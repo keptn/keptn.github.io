@@ -1,0 +1,17 @@
+baseURL = "www.example.com"
+languageCode = "en-us"
+title = "Hugo Serif Theme"
+theme = "hugo-serif-theme"
+
+[params]
+    google_analytics_id=""
+
+[[menu.main]]
+	name = "Github"
+	url = "https://github.com/keptn/keptn.github.io"
+    weight = 1
+
+[[menu.main]]
+    name = "Roadmap"
+    url = "/roadmap/"
+    weight = 2
