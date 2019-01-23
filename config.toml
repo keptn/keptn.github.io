@@ -1,4 +1,4 @@
-baseURL = "www.example.com"
+baseURL = "https://hugoserif.netlify.com"
 languageCode = "en-us"
 title = "Hugo Serif Theme"
 theme = "hugo-serif-theme"
