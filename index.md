@@ -47,6 +47,6 @@ Subscribe to our newsletter to stay in the loop.
 <center style="font-size: 10px">Curated by</center>
 <center>
 <a href="https://dynatrace.com" traget="_blank">
-<img src="{{site.url}}/assets/Dynatrace_Logo.png" alt="Dynatrace" width="170px" style="border: none"/>
+<img src="assets/Dynatrace_Logo.png" alt="Dynatrace" width="170px" style="border: none"/>
 </a>
 </center>
