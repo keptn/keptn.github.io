@@ -1,0 +1,9 @@
+theme: jekyll-theme-slate
+timezone: Europe/Vienna
+future: true
+title: "keptn"
+description: "Building the fabric for cloud-native lifecycle automation at enterprise scale"
+github:
+  is_project_page: true
+  repository_url: https://github.com/keptn
+google_analytics: UA-131190489-1
