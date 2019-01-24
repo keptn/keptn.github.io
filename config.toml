@@ -1,6 +1,6 @@
 baseURL = "https://hugoserif.netlify.com/"
 languageCode = "en-us"
-title = "Hugo Serif Theme"
+title = "keptn"
 theme = "hugo-serif-theme"
 
 [params]
