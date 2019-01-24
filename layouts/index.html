@@ -1,8 +1,8 @@
-{{ define "title" }}Hugo Serif Theme Demo{{ end}}
+{{ define "title" }}keptn{{ end}}
 {{ define "header_css" }}{{ end }}
 {{ define "body_classes" }}page-home{{ end }}
 {{ define "header_classes" }}header-transparent{{ end }}
-{{ define "meta"}}<meta name="description" content="Live demo of the Hugo Serif Theme">{{ end }}
+{{ define "meta"}}<meta name="description" content="keptn open source project">{{ end }}
 
 {{ define "main" }}
 
@@ -36,9 +36,24 @@
 <div class="container pt-5 pb-5 pt-md-8 pb-md-8">
   <div class="row justify-content-center">
     <div class="col-12">
-      <h2 class="text-center text-dark mb-3">Core desgin principles</h2>
+      <h2 class="text-center text-dark mb-3">Core design principles</h2>
     </div>
-    {{ range .Site.Data.features }}
+    {{ range .Site.Data.principles }}
+    <div class="col-12 col-md-6 col-lg-4 mb-2">
+      <div class="feature">
+        {{ if .image }}<div class="feature-image"><img alt="{{ .title }} logo" src="{{ .image }}" /></div> {{ end }}
+        <h2 class="feature-title">{{ .title }}</h2>
+        <div class="feature-content">{{ .description }}</div>
+      </div>
+    </div>
+    {{end}}
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <br><br>
+      <h2 class="text-center text-dark mb-3">Core capabilities</h2>
+    </div>
+    {{ range .Site.Data.capabilities }}
     <div class="col-12 col-md-6 col-lg-4 mb-2">
       <div class="feature">
         {{ if .image }}<div class="feature-image"><img alt="{{ .title }} logo" src="{{ .image }}" /></div> {{ end }}
@@ -49,24 +64,6 @@
     {{end}}
   </div>
 </div>
-</div>
-<div class="strip strip-grey">
-  <div class="container pt-5 pb-5 pt-md-8 pb-md-8">
-    <div class="row justify-content-center">
-      <div class="col-12">
-        <h2 class="text-center text-dark mb-3">Core capabilities</h2>
-      </div>
-      {{ range .Site.Data.features }}
-      <div class="col-12 col-md-6 col-lg-4 mb-2">
-        <div class="feature">
-          {{ if .image }}<div class="feature-image"><img alt="{{ .title }} logo" src="{{ .image }}" /></div> {{ end }}
-          <h2 class="feature-title">{{ .title }}</h2>
-          <div class="feature-content">{{ .description }}</div>
-        </div>
-      </div>
-      {{end}}
-    </div>
-  </div>
 </div>
 {{ end }}
 
