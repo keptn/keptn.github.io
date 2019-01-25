@@ -8,5 +8,5 @@ theme = "hugo-serif-theme"
 
 [[menu.main]]
     name = "Roadmap"
-    url = "/roadmap/"
+    url = "/services/"
     weight = 1
