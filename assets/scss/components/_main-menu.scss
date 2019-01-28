@@ -1,0 +1,41 @@
+.main-menu {
+  display: none;
+  @include media-breakpoint-up(md) {
+    display: block;
+  }
+  > ul {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    > li {
+      list-style: none;
+      font-size: 0.9rem;
+      > a {
+        padding: 10px 14px 10px 14px;
+        display: inline-block;
+        font-weight: regular;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: $primary;
+        &:hover {
+          background: $primary;
+          color: #ffffff;
+          text-decoration: none;
+        }
+      }
+      &.active {
+        > a {
+          background: $primary;
+          text-decoration: none;
+          color: #ffffff;
+          &:hover {
+            text-decoration: none;
+            background: $primary;
+            transition: all 225ms ease-in 0s;
+            color: #ffffff;
+          }
+        }
+      }
+    }
+  }
+}
