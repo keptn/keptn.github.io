@@ -53,7 +53,7 @@ Before commiting changes to this repository, run the folling command to compile 
 hugo
 ```
 
-### Deployment
+## Deployment
 
 Commit all files (including generated files) to the git repository. Commits to the master branch will trigger automatic deployment via [Netlify](https://www.netlify.com/)
 
