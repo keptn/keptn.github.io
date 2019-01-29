@@ -12,21 +12,21 @@
   </div>
 </div>
 
-{{ $services := where (where .Site.RegularPages "Type" "services") ".Params.featured" true }}
-{{if gt (len $services) 0}}
+{{ $roadmap := where (where .Site.RegularPages "Type" "roadmap") ".Params.featured" true }}
+{{if gt (len $roadmap) 0}}
 <div class="container pt-8 pt-md-12 pb-md-12">
   <div class="row justify-content-start">
     <div class="col-12">
       <h2 class="mb-3">Roadmap</h2>
     </div>
-    {{ $services := where (where .Site.RegularPages "Type" "services") ".Params.featured" true }}
-    {{ range first 6 (sort $services ".Params.weight") }}
+    {{ $roadmap := where (where .Site.RegularPages "Type" "roadmap") ".Params.featured" true }}
+    {{ range first 6 (sort $roadmap ".Params.weight") }}
     <div class="col-12 col-md-4 mb-1">
       {{ .Render "summary" }}
     </div>
     {{ end }}
     <div class="col-12 text-center">
-      <a class="button button-primary" href="{{ .Site.BaseURL }}services">View Roadmap</a>
+      <a class="button button-primary" href="{{ .Site.BaseURL }}roadmap">View Roadmap</a>
     </div>
   </div>
 </div>

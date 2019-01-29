@@ -1,13 +1,13 @@
 ---
-title: 'Accounting'
-date: 2018-11-18T12:33:46+10:00
-image: '/services/noun_591323.png'
-draft: false
+title: "{{ replace .TranslationBaseName "-" " " | title }}"
+date: {{ .Date }}
+image: "/roadmap/default.png"
 featured: true
-weight: 1
+draft: false
+weight: 100
 ---
 
-Lorem markdownum aequalis strigis. _Saetigeri iubeas_, vultu huic alvum nondum
+Lorem markdownum aequalis strigis. Saetigeri iubeas, vultu huic alvum nondum
 de obside ut laniavit arbor palmis, cum quin. Rupes vetat videndo, armigerae
 crimen habet Priamum nec.
 

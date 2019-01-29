@@ -1,0 +1,8 @@
+<div class="roadmap roadmap-summary">
+  <div class="roadmap-content">
+    <h2 class="roadmap-title">
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
+    </h2>
+    <p>{{ .Content | truncate 120 "..." | plainify }}</p>
+  </div>
+</div>

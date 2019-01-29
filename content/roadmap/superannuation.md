@@ -1,10 +1,9 @@
 ---
-title: "{{ replace .TranslationBaseName "-" " " | title }}"
-date: {{ .Date }}
-image: "/services/default.png"
+title: "Superannuation"
+date: 2018-11-28T15:14:54+10:00
+image: "/roadmap/default.png"
 featured: true
 draft: false
-weight: 100
 ---
 
 Lorem markdownum aequalis strigis. Saetigeri iubeas, vultu huic alvum nondum
