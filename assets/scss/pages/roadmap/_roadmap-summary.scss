@@ -1,7 +1,7 @@
-.service-summary {
+.roadmap-summary {
   display: flex;
   align-items: flex-start;
-  .service-image {
+  .roadmap-image {
     flex: 0 0 100px;
     margin-right: 10px;
     img {
@@ -9,9 +9,9 @@
       height: auto;
     }
   }
-  .service-content {
+  .roadmap-content {
     flex: 1;
-    .service-title {
+    .roadmap-title {
       font-family: $font-family-heading;
       font-size: 1.6rem;
     }
