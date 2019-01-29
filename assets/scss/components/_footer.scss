@@ -24,10 +24,9 @@
   .footer-title {
     color: #ffffff;
     font-size: 1.2rem;
-    font-family: $font-family-heading;
     @include media-breakpoint-up(sm) {
       align-self: flex-end;
-      margin-bottom: 4px;
+      margin-bottom: 5px;
     }
   }
   ul {
