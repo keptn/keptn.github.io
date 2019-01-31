@@ -28,10 +28,10 @@
           color: #ffffff;
         }
         a {
-          color: lighten($secondary, 40%);
-          text-decoration: none;
+          color: #ffffff;
+          text-decoration: underline;
           &:hover {
-            text-decoration: underline;
+            text-decoration: none;
           }
         }
         span {
