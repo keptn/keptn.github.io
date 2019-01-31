@@ -1,3 +1,4 @@
+{{ if .Site.Menus.main }}
 <div id="main-menu-mobile" class="main-menu-mobile">
   <ul>
     {{ $currentPage := . }}
@@ -11,3 +12,4 @@
     {{end}}
   </ul>
 </div>
+{{end}}
