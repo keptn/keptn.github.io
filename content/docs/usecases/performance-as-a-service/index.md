@@ -6,7 +6,7 @@ keywords: [quality gates]
 aliases:
 ---
 
-This use case shows you how to setup a fully automated on-demand self-service model for performance testing.
+This use case shows how to setup a fully automated on-demand self-service model for performance testing.
 
 ## About this use case
 
