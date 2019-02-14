@@ -15,14 +15,14 @@
 // @import "bootstrap/code";
 // @import "bootstrap/forms";
 // @import "bootstrap/buttons";
-// @import "bootstrap/transitions";
+@import "bootstrap/transitions";
 // @import "bootstrap/dropdown";
 // @import "bootstrap/button-group";
 // @import "bootstrap/input-group";
 // @import "bootstrap/custom-forms";
 // @import "bootstrap/nav";
 // @import "bootstrap/navbar";
-// @import "bootstrap/card";
+@import "bootstrap/card";
 // @import "bootstrap/breadcrumb";
 // @import "bootstrap/pagination";
 // @import "bootstrap/badge";
@@ -61,6 +61,13 @@
 @import 'components/whitebox';
 @import 'components/feature';
 @import 'components/github-corner';
+
+// Styles for documentation pages
+@import 'components/doc';
+@import 'components/sidebar';
+@import 'components/toc';
+
+@import 'components/pagenav';
 
 // Pages
 @import 'pages/home';
