@@ -1,6 +1,6 @@
 ---
 title: Setup
-description: How to deploy Istio in various environments (e.g., Kubernetes, Consul).
+description: How to deploy keptn in Kubernetes.
 weight: 15
 icon: setup
 ---
