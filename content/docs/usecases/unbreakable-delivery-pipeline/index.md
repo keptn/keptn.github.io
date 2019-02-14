@@ -6,21 +6,21 @@ keywords: [self-healing, quality gates]
 aliases:
 ---
 
-This use case shows you how to implement a delivery pipeline that prevents bad code changes from impacting your end users.
+This use case shows how to implement a delivery pipeline that prevents bad code changes from impacting your end users.
 
 ## About this use case
 
-The initial goal of the *Unbreakable Delivery Pipeline* is to implement a pipeline that prevents bad code changes from impacting your end users. Therefore, it relies on three concepts known as Shift-Left, Shift-Right, and Self-Healing.
+The initial goal of the *Unbreakable Delivery Pipeline* is to implement a pipeline that prevents bad code changes from impacting your end users. This pipeline relies on three concepts known as Shift-Left, Shift-Right, and Self-Healing.
 
 * **Shift-Left**: Ability to pull data for specific entities (processes, services, or applications) through an automation API and feed it into the tools that are used to decide on whether to stop the pipeline or keep it running.
 
-* **Shift-Right**: Ability to push deployment information and meta data to your monitoring solution (e.g., to differentiate BLUE vs GREEN deployments), to push build or revision number of deployment, or to notify about configuration changes.
+* **Shift-Right**: Ability to push deployment information and meta data to your monitoring solution (e.g., to differentiate BLUE vs GREEN deployments), to push build or revision number of a deployment, or to notify about configuration changes.
 
 * **Self-Healing**: Ability for smart auto-remediation that addresses the root cause of a problem and not the symptom.
 
 To illustrate the scenario this use case addresses, two steps are required: 
 
-1. The source code of a service will be changed, and the service gets deployed to the development environment. Although the service passes the quality gates in the development environment, the service does not pass the quality gate in staging due to an increase of the response time detected by a performance test. This demonstrates an early break of the delivery pipeline based on automated quality gates. 
+1. The source code of a service of the [Dynatrace Sockshop](https://github.com/dynatrace-sockshop) will be changed, and the service gets deployed to the development environment. Although the service passes the quality gates in the development environment, the service does not pass the quality gate in staging due to an increase of the response time detected by a performance test. This demonstrates an early break of the delivery pipeline based on automated quality gates. 
 
 1. For showing the self-healing capabilities, a faulty service version is deployed to the production environment and traffic is routed to this new version. Consequently, an issue is detected in production and a problem ticket is opened. To auto-remediate the bad deployment, the traffic routing is changed to redirect traffic to the previous (non-faulty) version.
 
