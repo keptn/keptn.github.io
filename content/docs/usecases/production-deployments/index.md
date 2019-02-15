@@ -16,6 +16,8 @@ To illustrate the benefit this use case addresses, you will create a second vers
 
 Optionally, you can try the additional virtual service configurations that redirect signed-in users or users with a Chrome browser to the new front-end version.
 
+{{< youtube IFegk6BtN8I >}}
+
 ## Step 1: Verify Istio installation and deploy sockshop to production
 
 1. To verify the installation of Istio, execute the `kubectl get services -n istio-system` command:
