@@ -31,10 +31,14 @@
 <body class='page {{ block "body_classes" . }}{{ end }}'>
   {{ partial "main-menu-mobile.html" . }}
   <div class="wrapper">
+
     {{ partial "header.html" . }}
     {{ partial "github-corner.html" . }}
-    {{ block "main" . }}
+    <div class="container">
+      {{ block "main" . }}
+    </div>
     {{ end }}
+
   </div>
 
   {{ partial "footer.html" . }}
