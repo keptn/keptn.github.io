@@ -8,4 +8,3 @@ icon: docs
 menu: main
 ---
 
-# Lorem Ipsum Dolor
