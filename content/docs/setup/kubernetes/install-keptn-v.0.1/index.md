@@ -14,14 +14,16 @@ The next steps expect that you have a working Kubernetes cluster in Google Conta
 - Master version 1.11.6 (minimum tested master version 1.10.11)
 - Node pool with 2 nodes:
     - each 8vCPUs and 30 GB memory (`n1-standard-8` in GKE)
-    - image type: Ubuntu (preferred) (or Container-Optimized OS (cos))
-    - **Note:** If *Container-Optimized OS (cos)* is selected, make sure to [follow the instructions](https://www.dynatrace.com/support/help/cloud-platforms/google-cloud-platform/google-kubernetes-engine/deploy-oneagent-on-google-kubernetes-engine-clusters/#expand-134parameter-for-container-optimized-os-early-access) for setting up the Dynatrace OneAgent Operator. This means that after the initial setup with `setupInfrastructure.sh` (which is a step below) the `cr.yml` has to be edited and applied again. In addition, all pods have to be restarted.
+    - image type: Ubuntu (**preferred**) or *Container-Optimized OS (cos)*
+
+        **Note:** If *Container-Optimized OS (cos)* is selected, make sure to [follow the instructions](https://www.dynatrace.com/support/help/cloud-platforms/google-cloud-platform/google-kubernetes-engine/deploy-oneagent-on-google-kubernetes-engine-clusters/#expand-134parameter-for-container-optimized-os-early-access) for setting up the Dynatrace OneAgent Operator. This means that after the initial setup with `setupInfrastructure.sh`, which is a step below, the `cr.yml` has to be edited and applied again. In addition, all pods have to be restarted.
 
 The scripts provided by keptn v.0.1 run in a BASH and require following tools locally installed: 
 
-- `jq` [(download)](https://stedolan.github.io/jq/) which is a lightweight and flexible command-line JSON processor.
-- `git` [(download)](https://git-scm.com/) and `hub` [(download)](https://hub.github.com/) that helps you do everyday GitHub tasks without ever leaving the terminal
-- `kubectl` [(download)](https://kubernetes.io/docs/tasks/tools/install-kubectl/) that is logged in to your cluster. 
+- [jq](https://stedolan.github.io/jq/) which is a lightweight and flexible command-line JSON processor.
+- [git](https://git-scm.com/) and [hub](https://hub.github.com/) that helps you do everyday GitHub tasks without ever leaving the terminal.
+- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) that is logged in to your cluster.
+
     **Tip:** View all the kubectl commands, including their options and descriptions in the [kubectl CLI reference](https://kubernetes.io/docs/user-guide/kubectl-overview/).
 
 Additionally, the scripts need:
@@ -32,9 +34,7 @@ Additionally, the scripts need:
 
 ## Step 2: Download and prepare for the installation
 
-Keptn is installed in its own `cicd` namespace and can manage services from all other namespaces.
-
-1. Go to the [keptn release](link) page to download the installation file:
+1. Go to the [keptn release](link) page to download the installation file using, e.g., `wget`:
     ```console
     $ cd ~
     $ wget ...
@@ -100,7 +100,9 @@ Keptn contains all scripts and instructions needed to deploy the demo applicatio
     front-end    LoadBalancer    10.23.248.***    **.226.62.***    8080:32232/TCP    7m
     ```
 
-1. Run the `kubectl get svc` command to get the **EXTERNAL-IP** and **PORT** of Jenkins. Then user a browser to open Jenkins and login using the default Jenkins credentials: `admin` / `AiTx4u8VyUV8tCKk`. **Note:** It is highly recommended to change these credentials right after the first login.
+1. Run the `kubectl get svc` command to get the **EXTERNAL-IP** and **PORT** of Jenkins. Then user a browser to open Jenkins and login using the default Jenkins credentials: `admin` / `AiTx4u8VyUV8tCKk`. 
+    
+    **Note:** It is highly recommended to change these credentials right after the first login.
 
     ```console
     $ kubectl get svc jenkins -n cicd
