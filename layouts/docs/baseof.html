@@ -15,8 +15,9 @@
   {{- $cssTarget := "css/style.css" }}
   {{- $cssOptions := cond ($inServerMode) (dict "targetPath" $cssTarget "enableSourceMap" true) (dict "targetPath" $cssTarget "outputStyle" "compressed") }}
   {{- $style := resources.Get "scss/style.scss" | toCSS $cssOptions }}
+  {{ $lightbox := resources.Get "js/libs/doc/lightbox/css/lightbox.min.css" }}
   <link rel="stylesheet" href="{{ ($style | minify | fingerprint).RelPermalink }}">
-
+  <link rel="stylesheet" href="{{ ($lightbox | minify | fingerprint).RelPermalink }}">
   {{ block "header_css" . }}{{ end }}
   <script>
     var branchName = "{{ .Site.Data.args.source_branch_name }}";
@@ -48,7 +49,7 @@
   {{ $docutils := resources.Get "js/libs/doc/utils.js" }}
   {{ $docmisc := resources.Get "js/libs/doc/misc.js" }}
   {{ $docprism := resources.Get "js/libs/doc/prism.js" }}
-
+  {{ $doclightbox := resources.Get "js/libs/doc/lightbox/js/lightbox-plus-jquery.min.js" }}
   {{ block "footer_js" . }}
   {{ end }}
 
@@ -62,11 +63,13 @@
   <script type="text/javascript" src="{{ $docutils.RelPermalink }}"></script>
   <script type="text/javascript" src="{{ $docmisc.RelPermalink }}"></script>
   <script type="text/javascript" src="{{ $docprism.RelPermalink }}"></script>
+  <script type="text/javascript" src="{{ $doclightbox.RelPermalink }}"></script>
   {{ else }}
   <script type="text/javascript" src="{{ ($scripts | minify | fingerprint).RelPermalink }}"></script>
   <script type="text/javascript" src="{{ ($docutils | minify | fingerprint).RelPermalink }}"></script>
   <script type="text/javascript" src="{{ ($docmisc | minify | fingerprint).RelPermalink }}"></script>
   <script type="text/javascript" src="{{ ($docprism | minify | fingerprint).RelPermalink }}"></script>
+  <script type="text/javascript" src="{{ ($doclightbox | minify | fingerprint).RelPermalink }}"></script>
   {{ end }}
 
   {{ partial "google-analytics.html" . }}

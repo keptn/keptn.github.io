@@ -41,28 +41,17 @@
   {{ partial "sub-footer.html" . }}
 
   {{ $scripts := resources.Get "js/scripts.js" }}
-  {{ $docutils := resources.Get "js/libs/doc/utils.js" }}
-  {{ $docmisc := resources.Get "js/libs/doc/misc.js" }}
-  {{ $docprism := resources.Get "js/libs/doc/prism.js" }}
 
   {{ block "footer_js" . }}
   {{ end }}
 
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 
   {{ if .Site.IsServer }}
   <script type="text/javascript" src="{{ $scripts.RelPermalink }}"></script>
-  <script type="text/javascript" src="{{ $docutils.RelPermalink }}"></script>
-  <script type="text/javascript" src="{{ $docmisc.RelPermalink }}"></script>
-  <script type="text/javascript" src="{{ $docprism.RelPermalink }}"></script>
+
   {{ else }}
   <script type="text/javascript" src="{{ ($scripts | minify | fingerprint).RelPermalink }}"></script>
-  <script type="text/javascript" src="{{ ($docutils | minify | fingerprint).RelPermalink }}"></script>
-  <script type="text/javascript" src="{{ ($docmisc | minify | fingerprint).RelPermalink }}"></script>
-  <script type="text/javascript" src="{{ ($docprism | minify | fingerprint).RelPermalink }}"></script>
+
   {{ end }}
 
   {{ partial "google-analytics.html" . }}
