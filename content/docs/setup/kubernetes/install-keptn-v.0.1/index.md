@@ -15,8 +15,10 @@ The next steps expect that you have a working Kubernetes cluster in Google Conta
 - Node pool with 2 nodes:
     - each 8vCPUs and 30 GB memory (`n1-standard-8` in GKE)
     - image type: Ubuntu (**preferred**) or *Container-Optimized OS (cos)*
-
-        **Note:** If *Container-Optimized OS (cos)* is selected, make sure to [follow the instructions](https://www.dynatrace.com/support/help/cloud-platforms/google-cloud-platform/google-kubernetes-engine/deploy-oneagent-on-google-kubernetes-engine-clusters/#expand-134parameter-for-container-optimized-os-early-access) for setting up the Dynatrace OneAgent Operator. This means that after the initial setup with `setupInfrastructure.sh`, which is a step below, the `cr.yml` has to be edited and applied again. In addition, all pods have to be restarted.
+    
+        **Note 1:** To select Ubuntu, click on the "Advanced Edit" button in GKE and select "Ubuntu" as the Image Type in the Nodes section.
+        
+        **Note 2:** If *Container-Optimized OS (cos)* is selected, make sure to [follow the instructions](https://www.dynatrace.com/support/help/cloud-platforms/google-cloud-platform/google-kubernetes-engine/deploy-oneagent-on-google-kubernetes-engine-clusters/#expand-134parameter-for-container-optimized-os-early-access) for setting up the Dynatrace OneAgent Operator. This means that after the initial setup with `setupInfrastructure.sh`, which is a step below, the `cr.yml` has to be edited and applied again. In addition, all pods have to be restarted.
 
 The scripts provided by keptn v.0.1 run in a BASH and require following tools locally installed: 
 
@@ -124,6 +126,29 @@ Keptn contains all scripts and instructions needed to deploy the demo applicatio
 1. Finally, navigate to **Jenkins** > **Manage Jenkins** > **Configure System** and  scroll to the environment variables to verify whether the variables are set correctly. **Note:** The value for the parameter *DT_TENANT_URL* must start with *https://*
 
 ![](./assets/jenkins-env-vars.png)
+
+### Troubleshooting
+
+- In case any value is missing in Jenkins, this can be fixed by adding the corresponding value in the `manifests/jenkins/k8s-jenkins-deployment.yml` file and re-applying this file with `kubectl`. 
+E.g., if the the value for `DOCKER_REGISTRY_IP` is unset, retrieve the value with `kubectl get svc -n cicd` and insert as value.
+
+    ```
+    ...
+    env:
+      - name: GITHUB_USER_EMAIL
+        value: youremail@organization.com
+      - name: GITHUB_ORGANIZATION
+        value: your-github-org
+      - name: DOCKER_REGISTRY_IP
+        value: 10.20.30.40
+      - name: DT_TENANT_URL
+        value: yourID.live.dynatrace.com
+      - name: DT_API_TOKEN
+        value: 123apitoken
+    ...
+    ```
+
+    Save the file and apply with: `kubectl apply -f k8s-jenkins-deployment.yml`. This will redeploy the Jenkins with the updated configuration.
 
 ## Step 4: (optional) Create process group naming rule in Dynatrace
 
