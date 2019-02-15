@@ -14,6 +14,9 @@ The [Dynatrace Sockshop](https://github.com/dynatrace-sockshop) sample used in k
 
 To illustrate the scenario this use case addresses, you will change one service of Sockshop that gets deployed to the dev environment. Eager to understand the performance characteristics of this new deployment, you trigger a performance test. However, this performance test fails due to a quality gate in place. To investigate the issues resulting in this failed performance test, you will use a monitoring solution that allows a comparison of test load.
 
+
+{{< youtube MGbmvVwF7tU >}}
+
 ## Step 1: Define request attributes in Dynatrace
 
 In this step you will set up a rule to capture request attributes in Dynatrace based on web request data. In more detail, the data stored in the request header `x-dynatrace-test` will be extracted to create request attributes that tag and distinguish service traffic. For further information on how to capture request attributes, [please see this page in the Dynatrace documentation.](https://www.dynatrace.com/support/help/monitor/transactions-and-services/request-attributes/how-do-i-capture-request-attributes-based-on-web-request-data/)
@@ -31,6 +34,12 @@ In this step you will set up a rule to capture request attributes in Dynatrace b
 
     Screenshot shows this rule definition.
     ![request-attribute](./assets/request_attribute.png)
+
+    {{< image width="50%" ratio="1"
+    link="./assets/request_attribute.png"
+    alt="Image not available"
+    title="Rule definition"
+    caption="Rule definition">}}
 
 2. Create request attribute for Load Script Name (LSN)
     1. Go to **Settings**, **Server-side monitoring**, and click on **Request attributes**.
@@ -82,30 +91,30 @@ In this step you trigger a performance test for (1) the current implementation o
 
 1. Run performance test on new version
     1. Go to **Jenkins** and click on **sockshop** folder.
-    1. Click on **carts.performance** and select the **master** branch.  
+    1. Click on **carts.performance** and select the **master** branch.
     1. Click on **Build Now** to trigger the performance pipeline.
 
 1. Explore results in Jenkins
-    1. After a successful pipeline execution, click on **Performance Trend**. 
+    1. After a successful pipeline execution, click on **Performance Trend**.
     This opens a trend analysis of the JMeter test results. In more details, it shows a chart for the throughput, response time, and percentage of errors as shown below.
     ![performance_trend](./assets/performance_trend.png)
 
     2. Click on **Performance Signature**.
-    There you get an overview of the last builds similar to the screenshot below. 
+    There you get an overview of the last builds similar to the screenshot below.
     ![jenkins_result](./assets/jenkins_result.png)
 
     3. Click on the **Build No** of one particular build and click on **Performance Signature**.
-    This opens a detailed view about the performance validation of the selected build. 
+    This opens a detailed view about the performance validation of the selected build.
     ![build_result](./assets/build_result.png)
 
 ## Step 3: Compare builds in Dynatrace
 
-In this step you will leverage Dynatrace to identify the difference between two performance tests. Literally, a couple of clicks can tell you the reason why one build was slower compared to another one. 
+In this step you will leverage Dynatrace to identify the difference between two performance tests. Literally, a couple of clicks can tell you the reason why one build was slower compared to another one.
 
 1. Open Dynatrace from Jenkins Pipeline
     1. In the Performance Signature for a selected build, click on **open in Dynatrace**. (This opens the correct timeframe.)
     1. Go to **Diagnostic tools** and click on **Top web requests**.
-    1. (optional) Filter on a Management Zone. 
+    1. (optional) Filter on a Management Zone.
 
 1. Narrow down the requests based on request attributes
     1. Click on **Add filter**.
