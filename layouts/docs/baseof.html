@@ -15,11 +15,9 @@
   {{- $cssTarget := "css/style.css" }}
   {{- $cssOptions := cond ($inServerMode) (dict "targetPath" $cssTarget "enableSourceMap" true) (dict "targetPath" $cssTarget "outputStyle" "compressed") }}
   {{- $style := resources.Get "scss/style.scss" | toCSS $cssOptions }}
-
   {{ $lightbox := resources.Get "js/libs/doc/lightbox/css/lightbox.min.css" }}
   <link rel="stylesheet" href="{{ ($style | minify | fingerprint).RelPermalink }}">
   <link rel="stylesheet" href="{{ ($lightbox | minify | fingerprint).RelPermalink }}">
-  <link rel="stylesheet" href="/style.css">
   {{ block "header_css" . }}{{ end }}
   <script>
     var branchName = "{{ .Site.Data.args.source_branch_name }}";
