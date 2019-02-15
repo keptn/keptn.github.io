@@ -18,7 +18,14 @@
   <link rel="stylesheet" href="{{ ($style | minify | fingerprint).RelPermalink }}">
 
   {{ block "header_css" . }}{{ end }}
-
+  <script>
+    var branchName = "{{ .Site.Data.args.source_branch_name }}";
+    var docTitle = "{{ .Title }}";
+    var iconFile = "{{ .Site.BaseURL}}/img/icons.svg";
+    var buttonCopy = '{{ i18n "button_copy" }}';
+    var buttonPrint = '{{ i18n "button_print" }}';
+    var buttonDownload = '{{ i18n "button_download" }}';
+  </script>
 </head>
 
 <body class='page {{ block "body_classes" . }}{{ end }}'>
@@ -38,13 +45,17 @@
   {{ block "footer_js" . }}
   {{ end }}
 
+
   {{ if .Site.IsServer }}
   <script type="text/javascript" src="{{ $scripts.RelPermalink }}"></script>
+
   {{ else }}
   <script type="text/javascript" src="{{ ($scripts | minify | fingerprint).RelPermalink }}"></script>
+
   {{ end }}
 
   {{ partial "google-analytics.html" . }}
 
 </body>
+
 </html>
