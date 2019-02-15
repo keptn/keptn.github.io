@@ -15,6 +15,8 @@ In this use case, we are going to use the [Dynatrace Sockshop](https://github.co
 In our scenario, we will use Ansible Tower as the tool that is managing the promotional campaigns. We will have a playbook that allows us to configure and start a campaign, e.g., adding gifts to 30 % of the interactions with the shopping cart, i.e., about 1/3 of the items placed in the shopping card will be awarded an additional gift. In addition, we will have a playbook that stops the campaign if something goes wrong. 
 Therefore, in this use case we will experience troubles with the promotional campaign. We will setup means that automatically execute the playbook that can stop the campaign based on the information we get from our monitoring tool Dynatrace.
 
+{{< youtube iguxwIQdug8 >}}
+
 ## Step 1: Check prerequisites
 
 1. A personal license for Ansible Tower is needed. In case you don't have a license yet, you can get a free license here: https://www.ansible.com/license
