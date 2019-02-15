@@ -33,9 +33,8 @@ In this step you will set up a rule to capture request attributes in Dynatrace b
     1. Finally, click **Save**, click **Save**.
 
     Screenshot shows this rule definition.
-    ![request-attribute](./assets/request_attribute.png)
 
-    {{< image width="50%" ratio="1"
+    {{< image ratio="1"
     link="./assets/request_attribute.png"
     alt="Image not available"
     title="Rule definition"
@@ -43,25 +42,25 @@ In this step you will set up a rule to capture request attributes in Dynatrace b
 
 2. Create request attribute for Load Script Name (LSN)
     1. Go to **Settings**, **Server-side monitoring**, and click on **Request attributes**.
-    1. Click the **Create new request attribute** button.
-    1. Provide a unique *Request attribute name*: `LSN`
-    1. Click on **Add new data source**.
-    1. Select the *Request attribute source*: `HTTP request header`
-    1. Specify the *Parameter name*: `x-dynatrace-test`
-    1. Open *Optionally restrict or process the captured parameter(s) further*
-    1. At *Preprocess by extracting substring* set: `between` > `LSN=` > `;`
-    1. Finally, click **Save**, click **Save**.
+    2. Click the **Create new request attribute** button.
+    3. Provide a unique *Request attribute name*: `LSN`
+    4. Click on **Add new data source**.
+    5. Select the *Request attribute source*: `HTTP request header`
+    6. Specify the *Parameter name*: `x-dynatrace-test`
+    7. Open *Optionally restrict or process the captured parameter(s) further*
+    8. At *Preprocess by extracting substring* set: `between` > `LSN=` > `;`
+    9. Finally, click **Save**, click **Save**.
 
 3.  Create request attribute for Test Script Name (TSN)
     1. Go to **Settings**, **Server-side monitoring**, and click on **Request attributes**.
-    1. Click the **Create new request attribute** button.
-    1. Provide a unique *Request attribute name*: `TSN`
-    1. Click on **Add new data source**.
-    1. Select the *Request attribute source*: `HTTP request header`
-    1. Specify the *Parameter name*: `x-dynatrace-test`
-    1. Open *Optionally restrict or process the captured parameter(s) further*
-    1. At *Preprocess by extracting substring* set: `between` > `TSN=` > `;`
-    1. Finally, click **Save**, click **Save**.
+    2. Click the **Create new request attribute** button.
+    3. Provide a unique *Request attribute name*: `TSN`
+    4. Click on **Add new data source**.
+    5. Select the *Request attribute source*: `HTTP request header`
+    6. Specify the *Parameter name*: `x-dynatrace-test`
+    7. Open *Optionally restrict or process the captured parameter(s) further*
+    8. At *Preprocess by extracting substring* set: `between` > `TSN=` > `;`
+    9. Finally, click **Save**, click **Save**.
 
 ## Step 2: Run performance test on carts service
 

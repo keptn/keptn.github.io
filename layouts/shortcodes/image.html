@@ -30,6 +30,7 @@ omit this value and it will be computed automatically.
 */ -}}
 
 {{- $width := .Get "width" -}}
+{{- $imageid := .Get "imageid" -}}
 {{- $ratio := .Get "ratio" -}}
 {{- $link := .Get "link" -}}
 {{- $caption := .Get "caption" -}}
@@ -44,6 +45,10 @@ omit this value and it will be computed automatically.
 
 {{- if not $width -}}
 {{- $width = "100%" -}}
+{{- end -}}
+
+{{- if not $imageid -}}
+{{- $imageid = "lightbox" -}}
 {{- end -}}
 
 {{- /* Turn relative values for $link into absolute URLs */ -}}
@@ -85,7 +90,7 @@ omit this value and it will be computed automatically.
 
 <figure style="width: {{- $width -}}">
     <div class="wrapper-with-intrinsic-ratio" style="padding-bottom: {{- $ratio -}}%">
-        <a class="not-for-endnotes" href="{{- $link -}}" title="{{- $title -}}">
+        <a data-lightbox="{{- $imageid -}}" class="not-for-endnotes" href="{{- $link -}}" title="{{- $title -}}">
             <img class="element-to-stretch" src="{{- $link -}}" alt="{{- $alt -}}" />
         </a>
     </div>
