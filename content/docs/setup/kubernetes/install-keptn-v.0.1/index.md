@@ -32,6 +32,10 @@ Additionally, the scripts need:
 - `GitHub personal access token` to push changes to the sockshop repositories
 - Dynatrace Tenant including the Dynatrace `Tenant ID`, a Dynatrace `API Token`, and Dynatrace `PaaS Token`. If you don't have a Dynatrace tenant yet, sign up for a [free trial](https://www.dynatrace.com/trial/) or a [developer account](https://www.dynatrace.com/developer/).
 
+    **Note:** The `API Token` must have the permissions as shown in the screenshot below:
+
+    ![dt_api_token](./assets/dt_api_token.png)
+
 ## Step 2: Download and prepare for the installation
 
 1. Go to the [keptn release](link) page to download the installation file using, e.g., `wget`:
