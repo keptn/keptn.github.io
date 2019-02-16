@@ -418,7 +418,7 @@ function handleDOMLoaded() {
         attachLinksToDefinedTerms();
         makeOutsideLinksOpenInTabs();
         loadExternalPreBlocks();
-        createEndnotes();
+        // createEndnotes();
     }
 
     function selectTabs() {

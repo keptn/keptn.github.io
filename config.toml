@@ -3,12 +3,15 @@ languageCode = "en-us"
 title = "keptn"
 theme = "hugo-serif-theme"
 
+
+
 [params]
     google_analytics_id="UA-133584243-1"
 
 [blackfriday]
-    plainIDAnchors = true
-    hrefTargetBlank = false
+	plainIDAnchors = true
+    # See https://github.com/gohugoio/hugo/issues/2424
+	hrefTargetBlank = false
     angledQuotes = false
     latexDashes = true
     extensions = [""]
