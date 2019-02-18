@@ -211,11 +211,7 @@ The promotional itself is controlled via Ansible Tower. That means that starting
         ![remediation job execution](./assets/ansible-remediation-execution.png)
 
 1. The remediation playbook set back the promotion rate to 0 %, which is also send as *Configuration changed event* to Dynatrace:
-    
-    {{< popup_image
-         link="./assets/service-custom-configuration-event-remediation.png"
-         caption="Custom Configuration Event">}}
-    
+    ![custom configuration event](./assets/service-custom-configuration-event-remediation.png)
 
 1. Problem is remediated thanks to automating runbook execution by Dynatrace!
 
