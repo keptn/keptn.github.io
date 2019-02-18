@@ -88,7 +88,9 @@ This step integrates the defined *remediation runbook* in Dynatrace in a way tha
 1. Setup a problem notification in Dynatrace
     - Navigate to **Settings**, **Integration**, **Problem notification**, **Set up notifications**, and **Ansible Tower** 
 
-        ![integration](./assets/ansible-integration.png)
+        {{< popup_image
+         link="./assets/ansible-integration.png"
+         caption="Ansible Integration">}}
 
 1. Enter your Ansible Tower job template URL and Ansible Tower credentials.
     - Name: e.g., `remediation`
@@ -195,7 +197,10 @@ The promotional itself is controlled via Ansible Tower. That means that starting
         - one comment that the remediation playbook has started
         - one comment that the remediation playbook has already finished executing
 
-        ![problem details](./assets/dynatrace-problem.png)
+        {{< popup_image
+         link="./assets/dynatrace-problem.png"
+         caption="Dynatrace Problem Ticket">}}
+        
 
 1. To verify executed playbooks in Ansible Tower, navigate to **Jobs** and verify that Ansible Tower has executed two jobs.        
     - The first job `X - remediation` was called since Dynatrace sent out the problem notification to Ansible Tower. 
