@@ -34,7 +34,7 @@ if(link.classList.contains("not-for-endnotes")){continue;}
 var count=map.get(link.href);if(count===undefined){count=map.size+1;map.set(link.href,count);var li=document.createElement("li");li.innerText=link.href;notes.appendChild(li);}
 link.insertAdjacentHTML("afterend","<sup class='endnote-ref'>"+count+"</sup>");num_links++;}
 if(num_links===0){var div=document.getElementsByClassName("link-endnotes")[0];div.style.display="none";}}
-attachToolbarToPreBlocks();applySyntaxColoringToPreBlocks();attachLinksToHeaders();attachLinksToDefinedTerms();makeOutsideLinksOpenInTabs();loadExternalPreBlocks();createEndnotes();}
+attachToolbarToPreBlocks();applySyntaxColoringToPreBlocks();attachLinksToHeaders();attachLinksToDefinedTerms();makeOutsideLinksOpenInTabs();loadExternalPreBlocks();}
 function selectTabs(){var tabs=document.querySelectorAll('a[data-toggle="tab"]');for(var i=0;i<tabs.length;i++){var tab=tabs[i];var cookie_name=tab.getAttribute("data-cookie-name");var cookie_value=tab.getAttribute("data-cookie-value");if(cookie_name===null||cookie_name===""){continue;}
 var v=readCookie(cookie_name);if(cookie_value===v){$('.nav-tabs a[href="'+tab.hash+'"]').tab('show');}}}
 function getDOMTopology(){scrollToTopButton=document.getElementById("scroll-to-top");var toc=document.getElementById("toc");if(toc!==null){tocLinks=toc.getElementsByTagName("A");tocHeadings=new Array(tocLinks.length);for(var i=0;i<tocLinks.length;i++){tocHeadings[i]=document.getElementById(tocLinks[i].hash.substring(1));}}}
