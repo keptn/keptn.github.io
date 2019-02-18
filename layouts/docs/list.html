@@ -1,5 +1,5 @@
 {{ define "main" }}
-
+<div class="container">
 {{ .Scratch.Set "skipSeeAlso" true }}
 
 {{ partial "primary-top.html" . }}
@@ -36,5 +36,5 @@
 {{ .Content }}
 
 {{ partial "primary-bottom.html" . }}
-
+</div>
 {{ end }}
