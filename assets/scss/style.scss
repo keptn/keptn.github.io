@@ -66,6 +66,7 @@
 @import 'components/doc';
 @import 'components/sidebar';
 @import 'components/toc';
+@import 'components/section-index';
 
 @import 'components/pagenav';
 
@@ -75,7 +76,7 @@
 body {
   font-size: 1rem;
   font-family: $font-family-base;
-  margin-bottom: 50px;
+
   // -webkit-font-smoothing: antialiased;
   // -moz-osx-font-smoothing: grayscale;
   // -webkit-text-size-adjust: 100%;

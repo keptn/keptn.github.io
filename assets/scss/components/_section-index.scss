@@ -1,0 +1,34 @@
+.section-index {
+    display: grid;
+    grid-template-columns: [entry] 1fr;
+
+
+    @media (min-width: $bp-sm) {
+        grid-template-columns: [entry] 1fr [entry] 1fr;
+    }
+
+    @media (min-width: $bp-xl) {
+        grid-template-columns: [entry] 1fr [entry] 1fr [entry] 1fr;
+    }
+
+    .entry {
+        padding: 1rem 1rem;
+        border-right: 1px solid #eeeeee;
+        border-bottom: 1px solid #eeeeee;
+        @media (min-width: $bp-md) {
+            padding: 1rem 1rem;
+        }
+    }
+
+    h5 {
+        margin-bottom: 0;
+
+        a {
+            font-weight: 700;
+        }
+    }
+
+    p {
+        margin-top: 0;
+    }
+}
