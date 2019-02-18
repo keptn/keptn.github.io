@@ -134,7 +134,9 @@ In this step, you will promote the new version of the `front-end` service to pro
 
 2. Enter `front-end` as service name and `v2` as new version when asked for parameters to that pipeline.
 
-    ![enter-parameters](./assets/enter-parameters.png)
+    {{< popup_image
+         link="./assets/enter-parameters.png"
+         caption="Parameters">}}
 
     This pipeline reads the version of the passed service in the *staging* namespace and deploys the artefact in that version to the *production* namespace in a deployment with the passed version number. After running that pipeline, two deployments of `front-end` (one with *v1* and one with *v2*) are available.
 
