@@ -586,3 +586,21 @@ blockquote {
 .attribution {
     font-weight: $blogAttributeWeight;
 }
+
+.popup-image {
+    border: 2px solid #ffffff;
+}
+
+figure {
+    background-color: #eeeeee;
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+figcaption {
+    font-size: 12px;
+    color: #000000;
+    font-style: italic;
+    padding-top: 8px;
+}

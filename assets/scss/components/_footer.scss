@@ -10,7 +10,8 @@
     .footer-logo {
       width: 100px;
       margin-right: 10px;
-      padding-bottom: 10px;
+      margin-top: 1px;
+      padding-bottom: 0;
     }
     @include media-breakpoint-up(sm) {
       justify-content: space-between;
@@ -26,8 +27,13 @@
     font-size: 1.2rem;
     @include media-breakpoint-up(sm) {
       align-self: flex-end;
-      margin-bottom: 4px;
+      margin-bottom: 0;
     }
+
+    a {
+      color: #ffffff;
+    }
+
   }
   ul {
     list-style: none;

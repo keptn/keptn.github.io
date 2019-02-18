@@ -34,10 +34,8 @@ In this step you will set up a rule to capture request attributes in Dynatrace b
 
     Screenshot shows this rule definition.
 
-    {{< image ratio="1"
+    {{< popup_image
     link="./assets/request_attribute.png"
-    alt="Image not available"
-    title="Rule definition"
     caption="Rule definition">}}
 
 2. Create request attribute for Load Script Name (LSN)
@@ -96,15 +94,21 @@ In this step you trigger a performance test for (1) the current implementation o
 1. Explore results in Jenkins
     1. After a successful pipeline execution, click on **Performance Trend**.
     This opens a trend analysis of the JMeter test results. In more details, it shows a chart for the throughput, response time, and percentage of errors as shown below.
-    ![performance_trend](./assets/performance_trend.png)
+    {{< popup_image ratio="1"
+    link="./assets/performance_trend.png"
+    caption="Performance Trend">}}
 
-    2. Click on **Performance Signature**.
+    1. Click on **Performance Signature**.
     There you get an overview of the last builds similar to the screenshot below.
-    ![jenkins_result](./assets/jenkins_result.png)
+    {{< popup_image
+    link="./assets/jenkins_result.png"
+    caption="Last Builds in Jenkins">}}
 
-    3. Click on the **Build No** of one particular build and click on **Performance Signature**.
+    1. Click on the **Build No** of one particular build and click on **Performance Signature**.
     This opens a detailed view about the performance validation of the selected build.
-    ![build_result](./assets/build_result.png)
+    {{< popup_image
+    link="./assets/build_result.png"
+    caption="Performance Signatures">}}
 
 ## Step 3: Compare builds in Dynatrace
 
@@ -112,27 +116,35 @@ In this step you will leverage Dynatrace to identify the difference between two 
 
 1. Open Dynatrace from Jenkins Pipeline
     1. In the Performance Signature for a selected build, click on **open in Dynatrace**. (This opens the correct timeframe.)
-    1. Go to **Diagnostic tools** and click on **Top web requests**.
-    1. (optional) Filter on a Management Zone.
+    2. Go to **Diagnostic tools** and click on **Top web requests**.
+    3. (optional) Filter on a Management Zone.
 
-1. Narrow down the requests based on request attributes
+2. Narrow down the requests based on request attributes
     1. Click on **Add filter**.
-    1. Create filter for: `Request attribute` > `LTN`.
-    1. Click on **Apply**.
+    2. Create filter for: `Request attribute` > `LTN`.
+    3. Click on **Apply**.
 
-1. Open comparison view
+3. Open comparison view
     1. Select the timeframe of a *good build*.
-    1. Click on **...** and select **Comparison** as shown below:
-    ![compare_builds](./assets/compare_builds.png)
+    2. Click on **...** and select **Comparison** as shown below:
+    {{< popup_image
+    link="./assets/compare_builds.png"
+    caption="Compare Builds">}}
 
-1. Compare response time hotspots
+4. Compare response time hotspots
     1. Select the timeframe of the *bad build* by selecting *compare with*: `custom time frame`
-    1. Click on **Compare response time hotspots**.
-    ![compare_hotspots](./assets/compare_hotspots.png)
+    2. Click on **Compare response time hotspots**.
+    {{< popup_image
+    link="./assets/compare_hotspots.png"
+    caption="Compare Hotspots">}}
     1. There you can see that the *Active wait time* increased.
-    ![compare_overview](./assets/compare_overview.png)
+    {{< popup_image
+    link="./assets/compare_overview.png"
+    caption="Compare Overview">}}
     1. Click on **View method hotspots** to identify the root cause.
-    ![method_hotspot](./assets/method_hotspot.png)
+    {{< popup_image
+    link="./assets/method_hotspot.png"
+    caption="Method Hotspot">}}
 
 ## Step 4. Cleanup
 
@@ -140,8 +152,8 @@ In this step you will clean up the applications.properties file and rebuild the 
 
 1. Remove the slowdown in the carts service
     1. In the directory of `~/keptn/repositories/carts/`, open the file: `./src/main/resources/application.properties`
-    1. Change the value of `delayInMillis` from `1000` to `0`
-    1. Commit/Push the changes to your GitHub Repository *carts*
+    2. Change the value of `delayInMillis` from `1000` to `0`
+    3. Commit/Push the changes to your GitHub Repository *carts*
 
     ```console
     $ git add .
@@ -149,11 +161,11 @@ In this step you will clean up the applications.properties file and rebuild the 
     $ git push
     ```
 
-1. Build this new version
+2. Build this new version
     1. Go to your **Jenkins** and click on **sockshop** folder.
-    1. Click on **carts** and select the **master** branch (or click on **Scan Multibranch Pipeline Now**).
-    1. Click on **Build Now** to trigger the performance pipeline.
-    1. Wait until the pipeline shows: *Success*.
+    2. Click on **carts** and select the **master** branch (or click on **Scan Multibranch Pipeline Now**).
+    3. Click on **Build Now** to trigger the performance pipeline.
+    4. Wait until the pipeline shows: *Success*.
 
 ## Understanding what happened
 
