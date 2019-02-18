@@ -100,7 +100,9 @@ This step integrates the defined *remediation runbook* in Dynatrace in a way tha
     - Click **Send test notification** > a green banner should appear.
     - **Save** the integration
 
-        ![integration successful](./assets/ansible-integration-successful.png)
+        {{< popup_image
+         link="./assets/ansible-integration-successful.png"
+         caption="Successful Ansible Integration">}}
 
 1. *Optional:* Navigate back to your Ansible Tower instance and check what happenend when setting up the integration.
     - Navigate to **Jobs** and click on your *X - remediation* job
@@ -209,7 +211,11 @@ The promotional itself is controlled via Ansible Tower. That means that starting
         ![remediation job execution](./assets/ansible-remediation-execution.png)
 
 1. The remediation playbook set back the promotion rate to 0 %, which is also send as *Configuration changed event* to Dynatrace:
-    ![custom configuration event](./assets/service-custom-configuration-event-remediation.png)
+    
+    {{< popup_image
+         link="./assets/service-custom-configuration-event-remediation.png"
+         caption="Custom Configuration Event">}}
+    
 
 1. Problem is remediated thanks to automating runbook execution by Dynatrace!
 
