@@ -1,31 +1,14 @@
 {{- /*
-Purpose:
-Inserts a figure into a page. The user of this shortcode specifies the
-relative width of the figure in percentage, and an aspect ratio value in
-lieu of the Y coordinate. Through CSS trickery, these two values let us
-calculate the actual width and height of the image at render time in such
-a way that it avoids the typical 'shifting text' problem as images are
-loaded asynchronously.
+Like image just with a lightbox
 
 Usage:
 
-{{< image width="<NN>%" ratio="<NN>"
+{{< popup_image width="<NN>%" ratio="<NN>"
     link="<path to image file>"
     alt="<text to display when the image is not available>"
     title="<text to display when hovering over the image>"
     caption="<text to display below the image>"
 >}}
-
-If you omit the alt parameter, it will take on the value of the title parameter.
-If you omit the title parameter, it will take on the value of the caption parameter.
-In other words, if all three strings are the same, you can just supply the caption
-parameter.
-
-The width value represents the percentage of the page that the image should occupy. If
-width is not supplied, it defaults to 100%.
-
-The ratio value represents the ratio of width to height for the image. You can normally
-omit this value and it will be computed automatically.
 
 */ -}}
 
@@ -87,8 +70,8 @@ omit this value and it will be computed automatically.
 
 <figure style="width: {{- $width -}}">
     <div class="wrapper-with-intrinsic-ratio" style="padding-bottom: {{- $ratio -}}%">
-        <a class="not-for-endnotes" href="{{- $link -}}" title="{{- $title -}}">
-            <img class="element-to-stretch" src="{{- $link -}}" alt="{{- $alt -}}" />
+        <a data-lightbox="{{- $imageid -}}" class="not-for-endnotes" href="{{- $link -}}" title="{{- $title -}}">
+            <img class='popup-image element-to-stretch' src="{{- $link -}}" alt="{{- $alt -}}" />
         </a>
     </div>
     <figcaption>{{- $caption -}}</figcaption>
