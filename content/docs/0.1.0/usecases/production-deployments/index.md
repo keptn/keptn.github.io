@@ -54,7 +54,9 @@ Optionally, you can try the additional virtual service configurations that redir
 
 1. Trigger the `k8s-deploy-production` pipeline in your Jenkins instance (see :one:). This promotes all components that are currently in the *staging* namespace to the *production* namespace.
 
-    ![trigger k8s-deploy-production](./assets/trigger-k8s-deploy-production.png)
+    {{< popup_image
+    link="./assets/trigger-k8s-deploy-production.png"
+    caption="Trigger k8s-deploy-production">}}
 
     This pipeline reads the current versions of all artefacts in the *staging* namespace and deploys those artefacts in the exact same version to the *production* namespace. Instead of pushing individual microservices to production, we chose the approach of defining a release bracket, which holds versions of microservices that work together well.
 
@@ -74,7 +76,9 @@ In this step, you create an *improved* version of the front-end service. You wil
 
 1. Edit the file `public/topbar.html` in the master branch of the `~/keptn/repositories/front-end` repository and change the following lines as depicted in the screenshot:
 
-    ![change-topbar-html](./assets/change-topbar-html.png)
+    {{< popup_image
+    link="./assets/change-topbar-html.png"
+    caption="Change topbar of front-end">}}
 
 1. Save the changes to that file.
 
@@ -98,7 +102,9 @@ In this step, you create an *improved* version of the front-end service. You wil
         1. Increments the current version by 1. 
         1. Commits/Pushes the new version to the Git repository.
 
-        ![pipeline_release_branch](./assets/pipeline_release_branch.png)
+        {{< popup_image
+        link="./assets/pipeline_release_branch.png"
+        caption="Jenkins pipeline create-release-branch">}}
 
 1. After the **create-release-branch** pipeline has finished, trigger the build pipeline for the `front-end` service and wait until the new artefacts is deployed to the *staging* namespace.
     - Wait until the release/**version** build has finished.
@@ -122,7 +128,9 @@ In this step, you create an *improved* version of the front-end service. You wil
 
     Enter the public IP (e.g., 1**.2**.3**.4**:8080) in your browser and you see the visual improvements you did.
 
-    ![frontend-v2](./assets/frontend-v2.png)
+    {{< popup_image
+    link="./assets/frontend-v2.png"
+    caption="Front-end version 2">}}
 
 ## Step 4. Deploy front-end v2 to production
 
@@ -130,13 +138,15 @@ In this step, you will promote the new version of the `front-end` service to pro
 
 1. In your Jenkins instance, trigger the parameterized pipeline `k8s-deploy-production.update` (see :one:).
 
-    ![trigger-production-update](./assets/trigger-production-update.png)
+    {{< popup_image
+    link="./assets/trigger-production-update.png"
+    caption="Trigger production update">}}
 
 2. Enter `front-end` as service name and `v2` as new version when asked for parameters to that pipeline.
 
     {{< popup_image
-         link="./assets/enter-parameters.png"
-         caption="Parameters">}}
+    link="./assets/enter-parameters.png"
+    caption="Parameters for deploy-to-production pipeline">}}
 
     This pipeline reads the version of the passed service in the *staging* namespace and deploys the artefact in that version to the *production* namespace in a deployment with the passed version number. After running that pipeline, two deployments of `front-end` (one with *v1* and one with *v2*) are available.
 
@@ -215,7 +225,9 @@ In this step, you will configure traffic routing in Istio to redirect traffic ba
 
     **!Note! YOU MUST NOT DELETE THE COMMENTS #v1 AND #v2 - THE COMMENTS ARE NEEDED LATER ON**
 
-    ![modify-canary-yml](./assets/modify-canary-yml.png)
+    {{< popup_image
+    link="./assets/modify-canary-yml.png"
+    caption="Modify canary">}}
 
     This configuration redirects 10% of all traffic hitting the sockshop **VirtualService** to version 2. 
 
