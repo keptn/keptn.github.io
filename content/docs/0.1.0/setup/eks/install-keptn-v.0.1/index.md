@@ -9,14 +9,32 @@ To install and configure keptn in a Kubernetes cluster, follow these instruction
 
 ## Step 1: Prerequisites
 
-The next steps expect that you have a working Kubernetes cluster on AWS EKS. See the [Getting Started Guides](https://docs.aws.amazon.com/eks/latest/userguide/getting-started.html) for details about creating a Kubernetes cluster. When launching your worker nodes please follow the steps as explained in the Getting Started Guide. Here some inputs for the CloudFormation template as provided by AWS:
-- AutoScalingGroupMinSize: 1
+The next steps expect that you have a working Kubernetes cluster on AWS EKS. In case you do not have an EKS cluster available there are a couple of ways to setup your own cluster
+1. Follow the [Getting Started Guides](https://docs.aws.amazon.com/eks/latest/userguide/getting-started.html). 
+2. Leverage Terraform Templates such as [Tereraform AWS EKS Cluster by Cloudposse](https://github.com/cloudposse/terraform-aws-eks-cluster)
+
+When creating your own cluster we recommend the following minimum sizing definitions:
+
+- AutoScalingGroupMinSize: 2
 - AutoScalingGroupDesiredCapacity: 2
-- AutoScalingGroupMaxSize: 2
-- NodeInstanceType: t3.medium
+- AutoScalingGroupMaxSize: 3
+- NodeInstanceType: t3.2xlarge (8vCPUs, 32GB Memory)
 - NodeImageId: pick the correct AMI based on the table in the getting started guide
 
-Once your EKS cluster and all nodes are up & running we can go on with keptn.
+If you end up using the Terraform scripts from Cloudposse I suggest you create a terraform.tvars file with the following settings
+```
+namespace = "<yourprojectname>"
+stage = "workshop"
+name = "keptn01"
+
+instance_type = "t3.2xlarge"
+
+max_size = 3
+min_size = 2
+apply_config_map_aws_auth = "true"
+```
+
+Once your EKS cluster and all nodes are up & running we can go on with deploying keptn.
 
 The scripts provided by keptn v.0.1 run in a BASH and require following tools locally installed: 
 
@@ -140,24 +158,18 @@ Keptn contains all scripts and instructions needed to deploy the demo applicatio
     Screenshot shows this rule definition.
     ![naming-rule](./assets/pg_naming.png)
 
-<!-- 
-## Step 3: Use case walk through <a id="step-three"></a>
+ 
+## Step 5: Use case walk through <a id="step-three"></a>
 
-To explore the capabilities of keptn, follow the provided use cases that are dedicated to a special topic.
+To explore the capabilities of keptn, follow the provided use cases that are dedicated to a special topic. All use cases can be found in the keptn online doc
 
-* [Performance as a Service](./usecases/performance-as-a-service): This use case aims on moving from manual sporadic execution and analysis of performance tests to a fully automated on-demand self-service testing model for developers.
-
-* [Production Deployments](./usecases/production-deployments): This use case gives an overview of production deployments, deployment strategies, and showcases those using Istio on Kubernetes to canary-deploy a new front-end version.
-
-* [Runbook Automation and Self-Healing](./usecases/runbook-automation-and-self-healing): This use case gives an overview of how to leverage the power of runbook automation to build self-healing applications. 
-
-* [Unbreakable Delivery Pipeline](./usecases/unbreakable-delivery-pipeline): The overall goal of the *Unbreakable Delivery Pipeline* is to implement a pipeline that prevents bad code changes from impacting real end users.
--->
-
-## Step 5: Cleanup
+## Step 6: Cleanup
 
 1. To clean up your Kubernetes cluster, execute the `cleanupCluster.sh` script in the `scripts` directory.
 
     ```console
     $ ./scripts/cleanupCluster.sh
     ```
+2. Delete GitHub Organization
+
+If you want to remove Sockshop from your GitHub feel free to delete your GitHub Organization
