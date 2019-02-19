@@ -64,7 +64,7 @@
 
         li {
             display: inline-block;
-            padding: 2px 0 1px 1.4em;
+            padding: 2px 0 1px 0em;
             width: 100%;
             font-size: 85%;
 
@@ -74,12 +74,20 @@
             }
         }
 
+        li {
+            ul {
+                li {
+                    font-size: 70%;
+                }
+            }
+        }
+
         li.sublist {
             padding-left: 0;
         }
 
         .card-body {
-            padding: .5em .1em;
+            padding: .1em 0em;
         }
 
         .card-body > ul {
@@ -109,7 +117,7 @@
 
         @media (min-width: $bp-lg) {
             .card-body {
-                padding-left: 1.25rem;
+                padding-left: 0.25rem;
                 padding-right: 0.5rem;
             }
 

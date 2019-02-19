@@ -26,7 +26,7 @@
         }
 
         li {
-            font-size: .9rem;
+            font-size: .8rem;
 
             a {
                 font-weight: $tocLinkWeight;
@@ -34,8 +34,9 @@
 
             a.current {
                 color: $linkActiveColor;
-                font-weight: bold;
+                font-weight: normal;
             }
+            border-bottom: 1px solid #bbbbbb;
         }
 
         ul {
