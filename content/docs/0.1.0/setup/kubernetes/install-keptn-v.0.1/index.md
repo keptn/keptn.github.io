@@ -185,3 +185,8 @@ To explore the capabilities of keptn, follow the provided use cases that are ded
     ```console
     $ ./scripts/cleanupCluster.sh
     ```
+
+
+## Troubleshooting
+
+Please note that in case of any errors, the install script might leave some files in a inconsistent state, therefore the `setupInfrastructure.sh` file can not be run a second time without a cleanup. To prevent any issues with subsequent setup runs, we recommend to fully delete the GitHub organization, the keptn installation folder and checkout the keptn release again. (Some files may have been edited already that are not reverted in case of aborting the setup script.)
