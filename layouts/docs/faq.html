@@ -1,5 +1,5 @@
 {{ define "main" }}
-
+<div class="container">
 {{ partial "primary-top.html" . }}
 
 {{ $questions := .Resources.ByType "page" }}
@@ -31,5 +31,6 @@
 </div>
 
 {{ partial "primary-bottom.html" . }}
+</div>
 
 {{ end }}
