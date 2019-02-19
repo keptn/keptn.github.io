@@ -50,7 +50,9 @@ In this step you'll release a service to staging that is not tested based on per
         1. Increments the current version by 1. 
         1. Commits/Pushes the new version to the Git repository.
 
-        ![pipeline_release_branch](./assets/pipeline_release_branch.png)
+        {{< popup_image
+        link="./assets/pipeline_release_branch.png"
+        caption="Pipeline create-release-branch">}}
 
 1. After the `create-release-branch` pipeline has finished, trigger the build pipeline for the carts release and follow the pipeline:
     1. Go to **sockshop**, **carts**, and click on **Scan Multibranch Pipeline Now**.
@@ -60,8 +62,8 @@ In this step you'll release a service to staging that is not tested based on per
     1. Click on **Performance Report** to see the average response time of the URI: *_cart - add to cart*
 
         {{< popup_image
-         link="./assets/break_early.png"
-         caption="Break early">}}
+        link="./assets/break_early.png"
+        caption="Break early">}}
 
 1. Remove the slowdown in the carts service
     1. In the directory of `~/keptn/repositories/carts/`, open the file: `./src/main/resources/application.properties`
@@ -124,7 +126,9 @@ In this step you will use an Ansible Tower job to release a deployment in a cana
         - The `xx` before `/launch` is the ID of the job shown in the next step.
 
     After this step, your job template for *canary*  should look as shown below: 
-    ![ansible_template_1](./assets/ansible_template_1.png)
+    {{< popup_image
+    link="./assets/ansible_template_1.png"
+    caption="Ansible template">}}
     
 
 1. Verify the existing job template for canary-reset in Ansible Tower by navigating to **Templates** and **canary-reset**.
@@ -139,8 +143,8 @@ In this step you will use an Ansible Tower job to release a deployment in a cana
 
     After this step, your job template for *canary reset* should look as shown below: 
     {{< popup_image
-         link="./assets/ansible_template_2.png"
-         caption="Ansible Job Template">}}
+    link="./assets/ansible_template_2.png"
+    caption="Ansible job template">}}
 
 ## Step 3: Introduce a failure into front-end and deploy to production
 
@@ -178,7 +182,9 @@ In this step you will introduce a Java Script error into the front-end service. 
         1. Increments the current version by 1. 
         1. Commits/Pushes the new version to the Git repository.
 
-        ![pipeline_release_branch](./assets/pipeline_release_branch.png)
+        {{< popup_image
+        link="./assets/pipeline_release_branch.png"
+        caption="Pipeline create-release-branch">}}
 
 1. After the **create-release-branch** pipeline has finished, trigger the build pipeline for the `front-end` service and wait until the new artefacts is deployed to the *staging* namespace.
     - Wait until the release/**version** build has finished.
@@ -213,8 +219,8 @@ In this step, you will launch the above Ansible job that redirects the entire tr
     1. Go to Ansible Tower.
     1. Start the job template **canary** to trigger a canary release of front-end *v2*.
     {{< popup_image
-         link="./assets/canary_release_job.png"
-         caption="Ansible Job Execution">}}
+    link="./assets/canary_release_job.png"
+    caption="Ansible job execution">}}
 
 1. (Optional) Adjust sensitivity of anomaly detection
     1. In your Dynatrace tenant, go to **Transaction & service** and click on **front-end.production**.
@@ -229,8 +235,8 @@ In this step, you will launch the above Ansible job that redirects the entire tr
 
 1. When Dynatrace opens a problem notification, it automatically invokes the remediation action as defined in the canary playbook. In fact, the remediation action refers to the **remediation** playbook, which then triggers the **canary-reset** playbook. Consequently, you see the executed playbooks when navigating to *Ansible Tower* and *Jobs*. Moreover, the failure rate of the front-end service must decrease since new traffic is routed to the previous version of front-end.
     {{< popup_image
-         link="./assets/canary_reset.png"
-         caption="Ansible Canary Reset Job">}}
+    link="./assets/canary_reset.png"
+    caption="Ansible canary reset job">}}
 
 ## Step 5. Cleanup
 
