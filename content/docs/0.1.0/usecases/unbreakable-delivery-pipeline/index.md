@@ -59,7 +59,9 @@ In this step you'll release a service to staging that is not tested based on per
     1. The pipeline should fail due to a too high response time. 
     1. Click on **Performance Report** to see the average response time of the URI: *_cart - add to cart*
 
-        ![break_early](./assets/break_early.png)
+        {{< popup_image
+         link="./assets/break_early.png"
+         caption="Break early">}}
 
 1. Remove the slowdown in the carts service
     1. In the directory of `~/keptn/repositories/carts/`, open the file: `./src/main/resources/application.properties`
@@ -123,6 +125,7 @@ In this step you will use an Ansible Tower job to release a deployment in a cana
 
     After this step, your job template for *canary*  should look as shown below: 
     ![ansible_template_1](./assets/ansible_template_1.png)
+    
 
 1. Verify the existing job template for canary-reset in Ansible Tower by navigating to **Templates** and **canary-reset**.
     - Name: `canary-reset`
@@ -135,7 +138,9 @@ In this step you will use an Ansible Tower job to release a deployment in a cana
         - The IP `1**.2**.3**.4**` in jenkins_url is the IP of your Jenkins.
 
     After this step, your job template for *canary reset* should look as shown below: 
-    ![ansible_template_2](./assets/ansible_template_2.png)
+    {{< popup_image
+         link="./assets/ansible_template_2.png"
+         caption="Ansible Job Template">}}
 
 ## Step 3: Introduce a failure into front-end and deploy to production
 
@@ -207,7 +212,9 @@ In this step, you will launch the above Ansible job that redirects the entire tr
 1. Run job template in the Ansible Tower
     1. Go to Ansible Tower.
     1. Start the job template **canary** to trigger a canary release of front-end *v2*.
-    ![canary_release_job](./assets/canary_release_job.png)
+    {{< popup_image
+         link="./assets/canary_release_job.png"
+         caption="Ansible Job Execution">}}
 
 1. (Optional) Adjust sensitivity of anomaly detection
     1. In your Dynatrace tenant, go to **Transaction & service** and click on **front-end.production**.
@@ -221,7 +228,9 @@ In this step, you will launch the above Ansible job that redirects the entire tr
 1. Now, you need to wait until a problem appears in Dynatrace.
 
 1. When Dynatrace opens a problem notification, it automatically invokes the remediation action as defined in the canary playbook. In fact, the remediation action refers to the **remediation** playbook, which then triggers the **canary-reset** playbook. Consequently, you see the executed playbooks when navigating to *Ansible Tower* and *Jobs*. Moreover, the failure rate of the front-end service must decrease since new traffic is routed to the previous version of front-end.
-    ![canary_reset](./assets/canary_reset.png)
+    {{< popup_image
+         link="./assets/canary_reset.png"
+         caption="Ansible Canary Reset Job">}}
 
 ## Step 5. Cleanup
 

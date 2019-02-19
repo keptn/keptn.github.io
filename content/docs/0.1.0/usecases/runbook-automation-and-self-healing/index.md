@@ -100,7 +100,9 @@ This step integrates the defined *remediation runbook* in Dynatrace in a way tha
     - Click **Send test notification** > a green banner should appear.
     - **Save** the integration
 
-        ![integration successful](./assets/ansible-integration-successful.png)
+        {{< popup_image
+         link="./assets/ansible-integration-successful.png"
+         caption="Successful Ansible Integration">}}
 
 1. *Optional:* Navigate back to your Ansible Tower instance and check what happenend when setting up the integration.
     - Navigate to **Jobs** and click on your *X - remediation* job
