@@ -96,19 +96,19 @@ In this step you trigger a performance test for (1) the current implementation o
     This opens a trend analysis of the JMeter test results. In more details, it shows a chart for the throughput, response time, and percentage of errors as shown below.
     {{< popup_image ratio="1"
     link="./assets/performance_trend.png"
-    caption="Performance Trend">}}
+    caption="Performance trend">}}
 
     1. Click on **Performance Signature**.
     There you get an overview of the last builds similar to the screenshot below.
     {{< popup_image
     link="./assets/jenkins_result.png"
-    caption="Last Builds in Jenkins">}}
+    caption="Last builds in Jenkins">}}
 
     1. Click on the **Build No** of one particular build and click on **Performance Signature**.
     This opens a detailed view about the performance validation of the selected build.
     {{< popup_image
     link="./assets/build_result.png"
-    caption="Performance Signatures">}}
+    caption="Performance signature">}}
 
 ## Step 3: Compare builds in Dynatrace
 
@@ -129,22 +129,25 @@ In this step you will leverage Dynatrace to identify the difference between two 
     2. Click on **...** and select **Comparison** as shown below:
     {{< popup_image
     link="./assets/compare_builds.png"
-    caption="Compare Builds">}}
+    caption="Compare builds">}}
 
 4. Compare response time hotspots
     1. Select the timeframe of the *bad build* by selecting *compare with*: `custom time frame`
-    2. Click on **Compare response time hotspots**.
+
+    1. Click on **Compare response time hotspots**.
     {{< popup_image
     link="./assets/compare_hotspots.png"
-    caption="Compare Hotspots">}}
+    caption="Compare hotspots">}}
+
     1. There you can see that the *Active wait time* increased.
     {{< popup_image
     link="./assets/compare_overview.png"
-    caption="Compare Overview">}}
+    caption="Comparison overview">}}
+    
     1. Click on **View method hotspots** to identify the root cause.
     {{< popup_image
     link="./assets/method_hotspot.png"
-    caption="Method Hotspot">}}
+    caption="Method hotspot">}}
 
 ## Step 4. Cleanup
 

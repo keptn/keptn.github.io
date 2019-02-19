@@ -23,8 +23,9 @@ Therefore, in this use case we will experience troubles with the promotional cam
 
     The personal edition with limited features is sufficient for this use case.
 
-    ![free license](./assets/ansible-license-free.png)
-
+    {{< popup_image
+    link="./assets/ansible-license-free.png"
+    caption="Free Ansible Tower license">}}
 
 ## Step 2.1: Verify installation of Ansible Tower
 
@@ -42,7 +43,9 @@ During the setup of the cluster, Ansible Tower has already been installed and pr
     Copy the `EXTERNAL-IP` into a browser and navigate to https://external-ip 
 
 1. Submit the Ansible Tower license when prompted.
-    ![ansible license prompt](./assets/ansible-license.png)
+    {{< popup_image
+    link="./assets/ansible-license.png"
+    caption="Ansible Tower license prompt">}}
 
 1. Your login is:
 
@@ -50,7 +53,9 @@ During the setup of the cluster, Ansible Tower has already been installed and pr
     - Password: `dynatrace` 
 
     You should see the initial dashboard after your first login.
-    ![Ansible Tower dashboard](./assets/tower-initial-dashboard.png)
+    {{< popup_image
+    link="./assets/tower-initial-dashboard.png"
+    caption="Ansible Tower dashboard">}}
 
 
 ## Step 2.2 Verify predefined Templates, Projects, and Inventories
@@ -78,8 +83,10 @@ When running the install scripts, Ansible Tower is already preconfigured for thi
     - start-campaign
     - stop-campaign
 
-    Please go ahead an open the *remediation* playbook. Copy the URL from your browser to your clipboard, we will need it in a second. 
-    ![remediation-template](./assets/ansible-remediation-template.png)
+    Please go ahead an open the *remediation* playbook. Copy the URL from your browser to your clipboard, we will need it in a second.
+    {{< popup_image
+    link="./assets/ansible-remediation-template.png"
+    caption="Ansible remediation template">}}     
 
 ## Step 3: Integration of Ansible Tower runbook in Dynatrace
 
@@ -90,7 +97,7 @@ This step integrates the defined *remediation runbook* in Dynatrace in a way tha
 
         {{< popup_image
          link="./assets/ansible-integration.png"
-         caption="Ansible Integration">}}
+         caption="Ansible integration">}}
 
 1. Enter your Ansible Tower job template URL and Ansible Tower credentials.
     - Name: e.g., `remediation`
@@ -102,7 +109,7 @@ This step integrates the defined *remediation runbook* in Dynatrace in a way tha
 
         {{< popup_image
          link="./assets/ansible-integration-successful.png"
-         caption="Successful Ansible Integration">}}
+         caption="Successful Ansible integration">}}
 
 1. *Optional:* Navigate back to your Ansible Tower instance and check what happenend when setting up the integration.
     - Navigate to **Jobs** and click on your *X - remediation* job
@@ -114,10 +121,14 @@ Both problem and anomaly detection in Dynatrace leverage AI technology. This mea
 
 In your Dynatrace tenant, navigate to "Transaction & services" and filter by: *app:carts* and *environment:production* (This assumes that you have done the previous use-cases of keptn)
 
-![services](./assets/dynatrace-services.png)
+{{< popup_image
+link="./assets/dynatrace-services.png"
+caption="Dynatrace services">}} 
 
 Click on the **ItemsController** and then on the three dots ( <kbd>...</kbd> ) next to the service name. Click on *Edit*. 
-![service-edit](./assets/dynatrace-service-edit.png)
+{{< popup_image
+link="./assets/dynatrace-service-edit.png"
+caption="Dynatrace edit service">}} 
 
 On the next screen, edit the anomaly detection settings as seen in the following screenshot.
 - **Globaly anomaly detection** has to be **turned off**
@@ -125,7 +136,9 @@ On the next screen, edit the anomaly detection settings as seen in the following
 - Alert if **10 %** custom failure rate threshold is exceed during any 5-minute period.
 - Sensitivity: **High**
 
-![anomaly detection](./assets/anomaly-detection.png)
+{{< popup_image
+link="./assets/anomaly-detection.png"
+caption="Dynatrace adjust anomaly detection">}} 
 
 ## Step 5: Run a promotional campaign
 
@@ -164,14 +177,18 @@ The promotional itself is controlled via Ansible Tower. That means that starting
 1. Run the promotional campain
     - Navigate to **Templates** in your Ansible Tower
     - Click on the "rocket" icon (🚀) next to your *start-campaign* job template
-    ![run template](./assets/ansible-template-run.png)
+    {{< popup_image
+    link="./assets/ansible-template-run.png"
+    caption="Ansible run template">}} 
     - Adjust the values accordingly for you promotional campaign:
       - Set the value for `promotion_rate: '30'` to allow for 30 % of the user interactions to receive the promotional gift
       - Do not change the `remediation_action`, this is already configured for you and it is set to the `stop-campaign` job template URL.
     - Click **Next**, then **Launch**
 
 1. To verify the update in the `carts` service in Dynatrace, navigate to the `carts` service in your Dynatrace tenant and see the configuration change that has been applied and attached to the `carts` service in the production environment.
-    ![custom configuration event](./assets/service-custom-configuration-event.png)
+    {{< popup_image
+    link="./assets/service-custom-configuration-event.png"
+    caption="Dynatrace custom configuration event">}}
 
     Please also note that a remediation action has been attached to this configuration change. This means, if Dynatrace detects a problem with this service that is related to this configuratio change, this remediation action could be called to remediate the problem. 
 
@@ -201,18 +218,22 @@ The promotional itself is controlled via Ansible Tower. That means that starting
 
         {{< popup_image
          link="./assets/dynatrace-problem.png"
-         caption="Dynatrace Problem Ticket">}}
+         caption="Dynatrace problem ticket">}}
         
 
 1. To verify executed playbooks in Ansible Tower, navigate to **Jobs** and verify that Ansible Tower has executed two jobs.        
     - The first job `X - remediation` was called since Dynatrace sent out the problem notification to Ansible Tower. 
     - This job was then executing the remediation tasks which include the execution of the remediation action that is defined in the custom configuration event of the impacted entities (the `carts` service). Therefore, you will also see a job called `X - stop-campaign` that was executed.
 
-        ![remediation job execution](./assets/ansible-remediation-execution.png)
+        {{< popup_image
+        link="./assets/ansible-remediation-execution.png"
+        caption="Remediation job execution">}}
 
 1. The remediation playbook set back the promotion rate to 0 %, which is also send as *Configuration changed event* to Dynatrace:
-    ![custom configuration event](./assets/service-custom-configuration-event-remediation.png)
-
+    {{< popup_image
+    link="./assets/service-custom-configuration-event-remediation.png"
+    caption="Service custom configuration event">}}
+       
 1. Problem is remediated thanks to automating runbook execution by Dynatrace!
 
 ## Understanding what happened
