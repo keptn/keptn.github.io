@@ -21,7 +21,7 @@ do
   i=$((i+1))
   if [ $i -ge 100 ] 
   then
-    curl -X DELETE http://35.232.216.57/carts/1
+    curl -X DELETE $url
     i=0
   fi
 done
