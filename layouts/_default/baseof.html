@@ -43,8 +43,10 @@
   </div>
 
   {{ partial "footer.html" . }}
-  {{ partial "sub-footer.html" . }}
 
+  <!--
+  {{ partial "sub-footer.html" . }}
+  -->
   {{ $scripts := resources.Get "js/scripts.js" }}
   {{ $docutils := resources.Get "js/libs/doc/utils.js" }}
   {{ $docmisc := resources.Get "js/libs/doc/misc.js" }}
