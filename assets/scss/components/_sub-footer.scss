@@ -17,12 +17,8 @@
       flex-direction: row;
     }
     ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
+
       li {
-        list-style: none;
-        display: block;
         color: lighten($secondary, 40%);
         font-size: 0.9rem;
         line-height: 1.8;
@@ -47,15 +43,6 @@
         &.zerostatic {
           a {
             color: #ffffff;
-          }
-        }
-      }
-      @include media-breakpoint-up(sm) {
-        li {
-          display: inline-block;
-          margin-left: 10px;
-          &:first-of-type {
-            margin-left: 0;
           }
         }
       }
