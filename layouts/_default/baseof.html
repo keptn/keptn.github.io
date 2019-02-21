@@ -19,6 +19,145 @@
   <link rel="stylesheet" href="{{ ($style | minify | fingerprint).RelPermalink }}">
   <link rel="stylesheet" href="{{ ($lightbox | minify | fingerprint).RelPermalink }}">
   {{ block "header_css" . }}{{ end }}
+  <script type="text/javascript">
+    (function () {
+      (function () {
+        function a() { if (!b.dialogArguments) return navigator.cookieEnabled; document.cookie = "__dTCookie=1"; var a = -1 !== document.cookie.indexOf("__dTCookie"); document.cookie = "__dTCookie=1; expires=Thu, 01-Jan-1970 00:00:01 GMT"; return a } if (window.dT_) window.console && window.console.log("Duplicate agent injection detected, turning off redundant initConfig."); else {
+          var b = "undefined" !== typeof window ? window : self; a() && (window.dT_ || (window.dT_ = {
+            cfg: "app=878036b6096f88c7|cors=1|featureHash=A2SVfqr|srsr=25000|reportUrl=https://bf44680svb.bf-sprint.dynatracelabs.com/bf|rdnt=1|uxrgce=1|bp=2|srms=1,1,,,|uxrgcm=100,25,300,3;100,25,300,3|dpvc=1|lastModification=1550764375989|dtVersion=10163190220134628|tp=500,50,0,1|featureHash=A2SVfqr|agentUri=https://js-cdn.dynatracelabs.com/jstag/145e049b9b1/ruxitagent_A2SVfqr_10163190220134628.js|auto=|domain=|rid=RID_|rpid=|app=878036b6096f88c7",
+            iCE: a
+          }))
+        }
+      })();
+    }).call(this);
+
+    (function () {
+      (function () {
+        function Gb() { return ka ? new ka : la ? new la("MSXML2.XMLHTTP.3.0") : e.XMLHttpRequest ? new e.XMLHttpRequest : new e.ActiveXObject("MSXML2.XMLHTTP.3.0") } function Hb() { la = ka = void 0 } function r() { var a = 0; try { a = e.performance.timing.navigationStart + Math.floor(e.performance.now()) } catch (b) { } return 0 >= a || isNaN(a) || !isFinite(a) ? (new Date).getTime() : a } function aa(a, b) {
+          function c() { delete ba[f]; a.apply(this, arguments) } for (var d = [], ma = 2; ma < arguments.length; ma++)d[ma - 2] = arguments[ma]; var f; "apply" in na ? f = na.apply(e,
+            [c, b].concat(d)) : f = na(c, b); ba[f] = !0; return f
+        } function Va(a) { delete ba[a]; "apply" in O ? O.call(e, a) : O(a) } function h(a) { for (var b = [], c = 1; c < arguments.length; c++)b[c - 1] = arguments[c]; a.push.apply(a, b) } function Wa(a) { h(wa, a) } function Ib() { return wa } function Jb(a, b) { return Xa(a, b) } function Kb(a, b) { a = new Lb([a], { type: b }); return Mb(a) } function Nb(a, b) { return Ya ? new Ya(a, b) : void 0 } function Ob(a) { "function" === typeof a && h(Za, a) } function Pb() { return Za } function Qb() { return xa } function $a(a) {
+          return function () {
+            for (var b =
+              [], c = 0; c < arguments.length; c++)b[c] = arguments[c]; if ("number" !== typeof b[0] || !ba[b[0]]) try { return a.apply(this, b) } catch (d) { return a(b[0]) }
+          }
+        } function Rb() { ca && (e.clearTimeout = O, e.clearInterval = ya, ca = !1) } function P(a, b) { return isNaN(a) || isNaN(b) ? 0 : Math.floor(Math.random() * (b - a + 1)) + a } function Q(a, b) { return parseInt(a, b || 10) } function k(a, b, c) { void 0 === c && (c = 0); var d = -1; b && a && a.indexOf && (d = a.indexOf(b, c)); return d } function ab(a) { return document.getElementsByTagName(a) } function bb(a) {
+          var b = a.length; if ("number" ===
+            typeof b) a = b; else { for (var b = 0, c = 2048; a[c - 1];)b = c, c += c; for (var d = 7; 1 < c - b;)d = (c + b) / 2, a[d - 1] ? b = d : c = d; a = a[d] ? c : b } return a
+        } function Sb(a) { a = encodeURIComponent(a); var b = []; if (a) for (var c = 0; c < a.length; c++) { var d = a.charAt(c); h(b, Tb[d] || d) } return b.join("") } function w(a) { if (!a) return ""; var b = e.crypto || e.msCrypto; if (b) { var c = new Int8Array(a); b.getRandomValues(c) } else for (c = [], b = 0; b < a; b++)c.push(P(0, 32)); a = []; for (b = 0; b < c.length; b++) { var d = Math.abs(c[b] % 32); a.push(String.fromCharCode(d + (9 >= d ? 48 : 55))) } return a.join("") }
+        function cb() { return !(!e.console || !e.console.log) } function Ub() { try { Vb.apply(e.parent, arguments) } catch (a) { } } function Wb() { try { Xb.apply(e.top, arguments) } catch (a) { } } function Yb(a) { var b = Array.prototype.slice.call(arguments, 1); try { Zb.apply(a, b) } catch (c) { } } function $b(a) { var b = Array.prototype.slice.call(arguments, 1); try { ac.apply(a, b) } catch (c) { } } function x() { return e.dT_ } function bc() { return D } function cc() { return db } function dc() { return eb } function ec() { return oa } function fb() { return "dtAdk" } function fc() { return R }
+        function gb(a) { -1 < e.dT_.io(a, "^") && (a = a.split("^^").join("^"), a = a.split("^dq").join('"'), a = a.split("^rb").join(">"), a = a.split("^lb").join("<"), a = a.split("^p").join("|"), a = a.split("^e").join("="), a = a.split("^s").join(";"), a = a.split("^c").join(","), a = a.split("^bs").join("\\")); return a } function gc() { return S } function hc(a) { S = a } function hb(a) { var b = e.dT_, c = b.scv("rid"), b = b.scv("rpid"); c && (a.rid = c); b && (a.rpid = b) } function ib(a) { if (a.xb) { a = gb(a.xb); try { S = new RegExp(a) } catch (b) { } } } function jb(a) {
+          var b = {};
+          a = a.split("|"); for (var c = 0; c < a.length; c++) { var d = a[c].split("="); 2 === d.length && (b[d[0]] = decodeURIComponent(d[1].replace(/\+/g, " "))) } return b
+        } function za() { var a = n("csu"); return (a.indexOf("dbg") === a.length - 3 ? a.substr(0, a.length - 3) : a) + "_" + n("app") + "_Store" } function pa(a, b, c) {
+          b = b || {}; a = a.split("|"); for (var d = 0; d < a.length; d++) { var e = a[d], f = k(a[d], "="); -1 === f ? b[e] = "1" : (e = a[d].substring(0, f), b[e] = a[d].substring(f + 1, a[d].length)) } !c && (c = b, a = c.spc) && (d = document.createElement("textarea"), d.innerHTML = a, c.spc =
+            d.value); return b
+        } function T(a) { return a in f ? f[a] : qa[a] } function m(a) { a = T(a); return "false" === a || "0" === a ? !1 : !!a } function ra(a) { var b = Q(T(a)); isNaN(b) && (b = qa[a]); return b } function n(a) { return String(T(a) || "") } function ic(a, b) { f[a] = b } function kb(a) { return f = a } function lb(a) { var b = location.hostname; return b && a ? b === a || -1 !== b.indexOf("." + a, b.length - ("." + a).length) : !0 } function Aa(a) { f[a] = 0 > k(f[a], "#" + a.toUpperCase()) ? f[a] : "" } function Ba(a) {
+          var b = a.agentUri; b && -1 < k(b, "_") && (b = /([a-zA-Z]*)[0-9]{0,4}_([a-zA-Z_0-9]*)_[0-9]+/g.exec(b)) &&
+            b.length && 2 < b.length && (a.csu = b[1], a.featureHash = b[2])
+        } function Ca(a, b) { lb(f.domain || "") || (f.domainOverride = location.hostname + "," + f.domain, delete f.domain); f.pVO && (a.pVO = f.pVO); b || (a.bp = a.bp || qa.bp, 1 === g && a.bp1 && (a.bp = 1), a.bp2 && (a.bp = 2), 4 !== a.bp || e.JSON || (a.bp = 1)) } function jc() { return f } function F(a, b) { try { var c = da; c && c.setItem(a, b) } catch (d) { } } function ea(a) { try { var b = da; if (b) return b.getItem(a) } catch (c) { } return null } function fa(a) { try { var b = da; b && b.removeItem(a) } catch (c) { } } function sa(a, b) {
+          if (G() &&
+            (!x().v || mb)) return a.apply(this, b || [])
+        } function G() { return !m("coo") || m("cooO") || mb } function p(a) { document.cookie = a + '="";path=/' + (n("domain") ? ";domain=" + n("domain") : "") + "; expires=Thu, 01 Jan 1970 00:00:01 GMT;" } function nb(a, b, c) { var d = 1, e = 0; do document.cookie = a + '=""' + (b ? ";domain=" + b : "") + ";path=" + c.substr(0, d) + "; expires=Thu, 01 Jan 1970 00:00:01 GMT;", d = c.indexOf("/", d), e++; while (-1 !== d && 5 > e) } function E(a) {
+          var b = document.cookie; if (!b) return ""; var c = a + "="; a = k(b, c); if (0 > a) return ""; for (; 0 <= a;)if (a &&
+            " " !== b.charAt(a - 1) && ";" !== b.charAt(a - 1)) a = k(b, c, a + c.length); else return c = a + c.length, a = k(b, ";", a), 0 <= a ? b.substring(c, a) : b.substr(c); return ""
+        } function kc(a, b, c, d) { b || 0 === b ? (b = ("" + b).replace(/[;\n\r]/g, "_"), a = a + "=" + b + ";path=/" + (n("domain") ? ";domain=" + n("domain") : ""), c && (a += ";expires=" + c.toUTCString()), d && (a += ";Secure"), document.cookie = a) : p(a) } function y(a, b, c, d) { sa(kc, [a, b, c, d]) } function ob(a) {
+          var b = /^[0-9A-Za-z_=:\$\+\/\.\-\*%\|]*$/.test(a); return 0 === g && (0 >= k(a, "$") && -1 === k(a, "=srv=") || a && 2 < a.split("$").length) ?
+            !1 : b
+        } function pb() { var a = E(D); return a && ob(a) ? a : "" } function U(a) { y(D, a, void 0, m("ssc")) } function V(a) { return 32 === a.length || 12 >= a.length ? a : "" } function qb(a) { return !isNaN(a) && 3 >= a.length ? a : "" } function rb(a) { var b = { sessionId: "", b: "" }, c = k(a, "|"), d = a; -1 !== c && (d = a.substring(0, c)); c = k(d, "$"); -1 !== c ? (b.sessionId = V(d.substring(c + 1)), b.b = qb(d.substring(0, c))) : b.sessionId = V(d); return b } function sb(a) {
+          var b = { sessionId: "", b: "" }; a = a.split("="); if (2 < a.length && !(a.length % 2)) {
+            var c = Number(a[1]); if (isNaN(c) || 3 > c) return b;
+            for (var c = {}, d = 2; d < a.length; d++)c[a[d]] = a[d + 1], d++; b.sessionId = V(c.sn); c.srv && (b.b = qb(c.srv)); "1" === c.ol && (F("dtDisabled", "true"), x().disabled = !0, x().v = !0)
+          } return b
+        } function H(a) {
+          var b = document.cookie ? document.cookie.split(a).length - 1 : 0; if (1 < b) {
+            var c = n("domain") || e.location.hostname, d = e.location.hostname, f = e.location.pathname, g = 0, l = 0; z.push(a); do {
+              var k = d.substr(g); if (k !== c || "/" !== f) { nb(a, k === c ? "" : k, f); var h = document.cookie ? document.cookie.split(a).length - 1 : 0; h < b && (z.push(k), b = h) } g = d.indexOf(".", g) +
+                1; l++
+            } while (g && 10 > l && 1 < b); n("domain") && 1 < b && nb(a, "", f)
+          }
+        } function lc() { H(R); H(D); H(oa); H("rxvt"); Wa(function (a, b, c, d) { 0 < z.length && !b && (a.av(d, 0, "dCN", function () { return z.join(",") }), a.av(d, 4, "duplicateCookieNames", function () { return z.slice() }), z = []) }) } function mc() { return W } function Da(a, b, c, d) {
+          var e = document.createElement("script"); e.setAttribute("src", a); b && e.setAttribute("defer", "true"); c && (e.onload = c); d && (e.onerror = d); e.setAttribute("crossorigin", "anonymous"); a = document.getElementsByTagName("script")[0];
+          a.parentElement.insertBefore(e, a)
+        } function Ea(a, b) { return Fa + "/" + (b || I) + "_" + a + "_" + (ra("buildNumber") || x().version) + ".js" } function ta(a) { G() ? a() : (t || (t = []), h(t, a)) } function nc(a) { return sa(a) } function oc() { for (var a = 0; a < t.length; a++)aa(t[a], 0); t = []; f.cooO = !0 } function pc() { f.cooO = !1; p(D); p(R); p(oa); p("dtSa"); p(fb()); 0 === g && (p("rxVisitor"), p("rxvt")); try { var a = da; a && (0 === g && a.removeItem("rxVisitor"), a.removeItem(D)); (a = Ga) && a.removeItem(za()) } catch (b) { } } function tb(a) {
+          return (a = a || pb()) ? k(a, "=") ? rb(a) :
+            sb(a) : { sessionId: "", b: "" }
+        } function J(a) { return tb(a).b } function K(a) { return tb(a).sessionId } function qc() { return q } function rc() { ta(function () { K() || U((0 === g ? -1 * P(2, 21) + "$" : "") + w(32)); q = J() || "" }) } function Ha(a) { try { if (e.localStorage) return e.localStorage.getItem(a) } catch (b) { } return null } function ga(a) { try { e.localStorage && e.localStorage.removeItem(a) } catch (b) { } } function ub(a, b) { b = X(b); for (var c = !1, d = 0; d < b.length; d++)b[d].frameId === W && (b[d].g = a, c = !0); c || h(b, { frameId: W, g: a }); ha(b) } function ha(a, b) {
+          var c =
+            ""; if (a) { for (var c = [], d = 0; d < a.length; d++)"-" !== a[d].g && (0 < d && 0 < c.length && h(c, "p"), 0 === g && (h(c, q), h(c, "$")), h(c, a[d].frameId), h(c, "h"), h(c, a[d].g)); 0 === g && (c.length || (Ia && (L(0, !0), Ja(!1)), q = J() || "", h(c, q), h(c, "$"), h(c, W), h(c, "h-")), h(c, "v"), h(c, b || Ka())); c = c.join("") } c || (c = "-", 0 === g && (Ia && (L(0, !0), Ja(!1)), q = J() || "", c = q + "$" + W + "h-v" + (b || Ka()))); y(R, c, void 0, m("ssc"))
+        } function X(a) {
+          var b = E(R), c = []; if (b && "-" !== b) for (var b = b.split("p"), d = 0; d < b.length; d++) {
+            var e = b[d].split("h"); if (2 === e.length && e[0] && e[1]) {
+              var f =
+                e[0]; if (0 === g && (f && 0 <= k(f, "$") && (f = f.split("$")[1]), 0 <= k(e[1], "v"))) { var l = e[1].split("v"); if (2 === l.length) { var n = l[1]; e[1] = l[0] } } if (!(l = a)) { var l = Q(f.split("_")[0]), m = r() % La; m < l && (m += La); l = l + 9E5 > m } l && h(c, { frameId: f, g: e[1] })
+            }
+          } if (0 === g) for (a = 0; a < c.length; a++)c[a].visitId = n || ""; return c
+        } function Ka() { return Ma() || L(0, !0) } function Ma() { var a = X(!0); if (!(Na() <= r())) { A(!1); if (a && 1 <= a.length) return a[0].visitId || ""; (a = Ha(M)) || (a = ea(M)); return a || "" } return "" } function A(a) {
+          var b = r(), c = vb().j; a && (c = b); wb(b +
+            xb + "|" + c); yb()
+        } function zb(a) { a || (a = P(1, 1E6)); var b = K() || ""; b || (b = (0 === g ? -1 * P(2, 21) + "$" : "") + w(32), U(b), b = K(b) || ""); a = "" + a; for (var c = a.length, d = [], e = 0; e < b.length; e++)d[e] = String.fromCharCode(65 + Math.abs((b.charCodeAt(e) ^ a.charCodeAt(e % c)) % 26)); b = d.join(""); for (a = 0; a < Oa.length; a++)Oa[a](b, Y); return b } function Pa(a) { var b = X(!1); ha(b, a); Qa(M, a); A(!0) } function L(a, b) { b && (Y = !0); a = zb(r()); Pa(a); return a } function sc(a) { Oa.push(a) } function yb() { Ra && Va(Ra); Ra = aa(Ab, Na() - r()) } function Ab() {
+          if (Na() <= r() && G()) {
+            var a =
+              zb(r()); Pa(a); return !0
+          } ta(yb); return !1
+        } function wb(a) { y("rxvt", a, void 0, m("ssc")); Qa("rxvt", a) } function Qa(a, b) { if (m("dpvc") || m("pVO")) F(a, b), ga(a); else { try { e.localStorage && e.localStorage.setItem(a, b) } catch (c) { } fa(a) } } function Bb() { var a = E("rxvt"); a || (a = Ha("rxvt") || "") || (a = ea("rxvt") || ""); return a } function Cb() { var a = Ma() || ""; Qa(M, a); a = Bb(); wb(a) } function vb() { var a = { m: 0, j: 0 }, b = Bb(); if (b) try { var c = b.split("|"); 2 === c.length && (a.m = parseInt(c[0], 10), a.j = parseInt(c[1], 10)) } catch (d) { } return a } function Na() {
+          var a =
+            vb(); return Math.min(a.m, a.j + Db)
+        } function tc(a) { xb = a } function Ja(a) { void 0 === a && (a = !0); Ia = a } function uc() { var a = Y; Y = !1; return a } function vc() { Ab() || A(!1) } function Sa() { var a = E("rxVisitor"); if (!a || a.length && a.length !== Ta) a = ea("rxVisitor"), a && a.length === Ta || (Eb = !0, a = r() + "", a += w(Ta - a.length)); var b = a; if (!m("dpvc") && !m("pVO")) { var c = new Date; c.setFullYear(c.getFullYear() + 2) } y("rxVisitor", b, c, m("ssc")); F("rxVisitor", b); return a } function wc() { return Eb } function xc(a) {
+          var b = E("rxVisitor"); p("rxVisitor");
+          fa("rxVisitor"); y("rxVisitor", b); f.pVO = !0; if (a) try { e.localStorage && e.localStorage.setItem(Ua, "1") } catch (c) { } Cb()
+        } function yc() { ga(Ua); m("pVO") && (f.pVO = !1, Sa()); Cb() } function zc() {
+        e.dT_ = {
+          version: "10163190220134628", cfg: e.dT_ ? e.dT_.cfg : "", iCE: e.dT_ ? e.dT_.iCE : function () { return navigator.cookieEnabled }, ica: 1, disabled: !1, v: !1, gx: Gb, cx: Hb, mp: Ub, mtp: Wb, mi: Yb, mw: $b, gAST: Qb, ww: Nb, stu: Kb, nw: r, apush: h, st: aa, si: Jb, aBPSL: Wa, gBPSL: Ib, aBPSCC: Ob, gBPSCC: Pb, buildType: 0 === g ? "dynatrace" : "appmon", gSSV: ea, sSSV: F, rSSV: fa,
+          rvl: ga, pn: Q, iVSC: ob, p3SC: sb, pLSC: rb, io: k, dC: p, sC: y, esc: Sb, gSId: J, gDtc: K, gSC: pb, sSC: U, gC: E, cRN: P, cRS: w, gEL: bb, gEBTN: ab, gSCN: bc, gPCHN: cc, gRHN: dc, gPCCN: fc, gLCN: ec, gMSIDCN: fb, cfgO: jc, pCfg: jb, pCSAA: pa, cFHFAU: Ba, sCD: Ca, bcv: m, ncv: ra, scv: n, stcv: ic, rplC: kb, cLSCK: za, gFId: mc, gBAU: Ea, iS: Da, eWE: ta, oEIE: nc, oEIEWA: sa, eA: oc, dA: pc, gcSId: qc, iNV: wc, gVID: Sa, dPV: xc, ePV: yc, sVIdUP: Ja, sVTT: tc, sVID: Pa, rVID: Ma, gVI: Ka, gNVId: L, gARnVF: uc, cAUV: vc, uVT: A, aNVL: sc, gPC: X, cPC: ub, sPC: ha, clB: Rb, ct: Va, aRI: hb, iXB: ib, gXBR: gc, sXBR: hc, de: gb,
+          cCL: cb
+        }
+        } var B = window; if (!B.dT_ || !B.dT_.cfg || "string" != typeof B.dT_.cfg || B.dT_.initialized) B.console && B.console.log("Initconfig not found or agent already initialized! This is an injection issue."); else if (!(navigator.userAgent && 0 <= navigator.userAgent.indexOf("RuxitSynthetic"))) {
+          var e = "undefined" !== typeof window ? window : self, ka, la, wa, Za = [], xa, Ga, da, ba = {}, Tb = new (function () {
+            return function () {
+            this["!"] = "%21"; this["~"] = "%7E"; this["*"] = "%2A"; this["("] = "%28"; this[")"] = "%29"; this["'"] = "%27"; this.$ = "%24";
+              this[";"] = "%3B"; this[","] = "%2C"
+            }
+          }()), na, Xa, Zb = e.postMessage, Ya = e.Worker, Lb = e.Blob, Mb = e.URL && e.URL.createObjectURL, ac = e.Worker && e.Worker.prototype.postMessage, Vb = e.parent.postMessage, Xb = e.top.postMessage, O, ya, ca = !1, g, qa, R = "dtPC", D = "dtCookie", db = "x-dtpc", eb = "x-dtreferer", oa = "dtLatC", S, f = {}, mb = !!navigator.userAgent && 0 <= navigator.userAgent.indexOf("RuxitSynthetic"), z = [], W, La = 6E8, Fb, Fa, I, Ac = { childList: !0, subtree: !0, attributes: !0, attributeOldValue: !0 }, Bc = ["_DT_RENDERING_"], t = [], q, M = "rxvisitid", Ra, xb = 18E5,
+          Db = 216E5, Y = !1, Oa = [], Ia = !1, Ua = "dt-pVO", Ta = 45, Eb = !1; (function (a) {
+            try {
+              g = a; var b = e.dT_; ka = e.XMLHttpRequest; la = e.ActiveXObject; na = e.setTimeout; Xa = e.setInterval; ca || (O = e.clearTimeout, ya = e.clearInterval); if (b.iCE && !b.iCE() || !navigator.cookieEnabled) return !1; zc(); try { Ga = e.localStorage, da = e.sessionStorage } catch (ua) { } xa = r(); wa = []; ba = {}; ca || (e.clearTimeout = $a(O), e.clearInterval = $a(ya), ca = !0); W = xa % La + "_" + Q(P(0, 1E3) + ""); qa = {
+                ade: "", agentLocation: "", agentname: "", agentUri: "", uana: "data-dtname,data-dtName", app: "",
+                async: !1, auto: !1, bandwidth: "300", bp1: !1, bp2: !1, bp: 0 === g ? 1 : 2, bs: !1, buildNumber: 0, coo: !1, cooO: !1, cors: !1, csu: "", cux: !1, dataDtConfig: "", debugName: "", disableCookieManager: !1, disableLogging: !1, dmo: !1, dpvc: !1, disableXhrFailures: !1, domain: "", domainOverride: "", doNotDetect: "", dsndb: !1, dsss: !1, euf: !1, evl: "", extblacklist: "", exteventsoff: !1, fa: !1, featureHash: "", ffi: !1, hvt: 216E5, lastModification: 0, imm: !1, initializedModules: "", ign: "", instr: "", lab: !1, legacy: !1, lmut: !0, lzwd: !1, lzwe: !1, md: "", name: "", mdn: 5E3, mepp: 10,
+                moa: 30, mrt: 3, msl: 3E4, mhl: 4E3, ncw: !1, ntd: !1, oat: 180, ote: !1, perfbv: 1, pui: !1, pVO: !1, rdnt: 0, reportUrl: "dynaTraceMonitor", restoreTimeline: !1, rid: "", ridPath: "", rpid: "", rt: 0 === g ? 1E4 : 0, rtl: 0 === g ? 0 : 100, rtp: 0 === g ? 2 : 1, rtt: 1E3, rtu: 200, rx_visitID: "", sl: 100, sosi: !1, spc: "", srbbv: 1, srbw: !0, srad: !0, srmr: 100, srms: "1,1,,,", srsr: 1E5, srtbv: 3, srtd: 1, srtr: 500, srwo: !1, ssc: !1, st: 3E3, svNB: !1, syntheticConfig: !1, tal: 0, tp: "500,50,3", tt: 100, tvc: 3E3, uam: !1, useNewCookies: !1, uxrgce: !0, uxrgcm: "100,25,300,3;100,25,300,3", vcfi: !1, WST: !1,
+                xb: "", xmut: !0, xt: 0
+              }; a: {
+                var c = x().cfg; f = { reportUrl: "dynaTraceMonitor", initializedModules: "", csu: "dtagent", dataDtConfig: "string" === typeof c ? c : "" }; x().cfg = f; 0 === g && (f.csu = "ruxitagentjs"); var d = f.dataDtConfig; d && -1 === k(d, "#CONFIGSTRING") && (pa(d, f), Aa("domain"), Aa("auto"), Aa("app"), Ba(f)); var h = ab("script"), p = bb(h), l = -1 === k(f.dataDtConfig || "", "#CONFIGSTRING") ? f : null; if (0 < p) for (a = 0; a < p; a++)b: {
+                  var b = void 0, q = h[a], c = l; if (q.attributes) {
+                    var y = f.csu + "_bootstrap.js", d = /.*\/jstag\/.*\/.*\/(.*)_bs(_dbg)?.js$/,
+                    z = c, N = q.src, t = N && N.indexOf(y), B = q.attributes.getNamedItem("data-dtconfig"); if (B) { var w = N, F = B.value, u = {}; f.legacy = !0; if (w) { var Z = /([a-zA-Z]*)[0-9]{0,4}_([a-zA-Z_0-9]*)_([0-9]+)/g.exec(w); Z && Z.length && (u.csu = Z[1], u.featureHash = Z[2], 0 === g && (u.agentLocation = w.substr(0, k(w, Z[1]) - 1), u.buildNumber = Z[3])) } F && pa(F, u, !0); lb(u.domain) || (u.domainOverride = location.hostname + "," + u.domain, delete u.domain); b = u; if (!c) z = b; else if (!b.syntheticConfig) { l = b; break b } } b || (b = f); if (t && 0 <= t) {
+                      var H = t + y.length + 5; b.app = N.length >
+                        H ? N.substr(H) : "Default%20Application"
+                    } else if (N) { var J = d.exec(N); J && (b.app = J[1]) } l = z
+                  } else l = c
+                } if (l) for (var K in l) l.hasOwnProperty(K) && (h = K, f[h] = l[h]); f.rx_visitID && (x().rx_visitID = f.rx_visitID); var X = za(); try {
+                  var L = (l = Ga) && l.getItem(X); if (L) {
+                    var ia = jb(L), v = pa(ia.config || ""), A = f.lastModification || "0", M = Q((v.lastModification || ia.lastModification || "0").substr(0, 13)), Y = "string" === typeof A ? Q(A.substr(0, 13)) : A; if (!A || M >= Y) if (v.agentname = ia.name, v.agentUri ? Ba(v) : (v.csu = ia.name, v.featureHash = ia.featureHash),
+                      Ca(v, !0), ib(v), hb(v), M > (f.lastModification || 0)) { var aa = m("auto"); f = kb(v); f.auto = aa }
+                  }
+                } catch (ua) { } Ca(f); try { var S = f.ign; if (S && (new RegExp(S)).test(e.location.href)) { document.dT_ = e.dT_ = void 0; var ja = !1; break a } } catch (ua) { } f.useNewCookies && 0 === g && (R = "rxpc", D = "rxsession", oa = "rxlatency", db = "x-rxpc", eb = "x-rxreferer"); ja = !0
+              } if (!ja) return !1; lc(); try { Fb = x().disabled || !!ea("dtDisabled") } catch (ua) { } var va; if (!(va = n("agentLocation"))) a: {
+                var T = n("agentUri"); if (T || document.currentScript) {
+                  var C = T || document.currentScript.src;
+                  if (C) { var fa = -1 === k(C, "_bs") && -1 === k(C, "_bootstrap") && -1 === k(C, "_complete") ? 1 : 2, G = C.lastIndexOf("/"); for (ja = 0; ja < fa && -1 !== G; ja++)C = C.substr(0, G), G = C.lastIndexOf("/"); va = C; break a }
+                } var U = location.pathname; va = U.substr(0, U.lastIndexOf("/"))
+              } Fa = va; I = n("agentname") || n("csu") || (0 === g ? "ruxitagentjs" : "dtagent"); "true" === E("dtUseDebugAgent") ? 0 > I.indexOf("dbg") && (I = n("debugName") || I + "dbg") : I = n("name") || I; if (!m("auto") && !m("legacy") && !Fb) {
+                var V = n("agentUri") || Ea(n("featureHash")); m("async") || "complete" === document.readyState ?
+                  Da(V, m("async")) : document.write('<script type="text/javascript" src="' + V + '">\x3c/script>')
+              } var ga = e.location.href; 0 === g && -1 !== k(ga, "_DT_RENDERING_") && (x().RMOD = { conf: Ac, ignore: Bc, ID: "_DT_RENDERING_" }, Fa && Da(Ea("R"), !0)); E(D) && (f.cooO = !0); rc(); if (0 === g) { var ha = !!Ha(Ua); f.pVO = ha; ta(Sa) } 0 === g && ra("hvt") && (Db = ra("hvt")); sa(ub, [1])
+            } catch (ua) { return !1 } return !0
+          })(0) || (delete e.dT_, cb() && e.console.log("JsAgent initCode initialization failed!"))
+        }
+      })();
+    }).call(this);
+
+
+  </script>
   <script>
     var branchName = "{{ .Site.Data.args.source_branch_name }}";
     var docTitle = "{{ .Title }}";
