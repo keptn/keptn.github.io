@@ -157,7 +157,7 @@ The promotional itself is controlled via Ansible Tower. That means that starting
       carts   LoadBalancer   xx.xx.xxx.xxx   xxx.xxx.xxx.xxx   80:31399/TCP   1d
       ```
 
-    - From inside your `keptn` directory, navigate to the `usecases/runbook-automation-and-self-healing/scripts` directory and start the `add-to-cart.sh` script using the IP of your carts service.
+    - From inside your `keptn` directory, navigate to the `usecases/runbook-automation-and-self-healing/scripts` directory and start the [add-to-cart.sh](./scripts/add-to-cart.sh) script using the IP of your carts service.
 
       ```console
       $ cd usecases/runbook-automation-and-self-healing/scripts
