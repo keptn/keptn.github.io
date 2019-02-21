@@ -3,9 +3,9 @@
   background: $secondary;
   padding-top: 5px;
   padding-bottom: 5px;
-  bottom: 53px;
+  bottom: 0;
   .footer-inner {
-    display: flex;
+
     justify-content: space-between;
     flex-direction: column;
     align-items: flex-start;
@@ -15,18 +15,11 @@
       margin-top: 1px;
       padding-bottom: 0;
     }
-    @include media-breakpoint-up(sm) {
-      justify-content: space-between;
-      flex-direction: row;
-      align-items: center;
-      .footer-logo {
-        padding-bottom: 0px;
-      }
-    }
+
   }
   .footer-title {
     color: #ffffff;
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     @include media-breakpoint-up(sm) {
       align-self: flex-end;
       margin-bottom: 0;
@@ -43,9 +36,7 @@
     padding: 0;
     flex: 1;
     li {
-      display: block;
-      margin-right: 10px;
-      margin-top: 10px;
+
       color: lighten($secondary, 50%);
       font-size: 0.9rem;
       line-height: 1.8;
@@ -68,28 +59,7 @@
         font-weight: bold;
         color: lighten($secondary, 50%);
         display: none;
-        @include media-breakpoint-up(md) {
-          display: inline-block;
-        }
-      }
-    }
-    @include media-breakpoint-up(sm) {
-      height: inherit;
-      display: flex;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      align-items: center;
-      justify-content: flex-end;
-      li {
-        list-style: none;
-        margin-top: 0px;
-        a {
-          display: inline-block;
-          height: 40px;
-          padding: 10px 8px 10px 8px;
-          font-weight: 300;
-        }
+
       }
     }
   }
