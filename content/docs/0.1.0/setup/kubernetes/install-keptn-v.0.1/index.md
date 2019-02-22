@@ -62,7 +62,8 @@ Keptn contains all scripts and instructions needed to deploy the demo applicatio
 1. Execute the `forkGitHubRepositories.sh` script in the `scripts` directory. This script takes the name of the GitHub organization you have created earlier. This script clones all needed repositories and uses `hub` to fork those repositories to the passed GitHub organization. Afterwards, the script deletes all repositories and clones them again from the GitHub organization.
 
     ```console
-    $ cd ~/keptn/scripts/
+    # from your keptn repo, navigate into your scripts folder
+    $ cd scripts/
     $ ./forkGitHubRepositories.sh <GitHubOrg>
     ```
     
