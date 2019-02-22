@@ -1,7 +1,7 @@
 ---
 title: Install keptn v.0.1 on GKE
 description: Demonstrates how to install keptn in a Kubernetes cluster on Google Container Engine (GKE). 
-weight: 37
+weight: 36
 keywords: [kubernetes, install]
 ---
 
