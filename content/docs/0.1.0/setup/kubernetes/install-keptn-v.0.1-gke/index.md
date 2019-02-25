@@ -135,6 +135,9 @@ Keptn contains all scripts and instructions needed to deploy the demo applicatio
     link="./assets/jenkins-env-vars.png"
     caption="Jenkins environment variables">}}
 
+1. **Important**: Due to a [known issue](https://issues.jenkins-ci.org/browse/JENKINS-14880) in Jenkins, it is necessary to click **Save** although nothing is changed in this verification step. If the configuration is not saved at this point, the `$BUILD_URL` variable won't be initialized correctly for the builds and this meta-information will be missing later on in the use cases. 
+
+
 ### Troubleshooting
 
 - In case any value is missing in Jenkins, this can be fixed by adding the corresponding value in the `manifests/jenkins/k8s-jenkins-deployment.yml` file and re-applying this file with `kubectl`. 
