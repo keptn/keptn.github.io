@@ -11,6 +11,7 @@ then
 fi
 
 url=$1
+deleteUrl=${url%'items'}
 
 i=0
 while true
@@ -19,9 +20,9 @@ do
   echo "adding item to cart..."
   curl -X POST -H "Content-Type: application/json" -d "{\"id\":\"3395a43e-2d88-40de-b95f-e00e1502085b\", \"itemId\":\"03fef6ac-1896-4ce8-bd69-b798f85c6e0b\"}" $url
   i=$((i+1))
-  if [ $i -ge 100 ] 
+  if [ $i -ge 10 ] 
   then
-    curl -X DELETE $url
+    curl -X DELETE $deleteUrl
     i=0
   fi
 done
