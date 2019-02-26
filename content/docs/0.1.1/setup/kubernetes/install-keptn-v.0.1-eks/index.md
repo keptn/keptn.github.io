@@ -57,7 +57,7 @@ Additionally, the scripts need:
 
 ## Step 2: Download and prepare for the installation
 
-1. Go to the [keptn release](link) page to download the installation file using, e.g., `wget`:
+1. Go to the [keptn release](https://github.com/keptn/keptn/releases/tag/0.1.1) page to download the installation file using, e.g., `wget`:
     ```console
     $ cd ~
     $ wget ...
@@ -66,7 +66,7 @@ Additionally, the scripts need:
 1. Extract the package and move to the keptn directory:
 
     ```console
-    $ tar -xvzf keptn-v.0.1.0.tar.gz 
+    $ tar -xvzf keptn-v.0.1.1.tar.gz 
     $ cd keptn
     ```
 
