@@ -1,0 +1,59 @@
+{{ $toc := partial "toc.html" (dict "page" .) }}
+{{ $needTOC := .Scratch.Get "needTOC" }}
+
+{{ if and $needTOC (ne .Params.force_inline_toc true) }}
+    <div class="primary">
+{{ else }}
+    <div class="primary notoc">
+{{ end }}
+
+    <div id="sidebar-container" class="sidebar-container sidebar-offcanvas">
+        {{ $section := .Site.GetPage "section" .Section }}
+        {{ if $section.Params.sidebar_multicard }}
+            {{ partial "sidebar-multicard.html" . }}
+        {{ else if $section.Params.sidebar_none }}
+        {{ else }}
+            {{ partial "sidebar-singlecard.html" . }}
+        {{ end }}
+    </div>
+
+    <div class="article-container">
+        {{ if or $section.Params.sidebar_singlecard $section.Params.sidebar_multicard }}
+            <label class="sidebar-toggler" id="sidebar-toggler" title='{{ i18n "button_sidenav" }}'>
+                {{ partial "icon.html" "pull" }}
+            </label>
+        {{ end }}
+
+        <div class="pagenav">
+            <p>{{- partial "breadcrumbs.html" . -}}</p>
+        </div>
+
+        <main aria-labelledby="title">
+            <h1 id="title">
+                {{- if .Params.icon -}}
+                    <i class="page_icon">
+                        {{- partial "icon.html" .Params.icon -}}
+                    </i>
+                {{- end -}}
+                {{- .Title -}}
+            </h1>
+
+            {{ if .Params.subtitle }}
+                {{ if (strings.HasSuffix .Params.subtitle ".") }}
+                    {{ errorf "Subtitles should not end in a period: '%s" .Params.subtitle }}
+                {{ else }}
+                    <p class="subtitle">{{ .Params.subtitle }}</p>
+                {{ end }}
+            {{ end }}
+
+
+
+            {{ if $needTOC }}
+                <nav class="toc-inlined{{ if .Params.force_inline_toc }} toc-forced{{ end }}">
+                    <hr/>
+                    <div class="directory" role="directory">
+                        {{ replace $toc "TableOfContents" "InlinedTableOfContents" | safeHTML }}
+                    </div>
+                    <hr/>
+                </nav>
+            {{ end }}
