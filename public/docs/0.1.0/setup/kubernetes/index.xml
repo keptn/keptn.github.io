@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kubernetes on keptn</title>
+    <link>https://keptn.sh/docs/0.1.0/setup/kubernetes/</link>
+    <description>Recent content in Kubernetes on keptn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://keptn.sh/docs/0.1.0/setup/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Install keptn v.0.1 on GKE</title>
+      <link>https://keptn.sh/docs/0.1.0/setup/kubernetes/install-keptn-v.0.1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://keptn.sh/docs/0.1.0/setup/kubernetes/install-keptn-v.0.1/</guid>
+      <description>To install and configure keptn in a Kubernetes cluster, follow these instructions:
+Step 1: Prerequisites The next steps expect that you have a working Kubernetes cluster in Google Container Engine (GKE). See the Getting Started Guides for details about creating a cluster with the folllowing configuration:
+ Master version 1.11.6 (minimum tested master version 1.10.11) Node pool with 2 nodes:
+ each 8vCPUs and 30 GB memory (n1-standard-8 in GKE) image type: Ubuntu (preferred) or Container-Optimized OS (cos)</description>
+    </item>
+    
+  </channel>
+</rss>

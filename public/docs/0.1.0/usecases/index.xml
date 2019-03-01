@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Use Cases on keptn</title>
+    <link>https://keptn.sh/docs/0.1.0/usecases/</link>
+    <description>Recent content in Use Cases on keptn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://keptn.sh/docs/0.1.0/usecases/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Performance as a Service</title>
+      <link>https://keptn.sh/docs/0.1.0/usecases/performance-as-a-service/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://keptn.sh/docs/0.1.0/usecases/performance-as-a-service/</guid>
+      <description>This use case shows how to setup a fully automated on-demand self-service model for performance testing.
+About this use case The Dynatrace Sockshop sample used in keptn v.0.1 consists of eight microservices that are under development. The goal of this use case is to provide an automated performance testing model for developers to run a performance test for these services on demand. This supports the implementation of an advanced DevOps approach due to early performance feedback regarding a service in a development environment and before it gets deployed into a production environment.</description>
+    </item>
+    
+    <item>
+      <title>Production Deployments</title>
+      <link>https://keptn.sh/docs/0.1.0/usecases/production-deployments/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://keptn.sh/docs/0.1.0/usecases/production-deployments/</guid>
+      <description>This use case gives an overview of production deployments, deployment strategies, and depicts those using Istio on Kubernetes to canary-deploy a new front-end version.
+About this use case When developing an application, sooner or later you need to update a service in a production environment. To conduct this in a controlled manner and without impacting end-user experience, deployment strategies must be in place. For example, blue-green or canary deployment are well known strategies to rollout a new service version.</description>
+    </item>
+    
+    <item>
+      <title>Runbook Automation and Self-healing</title>
+      <link>https://keptn.sh/docs/0.1.0/usecases/runbook-automation-and-self-healing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://keptn.sh/docs/0.1.0/usecases/runbook-automation-and-self-healing/</guid>
+      <description>This use case gives an overview of how to leverage the power of runbook automation to build self-healing applications. Therefore, you will use Ansible Tower as the tool for executing and managing the runbooks.
+About this use case In this use case, we are going to use the Dynatrace Sockshop as our demo application. Assume that we want to start a marketing campaign for our SockShop, which will add promotional gifts (e.</description>
+    </item>
+    
+    <item>
+      <title>Unbreakable Delivery Pipeline</title>
+      <link>https://keptn.sh/docs/0.1.0/usecases/unbreakable-delivery-pipeline/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://keptn.sh/docs/0.1.0/usecases/unbreakable-delivery-pipeline/</guid>
+      <description>This use case shows how to implement a delivery pipeline that prevents bad code changes from impacting your end users.
+About this use case The initial goal of the Unbreakable Delivery Pipeline is to implement a pipeline that prevents bad code changes from impacting your end users. This pipeline relies on three concepts known as Shift-Left, Shift-Right, and Self-Healing.
+ Shift-Left: Ability to pull data for specific entities (processes, services, or applications) through an automation API and feed it into the tools that are used to decide on whether to stop the pipeline or keep it running.</description>
+    </item>
+    
+  </channel>
+</rss>

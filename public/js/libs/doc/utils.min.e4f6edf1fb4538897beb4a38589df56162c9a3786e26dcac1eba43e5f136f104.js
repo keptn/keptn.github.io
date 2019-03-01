@@ -1,0 +1,4 @@
+"use strict";function scrollToTop(){document.body.scrollTop=0;document.documentElement.scrollTop=0;}
+var escapeChars={'¢':'cent','£':'pound','¥':'yen','€':'euro','©':'copy','®':'reg','<':'lt','>':'gt','"':'quot','&':'amp','\'':'#39'};var regex=new RegExp("[¢£¥€©®<>\"&']",'g');function escapeHTML(str){return str.replace(regex,function(m){return '&'+escapeChars[m]+';';});}
+function saveFile(filename,text){var element=document.createElement('a');element.setAttribute('href','data:text/text;charset=utf-8,'+encodeURI(text));element.setAttribute('download',filename);element.click();}
+function printText(text){var html="<html><body><pre><code>"+text+"</code></pre></html>";var printWin=window.open('','','left=0,top=0,width=100,height=100,toolbar=0,scrollbars=0,status=0,location=0,menubar=0',false);printWin.document.write(html);printWin.document.close();printWin.focus();printWin.print();printWin.close();}

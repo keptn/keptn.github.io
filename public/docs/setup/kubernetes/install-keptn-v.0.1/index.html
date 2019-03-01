@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Install keptn v.0.1 on GKE - keptn</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-site-verification" content="wDzKASaTgmwGTtV-z_O-NU_6e1wOgA7spKT96o9r8XE" />
+  
+  <link rel="icon" href="https://keptn.sh/favicon.png">
+
+  
+  
+  <link rel="stylesheet" href="/css/style.min.821919e21a897e2d44560dc93ae95d622a07179547d0969419b46936cfcf90b5.css">
+  <link rel="stylesheet" href="/js/libs/doc/lightbox/css/lightbox.min.min.1bbb47ec548f1c47e276ce27971cdc27f8c803ee4bb96f064c72c7448f7c0f12.css">
+  
+  <script>
+    var branchName = "";
+    var docTitle = "Install keptn v.0.1 on GKE";
+    var iconFile = "https:\/\/keptn.sh\//img/icons.svg";
+    var buttonCopy = '';
+    var buttonPrint = '';
+    var buttonDownload = '';
+  </script>
+</head>
+
+<body class='page '>
+  
+<div id="main-menu-mobile" class="main-menu-mobile">
+  <ul>
+    
+    
+    <li class="menu-item-docs">
+      <a href="/docs/">
+        
+        <span>Docs</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+
+  <div class="wrapper">
+
+    <div class='header'>
+  <div class="container">
+    <div class="logo">
+      <a href="https://keptn.sh/"><img alt="Keptn Homepage" src="https://keptn.sh/images/logo.svg" /></a>
+    </div>
+    <div class="logo-mobile">
+      <a href="https://keptn.sh/"><img alt="Keptn Homepage" src="https://keptn.sh/images/logo-mobile.svg" /></a>
+    </div>
+    
+<div id="main-menu" class="main-menu">
+  <ul>
+    
+    
+    <li class="menu-item-docs">
+      <a href="/docs/">
+        
+        <span>Docs</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+
+    
+<button id="toggle-main-menu-mobile" class="hamburger hamburger--slider" role="presentation" aria-label="mobile menu trigger">
+  <span class="hamburger-box">
+    <span class="hamburger-inner"></span>
+  </span>
+</button>
+
+  </div>
+</div>
+    <a href="https://github.com/keptn/" class="github-corner" aria-label="Keptn on GitHub">
+  <svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z" fill="#151513"></path>
+    <path class="octo-arm" d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="#ffffff" style="transform-origin: 130px 106px;"></path>
+    <path class="octo-body" d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="#ffffff"></path>
+  </svg>
+</a>
+    <div class="container">
+      
+
+
+
+
+    <div class="primary">
+
+
+    <div id="sidebar-container" class="sidebar-container sidebar-offcanvas">
+        
+        
+            <nav class="sidebar">
+    <div class="spacer"></div>
+    <div class="directory" role="tablist">
+        
+
+        
+        
+
+        
+            
+        
+            
+        
+            
+
+                <div class="card">
+                    <div class="card-header" role="tab" id="header2">
+                        <a data-toggle="collapse" href="#collapse2" title="How to deploy keptn in Kubernetes." role="button" aria-controls="collapse2">
+                            <div><svg class="icon"><use xlink:href="/img/icons.svg#setup"/></svg>Setup</div>
+                        </a>
+                    </div>
+
+                    <div id="collapse2" class="collapse show" role="tabpanel" aria-labelledby="header2">
+                        <div class="card-body">
+                            
+
+
+
+
+<ul class="tree">
+    
+        
+    
+        
+            
+                <li class="sublist">
+                    
+
+                    <label class='tree-toggle'><i class="chevron"><svg class="icon"><use xlink:href="/img/icons.svg#right-chevron"/></svg></i><i class="chevron show"><svg class="icon"><use xlink:href="/img/icons.svg#down-chevron"/></svg></i><a  title="Instructions for installing keptn on Kubernetes." href="https://keptn.sh/docs/setup/kubernetes/">Kubernetes</a>
+                    </label>
+
+                    
+
+
+
+
+<ul class="tree">
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <li>
+                    
+                        <span class="current" title="Demonstrates how to install keptn in a Kubernetes cluster on Google Container Engine (GKE).">Install keptn v.0.1 on GKE</span>
+                    
+                </li>
+             
+        
+    
+</ul>
+
+                </li>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+</ul>
+
+                        </div>
+                    </div>
+                </div>
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+
+                <div class="card">
+                    <div class="card-header" role="tab" id="header7">
+                        <a data-toggle="collapse" href="#collapse7" title="How to do specific targeted activities with keptn." role="button" aria-controls="collapse7">
+                            <div><svg class="icon"><use xlink:href="/img/icons.svg#tasks"/></svg>Use Cases</div>
+                        </a>
+                    </div>
+
+                    <div id="collapse7" class="collapse" role="tabpanel" aria-labelledby="header7">
+                        <div class="card-body">
+                            
+
+
+
+
+<ul class="tree">
+    
+        
+    
+        
+    
+        
+    
+        
+            
+                <li>
+                    
+                        <a title="Shows you how to setup a fully automated on-demand self-service model for performance testing." href="https://keptn.sh/docs/usecases/performance-as-a-service/">Performance as a Service</a>
+                    
+                </li>
+             
+        
+    
+        
+            
+                <li>
+                    
+                        <a title="Gives an overview of production deployments, deployment strategies, and depicts those using Istio on Kubernetes to canary-deploy a new front-end version." href="https://keptn.sh/docs/usecases/production-deployments/">Production Deployments</a>
+                    
+                </li>
+             
+        
+    
+        
+            
+                <li>
+                    
+                        <a title="Gives an overview of how to leverage the power of runbook automation to build self-healing applications. Therefore, you will use Ansible Tower as the tool for executing and managing the runbooks." href="https://keptn.sh/docs/usecases/runbook-automation-and-self-healing/">Runbook Automation and Self-healing</a>
+                    
+                </li>
+             
+        
+    
+        
+            
+                <li>
+                    
+                        <a title="Shows you how to implement a delivery pipeline that prevents bad code changes from impacting your end users." href="https://keptn.sh/docs/usecases/unbreakable-delivery-pipeline/">Unbreakable Delivery Pipeline</a>
+                    
+                </li>
+             
+        
+    
+        
+    
+        
+    
+</ul>
+
+                        </div>
+                    </div>
+                </div>
+            
+        
+            
+        
+
+        
+            
+        
+    </div>
+</nav>
+
+        
+    </div>
+
+    <div class="article-container">
+        
+            <label class="sidebar-toggler" id="sidebar-toggler" title=''>
+                <svg class="icon"><use xlink:href="/img/icons.svg#pull"/></svg>
+            </label>
+        
+
+        <div class="pagenav">
+            <p>
+
+
+    
+        
+        
+        
+    
+
+    
+        
+        
+        
+    
+
+    
+        
+        
+        
+    
+
+    
+        
+        
+        
+    
+
+    
+        
+        
+        
+    
+
+
+
+
+    
+    
+    
+
+    
+        <a href="https://keptn.sh/">Home</a>
+        <span>/</span>
+    
+
+    
+    
+    
+
+    
+        <a href="https://keptn.sh/docs/">Docs</a>
+        <span>/</span>
+    
+
+    
+    
+    
+
+    
+        <a href="https://keptn.sh/docs/setup/">Setup</a>
+        <span>/</span>
+    
+
+    
+    
+    
+
+    
+        <a href="https://keptn.sh/docs/setup/kubernetes/">Kubernetes</a>
+        <span>/</span>
+    
+
+    
+    
+    
+
+    
+        Install keptn v.0.1 on GKE
+    
+
+</p>
+        </div>
+
+        <main aria-labelledby="title">
+            <h1 id="title">Install keptn v.0.1 on GKE</h1>
+
+            
+
+            
+                <p class="byline"><span title="%!(EXTRA int=1030)"><svg class="icon"><use xlink:href="/img/icons.svg#clock"/></svg><span>&nbsp;</span>%!(EXTRA int=5)</span></p>
+            
+
+            
+                <nav class="toc-inlined">
+                    <hr/>
+                    <div class="directory" role="directory">
+                        
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+    
+        
+        <nav id="InlinedTableOfContents">
+            <ul>
+                
+                
+                    
+                    
+                    
+                    
+
+                    
+
+                    <li><a href="#step-1-prerequisites">Step 1: Prerequisites</a></li>
+
+                    
+                
+                    
+                    
+                    
+                    
+
+                    
+
+                    <li><a href="#step-2-download-and-prepare-for-the-installation">Step 2: Download and prepare for the installation</a></li>
+
+                    
+                
+                    
+                    
+                    
+                    
+
+                    
+
+                    <li><a href="#step-3-provision-cluster-on-kubernetes">Step 3: Provision cluster on Kubernetes</a></li>
+
+                    
+                
+                    
+                    
+                    
+                    
+
+                    
+
+                    <li><a href="#step-4-optional-create-process-group-naming-rule-in-dynatrace">Step 4: (optional) Create process group naming rule in Dynatrace</a></li>
+
+                    
+                
+                    
+                    
+                    
+                    
+
+                    
+
+                    <li><a href="#step-5-cleanup">Step 5: Cleanup</a></li>
+
+                    
+                
+
+                
+                
+
+                
+            </ul>
+        </nav>
+    
+
+
+                    </div>
+                    <hr/>
+                </nav>
+            
+
+
+
+<p>To install and configure keptn in a Kubernetes cluster, follow these instructions:</p>
+
+<h2 id="step-1-prerequisites">Step 1: Prerequisites</h2>
+
+<p>The next steps expect that you have a working Kubernetes cluster in Google Container Engine (GKE). See the <a href="https://kubernetes.io/docs/setup/">Getting Started Guides</a> for details about creating a cluster with the folllowing configuration:</p>
+
+<ul>
+<li>Master version 1.11.6 (minimum tested master version 1.10.11)</li>
+
+<li><p>Node pool with 2 nodes:</p>
+
+<ul>
+<li>each 8vCPUs and 30 GB memory (<code>n1-standard-8</code> in GKE)</li>
+
+<li><p>image type: Ubuntu (<strong>preferred</strong>) or <em>Container-Optimized OS (cos)</em></p>
+
+<p><strong>Note:</strong> If <em>Container-Optimized OS (cos)</em> is selected, make sure to <a href="https://www.dynatrace.com/support/help/cloud-platforms/google-cloud-platform/google-kubernetes-engine/deploy-oneagent-on-google-kubernetes-engine-clusters/#expand-134parameter-for-container-optimized-os-early-access">follow the instructions</a> for setting up the Dynatrace OneAgent Operator. This means that after the initial setup with <code>setupInfrastructure.sh</code>, which is a step below, the <code>cr.yml</code> has to be edited and applied again. In addition, all pods have to be restarted.</p></li>
+</ul></li>
+</ul>
+
+<p>The scripts provided by keptn v.0.1 run in a BASH and require following tools locally installed:</p>
+
+<ul>
+<li><a href="https://stedolan.github.io/jq/">jq</a> which is a lightweight and flexible command-line JSON processor.</li>
+<li><a href="https://git-scm.com/">git</a> and <a href="https://hub.github.com/">hub</a> that helps you do everyday GitHub tasks without ever leaving the terminal.</li>
+
+<li><p><a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/">kubectl</a> that is logged in to your cluster.</p>
+
+<p><strong>Tip:</strong> View all the kubectl commands, including their options and descriptions in the <a href="https://kubernetes.io/docs/user-guide/kubectl-overview/">kubectl CLI reference</a>.</p></li>
+</ul>
+
+<p>Additionally, the scripts need:</p>
+
+<ul>
+<li><code>GitHub organization</code> to store the repositories of the sockshop application</li>
+<li><code>GitHub personal access token</code> to push changes to the sockshop repositories</li>
+
+<li><p>Dynatrace Tenant including the Dynatrace <code>Tenant ID</code>, a Dynatrace <code>API Token</code>, and Dynatrace <code>PaaS Token</code>. If you don&rsquo;t have a Dynatrace tenant yet, sign up for a <a href="https://www.dynatrace.com/trial/">free trial</a> or a <a href="https://www.dynatrace.com/developer/">developer account</a>.</p>
+
+<p><strong>Note:</strong> The <code>API Token</code> must have the permissions as shown in the screenshot below:</p>
+
+<p><img src="./assets/dt_api_token.png" alt="dt_api_token" /></p></li>
+</ul>
+
+<h2 id="step-2-download-and-prepare-for-the-installation">Step 2: Download and prepare for the installation</h2>
+
+<ol>
+<li><p>Go to the <a href="link">keptn release</a> page to download the installation file using, e.g., <code>wget</code>:</p>
+
+<pre><code class="language-console">$ cd ~
+$ wget ...
+</code></pre></li>
+
+<li><p>Extract the package and move to the keptn directory:</p>
+
+<pre><code class="language-console">$ tar -xvzf keptn-v.0.1.0.tar.gz 
+$ cd keptn
+</code></pre></li>
+</ol>
+
+<h2 id="step-3-provision-cluster-on-kubernetes">Step 3: Provision cluster on Kubernetes</h2>
+
+<p>Keptn contains all scripts and instructions needed to deploy the demo application <em>Sockshop</em> on a Kubernetes cluster.</p>
+
+<ol>
+<li><p>Execute the <code>forkGitHubRepositories.sh</code> script in the <code>scripts</code> directory. This script takes the name of the GitHub organization you have created earlier. This script clones all needed repositories and uses <code>hub</code> to fork those repositories to the passed GitHub organization. Afterwards, the script deletes all repositories and clones them again from the GitHub organization.</p>
+
+<pre><code class="language-console">$ cd ~/keptn/scripts/
+$ ./forkGitHubRepositories.sh &lt;GitHubOrg&gt;
+</code></pre></li>
+
+<li><p>Insert information in <em>./scripts/creds.json</em> by executing <code>defineCredentials.sh</code> in the <code>scripts</code> directory. This script will prompt you for all information needed to complete the setup and populate the file <em>scripts/creds.json</em> with them.</p>
+
+<p><strong>Attention:</strong> This file will hold your personal access-token and credentials needed for the automatic setup of keptn. Take care of not leaking this file! (As a first precaution we have added this file to the <code>.gitignore</code> file to prevent committing it to GitHub.)</p>
+
+<pre><code class="language-console">$ ./defineCredentials.sh
+</code></pre></li>
+
+<li><p>Execute <code>setupInfrastructure.sh</code> in the <code>scripts</code> directory. This script deploys a container registry and Jenkins service within your cluster, as well as an initial deployment of the sockshop application in the <em>dev</em>, <em>staging</em>, and <em>production</em> namespaces. Please note that this is an initial step to provide you with running services in all three environments. In the course of the different use cases provided by keptn, the microservices will be built and deployed by the Jenkins pipelines set up by keptn.</p>
+
+<p><strong>Attention:</strong> The script will create several new resources for you and will also update the files shipped with keptn. Take care of not leaking any files that will hold personal information. Including:</p>
+
+<ul>
+<li><code>manifests/dynatrace/cr.yml</code></li>
+<li><code>manifests/istio/service_entries.yml</code></li>
+<li><code>manifests/jenkins/k8s-jenkins-deployment.yml</code></li>
+</ul>
+
+<p><strong>Note:</strong> The script will run for some time (~10-15 min), since it will wait for Jenkins to boot before setting credentials via the Jenkins REST API.</p>
+
+<pre><code class="language-console">$ ./setupInfrastructure.sh
+</code></pre></li>
+
+<li><p>To verify the deployment of the sockshop service, retrieve the URLs of your front-end in the dev, staging, and production environments with the <code>kubectl get svc</code> <em><code>service</code></em> <code>-n</code> <em><code>namespace</code></em> command:</p>
+
+<pre><code class="language-console">$ kubectl get svc front-end -n dev
+NAME         TYPE            CLUSTER-IP      EXTERNAL-IP       PORT(S)           AGE
+front-end    LoadBalancer    10.23.252.***   **.225.203.***    8080:30438/TCP    5m
+</code></pre>
+
+<pre><code class="language-console">$ kubectl get svc front-end -n staging
+NAME         TYPE            CLUSTER-IP       EXTERNAL-IP      PORT(S)           AGE
+front-end    LoadBalancer    10.23.246.***    **.184.97.***    8080:32501/TCP    6m
+</code></pre>
+
+<pre><code class="language-console">$ kubectl get svc front-end -n production
+NAME         TYPE            CLUSTER-IP       EXTERNAL-IP      PORT(S)           AGE
+front-end    LoadBalancer    10.23.248.***    **.226.62.***    8080:32232/TCP    7m
+</code></pre></li>
+
+<li><p>Run the <code>kubectl get svc</code> command to get the <strong>EXTERNAL-IP</strong> and <strong>PORT</strong> of Jenkins. Then user a browser to open Jenkins and login using the default Jenkins credentials: <code>admin</code> / <code>AiTx4u8VyUV8tCKk</code>.</p>
+
+<p><strong>Note:</strong> It is highly recommended to change these credentials right after the first login.</p>
+
+<pre><code class="language-console">$ kubectl get svc jenkins -n cicd
+NAME       TYPE            CLUSTER-IP      EXTERNAL-IP       PORT(S)                            AGE
+jenkins    LoadBalancer    10.23.245.***   ***.198.26.***    24***:32478/TCP,50***:31867/TCP    10m
+</code></pre></li>
+
+<li><p>To verify the correct installation of Jenkins, go to the Jenkins dashboard where you see the following pipelines:</p>
+
+<ul>
+<li>k8s-deploy-production</li>
+<li>k8s-deploy-production-canary</li>
+<li>k8s-deploy-production-update</li>
+<li>k8s-deploy-staging</li>
+<li>Folder called sockshop</li>
+</ul></li>
+
+<li><p>Finally, navigate to <strong>Jenkins</strong> &gt; <strong>Manage Jenkins</strong> &gt; <strong>Configure System</strong> and  scroll to the environment variables to verify whether the variables are set correctly. <strong>Note:</strong> The value for the parameter <em>DT_TENANT_URL</em> must start with <em>https://</em></p></li>
+</ol>
+
+<p><img src="./assets/jenkins-env-vars.png" alt="" /></p>
+
+<h2 id="step-4-optional-create-process-group-naming-rule-in-dynatrace">Step 4: (optional) Create process group naming rule in Dynatrace</h2>
+
+<ol>
+<li><p>Create a naming rule for process groups</p>
+
+<ol>
+<li>Go to <strong>Settings</strong>, <strong>Process and containers</strong>, and click on <strong>Process group naming</strong>.</li>
+<li>Create a new process group naming rule with <strong>Add new rule</strong>.</li>
+<li>Edit that rule:
+
+<ul>
+<li>Rule name: <code>Container.Namespace</code></li>
+<li>Process group name format: <code>{ProcessGroup:KubernetesContainerName}.{ProcessGroup:KubernetesNamespace}</code></li>
+<li>Condition: <code>Kubernetes namespace</code>&gt; <code>exits</code></li>
+</ul></li>
+<li>Click on <strong>Preview</strong> and <strong>Save</strong>.</li>
+</ol>
+
+<p>Screenshot shows this rule definition.
+<img src="./assets/pg_naming.png" alt="naming-rule" /></p></li>
+</ol>
+
+<!-- 
+## Step 3: Use case walk through <a id="step-three"></a>
+
+To explore the capabilities of keptn, follow the provided use cases that are dedicated to a special topic.
+
+* [Performance as a Service](./usecases/performance-as-a-service): This use case aims on moving from manual sporadic execution and analysis of performance tests to a fully automated on-demand self-service testing model for developers.
+
+* [Production Deployments](./usecases/production-deployments): This use case gives an overview of production deployments, deployment strategies, and showcases those using Istio on Kubernetes to canary-deploy a new front-end version.
+
+* [Runbook Automation and Self-Healing](./usecases/runbook-automation-and-self-healing): This use case gives an overview of how to leverage the power of runbook automation to build self-healing applications. 
+
+* [Unbreakable Delivery Pipeline](./usecases/unbreakable-delivery-pipeline): The overall goal of the *Unbreakable Delivery Pipeline* is to implement a pipeline that prevents bad code changes from impacting real end users.
+-->
+
+<h2 id="step-5-cleanup">Step 5: Cleanup</h2>
+
+<ol>
+<li><p>To clean up your Kubernetes cluster, execute the <code>cleanupCluster.sh</code> script in the <code>scripts</code> directory.</p>
+
+<pre><code class="language-console">$ ./scripts/cleanupCluster.sh
+</code></pre></li>
+</ol>
+
+
+
+
+            
+        </main>
+
+        
+
+        <div class="link-endnotes" aria-hidden="true">
+            <h2></h2>
+            <ol id="endnotes"></ol>
+        </div>
+    </div>
+
+    
+        <div class="toc-container">
+            <nav class="toc">
+                <div class="spacer"></div>
+                <div id="toc" class="directory" role="directory">
+                    
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+
+    
+        
+        <nav id="TableOfContents">
+            <ul>
+                
+                
+                    
+                    
+                    
+                    
+
+                    
+
+                    <li><a href="#step-1-prerequisites">Step 1: Prerequisites</a></li>
+
+                    
+                
+                    
+                    
+                    
+                    
+
+                    
+
+                    <li><a href="#step-2-download-and-prepare-for-the-installation">Step 2: Download and prepare for the installation</a></li>
+
+                    
+                
+                    
+                    
+                    
+                    
+
+                    
+
+                    <li><a href="#step-3-provision-cluster-on-kubernetes">Step 3: Provision cluster on Kubernetes</a></li>
+
+                    
+                
+                    
+                    
+                    
+                    
+
+                    
+
+                    <li><a href="#step-4-optional-create-process-group-naming-rule-in-dynatrace">Step 4: (optional) Create process group naming rule in Dynatrace</a></li>
+
+                    
+                
+                    
+                    
+                    
+                    
+
+                    
+
+                    <li><a href="#step-5-cleanup">Step 5: Cleanup</a></li>
+
+                    
+                
+
+                
+                
+
+                
+            </ul>
+        </nav>
+    
+
+
+                </div>
+            </nav>
+        </div>
+    
+</div>
+
+
+
+  </div>
+
+  <div class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="footer-inner">
+          <img alt="Keptn" src="https://keptn.sh/images/logo_white.svg" class="footer-logo"/><h3 class="footer-title">built with <span style="font-size: 1.8rem">&#x2665;</span> by Dynatrace</h3>
+          <ul class="footer-menu">
+            <li><a href="https://github.com/keptn/" target="_blank"><img alt="github" src="https://keptn.sh/social/github.svg" /></a></li>
+            <li><a href="https://keptn.slack.com/" target="_blank"><img alt="slack" src="https://keptn.sh/social/slack.svg" /></a></li>
+            <li><a href="https://twitter.com/keptnproject" target="_blank"><img alt="twitter" src="https://keptn.sh/social/twitter.svg" /></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="sub-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="sub-footer-inner">
+          <ul>
+            <li><strong>Email: </strong><a href="mailto:keptn@dynatrace.com">
+                keptn@dynatrace.com</a></li>
+          </ul>
+          <ul>
+            <li class="zerostatic"><a href="https://keptn.sh">keptn.sh</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+  
+  
+  
+  
+  
+  
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+  
+  <script type="text/javascript" src="/js/scripts.min.6d111557349b327a23f49ebbca651db173a6db206c8251e177fc4ffa955c2831.js"></script>
+  <script type="text/javascript" src="/js/libs/doc/utils.min.e4f6edf1fb4538897beb4a38589df56162c9a3786e26dcac1eba43e5f136f104.js"></script>
+  <script type="text/javascript" src="/js/libs/doc/misc.min.ed496662b7e3100b5a0fb8aff7eb00424b75ab3ffc1e06528004efb2529153f5.js"></script>
+  <script type="text/javascript" src="/js/libs/doc/prism.min.ccc0e2507ebaf84f84a022e4628fd98c50c9c636e3c447653b6c813f04258344.js"></script>
+  <script type="text/javascript" src="/js/libs/doc/lightbox/js/lightbox-plus-jquery.min.min.caa0181254e65ca8b51c5db7115641bd56796eeb7236589c6d6e1785cfb37e9d.js"></script>
+  
+
+  
+
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133584243-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'UA-133584243-1');
+  </script>
+
+
+
+</body>
+
+</html>
