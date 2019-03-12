@@ -26,12 +26,16 @@ The scripts provided by keptn v.0.2 run in a BASH and require following tools lo
 - [jq](https://stedolan.github.io/jq/) which is a lightweight and flexible command-line JSON processor.
 - [yq](https://github.com/mikefarah/yq) for querying and writing YAML objects.
 - [git](https://git-scm.com/) and [hub](https://hub.github.com/) that helps you do everyday GitHub tasks without ever leaving the terminal.
-- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) that is logged in to your cluster.
+- [gcloud](https://cloud.google.com/sdk/gcloud/) CLI
+- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) - The script will log you into the cluster you will provide as an input parameter.
 
     **Tip:** View all the kubectl commands, including their options and descriptions in the [kubectl CLI reference](https://kubernetes.io/docs/user-guide/kubectl-overview/).
 
 Additionally, the scripts need:
 
+- `GKE cluster name`: The GKE cluster you want to deploy keptn on.
+- `GKE cluster zone`: The zone your GKE cluster is located in (e.g. us-centra-1-a).
+- `GKE Project`: The GKE project the cluster is managed by.
 - `GitHub organization` to store the repositories of the sockshop application
 - `GitHub personal access token` to push changes to the sockshop repositories
 - Dynatrace Tenant including the Dynatrace `Tenant ID`, a Dynatrace `API Token`, and Dynatrace `PaaS Token`. If you don't have a Dynatrace tenant yet, sign up for a [free trial](https://www.dynatrace.com/trial/) or a [developer account](https://www.dynatrace.com/developer/).
