@@ -1,7 +1,7 @@
 ---
 title: Onboarding of a service
 description: The following description explains how an existing service can be onboarded using keptn.
-weight: 36
+weight: 16
 keywords: [cli, onboard]
 ---
 
@@ -63,11 +63,6 @@ In order to guarantee the expected behavior, please strictly use the following c
     In order to work with GitHub (i.e. create a new project, make commits), keptn requires a
     GitHub organization, the GitHub user, and the GitHub personal access token belonging to that user.
     Therefore, the CLI is used to set the GitHub organization, the GitHub user, and the GitHub personal access token belonging to that user in the keptn installation.
-
-    <span style="color:red">
-    **Note (we will implement this functionality soon):** Currently, this functionality is not implemented in keptn, i.e. in the GitHub service. Instead, the organization, user, and token are hard-coded.
-    For the organization `keptn-tiger`, for the user `johannes-b`, and a respective token is used. 
-    </span>
 
     <span style="color:red">
     **Note:** Should we describe a best practice, which creates a new GitHub user only used by keptn?
