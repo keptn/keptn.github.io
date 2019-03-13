@@ -90,9 +90,9 @@ In order to guarantee the expected behavior, please strictly use the following c
 
     To onboard a service using the Helm descriptions use command `onboard service` and provide the project name, the Helm values description and optionally also deployment and service descriptions.
     ```console
-    keptn onboard service --project=carts --values=values.yaml
+    keptn onboard service --project=sockshop --values=values.yaml
     ```
     or
     ```console
-    keptn onboard service --project=carts --values=values.yaml --deployment=deployment.yaml --service=service.yaml
+    keptn onboard service --project=sockshop --values=values.yaml --deployment=deployment.yaml --service=service.yaml
     ```
