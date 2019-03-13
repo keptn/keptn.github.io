@@ -28,6 +28,7 @@ The scripts provided by keptn v.0.2 run in a BASH and require following tools lo
 - [git](https://git-scm.com/) and [hub](https://hub.github.com/) that helps you do everyday GitHub tasks without ever leaving the terminal.
 - [gcloud](https://cloud.google.com/sdk/gcloud/) CLI
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) - The script will log you into the cluster you will provide as an input parameter.
+- [helm](https://helm.sh/) - A package manager for Kubernetes, used for deploying keptn-managed applications
 
     **Tip:** View all the kubectl commands, including their options and descriptions in the [kubectl CLI reference](https://kubernetes.io/docs/user-guide/kubectl-overview/).
 
