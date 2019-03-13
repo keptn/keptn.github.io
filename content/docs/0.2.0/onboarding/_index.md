@@ -46,7 +46,12 @@ In order to guarantee the expected behavior, please strictly use the following c
 1. Authentication against the keptn installation:
 
     Before the CLI can be used, it needs to be authenticated against a keptn installation.
-    Therefore, an endpoint and an API token are required. Both are exposed during the keptn installation.
+    Therefore, an endpoint and an API token are required. To retrieve them, execute the following commands:
+
+    ```console
+    KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -o=yaml | yq - r data.keptn-api-token | base64 --decode)
+    KEPTN_ENDPOINT=$(kubectl get ksvc -n keptn control-o=yaml | yq r - status.domain)
+    ```
     
     If the authentication is successful, keptn will inform the user.
     Furthermore, if the authentication is successful, the endpoint and the API token are stored in a password store of the underlying operating system.
@@ -55,7 +60,7 @@ In order to guarantee the expected behavior, please strictly use the following c
 
     To authenticate against the keptn installation use command `auth` and your endpoint and API token:
     ```console
-    keptn auth --endpoint=mykeptnendpoint.com --api-token=xyz
+    keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN
     ```
 
 1. Configure the used GitHub organization, user, and personal access token:
