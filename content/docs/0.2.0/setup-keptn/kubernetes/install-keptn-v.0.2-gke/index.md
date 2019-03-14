@@ -71,7 +71,7 @@ Additionally, the scripts need:
 
 ## Step 3: Provision cluster on Kubernetes
 
-Keptn contains all scripts and instructions needed to deploy the demo application *Sockshop* on a Kubernetes cluster.
+Keptn contains all scripts and instructions needed to install the necessary components on your K8S cluster.
     
 1. Insert information in *./scripts/creds.json* by executing `defineCredentials.sh` in the `scripts` directory. This script will prompt you for all information needed to complete the setup and populate the file *scripts/creds.json* with them. 
 
@@ -80,8 +80,9 @@ Keptn contains all scripts and instructions needed to deploy the demo applicatio
     ```console
     $ ./defineCredentials.sh
     ```
-    
-1. Execute `setupInfrastructure.sh` in the `scripts` directory. This script deploys a container registry and Jenkins service within your cluster, as well as an initial deployment of the sockshop application in the *dev*, *staging*, and *production* namespaces. Please note that this is an initial step to provide you with running services in all three environments. In the course of the different use cases provided by keptn, the microservices will be built and deployed by the Jenkins pipelines set up by keptn. 
+1. If you don't have a running cluster yet, you can create one by executing the script `createCluster.sh` in the `scripts` directory.   
+
+1. Execute `setupInfrastructure.sh` in the `scripts` directory. This script deploys a container registry and Jenkins service within your cluster, as well as the keptn core components. 
 
     **Attention:** The script will create several new resources for you and will also update the files shipped with keptn. Take care of not leaking any files that will hold personal information. Including:
         
