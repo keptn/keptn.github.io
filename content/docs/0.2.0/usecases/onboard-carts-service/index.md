@@ -27,7 +27,9 @@ To illustrate the scenario this use case addresses, keptn relies on two services
 
 ## Prerequisits
 
-1. You will need a GitHub organization. 
+1. A GitHub organization, user, and personal access token, which are used by keptn 
+
+1. The endpoint and API token provided by the keptn installation.
 
 1. Git clone artifacts for this use case.
 
