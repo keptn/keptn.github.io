@@ -1,29 +1,30 @@
 ---
-title: Onboarding the carts service
-description: Shows you how to onboard the carts service including its database.
+title: Onboarding the Carts Service
+description: Shows you how to onboard the carts service including its database to a keptn managed project. Besides, this use case builds a new artifact that will be automatically deployed via keptn.
 weight: 20
 keywords: [onboarding]
 aliases:
 ---
 
-Shows you how to onboard the carts service including its database. Besides, this use case builds and deploys a new artifact that will be automatically deployed via keptn.
+Shows you how to onboard the carts service including its database. Besides, this use case builds a new artifact that will be automatically deployed via keptn.
 
 ## About this use case
 
 The goal of this use case is to automatically deploy a service - and new artifacts of this service - into a multi-stage environment using keptn. The stages of the environment are described in a *shipyard* file that defines the name, deployment strategy and test strategy of each stage. In case an additional stage is needed, the shipyard file can be easily extended by a stage definition before creating the project. After creating the project, the service that is going to be managed by keptn need to be onboarded. Therefore, keptn provides the functionality to create the deployment and service definition of the onboarded service for each stage. 
 
 To illustrate the scenario this use case addresses, keptn relies on two services: github-service and jenkins-service. These services have the following responsibilities: 
-* **github-service**: 
+
+**github-service**: 
   
   * Creating a project
   * Onboarding a service
-  * Listening to a new artefact event - to update the reference to the new artifact in the service configuration. 
+  * Listening to a new artefact event to update the reference to the new artifact in the service configuration. 
 
-* **jenkins-service**:
+**jenkins-service**:
   
-  * Listening to configuration changed event - to deploy a service based on the new configuration.
-  * Listening to a deployment finised event - to test a freshly deployed service.
-  * Listening to a test finished event - to promote the service to the next stage meaning to send a new artifact event for the next stage. 
+  * Listening to configuration changed event to deploy a service based on the new configuration.
+  * Listening to a deployment finised event to test a freshly deployed service.
+  * Listening to a test finished event to promote the service to the next stage meaning to send a new artifact event for the next stage. 
 
 ## Prerequisits
 
@@ -36,6 +37,7 @@ To illustrate the scenario this use case addresses, keptn relies on two services
     ```console
     $ cd ~
     $ git clone https://github.com/keptn/examples.git
+    $ cd ~/examples/onboarding-carts
     ```
 
 ## Step 1: Authenticate, configure keptn and create project
@@ -49,15 +51,14 @@ To illustrate the scenario this use case addresses, keptn relies on two services
 1. Configure the used GitHub organization, user, and personal access token using the `keptn configure` command:
   
     ```console
-    keptn configure --org=keptn-tiger --user=johannes-b --token=**
+    $ keptn configure --org=keptn-tiger --user=johannes-b --token=**
     ```
 
 1. Create a new project for your carts service. In this example, the project is called *sockshop*.
 
     ```console
-    $ cd ~/examples/onboarding-carts
     $ ls
-    deployment.yaml  service.yaml  shipyard.yaml  values_carts.yaml  values_carts_db.yaml
+    deployment_carts_db.yaml  service_carts_db.yaml  shipyard.yaml  values_carts.yaml  values_carts_db.yaml
     $ keptn create project sockshop shipyard.yaml
     ```
 
@@ -73,14 +74,14 @@ After creating the project, you are ready to onboard the first service.
 1. Onboard the `carts-db` service using the `keptn onboard service` command. In this onboarding scenario, the  deployment and service files are handed over to the github-service.
 
     ```console
-    $ keptn onboard service --project=sockshop --values=values_carts_db.yaml --deployment=deployment.yaml --service=service.yaml
+    $ keptn onboard service --project=sockshop --values=values_carts_db.yaml --deployment=deployment_carts_db.yaml --service=service_carts_db.yaml
     ```
 
 ## Step 3: Fork carts example into your GitHub organization
 
 1. Go to `https://github.com/keptn-sockshop/carts` and click on the **Fork** button on the top right corner.
 
-1. Select the Github repository you use for keptn.
+1. Select the Github organization you use for keptn.
 
 ## Step 4: Add CI pipeline to Jenkins
 
@@ -104,7 +105,7 @@ After creating the project, you are ready to onboard the first service.
 
       {{< popup_image
       link="./assets/carts_ci.png"
-      caption="CI Pipeline config for carts">}}
+      caption="CI pipeline configuration for carts">}}
 
 ## Step 5: Build new artifact and watch keptn doing the deployment 
 
