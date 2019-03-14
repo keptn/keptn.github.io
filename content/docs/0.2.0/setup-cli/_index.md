@@ -124,17 +124,7 @@ $ keptn create project sockshop shipyard.yml
 
 ## keptn onboard service
 
-```console
-$ keptn onboard service --project=sockshop --values=values_carts.yaml
-```
-
-To onboard a service, please see the [Use Case section](../usecases/onboard-carts-service).
-
-<!-- juergen: I would argue to remove this section since no use case can be done by onboarding an arbitrary service. Instead, link to the first use case of onboarding the carts service here.
-
-## keptn onboard service - Onboard a new service to the project
-
-For describing the used Kubernetes resources, [Helm charts](https://helm.sh/) are used. Here, the CLI allows setting a Helm values description in the before created project. Optionally, the user can also provide a Helm deployment and service description.
+After creating a project which represents a repository in your GitHub organization, the keptn CLI allows to onboard services into this project. Please note that for describing the Kubernetes resources, [Helm charts](https://helm.sh/) are used. Therefore, the CLI allows setting a Helm values description in the before created project. Optionally, the user can also provide a Helm deployment and service description.
 
 To onboard a service, use the command `onboard service` and provide the project name, the Helm chart values and optionally also deployment and service descriptions.
 
@@ -146,4 +136,5 @@ or
 $ keptn onboard service --project=sockshop --values=values.yaml --deployment=deployment.yaml --service=service.yaml
 ```
 
--->
+To start onboarding a service, please see the [Use Case section](../usecases/onboard-carts-service).
+
