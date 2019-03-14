@@ -18,7 +18,7 @@ If you are unfamiliar with keptn, we recommend to first watch this [community me
 which provides an introduction to keptn.
 
 ## Prerequisites
-- A successful keptn server installation.
+- A successful keptn server installation (including the tools like kubectl, ...)
 - A GitHub organization, a GitHub user, and [personal access token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line). 
 
 ## Install the CLI
