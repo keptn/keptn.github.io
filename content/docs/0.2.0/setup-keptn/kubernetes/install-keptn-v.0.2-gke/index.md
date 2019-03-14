@@ -168,7 +168,22 @@ To explore the capabilities of keptn, follow the provided use cases that are ded
 * [Unbreakable Delivery Pipeline](./usecases/unbreakable-delivery-pipeline): The overall goal of the *Unbreakable Delivery Pipeline* is to implement a pipeline that prevents bad code changes from impacting real end users.
 -->
 
-## Step 5: Cleanup
+## Step 5: Verify Installation
+
+To verify your installation, retrieve the pods runnning in the `keptn` namespace. The output of this command should include the following pods:
+
+    ```console
+    $ kubectl get pods -n keptn
+    authenticator-85jzg-deployment-6c5b596998-b5lhc       3/3       Running     0          1d
+    control-zbpdw-deployment-6b5bdcf9b7-4djv4             3/3       Running     0          2h
+    docker-registry-55bd8d967c-lx8z6                      2/2       Running     0          1d
+    event-broker-ext-grqwq-deployment-76fc5975fb-9s2ct    3/3       Running     0          1d
+    event-broker-vqw2d-deployment-db6bdcf99-jgkfr         3/3       Running     0          1d
+    jenkins-deployment-84d5d5d8d7-lt5sw                   2/2       Running     0          20h
+    ```
+
+
+## Step 6: Cleanup
 
 1. To clean up your Kubernetes cluster, execute the `cleanupCluster.sh` script in the `scripts` directory.
 
