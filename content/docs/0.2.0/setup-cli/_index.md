@@ -69,6 +69,11 @@ $ KEPTN_ENDPOINT=https://$(kubectl get ksvc -n keptn control -o=yaml | yq r - st
 
 ### Windows 
 
+Please expand the corresponding section matching your CLI tool.
+
+<details><summary>PowerShell</summary>
+<p>
+
 For the Windows PowerShell, a small script is provided that installs the `PSYaml` module and sets the environment variables. Please note that the PowerShell might have to be started with **Run as Administrator** privileges to install the module.
 
 Copy the following snippet in a file `set-keptn-env-variables.ps1` and run it with `.\set-keptn-env-variables.ps1` from your PowerShell.
@@ -89,6 +94,12 @@ $yaml = ConvertFrom-YAML $content
 $ENDPOINT = $yaml.status.domain
 $Env:KEPTN_ENDPOINT = "https://$ENDPOINT"
 ```
+
+</p>
+</details>
+
+<details><summary>Command Line</summary>
+<p>
 
 In the Windows Command Line, a couple of steps are necessary.
 
@@ -143,6 +154,9 @@ In the Windows Command Line, a couple of steps are necessary.
     ```
     $ set KEPTN_ENDPOINT=https://control.keptn.XX.XXX.XXX.XX.xip.io
     ```
+
+</p>
+</details>
 
 Now that everything we need is stored in environment variables, we can proceed with authorizing the keptn CLI.
 
