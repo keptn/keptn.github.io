@@ -58,7 +58,7 @@ To illustrate the scenario this use case addresses, keptn relies on two services
 
     ```console
     $ ls
-    deployment.yaml  service.yaml  shipyard.yaml  values_carts.yaml  values_carts_db.yaml
+    deployment_carts_db.yaml  service_carts_db.yaml  shipyard.yaml  values_carts.yaml  values_carts_db.yaml
     $ keptn create project sockshop shipyard.yaml
     ```
 
@@ -74,7 +74,7 @@ After creating the project, you are ready to onboard the first service.
 1. Onboard the `carts-db` service using the `keptn onboard service` command. In this onboarding scenario, the  deployment and service files are handed over to the github-service.
 
     ```console
-    $ keptn onboard service --project=sockshop --values=values_carts_db.yaml --deployment=deployment.yaml --service=service.yaml
+    $ keptn onboard service --project=sockshop --values=values_carts_db.yaml --deployment=deployment_carts_db.yaml --service=service_carts_db.yaml
     ```
 
 ## Step 3: Fork carts example into your GitHub organization
