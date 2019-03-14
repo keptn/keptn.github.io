@@ -105,7 +105,7 @@ $ keptn configure --org=gitHubOrg --user=gitHub_keptnUser --token=XYZ
 
 ## keptn create project 
 
-For onboarding a new service, a new GitHub project need to be created first. This new project contains branches for the specified stages (i.e., dev, staging, and production), which are defined in a *shipyard* file like the following example:
+Before onboarding a service, a project need to be created. A project represents a repository in the GitHub organization that is used by keptn. This project will contain a branch for each stage of the multi-stage environment (e.g., dev, staging, and production stage). In other words, the separation of stage configurations is based on repository branches. To describe each stage, a `shipyard.yaml` file is need that specifies the name, deployment strategy, and test strategy as shown below:
 
 ```yaml
 stages:
@@ -119,7 +119,7 @@ stages:
     deployment_strategy: "blue_green_service"
 ```
 
-To create a new project, use the command `create project` and specify the name of the project as well as the shipyard file.
+To create a new project, use the command `create project` and specify the name of the project as well as the `shipyard.yaml` file.
 
 ```console
 $ keptn create project sockshop shipyard.yml
