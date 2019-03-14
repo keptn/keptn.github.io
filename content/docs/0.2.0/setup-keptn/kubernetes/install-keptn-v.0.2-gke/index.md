@@ -25,7 +25,7 @@ The scripts provided by keptn v.0.2 run in a BASH and require following tools lo
 
 - [jq](https://stedolan.github.io/jq/) which is a lightweight and flexible command-line JSON processor.
 - [yq](https://github.com/mikefarah/yq) for querying and writing YAML objects.
-- [git](https://git-scm.com/) and [hub](https://hub.github.com/) that helps you do everyday GitHub tasks without ever leaving the terminal.
+- [git](https://git-scm.com/)
 - [gcloud](https://cloud.google.com/sdk/gcloud/) CLI
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) - The script will log you into the cluster you will provide as an input parameter.
 - [helm 2.12.3](https://helm.sh/) - A package manager for Kubernetes, used for deploying keptn-managed applications
@@ -37,8 +37,8 @@ Additionally, the scripts need:
 - `GKE cluster name`: The GKE cluster you want to deploy keptn on.
 - `GKE cluster zone`: The zone your GKE cluster is located in (e.g. us-centra-1-a).
 - `GKE Project`: The GKE project the cluster is managed by.
-- `GitHub organization` to store the repositories of the sockshop application
-- `GitHub personal access token` to push changes to the sockshop repositories
+- `GitHub organization`
+- `GitHub personal access token` 
 - Dynatrace Tenant including the Dynatrace `Tenant ID`, a Dynatrace `API Token`, and Dynatrace `PaaS Token`. If you don't have a Dynatrace tenant yet, sign up for a [free trial](https://www.dynatrace.com/trial/) or a [developer account](https://www.dynatrace.com/developer/).
 
     **Note:** The `API Token` must have the following permissions as shown in the screenshot below:
@@ -153,20 +153,6 @@ E.g., if the the value for `DOCKER_REGISTRY_IP` is unset, retrieve the value wit
     {{< popup_image
     link="./assets/pg_naming.png"
     caption="Dynatrace naming rule">}}
-
-<!-- 
-## Step 3: Use case walk through <a id="step-three"></a>
-
-To explore the capabilities of keptn, follow the provided use cases that are dedicated to a special topic.
-
-* [Performance as a Service](./usecases/performance-as-a-service): This use case aims on moving from manual sporadic execution and analysis of performance tests to a fully automated on-demand self-service testing model for developers.
-
-* [Production Deployments](./usecases/production-deployments): This use case gives an overview of production deployments, deployment strategies, and showcases those using Istio on Kubernetes to canary-deploy a new front-end version.
-
-* [Runbook Automation and Self-Healing](./usecases/runbook-automation-and-self-healing): This use case gives an overview of how to leverage the power of runbook automation to build self-healing applications. 
-
-* [Unbreakable Delivery Pipeline](./usecases/unbreakable-delivery-pipeline): The overall goal of the *Unbreakable Delivery Pipeline* is to implement a pipeline that prevents bad code changes from impacting real end users.
--->
 
 ## Step 5: Verify Installation
 
