@@ -1,6 +1,6 @@
 ---
-title: Setup CLI
-description: The following description explains how to setup the keptn CLI and connect it to your keptn installation.
+title: Setup keptn CLI
+description: The following description explains how to setup the keptn CLI and connect it to your keptn server.
 weight: 16
 keywords: [cli, setup]
 ---
@@ -18,24 +18,24 @@ If you are unfamiliar with keptn, we recommend to first watch this [community me
 which provides an introduction to keptn.
 
 ## Prerequisites
-- A successful keptn server installation.
+- A successful keptn server installation (including the tools like kubectl, ...)
 - A GitHub organization, a GitHub user, and [personal access token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line). 
 
-## Install the CLI
-Every release of keptn provides binaries for the CLI. These binaries are available for Linux, macOS, and Windows.
+## Install the keptn CLI
+Every release of keptn provides binaries for the keptn CLI. These binaries are available for Linux, macOS, and Windows.
 
 1. Download your [desired version](https://github.com/keptn/keptn/releases/)
 1. Unpack the download
 1. Find the `keptn` binary in the unpacked directory.
-  - Linux / MacOS
+  - Linux / macOS
     
         add executable permissions (``chmod +x keptn``), and move it to the desired destination (e.g. `mv keptn /usr/local/bin/keptn`)
 
   - Windows
 
-        move/copy the exectable to the desired folder
+        move/copy the executable to the desired folder
 
-1. Now, you should be able to run the CLI by 
+1. Now, you should be able to run the keptn CLI by 
     ```console
     keptn --help
     ```
@@ -48,47 +48,108 @@ Every release of keptn provides binaries for the CLI. These binaries are availab
 ## Start using the keptn CLI
 **TODO:** Describe expected output or how the command can be verified
 
-The CLI allows to onboard a new service using the commands described in the following.
+The keptn CLI allows to onboard a new service using the commands described in the following.
 All of these commands provide a help flag (`--help`), which describes details of the respective command (e.g., usage of the command or description of flags).
 
 **Note:** In the current version, keptn is missing checks whether the sent command is executed correctly.
 In order to guarantee the expected behavior, please strictly use the following commands in the specified order.
+In future releases, we add additional checks whether the executed commands succeeded or failed.
 
 ## keptn auth 
 
-Before the CLI can be used, it needs to be authenticated against a keptn installation. Therefore, an endpoint and an API token are required. To retrieve them, execute the following commands:
+Before the keptn CLI can be used, it needs to be authenticated against a keptn server. Therefore, an endpoint and an API token are required. To retrieve them, execute the following commands:
 
-### Linux / MacOS
+### Linux / macOS
 
 ```console
-KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -o=yaml | yq - r data.keptn-api-token | base64 --decode)
+$ KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -o=yaml | yq - r data.keptn-api-token | base64 --decode)
 
-KEPTN_ENDPOINT=https://$(kubectl get ksvc -n keptn control-websocket -o=yaml | yq r - status.domain)
+$ KEPTN_ENDPOINT=https://$(kubectl get ksvc -n keptn control -o=yaml | yq r - status.domain)
 ```
 
 ### Windows 
 
-```console
-TBD
-```
+In the Windows Command Line, a couple of steps are necessary.
+
+1. Get the keptn API Token encoded in base64
+
+    ```console
+    $ kubectl get secret keptn-api-token -n keptn -o=yaml
+
+    Output:
+    apiVersion: v1
+    data:
+      keptn-api-token: abcdefghijkladfaea
+    kind: Secret
+    metadata:
+      ...
+    type: Opaque
+    ```
+
+1. Take the encoded API token - it is the value from the key `keptn-api-token`, in this case `abcdefghijkladfaea` and save it in a text file, e.g., `keptn-api-token-base64.txt`
+
+1. Decode the file
+
+    ```
+    $ certutil -decode keptn-api-token-base64.txt keptn-api-token.txt
+    ```
+
+1. Open the newly created file `keptn-api-token.txt`, copy the value and paste it into the next command
+
+    ```
+    $ set KEPTN_API_TOKEN=value-of-your-token
+    ```
+
+1. Get the keptn server endpoint 
+
+    ```
+    $ kubectl get ksvc -n keptn control -o yaml
+
+    Output:
+    apiVersion: serving.knative.dev/v1alpha1
+    kind: Service
+    ...
+    status:
+      address:
+        hostname: control.keptn.svc.cluster.local
+      ...
+      domain: control.keptn.XX.XXX.XXX.XX.xip.io
+      ...
+    ```
+
+1. Copy the `domain` value and save it in an environment variable
+
+    ```
+    $ set KEPTN_ENDPOINT=https://control.keptn.XX.XXX.XXX.XX.xip.io
+    ```
+
+Now that everything we need is stored in environment variables, we can proceed with authorizing the keptn CLI.
 
 If the authentication is successful, keptn will inform the user. Furthermore, if the authentication is successful, the endpoint and the API token are stored in a password store of the underlying operating system.
-More precisely, the CLI stores the endpoint and API token using `pass` in case of Linux, using `Keychain` in case of macOS, or `Wincred` in case of Windows.
+More precisely, the keptn CLI stores the endpoint and API token using `pass` in case of Linux, using `Keychain` in case of macOS, or `Wincred` in case of Windows.
 
-To authenticate against the keptn installation use command `auth` and your endpoint and API token:
+To authenticate against the keptn server use command `auth` and your endpoint and API token:
+
+- Linux/macOS
 
 ```console
 $ keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN
 ```
 
-**Note**: If you receive a warning `handler_linux.go:29: Use a file-based storage for the key because the password-store seems to be not set up.` it is becaue a password store could not be found in your environment. In this case the credentials are stored in **TODO**
+- Windows
+
+```
+$ keptn.exe auth --endpoint=%KEPTN_ENDPOINT% --api-token=%KEPTN_API_TOKEN%
+```
+
+**Note**: If you receive a warning `Using a file-based storage for the key because the password-store seems to be not set up.` it is because a password store could not be found in your environment. In this case, the credentials are stored in a file called `.keptn` in your home directory.
 
 
 ## keptn configure 
 
 In order to work with GitHub (i.e. create a new project, make commits), keptn requires a
 GitHub organization, the GitHub user, and the GitHub personal access token belonging to that user.
-Therefore, the CLI is used to set the GitHub organization, the GitHub user, and the GitHub personal access token belonging to that user in the keptn installation.
+Therefore, the keptn CLI is used to set the GitHub organization, the GitHub user, and the GitHub personal access token belonging to that user in the keptn server.
 
 <span style="color:red">
 **Note:** Should we describe a best practice, which creates a new GitHub user only used by keptn?
@@ -102,7 +163,7 @@ $ keptn configure --org=gitHubOrg --user=gitHub_keptnUser --token=XYZ
 
 ## keptn create project 
 
-Before onboarding a service, a project need to be created. A project represents a repository in the GitHub organization that is used by keptn. This project will contain a branch for each stage of the multi-stage environment (e.g., dev, staging, and production stage). In other words, the separation of stage configurations is based on repository branches. To describe each stage, a `shipyard.yaml` file is need that specifies the name, deployment strategy, and test strategy as shown below:
+Before onboarding a service, a project needs to be created. A project represents a repository in the GitHub organization that is used by keptn. This project will contain a branch for each stage of the multi-stage environment (e.g., dev, staging, and production stage). In other words, the separation of stage configurations is based on repository branches. To describe each stage, a `shipyard.yaml` file is needed that specifies the name, deployment strategy, and test strategy as shown below:
 
 ```yaml
 stages:
@@ -124,7 +185,7 @@ $ keptn create project sockshop shipyard.yml
 
 ## keptn onboard service
 
-After creating a project which represents a repository in your GitHub organization, the keptn CLI allows to onboard services into this project. Please note that for describing the Kubernetes resources, [Helm charts](https://helm.sh/) are used. Therefore, the CLI allows setting a Helm values description in the before created project. Optionally, the user can also provide a Helm deployment and service description.
+After creating a project which represents a repository in your GitHub organization, the keptn&nbsp;CLI allows to onboard services into this project. Please note that for describing the Kubernetes resources, [Helm charts](https://helm.sh/) are used. Therefore, the keptn CLI allows setting a Helm values description in the before created project. Optionally, the user can also provide a Helm deployment and service description.
 
 To onboard a service, use the command `onboard service` and provide the project name, the Helm chart values and optionally also deployment and service descriptions.
 
