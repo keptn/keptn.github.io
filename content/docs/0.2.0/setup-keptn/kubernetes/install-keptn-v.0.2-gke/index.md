@@ -41,10 +41,15 @@ Additionally, the scripts need:
 - `GitHub personal access token` to push changes to the sockshop repositories
 - Dynatrace Tenant including the Dynatrace `Tenant ID`, a Dynatrace `API Token`, and Dynatrace `PaaS Token`. If you don't have a Dynatrace tenant yet, sign up for a [free trial](https://www.dynatrace.com/trial/) or a [developer account](https://www.dynatrace.com/developer/).
 
-    **Note:** The `API Token` must have the following permissions additional as shown in the screenshot below:
+    **Note:** The `API Token` must have the following permissions as shown in the screenshot below:
     
+    - Access problem and event feed, metrics and topology
+    - Access logs
+    - Configure maintenance windows
     - Read configuration
     - Write configuration
+    - Capture request data
+    - Real user monitoring JavaScript tag management
 
     {{< popup_image
     link="./assets/dt_api_token.png"
