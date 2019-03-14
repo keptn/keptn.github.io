@@ -61,24 +61,84 @@ Before the CLI can be used, it needs to be authenticated against a keptn install
 ### Linux / MacOS
 
 ```console
-KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -o=yaml | yq - r data.keptn-api-token | base64 --decode)
+$ KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -o=yaml | yq - r data.keptn-api-token | base64 --decode)
 
-KEPTN_ENDPOINT=https://$(kubectl get ksvc -n keptn control-websocket -o=yaml | yq r - status.domain)
+$ KEPTN_ENDPOINT=https://$(kubectl get ksvc -n keptn control-websocket -o=yaml | yq r - status.domain)
 ```
 
 ### Windows 
 
-```console
-TBD
-```
+For the Windows Command Line tool  a couple of steps are necessary.
+
+1. Get the keptn API Token encoded in base64
+
+    ```console
+    $ kubectl get secret keptn-api-token -n keptn -o=yaml
+
+    Output:
+    apiVersion: v1
+    data:
+      keptn-api-token: abcdefghijkladfaea
+    kind: Secret
+    metadata:
+      ...
+    type: Opaque
+    ```
+
+1. Take the encoded API token - it is the value from the key `keptn-api-token`, in this case `abcdefghijkladfaea` and save it in a textfile, e.g., `keptn-api-token-base64.txt`
+
+1. Decode the file
+
+    ```
+    $ certutil -decode keptn-api-token-base64.txt keptn-api-token.txt
+    ```
+
+1. Open the newly created file `keptn-api-token.txt`, copy the value and paste it into the next command
+
+    ```
+    $ set KEPTN_API_TOKEN=value-of-your-token
+    ```
+
+1. Get the keptn server endpoint 
+
+    ```
+    $ kubectl get ksvc -n keptn control-websocket -o yaml
+
+    Output:
+    apiVersion: serving.knative.dev/v1alpha1
+    kind: Service
+    ...
+    status:
+      address:
+        hostname: control-websocket.keptn.svc.cluster.local
+      ...
+      domain: control-websocket.keptn.XX.XXX.XXX.XX.xip.io
+      ...
+    ```
+
+1. Copy the `domain` value and save it in an environment variable
+
+    ```
+    $ set KEPTN_ENDPOINT=https://control-websocket.keptn.XX.XXX.XXX.XX.xip.io
+    ```
+
+Now that everything we need is stored in environment variables, we can proceed with authorizing the keptn CLI.
 
 If the authentication is successful, keptn will inform the user. Furthermore, if the authentication is successful, the endpoint and the API token are stored in a password store of the underlying operating system.
 More precisely, the CLI stores the endpoint and API token using `pass` in case of Linux, using `Keychain` in case of macOS, or `Wincred` in case of Windows.
 
 To authenticate against the keptn installation use command `auth` and your endpoint and API token:
 
+- Linux/MacOS
+
 ```console
 $ keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN
+```
+
+- Windows
+
+```
+$ keptn.exe auth --endpoint=%KEPTN_ENDPOINT% --api-token=%KEPTN_API_TOKEN%
 ```
 
 **Note**: If you receive a warning `handler_linux.go:29: Use a file-based storage for the key because the password-store seems to be not set up.` it is becaue a password store could not be found in your environment. In this case the credentials are stored in **TODO**
