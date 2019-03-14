@@ -42,16 +42,18 @@ To illustrate the scenario this use case addresses, keptn relies on two services
 
 ## Step 1: Authenticate, configure keptn and create project
 
+**Please note:** This step can be skipped if you already followed the [Setup CLI](../../setup-cli) instructions.
+
 1. Authentication against the keptn installation using the `keptn auth` command:
 
     ```console
-    $ keptn auth --endpoint=https://contorl.keptn.***.239.5.***.xip.io --api-token=***
+    $ keptn auth --endpoint=https://keptn-endpoint --api-token=***
     ```
 
 1. Configure the used GitHub organization, user, and personal access token using the `keptn configure` command:
   
     ```console
-    $ keptn configure --org=keptn-tiger --user=johannes-b --token=**
+    $ keptn configure --org=keptn-github-org --user=keptn-github-user --token=***
     ```
 
 1. Create a new project for your carts service. In this example, the project is called *sockshop*.
