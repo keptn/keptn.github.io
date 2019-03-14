@@ -28,7 +28,7 @@ To illustrate the scenario this use case addresses, keptn relies on two services
 
 ## Prerequisits
 
-1. A GitHub organization, user, and personal access token, which are used by keptn 
+1. A GitHub organization, user, and personal access token, which are used by keptn.
 
 1. The endpoint and API token provided by the keptn installation.
 
@@ -40,7 +40,7 @@ To illustrate the scenario this use case addresses, keptn relies on two services
     $ cd ~/examples/onboarding-carts
     ```
 
-## Step 1: Authenticate, configure keptn and create project
+## Step 1: Authenticate and configure keptn
 
 **Please note:** This step can be skipped if you already followed the [Setup CLI](../../setup-cli) instructions.
 
@@ -56,7 +56,23 @@ To illustrate the scenario this use case addresses, keptn relies on two services
     $ keptn configure --org=keptn-github-org --user=keptn-github-user --token=***
     ```
 
-1. Create a new project for your carts service. In this example, the project is called *sockshop*.
+## Step 2: Create project sockshop
+
+For creating a project, this use case relies on the `shipyard.yaml` file shown below:
+
+```yaml
+stages:
+  - name: "dev"
+    deployment_strategy: "direct"
+    test_strategy: "functional"
+  - name: "staging"
+    deployment_strategy: "direct"
+    test_strategy: "performance"
+  - name: "production"
+    deployment_strategy: "blue_green_service"
+```
+
+1. Create a new project for your carts service using the `keptn create project` command. In this example, the project is called *sockshop*.
 
     ```console
     $ ls
@@ -64,7 +80,7 @@ To illustrate the scenario this use case addresses, keptn relies on two services
     $ keptn create project sockshop shipyard.yaml
     ```
 
-## Step 2: Onboard carts service and carts database
+## Step 3: Onboard carts service and carts database
 After creating the project, you are ready to onboard the first service.
 
 1. Onboard the `carts` service using the `keptn onboard service` command. In this onboarding scenario, a default deployment and service template will be provided by the github-service.
@@ -73,19 +89,21 @@ After creating the project, you are ready to onboard the first service.
     $ keptn onboard service --project=sockshop --values=values_carts.yaml
     ```
 
+Since the carts services needs a mongo database, a second app need to be onboarded.
+
 1. Onboard the `carts-db` service using the `keptn onboard service` command. In this onboarding scenario, the  deployment and service files are handed over to the github-service.
 
     ```console
     $ keptn onboard service --project=sockshop --values=values_carts_db.yaml --deployment=deployment_carts_db.yaml --service=service_carts_db.yaml
     ```
 
-## Step 3: Fork carts example into your GitHub organization
+## Step 4: Fork carts example into your GitHub organization
 
 1. Go to `https://github.com/keptn-sockshop/carts` and click on the **Fork** button on the top right corner.
 
 1. Select the Github organization you use for keptn.
 
-## Step 4: Add CI pipeline to Jenkins
+## Step 5: Add CI pipeline to Jenkins
 
 1. Run the `kubectl get svc` command to get the **EXTERNAL-IP** of the Istio ingress gateway.  
     
