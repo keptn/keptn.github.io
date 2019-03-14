@@ -42,7 +42,7 @@ Every release of keptn provides binaries for the CLI. These binaries are availab
         ```
         keptn.exe --help
         ```
-        
+
     - for PowerShell
         ```
         .\keptn.exe --help
@@ -64,13 +64,18 @@ Before the CLI can be used, it needs to be authenticated against a keptn install
 ```console
 KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -o=yaml | yq - r data.keptn-api-token | base64 --decode)
 
-KEPTN_ENDPOINT=$(kubectl get ksvc -n keptn control-websocket -o=yaml | yq r - status.domain)
+KEPTN_ENDPOINT=https://$(kubectl get ksvc -n keptn control-websocket -o=yaml | yq r - status.domain)
 ```
-    
 If the authentication is successful, keptn will inform the user. Furthermore, if the authentication is successful, the endpoint and the API token are stored in a password store of the underlying operating system.
 More precisely, the CLI stores the endpoint and API token using `pass` in case of Linux, using `Keychain` in case of macOS, or `Wincred` in case of Windows.
 
 To authenticate against the keptn installation use command `auth` and your endpoint and API token:
+
+```console
+$ keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN
+```
+
+**Note**: If you receive a warning `handler_linux.go:29: Use a file-based storage for the key because the password-store seems to be not set up.` it is becaue a password store could not be found in your environment. The credentials are therefore stored in **TODO**
 
 #### windows:
 
