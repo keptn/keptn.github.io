@@ -69,6 +69,27 @@ $ KEPTN_ENDPOINT=https://$(kubectl get ksvc -n keptn control -o=yaml | yq r - st
 
 ### Windows 
 
+For the Windows PowerShell, a small script is provided that installs the `PSYaml` module and sets the environment variables. Please note that the PowerShell might have to be started with **Run as Administrator** privileges to install the module.
+
+Copy the following snippet in a file `set-keptn-env-variables.ps1` and run it with `.\set-keptn-env-variables.ps1` from your PowerShell.
+
+```
+Install-Module PSYaml
+import-module psyaml
+$yamlText = kubectl get secret keptn-api-token -n keptn -o=yaml
+$content = ''
+foreach ($line in $yamlText) { $content = $content + "`n" + $line }
+$yaml = ConvertFrom-YAML $content
+$Env:KEPTN_API_TOKEN = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($yaml.data."keptn-api-token"))
+
+$yamlText = kubectl get ksvc -n keptn control -o=yaml
+$content = ''
+foreach ($line in $yamlText) { $content = $content + "`n" + $line }
+$yaml = ConvertFrom-YAML $content
+$ENDPOINT = $yaml.status.domain
+$Env:KEPTN_ENDPOINT = "https://$ENDPOINT"
+```
+
 In the Windows Command Line, a couple of steps are necessary.
 
 1. Get the keptn API Token encoded in base64
