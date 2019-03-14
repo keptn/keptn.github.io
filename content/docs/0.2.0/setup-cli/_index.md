@@ -5,48 +5,45 @@ weight: 16
 keywords: [cli, setup]
 ---
 
+In this section, the functionality and commands of the keptn CLI are described. The keptn CLI is needed to configure the keptn server, to create new projects and to onboard new services to the keptn server. Furthermore, authorization is needed for the keptn CLI against the keptn server.
+
+<!--
 For onboarding, a so-called `shipyard` (**TODO: provide more information/link here**) files has to be provided that defines deployment strategies for the service, as well as the different stages (i.e., dev, staging, and production).
 During onboarding, keptn creates a new GitHub projects, which then contains branches for the specified stages (i.e. dev, staging, and production).
 Furthermore, keptn creates resources definitions for several Kubernetes resources in terms on [Helm charts](https://helm.sh/).
 Please note that onboarding does not deploy a service.
+-->
 
 If you are unfamiliar with keptn, we recommend to first watch this [community meeting recording](https://drive.google.com/open?id=1Zj-c0tGIvQ_0Dys6NsyDa-REsEZCvAHJ),
 which provides an introduction to keptn.
 
 ## Prerequisites
-- A successful keptn installation
-- The endpoint and API token provided by the keptn installation. This endpoint and API token are used by the CLI to send commands to the keptn installation.
-- A GitHub organization, user, and personal access token, which are used by keptn 
+- A successful keptn server installation.
+- A GitHub organization, a GitHub user, and [personal access token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line). 
 
 ## Install the CLI
 Every release of keptn provides binaries for the CLI. These binaries are available for Linux, macOS, and Windows.
 
-### Linux and Mac OS
+1. Download your [desired version](https://github.com/keptn/keptn/releases/)
+1. Unpack the download
+1. Find the `keptn` binary in the unpacked directory.
+  - Linux / MacOS
+    
+        add executable permissions (``chmod +x keptn``), and move it to the desired destination (e.g. `mv keptn /usr/local/bin/keptn`)
 
-1. Download your [desired version](https://github.com/keptn/keptn/releases/tag/0.2)
-2. Unpack the download <!--- Check if necessary -->
-3. Find the `keptn` binary in the unpacked directory, add executable permissions (``chmod +x keptn``), and move it to the desired destination (``mv keptn /usr/local/bin/keptn``)
+  - Windows
+
+        move/copy the exectable to the desired folder
+
 1. Now, you should be able to run the CLI by 
     ```console
     keptn --help
     ```
 
-### Windows
+{{< popup_image
+    link="./assets/keptn-cli-help.png"
+    caption="keptn CLI">}}
 
-1. Download your [desired version](https://github.com/keptn/keptn/releases/tag/0.2)
-1. Unpack the download <!--- Check if necessary -->
-1. Find the `keptn.exe` executable in the unzipped folder. 
-1. Open the `Command Prompt` or `PowerShell` and navigate to this folder.
-1. Test the `keptn.exe` by executing 
-    - for Command Prompt
-        ```
-        keptn.exe --help
-        ```
-
-    - for PowerShell
-        ```
-        .\keptn.exe --help
-        ```
 
 ## Start using the keptn CLI
 **TODO:** Describe expected output or how the command can be verified
@@ -84,7 +81,7 @@ To authenticate against the keptn installation use command `auth` and your endpo
 $ keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN
 ```
 
-**Note**: If you receive a warning `handler_linux.go:29: Use a file-based storage for the key because the password-store seems to be not set up.` it is becaue a password store could not be found in your environment. The credentials are therefore stored in **TODO**
+**Note**: If you receive a warning `handler_linux.go:29: Use a file-based storage for the key because the password-store seems to be not set up.` it is becaue a password store could not be found in your environment. In this case the credentials are stored in **TODO**
 
 
 ## keptn configure 
@@ -125,7 +122,11 @@ To create a new project, use the command `create project` and specify the name o
 $ keptn create project sockshop shipyard.yml
 ```
 
-## keptn onboard 
+## keptn onboard service
+
+```console
+$ keptn onboard service --project=sockshop --values=values_carts.yaml
+```
 
 To onboard a service, please see the [Use Case section](../usecases/onboard-carts-service).
 
