@@ -60,14 +60,13 @@ Additionally, the scripts need:
 1. Go to the [keptn release](https://github.com/keptn/keptn/archive/0.2.0.tar.gz) page to download the installation file using, e.g., `wget`:
     ```console
     $ cd ~
-    $ wget https://github.com/keptn/keptn/archive/0.2.0.tar.gz
+    $ git clone --branch v0.2.x-prerelease https://github.com/keptn/keptn.git
     ```
 
-1. Extract the package and move to the keptn directory:
+1. Navigate to the keptn directory:
 
     ```console
-    $ tar -xvzf 0.2.0.tar.gz 
-    $ cd keptn-0.2.0
+    $ cd keptn
     ```
 
 ## Step 3: Provision cluster on Kubernetes
