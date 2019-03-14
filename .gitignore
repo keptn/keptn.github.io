@@ -1,4 +1,3 @@
 # Ignore build folder
 public
 resources/_gen/**/*.content
-keptn
