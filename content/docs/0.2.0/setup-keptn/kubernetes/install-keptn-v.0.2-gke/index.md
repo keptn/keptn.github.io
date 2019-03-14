@@ -167,7 +167,7 @@ To verify your installation, retrieve the pods runnning in the `keptn` namespace
     event-broker-vqw2d-deployment-db6bdcf99-jgkfr         3/3       Running     0          1d
     jenkins-deployment-84d5d5d8d7-lt5sw                   2/2       Running     0          20h
     ```
-
+If those pods do not show up after a few minutes, please check if all pods within the `istio-system` pods are in a running state. If that is not the case, there may have been a problem during the Istio installation. In that case we kindly ask you to clean your cluster and restart the installation, as described in the **Troubleshooting** section below
 
 ## Step 6: Cleanup
 
