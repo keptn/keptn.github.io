@@ -1,39 +1,57 @@
 ---
 title: Onboarding of a service
-description: The following description explains how an existing service can be onboarded using keptn.
+description: The following description explains how an existing microservice can be onboarded to keptn using the keptn CLI.
 weight: 16
 keywords: [cli, onboard]
 ---
 
-Onboarding a new service creates a new GitHub project, which contains branches for the specified stages (i.e. dev, staging, and production).
-These stages and e.g. their respective deployment strategy are specified in a so-called `shipyard` file.
-Furthermore, in onboarding the used Kubernetes resources are described using [Helm charts](https://helm.sh/).
-However, onboarding does not deploy a service.
-
-The CLI supports to onboard a new service. 
-Therefore, the CLI sends commands to the keptn installation.
+For onboarding, a so-called `shipyard` (**TODO: provide more information/link here**) files has to be provided that defines deployment strategies for the service, as well as the different stages (i.e., dev, staging, and production).
+During onboarding, keptn creates a new GitHub projects, which then contains branches for the specified stages (i.e. dev, staging, and production).
+Furthermore, keptn creates resources definitions for several Kubernetes resources in terms on [Helm charts](https://helm.sh/).
+Please note that onboarding does not deploy a service.
 
 If you are unfamiliar with keptn, we recommend to first watch this [community meeting recording](https://drive.google.com/open?id=1Zj-c0tGIvQ_0Dys6NsyDa-REsEZCvAHJ),
-which provides an introduction of keptn.
+which provides an introduction to keptn.
 
 
 ## Prerequisites
-- A successful keptn installation
-- The endpoint and API token provided by the keptn installation. This endpoint and API token are used by the CLI to send commands to the keptn installation
-- A GitHub organization, user, and personal access token, which are used by keptn 
+- A successful keptn installation.
+- The endpoint and API token provided by the keptn installation. 
+- A GitHub organization, user, and personal access token, which are used by keptn.
 
 
 ## Install the CLI
 Every release of keptn provides binaries for the CLI. These binaries are available for Linux, macOS, and Windows.
 
+### Linux and Mac OS
+
 1. Download your [desired version](https://github.com/keptn/keptn/releases/tag/0.2)
 2. Unpack the download <!--- Check if necessary -->
 3. Find the `keptn` binary in the unpacked directory, add executable permissions (``chmod +x keptn``), and move it to the desired destination (``mv keptn /usr/local/bin/keptn``)
+1. Now, you should be able to run the CLI by 
+    ```console
+    keptn --help
+    ```
 
-Now, you should be able to run the CLI by 
-```console
-keptn --help
-```
+### Windows
+
+
+1. Download your [desired version](https://github.com/keptn/keptn/releases/tag/0.2)
+1. Unpack the download <!--- Check if necessary -->
+1. Find the `keptn.exe` executable in the unzipped folder. 
+1. Open the `Command Prompt` or `PowerShell` and navigate to this folder.
+1. Test the `keptn.exe` by executing 
+
+    - for Command Prompt
+        ```
+        keptn.exe --help
+        ```
+
+    - for PowerShell
+        ```
+        .\keptn.exe --help
+        ```
+
 ## Steps and commands to onboard a service
 **TODO:** Describe expected output or how the command can be verified
 
@@ -50,7 +68,7 @@ In order to guarantee the expected behavior, please strictly use the following c
 
     ```console
     KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -o=yaml | yq - r data.keptn-api-token | base64 --decode)
-    KEPTN_ENDPOINT=$(kubectl get ksvc -n keptn control-o=yaml | yq r - status.domain)
+    KEPTN_ENDPOINT=$(kubectl get ksvc -n keptn control-websocket -o=yaml | yq r - status.domain)
     ```
     
     If the authentication is successful, keptn will inform the user.
@@ -62,6 +80,12 @@ In order to guarantee the expected behavior, please strictly use the following c
     ```console
     keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN
     ```
+
+# windows:
+
+```
+important: add https to the endpoint!
+```
 
 1. Configure the used GitHub organization, user, and personal access token:
 
