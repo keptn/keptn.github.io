@@ -113,7 +113,7 @@ Keptn contains all scripts and instructions needed to deploy the demo applicatio
     front-end    LoadBalancer    10.23.248.***    **.226.62.***    8080:32232/TCP    7m
     ```
 
-1. Run the `kubectl get svc` command to get the **EXTERNAL-IP** and **PORT** of Jenkins. Then user a browser to open Jenkins and login using the default Jenkins credentials: `admin` / `AiTx4u8VyUV8tCKk`. 
+1. Run the `kubectl get svc` command to get the **EXTERNAL-IP** and **PORT** of Jenkins. Then use a browser to open Jenkins and login using the default Jenkins credentials: `admin` / `AiTx4u8VyUV8tCKk`. 
     
     **Note:** It is highly recommended to change these credentials right after the first login.
 
