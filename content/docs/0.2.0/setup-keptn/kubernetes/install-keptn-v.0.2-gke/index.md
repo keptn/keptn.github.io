@@ -67,28 +67,26 @@ Keptn contains all scripts and instructions needed to install the necessary comp
 
 1. Execute `setupInfrastructure.sh` in the `scripts` directory. This script deploys a container registry and Jenkins service within your cluster, as well as the keptn core components. 
 
-    **Attention:** The script will create several new resources for you and will also update the files shipped with keptn. Take care of not leaking any files that will hold personal information. Including:
-        
-    - `manifests/istio/service_entries.yml`
-    - `manifests/jenkins/k8s-jenkins-deployment.yml`
-
     **Note:** The script will run for some time (~10-15 min), since it will wait for Jenkins to boot before setting credentials via the Jenkins REST API.
 
     ```console
     $ ./setupInfrastructure.sh
     ```
 
-1. Run the `kubectl get svc` command to get the **EXTERNAL-IP** and **PORT** of Jenkins. Then user a browser to open Jenkins and login using the default Jenkins credentials: `admin` / `AiTx4u8VyUV8tCKk`. 
+1. Run the `kubectl get svc` command to get the **EXTERNAL-IP** and **PORT** of your cluster's ingress gateway.
+
+    ```console
+    $ kubectl get svc istio-ingressgateway -n istio-system
+    NAME                     TYPE           CLUSTER-IP      EXTERNAL-IP      PORT(S)
+    istio-ingressgateway     LoadBalancer   10.11.246.127   <EXTERNAL_IP>   80:32399/TCP 
+    ```
+
+You will be able to reach Jenkins at `http://jenkins.keptn.<EXTERNAL_IP>.xip.io/`.
+Then use a browser to open Jenkins and login using the default Jenkins credentials: `admin` / `AiTx4u8VyUV8tCKk`. 
     
     **Note:** It is highly recommended to change these credentials right after the first login.
 
-    ```console
-    $ kubectl get svc jenkins -n keptn
-    NAME       TYPE            CLUSTER-IP      EXTERNAL-IP       PORT(S)                            AGE
-    jenkins    LoadBalancer    10.23.245.***   ***.198.26.***    24***:32478/TCP,50***:31867/TCP    10m
-    ``` 
-
-1. Finally, navigate to **Jenkins** > **Manage Jenkins** > **Configure System** and  scroll to the environment variables to verify whether the variables are set correctly. **Note:** The value for the parameter *DT_TENANT_URL* must start with *https://*
+1. Finally, navigate to **Jenkins** > **Manage Jenkins** > **Configure System** and  scroll to the environment variables to verify whether the variables are set correctly.
 
     {{< popup_image
     link="./assets/jenkins-env-vars.png"
@@ -102,21 +100,17 @@ Keptn contains all scripts and instructions needed to install the necessary comp
 - In case any value is missing in Jenkins, this can be fixed by adding the corresponding value in the `manifests/jenkins/k8s-jenkins-deployment.yml` file and re-applying this file with `kubectl`. 
 E.g., if the the value for `DOCKER_REGISTRY_IP` is unset, retrieve the value with `kubectl get svc -n keptn` and insert as value.
 
-    ```
-    ...
-    env:
-      - name: GITHUB_USER_EMAIL
-        value: youremail@organization.com
-      - name: GITHUB_ORGANIZATION
-        value: your-github-org
-      - name: DOCKER_REGISTRY_IP
-        value: 10.20.30.40
-      - name: DT_TENANT_URL
-        value: yourID.live.dynatrace.com
-      - name: DT_API_TOKEN
-        value: 123apitoken
-    ...
-    ```
+  ```
+  ...
+  env:
+    - name: GITHUB_USER_EMAIL
+      value: youremail@organization.com
+    - name: GITHUB_ORGANIZATION
+      value: your-github-org
+    - name: DOCKER_REGISTRY_IP
+      value: 10.20.30.40
+  ...
+  ```
 
     Save the file and apply with: `kubectl apply -f k8s-jenkins-deployment.yml`. This will redeploy the Jenkins with the updated configuration.
 
