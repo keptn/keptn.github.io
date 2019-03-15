@@ -66,7 +66,7 @@ When this script is finished, the Dynatrace OneAgent will be deployed in your cl
   ...
   ```
 -->
-## Step 6: (optional) Create process group naming rule in Dynatrace
+## Step 5: (optional) Create process group naming rule in Dynatrace
 
 1. Create a naming rule for process groups
     1. Go to **Settings**, **Process and containers**, and click on **Process group naming**.
