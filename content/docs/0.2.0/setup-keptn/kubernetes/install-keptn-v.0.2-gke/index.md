@@ -18,8 +18,6 @@ The next steps expect that you have a working Kubernetes cluster in Google Conta
     - image type: Ubuntu (**preferred**) or *Container-Optimized OS (cos)*
     
         **Note 1:** To select Ubuntu, click on the "Advanced Edit" button in GKE and select "Ubuntu" as the Image Type in the Nodes section.
-        
-        **Note 2:** If *Container-Optimized OS (cos)* is selected, make sure to [follow the instructions](https://www.dynatrace.com/support/help/cloud-platforms/google-cloud-platform/google-kubernetes-engine/deploy-oneagent-on-google-kubernetes-engine-clusters/#expand-134parameter-for-container-optimized-os-early-access) for setting up the Dynatrace OneAgent Operator. This means that after the initial setup with `setupInfrastructure.sh`, which is a step below, the `cr.yml` has to be edited and applied again. In addition, all pods have to be restarted.
 
 The scripts provided by keptn v.0.2 run in a BASH and require following tools locally installed: 
 
@@ -39,21 +37,6 @@ Additionally, the scripts need:
 - `GKE Project`: The GKE project the cluster is managed by.
 - `GitHub organization`
 - `GitHub personal access token` 
-- Dynatrace Tenant including the Dynatrace `Tenant ID`, a Dynatrace `API Token`, and Dynatrace `PaaS Token`. If you don't have a Dynatrace tenant yet, sign up for a [free trial](https://www.dynatrace.com/trial/) or a [developer account](https://www.dynatrace.com/developer/).
-
-    **Note:** The `API Token` must have the following permissions as shown in the screenshot below:
-    
-    - Access problem and event feed, metrics and topology
-    - Access logs
-    - Configure maintenance windows
-    - Read configuration
-    - Write configuration
-    - Capture request data
-    - Real user monitoring JavaScript tag management
-
-    {{< popup_image
-    link="./assets/dt_api_token.png"
-    caption="Dynatrace API token">}}
 
 ## Step 2: Download and prepare for the installation
 
@@ -86,7 +69,6 @@ Keptn contains all scripts and instructions needed to install the necessary comp
 
     **Attention:** The script will create several new resources for you and will also update the files shipped with keptn. Take care of not leaking any files that will hold personal information. Including:
         
-    - `manifests/dynatrace/cr.yml`
     - `manifests/istio/service_entries.yml`
     - `manifests/jenkins/k8s-jenkins-deployment.yml`
 
@@ -137,22 +119,6 @@ E.g., if the the value for `DOCKER_REGISTRY_IP` is unset, retrieve the value wit
     ```
 
     Save the file and apply with: `kubectl apply -f k8s-jenkins-deployment.yml`. This will redeploy the Jenkins with the updated configuration.
-
-## Step 4: (optional) Create process group naming rule in Dynatrace
-
-1. Create a naming rule for process groups
-    1. Go to **Settings**, **Process and containers**, and click on **Process group naming**.
-    1. Create a new process group naming rule with **Add new rule**. 
-    1. Edit that rule:
-        * Rule name: `Container.Namespace`
-        * Process group name format: `{ProcessGroup:KubernetesContainerName}.{ProcessGroup:KubernetesNamespace}`
-        * Condition: `Kubernetes namespace`> `exits`
-    1. Click on **Preview** and **Save**.
-
-    Screenshot shows this rule definition.
-    {{< popup_image
-    link="./assets/pg_naming.png"
-    caption="Dynatrace naming rule">}}
 
 ## Step 5: Verify Installation
 
