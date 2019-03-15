@@ -15,17 +15,17 @@ If you don't have a Dynatrace tenant yet, sign up for a [free trial](https://www
 Log in to your Dynatrace tenant, and go to **Settings > Integration > Dynatrace API**. Then, create a new API Token with the following permissions:
 
     
-    - Access problem and event feed, metrics and topology
-    - Access logs
-    - Configure maintenance windows
-    - Read configuration
-    - Write configuration
-    - Capture request data
-    - Real user monitoring JavaScript tag management
+  - Access problem and event feed, metrics and topology
+  - Access logs
+  - Configure maintenance windows
+  - Read configuration
+  - Write configuration
+  - Capture request data
+  - Real user monitoring JavaScript tag management
 
-    {{< popup_image
-    link="./assets/dt_api_token.png"
-    caption="Dynatrace API token">}}
+  {{< popup_image
+  link="./assets/dt_api_token.png"
+  caption="Dynatrace API token">}}
 
 ## Step 3: Create a Dynatrace PaaS Token
 In your Dynatrace tenant, go to **Settings > Integration > Platfrom as a Service**, and create a new PaaS Token.
@@ -56,7 +56,7 @@ When this script is finished, the Dynatrace OneAgent will be deployed in your cl
 
 1. Create a naming rule for process groups
     1. Go to **Settings**, **Process and containers**, and click on **Process group naming**.
-    1. Create a new process group naming rule with **Add new rule**. 
+    1. Create a new process group naming rule with **Add new rule**.
     1. Edit that rule:
         * Rule name: `Container.Namespace`
         * Process group name format: `{ProcessGroup:KubernetesContainerName}.{ProcessGroup:KubernetesNamespace}`
