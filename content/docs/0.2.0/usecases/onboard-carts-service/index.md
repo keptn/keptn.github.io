@@ -42,7 +42,7 @@ To illustrate the scenario this use case addresses, keptn relies on two services
 
 ## Step 1: Authenticate and configure keptn
 
-**Please note:** This step can be skipped if you already followed the [Setup CLI](../../setup-cli) instructions.
+**Please note:** This step can be skipped if you already followed the [keptn auth](../../cli/setup-cli) instructions.
 
 1. Authentication against the keptn installation using the `keptn auth` command:
 
