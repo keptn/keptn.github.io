@@ -47,7 +47,6 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
 
 
 ## Start using the keptn CLI
-**TODO:** Describe expected output or how the command can be verified
 
 The keptn CLI allows to onboard a new service using the commands described in the following.
 All of these commands provide a help flag (`--help`), which describes details of the respective command (e.g., usage of the command or description of flags).
@@ -119,7 +118,7 @@ In the Windows Command Line, a couple of steps are necessary.
     type: Opaque
     ```
 
-1. Take the encoded API token - it is the value from the key `keptn-api-token`, in this case `abcdefghijkladfaea` and save it in a text file, e.g., `keptn-api-token-base64.txt`
+1. Take the encoded API token - it is the value from the key `keptn-api-token` (in this example, it is `abcdefghijkladfaea`) and save it in a text file, e.g., `keptn-api-token-base64.txt`
 
 1. Decode the file
 
@@ -186,10 +185,6 @@ $ keptn.exe auth --endpoint=%KEPTN_ENDPOINT% --api-token=%KEPTN_API_TOKEN%
 In order to work with GitHub (i.e. create a new project, make commits), keptn requires a
 GitHub organization, the GitHub user, and the GitHub personal access token belonging to that user.
 Therefore, the keptn CLI is used to set the GitHub organization, the GitHub user, and the GitHub personal access token belonging to that user in the keptn server.
-
-<span style="color:red">
-**Note:** Should we describe a best practice, which creates a new GitHub user only used by keptn?
-</span>
 
 To configure the used GitHub organization, user, and personal access token use command `configure` and provide your details using the respective flags:
 
