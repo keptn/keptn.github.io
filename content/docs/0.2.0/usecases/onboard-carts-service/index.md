@@ -1,5 +1,5 @@
 ---
-title: Onboarding the Carts Service
+title: Onboarding a Service
 description: Shows you how to onboard the carts service including its database to a keptn managed project. Besides, this use case builds a new artifact that will be automatically deployed via keptn.
 weight: 20
 keywords: [onboarding]
