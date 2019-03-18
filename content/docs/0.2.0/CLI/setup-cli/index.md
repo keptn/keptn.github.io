@@ -1,7 +1,7 @@
 ---
-title: Setup keptn CLI
-description: The following description explains how to setup the keptn CLI and connect it to your keptn server.
-weight: 16
+title: Use the keptn CLI
+description: The following description explains how to use the keptn CLI and connect it to your keptn server.
+weight: 21
 keywords: [cli, setup]
 ---
 
@@ -18,6 +18,7 @@ If you are unfamiliar with keptn, we recommend to first watch this [community me
 which provides an introduction to keptn.
 
 ## Prerequisites
+- A successful installation of the [keptn CLI](../../installation/setup-keptn/)
 - A successful keptn server installation (including the tools like kubectl, ...)
 - A GitHub organization, a GitHub user, and [personal access token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line). 
 
