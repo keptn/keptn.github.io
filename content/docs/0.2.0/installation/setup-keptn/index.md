@@ -89,6 +89,22 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
   $ cd keptn
   $ ./scripts/uninstallKeptn.sh
   ```
+- To verify the cleanup, retrieve the list of namespaces in your cluster, and ensure that the `keptn` namespace is not included in the output of the following command:
+
+  ```console
+  $ kubectl get namespaces
+  ```
+
+- *Note*: In some cases, it might occure that the `keptn` namespace remains stuck in the `Terminating` state. If that happens, you can enforce the deletion of the namespace as follows:
+
+  ```console
+  $ NAMESPACE=keptn
+  $ kubectl proxy &
+  $ kubectl get namespace $NAMESPACE -o json |jq '.spec = {"finalizers":[]}' >temp.json
+  $ curl -k -H "Content-Type: application/json" -X PUT --data-binary @temp.json 127.0.0.1:8001/api/v1/namespaces/$NAMESPACE/finalize
+  $ rm temp.json
+  ```
+
 
 ## Troubleshooting
 
