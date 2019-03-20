@@ -14,7 +14,7 @@ When developing an application, sooner or later you need to update a service in 
 
 To illustrate the benefit this use case addresses, you will create a second version of the carts service. Then, this version will be deployed to the production environment in a dark-launch manner. To route traffic to this new service version, the configuration of a virtual service will be changed by setting weights for the routes. In other words, this configuration change defines how much traffic is routed to the old and to the new version of the carts service.
 
-## Step 1: Deploy carts service and clone the forked repository
+## Step 1: Deploy carts v1 and clone the forked repository
 
 1. Complete the use case [Onboarding a Service](../onboard-carts-service/index.md).
 
@@ -28,7 +28,7 @@ To illustrate the benefit this use case addresses, you will create a second vers
 
 ## Step 2: Verify Istio installation and access ingress gateway
 
-1. Ensure that the label `istio-injection` has only been applied to the production namespace by executing the `kubectl get namespace -L istio-injection` command:
+1. Ensure that the label `istio-injection` has been applied to the production namespace by executing the `kubectl get namespace -L istio-injection` command:
 
     ```console
     $ kubectl get namespace -L istio-injection
@@ -50,15 +50,17 @@ To illustrate the benefit this use case addresses, you will create a second vers
     NAME                   TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)                                      AGE
     istio-ingressgateway   LoadBalancer   172.21.109.129   3*.2**.1**.8*   80:31380/TCP,443:31390/TCP,31400:31400/TCP   17h
     ```
+
+1. Open browser and navigate to: `http://carts.production.EXTERNAL-IP.xip.io/version`
   
 ## Step 3. Create carts v2
 In this step, you will change the version number of the carts service to see the effect of traffic routing between two different artefact versions.
 
-1. In the source code directory of your `carts` repository, edit 
-    * the file `src/main/resources/application.properties` by changing `version=v1` to `version=v2`.
-    * the file `version` by changing `0.6.0` to `0.6.1`.
+1. In the directory of your `carts` repository:
+    * open the file `version` and change `0.6.0` to `0.6.1`.
+    * open the file `src/main/resources/application.properties` and change `version=v1` to `version=v2`.
 
-1. Save the changes to that file.
+1. Save the changes.
 
 1. Commit your changes; first locally, and then push it to the remote repository.
 
@@ -71,7 +73,7 @@ In this step, you will change the version number of the carts service to see the
 ## Step 4. Change Istio traffic routing (manually)
 In this step, you will configure traffic routing in Istio to redirect traffic to both versions of the `carts` service.
 
-1. On github.com, go to your github organization used by keptn.
+1. Go to your github organization used by keptn (i.e., the github organization used for `keptn configure`).
 
 1. Click on the repository called `sockshop` and change the branch to `production`.
 
@@ -79,13 +81,19 @@ In this step, you will configure traffic routing in Istio to redirect traffic to
 
 1. Click on `Edit this file` [1] and change the weights [2] as shown in the screenshot below:
 
+      {{< popup_image
+      link="./assets/istio_traffic.png"
+      caption="Traffic routing configuration for carts">}}
+
+1. Finally, click on *Commit changes*.
+
 ## Step 5. Deploy carts v2 to production
 
 1. Trigger the CI pipeline for the `carts` service to create a new artefact. 
 
 1. Watch keptn deploying the new artefact. 
 
-1. To verify the configuration change of Istio, open a browser an navigate to:
+1. To verify the configuration change of Istio, open a browser an navigate to: `http://carts.production.EXTERNAL-IP.xip.io/version`
 
 1. Refresh the page a couple of times. You should notice that about every third hit redirects you to the new version (*v2*).
 
