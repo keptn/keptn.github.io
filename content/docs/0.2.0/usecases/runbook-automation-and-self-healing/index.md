@@ -13,7 +13,7 @@ This use case gives an overview of how to leverage the power of runbook automati
 ## Prerequisites
 
 - ServiceNow instance or [free ServiceNow developer instance](https://developer.servicenow.com)
-- 
+- Dynatrace Tenant [free trial](https://www.dynatrace.com/trial)
 
 ## Setup the Workflow in ServiceNow
 
@@ -42,7 +42,7 @@ A ServiceNow Update Set is provided to run this use case. To install the Update 
 
 1. Find the `keptn-carts-remediation` workflow.
 
-1. **TODO add instructions if changes to workflow has to be made**
+1. **TODO add instructions if changes to workflow have to be made**
 
 ## Setup a Dynatrace Problem Notification
 
@@ -58,6 +58,28 @@ In order to create incidents in ServiceNow and to trigger workflows, an integrat
     - The name for the header is: `Authorization`
     - The value has to be set to the following: `Bearer KEPTN_API_TOKEN` where KEPTN_API_TOKEN has to be replaced with your actual Api Token that was received during installation. You can always retrieve the token again by executing `kubectl get secret keptn-api-token -n keptn -o=yaml | yq - r data.keptn-api-token | base64 --decode` from a shell/bash. 
 
+1. As the custom payload, a valid Cloud Event has to be defined:
+
+    ```json
+    {
+        "specversion":"0.2",
+        "type":"sh.keptn.events.problem",
+        "source":"dynatrace",
+        "id":"{PID}",
+        "time":"",
+        "contenttype":"application/json",
+        "data": {
+            "State":"{State}",
+            "ProblemID":"{ProblemID}",
+            "PID":"{PID}",
+            "ProblemTitle":"{ProblemTitle}",
+            "ProblemDetails":{ProblemDetailsJSON},
+            "ImpactedEntities":{ImpactedEntities},
+            "ImpactedEntity":"{ImpactedEntity}"
+        }
+    }
+    ```
+
     {{< popup_image
     link="./assets/dynatrace-problem-notification-integration.png"
     caption="Dynatrace Problem Notification Integration">}}
@@ -71,6 +93,7 @@ In order to create incidents in ServiceNow and to trigger workflows, an integrat
 can't be detected by keptn
 
 ### Problem Detections by Dynatrace
+
 
 ### Workflow execution by ServiceNow
 
