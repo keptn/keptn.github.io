@@ -40,9 +40,12 @@ A ServiceNow Update Set is provided to run this use case. To install the Update 
 
 1. After importing, navigate to **Workflow Versions** by typing this as a search term into the upper left search box.
 
+1. add credentials and remediation url in the table
+
 1. Find the `keptn-carts-remediation` workflow.
 
 1. **TODO add instructions if changes to workflow have to be made**
+
 
 ## Setup a Dynatrace Problem Notification
 
