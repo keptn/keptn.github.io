@@ -53,7 +53,7 @@ As a result, you should retrieve something like this:
 
   {{< popup_image link="./assets/export.png" caption="Keptn Log Entries in JSON format">}}
 
-These logs can then be ahred and used for debugging purposes, in case you encounter any problems during the execution of your build pipelines.
+These logs can then be shared and used for debugging purposes, in case you encounter any problems during the execution of your build pipelines.
 
 ## Troubleshooting
 
