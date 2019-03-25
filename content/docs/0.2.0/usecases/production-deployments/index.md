@@ -28,6 +28,7 @@ To illustrate the benefit this use case addresses, you will create a second vers
 
 ## Step 2: Verify Istio installation and access ingress gateway
 
+<!--
 1. Ensure that the label `istio-injection` has been applied to the production namespace by executing the `kubectl get namespace -L istio-injection` command:
 
     ```console
@@ -40,8 +41,9 @@ To illustrate the benefit this use case addresses, you will create a second vers
     kube-public    Active    10h
     kube-system    Active    10h
     production     Active    10h        enabled
-    staging        Active    10h
+    staging        Active    10h        enabled
     ```
+-->
 
 1. Run the `kubectl get svc istio-ingressgateway -n istio-system` command to get the *EXTERNAL-IP* of your *Gateway*.
 
@@ -53,12 +55,13 @@ To illustrate the benefit this use case addresses, you will create a second vers
 
 1. Open browser and navigate to: `http://carts.production.EXTERNAL-IP.xip.io/version`
   
-## Step 3. Create carts v2
+## Step 3. Create carts v2 with slowdown
 In this step, you will change the version number of the carts service to see the effect of traffic routing between two different artefact versions.
 
 1. In the directory of your `carts` repository:
     * open the file `version` and change `0.6.0` to `0.6.1`.
     * open the file `src/main/resources/application.properties` and change `version=v1` to `version=v2`.
+    * and  `delayInMillis=0` to `delayInMillis=1000`.
 
 1. Save the changes.
 
@@ -69,7 +72,7 @@ In this step, you will change the version number of the carts service to see the
     $ git commit -m "Increased the service version."
     $ git push
     ```
-
+<!--
 ## Step 4. Change Istio traffic routing (manually)
 In this step, you will configure traffic routing in Istio to redirect traffic to both versions of the `carts` service.
 
@@ -86,14 +89,93 @@ In this step, you will configure traffic routing in Istio to redirect traffic to
       caption="Traffic routing configuration for carts">}}
 
 1. Finally, click on *Commit changes*.
+--> 
+## Step 4. Deploy carts v2 to production
 
-## Step 5. Deploy carts v2 to production
+1. Trigger the CI pipeline for the `carts` service to create a new artefact.
 
-1. Trigger the CI pipeline for the `carts` service to create a new artefact. 
+1. When the artifact is pushed to the docker registry, the configuration of the service is automatically updated and the CD pipeline gets triggered.
 
-1. Watch keptn deploying the new artefact. 
+1. Watch keptn deploying the new artefact.
+  * The Jenkins `deploy` pipeline deploys the new artifact to dev.
+  * The Jenkins `test` pipeline runs a basic health check and functional check in dev.
+  * The Jenkins `evaluate` pipeline does a test validation and sends a new artefact event for staging.
+  * The Jenkins `deploy` pipeline deploys the new artifact to staging using a blue/green deployment strategy.
+  * The Jenkins `test` pipeline runs a performance test in staging.
+  * The Jenkins `evaluate` pipeline fails since the quality gate is not passed. This automatically switches re-routes traffic to the previous color (blue or green).
 
-1. To verify the configuration change of Istio, open a browser an navigate to: `http://carts.production.EXTERNAL-IP.xip.io/version`
+## Step 5. Create carts v3 without slowdown
+In this step, you will change the version number of the carts service to see the effect of traffic routing between two different artefact versions.
 
-1. Refresh the page a couple of times. You should notice that about every third hit redirects you to the new version (*v2*).
+1. In the directory of your `carts` repository:
+    * open the file `version` and change `0.6.1` to `0.6.2`.
+    * open the file `src/main/resources/application.properties` and change `version=v2` to `version=v3`.
+    * and  `delayInMillis=1000` to `delayInMillis=0`.
 
+1. Save the changes.
+
+1. Commit your changes; first locally, and then push it to the remote repository.
+
+    ```console
+    $ git add .
+    $ git commit -m "Increased the service version."
+    $ git push
+    ```
+
+## Step 4. Deploy carts v2 to production
+
+1. Trigger the CI pipeline for the `carts` service to create a new artefact.
+
+1. When the artifact is pushed to the docker registry, the configuration of the service is automatically updated and the CD pipeline gets triggered.
+
+1. In this case, the quality gate is passed and the service gets deployed in the production namespace. 
+
+1. To verify the deployment in production, open a browser an navigate to: `http://carts.production.EXTERNAL-IP.xip.io/version`. As a result, you see `Version = v3`.
+
+1. Besides, you can take verify the deployments on you K8s cluster using the following commands: 
+
+    ```console
+    $ kubectl get deployments -n production
+    NAME             DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+    carts-blue       1         1         1            0           1h
+    carts-db-blue    1         1         1            0           1h
+    carts-db-green   1         1         1            0           1h
+    carts-green      1         1         1            0           1h
+    ```
+
+    ```console
+    $ kubectl describe deployment carts-blue -n production
+    ...
+    Pod Template:
+      Labels:  app=sockshop-selector-carts
+               deployment=carts-blue
+      Containers:
+      carts:
+        Image:      10.11.245.27:5000/sockshopcr/carts:0.6.0-x
+    ```
+
+    ```console
+    $ kubectl describe deployment carts-green -n production
+    ...
+    Pod Template:
+      Labels:  app=sockshop-selector-carts
+               deployment=carts-blue
+      Containers:
+      carts:
+        Image:      10.11.245.27:5000/sockshopcr/carts:0.6.2-x
+    ```
+
+    ```console
+    $ kubectl describe virtualService -n production
+    ...
+    Route:
+      Destination:
+        Host:    carts-db.production.svc.cluster.local
+        Subset:  blue
+      Weight:    0
+      Destination:
+        Host:    carts-db.production.svc.cluster.local
+        Subset:  green
+      Weight:    100
+    ```
+  
