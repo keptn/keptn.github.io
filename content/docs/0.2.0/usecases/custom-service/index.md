@@ -92,4 +92,17 @@ The *Subscription* defines to which kind of event the service should listen to. 
 
 Additionally, you will need to provide a name for the subscription (*metadata.name*), and reference the name of your service (*spec.subscriber.ref.name*).
 
-To deploy the service, we use a script that will first retrieve the IP of the cluster-internal docker registry, and replace the `REGISTRY_URI_PLACEHOLDER` in the manifest file with that value. The resulting manifest file will be stored in the *[config/gen](https://github.com/keptn/github-service/tree/master/config/gen)* directory.
+To deploy the service, we use a script that will first retrieve the IP of the cluster-internal docker registry, and replace the `REGISTRY_URI_PLACEHOLDER` in the manifest file with that value. The resulting manifest file will be stored in the *[config/gen](https://github.com/keptn/github-service/tree/master/config/gen)* directory. By executing the script with
+
+  ```console
+  $ ./deploy.sh
+  ```
+
+any previous revisions of the service will be deleted and the newest version will be deployed.
+
+To summarize, you will need to provide the following when you want to write a custom service:
+
+- A Github repo, containing the source code, as well as a Dockerfile for your application.
+- The application needs to provide a REST endpoint at `/` that accepts `POST` requests for JSON objects.
+- The `config` directory, containing the template for the manifest file (see description above), as well as the `config/gen` directory.
+- The `deploy.sh` script.
