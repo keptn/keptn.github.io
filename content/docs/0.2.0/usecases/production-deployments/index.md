@@ -60,18 +60,18 @@ In this step, you will change the version number of the carts service to see the
 
 1. In the directory of your `carts` repository:
     * open the file `version` and change `0.6.0` to `0.6.1`.
-    * open the file `src/main/resources/application.properties` and change `version=v1` to `version=v2`.
-    * and  `delayInMillis=0` to `delayInMillis=1000`.
+    * open the file `src/main/resources/application.properties` and change `version=v1` to `version=v2` and  `delayInMillis=0` to `delayInMillis=1000`.
 
 1. Save the changes.
 
-1. Commit your changes; first locally, and then push it to the remote repository.
+1. Commit the changes and then push it to the remote git repository.
 
     ```console
     $ git add .
     $ git commit -m "Increased the service version."
     $ git push
     ```
+
 <!--
 ## Step 4. Change Istio traffic routing (manually)
 In this step, you will configure traffic routing in Istio to redirect traffic to both versions of the `carts` service.
@@ -109,12 +109,11 @@ In this step, you will change the version number of the carts service to see the
 
 1. In the directory of your `carts` repository:
     * open the file `version` and change `0.6.1` to `0.6.2`.
-    * open the file `src/main/resources/application.properties` and change `version=v2` to `version=v3`.
-    * and  `delayInMillis=1000` to `delayInMillis=0`.
+    * open the file `src/main/resources/application.properties` and change `version=v2` to `version=v3` and  `delayInMillis=1000` to `delayInMillis=0`.
 
 1. Save the changes.
 
-1. Commit your changes; first locally, and then push it to the remote repository.
+1. Commit the changes and then push it to the remote git repository.
 
     ```console
     $ git add .
@@ -122,7 +121,7 @@ In this step, you will change the version number of the carts service to see the
     $ git push
     ```
 
-## Step 4. Deploy carts v2 to production
+## Step 6. Deploy carts v3 to production and verify result
 
 1. Trigger the CI pipeline for the `carts` service to create a new artefact.
 
@@ -132,7 +131,7 @@ In this step, you will change the version number of the carts service to see the
 
 1. To verify the deployment in production, open a browser an navigate to: `http://carts.production.EXTERNAL-IP.xip.io/version`. As a result, you see `Version = v3`.
 
-1. Besides, you can take verify the deployments on you K8s cluster using the following commands: 
+1. Besides, you can verify the deployments in you K8s cluster using the following commands: 
 
     ```console
     $ kubectl get deployments -n production
@@ -151,7 +150,7 @@ In this step, you will change the version number of the carts service to see the
                deployment=carts-blue
       Containers:
       carts:
-        Image:      10.11.245.27:5000/sockshopcr/carts:0.6.0-x
+        Image:      10.11.245.27:5000/sockshopcr/carts:0.6.0-1
     ```
 
     ```console
@@ -162,7 +161,7 @@ In this step, you will change the version number of the carts service to see the
                deployment=carts-blue
       Containers:
       carts:
-        Image:      10.11.245.27:5000/sockshopcr/carts:0.6.2-x
+        Image:      10.11.245.27:5000/sockshopcr/carts:0.6.2-3
     ```
 
     ```console
