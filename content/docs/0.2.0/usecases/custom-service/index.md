@@ -100,9 +100,11 @@ To deploy the service, we use a script that will first retrieve the IP of the cl
 
 any previous revisions of the service will be deleted and the newest version will be deployed.
 
-To summarize, you will need to provide the following when you want to write a custom service:
+*To summarize*, you will need to provide the following when you want to write a custom service:
 
 - A Github repo, containing the source code, as well as a Dockerfile for your application.
 - The application needs to provide a REST endpoint at `/` that accepts `POST` requests for JSON objects.
 - The `config` directory, containing the template for the manifest file (see description above), as well as the `config/gen` directory.
 - The `deploy.sh` script.
+
+*Note:* this documentation will be replaced with an extensive step-by-step guide in the future.
