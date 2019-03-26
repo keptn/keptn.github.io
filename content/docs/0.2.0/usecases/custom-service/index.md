@@ -10,8 +10,8 @@ Shows you how to implement your own keptn service and listen for certain events.
 
 ## About this use case
 
-The goal of this use section is to describe how you can add additional functionality to your keptn installation by implementing your own services. 
-This way, you can react to certain events that occur during your CD pipeline runs, and, e.g., integrate additional tools into your pipeline by accessing their REST interfaces with your custom services. At the moment the events you can subscribe to include:
+The goal of this use case is to describe how you can add additional functionality to your keptn installation by implementing your own services. 
+You can react to certain events that occur during your CD pipeline runs, and, integrate additional tools into your pipeline by accessing their REST interfaces with your custom services. At the moment the events you can subscribe to include:
 
 - sh.keptn.events.new-artefact
 - sh.keptn.events.configuration-changed
@@ -21,9 +21,9 @@ This way, you can react to certain events that occur during your CD pipeline run
 
 ## Writing you own service
 
-As a reference for writing your own service, please have a look at our implementation of the [GitHub Service](https://github.com/keptn/github-service). Essentially, this service is a *nodeJS express* application that accepts POST requests at its `/` endpoint. This endpoint is called by the *knative channel controller* as soon as an event has been pushed to the queue your service is subscribed to. Of course, you can write your own service in any language, as long as it provides that endpoint in order to be able to receive events.
+As a reference for writing your own service, please have a look at our implementation of the [GitHub Service](https://github.com/keptn/github-service). Essentially, this service is a *nodeJS express* application that accepts POST requests at its `/` endpoint. This endpoint is called by the *knative channel controller* as soon as an event has been pushed to the queue your service is subscribed to. Of course, you can write your own service in any language, as long as it provides the endpoint to receive events.
 
-Services in kepn are implemented as *[knative services](https://cloud.google.com/knative/)*. The template manifest for the *GitHub service* can be found in the [config/service.yaml](https://github.com/keptn/github-service/tree/master/config) file in the GitHub repo:
+Services in keptn are implemented as [knative services](https://cloud.google.com/knative/). The template manifest for the *GitHub service* can be found in the [config/service.yaml](https://github.com/keptn/github-service/tree/master/config) file in the GitHub repo:
 
   ```yaml
   apiVersion: serving.knative.dev/v1alpha1
@@ -106,5 +106,3 @@ any previous revisions of the service will be deleted and the newest version wil
 - The application needs to provide a REST endpoint at `/` that accepts `POST` requests for JSON objects.
 - The `config` directory, containing the template for the manifest file (see description above), as well as the `config/gen` directory.
 - The `deploy.sh` script.
-
-*Note:* this documentation will be replaced with an extensive step-by-step guide in the future.
