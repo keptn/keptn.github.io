@@ -78,16 +78,11 @@ As you can see in the manifest file, it consists of a *knative service*, as well
 The *Subscription* defines to which kind of event the service should listen to. To subscribe your service to a queue, set the property *spec.channel.name* to one of the following:
 
   ```
-  configuration-changed   2h
-  deployment-finished     2h
-  evaluation-done         2h
-  keptn-channel           2h
-  new-artefact            2h
-  problem                 2h
-  start-deployment        2h
-  start-evaluation        2h
-  start-tests             2h
-  tests-finished          2h
+  new-artefact
+  configuration-changed
+  deployment-finished
+  tests-finished
+  evaluation-done
   ```
 
 Additionally, you will need to provide a name for the subscription (*metadata.name*), and reference the name of your service (*spec.subscriber.ref.name*).
@@ -108,3 +103,138 @@ any previous revisions of the service will be deleted and the newest version wil
 - The `deploy.sh` script.
 
 *Note:* this documentation will be replaced with an extensive step-by-step guide in the future.
+
+## Cloudevents
+
+Depending on the channel your service is subscribed to, it will receive the payload in the following format:
+
+### sh.keptn.new-artefact
+
+```json
+{  
+   "specversion":"0.2",
+   "type":"sh.keptn.events.new-artefact",
+   "source":"Jenkins",
+   "id":"1234",
+   "time":"20190325-15:26:52.036",
+   "datacontenttype":"application/json",
+   "shkeptncontext":"db51be80-4fee-41af-bb53-1b093d2b694c",
+   "data":{  
+      "githuborg":"keptn-tiger",
+      "project":"sockshop",
+      "teststategy":"functional",
+      "deploymentstrategy":"direct",
+      "stage":"dev",
+      "service":"carts",
+      "image":"10.11.245.27:5000/sockshopcr/carts",
+      "tag":"0.6.7-16"
+   }
+}
+```
+
+### sh.keptn.configuration-changed
+
+```json
+{  
+   "specversion":"0.2",
+   "time":"2019-03-25T15:21:27+00:00",
+   "datacontenttype":"application/json",
+   "data":{  
+      "service":"carts",
+      "image":"10.11.245.27:5000/sockshopcr/carts",
+      "tag":"0.6.7-16",
+      "project":"sockshop",
+      "stage":"dev",
+      "githuborg":"keptn-tiger",
+      "teststategy":"functional",
+      "deploymentstrategy":"direct"
+   },
+   "type":"sh.keptn.events.configuration-changed",
+   "shkeptncontext":"db51be80-4fee-41af-bb53-1b093d2b694c"
+}
+```
+
+### sh.keptn.deployment-finished
+
+```json
+{  
+   "specversion":"0.2",
+   "type":"sh.keptn.events.deployment-finished",
+   "source":"Jenkins",
+   "id":"1234",
+   "time":"20190325-15:22:50.560",
+   "datacontenttype":"application/json",
+   "shkeptncontext":"db51be80-4fee-41af-bb53-1b093d2b694c",
+   "data":{  
+      "githuborg":"keptn-tiger",
+      "project":"sockshop",
+      "teststategy":"functional",
+      "deploymentstrategy":"direct",
+      "stage":"dev",
+      "service":"carts",
+      "image":"10.11.245.27:5000/sockshopcr/carts",
+      "tag":"0.6.7-16"
+   }
+}
+```
+
+### sh.keptn.tests-finished
+
+```json
+{  
+   "specversion":"0.2",
+   "type":"sh.keptn.events.tests-finished",
+   "source":"Jenkins",
+   "id":"1234",
+   "time":"20190325-15:25:56.096",
+   "datacontenttype":"application/json",
+   "shkeptncontext":"db51be80-4fee-41af-bb53-1b093d2b694c",
+   "data":{  
+      "githuborg":"keptn-tiger",
+      "project":"sockshop",
+      "teststategy":"functional",
+      "deploymentstrategy":"direct",
+      "stage":"dev",
+      "service":"carts",
+      "image":"10.11.245.27:5000/sockshopcr/carts",
+      "tag":"0.6.7-16"
+   }
+}
+```
+
+### sh.keptn.evaluation-done
+
+```json
+{  
+   "specversion":"0.2",
+   "type":"sh.keptn.events.evaluation-done",
+   "source":"Jenkins",
+   "id":"1234",
+   "time":"20190325-15:25:56.096",
+   "datacontenttype":"application/json",
+   "shkeptncontext":"db51be80-4fee-41af-bb53-1b093d2b694c",
+   "data":{  
+      "githuborg":"keptn-tiger",
+      "project":"sockshop",
+      "teststategy":"functional",
+      "deploymentstrategy":"direct",
+      "stage":"dev",
+      "service":"carts",
+      "image":"10.11.245.27:5000/sockshopcr/carts",
+      "tag":"0.6.7-16"
+   }
+}
+```
+
+## Logging
+
+To inspect your service's log messages for a specific pipeline run, as described in the [keptn's log](https://keptn.sh/docs/0.2.0/log/use-log/) section, you can use the `shkeptncontext` property of the incoming CloudEvents. Your service has to output its log messages in the following format:
+
+```json
+{
+  "keptnContext": "<KEPTN_CONTEXT>",
+  "logLevel": "INFO | WARN | ERROR",
+  "keptnService": "<YOUR_SERVICE_NAME>",
+  "message": "logging message"
+}
+```
