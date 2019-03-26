@@ -15,6 +15,16 @@ This use case gives an overview of how to leverage the power of runbook automati
 - ServiceNow instance or [free ServiceNow developer instance](https://developer.servicenow.com)
 - Dynatrace Tenant [free trial](https://www.dynatrace.com/trial)
 
+## Configure keptn
+
+```
+kubectl -n keptn create secret generic dynatrace --from-literal="DT_TENANT_ID=xxx" --from-literal="DT_API_TOKEN=xxx"
+```
+
+```
+kubectl -n keptn create secret generic servicenow --from-literal="tenant=xxx" --from-literal="user=xxx" --from-literal="token=xxx"
+```
+
 ## Setup the Workflow in ServiceNow
 
 A ServiceNow Update Set is provided to run this use case. To install the Update Set follow these steps:
@@ -67,6 +77,7 @@ In order to create incidents in ServiceNow and to trigger workflows, an integrat
     {
         "specversion":"0.2",
         "type":"sh.keptn.events.problem",
+        "shkeptncontext": "{PID}",
         "source":"dynatrace",
         "id":"{PID}",
         "time":"",
