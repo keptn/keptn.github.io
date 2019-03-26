@@ -96,13 +96,15 @@ In this step, you will configure traffic routing in Istio to redirect traffic to
 
 1. When the artifact is pushed to the docker registry, the configuration of the service is automatically updated and the CD pipeline gets triggered.
 
-1. Watch keptn deploying the new artefact.
-  * The Jenkins `deploy` pipeline deploys the new artifact to dev.
-  * The Jenkins `test` pipeline runs a basic health check and functional check in dev.
-  * The Jenkins `evaluate` pipeline does a test validation and sends a new artefact event for staging.
-  * The Jenkins `deploy` pipeline deploys the new artifact to staging using a blue/green deployment strategy.
-  * The Jenkins `test` pipeline runs a performance test in staging.
-  * The Jenkins `evaluate` pipeline fails since the quality gate is not passed. This automatically switches re-routes traffic to the previous color (blue or green).
+1. Watch keptn deploying the new artefact by following the pipelines in Jenkins.
+  * Phase 1: Deploying, testing and evaluating the test in the `dev` stage:
+      * **deploy**: The new artifact gets deployed to dev.
+      * **test**: Runs a basic health check and functional check in dev.
+      * **evaluate**: Does a test validation and sends a new artefact event for staging.
+  * Phase 2: Deploying, testing and evaluating the test in the `staging` stage:
+      * **deploy**: The new artifact gets deployed to staging using a blue/green deployment strategy.
+      * **test**: Runs a performance test in staging.
+      * **evaluate**: The pipeline **fails** because the quality gate is not passed. This automatically re-routes traffic to the previous color (blue or green).
 
 ## Step 5. Create carts v3 without slowdown
 In this step, you will change the version number of the carts service to see the effect of traffic routing between two different artefact versions.
