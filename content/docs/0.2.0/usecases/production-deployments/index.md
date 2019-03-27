@@ -10,7 +10,7 @@ This use case gives an overview of production deployments, deployment strategies
 
 ## About this use case
 
-When developing an application, sooner or later you need to update a service in a production environment. To conduct this in a controlled manner and without impacting end-user experience,  deployment strategies must be in place. For example, blue-green or canary deployment are well known strategies to rollout a new service version. Additionally, these strategies keep the previous service available if something goes wrong.
+When developing an application, sooner or later you need to update a service in a production environment. To conduct this in a controlled manner and without impacting end-user experience,  deployment strategies must be in place. For example, blue-green or canary deployment are well-known strategies to rollout a new service version. Additionally, these strategies keep the previous service available if something goes wrong.
 
 To illustrate the benefit this use case addresses, you will create a second version of the carts service. Then, this version will be deployed to the production environment in a dark-launch manner. To route traffic to this new service version, the configuration of a virtual service will be changed by setting weights for the routes. In other words, this configuration change defines how much traffic is routed to the old and to the new version of the carts service.
 
@@ -53,10 +53,10 @@ To illustrate the benefit this use case addresses, you will create a second vers
     istio-ingressgateway   LoadBalancer   172.21.109.129   3*.2**.1**.8*   80:31380/TCP,443:31390/TCP,31400:31400/TCP   17h
     ```
 
-1. Open browser and navigate to: `http://carts.production.EXTERNAL-IP.xip.io/version`
+1. Open a browser and navigate to: `http://carts.production.EXTERNAL-IP.xip.io/version`
   
 ## Step 3. Create carts v2 with slowdown
-In this step, you will change the version number of the carts service to see the effect of traffic routing between two different artefact versions.
+In this step, you will change the version number of the carts service to see the effect of traffic routing between two different artifact versions.
 
 1. In the directory of your `carts` repository:
     * open the file `version` and change `0.6.0` to `0.6.1`.
@@ -90,24 +90,26 @@ In this step, you will configure traffic routing in Istio to redirect traffic to
 
 1. Finally, click on *Commit changes*.
 --> 
-## Step 4. Deploy carts v2 to production
+## Step 4. Trigger deployment of carts v2 to production
 
-1. Trigger the CI pipeline for the `carts` service to create a new artefact.
+1. Trigger the CI pipeline for the `carts` service to create a new artifact:
+  * Use a browser to open Jenkins with the url `jenkins.keptn.EXTERNAL-IP.xip.io` and login using the credentials set in the [Onboarding a Service](../onboard-carts-service) use case.
+  * In Jenkins go to **carts** > **master** > **Build Now** to trigger the build for the new artifact.
 
 1. When the artifact is pushed to the docker registry, the configuration of the service is automatically updated and the CD pipeline gets triggered.
 
-1. Watch keptn deploying the new artefact by following the pipelines in Jenkins.
+1. Watch keptn deploying the new artifact by following the pipelines in Jenkins.
   * Phase 1: Deploying, testing and evaluating the test in the `dev` stage:
       * **deploy**: The new artifact gets deployed to dev.
-      * **test**: Runs a basic health check and functional check in dev.
-      * **evaluate**: Does a test validation and sends a new artefact event for staging.
+      * **test_evaluate**: Runs a basic health check and functional check in dev. Furthermore, it does a test validation and sends a new artifact event for staging.
   * Phase 2: Deploying, testing and evaluating the test in the `staging` stage:
       * **deploy**: The new artifact gets deployed to staging using a blue/green deployment strategy.
-      * **test**: Runs a performance test in staging.
-      * **evaluate**: The pipeline **fails** because the quality gate is not passed. This automatically re-routes traffic to the previous color (blue or green).
+      * **test_evaluate**: Runs a performance test in staging. This pipline should return **unstable** because the quality gate is not passed. This automatically re-routes traffic to the previous colored blue or green version in staging. 
+      
+  Outcome of the step: This slow version v2 is **not** promoted to the production namespace because of the active quality gate in place.
 
 ## Step 5. Create carts v3 without slowdown
-In this step, you will change the version number of the carts service to see the effect of traffic routing between two different artefact versions.
+In this step, you will change the version number of the carts service to see the effect of traffic routing between two different artifact versions.
 
 1. In the directory of your `carts` repository:
     * open the file `version` and change `0.6.1` to `0.6.2`.
@@ -123,9 +125,9 @@ In this step, you will change the version number of the carts service to see the
     $ git push
     ```
 
-## Step 6. Deploy carts v3 to production and verify result
+## Step 6. Deploy carts v3 to production and verify the result
 
-1. Trigger the CI pipeline for the `carts` service to create a new artefact.
+1. Trigger the CI pipeline for the `carts` service to create a new artifact.
 
 1. When the artifact is pushed to the docker registry, the configuration of the service is automatically updated and the CD pipeline gets triggered.
 
@@ -133,7 +135,7 @@ In this step, you will change the version number of the carts service to see the
 
 1. To verify the deployment in production, open a browser an navigate to: `http://carts.production.EXTERNAL-IP.xip.io/version`. As a result, you see `Version = v3`.
 
-1. Besides, you can verify the deployments in you K8s cluster using the following commands: 
+1. Besides, you can verify the deployments in your K8s cluster using the following commands: 
 
     ```console
     $ kubectl get deployments -n production
