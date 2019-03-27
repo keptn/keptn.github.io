@@ -10,6 +10,8 @@ This use case gives an overview of how to leverage the power of runbook automati
 
 ## About this use case
 
+TODO
+
 ## Prerequisites
 
 - ServiceNow instance or [free ServiceNow developer instance](https://developer.servicenow.com)
@@ -17,10 +19,16 @@ This use case gives an overview of how to leverage the power of runbook automati
 
 ## Configure keptn
 
+In order for keptn to use both ServiceNow and Dynatrace, the corresponding credentials have to be stored as Kubernetes secrets in the cluster.
+Please adapt the following commands with your personal credentials:
+
+Create Dynatrace secret to leverage the Dynatrace API.
 ```
 kubectl -n keptn create secret generic dynatrace --from-literal="DT_TENANT_ID=xxx" --from-literal="DT_API_TOKEN=xxx"
 ```
 
+Create ServiceNow secret to create/update incidents in ServiceNow and run workflows.
+For the sake of simplicity, you can use your ServiceNow user, e.g., _admin_ as user and your ServiceNow password as the token.
 ```
 kubectl -n keptn create secret generic servicenow --from-literal="tenant=xxx" --from-literal="user=xxx" --from-literal="token=xxx"
 ```
