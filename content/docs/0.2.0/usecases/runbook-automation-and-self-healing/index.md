@@ -20,11 +20,16 @@ TODO
 ## Configure keptn
 
 In order for keptn to use both ServiceNow and Dynatrace, the corresponding credentials have to be stored as Kubernetes secrets in the cluster.
-Please adapt the following commands with your personal credentials:
+Please set the environment variables and adapt the following commands with your personal credentials:
+
+```
+export DT_TENANT_ID=xxx
+export DT_API_TOKEN=xxx
+```
 
 Create Dynatrace secret to leverage the Dynatrace API.
 ```
-kubectl -n keptn create secret generic dynatrace --from-literal="DT_TENANT_ID=xxx" --from-literal="DT_API_TOKEN=xxx"
+kubectl -n keptn create secret generic dynatrace --from-literal="DT_TENANT_ID=$DT_TENANT_ID" --from-literal="DT_API_TOKEN=$DT_API_TOKEN"
 ```
 
 Create ServiceNow secret to create/update incidents in ServiceNow and run workflows.
@@ -126,6 +131,22 @@ In order to create incidents in ServiceNow and to trigger workflows, an integrat
     link="./assets/dynatrace-problem-notification-integration.png"
     caption="Dynatrace Problem Notification Integration">}}
 
+## Adjust Anomaly Detection in Dynatrace
+
+The Dynatrace platform is built on top of AI which is great for production use cases but for this demo we have to override some default settings in order for Dynatrace to trigger the problem.
+
+1. Navigate to **Transaction & Services** and find the service **carts-ItemsController** in the _production_ namespace. 
+2. Open the service and click on the three dots button to **Edit** the service.
+
+    {{< popup_image
+        link="./assets/dynatrace-service-edit.png"
+        caption="Edit Service">}}
+
+1. In the section **Anomaly detection** override the global anomaly detection and set the value for the **failure rate** to use **fixed thresholds** and to alert if **10%** custom failure rate are exceeded. Finally, set the **Sensitiviy** to **High**.
+    {{< popup_image
+        link="./assets/dynatrace-service-anomaly-detection.png"
+        caption="Edit Anomaly Detection">}}
+
 ## Run the Use Case
 
 Now that all pieces are in place we can run the use case. Therefore, we will start by generating some load on the `carts` service in our production environment. Afterwards we will change configuration of this service at runtime. This will cause some troubles in our production environment, Dynatrace will detect the issue and will create a problem ticket. Thanks to the problem notification we just set up, keptn will be informed about the problem and will forward it to the ServiceNow service that in turn creates an incident in ServiceNow. This incident will trigger a workflow that is able to remediate the issue at runtime. Along the remediation, comments and details on configuration changes are posted to Dynatrace.
@@ -133,18 +154,82 @@ Now that all pieces are in place we can run the use case. Therefore, we will sta
 ### Load generation
 
 1. Download the script provided for the load generation: https://raw
-1. Run the script 
+1. Run the script:
+
     ```
     ./add-to-cart.sh "carts.production.$(kubectl get svc istio-ingressgateway -n istio-system -o yaml | yq - r status.loadBalancer.ingress[0].ip).xip.io"
     ```
-1. 
+1. You should see some logging output each time an item is added to your shopping cart:
+
+    ```
+    ...
+    adding item to cart...
+    {"id":"3395a43e-2d88-40de-b95f-e00e1502085b","itemId":"03fef6ac-1896-4ce8-bd69-b798f85c6e0b","quantity":73,"unitPrice":0.0}
+    adding item to cart...
+    {"id":"3395a43e-2d88-40de-b95f-e00e1502085b","itemId":"03fef6ac-1896-4ce8-bd69-b798f85c6e0b","quantity":74,"unitPrice":0.0}
+    adding item to cart...
+    {"id":"3395a43e-2d88-40de-b95f-e00e1502085b","itemId":"03fef6ac-1896-4ce8-bd69-b798f85c6e0b","quantity":75,"unitPrice":0.0}
+    ...
+    ```
+1. You will notice that your load generation script output will include some error messages after applying the script:
+    ```
+    ...
+    adding item to cart...
+    {"id":"3395a43e-2d88-40de-b95f-e00e1502085b","itemId":"03fef6ac-1896-4ce8-bd69-b798f85c6e0b","quantity":80,"unitPrice":0.0}
+    adding item to cart...
+    {"timestamp":1553686899190,"status":500,"error":"Internal Server Error","exception":"java.lang.Exception","message":"promotion campaign not yet implemented","path":"/carts/1/items"}
+    adding item to cart...
+    {"id":"3395a43e-2d88-40de-b95f-e00e1502085b","itemId":"03fef6ac-1896-4ce8-bd69-b798f85c6e0b","quantity":81,"unitPrice":0.0}
+    ...
+    ```
+
 
 ### Configuration change at runtime
 
-can't be detected by keptn
+1. To apply a configuration change at runtime, a script is provided which can be downloaded here: https://TODO
+1. _(Optional:)_ Verify that the environment variables you set earlier are still available:
+    ```
+    echo $DT_TENANT_ID
+    echo $DT_API_TOKEN
+    ```
+
+1. Run the script:
+    ```
+    ./enable-promotion.sh "carts.production.$(kubectl get svc istio-ingressgateway -n istio-system -o yaml | yq - r status.loadBalancer.ingress[0].ip).xip.io" 30
+    ```
+    Please note the parameter `30` at the end, which is the value for the configuration change and can be interpreted as for 30 % of the shopping cart interactions a special item is added to the shopping cart. This value can be set from `0` to `100`. For this use case the value `30` is just fine.
+
 
 ### Problem Detections by Dynatrace
 
+Validate in Dynatrace, that the configuration change has been applied.
+    {{< popup_image
+        link="./assets/dynatrace-config-event.png"
+        caption="Dynatrace Custom Configuration Event">}}
 
-### Workflow execution by ServiceNow
+After a couple of minutes, Dynatrace will open a problem ticket based on the increase of the failure rate.
+    {{< popup_image
+        link="./assets/dynatrace-problem-open.png"
+        caption="Dynatrace Open Problem">}}
 
+
+
+### Incident Creation & Workflow Execution by ServiceNow
+
+The Dynatrace problem ticket notification is sent out to keptn which puts it into the problem channel where the ServiceNow service in subscribed. Thus, the ServiceNow service takes the event and creates a new incident in ServiceNow. 
+In your ServiceNow instance, you can take a look at all incidents by typing in **incidents** in the top-left search box and click on **Service Desk -> Incidents**. You should be able to see the newly created incident, click on it to view some details.
+    {{< popup_image
+        link="./assets/service-now-incident.png"
+        caption="ServiceNow incident">}}
+
+After creation of the incident, a workflow is triggered in ServiceNow that has been setup during the import of the update set earlier. The workflow takes a look at the incident, resolves the URL that is stored in the _Remediation_ tab in the incident detail screen. Along with that, a new custom configuration change is sent to Dynatrace. Besides, the ServiceNow service running in keptn sends comments to the Dynatrace problem to be able to keep track of executed steps.
+
+Once the problem is resolved, Dynatrace sends out another notification which again is handled by the ServiceNow service. Now the incidents gets resolved and another comment is sent to Dynatrace.
+    {{< popup_image
+        link="./assets/service-now-incident-resolved.png"
+        caption="Resolved ServiceNow incident">}}
+
+
+# Troubleshooting
+
+- Please note that Dynatrace has its feature called **Frequent Issue Detection** enabled by default. This means, that if Dynatrace detects the same problem multiple times, it will be classified as a frequent issue and problem notifications won't be sent out to third party tools. Therefore, the use case might not be able to be run a couple of times in a row.
