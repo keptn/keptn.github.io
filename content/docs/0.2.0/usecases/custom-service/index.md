@@ -124,7 +124,7 @@ Depending on the channel your service is subscribed to, it will receive the payl
    "data":{  
       "githuborg":"keptn-tiger",
       "project":"sockshop",
-      "teststategy":"functional",
+      "teststrategy":"functional",
       "deploymentstrategy":"direct",
       "stage":"dev",
       "service":"carts",
@@ -148,7 +148,7 @@ Depending on the channel your service is subscribed to, it will receive the payl
       "project":"sockshop",
       "stage":"dev",
       "githuborg":"keptn-tiger",
-      "teststategy":"functional",
+      "teststrategy":"functional",
       "deploymentstrategy":"direct"
    },
    "type":"sh.keptn.events.configuration-changed",
@@ -170,7 +170,7 @@ Depending on the channel your service is subscribed to, it will receive the payl
    "data":{  
       "githuborg":"keptn-tiger",
       "project":"sockshop",
-      "teststategy":"functional",
+      "teststrategy":"functional",
       "deploymentstrategy":"direct",
       "stage":"dev",
       "service":"carts",
@@ -194,7 +194,7 @@ Depending on the channel your service is subscribed to, it will receive the payl
    "data":{  
       "githuborg":"keptn-tiger",
       "project":"sockshop",
-      "teststategy":"functional",
+      "teststrategy":"functional",
       "deploymentstrategy":"direct",
       "stage":"dev",
       "service":"carts",
@@ -218,7 +218,7 @@ Depending on the channel your service is subscribed to, it will receive the payl
    "data":{  
       "githuborg":"keptn-tiger",
       "project":"sockshop",
-      "teststategy":"functional",
+      "teststrategy":"functional",
       "deploymentstrategy":"direct",
       "stage":"dev",
       "service":"carts",
