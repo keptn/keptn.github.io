@@ -40,7 +40,7 @@ To illustrate the scenario this use case addresses, keptn relies on two services
     $ cd ~/examples/onboarding-carts
     ```
 
-## Step 1: Authenticate and configure keptn
+## Authenticate and configure keptn
 
 **Please note:** This step can be skipped if you already followed the [keptn auth](../../cli/setup-cli) instructions.
 
@@ -56,7 +56,7 @@ To illustrate the scenario this use case addresses, keptn relies on two services
     $ keptn configure --org=keptn-github-org --user=keptn-github-user --token=***
     ```
 
-## Step 2: Create project sockshop
+## Create project sockshop
 
 For creating a project, this use case relies on the `shipyard.yaml` file shown below:
 
@@ -80,7 +80,7 @@ stages:
     $ keptn create project sockshop shipyard.yaml
     ```
 
-## Step 3: Onboard carts service and carts database
+## Onboard carts service and carts database
 After creating the project, you are ready to onboard the first service.
 
 1. Onboard the `carts` service using the `keptn onboard service` command. In this onboarding scenario, a default deployment and service template will be provided by the github-service.
@@ -97,13 +97,13 @@ Since the carts service needs a mongo database, a second app needs to be onboard
     $ keptn onboard service --project=sockshop --values=values_carts_db.yaml --deployment=deployment_carts_db.yaml --service=service_carts_db.yaml
     ```
 
-## Step 4: Fork carts example into your GitHub organization
+## Fork carts example into your GitHub organization
 
 1. Go to `https://github.com/keptn-sockshop/carts` and click on the **Fork** button on the top right corner.
 
 1. Select the Github organization you use for keptn.
 
-## Step 5: Add CI pipeline to Jenkins
+## Add CI pipeline to Jenkins
 
 1. Run the `kubectl get svc` command to get the **EXTERNAL-IP** of the Istio ingress gateway.  
     
@@ -127,7 +127,7 @@ Since the carts service needs a mongo database, a second app needs to be onboard
       link="./assets/carts_ci.png"
       caption="CI pipeline configuration for carts">}}
 
-## Step 5: Build new artifact and watch keptn doing the deployment 
+## Build new artifact and watch keptn doing the deployment 
 
 1. After creating the CI pipeline, in Jenkins go to **carts** > **master** > **Build Now**.
 

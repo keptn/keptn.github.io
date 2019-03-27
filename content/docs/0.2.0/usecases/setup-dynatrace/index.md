@@ -7,11 +7,11 @@ keywords: [dynatrace, install]
 
 To deploy the Dynatrace OneAgent in your Kubernetes cluster, follow these instructions:
 
-## Step 1: Get your Dynatrace Tenant
+## Get your Dynatrace Tenant
 
 If you don't have a Dynatrace tenant yet, sign up for a [free trial](https://www.dynatrace.com/trial/) or a [developer account](https://www.dynatrace.com/developer/).
 
-## Step 2: Create a Dynatrace APi Token
+## Create a Dynatrace API Token
 Log in to your Dynatrace tenant, and go to **Settings > Integration > Dynatrace API**. Then, create a new API Token with the following permissions:
 
     
@@ -27,10 +27,10 @@ Log in to your Dynatrace tenant, and go to **Settings > Integration > Dynatrace 
   link="./assets/dt_api_token.png"
   caption="Dynatrace API token">}}
 
-## Step 3: Create a Dynatrace PaaS Token
+## Create a Dynatrace PaaS Token
 In your Dynatrace tenant, go to **Settings > Integration > Platfrom as a Service**, and create a new PaaS Token.
 
-## Step 4: Deploy the Dynatrace OneAgent:
+## Deploy the Dynatrace OneAgent:
 In your keptn directory, navigate to `install/scripts`. Afterwards, execute the script `defineDynatraceCredentials.sh`:
 
   ```console
@@ -53,7 +53,7 @@ When this script is finished, the Dynatrace OneAgent will be deployed in your cl
   **Note 2:** If the nodes in your cluster run on *Container-Optimized OS (cos)*, make sure to [follow the instructions](https://www.dynatrace.com/support/help/cloud-platforms/google-cloud-platform/google-kubernetes-engine/deploy-oneagent-on-google-kubernetes-engine-clusters/#expand-134parameter-for-container-optimized-os-early-access) for setting up the Dynatrace OneAgent Operator. This means that after the initial setup with `deployDynatrace.sh`, which is a step below, the `cr.yml` has to be edited and applied again. In addition, all pods have to be restarted.
 
 <!--
-## Step 5: Add Dynatrace information to Jenkins
+## Add Dynatrace information to Jenkins
 
 
   ```
@@ -66,7 +66,7 @@ When this script is finished, the Dynatrace OneAgent will be deployed in your cl
   ...
   ```
 -->
-## Step 5: (optional) Create process group naming rule in Dynatrace
+## (Optional) Create process group naming rule in Dynatrace
 
 1. Create a naming rule for process groups
     1. Go to **Settings**, **Process and containers**, and click on **Process group naming**.
