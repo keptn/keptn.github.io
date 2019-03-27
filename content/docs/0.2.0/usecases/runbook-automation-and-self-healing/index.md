@@ -38,13 +38,14 @@ kubectl -n keptn create secret generic servicenow --from-literal="tenant=xxx" --
 A ServiceNow Update Set is provided to run this use case. To install the Update Set follow these steps:
 
 1. Login to your ServiceNow instance.
-1. Search for `update` in the left search box and navigate to **Update Sets to Commit** 
+1. Search for _update set_ in the left search box and navigate to **Update Sets to Commit** 
     {{< popup_image
     link="./assets/service-now-update-set-overview.png"
     caption="Service Now Update Set">}}
 
 1. Click on **Import Update Set from XML** 
-1. Import the file from this URL: `https://raw.githubusercontent.com/keptn/servicenow-service/master/demo/remediationworkflow-updateset.xml`
+
+1. Import the file from this URL: https://raw.githubusercontent.com/keptn/keptn.github.io/docs-v0.2/content/docs/0.2.0/usecases/runbook-automation-and-self-healing/scripts/keptn_demo_remediation_updateset.xml TODO update URL
 
 1. Open the Update Set
     {{< popup_image
@@ -56,14 +57,23 @@ A ServiceNow Update Set is provided to run this use case. To install the Update 
     link="./assets/service-now-update-set-commit.png"
     caption="Service Now Update Set Commit">}}
 
-1. After importing, navigate to **Workflow Versions** by typing this as a search term into the upper left search box.
+1. After importing, enter **keptn** as the search term into the upper left search box.
+    {{< popup_image 
+    link="./assets/service-now-keptn-creds.png"
+    caption="ServiceNow keptn credentials">}}
+1. Click on **New** and enter your Dynatrace API token as well as your Dynatrace tenant ID.
 
-1. add credentials and remediation url in the table
-
-1. Find the `keptn-carts-remediation` workflow.
-
-1. **TODO add instructions if changes to workflow have to be made**
-
+1. _(Optional)_ You can also take a look at the predefined workflow that is able to handle Dynatrace problem notifications and remediate issues.
+    - Navigate to the workflow editor by typing **Workflow Editor** and clicking on the item **Workflow -> Workflow Editor**
+    - The workflow editor is opened in a new window/tab
+    - Search for the workflow **keptn_demo_remediation** (it might as well be on the second or third page)
+    {{< popup_image 
+    link="./assets/service-now-workflow-list.png"
+    caption="ServiceNow keptn workflow">}}
+    - Open the workflow by clicking on it. It will look similar to the following image. By clicking on the workflow notes you can further investigate each step of the workflow.
+    {{< popup_image 
+    link="./assets/service-now-keptn-workflow.png"
+    caption="ServiceNow keptn workflow">}}
 
 ## Setup a Dynatrace Problem Notification
 
@@ -73,11 +83,21 @@ In order to create incidents in ServiceNow and to trigger workflows, an integrat
 1. Navigate to **Settings -> Integration -> Problem Notifications**
 1. Click on **Set up notifications** and select **Custom Notification**
 1. Choose a name for your integration, e.g., _keptn integration_
-1. In the webhook URL, paste the value of your keptn endpoint appended by `/dynatrace`, e.g., `https://control.keptn.XX.XXX.XXX.XX.xip.io/dynatrace`
-1. Additionally, a Authorization Header is needed to authorize against the keptn server. 
+1. In the webhook URL, paste the value of your keptn external eventbroker endpoint appended by `/dynatrace`, e.g., `https://event-broker-ext.keptn.XX.XXX.XXX.XX.xip.io/dynatrace`
+    - Note: retrieve the base URL by running:
+
+    ```
+    kubectl get ksvc event-broker-ext -n keptn
+    ```
+    Please click the checkbox **Accept any SSL certificate**
+1. Additionally, an Authorization Header is needed to authorize against the keptn server. 
     - Click on **Add header**
     - The name for the header is: `Authorization`
-    - The value has to be set to the following: `Bearer KEPTN_API_TOKEN` where KEPTN_API_TOKEN has to be replaced with your actual Api Token that was received during installation. You can always retrieve the token again by executing `kubectl get secret keptn-api-token -n keptn -o=yaml | yq - r data.keptn-api-token | base64 --decode` from a shell/bash. 
+    - The value has to be set to the following: `Bearer KEPTN_API_TOKEN` where KEPTN_API_TOKEN has to be replaced with your actual Api Token that was received during installation. You can always retrieve the token again by executing:
+
+    ```
+    kubectl get secret keptn-api-token -n keptn -o=yaml | yq - r data.keptn-api-token | base64 --decode
+    ```
 
 1. As the custom payload, a valid Cloud Event has to be defined:
 
@@ -85,7 +105,7 @@ In order to create incidents in ServiceNow and to trigger workflows, an integrat
     {
         "specversion":"0.2",
         "type":"sh.keptn.events.problem",
-        "shkeptncontext": "{PID}",
+        "shkeptncontext":"{PID}",
         "source":"dynatrace",
         "id":"{PID}",
         "time":"",
@@ -108,7 +128,16 @@ In order to create incidents in ServiceNow and to trigger workflows, an integrat
 
 ## Run the Use Case
 
+Now that all pieces are in place we can run the use case. Therefore, we will start by generating some load on the `carts` service in our production environment. Afterwards we will change configuration of this service at runtime. This will cause some troubles in our production environment, Dynatrace will detect the issue and will create a problem ticket. Thanks to the problem notification we just set up, keptn will be informed about the problem and will forward it to the ServiceNow service that in turn creates an incident in ServiceNow. This incident will trigger a workflow that is able to remediate the issue at runtime. Along the remediation, comments and details on configuration changes are posted to Dynatrace.
+
 ### Load generation
+
+1. Download the script provided for the load generation: https://raw
+1. Run the script 
+    ```
+    ./add-to-cart.sh "carts.production.$(kubectl get svc istio-ingressgateway -n istio-system -o yaml | yq - r status.loadBalancer.ingress[0].ip).xip.io"
+    ```
+1. 
 
 ### Configuration change at runtime
 
