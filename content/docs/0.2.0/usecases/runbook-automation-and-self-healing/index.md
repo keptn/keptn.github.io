@@ -10,12 +10,18 @@ This use case gives an overview of how to leverage the power of runbook automati
 
 ## About this use case
 
-TODO
+Configuration changes during runtime are sometimes necessary to increase flexibility. A prominent example are feature flags that can be toggled also in a production environment. In this use case we will change the promotion rate of a shopping cart service, which means that a defined percentage of interactions with the shopping cart will add promotional items (e.g., small gifts) to the shopping carts of our customers. However, we will experience troubles with this configuration change. Therefore, we will set means in place that are capable of auto-remediating issues at runtime. In fact, we will leverage workflows in ServiceNow. 
 
 ## Prerequisites
 
 - ServiceNow instance or [free ServiceNow developer instance](https://developer.servicenow.com)
 - Dynatrace Tenant [free trial](https://www.dynatrace.com/trial)
+- Clone the GitHub repository with the necessary files for the use case:
+    
+    ```
+    git clone --branch keptn-v0.2.x https://github.com/keptn/servicenow-service.git
+    cd servicenow-service
+    ```
 
 ## Configure keptn
 
@@ -50,7 +56,7 @@ A ServiceNow Update Set is provided to run this use case. To install the Update 
 
 1. Click on **Import Update Set from XML** 
 
-1. Import the file from this URL: https://raw.githubusercontent.com/keptn/keptn.github.io/docs-v0.2/content/docs/0.2.0/usecases/runbook-automation-and-self-healing/scripts/keptn_demo_remediation_updateset.xml TODO update URL
+1. Import the file from your file system that you find in your `servicenow-service/usecase` folder: `keptn_demo_remediation_updateset.xml`
 
 1. Open the Update Set
     {{< popup_image
@@ -153,7 +159,11 @@ Now that all pieces are in place we can run the use case. Therefore, we will sta
 
 ### Load generation
 
-1. Download the script provided for the load generation: https://raw
+1. Navigate to the _servicenow-service/usecase_ folder: 
+
+    ```
+    cd usecase
+    ```
 1. Run the script:
 
     ```
@@ -186,7 +196,7 @@ Now that all pieces are in place we can run the use case. Therefore, we will sta
 
 ### Configuration change at runtime
 
-1. To apply a configuration change at runtime, a script is provided which can be downloaded here: https://TODO
+1. Open another terminal to make sure the load generation is still running and again, navigate to the _servicenow-service/usecase_ folder.
 1. _(Optional:)_ Verify that the environment variables you set earlier are still available:
     ```
     echo $DT_TENANT_ID
@@ -233,3 +243,8 @@ Once the problem is resolved, Dynatrace sends out another notification which aga
 # Troubleshooting
 
 - Please note that Dynatrace has its feature called **Frequent Issue Detection** enabled by default. This means, that if Dynatrace detects the same problem multiple times, it will be classified as a frequent issue and problem notifications won't be sent out to third party tools. Therefore, the use case might not be able to be run a couple of times in a row.
+
+- In ServiceNow you can take a look at the **System Log -> All** to verify which actions have been executed. 
+    {{< popup_image
+        link="./assets/service-now-systemlog.png"
+        caption="ServiceNow System Log">}}
