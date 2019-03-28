@@ -7,4 +7,4 @@ date: 2018-02-12T15:37:57+07:00
 
 <br>
 <strong>Enterprise-grade framework for shipping and running cloud-native applications</strong><br><br>
-Deployable on any Kubernetes cluster, keptn converts any Kubernetes cluster into a self-healing, autonomous cloud fabric.
+Deployable on any Kubernetes cluster, keptn converts your cluster into a self-healing, autonomous cloud fabric.
