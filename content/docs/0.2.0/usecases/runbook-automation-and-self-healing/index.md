@@ -6,7 +6,7 @@ keywords: [self-healing]
 aliases:
 ---
 
-This use case gives an overview of how to leverage the power of runbook automation to build self-healing applications. Therefore, you will use Service Now workflows that are triggered to remediate incidents.
+This use case gives an overview of how to leverage the power of runbook automation to build self-healing applications. Therefore, you will use ServiceNow workflows that are triggered to remediate incidents.
 
 ## About this use case
 
@@ -52,7 +52,7 @@ A ServiceNow Update Set is provided to run this use case. To install the Update 
 1. Search for _update set_ in the left search box and navigate to **Update Sets to Commit** 
     {{< popup_image
     link="./assets/service-now-update-set-overview.png"
-    caption="Service Now Update Set">}}
+    caption="ServiceNow Update Set">}}
 
 1. Click on **Import Update Set from XML** 
 
@@ -61,12 +61,12 @@ A ServiceNow Update Set is provided to run this use case. To install the Update 
 1. Open the Update Set
     {{< popup_image
     link="./assets/service-now-update-set-list.png"
-    caption="Service Now Update Sets List">}}
+    caption="ServiceNow Update Sets List">}}
 
 1. In the right upper corner, click on **Preview Update Set** and once previewed, click on **Commit Update Set** to apply it to your instance
     {{< popup_image
     link="./assets/service-now-update-set-commit.png"
-    caption="Service Now Update Set Commit">}}
+    caption="ServiceNow Update Set Commit">}}
 
 1. After importing, enter **keptn** as the search term into the upper left search box.
     {{< popup_image 
