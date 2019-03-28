@@ -23,6 +23,7 @@ We exactly used these three concepts in our use cases:
 1. [Production Deployments](../production-deployments/index.md): In this use case, the configuration of the *carts* service
 has been changed, which intentionally slowed down this service.  Next, this service has been deployed to the development environment.
 Although the service has passed the quality gates in the development environment, the service has not passed the quality gate in the staging environment due to the increase of the response time detected by a performance test. This demonstrates an early break of the delivery pipeline based on automated quality gates. Hence, exploiting the concepts of **Shift-Left**, this pipeline has been stopped.
+Additionally, the used pipelines for deploying, testing and evaluating have pushed information to our monitoring solution (in this case study Dynatrace was used). This information can be used in following steps and, by this, provides the basis for **Shift-Rigt**.
 Summarizing, the pipeline stopped due to a (here intentionally introduced) failure in a service. This was early enough to not deploy this faulty service version into production.
 
 1. [Runbook Automation and Self-healing](../runbook-automation-and-self-healing/index.md): This use case 
