@@ -61,12 +61,13 @@ To illustrate the scenario this use case addresses, keptn relies on two services
 For creating a project, this use case relies on the `shipyard.yaml` file shown below:
 
 ```yaml
+registry: sockshopcr
 stages:
   - name: "dev"
     deployment_strategy: "direct"
     test_strategy: "functional"
   - name: "staging"
-    deployment_strategy: "direct"
+    deployment_strategy: "blue_green_service"
     test_strategy: "performance"
   - name: "production"
     deployment_strategy: "blue_green_service"
