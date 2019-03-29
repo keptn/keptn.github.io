@@ -25,13 +25,13 @@ keywords: setup
 
 - Execute `./defineCredentials.sh` and provide the needed information
     ```console
-    $ cd keptn
-    $ ./scripts/defineCredentials.sh
+    $ cd keptn/install/scripts
+    $ ./defineCredentials.sh
     ```
 
 - Execute `./installKeptn.sh`: this script sets up all necessary component for keptn 0.2 (~10-15mins)
     ```console
-    $ ./scripts/installKeptn.sh
+    $ ./installKeptn.sh
     ```
 
 ## Install keptn CLI
