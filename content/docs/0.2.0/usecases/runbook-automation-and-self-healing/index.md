@@ -132,6 +132,7 @@ In order to create incidents in ServiceNow and to trigger workflows, an integrat
         }
     }
     ```
+
 1. Click on **Send Test Notification** and then on  **Save**.
 
     {{< popup_image
@@ -142,7 +143,14 @@ In order to create incidents in ServiceNow and to trigger workflows, an integrat
 
 The Dynatrace platform is built on top of AI which is great for production use cases but for this demo we have to override some default settings in order for Dynatrace to trigger the problem.
 
-1. Navigate to **Transaction & Services** and find the service **carts-ItemsController** in the _production_ namespace. 
+Before you adjust this setting, make sure to have some traffic on the service in order for Dynatrace to detect and list the service. The easiest way to generate traffic is to use the provided file `add-to-carts.sh` in the `./usecase` folder. This script will add items to the shopping cart and can be stopped after a couple of added items by hitting <kbd>CTRL</kbd>+<kbd>C</kbd>.
+
+```
+./add-to-cart.sh "carts.production.$(kubectl get svc istio-ingressgateway -n istio-system -o yaml | yq - r status.loadBalancer.ingress[0].ip).xip.io"
+```
+
+
+1. Once you generated some load, navigate to **Transaction & Services** and find the service **carts-ItemsController** in the _production_ namespace. 
 2. Open the service and click on the three dots button to **Edit** the service.
 
     {{< popup_image
@@ -212,18 +220,23 @@ Now that all pieces are in place we can run the use case. Therefore, we will sta
     ...
     ```
 
-### Problem Detections by Dynatrace
+### Problem Detection by Dynatrace
 
-Validate in Dynatrace, that the configuration change has been applied.
+Navigate to the ItemsController service by clicking on **Transactions & Services** and looking for your ItemsController. Since our service is running in three different environment (dev, staging, production) it is recommended to filter by the `environment:production` to make sure to find the correct service.
+    {{< popup_image
+        link="./assets/dynatrace-services.png"
+        caption="Dynatrace Transactions & Services">}}
+
+When clicking on the service, in the right bottom corner you can validate in Dynatrace that the configuration change has been applied.
     {{< popup_image
         link="./assets/dynatrace-config-event.png"
         caption="Dynatrace Custom Configuration Event">}}
+
 
 After a couple of minutes, Dynatrace will open a problem ticket based on the increase of the failure rate.
     {{< popup_image
         link="./assets/dynatrace-problem-open.png"
         caption="Dynatrace Open Problem">}}
-
 
 
 ### Incident Creation & Workflow Execution by ServiceNow
