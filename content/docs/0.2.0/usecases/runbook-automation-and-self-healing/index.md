@@ -181,17 +181,7 @@ Now that all pieces are in place we can run the use case. Therefore, we will sta
     {"id":"3395a43e-2d88-40de-b95f-e00e1502085b","itemId":"03fef6ac-1896-4ce8-bd69-b798f85c6e0b","quantity":75,"unitPrice":0.0}
     ...
     ```
-1. You will notice that your load generation script output will include some error messages after applying the script:
-    ```
-    ...
-    adding item to cart...
-    {"id":"3395a43e-2d88-40de-b95f-e00e1502085b","itemId":"03fef6ac-1896-4ce8-bd69-b798f85c6e0b","quantity":80,"unitPrice":0.0}
-    adding item to cart...
-    {"timestamp":1553686899190,"status":500,"error":"Internal Server Error","exception":"java.lang.Exception","message":"promotion campaign not yet implemented","path":"/carts/1/items"}
-    adding item to cart...
-    {"id":"3395a43e-2d88-40de-b95f-e00e1502085b","itemId":"03fef6ac-1896-4ce8-bd69-b798f85c6e0b","quantity":81,"unitPrice":0.0}
-    ...
-    ```
+
 
 
 ### Configuration change at runtime
@@ -209,6 +199,17 @@ Now that all pieces are in place we can run the use case. Therefore, we will sta
     ```
     Please note the parameter `30` at the end, which is the value for the configuration change and can be interpreted as for 30 % of the shopping cart interactions a special item is added to the shopping cart. This value can be set from `0` to `100`. For this use case the value `30` is just fine.
 
+1. You will notice that your load generation script output will include some error messages after applying the script:
+    ```
+    ...
+    adding item to cart...
+    {"id":"3395a43e-2d88-40de-b95f-e00e1502085b","itemId":"03fef6ac-1896-4ce8-bd69-b798f85c6e0b","quantity":80,"unitPrice":0.0}
+    adding item to cart...
+    {"timestamp":1553686899190,"status":500,"error":"Internal Server Error","exception":"java.lang.Exception","message":"promotion campaign not yet implemented","path":"/carts/1/items"}
+    adding item to cart...
+    {"id":"3395a43e-2d88-40de-b95f-e00e1502085b","itemId":"03fef6ac-1896-4ce8-bd69-b798f85c6e0b","quantity":81,"unitPrice":0.0}
+    ...
+    ```
 
 ### Problem Detections by Dynatrace
 
@@ -242,7 +243,7 @@ Once the problem is resolved, Dynatrace sends out another notification which aga
 
 # Troubleshooting
 
-- Please note that Dynatrace has its feature called **Frequent Issue Detection** enabled by default. This means, that if Dynatrace detects the same problem multiple times, it will be classified as a frequent issue and problem notifications won't be sent out to third party tools. Therefore, the use case might not be able to be run a couple of times in a row.
+- Please note that Dynatrace has its feature called **Frequent Issue Detection** enabled by default. This means, that if Dynatrace detects the same problem multiple times, it will be classified as a frequent issue and problem notifications won't be sent out to third party tools. Therefore, the use case might not be able to be run a couple of times in a row. To disable the feature for your tenant please reach out to the Dynatrace support team.
 
 - In ServiceNow you can take a look at the **System Log -> All** to verify which actions have been executed. 
     {{< popup_image
