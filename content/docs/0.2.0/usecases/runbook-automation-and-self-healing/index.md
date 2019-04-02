@@ -133,6 +133,8 @@ In order to create incidents in ServiceNow and to trigger workflows, an integrat
     }
     ```
 
+1. Click on **Send Test Notification** and then on  **Save**.
+
     {{< popup_image
     link="./assets/dynatrace-problem-notification-integration.png"
     caption="Dynatrace Problem Notification Integration">}}
@@ -141,7 +143,14 @@ In order to create incidents in ServiceNow and to trigger workflows, an integrat
 
 The Dynatrace platform is built on top of AI which is great for production use cases but for this demo we have to override some default settings in order for Dynatrace to trigger the problem.
 
-1. Navigate to **Transaction & Services** and find the service **carts-ItemsController** in the _production_ namespace. 
+Before you adjust this setting, make sure to have some traffic on the service in order for Dynatrace to detect and list the service. The easiest way to generate traffic is to use the provided file `add-to-carts.sh` in the `./usecase` folder. This script will add items to the shopping cart and can be stopped after a couple of added items by hitting <kbd>CTRL</kbd>+<kbd>C</kbd>.
+
+```
+./add-to-cart.sh "carts.production.$(kubectl get svc istio-ingressgateway -n istio-system -o yaml | yq - r status.loadBalancer.ingress[0].ip).xip.io"
+```
+
+
+1. Once you generated some load, navigate to **Transaction & Services** and find the service **carts-ItemsController** in the _production_ namespace. 
 2. Open the service and click on the three dots button to **Edit** the service.
 
     {{< popup_image
@@ -181,17 +190,7 @@ Now that all pieces are in place we can run the use case. Therefore, we will sta
     {"id":"3395a43e-2d88-40de-b95f-e00e1502085b","itemId":"03fef6ac-1896-4ce8-bd69-b798f85c6e0b","quantity":75,"unitPrice":0.0}
     ...
     ```
-1. You will notice that your load generation script output will include some error messages after applying the script:
-    ```
-    ...
-    adding item to cart...
-    {"id":"3395a43e-2d88-40de-b95f-e00e1502085b","itemId":"03fef6ac-1896-4ce8-bd69-b798f85c6e0b","quantity":80,"unitPrice":0.0}
-    adding item to cart...
-    {"timestamp":1553686899190,"status":500,"error":"Internal Server Error","exception":"java.lang.Exception","message":"promotion campaign not yet implemented","path":"/carts/1/items"}
-    adding item to cart...
-    {"id":"3395a43e-2d88-40de-b95f-e00e1502085b","itemId":"03fef6ac-1896-4ce8-bd69-b798f85c6e0b","quantity":81,"unitPrice":0.0}
-    ...
-    ```
+
 
 
 ### Configuration change at runtime
@@ -209,19 +208,35 @@ Now that all pieces are in place we can run the use case. Therefore, we will sta
     ```
     Please note the parameter `30` at the end, which is the value for the configuration change and can be interpreted as for 30 % of the shopping cart interactions a special item is added to the shopping cart. This value can be set from `0` to `100`. For this use case the value `30` is just fine.
 
+1. You will notice that your load generation script output will include some error messages after applying the script:
+    ```
+    ...
+    adding item to cart...
+    {"id":"3395a43e-2d88-40de-b95f-e00e1502085b","itemId":"03fef6ac-1896-4ce8-bd69-b798f85c6e0b","quantity":80,"unitPrice":0.0}
+    adding item to cart...
+    {"timestamp":1553686899190,"status":500,"error":"Internal Server Error","exception":"java.lang.Exception","message":"promotion campaign not yet implemented","path":"/carts/1/items"}
+    adding item to cart...
+    {"id":"3395a43e-2d88-40de-b95f-e00e1502085b","itemId":"03fef6ac-1896-4ce8-bd69-b798f85c6e0b","quantity":81,"unitPrice":0.0}
+    ...
+    ```
 
-### Problem Detections by Dynatrace
+### Problem Detection by Dynatrace
 
-Validate in Dynatrace, that the configuration change has been applied.
+Navigate to the ItemsController service by clicking on **Transactions & Services** and looking for your ItemsController. Since our service is running in three different environment (dev, staging, production) it is recommended to filter by the `environment:production` to make sure to find the correct service.
+    {{< popup_image
+        link="./assets/dynatrace-services.png"
+        caption="Dynatrace Transactions & Services">}}
+
+When clicking on the service, in the right bottom corner you can validate in Dynatrace that the configuration change has been applied.
     {{< popup_image
         link="./assets/dynatrace-config-event.png"
         caption="Dynatrace Custom Configuration Event">}}
+
 
 After a couple of minutes, Dynatrace will open a problem ticket based on the increase of the failure rate.
     {{< popup_image
         link="./assets/dynatrace-problem-open.png"
         caption="Dynatrace Open Problem">}}
-
 
 
 ### Incident Creation & Workflow Execution by ServiceNow
@@ -242,7 +257,7 @@ Once the problem is resolved, Dynatrace sends out another notification which aga
 
 # Troubleshooting
 
-- Please note that Dynatrace has its feature called **Frequent Issue Detection** enabled by default. This means, that if Dynatrace detects the same problem multiple times, it will be classified as a frequent issue and problem notifications won't be sent out to third party tools. Therefore, the use case might not be able to be run a couple of times in a row.
+- Please note that Dynatrace has its feature called **Frequent Issue Detection** enabled by default. This means, that if Dynatrace detects the same problem multiple times, it will be classified as a frequent issue and problem notifications won't be sent out to third party tools. Therefore, the use case might not be able to be run a couple of times in a row. To disable the feature for your tenant please reach out to the Dynatrace support team.
 
 - In ServiceNow you can take a look at the **System Log -> All** to verify which actions have been executed. 
     {{< popup_image
