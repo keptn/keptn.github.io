@@ -7,4 +7,5 @@ date: 2018-02-12T15:37:57+07:00
 
 <br>
 <strong>Enterprise-grade control plane for cloud-native delivery and automated operations</strong><br><br>
-Deployable on any Kubernetes cluster, keptn converts your cluster into a self-healing, autonomous cloud fabric.    
+Keptn can be deployed on any Kubernetes cluster and converts it into a self-healing autonomous cloud fabric. 
+ 
