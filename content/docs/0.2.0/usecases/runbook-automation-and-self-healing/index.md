@@ -132,6 +132,7 @@ In order to create incidents in ServiceNow and to trigger workflows, an integrat
         }
     }
     ```
+1. Click on **Send Test Notification** and then on  **Save**.
 
     {{< popup_image
     link="./assets/dynatrace-problem-notification-integration.png"
