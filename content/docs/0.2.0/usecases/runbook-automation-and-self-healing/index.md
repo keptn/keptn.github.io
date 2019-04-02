@@ -255,7 +255,7 @@ Once the problem is resolved, Dynatrace sends out another notification which aga
         caption="Resolved ServiceNow incident">}}
 
 
-# Troubleshooting
+## Troubleshooting
 
 - Please note that Dynatrace has its feature called **Frequent Issue Detection** enabled by default. This means, that if Dynatrace detects the same problem multiple times, it will be classified as a frequent issue and problem notifications won't be sent out to third party tools. Therefore, the use case might not be able to be run a couple of times in a row. To disable the feature for your tenant please reach out to the Dynatrace support team.
 
