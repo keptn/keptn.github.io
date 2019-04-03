@@ -15,7 +15,7 @@ Configuration changes during runtime are sometimes necessary to increase flexibi
 ## Prerequisites
 
 - ServiceNow instance or [free ServiceNow developer instance](https://developer.servicenow.com)
-- Dynatrace Tenant [free trial](https://www.dynatrace.com/trial)
+- Complete [setup of Dynatrace](../setup-dynatrace/) in your keptn installation
 - Clone the GitHub repository with the necessary files for the use case:
     
     ```
@@ -25,21 +25,39 @@ Configuration changes during runtime are sometimes necessary to increase flexibi
 
 ## Configure keptn
 
-In order for keptn to use both ServiceNow and Dynatrace, the corresponding credentials have to be stored as Kubernetes secrets in the cluster.
-Please set the environment variables and adapt the following commands with your personal credentials:
+### Dynatrace Secret 
+
+In order for keptn to use both ServiceNow and Dynatrace, the corresponding credentials have to be stored as Kubernetes secrets in the cluster. 
+The Dynatrace secret should already have been created the Dynatrace secret for you and stored some needed information in environment variables.
+Please verify by executing the following commands:
 
 ```
-export DT_TENANT_ID=xxx
-export DT_API_TOKEN=xxx
+kubectl get secret dynatrace -n keptn -o yaml
+```
+The output should include the `DT_API_TOKEN` as well as the `DT_TENANT_ID` (both will be shown in base64 encoding):
+```yaml
+apiVersion: v1
+data:
+  DT_API_TOKEN: xxxxxx
+  DT_TENANT_ID: xxxxxx
+kind: Secret
+metadata:
+  creationTimestamp:
+  ...
 ```
 
-Create Dynatrace secret to leverage the Dynatrace API.
+Additionally we verify that the enviroment variables are set (execute line by line)
 ```
-kubectl -n keptn create secret generic dynatrace --from-literal="DT_TENANT_ID=$DT_TENANT_ID" --from-literal="DT_API_TOKEN=$DT_API_TOKEN"
+export DT_TENANT_ID=$(kubectl get secret dynatrace -n keptn -o=yaml | yq - r data.DT_TENANT_ID | base64 --decode)
+export DT_API_TOKEN=$(kubectl get secret dynatrace -n keptn -o=yaml | yq - r data.DT_API_TOKEN | base64 --decode)
+echo $DT_TENANT_ID
+echo $DT_API_TOKEN
 ```
+
+### ServiceNow Secret 
 
 Create ServiceNow secret to create/update incidents in ServiceNow and run workflows.
-For the sake of simplicity, you can use your ServiceNow user, e.g., _admin_ as user and your ServiceNow password as the token.
+For the sake of simplicity, you can use your ServiceNow user, e.g., _admin_ as user and your ServiceNow password as the token. Make sure to adapt the values accordingly in the following command.
 ```
 kubectl -n keptn create secret generic servicenow --from-literal="tenant=xxx" --from-literal="user=xxx" --from-literal="token=xxx"
 ```
