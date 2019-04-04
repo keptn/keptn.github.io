@@ -1,6 +1,6 @@
 ---
-title: Installation
+title: Install keptn
 description: How to install keptn.
-weight: 10
-icon: tasks
+weight: 20
+icon: setup
 ---
