@@ -94,14 +94,22 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
 - To verify your installation, retrieve the pods runnning in the `keptn` namespace.
   ```console
   $ kubectl get pods -n keptn
-  authenticator-hghrm-deployment-85985b6c56-894zm     3/3       Running
-  control-tjkl6-deployment-5bb45669c6-8h2d6           3/3       Running
-  docker-registry-754b7797bd-v86pn                    2/2       Running
-  event-broker-2fwtg-deployment-ffdd57984-t8jbn       3/3       Running
-  event-broker-ext-8wn6q-deployment-7bc86dcd9-zjc7r   3/3       Running
-  github-service-gl2f9-deployment-854f4d747b-dhz89    3/3       Running
-  jenkins-deployment-69fb95d575-mz6fp                 2/2       Running
-  jenkins-service-82wsp-deployment-74f9f78856-k5z5f   3/3       Running
+  authenticator-h7ftc-pod-cd730a                      0/1       Completed   0          10d
+  authenticator-hghrm-deployment-85985b6c56-894zm     3/3       Running     0          10d
+  control-9hw4x-pod-7d4b93                            0/1       Completed   0          10d
+  control-tjkl6-deployment-5bb45669c6-8h2d6           3/3       Running     0          10d
+  docker-registry-754b7797bd-v86pn                    2/2       Running     0          10d
+  event-broker-2fwtg-deployment-ffdd57984-t8jbn       3/3       Running     0          23m
+  event-broker-bcsdr-pod-15d743                       0/1       Completed   0          25m
+  event-broker-ext-2rndl-pod-0fe9f3                   0/1       Completed   0          10d
+  event-broker-ext-8wn6q-deployment-7bc86dcd9-zjc7r   3/3       Running     0          10d
+  github-service-gl2f9-deployment-854f4d747b-dhz89    3/3       Running     0          10d
+  github-service-kt7x5-pod-cd2884                     0/1       Completed   0          10d
+  jenkins-deployment-69fb95d575-mz6fp                 2/2       Running     0          10d
+  jenkins-service-82wsp-deployment-74f9f78856-k5z5f   3/3       Running     0          56m
+  jenkins-service-ghcpz-pod-1f5a6a                    0/1       Completed   0          57m
+  pitometer-service-v8n47-pod-99ace2                  0/1       Completed   0          1d
+  servicenow-service-bj9hv-pod-650ed4                 0/1       Completed   0          7d
   ```
   If those pods do not show up after a few minutes, please check if all pods within the `istio-system` pods are in a running state: 
   
