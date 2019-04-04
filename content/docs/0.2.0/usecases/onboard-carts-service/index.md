@@ -42,18 +42,18 @@ To illustrate the scenario this use case addresses, keptn relies on two services
 
 ## Authenticate and configure keptn
 
-**Please note:** This step can be skipped if you already followed the [keptn auth](../../cli/setup-cli) instructions.
+**Please note:** This step can be skipped if you already followed the [keptn auth](https://keptn.sh/docs/0.2.0/reference/cli/#keptn-auth) instructions.
 
-1. Authentication against the keptn installation using the `keptn auth` command:
+1. Authentication against the keptn installation using the `keptn auth` command.
 
     ```console
-    $ keptn auth --endpoint=https://keptn-endpoint --api-token=***
+    $ keptn auth --endpoint=https://<KEPTN_ENDPOINT> --api-token=<KEPTN_API_TOKEN>
     ```
 
 1. Configure the used GitHub organization, user, and personal access token using the `keptn configure` command:
   
     ```console
-    $ keptn configure --org=keptn-github-org --user=keptn-github-user --token=***
+    $ keptn configure --org=<YOUR_GITHUB_ORG> --user=<YOUR_GITHUB_USER> --token=<YOUR_GITHUB_TOKEN>
     ```
 
 ## Create project sockshop
