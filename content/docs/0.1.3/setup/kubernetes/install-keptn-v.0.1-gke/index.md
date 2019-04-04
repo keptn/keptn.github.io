@@ -7,6 +7,8 @@ keywords: [kubernetes, install]
 
 To install and configure keptn in a Kubernetes cluster, follow these instructions:
 
+**Note:** This version of keptn uses Istio 1.1, where outbound traffic from Istio-enabled pods is allowed per default. In case you want to limit this behavior, please refer to the documentation found at the [Istio homepage](https://istio.io/docs/tasks/traffic-management/egress/#envoy-passthrough-to-external-services)
+
 ## Step 1: Prerequisites
 
 The next steps expect that you have a working Kubernetes cluster in Google Container Engine (GKE). See the [Getting Started Guides](https://kubernetes.io/docs/setup/) for details about creating a cluster with the folllowing configuration: 
