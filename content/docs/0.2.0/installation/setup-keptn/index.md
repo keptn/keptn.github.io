@@ -34,6 +34,29 @@ keywords: setup
     $ ./installKeptn.sh
     ```
 
+This will install the complete infrastructure necessary to run keptn. This includes:
+
+- Istio
+- Knative
+- An Elasticsearch/Kibana Stack for the Keptn's log
+- The Keptn Core Services:
+  - Event-broker
+  - Event-broker-ext
+  - Control
+  - Authenticator
+- The services required to run the delivery pipelines, as well as the self healing use cases:
+  - Github Services
+  - Jenkins Service
+  - Pitometer Service
+  - ServiceNow Service
+- The channels to which events are published:
+  - new-artefact
+  - configuration-changed
+  - deployment-finished
+  - tests-finished
+  - evaluation-done
+  - problem
+
 ## Install keptn CLI
 Every release of keptn provides binaries for the keptn CLI. These binaries are available for Linux, macOS, and Windows.
 
@@ -71,16 +94,79 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
 - To verify your installation, retrieve the pods runnning in the `keptn` namespace.
   ```console
   $ kubectl get pods -n keptn
-  authenticator-85jzg-deployment-6c5b596998-b5lhc       3/3       Running
-  control-zbpdw-deployment-6b5bdcf9b7-4djv4             3/3       Running
-  docker-registry-55bd8d967c-lx8z6                      2/2       Running
-  event-broker-ext-grqwq-deployment-76fc5975fb-9s2ct    3/3       Running
-  event-broker-vqw2d-deployment-db6bdcf99-jgkfr         3/3       Running
-  jenkins-deployment-84d5d5d8d7-lt5sw                   2/2       Running
+  authenticator-hghrm-deployment-85985b6c56-894zm     3/3       Running
+  control-tjkl6-deployment-5bb45669c6-8h2d6           3/3       Running
+  docker-registry-754b7797bd-v86pn                    2/2       Running
+  event-broker-2fwtg-deployment-ffdd57984-t8jbn       3/3       Running
+  event-broker-ext-8wn6q-deployment-7bc86dcd9-zjc7r   3/3       Running
+  github-service-gl2f9-deployment-854f4d747b-dhz89    3/3       Running
+  jenkins-deployment-69fb95d575-mz6fp                 2/2       Running
+  jenkins-service-82wsp-deployment-74f9f78856-k5z5f   3/3       Running
   ```
-  If those pods do not show up after a few minutes, please check if all pods within the `istio-system` pods are in a running state. If that is not the case, there may have been a problem during the Istio installation. In that case we kindly ask you to clean your cluster and restart the installation, as described in the **Troubleshooting** section below
-- Channels
-- keptn help
+  If those pods do not show up after a few minutes, please check if all pods within the `istio-system` pods are in a running state: 
+  
+  ```console
+  $ kubectl get pods -n istio-system
+  cluster-local-gateway-775b6cbf4c-bxxx8    1/1       Running
+  istio-citadel-796c94878b-fhzf8            1/1       Running
+  istio-cleanup-secrets-nbdff               0/1       Completed
+  istio-egressgateway-864444d6ff-g7c6m      1/1       Running
+  istio-galley-6c68c5dbcf-fzdzb             1/1       Running
+  istio-ingressgateway-694576c7bb-w52j7     1/1       Running
+  istio-pilot-79f5f46dd5-c62bv              2/2       Running
+  istio-pilot-79f5f46dd5-wjwmf              2/2       Running
+  istio-pilot-79f5f46dd5-zgbwm              2/2       Running
+  istio-policy-5bd5578b94-nggnx             2/2       Running
+  istio-sidecar-injector-6d8f88c98f-mqrpj   1/1       Running
+  istio-telemetry-5598f86cd8-7s4t7          2/2       Running
+  istio-telemetry-5598f86cd8-bzfb5          2/2       Running
+  istio-telemetry-5598f86cd8-hxkhm          2/2       Running
+  istio-telemetry-5598f86cd8-pgstj          2/2       Running
+  istio-telemetry-5598f86cd8-wkh7g          2/2       Running
+  zipkin-6b4d5d66-jwqzk                     1/1       Running
+  ```
+
+  Next, please check the pods in the `knative-serving` namespace:
+
+  ```console
+  $ kubectl get pods -n knative-serving
+  activator-6f7d494f55-fthpr    2/2       Running
+  autoscaler-5cb4d56d69-qz7dh   2/2       Running
+  controller-6d65444c78-8wqb8   1/1       Running
+  webhook-55f88654fb-tq8ps      1/1       Running
+  ```
+
+  Next, check that all routes for the core services, as well as for the jenkins-service, pitometer-service, github-service and servicenow-service have been created:
+
+  ```console
+  $ kubectl get routes -n keptn
+  authenticator        10d
+  control              10d
+  event-broker         16m
+  event-broker-ext     10d
+  github-service       10d
+  jenkins-service      48m
+  pitometer-service    1d
+  servicenow-service   7d
+  ```
+
+  The channels have to be created as well:
+
+  ```console
+  $ kubectl get channels -n keptn
+  configuration-changed   10d
+  deployment-finished     10d
+  evaluation-done         10d
+  keptn-channel           10d
+  new-artefact            10d
+  problem                 10d
+  start-deployment        10d
+  start-evaluation        10d
+  start-tests             10d
+  tests-finished          10d
+  ```
+
+  If that is not the case, there may have been a problem during the installation. In that case we kindly ask you to clean your cluster and restart the installation, as described in the **Troubleshooting** section below.
 
 ## Uninstall
 - Execute `./uninstallKeptn.sh` and all keptn resource will be deleted
