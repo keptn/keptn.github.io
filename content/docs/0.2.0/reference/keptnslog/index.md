@@ -1,7 +1,7 @@
 ---
-title: Access the keptn's log
+title: keptn's log
 description: The following description explains how to access the keptn's log using Kibana.
-weight: 21
+weight: 20
 keywords: [log]
 ---
 
