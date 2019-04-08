@@ -100,7 +100,7 @@ Since the carts service needs a mongo database, a second app needs to be onboard
 
 ## Fork carts example into your GitHub organization
 
-1. Go to `https://github.com/keptn-sockshop/carts` and click on the **Fork** button on the top right corner.
+1. Go to https://github.com/keptn-sockshop/carts and click on the **Fork** button on the top right corner.
 
 1. Select the Github organization you use for keptn.
 
