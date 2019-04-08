@@ -14,6 +14,106 @@ When developing an application, sooner or later you need to update a service in 
 
 To illustrate the benefit this use case addresses, you will create a second version of the carts service. Then, this version will be deployed to the production environment in a dark-launch manner. To route traffic to this new service version, the configuration of a virtual service will be changed by setting weights for the routes. In other words, this configuration change defines how much traffic is routed to the old and to the new version of the carts service.
 
+## Set up Monitoring for the carts service
+Since this use case relies on the concept of quality gates, you will need to set up monitoring for your carts service.
+This can be done by using *Dynatrace*, or the open source monitoring solution *Prometheus*:
+
+### Monitoring with Prometheus
+As Pitometer allows developers to add their own sources for evaluating a service's performance it is possible to use any monitoring solution to evaluate your performance tests. For this example, you can also use Prometheus to monitor and evaluate your service's deployment. To do so, please set up Prometheus monitoring for the carts service by following these steps:
+
+  - In the examples folder you have cloned during [Onboarding a Service](../onboard-carts-service/index.md), navigate to the directory `monitoring/prometheus`. In this directory, you will find a script called `deployPrometheus.sh`. This script will deploy Prometheus in the namespace `monitoring` and set up scrape job configs for monitoring the carts service in the `dev`, `staging`and `production` namespace. Execute that script by calling:
+
+  ```console
+  $ ./deployPrometheus
+  namespace "monitoring" created
+  configmap "prometheus-server-conf" created
+  clusterrole.rbac.authorization.k8s.io "prometheus" created
+  clusterrolebinding.rbac.authorization.k8s.io "prometheus" created
+  deployment.extensions "prometheus-deployment" created
+  service "prometheus-service" created
+  ```
+
+To verify the Prometheus installation, you can browse to the Prometheus web interface:
+
+- First, enable port-forwarding for the `prometheus-service`:
+
+```console
+kubectl port-forward svc/prometheus-service 8080 -n monitoring
+```
+
+- Afterwards, open the URL [localhost:8080/targets](http://localhost:8080/targets) in your browser. Here you should see three targets for the carts service:
+
+        {{< popup_image
+      link="./assets/prometheus-targets.png"
+      caption="Prometheus Targets">}}
+
+- To set up the quality gates for the carts service, please open the file `perfspec/perfspec.json` in the repository of your carts service, and insert the following content:
+
+  ```json
+  {
+    "spec_version": "1.0",
+    "indicators": [
+      {
+            "id":"request_latency_seconds",
+            "source":"Prometheus",
+            "query":"rate(requests_latency_seconds_sum{instance='carts.ENV_PLACEHOLDER.svc.cluster.local:80',job='carts'}[3m])/rate(requests_latency_seconds_count{instance='carts.ENV_PLACEHOLDER.svc.cluster.local:80',job='carts'}[3m])",
+            "grading":{
+                "type":"Threshold",
+                "thresholds":{
+                  "upperSevere":1.0
+                },
+                "metricScore":100
+            }
+          }
+    ],
+    "objectives": {
+      "pass": 90,
+      "warning": 75
+    }
+  }
+  ```
+
+This quality gate will check that the average response time of the service is under 1s. If the response time exceeds this threshold, the performance evaluation will be marked  as failed, the service deployment will be rejected and the requests to the service will be directed to the previous working deployment of the service.
+
+### Monitoring with Dynatrace
+To monitor your service with Dynatrace, please follow the [Dynatrace setup instructions](https://keptn.sh/docs/0.2.0/usecases/setup-dynatrace/).
+This will deploy the OneAgent in your cluster, and set up rules for automatic tagging of your services.
+
+After the OneAgent has been deployed, you can use Dynatrace as a source for your deployment's quality gates. The quality gates can be specified in the file `perfscpec/perfspec.json` in the repository of your carts service. In this example we are going to evaluate the average response time of the newly deployed service version after the performance tests in the staging environment have been executed. To set up this metric, please open the `perfspec/perfspec.json` file, and insert the following content:
+
+  ```json
+  {
+    "spec_version": "1.0",
+    "indicators": [
+      {
+        "id": "ResponseTime_Backend",
+        "source": "Dynatrace",
+        "query": {
+          "timeseriesId": "com.dynatrace.builtin:service.responsetime",
+          "aggregation": "AVG",
+          "startTimestamp": "",
+          "endTimestamp": ""
+        },
+        "grading": {
+          "type": "Threshold",
+          "thresholds": {
+            "upperSevere": 1000000,
+            "upperWarning": 800000
+          },
+          "metricScore": 100
+        }
+      }
+    ],
+    "objectives": {
+      "pass": 90,
+      "warning": 75
+    }
+  }
+  ```
+
+This quality gate will check that the average response time of the service is under 1s. If the response time exceeds this threshold, the performance evaluation will be marked  as failed, the service deployment will be rejected and the requests to the service will be directed to the previous working deployment of the service.
+
+
 ## Deploy carts v1 and clone the forked repository
 
 1. Complete the use case [Onboarding a Service](../onboard-carts-service/index.md).
@@ -101,10 +201,14 @@ In this step, you will configure traffic routing in Istio to redirect traffic to
 1. Watch keptn deploying the new artifact by following the pipelines in Jenkins.
   * Phase 1: Deploying, testing and evaluating the test in the `dev` stage:
       * **deploy**: The new artifact gets deployed to dev.
-      * **test_evaluate**: Runs a basic health check and functional check in dev. Furthermore, it does a test validation and sends a new artifact event for staging.
+      * **run_tests**: Runs a basic health check and functional check in dev.
+      * **Pitometer test evaluation**: Whenever the test pipeline has been executed, an event of the type `sh.keptn.events.tests-finished` is generated. This event will be picked up by the Pitometer service, which is responsible for evaluating test runs, based on the quality gates specified in the `perfspec.json` file. Since in the dev environment, only functional tests are executed, the Pitometer service will mark the test run as successful (functional failures would have led the **run-tests** pipeline to fail).
+      * **evaluation_done**: This pipeline will promete the artifact to the next stage, i.e., staging.
   * Phase 2: Deploying, testing and evaluating the test in the `staging` stage:
       * **deploy**: The new artifact gets deployed to staging using a blue/green deployment strategy.
-      * **test_evaluate**: Runs a performance test in staging. This pipline should return **unstable** because the quality gate is not passed. This automatically re-routes traffic to the previous colored blue or green version in staging. 
+      * **run_tests**: Runs a performance test in staging..
+      * **Pitometer test evaluation**: This time, the quality gates of the service will be evaluated, because we are using the performance-tests strategy for this stage. This means that the Pitometer service will fetch the metrics for the carts service from either Dynatrace or Prometheus, depending on how you set up the monitoring for you service earlier. Based on the results of that evaluation, the Pitometer service will mark the test run execution as successful or failed.
+      * **evaluation_done**:  In case of a failed performance test run, this pipeline automatically re-routes traffic to the previous colored blue or green version in staging. If the test has been successful, the artefact will be promoted to production. In this case, the newly deployed version of the carts service will be too slow and hence not be promoted to production.
       
   Outcome: This slow version v2 is **not** promoted to the production namespace because of the active quality gate in place.
 
