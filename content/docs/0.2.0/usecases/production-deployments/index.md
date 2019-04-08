@@ -18,7 +18,7 @@ To illustrate the benefit this use case addresses, you will create a second vers
 Since this use case relies on the concept of quality gates, you will need to set up monitoring for your carts service.
 In this use case we will be using both the open source monitoring solution *Prometheus* as well as *Dynatrace*.
 
-### Set up Prometheus
+### Option 1: Set up Prometheus
 As [Pitometer](https://github.com/keptn/pitometer) allows developers to add their own sources for evaluating a service's performance it is possible to use any monitoring solution to evaluate your quality gates. For this example, we will use Prometheus to monitor and evaluate the service:
 
   - In the examples folder you have cloned during [onboarding the carts service](../onboard-carts-service/), navigate to the directory `monitoring/prometheus`. In this directory, you will find a script called `deployPrometheus.sh`. This script will deploy Prometheus in the namespace `monitoring` and set up scrape job configurations for monitoring the carts service in the `dev`, `staging` and `production` namespace. Execute that script by calling:
@@ -75,7 +75,7 @@ kubectl port-forward svc/prometheus-service 8080 -n monitoring
 
 This quality gate will check that the average response time of the service is under 1&nbsp;second. If the response time exceeds this threshold, the performance evaluation will be marked as failed, the service deployment will be rejected and the requests to the service will be directed to the previous working deployment of the service.
 
-### Set up Dynatrace
+### Option 2: Set up Dynatrace
 To monitor your service with Dynatrace, please follow the [Dynatrace setup instructions](https://keptn.sh/docs/0.2.0/usecases/setup-dynatrace/).
 This will deploy the OneAgent in your cluster, and set up rules for automatic tagging of your services.
 
@@ -166,7 +166,7 @@ Next, you will change the version number of the carts service to see the effect 
     * open the file `version` and change `0.6.0` to `0.6.1`.
     * open the file `src/main/resources/application.properties` and change the following properties:
         
-    | Old values        | New Values           |
+    | Old values        | New values           |
     |----------------   |----------------      |
     | `version=v1`      | `version=v2`         |
     | `delayInMillis=0` | `delayInMillis=1000` |
@@ -230,7 +230,7 @@ Next, you will change the `carts` service to make it pass the quality gate.
     * open the file `version` and change `0.6.1` to `0.6.2`.
     * open the file `src/main/resources/application.properties` and change change the following properties:
         
-    | Old values           | New Values        |
+    | Old values           | New values        |
     |----------------      |----------------   |
     | `version=v2`         | `version=v3`      |
     | `delayInMillis=1000` | `delayInMillis=0` |
