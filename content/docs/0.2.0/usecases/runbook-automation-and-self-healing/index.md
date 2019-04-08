@@ -110,7 +110,7 @@ In order to create incidents in ServiceNow and to trigger workflows, an integrat
 
 1. Login to your Dynatrace tenant.
 1. Navigate to **Settings -> Integration -> Problem Notifications**
-1. Click on **Set up notifications** and select **Custom Notification**
+1. Click on **Set up notifications** and select **Custom integration**
 1. Choose a name for your integration, e.g., _keptn integration_
 1. In the webhook URL, paste the value of your keptn external eventbroker endpoint appended by `/dynatrace`, e.g., `https://event-broker-ext.keptn.XX.XXX.XXX.XX.xip.io/dynatrace`
     - Note: retrieve the base URL by running:
