@@ -131,12 +131,12 @@ table p:last-of-type {
 }
 
 th {
-    color: $textBrandColor;
+    color: #ffffff;
     background-color: $secondBrandColor;
     font-weight: $tableHeaderWeight;
 
     code {
-        color: $textBrandColor;
+        color: #ffffff;
     }
 }
 
@@ -277,7 +277,7 @@ div.toolbar {
     position: relative;
 
     button {
-        font-size: .8em;
+        font-size: 12px;
         padding: 0 .5em;
         border-radius: .3em;
         background-color: $secondBrandColor;
@@ -288,34 +288,38 @@ div.toolbar {
         position: absolute;
         top: 3px;
         z-index: 5;
-        transition: opacity .4s ease-in-out;
-        opacity: 0;
+        opacity: 0.2;
+
+        &:hover {
+            opacity: 1;
+        }
     }
 
-    button.toolbar-show {
-        transition: opacity 1.1s ease-in-out;
-        opacity: 1;
-    }
+
 
     button.copy {
-        right: 2.2rem;
-        width: 3rem;
+        right: 1.5rem;
+        width: 22px;
+
+
     }
 
     button.download {
-        right: 5.5rem;
+        right: 3.1rem;
+        width: 22px;
     }
 
     button.print {
-        right: 7.4rem;
+       right: 4.7rem;
+       width: 22px;
     }
 
     svg {
         width: .8em;
         height: .8em;
         display: inline;
-        fill: $textBrandColor;
-        stroke: $textBrandColor;
+        fill: #ffffff;
+        stroke: #ffffff;
     }
 }
 
