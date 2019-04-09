@@ -231,3 +231,7 @@ $ keptn onboard service --project=sockshop --values=values.yaml --deployment=dep
 
 To start onboarding a service, please see the [Use Case section](../usecases/onboard-carts-service).
 
+
+## keptn version
+
+Prints the version of the keptn CLI.
