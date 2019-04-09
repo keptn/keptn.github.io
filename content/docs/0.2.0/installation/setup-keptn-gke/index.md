@@ -8,9 +8,9 @@ keywords: setup
 
 ## Prerequisites
 - GKE cluster
-  - master version >= `1.10.11`
+  - master version >= `1.10.11` (tested version: `1.11.7-gke.12`)
   - one `n1-standard-8` node
-  - image type `ubuntu` or `cos`
+  - image type `ubuntu` or `cos` (if you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../usecases/setup-dynatrace/))
 - GitHub
   - Organization for configuration repositories
   - Personal access token for a user with access to said organization
