@@ -1,7 +1,7 @@
 ---
 title: Dynatrace Setup
 description: Instructions for monitoring your keptn cluster with Dynatrace. 
-weight: 16
+weight: 15
 keywords: [dynatrace, install]
 ---
 
