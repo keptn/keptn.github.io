@@ -56,7 +56,7 @@ kubectl port-forward svc/prometheus-service 8080 -n monitoring
       {
             "id":"request_latency_seconds",
             "source":"Prometheus",
-            "query":"rate(requests_latency_seconds_sum{instance='carts.ENV_PLACEHOLDER.svc.cluster.local:80',job='carts'}[3m])/rate(requests_latency_seconds_count{instance='carts.ENV_PLACEHOLDER.svc.cluster.local:80',job='carts'}[3m])",
+            "query":"rate(requests_latency_seconds_sum{job='carts-$ENVIRONMENT'}[$DURATION_MINUTESm])/rate(requests_latency_seconds_count{job='carts-$ENVIRONMENT'}[$DURATION_MINUTESm])",
             "grading":{
                 "type":"Threshold",
                 "thresholds":{
