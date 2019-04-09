@@ -29,10 +29,39 @@ keywords: setup
     $ ./defineCredentials.sh
     ```
 
-- Optional: Please note that if you intend to use Dynatrace monitoring for some use cases, it is needed to execute the following script to ensure all components are set up correctly. Dynatrace is optional for the [deployments with quality gates](../../usecases/deployments-with-quality-gates) but needed as a prerequisite for the [runbook automation and self-healing](../../usecases/runbook-automation-and-self-healing) use case.
-    ```console
-    $ ./defineDynatraceCredentials.sh
-    ```
+- _Optional:_ Please note that if you intend to use Dynatrace monitoring for some use cases, it is needed to execute the following script to ensure all components are set up correctly. Dynatrace is optional for the [deployments with quality gates](../../usecases/deployments-with-quality-gates) but needed as a prerequisite for the [runbook automation and self-healing](../../usecases/runbook-automation-and-self-healing) use case.
+
+
+    1. Get your Dynatrace Tenant
+
+        If you don't have a Dynatrace tenant yet, sign up for a [free trial](https://www.dynatrace.com/trial/) or a [developer account](https://www.dynatrace.com/developer/).
+
+    1. Create a Dynatrace API Token
+
+        Log in to your Dynatrace tenant, and go to **Settings > Integration > Dynatrace API**. Then, create a new API Token with the following permissions:
+
+    
+        - Access problem and event feed, metrics and topology
+        - Access logs
+        - Configure maintenance windows
+        - Read configuration
+        - Write configuration
+        - Capture request data
+        - Real user monitoring JavaScript tag management
+
+        {{< popup_image
+        link="./assets/dt_api_token.png"
+        caption="Dynatrace API token"
+        width="400px">}}
+
+    1. Create a Dynatrace PaaS Token
+    
+        In your Dynatrace tenant, go to **Settings > Integration > Platfrom as a Service**, and create a new PaaS Token.
+    
+    1. Start the following script:
+        ```console
+        $ ./defineDynatraceCredentials.sh
+        ```
     <!--
     This script will ask you for your **Dynatrace Tenant ID**, as well as the **Dynatrace API Token** and the **Dynatrace PaaS Token** you created earlier. When the script is finished, you should see a file called `creds_dt.json` with those values in the `install/scripts` directory. -->
 
