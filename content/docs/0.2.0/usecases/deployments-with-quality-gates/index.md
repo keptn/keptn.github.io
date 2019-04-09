@@ -1,7 +1,7 @@
 ---
-title: Production Deployments
-description: Gives an overview of production deployments, deployment strategies, and depicts those using Istio on Kubernetes to blue/green a new service version.
-weight: 20
+title: Deployments with Quality Gates
+description: Gives an overview of deployments using quality gates and blue/green deployments of a new service version.
+weight: 25
 keywords: []
 aliases:
 ---
