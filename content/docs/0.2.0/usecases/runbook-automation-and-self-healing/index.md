@@ -16,10 +16,11 @@ Configuration changes during runtime are sometimes necessary to increase flexibi
 
 - ServiceNow instance or [free ServiceNow developer instance](https://developer.servicenow.com)
 - Complete [setup of Dynatrace](../setup-dynatrace/) in your keptn installation
+- Complete [onboarding a service](../onboard-carts-service) use case
 - Clone the GitHub repository with the necessary files for the use case:
     
     ```
-    git clone --branch keptn-v0.2.x https://github.com/keptn/servicenow-service.git
+    git clone --branch 0.1.0 https://github.com/keptn/servicenow-service.git
     cd servicenow-service
     ```
 
