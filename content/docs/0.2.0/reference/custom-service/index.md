@@ -1,16 +1,16 @@
 ---
 title: Write your own Keptn service
 description: Shows you how to implement your own keptn service and listen for certain events.
-weight: 20
+weight: 30
 keywords: [service, custom]
 aliases:
 ---
 
 Shows you how to implement your own keptn service and listen for certain events.
 
-## About this use case
+## About
 
-The goal of this use case is to describe how you can add additional functionality to your keptn installation by implementing your own services. 
+The goal of this section is to describe how you can add additional functionality to your keptn installation by implementing your own services. 
 You can react to certain events that occur during your CD pipeline runs, and, integrate additional tools into your pipeline by accessing their REST interfaces with your custom services. At the moment the events you can subscribe to include:
 
 - sh.keptn.events.new-artefact
