@@ -1,7 +1,7 @@
 ---
-title: Use the keptn CLI
+title: keptn CLI
 description: The following description explains how to use the keptn CLI and connect it to your keptn server.
-weight: 21
+weight: 10
 keywords: [cli, setup]
 ---
 

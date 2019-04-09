@@ -16,9 +16,9 @@ To illustrate the scenario this use case addresses, keptn relies on two services
 
 **github-service**: 
   
-  * Creating a project
-  * Onboarding a service
-  * Listening to a new artefact event to update the reference to the new artifact in the service configuration. 
+  * Creating a project: When a new project is created, the github service will create a new repository within your configured GitHub organization. This repository will contain the complete configuration of your application, where the configuration for each stage (e.g., the image tags to be used for each service within your application) is located in a separate branch. For the configuration of a keptn-managed app we use [Helm Charts](https://helm.sh/).
+  * Onboarding a service: When a new service is onboarded to a project by providing the github service with a manifest file containing the specification for that service, it will be added as a new entry in the `values.yaml` file of your application's helm chart. Further, depending on the deployment strategy of each stage, the github service will also generate a set of Istio configurations (i.e., a Gateway, DestinationRules and VirtualServices) to facilitate blue/green deployments. You can read more about this concept at the [Istio documentation](https://istio.io/docs/concepts/traffic-management/#rule-configuration)
+  * Listening to a new artefact event to update the reference to the new artifact in the service configuration. This means, that when a new artefact is pushed to the registry with a new tag, the github service will update the configuration of the application such that this new tag is being used by the respective service.
 
 **jenkins-service**:
   
@@ -42,18 +42,18 @@ To illustrate the scenario this use case addresses, keptn relies on two services
 
 ## Authenticate and configure keptn
 
-**Please note:** This step can be skipped if you already followed the [keptn auth](../../cli/setup-cli) instructions.
+**Please note:** This step can be skipped if you already followed the [keptn auth](https://keptn.sh/docs/0.2.0/reference/cli/#keptn-auth) instructions.
 
-1. Authentication against the keptn installation using the `keptn auth` command:
+1. Authentication against the keptn installation using the `keptn auth` command.
 
     ```console
-    $ keptn auth --endpoint=https://keptn-endpoint --api-token=***
+    $ keptn auth --endpoint=https://<KEPTN_ENDPOINT> --api-token=<KEPTN_API_TOKEN>
     ```
 
 1. Configure the used GitHub organization, user, and personal access token using the `keptn configure` command:
   
     ```console
-    $ keptn configure --org=keptn-github-org --user=keptn-github-user --token=***
+    $ keptn configure --org=<YOUR_GITHUB_ORG> --user=<YOUR_GITHUB_USER> --token=<YOUR_GITHUB_TOKEN>
     ```
 
 ## Create project sockshop
@@ -100,7 +100,7 @@ Since the carts service needs a mongo database, a second app needs to be onboard
 
 ## Fork carts example into your GitHub organization
 
-1. Go to `https://github.com/keptn-sockshop/carts` and click on the **Fork** button on the top right corner.
+1. Go to https://github.com/keptn-sockshop/carts and click on the **Fork** button on the top right corner.
 
 1. Select the Github organization you use for keptn.
 
