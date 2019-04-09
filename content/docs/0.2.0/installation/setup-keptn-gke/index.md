@@ -8,9 +8,9 @@ keywords: setup
 
 ## Prerequisites
 - GKE cluster
-  - master version >= `1.10.11`
+  - master version >= `1.10.11` (tested version: `1.11.7-gke.12`)
   - one `n1-standard-8` node
-  - image type `ubuntu` or `cos`
+  - image type `ubuntu` or `cos` (if you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../usecases/setup-dynatrace/))
 - GitHub
   - Organization for configuration repositories
   - Personal access token for a user with access to said organization
@@ -18,16 +18,53 @@ keywords: setup
   - [jq](https://stedolan.github.io/jq/), [yq](https://github.com/mikefarah/yq), [git](https://git-scm.com/), [gcloud](https://cloud.google.com/sdk/gcloud/), [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/), [helm 2.12.3](https://helm.sh/)
 
 ## Install keptn
-- Clone the GitHub repository of the latest release branch
+- Clone the GitHub repository of the latest release branch.
     ```console
     $ git clone --branch prerelease-0.2.x https://github.com/keptn/keptn
     ```
 
-- Execute `./defineCredentials.sh` and provide the needed information
+- Execute `./defineCredentials.sh` and provide the needed information.
     ```console
     $ cd keptn/install/scripts
     $ ./defineCredentials.sh
     ```
+
+- _Optional:_ Please note that if you intend to use Dynatrace monitoring for some use cases, it is needed to execute the following script to ensure all components are set up correctly. Dynatrace is optional for the [deployments with quality gates](../../usecases/deployments-with-quality-gates) but needed as a prerequisite for the [runbook automation and self-healing](../../usecases/runbook-automation-and-self-healing) use case.
+
+
+    1. Get your Dynatrace Tenant
+
+        If you don't have a Dynatrace tenant yet, sign up for a [free trial](https://www.dynatrace.com/trial/) or a [developer account](https://www.dynatrace.com/developer/).
+
+    1. Create a Dynatrace API Token
+
+        Log in to your Dynatrace tenant, and go to **Settings > Integration > Dynatrace API**. Then, create a new API Token with the following permissions:
+
+    
+        - Access problem and event feed, metrics and topology
+        - Access logs
+        - Configure maintenance windows
+        - Read configuration
+        - Write configuration
+        - Capture request data
+        - Real user monitoring JavaScript tag management
+
+        {{< popup_image
+        link="./assets/dt_api_token.png"
+        caption="Dynatrace API token"
+        width="400px">}}
+
+    1. Create a Dynatrace PaaS Token
+    
+        In your Dynatrace tenant, go to **Settings > Integration > Platfrom as a Service**, and create a new PaaS Token.
+    
+    1. Start the following script:
+        ```console
+        $ ./defineDynatraceCredentials.sh
+        ```
+    <!--
+    This script will ask you for your **Dynatrace Tenant ID**, as well as the **Dynatrace API Token** and the **Dynatrace PaaS Token** you created earlier. When the script is finished, you should see a file called `creds_dt.json` with those values in the `install/scripts` directory. -->
+
 
 - Execute `./installKeptn.sh`: this script sets up all necessary component for keptn 0.2 (~10-15mins)
     ```console
@@ -60,7 +97,7 @@ This will install the complete infrastructure necessary to run keptn. This inclu
 ## Install keptn CLI
 Every release of keptn provides binaries for the keptn CLI. These binaries are available for Linux, macOS, and Windows.
 
-- Download your [desired version](https://github.com/keptn/keptn/releases/)
+- Download the version for your operatoring system from https://github.com/keptn/keptn/releases/tag/0.2.0
 - Unpack the download
 - Find the `keptn` binary in the unpacked directory.
   - Linux / macOS
@@ -89,7 +126,7 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
   <br><br>**Note:** Please change these credentials right after the first login!<br><br>
   Navigate to **Jenkins** > **Manage Jenkins** > **Configure System**, scroll to the environment variables and verify that the variables are set correctly.
   {{< popup_image link="./assets/jenkins-env-vars.png" caption="Jenkins environment variables">}}
-  Due to a [known issue](https://issues.jenkins-ci.org/browse/JENKINS-14880) in Jenkins, it is necessary to click **Save** although nothing is changed in this verification step.
+  **Important:** Due to a [known issue](https://issues.jenkins-ci.org/browse/JENKINS-14880) in Jenkins, it is necessary to click **Save** although nothing is changed in this verification step.
 
 - To verify your installation, retrieve the pods runnning in the `keptn` namespace.
   ```console
@@ -181,7 +218,7 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
 
   ```console
   $ cd keptn
-  $ ./scripts/uninstallKeptn.sh
+  $ ./install/scripts/uninstallKeptn.sh
   ```
 - To verify the cleanup, retrieve the list of namespaces in your cluster, and ensure that the `keptn` namespace is not included in the output of the following command:
 

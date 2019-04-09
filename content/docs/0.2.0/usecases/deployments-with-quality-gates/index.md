@@ -1,25 +1,40 @@
 ---
-title: Production Deployments
-description: Gives an overview of production deployments, deployment strategies, and depicts those using Istio on Kubernetes to blue/green a new service version.
-weight: 20
+title: Deployments with Quality Gates
+description: Gives an overview of deployments using quality gates and blue/green deployments of a new service version.
+weight: 25
 keywords: []
 aliases:
 ---
 
-This use case gives an overview of production deployments, deployment strategies, and depicts those using Istio on Kubernetes to blue/green a new service version.
+This use case gives an overview of deployments using quality gates and blue/green deployments of a new service version.
 
 ## About this use case
 
-When developing an application, sooner or later you need to update a service in a production environment. To conduct this in a controlled manner and without impacting end-user experience, adequate deployment strategies must be in place. For example, blue-green deployments are well-known strategies to rollout a new service version by also keeping the previous service version available if something goes wrong.
+When developing an application, sooner or later you need to update a service in a production environment. To conduct this in a controlled manner and without impacting end-user experience, the quality of the new service has to be ensured and adequate deployment strategies must be in place. For example, blue-green deployments are well-known strategies to rollout a new service version by also keeping the previous service version available if something goes wrong.
 
-To illustrate the benefit this use case addresses, you will create a second version of the carts service. Then, this version will be deployed to the production environment by releasing it as the blue or green version next to the previous version of the service. To route traffic to this new service version, the configuration of a virtual service will be changed by setting weights for the routes between blue and green.
+To illustrate the benefit this use case addresses, you will create a second version of the carts service. Then, this version will be pushed through the different stages and has to pass quality gates. To increase resilience, the service is deployed to the production environment by releasing it as the blue or green version next to the previous version of the service. To route traffic to this new service version, the configuration of a virtual service will be changed by setting weights for the routes between blue and green.
+
+## Prerequisites
+
+1. In order to start this use case, please deploy the `carts` service by completing the use case [Onboarding a Service](../onboard-carts-service/).
+
+1. Clone the forked `carts` service to your local machine. Please note that you have to use your own GitHub organization.
+
+    ```console
+    $ cd ~
+    $ git clone https://github.com/your-github-org/carts.git
+    $ cd carts
+    ```
 
 ## Set up Monitoring for the carts service
 Since this use case relies on the concept of quality gates, you will need to set up monitoring for your carts service.
-In this use case we will be using both the open source monitoring solution *Prometheus* as well as *Dynatrace*.
+In this use case we will be using either the open source monitoring solution *Prometheus* as well as *Dynatrace*.
+As [Pitometer](https://github.com/keptn/pitometer) allows developers to add their own sources for evaluating a service's performance it is possible to use any monitoring solution to evaluate your quality gates. 
 
 ### Option 1: Set up Prometheus
-As [Pitometer](https://github.com/keptn/pitometer) allows developers to add their own sources for evaluating a service's performance it is possible to use any monitoring solution to evaluate your quality gates. For this example, we will use Prometheus to monitor and evaluate the service:
+<details><summary>Expand instructions</summary>
+<p>
+For this example, we will use Prometheus to monitor and evaluate the service:
 
   - In the examples folder you have cloned during [onboarding the carts service](../onboard-carts-service/), navigate to the directory `monitoring/prometheus`. In this directory, you will find a script called `deployPrometheus.sh`. This script will deploy Prometheus in the namespace `monitoring` and set up scrape job configurations for monitoring the carts service in the `dev`, `staging` and `production` namespace. Execute that script by calling:
 
@@ -47,84 +62,51 @@ kubectl port-forward svc/prometheus-service 8080 -n monitoring
       link="./assets/prometheus-targets.png"
       caption="Prometheus Targets">}}
 
-- To set up the quality gates for the carts service, please open the file `perfspec/perfspec.json` in the repository of your carts service, and insert the following content:
+- To set up the quality gates for the carts service, please navigate to the `perfspec` folder of your carts service. This file contains the quality gate that will be evaluated against Prometheus. 
 
-  ```json
-  {
-    "spec_version": "1.0",
-    "indicators": [
-      {
-            "id":"request_latency_seconds",
-            "source":"Prometheus",
-            "query":"rate(requests_latency_seconds_sum{job='carts-$ENVIRONMENT'}[$DURATION_MINUTESm])/rate(requests_latency_seconds_count{job='carts-$ENVIRONMENT'}[$DURATION_MINUTESm])",
-            "grading":{
-                "type":"Threshold",
-                "thresholds":{
-                  "upperSevere":1.0
-                },
-                "metricScore":100
-            }
-          }
-    ],
-    "objectives": {
-      "pass": 90,
-      "warning": 75
-    }
-  }
-  ```
+    This quality gate will check that the average response time of the service is under 1&nbsp;second. If the response time exceeds this threshold, the performance evaluation will be marked as failed, the service deployment will be rejected and the requests to the service will be directed to the previous working deployment of the service. The evaluation is done with the [Pitometer](https://github.com/keptn/pitometer) component that is installed along with keptn.
 
-This quality gate will check that the average response time of the service is under 1&nbsp;second. If the response time exceeds this threshold, the performance evaluation will be marked as failed, the service deployment will be rejected and the requests to the service will be directed to the previous working deployment of the service.
+    1. Rename the file `perfspec_prometheus.json` to `perfspec.json`. 
+    1. Commit and push the file.
+
+      ```console
+      $ git add .
+      $ git commit -m "use prometheus perfspec"
+      $ git push
+      ```
+
+
+</p>
+</details>
 
 ### Option 2: Set up Dynatrace
-To monitor your service with Dynatrace, please follow the [Dynatrace setup instructions](https://keptn.sh/docs/0.2.0/usecases/setup-dynatrace/).
+<details><summary>Expand instructions</summary>
+<p>
+For this example, we will use Dynatrace to monitor and evaluate the service:
+
+- To monitor your service with Dynatrace, please follow the [Dynatrace setup instructions](https://keptn.sh/docs/0.2.0/usecases/setup-dynatrace/).
 This will deploy the OneAgent in your cluster, and set up rules for automatic tagging of your services.
 
-After the OneAgent has been deployed, you can use Dynatrace as a source for your deployment's quality gates. The quality gates can be specified in the file `perfscpec/perfspec.json` in the repository of your carts service. In this example we are going to evaluate the average response time of the newly deployed service version after the performance tests in the staging environment have been executed. To set up this metric, please open the `perfspec/perfspec.json` file, and insert the following content:
+- After the OneAgent has been deployed, you can use Dynatrace as a source for your deployment's quality gates. In this example we are going to evaluate the average response time of the newly deployed service version after the performance tests in the staging environment have been executed.
 
-  ```json
-  {
-    "spec_version": "1.0",
-    "indicators": [
-      {
-        "id": "ResponseTime_Backend",
-        "source": "Dynatrace",
-        "query": {
-          "timeseriesId": "com.dynatrace.builtin:service.responsetime",
-          "aggregation": "AVG",
-          "startTimestamp": "",
-          "endTimestamp": ""
-        },
-        "grading": {
-          "type": "Threshold",
-          "thresholds": {
-            "upperSevere": 1000000,
-            "upperWarning": 800000
-          },
-          "metricScore": 100
-        }
-      }
-    ],
-    "objectives": {
-      "pass": 90,
-      "warning": 75
-    }
-  }
-  ```
+- To set up the quality gates for the carts service, please navigate to the `perfspec` folder of your carts service. This file contains the quality gate that will be evaluated against Dynatrace. 
 
-This quality gate will check that the average response time of the service is under 1&nbsp;second. If the response time exceeds this threshold, the performance evaluation will be marked as failed, the service deployment will be rejected and the requests to the service will be directed to the previous working deployment of the service.
+    This quality gate will check that the average response time of the service is under 1&nbsp;second. If the response time exceeds this threshold, the performance evaluation will be marked as failed, the service deployment will be rejected and the requests to the service will be directed to the previous working deployment of the service.
+
+    1. Rename the file `perfspec_dynatrace.json` to `perfspec.json`. 
+    1. Commit and push the file.
+
+      ```console
+      $ git add .
+      $ git commit -m "use dyntrace perfspec"
+      $ git push
+      ```
 
 
-## Deploy carts v1 and clone the forked repository
 
-1. In order to start this use case, please deploy the `carts` service by completing the use case [Onboarding a Service](../onboard-carts-service/).
+</p>
+</details>
 
-1. Clone the forked carts service to your local machine.
-
-    ```console
-    $ cd ~
-    $ git clone https://github.com/your-github-org/carts.git
-    $ cd carts
-    ```
 
 ## Access service via ingress gateway
 
@@ -200,7 +182,7 @@ In this step, you will configure traffic routing in Istio to redirect traffic to
 1. Finally, click on *Commit changes*.
 --> 
 
-## Deploy carts v2 to production
+## Try to deploy carts v2 to production
 
 1. Trigger the CI pipeline for the `carts` service to create a new version of the artifact:
   * Use a browser to open Jenkins with the url `jenkins.keptn.EXTERNAL-IP.xip.io` and login using the credentials set in the [Onboarding a Service](../onboard-carts-service/#add-ci-pipeline-to-jenkins) use case.
@@ -245,7 +227,7 @@ Next, you will change the `carts` service to make it pass the quality gate.
     $ git push
     ```
 
-## Deploy carts v3 to production and verify the result
+## Deploy carts v3 to production
 
 1. Trigger the CI pipeline for the `carts` service to create a new artifact.
 
