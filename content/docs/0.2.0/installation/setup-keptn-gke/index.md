@@ -71,7 +71,13 @@ keywords: setup
     $ ./installKeptn.sh
     ```
 
-This will install the complete infrastructure necessary to run keptn. This includes:
+    Please note that this error message can be ignored:
+    ```console
+    Error from server (InternalError): error when creating "https://github.com/knative/eventing/releases/download/v0.4.0/release.yaml": Internal error occurred: failed calling admission webhook "webhook.eventing.knative.dev": Post https://webhook.knative-eventing.svc:443/?timeout=30s: no endpoints available for service "webhook"
+    Error from server (InternalError): error when creating "https://github.com/knative/eventing/releases/download/v0.4.0/release.yaml": Internal error occurred: failed calling admission webhook "webhook.eventing.knative.dev": Post https://webhook.knative-eventing.svc:443/?timeout=30s: no endpoints available for service "webhook"
+    ```
+
+The script will install the complete infrastructure necessary to run keptn. This includes:
 
 - Istio
 - Knative
