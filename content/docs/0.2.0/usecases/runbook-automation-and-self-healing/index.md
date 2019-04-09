@@ -16,6 +16,7 @@ Configuration changes during runtime are sometimes necessary to increase flexibi
 
 - ServiceNow instance or [free ServiceNow developer instance](https://developer.servicenow.com)
 - Complete [setup of Dynatrace](../setup-dynatrace/) in your keptn installation
+- Complete [onboarding a service](../onboard-carts-service) use case
 - Clone the GitHub repository with the necessary files for the use case:
     
     ```
