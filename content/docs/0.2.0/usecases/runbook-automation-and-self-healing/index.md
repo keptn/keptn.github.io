@@ -47,7 +47,7 @@ metadata:
   ...
 ```
 
-Additionally we verify that the enviroment variables are set (execute line by line)
+Additionally we verify that the enviroment variables are set (execute line by line):
 ```
 export DT_TENANT_ID=$(kubectl get secret dynatrace -n keptn -o=yaml | yq - r data.DT_TENANT_ID | base64 --decode)
 export DT_API_TOKEN=$(kubectl get secret dynatrace -n keptn -o=yaml | yq - r data.DT_API_TOKEN | base64 --decode)
