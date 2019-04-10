@@ -17,14 +17,14 @@ To illustrate the scenario this use case addresses, keptn relies on two services
 **github-service**: 
   
   * Creating a project: When a new project is created, the github service will create a new repository within your configured GitHub organization. This repository will contain the complete configuration of your application, where the configuration for each stage (e.g., the image tags to be used for each service within your application) is located in a separate branch. For the configuration of a keptn-managed app we use [Helm Charts](https://helm.sh/).
-  * Onboarding a service: When a new service is onboarded to a project by providing the github service with a manifest file containing the specification for that service, it will be added as a new entry in the `values.yaml` file of your application's helm chart. Further, depending on the deployment strategy of each stage, the github service will also generate a set of Istio configurations (i.e., a Gateway, DestinationRules and VirtualServices) to facilitate blue/green deployments. You can read more about this concept at the [Istio documentation](https://istio.io/docs/concepts/traffic-management/#rule-configuration)
+  * Onboarding a service: When a new service is onboarded to a project by providing the github service with a manifest file containing the specification for that service, it will be added as a new entry in the `values.yaml` file of your application's helm chart. Further, depending on the deployment strategy of each stage, the github service will also generate a set of Istio configurations (i.e., a Gateway, DestinationRules and VirtualServices) to facilitate blue/green deployments. You can read more about this concept at the [Istio documentation](https://istio.io/docs/concepts/traffic-management/#rule-configuration).
   * Listening to a new artefact event to update the reference to the new artifact in the service configuration. This means, that when a new artefact is pushed to the registry with a new tag, the github service will update the configuration of the application such that this new tag is being used by the respective service.
 
 **jenkins-service**:
   
   * Listening to configuration changed event to deploy a service based on the new configuration.
   * Listening to a deployment finished event to test a freshly deployed service.
-  * Listening to a test finished event to promote the service to the next stage meaning to send a new artifact event for the next stage. 
+  * Listening to evaluation done event to decide whether the deployment can be promoted to the next stage.
 
 ## Prerequisites
 
@@ -108,7 +108,7 @@ Since the carts service needs a mongo database, a second app needs to be onboard
     istio-ingressgateway    LoadBalancer    10.23.245.***   ***.198.26.***    80:32399/TCP,443:31203/TCP,...     10m
     ``` 
 
-1. Then use a browser to open Jenkins with the url `jenkins.keptn.EXTERNAL-IP.xip.io` and login using the default Jenkins credentials: `admin` / `AiTx4u8VyUV8tCKk`.
+1. Then use a browser to open Jenkins with the url `jenkins.keptn.EXTERNAL-IP.xip.io` and login using the default Jenkins credentials: `admin` / `AiTx4u8VyUV8tCKk`
     
     **Note:** It is highly recommended to change these credentials right after the first login.
 
@@ -119,9 +119,9 @@ Since the carts service needs a mongo database, a second app needs to be onboard
     1. At *Branch Source* select *Git* and specify at *Project Repository* the github repository of your forked carts service.
     1. At *Build Configurtion* add the extension `.ci` to the Jenkinsfile.
 
-      {{< popup_image
-      link="./assets/carts_ci.png"
-      caption="CI pipeline configuration for carts">}}
+        {{< popup_image
+        link="./assets/carts_ci.png"
+        caption="CI pipeline configuration for carts">}}
 
     1. Click Save
 
@@ -129,7 +129,7 @@ Since the carts service needs a mongo database, a second app needs to be onboard
 
 1. Saving the Pipeline automatically starts the checkout from your Github repository and triggers the build. In case the build is not triggered, go to **carts** > **master** > **Build Now**.
 
-1. Go back to the Jenkins dashboard to see how the indiviual steps of the CD pipeline get triggered.
+1. Go back to the Jenkins dashboard to see how the other pipelines get triggered automatically. In detail, after the build of the artifact (`carts` pipeline), the `deploy` pipeline is triggered for the `dev` namespace, `run_tests` is executed, before `evaluation_done` is executed. If everything goes well, the same pipelines get triggered for the `staging` and `production` namespace. In total, the pipelines will run for about 15&nbsp;minutes before you have your `carts` service deployed in your `dev`, `staging` and `production` namespace.
 
     {{< popup_image
       link="./assets/carts-pipeline.png"
