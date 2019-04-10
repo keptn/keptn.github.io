@@ -56,7 +56,7 @@ keywords: setup
 
     1. Create a Dynatrace PaaS Token
     
-        In your Dynatrace tenant, go to **Settings > Integration > Platfrom as a Service**, and create a new PaaS Token.
+        In your Dynatrace tenant, go to **Settings > Integration > Platform as a Service**, and create a new PaaS Token.
     
     1. Start the following script:
         ```console
