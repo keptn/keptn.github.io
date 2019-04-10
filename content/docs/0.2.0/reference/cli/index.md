@@ -57,15 +57,28 @@ In future releases, we add additional checks whether the executed commands succe
 
 ## keptn auth 
 
-Before the keptn CLI can be used, it needs to be authenticated against a keptn server. Therefore, an endpoint and an API token are required. To retrieve them, execute the following commands:
+Before the keptn CLI can be used, it needs to be authenticated against a keptn server. Therefore, an endpoint and an API token are required. 
+
+If the authentication is successful, keptn will inform the user. Furthermore, if the authentication is successful, the endpoint and the API token are stored in a password store of the underlying operating system.
+More precisely, the keptn CLI stores the endpoint and API token using `pass` in case of Linux, using `Keychain` in case of macOS, or `Wincred` in case of Windows.
+
 
 ### Linux / macOS
 
 ```console
-$ KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -o=yaml | yq - r data.keptn-api-token | base64 --decode)
-
 $ KEPTN_ENDPOINT=https://$(kubectl get ksvc -n keptn control -o=yaml | yq r - status.domain)
+
+$ KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -o=yaml | yq - r data.keptn-api-token | base64 --decode)
 ```
+
+Authenticate to the keptn server.
+
+```console
+$ keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN
+```
+
+**Note**: If you receive a warning `Using a file-based storage for the key because the password-store seems to be not set up.` it is because a password store could not be found in your environment. In this case, the credentials are stored in a file called `.keptn` in your home directory.
+
 
 ### Windows 
 
@@ -76,24 +89,30 @@ Please expand the corresponding section matching your CLI tool.
 
 For the Windows PowerShell, a small script is provided that installs the `PSYaml` module and sets the environment variables. Please note that the PowerShell might have to be started with **Run as Administrator** privileges to install the module.
 
-Copy the following snippet in a file `set-keptn-env-variables.ps1` and run it with `.\set-keptn-env-variables.ps1` from your PowerShell.
+1. Copy the following snippet and paste it in your PowerShell. The snippet will be automatically executed line by line.
 
-```
-Install-Module PSYaml
-import-module psyaml
-$yamlText = kubectl get secret keptn-api-token -n keptn -o=yaml
-$content = ''
-foreach ($line in $yamlText) { $content = $content + "`n" + $line }
-$yaml = ConvertFrom-YAML $content
-$Env:KEPTN_API_TOKEN = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($yaml.data."keptn-api-token"))
+    ```
+    Install-Module PSYaml
+    import-module psyaml
+    $yamlText = kubectl get secret keptn-api-token -n keptn -o=yaml
+    $content = ''
+    foreach ($line in $yamlText) { $content = $content + "`n" + $line }
+    $yaml = ConvertFrom-YAML $content
+    $Env:KEPTN_API_TOKEN = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($yaml.data."keptn-api-token"))
 
-$yamlText = kubectl get ksvc -n keptn control -o=yaml
-$content = ''
-foreach ($line in $yamlText) { $content = $content + "`n" + $line }
-$yaml = ConvertFrom-YAML $content
-$ENDPOINT = $yaml.status.domain
-$Env:KEPTN_ENDPOINT = "https://$ENDPOINT"
-```
+    $yamlText = kubectl get ksvc -n keptn control -o=yaml
+    $content = ''
+    foreach ($line in $yamlText) { $content = $content + "`n" + $line }
+    $yaml = ConvertFrom-YAML $content
+    $ENDPOINT = $yaml.status.domain
+    $Env:KEPTN_ENDPOINT = "https://$ENDPOINT"
+    ```
+
+1. Now that everything we need is stored in environment variables, we can proceed with authorizing the keptn CLI. To authenticate against the keptn server use command auth and your endpoint and API token:
+
+    ```
+    .\keptn.exe auth --endpoint=$Env:KEPTN_ENDPOINT --api-token=$Env:KEPTN_API_TOKEN
+    ```
 
 </p>
 </details>
@@ -155,29 +174,19 @@ In the Windows Command Line, a couple of steps are necessary.
     $ set KEPTN_ENDPOINT=https://control.keptn.XX.XXX.XXX.XX.xip.io
     ```
 
+1. Now that everything we need is stored in environment variables, we can proceed with authorizing the keptn CLI.
+
+    To authenticate against the keptn server use command `auth` and your endpoint and API token:
+
+    ```
+    $ keptn.exe auth --endpoint=%KEPTN_ENDPOINT% --api-token=%KEPTN_API_TOKEN%
+    ```
+
 </p>
 </details>
 
-Now that everything we need is stored in environment variables, we can proceed with authorizing the keptn CLI.
 
-If the authentication is successful, keptn will inform the user. Furthermore, if the authentication is successful, the endpoint and the API token are stored in a password store of the underlying operating system.
-More precisely, the keptn CLI stores the endpoint and API token using `pass` in case of Linux, using `Keychain` in case of macOS, or `Wincred` in case of Windows.
 
-To authenticate against the keptn server use command `auth` and your endpoint and API token:
-
-- Linux/macOS
-
-```console
-$ keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN
-```
-
-- Windows
-
-```
-$ keptn.exe auth --endpoint=%KEPTN_ENDPOINT% --api-token=%KEPTN_API_TOKEN%
-```
-
-**Note**: If you receive a warning `Using a file-based storage for the key because the password-store seems to be not set up.` it is because a password store could not be found in your environment. In this case, the credentials are stored in a file called `.keptn` in your home directory.
 
 
 ## keptn configure 
