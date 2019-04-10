@@ -18,14 +18,14 @@ If you are unfamiliar with keptn, we recommend to first watch this [community me
 which provides an introduction to keptn.
 
 ## Prerequisites
-- A successful installation of the [keptn CLI](../../installation/setup-keptn/)
+- A successful installation of the [keptn CLI](../../installation/)
 - A successful keptn server installation (including the tools like kubectl, ...)
 - A GitHub organization, a GitHub user, and [personal access token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line). 
 
 ## Install the keptn CLI
 Every release of keptn provides binaries for the keptn CLI. These binaries are available for Linux, macOS, and Windows.
 
-1. Download your [desired version](https://github.com/keptn/keptn/releases/)
+1. Download the [version matching your operating system](https://github.com/keptn/keptn/releases/)
 1. Unpack the download
 1. Find the `keptn` binary in the unpacked directory.
   - Linux / macOS
@@ -34,7 +34,8 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
 
   - Windows
 
-        move/copy the executable to the desired folder
+        move/copy the executable to the desired folder and, optionally, add the executable to your PATH environment variable for a more convenient experience.
+
 
 1. Now, you should be able to run the keptn CLI by 
     ```console
@@ -64,6 +65,8 @@ More precisely, the keptn CLI stores the endpoint and API token using `pass` in 
 
 
 ### Linux / macOS
+
+Set the needed environment variables.
 
 ```console
 $ KEPTN_ENDPOINT=https://$(kubectl get ksvc -n keptn control -o=yaml | yq r - status.domain)

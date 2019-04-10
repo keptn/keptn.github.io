@@ -22,9 +22,9 @@ You can react to certain events that occur during your CD pipeline runs, and, in
 
 ## Writing you own service
 
-As a reference for writing your own service, please have a look at our implementation of the [GitHub Service](https://github.com/keptn/github-service). Essentially, this service is a *nodeJS express* application that accepts POST requests at its `/` endpoint. This endpoint is called by the *knative channel controller* as soon as an event has been pushed to the queue your service is subscribed to. Of course, you can write your own service in any language, as long as it provides the endpoint to receive events.
+As a reference for writing your own service, please have a look at our implementation of the [GitHub Service](https://github.com/keptn/github-service/tree/release-0.1.x). Essentially, this service is a *nodeJS express* application that accepts POST requests at its `/` endpoint. This endpoint is called by the *knative channel controller* as soon as an event has been pushed to the queue your service is subscribed to. Of course, you can write your own service in any language, as long as it provides the endpoint to receive events.
 
-Services in keptn are implemented as [knative services](https://cloud.google.com/knative/). The template manifest for the *GitHub service* can be found in the [config/service.yaml](https://github.com/keptn/github-service/tree/master/config) file in the GitHub repo:
+Services in keptn are implemented as [knative services](https://cloud.google.com/knative/). The template manifest for the *GitHub service* can be found in the [config/service.yaml](https://github.com/keptn/github-service/blob/release-0.1.x/config/service.yaml) file in the GitHub repo:
 
   ```yaml
   apiVersion: serving.knative.dev/v1alpha1
@@ -89,7 +89,7 @@ The *Subscription* defines to which kind of event the service should listen to. 
 
 Additionally, you will need to provide a name for the subscription (*metadata.name*), and reference the name of your service (*spec.subscriber.ref.name*).
 
-To deploy the service, we use a script that will first retrieve the IP of the cluster-internal docker registry, and replace the `REGISTRY_URI_PLACEHOLDER` in the manifest file with that value. The resulting manifest file will be stored in the *[config/gen](https://github.com/keptn/github-service/tree/master/config/gen)* directory. By executing the script with
+To deploy the service, we use a script that will first retrieve the IP of the cluster-internal docker registry, and replace the `REGISTRY_URI_PLACEHOLDER` in the manifest file with that value. The resulting manifest file will be stored in the *[config/gen](https://github.com/keptn/github-service/tree/release-0.1.x/config/gen)* directory. By executing the script with
 
   ```console
   $ ./deploy.sh
@@ -338,7 +338,7 @@ To receive events in this channel, please follow the instructions of the [Runboo
 
 ## Logging
 
-To inspect your service's log messages for a specific pipeline run, as described in the [keptn's log](https://keptn.sh/docs/0.2.0/log/use-log/) section, you can use the `shkeptncontext` property of the incoming CloudEvents. Your service has to output its log messages in the following format:
+To inspect your service's log messages for a specific pipeline run, as described in the [keptn's log](https://keptn.sh/docs/0.2.0/reference/keptnslog/) section, you can use the `shkeptncontext` property of the incoming CloudEvents. Your service has to output its log messages in the following format:
 
 ```json
 {
