@@ -71,11 +71,13 @@ keywords: setup
     $ ./installKeptn.sh
     ```
 
-    Please note that this error message can be ignored:
+    Please note that this error message during installation can be ignored:
     ```console
     Error from server (InternalError): error when creating "https://github.com/knative/eventing/releases/download/v0.4.0/release.yaml": Internal error occurred: failed calling admission webhook "webhook.eventing.knative.dev": Post https://webhook.knative-eventing.svc:443/?timeout=30s: no endpoints available for service "webhook"
     Error from server (InternalError): error when creating "https://github.com/knative/eventing/releases/download/v0.4.0/release.yaml": Internal error occurred: failed calling admission webhook "webhook.eventing.knative.dev": Post https://webhook.knative-eventing.svc:443/?timeout=30s: no endpoints available for service "webhook"
     ```
+
+- If you chose to use Dynatrace as your monitoring solution, please proceed here with [setup up Dynatrace on your cluster](../../usecases/setup-dynatrace/) and come back to this instructions once finished.
 
 The script will install the complete infrastructure necessary to run keptn. This includes:
 
@@ -125,7 +127,7 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
         ```console
         .\keptn.exe --help
         ```
-        
+
     Please note that for the rest of the documentation we will stick to the Mac OS / Linux version of the commands.
 
 ## Verifying the installation
