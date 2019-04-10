@@ -44,10 +44,6 @@ To illustrate the scenario this use case addresses, keptn relies on two services
 
 1. The CLI needs to be authenticated against the keptn server. Therefore, please follow the [keptn auth](https://keptn.sh/docs/0.2.0/reference/cli/#keptn-auth) instructions.
 
-    ```console
-    $ keptn auth --endpoint=https://<KEPTN_ENDPOINT> --api-token=<KEPTN_API_TOKEN>
-    ```
-
 1. Configure the used GitHub organization, user, and personal access token using the `keptn configure` command:
   
     ```console
