@@ -141,6 +141,18 @@ Since the carts service needs a mongo database, a second app needs to be onboard
       link="./assets/carts-pipeline.png"
       caption="Successful pipeline run of the carts service">}}
 
+1. Finally, once the carts service is built, this should trigger all other pipelines that have been set up automatically. Please verify the finished pipelines:
+
+    {{< popup_image
+      link="./assets/keptn-pipelines.png"
+      caption="Successful pipeline runs">}}
+
+1. Verifying the `deploy` pipeline, we can see that the `carts` service has been deployed directly first, while for the subsequent stages, a blue/green deployment has been triggered by keptn.
+
+    {{< popup_image
+      link="./assets/deploy-pipeline.png"
+      caption="Successful deploy pipeline run">}}
+
 ## Troubleshooting
 
 - In rare cases the host is not available at the time when the project is created or a service is onboarded and the resulting response message will look similar to this:
@@ -153,12 +165,3 @@ Since the carts service needs a mongo database, a second app needs to be onboard
     ``` 
 
     In this case, please wait a couple of minutes for the server to be ready and try again.
-
-- If the 
-
-Execute the following steps:
-1.) Open Jenkins
-2.) Select Manage Jenkins
-3.) In the configuration of the Kubernetes plugin:
-a.) Delete Jenkins URL
-b.) Set Jenkins tunnel to jenkins.keptn.svc.cluster.local:50000
