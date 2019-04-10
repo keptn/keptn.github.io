@@ -123,6 +123,7 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
         ```console
         .\keptn.exe --help
         ```
+    Please note that for the rest of the documentation we will stick to the Mac OS / Linux version of the commands.
 
 ## Verifying the installation
 
