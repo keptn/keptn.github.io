@@ -20,7 +20,7 @@ keywords: setup
 ## Install keptn
 - Clone the GitHub repository of the latest release branch.
     ```console
-    $ git clone --branch prerelease-0.2.x https://github.com/keptn/keptn
+    $ git clone --branch 0.2.0 https://github.com/keptn/keptn
     ```
 
 - Execute `./defineCredentials.sh` and provide the needed information.
