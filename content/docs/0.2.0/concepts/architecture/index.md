@@ -5,7 +5,7 @@ weight: 20
 keywords: [keptn, architecture]
 ---
 
-keptn is a control plane for continuous delivery that runs on Kubernetes. It's built on [Knative](https://cloud.google.com/knative/) and uses a publish-subscribe pattern to forward events, like when a new container has been pushed to an artefact registry, to one or a number of Knative services that react to that event. To continue the continuous delivery workflow those services need to send an event to keptn. The events that keptn understands are documented [here](../../usecases/custom-service/). All keptn events follow the [cloudevents](https://cloudevents.io/) specification [v2](https://github.com/cloudevents/spec/tree/v0.2).
+keptn is a control plane for continuous delivery that runs on Kubernetes. It's built on [Knative](https://cloud.google.com/knative/) and uses a publish-subscribe pattern to forward events, like when a new container has been pushed to an artefact registry, to one or a number of Knative services that react to that event. To continue the continuous delivery workflow those services need to send an event to keptn. The events that keptn understands are documented [here](../../reference/custom-service/). All keptn events follow the [cloudevents](https://cloudevents.io/) specification [v2](https://github.com/cloudevents/spec/tree/v0.2).
 
 {{< popup_image link="./assets/architecture.jpg" caption="keptn architecture">}}
 
