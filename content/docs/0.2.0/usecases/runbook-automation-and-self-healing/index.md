@@ -26,9 +26,10 @@ Configuration changes during runtime are sometimes necessary to increase flexibi
 
 ## Configure keptn
 
+In order for keptn to use both ServiceNow and Dynatrace, the corresponding credentials have to be stored as Kubernetes secrets in the cluster. 
+
 ### Dynatrace Secret 
 
-In order for keptn to use both ServiceNow and Dynatrace, the corresponding credentials have to be stored as Kubernetes secrets in the cluster. 
 The Dynatrace secret should already have been created the Dynatrace secret for you and stored some needed information in environment variables.
 Please verify by executing the following commands:
 
@@ -47,7 +48,7 @@ metadata:
   ...
 ```
 
-Additionally we verify that the enviroment variables are set (execute line by line):
+Additionally, we verify that the enviroment variables are set (execute line by line):
 ```
 export DT_TENANT_ID=$(kubectl get secret dynatrace -n keptn -o=yaml | yq - r data.DT_TENANT_ID | base64 --decode)
 export DT_API_TOKEN=$(kubectl get secret dynatrace -n keptn -o=yaml | yq - r data.DT_API_TOKEN | base64 --decode)
@@ -57,27 +58,26 @@ echo $DT_API_TOKEN
 
 ### ServiceNow Secret 
 
-Create ServiceNow secret to create/update incidents in ServiceNow and run workflows.
-For the sake of simplicity, you can use your ServiceNow user, e.g., _admin_ as user and your ServiceNow password as the token. Make sure to adapt the values accordingly in the following command.
+Create the ServiceNow secret to create/update incidents in ServiceNow and run workflows. For the command below, use your ServiceNow tenant id (8-digits), your ServiceNow user (e.g., *admin*) as user, and your ServiceNow password as token:
 ```
 kubectl -n keptn create secret generic servicenow --from-literal="tenant=xxx" --from-literal="user=xxx" --from-literal="token=xxx"
 ```
 
 ## Setup the Workflow in ServiceNow
 
-A ServiceNow Update Set is provided to run this use case. To install the Update Set follow these steps:
+A ServiceNow *Update Set* is provided to run this use case. To install the *Update Set* follow these steps:
 
 1. Login to your ServiceNow instance.
-1. Search for _update set_ in the left search box and navigate to **Update Sets to Commit** 
+1. Look for *update set* in the left search box and navigate to **Update Sets to Commit** 
     {{< popup_image
     link="./assets/service-now-update-set-overview.png"
     caption="ServiceNow Update Set">}}
 
 1. Click on **Import Update Set from XML** 
 
-1. Import the file from your file system that you find in your `servicenow-service/usecase` folder: `keptn_demo_remediation_updateset.xml`
+1. *Import* and *Upload* the file from your file system that you find in your `servicenow-service/usecase` folder: `keptn_demo_remediation_updateset.xml`
 
-1. Open the Update Set
+1. Open the *Update Set*
     {{< popup_image
     link="./assets/service-now-update-set-list.png"
     caption="ServiceNow Update Sets List">}}
@@ -91,12 +91,13 @@ A ServiceNow Update Set is provided to run this use case. To install the Update 
     {{< popup_image 
     link="./assets/service-now-keptn-creds.png"
     caption="ServiceNow keptn credentials">}}
+
 1. Click on **New** and enter your Dynatrace API token as well as your Dynatrace tenant ID.
 
-1. _(Optional)_ You can also take a look at the predefined workflow that is able to handle Dynatrace problem notifications and remediate issues.
-    - Navigate to the workflow editor by typing **Workflow Editor** and clicking on the item **Workflow -> Workflow Editor**
+1. *(Optional)* You can also take a look at the predefined workflow that is able to handle Dynatrace problem notifications and remediate issues.
+    - Navigate to the workflow editor by typing **Workflow Editor** and clicking on the item **Workflow** > **Workflow Editor**
     - The workflow editor is opened in a new window/tab
-    - Search for the workflow **keptn_demo_remediation** (it might as well be on the second or third page)
+    - Look for the workflow **keptn_demo_remediation** (it might as well be on the second or third page)
     {{< popup_image 
     link="./assets/service-now-workflow-list.png"
     caption="ServiceNow keptn workflow">}}
@@ -110,7 +111,7 @@ A ServiceNow Update Set is provided to run this use case. To install the Update 
 In order to create incidents in ServiceNow and to trigger workflows, an integration with Dynatrace has to be set up.
 
 1. Login to your Dynatrace tenant.
-1. Navigate to **Settings -> Integration -> Problem Notifications**
+1. Navigate to **Settings** > **Integration** > **Problem notifications**
 1. Click on **Set up notifications** and select **Custom integration**
 1. Choose a name for your integration, e.g., _keptn integration_
 1. In the webhook URL, paste the value of your keptn external eventbroker endpoint appended by `/dynatrace`, e.g., `https://event-broker-ext.keptn.XX.XXX.XXX.XX.xip.io/dynatrace`
@@ -152,7 +153,7 @@ In order to create incidents in ServiceNow and to trigger workflows, an integrat
     }
     ```
 
-1. Click on **Send Test Notification** and then on  **Save**.
+1. Click on **Send test notification** and then on  **Save**.
 
     {{< popup_image
     link="./assets/dynatrace-problem-notification-integration.png"
@@ -164,14 +165,19 @@ The Dynatrace platform is built on top of AI which is great for production use c
 
 Before you adjust this setting, make sure to have some traffic on the service in order for Dynatrace to detect and list the service. The easiest way to generate traffic is to use the provided file `add-to-carts.sh` in the `./usecase` folder. This script will add items to the shopping cart and can be stopped after a couple of added items by hitting <kbd>CTRL</kbd>+<kbd>C</kbd>.
 
-```
-./add-to-cart.sh "carts.production.$(kubectl get svc istio-ingressgateway -n istio-system -o yaml | yq - r status.loadBalancer.ingress[0].ip).xip.io"
-```
+1. Navigate to the _servicenow-service/usecase_ folder: 
+    ```
+    cd usecase
+    ```
 
+1. Run the script:
+    ```
+    ./add-to-cart.sh "carts.production.$(kubectl get svc istio-ingressgateway -n istio-system -o yaml | yq - r status.loadBalancer.ingress[0].ip).xip.io"
+    ```
 
-1. Once you generated some load, navigate to **Transaction & Services** and find the service **carts-ItemsController** in the _production_ namespace. 
+1. Once you generated some load, navigate to **Transaction & services** and find the service **ItemsController** in the _production_ environment. 
+
 2. Open the service and click on the three dots button to **Edit** the service.
-
     {{< popup_image
         link="./assets/dynatrace-service-edit.png"
         caption="Edit Service">}}
@@ -183,22 +189,16 @@ Before you adjust this setting, make sure to have some traffic on the service in
 
 ## Run the Use Case
 
-Now that all pieces are in place we can run the use case. Therefore, we will start by generating some load on the `carts` service in our production environment. Afterwards we will change configuration of this service at runtime. This will cause some troubles in our production environment, Dynatrace will detect the issue and will create a problem ticket. Thanks to the problem notification we just set up, keptn will be informed about the problem and will forward it to the ServiceNow service that in turn creates an incident in ServiceNow. This incident will trigger a workflow that is able to remediate the issue at runtime. Along the remediation, comments and details on configuration changes are posted to Dynatrace.
+Now, all pieces are in place to run the use case. Therefore, we will start by generating some load on the `carts` service in our production environment. Afterwards, we will change configuration of this service at runtime. This will cause some troubles in our production environment, Dynatrace will detect the issue, and will create a problem ticket. Due to the problem notification we just set up, keptn will be informed about the problem and will forward it to the ServiceNow service that in turn creates an incident in ServiceNow. This incident will trigger a workflow that is able to remediate the issue at runtime. Along the remediation, comments, and details on configuration changes are posted to Dynatrace.
 
 ### Load generation
 
-1. Navigate to the _servicenow-service/usecase_ folder: 
-
-    ```
-    cd usecase
-    ```
 1. Run the script:
-
     ```
     ./add-to-cart.sh "carts.production.$(kubectl get svc istio-ingressgateway -n istio-system -o yaml | yq - r status.loadBalancer.ingress[0].ip).xip.io"
     ```
-1. You should see some logging output each time an item is added to your shopping cart:
 
+1. You should see some logging output each time an item is added to your shopping cart:
     ```
     ...
     adding item to cart...
@@ -210,13 +210,20 @@ Now that all pieces are in place we can run the use case. Therefore, we will sta
     ...
     ```
 
-
-
 ### Configuration change at runtime
 
 1. Open another terminal to make sure the load generation is still running and again, navigate to the _servicenow-service/usecase_ folder.
+
 1. _(Optional:)_ Verify that the environment variables you set earlier are still available:
     ```
+    echo $DT_TENANT_ID
+    echo $DT_API_TOKEN
+    ```
+
+1. Additionally, the DT_TENANT_ID and DT_API_TOKEN must be exported for this terminal (execute line by line):
+    ```
+    export DT_TENANT_ID=$(kubectl get secret dynatrace -n keptn -o=yaml | yq - r data.DT_TENANT_ID | base64 --decode)
+    export DT_API_TOKEN=$(kubectl get secret dynatrace -n keptn -o=yaml | yq - r data.DT_API_TOKEN | base64 --decode)
     echo $DT_TENANT_ID
     echo $DT_API_TOKEN
     ```
@@ -241,7 +248,7 @@ Now that all pieces are in place we can run the use case. Therefore, we will sta
 
 ### Problem Detection by Dynatrace
 
-Navigate to the ItemsController service by clicking on **Transactions & Services** and looking for your ItemsController. Since our service is running in three different environment (dev, staging, production) it is recommended to filter by the `environment:production` to make sure to find the correct service.
+Navigate to the ItemsController service by clicking on **Transactions & services** and look for your ItemsController. Since our service is running in three different environment (dev, staging, and production) it is recommended to filter by the `environment:production` to make sure to find the correct service.
     {{< popup_image
         link="./assets/dynatrace-services.png"
         caption="Dynatrace Transactions & Services">}}
@@ -260,25 +267,24 @@ After a couple of minutes, Dynatrace will open a problem ticket based on the inc
 
 ### Incident Creation & Workflow Execution by ServiceNow
 
-The Dynatrace problem ticket notification is sent out to keptn which puts it into the problem channel where the ServiceNow service in subscribed. Thus, the ServiceNow service takes the event and creates a new incident in ServiceNow. 
-In your ServiceNow instance, you can take a look at all incidents by typing in **incidents** in the top-left search box and click on **Service Desk -> Incidents**. You should be able to see the newly created incident, click on it to view some details.
+The Dynatrace problem ticket notification is sent out to keptn which puts it into the problem channel where the ServiceNow service is subscribed. Thus, the ServiceNow service takes the event and creates a new incident in ServiceNow. 
+In your ServiceNow instance, you can take a look at all incidents by typing in **incidents** in the top-left search box and click on **Service Desk** > **Incidents**. You should be able to see the newly created incident, click on it to view some details.
     {{< popup_image
         link="./assets/service-now-incident.png"
         caption="ServiceNow incident">}}
 
-After creation of the incident, a workflow is triggered in ServiceNow that has been setup during the import of the update set earlier. The workflow takes a look at the incident, resolves the URL that is stored in the _Remediation_ tab in the incident detail screen. Along with that, a new custom configuration change is sent to Dynatrace. Besides, the ServiceNow service running in keptn sends comments to the Dynatrace problem to be able to keep track of executed steps.
+After creation of the incident, a workflow is triggered in ServiceNow that has been setup during the import of the *Update Set* earlier. The workflow takes a look at the incident, resolves the URL that is stored in the *Remediation* tab in the incident detail screen. Along with that, a new custom configuration change is sent to Dynatrace. Besides, the ServiceNow service running in keptn sends comments to the Dynatrace problem to be able to keep track of executed steps.
 
 Once the problem is resolved, Dynatrace sends out another notification which again is handled by the ServiceNow service. Now the incidents gets resolved and another comment is sent to Dynatrace.
     {{< popup_image
         link="./assets/service-now-incident-resolved.png"
         caption="Resolved ServiceNow incident">}}
 
-
 ## Troubleshooting
 
 - Please note that Dynatrace has its feature called **Frequent Issue Detection** enabled by default. This means, that if Dynatrace detects the same problem multiple times, it will be classified as a frequent issue and problem notifications won't be sent out to third party tools. Therefore, the use case might not be able to be run a couple of times in a row. To disable the feature for your tenant please reach out to the Dynatrace support team.
 
-- In ServiceNow you can take a look at the **System Log -> All** to verify which actions have been executed. You should be able to see some logs on the execution of the keptn demo workflow as shown in the screenshot:
+- In ServiceNow you can take a look at the **System Log** > **All** to verify which actions have been executed. You should be able to see some logs on the execution of the keptn demo workflow as shown in the screenshot:
     {{< popup_image
         link="./assets/service-now-systemlog.png"
         caption="ServiceNow System Log">}}
