@@ -133,3 +133,17 @@ Since the carts service needs a mongo database, a second app needs to be onboard
 1. After creating the CI pipeline, in Jenkins go to **carts** > **master** > **Build Now**.
 
 1. Go back to the Jenkins dashboard to see how the indiviual steps of the CD pipeline get triggered.
+
+
+## Troubleshooting
+
+In rare cases the host is not available at the time when the project is created or a service is onboarded and the resulting response message will look similar to this:
+
+```console
+keptn onboard service --project=sockshop --values=values_carts.yaml
+Starting to onboard service
+Onboard service was unsuccessful
+Error: Post https://control.keptn.1xx.xxx.xx.xx.xip.io/service: dial tcp: lookup control.keptn.1xx.xxx.xx.xx.xip.io: no such host
+``` 
+
+In this case, please wait a couple of minutes for the server to be ready and try again.
