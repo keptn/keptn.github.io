@@ -114,7 +114,7 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
 
   - Windows
 
-        move/copy the executable to the desired folder
+        move/copy the executable to the desired folder and, optionally, add the executable to your PATH environment variable for a more convenient experience.
 
 - Now, you should be able to run the keptn CLI by 
     - Mac OS / Linux
