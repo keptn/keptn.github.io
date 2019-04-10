@@ -114,7 +114,7 @@ Since the carts service needs a mongo database, a second app needs to be onboard
     istio-ingressgateway    LoadBalancer    10.23.245.***   ***.198.26.***    80:32399/TCP,443:31203/TCP,...     10m
     ``` 
 
-1. Then use a browser to open Jenkins with the url `jenkins.keptn.EXTERNAL-IP.xip.io` and login using the default Jenkins credentials: `admin` / `AiTx4u8VyUV8tCKk`.
+1. Then use a browser to open Jenkins with the url `jenkins.keptn.EXTERNAL-IP.xip.io` and login using the default Jenkins credentials: `admin` / `AiTx4u8VyUV8tCKk`
     
     **Note:** It is highly recommended to change these credentials right after the first login.
 
