@@ -20,9 +20,8 @@ The goal of the *Unbreakable Delivery Pipeline* is to implement a pipeline that 
 
 Exactly these three concepts have been applied in the use cases:
 
-1. [Production Deployments](../production-deployments/index.md): 
-    In this particular use case, the *carts* service
-    has been changed, which intentionally slowed down the execution of the *addToCarts* function. After changing the service, it has been deployed to the development environment. Although the service has passed the quality gates (functional checks) in the development environment, the service has not passed the quality gate in the staging environment due to the increase of the response time detected by a performance test. This demonstrates an early break of the delivery pipeline based on automated quality gates. Hence, exploiting the concepts of **Shift-Left**, the delivery pipeline has been stopped and immediate feedback to the development team can be provided.
+1. [Deployments with Quality Gates](../deployments-with-quality-gates/): 
+    In this particular use case, the *carts* service has been changed, which intentionally slowed down the execution of the *addToCarts* function. After changing the service, it has been deployed to the development environment. Although the service has passed the quality gates (functional checks) in the development environment, the service has not passed the quality gate in the staging environment due to the increase of the response time detected by a performance test. This demonstrates an early break of the delivery pipeline based on automated quality gates. Hence, exploiting the concepts of **Shift-Left**, the delivery pipeline has been stopped and immediate feedback to the development team can be provided.
 
     Additionally, the used pipelines for deploying, testing, and evaluating have pushed information to our monitoring solution (Dynatrace in this case). This information can be used in following steps and provides the basis for **Shift-Right**. Summarizing, the pipeline stopped due to a - intentionally introduced - failure in a service. This was early enough to not deploy this faulty service version into production.
 
