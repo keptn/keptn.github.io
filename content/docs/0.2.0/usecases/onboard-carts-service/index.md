@@ -135,7 +135,7 @@ Since the carts service needs a mongo database, a second app needs to be onboard
 
 1. Saving the Pipeline automatically starts the checkout from your Github repository and triggers the build. In case the build is not triggered, go to **carts** > **master** > **Build Now**.
 
-1. Go back to the Jenkins dashboard to see how the indiviual steps of the CD pipeline get triggered.
+1. Go back to the Jenkins dashboard to see how the other pipelines get triggered automatically. In detail, after the build of the artifact (`carts` pipeline), the `deploy` pipeline is triggered for the `dev` namespace, `run_tests` is executed, before `evaluation_done` is executed. If everything goes well, the same pipelines get triggered for the `staging` and `production` namespace. In total, the pipelines will run for about XX minutes before you have your `carts` service deployed in your `dev`, `staging` and `production` namespace.
 
     {{< popup_image
       link="./assets/carts-pipeline.png"
