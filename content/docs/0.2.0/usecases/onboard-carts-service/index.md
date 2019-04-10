@@ -42,9 +42,7 @@ To illustrate the scenario this use case addresses, keptn relies on two services
 
 ## Authenticate and configure keptn
 
-**Please note:** This step can be skipped if you already followed the [keptn auth](https://keptn.sh/docs/0.2.0/reference/cli/#keptn-auth) instructions.
-
-1. Authentication against the keptn installation using the `keptn auth` command.
+1. The CLI needs to be authenticated against the keptn installation. Therefore, please follow the [keptn auth](https://keptn.sh/docs/0.2.0/reference/cli/#keptn-auth) instructions.
 
     ```console
     $ keptn auth --endpoint=https://<KEPTN_ENDPOINT> --api-token=<KEPTN_API_TOKEN>
