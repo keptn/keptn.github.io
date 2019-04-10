@@ -116,13 +116,16 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
 
 - Now, you should be able to run the keptn CLI by 
     - Mac OS / Linux
+
         ```console
         keptn --help
         ```
     - Windows
+
         ```console
         .\keptn.exe --help
         ```
+        
     Please note that for the rest of the documentation we will stick to the Mac OS / Linux version of the commands.
 
 ## Verifying the installation
