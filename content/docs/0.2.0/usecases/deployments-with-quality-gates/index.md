@@ -28,7 +28,7 @@ To illustrate the benefit this use case addresses, you will create a second vers
 
 ## Set up Monitoring for the carts service
 Since this use case relies on the concept of quality gates, you will need to set up monitoring for your carts service.
-In this use case we will be using either the open source monitoring solution *Prometheus* as well as *Dynatrace*.
+In this use case we will be using either the open source monitoring solution *Prometheus* or *Dynatrace*.
 As [Pitometer](https://github.com/keptn/pitometer) allows developers to add their own sources for evaluating a service's performance it is possible to use any monitoring solution to evaluate your quality gates. 
 
 ### Option 1: Set up Prometheus
