@@ -62,7 +62,7 @@ kubectl port-forward svc/prometheus-service 8080 -n monitoring
       link="./assets/prometheus-targets.png"
       caption="Prometheus Targets">}}
 
-- To set up the quality gates for the carts service, please navigate to the `perfspec` folder of your carts service. This file contains the quality gate that will be evaluated against Prometheus. 
+- To set up the quality gates for the carts service, please navigate to the `perfspec` folder of your carts service. This folder contains files defining the quality gate that will be evaluated against Prometheus. 
 
     This quality gate will check that the average response time of the service is under 1&nbsp;second. If the response time exceeds this threshold, the performance evaluation will be marked as failed, the service deployment will be rejected and the requests to the service will be directed to the previous working deployment of the service. The evaluation is done with the [Pitometer](https://github.com/keptn/pitometer) component that is installed along with keptn.
 
