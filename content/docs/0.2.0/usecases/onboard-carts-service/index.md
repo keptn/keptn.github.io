@@ -17,14 +17,14 @@ To illustrate the scenario this use case addresses, keptn relies on two services
 **github-service**: 
   
   * Creating a project: When a new project is created, the github service will create a new repository within your configured GitHub organization. This repository will contain the complete configuration of your application, where the configuration for each stage (e.g., the image tags to be used for each service within your application) is located in a separate branch. For the configuration of a keptn-managed app we use [Helm Charts](https://helm.sh/).
-  * Onboarding a service: When a new service is onboarded to a project by providing the github service with a manifest file containing the specification for that service, it will be added as a new entry in the `values.yaml` file of your application's helm chart. Further, depending on the deployment strategy of each stage, the github service will also generate a set of Istio configurations (i.e., a Gateway, DestinationRules and VirtualServices) to facilitate blue/green deployments. You can read more about this concept at the [Istio documentation](https://istio.io/docs/concepts/traffic-management/#rule-configuration)
+  * Onboarding a service: When a new service is onboarded to a project by providing the github service with a manifest file containing the specification for that service, it will be added as a new entry in the `values.yaml` file of your application's helm chart. Further, depending on the deployment strategy of each stage, the github service will also generate a set of Istio configurations (i.e., a Gateway, DestinationRules and VirtualServices) to facilitate blue/green deployments. You can read more about this concept at the [Istio documentation](https://istio.io/docs/concepts/traffic-management/#rule-configuration).
   * Listening to a new artefact event to update the reference to the new artifact in the service configuration. This means, that when a new artefact is pushed to the registry with a new tag, the github service will update the configuration of the application such that this new tag is being used by the respective service.
 
 **jenkins-service**:
   
   * Listening to configuration changed event to deploy a service based on the new configuration.
   * Listening to a deployment finished event to test a freshly deployed service.
-  * Listening to a test finished event to promote the service to the next stage meaning to send a new artifact event for the next stage. 
+  * Listening to evaluation done event to decide whether the deployment can be promoted to the next stage.
 
 ## Prerequisites
 
