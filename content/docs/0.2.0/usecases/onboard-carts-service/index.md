@@ -102,8 +102,6 @@ Since the carts service needs a mongo database, a second app needs to be onboard
 
 1. Run the `kubectl get svc` command to get the **EXTERNAL-IP** of the Istio ingress gateway.  
     
-    **Note:** It is highly recommended to change these credentials right after the first login.
-
     ```console
     $ kubectl get svc istio-ingressgateway -n istio-system
     NAME                    TYPE            CLUSTER-IP      EXTERNAL-IP       PORT(S)                            AGE
@@ -111,6 +109,9 @@ Since the carts service needs a mongo database, a second app needs to be onboard
     ``` 
 
 1. Then use a browser to open Jenkins with the url `jenkins.keptn.EXTERNAL-IP.xip.io` and login using the default Jenkins credentials: `admin` / `AiTx4u8VyUV8tCKk`.
+    
+    **Note:** It is highly recommended to change these credentials right after the first login.
+
 
 1. Afterwards, click on the **New Item** button and enter `carts` as name.
 
@@ -122,8 +123,39 @@ Since the carts service needs a mongo database, a second app needs to be onboard
       link="./assets/carts_ci.png"
       caption="CI pipeline configuration for carts">}}
 
+    1. Click Save
+
 ## Build new artifact and watch keptn doing the deployment 
 
-1. After creating the CI pipeline, in Jenkins go to **carts** > **master** > **Build Now**.
+1. Saving the Pipeline automatically starts the checkout from your Github repository and triggers the build. In case the build is not triggered, go to **carts** > **master** > **Build Now**.
 
 1. Go back to the Jenkins dashboard to see how the indiviual steps of the CD pipeline get triggered.
+
+    {{< popup_image
+      link="./assets/carts-pipeline.png"
+      caption="Successful pipeline run of the carts service">}}
+
+1. Finally, once the carts service is built, this should trigger all other pipelines that have been set up automatically. Please verify the finished pipelines:
+
+    {{< popup_image
+      link="./assets/keptn-pipelines.png"
+      caption="Successful pipeline runs">}}
+
+1. Verifying the `deploy` pipeline, we can see that the `carts` service has been deployed directly first, while for the subsequent stages, a blue/green deployment has been triggered by keptn.
+
+    {{< popup_image
+      link="./assets/deploy-pipeline.png"
+      caption="Successful deploy pipeline run">}}
+
+## Troubleshooting
+
+- In rare cases the host is not available at the time when the project is created or a service is onboarded and the resulting response message will look similar to this:
+
+    ```console
+    keptn onboard service --project=sockshop --values=values_carts.yaml
+    Starting to onboard service
+    Onboard service was unsuccessful
+    Error: Post https://control.keptn.1xx.xxx.xx.xx.xip.io/service: dial tcp: lookup control.keptn.1xx.xxx.xx.xx.xip.io: no such host
+    ``` 
+
+    In this case, please wait a couple of minutes for the server to be ready and try again.
