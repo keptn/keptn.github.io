@@ -16,6 +16,8 @@ To illustrate the benefit this use case addresses, you will create a second vers
 
 ## Prerequisites
 
+1. Either [Prometheus](../../monitoring/prometheus) or [Dynatrace](../../monitoring/dynatrace) monitoring set up.
+
 1. In order to start this use case, please deploy the `carts` service by completing the use case [Onboarding a Service](../onboard-carts-service/).
 
 1. Clone the forked `carts` service to your local machine. Please note that you have to use your own GitHub organization.
@@ -29,78 +31,45 @@ To illustrate the benefit this use case addresses, you will create a second vers
 ## Set up Monitoring for the carts service
 Since this use case relies on the concept of quality gates, you will need to set up monitoring for your carts service.
 In this use case we will be using either the open source monitoring solution *Prometheus* or *Dynatrace*.
-As [Pitometer](https://github.com/keptn/pitometer) allows developers to add their own sources for evaluating a service's performance it is possible to use any monitoring solution to evaluate your quality gates. 
+The [Pitometer](https://github.com/keptn/pitometer) service will then evaluate the data coming from these sources to determine a score for the quality gate.
 
-### Option 1: Set up Prometheus
+### Option 1: Prometheus
 <details><summary>Expand instructions</summary>
 <p>
-For this example, we will use Prometheus to monitor and evaluate the service:
+Please make sure you have followed the instructions for setting up [Prometheus](../../monitoring/prometheus).
 
-  - In the examples folder you have cloned during [onboarding the carts service](../onboard-carts-service/), navigate to the directory `monitoring/prometheus`. In this directory, you will find a script called `deployPrometheus.sh`. This script will deploy Prometheus in the namespace `monitoring` and set up scrape job configurations for monitoring the carts service in the `dev`, `staging` and `production` namespace. Execute that script by calling:
+To set up the quality gates for the carts service, please navigate to the `perfspec` folder of your carts service. This folder contains files defining the quality gate that will be evaluated against Prometheus. 
+
+This quality gate will check that the average response time of the service is under 1&nbsp;second. If the response time exceeds this threshold, the performance evaluation will be marked as failed, the service deployment will be rejected and the requests to the service will be directed to the previous working deployment of the service. The evaluation is done with the [Pitometer](https://github.com/keptn/pitometer) component that is installed along with keptn.
+
+1. Rename the file `perfspec_prometheus.json` to `perfspec.json`. 
+1. Commit and push the file.
 
   ```console
-  $ ./deployPrometheus.sh
-  namespace "monitoring" created
-  configmap "prometheus-server-conf" created
-  clusterrole.rbac.authorization.k8s.io "prometheus" created
-  clusterrolebinding.rbac.authorization.k8s.io "prometheus" created
-  deployment.extensions "prometheus-deployment" created
-  service "prometheus-service" created
+  $ git add .
+  $ git commit -m "use prometheus perfspec"
+  $ git push
   ```
-
-To verify the Prometheus installation, you can browse to the Prometheus web interface:
-
-- First, enable port-forwarding for the `prometheus-service`:
-
-```console
-kubectl port-forward svc/prometheus-service 8080 -n monitoring
-```
-
-- Afterwards, open the URL [localhost:8080/targets](http://localhost:8080/targets) in your browser. Here you should see three targets for the carts service:
-
-    {{< popup_image
-      link="./assets/prometheus-targets.png"
-      caption="Prometheus Targets">}}
-
-- To set up the quality gates for the carts service, please navigate to the `perfspec` folder of your carts service. This folder contains files defining the quality gate that will be evaluated against Prometheus. 
-
-    This quality gate will check that the average response time of the service is under 1&nbsp;second. If the response time exceeds this threshold, the performance evaluation will be marked as failed, the service deployment will be rejected and the requests to the service will be directed to the previous working deployment of the service. The evaluation is done with the [Pitometer](https://github.com/keptn/pitometer) component that is installed along with keptn.
-
-    1. Rename the file `perfspec_prometheus.json` to `perfspec.json`. 
-    1. Commit and push the file.
-
-      ```console
-      $ git add .
-      $ git commit -m "use prometheus perfspec"
-      $ git push
-      ```
-
-
 </p>
 </details>
 
-### Option 2: Set up Dynatrace
+### Option 2: Dynatrace
 <details><summary>Expand instructions</summary>
 <p>
-For this example, we will use Dynatrace to monitor and evaluate the service:
+Please make sure you have followed the instructions for setting up [Dynatrace](../../monitoring/dynatrace).
 
-- To monitor your service with Dynatrace, please follow the [Dynatrace setup instructions](https://keptn.sh/docs/0.2.0/usecases/setup-dynatrace/).
-This will deploy the OneAgent in your cluster, and set up rules for automatic tagging of your services.
+To set up the quality gates for the carts service, please navigate to the `perfspec` folder of your carts service. This file contains the quality gate that will be evaluated against Dynatrace. 
 
-- After the OneAgent has been deployed, you can use Dynatrace as a source for your deployment's quality gates. In this example we are going to evaluate the average response time of the newly deployed service version after the performance tests in the staging environment have been executed.
+This quality gate will check that the average response time of the service is under 1&nbsp;second. If the response time exceeds this threshold, the performance evaluation will be marked as failed, the service deployment will be rejected and the requests to the service will be directed to the previous working deployment of the service. The evaluation is done with the [Pitometer](https://github.com/keptn/pitometer) component that is installed along with keptn.
 
-- To set up the quality gates for the carts service, please navigate to the `perfspec` folder of your carts service. This file contains the quality gate that will be evaluated against Dynatrace. 
+1. Rename the file `perfspec_dynatrace.json` to `perfspec.json`. 
+1. Commit and push the file.
 
-    This quality gate will check that the average response time of the service is under 1&nbsp;second. If the response time exceeds this threshold, the performance evaluation will be marked as failed, the service deployment will be rejected and the requests to the service will be directed to the previous working deployment of the service.
-
-    1. Rename the file `perfspec_dynatrace.json` to `perfspec.json`. 
-    1. Commit and push the file.
-
-      ```console
-      $ git add .
-      $ git commit -m "use dyntrace perfspec"
-      $ git push
-      ```
+  ```console
+  $ git add .
+  $ git commit -m "use dynatrace perfspec"
+  $ git push
+  ```
 
 
 
