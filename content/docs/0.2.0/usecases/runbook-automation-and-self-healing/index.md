@@ -15,7 +15,7 @@ Configuration changes during runtime are sometimes necessary to increase flexibi
 ## Prerequisites
 
 - ServiceNow instance or [free ServiceNow developer instance](https://developer.servicenow.com)
-- [Setup of Dynatrace](../../monitoring/dynatrace/) is mandatory for this usecase
+- [Setup of Dynatrace](../../monitoring/dynatrace/) is mandatory for this usecase 
 - Complete [onboarding a service](../onboard-carts-service) use case
 - Clone the GitHub repository with the necessary files for the use case:
     
