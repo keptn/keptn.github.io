@@ -67,7 +67,7 @@ This quality gate will check that the average response time of the service is un
 
   ```console
   $ git add .
-  $ git commit -m "use dyntrace perfspec"
+  $ git commit -m "use dynatrace perfspec"
   $ git push
   ```
 
