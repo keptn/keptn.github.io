@@ -152,7 +152,7 @@ Keptn contains all scripts and instructions needed to deploy the demo applicatio
     1. Edit that rule:
         * Rule name: `Container.Namespace`
         * Process group name format: `{ProcessGroup:KubernetesContainerName}.{ProcessGroup:KubernetesNamespace}`
-        * Condition: `Kubernetes namespace`> `exits`
+        * Condition: `Kubernetes namespace`> `exists`
     1. Click on **Preview** and **Save**.
 
     Screenshot shows this rule definition.
