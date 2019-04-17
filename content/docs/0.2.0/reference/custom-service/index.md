@@ -116,17 +116,17 @@ Depending on the channel your service is subscribed to, it will receive the payl
 {  
    "specversion":"0.2",
    "type":"sh.keptn.events.new-artefact",
-   "source":"Jenkins",
+   "source":"Jenkins", // optional
    "id":"1234",
    "time":"20190325-15:26:52.036",
    "datacontenttype":"application/json",
    "shkeptncontext":"db51be80-4fee-41af-bb53-1b093d2b694c",
    "data":{  
-      "githuborg":"keptn-tiger",
+      "githuborg":"keptn-tiger", // optional
       "project":"sockshop",
-      "teststrategy":"functional",
-      "deploymentstrategy":"direct",
-      "stage":"dev",
+      "teststrategy":"functional", // optional
+      "deploymentstrategy":"direct", // optional
+      "stage":"dev", // optional
       "service":"carts",
       "image":"10.11.245.27:5000/sockshopcr/carts",
       "tag":"0.6.7-16"
