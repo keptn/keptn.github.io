@@ -18,7 +18,7 @@ keywords: setup
   - [jq](https://stedolan.github.io/jq/), [yq](https://github.com/mikefarah/yq), [git](https://git-scm.com/), [gcloud](https://cloud.google.com/sdk/gcloud/), [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/), [helm 2.12.3](https://helm.sh/)
 
 ## Install keptn
-- Clone the GitHub repository of the latest release branch.
+- Clone the GitHub repository of the latest release.
     ```console
     $ git clone --branch 0.2.0 https://github.com/keptn/keptn
     ```
