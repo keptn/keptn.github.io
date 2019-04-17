@@ -62,6 +62,7 @@ Create the ServiceNow secret to create/update incidents in ServiceNow and run wo
 ```
 kubectl -n keptn create secret generic servicenow --from-literal="tenant=xxx" --from-literal="user=xxx" --from-literal="token=xxx"
 ```
+Please note that if your ServiceNow password has some special characters in it, you need to [escape them](https://kubernetes.io/docs/concepts/configuration/secret/).
 
 ## Setup the Workflow in ServiceNow
 
