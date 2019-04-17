@@ -241,7 +241,7 @@ or
 $ keptn onboard service --project=sockshop --values=values.yaml --deployment=deployment.yaml --service=service.yaml
 ```
 
-To start onboarding a service, please see the [Use Case section](../usecases/onboard-carts-service).
+To start onboarding a service, please see the [Onboarding a Service](../../usecases/onboard-carts-service) use case.
 
 
 ## keptn version

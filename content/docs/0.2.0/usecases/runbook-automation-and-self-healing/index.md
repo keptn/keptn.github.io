@@ -15,6 +15,7 @@ Configuration changes during runtime are sometimes necessary to increase flexibi
 ## Prerequisites
 
 - ServiceNow instance or [free ServiceNow developer instance](https://developer.servicenow.com)
+    - Use case tested on _London_ and _Madrid_ releases
 - [Setup of Dynatrace](../../monitoring/dynatrace/) is mandatory for this usecase 
 - Complete [onboarding a service](../onboard-carts-service) use case
 - Clone the GitHub repository with the necessary files for the use case:
@@ -62,6 +63,7 @@ Create the ServiceNow secret to create/update incidents in ServiceNow and run wo
 ```
 kubectl -n keptn create secret generic servicenow --from-literal="tenant=xxx" --from-literal="user=xxx" --from-literal="token=xxx"
 ```
+Please note that if your ServiceNow password has some special characters in it, you need to [escape them](https://kubernetes.io/docs/concepts/configuration/secret/).
 
 ## Setup the Workflow in ServiceNow
 
