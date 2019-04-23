@@ -12,6 +12,7 @@ keywords: setup
   - one `n1-standard-8` node
   - image type `ubuntu` or `cos` (if you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../monitoring/dynatrace/))
   - Sample script to create such cluster (adapt the values according to your needs)
+
     ```console
     // set environment variables
     PROJECT=nameofgcloudproject
@@ -33,6 +34,7 @@ keywords: setup
   - [helm 2.12.3](https://helm.sh/)
   - [gcloud](https://cloud.google.com/sdk/gcloud/)
   - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) (configured to be used with your cluster) 
+  
     ```console
     gcloud container clusters get-credentials $CLUSTERNAME --zone $ZONE --project $PROJECT
     ```
