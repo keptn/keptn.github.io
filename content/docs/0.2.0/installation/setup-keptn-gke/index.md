@@ -11,27 +11,48 @@ keywords: setup
   - master version >= `1.11.x` (tested version: `1.11.7-gke.12`)
   - one `n1-standard-8` node
   - image type `ubuntu` or `cos` (if you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../monitoring/dynatrace/))
+  - Sample script to create such cluster (adapt the values according to your needs)
+    ```console
+    // set environment variables
+    PROJECT=nameofgcloudproject
+    CLUSTERNAME=nameofcluster
+    ZONE=us-central1-a
+    GKEVERSION="1.12.7-gke.7"
+    ```
+
+    ```console
+    gcloud beta container --project $PROJECT clusters create $CLUSTERNAME --zone $ZONE --no-enable-basic-auth --cluster-version $GKEVERSION --machine-type "n1-standard-8" --image-type "UBUNTU" --disk-type "pd-standard" --disk-size "100" --metadata disable-legacy-endpoints=true --scopes "https://www.googleapis.com/auth/devstorage.read_only","https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/monitoring","https://www.googleapis.com/auth/servicecontrol","https://www.googleapis.com/auth/service.management.readonly","https://www.googleapis.com/auth/trace.append" --num-nodes "1" --enable-cloud-logging --enable-cloud-monitoring --no-enable-ip-alias --network "projects/$PROJECT/global/networks/default" --subnetwork "projects/$PROJECT/regions/$ZONE/subnetworks/default" --addons HorizontalPodAutoscaling,HttpLoadBalancing --no-enable-autoupgrade
+    ```
 - GitHub
-  - Organization for configuration repositories
-  - Personal access token for a user with access to said organization
+  - [Own organization](https://github.com/organizations/new) for keptn to store its configuration repositories
+  - [Personal access token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line) for a user with access to said organization
 - Bash + Local tools
-  - [jq](https://stedolan.github.io/jq/), [yq](https://github.com/mikefarah/yq), [git](https://git-scm.com/), [gcloud](https://cloud.google.com/sdk/gcloud/), [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/), [helm 2.12.3](https://helm.sh/)
+  - [jq](https://stedolan.github.io/jq/)
+  - [yq](https://github.com/mikefarah/yq)
+  - [git](https://git-scm.com/)
+  - [helm 2.12.3](https://helm.sh/)
+  - [gcloud](https://cloud.google.com/sdk/gcloud/)
+  - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) (configured to be used with your cluster) 
+    ```console
+    gcloud container clusters get-credentials $CLUSTERNAME --zone $ZONE --project $PROJECT
+    ```
+
 
 ## Install keptn
 - Clone the GitHub repository of the latest release.
     ```console
-    $ git clone --branch 0.2.0 https://github.com/keptn/keptn
+    git clone --branch 0.2.0 https://github.com/keptn/keptn
     ```
 
 - Execute `./defineCredentials.sh` and provide the needed information.
     ```console
-    $ cd keptn/install/scripts
-    $ ./defineCredentials.sh
+    cd keptn/install/scripts
+    ./defineCredentials.sh
     ```
 
 - Execute `./installKeptn.sh`: this script sets up all necessary component for keptn 0.2 (~10-15mins)
     ```console
-    $ ./installKeptn.sh
+    ./installKeptn.sh
     ```
 
     Please note that this error message during installation can be ignored:
