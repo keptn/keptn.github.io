@@ -248,6 +248,17 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
 
   If that is not the case, there may have been a problem during the installation. In that case we kindly ask you to clean your cluster and restart the installation, as described in the **Troubleshooting** section below.
 
+
+## Authenticate keptn CLI and configure keptn
+
+1. The CLI needs to be authenticated against the keptn server. Therefore, please follow the [keptn auth](../../reference/cli/#keptn-auth) instructions.
+
+1. Configure the used GitHub organization, user, and personal access token using the `keptn configure` command:
+  
+    ```console
+    $ keptn configure --org=<YOUR_GITHUB_ORG> --user=<YOUR_GITHUB_USER> --token=<YOUR_GITHUB_TOKEN>
+    ```
+
 ## Uninstall
 - Execute `./uninstallKeptn.sh` and all keptn resource will be deleted
 
