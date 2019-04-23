@@ -33,13 +33,14 @@ keywords: setup
   - [Personal access token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line) for a user with access to said organization
     <details><summary>Expand for access token scopes</summary>
     Needed scopes:
-    
+
       - repo
       - admin:org
       - admin:repo_hook
       {{< popup_image link="./assets/github-access-token.png" 
       caption="GitHub Personal Access Token Scopes">}}
     </details>
+    
 - Bash + Local tools
   - [jq](https://stedolan.github.io/jq/)
   - [yq](https://github.com/mikefarah/yq)
