@@ -38,7 +38,7 @@ keywords: setup
           - admin:org
           - admin:repo_hook
 
-          <details><summary>Expand Screenshot</summary>
+        <details><summary>Expand Screenshot</summary>
           {{< popup_image link="./assets/github-access-token.png" 
         caption="GitHub Personal Access Token Scopes" width="50%">}}
           </details>
