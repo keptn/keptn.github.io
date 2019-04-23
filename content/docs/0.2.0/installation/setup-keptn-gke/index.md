@@ -10,6 +10,10 @@ keywords: setup
 - GKE cluster
   - master version >= `1.11.x` (tested version: `1.11.7-gke.12`)
   - one `n1-standard-8` node
+    <details><summary>Expand for details</summary>
+    {{< popup_image link="./assets/gke-cluster-size.png" 
+      caption="GKE cluster size">}}
+    </details>
   - image type `ubuntu` or `cos` (if you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../monitoring/dynatrace/))
   - Sample script to create such cluster (adapt the values according to your needs)
 
@@ -27,6 +31,12 @@ keywords: setup
 - GitHub
   - [Own organization](https://github.com/organizations/new) for keptn to store its configuration repositories
   - [Personal access token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line) for a user with access to said organization
+
+    <details><summary>Expand for access token scopes</summary>
+      {{< popup_image link="./assets/github-access-token.png" 
+      caption="GitHub Personal Access Token Scopes">}}
+    </details>
+
 - Bash + Local tools
   - [jq](https://stedolan.github.io/jq/)
   - [yq](https://github.com/mikefarah/yq)
