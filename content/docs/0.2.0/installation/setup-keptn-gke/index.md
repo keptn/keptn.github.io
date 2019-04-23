@@ -31,15 +31,18 @@ keywords: setup
 - GitHub
   - [Own organization](https://github.com/organizations/new) for keptn to store its configuration repositories
   - [Personal access token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line) for a user with access to said organization
-    <details><summary>Expand for access token scopes</summary>
-    Needed scopes:
-    
-      - repo
-      - admin:org
-      - admin:repo_hook
-      {{< popup_image link="./assets/github-access-token.png" 
-      caption="GitHub Personal Access Token Scopes">}}
-    </details>
+
+      -  Needed scopes:
+        
+          - repo
+          - admin:org
+          - admin:repo_hook
+
+        <details><summary>Expand Screenshot</summary>
+          {{< popup_image link="./assets/github-access-token.png" 
+        caption="GitHub Personal Access Token Scopes" width="50%">}}
+          </details>
+
 - Bash + Local tools
   - [jq](https://stedolan.github.io/jq/)
   - [yq](https://github.com/mikefarah/yq)
