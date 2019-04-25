@@ -1,4 +1,4 @@
-baseURL = "https://keptn.sh/"
+# baseURL = "https://keptn.sh/"
 languageCode = "en-us"
 title = "keptn"
 theme = "hugo-serif-theme"
