@@ -49,7 +49,7 @@ metadata:
   ...
 ```
 
-Additionally, we verify that the enviroment variables are set (execute line by line):
+Additionally, we verify that the environment variables are set (execute line by line):
 ```
 export DT_TENANT_ID=$(kubectl get secret dynatrace -n keptn -o=yaml | yq - r data.DT_TENANT_ID | base64 --decode)
 export DT_API_TOKEN=$(kubectl get secret dynatrace -n keptn -o=yaml | yq - r data.DT_API_TOKEN | base64 --decode)
@@ -184,14 +184,14 @@ Before you adjust this setting, make sure to have some traffic on the service in
         link="./assets/dynatrace-service-edit.png"
         caption="Edit Service">}}
 
-1. In the section **Anomaly detection** override the global anomaly detection and set the value for the **failure rate** to use **fixed thresholds** and to alert if **10%** custom failure rate are exceeded. Finally, set the **Sensitiviy** to **High**.
+1. In the section **Anomaly detection** override the global anomaly detection and set the value for the **failure rate** to use **fixed thresholds** and to alert if **10%** custom failure rate are exceeded. Finally, set the **Sensitivity** to **High**.
     {{< popup_image
         link="./assets/dynatrace-service-anomaly-detection.png"
         caption="Edit Anomaly Detection">}}
 
 ## Run the Use Case
 
-Now, all pieces are in place to run the use case. Therefore, we will start by generating some load on the `carts` service in our production environment. Afterwards, we will change configuration of this service at runtime. This will cause some troubles in our production environment, Dynatrace will detect the issue, and will create a problem ticket. Due to the problem notification we just set up, keptn will be informed about the problem and will forward it to the ServiceNow service that in turn creates an incident in ServiceNow. This incident will trigger a workflow that is able to remediate the issue at runtime. Along the remediation, comments, and details on configuration changes are posted to Dynatrace.
+Now, all pieces are in place to run the use case. Therefore, we will start by generating some load on the `carts` service in our production environment. Afterwards, we will change configuration of this service at runtime. This will cause some troubles in our production environment, Dynatrace will detect the issue, and will create a problem ticket. Due to the problem notification we just set up, keptn will be informed about the problem and will forward it to the ServiceNow service that in turn creates an incident in ServiceNow. This incident will trigger a workflow that is able to remediate the issue at runtime. Along with the remediation, comments, and details on configuration changes are posted to Dynatrace.
 
 ### Load generation
 
@@ -250,7 +250,7 @@ Now, all pieces are in place to run the use case. Therefore, we will start by ge
 
 ### Problem Detection by Dynatrace
 
-Navigate to the ItemsController service by clicking on **Transactions & services** and look for your ItemsController. Since our service is running in three different environment (dev, staging, and production) it is recommended to filter by the `environment:production` to make sure to find the correct service.
+Navigate to the ItemsController service by clicking on **Transactions & services** and look for your ItemsController. Since our service is running in three different environments (dev, staging, and production) it is recommended to filter by the `environment:production` to ensure you find the correct service.
     {{< popup_image
         link="./assets/dynatrace-services.png"
         caption="Dynatrace Transactions & Services">}}
@@ -261,7 +261,7 @@ When clicking on the service, in the right bottom corner you can validate in Dyn
         caption="Dynatrace Custom Configuration Event">}}
 
 
-After a couple of minutes, Dynatrace will open a problem ticket based on the increase of the failure rate.
+After a couple of minutes, Dynatrace will open a problem ticket based on the increased failure rate.
     {{< popup_image
         link="./assets/dynatrace-problem-open.png"
         caption="Dynatrace Open Problem">}}
@@ -279,7 +279,7 @@ After creation of the incident, a workflow is triggered in ServiceNow that has b
 
 You can check both the new _custom configuration change_ on the service overview page in Dynatrace as well as the added comment on the problem ticket in Dynatrace.
 
-Once the problem is resolved, Dynatrace sends out another notification which again is handled by the ServiceNow service. Now the incidents gets resolved and another comment is sent to Dynatrace. The image shows the updated incident in ServiceNow. The comment can be found if you navigate to the closed problem ticket in Dynatrace. 
+Once the problem is resolved, Dynatrace sends out another notification which again is handled by the ServiceNow service. Now the incident gets resolved and another comment is sent to Dynatrace. The image shows the updated incident in ServiceNow. The comment can be found if you navigate to the closed problem ticket in Dynatrace. 
     {{< popup_image
         link="./assets/service-now-incident-resolved.png"
         caption="Resolved ServiceNow incident">}}
@@ -288,7 +288,7 @@ Once the problem is resolved, Dynatrace sends out another notification which aga
 
 ## Troubleshooting
 
-- Please note that Dynatrace has its feature called **Frequent Issue Detection** enabled by default. This means, that if Dynatrace detects the same problem multiple times, it will be classified as a frequent issue and problem notifications won't be sent out to third party tools. Therefore, the use case might not be able to be run a couple of times in a row. To disable the feature for your tenant please reach out to the Dynatrace support team.
+- Please note that Dynatrace has a feature called **Frequent Issue Detection** enabled by default. This means, that if Dynatrace detects the same problem multiple times, it will be classified as a frequent issue and problem notifications won't be sent out to third party tools. Therefore, the use case might not be able to be run a couple of times in a row. To disable the feature for your tenant please reach out to the Dynatrace support team.
 
 - In ServiceNow you can take a look at the **System Log** > **All** to verify which actions have been executed. You should be able to see some logs on the execution of the keptn demo workflow as shown in the screenshot:
     {{< popup_image
