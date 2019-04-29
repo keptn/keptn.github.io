@@ -20,7 +20,7 @@ You can react to certain events that occur during your CD pipeline runs, and, in
 - sh.keptn.events.evaluation-done
 - sh.keptn.events.problem
 
-## Writing you own service
+## Writing your own service
 
 As a reference for writing your own service, please have a look at our implementation of the [GitHub Service](https://github.com/keptn/github-service/tree/release-0.1.x). Essentially, this service is a *nodeJS express* application that accepts POST requests at its `/` endpoint. This endpoint is called by the *knative channel controller* as soon as an event has been pushed to the queue your service is subscribed to. Of course, you can write your own service in any language, as long as it provides the endpoint to receive events.
 
