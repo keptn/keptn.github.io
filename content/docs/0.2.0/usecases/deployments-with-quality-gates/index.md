@@ -233,7 +233,7 @@ Next, you will change the `carts` service to make it pass the quality gate.
     ...
     Pod Template:
       Labels:  app=sockshop-selector-carts
-               deployment=carts-blue
+               deployment=carts-green
       Containers:
       carts:
         Image:      10.11.245.27:5000/sockshopcr/carts:0.6.2-3
