@@ -36,8 +36,6 @@ keywords: setup
       -  Needed scopes:
         
           - repo
-          - admin:org
-          - admin:repo_hook
 
         <details><summary>Expand Screenshot</summary>
           {{< popup_image link="./assets/github-access-token.png" 
@@ -143,8 +141,12 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
     istio-ingressgateway     LoadBalancer   10.11.246.127   <EXTERNAL_IP>   80:32399/TCP 
     ```
 
-- Go to Jenkins at `http://jenkins.keptn.<EXTERNAL_IP>.xip.io/` and login with the credentials `admin` / `AiTx4u8VyUV8tCKk`.
-  <br><br>**Note:** Please change these credentials right after the first login!<br><br>
+- Go to Jenkins at `http://jenkins.keptn.<EXTERNAL_IP>.xip.io/` and login with the credentials `admin` / `AiTx4u8VyUV8tCKk`
+  <br><br>**Note:** Please change these credentials right after the first login:
+  1. Change credentials in Jenkins
+  1. Update credentials in the `jenkins-secret` in the `keptn` namespace
+  1. Restart the `jenkins-service` pod.<br><br>
+
   Navigate to **Jenkins** > **Manage Jenkins** > **Configure System**, scroll to the environment variables and verify that the variables are set correctly.
   {{< popup_image link="./assets/jenkins-env-vars.png" caption="Jenkins environment variables">}}
   **Important:** Due to a [known issue](https://issues.jenkins-ci.org/browse/JENKINS-14880) in Jenkins, it is necessary to click **Save** although nothing is changed in this verification step.
