@@ -8,7 +8,7 @@ keywords: setup
 
 ## Prerequisites
 - GKE cluster
-  - master version >= `1.11.x` (tested version: `1.11.7-gke.12`)
+  - master version >= `1.11.x` (tested version: `1.11.7-gke.12` and `1.12.7-gke.10`)
   - one `n1-standard-8` node
     <details><summary>Expand for details</summary>
     {{< popup_image link="./assets/gke-cluster-size.png" 
@@ -58,7 +58,7 @@ keywords: setup
 ## Install keptn
 - Clone the GitHub repository of the latest release.
     ```console
-    git clone --branch 0.2.0 https://github.com/keptn/keptn
+    git clone --branch 0.2.1 https://github.com/keptn/keptn
     ```
 
 - Execute `./defineCredentials.sh` and provide the needed information.
@@ -74,16 +74,22 @@ keywords: setup
 
     Please note that this error message during installation can be ignored:
     ```console
-    Error from server (InternalError): error when creating "https://github.com/knative/eventing/releases/download/v0.4.0/release.yaml": Internal error occurred: failed calling admission webhook "webhook.eventing.knative.dev": Post https://webhook.knative-eventing.svc:443/?timeout=30s: no endpoints available for service "webhook"
-    Error from server (InternalError): error when creating "https://github.com/knative/eventing/releases/download/v0.4.0/release.yaml": Internal error occurred: failed calling admission webhook "webhook.eventing.knative.dev": Post https://webhook.knative-eventing.svc:443/?timeout=30s: no endpoints available for service "webhook"
+    Error from server (AlreadyExists): namespaces "keptn" already exists
+    ```
+
+-  **Important:** Due to a [known issue](https://issues.jenkins-ci.org/browse/JENKINS-14880) in Jenkins, it is necessary to open the Jenkins configuration and click **Save** although nothing is changed.
+
+    You can open the configuration page of Jenkins with the credentials `admin` / `AiTx4u8VyUV8tCKk` by generating the URL and copy it in your browser (the installation has to be finished at this point):
+    ```
+    echo http://jenkins.keptn.$(kubectl describe svc istio-ingressgateway -n istio-system | grep "LoadBalancer Ingress:" | sed 's~LoadBalancer Ingress:[ \t]*~~').xip.io/configure
     ```
 
 The script will install the complete infrastructure necessary to run keptn. This includes:
 
 - Istio
 - Knative
-- An Elasticsearch/Kibana Stack for the Keptn's log
-- The Keptn Core Services:
+- An Elasticsearch/Kibana Stack for the keptn's log
+- The keptn Core Services:
   - Event-broker
   - Event-broker-ext
   - Control
@@ -101,10 +107,13 @@ The script will install the complete infrastructure necessary to run keptn. This
   - evaluation-done
   - problem
 
+
+
+
 ## Install keptn CLI
 Every release of keptn provides binaries for the keptn CLI. These binaries are available for Linux, macOS, and Windows.
 
-- Download the version for your operating system from https://github.com/keptn/keptn/releases/tag/0.2.0
+- Download the version for your operatoring system from https://github.com/keptn/keptn/releases/tag/0.2.1
 - Unpack the download
 - Find the `keptn` binary in the unpacked directory.
   - Linux / macOS
@@ -142,10 +151,18 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
     ```
 
 - Go to Jenkins at `http://jenkins.keptn.<EXTERNAL_IP>.xip.io/` and login with the credentials `admin` / `AiTx4u8VyUV8tCKk`
-  <br><br>**Note:** Please change these credentials right after the first login:
+  <br><br>**Note:** For security reasons, we recommend to change these credentials right after the first login:
   1. Change credentials in Jenkins
-  1. Update credentials in the `jenkins-secret` in the `keptn` namespace
-  1. Restart the `jenkins-service` pod.<br><br>
+  1. Update credentials in the kubernetes secret named `jenkins-secret` in the `keptn` namespace, by using the following command. Please note that the password has to be base64 encoded.
+  ```console
+  kubectl edit secret jenkins-secret -n keptn     
+  ```
+
+  1. Restart the `jenkins-service` pod.
+ ```
+kubectl delete pod $(kubectl get pods -n keptn | awk '/jenkins-service/' | awk '{print $1}') -n keptn
+ ``` 
+  <br><br>
 
   Navigate to **Jenkins** > **Manage Jenkins** > **Configure System**, scroll to the environment variables and verify that the variables are set correctly.
   {{< popup_image link="./assets/jenkins-env-vars.png" caption="Jenkins environment variables">}}
@@ -157,14 +174,22 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
   ```
 
   ```console
+  authenticator-h7ftc-pod-cd730a                      0/1       Completed   0          10d
   authenticator-hghrm-deployment-85985b6c56-894zm     3/3       Running     0          10d
+  control-9hw4x-pod-7d4b93                            0/1       Completed   0          10d
   control-tjkl6-deployment-5bb45669c6-8h2d6           3/3       Running     0          10d
   docker-registry-754b7797bd-v86pn                    2/2       Running     0          10d
   event-broker-2fwtg-deployment-ffdd57984-t8jbn       3/3       Running     0          23m
+  event-broker-bcsdr-pod-15d743                       0/1       Completed   0          25m
+  event-broker-ext-2rndl-pod-0fe9f3                   0/1       Completed   0          10d
   event-broker-ext-8wn6q-deployment-7bc86dcd9-zjc7r   3/3       Running     0          10d
   github-service-gl2f9-deployment-854f4d747b-dhz89    3/3       Running     0          10d
+  github-service-kt7x5-pod-cd2884                     0/1       Completed   0          10d
   jenkins-deployment-69fb95d575-mz6fp                 2/2       Running     0          10d
   jenkins-service-82wsp-deployment-74f9f78856-k5z5f   3/3       Running     0          56m
+  jenkins-service-ghcpz-pod-1f5a6a                    0/1       Completed   0          57m
+  pitometer-service-v8n47-pod-99ace2                  0/1       Completed   0          1d
+  servicenow-service-bj9hv-pod-650ed4                 0/1       Completed   0          7d
   ```
   If those pods do not show up after a few minutes, please check if all pods within the `istio-system` pods are in a running state: 
   
@@ -235,6 +260,9 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
   keptn-channel           10d
   new-artefact            10d
   problem                 10d
+  start-deployment        10d
+  start-evaluation        10d
+  start-tests             10d
   tests-finished          10d
   ```
 
@@ -243,13 +271,18 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
 
 ## Authenticate keptn CLI and configure keptn
 
-1. The CLI needs to be authenticated against the keptn server. Therefore, please follow the [keptn auth](../../reference/cli/#keptn-auth) instructions.
+1. The CLI needs to be authenticated against the keptn server. Therefore, please copy the values from your installation log output into the next command and execute it:
+
+    ```console
+    keptn auth --endpoint=YOUR_ENDPOINT --api-token=YOUR_TOKEN
+    ```
 
 1. Configure the used GitHub organization, user, and personal access token using the `keptn configure` command:
   
     ```console
-    $ keptn configure --org=<YOUR_GITHUB_ORG> --user=<YOUR_GITHUB_USER> --token=<YOUR_GITHUB_TOKEN>
+    keptn configure --org=<YOUR_GITHUB_ORG> --user=<YOUR_GITHUB_USER> --token=<YOUR_GITHUB_TOKEN>
     ```
+
 
 ## Uninstall
 - Execute `./uninstallKeptn.sh` and all keptn resource will be deleted
