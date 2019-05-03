@@ -13,15 +13,22 @@ For security purposes, Kibana is exposed only within the cluster. To access the 
   $ kubectl proxy
   ```
 
-Afterwards, you can navigate to the [Kibana UI](http://localhost:8001/api/v1/namespaces/knative-monitoring/services/kibana-logging/proxy/app/kibana). It might take a couple of minutes for the proxy to work.
+Afterwards, you can navigate to the Kibana UI http://localhost:8001/api/v1/namespaces/knative-monitoring/services/kibana-logging/proxy/app/kibana (Please be patient, it might take a couple of minutes for the proxy to work)
 
-Within the "Configure an index pattern" page, enter `logstash-*` to `Index pattern` and select `@timestamp` from `Time Filter field name` and click on the `Create` button.
+Setup keptns log within the "Configure an index pattern" page:
+
+- enter `logstash-*` to `Index pattern` 
+- select `@timestamp` from `Time Filter field name` 
+- click on the `Create` button.
 
 ## Analyzing pipeline runs
 
 Keptn summarizes logs for a specific pipeline run by adding a property called `keptnContext` to the log messages of the services that participate during a pipeline run for a new artefact. To retrieve the `keptnContext` for a pipeline run, do the following:
 
   1. Navigate to the <a href="http://localhost:8001/api/v1/namespaces/knative-monitoring/services/kibana-logging/proxy/app/kibana#/discover?_g=()&_a=(columns:!(keptnService,message,logLevel,keptnContext),index:AWmaEz7MZe0TiwRXPS-e,interval:auto,query:(query_string:(analyze_wildcard:!t,query:'keptnEntry:%20true')),sort:!('@timestamp',desc))">Discover</a> view in Kibana (Please use that specific link, as that one already contains the ideal formatting configuration).
+    
+    Open View: http://localhost:8001/api/v1/namespaces/knative-monitoring/services/kibana-logging/proxy/app/kibana#/discover?_g=()&_a=(columns:!(keptnService,message,logLevel,keptnContext),index:AWmaEz7MZe0TiwRXPS-e,interval:auto,query:(query_string:(analyze_wildcard:!t,query:'keptnEntry:%20true')),sort:!('@timestamp',desc))
+      
 
   1. Ensure that you have selected the correct time frame on the top right corner of the Discover view.
 
