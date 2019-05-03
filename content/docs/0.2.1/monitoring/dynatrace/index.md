@@ -14,6 +14,8 @@ In order to evaluate the quality gates, we have to set up monitoring to provide 
 
     If you don't have a Dynatrace tenant yet, sign up for a [free trial](https://www.dynatrace.com/trial/) or a [developer account](https://www.dynatrace.com/developer/).
 
+    **Please note** that if you bring your own tenant, the current version of keptn only supports Dynatrace SaaS tenants. Support for Dynatrace Managed is planned for future releases.
+
 1. Create a Dynatrace API Token
 
     Log in to your Dynatrace tenant, and go to **Settings > Integration > Dynatrace API**. Then, create a new API Token with the following permissions:
@@ -47,7 +49,10 @@ In order to evaluate the quality gates, we have to set up monitoring to provide 
 
 When this script is finished, the Dynatrace OneAgent will be deployed in your cluster.
 
-  **Note:** To see the services running in your cluster, make sure to restart the pods they are running in.
+  **Note 1:** To see the services running in your cluster, make sure to restart the pods they are running in.
+  ```
+  kubectl delete pods --all -n keptn
+  ```
 
   **Note 2:** If the nodes in your cluster run on *Container-Optimized OS (cos)*, make sure to [follow the instructions](https://www.dynatrace.com/support/help/cloud-platforms/google-cloud-platform/google-kubernetes-engine/deploy-oneagent-on-google-kubernetes-engine-clusters/#expand-134parameter-for-container-optimized-os-early-access) for setting up the Dynatrace OneAgent Operator. This means that after the initial setup with `deployDynatrace.sh`, which is a step below, the `cr.yml` has to be edited and applied again. In addition, all pods have to be restarted.
 
@@ -68,12 +73,14 @@ When this script is finished, the Dynatrace OneAgent will be deployed in your cl
 
 ## Configure Jenkins
 
-1. Go to Jenkins at `http://jenkins.keptn.<EXTERNAL_IP>.xip.io/` and login with the credentials `admin` / `AiTx4u8VyUV8tCKk` or with the updated credentials you set after the installation. You can retrieve the external ip with the following command:
+1. Go to Jenkins at `http://jenkins.keptn.<EXTERNAL_IP>.xip.io/` and login with the default credentials `admin` / `AiTx4u8VyUV8tCKk` or with the updated credentials you set after the installation. You can retrieve the URL of Jenkins with the following command:
   ```
-  $ kubectl get svc istio-ingressgateway -n istio-system
+  echo http://jenkins.keptn.$(kubectl describe svc istio-ingressgateway -n istio-system | grep "LoadBalancer Ingress:" | sed 's~LoadBalancer Ingress:[ \t]*~~').xip.io/configure
   ``` 
   
-1. Navigate to **Jenkins** > **Manage Jenkins** > **Configure System**, scroll to the environment variables and enter the Dynatrace tenant URL and Dynatrace API token.
+1. In the **Jenkins** > **Manage Jenkins** > **Configure System** screen, scroll to the environment variables and **Add** two new environment variables:
+    - DT_TENANT_URL with the Dynatrace tenant URL as value 
+    - DT_API_TOKEN with the Dynatrace API token as value
   {{< popup_image link="./assets/jenkins-env-vars.png" caption="Jenkins environment variables">}}
 
 ## (Optional) Create process group naming rule in Dynatrace
