@@ -74,8 +74,7 @@ keywords: setup
 
     Please note that this error message during installation can be ignored:
     ```console
-    Error from server (InternalError): error when creating "https://github.com/knative/eventing/releases/download/v0.4.0/release.yaml": Internal error occurred: failed calling admission webhook "webhook.eventing.knative.dev": Post https://webhook.knative-eventing.svc:443/?timeout=30s: no endpoints available for service "webhook"
-    Error from server (InternalError): error when creating "https://github.com/knative/eventing/releases/download/v0.4.0/release.yaml": Internal error occurred: failed calling admission webhook "webhook.eventing.knative.dev": Post https://webhook.knative-eventing.svc:443/?timeout=30s: no endpoints available for service "webhook"
+    Error from server (AlreadyExists): namespaces "keptn" already exists
     ```
 
 -  **Important:** Due to a [known issue](https://issues.jenkins-ci.org/browse/JENKINS-14880) in Jenkins, it is necessary to open the Jenkins configuration and click **Save** although nothing is changed.
@@ -272,7 +271,11 @@ kubectl delete pod $(kubectl get pods -n keptn | awk '/jenkins-service/' | awk '
 
 ## Authenticate keptn CLI and configure keptn
 
-1. The CLI needs to be authenticated against the keptn server. Therefore, please follow the [keptn auth](../../reference/cli/#keptn-auth) instructions.
+1. The CLI needs to be authenticated against the keptn server. Therefore, please copy the values from your installation log output into the next command and execute it:
+
+    ```console
+    keptn auth --endpoint=YOUR_ENDPOINT --api-token=YOUR_TOKEN
+    ```
 
 1. Configure the used GitHub organization, user, and personal access token using the `keptn configure` command:
   
