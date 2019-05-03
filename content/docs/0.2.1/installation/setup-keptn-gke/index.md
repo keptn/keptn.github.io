@@ -8,7 +8,7 @@ keywords: setup
 
 ## Prerequisites
 - GKE cluster
-  - master version >= `1.11.x` (tested version: `1.11.7-gke.12`)
+  - master version >= `1.11.x` (tested version: `1.11.7-gke.12` and `1.12.7-gke.10`)
   - one `n1-standard-8` node
     <details><summary>Expand for details</summary>
     {{< popup_image link="./assets/gke-cluster-size.png" 
@@ -80,17 +80,17 @@ keywords: setup
 
 -  **Important:** Due to a [known issue](https://issues.jenkins-ci.org/browse/JENKINS-14880) in Jenkins, it is necessary to open the Jenkins configuration and click **Save** although nothing is changed.
 
-    You can open the configuration page of Jenkins by executing this command:
+    You can open the configuration page of Jenkins with the credentials `admin` / `AiTx4u8VyUV8tCKk` by generating the URL and copy it in your browser (the installation has to be finished at this point):
     ```
-    open http://jenkins.keptn.$(kubectl describe svc istio-ingressgateway -n istio-system | grep "LoadBalancer Ingress:" | sed 's~LoadBalancer Ingress:[ \t]*~~').xip.io/configure
+    echo http://jenkins.keptn.$(kubectl describe svc istio-ingressgateway -n istio-system | grep "LoadBalancer Ingress:" | sed 's~LoadBalancer Ingress:[ \t]*~~').xip.io/configure
     ```
 
 The script will install the complete infrastructure necessary to run keptn. This includes:
 
 - Istio
 - Knative
-- An Elasticsearch/Kibana Stack for the Keptn's log
-- The Keptn Core Services:
+- An Elasticsearch/Kibana Stack for the keptn's log
+- The keptn Core Services:
   - Event-broker
   - Event-broker-ext
   - Control
@@ -152,10 +152,18 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
     ```
 
 - Go to Jenkins at `http://jenkins.keptn.<EXTERNAL_IP>.xip.io/` and login with the credentials `admin` / `AiTx4u8VyUV8tCKk`
-  <br><br>**Note:** Please change these credentials right after the first login:
+  <br><br>**Note:** For security reasons, we recommend to change these credentials right after the first login:
   1. Change credentials in Jenkins
-  1. Update credentials in the `jenkins-secret` in the `keptn` namespace
-  1. Restart the `jenkins-service` pod.<br><br>
+  1. Update credentials in the kubernetes secret named `jenkins-secret` in the `keptn` namespace, by using the following command. Please note that the password has to be base64 encoded.
+  ```console
+  kubectl edit secret jenkins-secret -n keptn     
+  ```
+
+  1. Restart the `jenkins-service` pod.
+ ```
+kubectl delete pod $(kubectl get pods -n keptn | awk '/jenkins-service/' | awk '{print $1}') -n keptn
+ ``` 
+  <br><br>
 
   Navigate to **Jenkins** > **Manage Jenkins** > **Configure System**, scroll to the environment variables and verify that the variables are set correctly.
   {{< popup_image link="./assets/jenkins-env-vars.png" caption="Jenkins environment variables">}}
@@ -272,16 +280,6 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
     keptn configure --org=<YOUR_GITHUB_ORG> --user=<YOUR_GITHUB_USER> --token=<YOUR_GITHUB_TOKEN>
     ```
 
-## Upgrade keptn from 0.2.0 to 0.2.1
-
-For upgrading an existing keptn 0.2.0 installation an upgrade script is provided. This will update all keptn core components to their new version.
-Please find the script in the `keptn/instal/scripts` folder and start the script with the following command:
-```
-cd keptn/install/scripts/
-```
-```
-./upgradeKeptn.sh github_username github_access_token
-```
 
 ## Uninstall
 - Execute `./uninstallKeptn.sh` and all keptn resource will be deleted
