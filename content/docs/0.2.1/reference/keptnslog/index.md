@@ -27,9 +27,6 @@ Keptn summarizes logs for a specific pipeline run by adding a property called `k
 
   1. Navigate to the <a href="http://localhost:8001/api/v1/namespaces/knative-monitoring/services/kibana-logging/proxy/app/kibana#/discover?_g=()&_a=(columns:!(keptnService,message,logLevel,keptnContext),index:AWmaEz7MZe0TiwRXPS-e,interval:auto,query:(query_string:(analyze_wildcard:!t,query:'keptnEntry:%20true')),sort:!('@timestamp',desc))">Discover</a> view in Kibana (Please use that specific link, as that one already contains the ideal formatting configuration).
     
-    Open View: http://localhost:8001/api/v1/namespaces/knative-monitoring/services/kibana-logging/proxy/app/kibana#/discover?_g=()&_a=(columns:!(keptnService,message,logLevel,keptnContext),index:AWmaEz7MZe0TiwRXPS-e,interval:auto,query:(query_string:(analyze_wildcard:!t,query:'keptnEntry:%20true')),sort:!('@timestamp',desc))
-      
-
   1. Ensure that you have selected the correct time frame on the top right corner of the Discover view.
 
   1. Entrypoints for new pipeline runs are marked with `keptnEntry: true`. To retrieve all events of this type within the selected timeframe, enter "keptnEntry: true" in the search bar at the top. Afterwards, you should see something like this:
