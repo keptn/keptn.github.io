@@ -35,9 +35,9 @@ To illustrate the scenario this use case addresses, keptn relies on two services
 1. Git clone artifacts for this use case.
 
     ```console
-    $ cd ~
-    $ git clone https://github.com/keptn/examples.git
-    $ cd ~/examples/onboarding-carts
+    cd ~
+    git clone https://github.com/keptn/examples.git
+    cd ~/examples/onboarding-carts
     ```
 
 ## Authenticate and configure keptn
@@ -49,7 +49,7 @@ If you have not yet authenticated and configured the keptn CLI, please follow th
 1. Configure the used GitHub organization, user, and personal access token using the `keptn configure` command:
   
     ```console
-    $ keptn configure --org=<YOUR_GITHUB_ORG> --user=<YOUR_GITHUB_USER> --token=<YOUR_GITHUB_TOKEN>
+    keptn configure --org=<YOUR_GITHUB_ORG> --user=<YOUR_GITHUB_USER> --token=<YOUR_GITHUB_TOKEN>
     ```
 
 ## Create project sockshop
@@ -72,9 +72,10 @@ stages:
 1. Create a new project for your carts service using the `keptn create project` command. In this example, the project is called *sockshop*.
 
     ```console
-    $ ls
+    ls
     deployment_carts_db.yaml  service_carts_db.yaml  shipyard.yaml  values_carts.yaml  values_carts_db.yaml
-    $ keptn create project sockshop shipyard.yaml
+
+    keptn create project sockshop shipyard.yaml
     ```
 
 ## Onboard carts service and carts database
@@ -83,7 +84,7 @@ After creating the project, you are ready to onboard the first service.
 1. Onboard the `carts` service using the `keptn onboard service` command. In this onboarding scenario, a default deployment and service template will be provided by the github-service.
 
     ```console
-    $ keptn onboard service --project=sockshop --values=values_carts.yaml
+    keptn onboard service --project=sockshop --values=values_carts.yaml
     ```
 
 Since the carts service needs a mongo database, a second app needs to be onboarded.
@@ -91,7 +92,7 @@ Since the carts service needs a mongo database, a second app needs to be onboard
 1. Onboard the `carts-db` service using the `keptn onboard service` command. In this onboarding scenario, the  deployment and service files are handed over to the github-service.
 
     ```console
-    $ keptn onboard service --project=sockshop --values=values_carts_db.yaml --deployment=deployment_carts_db.yaml --service=service_carts_db.yaml
+    keptn onboard service --project=sockshop --values=values_carts_db.yaml --deployment=deployment_carts_db.yaml --service=service_carts_db.yaml
     ```
 
 ## Fork carts example into your GitHub organization
@@ -105,7 +106,8 @@ Since the carts service needs a mongo database, a second app needs to be onboard
 1. Run the `kubectl get svc` command to get the **EXTERNAL-IP** of the Istio ingress gateway.  
     
     ```console
-    $ kubectl get svc istio-ingressgateway -n istio-system
+    kubectl get svc istio-ingressgateway -n istio-system
+
     NAME                    TYPE            CLUSTER-IP      EXTERNAL-IP       PORT(S)                            AGE
     istio-ingressgateway    LoadBalancer    10.23.245.***   ***.198.26.***    80:32399/TCP,443:31203/TCP,...     10m
     ``` 
@@ -155,6 +157,7 @@ Since the carts service needs a mongo database, a second app needs to be onboard
 
     ```console
     keptn onboard service --project=sockshop --values=values_carts.yaml
+    
     Starting to onboard service
     Onboard service was unsuccessful
     Error: Post https://control.keptn.1xx.xxx.xx.xx.xip.io/service: dial tcp: lookup control.keptn.1xx.xxx.xx.xx.xip.io: no such host

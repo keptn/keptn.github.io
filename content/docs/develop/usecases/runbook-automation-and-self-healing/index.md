@@ -10,18 +10,18 @@ This use case gives an overview of how to leverage the power of runbook automati
 
 ## About this use case
 
-Configuration changes during runtime are sometimes necessary to increase flexibility. A prominent example are feature flags that can be toggled also in a production environment. In this use case we will change the promotion rate of a shopping cart service, which means that a defined percentage of interactions with the shopping cart will add promotional items (e.g., small gifts) to the shopping carts of our customers. However, we will experience troubles with this configuration change. Therefore, we will set means in place that are capable of auto-remediating issues at runtime. In fact, we will leverage workflows in ServiceNow. 
+Configuration changes during runtime are sometimes necessary to increase flexibility. A prominent example are feature flags that can be toggled also in a production environment. In this use case, we will change the promotion rate of a shopping cart service, which means that a defined percentage of interactions with the shopping cart will add promotional items (e.g., small gifts) to the shopping carts of our customers. However, we will experience troubles with this configuration change. Therefore, we will set means in place that are capable of auto-remediating issues at runtime. In fact, we will leverage workflows in ServiceNow. 
 
 ## Prerequisites
 
 - ServiceNow instance or [free ServiceNow developer instance](https://developer.servicenow.com)
-    - Use case tested on _London_ and _Madrid_ releases
+  - Use case tested on _London_ and _Madrid_ releases
 - [Setup of Dynatrace](../../monitoring/dynatrace/) is mandatory for this usecase 
 - Complete [onboarding a service](../onboard-carts-service) use case
 - Clone the GitHub repository with the necessary files for the use case:
-    
+  
     ```
-    git clone --branch 0.1.0 https://github.com/keptn/servicenow-service.git
+    git clone --branch 0.1.1 https://github.com/keptn/servicenow-service.git
     cd servicenow-service
     ```
 
@@ -31,29 +31,28 @@ In order for keptn to use both ServiceNow and Dynatrace, the corresponding crede
 
 ### Dynatrace Secret 
 
-The Dynatrace secret should already have been created the Dynatrace secret for you and stored some needed information in environment variables.
-Please verify by executing the following commands:
+The Dynatrace secret should already have been created while setting up [Dynatrace monitoring](../../monitoring/dynatrace/). Please verify your Dynatrace secret by executing the following commands:
 
 ```
 kubectl get secret dynatrace -n keptn -o yaml
 ```
-The output should include the `DT_API_TOKEN` as well as the `DT_TENANT_ID` (both will be shown in base64 encoding):
+The output should include the `DT_API_TOKEN` and the `DT_TENANT` (both will be shown in base64 encoding):
 ```yaml
 apiVersion: v1
 data:
   DT_API_TOKEN: xxxxxx
-  DT_TENANT_ID: xxxxxx
+  DT_TENANT: xxxxxx
 kind: Secret
 metadata:
   creationTimestamp:
   ...
 ```
 
-Additionally, we verify that the enviroment variables are set (execute line by line):
+The`DT_API_TOKEN` and the `DT_TENANT` need to be stored in an environment variable. Therefore, execute the below commands line by line and make sure that `DT_TENANT` stores a url that follows the pattern `{your-domain}/e/{your-environment-id}` for a managed Dynatrace tenant or `{your-environment-id}.live.dynatrace.com` for a SaaS tenant. 
 ```
-export DT_TENANT_ID=$(kubectl get secret dynatrace -n keptn -o=yaml | yq - r data.DT_TENANT_ID | base64 --decode)
+export DT_TENANT=$(kubectl get secret dynatrace -n keptn -o=yaml | yq - r data.DT_TENANT | base64 --decode)
 export DT_API_TOKEN=$(kubectl get secret dynatrace -n keptn -o=yaml | yq - r data.DT_API_TOKEN | base64 --decode)
-echo $DT_TENANT_ID
+echo $DT_TENANT
 echo $DT_API_TOKEN
 ```
 
@@ -94,7 +93,7 @@ A ServiceNow *Update Set* is provided to run this use case. To install the *Upda
     link="./assets/service-now-keptn-creds.png"
     caption="ServiceNow keptn credentials">}}
 
-1. Click on **New** and enter your Dynatrace API token as well as your Dynatrace tenant ID.
+1. Click on **New** and enter your Dynatrace API token as well as your Dynatrace tenant.
 
 1. *(Optional)* You can also take a look at the predefined workflow that is able to handle Dynatrace problem notifications and remediate issues.
     - Navigate to the workflow editor by typing **Workflow Editor** and clicking on the item **Workflow** > **Workflow Editor**
@@ -126,7 +125,7 @@ In order to create incidents in ServiceNow and to trigger workflows, an integrat
 1. Additionally, an Authorization Header is needed to authorize against the keptn server. 
     - Click on **Add header**
     - The name for the header is: `Authorization`
-    - The value has to be set to the following: `Bearer KEPTN_API_TOKEN` where KEPTN_API_TOKEN has to be replaced with your actual Api Token that was received during installation. You can always retrieve the token again by executing:
+    - The value has to be set to the following: `Bearer KEPTN_API_TOKEN` where KEPTN_API_TOKEN has to be replaced with your actual API token that was received during installation. You can always retrieve the token again by executing:
 
     ```
     kubectl get secret keptn-api-token -n keptn -o=yaml | yq - r data.keptn-api-token | base64 --decode
@@ -174,10 +173,10 @@ Before you adjust this setting, make sure to have some traffic on the service in
 
 1. Run the script:
     ```
-    ./add-to-cart.sh "carts.production.$(kubectl get svc istio-ingressgateway -n istio-system -o yaml | yq - r status.loadBalancer.ingress[0].ip).xip.io"
+    ./add-to-cart.sh "carts.sockshop-production.$(kubectl get svc istio-ingressgateway -n istio-system -o yaml | yq - r status.loadBalancer.ingress[0].ip).xip.io"
     ```
 
-1. Once you generated some load, navigate to **Transaction & services** and find the service **ItemsController** in the _production_ environment. 
+1. Once you generated some load, navigate to **Transaction & services** and find the service **ItemsController** in the _sockshop-production_ environment. 
 
 2. Open the service and click on the three dots button to **Edit** the service.
     {{< popup_image
@@ -197,7 +196,7 @@ Now, all pieces are in place to run the use case. Therefore, we will start by ge
 
 1. Run the script:
     ```
-    ./add-to-cart.sh "carts.production.$(kubectl get svc istio-ingressgateway -n istio-system -o yaml | yq - r status.loadBalancer.ingress[0].ip).xip.io"
+    ./add-to-cart.sh "carts.sockshop-production.$(kubectl get svc istio-ingressgateway -n istio-system -o yaml | yq - r status.loadBalancer.ingress[0].ip).xip.io"
     ```
 
 1. You should see some logging output each time an item is added to your shopping cart:
@@ -218,21 +217,21 @@ Now, all pieces are in place to run the use case. Therefore, we will start by ge
 
 1. _(Optional:)_ Verify that the environment variables you set earlier are still available:
     ```
-    echo $DT_TENANT_ID
+    echo $DT_TENANT
     echo $DT_API_TOKEN
     ```
 
-1. Additionally, the DT_TENANT_ID and DT_API_TOKEN must be exported for this terminal (execute line by line):
+1. Additionally, the `DT_TENANT` and `DT_API_TOKEN` must be exported for this terminal (execute line by line):
     ```
-    export DT_TENANT_ID=$(kubectl get secret dynatrace -n keptn -o=yaml | yq - r data.DT_TENANT_ID | base64 --decode)
+    export DT_TENANT=$(kubectl get secret dynatrace -n keptn -o=yaml | yq - r data.DT_TENANT | base64 --decode)
     export DT_API_TOKEN=$(kubectl get secret dynatrace -n keptn -o=yaml | yq - r data.DT_API_TOKEN | base64 --decode)
-    echo $DT_TENANT_ID
+    echo $DT_TENANT
     echo $DT_API_TOKEN
     ```
 
 1. Run the script:
     ```
-    ./enable-promotion.sh "carts.production.$(kubectl get svc istio-ingressgateway -n istio-system -o yaml | yq - r status.loadBalancer.ingress[0].ip).xip.io" 30
+    ./enable-promotion.sh "carts.sockshop-production.$(kubectl get svc istio-ingressgateway -n istio-system -o yaml | yq - r status.loadBalancer.ingress[0].ip).xip.io" 30
     ```
     Please note the parameter `30` at the end, which is the value for the configuration change and can be interpreted as for 30 % of the shopping cart interactions a special item is added to the shopping cart. This value can be set from `0` to `100`. For this use case the value `30` is just fine.
 
@@ -250,7 +249,7 @@ Now, all pieces are in place to run the use case. Therefore, we will start by ge
 
 ### Problem Detection by Dynatrace
 
-Navigate to the ItemsController service by clicking on **Transactions & services** and look for your ItemsController. Since our service is running in three different environment (dev, staging, and production) it is recommended to filter by the `environment:production` to make sure to find the correct service.
+Navigate to the ItemsController service by clicking on **Transactions & services** and look for your ItemsController. Since our service is running in three different environment (dev, staging, and production) it is recommended to filter by the `environment:sockshop-production` to make sure to find the correct service.
     {{< popup_image
         link="./assets/dynatrace-services.png"
         caption="Dynatrace Transactions & Services">}}
@@ -283,8 +282,6 @@ Once the problem is resolved, Dynatrace sends out another notification which aga
     {{< popup_image
         link="./assets/service-now-incident-resolved.png"
         caption="Resolved ServiceNow incident">}}
-
-
 
 ## Troubleshooting
 

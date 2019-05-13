@@ -127,13 +127,6 @@ in the version of the latest release.
     echo http://jenkins.keptn.$(kubectl get svc istio-ingressgateway -n istio-system -ojsonpath={.status.loadBalancer.ingress[0].ip}).xip.io/configure
     ```
 
-
-
-
-
-
-
-
 ## Verifying the installation
 
 - Run the following command to get the **EXTERNAL-IP** and **PORT** of your cluster's ingress gateway.
@@ -263,7 +256,6 @@ kubectl delete pod $(kubectl get pods -n keptn | awk '/jenkins-service/' | awk '
   ```
 
   If that is not the case, there may have been a problem during the installation. In that case, we kindly ask you to clean your cluster and restart the installation, as described in the **Troubleshooting** section below.
-
 
 ## Uninstall
 - Clone the GitHub repository of the latest release:
