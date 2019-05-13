@@ -233,106 +233,23 @@ Depending on the channel your service is subscribed to, it will receive the payl
 To receive events in this channel, please follow the instructions of the [Runbook Automation and Self-healing](https://keptn.sh/docs/0.2.0/usecases/runbook-automation-and-self-healing/) section.
 
 ```json
-{  
-   "specversion":"0.2",
-   "type":"sh.keptn.events.problem",
-   "source":"Dynatrace",
-   "id":"1234",
-   "time":"20190325-15:25:56.096",
-   "datacontenttype":"application/json",
-   "shkeptncontext":"db51be80-4fee-41af-bb53-1b093d2b694c",
-   "data":{
-    "State": "OPEN",
-    "ProblemID": "647",
-    "ProblemTitle": "Failure rate increase",
-    "ProblemDetails": {
-      "id": "-836294734073683647_1551872880000V2",
-      "startTime": 1551872880000,
-      "endTime": -1,
-      "displayName": "647",
-      "impactLevel": "SERVICE",
-      "status": "OPEN",
-      "severityLevel": "ERROR",
-      "commentCount": 0,
-      "tagsOfAffectedEntities": [
-        {
-          "context": "CONTEXTLESS",
-          "key": "service",
-          "value": "carts"
-        },
-        {
-          "context": "CONTEXTLESS",
-          "key": "SERVICE_TYPE",
-          "value": "BACKEND"
-        },
-        {
-          "context": "CONTEXTLESS",
-          "key": "environment",
-          "value": "juergen"
-        },
-        {
-          "context": "ENVIRONMENT",
-          "key": "product",
-          "value": "sockshop"
-        }
-      ],
-      "rankedEvents": [
-        {
-          "startTime": 1551872880000,
-          "endTime": -1,
-          "entityId": "SERVICE-80F384B3502D48B0",
-          "entityName": "carts-ItemsController",
-          "severityLevel": "ERROR",
-          "impactLevel": "SERVICE",
-          "eventType": "FAILURE_RATE_INCREASED",
-          "status": "OPEN",
-          "severities": [
-            {
-              "context": "FAILURE_RATE",
-              "value": 0.3078880310058594,
-              "unit": "Ratio"
-            }
-          ],
-          "isRootCause": true,
-          "serviceMethodGroup": "Default service method group",
-          "affectedRequestsPerMinute": 16.8,
-          "userDefinedFailureRateThreshold": 5,
-          "service": "carts-ItemsController"
-        }
-      ],
-      "rankedImpacts": [
-        {
-          "entityId": "SERVICE-80F384B3502D48B0",
-          "entityName": "carts-ItemsController",
-          "severityLevel": "ERROR",
-          "impactLevel": "SERVICE",
-          "eventType": "FAILURE_RATE_INCREASED"
-        }
-      ],
-      "affectedCounts": {
-        "INFRASTRUCTURE": 0,
-        "SERVICE": 1,
-        "APPLICATION": 0,
-        "ENVIRONMENT": 0
-      },
-      "recoveredCounts": {
-        "INFRASTRUCTURE": 0,
-        "SERVICE": 0,
-        "APPLICATION": 0,
-        "ENVIRONMENT": 0
-      },
-      "hasRootCause": true
-    },
-    "ProblemImpact": "SERVICES",
-    "ImpactedEntity": "Failure rate increase on Web service carts-ItemsController",
-    "ImpactedEntities": [
-      {
-        "type": "SERVICE",
-        "name": "carts-ItemsController",
-        "entity": "SERVICE-80F384B3502D48B0"
-      }
-    ]
-  }
+{
+    "specversion":"0.2",
+    "type":"sh.keptn.events.problem",
+    "shkeptncontext":"{PID}",
+    "source":"dynatrace",
+    "id":"{PID}",
+    "time":"",
+    "contenttype":"application/json",
+    "data": {
+        "State":"{State}",
+        "ProblemID":"{ProblemID}",
+        "PID":"{PID}",
+        "ProblemTitle":"{ProblemTitle}",
+        "ProblemDetails":{ProblemDetailsJSON},
+        "ImpactedEntities":{ImpactedEntities},
+        "ImpactedEntity":"{ImpactedEntity}"
+    }
 }
 ```
 
