@@ -23,9 +23,9 @@ To illustrate the benefit this use case addresses, you will create a second vers
 1. Clone the forked `carts` service to your local machine. Please note that you have to use your own GitHub organization.
 
     ```console
-    $ cd ~
-    $ git clone https://github.com/your-github-org/carts.git
-    $ cd carts
+    cd ~
+    git clone https://github.com/your-github-org/carts.git
+    cd carts
     ```
 
 ## Set up Monitoring for the carts service
@@ -46,9 +46,9 @@ This quality gate will check that the average response time of the service is un
 1. Commit and push the file.
 
   ```console
-  $ git add .
-  $ git commit -m "use prometheus perfspec"
-  $ git push
+  git add .
+  git commit -m "use prometheus perfspec"
+  git push
   ```
 </p>
 </details>
@@ -66,9 +66,9 @@ This quality gate will check that the average response time of the service is un
 1. Commit and push the file.
 
   ```console
-  $ git add .
-  $ git commit -m "use dynatrace perfspec"
-  $ git push
+  git add .
+  git commit -m "use dynatrace perfspec"
+  git push
   ```
 
 
@@ -83,7 +83,8 @@ This quality gate will check that the average response time of the service is un
 1. Ensure that the label `istio-injection` has been applied to the production namespace by executing the `kubectl get namespace -L istio-injection` command:
 
     ```console
-    $ kubectl get namespace -L istio-injection
+    kubectl get namespace -L istio-injection
+
     NAME           STATUS    AGE       ISTIO-INJECTION
     keptn          Active    10h
     default        Active    10h
@@ -99,7 +100,8 @@ This quality gate will check that the average response time of the service is un
 1. Run the `kubectl get svc istio-ingressgateway -n istio-system` command to get the *EXTERNAL-IP* of your `istio-ingressgateway` service.
 
     ```console
-    $ kubectl get svc istio-ingressgateway -n istio-system
+    kubectl get svc istio-ingressgateway -n istio-system
+
     NAME                   TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)                                      AGE
     istio-ingressgateway   LoadBalancer   172.21.109.129   3*.2**.1**.8*   80:31380/TCP,443:31390/TCP,31400:31400/TCP   17h
     ```
@@ -127,9 +129,9 @@ Next, you will change the version number of the carts service to see the effect 
 1. Commit the changes and then push it to the remote git repository.
 
     ```console
-    $ git add .
-    $ git commit -m "Introduced service slow down."
-    $ git push
+    git add .
+    git commit -m "Introduced service slow down."
+    git push
     ```
 
 <!--
@@ -191,9 +193,9 @@ Next, you will change the `carts` service to make it pass the quality gate.
 1. Commit the changes and then push it to the remote git repository.
 
     ```console
-    $ git add .
-    $ git commit -m "Fixed service slow down."
-    $ git push
+    git add .
+    git commit -m "Fixed service slow down."
+    git push
     ```
 
 ## Deploy carts v3 to production
@@ -209,7 +211,8 @@ Next, you will change the `carts` service to make it pass the quality gate.
 1. Besides, you can verify the deployments in your K8s cluster using the following commands: 
 
     ```console
-    $ kubectl get deployments -n production
+    kubectl get deployments -n production
+
     NAME             DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
     carts-blue       1         1         1            0           1h
     carts-db-blue    1         1         1            0           1h
@@ -218,7 +221,8 @@ Next, you will change the `carts` service to make it pass the quality gate.
     ```
 
     ```console
-    $ kubectl describe deployment carts-blue -n production
+    kubectl describe deployment carts-blue -n production
+
     ...
     Pod Template:
       Labels:  app=sockshop-selector-carts
@@ -229,7 +233,8 @@ Next, you will change the `carts` service to make it pass the quality gate.
     ```
 
     ```console
-    $ kubectl describe deployment carts-green -n production
+    kubectl describe deployment carts-green -n production
+
     ...
     Pod Template:
       Labels:  app=sockshop-selector-carts
@@ -240,7 +245,8 @@ Next, you will change the `carts` service to make it pass the quality gate.
     ```
 
     ```console
-    $ kubectl describe virtualService -n production
+    kubectl describe virtualService -n production
+    
     ...
     Route:
       Destination:
