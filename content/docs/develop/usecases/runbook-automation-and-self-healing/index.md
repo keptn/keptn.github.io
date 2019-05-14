@@ -18,6 +18,7 @@ Configuration changes during runtime are sometimes necessary to increase flexibi
   - Use case tested on _London_ and _Madrid_ releases
 - [Setup of Dynatrace](../../monitoring/dynatrace/) is mandatory for this usecase 
 - Complete [onboarding a service](../onboard-carts-service) use case
+  - Please note that for this use case the naming conventions of _onboarding a service_ have to be followed exactly since the provided scripts rely on some of the those values. 
 - Clone the GitHub repository with the necessary files for the use case:
   
     ```
