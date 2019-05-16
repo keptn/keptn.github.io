@@ -95,6 +95,12 @@ Since the carts service needs a mongo database, a second app needs to be onboard
     keptn onboard service --project=sockshop --values=values_carts_db.yaml --deployment=deployment_carts_db.yaml --service=service_carts_db.yaml
     ```
 
+Note, by onboarding a service without specifying a deployment file, we automatically include a [readiness and liveness probe](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/). Therefore, we assume that the 
+onboarded service has an endpoint `/health` on the internal port 8080. This is true for the `carts` service used in this use case.
+In case you would like to onboard your own service, please ensure that your service has an endpoint `health` which can be used or
+define your own [readiness and liveness probe](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/)
+in the deployment.
+
 ## Fork carts example into your GitHub organization
 
 1. Go to https://github.com/keptn-sockshop/carts and click on the **Fork** button on the top right corner.
