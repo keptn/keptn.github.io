@@ -283,7 +283,7 @@ kubectl delete pod $(
 1. Configure the used GitHub organization, user, and personal access token using the `keptn configure` command:
   
     ```console
-    keptn configure --org=<YOUR_GITHUB_ORG> --user=<YOUR_GITHUB_USER> --token=<YOUR_GITHUB_TOKEN>
+    keptn configure --org=$(yq r ~/keptn/install/scripts/creds.json githubOrg) --user=$(yq r ~/keptn/install/scripts/creds.json githubUserName) --token=$(yq r ~/keptn/install/scripts/creds.json githubPersonalAccessToken)
     ```
 
 
