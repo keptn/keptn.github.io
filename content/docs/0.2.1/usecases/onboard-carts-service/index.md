@@ -148,6 +148,9 @@ Since the carts service needs a mongo database, a second app needs to be onboard
     {{< popup_image
       link="./assets/deploy-pipeline.png"
       caption="Successful deploy pipeline run">}}
+    
+## View Carts Service
+ Navigate to `http://carts.production.<EXTERNAL IP>.xip.io` to view the carts service.
 
 ## Troubleshooting
 
