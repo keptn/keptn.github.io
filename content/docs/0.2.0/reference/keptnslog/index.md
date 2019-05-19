@@ -42,7 +42,7 @@ In case you want to export the keptn's log for debugging purposes, you can do so
   {
     "query": {
       "match": {
-        "keptnContext": "36ab658a-5933-4ff3-a079-d7205a339b0d"
+        "keptnContext": "<KEPTN_CONTEXT>"
       }
     },
     "size": 10000
