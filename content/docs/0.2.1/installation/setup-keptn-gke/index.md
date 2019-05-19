@@ -161,7 +161,8 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
 
   1. Restart the `jenkins-service` pod.
  ```
-kubectl delete pod $(kubectl get pods -n keptn | awk '/jenkins-service/' | awk '{print $1}') -n keptn
+kubectl delete pod $(
+| awk '/jenkins-service/' | awk '{print $1}') -n keptn
  ``` 
   <br><br>
 
@@ -170,6 +171,7 @@ kubectl delete pod $(kubectl get pods -n keptn | awk '/jenkins-service/' | awk '
   **Important:** Due to a [known issue](https://issues.jenkins-ci.org/browse/JENKINS-14880) in Jenkins, it is necessary to click **Save** although nothing is changed in this verification step.
 
 - To verify your installation, retrieve the pods runnning in the `keptn` namespace.
+  
   ```console
   kubectl get pods -n keptn
   ```
