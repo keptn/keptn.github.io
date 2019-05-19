@@ -274,10 +274,10 @@ kubectl delete pod $(
 
 ## Authenticate keptn CLI and configure keptn
 
-1. The CLI needs to be authenticated against the keptn server. Therefore, please copy the values from your installation log output into the next command and execute it:
+1. The CLI needs to be authenticated against the keptn server:
 
     ```console
-    keptn auth --endpoint=YOUR_ENDPOINT --api-token=YOUR_TOKEN
+    keptn auth --endpoint=https://$(kubectl get ksvc -n keptn control -o=yaml | yq r - status.domain) --api-token=$(kubectl get secret keptn-api-token -n keptn -o=yaml | yq - r data.keptn-api-token | base64 --decode)
     ```
 
 1. Configure the used GitHub organization, user, and personal access token using the `keptn configure` command:
