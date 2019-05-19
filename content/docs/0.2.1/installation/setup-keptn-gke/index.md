@@ -23,7 +23,7 @@ keywords: setup
     CLUSTERNAME=nameofcluster
     ZONE=us-central1-a
     REGION=us-central1
-    GKEVERSION="1.12.7-gke.7"
+    GKEVERSION="1.12.7-gke.10"
     ```
 
     ```console
