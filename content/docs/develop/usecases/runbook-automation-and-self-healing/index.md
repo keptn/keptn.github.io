@@ -49,7 +49,7 @@ metadata:
   ...
 ```
 
-The`DT_API_TOKEN` and the `DT_TENANT` need to be stored in an environment variable. Therefore, execute the below commands line by line and make sure that `DT_TENANT` stores a url that follows the pattern `{your-domain}/e/{your-environment-id}` for a managed Dynatrace tenant or `{your-environment-id}.live.dynatrace.com` for a SaaS tenant. 
+The `DT_API_TOKEN` and the `DT_TENANT` need to be stored in an environment variable. Therefore, execute the below commands line by line and make sure that `DT_TENANT` stores a url that follows the pattern `{your-domain}/e/{your-environment-id}` for a managed Dynatrace tenant or `{your-environment-id}.live.dynatrace.com` for a SaaS tenant. 
 ```
 export DT_TENANT=$(kubectl get secret dynatrace -n keptn -o=yaml | yq - r data.DT_TENANT | base64 --decode)
 export DT_API_TOKEN=$(kubectl get secret dynatrace -n keptn -o=yaml | yq - r data.DT_API_TOKEN | base64 --decode)
