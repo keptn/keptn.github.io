@@ -101,12 +101,12 @@ In case you would like to onboard your own service, please ensure that your serv
 define your own [readiness and liveness probe](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/)
 in the deployment.
 
-## Build new artifact and watch keptn doing the deployment 
+## Send a new artifact and watch keptn doing the deployment 
 
 1. Send a new artifact for the carts service using the [keptn send new-artifact](../../reference/cli/#keptn-send-new-artifact) command.
 The used artifact is stored on Docker Hub. 
   ```console
-  $ send new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.7.0
+  $ send new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.6.0
   ```
   
 1. Go back to the Jenkins dashboard to see how the pipelines get triggered automatically. More precisely, first the `deploy` pipeline is triggered for the `dev` namespace, second the `run_tests` is executed, and finnaly, `evaluation_done` is executed. If all piplines succeed, the same pipelines get triggered for the `staging` and `production` namespace. In total, the pipelines will run for about 15&nbsp;minutes before you have your `carts` service deployed in your `dev`, `staging` and `production` namespace.
