@@ -5,8 +5,8 @@ weight: 10
 keywords: [cli, setup]
 ---
 
-In this section, the functionality and commands of the keptn CLI are described. The keptn CLI allows to install keptn,
-to configure keptn, to create new projects, and to onboard new services.
+In this section, the functionality and commands of the keptn CLI are described. The keptn CLI allows installing keptn,
+configuring keptn, creating new projects, onboarding new services, and sending new artifacts.
 
 <!--
 For onboarding, a so-called `shipyard` (**TODO: provide more information/link here**) files has to be provided that defines deployment strategies for the service, as well as the different stages (i.e., dev, staging, and production).
@@ -208,7 +208,8 @@ GitHub organization, the GitHub user, and the GitHub personal access token belon
 Therefore, the keptn CLI is used to set the GitHub organization, the GitHub user, and the GitHub personal access token belonging to that user in the keptn server.
 **Note:** Keptn is automatically configured after installing keptn using the CLI. Hence, `keptn configure` can be skipped
 
-To configure the used GitHub organization, user, and personal access token use command `configure` and provide your details using the respective flags:
+To configure, use the command `configure` and specify the GitHub organization (flag `--org`), user (flag `--user`),
+and personal access token (flag `--token`):
 
 ```console
 $ keptn configure --org=gitHubOrg --user=gitHub_keptnUser --token=XYZ
@@ -241,7 +242,7 @@ $ keptn create project sockshop shipyard.yml
 
 After creating a project which represents a repository in your GitHub organization, the keptn&nbsp;CLI allows to onboard services into this project. Please note that for describing the Kubernetes resources, [Helm charts](https://helm.sh/) are used. Therefore, the keptn CLI allows setting a Helm values description in the before created project. Optionally, the user can also provide a Helm deployment and service description.
 
-To onboard a service, use the command `onboard service` and provide the project name, the Helm chart values and optionally also deployment and service descriptions.
+To onboard a service, use the command `onboard service` and provide the project name (flag `--project`), the Helm chart values (flag `--values`) and optionally also deployment (flag `--deployment`) and service (flag `--service`) descriptions.
 
 ```console
 $ keptn onboard service --project=sockshop --values=values.yaml
@@ -253,6 +254,33 @@ $ keptn onboard service --project=sockshop --values=values.yaml --deployment=dep
 
 To start onboarding a service, please see the [Onboarding a Service](../../usecases/onboard-carts-service) use case.
 
+## keptn send new-artifact
+
+After onboarding a service, the keptn&nbsp;CLI allows pushing a new artifact for the service.
+This artifact is a Docker image, which can be located at Docker Hub, Quay, or any other registry storing docker images.
+The new artifact is pushed in the first stage specified in the  `shipyard.yaml` file (usually this will be the dev-stage).
+Afterwards, keptn takes care of deploying this new artifact.
+
+To push a new artifact, use the command `send new-artifact`, which sends a new-artifact-event 
+to the keptn installation in order to deploy a new artifact for the specified service in the provided project.
+Therefore, this command takes the project (flag `--project`), the service (flag `--service`) 
+as well as the image (flag `--image`) and tag (flag `--tag`) of the new artifact.
+
+```console
+$ keptn new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.7.0
+```
+
+## keptn send 
+
+This command allows sending arbitrary keptn events. These events have to follow the [Cloud Events](https://cloudevents.io/)
+specification and are written in JSON.
+**Note:** This command is not required for any use case and requires precise keptn event definitions, which we will
+describe in one of the next releases.
+
+To send an arbitrary keptn event, use the command `send` and pass the file containing the event (flag `--event`).
+```console
+$ keptn send --event=new_artifact.json
+```
 
 ## keptn version
 
