@@ -67,6 +67,7 @@ $ keptn install
 ## keptn auth 
 
 Before the keptn CLI can be used, it needs to be authenticated against a keptn server. Therefore, an endpoint and an API token are required.
+
 **Note:** The CLI is automatically authenticated after installing keptn using the CLI. Hence, `keptn auth` can be skipped.
 
 If the authentication is successful, keptn will inform the user. Furthermore, if the authentication is successful, the endpoint and the API token are stored in a password store of the underlying operating system.
@@ -206,6 +207,7 @@ In the Windows Command Line, a couple of steps are necessary.
 In order to work with GitHub (i.e. create a new project, make commits), keptn requires a
 GitHub organization, the GitHub user, and the GitHub personal access token belonging to that user.
 Therefore, the keptn CLI is used to set the GitHub organization, the GitHub user, and the GitHub personal access token belonging to that user in the keptn server.
+
 **Note:** Keptn is automatically configured after installing keptn using the CLI. Hence, `keptn configure` can be skipped
 
 To configure, use the command `configure` and specify the GitHub organization (flag `--org`), user (flag `--user`),
