@@ -245,11 +245,11 @@ After creating a project which represents a repository in your GitHub organizati
 To onboard a service, use the command `onboard service` and provide the project name (flag `--project`), the Helm chart values (flag `--values`) and optionally also deployment (flag `--deployment`) and service (flag `--service`) descriptions.
 
 ```console
-$ keptn onboard service --project=sockshop --values=values.yaml
+$ keptn onboard service --project=sockshop --values=values_carts.yaml
 ```
 or
 ```console
-$ keptn onboard service --project=sockshop --values=values.yaml --deployment=deployment.yaml --service=service.yaml
+$ keptn onboard service --project=sockshop --values=values_carts_db.yaml --deployment=deployment_carts_db.yaml --service=service_carts_db.yaml
 ```
 
 To start onboarding a service, please see the [Onboarding a Service](../../usecases/onboard-carts-service) use case.
