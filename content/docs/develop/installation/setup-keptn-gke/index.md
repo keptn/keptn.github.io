@@ -23,7 +23,7 @@ keywords: setup
     CLUSTERNAME=nameofcluster
     ZONE=us-central1-a
     REGION=us-central1
-    GKEVERSION="1.12.7-gke.7"
+    GKEVERSION="1.12.7-gke.10"
     ```
 
     ```console
@@ -46,6 +46,7 @@ keywords: setup
   - [gcloud](https://cloud.google.com/sdk/gcloud/)
   - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) (configured to be used with your cluster) 
   - [git](https://git-scm.com/)
+  - (required for Ubuntu 19.04) [python 2.7](https://www.python.org/downloads/release/python-2716/)
 
     ```console
     gcloud container clusters get-credentials $CLUSTERNAME --zone $ZONE --project $PROJECT
@@ -149,7 +150,8 @@ in the version of the latest release.
 
   1. Restart the `jenkins-service` pod.
  ```
-kubectl delete pod $(kubectl get pods -n keptn | awk '/jenkins-service/' | awk '{print $1}') -n keptn
+kubectl delete pod $(
+| awk '/jenkins-service/' | awk '{print $1}') -n keptn
  ``` 
   <br><br>
 
@@ -158,6 +160,7 @@ kubectl delete pod $(kubectl get pods -n keptn | awk '/jenkins-service/' | awk '
   **Important:** Due to a [known issue](https://issues.jenkins-ci.org/browse/JENKINS-14880) in Jenkins, it is necessary to click **Save** although nothing is changed in this verification step.
 
 - To verify your installation, retrieve the pods running in the `keptn` namespace.
+
   ```console
   kubectl get pods -n keptn
   ```

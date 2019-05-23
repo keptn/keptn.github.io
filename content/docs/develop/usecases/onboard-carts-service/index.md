@@ -49,7 +49,7 @@ If you have not yet authenticated and configured the keptn CLI, please follow th
 1. Configure the used GitHub organization, user, and personal access token using the `keptn configure` command:
   
     ```console
-    keptn configure --org=<YOUR_GITHUB_ORG> --user=<YOUR_GITHUB_USER> --token=<YOUR_GITHUB_TOKEN>
+    keptn auth --endpoint=https://$(kubectl get ksvc -n keptn control -o=yaml | yq r - status.domain) --api-token=$(kubectl get secret keptn-api-token -n keptn -o=yaml | yq - r data.keptn-api-token | base64 --decode)
     ```
 
 ## Create project sockshop
@@ -156,6 +156,9 @@ in the deployment.
     {{< popup_image
       link="./assets/deploy-pipeline.png"
       caption="Successful deploy pipeline run">}}
+
+## View Carts Service
+ Navigate to `http://carts.sockshop-production.<EXTERNAL IP>.xip.io` to view the carts service.
 
 ## Troubleshooting
 
