@@ -46,6 +46,10 @@ If you have not yet authenticated and configured the keptn CLI, please follow th
 
 1. The CLI needs to be authenticated against the keptn server. Therefore, please follow the [keptn auth](../../reference/cli/#keptn-auth) instructions.
 
+    ```console
+    $ keptn auth --endpoint=https://$(kubectl get ksvc -n keptn control -o=yaml | yq r - status.domain) --api-token=$(kubectl get secret keptn-api-token -n keptn -o=yaml | yq - r data.keptn-api-token | base64 --decode)
+    ```
+
 1. Configure the used GitHub organization, user, and personal access token using the [keptn configure](../../reference/cli/#keptn-configure) command:
   
     ```console
@@ -120,3 +124,6 @@ The used artifact is stored on Docker Hub.
     {{< popup_image
       link="./assets/deploy-pipeline.png"
       caption="Successful deploy pipeline run">}}
+
+## View Carts Service
+ Navigate to `http://carts.sockshop-production.<EXTERNAL IP>.xip.io` to view the carts service.
