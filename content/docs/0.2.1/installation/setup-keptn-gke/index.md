@@ -49,7 +49,7 @@ keywords: setup
   - [helm 2.12.3](https://helm.sh/)
   - [gcloud](https://cloud.google.com/sdk/gcloud/)
   - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) (configured to be used with your cluster)
-  - [python 2.7](https://www.python.org/downloads/release/python-2716/)
+  - [python 2.7](https://www.python.org/downloads/release/python-2716/) (required for Ubuntu 19.04)
 
     ```console
     gcloud container clusters get-credentials $CLUSTERNAME --zone $ZONE --project $PROJECT
