@@ -17,7 +17,7 @@ To illustrate the scenario this use case addresses, keptn relies on two services
 **github-service**: 
   
   * Creating a project: When a new project is created, the github service will create a new repository within your configured GitHub organization. This repository will contain the complete configuration (e.g., the image tags to be used for each service within your application) of your application, where the configuration for each stage is located in a separate branch. For the configuration of a keptn-managed app we use [Helm Charts](https://helm.sh/).
-  * Onboarding a service: When a new service is onboarded to a project by providing a manifest file containing the specification for that service, the github service will add the service as a new entry in the `values.yaml` file of your application's helm chart. Further, depending on the deployment strategy of each stage, the github service will also generate a set of Istio configurations (i.e., a Gateway, DestinationRules and VirtualServices) to facilitate blue/green deployments. You can read more about this concept at the [Istio documentation](https://istio.io/docs/concepts/traffic-management/#rule-configuration).
+  * Onboarding a service: When a new service is onboarded to a project by providing a manifest file containing the specification for that service, the github service will add the service as a new entry in the `values.yaml` file of your application's helm chart. Further, depending on the deployment strategy of each stage, the github service will also generate a set of Istio configurations (i.e., a Gateway, DestinationRules, and VirtualServices) to facilitate blue/green deployments. You can read more about this concept at the [Istio documentation](https://istio.io/docs/concepts/traffic-management/#rule-configuration).
   * Listening to a new artifact event: When the github service receives a new artifact event, it updates the reference to the new artifact in the service configuration. By this, the new image is used by the respective service.
 
 **jenkins-service**:
@@ -35,9 +35,8 @@ To illustrate the scenario this use case addresses, keptn relies on two services
 1. Git clone artifacts for this use case.
 
     ```console
-    $ cd ~
-    $ git clone https://github.com/keptn/examples.git
-    $ cd ~/examples/onboarding-carts
+    git clone https://github.com/keptn/examples.git
+    cd examples/onboarding-carts
     ```
 
 ## Authenticate and configure keptn
@@ -47,13 +46,13 @@ If you have not yet authenticated and configured the keptn CLI, please follow th
 1. The CLI needs to be authenticated against the keptn server. Therefore, please follow the [keptn auth](../../reference/cli/#keptn-auth) instructions.
 
     ```console
-    $ keptn auth --endpoint=https://$(kubectl get ksvc -n keptn control -o=yaml | yq r - status.domain) --api-token=$(kubectl get secret keptn-api-token -n keptn -o=yaml | yq - r data.keptn-api-token | base64 --decode)
+    keptn auth --endpoint=https://$(kubectl get ksvc -n keptn control -o=yaml | yq r - status.domain) --api-token=$(kubectl get secret keptn-api-token -n keptn -o=yaml | yq - r data.keptn-api-token | base64 --decode)
     ```
 
 1. Configure the used GitHub organization, user, and personal access token using the [keptn configure](../../reference/cli/#keptn-configure) command:
   
     ```console
-    $ keptn configure --org=<YOUR_GITHUB_ORG> --user=<YOUR_GITHUB_USER> --token=<YOUR_GITHUB_TOKEN>
+    keptn configure --org=<YOUR_GITHUB_ORG> --user=<YOUR_GITHUB_USER> --token=<YOUR_GITHUB_TOKEN>
     ```
 
 ## Create project sockshop
@@ -73,13 +72,11 @@ stages:
     deployment_strategy: "blue_green_service"
 ```
 
-1. Create a new project for your carts service using the [keptn create project](../../reference/cli/#keptn-create-project) command. In this example, the project is called *sockshop*.
+1. Create a new project for your carts service using the [keptn create project](../../reference/cli/#keptn-create-project) command. In this example, the project is called *sockshop*. Before executing the following command, 
+make sure you are in the folder `examples/onboarding-carts`.
 
     ```console
-    $ ls
-    deployment_carts_db.yaml  service_carts_db.yaml  shipyard.yaml  values_carts.yaml  values_carts_db.yaml
-
-    $ keptn create project sockshop shipyard.yaml
+    keptn create project sockshop shipyard.yaml
     ```
 
 ## Onboard carts service and carts database
@@ -88,7 +85,7 @@ After creating the project, you are ready to onboard the first service.
 1. Onboard the `carts` service using the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command. In this onboarding scenario, a default deployment and service template will be provided by the github-service.
 
     ```console
-    $ keptn onboard service --project=sockshop --values=values_carts.yaml
+    keptn onboard service --project=sockshop --values=values_carts.yaml
     ```
 
 Since the carts service needs a mongo database, a second app needs to be onboarded.
@@ -96,7 +93,7 @@ Since the carts service needs a mongo database, a second app needs to be onboard
 1. Onboard the `carts-db` service using the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command. In this onboarding scenario, the  deployment and service files are handed over to the github-service.
 
     ```console
-    $ keptn onboard service --project=sockshop --values=values_carts_db.yaml --deployment=deployment_carts_db.yaml --service=service_carts_db.yaml
+    keptn onboard service --project=sockshop --values=values_carts_db.yaml --deployment=deployment_carts_db.yaml --service=service_carts_db.yaml
     ```
 
 Note, by onboarding a service without specifying a deployment file, we automatically include a [readiness and liveness probe](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/). Therefore, we assume that the 
@@ -107,13 +104,13 @@ in the deployment.
 
 ## Send a new artifact and watch keptn doing the deployment 
 
-1. Send a new artifact for the carts service using the [keptn send new-artifact](../../reference/cli/#keptn-send-new-artifact) command.
+1. Send a new artifact for the carts service using the [keptn send event new-artifact](../../reference/cli/#keptn-send-event-new-artifact) command.
 The used artifact is stored on Docker Hub. 
   ```console
-  $ send new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.8.0
+  keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.8.0
   ```
   
-1. Go back to the Jenkins dashboard to see how the pipelines get triggered automatically. More precisely, first the `deploy` pipeline is triggered for the `dev` namespace, second the `run_tests` is executed, and finnaly, `evaluation_done` is executed. If all piplines succeed, the same pipelines get triggered for the `staging` and `production` namespace. In total, the pipelines will run for about 15&nbsp;minutes before you have your `carts` service deployed in your `dev`, `staging` and `production` namespace.
+1. Go back to the Jenkins dashboard to see how the pipelines get triggered automatically. More precisely, first, the `deploy` pipeline is triggered for the `dev` namespace, second, the `run_tests` is executed, and finally, `evaluation_done` is executed. If all pipelines succeed, the same pipelines get triggered for the `staging` and `production` namespace. In total, the pipelines will run for about 15&nbsp;minutes before you have your `carts` service deployed in your `dev`, `staging`, and `production` namespaces.
 
     {{< popup_image
       link="./assets/keptn-pipelines.png"
