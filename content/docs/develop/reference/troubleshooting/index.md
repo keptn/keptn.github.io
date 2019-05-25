@@ -7,7 +7,7 @@ keywords: [troubleshooting]
 
 In this section, instructions are summarized that help to trouble shoot known issues that may occur when using keptn.
 
-## Knative Eventing
+<!-- ## Knative Eventing -->
 
 ### Service does not receive event, even though it has been sent
 <details><summary>Expand instructions</summary>
@@ -43,7 +43,7 @@ Internal knative problem, seen with knative 0.4
     ```
 </p></details>
 
-## Control Servic is not available
+<!-- ## Control service is not available -->
 
 ### CLI command was not executed correctly
 <details><summary>Expand instructions</summary>
@@ -64,7 +64,7 @@ The resulting response message will look similar to this:
 
 **Reason:** 
 
-Probably, the cluster is overloaded
+We are investiagting this problem in issue [#392](https://github.com/keptn/keptn/issues/392).
 
 **Solution:** 
 
