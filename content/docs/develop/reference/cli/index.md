@@ -6,7 +6,7 @@ keywords: [cli, setup]
 ---
 
 In this section, the functionality and commands of the keptn CLI are described. The keptn CLI allows installing keptn,
-configuring keptn, creating new projects, onboarding new services, and sending new artifacts.
+configuring keptn, creating new projects, onboarding new services, and sending new artifact events.
 
 <!--
 For onboarding, a so-called `shipyard` (**TODO: provide more information/link here**) files has to be provided that defines deployment strategies for the service, as well as the different stages (i.e., dev, staging, and production).
@@ -61,7 +61,7 @@ In future releases, we add additional checks whether the executed commands succe
 The keptn CLI allows to install keptn on a server. Further details are provided [here](../../installation/setup-keptn-gke).
 
 ```console
-$ keptn install
+keptn install
 ```
 
 ## keptn auth 
@@ -79,15 +79,15 @@ More precisely, the keptn CLI stores the endpoint and API token using `pass` in 
 Set the needed environment variables.
 
 ```console
-$ KEPTN_ENDPOINT=https://$(kubectl get ksvc -n keptn control -o=yaml | yq r - status.domain)
+KEPTN_ENDPOINT=https://$(kubectl get ksvc -n keptn control -o=yaml | yq r - status.domain)
 
-$ KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -o=yaml | yq - r data.keptn-api-token | base64 --decode)
+KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -o=yaml | yq - r data.keptn-api-token | base64 --decode)
 ```
 
 Authenticate to the keptn server.
 
 ```console
-$ keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN
+keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN
 ```
 
 **Note**: If you receive a warning `Using a file-based storage for the key because the password-store seems to be not set up.` it is because a password store could not be found in your environment. In this case, the credentials are stored in a file called `.keptn` in your home directory.
@@ -138,7 +138,7 @@ In the Windows Command Line, a couple of steps are necessary.
 1. Get the keptn API Token encoded in base64
 
     ```console
-    $ kubectl get secret keptn-api-token -n keptn -o=yaml
+    kubectl get secret keptn-api-token -n keptn -o=yaml
 
     Output:
     apiVersion: v1
@@ -155,19 +155,19 @@ In the Windows Command Line, a couple of steps are necessary.
 1. Decode the file
 
     ```
-    $ certutil -decode keptn-api-token-base64.txt keptn-api-token.txt
+    certutil -decode keptn-api-token-base64.txt keptn-api-token.txt
     ```
 
 1. Open the newly created file `keptn-api-token.txt`, copy the value and paste it into the next command
 
     ```
-    $ set KEPTN_API_TOKEN=value-of-your-token
+    set KEPTN_API_TOKEN=value-of-your-token
     ```
 
 1. Get the keptn server endpoint 
 
     ```
-    $ kubectl get ksvc -n keptn control -o yaml
+    kubectl get ksvc -n keptn control -o yaml
 
     Output:
     apiVersion: serving.knative.dev/v1alpha1
@@ -184,7 +184,7 @@ In the Windows Command Line, a couple of steps are necessary.
 1. Copy the `domain` value and save it in an environment variable
 
     ```
-    $ set KEPTN_ENDPOINT=https://control.keptn.XX.XXX.XXX.XX.xip.io
+    set KEPTN_ENDPOINT=https://control.keptn.XX.XXX.XXX.XX.xip.io
     ```
 
 1. Now that everything we need is stored in environment variables, we can proceed with authorizing the keptn CLI.
@@ -192,7 +192,7 @@ In the Windows Command Line, a couple of steps are necessary.
     To authenticate against the keptn server use command `auth` and your endpoint and API token:
 
     ```
-    $ keptn.exe auth --endpoint=%KEPTN_ENDPOINT% --api-token=%KEPTN_API_TOKEN%
+    keptn.exe auth --endpoint=%KEPTN_ENDPOINT% --api-token=%KEPTN_API_TOKEN%
     ```
 
 </p>
@@ -214,7 +214,7 @@ To configure, use the command `configure` and specify the GitHub organization (f
 and personal access token (flag `--token`):
 
 ```console
-$ keptn configure --org=gitHubOrg --user=gitHub_keptnUser --token=XYZ
+keptn configure --org=gitHubOrg --user=gitHub_keptnUser --token=XYZ
 ```
 
 ## keptn create project 
@@ -237,7 +237,7 @@ stages:
 To create a new project, use the command `create project` and specify the name of the project as well as the `shipyard.yaml` file.
 
 ```console
-$ keptn create project sockshop shipyard.yml
+keptn create project your_project shipyard.yml
 ```
 
 ## keptn onboard service
@@ -247,43 +247,47 @@ After creating a project which represents a repository in your GitHub organizati
 To onboard a service, use the command `onboard service` and provide the project name (flag `--project`), the Helm chart values (flag `--values`) and optionally also deployment (flag `--deployment`) and service (flag `--service`) descriptions.
 
 ```console
-$ keptn onboard service --project=sockshop --values=values_carts.yaml
+keptn onboard service --project=your_project --values=values.yaml
 ```
 or
 ```console
-$ keptn onboard service --project=sockshop --values=values_carts_db.yaml --deployment=deployment_carts_db.yaml --service=service_carts_db.yaml
+keptn onboard service --project=your_project --values=values.yaml --deployment=deployment.yaml --service=service.yaml
 ```
 
 To start onboarding a service, please see the [Onboarding a Service](../../usecases/onboard-carts-service) use case.
 
-## keptn send new-artifact
+## keptn send event new-artifact
 
 After onboarding a service, the keptn&nbsp;CLI allows pushing a new artifact for the service.
 This artifact is a Docker image, which can be located at Docker Hub, Quay, or any other registry storing docker images.
 The new artifact is pushed in the first stage specified in the  `shipyard.yaml` file (usually this will be the dev-stage).
 Afterwards, keptn takes care of deploying this new artifact.
 
-To push a new artifact, use the command `send new-artifact`, which sends a new-artifact-event 
-to the keptn installation in order to deploy a new artifact for the specified service in the provided project.
-Therefore, this command takes the project (flag `--project`), the service (flag `--service`) 
+To push a new artifact, use the command `send event new-artifact`, which sends a new-artifact-event 
+to keptn in order to deploy a new artifact for the specified service in the provided project.
+Therefore, this command takes the project (flag `--project`), the service (flag `--service`), 
 as well as the image (flag `--image`) and tag (flag `--tag`) of the new artifact.
 
 ```console
-$ keptn new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.7.0
+keptn send event new-artifact --project=your_project --service=your_service --image=docker.io/keptnexamples/carts --tag=0.7.0
 ```
 
-## keptn send 
+## keptn send event
 
 This command allows sending arbitrary keptn events. These events have to follow the [Cloud Events](https://cloudevents.io/)
 specification and are written in JSON.
-**Note:** This command is not required for any use case and requires precise keptn event definitions, which we will
-describe in one of the next releases.
+**Note:** This command is not required for any use case and requires precise keptn event definitions as you
+can find [here](https://github.com/keptn/keptn-specification/blob/master/cloudevents.md).
 
-To send an arbitrary keptn event, use the command `send` and pass the file containing the event (flag `--event`).
+To send an arbitrary keptn event, use the command `send event` and pass the file containing the event (flag `--file`).
 ```console
-$ keptn send --event=new_artifact.json
+keptn send event --file=new_artifact.json
 ```
 
 ## keptn version
 
 Prints the version of the keptn CLI.
+
+```console
+keptn version
+```
