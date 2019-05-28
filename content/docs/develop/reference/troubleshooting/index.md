@@ -1,7 +1,7 @@
 ---
 title: Troubleshooting
 description: The sections describes tips and tricks to deal with troubles that may occur when using keptn. 
-weight: 20
+weight: 30
 keywords: [troubleshooting]
 ---
 
@@ -54,13 +54,15 @@ Internal knative problem, seen with knative 0.4
 The control service is not available at the time when a command was sent by the keptn CLI. 
 The resulting response message will look similar to this:
 
-    ```console
-    keptn onboard service --project=sockshop --values=values_carts.yaml
-    
-    Starting to onboard service
-    Onboard service was unsuccessful
-    Error: Post https://control.keptn.1xx.xxx.xx.xx.xip.io/service: dial tcp: lookup control.keptn.1xx.xxx.xx.xx.xip.io: no such host
-    ``` 
+```console
+keptn onboard service --project=sockshop --values=values_carts.yaml
+```
+
+```console
+Starting to onboard service
+Onboard service was unsuccessful
+Error: Post https://control.keptn.1xx.xxx.xx.xx.xip.io/service: dial tcp: lookup control.keptn.1xx.xxx.xx.xx.xip.io: no such host
+``` 
 
 **Reason:** 
 

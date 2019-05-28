@@ -16,27 +16,28 @@ Configuration changes during runtime are sometimes necessary to increase flexibi
 
 - ServiceNow instance or [free ServiceNow developer instance](https://developer.servicenow.com) 
   - Use case tested on [London](https://docs.servicenow.com/category/london) and [Madrid](https://docs.servicenow.com/category/london) releases
-- [Setup of Dynatrace](../../monitoring/dynatrace/) for monitoring is mandatory for this usecase 
+- [Setup of Dynatrace](../../monitoring/dynatrace/) for monitoring is mandatory for this use case 
 - Complete [onboarding a service](../onboard-carts-service) use case
-  - Please note that for this use case the _onboarding a service_ use case has to be completed exactly as it is described. The scripts provided in the current use case rely on values that are set during the onboarding of the carts service. Therefore, if values are changed, this use case might not work as expected.
+  - Please note that for this use case the use case [Onboarding a Service](../onboard-carts-service/) has to be completed exactly as it is described. The scripts provided in the current use case rely on values that are set during the onboarding of the carts service. Thus, this use case might not work as expected if values are changed.
 - Clone the GitHub repository with the necessary files for the use case:
   
-    ```
-    git clone --branch 0.1.1 https://github.com/keptn/servicenow-service.git
-    cd servicenow-service
-    ```
+  ```
+  git clone --branch 0.1.1 https://github.com/keptn/servicenow-service.git
+  cd servicenow-service
+  ```
 
 ## Configure keptn
 
 In order for keptn to use both ServiceNow and Dynatrace, the corresponding credentials have to be stored as Kubernetes secrets in the cluster. 
 
-### Dynatrace Secret 
+### Dynatrace secret 
 
 The Dynatrace secret should already have been created while setting up [Dynatrace monitoring](../../monitoring/dynatrace/). Please verify your Dynatrace secret by executing the following commands:
 
 ```
 kubectl get secret dynatrace -n keptn -o yaml
 ```
+
 The output should include the `DT_API_TOKEN` and the `DT_TENANT` (both will be shown in base64 encoding):
 ```yaml
 apiVersion: v1
@@ -50,6 +51,7 @@ metadata:
 ```
 
 The `DT_API_TOKEN` and the `DT_TENANT` need to be stored in an environment variable. Therefore, copy and paste the following command to make sure that `DT_TENANT` stores a url that follows the pattern `{your-domain}/e/{your-environment-id}` for a managed Dynatrace tenant or `{your-environment-id}.live.dynatrace.com` for a SaaS tenant.
+
 ```
 export DT_TENANT=$(kubectl get secret dynatrace -n keptn -o=yaml | yq - r data.DT_TENANT | base64 --decode)
 export DT_API_TOKEN=$(kubectl get secret dynatrace -n keptn -o=yaml | yq - r data.DT_API_TOKEN | base64 --decode)
@@ -57,15 +59,16 @@ echo $DT_TENANT
 echo $DT_API_TOKEN
 ```
 
-### ServiceNow Secret 
+### ServiceNow secret 
 
 Create the ServiceNow secret to allow keptn to create/update incidents in ServiceNow and run workflows. For the command below, use your ServiceNow tenant id (8-digits), your ServiceNow user (e.g., *admin*) as user, and your ServiceNow password as token:
+
 ```
 kubectl -n keptn create secret generic servicenow --from-literal="tenant=xxx" --from-literal="user=xxx" --from-literal="token=xxx"
 ```
 Please note that if your ServiceNow password has some special characters in it, you need to [escape them](https://kubernetes.io/docs/concepts/configuration/secret/).
 
-## Setup the Workflow in ServiceNow
+## Setup the workflow in ServiceNow
 
 A ServiceNow *Update Set* is provided to run this use case. To install the *Update Set* follow these steps:
 
@@ -108,7 +111,7 @@ A ServiceNow *Update Set* is provided to run this use case. To install the *Upda
     link="./assets/service-now-keptn-workflow.png"
     caption="ServiceNow keptn workflow">}}
 
-## Setup a Dynatrace Problem Notification
+## Setup a Dynatrace problem notification
 
 In order to create incidents in ServiceNow and to trigger workflows, an integration with Dynatrace has to be set up.
 
@@ -123,7 +126,7 @@ In order to create incidents in ServiceNow and to trigger workflows, an integrat
     echo https://$(kubectl get ksvc event-broker-ext -n keptn -ojsonpath={.status.domain})/dynatrace
     ```
     Please click the checkbox **Accept any SSL certificate**
-1. Additionally, an Authorization Header is needed to authorize against the keptn server. 
+1. Additionally, an **Authorization Header** is needed to authorize against the keptn server. 
     - Click on **Add header**
     - The name for the header is: `Authorization`
     - The value has to be set to the following: `Bearer KEPTN_API_TOKEN` where KEPTN_API_TOKEN has to be replaced with your actual API token that was received during installation. You can retrieve the values to be pasted by executing the following command:
@@ -159,11 +162,12 @@ In order to create incidents in ServiceNow and to trigger workflows, an integrat
 
     {{< popup_image
     link="./assets/dynatrace-problem-notification-integration.png"
-    caption="Dynatrace Problem Notification Integration">}}
+    caption="Dynatrace Problem Notification Integration"
+    width="500px">}}
 
-## Adjust Anomaly Detection in Dynatrace
+## Adjust anomaly detection in Dynatrace
 
-The Dynatrace platform is built on top of AI which is great for production use cases but for this demo we have to override some default settings in order for Dynatrace to trigger the problem.
+The Dynatrace platform is built on top of AI, which is great for production use cases, but for this demo we have to override some default settings in order for Dynatrace to trigger the problem.
 
 Before you adjust this setting, make sure to have some traffic on the service in order for Dynatrace to detect and list the service. The easiest way to generate traffic is to use the provided file `add-to-carts.sh` in the `./usecase` folder. This script will add items to the shopping cart and can be stopped after a couple of added items by hitting <kbd>CTRL</kbd>+<kbd>C</kbd>.
 
@@ -182,14 +186,16 @@ Before you adjust this setting, make sure to have some traffic on the service in
 2. Open the service and click on the three dots button to **Edit** the service.
     {{< popup_image
         link="./assets/dynatrace-service-edit.png"
-        caption="Edit Service">}}
+        caption="Edit Service"
+        width="700px">}}
 
 1. In the section **Anomaly detection** override the global anomaly detection and set the value for the **failure rate** to use **fixed thresholds** and to alert if **10%** custom failure rate are exceeded. Finally, set the **Sensitiviy** to **High**.
     {{< popup_image
         link="./assets/dynatrace-service-anomaly-detection.png"
-        caption="Edit Anomaly Detection">}}
+        caption="Edit Anomaly Detection"
+        width="700px">}}
 
-## Run the Use Case
+## Run the use case
 
 Now, all pieces are in place to run the use case. Therefore, we will start by generating some load on the `carts` service in our production environment. Afterwards, we will change configuration of this service at runtime. This will cause some troubles in our production environment, Dynatrace will detect the issue, and will create a problem ticket. Due to the problem notification we just set up, keptn will be informed about the problem and will forward it to the ServiceNow service that in turn creates an incident in ServiceNow. This incident will trigger a workflow that is able to remediate the issue at runtime. Along the remediation, comments, and details on configuration changes are posted to Dynatrace.
 
@@ -243,26 +249,29 @@ Now, all pieces are in place to run the use case. Therefore, we will start by ge
     ...
     ```
 
-### Problem Detection by Dynatrace
+### Problem detection by Dynatrace
 
 Navigate to the ItemsController service by clicking on **Transactions & services** and look for your ItemsController. Since our service is running in three different environment (dev, staging, and production) it is recommended to filter by the `environment:sockshop-production` to make sure to find the correct service.
     {{< popup_image
         link="./assets/dynatrace-services.png"
-        caption="Dynatrace Transactions & Services">}}
+        caption="Dynatrace Transactions & Services"
+        width="700px">}}
 
 When clicking on the service, in the right bottom corner you can validate in Dynatrace that the configuration change has been applied.
     {{< popup_image
         link="./assets/dynatrace-config-event.png"
-        caption="Dynatrace Custom Configuration Event">}}
+        caption="Dynatrace Custom Configuration Event"
+        width="700px">}}
 
 
 After a couple of minutes, Dynatrace will open a problem ticket based on the increase of the failure rate.
     {{< popup_image
         link="./assets/dynatrace-problem-open.png"
-        caption="Dynatrace Open Problem">}}
+        caption="Dynatrace Open Problem"
+        width="700px">}}
 
 
-### Incident Creation & Workflow Execution by ServiceNow
+### Incident creation & workflow execution by ServiceNow
 
 The Dynatrace problem ticket notification is sent out to keptn which puts it into the problem channel where the ServiceNow service is subscribed. Thus, the ServiceNow service takes the event and creates a new incident in ServiceNow. 
 In your ServiceNow instance, you can take a look at all incidents by typing in **incidents** in the top-left search box and click on **Service Desk** > **Incidents**. You should be able to see the newly created incident, click on it to view some details.

@@ -56,21 +56,26 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
 - Download the version for your operating system from https://github.com/keptn/keptn/tree/develop
 - Unpack the download
 - Find the `keptn` binary in the unpacked directory.
-  - Mac OS / Linux: Add executable permissions (``chmod +x keptn``) and move it to the desired destination (e.g., `mv keptn /usr/local/bin/keptn`).
+  - Linux / macOS
+    
+        add executable permissions (``chmod +x keptn``), and move it to the desired destination (e.g. `mv keptn /usr/local/bin/keptn`)
 
-  - Windows: Move the executable to the desired folder and, optionally, add the executable to your PATH environment variable for a more convenient experience.
+  - Windows
+
+        move/copy the executable to the desired folder and, optionally, add the executable to your PATH environment variable for a more convenient experience.
 
 - Now, you should be able to run the keptn CLI: 
-    - Mac OS / Linux
+    - Linux / macOS
 
-        ```console
-        keptn --help
-        ```
+    ```console
+    keptn --help
+    ```
+    
     - Windows
 
-        ```console
-        .\keptn.exe --help
-        ```
+    ```console
+    .\keptn.exe --help
+    ```
 
     Please note that for the rest of the documentation we will stick to the Mac OS / Linux version of the commands.
 
@@ -117,9 +122,11 @@ in the version of the latest release.
             </ul>
         </details>
 
+
 - **Important:** Due to a [known issue](https://issues.jenkins-ci.org/browse/JENKINS-14880) in Jenkins, it is necessary to open the Jenkins configuration and click **Save** although nothing is changed.
 
     You can open the configuration page of Jenkins with the credentials `admin` / `AiTx4u8VyUV8tCKk` by generating the URL and copy it in your browser (the installation has to be finished at this point):
+    
     ```
     echo http://jenkins.keptn.$(kubectl get svc istio-ingressgateway -n istio-system -ojsonpath={.status.loadBalancer.ingress[0].ip}).xip.io/configure
     ```
@@ -127,28 +134,29 @@ in the version of the latest release.
 ## Verifying the installation
 
 - Run the following command to get the **EXTERNAL-IP** and **PORT** of your cluster's ingress gateway.
-    ```console    
-    kubectl get svc istio-ingressgateway -n istio-system
-    ```
+  
+  ```console    
+  kubectl get svc istio-ingressgateway -n istio-system
+  ```
 
-    ```console
-    NAME                     TYPE           CLUSTER-IP      EXTERNAL-IP      PORT(S)
-    istio-ingressgateway     LoadBalancer   10.11.246.127   <EXTERNAL_IP>    80:32399/TCP 
-    ```
+  ```console
+  NAME                     TYPE           CLUSTER-IP      EXTERNAL-IP      PORT(S)
+  istio-ingressgateway     LoadBalancer   10.11.246.127   <EXTERNAL_IP>    80:32399/TCP 
+  ```
 
 - Go to Jenkins at `http://jenkins.keptn.<EXTERNAL_IP>.xip.io/` and login with the credentials `admin` / `AiTx4u8VyUV8tCKk`
   <br><br>**Note:** For security reasons, we recommend to change these credentials right after the first login:
   1. Change credentials in Jenkins
   1. Update credentials in the kubernetes secret named `jenkins-secret` in the `keptn` namespace, by using the following command. Please note that the password has to be base64 encoded.
-  ```console
-  kubectl edit secret jenkins-secret -n keptn     
-  ```
+    ```console
+    kubectl edit secret jenkins-secret -n keptn     
+    ```
 
   1. Restart the `jenkins-service` pod.
- ```
-kubectl delete pod $(
-| awk '/jenkins-service/' | awk '{print $1}') -n keptn
- ``` 
+  ```
+  kubectl delete pod $(
+  | awk '/jenkins-service/' | awk '{print $1}') -n keptn
+  ``` 
 
 - Navigate to **Jenkins** > **Manage Jenkins** > **Configure System**, scroll to the environment variables and verify that the variables are set correctly.
   {{< popup_image link="./assets/jenkins-env-vars.png" caption="Jenkins environment variables">}}
