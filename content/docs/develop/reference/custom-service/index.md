@@ -206,6 +206,8 @@ Depending on the channel your service is subscribed to, it will receive the payl
 
 ### sh.keptn.evaluation-done
 
+- Example for a successful evaluation:
+
 ```json
 {  
    "specversion":"0.2",
@@ -223,6 +225,81 @@ Depending on the channel your service is subscribed to, it will receive the payl
       "stage":"dev",
       "service":"carts",
       "image":"10.11.245.27:5000/sockshopcr/carts",
+      "tag":"0.6.7-16",
+      "evaluationpassed": true,
+      "evaluationdetails": { // NOTE: the evaluationdetails object is not strictly typed
+        "options":{
+            "timeStart":1557838126,
+            "timeEnd":1557838317
+        },
+        "totalScore":100,
+        "objectives":{
+            "pass":90,
+            "warning":75
+        },
+        "indicatorResults":[
+            {
+              "id":"ResponseTime_Backend",
+              "violations":[
+
+              ],
+              "score":100
+            }
+        ],
+        "result":"pass"
+      },
+      "tag":"0.6.7-16"
+   }
+}
+```
+
+- Example for a failed evaluation:
+
+```json
+{  
+   "specversion":"0.2",
+   "type":"sh.keptn.events.evaluation-done",
+   "source":"Jenkins",
+   "id":"1234",
+   "time":"20190325-15:25:56.096",
+   "datacontenttype":"application/json",
+   "shkeptncontext":"db51be80-4fee-41af-bb53-1b093d2b694c",
+   "data":{  
+      "githuborg":"keptn-tiger",
+      "project":"sockshop",
+      "teststrategy":"functional",
+      "deploymentstrategy":"direct",
+      "stage":"dev",
+      "service":"carts",
+      "image":"10.11.245.27:5000/sockshopcr/carts",
+      "tag":"0.6.7-16",
+      "evaluationpassed": false,
+      "evaluationdetails": { // NOTE: the evaluationdetails object is not strictly typed
+        "options":{
+          "timeStart":1557839081,
+          "timeEnd":1557839741
+        },
+        "totalScore":0,
+        "objectives":{
+          "pass":90,
+          "warning":75
+        },
+        "indicatorResults":[
+          {
+            "id":"ResponseTime_Backend",
+            "violations":[
+                {
+                  "value":1014676.0082135524,
+                  "key":"SERVICE-64F930D2B8E888FF",
+                  "breach":"upperSevere",
+                  "threshold":1000000
+                }
+            ],
+            "score":0
+          }
+        ],
+        "result":"fail"
+      },
       "tag":"0.6.7-16"
    }
 }
