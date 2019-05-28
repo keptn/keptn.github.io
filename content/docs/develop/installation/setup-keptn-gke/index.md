@@ -43,78 +43,19 @@ keywords: setup
           </details>
 
 - Bash + Local tools
-  - [jq](https://stedolan.github.io/jq/)
-  - [yq](https://github.com/mikefarah/yq)
-  - [git](https://git-scm.com/)
-  - [helm 2.12.3](https://helm.sh/)
   - [gcloud](https://cloud.google.com/sdk/gcloud/)
-  - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) (configured to be used with your cluster)
-  - [python 2.7](https://www.python.org/downloads/release/python-2716/) (required for Ubuntu 19.04)
+  - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) (configured to be used with your cluster) 
+  - [git](https://git-scm.com/)
+  - (required for Ubuntu 19.04) [python 2.7](https://www.python.org/downloads/release/python-2716/)
 
     ```console
     gcloud container clusters get-credentials $CLUSTERNAME --zone $ZONE --project $PROJECT
     ```
 
-
-## Install keptn
-- Clone the GitHub repository of the latest release.
-    ```console
-    git clone --branch 0.2.1 https://github.com/keptn/keptn
-    ```
-
-- Execute `./defineCredentials.sh` and provide the needed information.
-    ```console
-    cd keptn/install/scripts
-    ./defineCredentials.sh
-    ```
-
-- Execute `./installKeptn.sh`: this script sets up all necessary component for keptn 0.2 (~10-15mins)
-    ```console
-    ./installKeptn.sh
-    ```
-
-    Please note that this error message during installation can be ignored:
-    ```console
-    Error from server (AlreadyExists): namespaces "keptn" already exists
-    ```
-
--  **Important:** Due to a [known issue](https://issues.jenkins-ci.org/browse/JENKINS-14880) in Jenkins, it is necessary to open the Jenkins configuration and click **Save** although nothing is changed.
-
-    You can open the configuration page of Jenkins with the credentials `admin` / `AiTx4u8VyUV8tCKk` by generating the URL and copy it in your browser (the installation has to be finished at this point):
-    ```
-    echo http://jenkins.keptn.$(kubectl describe svc istio-ingressgateway -n istio-system | grep "LoadBalancer Ingress:" | sed 's~LoadBalancer Ingress:[ \t]*~~').xip.io/configure
-    ```
-
-The script will install the complete infrastructure necessary to run keptn. This includes:
-
-- Istio
-- Knative
-- An Elasticsearch/Kibana Stack for the keptn's log
-- The keptn Core Services:
-  - Event-broker
-  - Event-broker-ext
-  - Control
-  - Authenticator
-- The services required to run the delivery pipelines, as well as the self healing use cases:
-  - Github Services
-  - Jenkins Service
-  - Pitometer Service
-  - ServiceNow Service
-- The channels to which events are published:
-  - new-artefact
-  - configuration-changed
-  - deployment-finished
-  - tests-finished
-  - evaluation-done
-  - problem
-
-
-
-
 ## Install keptn CLI
 Every release of keptn provides binaries for the keptn CLI. These binaries are available for Linux, macOS, and Windows.
 
-- Download the version for your operating system from https://github.com/keptn/keptn/releases/tag/0.2.1
+- Download the version for your operating system from https://github.com/keptn/keptn/tree/develop
 - Unpack the download
 - Find the `keptn` binary in the unpacked directory.
   - Linux / macOS
@@ -138,6 +79,54 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
         ```
 
     Please note that for the rest of the documentation we will stick to the Mac OS / Linux version of the commands.
+
+## Install keptn
+
+- Execute the CLI command `keptn install` and provide the requested information. This command will install keptn
+in the version of the latest release.
+
+    ```console
+    keptn install
+    ```
+
+    In your cluster, this command installs the complete infrastructure necessary to run keptn. 
+        <details><summary>This includes:</summary>
+            <ul>
+            <li>Istio</li>
+            <li>Knative</li>
+            <li>An Elasticsearch/Kibana Stack for the keptn's log</li>
+            <li>The keptn Core Services:</li>
+                <ul>
+                    <li>Event-broker</li>
+                    <li>Event-broker-ext</li>
+                    <li>Control</li>
+                    <li>Authenticator</li>
+                </ul>
+            <li>The services required to run the delivery pipelines, as well as the self healing use cases:</li>
+                <ul>
+                    <li>Github Services</li>
+                    <li>Jenkins Service</li>
+                    <li>Pitometer Service</li>
+                    <li>ServiceNow Service</li>
+                </ul>
+            <li>The channels to which events are published:</li>
+                <ul>
+                    <li>new-artefact</li>
+                    <li>configuration-changed</li>
+                    <li>deployment-finished</li>
+                    <li>tests-finished</li>
+                    <li>evaluation-done</li>
+                    <li>problem</li>
+                </ul>
+            </ul>
+        </details>
+
+- **Important:** Due to a [known issue](https://issues.jenkins-ci.org/browse/JENKINS-14880) in Jenkins, it is necessary to open the Jenkins configuration and click **Save** although nothing is changed.
+
+    You can open the configuration page of Jenkins with the credentials `admin` / `AiTx4u8VyUV8tCKk` by generating the URL and copy it in your browser (the installation has to be finished at this point):
+    ```
+    echo http://jenkins.keptn.$(kubectl get svc istio-ingressgateway -n istio-system -ojsonpath={.status.loadBalancer.ingress[0].ip}).xip.io/configure
+    ```
 
 ## Verifying the installation
 
@@ -170,8 +159,8 @@ kubectl delete pod $(
   {{< popup_image link="./assets/jenkins-env-vars.png" caption="Jenkins environment variables">}}
   **Important:** Due to a [known issue](https://issues.jenkins-ci.org/browse/JENKINS-14880) in Jenkins, it is necessary to click **Save** although nothing is changed in this verification step.
 
-- To verify your installation, retrieve the pods runnning in the `keptn` namespace.
-  
+- To verify your installation, retrieve the pods running in the `keptn` namespace.
+
   ```console
   kubectl get pods -n keptn
   ```
@@ -233,7 +222,7 @@ kubectl delete pod $(
   webhook-55f88654fb-tq8ps      1/1       Running
   ```
 
-  Next, check that all routes for the core services, as well as for the jenkins-service, pitometer-service, github-service and servicenow-service have been created:
+  Next, check that all routes for the core services, as well as for the jenkins-service, pitometer-service, github-service, and servicenow-service have been created:
 
   ```console
   kubectl get routes -n keptn
@@ -269,26 +258,17 @@ kubectl delete pod $(
   tests-finished          10d
   ```
 
-  If that is not the case, there may have been a problem during the installation. In that case we kindly ask you to clean your cluster and restart the installation, as described in the **Troubleshooting** section below.
-
-
-## Authenticate keptn CLI and configure keptn
-
-1. The CLI needs to be authenticated against the keptn server:
-
-    ```console
-    keptn auth --endpoint=https://$(kubectl get ksvc -n keptn control -o=yaml | yq r - status.domain) --api-token=$(kubectl get secret keptn-api-token -n keptn -o=yaml | yq - r data.keptn-api-token | base64 --decode)
-    ```
-
-1. Configure the used GitHub organization, user, and personal access token using the `keptn configure` command:
-  
-    ```console
-    keptn configure --org=$(yq r ~/keptn/install/scripts/creds.json githubOrg) --user=$(yq r ~/keptn/install/scripts/creds.json githubUserName) --token=$(yq r ~/keptn/install/scripts/creds.json githubPersonalAccessToken)
-    ```
-
+  If that is not the case, there may have been a problem during the installation. In that case, we kindly ask you to clean your cluster and restart the installation, as described in the **Troubleshooting** section below.
 
 ## Uninstall
-- Execute `./uninstallKeptn.sh` and all keptn resource will be deleted
+- Clone the GitHub repository of the latest release:
+
+  ``` console
+  git  clone --branch 0.2.1 https://github.com/keptn/keptn
+  cd  keptn/install/scripts
+  ``` 
+
+- Execute `uninstallKeptn.sh` and all keptn resource will be deleted
 
   ```console
   cd keptn
@@ -310,7 +290,9 @@ kubectl delete pod $(
   rm temp.json
   ```
 
+- **Note:** In future releases of the keptn CLI, a command `keptn uninstall` will be added, which replaces the shell script `uninstallKeptn.sh`.
+
 
 ## Troubleshooting
 
-Please note that in case of any errors, the install script might leave some files in a inconsistent state, therefore the `installKeptn.sh` file can not be run a second time without a cleanup. To prevent any issues with subsequent setup runs, we recommend to fully delete the GitHub organization, the keptn installation folder and checkout the keptn release again. (Some files may have been edited already that are not reverted in case of aborting the setup script.)
+Please note that in case of any errors, the install process might leave some files in an inconsistent state. Therefore `keptn install` cannot be executed a second time without an uninstall.
