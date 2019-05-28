@@ -56,11 +56,11 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
 - Download the version for your operating system from https://github.com/keptn/keptn/tree/develop
 - Unpack the download
 - Find the `keptn` binary in the unpacked directory.
-  - Mac OS / Linux: Add executable permissions (``chmod +x keptn``), and move it to the desired destination (e.g. `mv keptn /usr/local/bin/keptn`)
+  - Mac OS / Linux: Add executable permissions (``chmod +x keptn``) and move it to the desired destination (e.g., `mv keptn /usr/local/bin/keptn`).
 
   - Windows: Move the executable to the desired folder and, optionally, add the executable to your PATH environment variable for a more convenient experience.
 
-- Now, you should be able to run the keptn CLI by 
+- Now, you should be able to run the keptn CLI: 
     - Mac OS / Linux
 
         ```console
@@ -133,7 +133,7 @@ in the version of the latest release.
 
     ```console
     NAME                     TYPE           CLUSTER-IP      EXTERNAL-IP      PORT(S)
-    istio-ingressgateway     LoadBalancer   10.11.246.127   <EXTERNAL_IP>   80:32399/TCP 
+    istio-ingressgateway     LoadBalancer   10.11.246.127   <EXTERNAL_IP>    80:32399/TCP 
     ```
 
 - Go to Jenkins at `http://jenkins.keptn.<EXTERNAL_IP>.xip.io/` and login with the credentials `admin` / `AiTx4u8VyUV8tCKk`
