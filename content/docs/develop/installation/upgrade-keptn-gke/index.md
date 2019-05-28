@@ -48,7 +48,7 @@ Additionally, `yq` is required:
 
 Due to a breaking change from keptn 0.2.1 to 0.2.2 regarding the naming convention of Kubernetes namespaces, it is necessary to re-create a keptn project and to onboard your services again.
 
-- First, delete your configuration repository in your GitHub organization.
+- Delete your configuration repository in your GitHub organization.
 
 - Instructions for creating a project are provided [here](../../usecases/onboard-carts-service/#create-project-sockshop).
 
