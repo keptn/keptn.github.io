@@ -116,17 +116,17 @@ Depending on the channel your service is subscribed to, it will receive the payl
 {  
    "specversion":"0.2",
    "type":"sh.keptn.events.new-artefact",
-   "source":"Jenkins", // optional
+   "source":"Jenkins",
    "id":"1234",
    "time":"20190325-15:26:52.036",
    "datacontenttype":"application/json",
    "shkeptncontext":"db51be80-4fee-41af-bb53-1b093d2b694c",
    "data":{  
-      "githuborg":"keptn-tiger", // optional
+      "githuborg":"keptn-tiger",
       "project":"sockshop",
-      "teststrategy":"functional", // optional
-      "deploymentstrategy":"direct", // optional
-      "stage":"dev", // optional
+      "teststrategy":"functional",
+      "deploymentstrategy":"direct",
+      "stage":"dev",
       "service":"carts",
       "image":"10.11.245.27:5000/sockshopcr/carts",
       "tag":"0.6.7-16"
@@ -199,8 +199,7 @@ Depending on the channel your service is subscribed to, it will receive the payl
       "stage":"dev",
       "service":"carts",
       "image":"10.11.245.27:5000/sockshopcr/carts",
-      "tag":"0.6.7-16",
-      "startedat": "20190325-15:20:56.096"
+      "tag":"0.6.7-16"
    }
 }
 ```
@@ -225,7 +224,8 @@ Depending on the channel your service is subscribed to, it will receive the payl
       "service":"carts",
       "image":"10.11.245.27:5000/sockshopcr/carts",
       "tag":"0.6.7-16",
-      "evaluationpassed": true
+      "evaluationpassed": true,
+      "evaluationdetails": {}
    }
 }
 ```
