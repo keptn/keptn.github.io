@@ -236,11 +236,11 @@ To receive events in this channel, please follow the instructions of the [Runboo
 {
     "specversion":"0.2",
     "type":"sh.keptn.events.problem",
-    "shkeptncontext":"{PID}",
     "source":"dynatrace",
     "id":"{PID}",
     "time":"",
-    "contenttype":"application/json",
+    "datacontenttype":"application/json",
+    "shkeptncontext":"{PID}",
     "data": {
         "State":"{State}",
         "ProblemID":"{ProblemID}",

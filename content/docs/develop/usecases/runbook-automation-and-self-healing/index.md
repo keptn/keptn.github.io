@@ -14,9 +14,9 @@ Configuration changes during runtime are sometimes necessary to increase flexibi
 
 ## Prerequisites
 
-- ServiceNow instance or [free ServiceNow developer instance](https://developer.servicenow.com)
-  - Use case tested on _London_ and _Madrid_ releases
-- [Setup of Dynatrace](../../monitoring/dynatrace/) is mandatory for this usecase 
+- ServiceNow instance or [free ServiceNow developer instance](https://developer.servicenow.com) 
+  - Use case tested on [London](https://docs.servicenow.com/category/london) and [Madrid](https://docs.servicenow.com/category/london) releases
+- [Setup of Dynatrace](../../monitoring/dynatrace/) for monitoring is mandatory for this usecase 
 - Complete [onboarding a service](../onboard-carts-service) use case
   - Please note that for this use case the _onboarding a service_ use case has to be completed exactly as it is described. The scripts provided in the current use case rely on values that are set during the onboarding of the carts service. Therefore, if values are changed, this use case might not work as expected.
 - Clone the GitHub repository with the necessary files for the use case:
@@ -49,7 +49,7 @@ metadata:
   ...
 ```
 
-The `DT_API_TOKEN` and the `DT_TENANT` need to be stored in an environment variable. Therefore, execute the below commands line by line and make sure that `DT_TENANT` stores a url that follows the pattern `{your-domain}/e/{your-environment-id}` for a managed Dynatrace tenant or `{your-environment-id}.live.dynatrace.com` for a SaaS tenant. 
+The `DT_API_TOKEN` and the `DT_TENANT` need to be stored in an environment variable. Therefore, copy and paste the following command to make sure that `DT_TENANT` stores a url that follows the pattern `{your-domain}/e/{your-environment-id}` for a managed Dynatrace tenant or `{your-environment-id}.live.dynatrace.com` for a SaaS tenant.
 ```
 export DT_TENANT=$(kubectl get secret dynatrace -n keptn -o=yaml | yq - r data.DT_TENANT | base64 --decode)
 export DT_API_TOKEN=$(kubectl get secret dynatrace -n keptn -o=yaml | yq - r data.DT_API_TOKEN | base64 --decode)
@@ -59,7 +59,7 @@ echo $DT_API_TOKEN
 
 ### ServiceNow Secret 
 
-Create the ServiceNow secret to create/update incidents in ServiceNow and run workflows. For the command below, use your ServiceNow tenant id (8-digits), your ServiceNow user (e.g., *admin*) as user, and your ServiceNow password as token:
+Create the ServiceNow secret to allow keptn to create/update incidents in ServiceNow and run workflows. For the command below, use your ServiceNow tenant id (8-digits), your ServiceNow user (e.g., *admin*) as user, and your ServiceNow password as token:
 ```
 kubectl -n keptn create secret generic servicenow --from-literal="tenant=xxx" --from-literal="user=xxx" --from-literal="token=xxx"
 ```
@@ -117,19 +117,19 @@ In order to create incidents in ServiceNow and to trigger workflows, an integrat
 1. Click on **Set up notifications** and select **Custom integration**
 1. Choose a name for your integration, e.g., _keptn integration_
 1. In the webhook URL, paste the value of your keptn external eventbroker endpoint appended by `/dynatrace`, e.g., `https://event-broker-ext.keptn.XX.XXX.XXX.XX.xip.io/dynatrace`
-    - Note: retrieve the base URL by running:
+    - You can retrieve the URL by executing this command:
 
     ```
-    kubectl get ksvc event-broker-ext -n keptn
+    echo https://$(kubectl get ksvc event-broker-ext -n keptn -ojsonpath={.status.domain})/dynatrace
     ```
     Please click the checkbox **Accept any SSL certificate**
 1. Additionally, an Authorization Header is needed to authorize against the keptn server. 
     - Click on **Add header**
     - The name for the header is: `Authorization`
-    - The value has to be set to the following: `Bearer KEPTN_API_TOKEN` where KEPTN_API_TOKEN has to be replaced with your actual API token that was received during installation. You can always retrieve the token again by executing:
+    - The value has to be set to the following: `Bearer KEPTN_API_TOKEN` where KEPTN_API_TOKEN has to be replaced with your actual API token that was received during installation. You can retrieve the values to be pasted by executing the following command:
 
     ```
-    kubectl get secret keptn-api-token -n keptn -o=yaml | yq - r data.keptn-api-token | base64 --decode
+    echo Bearer $(kubectl get secret keptn-api-token -n keptn -o=yaml | yq - r data.keptn-api-token | base64 --decode)
     ```
 
 1. As the custom payload, a valid Cloud Event has to be defined:
@@ -142,7 +142,7 @@ In order to create incidents in ServiceNow and to trigger workflows, an integrat
         "source":"dynatrace",
         "id":"{PID}",
         "time":"",
-        "contenttype":"application/json",
+        "datacontenttype":"application/json",
         "data": {
             "State":"{State}",
             "ProblemID":"{ProblemID}",
@@ -222,13 +222,8 @@ Now, all pieces are in place to run the use case. Therefore, we will start by ge
     echo $DT_API_TOKEN
     ```
 
-1. Additionally, the `DT_TENANT` and `DT_API_TOKEN` must be exported for this terminal (execute line by line):
-    ```
-    export DT_TENANT=$(kubectl get secret dynatrace -n keptn -o=yaml | yq - r data.DT_TENANT | base64 --decode)
-    export DT_API_TOKEN=$(kubectl get secret dynatrace -n keptn -o=yaml | yq - r data.DT_API_TOKEN | base64 --decode)
-    echo $DT_TENANT
-    echo $DT_API_TOKEN
-    ```
+    If the environment variables are not set, you can easily set them by [following the instructions on how to extract information from the Dynatrace secret](#dynatrace-secret). 
+
 
 1. Run the script:
     ```
