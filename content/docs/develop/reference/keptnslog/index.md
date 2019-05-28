@@ -9,17 +9,17 @@ Keptn uses the logging functionality provided by the underlying knative installa
 
 For security purposes, Kibana is exposed only within the cluster. To access the Kibana UI via your browser, you can start a local proxy by running the following command:
 
-  ```console
-  $ kubectl proxy
-  ```
+```console
+kubectl proxy
+```
 
 Afterwards, you can navigate to the Kibana UI http://localhost:8001/api/v1/namespaces/knative-monitoring/services/kibana-logging/proxy/app/kibana (Please be patient, it might take a couple of minutes for the proxy to work)
 
-Setup keptns log within the "Configure an index pattern" page:
+Setup keptns log within the **Configure an index pattern** page:
 
-- enter `logstash-*` to `Index pattern` 
-- select `@timestamp` from `Time Filter field name` 
-- click on the `Create` button.
+- Enter `logstash-*` to `Index pattern` 
+- Select `@timestamp` from `Time Filter field name` 
+- Click on the `Create` button.
 
 ## Analyzing pipeline runs
 
@@ -35,11 +35,11 @@ Keptn summarizes logs for a specific pipeline run by adding a property called `k
 
   1. As you can see in the example in the screenshot, we see that during that timeframe, a new pipeline run for the *carts* service of our *sockshop* project has been initiated as a result of a new image being pushed to the docker registry. To see all log messages relevant to this run, copy the value of the *keptnContext* at the right side of the table. Afterwards, enter the following query into the search bar at the top: `keptnContext: <KEPTN_CONTEXT>`. As a result, you will be presented with a view resembling the example below:
 
-  {{< popup_image link="./assets/pipeline-log.png" caption="Keptn Entry Log Entries">}}
+    {{< popup_image link="./assets/pipeline-log.png" caption="Keptn Entry Log Entries">}}
 
 At this point you will be able to inspect the log messages of all services participating during a pipeline run.
 
-## Exporting Log Traces
+## Exporting log traces
 In case you want to export the keptn's log for debugging purposes, you can do so in the <a href="http://localhost:8001/api/v1/namespaces/knative-monitoring/services/kibana-logging/proxy/app/kibana#/dev_tools/console?_g=(refreshInterval:(display:Off,pause:!f,value:0),time:(from:now%2Fd,mode:quick,to:now%2Fd))">Dev Tools</a> section in Kibana. In this view, you will see a *Console* section, where you can generate a JSON object containing all log entries for a specific context by entering the following query:
   ```
   GET _search

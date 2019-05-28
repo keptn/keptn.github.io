@@ -72,29 +72,29 @@ stages:
     deployment_strategy: "blue_green_service"
 ```
 
-1. Create a new project for your carts service using the [keptn create project](../../reference/cli/#keptn-create-project) command. In this example, the project is called *sockshop*. Before executing the following command, 
+- Create a new project for your carts service using the [keptn create project](../../reference/cli/#keptn-create-project) command. In this example, the project is called *sockshop*. Before executing the following command, 
 make sure you are in the folder `examples/onboarding-carts`.
 
-    ```console
-    keptn create project sockshop shipyard.yaml
-    ```
+  ```console
+  keptn create project sockshop shipyard.yaml
+  ```
 
 ## Onboard carts service and carts database
 After creating the project, you are ready to onboard the first services.
 
-1. Onboard the `carts` service using the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command. In this onboarding scenario, a default deployment and service template will be provided by the github-service.
+- Onboard the `carts` service using the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command. In this onboarding scenario, a default deployment and service template will be provided by the github-service.
 
-    ```console
-    keptn onboard service --project=sockshop --values=values_carts.yaml
-    ```
+  ```console
+  keptn onboard service --project=sockshop --values=values_carts.yaml
+  ```
 
-Since the carts service needs a mongo database, a second app needs to be onboarded.
+Since the carts service needs a mongo database, a second service needs to be onboarded.
 
-1. Onboard the `carts-db` service using the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command. In this onboarding scenario, the  deployment and service files are handed over to the github-service.
+- Onboard the `carts-db` service using the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command. In this onboarding scenario, the  deployment and service files are handed over to the github-service.
 
-    ```console
-    keptn onboard service --project=sockshop --values=values_carts_db.yaml --deployment=deployment_carts_db.yaml --service=service_carts_db.yaml
-    ```
+  ```console
+  keptn onboard service --project=sockshop --values=values_carts_db.yaml --deployment=deployment_carts_db.yaml --service=service_carts_db.yaml
+  ```
 
 Note, by onboarding a service without specifying a deployment file, we automatically include a [readiness and liveness probe](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/). Therefore, we assume that the 
 onboarded service has an endpoint `/health` on the internal port 8080. This is true for the `carts` service used in this use case.
@@ -110,7 +110,7 @@ The used artifact is stored on Docker Hub.
   keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.8.0
   ```
   
-1. Go to the Jenkins dashboard to see how the pipelines get triggered automatically. Therfore, generate and open the Jenkins URL:
+1. Go to the Jenkins dashboard to see how the pipelines get triggered automatically. Therefore, generate and open the Jenkins URL:
   ```console
   echo http://jenkins.keptn.$(kubectl get svc istio-ingressgateway -n istio-system -ojsonpath={.status.loadBalancer.ingress[0].ip}).xip.io/
   ```
@@ -125,17 +125,20 @@ The used artifact is stored on Docker Hub.
 
     {{< popup_image
       link="./assets/deploy-pipeline.png"
-      caption="Successful deploy pipeline run">}}
+      caption="Successful deploy pipeline run"
+      width="700px">}}
 
-## View Carts Service
+## View carts service
 
 - Run the following command to get the **EXTERNAL-IP** and **PORT** of your cluster's ingress gateway.
-    ```console    
-    kubectl get svc istio-ingressgateway -n istio-system
-    ```
+    
+  ```console    
+  kubectl get svc istio-ingressgateway -n istio-system
+  ```
 
-    ```console
-    NAME                     TYPE           CLUSTER-IP      EXTERNAL-IP      PORT(S)
-    istio-ingressgateway     LoadBalancer   10.11.246.127   <EXTERNAL_IP>   80:32399/TCP 
-    ```
+  ```console
+  NAME                     TYPE           CLUSTER-IP      EXTERNAL-IP      PORT(S)
+  istio-ingressgateway     LoadBalancer   10.11.246.127   <EXTERNAL_IP>   80:32399/TCP 
+  ```
+
 - Navigate to `http://carts.sockshop-production.<EXTERNAL IP>.xip.io` for viewing the carts service in your `production` environment. 

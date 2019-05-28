@@ -92,7 +92,7 @@ Additionally, you will need to provide a name for the subscription (*metadata.na
 To deploy the service, we use a script that will first retrieve the IP of the cluster-internal docker registry, and replace the `REGISTRY_URI_PLACEHOLDER` in the manifest file with that value. The resulting manifest file will be stored in the *[config/gen](https://github.com/keptn/github-service/tree/release-0.1.x/config/gen)* directory. By executing the script with
 
   ```console
-  $ ./deploy.sh
+  ./deploy.sh
   ```
 
 any previous revisions of the service will be deleted and the newest version will be deployed.
@@ -106,7 +106,7 @@ any previous revisions of the service will be deleted and the newest version wil
 
 *Note:* this documentation will be replaced with an extensive step-by-step guide in the future.
 
-## Cloudevents
+## CloudEvents
 
 Depending on the channel your service is subscribed to, it will receive the payload in the following format:
 
