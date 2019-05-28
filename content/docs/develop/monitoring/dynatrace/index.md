@@ -37,7 +37,7 @@ In order to evaluate the quality gates and allow self-healing in production, we 
 
 1. Clone the install repository and setup your credentials by executing the following steps:
   ```console
-  git clone --branch TODO https://github.com/keptn/installer
+  git clone --branch 0.1.0 https://github.com/keptn/installer
   cd installer/scripts
   ./defineDynatraceCredentials.sh
   ```
@@ -69,7 +69,11 @@ kubectl delete pods --all --namespace=sockshop-production
 
 ## See keptn events in Dynatrace
 
-TODO
+The Dynatrace service will take care of pushing events of the keptn workflow to the artifacts that have been onboarded with keptn. For example, the deployment as well as custom infos like starting and finishing of tests will appear in the details screen of your services in your Dynatrace tenant.
+    {{< popup_image
+    link="./assets/custom_events.png"
+    caption="keptn events">}}
+
 
 ## (Optional) Create process group naming rule in Dynatrace
 
