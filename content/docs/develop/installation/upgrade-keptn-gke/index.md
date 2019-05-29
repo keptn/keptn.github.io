@@ -10,10 +10,18 @@ For upgrading an existing keptn 0.2.0 or 0.2.1 installation, an upgrade script i
 
 ## Prerequisites
    
-Please note that [all needed command line tools](../setup-keptn-gke#prerequisites) are needed when upgrading keptn.
-Additionally, `yq` is required:
+- Please note that all [command line tools](../setup-keptn-gke#prerequisites) are needed when upgrading keptn.
+  
+    - Additionally, [yq](https://github.com/mikefarah/yq) is required.
+  
+- Make sure you are connected with the cluster running the keptn installation, which should be upgraded. Verify the connection by 
+  using the following command:
 
-  - [yq](https://github.com/mikefarah/yq)
+  ``` console
+  kubectl config current-context
+  ```
+
+
 
 ## Upgrade keptn from 0.2.x to 0.2.2
 
@@ -50,6 +58,31 @@ Additionally, `yq` is required:
 Due to a breaking change from keptn 0.2.1 to 0.2.2 regarding the naming convention of Kubernetes namespaces, it is necessary to re-create a keptn project and to onboard your services again.
 
 - Delete your configuration repository in your GitHub organization.
+
+- Delete your releases using [Helm](https://helm.sh):
+
+  ``` console
+  helm ls
+  ```
+
+  ``` console
+  NAME               	REVISION	UPDATED                 	STATUS  	CHART         	APP VERSION	NAMESPACE 
+  sockshop-dev       	1       	Wed May 29 10:59:56 2019	DEPLOYED	sockshop-0.1.0	           	dev       
+  sockshop-production	1       	Wed May 29 11:12:44 2019	DEPLOYED	sockshop-0.1.0	           	production
+  sockshop-staging   	1       	Wed May 29 11:07:16 2019	DEPLOYED	sockshop-0.1.0	           	staging 
+  ```
+
+  ``` console
+  helm delete --purge sockshop-dev
+  helm delete --purge sockshop-production
+  helm delete --purge sockshop-staging
+  ```
+
+  ``` console
+  release "sockshop-dev" deleted
+  release "sockshop-staging" deleted
+  release "sockshop-production" deleted
+  ```
 
 - Instructions for creating a project are provided [here](../../usecases/onboard-carts-service/#create-project-sockshop).
 
