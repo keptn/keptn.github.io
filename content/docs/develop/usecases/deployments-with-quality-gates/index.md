@@ -42,22 +42,10 @@ In this use case, we will be using either the open source monitoring solution *P
 Since this use case relies on the concept of quality gates, you will need to set up monitoring for your carts service.
 The [Pitometer](https://github.com/keptn/pitometer) service will then evaluate the data coming from the monitoring solution to determine a score for the quality gate.
 
-### Fork carts example into your GitHub organization
-
 For using the quality gate, Pitometer requires a performance specification.
 This performance specification has to be located in a repository having the name of 
 your service (for this use case `carts`) in the configured GitHub organization (i.e. used in [keptn configure](../../reference/cli/#keptn-configure)).
-Therefore, please fork the `carts` service in your GitHub organization and clone it:
 
-1. Go to https://github.com/keptn-sockshop/carts and click on the **Fork** button on the top right corner.
-
-1. Select the GitHub organization you use for keptn.
-
-1. Clone the forked carts service to your local machine. Please note that you have to use your own GitHub organization.
-  
-  ```console
-    git clone https://github.com/your-github-org/carts.git
-  ```
 
 ### Option 1: Prometheus
 <details><summary>Expand instructions</summary>
