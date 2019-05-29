@@ -35,7 +35,7 @@ To illustrate the scenario this use case addresses, keptn relies on two services
 1. Git clone artifacts for this use case.
 
     ```console
-    git clone https://github.com/keptn/examples.git
+    git clone --branch 0.2.0 https://github.com/keptn/examples.git --single-branch
     cd examples/onboarding-carts
     ```
 
