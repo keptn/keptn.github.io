@@ -26,19 +26,9 @@ This quality gate checks whether the average response time of the service is und
 
 In overview, we will conduct these two scenarios:
 
-1. First, we will *try* to deploy the *slow* version of the carts service. Therefore, keptn will deploy this new version into the `dev` environment
-  where functional tests will be executed.
-  After passing these functional tests, keptn will promote this service into the `staging` environment
-  by releasing it as the blue or green version next to the previous version of the service.
-  Then, keptn will route traffic to this new version by changing the configuration of the virtual service 
-  (i.e. by setting weights for the routes between blue and green) and keptn will start the defined performance test.
-  Using the monitoring results of this performance test will allow [Pitometer](https://github.com/keptn/pitometer)
-  to evaluate the quality gate. This *slow* version will not pass the quality gate and, hence, 
-  the deployment will be rejected. 
-  Furthermore, keptn will direct the requests to the service to the previous working deployment of the service. 
+First, we will *try* to deploy the *slow* version of the carts service. Therefore, keptn will deploy this new version into the `dev` environment where functional tests will be executed. After passing these functional tests, keptn will promote this service into the `staging` environment by releasing it as the blue or green version next to the previous version of the service. Then, keptn will route traffic to this new version by changing the configuration of the virtual service (i.e., by setting weights for the routes between blue and green) and keptn will start the defined performance test. Using the monitoring results of this performance test will allow [Pitometer](https://github.com/keptn/pitometer) to evaluate the quality gate. This *slow* version will not pass the quality gate and, hence, the deployment will be rejected. Furthermore, keptn will direct the requests to the service to the previous working deployment of the service. 
 
-1. Second, we will deploy the *regular* version of the carts service. Therefore, keptn will conduct the same steps as before except that this version will
-  now pass the quality gate. Hence, this *regular* version will be promoted into the `production` environment.
+Second, we will deploy the *regular* version of the carts service. Therefore, keptn will conduct the same steps as before except that this version will now pass the quality gate. Hence, this *regular* version will be promoted into the `production` environment.
 
 
 ## Prerequisites
@@ -48,25 +38,14 @@ In this use case, we will be using either the open source monitoring solution *P
 
 1. In order to start this use case, please deploy the `carts` service by completing the use case [Onboarding a Service](../onboard-carts-service/).
 
-## Set up of Monitoring for the carts service
+## Set up of monitoring for the carts service
 Since this use case relies on the concept of quality gates, you will need to set up monitoring for your carts service.
 The [Pitometer](https://github.com/keptn/pitometer) service will then evaluate the data coming from the monitoring solution to determine a score for the quality gate.
-
-### Fork carts example into your GitHub organization
 
 For using the quality gate, Pitometer requires a performance specification.
 This performance specification has to be located in a repository having the name of 
 your service (for this use case `carts`) in the configured GitHub organization (i.e. used in [keptn configure](../../reference/cli/#keptn-configure)).
-Therefore, please fork the `carts` service in your GitHub organization and clone it:
 
-1. Go to https://github.com/keptn-sockshop/carts and click on the **Fork** button on the top right corner.
-
-1. Select the GitHub organization you use for keptn.
-
-1. Clone the forked carts service to your local machine. Please note that you have to use your own GitHub organization.
-  ```console
-    git clone https://github.com/your-github-org/carts.git
-  ```
 
 ### Option 1: Prometheus
 <details><summary>Expand instructions</summary>
@@ -118,7 +97,9 @@ Now, you have quality gates in place, which will check whether the average respo
 
     ```console
     kubectl get svc istio-ingressgateway -n istio-system
+    ```
 
+    ```console
     NAME                   TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)                                      AGE
     istio-ingressgateway   LoadBalancer   172.21.109.129   3*.2**.1**.8*   80:31380/TCP,443:31390/TCP,31400:31400/TCP   17h
     ```
@@ -165,11 +146,13 @@ Here, you see that the version of the carts service has not changed.
 
 1. To verify the deployment in production, open a browser an navigate to `http://carts.sockshop-production.EXTERNAL-IP.xip.io/version`. As a result, you see `Version: v3`.
 
-1. Besides, you can verify the deployments in your K8s cluster using the following commands: 
+1. Besides, you can verify the deployments in your Kubernetes cluster using the following commands: 
 
     ```console
     kubectl get deployments -n sockshop-production
+    ``` 
 
+    ```console
     NAME             DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
     carts-blue       1         1         1            0           1h
     carts-db-blue    1         1         1            0           1h
@@ -179,7 +162,9 @@ Here, you see that the version of the carts service has not changed.
 
     ```console
     kubectl describe deployment carts-blue -n sockshop-production
-
+    ``` 
+    
+    ```console
     ...
     Pod Template:
       Labels:  app=sockshop-selector-carts
@@ -191,7 +176,9 @@ Here, you see that the version of the carts service has not changed.
 
     ```console
     kubectl describe deployment carts-green -n sockshop-production
-
+    ``` 
+    
+    ```console
     ...
     Pod Template:
       Labels:  app=sockshop-selector-carts
@@ -203,7 +190,9 @@ Here, you see that the version of the carts service has not changed.
 
     ```console
     kubectl describe virtualService -n sockshop-production
+    ``` 
     
+    ```console   
     ...
     Route:
       Destination:

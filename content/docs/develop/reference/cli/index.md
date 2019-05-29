@@ -38,13 +38,13 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
 
 
 1. Now, you should be able to run the keptn CLI by 
-    ```console
-    keptn --help
-    ```
-
+```console
+keptn --help
+```
 {{< popup_image
     link="./assets/keptn-cli-help.png"
-    caption="keptn CLI">}}
+    caption="keptn CLI"
+    width="700px">}}
 
 
 ## Start using the keptn CLI
@@ -73,14 +73,12 @@ Before the keptn CLI can be used, it needs to be authenticated against a keptn s
 If the authentication is successful, keptn will inform the user. Furthermore, if the authentication is successful, the endpoint and the API token are stored in a password store of the underlying operating system.
 More precisely, the keptn CLI stores the endpoint and API token using `pass` in case of Linux, using `Keychain` in case of macOS, or `Wincred` in case of Windows.
 
-
 ### Linux / macOS
 
 Set the needed environment variables.
 
 ```console
 KEPTN_ENDPOINT=https://$(kubectl get ksvc -n keptn control -o=yaml | yq r - status.domain)
-
 KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -o=yaml | yq - r data.keptn-api-token | base64 --decode)
 ```
 
@@ -139,7 +137,9 @@ In the Windows Command Line, a couple of steps are necessary.
 
     ```console
     kubectl get secret keptn-api-token -n keptn -o=yaml
+    ```
 
+    ```console
     Output:
     apiVersion: v1
     data:
@@ -166,9 +166,11 @@ In the Windows Command Line, a couple of steps are necessary.
 
 1. Get the keptn server endpoint 
 
-    ```
+    ```console
     kubectl get ksvc -n keptn control -o yaml
+    ```
 
+    ```console
     Output:
     apiVersion: serving.knative.dev/v1alpha1
     kind: Service

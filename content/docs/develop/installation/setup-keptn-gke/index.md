@@ -33,9 +33,7 @@ keywords: setup
   - [Own organization](https://github.com/organizations/new) for keptn to store its configuration repositories
   - [Personal access token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line) for a user with access to said organization
 
-      -  Needed scopes:
-        
-          - repo
+      -  Needed scopes: [x] `repo`
 
         <details><summary>Expand Screenshot</summary>
           {{< popup_image link="./assets/github-access-token.png" 
@@ -66,17 +64,18 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
 
         move/copy the executable to the desired folder and, optionally, add the executable to your PATH environment variable for a more convenient experience.
 
-- Now, you should be able to run the keptn CLI by 
-    - Mac OS / Linux
+- Now, you should be able to run the keptn CLI: 
+    - Linux / macOS
 
-        ```console
-        keptn --help
-        ```
+    ```console
+    keptn --help
+    ```
+    
     - Windows
 
-        ```console
-        .\keptn.exe --help
-        ```
+    ```console
+    .\keptn.exe --help
+    ```
 
     Please note that for the rest of the documentation we will stick to the Mac OS / Linux version of the commands.
 
@@ -95,35 +94,39 @@ in the version of the latest release.
             <li>Istio</li>
             <li>Knative</li>
             <li>An Elasticsearch/Kibana Stack for the keptn's log</li>
-            <li>The keptn Core Services:</li>
+            <li>The keptn core services:</li>
                 <ul>
-                    <li>Event-broker</li>
-                    <li>Event-broker-ext</li>
-                    <li>Control</li>
-                    <li>Authenticator</li>
+                    <li>authenticator</li>
+                    <li>bridge</li>
+                    <li>control</li>
+                    <li>eventbroker</li>
+                    <li>eventbroker-ext</li>
                 </ul>
-            <li>The services required to run the delivery pipelines, as well as the self healing use cases:</li>
+            <li>The services required to run the delivery pipelines and the self-healing use cases:</li>
                 <ul>
-                    <li>Github Services</li>
-                    <li>Jenkins Service</li>
-                    <li>Pitometer Service</li>
-                    <li>ServiceNow Service</li>
+                    <li>github-services</li>
+                    <li>jenkins-service</li>
+                    <li>pitometer-service</li>
+                    <li>serviceNow-service</li>
                 </ul>
             <li>The channels to which events are published:</li>
                 <ul>
-                    <li>new-artefact</li>
                     <li>configuration-changed</li>
                     <li>deployment-finished</li>
-                    <li>tests-finished</li>
                     <li>evaluation-done</li>
+                    <li>keptn-channel</li>
+                    <li>new-artefact</li>
                     <li>problem</li>
+                    <li>tests-finished</li>
                 </ul>
             </ul>
         </details>
 
+
 - **Important:** Due to a [known issue](https://issues.jenkins-ci.org/browse/JENKINS-14880) in Jenkins, it is necessary to open the Jenkins configuration and click **Save** although nothing is changed.
 
     You can open the configuration page of Jenkins with the credentials `admin` / `AiTx4u8VyUV8tCKk` by generating the URL and copy it in your browser (the installation has to be finished at this point):
+    
     ```
     echo http://jenkins.keptn.$(kubectl get svc istio-ingressgateway -n istio-system -ojsonpath={.status.loadBalancer.ingress[0].ip}).xip.io/configure
     ```
@@ -131,156 +134,154 @@ in the version of the latest release.
 ## Verifying the installation
 
 - Run the following command to get the **EXTERNAL-IP** and **PORT** of your cluster's ingress gateway.
-    ```console    
-    kubectl get svc istio-ingressgateway -n istio-system
-    ```
+  
+  ```console    
+  kubectl get svc istio-ingressgateway -n istio-system
+  ```
 
-    ```console
-    NAME                     TYPE           CLUSTER-IP      EXTERNAL-IP      PORT(S)
-    istio-ingressgateway     LoadBalancer   10.11.246.127   <EXTERNAL_IP>   80:32399/TCP 
-    ```
+  ```console
+  NAME                     TYPE           CLUSTER-IP      EXTERNAL-IP      PORT(S)
+  istio-ingressgateway     LoadBalancer   10.11.246.127   <EXTERNAL_IP>    80:32399/TCP 
+  ```
 
 - Go to Jenkins at `http://jenkins.keptn.<EXTERNAL_IP>.xip.io/` and login with the credentials `admin` / `AiTx4u8VyUV8tCKk`
   <br><br>**Note:** For security reasons, we recommend to change these credentials right after the first login:
   1. Change credentials in Jenkins
   1. Update credentials in the kubernetes secret named `jenkins-secret` in the `keptn` namespace, by using the following command. Please note that the password has to be base64 encoded.
-  ```console
-  kubectl edit secret jenkins-secret -n keptn     
-  ```
+    ```console
+    kubectl edit secret jenkins-secret -n keptn     
+    ```
 
   1. Restart the `jenkins-service` pod.
- ```
-kubectl delete pod $(
-| awk '/jenkins-service/' | awk '{print $1}') -n keptn
- ``` 
-  <br><br>
+  ```
+  kubectl delete pod $(
+  | awk '/jenkins-service/' | awk '{print $1}') -n keptn
+  ``` 
 
-  Navigate to **Jenkins** > **Manage Jenkins** > **Configure System**, scroll to the environment variables and verify that the variables are set correctly.
+- Navigate to **Jenkins** > **Manage Jenkins** > **Configure System**, scroll to the environment variables and verify that the variables are set correctly.
   {{< popup_image link="./assets/jenkins-env-vars.png" caption="Jenkins environment variables">}}
   **Important:** Due to a [known issue](https://issues.jenkins-ci.org/browse/JENKINS-14880) in Jenkins, it is necessary to click **Save** although nothing is changed in this verification step.
 
-- To verify your installation, retrieve the pods running in the `keptn` namespace.
+- To verify your keptn installation, retrieve the pods running in the `keptn` namespace.
 
   ```console
   kubectl get pods -n keptn
   ```
 
   ```console
-  authenticator-h7ftc-pod-cd730a                      0/1       Completed   0          10d
-  authenticator-hghrm-deployment-85985b6c56-894zm     3/3       Running     0          10d
-  control-9hw4x-pod-7d4b93                            0/1       Completed   0          10d
-  control-tjkl6-deployment-5bb45669c6-8h2d6           3/3       Running     0          10d
-  docker-registry-754b7797bd-v86pn                    2/2       Running     0          10d
-  event-broker-2fwtg-deployment-ffdd57984-t8jbn       3/3       Running     0          23m
-  event-broker-bcsdr-pod-15d743                       0/1       Completed   0          25m
-  event-broker-ext-2rndl-pod-0fe9f3                   0/1       Completed   0          10d
-  event-broker-ext-8wn6q-deployment-7bc86dcd9-zjc7r   3/3       Running     0          10d
-  github-service-gl2f9-deployment-854f4d747b-dhz89    3/3       Running     0          10d
-  github-service-kt7x5-pod-cd2884                     0/1       Completed   0          10d
-  jenkins-deployment-69fb95d575-mz6fp                 2/2       Running     0          10d
-  jenkins-service-82wsp-deployment-74f9f78856-k5z5f   3/3       Running     0          56m
-  jenkins-service-ghcpz-pod-1f5a6a                    0/1       Completed   0          57m
-  pitometer-service-v8n47-pod-99ace2                  0/1       Completed   0          1d
-  servicenow-service-bj9hv-pod-650ed4                 0/1       Completed   0          7d
-  ```
-  If those pods do not show up after a few minutes, please check if all pods within the `istio-system` pods are in a running state: 
-  
-  ```console
-  kubectl get pods -n istio-system
+  NAME                                                 READY     STATUS    RESTARTS   AGE
+  authenticator-fvq2c-deployment-565597c98c-fqj46      3/3       Running   0          30m
+  control-kwhms-deployment-6d7b8b8d94-v7xsj            3/3       Running   0          30m
+  docker-registry-66bb5d6d98-rz5pl                     2/2       Running   0          30m
+  event-broker-ext-2v84b-deployment-856cf65b99-96zpd   3/3       Running   0          30m
+  event-broker-z8tc6-deployment-7997b998b4-jhvq4       3/3       Running   0          30m
+  github-service-xcn9w-deployment-545866fc6f-hl4gc     3/3       Running   0          30m
+  jenkins-deployment-78dcd99964-zntbz                  2/2       Running   0          30m
+  jenkins-service-p4j5d-deployment-64755bddd7-7cbnp    3/3       Running   0          30m
   ```
 
-  ```console
-  cluster-local-gateway-775b6cbf4c-bxxx8    1/1       Running
-  istio-citadel-796c94878b-fhzf8            1/1       Running
-  istio-cleanup-secrets-nbdff               0/1       Completed
-  istio-egressgateway-864444d6ff-g7c6m      1/1       Running
-  istio-galley-6c68c5dbcf-fzdzb             1/1       Running
-  istio-ingressgateway-694576c7bb-w52j7     1/1       Running
-  istio-pilot-79f5f46dd5-c62bv              2/2       Running
-  istio-pilot-79f5f46dd5-wjwmf              2/2       Running
-  istio-pilot-79f5f46dd5-zgbwm              2/2       Running
-  istio-policy-5bd5578b94-nggnx             2/2       Running
-  istio-sidecar-injector-6d8f88c98f-mqrpj   1/1       Running
-  istio-telemetry-5598f86cd8-7s4t7          2/2       Running
-  istio-telemetry-5598f86cd8-bzfb5          2/2       Running
-  istio-telemetry-5598f86cd8-hxkhm          2/2       Running
-  istio-telemetry-5598f86cd8-pgstj          2/2       Running
-  istio-telemetry-5598f86cd8-wkh7g          2/2       Running
-  zipkin-6b4d5d66-jwqzk                     1/1       Running
-  ```
-
-  Next, please check the pods in the `knative-serving` namespace:
-
-  ```console
-  kubectl get pods -n knative-serving
-  ```
-
-  ```console
-  activator-6f7d494f55-fthpr    2/2       Running
-  autoscaler-5cb4d56d69-qz7dh   2/2       Running
-  controller-6d65444c78-8wqb8   1/1       Running
-  webhook-55f88654fb-tq8ps      1/1       Running
-  ```
-
-  Next, check that all routes for the core services, as well as for the jenkins-service, pitometer-service, github-service, and servicenow-service have been created:
+- Next, check that all routes for the keptn core services, as well as for the bridge, jenkins-service, pitometer-service, github-service, and servicenow-service have been created:
 
   ```console
   kubectl get routes -n keptn
   ```
 
   ```console
-  authenticator        10d
-  control              10d
-  event-broker         16m
-  event-broker-ext     10d
-  github-service       10d
-  jenkins-service      48m
-  pitometer-service    1d
-  servicenow-service   7d
+  NAME                 AGE
+  authenticator        31m
+  bridge               31m
+  control              32m
+  eventbroker          30m
+  eventbroker-ext      31m
+  github-service       30m
+  jenkins-service      30m
+  pitometer-service    30m
+  servicenow-service   32m
   ```
 
-  The channels have to be created as well:
+- Finally, check that all keptn channels have been created:
 
   ```console
   kubectl get channels -n keptn
   ```
 
   ```console
-  configuration-changed   10d
-  deployment-finished     10d
-  evaluation-done         10d
-  keptn-channel           10d
-  new-artefact            10d
-  problem                 10d
-  start-deployment        10d
-  start-evaluation        10d
-  start-tests             10d
-  tests-finished          10d
+  NAME                    AGE
+  configuration-changed   31m
+  deployment-finished     31m
+  evaluation-done         31m
+  keptn-channel           31m
+  new-artefact            31m
+  problem                 31m
+  start-deployment        31m
+  start-evaluation        31m
+  start-tests             31m
+  tests-finished          31m
   ```
 
-  If that is not the case, there may have been a problem during the installation. In that case, we kindly ask you to clean your cluster and restart the installation, as described in the **Troubleshooting** section below.
+- To verify the Istio installation, retrieve all pods within the `istio-system` namespace and check whether they are in a running state:
+  
+  ```console
+  kubectl get pods -n istio-system
+  ```
+
+  ```console
+  NAME                                      READY     STATUS      RESTARTS   AGE
+  cluster-local-gateway-775b6cbf4c-bxxx8    1/1       Running     0          18m
+  istio-citadel-796c94878b-fhzf8            1/1       Running     0          20m
+  istio-cleanup-secrets-nbdff               0/1       Completed   0          20m
+  istio-egressgateway-864444d6ff-g7c6m      1/1       Running     0          20m
+  istio-galley-6c68c5dbcf-fzdzb             1/1       Running     0          20m
+  istio-ingressgateway-694576c7bb-w52j7     1/1       Running     0          20m
+  istio-pilot-79f5f46dd5-c62bv              2/2       Running     0          22m
+  istio-pilot-79f5f46dd5-wjwmf              2/2       Running     0          22m
+  istio-pilot-79f5f46dd5-zgbwm              2/2       Running     0          22m
+  istio-policy-5bd5578b94-nggnx             2/2       Running     0          21m
+  istio-sidecar-injector-6d8f88c98f-mqrpj   1/1       Running     0          22m
+  istio-telemetry-5598f86cd8-7s4t7          2/2       Running     0          21m
+  istio-telemetry-5598f86cd8-bzfb5          2/2       Running     0          20m
+  istio-telemetry-5598f86cd8-hxkhm          2/2       Running     0          20m
+  istio-telemetry-5598f86cd8-pgstj          2/2       Running     0          20m
+  istio-telemetry-5598f86cd8-wkh7g          2/2       Running     0          20m
+  zipkin-6b4d5d66-jwqzk                     1/1       Running     0          24m
+  ```
+
+- To verify the Knative installation, check the pods in the `knative-serving` namespace:
+
+  ```console
+  kubectl get pods -n knative-serving
+  ```
+
+  ```console
+  NAME                          READY     STATUS      RESTARTS   AGE
+  activator-6f7d494f55-fthpr    2/2       Running     0          17m
+  autoscaler-5cb4d56d69-qz7dh   2/2       Running     0          16m
+  controller-6d65444c78-8wqb8   1/1       Running     0          18m
+  webhook-55f88654fb-tq8ps      1/1       Running     0          17m
+  ```
+
+  If that is not the case, there may have been a problem during the installation. In that case, we kindly ask you to clean your cluster and restart the installation described in the **Troubleshooting** section below.
 
 ## Uninstall
-- Clone the GitHub repository of the latest release:
+- Clone the keptn installer repository of the latest release:
 
   ``` console
-  git  clone --branch 0.2.1 https://github.com/keptn/keptn
-  cd  keptn/install/scripts
+  git  clone --branch 0.2.2 https://github.com/keptn/installer
+  cd  ./installer/scripts
   ``` 
 
 - Execute `uninstallKeptn.sh` and all keptn resource will be deleted
 
   ```console
-  cd keptn
-  ./install/scripts/uninstallKeptn.sh
+  ./uninstallKeptn.sh
   ```
-- To verify the cleanup, retrieve the list of namespaces in your cluster, and ensure that the `keptn` namespace is not included in the output of the following command:
+- To verify the cleanup, retrieve the list of namespaces in your cluster and ensure that the `keptn` namespace is not included in the output of the following command:
 
   ```console
   kubectl get namespaces
   ```
 
-- *Note*: In some cases, it might occure that the `keptn` namespace remains stuck in the `Terminating` state. If that happens, you can enforce the deletion of the namespace as follows:
+- **Note**: In some cases, it might occure that the `keptn` namespace remains stuck in the `Terminating` state. If that happens, you can enforce the deletion of the namespace as follows:
 
   ```console
   NAMESPACE=keptn
@@ -291,7 +292,6 @@ kubectl delete pod $(
   ```
 
 - **Note:** In future releases of the keptn CLI, a command `keptn uninstall` will be added, which replaces the shell script `uninstallKeptn.sh`.
-
 
 ## Troubleshooting
 

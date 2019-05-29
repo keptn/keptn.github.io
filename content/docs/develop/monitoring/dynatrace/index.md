@@ -6,7 +6,7 @@ icon: setup
 keywords: setup
 ---
 
-In order to evaluate the quality gates, we have to set up monitoring to provide the needed data.
+In order to evaluate the quality gates and allow self-healing in production, we have to set up monitoring to provide the needed data.
 
 ## Setup Dynatrace
 
@@ -35,16 +35,17 @@ In order to evaluate the quality gates, we have to set up monitoring to provide 
 
     In your Dynatrace tenant, go to **Settings > Integration > Platform as a Service**, and create a new PaaS Token.
 
-1. Start the following script:
-  ```console
-  cd ~/keptn/install/scripts
-  ./defineDynatraceCredentials.sh
-  ```
+1. Clone the install repository and setup your credentials by executing the following steps:
+```console
+git clone --branch 0.2.2 https://github.com/keptn/installer
+cd installer/scripts
+./defineDynatraceCredentials.sh
+```
   When the  script asks for your Dynatrace tenant, please enter your tenant according to the appropriate pattern:
     - Dynatrace SaaS tenant: `{your-environment-id}.live.dynatrace.com`
     - Dynatrace-managed tenant: `{your-domain}/e/{your-environment-id}`
 
-1. Execute the installation script:
+1. Execute the installation script `deployDynatrace.sh`:
   ```console
   ./deployDynatrace.sh
   ```
@@ -52,17 +53,30 @@ In order to evaluate the quality gates, we have to set up monitoring to provide 
 
     ```console
     kubectl get ksvc dynatrace-service -n keptn
+    ```
 
+    ```console
     NAME                AGE
     dynatrace-service   5m
     ```
 
-**Note 1:** To monitor the services that are running, make sure to restart the pods.
+**Note 1:** To monitor the services that are already onboarded in the `dev`, `staging`, and `production` namespace, make sure to restart the pods. If you defined different environments in your shipyard file, please adjust the values accordingly. 
 ```console
-kubectl delete pods --all -n keptn
+kubectl delete pods --all --namespace=sockshop-dev
+kubectl delete pods --all --namespace=sockshop-staging
+kubectl delete pods --all --namespace=sockshop-production
 ```
 
 **Note 2:** If the nodes in your cluster run on *Container-Optimized OS (cos)*, make sure to [follow the instructions](https://www.dynatrace.com/support/help/cloud-platforms/google-cloud-platform/google-kubernetes-engine/deploy-oneagent-on-google-kubernetes-engine-clusters/#expand-134parameter-for-container-optimized-os-early-access) for setting up the Dynatrace OneAgent Operator. This means that after the initial setup with `deployDynatrace.sh`, which is a step below, the `cr.yml` has to be edited and applied again. In addition, all pods have to be restarted.
+
+## See keptn events in Dynatrace
+
+The Dynatrace service will take care of pushing events of the keptn workflow to the artifacts that have been onboarded with keptn. For example, the deployment as well as custom infos like starting and finishing of tests will appear in the details screen of your services in your Dynatrace tenant.
+    {{< popup_image
+    link="./assets/custom_events.png"
+    caption="keptn events"
+    width="500px">}}
+
 
 ## (Optional) Create process group naming rule in Dynatrace
 
