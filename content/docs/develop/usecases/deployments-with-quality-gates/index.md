@@ -103,22 +103,20 @@ Now, you have quality gates in place, which will check whether the average respo
 
 
 
-## Access service via ingress gateway
+## View carts service
 
-1. Run the `kubectl get svc istio-ingressgateway -n istio-system` command to get the *EXTERNAL-IP* of your `istio-ingressgateway` service.
+- Run the following command to get the **EXTERNAL-IP** and **PORT** of your cluster's ingress gateway.
+    
+  ```console    
+  kubectl get svc istio-ingressgateway -n istio-system
+  ```
 
-    ```console
-    kubectl get svc istio-ingressgateway -n istio-system
-    ```
+  ```console
+  NAME                     TYPE           CLUSTER-IP      EXTERNAL-IP      PORT(S)
+  istio-ingressgateway     LoadBalancer   10.11.246.127   <EXTERNAL_IP>   80:32399/TCP 
+  ```
 
-    ```console
-    NAME                   TYPE           CLUSTER-IP       EXTERNAL-IP     PORT(S)                                      AGE
-    istio-ingressgateway   LoadBalancer   172.21.109.129   3*.2**.1**.8*   80:31380/TCP,443:31390/TCP,31400:31400/TCP   17h
-    ```
-
-1. Open a browser and navigate to `http://carts.sockshop-production.EXTERNAL-IP.xip.io/version`
-
-1. You should be able to retrieve the version of the service.
+- Navigate to `http://carts.sockshop-production.<EXTERNAL IP>.xip.io` for viewing the carts service in your `production` environment. 
 
 
 ## Try to deploy the slow carts version

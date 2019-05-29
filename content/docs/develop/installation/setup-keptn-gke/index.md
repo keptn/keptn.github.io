@@ -190,13 +190,13 @@ in the version of the latest release.
   NAME                 AGE
   authenticator        31m
   bridge               31m
-  control              32m
-  eventbroker          30m
+  control              31m
+  eventbroker          31m
   eventbroker-ext      31m
-  github-service       30m
-  jenkins-service      30m
-  pitometer-service    30m
-  servicenow-service   32m
+  github-service       31m
+  jenkins-service      31m
+  pitometer-service    31m
+  servicenow-service   31m
   ```
 
 - Finally, check that all keptn channels have been created:
@@ -227,23 +227,23 @@ in the version of the latest release.
 
   ```console
   NAME                                      READY     STATUS      RESTARTS   AGE
-  cluster-local-gateway-775b6cbf4c-bxxx8    1/1       Running     0          18m
+  cluster-local-gateway-775b6cbf4c-bxxx8    1/1       Running     0          20m
   istio-citadel-796c94878b-fhzf8            1/1       Running     0          20m
   istio-cleanup-secrets-nbdff               0/1       Completed   0          20m
   istio-egressgateway-864444d6ff-g7c6m      1/1       Running     0          20m
   istio-galley-6c68c5dbcf-fzdzb             1/1       Running     0          20m
   istio-ingressgateway-694576c7bb-w52j7     1/1       Running     0          20m
-  istio-pilot-79f5f46dd5-c62bv              2/2       Running     0          22m
+  istio-pilot-79f5f46dd5-c62bv              2/2       Running     0          20m
   istio-pilot-79f5f46dd5-wjwmf              2/2       Running     0          22m
   istio-pilot-79f5f46dd5-zgbwm              2/2       Running     0          22m
-  istio-policy-5bd5578b94-nggnx             2/2       Running     0          21m
-  istio-sidecar-injector-6d8f88c98f-mqrpj   1/1       Running     0          22m
-  istio-telemetry-5598f86cd8-7s4t7          2/2       Running     0          21m
+  istio-policy-5bd5578b94-nggnx             2/2       Running     0          20m
+  istio-sidecar-injector-6d8f88c98f-mqrpj   1/1       Running     0          20m
+  istio-telemetry-5598f86cd8-7s4t7          2/2       Running     0          20m
   istio-telemetry-5598f86cd8-bzfb5          2/2       Running     0          20m
   istio-telemetry-5598f86cd8-hxkhm          2/2       Running     0          20m
   istio-telemetry-5598f86cd8-pgstj          2/2       Running     0          20m
   istio-telemetry-5598f86cd8-wkh7g          2/2       Running     0          20m
-  zipkin-6b4d5d66-jwqzk                     1/1       Running     0          24m
+  zipkin-6b4d5d66-jwqzk                     1/1       Running     0          20m
   ```
 
 - To verify the Knative installation, check the pods in the `knative-serving` namespace:
@@ -255,8 +255,8 @@ in the version of the latest release.
   ```console
   NAME                          READY     STATUS      RESTARTS   AGE
   activator-6f7d494f55-fthpr    2/2       Running     0          17m
-  autoscaler-5cb4d56d69-qz7dh   2/2       Running     0          16m
-  controller-6d65444c78-8wqb8   1/1       Running     0          18m
+  autoscaler-5cb4d56d69-qz7dh   2/2       Running     0          17m
+  controller-6d65444c78-8wqb8   1/1       Running     0          17m
   webhook-55f88654fb-tq8ps      1/1       Running     0          17m
   ```
 

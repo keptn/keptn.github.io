@@ -56,8 +56,8 @@ cd installer/scripts
     ```
 
     ```console
-    NAME                AGE
-    dynatrace-service   5m
+    NAME                DOMAIN                                      LATESTCREATED             LATESTREADY               READY
+    dynatrace-service   dynatrace-service.keptn.svc.cluster.local   dynatrace-service-26sm4   dynatrace-service-26sm4   True
     ```
 
 **Note 1:** To monitor the services that are already onboarded in the `dev`, `staging`, and `production` namespace, make sure to restart the pods. If you defined different environments in your shipyard file, please adjust the values accordingly. 
