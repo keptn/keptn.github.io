@@ -38,6 +38,14 @@ To illustrate the scenario this use case addresses, keptn relies on two services
     git clone --branch 0.2.0 https://github.com/keptn/examples.git --single-branch
     cd examples/onboarding-carts
     ```
+1. Fork carts example into your GitHub organization
+  - Go to https://github.com/keptn-sockshop/carts and click on the **Fork** button on the top right corner.
+  - Select the GitHub organization you use for keptn.
+  - Clone the forked carts service to your local machine. Please note that you have to use your own GitHub organization.
+  
+    ```console
+      git clone https://github.com/your-github-org/carts.git
+    ```
 
 ## Authenticate and configure keptn
 
