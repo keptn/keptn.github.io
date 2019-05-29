@@ -14,10 +14,10 @@ When developing an application, sooner or later you need to update a service in 
 
 For this use case, we prepared a *slow* and a *regular* version of the carts service:
 
-| Version Info | Image                               | Description                                        |
-|--------------|-------------------------------------|----------------------------------------------------|
-| v2_slow      | docker.io/keptnexamples/carts:0.8.1 | Processes each request with a slowdown of 1 second |
-| v3           | docker.io/keptnexamples/carts:0.8.2 | Processes each request without any slowdown        |
+| Image                                 | Description                                        |
+|---------------------------------------|----------------------------------------------------|
+| docker.io/keptnexamples/carts:0.8.1   | Processes each request with a slowdown of 1 second |
+| docker.io/keptnexamples/carts:0.8.2   | Processes each request without any slowdown        |
 
 In this use case, we will try to deploy these two versions.
 During this deployment process, the versions have to pass a quality gate
