@@ -37,7 +37,7 @@ In order to evaluate the quality gates and allow self-healing in production, we 
 
 1. Clone the install repository and setup your credentials by executing the following steps:
 ```console
-git clone --branch 0.2.2 https://github.com/keptn/installer
+git clone --branch 0.2.2 https://github.com/keptn/installer --single-branch
 cd installer/scripts
 ./defineDynatraceCredentials.sh
 ```

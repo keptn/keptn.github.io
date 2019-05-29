@@ -8,13 +8,6 @@ keywords: [cli, setup]
 In this section, the functionality and commands of the keptn CLI are described. The keptn CLI allows installing keptn,
 configuring keptn, creating new projects, onboarding new services, and sending new artifact events.
 
-<!--
-For onboarding, a so-called `shipyard` (**TODO: provide more information/link here**) files has to be provided that defines deployment strategies for the service, as well as the different stages (i.e., dev, staging, and production).
-During onboarding, keptn creates a new GitHub projects, which then contains branches for the specified stages (i.e. dev, staging, and production).
-Furthermore, keptn creates resources definitions for several Kubernetes resources in terms on [Helm charts](https://helm.sh/).
-Please note that onboarding does not deploy a service.
--->
-
 If you are unfamiliar with keptn, we recommend to first watch this [community meeting recording](https://drive.google.com/open?id=1Zj-c0tGIvQ_0Dys6NsyDa-REsEZCvAHJ),
 which provides an introduction to keptn.
 
