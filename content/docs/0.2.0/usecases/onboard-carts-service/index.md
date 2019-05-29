@@ -36,7 +36,7 @@ To illustrate the scenario this use case addresses, keptn relies on two services
 
     ```console
     $ cd ~
-    $ git clone https://github.com/keptn/examples.git
+    $ git clone --branch 0.1.0 https://github.com/keptn/examples.git --single-branch
     $ cd ~/examples/onboarding-carts
     ```
 
