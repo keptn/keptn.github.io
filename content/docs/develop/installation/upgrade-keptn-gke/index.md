@@ -59,6 +59,31 @@ Due to a breaking change from keptn 0.2.1 to 0.2.2 regarding the naming conventi
 
 - Delete your configuration repository in your GitHub organization.
 
+- Delete your releases using [Helm](https://helm.sh):
+
+  ``` console
+  helm ls
+  ```
+
+  ``` console
+  NAME               	REVISION	UPDATED                 	STATUS  	CHART         	APP VERSION	NAMESPACE 
+  sockshop-dev       	1       	Wed May 29 10:59:56 2019	DEPLOYED	sockshop-0.1.0	           	dev       
+  sockshop-production	1       	Wed May 29 11:12:44 2019	DEPLOYED	sockshop-0.1.0	           	production
+  sockshop-staging   	1       	Wed May 29 11:07:16 2019	DEPLOYED	sockshop-0.1.0	           	staging 
+  ```
+
+  ``` console
+  helm delete --purge sockshop-dev
+  helm delete --purge sockshop-production
+  helm delete --purge sockshop-staging
+  ```
+
+  ``` console
+  release "sockshop-dev" deleted
+  release "sockshop-staging" deleted
+  release "sockshop-production" deleted
+  ```
+
 - Instructions for creating a project are provided [here](../../usecases/onboard-carts-service/#create-project-sockshop).
 
 - Instructions for onboarding a service are provided [here](../../usecases/onboard-carts-service/#onboard-carts-service-and-carts-database).
