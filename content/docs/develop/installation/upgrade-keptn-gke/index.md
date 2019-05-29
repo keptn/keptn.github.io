@@ -10,10 +10,18 @@ For upgrading an existing keptn 0.2.0 or 0.2.1 installation, an upgrade script i
 
 ## Prerequisites
    
-Please note that [all needed command line tools](../setup-keptn-gke#prerequisites) are needed when upgrading keptn.
-Additionally, `yq` is required:
+- Please note that all [command line tools](../setup-keptn-gke#prerequisites) are needed when upgrading keptn.
+  
+    - Additionally, [yq](https://github.com/mikefarah/yq) is required.
+  
+- Make sure you are connected with the cluster running the keptn installation, which should be upgraded. Verify the connection by 
+  using the following command:
 
-  - [yq](https://github.com/mikefarah/yq)
+  ``` console
+  kubectl config current-context
+  ```
+
+
 
 ## Upgrade keptn from 0.2.x to 0.2.2
 
