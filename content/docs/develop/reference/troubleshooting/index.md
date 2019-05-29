@@ -69,5 +69,26 @@ We are investiagting this problem in issue [#392](https://github.com/keptn/keptn
 **Solution:** 
 
 Please wait a couple of minutes for the cluster to recover and try again.
-</p>
+</p></details>
+
+### Jenkins Builds are not starting ###
+<details><summary>Expand instructions</summary>
+<p>
+
+**Investigation:**
+
+In Jenkins, investigate the logs of the build that was triggered by keptn, e.g. the `deploy` pipeline.
+The last line in the logs says something like **"Jenkins doesn't have label kubegit"**, and it does not proceed for an extended amount of time (i.e., ~2 minutes). 
+
+**Solution:**
+
+can work around this problem by following these instructions:
+
+1. In Jenkins, navigate to **Manage Jenkins > Configure System**.
+1. In the **Cloud** section of the settings page, you should see the parameters **Jenkins URL** and **Jenkins tunnel** (see screenshot below)
+1. In the field for **Jenkins URL**, enter 'http://jenkins', and hit save.
+1. Afterwards, delete this value again and hit save once again.
+
+{{< popup_image link="./assets/jenkins-tunnel.png" caption="Jenkins configuration">}}
+</p></details>
 </details>
