@@ -16,8 +16,8 @@ For this use case, we prepared a *slow* and a *regular* version of the carts ser
 
 | Image                                 | Description                                        |
 |---------------------------------------|----------------------------------------------------|
-| docker.io/keptnexamples/carts:0.8.1   | Processes each request with a slowdown of 1 second |
-| docker.io/keptnexamples/carts:0.8.2   | Processes each request without any slowdown        |
+| docker.io/keptnexamples/carts:0.7.1   | Processes each request with a slowdown of 1 second |
+| docker.io/keptnexamples/carts:0.7.2   | Processes each request without any slowdown        |
 
 In this use case, we will try to deploy these two versions.
 During this deployment process, the versions have to pass a quality gate
@@ -112,7 +112,7 @@ Now, you have quality gates in place, which will check whether the average respo
 1. Use the keptn CLI to send a version of the `carts` artifact, which contains an artificial
 slowdown of 1 second in each request. 
   ```console
-  keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.8.1
+  keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.7.1
   ```
 
 1. This automatically changes the configuration of the service and automatically triggers the pipelines. Watch keptn deploying the new artifact by following the pipelines in Jenkins.
@@ -135,7 +135,7 @@ Here, you see that the version of the carts service has not changed.
 
 1. Use the keptn CLI to send a new version of the `carts` artifact, which does **not** contain any slowdown.
   ```console
-  keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.8.2
+  keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.7.2
   ```
 
 1. This automatically changes the configuration of the service and automatically triggers the pipelines.
@@ -169,7 +169,7 @@ Here, you see that the version of the carts service has not changed.
                deployment=carts-blue
       Containers:
       carts:
-        Image:      docker.io/keptnexamples/carts:0.8.2
+        Image:      docker.io/keptnexamples/carts0.7.2
     ```
 
     ```console
@@ -183,7 +183,7 @@ Here, you see that the version of the carts service has not changed.
                deployment=carts-green
       Containers:
       carts:
-        Image:      docker.io/keptnexamples/carts:0.8.0
+        Image:      docker.io/keptnexamples/carts:0.7.0
     ```
 
     ```console
