@@ -264,7 +264,7 @@ Therefore, this command takes the project (flag `--project`), the service (flag 
 as well as the image (flag `--image`) and tag (flag `--tag`) of the new artifact.
 
 ```console
-keptn send event new-artifact --project=your_project --service=your_service --image=docker.io/keptnexamples/carts --tag=0.7.0
+keptn send event new-artifact --project=your_project --service=your_service --image=docker.io/keptnexamples/carts --tag=0.7.1
 ```
 
 ## keptn send event
