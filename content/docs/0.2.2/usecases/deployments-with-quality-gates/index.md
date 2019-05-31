@@ -169,7 +169,7 @@ Here, you see that the version of the carts service has not changed.
                deployment=carts-blue
       Containers:
       carts:
-        Image:      docker.io/keptnexamples/carts0.7.2
+        Image:      docker.io/keptnexamples/carts:0.7.2
     ```
 
     ```console
