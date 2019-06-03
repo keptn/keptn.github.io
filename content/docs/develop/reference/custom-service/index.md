@@ -13,7 +13,7 @@ Shows you how to implement your own keptn service and listen for certain events.
 The goal of this section is to describe how you can add additional functionality to your keptn installation by implementing your own services. 
 You can react to certain events that occur during your CD pipeline runs, and, integrate additional tools into your pipeline by accessing their REST interfaces with your custom services. At the moment the events you can subscribe to include:
 
-- sh.keptn.events.new-artefact
+- sh.keptn.events.new-artifact
 - sh.keptn.events.configuration-changed
 - sh.keptn.events.deployment-finished
 - sh.keptn.events.tests-finished
@@ -60,13 +60,13 @@ Services in keptn are implemented as [knative services](https://cloud.google.com
   apiVersion: eventing.knative.dev/v1alpha1
   kind: Subscription
   metadata:
-    name: github-new-artefact-subscription
+    name: github-new-artifact-subscription
     namespace: keptn
   spec:
     channel:
       apiVersion: eventing.knative.dev/v1alpha1
       kind: Channel
-      name: new-artefact
+      name: new-artifact
     subscriber:
       ref:
         apiVersion: serving.knative.dev/v1alpha1
@@ -79,7 +79,7 @@ As you can see in the manifest file, it consists of a *knative service*, as well
 The *Subscription* defines to which kind of event the service should listen to. To subscribe your service to a queue, set the property *spec.channel.name* to one of the following:
 
   ```
-  new-artefact
+  new-artifact
   configuration-changed
   deployment-finished
   tests-finished
@@ -110,12 +110,12 @@ any previous revisions of the service will be deleted and the newest version wil
 
 Depending on the channel your service is subscribed to, it will receive the payload in the following format:
 
-### sh.keptn.new-artefact
+### sh.keptn.new-artifact
 
 ```json
 {  
    "specversion":"0.2",
-   "type":"sh.keptn.events.new-artefact",
+   "type":"sh.keptn.events.new-artifact",
    "source":"Jenkins",
    "id":"1234",
    "time":"20190325-15:26:52.036",
