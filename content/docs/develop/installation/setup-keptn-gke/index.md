@@ -115,7 +115,7 @@ in the version of the latest release.
                     <li>deployment-finished</li>
                     <li>evaluation-done</li>
                     <li>keptn-channel</li>
-                    <li>new-artefact</li>
+                    <li>new-artifact</li>
                     <li>problem</li>
                     <li>tests-finished</li>
                 </ul>
@@ -211,7 +211,7 @@ in the version of the latest release.
   deployment-finished     31m
   evaluation-done         31m
   keptn-channel           31m
-  new-artefact            31m
+  new-artifact            31m
   problem                 31m
   start-deployment        31m
   start-evaluation        31m
