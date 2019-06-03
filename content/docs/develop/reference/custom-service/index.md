@@ -60,7 +60,7 @@ Services in keptn are implemented as [knative services](https://cloud.google.com
   apiVersion: eventing.knative.dev/v1alpha1
   kind: Subscription
   metadata:
-    name: github-new-artefict-subscription
+    name: github-new-artifact-subscription
     namespace: keptn
   spec:
     channel:
