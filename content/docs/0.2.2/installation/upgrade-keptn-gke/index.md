@@ -7,6 +7,7 @@ keywords: setup
 ---
 
 For upgrading an existing keptn 0.2.0 or 0.2.1 installation, an upgrade script is provided. This will update all keptn core components to their new version and installs the keptn's bridge.
+Furthermore, a new version of the CLI needs to be downloaded.
 
 ## Prerequisites
    
@@ -22,7 +23,39 @@ For upgrading an existing keptn 0.2.0 or 0.2.1 installation, an upgrade script i
   ``` console
   kubectl config current-context
   ```
+## Upgrade keptn CLI
 
+- Download the version for your operating system from https://github.com/keptn/keptn/releases/tag/0.2.2
+- Unpack the download
+- Find the `keptn` binary in the unpacked directory.
+  - Linux / macOS
+    
+        add executable permissions (``chmod +x keptn``), and move it to the desired destination (e.g. `mv keptn /usr/local/bin/keptn`)
+
+  - Windows
+
+        move/copy the executable to the desired folder and, optionally, add the executable to your PATH environment variable for a more convenient experience.
+
+- For double checking the version of the CLI, run the `version` command in the CLI: 
+    - Linux / macOS
+
+    ```console
+    keptn --version
+    ```
+
+    ```console
+    CLI version: 0.2.2
+    ```
+    
+    - Windows
+
+    ```console
+    .\keptn.exe --version
+    ```
+
+     ```console
+    CLI version: 0.2.2
+    ```
 
 ## Upgrade keptn from 0.2.x to 0.2.2
 
