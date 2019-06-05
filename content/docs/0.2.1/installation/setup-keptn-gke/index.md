@@ -257,16 +257,14 @@ kubectl delete pod $(
   ```
 
   ```console
-  configuration-changed   10d
-  deployment-finished     10d
-  evaluation-done         10d
-  keptn-channel           10d
-  new-artefact            10d
-  problem                 10d
-  start-deployment        10d
-  start-evaluation        10d
-  start-tests             10d
-  tests-finished          10d
+  NAME                    AGE
+  configuration-changed   16m
+  deployment-finished     16m
+  evaluation-done         16m
+  keptn-channel           16m
+  new-artefact            16m
+  problem                 16m
+  tests-finished          16m
   ```
 
   If that is not the case, there may have been a problem during the installation. In that case we kindly ask you to clean your cluster and restart the installation, as described in the **Troubleshooting** section below.
