@@ -38,7 +38,7 @@ In order to evaluate the quality gates and allow self-healing in production, we 
 1. Clone the install repository and setup your credentials by executing the following steps:
 ```console
 git clone --branch 0.1.2 https://github.com/keptn/dynatrace-service --single-branch
-cd deploy/scripts
+cd dynatrace-service/deploy/scripts
 ./defineDynatraceCredentials.sh
 ```
   When the  script asks for your Dynatrace tenant, please enter your tenant according to the appropriate pattern:
