@@ -92,7 +92,7 @@ Additionally, you will need to provide a name for the subscription (*metadata.na
 To deploy the service, we use a script that will first retrieve the IP of the cluster-internal docker registry, and replace the `REGISTRY_URI_PLACEHOLDER` in the manifest file with that value. The resulting manifest file will be stored in the *[config/gen](https://github.com/keptn/github-service/tree/release-0.1.x/config/gen)* directory. By executing the script with
 
   ```console
-  $ ./deploy.sh
+  ./deploy.sh
   ```
 
 any previous revisions of the service will be deleted and the newest version will be deployed.
@@ -106,7 +106,7 @@ any previous revisions of the service will be deleted and the newest version wil
 
 *Note:* this documentation will be replaced with an extensive step-by-step guide in the future.
 
-## Cloudevents
+## CloudEvents
 
 Depending on the channel your service is subscribed to, it will receive the payload in the following format:
 
@@ -116,17 +116,17 @@ Depending on the channel your service is subscribed to, it will receive the payl
 {  
    "specversion":"0.2",
    "type":"sh.keptn.events.new-artefact",
-   "source":"Jenkins", // optional
+   "source":"Jenkins",
    "id":"1234",
    "time":"20190325-15:26:52.036",
    "datacontenttype":"application/json",
    "shkeptncontext":"db51be80-4fee-41af-bb53-1b093d2b694c",
    "data":{  
-      "githuborg":"keptn-tiger", // optional
+      "githuborg":"keptn-tiger",
       "project":"sockshop",
-      "teststrategy":"functional", // optional
-      "deploymentstrategy":"direct", // optional
-      "stage":"dev", // optional
+      "teststrategy":"functional",
+      "deploymentstrategy":"direct",
+      "stage":"dev",
       "service":"carts",
       "image":"10.11.245.27:5000/sockshopcr/carts",
       "tag":"0.6.7-16"
@@ -199,13 +199,14 @@ Depending on the channel your service is subscribed to, it will receive the payl
       "stage":"dev",
       "service":"carts",
       "image":"10.11.245.27:5000/sockshopcr/carts",
-      "tag":"0.6.7-16",
-      "startedat": "20190325-15:20:56.096"
+      "tag":"0.6.7-16"
    }
 }
 ```
 
 ### sh.keptn.evaluation-done
+
+- Example for a successful evaluation:
 
 ```json
 {  
@@ -225,7 +226,81 @@ Depending on the channel your service is subscribed to, it will receive the payl
       "service":"carts",
       "image":"10.11.245.27:5000/sockshopcr/carts",
       "tag":"0.6.7-16",
-      "evaluationpassed": true
+      "evaluationpassed": true,
+      "evaluationdetails": { // NOTE: the evaluationdetails object is not strictly typed
+        "options":{
+            "timeStart":1557838126,
+            "timeEnd":1557838317
+        },
+        "totalScore":100,
+        "objectives":{
+            "pass":90,
+            "warning":75
+        },
+        "indicatorResults":[
+            {
+              "id":"ResponseTime_Backend",
+              "violations":[
+
+              ],
+              "score":100
+            }
+        ],
+        "result":"pass"
+      },
+      "tag":"0.6.7-16"
+   }
+}
+```
+
+- Example for a failed evaluation:
+
+```json
+{  
+   "specversion":"0.2",
+   "type":"sh.keptn.events.evaluation-done",
+   "source":"Jenkins",
+   "id":"1234",
+   "time":"20190325-15:25:56.096",
+   "datacontenttype":"application/json",
+   "shkeptncontext":"db51be80-4fee-41af-bb53-1b093d2b694c",
+   "data":{  
+      "githuborg":"keptn-tiger",
+      "project":"sockshop",
+      "teststrategy":"functional",
+      "deploymentstrategy":"direct",
+      "stage":"dev",
+      "service":"carts",
+      "image":"10.11.245.27:5000/sockshopcr/carts",
+      "tag":"0.6.7-16",
+      "evaluationpassed": false,
+      "evaluationdetails": { // NOTE: the evaluationdetails object is not strictly typed
+        "options":{
+          "timeStart":1557839081,
+          "timeEnd":1557839741
+        },
+        "totalScore":0,
+        "objectives":{
+          "pass":90,
+          "warning":75
+        },
+        "indicatorResults":[
+          {
+            "id":"ResponseTime_Backend",
+            "violations":[
+                {
+                  "value":1014676.0082135524,
+                  "key":"SERVICE-64F930D2B8E888FF",
+                  "breach":"upperSevere",
+                  "threshold":1000000
+                }
+            ],
+            "score":0
+          }
+        ],
+        "result":"fail"
+      },
+      "tag":"0.6.7-16"
    }
 }
 ```
@@ -238,11 +313,11 @@ To receive events in this channel, please follow the instructions of the [Runboo
 {
     "specversion":"0.2",
     "type":"sh.keptn.events.problem",
-    "shkeptncontext":"{PID}",
     "source":"dynatrace",
     "id":"{PID}",
     "time":"",
-    "contenttype":"application/json",
+    "datacontenttype":"application/json",
+    "shkeptncontext":"{PID}",
     "data": {
         "State":"{State}",
         "ProblemID":"{ProblemID}",

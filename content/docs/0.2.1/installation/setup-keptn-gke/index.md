@@ -23,7 +23,7 @@ keywords: setup
     CLUSTERNAME=nameofcluster
     ZONE=us-central1-a
     REGION=us-central1
-    GKEVERSION="1.12.7-gke.7"
+    GKEVERSION="1.12.7-gke.10"
     ```
 
     ```console
@@ -48,7 +48,8 @@ keywords: setup
   - [git](https://git-scm.com/)
   - [helm 2.12.3](https://helm.sh/)
   - [gcloud](https://cloud.google.com/sdk/gcloud/)
-  - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) (configured to be used with your cluster) 
+  - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) (configured to be used with your cluster)
+  - [python 2.7](https://www.python.org/downloads/release/python-2716/) (required for Ubuntu 19.04)
 
     ```console
     gcloud container clusters get-credentials $CLUSTERNAME --zone $ZONE --project $PROJECT
@@ -113,7 +114,7 @@ The script will install the complete infrastructure necessary to run keptn. This
 ## Install keptn CLI
 Every release of keptn provides binaries for the keptn CLI. These binaries are available for Linux, macOS, and Windows.
 
-- Download the version for your operatoring system from https://github.com/keptn/keptn/releases/tag/0.2.1
+- Download the version for your operating system from https://github.com/keptn/keptn/releases/tag/0.2.1
 - Unpack the download
 - Find the `keptn` binary in the unpacked directory.
   - Linux / macOS
@@ -160,7 +161,8 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
 
   1. Restart the `jenkins-service` pod.
  ```
-kubectl delete pod $(kubectl get pods -n keptn | awk '/jenkins-service/' | awk '{print $1}') -n keptn
+kubectl delete pod $(
+| awk '/jenkins-service/' | awk '{print $1}') -n keptn
  ``` 
   <br><br>
 
@@ -169,6 +171,7 @@ kubectl delete pod $(kubectl get pods -n keptn | awk '/jenkins-service/' | awk '
   **Important:** Due to a [known issue](https://issues.jenkins-ci.org/browse/JENKINS-14880) in Jenkins, it is necessary to click **Save** although nothing is changed in this verification step.
 
 - To verify your installation, retrieve the pods runnning in the `keptn` namespace.
+  
   ```console
   kubectl get pods -n keptn
   ```
@@ -271,16 +274,16 @@ kubectl delete pod $(kubectl get pods -n keptn | awk '/jenkins-service/' | awk '
 
 ## Authenticate keptn CLI and configure keptn
 
-1. The CLI needs to be authenticated against the keptn server. Therefore, please copy the values from your installation log output into the next command and execute it:
+1. The CLI needs to be authenticated against the keptn server:
 
     ```console
-    keptn auth --endpoint=YOUR_ENDPOINT --api-token=YOUR_TOKEN
+    keptn auth --endpoint=https://$(kubectl get ksvc -n keptn control -o=yaml | yq r - status.domain) --api-token=$(kubectl get secret keptn-api-token -n keptn -o=yaml | yq - r data.keptn-api-token | base64 --decode)
     ```
 
 1. Configure the used GitHub organization, user, and personal access token using the `keptn configure` command:
   
     ```console
-    keptn configure --org=<YOUR_GITHUB_ORG> --user=<YOUR_GITHUB_USER> --token=<YOUR_GITHUB_TOKEN>
+    keptn configure --org=$(yq r ~/keptn/install/scripts/creds.json githubOrg) --user=$(yq r ~/keptn/install/scripts/creds.json githubUserName) --token=$(yq r ~/keptn/install/scripts/creds.json githubPersonalAccessToken)
     ```
 
 
