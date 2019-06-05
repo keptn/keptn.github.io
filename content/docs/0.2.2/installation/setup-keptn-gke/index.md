@@ -213,9 +213,6 @@ in the version of the latest release.
   keptn-channel           31m
   new-artefact            31m
   problem                 31m
-  start-deployment        31m
-  start-evaluation        31m
-  start-tests             31m
   tests-finished          31m
   ```
 
