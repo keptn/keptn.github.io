@@ -337,7 +337,7 @@ To inspect your service's log messages for a specific pipeline run, as described
 ```json
 {
   "keptnContext": "<KEPTN_CONTEXT>",
-  "logLevel": "INFO | WARN | ERROR",
+  "logLevel": "INFO | DEBUG | WARNING | ERROR",
   "keptnService": "<YOUR_SERVICE_NAME>",
   "message": "logging message"
 }
