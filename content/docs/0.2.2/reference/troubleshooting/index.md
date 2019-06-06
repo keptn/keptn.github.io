@@ -70,7 +70,30 @@ We are investiagting this problem in issue [#392](https://github.com/keptn/keptn
 
 **Solution:** 
 
-Please wait a couple of minutes for the cluster to recover and try again.
+Please wait a couple of minutes for the cluster to recover and try again. 
+
+Alternatively, you can try to delete the `control` pod in the `keptn` namespace. Therefore, first get
+the name of the `control` pod:
+
+```console
+kubectl get pods -n keptn | grep control
+```
+
+```console
+control-k8stj-deployment-5f8d986946-r4l69            3/3     Running   0          20h
+```
+Second, use the name of your `control` pod and delete it:
+
+```console
+kubectl delete pod control-k8stj-deployment-5f8d986946-r4l69 -n keptn
+```
+
+```console
+pod "control-k8stj-deployment-5f8d986946-r4l69" deleted
+```
+
+The `control` pod will automatically restart.
+
 </p></details>
 
 ### Jenkins Builds are not starting ###
