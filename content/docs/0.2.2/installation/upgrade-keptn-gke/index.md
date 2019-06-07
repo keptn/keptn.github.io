@@ -40,7 +40,7 @@ Furthermore, a new version of the CLI needs to be downloaded.
     - Linux / macOS
 
     ```console
-    keptn --version
+    keptn version
     ```
 
     ```console
@@ -50,7 +50,7 @@ Furthermore, a new version of the CLI needs to be downloaded.
     - Windows
 
     ```console
-    .\keptn.exe --version
+    .\keptn.exe version
     ```
 
      ```console
