@@ -123,7 +123,7 @@ The used artifact is stored on Docker Hub.
   echo http://bridge.keptn.$(kubectl get svc istio-ingressgateway -n istio-system -ojsonpath={.status.loadBalancer.ingress[0].ip}).xip.io/
   ```
 
-  The keptn's bridge shows all pipeline runs that have been started. On the left-hand side you can see the pipeline start events, such as the one that is selected and happened at 8:44am. Over time, more and more events will show up in keptn's bridge to allow you to check what is going on in your keptn installation.
+  The keptn's bridge shows all pipeline runs that have been started. On the left-hand side you can see the pipeline start events, such as the one that is selected. Over time, more and more events will show up in keptn's bridge to allow you to check what is going on in your keptn installation.
 
   {{< popup_image
     link="./assets/bridge.png"
