@@ -77,6 +77,16 @@ The Dynatrace service will take care of pushing events of the keptn workflow to 
     caption="keptn events"
     width="500px">}}
 
+## Upgrade Dynatrace monitoring for keptn 0.2.2
+
+Due to a change of the data stored in the `dynatrace` secret in the `keptn` namespace, it is necessary to update the secret according to the following steps:
+  1. Prepare the Dynatrace URI:
+      - Dynatrace SaaS tenant: `{your-environment-id}.live.dynatrace.com`
+      - Dynatrace-managed tenant: `{your-domain}/e/{your-environment-id}`
+  1. Update the property `DT_TENANT` based on the Dynatrace URI. Please note that the value has to be base64 encoded.
+      ```console
+      kubectl edit secret dynatrace -n keptn     
+      ```
 
 ## (Optional) Create process group naming rule in Dynatrace
 
@@ -93,4 +103,3 @@ The Dynatrace service will take care of pushing events of the keptn workflow to 
     {{< popup_image
     link="./assets/pg_naming.png"
     caption="Dynatrace naming rule">}}
-
