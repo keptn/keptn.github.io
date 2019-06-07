@@ -9,9 +9,9 @@ The keptn's bridge lets you browse the keptn's log. It is automatically installe
 
 ## Usage
 
-The keptn's bridge is accessible under the address `http://bridge.keptn.XX.XX.XX.XX.xip.io/` or by simply getting the full domain name by executing:
+The keptn's bridge is not publicly accessible, but can be retrieved by enable port-forwarding from your local machine to the keptn's bridge:
 ```console
-echo http://bridge.keptn.$(kubectl get svc istio-ingressgateway -n istio-system -ojsonpath={.status.loadBalancer.ingress[0].ip}).xip.io 
+kubectl port-forward svc/$(kubectl get ksvc bridge -n keptn -ojsonpath={.status.latestReadyRevisionName})-service -n keptn 9000:80
 ```
 
 The keptn's bridge provides an easy way to browse all events that are sent within keptn and to filter on a specific keptn context. 
