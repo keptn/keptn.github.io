@@ -116,4 +116,19 @@ can work around this problem by following these instructions:
 
 {{< popup_image link="./assets/jenkins-tunnel.png" caption="Jenkins configuration">}}
 </p></details>
+
+### keptn's bridge is empty
+<details><summary>Expand instructions</summary>
+<p>
+
+**Investigation:**
+
+In the keptn's bridge you cannot see any entries.
+
+**Solution:**
+
+We fixed this issue (see [#423](https://github.com/keptn/keptn/issues/423)).
+In order to obtain this fix, please follow the [upgrade instructions](../../installation/upgrade-keptn-gke/#upgrade-keptn-from-0-2-x-to-0-2-2).
+</p></details>
+
 </details>

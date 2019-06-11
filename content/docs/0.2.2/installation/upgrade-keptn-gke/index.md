@@ -62,7 +62,7 @@ Furthermore, a new version of the CLI needs to be downloaded.
 - Clone the keptn installer repository of the latest release:
 
   ``` console
-  git  clone --branch 0.2.2 https://github.com/keptn/installer
+  git  clone --branch 0.2.3 https://github.com/keptn/installer
   ``` 
 
 - Navigate to the scripts folder:
