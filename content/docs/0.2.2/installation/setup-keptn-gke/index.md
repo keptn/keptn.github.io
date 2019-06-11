@@ -115,7 +115,7 @@ in the version of the latest release.
                     <li>deployment-finished</li>
                     <li>evaluation-done</li>
                     <li>keptn-channel</li>
-                    <li>new-artefact</li>
+                    <li>new-artifact</li>
                     <li>problem</li>
                     <li>tests-finished</li>
                 </ul>
@@ -172,7 +172,6 @@ in the version of the latest release.
   NAME                                                 READY     STATUS    RESTARTS   AGE
   authenticator-fvq2c-deployment-565597c98c-fqj46      3/3       Running   0          30m
   control-kwhms-deployment-6d7b8b8d94-v7xsj            3/3       Running   0          30m
-  docker-registry-66bb5d6d98-rz5pl                     2/2       Running   0          30m
   event-broker-ext-2v84b-deployment-856cf65b99-96zpd   3/3       Running   0          30m
   event-broker-z8tc6-deployment-7997b998b4-jhvq4       3/3       Running   0          30m
   github-service-xcn9w-deployment-545866fc6f-hl4gc     3/3       Running   0          30m
@@ -211,7 +210,7 @@ in the version of the latest release.
   deployment-finished     31m
   evaluation-done         31m
   keptn-channel           31m
-  new-artefact            31m
+  new-artifact            31m
   problem                 31m
   tests-finished          31m
   ```
