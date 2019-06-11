@@ -40,7 +40,7 @@ Furthermore, a new version of the CLI needs to be downloaded.
     - Linux / macOS
 
     ```console
-    keptn --version
+    keptn version
     ```
 
     ```console
@@ -50,7 +50,7 @@ Furthermore, a new version of the CLI needs to be downloaded.
     - Windows
 
     ```console
-    .\keptn.exe --version
+    .\keptn.exe version
     ```
 
      ```console
@@ -121,3 +121,7 @@ Due to a breaking change from keptn 0.2.1 to 0.2.2 regarding the naming conventi
 - Instructions for creating a project are provided [here](../../usecases/onboard-carts-service/#create-project-sockshop).
 
 - Instructions for onboarding a service are provided [here](../../usecases/onboard-carts-service/#onboard-carts-service-and-carts-database).
+
+## Upgrade monitoring
+
+If Dynatrace is used for monitoring, please follow the upgrade instructions [here](../../monitoring/dynatrace/#upgrade-dynatrace-monitoring-for-keptn-0.2.2).

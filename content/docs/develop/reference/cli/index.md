@@ -253,7 +253,7 @@ keptn onboard service --project=your_project --values=values.yaml
 keptn onboard service --project=your_project --values=values.yaml --deployment=deployment.yaml --service=service.yaml
 ```
 
-**Note:** If you would like to have the environment variables `KEPTN_PROJECT`, `KEPTN_STAGE`, and `KEPTN_SERVICE` within your service, add the following environment variables to your deployment configuration.
+**Note:** If you are using custom configurations and you would like to have the environment variables `KEPTN_PROJECT`, `KEPTN_STAGE`, and `KEPTN_SERVICE` within your service, add the following environment variables to your deployment configuration.
 
   ```yaml
   env:
