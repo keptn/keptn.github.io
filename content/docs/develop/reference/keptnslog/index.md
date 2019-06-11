@@ -33,7 +33,7 @@ Keptn summarizes logs for a specific pipeline run by adding a property called `k
 
     {{< popup_image link="./assets/entry.png" caption="Keptn Entry Points">}}
 
-  1. As you can see in the example in the screenshot, we see that during that timeframe, a new pipeline run for the *carts* service of our *sockshop* project has been initiated as a result of a new image being pushed to a container registry. To see all log messages relevant to this run, copy the value of the *keptnContext* at the right side of the table. Afterwards, enter the following query into the search bar at the top: `keptnContext: <KEPTN_CONTEXT>`. As a result, you will be presented with a view resembling the example below:
+  1. As you can see in the example in the screenshot, we see that during that timeframe, a new pipeline run for the *carts* service of our *sockshop* project has been initiated as a result of executing the [keptn CLI](../cli) command for sending a new artifact event. To see all log messages relevant to this run, copy the value of the *keptnContext* at the right side of the table. Afterwards, enter the following query into the search bar at the top: `keptnContext: <KEPTN_CONTEXT>`. As a result, you will be presented with a view resembling the example below:
 
     {{< popup_image link="./assets/pipeline-log.png" caption="Keptn Entry Log Entries">}}
 
