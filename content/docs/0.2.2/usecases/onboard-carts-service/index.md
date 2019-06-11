@@ -117,7 +117,22 @@ The used artifact is stored on Docker Hub.
   ```console
   keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.7.1
   ```
-  
+
+1. Go to the keptn's bridge and check which events have already been generated. You can access it by a port-forward from your local machine to the Kubernetes cluster:
+  ```console 
+  kubectl port-forward svc/$(kubectl get ksvc bridge -n keptn -ojsonpath={.status.latestReadyRevisionName})-service -n keptn 9000:80
+  ```
+  Now access the bridge from your browser on http://localhost:9000. 
+  \\
+  \\
+  The keptn's bridge shows all pipeline runs that have been started. On the left-hand side you can see the pipeline start events, such as the one that is selected. Over time, more and more events will show up in keptn's bridge to allow you to check what is going on in your keptn installation. Please note that if events happen at the same time, their order in the keptn's bridge might be arbitrary since they are only sorted on the granularity of one second. 
+
+    {{< popup_image
+      link="./assets/bridge.png"
+      caption="keptn's bridge">}}
+
+**Alternatively check the progress in Jenkins**
+
 1. Go to the Jenkins dashboard to see how the pipelines get triggered automatically. Therefore, generate and open the Jenkins URL:
   ```console
   echo http://jenkins.keptn.$(kubectl get svc istio-ingressgateway -n istio-system -ojsonpath={.status.loadBalancer.ingress[0].ip}).xip.io/
