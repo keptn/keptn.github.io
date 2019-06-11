@@ -9,7 +9,7 @@ The keptn's bridge lets you browse the keptn's log. It is automatically installe
 
 ## Usage
 
-The keptn's bridge is not publicly accessible, but can be retrieved by enable port-forwarding from your local machine to the keptn's bridge:
+The keptn's bridge is not publicly accessible, but can be retrieved by enabling port-forwarding from your local machine to the keptn's bridge:
 ```console
 kubectl port-forward svc/$(kubectl get ksvc bridge -n keptn -ojsonpath={.status.latestReadyRevisionName})-service -n keptn 9000:80
 ```
