@@ -3,7 +3,7 @@ title: Prepare PKS cluster
 description: How to setup a PKS cluster on GCP for keptn.
 weight: 30
 icon: setup
-keywords: setup
+keywords: cluster
 ---
 
 ## Install local tools
@@ -15,7 +15,14 @@ keywords: setup
 
 1. Create a PKS cluster by using the PKS CLI and executing the following command:
     ```console
-    pks create-cluster your-cluster --external-hostname example.hostname --plan small
+    // set environment variables
+    CLUSTER_NAME=nameofcluster
+    HOST_NAME=hostname
+    PLAN=small
+    ```
+
+    ```console
+    pks create-cluster $CLUSTER_NAME --external-hostname $HOST_NAME --plan $PLAN
     ```
 
 ## Install keptn 
