@@ -7,30 +7,12 @@ keywords: setup
 ---
 
 ## Prerequisites
-- GKE cluster
-  - master version >= `1.11.x` (tested version: `1.11.7-gke.12` and `1.12.7-gke.10`)
-  - one `n1-standard-16` node
-    <details><summary>Expand for details</summary>
-    {{< popup_image link="./assets/gke-cluster-size.png" 
-      caption="GKE cluster size">}}
-    </details>
-  - image type `ubuntu` or `cos` (if you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../monitoring/dynatrace/))
-  - Sample script to create such cluster (adapt the values according to your needs)
+- Kubernetes cluster, use one of the following options:
+  - Prepare [GKE cluster](../prepare-gke/)
+  - Prepare [PKS cluster](../prepare-pks/)
 
-    ```console
-    // set environment variables
-    PROJECT=nameofgcloudproject
-    CLUSTERNAME=nameofcluster
-    ZONE=us-central1-a
-    REGION=us-central1
-    GKEVERSION="1.12.7-gke.10"
-    ```
-
-    ```console
-    gcloud beta container --project $PROJECT clusters create $CLUSTERNAME --zone $ZONE --no-enable-basic-auth --cluster-version $GKEVERSION --machine-type "n1-standard-16" --image-type "UBUNTU" --disk-type "pd-standard" --disk-size "100" --metadata disable-legacy-endpoints=true --scopes "https://www.googleapis.com/auth/devstorage.read_only","https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/monitoring","https://www.googleapis.com/auth/servicecontrol","https://www.googleapis.com/auth/service.management.readonly","https://www.googleapis.com/auth/trace.append" --num-nodes "1" --enable-cloud-logging --enable-cloud-monitoring --no-enable-ip-alias --network "projects/$PROJECT/global/networks/default" --subnetwork "projects/$PROJECT/regions/$REGION/subnetworks/default" --addons HorizontalPodAutoscaling,HttpLoadBalancing --no-enable-autoupgrade
-    ```
 - GitHub
-  - [Own organization](https://github.com/organizations/new) for keptn to store its configuration repositories
+  - [GitHub organization](https://github.com/organizations/new) for keptn to store its configuration repositories
   - [Personal access token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line) for a user with access to said organization
 
       -  Needed scopes: [x] `repo`
@@ -40,15 +22,10 @@ keywords: setup
         caption="GitHub Personal Access Token Scopes" width="50%">}}
           </details>
 
-- Bash + Local tools
-  - [gcloud](https://cloud.google.com/sdk/gcloud/)
+- Local tools
   - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) (configured to be used with your cluster) 
   - [git](https://git-scm.com/)
   - (required for Ubuntu 19.04) [python 2.7](https://www.python.org/downloads/release/python-2716/)
-
-    ```console
-    gcloud container clusters get-credentials $CLUSTERNAME --zone $ZONE --project $PROJECT
-    ```
 
 ## Install keptn CLI
 Every release of keptn provides binaries for the keptn CLI. These binaries are available for Linux, macOS, and Windows.
