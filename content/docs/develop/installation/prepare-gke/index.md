@@ -15,7 +15,7 @@ keywords: setup
 - One `n1-standard-16` node
   <details><summary>Expand for details</summary>
   {{< popup_image link="./assets/gke-cluster-size.png" 
-    caption="GKE cluster size">}}
+    caption="GKE cluster size" width="50%">}}
   </details>
 - Image type `ubuntu` or `cos` (if you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../monitoring/dynatrace/))
 - Sample script to create such cluster (adapt the values according to your needs)

@@ -1,6 +1,6 @@
 ---
-title: Install keptn on GKE
-description: How to setup keptn in GKE.
+title: Install keptn
+description: How to setup keptn.
 weight: 10
 icon: setup
 keywords: setup

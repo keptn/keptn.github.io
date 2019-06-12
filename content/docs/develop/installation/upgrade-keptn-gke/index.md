@@ -1,7 +1,7 @@
 ---
 title: Upgrade keptn on GKE
-description: How to upgrade keptn in GKE.
-weight: 11
+description: How to upgrade keptn on GKE.
+weight: 80
 icon: setup
 keywords: setup
 ---
