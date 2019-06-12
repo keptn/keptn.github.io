@@ -66,7 +66,7 @@ Error: Post https://control.keptn.1xx.xxx.xx.xx.xip.io/service: dial tcp: lookup
 
 **Reason:** 
 
-We are investiagting this problem in issue [#392](https://github.com/keptn/keptn/issues/392).
+The root cause of this issue is that during peak hours, xip.io is unfortunately not very reliable. Therefore, the host can not be resolved and the CLI will return this error.
 
 **Solution:** 
 
