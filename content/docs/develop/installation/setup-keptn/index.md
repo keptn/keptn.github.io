@@ -1,36 +1,14 @@
 ---
-title: Install keptn on GKE
-description: How to setup keptn in GKE.
+title: Install keptn
+description: How to setup keptn.
 weight: 10
 icon: setup
 keywords: setup
 ---
 
 ## Prerequisites
-- GKE cluster
-  - master version >= `1.11.x` (tested version: `1.11.7-gke.12` and `1.12.7-gke.10`)
-  - one `n1-standard-16` node
-    <details><summary>Expand for details</summary>
-    {{< popup_image link="./assets/gke-cluster-size.png" 
-      caption="GKE cluster size">}}
-    </details>
-  - image type `ubuntu` or `cos` (if you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../monitoring/dynatrace/))
-  - Sample script to create such cluster (adapt the values according to your needs)
-
-    ```console
-    // set environment variables
-    PROJECT=nameofgcloudproject
-    CLUSTERNAME=nameofcluster
-    ZONE=us-central1-a
-    REGION=us-central1
-    GKEVERSION="1.12.7-gke.10"
-    ```
-
-    ```console
-    gcloud beta container --project $PROJECT clusters create $CLUSTERNAME --zone $ZONE --no-enable-basic-auth --cluster-version $GKEVERSION --machine-type "n1-standard-16" --image-type "UBUNTU" --disk-type "pd-standard" --disk-size "100" --metadata disable-legacy-endpoints=true --scopes "https://www.googleapis.com/auth/devstorage.read_only","https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/monitoring","https://www.googleapis.com/auth/servicecontrol","https://www.googleapis.com/auth/service.management.readonly","https://www.googleapis.com/auth/trace.append" --num-nodes "1" --enable-cloud-logging --enable-cloud-monitoring --no-enable-ip-alias --network "projects/$PROJECT/global/networks/default" --subnetwork "projects/$PROJECT/regions/$REGION/subnetworks/default" --addons HorizontalPodAutoscaling,HttpLoadBalancing --no-enable-autoupgrade
-    ```
 - GitHub
-  - [Own organization](https://github.com/organizations/new) for keptn to store its configuration repositories
+  - [GitHub organization](https://github.com/organizations/new) for keptn to store its configuration repositories
   - [Personal access token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line) for a user with access to said organization
 
       -  Needed scopes: [x] `repo`
@@ -40,15 +18,104 @@ keywords: setup
         caption="GitHub Personal Access Token Scopes" width="50%">}}
           </details>
 
-- Bash + Local tools
-  - [gcloud](https://cloud.google.com/sdk/gcloud/)
-  - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) (configured to be used with your cluster) 
+- Local tools
   - [git](https://git-scm.com/)
-  - (required for Ubuntu 19.04) [python 2.7](https://www.python.org/downloads/release/python-2716/)
+  - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+
+## Setup Kubernetes Cluster
+Select one of the following options:
+
+<details><summary>Google Kubernetes Engine (GKE)</summary>
+<p>
+
+1. Install local tools
+  - [gcloud](https://cloud.google.com/sdk/gcloud/)
+  - [python 2.7](https://www.python.org/downloads/release/python-2716/) (required for Ubuntu 19.04)
+
+2. Create GKE cluster
+  - Master version >= `1.11.x` (tested version: `1.11.7-gke.12` and `1.12.7-gke.10`)
+  - One `n1-standard-16` node
+    <details><summary>Expand for details</summary>
+    {{< popup_image link="./assets/gke-cluster-size.png" 
+      caption="GKE cluster size" width="50%">}}
+    </details>
+  - Image type `ubuntu` or `cos` (if you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../monitoring/dynatrace/))
+  - Sample script to create such cluster (adapt the values according to your needs)
 
     ```console
-    gcloud container clusters get-credentials $CLUSTERNAME --zone $ZONE --project $PROJECT
+    // set environment variables
+    PROJECT=nameofgcloudproject
+    CLUSTER_NAME=nameofcluster
+    ZONE=us-central1-a
+    REGION=us-central1
+    GKE_VERSION="1.12.7-gke.10"
     ```
+
+    ```console
+    gcloud beta container --project $PROJECT clusters create $CLUSTER_NAME --zone $ZONE --no-enable-basic-auth --cluster-version $GKE_VERSION --machine-type "n1-standard-16" --image-type "UBUNTU" --disk-type "pd-standard" --disk-size "100" --metadata disable-legacy-endpoints=true --scopes "https://www.googleapis.com/auth/devstorage.read_only","https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/monitoring","https://www.googleapis.com/auth/servicecontrol","https://www.googleapis.com/auth/service.management.readonly","https://www.googleapis.com/auth/trace.append" --num-nodes "1" --enable-cloud-logging --enable-cloud-monitoring --no-enable-ip-alias --network "projects/$PROJECT/global/networks/default" --subnetwork "projects/$PROJECT/regions/$REGION/subnetworks/default" --addons HorizontalPodAutoscaling,HttpLoadBalancing --no-enable-autoupgrade
+    ```
+ </p>
+</details>
+
+<details><summary>Pivotal Container Service (PKS)</summary>
+<p>
+
+1. Install local tools
+  - [pks CLI - v1.0.4](https://docs.pivotal.io/runtimes/pks/1-4/installing-pks-cli.html)
+
+1. Create PKS cluster on GCP
+  - Use the provided instructions for [Enterprise Pivotal Container Service (Enterprise PKS) installation on GCP](https://docs.pivotal.io/runtimes/pks/1-4/gcp-index.html)
+
+  - Create a PKS cluster by using the PKS CLI and executing the following command:
+
+    ```console
+    // set environment variables
+    CLUSTER_NAME=nameofcluster
+    HOST_NAME=hostname
+    PLAN=small
+    ```
+
+    ```console
+    pks create-cluster $CLUSTER_NAME --external-hostname $HOST_NAME --plan $PLAN
+    ```
+
+* **Note** For the keptn installation, the *Cluster CIDR Range* and *Services CIDR Range* are required. The values for these two properties you find in your PCF OpsManager. 
+
+    * Login to your PCF OpsManager
+    * Click on the **Enterprise PKS** tile and go to **Networking**
+    * The networking configuration shows the values for the *Kubernetes Pod Network CIDR Range* (Cluster CIDR Range) and *Kubernetes Service Network CIDR Range* (Services CIDR Range).
+    {{< popup_image link="./assets/cluster-services-ip.png" caption="Kubernetes Pod and Services Network CIDR Range" width="40%">}}
+
+</p>
+</details>
+
+<details><summary>OpenShift Container Platform (OCP)</summary>
+<p>
+
+1. Install local tools
+
+1. Create OCP cluster on AWS
+</p>
+</details>
+
+<details><summary>Amazon Elastic Container Service (EKS)</summary>
+<p>
+
+1. Install local tools
+
+1. Create EKS cluster on AWS
+</p>
+</details>
+
+
+<details><summary>Azure Kubernetes Service (AKS)</summary>
+<p>
+
+1. Install local tools
+
+1. Create AKS cluster on Azure
+</p>
+</details>
 
 ## Install keptn CLI
 Every release of keptn provides binaries for the keptn CLI. These binaries are available for Linux, macOS, and Windows.

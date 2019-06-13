@@ -1,9 +1,9 @@
 ---
-title: Upgrade keptn on GKE
-description: How to upgrade keptn in GKE.
-weight: 11
+title: Upgrade keptn
+description: How to upgrade keptn.
+weight: 80
 icon: setup
-keywords: setup
+keywords: upgrade
 ---
 
 For upgrading an existing keptn 0.2.0 or 0.2.1 installation, an upgrade script is provided. This will update all keptn core components to their new version and installs the keptn's bridge.
@@ -22,6 +22,7 @@ For upgrading an existing keptn 0.2.0 or 0.2.1 installation, an upgrade script i
   ``` console
   kubectl config current-context
   ```  
+
 ## Upgrade keptn CLI
 
 - Download the version for your operating system from https://github.com/keptn/keptn/releases/tag/0.2.2
