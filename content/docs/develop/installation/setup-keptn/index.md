@@ -89,6 +89,8 @@ Select one of the following options:
 </p>
 </details>
 
+<!-- 
+
 <details><summary>OpenShift Container Platform (OCP)</summary>
 <p>
 
@@ -116,6 +118,8 @@ Select one of the following options:
 1. Create AKS cluster on Azure
 </p>
 </details>
+
+-->
 
 ## Install keptn CLI
 Every release of keptn provides binaries for the keptn CLI. These binaries are available for Linux, macOS, and Windows.
