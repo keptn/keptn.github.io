@@ -22,7 +22,7 @@ keywords: setup
   - [git](https://git-scm.com/)
   - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
-## Prepare Kubernetes Cluster
+## Setup Kubernetes Cluster
 Select one of the following options:
 
 <details><summary>Google Kubernetes Engine (GKE)</summary>
