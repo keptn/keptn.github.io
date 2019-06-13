@@ -12,7 +12,7 @@ This use case shows how to onboard the carts service including its database. Bes
 
 The goal of this use case is to automatically deploy a service into a multi-stage environment using keptn. The stages of the environment are described in a *shipyard* file that defines the name, deployment strategy and test strategy of each stage. In case an additional stage is needed, the shipyard file can be easily extended by a stage definition before creating the project. After creating the project, the service that is going to be managed by keptn needs to be onboarded. Therefore, keptn provides the functionality to create the deployment and service definition of the onboarded service for each stage. Finally, an artifact of the carts service will be deployed by keptn.  
 
-To illustrate the scenario this use case addresses, keptn relies on two services: github-service and jenkins-service. These services have the following responsibilities: 
+To illustrate the scenario this use case addresses, keptn relies on the following services: github-service, helm-service, jmeter-service, and gatekeeper-service. These services have the following responsibilities: 
 
 **github-service**: 
   
@@ -20,11 +20,17 @@ To illustrate the scenario this use case addresses, keptn relies on two services
   * Onboarding a service: When a new service is onboarded to a project (here a manifest file containing the specification for that service is required), the github service will add the service as a new entry in the `values.yaml` file of your application's helm chart. Further, depending on the deployment strategy of each stage, the github service will also generate a set of Istio configurations (i.e., a Gateway, DestinationRules, and VirtualServices) to facilitate blue/green deployments. You can read more about this concept at the [Istio documentation](https://istio.io/docs/concepts/traffic-management/#rule-configuration).
   * Listening to a new artifact event: When the github service receives a new artifact event, it updates the reference to the new artifact in the service configuration. By this, the new image is used for the respective service.
 
-**jenkins-service**:
+**helm-service**:
   
-  * Listening to configuration changed events to deploy a service based on the new configuration.
-  * Listening to deployment finished events to test a newly deployed service.
-  * Listening to evaluation done events to decide whether the deployment can be promoted to the next stage.
+  * Listening to configuration changed events to deploy a service using the new configuration.
+
+**jmpeter-service**:
+
+  * Listening to deployment finished events to test a newly deployed service using jmeter.
+
+**gatekeeper-service**:
+
+  * Listening to evaluation done events to decide whether the deployment can be promoted to the next stage or not.
 
 ## Prerequisites
 
@@ -125,31 +131,11 @@ The used artifact is stored on Docker Hub.
   Now access the bridge from your browser on http://localhost:9000. 
   \\
   \\
-  The keptn's bridge shows all pipeline runs that have been started. On the left-hand side you can see the pipeline start events, such as the one that is selected. Over time, more and more events will show up in keptn's bridge to allow you to check what is going on in your keptn installation. Please note that if events happen at the same time, their order in the keptn's bridge might be arbitrary since they are only sorted on the granularity of one second. 
+  The keptn's bridge shows all deployments that have been triggered. On the left-hand side you can see the deployment start events, such as the one that is selected. Over time, more and more events will show up in keptn's bridge to allow you to check what is going on in your keptn installation. Please note that if events happen at the same time, their order in the keptn's bridge might be arbitrary since they are only sorted on the granularity of one second. 
 
     {{< popup_image
       link="./assets/bridge.png"
       caption="keptn's bridge">}}
-
-**Alternatively check the progress in Jenkins**
-
-1. Go to the Jenkins dashboard to see how the pipelines get triggered automatically. Therefore, generate and open the Jenkins URL:
-  ```console
-  echo http://jenkins.keptn.$(kubectl get svc istio-ingressgateway -n istio-system -ojsonpath={.status.loadBalancer.ingress[0].ip}).xip.io/
-  ```
-
-    In the Jenkins dashboard, you can see that first, the `deploy` pipeline is triggered for the `dev` namespace, second, the `run_tests` is executed, and finally, `evaluation_done` is executed. If all pipelines succeed, the same pipelines get triggered for the `staging` and `production` namespace. In total, the pipelines will run for about 15&nbsp;minutes before you have your `carts` service deployed in your `dev`, `staging`, and `production` namespaces.
-
-    {{< popup_image
-      link="./assets/keptn-pipelines.png"
-      caption="Successful pipeline runs">}}
-
-1. For example, for verifying the success of the `deploy` pipeline, we can see that the `carts` service has been deployed directly first, while for the subsequent stages, a blue/green deployment has been triggered by keptn.
-
-    {{< popup_image
-      link="./assets/deploy-pipeline.png"
-      caption="Successful deploy pipeline run"
-      width="700px">}}
 
 ## View carts service
 

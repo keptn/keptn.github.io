@@ -73,25 +73,3 @@ The root cause of this issue is that during peak hours, xip.io is unfortunately 
 Please wait a couple of minutes and retry. Since this is an external dependency, there is nothing to fix inside the keptn installation.
 
 </p></details>
-
-### Jenkins Builds are not starting ###
-<details><summary>Expand instructions</summary>
-<p>
-
-**Investigation:**
-
-In Jenkins, investigate the logs of the build that was triggered by keptn, e.g. the `deploy` pipeline.
-The last line in the logs says something like **"Jenkins doesn't have label kubegit"**, and it does not proceed for an extended amount of time (i.e., ~2 minutes). 
-
-**Solution:**
-
-can work around this problem by following these instructions:
-
-1. In Jenkins, navigate to **Manage Jenkins > Configure System**.
-1. In the **Cloud** section of the settings page, you should see the parameters **Jenkins URL** and **Jenkins tunnel** (see screenshot below)
-1. In the field for **Jenkins URL**, enter 'http://jenkins', and hit save.
-1. Afterwards, delete this value again and hit save once again.
-
-{{< popup_image link="./assets/jenkins-tunnel.png" caption="Jenkins configuration">}}
-</p></details>
-</details>

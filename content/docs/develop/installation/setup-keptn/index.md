@@ -173,10 +173,12 @@ in the version of the latest release.
                     <li>eventbroker</li>
                     <li>eventbroker-ext</li>
                 </ul>
-            <li>The services required to run the delivery pipelines and the self-healing use cases:</li>
+            <li>The services are required to deploy artifacts and to demonstrate the self-healing use cases:</li>
                 <ul>
                     <li>github-services</li>
-                    <li>jenkins-service</li>
+                    <li>helm-service</li>
+                    <li>jmeter-service</li>
+                    <li>gatekeeper-service</li>
                     <li>pitometer-service</li>
                     <li>serviceNow-service</li>
                 </ul>
@@ -194,44 +196,7 @@ in the version of the latest release.
         </details>
 
 
-- **Important:** Due to a [known issue](https://issues.jenkins-ci.org/browse/JENKINS-14880) in Jenkins, it is necessary to open the Jenkins configuration and click **Save** although nothing is changed.
-
-    You can open the configuration page of Jenkins with the credentials `admin` / `AiTx4u8VyUV8tCKk` by generating the URL and copy it in your browser (the installation has to be finished at this point):
-    
-    ```
-    echo http://jenkins.keptn.$(kubectl get svc istio-ingressgateway -n istio-system -ojsonpath={.status.loadBalancer.ingress[0].ip}).xip.io/configure
-    ```
-
 ## Verifying the installation
-
-- Run the following command to get the **EXTERNAL-IP** and **PORT** of your cluster's ingress gateway.
-  
-  ```console    
-  kubectl get svc istio-ingressgateway -n istio-system
-  ```
-
-  ```console
-  NAME                     TYPE           CLUSTER-IP      EXTERNAL-IP      PORT(S)
-  istio-ingressgateway     LoadBalancer   10.11.246.127   <EXTERNAL_IP>    80:32399/TCP 
-  ```
-
-- Go to Jenkins at `http://jenkins.keptn.<EXTERNAL_IP>.xip.io/` and login with the credentials `admin` / `AiTx4u8VyUV8tCKk`
-  <br><br>**Note:** For security reasons, we recommend to change these credentials right after the first login:
-  1. Change credentials in Jenkins
-  1. Update credentials in the kubernetes secret named `jenkins-secret` in the `keptn` namespace, by using the following command. Please note that the password has to be base64 encoded.
-    ```console
-    kubectl edit secret jenkins-secret -n keptn     
-    ```
-
-  1. Restart the `jenkins-service` pod.
-  ```
-  kubectl delete pod $(
-  | awk '/jenkins-service/' | awk '{print $1}') -n keptn
-  ``` 
-
-- Navigate to **Jenkins** > **Manage Jenkins** > **Configure System**, scroll to the environment variables and verify that the variables are set correctly.
-  {{< popup_image link="./assets/jenkins-env-vars.png" caption="Jenkins environment variables">}}
-  **Important:** Due to a [known issue](https://issues.jenkins-ci.org/browse/JENKINS-14880) in Jenkins, it is necessary to click **Save** although nothing is changed in this verification step.
 
 - To verify your keptn installation, retrieve the pods running in the `keptn` namespace.
 
@@ -245,12 +210,13 @@ in the version of the latest release.
   control-kwhms-deployment-6d7b8b8d94-v7xsj            3/3       Running   0          30m
   event-broker-ext-2v84b-deployment-856cf65b99-96zpd   3/3       Running   0          30m
   event-broker-z8tc6-deployment-7997b998b4-jhvq4       3/3       Running   0          30m
+  gatekeeper-service-svvqm-deployment-8f559dc8c-k42s4  3/3       Running   0          30m
   github-service-xcn9w-deployment-545866fc6f-hl4gc     3/3       Running   0          30m
-  jenkins-deployment-78dcd99964-zntbz                  2/2       Running   0          30m
-  jenkins-service-p4j5d-deployment-64755bddd7-7cbnp    3/3       Running   0          30m
+  helm-service-2hdsb-deployment-665fdb697d-hwtmv       3/3       Running   0          30m
+  jmeter-service-n5xrq-deployment-75644db9c4-c9fhn     3/3       Running   0          30m
   ```
 
-- Next, check that all routes for the keptn core services, as well as for the bridge, jenkins-service, pitometer-service, github-service, and servicenow-service have been created:
+- Next, check that all routes for the keptn core services, as well as for the bridge, gatekeeper-service, github-service, helm-service, pitometer-service, jmeter-service, and the servicenow-service have been created:
 
   ```console
   kubectl get routes -n keptn
@@ -263,9 +229,11 @@ in the version of the latest release.
   control              31m
   eventbroker          31m
   eventbroker-ext      31m
+  gatekeeper-service   31m
+  helm-service         31m
   github-service       31m
-  jenkins-service      31m
   pitometer-service    31m
+  jmeter-service       31m
   servicenow-service   31m
   ```
 
