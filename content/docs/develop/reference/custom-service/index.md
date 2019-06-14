@@ -116,7 +116,6 @@ Depending on the channel your service is subscribed to, it will receive the payl
 {  
    "specversion":"0.2",
    "type":"sh.keptn.events.new-artifact",
-   "source":"Jenkins",
    "id":"1234",
    "time":"20190325-15:26:52.036",
    "datacontenttype":"application/json",
@@ -162,7 +161,6 @@ Depending on the channel your service is subscribed to, it will receive the payl
 {  
    "specversion":"0.2",
    "type":"sh.keptn.events.deployment-finished",
-   "source":"Jenkins",
    "id":"1234",
    "time":"20190325-15:22:50.560",
    "datacontenttype":"application/json",
@@ -186,7 +184,6 @@ Depending on the channel your service is subscribed to, it will receive the payl
 {  
    "specversion":"0.2",
    "type":"sh.keptn.events.tests-finished",
-   "source":"Jenkins",
    "id":"1234",
    "time":"20190325-15:25:56.096",
    "datacontenttype":"application/json",
@@ -212,7 +209,6 @@ Depending on the channel your service is subscribed to, it will receive the payl
 {  
    "specversion":"0.2",
    "type":"sh.keptn.events.evaluation-done",
-   "source":"Jenkins",
    "id":"1234",
    "time":"20190325-15:25:56.096",
    "datacontenttype":"application/json",
@@ -259,7 +255,6 @@ Depending on the channel your service is subscribed to, it will receive the payl
 {  
    "specversion":"0.2",
    "type":"sh.keptn.events.evaluation-done",
-   "source":"Jenkins",
    "id":"1234",
    "time":"20190325-15:25:56.096",
    "datacontenttype":"application/json",

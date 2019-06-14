@@ -115,19 +115,19 @@ slowdown of 1 second in each request.
   keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.8.2
   ```
 
-1. This automatically changes the configuration of the service and automatically triggers the pipelines. Watch keptn deploying the new artifact by following the pipelines in Jenkins.
+1. This automatically changes the configuration of the service and automatically triggers the following services:
   * **Phase 1**: Deploying, testing and evaluating the test in the `dev` stage:
-      * **deploy**: The new artifact gets deployed to dev.
-      * **run_tests**: Runs a basic health check and functional check in dev. Whenever the test pipeline has been executed, an event of the type `sh.keptn.events.tests-finished` is generated. 
-      * **Pitometer test evaluation**: This event will be picked up by the Pitometer service, which is responsible for evaluating test runs, based on the quality gates specified earlier in the `perfspec.json` file. Since in the dev environment, only functional tests are executed, the Pitometer service will mark the test run as successful (functional failures would have led the **run-tests** pipeline to fail).
-      * **evaluation_done**: This pipeline will promote the artifact to the next stage, i.e., staging.
+      * **helm-service**: This service deploys the new artifact to `dev`.
+      * **jmeter-service**: This service runs a basic health check and a functional check in `dev`. Afterwards, this service sends an event of type `sh.keptn.events.tests-finished`. 
+      * **pitometer-service**: This service picks up the event and evaluates the test runs based on the  performance signature specified earlier in the `perfspec.json` file. Since in the `dev` environment, only functional tests are executed, the pitometer-service will mark the test run as successful (functional failures would have been detected by the **jmeter-service**).
+      * **gatekeeper-service**: This service promotes the artifact to the next stage, i.e., `staging`.
   * **Phase 2**: Deploying, testing and evaluating the test in the `staging` stage:
-      * **deploy**: The new artifact gets deployed to staging using a blue/green deployment strategy.
-      * **run_tests**: Runs a performance test in staging and sends the `sh.keptn.events.tests-finished` event.
-      * **Pitometer test evaluation**: This time, the quality gates of the service will be evaluated because we are using the performance-tests strategy for this stage. This means that the Pitometer service will fetch the metrics for the `carts` service from either Prometheus or Dynatrace, depending on how you set up the monitoring for your service earlier. Based on the results of that evaluation, the Pitometer service will mark the test run execution as successful or failed. In our scenario, the Pitometer service will mark it as failed since the response time thresholds will be exceeded.
-      * **evaluation_done**:  If the evaluation would have been successful, the artifact would be promoted to production. Since in our case we failed the performance test run, this pipeline automatically re-routes traffic to the previous colored blue or green version in staging and the artifact won't be promoted to production.
+      * **helm-service**: This service deploys the new artifact to `staging` using a blue/green deployment strategy.
+      * **jmeter-service**: This service runs a performance test in `staging` and sends the `sh.keptn.events.tests-finished` event.
+      * **pitometer-service**: This service picks up the event and this time, the quality gates of the service will be evaluated because we are using the performance-tests strategy for this stage. This means that the pitometer-service will fetch the metrics for the `carts` service from either Prometheus or Dynatrace, depending on how you set up the monitoring for your service earlier. Based on the results of that evaluation, the pitometer-service will mark the test run execution as successful or failed. In our scenario, the pitometer-service will mark it as failed since the response time thresholds will be exceeded.
+      * **gatekeeper-service**: This service receives a `sh.keptn.events.evaluation-done` event, which contains the result of the evaluaton of the pitometer-service. Since in this case the performance test run failed, the gatekeeper-service automatically re-routes traffic to the previous colored blue or green version in `staging` and the artifact won't be promoted to `production`.
       
-  **Outcome**: This slow version is **not** promoted to the production namespace because of the active quality gate in place.
+  **Outcome**: This slow version is **not** promoted to the `production` namespace because of the active quality gate in place.
 For verifying this, open a browser and navigate to `http://carts.sockshop-production.EXTERNAL-IP.xip.io/version`.
 Here, you see that the version of the carts service has not changed.
 
@@ -138,11 +138,11 @@ Here, you see that the version of the carts service has not changed.
   keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.8.3
   ```
 
-1. This automatically changes the configuration of the service and automatically triggers the pipelines.
+1. This automatically changes the configuration of the service and automatically triggers the deployment.
 
-1. In this case, the quality gate is passed and the service gets deployed in the production namespace. 
+1. In this case, the quality gate is passed and the service gets deployed in the `production` namespace. 
 
-1. To verify the deployment in production, open a browser an navigate to `http://carts.sockshop-production.EXTERNAL-IP.xip.io/version`. As a result, you see `Version: v3`.
+1. To verify the deployment in `production`, open a browser an navigate to `http://carts.sockshop-production.EXTERNAL-IP.xip.io/version`. As a result, you see `Version: v3`.
 
 1. Besides, you can verify the deployments in your Kubernetes cluster using the following commands: 
 

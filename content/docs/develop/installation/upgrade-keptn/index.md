@@ -76,15 +76,6 @@ For upgrading an existing keptn 0.2.0 or 0.2.1 installation, an upgrade script i
   ```
   ./upgradeKeptn.sh github_username github_access_token
   ```
-
--  **Important:** Due to a [known issue](https://issues.jenkins-ci.org/browse/JENKINS-14880) in Jenkins, it is necessary to open the Jenkins configuration and click **Save** although nothing is changed.
-
-    You can open the configuration page of Jenkins with the credentials `admin` / `AiTx4u8VyUV8tCKk` by taking the URL from the upgrade script or generating it and copying it in your browser:
-
-  ```
-  echo http://jenkins.keptn.$(kubectl describe svc istio-ingressgateway -n istio-system | grep "LoadBalancer Ingress:" | sed 's~LoadBalancer  Ingress:[ \t]*~~').xip.io/configure
-  ```
-
 - **Note:** In future releases of the keptn CLI, a command `keptn upgrade` will be added, which replaces the shell script `upgradeKeptn.sh`.
 
 ## Create project and onboard services
