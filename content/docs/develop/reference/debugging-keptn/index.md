@@ -51,7 +51,7 @@ Here we can use the installation logs. The installation logs can be found in the
 <details><summary>Expand instructions</summary>
 <p>
 
-**Investigation:**
+**TODO:** Visualize the following steps as figures!
 
 For debugging the commands `keptn configure` and `keptn create project`, the following steps can be executed and verified:
 
@@ -75,7 +75,7 @@ For debugging the commands `keptn configure` and `keptn create project`, the fol
 <details><summary>Expand instructions</summary>
 <p>
 
-**Investigation:**
+**TODO:** Visualize the following steps as figures!
 
 For debugging the command `keptn send event new-artifact`, the following steps can be executed and verified:
 
@@ -142,8 +142,7 @@ For debugging the command `keptn send event new-artifact`, the following steps c
     1. The `gatekeeper-service` evaluates the result of the tests and either promotes the artifact to the next stage by sending a `new-artifact` event 
     or makes a rollback by sending a `configuration-changed` event in case a blue/green deployment is used. 
 
-
-
-
-
 </p></details>
+
+**TODO:** Currently, we only provide debugging instructions. However, we do not address what the user should/can do when he/she determines an
+deviations from the target state.
