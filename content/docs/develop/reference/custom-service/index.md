@@ -1,7 +1,7 @@
 ---
 title: Write your own keptn service
 description: Shows you how to implement your own keptn service and listen for certain events.
-weight: 30
+weight: 35
 keywords: [service, custom]
 aliases:
 ---
