@@ -69,6 +69,18 @@ kubectl delete pods --all --namespace=sockshop-production
 
 **Note 2:** If the nodes in your cluster run on *Container-Optimized OS (cos)*, make sure to [follow the instructions](https://www.dynatrace.com/support/help/cloud-platforms/google-cloud-platform/google-kubernetes-engine/deploy-oneagent-on-google-kubernetes-engine-clusters/#expand-134parameter-for-container-optimized-os-early-access) for setting up the Dynatrace OneAgent Operator. This means that after the initial setup with `deployDynatrace.sh`, which is a step below, the `cr.yml` has to be edited and applied again. In addition, all pods have to be restarted.
 
+### What was set up?
+
+In your Dynatrace tenant, when you navigate to "Settings -> Tags -> Automatically applied tags" you will find two entries:
+
+- environemnt
+- service
+
+This means that Dynatrace will automatially apply tags on your onboarded services.
+
+In addition, a Problem Notification has automatically been set up to inform your keptn installation of any problems with your services to allow auto-remediation. This will be describes in more detail in the [runbook automation and self-healing use case](../../usecases/runbook-automation-and-self-healing/). You can check the problem notification by navigating to "Settings -> Integration -> Problem notifications" and you will find a "keptn remediation" problem notification.
+
+
 ## See keptn events in Dynatrace
 
 The Dynatrace service will take care of pushing events of the keptn workflow to the artifacts that have been onboarded with keptn. For example, the deployment as well as custom infos like starting and finishing of tests will appear in the details screen of your services in your Dynatrace tenant.

@@ -111,59 +111,20 @@ A ServiceNow *Update Set* is provided to run this use case. To install the *Upda
     link="./assets/service-now-keptn-workflow.png"
     caption="ServiceNow keptn workflow">}}
 
-## Setup a Dynatrace problem notification
+## (optional): Verify Dynatrace problem notification
 
-In order to create incidents in ServiceNow and to trigger workflows, an integration with Dynatrace has to be set up.
+During the [setup of Dynatrace](../../monitoring/dynatrace) a problem notification has already been set up for you. You can verify the correct setup by following the instructions: 
 
 1. Login to your Dynatrace tenant.
 1. Navigate to **Settings** > **Integration** > **Problem notifications**
 1. Click on **Set up notifications** and select **Custom integration**
-1. Choose a name for your integration, e.g., _keptn integration_
-1. In the webhook URL, paste the value of your keptn external eventbroker endpoint appended by `/dynatrace`, e.g., `https://event-broker-ext.keptn.XX.XXX.XXX.XX.xip.io/dynatrace`
-    - You can retrieve the URL by executing this command:
-
-    ```
-    echo https://$(kubectl get ksvc event-broker-ext -n keptn -ojsonpath={.status.domain})/dynatrace
-    ```
-    Please click the checkbox **Accept any SSL certificate**
-1. Additionally, an **Authorization Header** is needed to authorize against the keptn server. 
-    - Click on **Add header**
-    - The name for the header is: `Authorization`
-    - The value has to be set to the following: `Bearer KEPTN_API_TOKEN` where KEPTN_API_TOKEN has to be replaced with your actual API token that was received during installation. You can retrieve the values to be pasted by executing the following command:
-
-    ```
-    echo Bearer $(kubectl get secret keptn-api-token -n keptn -o=yaml | yq - r data.keptn-api-token | base64 --decode)
-    ```
-
-1. As the custom payload, a valid Cloud Event has to be defined:
-
-    ```json
-    {
-        "specversion":"0.2",
-        "type":"sh.keptn.events.problem",
-        "shkeptncontext":"{PID}",
-        "source":"dynatrace",
-        "id":"{PID}",
-        "time":"",
-        "datacontenttype":"application/json",
-        "data": {
-            "State":"{State}",
-            "ProblemID":"{ProblemID}",
-            "PID":"{PID}",
-            "ProblemTitle":"{ProblemTitle}",
-            "ProblemDetails":{ProblemDetailsJSON},
-            "ImpactedEntities":{ImpactedEntities},
-            "ImpactedEntity":"{ImpactedEntity}"
-        }
-    }
-    ```
-
-1. Click on **Send test notification** and then on  **Save**.
+1. Click on **keptn remediation**
+1. The problem notification should look similar to the one in this screen shot:
 
     {{< popup_image
     link="./assets/dynatrace-problem-notification-integration.png"
     caption="Dynatrace Problem Notification Integration"
-    width="500px">}}
+    width="600px">}}
 
 ## Adjust anomaly detection in Dynatrace
 
