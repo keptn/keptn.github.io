@@ -13,6 +13,7 @@ The keptn's bridge is not publicly accessible, but can be retrieved by enabling 
 ```console
 kubectl port-forward svc/$(kubectl get ksvc bridge -n keptn -ojsonpath={.status.latestReadyRevisionName})-service -n keptn 9000:80
 ```
+Now you can access the bridge from your browser on http://localhost:9000.
 
 The keptn's bridge provides an easy way to browse all events that are sent within keptn and to filter on a specific keptn context. 
 When you access the keptn's bridge, all keptn entry points will be listed in the left column. Please note that this list only represents the start of a deployment of a new artifact and, thus, more information on the executed steps can be revealed when you click on one event.
