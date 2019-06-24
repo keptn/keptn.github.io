@@ -89,17 +89,81 @@ Select one of the following options:
 </p>
 </details>
 
-<!-- 
 
-<details><summary>OpenShift Container Platform (OCP)</summary>
+
+<details><summary>OpenShift 3.11</summary>
 <p>
 
 1. Install local tools
 
-1. Create OCP cluster on AWS
+1. Create OpenShift cluster on AWS
+
+1. On the OpenShift master node, execute the following steps:
+
+    - Set up the required permissions for your user:
+
+      ```
+      oc adm policy --as system:admin add-cluster-role-to-user cluster-admin <OPENSHIFT_USER_NAME>
+      ```
+
+    - Set up the required permissions for the installer pod:
+
+      ```
+      oc adm policy  add-cluster-role-to-user cluster-admin system:serviceaccount:default:default
+      oc adm policy  add-cluster-role-to-user cluster-admin system:serviceaccount:kube-system:default
+      ```
+
+    - Enable admission WebHooks on your OpenShift master node:
+
+      ```
+      sudo -i
+      cp -n /etc/origin/master/master-config.yaml /etc/origin/master/master-config.yaml.backup
+      oc ex config patch /etc/origin/master/master-config.yaml --type=merge -p '{
+        "admissionConfig": {
+          "pluginConfig": {
+            "ValidatingAdmissionWebhook": {
+              "configuration": {
+                "apiVersion": "apiserver.config.k8s.io/v1alpha1",
+                "kind": "WebhookAdmission",
+                "kubeConfigFile": "/dev/null"
+              }
+            },
+            "MutatingAdmissionWebhook": {
+              "configuration": {
+                "apiVersion": "apiserver.config.k8s.io/v1alpha1",
+                "kind": "WebhookAdmission",
+                "kubeConfigFile": "/dev/null"
+              }
+            }
+          }
+        }
+      }' >/etc/origin/master/master-config.yaml.patched
+      if [ $? == 0 ]; then
+        mv -f /etc/origin/master/master-config.yaml.patched /etc/origin/master/master-config.yaml
+        /usr/local/bin/master-restart api && /usr/local/bin/master-restart controllers
+      else
+        exit
+      fi
+      ```
+
+* **Note** For the keptn installation, the *Cluster CIDR Range* and *Services CIDR Range* are required. On OpenShift, those values correlate to the following fields in the file `/etc/origin/master/master-config.yaml` on the master node: 
+
+    ```
+    networkConfig:
+      clusterNetworks:
+      - cidr: 10.128.0.0/14 # CLUSTER_IPV4_CIDR
+        hostSubnetLength: 9
+      externalIPNetworkCIDRs:
+      - 0.0.0.0/0
+      ingressIPNetworkCIDR: ""
+      networkPluginName: redhat/openshift-ovs-subnet
+      serviceNetworkCIDR: 172.30.0.0/16 # SERVICES_IPV4_CIDR
+    ```
+
 </p>
 </details>
 
+<!-- 
 <details><summary>Amazon Elastic Container Service (EKS)</summary>
 <p>
 
@@ -181,6 +245,7 @@ in the version of the latest release.
                     <li>gatekeeper-service</li>
                     <li>pitometer-service</li>
                     <li>serviceNow-service</li>
+                    <li>openshift-route-service (OpenShift only)</li>
                 </ul>
             <li>The channels to which events are published:</li>
                 <ul>
