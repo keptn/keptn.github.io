@@ -95,8 +95,8 @@ Select one of the following options:
 <p>
 
 1. Install local tools
+  - [oc CLI - v3.11](https://docs.pivotal.io/runtimes/pks/1-4/installing-pks-cli.html)
 
-1. Create OpenShift cluster on AWS
 
 1. On the OpenShift master node, execute the following steps:
 
@@ -217,10 +217,18 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
 ## Install keptn
 
 - Execute the CLI command `keptn install` and provide the requested information. This command will install keptn
-in the version of the latest release.
+in the version of the latest release. Since v0.3 of keptn, the install command accepts a parameter to select the platform you would like to install keptn on. Currently supported platforms are Google Kubernetes Engine (GKE) and OpenShift. Depending on your platform, enter the following command to start the installation:
+
+  - For **GKE**:
 
     ```console
-    keptn install
+    keptn install -p=gke
+    ```
+
+  - For **OpenShift**:
+
+    ```console
+    keptn install -p=openshift
     ```
 
     In your cluster, this command installs the complete infrastructure necessary to run keptn. 

@@ -45,10 +45,17 @@ cd dynatrace-service/deploy/scripts
     - Dynatrace SaaS tenant: `{your-environment-id}.live.dynatrace.com`
     - Dynatrace-managed tenant: `{your-domain}/e/{your-environment-id}`
 
-1. Execute the installation script `deployDynatrace.sh`:
-  ```console
-  ./deployDynatrace.sh
-  ```
+1. Execute the installation script for your platform:
+
+  - If you are on **GKE**, please execute
+    ```console
+    ./deployDynatrace.sh
+    ```
+  - If you are on **OpenShift**, please execute
+    ```console
+    ./deployDynatraceOnOpenshift.sh
+    ```
+
   When this script is finished, the Dynatrace OneAgent and the dynatrace-service are deployed in your cluster. Execute the following command to verify the deployment of the dynatrace-service.
 
     ```console
