@@ -75,9 +75,13 @@ For debugging the commands `keptn configure` and `keptn create project`, the fol
 <details><summary>Expand instructions</summary>
 <p>
 
-**TODO:** Visualize the following steps as figures!
+The following figure shows the workflow which is triggered by a new artifact event.
 
-For debugging the command `keptn send event new-artifact`, the following steps can be executed and verified:
+  {{< popup_image
+      link="./assets/new-artifact.png"
+      caption="Workflow triggered by a new artifact event">}}
+
+Additionally, you can find a textual description for the respective steps:
 
 1. **control-service**
     1. The `control-service` checks whether the message is correctly signed. Therefore, it uses the `authenticator-service`.
