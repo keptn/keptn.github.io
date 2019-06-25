@@ -48,10 +48,13 @@ In order to evaluate the quality gates and allow self-healing in production, we 
 1. Execute the installation script for your platform:
 
   - If you are on **GKE**, please execute
+
     ```console
     ./deployDynatrace.sh
     ```
+
   - If you are on **OpenShift**, please execute
+  
     ```console
     ./deployDynatraceOnOpenshift.sh
     ```
