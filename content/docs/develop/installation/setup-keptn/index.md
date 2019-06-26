@@ -147,7 +147,7 @@ Select one of the following options:
       fi
       ```
 
-1. Determine the **Cluster CIDR Range** and **Services CIDR Range** that are required during the installation. On OpenShift, those values correlate to the following fields in the file `/etc/origin/master/master-config.yaml` on the OpenShift master node:
+1. Determine the **Cluster CIDR Range** and **Services CIDR Range** that are required during the installation. On OpenShift, those values correlate to the following fields in the file `/etc/origin/master/master-config.yaml` on the OpenShift master node: 
 
     ```yaml
     networkConfig:
