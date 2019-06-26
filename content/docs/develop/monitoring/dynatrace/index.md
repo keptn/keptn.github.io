@@ -50,11 +50,11 @@ In order to evaluate the quality gates and allow self-healing in production, we 
   - If you are on **GKE**, please execute
 
     ```console
-    ./deployDynatrace.sh
+    ./deployDynatraceOnGKE.sh
     ```
 
   - If you are on **OpenShift**, please execute
-  
+
     ```console
     ./deployDynatraceOnOpenshift.sh
     ```
