@@ -146,20 +146,21 @@ Select one of the following options:
       fi
       ```
 
-1. Determine the *Cluster CIDR Range* and *Services CIDR Range* that are required during the installation. On OpenShift, those values correlate to the following fields in the file `/etc/origin/master/master-config.yaml` on the OpenShift master node: 
+1. Determine the **Cluster CIDR Range** and **Services CIDR Range** that are required during the installation. On OpenShift, those values correlate to the following fields in the file `/etc/origin/master/master-config.yaml` on the OpenShift master node: 
 
     ```yaml
     networkConfig:
       clusterNetworks:
-      - cidr: 10.128.0.0/14 # CLUSTER_IPV4_CIDR
+      - cidr: 10.128.0.0/14
         hostSubnetLength: 9
       externalIPNetworkCIDRs:
       - 0.0.0.0/0
       ingressIPNetworkCIDR: ""
       networkPluginName: redhat/openshift-ovs-subnet
-      serviceNetworkCIDR: 172.30.0.0/16 # SERVICES_IPV4_CIDR
+      serviceNetworkCIDR: 172.30.0.0/16
     ```
 
+  In this example, the **Cluster CIDR Range** has the value `10.128.0.0/14` and the **Services CIDR Range** is set to `172.30.0.0/16`. Please note those values, as you will be asked for them as during the installation of keptn via the CLI.
 </p>
 </details>
 
