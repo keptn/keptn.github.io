@@ -5,6 +5,9 @@ weight: 20
 keywords: [log]
 ---
 
+*DISCLAIMER: This feature is currently not available if you run keptn on OpenShift. We will add logging capabilities for OpenShift in subsequent releases.*
+
+
 Keptn uses the logging functionality provided by the underlying knative installation that comes with keptn. This means that you can use [Kibana](https://www.elastic.co/products/kibana) to access and analyze the logging output created by the keptn services.
 
 For security purposes, Kibana is exposed only within the cluster. To access the Kibana UI via your browser, you can start a local proxy by running the following command:

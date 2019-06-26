@@ -5,6 +5,8 @@ weight: 21
 keywords: [bridge]
 ---
 
+*DISCLAIMER: This feature is currently not available if you run keptn on OpenShift. We will add logging capabilities for OpenShift in subsequent releases.*
+
 The keptn's bridge lets you browse the keptn's log. It is automatically installed with your keptn installation.
 
 ## Usage

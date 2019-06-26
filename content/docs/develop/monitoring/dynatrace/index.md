@@ -36,19 +36,29 @@ In order to evaluate the quality gates and allow self-healing in production, we 
     In your Dynatrace tenant, go to **Settings > Integration > Platform as a Service**, and create a new PaaS Token.
 
 1. Clone the install repository and setup your credentials by executing the following steps:
-```console
-git clone --branch 0.1.2 https://github.com/keptn/dynatrace-service --single-branch
-cd dynatrace-service/deploy/scripts
-./defineDynatraceCredentials.sh
-```
-  When the  script asks for your Dynatrace tenant, please enter your tenant according to the appropriate pattern:
-    - Dynatrace SaaS tenant: `{your-environment-id}.live.dynatrace.com`
-    - Dynatrace-managed tenant: `{your-domain}/e/{your-environment-id}`
-
-1. Execute the installation script `deployDynatrace.sh`:
   ```console
-  ./deployDynatrace.sh
+  git clone --branch 0.1.2 https://github.com/keptn/dynatrace-service --single-branch
+  cd dynatrace-service/deploy/scripts
+  ./defineDynatraceCredentials.sh
   ```
+    When the  script asks for your Dynatrace tenant, please enter your tenant according to the appropriate pattern:
+      - Dynatrace SaaS tenant: `{your-environment-id}.live.dynatrace.com`
+      - Dynatrace-managed tenant: `{your-domain}/e/{your-environment-id}`
+
+1. Execute the installation script for your platform:
+
+  - If you are on **GKE**, please execute
+
+    ```console
+    ./deployDynatraceOnGKE.sh
+    ```
+
+  - If you are on **OpenShift**, please execute
+
+    ```console
+    ./deployDynatraceOnOpenshift.sh
+    ```
+
   When this script is finished, the Dynatrace OneAgent and the dynatrace-service are deployed in your cluster. Execute the following command to verify the deployment of the dynatrace-service.
 
     ```console
