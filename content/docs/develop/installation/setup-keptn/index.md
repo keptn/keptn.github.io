@@ -89,17 +89,85 @@ Select one of the following options:
 </p>
 </details>
 
-<!-- 
 
-<details><summary>OpenShift Container Platform (OCP)</summary>
+
+<details><summary>OpenShift 3.11</summary>
 <p>
 
 1. Install local tools
 
-1. Create OCP cluster on AWS
+  - [oc CLI - v3.11](https://docs.pivotal.io/runtimes/pks/1-4/installing-pks-cli.html)
+
+
+1. On the OpenShift master node, execute the following steps:
+
+    - Set up the required permissions for your user:
+
+      ```
+      oc adm policy --as system:admin add-cluster-role-to-user cluster-admin <OPENSHIFT_USER_NAME>
+      ```
+
+    - Set up the required permissions for the installer pod:
+
+      ```
+      oc adm policy  add-cluster-role-to-user cluster-admin system:serviceaccount:default:default
+      oc adm policy  add-cluster-role-to-user cluster-admin system:serviceaccount:kube-system:default
+      ```
+
+    - Enable admission WebHooks on your OpenShift master node:
+
+      ```
+      sudo -i
+      cp -n /etc/origin/master/master-config.yaml /etc/origin/master/master-config.yaml.backup
+      oc ex config patch /etc/origin/master/master-config.yaml --type=merge -p '{
+        "admissionConfig": {
+          "pluginConfig": {
+            "ValidatingAdmissionWebhook": {
+              "configuration": {
+                "apiVersion": "apiserver.config.k8s.io/v1alpha1",
+                "kind": "WebhookAdmission",
+                "kubeConfigFile": "/dev/null"
+              }
+            },
+            "MutatingAdmissionWebhook": {
+              "configuration": {
+                "apiVersion": "apiserver.config.k8s.io/v1alpha1",
+                "kind": "WebhookAdmission",
+                "kubeConfigFile": "/dev/null"
+              }
+            }
+          }
+        }
+      }' >/etc/origin/master/master-config.yaml.patched
+      if [ $? == 0 ]; then
+        mv -f /etc/origin/master/master-config.yaml.patched /etc/origin/master/master-config.yaml
+        /usr/local/bin/master-restart api && /usr/local/bin/master-restart controllers
+      else
+        exit
+      fi
+      ```
+
+1. Determine the **Cluster CIDR Range** and **Services CIDR Range** that are required during the installation. On OpenShift, those values correlate to the following fields in the file `/etc/origin/master/master-config.yaml` on the OpenShift master node: 
+
+  ```yaml
+  
+  networkConfig:
+    clusterNetworks:
+    - cidr: "10.128.0.0/14"
+      hostSubnetLength: 9
+    externalIPNetworkCIDRs:
+    - "0.0.0.0/0"
+    ingressIPNetworkCIDR: ""
+    networkPluginName: redhat/openshift-ovs-subnet
+    serviceNetworkCIDR: "172.30.0.0/16"
+    
+  ```
+
+  In this example, the **Cluster CIDR Range** has the value `10.128.0.0/14` and the **Services CIDR Range** is set to `172.30.0.0/16`. Please note those values, as you will be asked for them as during the installation of keptn via the CLI.
 </p>
 </details>
 
+<!-- 
 <details><summary>Amazon Elastic Container Service (EKS)</summary>
 <p>
 
@@ -153,10 +221,18 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
 ## Install keptn
 
 - Execute the CLI command `keptn install` and provide the requested information. This command will install keptn
-in the version of the latest release.
+in the version of the latest release. Since v0.3 of keptn, the install command accepts a parameter to select the platform you would like to install keptn on. Currently supported platforms are Google Kubernetes Engine (GKE) and OpenShift. Depending on your platform, enter the following command to start the installation:
+
+  - For **GKE**:
 
     ```console
-    keptn install
+    keptn install -p=gke
+    ```
+
+  - For **OpenShift**:
+
+    ```console
+    keptn install -p=openshift
     ```
 
     In your cluster, this command installs the complete infrastructure necessary to run keptn. 
@@ -181,6 +257,7 @@ in the version of the latest release.
                     <li>gatekeeper-service</li>
                     <li>pitometer-service</li>
                     <li>serviceNow-service</li>
+                    <li>openshift-route-service (OpenShift only)</li>
                 </ul>
             <li>The channels to which events are published:</li>
                 <ul>
