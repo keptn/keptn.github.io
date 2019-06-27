@@ -397,18 +397,36 @@ in the version of the latest release. Since v0.3 of keptn, the install command a
   If that is not the case, there may have been a problem during the installation. In that case, we kindly ask you to clean your cluster and restart the installation described in the **Troubleshooting** section below.
 
 ## Uninstall
-- Clone the keptn installer repository of the latest release:
 
-  ``` console
-  git  clone --branch 0.3.0 https://github.com/keptn/installer
-  cd  ./installer/scripts/common
-  ``` 
+- Please follow these instructions to uninstall keptn from your cluster:
 
-- Execute `uninstallKeptn.sh` and all keptn resource will be deleted
+  - For **GKE** and **AKS**:
+    - Clone the keptn installer repository of the latest release:
 
-  ```console
-  ./uninstallKeptn.sh
-  ```
+      ``` console
+      git  clone --branch 0.3.0 https://github.com/keptn/installer
+      cd  ./installer/scripts/common
+      ``` 
+
+    - Execute `uninstallKeptn.sh` and all keptn resource will be deleted
+
+      ```console
+      ./uninstallKeptn.sh
+      ```
+  - For **OpenShift**:
+    - Clone the keptn installer repository of the latest release:
+
+      ``` console
+      git  clone --branch 0.3.0 https://github.com/keptn/installer
+      cd  ./installer/scripts/openshift
+      ``` 
+
+    - Execute `uninstallKeptn.sh` and all keptn resource will be deleted
+
+      ```console
+      ./uninstallKeptn.sh
+      ``` 
+
 - To verify the cleanup, retrieve the list of namespaces in your cluster and ensure that the `keptn` namespace is not included in the output of the following command:
 
   ```console
