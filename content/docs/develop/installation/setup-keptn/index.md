@@ -167,6 +167,22 @@ Select one of the following options:
 </p>
 </details>
 
+<details><summary>Azure Kubernetes Service (AKS)</summary>
+<p>
+
+1. Install local tools
+  - [az](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
+
+2. Create GKE cluster
+  - Master version >= `1.12.x` (tested version: `1.12.8`)
+  - One `D16s_v3` node
+    <details><summary>Expand for details</summary>
+    {{< popup_image link="./assets/aks-cluster-size.png" 
+      caption="AKS cluster size" width="100%">}}
+    </details>  
+ </p>
+</details>
+
 <!-- 
 <details><summary>Amazon Elastic Container Service (EKS)</summary>
 <p>
@@ -221,18 +237,24 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
 ## Install keptn
 
 - Execute the CLI command `keptn install` and provide the requested information. This command will install keptn
-in the version of the latest release. Since v0.3 of keptn, the install command accepts a parameter to select the platform you would like to install keptn on. Currently supported platforms are Google Kubernetes Engine (GKE) and OpenShift. Depending on your platform, enter the following command to start the installation:
+in the version of the latest release. Since v0.3 of keptn, the install command accepts a parameter to select the platform you would like to install keptn on. Currently supported platforms are Google Kubernetes Engine (GKE), OpenShift and Azure Kubernetes Services (AKS). Depending on your platform, enter the following command to start the installation:
 
   - For **GKE**:
 
     ```console
-    keptn install -p=gke
+    keptn install --platform=gke
     ```
 
   - For **OpenShift**:
 
     ```console
-    keptn install -p=openshift
+    keptn install --platform=openshift
+    ```
+
+  - For **AKS**:
+
+    ```console
+    keptn install --platform=aks
     ```
 
     In your cluster, this command installs the complete infrastructure necessary to run keptn. 
@@ -379,7 +401,7 @@ in the version of the latest release. Since v0.3 of keptn, the install command a
 
   ``` console
   git  clone --branch 0.2.2 https://github.com/keptn/installer
-  cd  ./installer/scripts
+  cd  ./installer/scripts/common
   ``` 
 
 - Execute `uninstallKeptn.sh` and all keptn resource will be deleted

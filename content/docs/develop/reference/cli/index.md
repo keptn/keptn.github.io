@@ -51,11 +51,25 @@ In future releases, we add additional checks whether the executed commands succe
 
 ## keptn install 
 
-The keptn CLI allows to install keptn on a server. Further details are provided [here](../../installation/setup-keptn-gke).
+The keptn CLI allows to install keptn on a Google Kubernetes Engine (GKE), OpenShift or Azure Kubernetes Services (AKS). Further details are provided [here](../../installation/#install-keptn).
 
-```console
-keptn install
-```
+  - For **GKE**:
+
+    ```console
+    keptn install --platform=gke
+    ```
+
+  - For **OpenShift**:
+
+    ```console
+    keptn install --platform=openshift
+    ```
+
+  - For **AKS**:
+
+    ```console
+    keptn install --platform=aks
+    ```
 
 ## keptn auth 
 
