@@ -77,7 +77,7 @@ For upgrading an existing keptn 0.2.0, 0.2.1 or 0.2.2 installation, an upgrade s
   ./upgradeKeptn.sh <github_username> <github_access_token>
   ```
 
-- **Note:** As of version 0.3.0, keptn does not require the Jenkins installation that was part of previous versions. The upgrade script will not remove the Jenkins deployment from the keptn namespace in your cluster, but it will remove the subscriptions of the Jenkins service. This means that from v0.3.0 on, the deployment, testing, and promotion of an artifact to the next stage will be performed by the `helm-service`, `jmeter-service` and `gatekeeper-service` respectively.
+- **Note:** As of version 0.3.0, keptn does not require the Jenkins installation that was part of previous versions. The upgrade script will not remove the Jenkins deployment from the keptn namespace in your cluster, but it will remove the subscriptions of the Jenkins service. This means that from v0.3.0 on, the deployment, testing, and promotion of an artifact to the next stage will be performed by the `helm-service`, `jmeter-service`, and `gatekeeper-service`, respectively.
 
 - **Note:** In future releases of the keptn CLI, a command `keptn upgrade` will be added, which replaces the shell script `upgradeKeptn.sh`.
 
