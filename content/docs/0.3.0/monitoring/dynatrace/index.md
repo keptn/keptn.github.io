@@ -59,6 +59,12 @@ In order to evaluate the quality gates and allow self-healing in production, we 
     ./deployDynatraceOnOpenshift.sh
     ```
 
+  - If you are on **Azure AKS**, please execute
+
+    ```console
+    ./deployDynatraceOnAKS.sh
+    ```
+
   When this script is finished, the Dynatrace OneAgent and the dynatrace-service are deployed in your cluster. Execute the following command to verify the deployment of the dynatrace-service.
 
     ```console
