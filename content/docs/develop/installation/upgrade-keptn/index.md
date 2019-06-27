@@ -6,7 +6,7 @@ icon: setup
 keywords: upgrade
 ---
 
-For upgrading an existing keptn 0.2.0 or 0.2.1 installation, an upgrade script is provided. This will update all keptn core components to their new version and installs the keptn's bridge.
+For upgrading an existing keptn 0.2.0, 0.2.1 or 0.2.2 installation, an upgrade script is provided. This will update all keptn core components to their new version and installs the keptn's bridge.
 
 ## Prerequisites
    
@@ -25,7 +25,7 @@ For upgrading an existing keptn 0.2.0 or 0.2.1 installation, an upgrade script i
 
 ## Upgrade keptn CLI
 
-- Download the version for your operating system from https://github.com/keptn/keptn/releases/tag/0.2.2
+- Download the version for your operating system from https://github.com/keptn/keptn/releases/tag/0.3.0
 - Unpack the download
 - Find the `keptn` binary in the unpacked directory.
   - Linux / macOS
@@ -44,7 +44,7 @@ For upgrading an existing keptn 0.2.0 or 0.2.1 installation, an upgrade script i
     ```
 
     ```console
-    CLI version: 0.2.2
+    CLI version: 0.3.0
     ```
     
     - Windows
@@ -54,15 +54,15 @@ For upgrading an existing keptn 0.2.0 or 0.2.1 installation, an upgrade script i
     ```
 
      ```console
-    CLI version: 0.2.2
+    CLI version: 0.3.0
     ```
 
-## Upgrade keptn from 0.2.x to 0.2.2
+## Upgrade keptn from 0.2.x to 0.3.0
 
 - Clone the keptn installer repository of the latest release:
 
   ``` console
-  git  clone --branch 0.2.2 https://github.com/keptn/installer
+  git  clone --branch 0.3.0 https://github.com/keptn/installer
   ``` 
 
 - Navigate to the scripts folder:
@@ -74,13 +74,16 @@ For upgrading an existing keptn 0.2.0 or 0.2.1 installation, an upgrade script i
 - Run the keptn upgrade script:
 
   ```
-  ./upgradeKeptn.sh github_username github_access_token
+  ./upgradeKeptn.sh <github_username> <github_access_token>
   ```
+
+- **Note:** As of version 0.3.0, keptn does not require the Jenkins installation that was part of previous versions. The upgrade script will not remove the Jenkins deployment from the keptn namespace in your cluster, but it will remove the subscriptions of the Jenkins service. This means that from v0.3.0 on, the deployment, testing, and promotion of an artifact to the next stage will be performed by the `helm-service`, `jmeter-service`, and `gatekeeper-service`, respectively.
+
 - **Note:** In future releases of the keptn CLI, a command `keptn upgrade` will be added, which replaces the shell script `upgradeKeptn.sh`.
 
 ## Create project and onboard services
 
-Due to a breaking change from keptn 0.2.1 to 0.2.2 regarding the naming convention of Kubernetes namespaces, it is necessary to re-create a keptn project and to onboard your services again.
+Due to a breaking change from keptn 0.2.x to 0.3.0 regarding the naming convention of Kubernetes namespaces, it is necessary to re-create a keptn project and to onboard your services again.
 
 - Delete your configuration repository in your GitHub organization.
 
