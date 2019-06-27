@@ -32,7 +32,7 @@ Select one of the following options:
   - [gcloud](https://cloud.google.com/sdk/gcloud/)
   - [python 2.7](https://www.python.org/downloads/release/python-2716/) (required for Ubuntu 19.04)
 
-2. Create GKE cluster
+2. Create AKS cluster
   - Master version >= `1.11.x` (tested version: `1.11.7-gke.12` and `1.12.7-gke.10`)
   - One `n1-standard-16` node
     <details><summary>Expand for details</summary>
@@ -400,7 +400,7 @@ in the version of the latest release. Since v0.3 of keptn, the install command a
 - Clone the keptn installer repository of the latest release:
 
   ``` console
-  git  clone --branch 0.2.2 https://github.com/keptn/installer
+  git  clone --branch 0.3.0 https://github.com/keptn/installer
   cd  ./installer/scripts/common
   ``` 
 
