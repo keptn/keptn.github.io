@@ -36,19 +36,35 @@ In order to evaluate the quality gates and allow self-healing in production, we 
     In your Dynatrace tenant, go to **Settings > Integration > Platform as a Service**, and create a new PaaS Token.
 
 1. Clone the install repository and setup your credentials by executing the following steps:
-```console
-git clone --branch 0.2.2 https://github.com/keptn/installer --single-branch
-cd installer/scripts
-./defineDynatraceCredentials.sh
-```
-  When the  script asks for your Dynatrace tenant, please enter your tenant according to the appropriate pattern:
-    - Dynatrace SaaS tenant: `{your-environment-id}.live.dynatrace.com`
-    - Dynatrace-managed tenant: `{your-domain}/e/{your-environment-id}`
-
-1. Execute the installation script `deployDynatrace.sh`:
   ```console
-  ./deployDynatrace.sh
+  git clone --branch 0.1.2 https://github.com/keptn/dynatrace-service --single-branch
+  cd dynatrace-service/deploy/scripts
+  ./defineDynatraceCredentials.sh
   ```
+    When the  script asks for your Dynatrace tenant, please enter your tenant according to the appropriate pattern:
+      - Dynatrace SaaS tenant: `{your-environment-id}.live.dynatrace.com`
+      - Dynatrace-managed tenant: `{your-domain}/e/{your-environment-id}`
+
+1. Execute the installation script for your platform:
+
+  - If you are on **GKE**, please execute
+
+    ```console
+    ./deployDynatraceOnGKE.sh
+    ```
+
+  - If you are on **OpenShift**, please execute
+
+    ```console
+    ./deployDynatraceOnOpenshift.sh
+    ```
+
+  - If you are on **Azure AKS**, please execute
+
+    ```console
+    ./deployDynatraceOnAKS.sh
+    ```
+
   When this script is finished, the Dynatrace OneAgent and the dynatrace-service are deployed in your cluster. Execute the following command to verify the deployment of the dynatrace-service.
 
     ```console
@@ -69,6 +85,18 @@ kubectl delete pods --all --namespace=sockshop-production
 
 **Note 2:** If the nodes in your cluster run on *Container-Optimized OS (cos)*, make sure to [follow the instructions](https://www.dynatrace.com/support/help/cloud-platforms/google-cloud-platform/google-kubernetes-engine/deploy-oneagent-on-google-kubernetes-engine-clusters/#expand-134parameter-for-container-optimized-os-early-access) for setting up the Dynatrace OneAgent Operator. This means that after the initial setup with `deployDynatrace.sh`, which is a step below, the `cr.yml` has to be edited and applied again. In addition, all pods have to be restarted.
 
+### What was set up?
+
+In your Dynatrace tenant, when you navigate to "Settings -> Tags -> Automatically applied tags" you will find two entries:
+
+- environemnt
+- service
+
+This means that Dynatrace will automatially apply tags on your onboarded services.
+
+In addition, a Problem Notification has automatically been set up to inform your keptn installation of any problems with your services to allow auto-remediation. This will be described in more detail in the [runbook automation and self-healing use case](../../usecases/runbook-automation-and-self-healing/). You can check the problem notification by navigating to **Settings -> Integration -> Problem notifications** and you will find a **keptn remediation** problem notification.
+
+
 ## See keptn events in Dynatrace
 
 The Dynatrace service will take care of pushing events of the keptn workflow to the artifacts that have been onboarded with keptn. For example, the deployment as well as custom infos like starting and finishing of tests will appear in the details screen of your services in your Dynatrace tenant.
@@ -77,16 +105,6 @@ The Dynatrace service will take care of pushing events of the keptn workflow to 
     caption="keptn events"
     width="500px">}}
 
-## Upgrade Dynatrace monitoring for keptn 0.2.2
-
-Due to a change of the data stored in the `dynatrace` secret in the `keptn` namespace, it is necessary to update the secret according to the following steps:
-  1. Prepare the Dynatrace URI:
-      - Dynatrace SaaS tenant: `{your-environment-id}.live.dynatrace.com`
-      - Dynatrace-managed tenant: `{your-domain}/e/{your-environment-id}`
-  1. Update the property `DT_TENANT` based on the Dynatrace URI. Please note that the value has to be base64 encoded.
-      ```console
-      kubectl edit secret dynatrace -n keptn     
-      ```
 
 ## (Optional) Create process group naming rule in Dynatrace
 
@@ -103,3 +121,4 @@ Due to a change of the data stored in the `dynatrace` secret in the `keptn` name
     {{< popup_image
     link="./assets/pg_naming.png"
     caption="Dynatrace naming rule">}}
+
