@@ -32,12 +32,12 @@ Select one of the following options:
   - [gcloud](https://cloud.google.com/sdk/gcloud/)
   - [python 2.7](https://www.python.org/downloads/release/python-2716/) (required for Ubuntu 19.04)
 
-2. Create AKS cluster
+2. Create GKE cluster
   - Master version >= `1.11.x` (tested version: `1.11.7-gke.12` and `1.12.7-gke.10`)
   - One `n1-standard-16` node
     <details><summary>Expand for details</summary>
     {{< popup_image link="./assets/gke-cluster-size.png" 
-      caption="AKS cluster size" width="50%">}}
+      caption="GKE cluster size" width="50%">}}
     </details>
   - Image type `ubuntu` or `cos` (if you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../monitoring/dynatrace/))
   - Sample script to create such cluster (adapt the values according to your needs)
@@ -173,7 +173,7 @@ Select one of the following options:
 1. Install local tools
   - [az](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
 
-2. Create GKE cluster
+2. Create AKS cluster
   - Master version >= `1.12.x` (tested version: `1.12.8`)
   - One `D16s_v3` node
     <details><summary>Expand for details</summary>
