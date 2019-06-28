@@ -108,6 +108,8 @@ any previous revisions of the service will be deleted and the newest version wil
 
 ## CloudEvents
 
+Please note that cloudevents have to be sent with with the HTTP header `Content-Type: application/cloudevents+json` to be set.
+
 Depending on the channel your service is subscribed to, it will receive the payload in the following format:
 
 ### sh.keptn.new-artifact
@@ -117,8 +119,8 @@ Depending on the channel your service is subscribed to, it will receive the payl
    "specversion":"0.2",
    "type":"sh.keptn.events.new-artifact",
    "id":"1234",
-   "time":"20190325-15:26:52.036",
-   "datacontenttype":"application/json",
+   "time":"2018-04-05T17:31:00Z",
+   "contenttype":"application/json",
    "shkeptncontext":"db51be80-4fee-41af-bb53-1b093d2b694c",
    "data":{  
       "githuborg":"keptn-tiger",
@@ -138,8 +140,8 @@ Depending on the channel your service is subscribed to, it will receive the payl
 ```json
 {  
    "specversion":"0.2",
-   "time":"2019-03-25T15:21:27+00:00",
-   "datacontenttype":"application/json",
+   "time":"2018-04-05T17:31:00Z",
+   "contenttype":"application/json",
    "data":{  
       "service":"carts",
       "image":"10.11.245.27:5000/sockshopcr/carts",
@@ -162,8 +164,8 @@ Depending on the channel your service is subscribed to, it will receive the payl
    "specversion":"0.2",
    "type":"sh.keptn.events.deployment-finished",
    "id":"1234",
-   "time":"20190325-15:22:50.560",
-   "datacontenttype":"application/json",
+   "time":"2018-04-05T17:31:00Z",
+   "contenttype":"application/json",
    "shkeptncontext":"db51be80-4fee-41af-bb53-1b093d2b694c",
    "data":{  
       "githuborg":"keptn-tiger",
@@ -185,8 +187,8 @@ Depending on the channel your service is subscribed to, it will receive the payl
    "specversion":"0.2",
    "type":"sh.keptn.events.tests-finished",
    "id":"1234",
-   "time":"20190325-15:25:56.096",
-   "datacontenttype":"application/json",
+   "time":"2018-04-05T17:31:00Z",
+   "contenttype":"application/json",
    "shkeptncontext":"db51be80-4fee-41af-bb53-1b093d2b694c",
    "data":{  
       "githuborg":"keptn-tiger",
@@ -210,8 +212,8 @@ Depending on the channel your service is subscribed to, it will receive the payl
    "specversion":"0.2",
    "type":"sh.keptn.events.evaluation-done",
    "id":"1234",
-   "time":"20190325-15:25:56.096",
-   "datacontenttype":"application/json",
+   "time":"2018-04-05T17:31:00Z",
+   "contenttype":"application/json",
    "shkeptncontext":"db51be80-4fee-41af-bb53-1b093d2b694c",
    "data":{  
       "githuborg":"keptn-tiger",
@@ -256,8 +258,8 @@ Depending on the channel your service is subscribed to, it will receive the payl
    "specversion":"0.2",
    "type":"sh.keptn.events.evaluation-done",
    "id":"1234",
-   "time":"20190325-15:25:56.096",
-   "datacontenttype":"application/json",
+   "time":"2018-04-05T17:31:00Z",
+   "contenttype":"application/json",
    "shkeptncontext":"db51be80-4fee-41af-bb53-1b093d2b694c",
    "data":{  
       "githuborg":"keptn-tiger",
@@ -310,8 +312,8 @@ To receive events in this channel, please follow the instructions of the [Runboo
     "type":"sh.keptn.events.problem",
     "source":"dynatrace",
     "id":"{PID}",
-    "time":"",
-    "datacontenttype":"application/json",
+    "time":"2018-04-05T17:31:00Z",
+    "contenttype":"application/json",
     "shkeptncontext":"{PID}",
     "data": {
         "State":"{State}",
