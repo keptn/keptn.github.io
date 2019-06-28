@@ -208,7 +208,7 @@ Select one of the following options:
 ## Install keptn CLI
 Every release of keptn provides binaries for the keptn CLI. These binaries are available for Linux, macOS, and Windows.
 
-- Download the version for your operating system from https://github.com/keptn/keptn/releases/tag/0.2.2
+- Download the version for your operating system from https://github.com/keptn/keptn/releases/tag/0.3.0
 - Unpack the download
 - Find the `keptn` binary in the unpacked directory.
   - Linux / macOS

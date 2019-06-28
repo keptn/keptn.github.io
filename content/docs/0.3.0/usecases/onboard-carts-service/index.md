@@ -24,7 +24,7 @@ To illustrate the scenario this use case addresses, keptn relies on the followin
   
   * Listening to configuration changed events to deploy a service using the new configuration.
 
-**jmpeter-service**:
+**jmeter-service**:
 
   * Listening to deployment finished events to test a newly deployed service using jmeter.
 
@@ -139,7 +139,7 @@ The used artifact is stored on Docker Hub.
 
 <details><summary>Known issue for AKS installations</summary>
 <p>
-In AKS, the first functional check erronously fails. Therefore, the artifact is not promoted into staging and production.
+In AKS, the first functional check erroneously fails. Therefore, the artifact is not promoted into staging and production.
 We are addressing this bug in the [issue #483](https://github.com/keptn/keptn/issues/483).
 
 In order to pass this functional check, 
