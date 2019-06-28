@@ -94,7 +94,7 @@ In your Dynatrace tenant, when you navigate to "Settings -> Tags -> Automaticall
 
 This means that Dynatrace will automatially apply tags on your onboarded services.
 
-In addition, a Problem Notification has automatically been set up to inform your keptn installation of any problems with your services to allow auto-remediation. This will be describes in more detail in the [runbook automation and self-healing use case](../../usecases/runbook-automation-and-self-healing/). You can check the problem notification by navigating to "Settings -> Integration -> Problem notifications" and you will find a "keptn remediation" problem notification.
+In addition, a Problem Notification has automatically been set up to inform your keptn installation of any problems with your services to allow auto-remediation. This will be described in more detail in the [runbook automation and self-healing use case](../../usecases/runbook-automation-and-self-healing/). You can check the problem notification by navigating to **Settings -> Integration -> Problem notifications** and you will find a **keptn remediation** problem notification.
 
 
 ## See keptn events in Dynatrace

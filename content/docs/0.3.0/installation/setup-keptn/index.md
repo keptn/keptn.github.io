@@ -57,6 +57,7 @@ Select one of the following options:
  </p>
 </details>
 
+<!--
 <details><summary>Pivotal Container Service (PKS)</summary>
 <p>
 
@@ -88,7 +89,7 @@ Select one of the following options:
 
 </p>
 </details>
-
+-->
 
 
 <details><summary>OpenShift 3.11</summary>
@@ -193,22 +194,12 @@ Select one of the following options:
 </p>
 </details>
 
-
-<details><summary>Azure Kubernetes Service (AKS)</summary>
-<p>
-
-1. Install local tools
-
-1. Create AKS cluster on Azure
-</p>
-</details>
-
 -->
 
 ## Install keptn CLI
 Every release of keptn provides binaries for the keptn CLI. These binaries are available for Linux, macOS, and Windows.
 
-- Download the version for your operating system from https://github.com/keptn/keptn/releases/tag/0.2.2
+- Download the version for your operating system from https://github.com/keptn/keptn/releases/tag/0.3.0
 - Unpack the download
 - Find the `keptn` binary in the unpacked directory.
   - Linux / macOS
