@@ -57,6 +57,7 @@ Select one of the following options:
  </p>
 </details>
 
+<!--
 <details><summary>Pivotal Container Service (PKS)</summary>
 <p>
 
@@ -88,7 +89,7 @@ Select one of the following options:
 
 </p>
 </details>
-
+-->
 
 
 <details><summary>OpenShift 3.11</summary>
@@ -190,16 +191,6 @@ Select one of the following options:
 1. Install local tools
 
 1. Create EKS cluster on AWS
-</p>
-</details>
-
-
-<details><summary>Azure Kubernetes Service (AKS)</summary>
-<p>
-
-1. Install local tools
-
-1. Create AKS cluster on Azure
 </p>
 </details>
 
