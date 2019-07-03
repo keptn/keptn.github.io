@@ -164,3 +164,27 @@ please re-send a new artifact event for the carts service.
   ```
 
 - Navigate to `http://carts.sockshop-production.<EXTERNAL IP>.xip.io` for viewing the carts service in your `production` environment. 
+
+## Delete a project
+
+**Please note,** if you want to continue with other use cases, please **do not execute** the following commands.
+
+The keptn CLI does currently not support the deletion of a project. However, by following the next steps, a project can manually be removed:
+
+- Delete the GitHub repository for your project, e.g., sockshop.
+- Delete all namespaces that have been created by keptn in your Kubernetes cluster, e.g.,
+  - sockshop-dev
+  - sockhop-staging
+  - sockshop-production
+  
+    by executing
+
+  ```console
+  kubectl delete namespace sockshop-dev sockshop-staging sockshop-production
+  ```
+
+- Delete the configuration map `keptn-orgs` that has been created by executing
+
+```console
+kubectl delete configmap keptn-orgs -n keptn
+```
