@@ -177,13 +177,13 @@ image:
     tag: null
     pullPolicy: IfNotPresent
 service:
-    name: details 
-    internalPort: 9080
+    name: myservice 
+    internalPort: 8080
 container:
-    name: details
+    name: myservice
 ```
 
-First, define how many instances of your deployment should be running by providing this number as the `replicaCount`. Next, the `image repository` and `tag` can be set to null since they will be set with the keptn CLI command `keptn send event new-artifact`. For the `service`, simply provide the name of your service as well as the internal port you want your service to be reachable. For the `container name` simply provide a name you want to call your container. 
+First, define how many instances of your deployment should be running by providing this number as the `replicaCount`. Next, the `image repository` and `tag` can be set to null since they will be set with the keptn CLI command `keptn send event new-artifact`. For the `service`, simply provide the name of your service as well as the internal port you want your service to be reachable. For the `container name` simply provide a name you want to call your container. Additionally, make sure that your actual service provides a `/health` endpoint at port `8080` since this is needed for the [liveness and readiness probe](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/) for Kubernetes.
 If you already have your service.yaml and deployment.yaml file, your can easily reuse them with keptn by attaching them in the onboarding command: 
 
 ```console
