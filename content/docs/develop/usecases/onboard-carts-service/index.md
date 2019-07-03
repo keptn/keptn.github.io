@@ -194,19 +194,19 @@ Furthermore, keptn needs to have access to the `perfspec.json` file as well as t
 Make sure in your repository there are the needed files in the corresponding folders:
 ```
 SERVICENAME
-│   README.md
-│   ...    
+│  README.md
+│  ...    
 │
-└───jmeter
+└── jmeter
 │   │   basiccheck.jmx
 │   │   SERVICENAME_load.jmx
 │   │   SERVICENAME_perfcheck.jmx
 │   
-└───perfspec
+└── perfspec
 │   │   perfspec.json
 │
-└───src
-└───...
+└── src
+└── ...
 ```
 
 Please note that all subsequent use cases described on this website do require the onboarded `carts` service to work out-of-the-box. 
