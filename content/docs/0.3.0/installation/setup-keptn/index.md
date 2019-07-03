@@ -21,6 +21,7 @@ keywords: setup
 - Local tools
   - [git](https://git-scm.com/)
   - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+  - For Linux: [bc] (https://www.gnu.org/software/bc/manual/html_mono/bc.html)
 
 ## Setup Kubernetes Cluster
 Select one of the following options:
