@@ -190,6 +190,28 @@ If you already have your service.yaml and deployment.yaml file, your can easily 
 keptn onboard service --project=sockshop --values=VALUES.yaml --deployment=DEPLOYMENT.yaml --service=SERVICE.yaml
 ```
 
+Furthermore, keptn needs to have access to the `perfspec.json` file as well as the JMeter files. Therefore, fork the GitHub repo of your service into the GitHub organization that you have created earlier.
+Make sure in your repository there are the needed files in the corresponding folders:
+```
+SERVICENAME
+│   README.md
+│   ...    
+│
+└───jmeter
+│   │   basiccheck.jmx
+│   │   SERVICENAME_load.jmx
+│   │   SERVICENAME_perfcheck.jmx
+│   
+└───perfspec
+│   │   perfspec.json
+│
+└───src
+└───...
+```
+
+Please note that all subsequent use cases described on this website do require the onboarded `carts` service to work out-of-the-box. 
+
+
 ## Delete a project
 
 **Please note,** if you want to continue with other use cases, please **do not execute** the following commands.
