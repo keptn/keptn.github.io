@@ -165,6 +165,31 @@ please re-send a new artifact event for the carts service.
 
 - Navigate to `http://carts.sockshop-production.<EXTERNAL IP>.xip.io` for viewing the carts service in your `production` environment. 
 
+## Onboard your own service
+
+When onboarding your own service instead of the provided `carts` service, a values file _has_ to be provided. In addition, a service and a deployment file _can_ be provided.
+The following snippet will help to define your own `values.yaml` file:
+
+```yaml
+replicaCount: 1
+image:
+    repository: null
+    tag: null
+    pullPolicy: IfNotPresent
+service:
+    name: details 
+    internalPort: 9080
+container:
+    name: details
+```
+
+First, define how many instances of your deployment should be running by providing this number as the `replicaCount`. Next, the `image repository` and `tag` can be set to null since they will be set with the keptn CLI command `keptn send event new-artifact`. For the `service`, simply provide the name of your service as well as the internal port you want your service to be reachable. For the `container name` simply provide a name you want to call your container. 
+If you already have your service.yaml and deployment.yaml file, your can easily reuse them with keptn by attaching them in the onboarding command: 
+
+```console
+keptn onboard service --project=sockshop --values=VALUES.yaml --deployment=DEPLOYMENT.yaml --service=SERVICE.yaml
+```
+
 ## Delete a project
 
 **Please note,** if you want to continue with other use cases, please **do not execute** the following commands.
