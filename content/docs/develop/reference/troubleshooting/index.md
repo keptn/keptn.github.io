@@ -42,34 +42,3 @@ Internal knative problem, seen with knative 0.4
     kubectl delete pods --all -n knative-eventing
     ```
 </p></details>
-
-<!-- ## Control service is not available -->
-
-### CLI command was not executed correctly
-<details><summary>Expand instructions</summary>
-<p>
-
-**Investigation:**
-
-The control service is not available at the time when a command was sent by the keptn CLI. 
-The resulting response message will look similar to this:
-
-```console
-keptn onboard service --project=sockshop --values=values_carts.yaml
-```
-
-```console
-Starting to onboard service
-Onboard service was unsuccessful
-Error: Post https://control.keptn.1xx.xxx.xx.xx.xip.io/service: dial tcp: lookup control.keptn.1xx.xxx.xx.xx.xip.io: no such host
-``` 
-
-**Reason:** 
-
-The root cause of this issue is that during peak hours, xip.io is unfortunately not very reliable. Therefore, the host can not be resolved and the CLI will return this error.
-
-**Solution:** 
-
-Please wait a couple of minutes and retry. Since this is an external dependency, there is nothing to fix inside the keptn installation.
-
-</p></details>
