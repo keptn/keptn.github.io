@@ -73,3 +73,28 @@ The root cause of this issue is that during peak hours, xip.io is unfortunately 
 Please wait a couple of minutes and retry. Since this is an external dependency, there is nothing to fix inside the keptn installation.
 
 </p></details>
+
+<!-- Azure Installation not working -->
+
+### Installation on Azure aborting
+<details><summary>Expand instructions</summary>
+<p>
+
+**Investigation:**
+
+The keptn installation is aborting with the following error:
+
+```console
+Cannot obtain the cluster/pod IP CIDR
+```
+
+
+**Reason:** 
+
+The root cause of this issue is that `kubenet` is not used in your AKS cluster. However, it is needed to retrieve the `podCidr` according to the official docs: https://docs.microsoft.com/en-us/rest/api/aks/managedclusters/createorupdate#containerservicenetworkprofile 
+
+**Solution:** 
+
+Please select the **Kubenet network plugin (basic)** when setting up your AKS cluster, instead of *Azure network plugin (advanced)* and retry the installation. You can find more information here: https://docs.microsoft.com/en-us/azure/aks/configure-kubenet 
+
+</p></details>
