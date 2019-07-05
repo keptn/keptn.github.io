@@ -28,10 +28,11 @@ container:
     name: myservice
 ```
 
-First, define how many instances of your deployment should be running by providing this number as the `replicaCount`. Next, the `image repository` and `tag` can be set to null since they will be set with the keptn CLI command `keptn send event new-artifact`. For the `service`, simply provide the name of your service as well as the internal port you want your service to be reachable. For the `container name` simply provide a name you want to call your container. Additionally, make sure that your actual service provides a `/health` endpoint at port `8080` since this is needed for the [liveness and readiness probe](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/) for Kubernetes.
+First, define how many instances of your deployment should be running by providing this number as the `replicaCount`. Next, the `image repository` and `tag` can be set to null since they will be set with the keptn CLI command `keptn send event new-artifact`. For the `service`, provide the name of your service as well as the internal port you want your service to be reachable. For the `container name` provide a name you want to call your container. Additionally, make sure that your actual service provides a `/health` endpoint at port `8080` since this is needed for the [liveness and readiness probe](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/) for Kubernetes.
 
 Furthermore, keptn needs to have access to the `perfspec.json` file as well as the JMeter files. Therefore, fork the GitHub repo of your service into the GitHub organization that you have created earlier.
 Make sure in your repository there are the needed files in the corresponding folders:
+
 ```
 SERVICENAME
 │  README.md
@@ -48,6 +49,10 @@ SERVICENAME
 └── src
 └── ...
 ```
+
+
+**TODO: explain that currently only JMeter is allowed for tests and which parameters are allowed.**
+
 
 An example of a perfspec file is listed below:
 
@@ -75,7 +80,9 @@ An example of a perfspec file is listed below:
 }
 ```
 
-In this file, [Prometheus](https://prometheus.io) is gather metrics on the request latency in seconds. A threshold grader is then used to evaluate if the threshold is met. A score to this single metric is assigned, as well as objectives that have to be met to consider the quality of the service satisfying.
+**TODO: explain pitometer file in more detail**
+
+In this file, [Prometheus](https://prometheus.io) is gathering metrics on the request latency in seconds. A threshold grader is then used to evaluate if the threshold is met. A score to this single metric is assigned, as well as objectives that have to be met to consider the quality of the service satisfying.
 
 To onboard a service, use the command `onboard service` and provide the project name (flag `--project`), the Helm chart values (flag `--values`) and optionally also deployment (flag `--deployment`) and service (flag `--service`) configuration.
 

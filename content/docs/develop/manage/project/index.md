@@ -10,8 +10,7 @@ Learn how to manage your projects in keptn.
 
 ## Create a project
 
-
-Before onboarding a service, a project needs to be created. A project represents a repository in the GitHub organization that is used by keptn. This project contains branches representing the multi-stage environment (e.g., dev, staging, and production stage). In other words, the separation of stage configurations is based on repository branches. To describe each stage, a `shipyard.yaml` file is needed that specifies the name, deployment strategy, and test strategy as shown below:
+A project is a structure in keptn that allows to organize your services and is represented as a repository in the GitHub organization that is used by keptn. This project contains branches representing the multi-stage environment (e.g., dev, staging, and production stage). In other words, the separation of stage configurations is based on repository branches. To describe the stages, a single `shipyard.yaml` file is needed that specifies the name, deployment strategy, and test strategy as shown below:
 
 ```yaml
 registry: sockshop
@@ -26,7 +25,9 @@ stages:
     deployment_strategy: "blue_green_service"
 ```
 
-Create a project is simple with the [keptn CLI](../../reference/cli). 
+Allowed values for the deployment strategies are "direct", which means the old version of the artifact is replaced, or "blue_green_service", which means that a new version is deployed . Allowed values for the test_strategy are "functional" or "performance". We are planning to incorporate more deployment and testing strategies in the next releases.
+
+Create a project with the [keptn CLI](../../reference/cli). 
 ```
 keptn create project your_project shipyard.yml
 ```
