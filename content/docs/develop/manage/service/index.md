@@ -29,11 +29,6 @@ container:
 ```
 
 First, define how many instances of your deployment should be running by providing this number as the `replicaCount`. Next, the `image repository` and `tag` can be set to null since they will be set with the keptn CLI command `keptn send event new-artifact`. For the `service`, simply provide the name of your service as well as the internal port you want your service to be reachable. For the `container name` simply provide a name you want to call your container. Additionally, make sure that your actual service provides a `/health` endpoint at port `8080` since this is needed for the [liveness and readiness probe](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/) for Kubernetes.
-If you already have your service.yaml and deployment.yaml file, your can easily reuse them with keptn by attaching them in the onboarding command: 
-
-```console
-keptn onboard service --project=sockshop --values=VALUES.yaml --deployment=DEPLOYMENT.yaml --service=SERVICE.yaml
-```
 
 Furthermore, keptn needs to have access to the `perfspec.json` file as well as the JMeter files. Therefore, fork the GitHub repo of your service into the GitHub organization that you have created earlier.
 Make sure in your repository there are the needed files in the corresponding folders:
@@ -110,3 +105,4 @@ keptn onboard service --project=your_project --values=values.yaml --deployment=d
       fieldRef:
         fieldPath: "metadata.namespace"
   ```
+

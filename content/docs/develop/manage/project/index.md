@@ -26,7 +26,7 @@ stages:
     deployment_strategy: "blue_green_service"
 ```
 
-Create a project is simple with the keptn CLI. 
+Create a project is simple with the [keptn CLI](../../reference/cli). 
 ```
 keptn create project your_project shipyard.yml
 ```
