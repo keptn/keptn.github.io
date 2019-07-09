@@ -13,16 +13,24 @@ In order to evaluate the quality gates, we have to set up monitoring to provide 
     - If you have not yet onboarded the carts service, please execute the following commands to receive the needed files:
     
     ```
-    git clone --branch 0.2.0 https://github.com/keptn/examples.git --single-branch
+    git clone --branch 0.3.0 https://github.com/keptn/examples.git --single-branch
     cd ./examples/monitoring/prometheus
     ```
 
     - If you already have [onboarded the carts service](../../usecases/onboard-carts-service/), navigate to the directory `monitoring/prometheus`. 
 
-1. In this directory, you will find a script called `deployPrometheus.sh`. This script will deploy Prometheus in the namespace `monitoring` and set up scrape job configurations for monitoring the carts service in the `dev`, `staging`, and `production` namespace. Execute that script by calling:
+1. In this directory, you will find scripts to deploy Prometheus in your cluster, depending on which platform you are using. These scripts will deploy Prometheus in the namespace `monitoring` and set up scrape job configurations for monitoring the carts service in the `dev`, `staging`, and `production` namespace. 
+
+  For **GKE** and **AKS**, you can deploy Prometheus by calling:
 
   ```console
   ./deployPrometheus.sh
+  ```
+
+  For **OpenShift**, please execute:
+
+  ```console
+  ./deployPrometheusOnOpenShift.sh
   ```
 
   ```console
