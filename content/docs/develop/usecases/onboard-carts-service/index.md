@@ -74,7 +74,6 @@ If you have not yet authenticated and configured the keptn CLI, please follow th
 For creating a project, this use case relies on the `shipyard.yaml` file shown below:
 
 ```yaml
-registry: sockshop
 stages:
   - name: "dev"
     deployment_strategy: "direct"
