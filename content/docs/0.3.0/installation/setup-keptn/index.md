@@ -98,7 +98,7 @@ Select one of the following options:
 
 1. Install local tools
 
-  - [oc CLI - v3.11](https://docs.pivotal.io/runtimes/pks/1-4/installing-pks-cli.html)
+  - [oc CLI - v3.11](https://github.com/openshift/origin/releases/tag/v3.11.0)
 
 
 1. On the OpenShift master node, execute the following steps:
