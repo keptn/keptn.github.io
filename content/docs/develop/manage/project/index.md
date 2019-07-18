@@ -48,9 +48,3 @@ The keptn CLI does currently not support the deletion of a project. However, by 
   ```console
   kubectl delete namespace sockshop-dev sockshop-staging sockshop-production
   ```
-
-- Delete the configuration map `keptn-orgs` that has been created during installation by executing
-
-```console
-kubectl delete configmap keptn-orgs -n keptn
-```
