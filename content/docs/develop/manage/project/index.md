@@ -13,7 +13,6 @@ Learn how to manage your projects in keptn.
 A project is a structure in keptn that allows to organize your services and is represented as a repository in the GitHub organization that is used by keptn. This project contains branches representing the multi-stage environment (e.g., dev, staging, and production stage). In other words, the separation of stage configurations is based on repository branches. To describe the stages, a single `shipyard.yaml` file is needed that specifies the name, deployment strategy, and test strategy as shown below:
 
 ```yaml
-registry: sockshop
 stages:
   - name: "dev"
     deployment_strategy: "direct"
@@ -48,3 +47,8 @@ The keptn CLI does currently not support the deletion of a project. However, by 
   ```console
   kubectl delete namespace sockshop-dev sockshop-staging sockshop-production
   ```
+
+
+## Update a project
+
+Updating a project is currently only supported by following the steps of [deleting](#delete-a-project) a project and [creating](#create-a-project) the project with updated settings again.
