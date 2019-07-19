@@ -8,9 +8,6 @@ keywords: [cli, setup]
 In this section, the functionality and commands of the keptn CLI are described. The keptn CLI allows installing keptn,
 configuring keptn, creating new projects, onboarding new services, and sending new artifact events.
 
-If you are unfamiliar with keptn, we recommend to first watch this [community meeting recording](https://drive.google.com/open?id=1Zj-c0tGIvQ_0Dys6NsyDa-REsEZCvAHJ),
-which provides an introduction to keptn.
-
 ## Prerequisites
 -  All prerequisites from the [setup](../../installation/setup-keptn-gke#prerequisites) are needed.
 - A GitHub organization, a GitHub user, and [personal access token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line). 
