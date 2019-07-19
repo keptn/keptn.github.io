@@ -317,32 +317,18 @@ in the version of the latest release. Since v0.3 of keptn, the install command a
 
 - Please follow these instructions to uninstall keptn from your cluster:
 
-  - For **GKE** and **AKS**:
-    - Clone the keptn installer repository of the latest release:
+  - Clone the keptn installer repository of the latest release:
 
-      ``` console
-      git  clone --branch 0.3.0 https://github.com/keptn/installer
-      cd  ./installer/scripts/common
-      ``` 
+    ``` console
+    git  clone --branch 0.4.0 https://github.com/keptn/installer
+    cd  ./installer/scripts/common
+    ``` 
 
-    - Execute `uninstallKeptn.sh` and all keptn resource will be deleted
+  - Execute `uninstallKeptn.sh` and all keptn resource will be deleted
 
-      ```console
-      ./uninstallKeptn.sh
-      ```
-  - For **OpenShift**:
-    - Clone the keptn installer repository of the latest release:
-
-      ``` console
-      git  clone --branch 0.3.0 https://github.com/keptn/installer
-      cd  ./installer/scripts/openshift
-      ``` 
-
-    - Execute `uninstallKeptn.sh` and all keptn resource will be deleted
-
-      ```console
-      ./uninstallKeptn.sh
-      ``` 
+    ```console
+    ./uninstallKeptn.sh
+    ```
 
 - To verify the cleanup, retrieve the list of namespaces in your cluster and ensure that the `keptn` namespace is not included in the output of the following command:
 
