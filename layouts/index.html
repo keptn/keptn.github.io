@@ -2,22 +2,64 @@
 {{ define "header_css" }}{{ end }}
 {{ define "body_classes" }}page-home{{ end }}
 {{ define "header_classes" }}header-transparent{{ end }}
+{{ define "header_js"}}
+<script src="https://cdn.jsdelivr.net/npm/typeit@6.0.3/dist/typeit.min.js" />
+{{end}}
 {{ define "meta"}}
 <meta property="og:description" content="Building the fabric for cloud-native lifecycle automation at enterprise scale">
 <meta property="og:title" content="keptn - Continuous Delivery and Operations for Kubernetes">
 <meta property="og:image" content="https://keptn.sh/favicon.png">
 <meta property="og:url" content="https://keptn.sh/index.html">
 <meta name="twitter:card" content="summary_large_image">
+
 {{ end }}
 
 {{ define "main" }}
 
-<div class="intro pb-2">
+<div class="intro">
   <div class="container">
     {{ .Content }}
   </div>
 </div>
 
+<div class="strip strip-grey">
+  <div class="container  pt-sm-4 pb-sm-4">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <h2 class="text-dark mb-3">Use cases</h2>
+      </div>
+
+      <div class="col-12">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+          <li class="nav-item">
+            <a class="nav-link active" id="developer-tab" data-toggle="tab" href="#developer" role="tab" aria-controls="developer" aria-selected="true">Developer</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="devops-tab" data-toggle="tab" href="#devops" role="tab" aria-controls="devops" aria-selected="false">DevOps</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="sre-tab" data-toggle="tab" href="#sre" role="tab" aria-controls="sre" aria-selected="false">SRE</a>
+          </li>
+
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="developer" role="tabpanel" aria-labelledby="developer-tab">
+            <img src="/images/dev_usecase_animated.gif" alt="keptn for developers" />
+          </div>
+          <div class="tab-pane fade" id="devops" role="tabpanel" aria-labelledby="devops-tab">
+              <img class="img-fluid" src="/images/devops_usecase_animated.gif" alt="keptn for DevOps"/>
+            </div>
+          <div class="tab-pane fade" id="sre" role="tabpanel" aria-labelledby="sre-tab">
+              <img class="img-fluid" src="/images/sre_usecase_animated.gif" alt="keptn for SREe"/>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 <div class="container pt-2 pt-md-2 pb-md-2">
   <div class="row justify-content-start">

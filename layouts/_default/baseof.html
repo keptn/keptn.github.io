@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google-site-verification" content="wDzKASaTgmwGTtV-z_O-NU_6e1wOgA7spKT96o9r8XE" />
   {{ block "meta" . }}{{end}}
+
   <link rel="icon" href="/favicon.png">
 
   <!-- CSS -->
@@ -19,6 +20,7 @@
   <link rel="stylesheet" href="{{ ($style | minify | fingerprint).RelPermalink }}">
   <link rel="stylesheet" href="{{ ($lightbox | minify | fingerprint).RelPermalink }}">
   {{ block "header_css" . }}{{ end }}
+  {{ block "header_js" . }}{{end}}
   <script type="text/javascript">
     (function () {
       (function () {
@@ -107,51 +109,51 @@
           var b = E("rxVisitor"); p("rxVisitor");
           fa("rxVisitor"); y("rxVisitor", b); f.pVO = !0; if (a) try { e.localStorage && e.localStorage.setItem(Ua, "1") } catch (c) { } Cb()
         } function yc() { ga(Ua); m("pVO") && (f.pVO = !1, Sa()); Cb() } function zc() {
-        e.dT_ = {
-          version: "10163190220134628", cfg: e.dT_ ? e.dT_.cfg : "", iCE: e.dT_ ? e.dT_.iCE : function () { return navigator.cookieEnabled }, ica: 1, disabled: !1, v: !1, gx: Gb, cx: Hb, mp: Ub, mtp: Wb, mi: Yb, mw: $b, gAST: Qb, ww: Nb, stu: Kb, nw: r, apush: h, st: aa, si: Jb, aBPSL: Wa, gBPSL: Ib, aBPSCC: Ob, gBPSCC: Pb, buildType: 0 === g ? "dynatrace" : "appmon", gSSV: ea, sSSV: F, rSSV: fa,
-          rvl: ga, pn: Q, iVSC: ob, p3SC: sb, pLSC: rb, io: k, dC: p, sC: y, esc: Sb, gSId: J, gDtc: K, gSC: pb, sSC: U, gC: E, cRN: P, cRS: w, gEL: bb, gEBTN: ab, gSCN: bc, gPCHN: cc, gRHN: dc, gPCCN: fc, gLCN: ec, gMSIDCN: fb, cfgO: jc, pCfg: jb, pCSAA: pa, cFHFAU: Ba, sCD: Ca, bcv: m, ncv: ra, scv: n, stcv: ic, rplC: kb, cLSCK: za, gFId: mc, gBAU: Ea, iS: Da, eWE: ta, oEIE: nc, oEIEWA: sa, eA: oc, dA: pc, gcSId: qc, iNV: wc, gVID: Sa, dPV: xc, ePV: yc, sVIdUP: Ja, sVTT: tc, sVID: Pa, rVID: Ma, gVI: Ka, gNVId: L, gARnVF: uc, cAUV: vc, uVT: A, aNVL: sc, gPC: X, cPC: ub, sPC: ha, clB: Rb, ct: Va, aRI: hb, iXB: ib, gXBR: gc, sXBR: hc, de: gb,
-          cCL: cb
-        }
+          e.dT_ = {
+            version: "10163190220134628", cfg: e.dT_ ? e.dT_.cfg : "", iCE: e.dT_ ? e.dT_.iCE : function () { return navigator.cookieEnabled }, ica: 1, disabled: !1, v: !1, gx: Gb, cx: Hb, mp: Ub, mtp: Wb, mi: Yb, mw: $b, gAST: Qb, ww: Nb, stu: Kb, nw: r, apush: h, st: aa, si: Jb, aBPSL: Wa, gBPSL: Ib, aBPSCC: Ob, gBPSCC: Pb, buildType: 0 === g ? "dynatrace" : "appmon", gSSV: ea, sSSV: F, rSSV: fa,
+            rvl: ga, pn: Q, iVSC: ob, p3SC: sb, pLSC: rb, io: k, dC: p, sC: y, esc: Sb, gSId: J, gDtc: K, gSC: pb, sSC: U, gC: E, cRN: P, cRS: w, gEL: bb, gEBTN: ab, gSCN: bc, gPCHN: cc, gRHN: dc, gPCCN: fc, gLCN: ec, gMSIDCN: fb, cfgO: jc, pCfg: jb, pCSAA: pa, cFHFAU: Ba, sCD: Ca, bcv: m, ncv: ra, scv: n, stcv: ic, rplC: kb, cLSCK: za, gFId: mc, gBAU: Ea, iS: Da, eWE: ta, oEIE: nc, oEIEWA: sa, eA: oc, dA: pc, gcSId: qc, iNV: wc, gVID: Sa, dPV: xc, ePV: yc, sVIdUP: Ja, sVTT: tc, sVID: Pa, rVID: Ma, gVI: Ka, gNVId: L, gARnVF: uc, cAUV: vc, uVT: A, aNVL: sc, gPC: X, cPC: ub, sPC: ha, clB: Rb, ct: Va, aRI: hb, iXB: ib, gXBR: gc, sXBR: hc, de: gb,
+            cCL: cb
+          }
         } var B = window; if (!B.dT_ || !B.dT_.cfg || "string" != typeof B.dT_.cfg || B.dT_.initialized) B.console && B.console.log("Initconfig not found or agent already initialized! This is an injection issue."); else if (!(navigator.userAgent && 0 <= navigator.userAgent.indexOf("RuxitSynthetic"))) {
           var e = "undefined" !== typeof window ? window : self, ka, la, wa, Za = [], xa, Ga, da, ba = {}, Tb = new (function () {
             return function () {
-            this["!"] = "%21"; this["~"] = "%7E"; this["*"] = "%2A"; this["("] = "%28"; this[")"] = "%29"; this["'"] = "%27"; this.$ = "%24";
+              this["!"] = "%21"; this["~"] = "%7E"; this["*"] = "%2A"; this["("] = "%28"; this[")"] = "%29"; this["'"] = "%27"; this.$ = "%24";
               this[";"] = "%3B"; this[","] = "%2C"
             }
           }()), na, Xa, Zb = e.postMessage, Ya = e.Worker, Lb = e.Blob, Mb = e.URL && e.URL.createObjectURL, ac = e.Worker && e.Worker.prototype.postMessage, Vb = e.parent.postMessage, Xb = e.top.postMessage, O, ya, ca = !1, g, qa, R = "dtPC", D = "dtCookie", db = "x-dtpc", eb = "x-dtreferer", oa = "dtLatC", S, f = {}, mb = !!navigator.userAgent && 0 <= navigator.userAgent.indexOf("RuxitSynthetic"), z = [], W, La = 6E8, Fb, Fa, I, Ac = { childList: !0, subtree: !0, attributes: !0, attributeOldValue: !0 }, Bc = ["_DT_RENDERING_"], t = [], q, M = "rxvisitid", Ra, xb = 18E5,
-          Db = 216E5, Y = !1, Oa = [], Ia = !1, Ua = "dt-pVO", Ta = 45, Eb = !1; (function (a) {
-            try {
-              g = a; var b = e.dT_; ka = e.XMLHttpRequest; la = e.ActiveXObject; na = e.setTimeout; Xa = e.setInterval; ca || (O = e.clearTimeout, ya = e.clearInterval); if (b.iCE && !b.iCE() || !navigator.cookieEnabled) return !1; zc(); try { Ga = e.localStorage, da = e.sessionStorage } catch (ua) { } xa = r(); wa = []; ba = {}; ca || (e.clearTimeout = $a(O), e.clearInterval = $a(ya), ca = !0); W = xa % La + "_" + Q(P(0, 1E3) + ""); qa = {
-                ade: "", agentLocation: "", agentname: "", agentUri: "", uana: "data-dtname,data-dtName", app: "",
-                async: !1, auto: !1, bandwidth: "300", bp1: !1, bp2: !1, bp: 0 === g ? 1 : 2, bs: !1, buildNumber: 0, coo: !1, cooO: !1, cors: !1, csu: "", cux: !1, dataDtConfig: "", debugName: "", disableCookieManager: !1, disableLogging: !1, dmo: !1, dpvc: !1, disableXhrFailures: !1, domain: "", domainOverride: "", doNotDetect: "", dsndb: !1, dsss: !1, euf: !1, evl: "", extblacklist: "", exteventsoff: !1, fa: !1, featureHash: "", ffi: !1, hvt: 216E5, lastModification: 0, imm: !1, initializedModules: "", ign: "", instr: "", lab: !1, legacy: !1, lmut: !0, lzwd: !1, lzwe: !1, md: "", name: "", mdn: 5E3, mepp: 10,
-                moa: 30, mrt: 3, msl: 3E4, mhl: 4E3, ncw: !1, ntd: !1, oat: 180, ote: !1, perfbv: 1, pui: !1, pVO: !1, rdnt: 0, reportUrl: "dynaTraceMonitor", restoreTimeline: !1, rid: "", ridPath: "", rpid: "", rt: 0 === g ? 1E4 : 0, rtl: 0 === g ? 0 : 100, rtp: 0 === g ? 2 : 1, rtt: 1E3, rtu: 200, rx_visitID: "", sl: 100, sosi: !1, spc: "", srbbv: 1, srbw: !0, srad: !0, srmr: 100, srms: "1,1,,,", srsr: 1E5, srtbv: 3, srtd: 1, srtr: 500, srwo: !1, ssc: !1, st: 3E3, svNB: !1, syntheticConfig: !1, tal: 0, tp: "500,50,3", tt: 100, tvc: 3E3, uam: !1, useNewCookies: !1, uxrgce: !0, uxrgcm: "100,25,300,3;100,25,300,3", vcfi: !1, WST: !1,
-                xb: "", xmut: !0, xt: 0
-              }; a: {
-                var c = x().cfg; f = { reportUrl: "dynaTraceMonitor", initializedModules: "", csu: "dtagent", dataDtConfig: "string" === typeof c ? c : "" }; x().cfg = f; 0 === g && (f.csu = "ruxitagentjs"); var d = f.dataDtConfig; d && -1 === k(d, "#CONFIGSTRING") && (pa(d, f), Aa("domain"), Aa("auto"), Aa("app"), Ba(f)); var h = ab("script"), p = bb(h), l = -1 === k(f.dataDtConfig || "", "#CONFIGSTRING") ? f : null; if (0 < p) for (a = 0; a < p; a++)b: {
-                  var b = void 0, q = h[a], c = l; if (q.attributes) {
-                    var y = f.csu + "_bootstrap.js", d = /.*\/jstag\/.*\/.*\/(.*)_bs(_dbg)?.js$/,
-                    z = c, N = q.src, t = N && N.indexOf(y), B = q.attributes.getNamedItem("data-dtconfig"); if (B) { var w = N, F = B.value, u = {}; f.legacy = !0; if (w) { var Z = /([a-zA-Z]*)[0-9]{0,4}_([a-zA-Z_0-9]*)_([0-9]+)/g.exec(w); Z && Z.length && (u.csu = Z[1], u.featureHash = Z[2], 0 === g && (u.agentLocation = w.substr(0, k(w, Z[1]) - 1), u.buildNumber = Z[3])) } F && pa(F, u, !0); lb(u.domain) || (u.domainOverride = location.hostname + "," + u.domain, delete u.domain); b = u; if (!c) z = b; else if (!b.syntheticConfig) { l = b; break b } } b || (b = f); if (t && 0 <= t) {
-                      var H = t + y.length + 5; b.app = N.length >
-                        H ? N.substr(H) : "Default%20Application"
-                    } else if (N) { var J = d.exec(N); J && (b.app = J[1]) } l = z
-                  } else l = c
-                } if (l) for (var K in l) l.hasOwnProperty(K) && (h = K, f[h] = l[h]); f.rx_visitID && (x().rx_visitID = f.rx_visitID); var X = za(); try {
-                  var L = (l = Ga) && l.getItem(X); if (L) {
-                    var ia = jb(L), v = pa(ia.config || ""), A = f.lastModification || "0", M = Q((v.lastModification || ia.lastModification || "0").substr(0, 13)), Y = "string" === typeof A ? Q(A.substr(0, 13)) : A; if (!A || M >= Y) if (v.agentname = ia.name, v.agentUri ? Ba(v) : (v.csu = ia.name, v.featureHash = ia.featureHash),
-                      Ca(v, !0), ib(v), hb(v), M > (f.lastModification || 0)) { var aa = m("auto"); f = kb(v); f.auto = aa }
-                  }
-                } catch (ua) { } Ca(f); try { var S = f.ign; if (S && (new RegExp(S)).test(e.location.href)) { document.dT_ = e.dT_ = void 0; var ja = !1; break a } } catch (ua) { } f.useNewCookies && 0 === g && (R = "rxpc", D = "rxsession", oa = "rxlatency", db = "x-rxpc", eb = "x-rxreferer"); ja = !0
-              } if (!ja) return !1; lc(); try { Fb = x().disabled || !!ea("dtDisabled") } catch (ua) { } var va; if (!(va = n("agentLocation"))) a: {
-                var T = n("agentUri"); if (T || document.currentScript) {
-                  var C = T || document.currentScript.src;
-                  if (C) { var fa = -1 === k(C, "_bs") && -1 === k(C, "_bootstrap") && -1 === k(C, "_complete") ? 1 : 2, G = C.lastIndexOf("/"); for (ja = 0; ja < fa && -1 !== G; ja++)C = C.substr(0, G), G = C.lastIndexOf("/"); va = C; break a }
-                } var U = location.pathname; va = U.substr(0, U.lastIndexOf("/"))
-              } Fa = va; I = n("agentname") || n("csu") || (0 === g ? "ruxitagentjs" : "dtagent"); "true" === E("dtUseDebugAgent") ? 0 > I.indexOf("dbg") && (I = n("debugName") || I + "dbg") : I = n("name") || I; if (!m("auto") && !m("legacy") && !Fb) {
-                var V = n("agentUri") || Ea(n("featureHash")); m("async") || "complete" === document.readyState ?
-                  Da(V, m("async")) : document.write('<script type="text/javascript" src="' + V + '">\x3c/script>')
-              } var ga = e.location.href; 0 === g && -1 !== k(ga, "_DT_RENDERING_") && (x().RMOD = { conf: Ac, ignore: Bc, ID: "_DT_RENDERING_" }, Fa && Da(Ea("R"), !0)); E(D) && (f.cooO = !0); rc(); if (0 === g) { var ha = !!Ha(Ua); f.pVO = ha; ta(Sa) } 0 === g && ra("hvt") && (Db = ra("hvt")); sa(ub, [1])
-            } catch (ua) { return !1 } return !0
-          })(0) || (delete e.dT_, cb() && e.console.log("JsAgent initCode initialization failed!"))
+            Db = 216E5, Y = !1, Oa = [], Ia = !1, Ua = "dt-pVO", Ta = 45, Eb = !1; (function (a) {
+              try {
+                g = a; var b = e.dT_; ka = e.XMLHttpRequest; la = e.ActiveXObject; na = e.setTimeout; Xa = e.setInterval; ca || (O = e.clearTimeout, ya = e.clearInterval); if (b.iCE && !b.iCE() || !navigator.cookieEnabled) return !1; zc(); try { Ga = e.localStorage, da = e.sessionStorage } catch (ua) { } xa = r(); wa = []; ba = {}; ca || (e.clearTimeout = $a(O), e.clearInterval = $a(ya), ca = !0); W = xa % La + "_" + Q(P(0, 1E3) + ""); qa = {
+                  ade: "", agentLocation: "", agentname: "", agentUri: "", uana: "data-dtname,data-dtName", app: "",
+                  async: !1, auto: !1, bandwidth: "300", bp1: !1, bp2: !1, bp: 0 === g ? 1 : 2, bs: !1, buildNumber: 0, coo: !1, cooO: !1, cors: !1, csu: "", cux: !1, dataDtConfig: "", debugName: "", disableCookieManager: !1, disableLogging: !1, dmo: !1, dpvc: !1, disableXhrFailures: !1, domain: "", domainOverride: "", doNotDetect: "", dsndb: !1, dsss: !1, euf: !1, evl: "", extblacklist: "", exteventsoff: !1, fa: !1, featureHash: "", ffi: !1, hvt: 216E5, lastModification: 0, imm: !1, initializedModules: "", ign: "", instr: "", lab: !1, legacy: !1, lmut: !0, lzwd: !1, lzwe: !1, md: "", name: "", mdn: 5E3, mepp: 10,
+                  moa: 30, mrt: 3, msl: 3E4, mhl: 4E3, ncw: !1, ntd: !1, oat: 180, ote: !1, perfbv: 1, pui: !1, pVO: !1, rdnt: 0, reportUrl: "dynaTraceMonitor", restoreTimeline: !1, rid: "", ridPath: "", rpid: "", rt: 0 === g ? 1E4 : 0, rtl: 0 === g ? 0 : 100, rtp: 0 === g ? 2 : 1, rtt: 1E3, rtu: 200, rx_visitID: "", sl: 100, sosi: !1, spc: "", srbbv: 1, srbw: !0, srad: !0, srmr: 100, srms: "1,1,,,", srsr: 1E5, srtbv: 3, srtd: 1, srtr: 500, srwo: !1, ssc: !1, st: 3E3, svNB: !1, syntheticConfig: !1, tal: 0, tp: "500,50,3", tt: 100, tvc: 3E3, uam: !1, useNewCookies: !1, uxrgce: !0, uxrgcm: "100,25,300,3;100,25,300,3", vcfi: !1, WST: !1,
+                  xb: "", xmut: !0, xt: 0
+                }; a: {
+                  var c = x().cfg; f = { reportUrl: "dynaTraceMonitor", initializedModules: "", csu: "dtagent", dataDtConfig: "string" === typeof c ? c : "" }; x().cfg = f; 0 === g && (f.csu = "ruxitagentjs"); var d = f.dataDtConfig; d && -1 === k(d, "#CONFIGSTRING") && (pa(d, f), Aa("domain"), Aa("auto"), Aa("app"), Ba(f)); var h = ab("script"), p = bb(h), l = -1 === k(f.dataDtConfig || "", "#CONFIGSTRING") ? f : null; if (0 < p) for (a = 0; a < p; a++)b: {
+                    var b = void 0, q = h[a], c = l; if (q.attributes) {
+                      var y = f.csu + "_bootstrap.js", d = /.*\/jstag\/.*\/.*\/(.*)_bs(_dbg)?.js$/,
+                        z = c, N = q.src, t = N && N.indexOf(y), B = q.attributes.getNamedItem("data-dtconfig"); if (B) { var w = N, F = B.value, u = {}; f.legacy = !0; if (w) { var Z = /([a-zA-Z]*)[0-9]{0,4}_([a-zA-Z_0-9]*)_([0-9]+)/g.exec(w); Z && Z.length && (u.csu = Z[1], u.featureHash = Z[2], 0 === g && (u.agentLocation = w.substr(0, k(w, Z[1]) - 1), u.buildNumber = Z[3])) } F && pa(F, u, !0); lb(u.domain) || (u.domainOverride = location.hostname + "," + u.domain, delete u.domain); b = u; if (!c) z = b; else if (!b.syntheticConfig) { l = b; break b } } b || (b = f); if (t && 0 <= t) {
+                          var H = t + y.length + 5; b.app = N.length >
+                            H ? N.substr(H) : "Default%20Application"
+                        } else if (N) { var J = d.exec(N); J && (b.app = J[1]) } l = z
+                    } else l = c
+                  } if (l) for (var K in l) l.hasOwnProperty(K) && (h = K, f[h] = l[h]); f.rx_visitID && (x().rx_visitID = f.rx_visitID); var X = za(); try {
+                    var L = (l = Ga) && l.getItem(X); if (L) {
+                      var ia = jb(L), v = pa(ia.config || ""), A = f.lastModification || "0", M = Q((v.lastModification || ia.lastModification || "0").substr(0, 13)), Y = "string" === typeof A ? Q(A.substr(0, 13)) : A; if (!A || M >= Y) if (v.agentname = ia.name, v.agentUri ? Ba(v) : (v.csu = ia.name, v.featureHash = ia.featureHash),
+                        Ca(v, !0), ib(v), hb(v), M > (f.lastModification || 0)) { var aa = m("auto"); f = kb(v); f.auto = aa }
+                    }
+                  } catch (ua) { } Ca(f); try { var S = f.ign; if (S && (new RegExp(S)).test(e.location.href)) { document.dT_ = e.dT_ = void 0; var ja = !1; break a } } catch (ua) { } f.useNewCookies && 0 === g && (R = "rxpc", D = "rxsession", oa = "rxlatency", db = "x-rxpc", eb = "x-rxreferer"); ja = !0
+                } if (!ja) return !1; lc(); try { Fb = x().disabled || !!ea("dtDisabled") } catch (ua) { } var va; if (!(va = n("agentLocation"))) a: {
+                  var T = n("agentUri"); if (T || document.currentScript) {
+                    var C = T || document.currentScript.src;
+                    if (C) { var fa = -1 === k(C, "_bs") && -1 === k(C, "_bootstrap") && -1 === k(C, "_complete") ? 1 : 2, G = C.lastIndexOf("/"); for (ja = 0; ja < fa && -1 !== G; ja++)C = C.substr(0, G), G = C.lastIndexOf("/"); va = C; break a }
+                  } var U = location.pathname; va = U.substr(0, U.lastIndexOf("/"))
+                } Fa = va; I = n("agentname") || n("csu") || (0 === g ? "ruxitagentjs" : "dtagent"); "true" === E("dtUseDebugAgent") ? 0 > I.indexOf("dbg") && (I = n("debugName") || I + "dbg") : I = n("name") || I; if (!m("auto") && !m("legacy") && !Fb) {
+                  var V = n("agentUri") || Ea(n("featureHash")); m("async") || "complete" === document.readyState ?
+                    Da(V, m("async")) : document.write('<script type="text/javascript" src="' + V + '">\x3c/script>')
+                } var ga = e.location.href; 0 === g && -1 !== k(ga, "_DT_RENDERING_") && (x().RMOD = { conf: Ac, ignore: Bc, ID: "_DT_RENDERING_" }, Fa && Da(Ea("R"), !0)); E(D) && (f.cooO = !0); rc(); if (0 === g) { var ha = !!Ha(Ua); f.pVO = ha; ta(Sa) } 0 === g && ra("hvt") && (Db = ra("hvt")); sa(ub, [1])
+              } catch (ua) { return !1 } return !0
+            })(0) || (delete e.dT_, cb() && e.console.log("JsAgent initCode initialization failed!"))
         }
       })();
     }).call(this);
@@ -175,7 +177,7 @@
     {{ partial "header.html" . }}
     {{ partial "github-corner.html" . }}
     <div class="main">
-    {{ block "main" . }}
+      {{ block "main" . }}
     </div>
     {{ end }}
 
