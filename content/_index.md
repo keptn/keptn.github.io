@@ -4,7 +4,7 @@ date: 2018-02-12T15:37:57+07:00
 ---
 
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-6 pb-sm-2">
     <h1 style="font-family: lora, 'Open Sans', Arial, sans-serif, -apple-system">/keptn/</h1>
 
     <br>
@@ -19,7 +19,7 @@ date: 2018-02-12T15:37:57+07:00
       <li><strong>SREs</strong> can enforce processes instead of debugging problems</li>
     </ul>
 
-    <a href="/docs/0.3.0/installation/setup-keptn/" class="mt-1 btn btn-primary btn-block">Get Started!</a>
+    <a href="/docs/0.3.0/installation/setup-keptn/" class="mt-2 btn btn-primary btn-block">Get Started!</a>
 
 
   </div>
