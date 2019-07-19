@@ -2,22 +2,64 @@
 {{ define "header_css" }}{{ end }}
 {{ define "body_classes" }}page-home{{ end }}
 {{ define "header_classes" }}header-transparent{{ end }}
+{{ define "header_js"}}
+<script src="https://cdn.jsdelivr.net/npm/typeit@6.0.3/dist/typeit.min.js" />
+{{end}}
 {{ define "meta"}}
 <meta property="og:description" content="Building the fabric for cloud-native lifecycle automation at enterprise scale">
 <meta property="og:title" content="keptn - Continuous Delivery and Operations for Kubernetes">
 <meta property="og:image" content="https://keptn.sh/favicon.png">
 <meta property="og:url" content="https://keptn.sh/index.html">
 <meta name="twitter:card" content="summary_large_image">
+
 {{ end }}
 
 {{ define "main" }}
 
-<div class="intro pb-2">
+<div class="intro">
   <div class="container">
     {{ .Content }}
   </div>
 </div>
 
+<div class="strip strip-grey">
+  <div class="container  pt-sm-4 pb-sm-4">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <h2 class="text-dark mb-3">Use cases</h2>
+      </div>
+
+      <div class="col-12">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+          <li class="nav-item">
+            <a class="nav-link active" id="developer-tab" data-toggle="tab" href="#developer" role="tab" aria-controls="developer" aria-selected="true">Developer</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="devops-tab" data-toggle="tab" href="#devops" role="tab" aria-controls="devops" aria-selected="false">DevOps</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="sre-tab" data-toggle="tab" href="#sre" role="tab" aria-controls="sre" aria-selected="false">SRE</a>
+          </li>
+
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="developer" role="tabpanel" aria-labelledby="developer-tab">
+            <img src="/images/dev_usecase_animated.gif" alt="keptn for developers" />
+          </div>
+          <div class="tab-pane fade" id="devops" role="tabpanel" aria-labelledby="devops-tab">
+              <img class="img-fluid" src="/images/devops_usecase_animated.gif" alt="keptn for DevOps"/>
+            </div>
+          <div class="tab-pane fade" id="sre" role="tabpanel" aria-labelledby="sre-tab">
+              <img class="img-fluid" src="/images/sre_usecase_animated.gif" alt="keptn for SREe"/>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 <div class="container pt-2 pt-md-2 pb-md-2">
   <div class="row justify-content-start">
@@ -55,91 +97,91 @@
 
 
 <div class="strip strip-grey">
-<div class="container pt-5 pb-5 pt-md-8 pb-md-8">
-  <div class="row justify-content-center">
-    <div class="col-12">
-      <h2 class="text-center text-dark mb-3">Core capabilities</h2>
-    </div>
+  <div class="container pt-5 pb-5 pt-md-8 pb-md-8">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <h2 class="text-center text-dark mb-3">Core capabilities</h2>
+      </div>
 
-    <div class="col-12 col-md-6 col-lg-4 mb-2">
-      <div class="feature">
-        <div class="feature-image"><img alt="" src="/images/water-pipe-100.png" /></div>
-        <h2 class="feature-title">Automated multistage unbreakable delivery pipelines</h2>
-        <div class="feature-content">GitOps-enabled delivery pipelines with automated quality gates support automated testing and monitoring-as-a-service.</div>
+      <div class="col-12 col-md-6 col-lg-4 mb-2">
+        <div class="feature">
+          <div class="feature-image"><img alt="" src="/images/water-pipe-100.png" /></div>
+          <h2 class="feature-title">Automated multistage unbreakable delivery pipelines</h2>
+          <div class="feature-content">GitOps-enabled delivery pipelines with automated quality gates support automated testing and monitoring-as-a-service.</div>
+        </div>
       </div>
-    </div>
-    <div class="col-12 col-md-6 col-lg-4 mb-2">
-      <div class="feature">
-        <div class="feature-image"><img alt="" src="/images/fixpack-gray700.png" /></div>
-        <h2 class="feature-title">Self-healing blue/green deployments</h2>
-        <div class="feature-content">Deployments that follow the “Operations as Code” paradigm automatically remediate problems and get your deployment pipeline working again in under a minute.</div>
+      <div class="col-12 col-md-6 col-lg-4 mb-2">
+        <div class="feature">
+          <div class="feature-image"><img alt="" src="/images/fixpack-gray700.png" /></div>
+          <h2 class="feature-title">Self-healing blue/green deployments</h2>
+          <div class="feature-content">Deployments that follow the “Operations as Code” paradigm automatically remediate problems and get your deployment pipeline working again in under a minute.</div>
+        </div>
       </div>
-    </div>
-    <div class="col-12 col-md-6 col-lg-4 mb-2">
-      <div class="feature">
-        <div class="feature-image"><img alt="" src="/images/repair-gray700.png" /></div>
-        <h2 class="feature-title">Event-driven runbook automation</h2>
-        <div class="feature-content">Production problems can be automatically remediated in real-time by executing runbooks that require no manual intervention.</div>
+      <div class="col-12 col-md-6 col-lg-4 mb-2">
+        <div class="feature">
+          <div class="feature-image"><img alt="" src="/images/repair-gray700.png" /></div>
+          <h2 class="feature-title">Event-driven runbook automation</h2>
+          <div class="feature-content">Production problems can be automatically remediated in real-time by executing runbooks that require no manual intervention.</div>
+        </div>
       </div>
-    </div>
 
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <br><br>
+        <h2 class="text-center text-dark mb-3">Design principles</h2>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4 mb-2">
+        <div class="feature">
+          <div class="feature-image"><img alt="" src="/images/git-signet-gray700.png" /></div>
+          <h2 class="feature-title">GitOps-based collaboration</h2>
+          <div class="feature-content">All keptn workflows are based on the GitOps paradigm.</div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4 mb-2">
+        <div class="feature">
+          <div class="feature-image"><img alt="" src="/images/services-gray700.png" /></div>
+          <h2 class="feature-title">Operator patterns for all logic components</h2>
+          <div class="feature-content">Logic components can be reused for other operational tasks.</div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4 mb-2">
+        <div class="feature">
+          <div class="feature-image"><img alt="" src="images/coding-gray700.png" /></div>
+          <h2 class="feature-title">Monitoring and operations as code</h2>
+          <div class="feature-content">Developer-friendly definition of monitoring and operational tasks.</div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4 mb-2">
+        <div class="feature">
+          <div class="feature-image"><img alt="" src="images/kubernetes-signet-gray700.png" /></div>
+          <h2 class="feature-title">Built on and for Kubernetes</h2>
+          <div class="feature-content">Built for modern cloud-native environments.</div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4 mb-2">
+        <div class="feature">
+          <div class="feature-image"><img alt="" src="images/serverless-icon.png" /></div>
+          <h2 class="feature-title">Event-driven and serverless</h2>
+          <div class="feature-content">Powerful with a minimal resource footprint.</div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4 mb-2">
+        <div class="feature">
+          <div class="feature-image"><img alt="" src="images/plug-in-connection-gray700.png" /></div>
+          <h2 class="feature-title">Pluggable tooling</h2>
+          <div class="feature-content">All tools leveraged by keptn can be replaced based on your tool preferences.</div>
+        </div>
+      </div>
+
+    </div>
   </div>
-  <div class="row justify-content-center">
-    <div class="col-12">
-      <br><br>
-      <h2 class="text-center text-dark mb-3">Design principles</h2>
-    </div>
-
-    <div class="col-12 col-md-6 col-lg-4 mb-2">
-      <div class="feature">
-      <div class="feature-image"><img alt="" src="/images/git-signet-gray700.png" /></div>
-        <h2 class="feature-title">GitOps-based collaboration</h2>
-        <div class="feature-content">All keptn workflows are based on the GitOps paradigm.</div>
-      </div>
-    </div>
-
-    <div class="col-12 col-md-6 col-lg-4 mb-2">
-      <div class="feature">
-      <div class="feature-image"><img alt="" src="/images/services-gray700.png" /></div>
-        <h2 class="feature-title">Operator patterns for all logic components</h2>
-        <div class="feature-content">Logic components can be reused for other operational tasks.</div>
-      </div>
-    </div>
-
-    <div class="col-12 col-md-6 col-lg-4 mb-2">
-      <div class="feature">
-      <div class="feature-image"><img alt="" src="images/coding-gray700.png" /></div>
-        <h2 class="feature-title">Monitoring and operations as code</h2>
-        <div class="feature-content">Developer-friendly definition of monitoring and operational tasks.</div>
-      </div>
-    </div>
-
-    <div class="col-12 col-md-6 col-lg-4 mb-2">
-      <div class="feature">
-      <div class="feature-image"><img alt="" src="images/kubernetes-signet-gray700.png" /></div>
-        <h2 class="feature-title">Built on and for Kubernetes</h2>
-        <div class="feature-content">Built for modern cloud-native environments.</div>
-      </div>
-    </div>
-
-    <div class="col-12 col-md-6 col-lg-4 mb-2">
-      <div class="feature">
-      <div class="feature-image"><img alt="" src="images/serverless-icon.png" /></div>
-        <h2 class="feature-title">Event-driven and serverless</h2>
-        <div class="feature-content">Powerful with a minimal resource footprint.</div>
-      </div>
-    </div>
-
-    <div class="col-12 col-md-6 col-lg-4 mb-2">
-      <div class="feature">
-      <div class="feature-image"><img alt="" src="images/plug-in-connection-gray700.png" /></div>
-        <h2 class="feature-title">Pluggable tooling</h2>
-        <div class="feature-content">All tools leveraged by keptn can be replaced based on your tool preferences.</div>
-      </div>
-    </div>
-
-  </div>
-</div>
 </div>
 {{ end }}
 
