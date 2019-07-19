@@ -240,11 +240,9 @@ in the version of the latest release. Since v0.3 of keptn, the install command a
             <li>A NATS Cluster</li>
             <li>The keptn core services:</li>
                 <ul>
-                    <li>authenticator</li>
+                    <li>api</li>
                     <li>bridge</li>
-                    <li>control</li>
                     <li>eventbroker</li>
-                    <li>eventbroker-ext</li>
                 </ul>
             <li>The services are required to deploy artifacts and to demonstrate the self-healing use cases:</li>
                 <ul>
@@ -270,15 +268,13 @@ in the version of the latest release. Since v0.3 of keptn, the install command a
 
   ```console
   NAME                                                 READY     STATUS    RESTARTS   AGE
-  authenticator-c7cdfbd76-qdnbt                                     1/1       Running   0          1d
+  api-c7cdfbd76-qdnbt                                               1/1       Running   0          1d
   bridge-569c8447d-cl4sn                                            1/1       Running   0          1d
-  control-d7d6d88bb-s6mn2                                           1/1       Running   0          1d
   dispatcher-c9899f967-nncfz                                        1/1       Running   4          8d
   dynatrace-service-65d5f564d7-dt4vv                                1/1       Running   0          21h
   dynatrace-service-deployment-finished-distributor-78b4c9f94bsjr   1/1       Running   0          21h
   dynatrace-service-evaluation-done-distributor-5759df98dd-dz9cc    1/1       Running   0          21h
   dynatrace-service-tests-finished-distributor-9d8896665-vw7lm      1/1       Running   0          21h
-  event-broker-ext-678c4dc5b5-772x7                                 1/1       Running   0          1d
   event-broker-nats-8456c59fcc-q4qmj                                1/1       Running   4          8d
   eventbroker-go-cf967f7f5-h7vlh                                    1/1       Running   0          1d
   gatekeeper-service-5956b8f566-fh9h7                               1/1       Running   0          1d
