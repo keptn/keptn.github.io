@@ -82,7 +82,7 @@ More precisely, the keptn CLI stores the endpoint and API token using `pass` in 
 Set the needed environment variables.
 
 ```console
-KEPTN_ENDPOINT=https://api.keptn.$(kubectl get cm -n keptn keptn-domain -ojsonpath={.data.app_doman})
+KEPTN_ENDPOINT=https://api.keptn.$(kubectl get cm -n keptn keptn-domain -ojsonpath={.data.app_domain})
 KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
     
 ```
@@ -108,9 +108,9 @@ For the Windows PowerShell, a small script is provided that installs the `PSYaml
 1. Copy the following snippet and paste it in your PowerShell. The snippet will be automatically executed line by line.
 
     ```
-    $tokenEncoded = $(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token})
+    $tokenEncoded = $(kubectl get secret keptn-api-token -n keptn -ojsonpath='{.data.keptn-api-token}')
     $Env:KEPTN_API_TOKEN = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($tokenEncoded))
-    $Env:KEPTN_ENDPOINT = https://api.keptn.$(kubectl get cm -n keptn keptn-domain -ojsonpath={.data.app_doman})
+    $Env:KEPTN_ENDPOINT = 'https://api.keptn.'+$(kubectl get cm -n keptn keptn-domain -ojsonpath='{.data.app_domain}')
     ```
 
 1. Now that everything we need is stored in environment variables, we can proceed with authorizing the keptn CLI. To authenticate against the keptn server use command auth and your endpoint and API token:
@@ -154,7 +154,11 @@ In the Windows Command Line, a couple of steps are necessary.
 1. Get the keptn server endpoint 
 
     ```console
-    echo https://api.keptn.$(kubectl get cm -n keptn keptn-domain -ojsonpath={.data.app_doman})
+    kubectl get cm -n keptn keptn-domain -ojsonpath={.data.app_domain}
+    ```
+
+    ```console
+    XX.XXX.XXX.XX.xip.io
     ```
 
 1. Copy the `domain` value and save it in an environment variable
