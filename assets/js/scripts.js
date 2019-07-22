@@ -54,7 +54,7 @@ if (TypeIt) {
         .break()
         .pause(500)
         .options({ speed: 0 })
-        .type('Updatding configuration for your DevOps tooling')
+        .type('Updating configuration for your DevOps tooling')
         .pause(500)
         .break()
         .type('Keptn now ready to receive your artifacts for this service')
