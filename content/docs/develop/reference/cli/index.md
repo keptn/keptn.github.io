@@ -231,7 +231,6 @@ keptn configure --org=gitHubOrg --user=gitHub_keptnUser --token=XYZ
 Before onboarding a service, a project needs to be created. A project represents a repository in the GitHub organization that is used by keptn. This project contains branches representing the multi-stage environment (e.g., dev, staging, and production stage). In other words, the separation of stage configurations is based on repository branches. To describe each stage, a `shipyard.yaml` file is needed that specifies the name, deployment strategy, and test strategy as shown below:
 
 ```yaml
-registry: sockshop
 stages:
   - name: "dev"
     deployment_strategy: "direct"

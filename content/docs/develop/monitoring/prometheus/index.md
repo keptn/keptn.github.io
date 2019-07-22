@@ -13,7 +13,7 @@ In order to evaluate the quality gates, we have to set up monitoring to provide 
     - If you have not yet onboarded the carts service, please execute the following commands to receive the needed files:
     
     ```
-    git clone --branch 0.2.0 https://github.com/keptn/examples.git --single-branch
+    git clone --branch 0.4.0 https://github.com/keptn/examples.git --single-branch
     cd ./examples/monitoring/prometheus
     ```
 
