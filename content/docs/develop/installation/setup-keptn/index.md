@@ -34,12 +34,8 @@ Select one of the following options:
   - [python 2.7](https://www.python.org/downloads/release/python-2716/) (required for Ubuntu 19.04)
 
 2. Create GKE cluster
-  - Master version >= `1.11.x` (tested version: `1.11.7-gke.12` and `1.12.7-gke.10`)
-  - One `n1-standard-16` node
-    <details><summary>Expand for details</summary>
-    {{< popup_image link="./assets/gke-cluster-size.png" 
-      caption="GKE cluster size" width="50%">}}
-    </details>
+  - Master version >= `1.11.x` (tested version: `1.12.8-gke.10`)
+  - One **n1-standard-4** node
   - Image type `ubuntu` or `cos` (if you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../monitoring/dynatrace/))
   - Sample script to create such cluster (adapt the values according to your needs)
 
@@ -49,11 +45,11 @@ Select one of the following options:
     CLUSTER_NAME=nameofcluster
     ZONE=us-central1-a
     REGION=us-central1
-    GKE_VERSION="1.12.7-gke.10"
+    GKE_VERSION="1.18.8-gke.10"
     ```
 
     ```console
-    gcloud beta container --project $PROJECT clusters create $CLUSTER_NAME --zone $ZONE --no-enable-basic-auth --cluster-version $GKE_VERSION --machine-type "n1-standard-16" --image-type "UBUNTU" --disk-type "pd-standard" --disk-size "100" --metadata disable-legacy-endpoints=true --scopes "https://www.googleapis.com/auth/devstorage.read_only","https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/monitoring","https://www.googleapis.com/auth/servicecontrol","https://www.googleapis.com/auth/service.management.readonly","https://www.googleapis.com/auth/trace.append" --num-nodes "1" --enable-cloud-logging --enable-cloud-monitoring --no-enable-ip-alias --network "projects/$PROJECT/global/networks/default" --subnetwork "projects/$PROJECT/regions/$REGION/subnetworks/default" --addons HorizontalPodAutoscaling,HttpLoadBalancing --no-enable-autoupgrade
+    gcloud beta container --project $PROJECT clusters create $CLUSTER_NAME --zone $ZONE --no-enable-basic-auth --cluster-version $GKE_VERSION --machine-type "n1-standard-4" --image-type "UBUNTU" --disk-type "pd-standard" --disk-size "100" --metadata disable-legacy-endpoints=true --scopes "https://www.googleapis.com/auth/devstorage.read_only","https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/monitoring","https://www.googleapis.com/auth/servicecontrol","https://www.googleapis.com/auth/service.management.readonly","https://www.googleapis.com/auth/trace.append" --num-nodes "1" --enable-cloud-logging --enable-cloud-monitoring --no-enable-ip-alias --network "projects/$PROJECT/global/networks/default" --subnetwork "projects/$PROJECT/regions/$REGION/subnetworks/default" --addons HorizontalPodAutoscaling,HttpLoadBalancing --no-enable-autoupgrade
     ```
  </p>
 </details>
@@ -160,11 +156,8 @@ Select one of the following options:
 
 2. Create AKS cluster
   - Master version >= `1.12.x` (tested version: `1.12.8`)
-  - One `D16s_v3` node
-    <details><summary>Expand for details</summary>
-    {{< popup_image link="./assets/aks-cluster-size.png" 
-      caption="AKS cluster size" width="100%">}}
-    </details>  
+  - One **B4ms** node
+ 
  </p>
 </details>
 
