@@ -125,7 +125,7 @@ The used artifact is stored on Docker Hub.
 
 1. Go to the keptn's bridge and check which events have already been generated. You can access it by a port-forward from your local machine to the Kubernetes cluster:
   ```console 
-  kubectl port-forward svc/$(kubectl get ksvc bridge -n keptn -ojsonpath={.status.latestReadyRevisionName})-service -n keptn 9000:80
+  kubectl port-forward svc/bridge -n keptn 9000:8080
   ```
   Now access the bridge from your browser on http://localhost:9000. 
   \\

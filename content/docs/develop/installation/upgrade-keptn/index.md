@@ -11,7 +11,7 @@ If you want to upgrade your existing Keptn installation, please uninstall Keptn 
 
 ## Uninstall Keptn
 
-For uninstalling Keptn, please [downlaod this file](https://github.com/keptn/installer/blob/0.4.0/scripts/common/uninstallKeptn030.sh) and execute it:
+For uninstalling Keptn, please [download this file](https://github.com/keptn/installer/blob/0.4.0/scripts/common/uninstallKeptn030.sh) and execute it:
 ```
 ./uninstalKeptn030.sh
 ```
