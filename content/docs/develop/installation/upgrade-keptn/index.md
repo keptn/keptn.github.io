@@ -6,84 +6,24 @@ icon: setup
 keywords: upgrade
 ---
 
-For upgrading an existing keptn 0.2.0, 0.2.1 or 0.2.2 installation, an upgrade script is provided. This will update all keptn core components to their new version and installs the keptn's bridge.
+Since we introduced breaking changes with Keptn 0.4.0 due to the removal of knative as a core technology, an upgrade script can unfortunately not be provided.
+If you want to upgrade your existing Keptn installation, please uninstall Keptn and install it with the new Keptn CLI 0.4.0.
 
-## Prerequisites
-   
-- Please note that all [command line tools](../setup-keptn-gke#prerequisites) are needed when upgrading keptn.
-  
-    - Additionally, [yq](https://github.com/mikefarah/yq) is required.
+## Uninstall Keptn
 
-- Furthermore, please note that we increaded the GKE cluster size to one `n1-standard-16` node.
+For uninstalling Keptn, please [downlaod this file](https://github.com/keptn/installer/blob/0.4.0/scripts/common/uninstallKeptn030.sh) and execute it:
+```
+./uninstalKeptn030.sh
+```
 
-- Make sure you are connected with the cluster running the keptn installation, which should be upgraded. Verify the connection by 
-  using the following command:
+## Install Keptn CLI
 
-  ``` console
-  kubectl config current-context
-  ```  
+Please refer to the [install section](../setup-keptn) to instal Keptn in version 0.4.0.
 
-## Upgrade keptn CLI
-
-- Download the version for your operating system from https://github.com/keptn/keptn/releases/tag/0.3.0
-- Unpack the download
-- Find the `keptn` binary in the unpacked directory.
-  - Linux / macOS
-    
-        add executable permissions (``chmod +x keptn``), and move it to the desired destination (e.g. `mv keptn /usr/local/bin/keptn`)
-
-  - Windows
-
-        move/copy the executable to the desired folder and, optionally, add the executable to your PATH environment variable for a more convenient experience.
-
-- For double checking the version of the CLI, run the `version` command in the CLI: 
-    - Linux / macOS
-
-    ```console
-    keptn version
-    ```
-
-    ```console
-    CLI version: 0.3.0
-    ```
-    
-    - Windows
-
-    ```console
-    .\keptn.exe version
-    ```
-
-     ```console
-    CLI version: 0.3.0
-    ```
-
-## Upgrade keptn from 0.2.x to 0.3.0
-
-- Clone the keptn installer repository of the latest release:
-
-  ``` console
-  git  clone --branch 0.3.0 https://github.com/keptn/installer
-  ``` 
-
-- Navigate to the scripts folder:
-
-  ```
-  cd  ./installer/scripts
-  ```
-
-- Run the keptn upgrade script:
-
-  ```
-  ./upgradeKeptn.sh <github_username> <github_access_token>
-  ```
-
-- **Note:** As of version 0.3.0, keptn does not require the Jenkins installation that was part of previous versions. The upgrade script will not remove the Jenkins deployment from the keptn namespace in your cluster, but it will remove the subscriptions of the Jenkins service. This means that from v0.3.0 on, the deployment, testing, and promotion of an artifact to the next stage will be performed by the `helm-service`, `jmeter-service`, and `gatekeeper-service`, respectively.
-
-- **Note:** In future releases of the keptn CLI, a command `keptn upgrade` will be added, which replaces the shell script `upgradeKeptn.sh`.
 
 ## Create project and onboard services
 
-Due to a breaking change from keptn 0.2.x to 0.3.0 regarding the naming convention of Kubernetes namespaces, it is necessary to re-create a keptn project and to onboard your services again.
+Due to a breaking change from Keptn 0.3.0 to 0.4.0 regarding the naming convention of Kubernetes namespaces, it is necessary to re-create a Keptn project and to onboard your services again.
 
 - Delete your configuration repository in your GitHub organization.
 
