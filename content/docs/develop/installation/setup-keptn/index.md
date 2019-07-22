@@ -261,36 +261,31 @@ Every release of Keptn provides binaries for the Keptn CLI. These binaries are a
   ```
 
   ```console
-  NAME                                                 READY     STATUS    RESTARTS   AGE
-  authenticator-c7cdfbd76-qdnbt                                     1/1       Running   0          1d
-  bridge-569c8447d-cl4sn                                            1/1       Running   0          1d
-  control-d7d6d88bb-s6mn2                                           1/1       Running   0          1d
-  dispatcher-c9899f967-nncfz                                        1/1       Running   4          8d
-  dynatrace-service-65d5f564d7-dt4vv                                1/1       Running   0          21h
-  dynatrace-service-deployment-finished-distributor-78b4c9f94bsjr   1/1       Running   0          21h
-  dynatrace-service-evaluation-done-distributor-5759df98dd-dz9cc    1/1       Running   0          21h
-  dynatrace-service-tests-finished-distributor-9d8896665-vw7lm      1/1       Running   0          21h
-  event-broker-ext-678c4dc5b5-772x7                                 1/1       Running   0          1d
-  event-broker-nats-8456c59fcc-q4qmj                                1/1       Running   4          8d
-  eventbroker-go-cf967f7f5-h7vlh                                    1/1       Running   0          1d
-  gatekeeper-service-5956b8f566-fh9h7                               1/1       Running   0          1d
-  gatekeeper-service-evaluation-done-distributor-7447546786-f6mk2   1/1       Running   0          1d
-  github-service-7c7694d879-r7tkn                                   1/1       Running   0          1d
-  github-service-configure-distributor-787f669c8c-pfw4z             1/1       Running   0          1d
-  github-service-create-project-distributor-69f9f64c9b-hr2z5        1/1       Running   0          1d
-  github-service-new-artifact-distributor-75b8969c5b-vtgx5          1/1       Running   0          1d
-  github-service-onboard-service-distributor-7d9bc4b8f7-h67mv       1/1       Running   0          1d
-  helm-service-66ffc548b7-d5xwq                                     1/1       Running   0          1d
-  helm-service-configuration-changed-distributor-6cd44bfd5-smmpl    1/1       Running   0          1d
-  jmeter-service-7d67f8df49-4gr59                                   1/1       Running   0          1d
-  jmeter-service-deployment-distributor-c59bf6bd7-58cgk             1/1       Running   0          1d
-  keptn-nats-cluster-1                                              1/1       Running   0          21h
-  nats-operator-67945f5c9f-5mdp2                                    1/1       Running   2          8d
-  openshift-route-service-57b45c4dfc-4x5lm                          1/1       Running   0          1d (Openshift only)
-  openshift-route-service-create-project-distributor-7d4454cs44xp   1/1       Running   0          1d (Openshift only)
-  pitometer-service-6795d67c45-4hcds                                1/1       Running   0          1d
-  pitometer-service-tests-finished-distributor-8675f778f-dksht      1/1       Running   0          1d
-  servicenow-service-7b5784c589-dsrkx                               1/1       Running   0          1d
+  NAME                                                              READY     STATUS    RESTARTS   AGE
+  authenticator-75ffd6bbdc-8tks2                                    1/1       Running   0          2m
+  bridge-d5bc7c9b6-72h6n                                            1/1       Running   0          2m
+  control-599858b499-b8rmf                                          1/1       Running   0          2m
+  event-broker-ext-796fbb94f6-2dcs7                                 1/1       Running   0          2m
+  eventbroker-go-77d4fc7fdd-rmzxk                                   1/1       Running   0          2m
+  gatekeeper-service-787c6f7d84-j8s4f                               1/1       Running   0          1m
+  gatekeeper-service-evaluation-done-distributor-5b5f77c6ff-fhbbq   1/1       Running   0          32s
+  github-service-78d59d549d-qdfzg                                   1/1       Running   0          1m
+  github-service-configure-distributor-5955b674d6-7d44w             1/1       Running   0          33s
+  github-service-create-project-distributor-79fcbb7855-t9blj        1/1       Running   0          34s
+  github-service-new-artifact-distributor-5cf8d5c6f5-5szdt          1/1       Running   0          33s
+  github-service-onboard-service-distributor-56db7595cb-z2qkx       1/1       Running   0          34s
+  helm-service-85c9cbc96f-7t86h                                     1/1       Running   0          1m
+  helm-service-configuration-changed-distributor-545b8849b-wl2pq    1/1       Running   0          33s
+  jmeter-service-65b474cd75-pxn2m                                   1/1       Running   0          1m
+  jmeter-service-deployment-distributor-687b778dfd-twqrp            1/1       Running   0          33s
+  keptn-nats-cluster-1                                              1/1       Running   0          2m
+  nats-operator-67d8dd94d5-wjlsj                                    1/1       Running   0          3m
+  openshift-route-service-57b45c4dfc-4x5lm                          1/1       Running   0          1d (OpenShift only)
+  openshift-route-service-create-project-distributor-7d4454cs44xp   1/1       Running   0          1d (OpenShift only)
+  pitometer-service-56d75f9fcc-hcbbw                                1/1       Running   0          1m
+  pitometer-service-tests-finished-distributor-785bdc79d4-xbnpb     1/1       Running   0          33s
+  servicenow-service-86d6dfb7f7-dqcx6                               1/1       Running   0          1m
+  servicenow-service-problem-distributor-6d4fc577d9-wmfn4           1/1       Running   0          32s
   ```
 - To verify the Istio installation, retrieve all pods within the `istio-system` namespace and check whether they are in a running state:
   
@@ -299,9 +294,9 @@ Every release of Keptn provides binaries for the Keptn CLI. These binaries are a
   ```
 
   ```console
-  NAME                                      READY     STATUS      RESTARTS   AGE
-  istio-ingressgateway-67f6df7897-gfrvf   1/1       Running   2          8d
-  istio-pilot-7884d46f6-6526d             1/1       Running   0          8d
+  NAME                                    READY     STATUS    RESTARTS   AGE
+  istio-ingressgateway-6f46678699-c742n   1/1       Running   0          5m
+  istio-pilot-85b956b4bb-rbhnn            1/1       Running   0          5m
   ```
   If that is not the case, there may have been a problem during the installation. In that case, we kindly ask you to clean your cluster and restart the installation described in the **Troubleshooting** section below.
 
