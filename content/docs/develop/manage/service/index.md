@@ -49,11 +49,9 @@ SERVICENAME
 └── src
 └── ...
 ```
-
-
+<!--
 **TODO: explain that currently only JMeter is allowed for tests and which parameters are allowed.**
-
-
+-->
 An example of a perfspec file is listed below:
 
 ```json
@@ -79,9 +77,9 @@ An example of a perfspec file is listed below:
   }
 }
 ```
-
+<!--
 **TODO: explain pitometer file in more detail**
-
+-->
 In this file, [Prometheus](https://prometheus.io) is gathering metrics on the request latency in seconds. A threshold grader is then used to evaluate if the threshold is met. A score to this single metric is assigned, as well as objectives that have to be met to consider the quality of the service satisfying.
 
 To onboard a service, use the command `onboard service` and provide the project name (flag `--project`), the Helm chart values (flag `--values`) and optionally also deployment (flag `--deployment`) and service (flag `--service`) configuration.
