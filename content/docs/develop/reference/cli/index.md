@@ -207,17 +207,13 @@ In the Windows Command Line, a couple of steps are necessary.
 </p>
 </details>
 
-
-
-
-
 ## keptn configure 
 
 In order to work with GitHub (i.e. create a new project, make commits), keptn requires a
 GitHub organization, the GitHub user, and the GitHub personal access token belonging to that user.
 Therefore, the keptn CLI is used to set the GitHub organization, the GitHub user, and the GitHub personal access token belonging to that user in the keptn server.
 
-**Note:** Keptn is automatically configured after installing keptn using the CLI. Hence, `keptn configure` can be skipped
+**Note:** keptn is automatically configured after installing keptn using the CLI. Hence, `keptn configure` can be skipped
 
 To configure, use the command `configure` and specify the GitHub organization (flag `--org`), user (flag `--user`),
 and personal access token (flag `--token`):
