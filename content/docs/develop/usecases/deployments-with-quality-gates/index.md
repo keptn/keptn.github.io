@@ -104,7 +104,12 @@ Now, you have quality gates in place, which will check whether the average respo
   istio-ingressgateway     LoadBalancer   10.11.246.127   <EXTERNAL_IP>    80:32399/TCP 
   ```
 
-- Navigate to `http://carts.sockshop-production.<EXTERNAL_IP>.xip.io` for viewing the carts service in your `production` environment. 
+- Navigate to `http://carts.sockshop-production.<EXTERNAL_IP>.xip.io` for viewing the carts service in your `production` environment and you should receive an output similar to the following:
+
+    {{< popup_image
+      link="./assets/carts-production.png"
+      caption="carts service"
+      width="50%">}}
 
 
 ## Try to deploy the slow carts version
