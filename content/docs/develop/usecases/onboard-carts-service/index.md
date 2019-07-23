@@ -136,18 +136,6 @@ The used artifact is stored on Docker Hub.
       link="./assets/bridge.png"
       caption="keptn's bridge">}}
 
-<details><summary>Known issue for AKS installations</summary>
-<p>
-In AKS, the first functional check erroneously fails. Therefore, the artifact is not promoted into staging and production.
-We are addressing this bug in the [issue #483](https://github.com/keptn/keptn/issues/483).
-
-In order to pass this functional check, 
-please re-send a new artifact event for the carts service.
-  ```console
-  keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.8.1
-  ```
- </p>
-</details>
 
 ## View carts service
 
