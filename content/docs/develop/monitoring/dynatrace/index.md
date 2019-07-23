@@ -65,16 +65,16 @@ In order to evaluate the quality gates and allow self-healing in production, we 
     ./deployDynatraceOnAKS.sh
     ```
 
-  When this script is finished, the Dynatrace OneAgent and the dynatrace-service are deployed in your cluster. Execute the following command to verify the deployment of the dynatrace-service.
+When this script is finished, the Dynatrace OneAgent and the dynatrace-service are deployed in your cluster. Execute the following command to verify the deployment of the dynatrace-service.
 
-    ```console
-    kubectl get ksvc dynatrace-service -n keptn
-    ```
+```console
+kubectl get svc dynatrace-service -n keptn
+```
 
-    ```console
-    NAME                DOMAIN                                      LATESTCREATED             LATESTREADY               READY
-    dynatrace-service   dynatrace-service.keptn.svc.cluster.local   dynatrace-service-26sm4   dynatrace-service-26sm4   True
-    ```
+```console
+NAME                TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)    AGE
+dynatrace-service   ClusterIP   10.0.44.191   <none>        8080/TCP   2m48s
+```
 
 **Note 1:** To monitor the services that are already onboarded in the `dev`, `staging`, and `production` namespace, make sure to restart the pods. If you defined different environments in your shipyard file, please adjust the values accordingly. 
 ```console
@@ -87,14 +87,14 @@ kubectl delete pods --all --namespace=sockshop-production
 
 ### What was set up?
 
-In your Dynatrace tenant, when you navigate to "Settings -> Tags -> Automatically applied tags" you will find two entries:
+In your Dynatrace tenant, when you navigate to **Settings > Tags > Automatically applied tags** you will find two entries:
 
 - environemnt
 - service
 
 This means that Dynatrace will automatially apply tags on your onboarded services.
 
-In addition, a Problem Notification has automatically been set up to inform your keptn installation of any problems with your services to allow auto-remediation. This will be described in more detail in the [runbook automation and self-healing use case](../../usecases/runbook-automation-and-self-healing/). You can check the problem notification by navigating to **Settings -> Integration -> Problem notifications** and you will find a **keptn remediation** problem notification.
+In addition, a Problem Notification has automatically been set up to inform your keptn installation of any problems with your services to allow auto-remediation. This will be described in more detail in the [runbook automation and self-healing use case](../../usecases/runbook-automation-and-self-healing/). You can check the problem notification by navigating to **Settings > Integration > Problem notifications** and you will find a **keptn remediation** problem notification.
 
 
 ## See keptn events in Dynatrace
@@ -122,3 +122,17 @@ The Dynatrace service will take care of pushing events of the keptn workflow to 
     link="./assets/pg_naming.png"
     caption="Dynatrace naming rule">}}
 
+## Uninstall Dynatrace
+
+1. (Optional) If you do not have the repository dynatrace-service, clone the latest release using:
+
+  ```console
+  git clone --branch 0.2.0 https://github.com/keptn/dynatrace-service --single-branch
+  ```
+
+1. Go to correct folder and execute the uninstallDynatrace.sh script:
+
+  ```console
+  cd dynatrace-service/deploy/scripts
+  ./uninstallDynatrace.sh
+  ```

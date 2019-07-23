@@ -101,10 +101,10 @@ Now, you have quality gates in place, which will check whether the average respo
 
   ```console
   NAME                     TYPE           CLUSTER-IP      EXTERNAL-IP      PORT(S)
-  istio-ingressgateway     LoadBalancer   10.11.246.127   <EXTERNAL_IP>   80:32399/TCP 
+  istio-ingressgateway     LoadBalancer   10.11.246.127   <EXTERNAL_IP>    80:32399/TCP 
   ```
 
-- Navigate to `http://carts.sockshop-production.<EXTERNAL IP>.xip.io` for viewing the carts service in your `production` environment. 
+- Navigate to `http://carts.sockshop-production.<EXTERNAL_IP>.xip.io` for viewing the carts service in your `production` environment. 
 
 
 ## Try to deploy the slow carts version
@@ -128,7 +128,7 @@ slowdown of 1 second in each request.
       * **gatekeeper-service**: This service receives a `sh.keptn.events.evaluation-done` event, which contains the result of the evaluaton of the pitometer-service. Since in this case the performance test run failed, the gatekeeper-service automatically re-routes traffic to the previous colored blue or green version in `staging` and the artifact won't be promoted to `production`.
       
   **Outcome**: This slow version is **not** promoted to the `production` namespace because of the active quality gate in place.
-For verifying this, open a browser and navigate to `http://carts.sockshop-production.EXTERNAL-IP.xip.io/version`.
+For verifying this, open a browser and navigate to `http://carts.sockshop-production.<EXTERNAL_IP>.xip.io`.
 Here, you see that the version of the carts service has not changed.
 
 ## Deploy the regular carts version
@@ -142,7 +142,7 @@ Here, you see that the version of the carts service has not changed.
 
 1. In this case, the quality gate is passed and the service gets deployed in the `production` namespace. 
 
-1. To verify the deployment in `production`, open a browser an navigate to `http://carts.sockshop-production.EXTERNAL-IP.xip.io/version`. As a result, you see `Version: v3`.
+1. To verify the deployment in `production`, open a browser an navigate to `http://carts.sockshop-production.EXTERNAL-IP.xip.io`. As a result, you see `Version: v3`.
 
 1. Besides, you can verify the deployments in your Kubernetes cluster using the following commands: 
 
