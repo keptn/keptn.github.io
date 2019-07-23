@@ -1,12 +1,14 @@
 ---
-title: Setup Prometheus
+title: Prometheus
 description: How to setup Prometheus monitoring.
 weight: 10
 icon: setup
 keywords: setup
 ---
 
-In order to evaluate the quality gates, we have to set up monitoring to provide the needed data.
+In order to evaluate the quality gates, we have to set up monitoring to provide the needed data. The setup provided in this documenation is specific to the carts service that is used throughout all use cases. This requires that the created project is called *sockshop* and the service is called *carts* as described in the use case [onboarding a service](../onboard-carts-service).
+
+## Setup Prometheus
 
 1. Checkout the needed files.
 
@@ -49,4 +51,6 @@ To verify the Prometheus installation, you can browse to the Prometheus web inte
       caption="Prometheus Targets">}}
 
     Please note that if you have not onboarded the carts service yet, the Prometheus dashboard will report _down_ in the state column.
+
+## Uninstall Prometheus
 
