@@ -54,6 +54,9 @@ To verify the Prometheus installation, you can browse to the Prometheus web inte
 
 ## Uninstall Prometheus
 
+
+If you want to uninstall Prometheus, there are scripts provided to do so. Uninstalling keptn will not automatically uninstall Prometheus.
+
 1. (Optional) If you do not have the *examples* repository, clone the latest release using:
 
   ```console
