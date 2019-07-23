@@ -124,6 +124,8 @@ The Dynatrace service will take care of pushing events of the keptn workflow to 
 
 ## Uninstall Dynatrace
 
+If you want to uninstall Dynatrace, there are scripts provided to do so. Uninstalling keptn will not automatically uninstall Dynatrace.
+
 1. (Optional) If you do not have the *dynatrace-service* repository, clone the latest release using:
 
   ```console
