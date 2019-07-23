@@ -59,8 +59,17 @@ If you have not yet authenticated and configured the keptn CLI, please follow th
 
 1. The CLI needs to be authenticated against the keptn server. Therefore, please follow the [keptn auth](../../reference/cli/#keptn-auth) instructions.
 
+    Set the needed environment variables.
+
     ```console
-    keptn auth --endpoint=https://$(kubectl get ksvc -n keptn control -o=yaml | yq r - status.domain) --api-token=$(kubectl get secret keptn-api-token -n keptn -o=yaml | yq - r data.keptn-api-token | base64 --decode)
+    KEPTN_ENDPOINT=https://$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
+    KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -o=jsonpath='{.data.keptn-api-token}' | base64 --decode)
+    ```
+
+    Authenticate to the keptn server.
+
+    ```console
+    keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN
     ```
 
 1. Configure the used GitHub organization, user, and personal access token using the [keptn configure](../../reference/cli/#keptn-configure) command:
