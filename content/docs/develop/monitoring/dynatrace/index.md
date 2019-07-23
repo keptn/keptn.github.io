@@ -1,5 +1,5 @@
 ---
-title: Setup Dynatrace
+title: Dynatrace
 description: How to setup Dynatrace monitoring.
 weight: 15
 icon: setup
