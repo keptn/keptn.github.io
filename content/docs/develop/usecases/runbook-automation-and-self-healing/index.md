@@ -260,4 +260,16 @@ To disable this feature:
 - In ServiceNow you can take a look at the **System Log** > **All** to verify which actions have been executed. You should be able to see some logs on the execution of the keptn demo workflow as shown in the screenshot:
     {{< popup_image
         link="./assets/service-now-systemlog.png"
-        caption="ServiceNow System Log">}}
+        caption="ServiceNow System Log"
+        width="80%">}}
+
+
+
+- In case Dynatrace detected a problem before the [ServiceNow secret was created](#servicenow-secret) in your Kubernetes cluster, the remediation will not work. Resolution:
+    1. [Create the secret](#servicenow-secret).
+    1. Restart the pod.
+    
+    ```
+    kubectl delete pod servicenow-service-XXXXX -n keptn
+    ```
+
