@@ -54,7 +54,7 @@ Please make sure you have followed the instructions for setting up [Prometheus](
 
 To set up the quality gates for the carts service, please navigate to the `perfspec` folder of your carts service. This folder contains files defining the quality gate that will be evaluated against Prometheus. 
 
-1. Make sure you are in the `carts` folder.
+1. Make sure you are in the `carts/perfspec` folder.
 1. Rename the file `perfspec_prometheus.json` to `perfspec.json`. 
 1. Commit and push the file.
 
@@ -75,7 +75,7 @@ Please make sure you have followed the instructions for setting up [Dynatrace](.
 
 To set up the quality gates for the carts service, please navigate to the `perfspec` folder of your carts service. This file contains the quality gate that will be evaluated against Dynatrace. 
 
-1. Make sure you are in the `carts` folder.
+1. Make sure you are in the `carts/perfspec` folder.
 1. Rename the file `perfspec_dynatrace.json` to `perfspec.json`. 
 1. Commit and push the file.
 
