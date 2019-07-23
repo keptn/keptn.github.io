@@ -6,12 +6,11 @@ icon: setup
 keywords: upgrade
 ---
 
-Since we introduced breaking changes with keptn 0.4.0 due to the removal of knative as a core technology, an upgrade script can unfortunately not be provided.
-If you want to upgrade your existing keptn installation, please uninstall keptn and install it with the new keptn CLI 0.4.0.
+Since the removal of knative as a core technology in keptn 0.4.0 is considered to be a breaking change, an upgrade script can unfortunately not be provided. If you want to upgrade your existing keptn installation, uninstall keptn and install it with the new keptn CLI 0.4.0.
 
 ## Uninstall keptn
 
-For uninstalling keptn, please [download this file](https://github.com/keptn/installer/blob/0.4.0/scripts/common/uninstallKeptn030.sh) and execute it:
+For uninstalling keptn, [download this script](https://github.com/keptn/installer/blob/0.4.0/scripts/common/uninstallKeptn030.sh) and execute it:
 ```
 ./uninstalKeptn030.sh
 ```
@@ -19,7 +18,6 @@ For uninstalling keptn, please [download this file](https://github.com/keptn/ins
 ## Install keptn CLI
 
 Please refer to the [install section](../setup-keptn) to instal keptn in version 0.4.0.
-
 
 ## Create project and onboard services
 
