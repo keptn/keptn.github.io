@@ -53,8 +53,8 @@ metadata:
 The `DT_API_TOKEN` and the `DT_TENANT` need to be stored in an environment variable. Therefore, copy and paste the following command to make sure that `DT_TENANT` stores a url that follows the pattern `{your-domain}/e/{your-environment-id}` for a managed Dynatrace tenant or `{your-environment-id}.live.dynatrace.com` for a SaaS tenant.
 
 ```
-export DT_TENANT=$(kubectl get secret dynatrace -n keptn -o=yaml | yq - r data.DT_TENANT | base64 --decode)
-export DT_API_TOKEN=$(kubectl get secret dynatrace -n keptn -o=yaml | yq - r data.DT_API_TOKEN | base64 --decode)
+export DT_TENANT=$(kubectl get secret dynatrace -n keptn -o=jsonpath='{.data.DT_TENANT}' | base64 --decode)
+export DT_API_TOKEN=$(kubectl get secret dynatrace -n keptn -o=jsonpath='{.data.DT_API_TOKEN}' | base64 --decode)
 echo $DT_TENANT
 echo $DT_API_TOKEN
 ```
@@ -139,7 +139,7 @@ Before you adjust this setting, make sure to have some traffic on the service in
 
 1. Run the script:
     ```
-    ./add-to-cart.sh "carts.sockshop-production.$(kubectl get svc istio-ingressgateway -n istio-system -o yaml | yq - r status.loadBalancer.ingress[0].ip).xip.io"
+    ./add-to-cart.sh "carts.sockshop-production.$(kubectl get svc istio-ingressgateway -n istio-system -o=jsonpath='{.status.loadBalancer.ingress[0].ip}').xip.io"
     ```
 
 1. Once you generated some load, navigate to **Transaction & services** and find the service **ItemsController** in the _sockshop-production_ environment. 
@@ -164,7 +164,7 @@ Now, all pieces are in place to run the use case. Therefore, we will start by ge
 
 1. Run the script:
     ```
-    ./add-to-cart.sh "carts.sockshop-production.$(kubectl get svc istio-ingressgateway -n istio-system -o yaml | yq - r status.loadBalancer.ingress[0].ip).xip.io"
+    ./add-to-cart.sh "carts.sockshop-production.$(kubectl get svc istio-ingressgateway -n istio-system -o=jsonpath='{.status.loadBalancer.ingress[0].ip}').xip.io"
     ```
 
 1. You should see some logging output each time an item is added to your shopping cart:
@@ -194,7 +194,7 @@ Now, all pieces are in place to run the use case. Therefore, we will start by ge
 
 1. Run the script:
     ```
-    ./enable-promotion.sh "carts.sockshop-production.$(kubectl get svc istio-ingressgateway -n istio-system -o yaml | yq - r status.loadBalancer.ingress[0].ip).xip.io" 30
+    ./enable-promotion.sh "carts.sockshop-production.$(kubectl get svc istio-ingressgateway -n istio-system -o=jsonpath='{.status.loadBalancer.ingress[0].ip}').xip.io" 30
     ```
     Please note the parameter `30` at the end, which is the value for the configuration change and can be interpreted as for 30 % of the shopping cart interactions a special item is added to the shopping cart. This value can be set from `0` to `100`. For this use case the value `30` is just fine.
 
