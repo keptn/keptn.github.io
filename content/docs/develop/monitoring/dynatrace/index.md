@@ -65,16 +65,16 @@ In order to evaluate the quality gates and allow self-healing in production, we 
     ./deployDynatraceOnAKS.sh
     ```
 
-  When this script is finished, the Dynatrace OneAgent and the dynatrace-service are deployed in your cluster. Execute the following command to verify the deployment of the dynatrace-service.
+When this script is finished, the Dynatrace OneAgent and the dynatrace-service are deployed in your cluster. Execute the following command to verify the deployment of the dynatrace-service.
 
-    ```console
-    kubectl get ksvc dynatrace-service -n keptn
-    ```
+```console
+kubectl get svc dynatrace-service -n keptn
+```
 
-    ```console
-    NAME                DOMAIN                                      LATESTCREATED             LATESTREADY               READY
-    dynatrace-service   dynatrace-service.keptn.svc.cluster.local   dynatrace-service-26sm4   dynatrace-service-26sm4   True
-    ```
+```console
+NAME                TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)    AGE
+dynatrace-service   ClusterIP   10.0.44.191   <none>        8080/TCP   2m48s
+```
 
 **Note 1:** To monitor the services that are already onboarded in the `dev`, `staging`, and `production` namespace, make sure to restart the pods. If you defined different environments in your shipyard file, please adjust the values accordingly. 
 ```console
