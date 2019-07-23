@@ -228,29 +228,13 @@ keptn configure --org=gitHubOrg --user=gitHub_keptnUser --token=XYZ
 
 ## keptn create project 
 
-Before onboarding a service, a project needs to be created. A project represents a repository in the GitHub organization that is used by keptn. This project contains branches representing the multi-stage environment (e.g., dev, staging, and production stage). In other words, the separation of stage configurations is based on repository branches. To describe each stage, a `shipyard.yaml` file is needed that specifies the name, deployment strategy, and test strategy as shown below:
-
-```yaml
-stages:
-  - name: "dev"
-    deployment_strategy: "direct"
-    test_strategy: "functional"
-  - name: "staging"
-    deployment_strategy: "blue_green_service"
-    test_strategy: "performance"
-  - name: "production"
-    deployment_strategy: "blue_green_service"
-```
-
-To create a new project, use the command `create project` and specify the name of the project as well as the `shipyard.yaml` file.
+To create a new project, use the command `create project` and specify the name of the project as well as the `shipyard.yaml` file. Learn more [how to write a shipyard file](../../manage/project/#create-a-project).
 
 ```console
 keptn create project your_project shipyard.yml
 ```
 
 ## keptn onboard service
-
-After creating a project which represents a repository in your GitHub organization, the keptn&nbsp;CLI allows to onboard services into this project. Please note that for describing the Kubernetes resources, [Helm charts](https://helm.sh/) are used. Therefore, the keptn CLI allows setting a Helm values description in the before created project. Optionally, the user can also provide a Helm deployment and service description.
 
 To onboard a service, use the command `onboard service` and provide the project name (flag `--project`), the Helm chart values (flag `--values`) and optionally also deployment (flag `--deployment`) and service (flag `--service`) configuration.
 
@@ -265,21 +249,6 @@ keptn onboard service --project=your_project --values=values.yaml
 ```console
 keptn onboard service --project=your_project --values=values.yaml --deployment=deployment.yaml --service=service.yaml
 ```
-
-**Note:** If you are using custom configurations and you would like to have the environment variables `KEPTN_PROJECT`, `KEPTN_STAGE`, and `KEPTN_SERVICE` within your service, add the following environment variables to your deployment configuration.
-
-  ```yaml
-  env:
-  ...
-  - name: KEPTN_PROJECT
-    value: "{{ .Chart.Name }}"
-  - name: KEPTN_SERVICE
-    value: "{{ .Values.SERVICE_PLACEHOLDER_C.service.name }}"
-  - name: KEPTN_STAGE
-    valueFrom:
-      fieldRef:
-        fieldPath: "metadata.namespace"
-  ```
 
 To start onboarding a service, please see the [Onboarding a Service](../../usecases/onboard-carts-service) use case.
 
