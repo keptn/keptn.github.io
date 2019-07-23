@@ -54,3 +54,15 @@ To verify the Prometheus installation, you can browse to the Prometheus web inte
 
 ## Uninstall Prometheus
 
+1. (Optional) If you do not have the *examples* repository, clone the latest release using:
+
+  ```console
+  git clone --branch 0.4.0 https://github.com/keptn/examples.git --single-branch
+  ```
+
+1. Go to correct folder and execute the uninstallPrometheus.sh script:
+
+  ```console
+  cd examples/monitoring/prometheus
+  ./uninstallPrometheus.sh
+  ```

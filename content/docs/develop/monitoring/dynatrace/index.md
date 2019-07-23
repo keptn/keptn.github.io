@@ -124,7 +124,7 @@ The Dynatrace service will take care of pushing events of the keptn workflow to 
 
 ## Uninstall Dynatrace
 
-1. (Optional) If you do not have the repository dynatrace-service, clone the latest release using:
+1. (Optional) If you do not have the *dynatrace-service* repository, clone the latest release using:
 
   ```console
   git clone --branch 0.2.0 https://github.com/keptn/dynatrace-service --single-branch
