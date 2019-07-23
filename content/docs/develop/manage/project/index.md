@@ -48,6 +48,12 @@ The keptn CLI does currently not support the deletion of a project. However, by 
   kubectl delete namespace sockshop-dev sockshop-staging sockshop-production
   ```
 
+In addition, the Helm releases have to be deleted:
+```
+helm delete --purge sockshop-dev
+helm delete --purge sockshop-production
+helm delete --purge sockshop-staging
+````
 
 ## Update a project
 
