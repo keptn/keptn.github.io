@@ -8,7 +8,7 @@ keywords: setup
 
 ## Prerequisites
 - GitHub
-  - [GitHub organization](https://github.com/organizations/new) for Keptn to store its configuration repositories
+  - [GitHub organization](https://github.com/organizations/new) for keptn to store its configuration repositories
   - [Personal access token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line) for a user with access to said organization
 
       -  Needed scopes: [x] `repo`
@@ -174,7 +174,7 @@ Select one of the following options:
 -->
 
 ## Install keptn CLI
-Every release of Keptn provides binaries for the Keptn CLI. These binaries are available for Linux, macOS, and Windows.
+Every release of keptn provides binaries for the keptn CLI. These binaries are available for Linux, macOS, and Windows.
 
 - Download the version for your operating system from https://github.com/keptn/keptn/releases/tag/0.4.0
 - Unpack the download
@@ -187,7 +187,7 @@ Every release of Keptn provides binaries for the Keptn CLI. These binaries are a
 
         move/copy the executable to the desired folder and, optionally, add the executable to your PATH environment variable for a more convenient experience.
 
-- Now, you should be able to run the Keptn CLI: 
+- Now, you should be able to run the keptn CLI: 
     - Linux / macOS
 
     ```console
@@ -202,9 +202,9 @@ Every release of Keptn provides binaries for the Keptn CLI. These binaries are a
 
     Please note that for the rest of the documentation we will stick to the Mac OS / Linux version of the commands.
 
-## Install Keptn
+## Install keptn
 
-- Execute the CLI command `keptn install` and provide the requested information. This command will install Keptn in the version of the latest release. Since v0.3 of Keptn, the install command accepts a parameter to select the platform you would like to install Keptn on. Currently supported platforms are Google Kubernetes Engine (GKE), OpenShift and Azure Kubernetes Services (AKS). Depending on your platform, enter the following command to start the installation:
+- Execute the CLI command `keptn install` and provide the requested information. This command will install keptn in the version of the latest release. Since v0.3 of keptn, the install command accepts a parameter to select the platform you would like to install keptn on. Currently supported platforms are Google Kubernetes Engine (GKE), OpenShift and Azure Kubernetes Services (AKS). Depending on your platform, enter the following command to start the installation:
 
   - For **GKE**:
 
@@ -224,13 +224,13 @@ Every release of Keptn provides binaries for the Keptn CLI. These binaries are a
     keptn install --platform=aks
     ```
 
-    In your cluster, this command installs the complete infrastructure necessary to run Keptn. 
+    In your cluster, this command installs the complete infrastructure necessary to run keptn. 
         <details><summary>This includes:</summary>
             <ul>
             <li>Istio</li>
-            <li>An Elasticsearch/Kibana Stack for the Keptn's log</li>
+            <li>An Elasticsearch/Kibana Stack for the keptn's log</li>
             <li>A NATS Cluster</li>
-            <li>The Keptn core services:</li>
+            <li>The keptn core services:</li>
                 <ul>
                     <li>authenticator</li>
                     <li>bridge</li>
@@ -254,7 +254,7 @@ Every release of Keptn provides binaries for the Keptn CLI. These binaries are a
 
 ## Verifying the installation
 
-- To verify your Keptn installation, retrieve the pods running in the `keptn` namespace.
+- To verify your keptn installation, retrieve the pods running in the `keptn` namespace.
 
   ```console
   kubectl get pods -n keptn
@@ -302,7 +302,7 @@ Every release of Keptn provides binaries for the Keptn CLI. These binaries are a
 
 ## Uninstall
 
-- Please follow these instructions to uninstall Keptn from your cluster:
+- Please follow these instructions to uninstall keptn from your cluster:
 
   - Clone the keptn installer repository of the latest release:
 
@@ -311,7 +311,7 @@ Every release of Keptn provides binaries for the Keptn CLI. These binaries are a
     cd  ./installer/scripts/common
     ``` 
 
-  - Execute `uninstallKeptn.sh` and all Keptn resource will be deleted
+  - Execute `uninstallKeptn.sh` and all keptn resource will be deleted
 
     ```console
     ./uninstallKeptn.sh
@@ -333,7 +333,7 @@ Every release of Keptn provides binaries for the Keptn CLI. These binaries are a
   rm temp.json
   ```
 
-- **Note:** In future releases of the Keptn CLI, a command `keptn uninstall` will be added, which replaces the shell script `uninstallKeptn.sh`.
+- **Note:** In future releases of the keptn CLI, a command `keptn uninstall` will be added, which replaces the shell script `uninstallKeptn.sh`.
 
 ## Troubleshooting
 
