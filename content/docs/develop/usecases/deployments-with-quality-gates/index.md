@@ -93,18 +93,15 @@ Now, you have quality gates in place, which will check whether the average respo
 
 ## View carts service
 
-- Run the following command to get the **EXTERNAL-IP** and **PORT** of your cluster's ingress gateway.
-    
-  ```console    
-  kubectl get svc istio-ingressgateway -n istio-system
-  ```
+- Get the URL for your carts service with the following commands in the respective namespaces:
 
   ```console
-  NAME                     TYPE           CLUSTER-IP      EXTERNAL-IP      PORT(S)
-  istio-ingressgateway     LoadBalancer   10.11.246.127   <EXTERNAL_IP>    80:32399/TCP 
+  echo http://carts.sockshop-dev.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
+  echo http://carts.sockshop-staging.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
+  echo http://carts.sockshop-production.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
   ```
 
-- Navigate to `http://carts.sockshop-production.<EXTERNAL_IP>.xip.io` for viewing the carts service in your `production` environment and you should receive an output similar to the following:
+- Navigate to `http://carts.sockshop-production.YOURDOMAIN` for viewing the carts service in your `production` environment and you should receive an output similar to the following:
 
     {{< popup_image
       link="./assets/carts-production.png"

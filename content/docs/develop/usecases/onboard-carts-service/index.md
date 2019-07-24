@@ -148,15 +148,17 @@ The used artifact is stored on Docker Hub.
 
 ## View carts service
 
-- Run the following command to get the **EXTERNAL-IP** and **PORT** of your cluster's ingress gateway.
-    
-  ```console    
-  kubectl get svc istio-ingressgateway -n istio-system
-  ```
+- Get the URL for your carts service with the following commands in the respective namespaces:
 
   ```console
-  NAME                     TYPE           CLUSTER-IP      EXTERNAL-IP      PORT(S)
-  istio-ingressgateway     LoadBalancer   10.11.246.127   <EXTERNAL_IP>   80:32399/TCP 
+  echo http://carts.sockshop-dev.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
+  echo http://carts.sockshop-staging.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
+  echo http://carts.sockshop-production.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
   ```
 
-- Navigate to `http://carts.sockshop-production.<EXTERNAL IP>.xip.io` for viewing the carts service in your `production` environment. 
+Navigate to the URLs to inspect your carts service. In the production namespace, you should receive an output similar to this:
+
+  {{< popup_image
+    link="./assets/carts-production.png"
+    caption="carts service in production"
+    width="50%">}}
