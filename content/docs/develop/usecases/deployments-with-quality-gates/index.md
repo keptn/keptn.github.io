@@ -130,7 +130,7 @@ slowdown of 1 second in each request.
       * **gatekeeper-service**: This service receives a `sh.keptn.events.evaluation-done` event, which contains the result of the evaluaton of the pitometer-service. Since in this case the performance test run failed, the gatekeeper-service automatically re-routes traffic to the previous colored blue or green version in `staging` and the artifact won't be promoted to `production`.
       
   **Outcome**: This slow version is **not** promoted to the `production` namespace because of the active quality gate in place.
-For verifying this, open a browser and navigate to `http://carts.sockshop-production.<EXTERNAL_IP>.xip.io`.
+For verifying this, open a browser and navigate to `http://carts.sockshop-production.YOURDOMAIN`.
 Here, you see that the version of the carts service has not changed.
 
 ## Deploy the regular carts version
@@ -144,7 +144,7 @@ Here, you see that the version of the carts service has not changed.
 
 1. In this case, the quality gate is passed and the service gets deployed in the `production` namespace. 
 
-1. To verify the deployment in `production`, open a browser an navigate to `http://carts.sockshop-production.EXTERNAL-IP.xip.io`. As a result, you see `Version: v3`.
+1. To verify the deployment in `production`, open a browser an navigate to `http://carts.sockshop-production.YOURDOMAIN`. As a result, you see `Version: v3`.
 
 1. Besides, you can verify the deployments in your Kubernetes cluster using the following commands: 
 
