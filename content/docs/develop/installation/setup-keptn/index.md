@@ -207,19 +207,32 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
 - Execute the CLI command `keptn install` and provide the requested information. This command will install keptn in the version of the latest release. Since v0.3 of keptn, the install command accepts a parameter to select the platform you would like to install keptn on. Currently supported platforms are Google Kubernetes Engine (GKE), OpenShift and Azure Kubernetes Services (AKS). Depending on your platform, enter the following command to start the installation:
 
   - For **GKE**:
-
     ```console
     keptn install --platform=gke
     ```
 
   - For **OpenShift**:
-
     ```console
     keptn install --platform=openshift
     ```
+    <details><summary>Configure a custom domain</summary>
+    <p>
+    In case you have a custom domain or can not use xip.io (e.g., because you are running in AWS which will create ELBs for you), there is a script provided to configure keptn to use your custom domain.
+    Checkout the script:
+    ```console
+    git clone --branch 0.4.0 https://github.com/keptn/installer 
+    cd installer/scripts/common
+    ```
+    Run the script:
+    ```console
+    ./updateDomain.sh YOURDOMAIN
+    ```
+    This will provide you a KEPTN_ENDPOINT and KEPTN_API_TOKEN at the end of the script which you can use to [authenticate the keptn CLI](../../reference/cli/#keptn-auth).
+    </p>
+    </details>
+
 
   - For **AKS**:
-
     ```console
     keptn install --platform=aks
     ```
