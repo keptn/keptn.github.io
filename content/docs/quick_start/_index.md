@@ -7,3 +7,7 @@ menu: main
 ---
 
 ## Setup your platform
+
+## Download and install keptn
+
+## Explore the core use cases
