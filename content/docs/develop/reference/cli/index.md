@@ -85,7 +85,7 @@ More precisely, the keptn CLI stores the endpoint and API token using `pass` in 
 Set the needed environment variables.
 
 ```console
-KEPTN_ENDPOINT=https://$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
+KEPTN_ENDPOINT=https://control.keptn.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
 KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -o=jsonpath='{.data.keptn-api-token}' | base64 --decode)
 ```
 
