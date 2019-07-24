@@ -139,7 +139,7 @@ Before you adjust this setting, make sure to have some traffic on the service in
 
 1. Run the script:
     ```
-    ./add-to-cart.sh "carts.sockshop-production.$(kubectl get svc istio-ingressgateway -n istio-system -o=jsonpath='{.status.loadBalancer.ingress[0].ip}').xip.io"
+    ./add-to-cart.sh "carts.sockshop-production.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')"
     ```
 
 1. Once you generated some load, navigate to **Transaction & services** and find the service **ItemsController** in the _sockshop-production_ environment. 
@@ -164,7 +164,7 @@ Now, all pieces are in place to run the use case. Therefore, we will start by ge
 
 1. Run the script:
     ```
-    ./add-to-cart.sh "carts.sockshop-production.$(kubectl get svc istio-ingressgateway -n istio-system -o=jsonpath='{.status.loadBalancer.ingress[0].ip}').xip.io"
+    ./add-to-cart.sh "carts.sockshop-production.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')"
     ```
 
 1. You should see some logging output each time an item is added to your shopping cart:
@@ -194,7 +194,7 @@ Now, all pieces are in place to run the use case. Therefore, we will start by ge
 
 1. Run the script:
     ```
-    ./enable-promotion.sh "carts.sockshop-production.$(kubectl get svc istio-ingressgateway -n istio-system -o=jsonpath='{.status.loadBalancer.ingress[0].ip}').xip.io" 30
+    ./enable-promotion.sh "carts.sockshop-production.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')" 30
     ```
     Please note the parameter `30` at the end, which is the value for the configuration change and can be interpreted as for 30 % of the shopping cart interactions a special item is added to the shopping cart. This value can be set from `0` to `100`. For this use case the value `30` is just fine.
 
