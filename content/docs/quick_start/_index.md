@@ -6,4 +6,4 @@ icon: setup
 menu: main
 ---
 
-# Setup your platform
+## Setup your platform
