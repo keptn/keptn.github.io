@@ -34,12 +34,8 @@ Select one of the following options:
   - [python 2.7](https://www.python.org/downloads/release/python-2716/) (required for Ubuntu 19.04)
 
 2. Create GKE cluster
-  - Master version >= `1.11.x` (tested version: `1.11.7-gke.12` and `1.12.7-gke.10`)
-  - One `n1-standard-16` node
-    <details><summary>Expand for details</summary>
-    {{< popup_image link="./assets/gke-cluster-size.png" 
-      caption="GKE cluster size" width="50%">}}
-    </details>
+  - Master version >= `1.11.x` (tested version: `1.12.8-gke.10`)
+  - One **n1-standard-4** node
   - Image type `ubuntu` or `cos` (if you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../monitoring/dynatrace/))
   - Sample script to create such cluster (adapt the values according to your needs)
 
@@ -49,11 +45,11 @@ Select one of the following options:
     CLUSTER_NAME=nameofcluster
     ZONE=us-central1-a
     REGION=us-central1
-    GKE_VERSION="1.12.7-gke.10"
+    GKE_VERSION="1.12.8-gke.10"
     ```
 
     ```console
-    gcloud beta container --project $PROJECT clusters create $CLUSTER_NAME --zone $ZONE --no-enable-basic-auth --cluster-version $GKE_VERSION --machine-type "n1-standard-16" --image-type "UBUNTU" --disk-type "pd-standard" --disk-size "100" --metadata disable-legacy-endpoints=true --scopes "https://www.googleapis.com/auth/devstorage.read_only","https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/monitoring","https://www.googleapis.com/auth/servicecontrol","https://www.googleapis.com/auth/service.management.readonly","https://www.googleapis.com/auth/trace.append" --num-nodes "1" --enable-cloud-logging --enable-cloud-monitoring --no-enable-ip-alias --network "projects/$PROJECT/global/networks/default" --subnetwork "projects/$PROJECT/regions/$REGION/subnetworks/default" --addons HorizontalPodAutoscaling,HttpLoadBalancing --no-enable-autoupgrade
+    gcloud beta container --project $PROJECT clusters create $CLUSTER_NAME --zone $ZONE --no-enable-basic-auth --cluster-version $GKE_VERSION --machine-type "n1-standard-4" --image-type "UBUNTU" --disk-type "pd-standard" --disk-size "100" --metadata disable-legacy-endpoints=true --scopes "https://www.googleapis.com/auth/devstorage.read_only","https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/monitoring","https://www.googleapis.com/auth/servicecontrol","https://www.googleapis.com/auth/service.management.readonly","https://www.googleapis.com/auth/trace.append" --num-nodes "1" --enable-cloud-logging --enable-cloud-monitoring --no-enable-ip-alias --network "projects/$PROJECT/global/networks/default" --subnetwork "projects/$PROJECT/regions/$REGION/subnetworks/default" --addons HorizontalPodAutoscaling,HttpLoadBalancing --no-enable-autoupgrade
     ```
  </p>
 </details>
@@ -149,23 +145,6 @@ Select one of the following options:
       fi
       ```
 
-1. Determine the **Cluster CIDR Range** and **Services CIDR Range** that are required during the installation. On OpenShift, those values correlate to the following fields in the file `/etc/origin/master/master-config.yaml` on the OpenShift master node: 
-
-  ```yaml
-  
-  networkConfig:
-    clusterNetworks:
-    - cidr: "10.128.0.0/14"
-      hostSubnetLength: 9
-    externalIPNetworkCIDRs:
-    - "0.0.0.0/0"
-    ingressIPNetworkCIDR: ""
-    networkPluginName: redhat/openshift-ovs-subnet
-    serviceNetworkCIDR: "172.30.0.0/16"
-    
-  ```
-
-  In this example, the **Cluster CIDR Range** has the value `10.128.0.0/14` and the **Services CIDR Range** is set to `172.30.0.0/16`. Please note those values, as you will be asked for them as during the installation of keptn via the CLI.
 </p>
 </details>
 
@@ -177,11 +156,8 @@ Select one of the following options:
 
 2. Create AKS cluster
   - Master version >= `1.12.x` (tested version: `1.12.8`)
-  - One `D16s_v3` node
-    <details><summary>Expand for details</summary>
-    {{< popup_image link="./assets/aks-cluster-size.png" 
-      caption="AKS cluster size" width="100%">}}
-    </details>  
+  - One **B4ms** node
+ 
  </p>
 </details>
 
@@ -200,7 +176,7 @@ Select one of the following options:
 ## Install keptn CLI
 Every release of keptn provides binaries for the keptn CLI. These binaries are available for Linux, macOS, and Windows.
 
-- Download the version for your operating system from https://github.com/keptn/keptn/releases/tag/0.3.0
+- Download the version for your operating system from https://github.com/keptn/keptn/releases/tag/0.4.0
 - Unpack the download
 - Find the `keptn` binary in the unpacked directory.
   - Linux / macOS
@@ -228,23 +204,35 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
 
 ## Install keptn
 
-- Execute the CLI command `keptn install` and provide the requested information. This command will install keptn
-in the version of the latest release. Since v0.3 of keptn, the install command accepts a parameter to select the platform you would like to install keptn on. Currently supported platforms are Google Kubernetes Engine (GKE), OpenShift and Azure Kubernetes Services (AKS). Depending on your platform, enter the following command to start the installation:
+- Execute the CLI command `keptn install` and provide the requested information. This command will install keptn in the version of the latest release. Since v0.3 of keptn, the install command accepts a parameter to select the platform you would like to install keptn on. Currently supported platforms are Google Kubernetes Engine (GKE), OpenShift and Azure Kubernetes Services (AKS). Depending on your platform, enter the following command to start the installation:
 
   - For **GKE**:
-
     ```console
     keptn install --platform=gke
     ```
 
   - For **OpenShift**:
-
     ```console
     keptn install --platform=openshift
     ```
+    <details><summary>Configure a custom domain</summary>
+    <p>
+    In case you have a custom domain or can not use xip.io (e.g., because you are running in AWS which will create ELBs for you), there is a script provided to configure keptn to use your custom domain.
+    Checkout the script:
+    ```console
+    git clone --branch 0.4.0 https://github.com/keptn/installer 
+    cd installer/scripts/common
+    ```
+    Run the script:
+    ```console
+    ./updateDomain.sh YOURDOMAIN
+    ```
+    This will provide you a KEPTN_ENDPOINT and KEPTN_API_TOKEN at the end of the script which you can use to [authenticate the keptn CLI](../../reference/cli/#keptn-auth).
+    </p>
+    </details>
+
 
   - For **AKS**:
-
     ```console
     keptn install --platform=aks
     ```
@@ -253,8 +241,8 @@ in the version of the latest release. Since v0.3 of keptn, the install command a
         <details><summary>This includes:</summary>
             <ul>
             <li>Istio</li>
-            <li>Knative</li>
             <li>An Elasticsearch/Kibana Stack for the keptn's log</li>
+            <li>A NATS Cluster</li>
             <li>The keptn core services:</li>
                 <ul>
                     <li>authenticator</li>
@@ -273,16 +261,6 @@ in the version of the latest release. Since v0.3 of keptn, the install command a
                     <li>serviceNow-service</li>
                     <li>openshift-route-service (OpenShift only)</li>
                 </ul>
-            <li>The channels to which events are published:</li>
-                <ul>
-                    <li>configuration-changed</li>
-                    <li>deployment-finished</li>
-                    <li>evaluation-done</li>
-                    <li>keptn-channel</li>
-                    <li>new-artifact</li>
-                    <li>problem</li>
-                    <li>tests-finished</li>
-                </ul>
             </ul>
         </details>
 
@@ -296,55 +274,32 @@ in the version of the latest release. Since v0.3 of keptn, the install command a
   ```
 
   ```console
-  NAME                                                 READY     STATUS    RESTARTS   AGE
-  authenticator-fvq2c-deployment-565597c98c-fqj46      3/3       Running   0          30m
-  control-kwhms-deployment-6d7b8b8d94-v7xsj            3/3       Running   0          30m
-  event-broker-ext-2v84b-deployment-856cf65b99-96zpd   3/3       Running   0          30m
-  event-broker-z8tc6-deployment-7997b998b4-jhvq4       3/3       Running   0          30m
-  gatekeeper-service-svvqm-deployment-8f559dc8c-k42s4  3/3       Running   0          30m
-  github-service-xcn9w-deployment-545866fc6f-hl4gc     3/3       Running   0          30m
-  helm-service-2hdsb-deployment-665fdb697d-hwtmv       3/3       Running   0          30m
-  jmeter-service-n5xrq-deployment-75644db9c4-c9fhn     3/3       Running   0          30m
+  NAME                                                              READY     STATUS    RESTARTS   AGE
+  authenticator-75ffd6bbdc-8tks2                                    1/1       Running   0          2m
+  bridge-d5bc7c9b6-72h6n                                            1/1       Running   0          2m
+  control-599858b499-b8rmf                                          1/1       Running   0          2m
+  event-broker-ext-796fbb94f6-2dcs7                                 1/1       Running   0          2m
+  eventbroker-go-77d4fc7fdd-rmzxk                                   1/1       Running   0          2m
+  gatekeeper-service-787c6f7d84-j8s4f                               1/1       Running   0          1m
+  gatekeeper-service-evaluation-done-distributor-5b5f77c6ff-fhbbq   1/1       Running   0          32s
+  github-service-78d59d549d-qdfzg                                   1/1       Running   0          1m
+  github-service-configure-distributor-5955b674d6-7d44w             1/1       Running   0          33s
+  github-service-create-project-distributor-79fcbb7855-t9blj        1/1       Running   0          34s
+  github-service-new-artifact-distributor-5cf8d5c6f5-5szdt          1/1       Running   0          33s
+  github-service-onboard-service-distributor-56db7595cb-z2qkx       1/1       Running   0          34s
+  helm-service-85c9cbc96f-7t86h                                     1/1       Running   0          1m
+  helm-service-configuration-changed-distributor-545b8849b-wl2pq    1/1       Running   0          33s
+  jmeter-service-65b474cd75-pxn2m                                   1/1       Running   0          1m
+  jmeter-service-deployment-distributor-687b778dfd-twqrp            1/1       Running   0          33s
+  keptn-nats-cluster-1                                              1/1       Running   0          2m
+  nats-operator-67d8dd94d5-wjlsj                                    1/1       Running   0          3m
+  openshift-route-service-57b45c4dfc-4x5lm                          1/1       Running   0          1d (OpenShift only)
+  openshift-route-service-create-project-distributor-7d4454cs44xp   1/1       Running   0          1d (OpenShift only)
+  pitometer-service-56d75f9fcc-hcbbw                                1/1       Running   0          1m
+  pitometer-service-tests-finished-distributor-785bdc79d4-xbnpb     1/1       Running   0          33s
+  servicenow-service-86d6dfb7f7-dqcx6                               1/1       Running   0          1m
+  servicenow-service-problem-distributor-6d4fc577d9-wmfn4           1/1       Running   0          32s
   ```
-
-- Next, check that all routes for the keptn core services, as well as for the bridge, gatekeeper-service, github-service, helm-service, pitometer-service, jmeter-service, and the servicenow-service have been created:
-
-  ```console
-  kubectl get routes -n keptn
-  ```
-
-  ```console
-  NAME                 AGE
-  authenticator        31m
-  bridge               31m
-  control              31m
-  eventbroker          31m
-  eventbroker-ext      31m
-  gatekeeper-service   31m
-  helm-service         31m
-  github-service       31m
-  pitometer-service    31m
-  jmeter-service       31m
-  servicenow-service   31m
-  ```
-
-- Finally, check that all keptn channels have been created:
-
-  ```console
-  kubectl get channels -n keptn
-  ```
-
-  ```console
-  NAME                    AGE
-  configuration-changed   31m
-  deployment-finished     31m
-  evaluation-done         31m
-  keptn-channel           31m
-  new-artifact            31m
-  problem                 31m
-  tests-finished          31m
-  ```
-
 - To verify the Istio installation, retrieve all pods within the `istio-system` namespace and check whether they are in a running state:
   
   ```console
@@ -352,72 +307,28 @@ in the version of the latest release. Since v0.3 of keptn, the install command a
   ```
 
   ```console
-  NAME                                      READY     STATUS      RESTARTS   AGE
-  cluster-local-gateway-775b6cbf4c-bxxx8    1/1       Running     0          20m
-  istio-citadel-796c94878b-fhzf8            1/1       Running     0          20m
-  istio-cleanup-secrets-nbdff               0/1       Completed   0          20m
-  istio-egressgateway-864444d6ff-g7c6m      1/1       Running     0          20m
-  istio-galley-6c68c5dbcf-fzdzb             1/1       Running     0          20m
-  istio-ingressgateway-694576c7bb-w52j7     1/1       Running     0          20m
-  istio-pilot-79f5f46dd5-c62bv              2/2       Running     0          20m
-  istio-pilot-79f5f46dd5-wjwmf              2/2       Running     0          22m
-  istio-pilot-79f5f46dd5-zgbwm              2/2       Running     0          22m
-  istio-policy-5bd5578b94-nggnx             2/2       Running     0          20m
-  istio-sidecar-injector-6d8f88c98f-mqrpj   1/1       Running     0          20m
-  istio-telemetry-5598f86cd8-7s4t7          2/2       Running     0          20m
-  istio-telemetry-5598f86cd8-bzfb5          2/2       Running     0          20m
-  istio-telemetry-5598f86cd8-hxkhm          2/2       Running     0          20m
-  istio-telemetry-5598f86cd8-pgstj          2/2       Running     0          20m
-  istio-telemetry-5598f86cd8-wkh7g          2/2       Running     0          20m
-  zipkin-6b4d5d66-jwqzk                     1/1       Running     0          20m
+  NAME                                    READY     STATUS    RESTARTS   AGE
+  istio-ingressgateway-6f46678699-c742n   1/1       Running   0          5m
+  istio-pilot-85b956b4bb-rbhnn            1/1       Running   0          5m
   ```
-
-- To verify the Knative installation, check the pods in the `knative-serving` namespace:
-
-  ```console
-  kubectl get pods -n knative-serving
-  ```
-
-  ```console
-  NAME                          READY     STATUS      RESTARTS   AGE
-  activator-6f7d494f55-fthpr    2/2       Running     0          17m
-  autoscaler-5cb4d56d69-qz7dh   2/2       Running     0          17m
-  controller-6d65444c78-8wqb8   1/1       Running     0          17m
-  webhook-55f88654fb-tq8ps      1/1       Running     0          17m
-  ```
-
   If that is not the case, there may have been a problem during the installation. In that case, we kindly ask you to clean your cluster and restart the installation described in the **Troubleshooting** section below.
 
 ## Uninstall
 
 - Please follow these instructions to uninstall keptn from your cluster:
 
-  - For **GKE** and **AKS**:
-    - Clone the keptn installer repository of the latest release:
+  - Clone the keptn installer repository of the latest release:
 
-      ``` console
-      git  clone --branch 0.3.0 https://github.com/keptn/installer
-      cd  ./installer/scripts/common
-      ``` 
+    ``` console
+    git  clone --branch 0.4.0 https://github.com/keptn/installer
+    cd  ./installer/scripts/common
+    ``` 
 
-    - Execute `uninstallKeptn.sh` and all keptn resource will be deleted
+  - Execute `uninstallKeptn.sh` and all keptn resource will be deleted
 
-      ```console
-      ./uninstallKeptn.sh
-      ```
-  - For **OpenShift**:
-    - Clone the keptn installer repository of the latest release:
-
-      ``` console
-      git  clone --branch 0.3.0 https://github.com/keptn/installer
-      cd  ./installer/scripts/openshift
-      ``` 
-
-    - Execute `uninstallKeptn.sh` and all keptn resource will be deleted
-
-      ```console
-      ./uninstallKeptn.sh
-      ``` 
+    ```console
+    ./uninstallKeptn.sh
+    ```
 
 - To verify the cleanup, retrieve the list of namespaces in your cluster and ensure that the `keptn` namespace is not included in the output of the following command:
 

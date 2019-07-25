@@ -41,7 +41,7 @@ To illustrate the scenario this use case addresses, keptn relies on the followin
 1. Git clone artifacts for this use case.
 
     ```console
-    git clone --branch 0.3.0 https://github.com/keptn/examples.git --single-branch
+    git clone --branch 0.4.0 https://github.com/keptn/examples.git --single-branch
     cd examples/onboarding-carts
     ```
 1. Fork carts example into your GitHub organization
@@ -59,8 +59,17 @@ If you have not yet authenticated and configured the keptn CLI, please follow th
 
 1. The CLI needs to be authenticated against the keptn server. Therefore, please follow the [keptn auth](../../reference/cli/#keptn-auth) instructions.
 
+    Set the needed environment variables.
+
     ```console
-    keptn auth --endpoint=https://$(kubectl get ksvc -n keptn control -o=yaml | yq r - status.domain) --api-token=$(kubectl get secret keptn-api-token -n keptn -o=yaml | yq - r data.keptn-api-token | base64 --decode)
+    KEPTN_ENDPOINT=https://control.keptn.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
+    KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -o=jsonpath='{.data.keptn-api-token}' | base64 --decode)
+    ```
+
+    Authenticate to the keptn server.
+
+    ```console
+    keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN
     ```
 
 1. Configure the used GitHub organization, user, and personal access token using the [keptn configure](../../reference/cli/#keptn-configure) command:
@@ -74,7 +83,6 @@ If you have not yet authenticated and configured the keptn CLI, please follow th
 For creating a project, this use case relies on the `shipyard.yaml` file shown below:
 
 ```yaml
-registry: sockshop
 stages:
   - name: "dev"
     deployment_strategy: "direct"
@@ -126,7 +134,7 @@ The used artifact is stored on Docker Hub.
 
 1. Go to the keptn's bridge and check which events have already been generated. You can access it by a port-forward from your local machine to the Kubernetes cluster:
   ```console 
-  kubectl port-forward svc/$(kubectl get ksvc bridge -n keptn -ojsonpath={.status.latestReadyRevisionName})-service -n keptn 9000:80
+  kubectl port-forward svc/bridge -n keptn 9000:8080
   ```
   Now access the bridge from your browser on http://localhost:9000. 
   \\
@@ -137,30 +145,20 @@ The used artifact is stored on Docker Hub.
       link="./assets/bridge.png"
       caption="keptn's bridge">}}
 
-<details><summary>Known issue for AKS installations</summary>
-<p>
-In AKS, the first functional check erroneously fails. Therefore, the artifact is not promoted into staging and production.
-We are addressing this bug in the [issue #483](https://github.com/keptn/keptn/issues/483).
-
-In order to pass this functional check, 
-please re-send a new artifact event for the carts service.
-  ```console
-  keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.8.1
-  ```
- </p>
-</details>
 
 ## View carts service
 
-- Run the following command to get the **EXTERNAL-IP** and **PORT** of your cluster's ingress gateway.
-    
-  ```console    
-  kubectl get svc istio-ingressgateway -n istio-system
-  ```
+- Get the URL for your carts service with the following commands in the respective namespaces:
 
   ```console
-  NAME                     TYPE           CLUSTER-IP      EXTERNAL-IP      PORT(S)
-  istio-ingressgateway     LoadBalancer   10.11.246.127   <EXTERNAL_IP>   80:32399/TCP 
+  echo http://carts.sockshop-dev.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
+  echo http://carts.sockshop-staging.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
+  echo http://carts.sockshop-production.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
   ```
 
-- Navigate to `http://carts.sockshop-production.<EXTERNAL IP>.xip.io` for viewing the carts service in your `production` environment. 
+Navigate to the URLs to inspect your carts service. In the production namespace, you should receive an output similar to this:
+
+  {{< popup_image
+    link="./assets/carts-production.png"
+    caption="carts service in production"
+    width="50%">}}
