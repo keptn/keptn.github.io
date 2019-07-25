@@ -110,20 +110,9 @@ For the Windows PowerShell, a small script is provided that installs the `PSYaml
 1. Copy the following snippet and paste it in your PowerShell. The snippet will be automatically executed line by line.
 
     ```
-    Install-Module PSYaml
-    import-module psyaml
-    $yamlText = kubectl get secret keptn-api-token -n keptn -o=yaml
-    $content = ''
-    foreach ($line in $yamlText) { $content = $content + "`n" + $line }
-    $yaml = ConvertFrom-YAML $content
-    $Env:KEPTN_API_TOKEN = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($yaml.data."keptn-api-token"))
-
-    $yamlText = kubectl get ksvc -n keptn control -o=yaml
-    $content = ''
-    foreach ($line in $yamlText) { $content = $content + "`n" + $line }
-    $yaml = ConvertFrom-YAML $content
-    $ENDPOINT = $yaml.status.domain
-    $Env:KEPTN_ENDPOINT = "https://$ENDPOINT"
+    $tokenEncoded = $(kubectl get secret keptn-api-token -n keptn -ojsonpath='{.data.keptn-api-token}')
+    $Env:KEPTN_API_TOKEN = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($tokenEncoded))
+    $Env:KEPTN_ENDPOINT = 'https://control.keptn.'+$(kubectl get cm -n keptn keptn-domain -ojsonpath='{.data.app_domain}')
     ```
 
 1. Now that everything we need is stored in environment variables, we can proceed with authorizing the keptn CLI. To authenticate against the keptn server use command auth and your endpoint and API token:
@@ -143,18 +132,11 @@ In the Windows Command Line, a couple of steps are necessary.
 1. Get the keptn API Token encoded in base64
 
     ```console
-    kubectl get secret keptn-api-token -n keptn -o=yaml
+    kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token}
     ```
 
     ```console
-    Output:
-    apiVersion: v1
-    data:
-      keptn-api-token: abcdefghijkladfaea
-    kind: Secret
-    metadata:
-      ...
-    type: Opaque
+    abcdefghijkladfaea
     ```
 
 1. Take the encoded API token - it is the value from the key `keptn-api-token` (in this example, it is `abcdefghijkladfaea`) and save it in a text file, e.g., `keptn-api-token-base64.txt`
@@ -174,26 +156,17 @@ In the Windows Command Line, a couple of steps are necessary.
 1. Get the keptn server endpoint 
 
     ```console
-    kubectl get ksvc -n keptn control -o yaml
+    kubectl get cm -n keptn keptn-domain -ojsonpath={.data.app_domain}
     ```
 
     ```console
-    Output:
-    apiVersion: serving.knative.dev/v1alpha1
-    kind: Service
-    ...
-    status:
-      address:
-        hostname: control.keptn.svc.cluster.local
-      ...
-      domain: control.keptn.XX.XXX.XXX.XX.xip.io
-      ...
+    YOUR.DOMAIN
     ```
 
 1. Copy the `domain` value and save it in an environment variable
 
     ```
-    set KEPTN_ENDPOINT=https://control.keptn.XX.XXX.XXX.XX.xip.io
+    set KEPTN_ENDPOINT=https://control.keptn.YOUR.DOMAIN
     ```
 
 1. Now that everything we need is stored in environment variables, we can proceed with authorizing the keptn CLI.
