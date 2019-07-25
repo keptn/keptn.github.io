@@ -1,6 +1,6 @@
 # baseURL = "https://keptn.sh/"
 languageCode = "en-us"
-title = "keptn"
+title = "keptn | Opinionated framework for event-driven automated continuous operations"
 theme = "hugo-serif-theme"
 relativeUrls = true
 

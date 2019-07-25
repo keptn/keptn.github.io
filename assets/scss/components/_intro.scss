@@ -2,19 +2,19 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding-top: 200px;
+  padding-top: 60px;
   padding-bottom: 100px;
   @include media-breakpoint-up(sm) {
-    padding-top: 160px;
-    padding-bottom: 80px;
+    padding-top: 60px;
+    padding-bottom: 40px;
   }
   @include media-breakpoint-up(md) {
-    padding-top: 160px;
-    padding-bottom: 80px;
+    padding-top: 60px;
+    padding-bottom: 40px;
   }
   @include media-breakpoint-up(lg) {
-    padding-top: 200px;
-    padding-bottom: 100px;
+    padding-top:60;
+    padding-bottom: 40px;
   }
   h1 {
     color: $primary;

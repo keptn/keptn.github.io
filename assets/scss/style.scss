@@ -11,16 +11,16 @@
 @import 'bootstrap/grid';
 @import 'bootstrap/type';
 @import 'bootstrap/tables';
-// @import "bootstrap/images";
+@import "bootstrap/images";
 // @import "bootstrap/code";
 // @import "bootstrap/forms";
-// @import "bootstrap/buttons";
+@import "bootstrap/buttons";
 @import "bootstrap/transitions";
 // @import "bootstrap/dropdown";
 // @import "bootstrap/button-group";
 // @import "bootstrap/input-group";
 // @import "bootstrap/custom-forms";
-// @import "bootstrap/nav";
+@import "bootstrap/nav";
 @import "bootstrap/navbar";
 @import "bootstrap/card";
 @import "bootstrap/breadcrumb";
@@ -103,3 +103,48 @@ body {
 //     }
 //   }
 // }
+
+.terminal-window {
+  background-color: rgba(0,0,0,.7);
+  width: 100%;
+  padding: 10px;
+}
+
+
+.terminal {
+  margin: 20px;
+  font-family: monospace;
+  font-size: 12px;
+  color: #22da26;
+  height: 240px;
+
+  .command {
+    width: 0%;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: write-command 5s both;
+    color: #22da26;
+    font-size: 14px;
+    font-weight: bold;
+    &:before {
+      content: '$ ';
+      color: #22da26;
+    }
+  }
+}
+
+.tab-content {
+  border-left: 1px solid rgb(222, 226, 230);
+  border-right: 1px solid rgb(222, 226, 230);
+  border-bottom: 1px solid rgb(222, 226, 230);
+  background-color: #ffffff;
+  .tab-pane {
+    padding: 15px;
+  }
+
+}
+
+.nav-tabs {
+  margin: 0 !important;
+  padding-left: 10px;
+}
