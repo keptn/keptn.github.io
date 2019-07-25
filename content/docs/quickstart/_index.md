@@ -33,4 +33,33 @@ keptn install --platform=[gke|aks|openshift|kubernetes]
 keptn is now ready to be used.
 
 ### 3. Explore the usecases
-With keptn installed, jave a look at the different use cases like
+With keptn installed, jave a look at the different [use cases](/docs/0.4.0/usecases) like
+
+* [Onboarding a new service](/docs/0.4.0/usecases/onboard-carts-service/)
+* [Using quality gates for deployments](/docs/0.4.0/usecases/deployments-with-quality-gates/)
+* [Runbook automation and self-healing](/docs/0.4.0/usecases/runbook-automation-and-self-healing/)
+* [Unbreakable delivery](/docs/0.4.0/usecases/unbreakable-delivery-pipeline/)
+
+### 4. Learn how keptn works under the hood and how it can be adapted to your usecases
+Review the [reference documentation](/docs/0.4.0/) for a full reference on all components of keptn and how they can be combined and extended to your needs.
+
+### 5. In case you need help
+Join [our slack channel](https://join.slack.com/t/keptn/shared_invite/enQtNTUxMTQ1MzgzMzUxLTcxMzE0OWU1YzU5YjY3NjFhYTJlZTNjOTZjY2EwYzQyYWRkZThhY2I3ZDMzN2MzOThkZjIzOTdhOGViMDNiMzI) for any questions that may arise.
+
+### 6. Uninstalling keptn
+##### 6.1. Clone Installer Repo
+```console
+git  clone --branch 0.3.0 https://github.com/keptn/installer
+```
+
+##### 6.2a. Uninstall for GKE, AKS, k8s
+```console
+cd  ./installer/scripts/common
+./uninstallKeptn.sh
+```
+
+##### 6.2b. Uninstall for OpenShift
+```console
+cd  ./installer/scripts/openshift
+./uninstallKeptn.sh
+```
