@@ -16,7 +16,7 @@ menu: main
 ### 2. Install keptn
 ##### 2.1. Download and Install the Keptn CLI
 ```console
-curl -o keptn-linux.tar https://github.com/keptn/keptn/releases/download/0.3.0/0.3.0_keptn-linux.tar
+curl -o keptn-linux.tar https://github.com/keptn/keptn/releases/download/0.4.0/0.4.0_keptn-linux.tar
 tar -zxvf keptn-linux.tar
 chmod +x keptn
 mv keptn /usr/local/bin/keptn
@@ -49,7 +49,7 @@ Join [our slack channel](https://join.slack.com/t/keptn/shared_invite/enQtNTUxMT
 ### 6. Uninstalling keptn
 ##### 6.1. Clone Installer Repo
 ```console
-git  clone --branch 0.3.0 https://github.com/keptn/installer
+git  clone --branch 0.4.0 https://github.com/keptn/installer
 ```
 
 ##### 6.2a. Uninstall for GKE, AKS, k8s
