@@ -19,7 +19,7 @@ date: 2018-02-12T15:37:57+07:00
       <li><strong>SREs</strong> can enforce processes instead of debugging problems</li>
     </ul>
 
-    <a href="/docs/quick_start/" class="mt-2 btn btn-primary btn-block">Get Started!</a>
+    <a href="/docs/quickstart/" class="mt-2 btn btn-primary btn-block">Get Started!</a>
 
 
   </div>
