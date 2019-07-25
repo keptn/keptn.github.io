@@ -2,7 +2,7 @@
 title: Setup OpenShift
 description: How to setup an OpenShift cluster to be used for keptn.
 weight: 15
-icon: setup
+
 keywords: setup
 ---
 

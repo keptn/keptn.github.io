@@ -2,8 +2,7 @@
 title: Uninstall
 description: Shows you how to uninstall keptn
 weight: 40
-icon: setup
-menu: main
+
 keywords: setup
 ---
 

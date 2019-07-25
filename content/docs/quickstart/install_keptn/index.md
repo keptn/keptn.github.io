@@ -2,8 +2,6 @@
 title: Download & Install keptn
 description: Shows you how to download the keptn CLI and install it on your k8s platform
 weight: 20
-icon: setup
-menu: main
 keywords: setup
 ---
 
