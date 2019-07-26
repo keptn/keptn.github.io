@@ -289,8 +289,8 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
   jmeter-service-deployment-distributor-687b778dfd-twqrp            1/1       Running   0          33s
   keptn-nats-cluster-1                                              1/1       Running   0          2m
   nats-operator-67d8dd94d5-wjlsj                                    1/1       Running   0          3m
-  openshift-route-service-57b45c4dfc-4x5lm                          1/1       Running   0          1d (OpenShift only)
-  openshift-route-service-create-project-distributor-7d4454cs44xp   1/1       Running   0          1d (OpenShift only)
+  openshift-route-service-57b45c4dfc-4x5lm                          1/1       Running   0          33s (OpenShift only)
+  openshift-route-service-create-project-distributor-7d4454cs44xp   1/1       Running   0          33s (OpenShift only)
   pitometer-service-56d75f9fcc-hcbbw                                1/1       Running   0          1m
   pitometer-service-tests-finished-distributor-785bdc79d4-xbnpb     1/1       Running   0          33s
   servicenow-service-86d6dfb7f7-dqcx6                               1/1       Running   0          1m
