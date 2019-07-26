@@ -8,9 +8,6 @@ keywords: [cli, setup]
 In this section, the functionality and commands of the keptn CLI are described. The keptn CLI allows installing keptn,
 configuring keptn, creating new projects, onboarding new services, and sending new artifact events.
 
-If you are unfamiliar with keptn, we recommend to first watch this [community meeting recording](https://drive.google.com/open?id=1Zj-c0tGIvQ_0Dys6NsyDa-REsEZCvAHJ),
-which provides an introduction to keptn.
-
 ## Prerequisites
 -  All prerequisites from the [setup](../../installation/setup-keptn-gke#prerequisites) are needed.
 - A GitHub organization, a GitHub user, and [personal access token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line). 
@@ -85,8 +82,8 @@ More precisely, the keptn CLI stores the endpoint and API token using `pass` in 
 Set the needed environment variables.
 
 ```console
-KEPTN_ENDPOINT=https://control.keptn.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
-KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -o=jsonpath='{.data.keptn-api-token}' | base64 --decode)
+KEPTN_ENDPOINT=https://api.keptn.$(kubectl get cm keptn-domain -n keptn -ojsonpath={.data.app_domain})
+KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
 ```
 
 Authenticate to the keptn server.
@@ -112,7 +109,7 @@ For the Windows PowerShell, a small script is provided that installs the `PSYaml
     ```
     $tokenEncoded = $(kubectl get secret keptn-api-token -n keptn -ojsonpath='{.data.keptn-api-token}')
     $Env:KEPTN_API_TOKEN = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($tokenEncoded))
-    $Env:KEPTN_ENDPOINT = 'https://control.keptn.'+$(kubectl get cm -n keptn keptn-domain -ojsonpath='{.data.app_domain}')
+    $Env:KEPTN_ENDPOINT = 'https://api.keptn.'+$(kubectl get cm -n keptn keptn-domain -ojsonpath='{.data.app_domain}')
     ```
 
 1. Now that everything we need is stored in environment variables, we can proceed with authorizing the keptn CLI. To authenticate against the keptn server use command auth and your endpoint and API token:
@@ -166,7 +163,7 @@ In the Windows Command Line, a couple of steps are necessary.
 1. Copy the `domain` value and save it in an environment variable
 
     ```
-    set KEPTN_ENDPOINT=https://control.keptn.YOUR.DOMAIN
+    set KEPTN_ENDPOINT=https://api.keptn.YOUR.DOMAIN
     ```
 
 1. Now that everything we need is stored in environment variables, we can proceed with authorizing the keptn CLI.

@@ -245,11 +245,9 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
             <li>A NATS Cluster</li>
             <li>The keptn core services:</li>
                 <ul>
-                    <li>authenticator</li>
+                    <li>api</li>
                     <li>bridge</li>
-                    <li>control</li>
                     <li>eventbroker</li>
-                    <li>eventbroker-ext</li>
                 </ul>
             <li>The services are required to deploy artifacts and to demonstrate the self-healing use cases:</li>
                 <ul>
@@ -275,10 +273,8 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
 
   ```console
   NAME                                                              READY     STATUS    RESTARTS   AGE
-  authenticator-75ffd6bbdc-8tks2                                    1/1       Running   0          2m
+  api-75ffd6bbdc-8tks2                                              1/1       Running   0          2m
   bridge-d5bc7c9b6-72h6n                                            1/1       Running   0          2m
-  control-599858b499-b8rmf                                          1/1       Running   0          2m
-  event-broker-ext-796fbb94f6-2dcs7                                 1/1       Running   0          2m
   eventbroker-go-77d4fc7fdd-rmzxk                                   1/1       Running   0          2m
   gatekeeper-service-787c6f7d84-j8s4f                               1/1       Running   0          1m
   gatekeeper-service-evaluation-done-distributor-5b5f77c6ff-fhbbq   1/1       Running   0          32s
