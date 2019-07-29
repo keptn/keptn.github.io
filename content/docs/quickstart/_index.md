@@ -58,7 +58,7 @@ Join [our slack channel](https://join.slack.com/t/keptn/shared_invite/enQtNTUxMT
 ### 7. Uninstalling keptn
 ##### 7.1. Clone Installer Repo
 ```console
-git  clone --branch 0.3.0 https://github.com/keptn/installer
+git  clone --branch 0.4.0 https://github.com/keptn/installer
 ```
 
 ##### 7.2a. Uninstall for GKE, AKS, k8s
