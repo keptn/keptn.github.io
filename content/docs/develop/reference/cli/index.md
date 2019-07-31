@@ -9,7 +9,7 @@ In this section, the functionality and commands of the keptn CLI are described. 
 configuring keptn, creating new projects, onboarding new services, and sending new artifact events.
 
 ## Prerequisites
--  All prerequisites from the [setup](../../installation/setup-keptn-gke#prerequisites) are needed.
+- All prerequisites from the [setup](../../installation/setup-keptn-gke#prerequisites) are needed.
 - A GitHub organization, a GitHub user, and [personal access token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line). 
 
 ## Install the keptn CLI
@@ -239,7 +239,7 @@ keptn send event new-artifact --project=your_project --service=your_service --im
 This command allows sending arbitrary keptn events. These events have to follow the [Cloud Events](https://cloudevents.io/)
 specification and are written in JSON.
 **Note:** This command is not required for any use case and requires precise keptn event definitions as you
-can find [here](https://github.com/keptn/keptn-specification/blob/master/cloudevents.md).
+can find [here](https://github.com/keptn/keptn/blob/develop/specification/cloudevents.md).
 
 To send an arbitrary keptn event, use the command `send event` and pass the file containing the event (flag `--file`).
 ```console
