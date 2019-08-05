@@ -12,7 +12,7 @@ Since the removal of knative as a core technology in keptn 0.4.0 is considered t
 
 For uninstalling keptn, [download this script](https://github.com/keptn/installer/blob/0.4.0/scripts/common/uninstallKeptn030.sh) and execute it:
 ```
-./uninstalKeptn030.sh
+./uninstallKeptn030.sh
 ```
 
 ## Install keptn CLI
