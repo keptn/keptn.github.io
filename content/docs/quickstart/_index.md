@@ -10,7 +10,7 @@ menu: main
 ### 1. Setup your platform
 
 * [Preparing Google Kubernetes Engine (GKE)](/docs/quickstart/setup_platform/setup_gke)
-* [Preparing Amazon Kubernetes Engine (AKS)](/docs/quickstart/setup_platform/setup_aks)
+* [Preparing Azure Kubernetes Engine (AKS)](/docs/quickstart/setup_platform/setup_aks)
 * [Preparing OpenShift](/docs/quickstart/setup_platform/setup_openshift)
 
 ### 2. Install keptn
