@@ -64,6 +64,19 @@ To set up the quality gates for the carts service, please navigate to the `perfs
   git push
   ```
 
+Finally, we have to configure Prometheus in order to collect data that can be evaluated.
+Therefore, navigate to the Prometheus folder of your examples (depending on your current location):
+
+  ```console
+  cd examples/monitoring/prometheus
+  ```
+
+Execute the `configurePrometheus.sh` script with the name of your project, the name of the service and the shipyard file containing all your stages, e.g.,:
+
+  ```console
+  ./configurePrometheus.sh sockshop carts ../../onboarding-carts/shipyard.yaml
+  ```
+
 Now, you have quality gates in place, which will check whether the average response time of the service is under 1&nbsp;second.
  </p>
 </details>
