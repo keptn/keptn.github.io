@@ -26,6 +26,41 @@ keywords: setup
 ## Setup Kubernetes Cluster
 Select one of the following options:
 
+<details><summary>Azure Kubernetes Service (AKS)</summary>
+<p>
+
+1. Install local tools
+  - [az](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
+
+2. Create AKS cluster
+  - Master version >= `1.12.x` (tested version: `1.12.8`)
+  - One **B4ms** node
+ 
+ </p>
+</details>
+
+<details><summary>Amazon Elastic Container Service (EKS)</summary>
+<p>
+
+1. Install local tools
+  - [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html) (version >= 1.16.156)
+
+1. Create EKS cluster on AWS
+  - version >= `1.13` (tested version: `1.13`)
+  - One `m5.xlarge` node
+  - Sample script using [eksctl](https://eksctl.io/introduction/installation/) to create such a cluster
+
+    ```console
+    eksctl create cluster --version=1.13 --name=keptn-cluster --node-type=m5.xlarge --nodes=1 --region=eu-west-3
+    ```
+    In our testing we learned that the default CoreDNS that comes with certain EKS versions has a bug. In order to solve that issue we can use eksctl to update the CoreDNS service like this: 
+    ```console
+    eksctl utils update-coredns --name=keptn-cluster --region=eu-west-3 --approve
+    ```
+
+</p>
+</details>
+
 <details><summary>Google Kubernetes Engine (GKE)</summary>
 <p>
 
@@ -148,31 +183,6 @@ Select one of the following options:
 </p>
 </details>
 
-<details><summary>Azure Kubernetes Service (AKS)</summary>
-<p>
-
-1. Install local tools
-  - [az](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
-
-2. Create AKS cluster
-  - Master version >= `1.12.x` (tested version: `1.12.8`)
-  - One **B4ms** node
- 
- </p>
-</details>
-
-<!-- 
-<details><summary>Amazon Elastic Container Service (EKS)</summary>
-<p>
-
-1. Install local tools
-
-1. Create EKS cluster on AWS
-</p>
-</details>
-
--->
-
 ## Install keptn CLI
 Every release of keptn provides binaries for the keptn CLI. These binaries are available for Linux, macOS, and Windows.
 
@@ -206,6 +216,15 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
 
 - Execute the CLI command `keptn install` and provide the requested information. This command will install keptn in the version of the latest release. Since v0.3 of keptn, the install command accepts a parameter to select the platform you would like to install keptn on. Currently supported platforms are Google Kubernetes Engine (GKE), OpenShift and Azure Kubernetes Services (AKS). Depending on your platform, enter the following command to start the installation:
 
+  - For **AKS**:
+    ```console
+    keptn install --platform=aks
+    ```
+  
+  - For **EKS**:
+    ```console
+    keptn install --platform=eks
+    ```
   - For **GKE**:
     ```console
     keptn install --platform=gke
@@ -215,52 +234,41 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
     ```console
     keptn install --platform=openshift
     ```
-    <details><summary>Configure a custom domain</summary>
-    <p>
-    In case you have a custom domain or can not use xip.io (e.g., because you are running in AWS which will create ELBs for you), there is a script provided to configure keptn to use your custom domain.
-    Checkout the script:
-    ```console
-    git clone --branch 0.4.0 https://github.com/keptn/installer 
-    cd installer/scripts/common
-    ```
-    Run the script:
-    ```console
-    ./updateDomain.sh YOURDOMAIN
-    ```
-    This will provide you a KEPTN_ENDPOINT and KEPTN_API_TOKEN at the end of the script which you can use to [authenticate the keptn CLI](../../reference/cli/#keptn-auth).
-    </p>
-    </details>
 
-
-  - For **AKS**:
-    ```console
-    keptn install --platform=aks
-    ```
-
-    In your cluster, this command installs the complete infrastructure necessary to run keptn. 
-        <details><summary>This includes:</summary>
+In your cluster, this command installs the complete infrastructure necessary to run keptn. 
+    <details><summary>This includes:</summary>
+        <ul>
+        <li>Istio</li>
+        <li>An Elasticsearch/Kibana Stack for the keptn's log</li>
+        <li>A NATS Cluster</li>
+        <li>The keptn core services:</li>
             <ul>
-            <li>Istio</li>
-            <li>An Elasticsearch/Kibana Stack for the keptn's log</li>
-            <li>A NATS Cluster</li>
-            <li>The keptn core services:</li>
-                <ul>
-                    <li>api</li>
-                    <li>bridge</li>
-                    <li>eventbroker</li>
-                </ul>
-            <li>The services are required to deploy artifacts and to demonstrate the self-healing use cases:</li>
-                <ul>
-                    <li>github-services</li>
-                    <li>helm-service</li>
-                    <li>jmeter-service</li>
-                    <li>gatekeeper-service</li>
-                    <li>pitometer-service</li>
-                    <li>serviceNow-service</li>
-                    <li>openshift-route-service (OpenShift only)</li>
-                </ul>
+                <li>api</li>
+                <li>bridge</li>
+                <li>eventbroker</li>
             </ul>
-        </details>
+        <li>The services are required to deploy artifacts and to demonstrate the self-healing use cases:</li>
+            <ul>
+                <li>github-services</li>
+                <li>helm-service</li>
+                <li>jmeter-service</li>
+                <li>gatekeeper-service</li>
+                <li>pitometer-service</li>
+                <li>serviceNow-service</li>
+                <li>openshift-route-service (OpenShift only)</li>
+            </ul>
+        </ul>
+    </details>
+    
+## Configure a custom domain (required for EKS)
+  
+In case you have a custom domain or cannot use xip.io (e.g., because you are running in AWS which will create ELBs for you), there is a 
+CLI command provided to configure keptn to use your custom domain:
+```console
+keptn configure domain YOUR_DOMAIN
+```
+
+
 
 
 ## Verifying the installation
@@ -311,38 +319,16 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
 
 ## Uninstall
 
-- Please follow these instructions to uninstall keptn from your cluster:
-
-  - Clone the keptn installer repository of the latest release:
-
+- In order to uninstall keptn from your cluster, run the uninstall command in the keptn CLI:
     ``` console
-    git  clone --branch 0.4.0 https://github.com/keptn/installer
-    cd  ./installer/scripts/common
+    keptn uninstall
     ``` 
 
-  - Execute `uninstallKeptn.sh` and all keptn resource will be deleted
+ - To verify the cleanup, retrieve the list of namespaces in your cluster and ensure that the `keptn` namespace is not included in the output of the following command:
 
     ```console
-    ./uninstallKeptn.sh
+    kubectl get namespaces
     ```
-
-- To verify the cleanup, retrieve the list of namespaces in your cluster and ensure that the `keptn` namespace is not included in the output of the following command:
-
-  ```console
-  kubectl get namespaces
-  ```
-
-- **Note**: In some cases, it might occure that the `keptn` namespace remains stuck in the `Terminating` state. If that happens, you can enforce the deletion of the namespace as follows:
-
-  ```console
-  NAMESPACE=keptn
-  kubectl proxy &
-  kubectl get namespace $NAMESPACE -o json |jq '.spec = {"finalizers":[]}' >temp.json
-  curl -k -H "Content-Type: application/json" -X PUT --data-binary @temp.json 127.0.0.1:8001/api/v1/namespaces/$NAMESPACE/finalize
-  rm temp.json
-  ```
-
-- **Note:** In future releases of the keptn CLI, a command `keptn uninstall` will be added, which replaces the shell script `uninstallKeptn.sh`.
 
 ## Troubleshooting
 
