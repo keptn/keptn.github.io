@@ -47,7 +47,19 @@ In order to evaluate the quality gates and allow self-healing in production, we 
 
 1. Execute the installation script for your platform:
 
-  - If you are on **GKE**, please execute
+  - If you are on **Azure AKS**, please execute
+
+    ```console
+    ./deployDynatraceOnAKS.sh
+    ```
+
+    - If you are on **AWS EKS**, please execute
+
+    ```console
+    ./deployDynatraceOnEKS.sh
+    ```
+
+  - If you are on **Google GKE**, please execute
 
     ```console
     ./deployDynatraceOnGKE.sh
@@ -57,12 +69,6 @@ In order to evaluate the quality gates and allow self-healing in production, we 
 
     ```console
     ./deployDynatraceOnOpenshift.sh
-    ```
-
-  - If you are on **Azure AKS**, please execute
-
-    ```console
-    ./deployDynatraceOnAKS.sh
     ```
 
 When this script is finished, the Dynatrace OneAgent and the dynatrace-service are deployed in your cluster. Execute the following command to verify the deployment of the dynatrace-service.

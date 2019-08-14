@@ -1,15 +1,15 @@
 ---
 title: keptn CLI
-description: The following description explains how to use the keptn CLI and connect it to your keptn server.
+description: The following description explains how to use the keptn CLI and connect it to your keptn cluster.
 weight: 10
 keywords: [cli, setup]
 ---
 
-In this section, the functionality and commands of the keptn CLI are described. The keptn CLI allows installing keptn,
-configuring keptn, creating new projects, onboarding new services, and sending new artifact events.
+In this section, the functionality and commands of the keptn CLI are described. The keptn CLI allows installing, configuring, and
+uninstalling keptn. Furthermore, the CLI allows creating new projects, onboarding new services, and sending new artifact events.
 
 ## Prerequisites
-- All prerequisites from the [setup](../../installation/setup-keptn-gke#prerequisites) are needed.
+- All prerequisites from the [setup](../../installation/setup-keptn#prerequisites) are needed.
 - A GitHub organization, a GitHub user, and [personal access token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line). 
 
 ## Install the keptn CLI
@@ -46,9 +46,21 @@ All of these commands provide a help flag (`--help`), which describes details of
 In order to guarantee the expected behavior, please strictly use the following commands in the specified order.
 In future releases, we add additional checks whether the executed commands succeeded or failed.
 
-## keptn install 
+### keptn install 
 
-The keptn CLI allows to install keptn on a Google Kubernetes Engine (GKE), OpenShift or Azure Kubernetes Services (AKS). Further details are provided [here](../../installation/#install-keptn).
+The keptn CLI allows to install keptn on an Azure Kubernetes Services (AKS), an Amazon Elastic Kubernetes Service (EKS),
+a Google Kubernetes Engine (GKE), and on OpenShift. Further details are provided [here](../../installation/#install-keptn).
+
+  - For **AKS**:
+
+    ```console
+    keptn install --platform=aks
+    ```
+  - For **EKS**:
+
+    ```console
+    keptn install --platform=eks
+    ```
 
   - For **GKE**:
 
@@ -62,22 +74,27 @@ The keptn CLI allows to install keptn on a Google Kubernetes Engine (GKE), OpenS
     keptn install --platform=openshift
     ```
 
-  - For **AKS**:
+### keptn configure domain
 
-    ```console
-    keptn install --platform=aks
-    ```
+The keptn CLI allows to configure your custom domain. This is mandatory if you 
+cannot use xip.io (e.g., because you are running in AWS which will create ELBs for you).
 
-## keptn auth 
+**Note:** This command requires a *kubernetes current context* pointing to the cluster where you would like to uninstall keptn. After installing keptn 
+this is guaranteed.
 
-Before the keptn CLI can be used, it needs to be authenticated against a keptn server. Therefore, an endpoint and an API token are required.
+```console
+keptn domain YOUR_CUSTOM_DOMAIN
+```
 
-**Note:** The CLI is automatically authenticated after installing keptn using the CLI. Hence, `keptn auth` can be skipped.
+### keptn auth 
+
+Before the keptn CLI can be used, it needs to be authenticated against a keptn cluster. Therefore, an endpoint and an API token are required.
 
 If the authentication is successful, keptn will inform the user. Furthermore, if the authentication is successful, the endpoint and the API token are stored in a password store of the underlying operating system.
 More precisely, the keptn CLI stores the endpoint and API token using `pass` in case of Linux, using `Keychain` in case of macOS, or `Wincred` in case of Windows.
 
-### Linux / macOS
+<details><summary>For **Linux / macOS**</summary>
+<p>
 
 Set the needed environment variables.
 
@@ -86,16 +103,18 @@ KEPTN_ENDPOINT=https://api.keptn.$(kubectl get cm keptn-domain -n keptn -ojsonpa
 KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
 ```
 
-Authenticate to the keptn server.
+Authenticate to the keptn cluster.
 
 ```console
 keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN
 ```
 
-**Note**: If you receive a warning `Using a file-based storage for the key because the password-store seems to be not set up.` it is because a password store could not be found in your environment. In this case, the credentials are stored in a file called `.keptn` in your home directory.
+**Note**: If you receive a warning `Using a file-based storage for the key because the password-store seems to be not set up.` it is because a password store could not be found in your environment. In this case, the credentials are stored in `~/.keptn/.password-store` in your home directory.
+</p>
+</details>
 
-
-### Windows 
+<details><summary>For **Windows**</summary>
+<p>
 
 Please expand the corresponding section matching your CLI tool.
 
@@ -112,7 +131,7 @@ For the Windows PowerShell, a small script is provided that installs the `PSYaml
     $Env:KEPTN_ENDPOINT = 'https://api.keptn.'+$(kubectl get cm -n keptn keptn-domain -ojsonpath='{.data.app_domain}')
     ```
 
-1. Now that everything we need is stored in environment variables, we can proceed with authorizing the keptn CLI. To authenticate against the keptn server use command auth and your endpoint and API token:
+1. Now that everything we need is stored in environment variables, we can proceed with authorizing the keptn CLI. To authenticate against the keptn cluster use command auth and your endpoint and API token:
 
     ```
     keptn.exe auth --endpoint=$Env:KEPTN_ENDPOINT --api-token=$Env:KEPTN_API_TOKEN
@@ -150,7 +169,7 @@ In the Windows Command Line, a couple of steps are necessary.
     set KEPTN_API_TOKEN=value-of-your-token
     ```
 
-1. Get the keptn server endpoint 
+1. Get the keptn cluster endpoint 
 
     ```console
     kubectl get cm -n keptn keptn-domain -ojsonpath={.data.app_domain}
@@ -168,7 +187,7 @@ In the Windows Command Line, a couple of steps are necessary.
 
 1. Now that everything we need is stored in environment variables, we can proceed with authorizing the keptn CLI.
 
-    To authenticate against the keptn server use command `auth` and your endpoint and API token:
+    To authenticate against the keptn cluster use command `auth` and your endpoint and API token:
 
     ```
     keptn.exe auth --endpoint=%KEPTN_ENDPOINT% --api-token=%KEPTN_API_TOKEN%
@@ -176,12 +195,14 @@ In the Windows Command Line, a couple of steps are necessary.
 
 </p>
 </details>
+</p>
+</details>
 
 ## keptn configure 
 
 In order to work with GitHub (i.e. create a new project, make commits), keptn requires a
 GitHub organization, the GitHub user, and the GitHub personal access token belonging to that user.
-Therefore, the keptn CLI is used to set the GitHub organization, the GitHub user, and the GitHub personal access token belonging to that user in the keptn server.
+Therefore, the keptn CLI is used to set the GitHub organization, the GitHub user, and the GitHub personal access token belonging to that user in the keptn cluster.
 
 **Note:** keptn is automatically configured after installing keptn using the CLI. Hence, `keptn configure` can be skipped
 
@@ -252,4 +273,15 @@ Prints the version of the keptn CLI.
 
 ```console
 keptn version
+```
+
+
+## keptn uninstall
+
+Uninstalls keptn from your cluster. 
+
+**Note:** This command requires a *kubernetes current context* pointing to the cluster where you would like to uninstall keptn.
+
+```console
+keptn uninstall
 ```
