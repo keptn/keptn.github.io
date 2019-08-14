@@ -53,7 +53,7 @@ Select one of the following options:
     ```console
     eksctl create cluster --version=1.13 --name=keptn-cluster --node-type=m5.xlarge --nodes=1 --region=eu-west-3
     ```
-    In our testing we learned that the default CoreDNS that come with certain EKS version had a bug. In order to solve that issue we can use eksctl to update the coredns service like this: 
+    In our testing we learned that the default CoreDNS that comes with certain EKS versions has a bug. In order to solve that issue we can use eksctl to update the CoreDNS service like this: 
     ```console
     eksctl utils update-coredns --name=keptn-cluster --region=eu-west-3 --approve
     ```
