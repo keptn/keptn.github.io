@@ -283,5 +283,5 @@ Uninstalls keptn from your cluster.
 **Note:** This command requires a *kubernetes current context* pointing to the cluster where you would like to uninstall keptn.
 
 ```console
-keptn version
+keptn uninstall
 ```
