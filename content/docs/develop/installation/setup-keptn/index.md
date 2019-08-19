@@ -7,19 +7,7 @@ keywords: setup
 ---
 
 ## Prerequisites
-- GitHub
-  - [GitHub organization](https://github.com/organizations/new) for keptn to store its configuration repositories
-  - [Personal access token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line) for a user with access to said organization
-
-      -  Needed scopes: [x] `repo`
-
-        <details><summary>Expand Screenshot</summary>
-          {{< popup_image link="./assets/github-access-token.png" 
-        caption="GitHub Personal Access Token Scopes" width="50%">}}
-          </details>
-
 - Local tools
-  - [git](https://git-scm.com/)
   - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
   - For Linux: [bc](https://www.gnu.org/software/bc/manual/html_mono/bc.html)
 
@@ -239,7 +227,7 @@ In your cluster, this command installs the complete infrastructure necessary to 
     <details><summary>This includes:</summary>
         <ul>
         <li>Istio</li>
-        <li>An Elasticsearch/Kibana Stack for the keptn's log</li>
+        <li>A MongoDb database for the keptn's log</li>
         <li>A NATS Cluster</li>
         <li>The keptn core services:</li>
             <ul>
