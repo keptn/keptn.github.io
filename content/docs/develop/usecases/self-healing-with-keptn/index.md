@@ -11,19 +11,18 @@ This usecase presents how to use the self-healing mechanisms Keptn provides to s
 
 ## About this use case
 
-TBD
+In this use case you will learn how to use the capabilities of Keptn to provide self-healing for an application without modifying any of the applications code. The use case presented in the following will scale up the pods of an application if the application undergoes heavy CPU saturation. 
 
 ## Prerequisites
 
-- clone repo to retrieve spec files
-- already onboarded service (carts:0.9.x)
+- clone repo to retrieve specification files
+- finish onboarded service use case (carts:0.9.x)
 
 ## Configure Monitoring
 
-A monitoring solution is needed to inform Keptn about any issues in a production system, therefore, first the monitoring solutions needs to be setup and configured.
+Monitoring has to be set up to inform Keptn about any issues in a production system. The Keptn CLI helps with automated setup and configuration of Prometheus as the monitoring solution running in the Kubernetes cluster.
 
-Keptn relies on different specification files that define service level indicators (SLI), service level objectives (SLO) as well as remediation actions if service level objectives are not met. 
-
+For the configuration, Keptn relies on different specification files that define service level indicators (SLI), service level objectives (SLO) as well as remediation actions for self-healing if service level objectives are not met. 
 
 <details>
 <summary>
@@ -66,8 +65,14 @@ remediations:
 </p>
 </details>
 
-In order to add these files to Keptn to automatically configure the monitoring solution, execute the following command:
+In order to add these files to Keptn to automatically configure Prometheus, execute the following commands.
 
+Make sure you are in the correct folder of your examples directory:
+```
+cd examples/onboarding-carts
+```
+
+Configure Prometheus with the Keptn CLI:
 ```console
 keptn configure monitoring prometheus --project=sockshop --service=carts --service-objectives=service-objectives.yaml --service-indicators=service-indicators.yaml --remediation=remediation.yaml
 ```
@@ -77,15 +82,15 @@ Executing this command will execute the following tasks:
 - Set up [Prometheus](https://prometheus.io) 
 - Configure Prometheus with scrape jobs and alerting rules for the service
 - Set up the [Alert Manager](https://prometheus.io/docs/alerting/configuration/) to manage alerts
-- Add the `service-indicators.yaml`, `service-objectives.yaml` and `remediation.yaml` to your keptn config repository
+- Add the `service-indicators.yaml`, `service-objectives.yaml` and `remediation.yaml` to your Keptn config repository
 
 
 
 ## Run the Use Case
 
-### Deploy an unhealthy service version
+### 1. Deploy an unhealthy service version
 
-In order to test the self-healing capabilities let us deploy an unhealthy version of our carts microservice that has some issues that might not be detected by the automated quality gates since they tests generate artificial traffic while in production real user traffic might reveal untested parts of the microservice that have issues.
+In order to test the self-healing capabilities let us deploy an unhealthy version of our carts microservice that has some issues that might not be detected by the automated quality gates since the tests generate artificial traffic, while in production real user traffic might reveal untested parts of the microservice that have issues.
 
 Therefore, please make sure that you have completed the [onboard carts](../onboard-carts-service/) or the [deployment with quality gates](../deployments-with-quality-gates/) use case. 
 
@@ -110,21 +115,29 @@ carts-db-green-859b98755c-jpq72   1/1     Running   0          6h
 carts-green-579fc5cd59-z62gw      1/1     Running   0          6h
 ```
 
-### Generate load for the service
+### 2. Generate load for the service
 
-In order to simulate user traffic that is causing an unhealthy behaviour in the carts servcie, pleaes execute the following script. This will add special items into the shopping cart that cause some extensive calculation.
+In order to simulate user traffic that is causing an unhealthy behaviour in the carts servcie, please execute the following script. This will add special items into the shopping cart that cause some extensive calculation.
 
+Move to the correct folder:
+```console
+cd ../loadgeneration
 ```
+
+Start the load generation script:
+```console
 ./add-to-cart.sh "carts.sockshop-production.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')"
 ```
 
-(Optional:) Verify load in Prometheus
+(Optional:) Verify load in Prometheus:
 
-### Watch self-healing in action
+ADD IMAGE OF PROMETHEUS HERE
+
+### 3. Watch self-healing in action
 
 After a couple of minutes the Prometheus Alert Manager will send out an alert since the service level objective is not met anymore. 
 
-INSERT IMAGE
+INSERT IMAGE OF ALERT MANAGER
 
 The alert will be received by the Prometheus service that will translate it into a Keptn CloudEvent.
 This event will eventually be received by the remediation service that will look for a remediation action specified for this type of problem and, if found, execute it.
@@ -149,3 +162,13 @@ Also you should see an additional pod running when you execute:
 kubectl get pods -n sockshop-production
 ```
 
+```console
+NAME                              READY   STATUS    RESTARTS   AGE
+carts-blue-856559f565-jnrsc       1/1     Running   0          6h
+carts-blue-424559f425-ldoev       1/1     Running   0          1m
+carts-db-blue-554d575dcc-h76s4    1/1     Running   0          6h
+carts-db-green-859b98755c-jpq72   1/1     Running   0          6h
+carts-green-579fc5cd59-z62gw      1/1     Running   0          6h
+```
+
+## Summary
