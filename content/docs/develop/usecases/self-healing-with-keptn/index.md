@@ -15,8 +15,12 @@ In this use case you will learn how to use the capabilities of Keptn to provide 
 
 ## Prerequisites
 
-- clone repo to retrieve specification files
-- finish onboarded service use case (carts:0.9.x)
+- Have a local copy of example repo to retrieve specification files, you can clone it with: 
+
+    ```console
+    git clone --branch 0.5.0 https://github.com/keptn/examples.git --single-branch
+    ```
+- Finish [onboarding a service](../onboard-carts-service/) use case
 
 ## Configure Monitoring
 
@@ -38,7 +42,7 @@ indicators:
   query: avg(rate(container_cpu_usage_seconds_total{namespace="sockshop-production",pod_name=~"carts-blue-.*|carts-green-.*"}[$DURATION_MINUTES]))
 - metric: request_latency_seconds
   source: Prometheus
-  query: rate(requests_latency_seconds_sum{job='carts-$ENVIRONMENT'}[$DURATION_MINUTESm])/rate(requests_latency_seconds_count{job='carts-$ENVIRONMENT'}[$DURATION_MINUTESm])
+  query: rate(requests_latency_seconds_sum{job='carts-sockshop-production'}[$DURATION_MINUTESm])/rate(requests_latency_seconds_count{job='carts-sockshop-production'}[$DURATION_MINUTESm])
 ```
 
 **service-objectives.yaml**: This file defines the service level objectives for one or more services. In this case the CPU saturation metric of the carts service (defined in the service-indicators.yaml file) is reused and augmented with a threshold and a timeframe. The timeframe indicates the duration in which the metrics is evaluated. 
@@ -50,7 +54,11 @@ objectives:
 - metric: request_latency_seconds
   threshold: 0.8
   timeframe: 5m
-  score: 100
+  score: 50
+- metrics: cpu_usage_sockshop_carts_production
+  threshold: 0.5
+  timeframe: 2m
+  score: 50
 ```
 
 **remediation.yaml**: This file defines remediation actions to execute in response to a problem related to the defined problem pattern / service objective. 
