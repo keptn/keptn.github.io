@@ -129,7 +129,10 @@ The used artifact is stored on Docker Hub.
   ```console 
   kubectl port-forward svc/bridge -n keptn 9000:8080
   ```
-  Now access the bridge from your browser on http://localhost:9000. 
+  Now access the bridge from your browser on http://localhost:9000.
+  
+  > **_NOTE:_**  Keptn's bridge is available via GCP cloud shell. Click the "Web Preview" button, change the port to `9000` and view.
+  
   \\
   \\
   The keptn's bridge shows all deployments that have been triggered. On the left-hand side you can see the deployment start events, such as the one that is selected. Over time, more and more events will show up in keptn's bridge to allow you to check what is going on in your keptn installation. Please note that if events happen at the same time, their order in the keptn's bridge might be arbitrary since they are only sorted on the granularity of one second. 
