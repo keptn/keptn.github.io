@@ -91,7 +91,7 @@ After creating the project, you are ready to onboard the first services.
 - Onboard the `carts` service using the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command:
 
   ```console
-  keptn onboard service carts --project=sockshop --chart=carts.tgz
+  keptn onboard service carts --project=sockshop --chart=carts-0.1.0.tgz
   ```
 
 Since the carts service needs a mongo database, a second service needs to be onboarded.
@@ -99,7 +99,7 @@ Since the carts service needs a mongo database, a second service needs to be onb
 - Onboard the `carts-db` service using the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command:
 
   ```console
-  keptn onboard service carts --project=sockshop --chart=carts-db.tgz
+  keptn onboard service carts --project=sockshop --chart=carts-db-0.1.0.tgz
   ```
 
 Note, by onboarding a service without specifying a deployment file, we automatically include a [readiness and liveness probe](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/). Therefore, we assume that the 
