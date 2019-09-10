@@ -12,16 +12,15 @@ This use case shows how to onboard the carts service including its database. Bes
 
 The goal of this use case is to automatically deploy a service into a multi-stage environment using keptn. The stages of the environment are described in a *shipyard* file that defines the name, deployment strategy and test strategy of each stage. In case an additional stage is needed, the shipyard file can be easily extended by a stage definition before creating the project. After creating the project, the service that is going to be managed by keptn needs to be onboarded. Therefore, keptn provides the functionality to create the deployment and service definition of the onboarded service for each stage. Finally, an artifact of the carts service will be deployed by keptn.  
 
-To illustrate the scenario this use case addresses, keptn relies on the following services: github-service, helm-service, jmeter-service, and gatekeeper-service. These services have the following responsibilities: 
+To illustrate the scenario this use case addresses, keptn relies on the following services: shipyard-service, helm-service, jmeter-service, and gatekeeper-service. These services have the following responsibilities: 
 
-**github-service**: 
+**shipyard-service**: 
   
-  * Creating a project: When a new project is created, the github service will create a new repository within your configured GitHub organization. This repository will contain the complete configuration (e.g., the image tags to be used for each service within your application) of your application, where the configuration for each stage is located in a separate branch. For the configuration of a keptn-managed app we use [Helm Charts](https://helm.sh/).
-  * Onboarding a service: When a new service is onboarded to a project (here a manifest file containing the specification for that service is required), the github service will add the service as a new entry in the `values.yaml` file of your application's helm chart. Further, depending on the deployment strategy of each stage, the github service will also generate a set of Istio configurations (i.e., a Gateway, DestinationRules, and VirtualServices) to facilitate blue/green deployments. You can read more about this concept at the [Istio documentation](https://istio.io/docs/concepts/traffic-management/#rule-configuration).
-  * Listening to a new artifact event: When the github service receives a new artifact event, it updates the reference to the new artifact in the service configuration. By this, the new image is used for the respective service.
+  * Creating a project: When a new project is created, the github service will create a new git repository within the cluster. This repository will contain the complete configuration (e.g., the image tags to be used for each service within your application) of your application, where the configuration for each stage is located in a separate branch. For the configuration of a keptn-managed app we use [Helm Charts](https://helm.sh/).
 
 **helm-service**:
   
+  * Onboarding a service: When a new service is onboarded, the helm  service will store a helm chart containing the service's configuration in the config repository.
   * Listening to configuration changed events to deploy a service using the new configuration.
 
 **jmeter-service**:
@@ -41,14 +40,10 @@ To illustrate the scenario this use case addresses, keptn relies on the followin
 1. Git clone artifacts for this use case.
 
     ```console
-    git clone --branch 0.4.0 https://github.com/keptn/examples.git --single-branch
+    git clone --branch 0.5.0 https://github.com/keptn/examples.git --single-branch
     cd examples/onboarding-carts
     ```
-1. Fork carts example into your GitHub organization
-  - Go to https://github.com/keptn-sockshop/carts and click on the **Fork** button on the top right corner.
-  - Select the GitHub organization you use for keptn.
-  - Clone the forked carts service to your local machine. Please note that you have to use your own GitHub organization.
-  
+
     ```console
       git clone https://github.com/your-github-org/carts.git
     ```
@@ -65,11 +60,7 @@ If you have not yet authenticated and configured the keptn CLI, please follow th
     keptn auth --endpoint=https://api.keptn.$(kubectl get cm -n keptn keptn-domain -ojsonpath={.data.app_domain}) --api-token=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
     ```
 
-1. Configure the used GitHub organization, user, and personal access token using the [keptn configure](../../reference/cli/#keptn-configure) command:
-  
-    ```console
-    keptn configure --org=<YOUR_GITHUB_ORG> --user=<YOUR_GITHUB_USER> --token=<YOUR_GITHUB_TOKEN>
-    ```
+  ```
 
 ## Create project sockshop
 
@@ -97,18 +88,18 @@ make sure you are in the folder `examples/onboarding-carts`.
 ## Onboard carts service and carts database
 After creating the project, you are ready to onboard the first services.
 
-- Onboard the `carts` service using the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command. In this onboarding scenario, a default deployment and service template will be provided by the github-service.
+- Onboard the `carts` service using the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command:
 
   ```console
-  keptn onboard service --project=sockshop --values=values_carts.yaml
+  keptn onboard service carts --project=sockshop --chart=carts.tgz
   ```
 
 Since the carts service needs a mongo database, a second service needs to be onboarded.
 
-- Onboard the `carts-db` service using the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command. In this onboarding scenario, the  deployment and service files are handed over to the github-service.
+- Onboard the `carts-db` service using the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command:
 
   ```console
-  keptn onboard service --project=sockshop --values=values_carts_db.yaml --deployment=deployment_carts_db.yaml --service=service_carts_db.yaml
+  keptn onboard service carts --project=sockshop --chart=carts-db.tgz
   ```
 
 Note, by onboarding a service without specifying a deployment file, we automatically include a [readiness and liveness probe](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/). Therefore, we assume that the 
