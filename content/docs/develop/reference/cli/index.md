@@ -10,7 +10,6 @@ uninstalling keptn. Furthermore, the CLI allows creating new projects, onboardin
 
 ## Prerequisites
 - All prerequisites from the [setup](../../installation/setup-keptn#prerequisites) are needed.
-- A GitHub organization, a GitHub user, and [personal access token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line). 
 
 ## Install the keptn CLI
 Every release of keptn provides binaries for the keptn CLI. These binaries are available for Linux, macOS, and Windows.
@@ -197,21 +196,6 @@ In the Windows Command Line, a couple of steps are necessary.
 </details>
 </p>
 </details>
-
-## keptn configure 
-
-In order to work with GitHub (i.e. create a new project, make commits), keptn requires a
-GitHub organization, the GitHub user, and the GitHub personal access token belonging to that user.
-Therefore, the keptn CLI is used to set the GitHub organization, the GitHub user, and the GitHub personal access token belonging to that user in the keptn cluster.
-
-**Note:** keptn is automatically configured after installing keptn using the CLI. Hence, `keptn configure` can be skipped
-
-To configure, use the command `configure` and specify the GitHub organization (flag `--org`), user (flag `--user`),
-and personal access token (flag `--token`):
-
-```console
-keptn configure --org=gitHubOrg --user=gitHub_keptnUser --token=XYZ
-```
 
 ## keptn create project 
 

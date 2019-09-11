@@ -7,7 +7,6 @@ keywords: setup
 ---
 
 ## Prerequisites
-
 - Local tools
   - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
   - For Linux: [bc](https://www.gnu.org/software/bc/manual/html_mono/bc.html)
@@ -231,6 +230,7 @@ In your cluster, this command installs the complete infrastructure necessary to 
     <details><summary>This includes:</summary>
         <ul>
         <li>Istio</li>
+        <li>A MongoDb database for the keptn's log</li>
         <li>A NATS Cluster</li>
         <li>The keptn core services:</li>
             <ul>
