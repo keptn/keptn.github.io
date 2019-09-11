@@ -47,7 +47,19 @@ In order to evaluate the quality gates and allow self-healing in production, we 
 
 1. Execute the installation script for your platform:
 
-  - If you are on **GKE**, please execute
+  - If you are on **Azure AKS**, please execute
+
+    ```console
+    ./deployDynatraceOnAKS.sh
+    ```
+
+    - If you are on **AWS EKS**, please execute
+
+    ```console
+    ./deployDynatraceOnEKS.sh
+    ```
+
+  - If you are on **Google GKE**, please execute
 
     ```console
     ./deployDynatraceOnGKE.sh
@@ -57,12 +69,6 @@ In order to evaluate the quality gates and allow self-healing in production, we 
 
     ```console
     ./deployDynatraceOnOpenshift.sh
-    ```
-
-  - If you are on **Azure AKS**, please execute
-
-    ```console
-    ./deployDynatraceOnAKS.sh
     ```
 
 When this script is finished, the Dynatrace OneAgent and the dynatrace-service are deployed in your cluster. Execute the following command to verify the deployment of the dynatrace-service.
@@ -89,10 +95,10 @@ kubectl delete pods --all --namespace=sockshop-production
 
 In your Dynatrace tenant, when you navigate to **Settings > Tags > Automatically applied tags** you will find two entries:
 
-- environment
+- environemnt
 - service
 
-This means that Dynatrace will automatically apply tags to your onboarded services.
+This means that Dynatrace will automatially apply tags on your onboarded services.
 
 In addition, a Problem Notification has automatically been set up to inform your keptn installation of any problems with your services to allow auto-remediation. This will be described in more detail in the [runbook automation and self-healing use case](../../usecases/runbook-automation-and-self-healing/). You can check the problem notification by navigating to **Settings > Integration > Problem notifications** and you will find a **keptn remediation** problem notification.
 
@@ -129,7 +135,7 @@ If you want to uninstall Dynatrace, there are scripts provided to do so. Uninsta
 1. (Optional) If you do not have the *dynatrace-service* repository, clone the latest release using:
 
   ```console
-  git clone --branch 0.2.0 https://github.com/keptn/dynatrace-service --single-branch
+  git clone --branch 0.2.0 https://github.com/keptn-contrib/dynatrace-service --single-branch
   ```
 
 1. Go to correct folder and execute the uninstallDynatrace.sh script:
