@@ -7,19 +7,8 @@ keywords: setup
 ---
 
 ## Prerequisites
-- GitHub
-  - [GitHub organization](https://github.com/organizations/new) for keptn to store its configuration repositories
-  - [Personal access token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line) for a user with access to the organization
-
-      -  Needed scopes: [x] `repo`
-
-        <details><summary>Expand Screenshot</summary>
-          {{< popup_image link="./assets/github-access-token.png" 
-        caption="GitHub Personal Access Token Scopes" width="50%">}}
-          </details>
 
 - Local tools
-  - [git](https://git-scm.com/)
   - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
   - For Linux: [bc](https://www.gnu.org/software/bc/manual/html_mono/bc.html)
 
@@ -247,9 +236,11 @@ In your cluster, this command installs the complete infrastructure necessary to 
             <ul>
                 <li>api</li>
                 <li>bridge</li>
+                <li>configuration-service</li>
                 <li>distributors</li>
                 <li>eventbroker</li>
                 <li>eventbroker</li>
+                <li>gatekeeper service</li>
                 <li>mongodb-datastore</li>
                 <li>shipyard-service</li>
                 <li>wait-service</li>
@@ -260,7 +251,8 @@ In your cluster, this command installs the complete infrastructure necessary to 
                 <li>jmeter-service</li>
                 <li>gatekeeper-service</li>
                 <li>pitometer-service</li>
-                <li>servicenow-service</li>
+                <li>prometheus-service</li>
+                <li>serviceNow-service</li>
                 <li>openshift-route-service (OpenShift only)</li>
             </ul>
         </ul>
@@ -285,32 +277,47 @@ keptn configure domain YOUR_DOMAIN
 
   ```console
   NAME                                                              READY     STATUS    RESTARTS   AGE
-  api-74dfc6c4cc-nrssz                                                1/1     Running   0          2m
-  bridge-6fc5bd679b-hldcq                                             1/1     Running   0          2m
-  configuration-service-845997dd7d-bh46f                              1/1     Running   0          2m
-  eventbroker-go-68d5f9d789-nhp4x                                     1/1     Running   0          2m
-  gatekeeper-service-6469d5f4f7-9lpk7                                 1/1     Running   0          2m
-  gatekeeper-service-evaluation-done-distributor-5b5f77c6ff-xzph2     1/1     Running   0          3m
-  helm-service-6c7c5787fc-rtnxj                                       1/1     Running   0          2m
-  helm-service-configuration-change-distributor-55ddcdbc94-zsrfn      1/1     Running   0          3m
-  helm-service-service-create-distributor-7b5c869ccd-52lsn            1/1     Running   0          3m
-  jmeter-service-57c9d4d999-4h4hr                                     1/1     Running   0          2m
-  jmeter-service-deployment-distributor-687b778dfd-q5t86              1/1     Running   0          3m
-  keptn-nats-cluster-1                                                1/1     Running   0          4m
-  nats-operator-67d8dd94d5-t5cvf                                      1/1     Running   0          4m
-  openshift-route-service-57b45c4dfc-4x5lm                            1/1     Running   0          3m (OpenShift only)
-  openshift-route-service-create-project-distributor-7d4454cs44xp     1/1     Running   0          3m (OpenShift only)
-  pitometer-service-775dfb4bf4-q7fvg                                  1/1     Running   0          2m
-  pitometer-service-tests-finished-distributor-785bdc79d4-tbrbf       1/1     Running   0          3m
-  prometheus-service-5d84cd45df-w8lg9                                 1/1     Running   0          2m
-  prometheus-service-monitoring-configure-distributor-5f4f9f9xrxk     1/1     Running   0          2m
-  servicenow-service-64cb58c879-vc74z                                 1/1     Running   0          2m
-  servicenow-service-problem-distributor-6d4fc577d9-prsnv             1/1     Running   0          2m
-  shipyard-service-6c7c5b9cd8-98cc8                                   1/1     Running   0          1m
-  shipyard-service-create-project-distributor-6bf6c7f6c4-xdlzb        1/1     Running   0          1m
-  wait-service-d749fc4bb-xqjjx                                        1/1     Running   0          2m
-  wait-service-deployment-distributor-7cd55f5cfb-jrjw8                1/1     Running   0          1m
+  api-55b57db797-8kgxd                                              1/1       Running   0          2m
+  bridge-6fc5bd679b-745fz                                           1/1       Running   0          2m
+  configuration-service-845997dd7d-sf5f6                            1/1       Running   0          1m
+  eventbroker-go-68d5f9d789-pp7n4                                   1/1       Running   0          2m
+  gatekeeper-service-6469d5f4f7-96cjl                               1/1       Running   0          1m
+  gatekeeper-service-evaluation-done-distributor-5b5f77c6ff-pf8hb   1/1       Running   0          1m
+  helm-service-569dc7d48f-dzs6n                                     1/1       Running   0          1m
+  helm-service-configuration-change-distributor-55ddcdbc94-6v8jj    1/1       Running   0          1m
+  helm-service-service-create-distributor-7896c55ccf-fn8cj          1/1       Running   0          1m
+  jmeter-service-57c9d4d999-mfxlr                                   1/1       Running   0          1m
+  jmeter-service-deployment-distributor-687b778dfd-hvd8q            1/1       Running   0          1m
+  keptn-nats-cluster-1                                              1/1       Running   0          2m
+  nats-operator-67d8dd94d5-7929b                                    1/1       Running   0          2m
+  pitometer-service-775dfb4bf4-6bqqm                                1/1       Running   0          1m
+  pitometer-service-tests-finished-distributor-785bdc79d4-xgwdd     1/1       Running   0          1m
+  prometheus-service-5d84cd45df-kcft8                               1/1       Running   0          4m
+  prometheus-service-monitoring-configure-distributor-5f4f9f54jks   1/1       Running   0          4m
+  servicenow-service-64cb58c879-f868m                               1/1       Running   0          4m
+  servicenow-service-problem-distributor-6d4fc577d9-8b97g           1/1       Running   0          4m
+  shipyard-service-58b5d5df74-2k8d5                                 1/1       Running   0          1m
+  shipyard-service-create-project-distributor-5d56b4fcfd-6hmt6      1/1       Running   0          1m
+  wait-service-d749fc4bb-qzfzk                                      1/1       Running   0          1m
+  wait-service-deployment-distributor-7cd55f5cfb-7f7cb              1/1       Running   0          1m
+  openshift-route-service-57b45c4dfc-4x5lm                          1/1       Running   0          33s (OpenShift only)
+  openshift-route-service-create-project-distributor-7d4454cs44xp   1/1       Running   0          33s (OpenShift only)
   ```
+
+  In the `keptn-datastore` namespace, you should see the following pods:
+
+  ```console
+  kubectl get pods -n keptn-datastore
+  ```
+
+  ```console
+  NAME                                             READY   STATUS    RESTARTS   AGE
+  fluent-bit-jc55r                                 1/1     Running   0          73m
+  mongodb-7d956d5775-rflh5                         1/1     Running   0          73m
+  mongodb-datastore-d65b468d7-4q5bh                1/1     Running   0          73m
+  mongodb-datastore-distributor-6cc947d554-ncfm7   1/1     Running   0          73m
+  ```
+    
 - To verify the Istio installation, retrieve all pods within the `istio-system` namespace and check whether they are in a running state:
   
   ```console
@@ -319,9 +326,17 @@ keptn configure domain YOUR_DOMAIN
 
   ```console
   NAME                                    READY     STATUS    RESTARTS   AGE
-  istio-ingressgateway-6f46678699-c742n   1/1       Running   0          5m
-  istio-pilot-85b956b4bb-rbhnn            1/1       Running   0          5m
+  istio-citadel-6c456d967c-bpqbd            1/1     Running     0          76m
+  istio-cleanup-secrets-1.2.5-22gts         0/1     Completed   0          76m
+  istio-ingressgateway-5d49795589-tfl4k     1/1     Running     0          76m
+  istio-init-crd-10-rzlf7                   0/1     Completed   0          76m
+  istio-init-crd-11-chvzr                   0/1     Completed   0          76m
+  istio-init-crd-12-8zvn4                   0/1     Completed   0          76m
+  istio-pilot-79b78c894b-zsz5j              2/2     Running     0          76m
+  istio-security-post-install-1.2.5-glswk   0/1     Completed   0          76m
+  istio-sidecar-injector-bcf445789-gkfjf    1/1     Running     0          76m
   ```
+
   If that is not the case, there may have been a problem during the installation. In that case, we kindly ask you to clean your cluster and restart the installation described in the **Troubleshooting** section below.
 
 ## Uninstall
