@@ -37,12 +37,12 @@ Click here to learn more on the service-indicator, service-objective, and remedi
 
 ```yaml
 indicators:
-- metric: cpu_usage_sockshop_carts_production
+- metric: cpu_usage_sockshop_carts
   source: Prometheus
-  query: avg(rate(container_cpu_usage_seconds_total{namespace="sockshop-production",pod_name=~"carts-blue-.*|carts-green-.*"}[$DURATION_MINUTES]))
+  query: avg(rate(container_cpu_usage_seconds_total{namespace="sockshop-$ENVIRONMENT",pod_name=~"carts-blue-.*|carts-green-.*"}[$DURATION_MINUTES]))
 - metric: request_latency_seconds
   source: Prometheus
-  query: rate(requests_latency_seconds_sum{job='carts-sockshop-production'}[$DURATION_MINUTESm])/rate(requests_latency_seconds_count{job='carts-sockshop-production'}[$DURATION_MINUTESm])
+  query: rate(requests_latency_seconds_sum{job='carts-sockshop-$ENVIRONMENT'}[$DURATION_MINUTESm])/rate(requests_latency_seconds_count{job='carts-sockshop-$ENVIRONMENT'}[$DURATION_MINUTESm])
 ```
 
 **SLO: service-objectives.yaml**: This file defines the service level objectives for one or more services. In this case, the CPU saturation metric of the carts service (defined in the service-indicators.yaml file) is reused and augmented with a threshold and a timeframe. The timeframe indicates the duration in which the metrics is evaluated. 
@@ -55,9 +55,9 @@ objectives:
   threshold: 0.8
   timeframe: 5m
   score: 50
-- metrics: cpu_usage_sockshop_carts_production
+- metric: cpu_usage_sockshop_carts
   threshold: 0.5
-  timeframe: 2m
+  timeframe: 5m
   score: 50
 ```
 
@@ -65,7 +65,7 @@ objectives:
 
 ```yaml
 remediations:
-- name: cpu_usage_sockshop_carts_production
+- name: cpu_usage_sockshop_carts
   actions:
   - action: scaling
     value: +1
