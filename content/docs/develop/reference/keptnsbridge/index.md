@@ -10,13 +10,13 @@ The keptn's bridge lets you browse the keptn's log. It is automatically installe
 ## Usage
 
 The keptn's bridge is not publicly accessible, but can be retrieved by enabling port-forwarding from your local machine to the keptn's bridge:
+
 ```console
 kubectl port-forward svc/bridge -n keptn 9000:8080
 ```
 Now you can access the bridge from your browser on http://localhost:9000.
 
-The keptn's bridge provides an easy way to browse all events that are sent within keptn and to filter on a specific keptn context. 
-When you access the keptn's bridge, all keptn entry points will be listed in the left column. Please note that this list only represents the start of a deployment of a new artifact and, thus, more information on the executed steps can be revealed when you click on one event.
+The keptn's bridge provides an easy way to browse all events that are sent within keptn and to filter on a specific keptn context. When you access the keptn's bridge, all keptn entry points will be listed in the left column. Please note that this list only represents the start of a deployment of a new artifact and, thus, more information on the executed steps can be revealed when you click on one event.
 
   {{< popup_image
   link="./assets/bridge-empty.png"

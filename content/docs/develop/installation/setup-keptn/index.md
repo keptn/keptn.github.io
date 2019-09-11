@@ -6,12 +6,11 @@ icon: setup
 keywords: setup
 ---
 
-## Prerequisites
-- Local tools
-  - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
-  - For Linux: [bc](https://www.gnu.org/software/bc/manual/html_mono/bc.html)
+## Prerequisites of local tools
+- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+- For Linux: [bc](https://www.gnu.org/software/bc/manual/html_mono/bc.html)
 
-## Setup Kubernetes Cluster
+## Setup Kubernetes cluster
 <!--
 Select one of the following options:
 
@@ -180,26 +179,24 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
 - Find the `keptn` binary in the unpacked directory.
   - Linux / macOS
     
-        add executable permissions (``chmod +x keptn``), and move it to the desired destination (e.g. `mv keptn /usr/local/bin/keptn`)
+    add executable permissions (``chmod +x keptn``), and move it to the desired destination (e.g. `mv keptn /usr/local/bin/keptn`)
 
   - Windows
 
-        move/copy the executable to the desired folder and, optionally, add the executable to your PATH environment variable for a more convenient experience.
+    move/copy the executable to the desired folder and, optionally, add the executable to your PATH environment variable for a more convenient experience.
 
 - Now, you should be able to run the keptn CLI: 
     - Linux / macOS
-
-    ```console
-    keptn --help
-    ```
+      ```console
+      keptn --help
+      ```
     
     - Windows
+      ```console
+      .\keptn.exe --help
+      ```
 
-    ```console
-    .\keptn.exe --help
-    ```
-
-    Please note that for the rest of the documentation we will stick to the Mac OS / Linux version of the commands.
+Please note that for the rest of the documentation we will stick to the Mac OS / Linux version of the commands.
 
 ## Install keptn
 
@@ -230,8 +227,8 @@ In your cluster, this command installs the complete infrastructure necessary to 
     <details><summary>This includes:</summary>
         <ul>
         <li>Istio</li>
-        <li>A MongoDb database for the keptn's log</li>
-        <li>A NATS Cluster</li>
+        <li>A mongoDb database for the keptn's log</li>
+        <li>A NATS cluster</li>
         <li>The keptn core services:</li>
             <ul>
                 <li>api</li>
