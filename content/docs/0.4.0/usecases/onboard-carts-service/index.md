@@ -41,7 +41,7 @@ To illustrate the scenario this use case addresses, keptn relies on the followin
 1. Git clone artifacts for this use case.
 
     ```console
-    git clone --branch 0.4.0 https://github.com/keptn/examples.git --single-branch
+    git clone --branch 0.4.1 https://github.com/keptn/examples.git --single-branch
     cd examples/onboarding-carts
     ```
 1. Fork carts example into your GitHub organization
