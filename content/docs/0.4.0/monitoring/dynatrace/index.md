@@ -37,7 +37,7 @@ In order to evaluate the quality gates and allow self-healing in production, we 
 
 1. Clone the install repository and setup your credentials by executing the following steps:
   ```console
-  git clone --branch 0.2.0 https://github.com/keptn/dynatrace-service --single-branch
+  git clone --branch 0.2.0 https://github.com/keptn-contrib/dynatrace-service --single-branch
   cd dynatrace-service/deploy/scripts
   ./defineDynatraceCredentials.sh
   ```
@@ -89,10 +89,10 @@ kubectl delete pods --all --namespace=sockshop-production
 
 In your Dynatrace tenant, when you navigate to **Settings > Tags > Automatically applied tags** you will find two entries:
 
-- environemnt
+- environment
 - service
 
-This means that Dynatrace will automatially apply tags on your onboarded services.
+This means that Dynatrace will automatically apply tags to your onboarded services.
 
 In addition, a Problem Notification has automatically been set up to inform your keptn installation of any problems with your services to allow auto-remediation. This will be described in more detail in the [runbook automation and self-healing use case](../../usecases/runbook-automation-and-self-healing/). You can check the problem notification by navigating to **Settings > Integration > Problem notifications** and you will find a **keptn remediation** problem notification.
 
