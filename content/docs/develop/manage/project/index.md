@@ -24,17 +24,16 @@ stages:
     deployment_strategy: "blue_green_service"
 ```
 
-Allowed values for the deployment strategies are "direct", which means the old version of the artifact is replaced, or "blue_green_service", which means that a new version is deployed . Allowed values for the test_strategy are "functional" or "performance". We are planning to incorporate more deployment and testing strategies in the next releases.
+Allowed values for the deployment strategies are `direct`, which means the old version of the artifact is replaced, or `blue_green_service`, which means that a new version is deployed . Allowed values for the test_strategy are `functional` or `performance`. More deployment and testing strategies are planned to be incorporated in the next releases.
 
 Create a project with the [keptn CLI](../../reference/cli). 
 ```
 keptn create project your_project shipyard.yml
 ```
 
-
 ## Delete a project
 
-The keptn CLI does currently not support the deletion of a project. However, by following the next steps, a project can manually be removed:
+The keptn CLI does currently not support the deletion of a project. However, a project can manually be deleted by following the next steps:
 
 - Delete the GitHub repository for your project, e.g., sockshop.
 - Delete all namespaces that have been created by keptn in your Kubernetes cluster, e.g.,

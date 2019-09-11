@@ -9,7 +9,7 @@ keywords: setup
 ## Prerequisites
 - GitHub
   - [GitHub organization](https://github.com/organizations/new) for keptn to store its configuration repositories
-  - [Personal access token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line) for a user with access to said organization
+  - [Personal access token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line) for a user with access to the organization
 
       -  Needed scopes: [x] `repo`
 
@@ -24,6 +24,7 @@ keywords: setup
   - For Linux: [bc](https://www.gnu.org/software/bc/manual/html_mono/bc.html)
 
 ## Setup Kubernetes Cluster
+<!--
 Select one of the following options:
 
 <details><summary>Azure Kubernetes Service (AKS)</summary>
@@ -60,7 +61,7 @@ Select one of the following options:
 
 </p>
 </details>
-
+-->
 <details><summary>Google Kubernetes Engine (GKE)</summary>
 <p>
 
@@ -123,7 +124,7 @@ Select one of the following options:
 </details>
 -->
 
-
+<!--
 <details><summary>OpenShift 3.11</summary>
 <p>
 
@@ -182,11 +183,11 @@ Select one of the following options:
 
 </p>
 </details>
-
+--> 
 ## Install keptn CLI
 Every release of keptn provides binaries for the keptn CLI. These binaries are available for Linux, macOS, and Windows.
 
-- Download the version for your operating system from https://github.com/keptn/keptn/releases/tag/0.4.0
+- Download the version for your operating system from https://github.com/keptn/keptn/releases/tag/0.5.0.beta
 - Unpack the download
 - Find the `keptn` binary in the unpacked directory.
   - Linux / macOS
@@ -214,8 +215,9 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
 
 ## Install keptn
 
-- Execute the CLI command `keptn install` and provide the requested information. This command will install keptn in the version of the latest release. Since v0.3 of keptn, the install command accepts a parameter to select the platform you would like to install keptn on. Currently supported platforms are Google Kubernetes Engine (GKE), OpenShift and Azure Kubernetes Services (AKS). Depending on your platform, enter the following command to start the installation:
+- Execute the CLI command `keptn install` and provide the requested information. This command will install keptn in the version of the latest release. Since v0.3 of keptn, the install command accepts a parameter to select the platform you would like to install keptn on. <!--Currently supported platforms are Google Kubernetes Engine (GKE), OpenShift and Azure Kubernetes Services (AKS). Depending on your platform, enter the following command to start the installation:-->
 
+<!--
   - For **AKS**:
     ```console
     keptn install --platform=aks
@@ -225,41 +227,46 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
     ```console
     keptn install --platform=eks
     ```
+-->
   - For **GKE**:
     ```console
     keptn install --platform=gke
     ```
-
+<!--
   - For **OpenShift**:
     ```console
     keptn install --platform=openshift
     ```
-
+-->
 In your cluster, this command installs the complete infrastructure necessary to run keptn. 
     <details><summary>This includes:</summary>
         <ul>
         <li>Istio</li>
-        <li>An Elasticsearch/Kibana Stack for the keptn's log</li>
         <li>A NATS Cluster</li>
         <li>The keptn core services:</li>
             <ul>
                 <li>api</li>
                 <li>bridge</li>
+                <li>distributors</li>
                 <li>eventbroker</li>
+                <li>eventbroker</li>
+                <li>mongodb-datastore</li>
+                <li>shipyard-service</li>
+                <li>wait-service</li>
             </ul>
         <li>The services are required to deploy artifacts and to demonstrate the self-healing use cases:</li>
             <ul>
-                <li>github-services</li>
                 <li>helm-service</li>
                 <li>jmeter-service</li>
                 <li>gatekeeper-service</li>
                 <li>pitometer-service</li>
-                <li>serviceNow-service</li>
+                <li>servicenow-service</li>
                 <li>openshift-route-service (OpenShift only)</li>
             </ul>
         </ul>
     </details>
     
+<!--
 ## Configure a custom domain (required for EKS)
   
 In case you have a custom domain or cannot use xip.io (e.g., because you are running in AWS which will create ELBs for you), there is a 
@@ -267,10 +274,7 @@ CLI command provided to configure keptn to use your custom domain:
 ```console
 keptn configure domain YOUR_DOMAIN
 ```
-
-
-
-
+-->
 ## Verifying the installation
 
 - To verify your keptn installation, retrieve the pods running in the `keptn` namespace.
@@ -281,28 +285,31 @@ keptn configure domain YOUR_DOMAIN
 
   ```console
   NAME                                                              READY     STATUS    RESTARTS   AGE
-  api-75ffd6bbdc-8tks2                                              1/1       Running   0          2m
-  bridge-d5bc7c9b6-72h6n                                            1/1       Running   0          2m
-  eventbroker-go-77d4fc7fdd-rmzxk                                   1/1       Running   0          2m
-  gatekeeper-service-787c6f7d84-j8s4f                               1/1       Running   0          1m
-  gatekeeper-service-evaluation-done-distributor-5b5f77c6ff-fhbbq   1/1       Running   0          32s
-  github-service-78d59d549d-qdfzg                                   1/1       Running   0          1m
-  github-service-configure-distributor-5955b674d6-7d44w             1/1       Running   0          33s
-  github-service-create-project-distributor-79fcbb7855-t9blj        1/1       Running   0          34s
-  github-service-new-artifact-distributor-5cf8d5c6f5-5szdt          1/1       Running   0          33s
-  github-service-onboard-service-distributor-56db7595cb-z2qkx       1/1       Running   0          34s
-  helm-service-85c9cbc96f-7t86h                                     1/1       Running   0          1m
-  helm-service-configuration-changed-distributor-545b8849b-wl2pq    1/1       Running   0          33s
-  jmeter-service-65b474cd75-pxn2m                                   1/1       Running   0          1m
-  jmeter-service-deployment-distributor-687b778dfd-twqrp            1/1       Running   0          33s
-  keptn-nats-cluster-1                                              1/1       Running   0          2m
-  nats-operator-67d8dd94d5-wjlsj                                    1/1       Running   0          3m
-  openshift-route-service-57b45c4dfc-4x5lm                          1/1       Running   0          33s (OpenShift only)
-  openshift-route-service-create-project-distributor-7d4454cs44xp   1/1       Running   0          33s (OpenShift only)
-  pitometer-service-56d75f9fcc-hcbbw                                1/1       Running   0          1m
-  pitometer-service-tests-finished-distributor-785bdc79d4-xbnpb     1/1       Running   0          33s
-  servicenow-service-86d6dfb7f7-dqcx6                               1/1       Running   0          1m
-  servicenow-service-problem-distributor-6d4fc577d9-wmfn4           1/1       Running   0          32s
+  api-74dfc6c4cc-nrssz                                                1/1     Running   0          2m
+  bridge-6fc5bd679b-hldcq                                             1/1     Running   0          2m
+  configuration-service-845997dd7d-bh46f                              1/1     Running   0          2m
+  eventbroker-go-68d5f9d789-nhp4x                                     1/1     Running   0          2m
+  gatekeeper-service-6469d5f4f7-9lpk7                                 1/1     Running   0          2m
+  gatekeeper-service-evaluation-done-distributor-5b5f77c6ff-xzph2     1/1     Running   0          3m
+  helm-service-6c7c5787fc-rtnxj                                       1/1     Running   0          2m
+  helm-service-configuration-change-distributor-55ddcdbc94-zsrfn      1/1     Running   0          3m
+  helm-service-service-create-distributor-7b5c869ccd-52lsn            1/1     Running   0          3m
+  jmeter-service-57c9d4d999-4h4hr                                     1/1     Running   0          2m
+  jmeter-service-deployment-distributor-687b778dfd-q5t86              1/1     Running   0          3m
+  keptn-nats-cluster-1                                                1/1     Running   0          4m
+  nats-operator-67d8dd94d5-t5cvf                                      1/1     Running   0          4m
+  openshift-route-service-57b45c4dfc-4x5lm                            1/1     Running   0          3m (OpenShift only)
+  openshift-route-service-create-project-distributor-7d4454cs44xp     1/1     Running   0          3m (OpenShift only)
+  pitometer-service-775dfb4bf4-q7fvg                                  1/1     Running   0          2m
+  pitometer-service-tests-finished-distributor-785bdc79d4-tbrbf       1/1     Running   0          3m
+  prometheus-service-5d84cd45df-w8lg9                                 1/1     Running   0          2m
+  prometheus-service-monitoring-configure-distributor-5f4f9f9xrxk     1/1     Running   0          2m
+  servicenow-service-64cb58c879-vc74z                                 1/1     Running   0          2m
+  servicenow-service-problem-distributor-6d4fc577d9-prsnv             1/1     Running   0          2m
+  shipyard-service-6c7c5b9cd8-98cc8                                   1/1     Running   0          1m
+  shipyard-service-create-project-distributor-6bf6c7f6c4-xdlzb        1/1     Running   0          1m
+  wait-service-d749fc4bb-xqjjx                                        1/1     Running   0          2m
+  wait-service-deployment-distributor-7cd55f5cfb-jrjw8                1/1     Running   0          1m
   ```
 - To verify the Istio installation, retrieve all pods within the `istio-system` namespace and check whether they are in a running state:
   
@@ -319,7 +326,7 @@ keptn configure domain YOUR_DOMAIN
 
 ## Uninstall
 
-- In order to uninstall keptn from your cluster, run the uninstall command in the keptn CLI:
+- In order to uninstall keptn from your cluster, run the uninstall command using the keptn CLI:
     ``` console
     keptn uninstall
     ``` 

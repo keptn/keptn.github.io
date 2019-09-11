@@ -14,13 +14,23 @@ In order to evaluate the quality gates, we have to set up monitoring to provide 
 
     - If you have not yet onboarded the carts service, please execute the following commands to receive the needed files:
     
-    ```
-    git clone --branch 0.4.0 https://github.com/keptn/examples.git --single-branch
-    cd ./examples/monitoring/prometheus
+    ```console
+    git clone --branch 0.5.0 https://github.com/keptn/examples.git --single-branch
     ```
 
-    - If you already have [onboarded the carts service](../../usecases/onboard-carts-service/), navigate to the directory `monitoring/prometheus`. 
+    ```console 
+    cd ./examples/onboarding-carts
+    ```
 
+    - If you already have [onboarded the carts service](../../usecases/onboard-carts-service/), navigate to the directory `examples/onboarding-carts`. 
+
+1. In this directory, you will find the `service-indicators.yaml`, `service-objectives.yaml`, and `remediation.yaml` that are specific to the carts service, but can be replaced for your custom service. If Prometheus is currently not installed in your Cluster, the following command will set up Prometheus and configures according to the `--service-indicators`, `--service-objectives.yaml`, and `--remediation` flags: 
+
+    ```console
+    keptn configure monitoring prometheus --project=sockshop --service=carts --service-indicators=service-indicators.yaml --service-objectives=service-objectives.yaml --remediation=remediation.yaml 
+    ```
+
+<!-- 
 1. In this directory, you will find a script called `deployPrometheus.sh`. This script will deploy Prometheus in the namespace `monitoring` and set up scrape job configurations for monitoring the carts service in the `dev`, `staging`, and `production` namespace. Execute that script by calling:
 
   ```console
@@ -35,6 +45,9 @@ In order to evaluate the quality gates, we have to set up monitoring to provide 
   deployment.extensions "prometheus-deployment" created
   service "prometheus-service" created
   ```
+-->
+
+## Verify installation
 
 To verify the Prometheus installation, you can browse to the Prometheus web interface:
 
@@ -54,18 +67,20 @@ To verify the Prometheus installation, you can browse to the Prometheus web inte
 
 ## Uninstall Prometheus
 
-
 If you want to uninstall Prometheus, there are scripts provided to do so. Uninstalling keptn will not automatically uninstall Prometheus.
 
-1. (Optional) If you do not have the *examples* repository, clone the latest release using:
+1. (optional) If you do not have the *examples* repository, clone the latest release using:
 
   ```console
   git clone --branch 0.4.0 https://github.com/keptn/examples.git --single-branch
   ```
 
-1. Go to correct folder and execute the uninstallPrometheus.sh script:
+1. Go to correct folder and execute the `uninstallPrometheus.sh` script:
 
   ```console
   cd examples/monitoring/prometheus
+  ```
+
+  ```
   ./uninstallPrometheus.sh
   ```

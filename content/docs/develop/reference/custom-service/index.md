@@ -27,6 +27,7 @@ As a reference for writing your own service, please have a look at our implement
 Services in keptn are implemented as [knative services](https://cloud.google.com/knative/). The template manifest for the *GitHub service* can be found in the [config/service.yaml](https://github.com/keptn-contrib/github-service/blob/release-0.1.x/config/service.yaml) file in the GitHub repo:
 
   ```yaml
+  ---
   apiVersion: serving.knative.dev/v1alpha1
   kind: Service
   metadata:
