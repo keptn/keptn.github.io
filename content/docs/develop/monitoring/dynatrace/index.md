@@ -8,6 +8,21 @@ keywords: setup
 
 In order to evaluate the quality gates and allow self-healing in production, we have to set up monitoring to provide the needed data.
 
+## Install local tools
+
+Please make sure to have the following tool(s) installed:
+- [jq](https://stedolan.github.io/jq/) - a lightweight and flexible command-line JSON processor.
+<details><summary>Open for installation instructions</summary>
+<p>
+
+  ```console
+  sudo apt-get update
+  sudo apt install jq -y
+  ```
+
+</p>
+</details>
+
 ## Setup Dynatrace
 
 1. Bring your Dynatrace SaaS or Dynatrace-managed tenant
