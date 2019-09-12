@@ -1,27 +1,27 @@
 ---
-title: Upgrade keptn
-description: How to upgrade keptn.
+title: Upgrade Keptn
+description: How to upgrade Keptn.
 weight: 80
 icon: setup
 keywords: upgrade
 ---
 
-Since the removal of knative as a core technology in keptn 0.4.0 is considered to be a breaking change, an upgrade script can unfortunately not be provided. If you want to upgrade your existing keptn installation, uninstall keptn and install it with the new keptn CLI 0.4.0.
+Since the removal of knative as a core technology in Keptn 0.4.0 is considered to be a breaking change, an upgrade script can unfortunately not be provided. If you want to upgrade your existing Keptn installation, uninstall Keptn and install it with the new Keptn CLI 0.4.0.
 
-## Uninstall keptn
+## Uninstall Keptn
 
 For uninstalling keptn, [download this script](https://github.com/keptn/installer/blob/0.4.0/scripts/common/uninstallKeptn030.sh) and execute it:
 ```
 ./uninstallKeptn030.sh
 ```
 
-## Install keptn CLI
+## Install Keptn CLI
 
-Please refer to the [install section](../setup-keptn) to instal keptn in version 0.4.0.
+Please refer to the [install section](../setup-keptn) to instal Keptn in version 0.4.0.
 
 ## Create project and onboard services
 
-Due to a breaking change from keptn 0.3.0 to 0.4.0 regarding the naming convention of Kubernetes namespaces, it is necessary to re-create a keptn project and to onboard your services again.
+Due to a breaking change from Keptn 0.3.0 to 0.4.0 regarding the naming convention of Kubernetes namespaces, it is necessary to re-create a Keptn project and to onboard your services again.
 
 - Delete your configuration repository in your GitHub organization.
 

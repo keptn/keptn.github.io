@@ -1,6 +1,6 @@
 ---
-title: Manage keptn
-description: Manage your own keptn installation.
+title: Manage Keptn
+description: Manage your own Keptn installation.
 weight: 35
 icon: reference
 ---

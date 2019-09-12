@@ -1,18 +1,18 @@
 ---
 title: Onboarding a Service
-description: Shows you how to onboard the carts service including its database to a keptn managed project. Besides, this use case builds a new artifact that will be automatically deployed via keptn.
+description: Shows you how to onboard the carts service including its database to a Keptn managed project. Besides, this use case builds a new artifact that will be automatically deployed via Keptn.
 weight: 20
 keywords: [onboarding]
 aliases:
 ---
 
-This use case shows how to onboard the carts service including its database. Besides this, a new artifact will be automatically deployed by keptn.
+This use case shows how to onboard the carts service including its database. Besides this, a new artifact will be automatically deployed by Keptn.
 
 ## About this use case
 
-The goal of this use case is to automatically deploy a service into a multi-stage environment using keptn. The stages of the environment are described in a *shipyard* file that defines the name, deployment strategy, and test strategy of each stage. In case an additional stage is needed, the shipyard file can be easily extended by a stage definition before creating the project. After creating the project, the service that is going to be managed by keptn needs to be onboarded. Therefore, keptn provides the functionality to create the deployment and service definition of the onboarded service for each stage. Finally, an artifact of the carts service will be deployed by keptn.  
+The goal of this use case is to automatically deploy a service into a multi-stage environment using Keptn. The stages of the environment are described in a *shipyard* file that defines the name, deployment strategy, and test strategy of each stage. In case an additional stage is needed, the shipyard file can be easily extended by a stage definition before creating the project. After creating the project, the service that is going to be managed by Keptn needs to be onboarded. Therefore, Keptn provides the functionality to create the deployment and service definition of the onboarded service for each stage. Finally, an artifact of the carts service will be deployed by Keptn.  
 
-To illustrate the scenario this use case addresses, keptn relies on the following services: *shipyard-service*, *helm-service*, *jmeter-service*, and *gatekeeper-service*. These services have the following responsibilities: 
+To illustrate the scenario this use case addresses, Keptn relies on the following services: *shipyard-service*, *helm-service*, *jmeter-service*, and *gatekeeper-service*. These services have the following responsibilities: 
 
 **shipyard-service:** 
   
@@ -36,9 +36,9 @@ To illustrate the scenario this use case addresses, keptn relies on the followin
 
 ## Prerequisites
 <!--
-1. A GitHub organization, user, and personal access token, which are used by keptn.
+1. A GitHub organization, user, and personal access token, which are used by Keptn.
 -->
-* The endpoint and API token provided by the keptn installation.
+* The endpoint and API token provided by the Keptn installation.
 
 * Clone example files used for this use case:
 
@@ -47,11 +47,11 @@ To illustrate the scenario this use case addresses, keptn relies on the followin
     cd examples/onboarding-carts
     ```
 
-## Authenticate and configure keptn
+## Authenticate and configure Keptn
 
-If you have not yet authenticated and configured the keptn CLI, please follow these instructions. If you have already done this [during the installation](../../installation/setup-keptn-gke/#authenticate-keptn-cli-and-configure-keptn), please skip this part and continue with [creating a project](#create-project-sockshop).
+If you have not yet authenticated and configured the Keptn CLI, please follow these instructions. If you have already done this [during the installation](../../installation/setup-keptn-gke/#authenticate-keptn-cli-and-configure-keptn), please skip this part and continue with [creating a project](#create-project-sockshop).
 
-The keptn CLI needs to be authenticated against the keptn server. Therefore, please follow the [keptn auth](../../reference/cli/#keptn-auth) instructions.
+The Keptn CLI needs to be authenticated against the Keptn server. Therefore, please follow the [keptn auth](../../reference/cli/#keptn-auth) instructions.
 
 ```console
 keptn auth --endpoint=https://api.keptn.$(kubectl get cm -n keptn keptn-domain -ojsonpath={.data.app_domain}) --api-token=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
@@ -120,7 +120,7 @@ Note, by onboarding a service without specifying a deployment file, we automatic
 in the deployment.
 -->
 
-## Send new artifacts and watch keptn doing the deployment 
+## Send new artifacts and watch Keptn doing the deployment 
 
 + Send a new artifact event for the carts-db, since this is needed for the carts service [keptn send event new-artifact](../../reference/cli/#keptn-send-event-new-artifact):
 
@@ -134,7 +134,7 @@ The used artifact is stored on Docker Hub.
   keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.8.1
   ```
 
-* Go to the keptn's bridge and check which events have already been generated. You can access it by a port-forward from your local machine to the Kubernetes cluster:
+* Go to the Keptn's bridge and check which events have already been generated. You can access it by a port-forward from your local machine to the Kubernetes cluster:
   ```console 
   kubectl port-forward svc/bridge -n keptn 9000:8080
   ```
@@ -143,11 +143,11 @@ The used artifact is stored on Docker Hub.
   
   > **_NOTE:_**  Keptn's bridge is available via GCP cloud shell. Click the "Web Preview" button, change the port to `9000` and view.
   
-  The keptn's bridge shows all deployments that have been triggered. On the left-hand side you can see the deployment start events, such as the one that is selected. Over time, more and more events will show up in keptn's bridge to allow you to check what is going on in your keptn installation. Please note that if events happen at the same time, their order in the keptn's bridge might be arbitrary since they are only sorted on the granularity of one second. 
+  The Keptn's bridge shows all deployments that have been triggered. On the left-hand side you can see the deployment start events, such as the one that is selected. Over time, more and more events will show up in Keptn's bridge to allow you to check what is going on in your Keptn installation. Please note that if events happen at the same time, their order in the Keptn's bridge might be arbitrary since they are only sorted on the granularity of one second. 
 
     {{< popup_image
       link="./assets/bridge.png"
-      caption="keptn's bridge">}}
+      caption="Keptn's bridge">}}
 
 ## View carts service
 
