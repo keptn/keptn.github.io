@@ -10,7 +10,7 @@ Learn how to manage your projects in keptn.
 
 ## Create a project
 
-A project is a structure in keptn that allows to organize your services and is represented as a repository in the GitHub organization used by keptn. This project contains branches representing the multi-stage environment (e.g., dev, staging, and production stage). In other words, the separation of stage configurations is based on repository branches. To describe the stages, a single `shipyard.yaml` file is needed that specifies the name, deployment strategy, and test strategy as shown below:
+In keptn, a project is a structure that allows to organize your services and it is represented as a repository. This project contains branches representing the multi-stage environment (e.g., dev, staging, and production stage). In other words, the separation of stage configurations is based on repository branches. To describe the stages, a `shipyard.yaml` file is needed that specifies the name, deployment strategy, and test strategy as shown by an example below:
 
 ```yaml
 stages:
@@ -24,31 +24,30 @@ stages:
     deployment_strategy: "blue_green_service"
 ```
 
-Allowed values for the deployment strategies are "direct", which means the old version of the artifact is replaced, or "blue_green_service", which means that a new version is deployed . Allowed values for the test_strategy are "functional" or "performance". We are planning to incorporate more deployment and testing strategies in the next releases.
+Allowed values for the **deployment_strategies** are `direct`, which means that the old version of the artifact is replaced, or `blue_green_service`, which means that a new version is deployed . Allowed values for the **test_strategy** are `functional` or `performance`. More deployment and testing strategies are planned to be incorporated in the next releases.
 
 Create a project with the [keptn CLI](../../reference/cli). 
-```
+```console
 keptn create project your_project shipyard.yml
 ```
 
-
 ## Delete a project
 
-The keptn CLI does currently not support the deletion of a project. However, by following the next steps, a project can manually be removed:
+Currently, the keptn CLI does not support the deletion of a project. However, a project can be deleted manually by following the next steps:
 
 - Delete the GitHub repository for your project, e.g., sockshop.
 - Delete all namespaces that have been created by keptn in your Kubernetes cluster, e.g.,
   - sockshop-dev
   - sockshop-staging
   - sockshop-production
-  
-    by executing
+
+  by executing:
 
   ```console
   kubectl delete namespace sockshop-dev sockshop-staging sockshop-production
   ```
 
-In addition, the Helm releases have to be deleted:
+- In addition, the Helm releases have to be deleted:
 
   ```console
   helm delete --purge sockshop-dev
