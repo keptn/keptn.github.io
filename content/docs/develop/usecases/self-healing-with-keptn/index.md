@@ -137,7 +137,9 @@ In order to simulate user traffic that is causing an unhealthy behavior in the c
 
 1. (optional:) Verify load in Prometheus:
 
-    ADD IMAGE OF PROMETHEUS HERE
+    ![](./assets/prometheus-load.png)
+    
+    TODO: update image
 
 ### 3. Watch self-healing in action
 
