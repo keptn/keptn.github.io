@@ -112,7 +112,7 @@ Since the carts service requires a mongodb database, a second service needs to b
 * Onboard the `carts-db` service using the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command:
 
   ```console
-  keptn onboard service carts --project=sockshop --chart=carts-db-0.1.0.tgz
+  keptn onboard service carts-db --project=sockshop --chart=carts-db-0.1.0.tgz
   ```
 
 <!--
