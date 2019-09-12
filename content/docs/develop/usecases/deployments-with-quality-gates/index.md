@@ -16,8 +16,8 @@ For this use case, we prepared a *slow* and a *regular* version of the carts ser
 
 | Image                                 | Description                                        |
 |---------------------------------------|----------------------------------------------------|
-| docker.io/keptnexamples/carts:0.8.2   | Processes each request with a slowdown of 1 second |
-| docker.io/keptnexamples/carts:0.8.3   | Processes each request without any slowdown        |
+| docker.io/keptnexamples/carts:0.9.2   | Processes each request with a slowdown of 1 second |
+| docker.io/keptnexamples/carts:0.9.3   | Processes each request without any slowdown        |
 
 In this use case, we will try to deploy these two versions.
 During this deployment process, the versions have to pass a quality gate
@@ -26,9 +26,9 @@ This quality gate checks whether the average response time of the service is und
 
 In overview, we will conduct these two scenarios:
 
-First, we will *try* to deploy the *slow* version of the carts service (v0.8.2). Therefore, keptn will deploy this new version into the `dev` environment where functional tests will be executed. After passing these functional tests, keptn will promote this service into the `staging` environment by releasing it as the blue or green version next to the previous version of the service. Then, keptn will route traffic to this new version by changing the configuration of the virtual service (i.e., by setting weights for the routes between blue and green) and keptn will start the defined performance test. Using the monitoring results of this performance test will allow [Pitometer](https://github.com/keptn/pitometer) to evaluate the quality gate. This *slow* version will not pass the quality gate and, hence, the deployment will be rejected. Furthermore, keptn will direct the requests to the service to the previous working deployment of the service. 
+First, we will *try* to deploy the *slow* version of the carts service (v0.9.2). Therefore, keptn will deploy this new version into the `dev` environment where functional tests will be executed. After passing these functional tests, keptn will promote this service into the `staging` environment by releasing it as the blue or green version next to the previous version of the service. Then, keptn will route traffic to this new version by changing the configuration of the virtual service (i.e., by setting weights for the routes between blue and green) and keptn will start the defined performance test. Using the monitoring results of this performance test will allow [Pitometer](https://github.com/keptn/pitometer) to evaluate the quality gate. This *slow* version will not pass the quality gate and, hence, the deployment will be rejected. Furthermore, keptn will direct the requests to the service to the previous working deployment of the service. 
 
-Second, we will deploy the *regular* version of the carts service (v0.8.3). Therefore, keptn will conduct the same steps as before except that this version will now pass the quality gate. Hence, this *regular* version will be promoted into the `production` environment.
+Second, we will deploy the *regular* version of the carts service (v0.9.3). Therefore, keptn will conduct the same steps as before except that this version will now pass the quality gate. Hence, this *regular* version will be promoted into the `production` environment.
 
 ## Prerequisites
 In this use case, we will be using either the open source monitoring solution *Prometheus* or *Dynatrace*.
@@ -126,7 +126,7 @@ Now, you have quality gates in place, which will check whether the average respo
 1. Use the keptn CLI to send a version of the `carts` artifact, which contains an artificial
 slowdown of 1 second in each request. 
   ```console
-  keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.8.2
+  keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.9.2
   ```
 
 1. This automatically changes the configuration of the service and automatically triggers the following services:
@@ -149,7 +149,7 @@ Here, you see that the version of the carts service has not changed.
 
 1. Use the keptn CLI to send a new version of the `carts` artifact, which does **not** contain any slowdown.
   ```console
-  keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.8.3
+  keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.9.3
   ```
 
 1. This automatically changes the configuration of the service and automatically triggers the deployment.
@@ -183,7 +183,7 @@ Here, you see that the version of the carts service has not changed.
                deployment=carts-blue
       Containers:
       carts:
-        Image:      docker.io/keptnexamples/carts:0.8.3
+        Image:      docker.io/keptnexamples/carts:0.9.3
     ```
 
     ```console
@@ -197,7 +197,7 @@ Here, you see that the version of the carts service has not changed.
                deployment=carts-green
       Containers:
       carts:
-        Image:      docker.io/keptnexamples/carts:0.8.1
+        Image:      docker.io/keptnexamples/carts:0.9.1
     ```
 
     ```console
