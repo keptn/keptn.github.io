@@ -23,7 +23,7 @@ Delivery pipelines and operations automation are often built ad-hoc. Code is spr
 
 **The solution - Separate the control plane from the actual tool plumbing**
 
-Keptn uses well-defined CloudEvents for pretty much everything that can happen during continuous delivery and operations automation. Knative services register these events and then translate them into API calls for specific tools. Keptn acts as a central control plane for continuous delivery, putting all your automation code in one place, as well as separating tool integrations from the definition of continuous delivery “applications.”
+Keptn uses well-defined Cloud Events for pretty much everything that can happen during continuous delivery and operations automation. Knative services register these events and then translate them into API calls for specific tools. Keptn acts as a central control plane for continuous delivery, putting all your automation code in one place, as well as separating tool integrations from the definition of continuous delivery “applications.”
 
 ## The problem - Massive vendor lock-in
 
@@ -31,7 +31,7 @@ As most tool integrations today are done on a 1:1 basis based on proprietary API
 
 **The solution - Provide standards for building continuous delivery**
 
-Keptn integrations are merely translations of well-defined CloudEvents into proprietary vendor APIs. This makes exchanging tools much easier from a continuous delivery perspective. Keptn, for example, uses a new artifact event instead of requiring a direct integration to container registries, and it issues deployment events rather than directly calling deployment tools. All tool integrations are defined in uniform files which allow for the building of “integrations-as-code”
+Keptn integrations are merely translations of well-defined Cloud Events into proprietary vendor APIs. This makes exchanging tools much easier from a continuous delivery perspective. Keptn, for example, uses a new artifact event instead of requiring a direct integration to container registries, and it issues deployment events rather than directly calling deployment tools. All tool integrations are defined in uniform files which allow for the building of “integrations-as-code”
 
 ## The problem - Heavy runtime footprint
 
