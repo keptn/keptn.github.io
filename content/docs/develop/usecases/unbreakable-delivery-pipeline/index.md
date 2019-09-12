@@ -1,7 +1,7 @@
 ---
 title: Unbreakable Delivery Pipeline
 description: Reviews and consolidates the concepts of a continuous delivery pipeline that prevents bad code changes from impacting end users.
-weight: 35
+weight: 50
 keywords: [self-healing, quality gates]
 aliases:
 ---
