@@ -1,5 +1,5 @@
 ---
-title: Runbook Automation and Self-healing
+title: Runbook Automation
 description: Gives an overview of how to leverage the power of runbook automation to build self-healing applications. Therefore, you will use automation tools for executing and managing the runbooks.
 weight: 30
 keywords: [self-healing]
