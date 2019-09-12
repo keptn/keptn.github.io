@@ -120,10 +120,16 @@ Note, by onboarding a service without specifying a deployment file, we automatic
 in the deployment.
 -->
 
-## Send a new artifact and watch keptn doing the deployment 
+## Send new artifacts and watch keptn doing the deployment 
 
-* Send a new artifact event for the carts service using the [keptn send event new-artifact](../../reference/cli/#keptn-send-event-new-artifact) command.
-The used artifact is stored on Docker Hub. 
++ Send a new artifact event for the carts-db, since this is needed for the carts service [keptn send event new-artifact](../../reference/cli/#keptn-send-event-new-artifact):
+
+  ```console
+  keptn send event new-artifact --project=sockshop --service=carts-db --image=mongo
+  ```
+
+* Send a new artifact event for the carts service using the  command.
+The used artifact is stored on Docker Hub.
   ```console
   keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.8.1
   ```
