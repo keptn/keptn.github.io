@@ -239,6 +239,7 @@ In your cluster, this command installs the complete infrastructure necessary to 
                 <li>eventbroker</li>
                 <li>gatekeeper service</li>
                 <li>mongodb-datastore</li>
+                <li>remediation-service</li>
                 <li>shipyard-service</li>
                 <li>wait-service</li>
             </ul>
@@ -249,7 +250,7 @@ In your cluster, this command installs the complete infrastructure necessary to 
                 <li>gatekeeper-service</li>
                 <li>pitometer-service</li>
                 <li>prometheus-service</li>
-                <li>serviceNow-service</li>
+                <li>servicenow-service</li>
                 <li>openshift-route-service (OpenShift only)</li>
             </ul>
         </ul>
@@ -291,6 +292,8 @@ keptn configure domain YOUR_DOMAIN
   pitometer-service-tests-finished-distributor-785bdc79d4-xgwdd     1/1       Running   0          1m
   prometheus-service-5d84cd45df-kcft8                               1/1       Running   0          4m
   prometheus-service-monitoring-configure-distributor-5f4f9f54jks   1/1       Running   0          4m
+  remediation-service-a7pysw4bb-q0mzk                               1/1       Running   0          4m
+  remediation-service-problem-distributor-u2dfa5f5cfb-8n8cb         1/1       Running   0          4m
   servicenow-service-64cb58c879-f868m                               1/1       Running   0          4m
   servicenow-service-problem-distributor-6d4fc577d9-8b97g           1/1       Running   0          4m
   shipyard-service-58b5d5df74-2k8d5                                 1/1       Running   0          1m
