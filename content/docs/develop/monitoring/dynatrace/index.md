@@ -8,6 +8,21 @@ keywords: setup
 
 In order to evaluate the quality gates and allow self-healing in production, we have to set up monitoring to provide the needed data.
 
+## Install local tools
+
+Please make sure to have the following tool(s) installed:
+- [jq](https://stedolan.github.io/jq/) - a lightweight and flexible command-line JSON processor.
+<details><summary>Open for installation instructions</summary>
+<p>
+
+  ```console
+  sudo apt-get update
+  sudo apt install jq -y
+  ```
+
+</p>
+</details>
+
 ## Setup Dynatrace
 
 1. Bring your Dynatrace SaaS or Dynatrace-managed tenant
@@ -112,7 +127,7 @@ The Dynatrace service will take care of pushing events of the keptn workflow to 
     width="500px">}}
 
 
-## (Optional) Create process group naming rule in Dynatrace
+## (optional) Create process group naming rule in Dynatrace
 
 1. Create a naming rule for process groups
     1. Go to **Settings**, **Process and containers**, and click on **Process group naming**.
@@ -132,7 +147,7 @@ The Dynatrace service will take care of pushing events of the keptn workflow to 
 
 If you want to uninstall Dynatrace, there are scripts provided to do so. Uninstalling keptn will not automatically uninstall Dynatrace.
 
-1. (Optional) If you do not have the *dynatrace-service* repository, clone the latest release using:
+1. (optional) If you do not have the *dynatrace-service* repository, clone the latest release using:
 
   ```console
   git clone --branch 0.2.0 https://github.com/keptn-contrib/dynatrace-service --single-branch
