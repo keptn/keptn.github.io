@@ -1,6 +1,6 @@
 ---
 title: keptn CLI
-description: The following description explains how to connect the keptn CLI your keptn cluster and which commands are available.
+description: The following description explains how to connect the keptn CLI to your keptn cluster and which commands are available.
 weight: 10
 keywords: [cli, setup]
 ---
