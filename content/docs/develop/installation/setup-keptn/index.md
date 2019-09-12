@@ -100,7 +100,7 @@ Select one of the following options:
     pks create-cluster $CLUSTER_NAME --external-hostname $HOST_NAME --plan $PLAN
     ```
 
-* **Note** For the keptn installation, the *Cluster CIDR Range* and *Services CIDR Range* are required. The values for these two properties you find in your PCF OpsManager. 
+* > **Note:** For the keptn installation, the *Cluster CIDR Range* and *Services CIDR Range* are required. The values for these two properties you find in your PCF OpsManager. 
 
     * Login to your PCF OpsManager
     * Click on the **Enterprise PKS** tile and go to **Networking**
