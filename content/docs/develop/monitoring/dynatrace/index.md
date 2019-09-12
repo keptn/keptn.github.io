@@ -97,23 +97,23 @@ NAME                TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)    AGE
 dynatrace-service   ClusterIP   10.0.44.191   <none>        8080/TCP   2m48s
 ```
 
-**Note 1:** To monitor the services that are already onboarded in the `dev`, `staging`, and `production` namespace, make sure to restart the pods. If you defined different environments in your shipyard file, please adjust the values accordingly. 
+> **Note 1:** To monitor the services that are already onboarded in the `dev`, `staging`, and `production` namespace, make sure to restart the pods. If you defined different environments in your shipyard file, please adjust the values accordingly. 
 ```console
 kubectl delete pods --all --namespace=sockshop-dev
 kubectl delete pods --all --namespace=sockshop-staging
 kubectl delete pods --all --namespace=sockshop-production
 ```
 
-**Note 2:** If the nodes in your cluster run on *Container-Optimized OS (cos)*, make sure to [follow the instructions](https://www.dynatrace.com/support/help/cloud-platforms/google-cloud-platform/google-kubernetes-engine/deploy-oneagent-on-google-kubernetes-engine-clusters/#expand-134parameter-for-container-optimized-os-early-access) for setting up the Dynatrace OneAgent Operator. This means that after the initial setup with `deployDynatrace.sh`, which is a step below, the `cr.yml` has to be edited and applied again. In addition, all pods have to be restarted.
+> **Note 2:** If the nodes in your cluster run on *Container-Optimized OS (cos)*, make sure to [follow the instructions](https://www.dynatrace.com/support/help/cloud-platforms/google-cloud-platform/google-kubernetes-engine/deploy-oneagent-on-google-kubernetes-engine-clusters/#expand-134parameter-for-container-optimized-os-early-access) for setting up the Dynatrace OneAgent Operator. This means that after the initial setup with `deployDynatrace.sh`, which is a step below, the `cr.yml` has to be edited and applied again. In addition, all pods have to be restarted.
 
 ### What was set up?
 
 In your Dynatrace tenant, when you navigate to **Settings > Tags > Automatically applied tags** you will find two entries:
 
-- environemnt
+- environment
 - service
 
-This means that Dynatrace will automatially apply tags on your onboarded services.
+This means that Dynatrace will automatically apply tags to your onboarded services.
 
 In addition, a Problem Notification has automatically been set up to inform your keptn installation of any problems with your services to allow auto-remediation. This will be described in more detail in the [runbook automation and self-healing use case](../../usecases/runbook-automation-and-self-healing/). You can check the problem notification by navigating to **Settings > Integration > Problem notifications** and you will find a **keptn remediation** problem notification.
 

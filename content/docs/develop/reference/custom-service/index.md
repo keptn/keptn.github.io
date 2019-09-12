@@ -10,8 +10,7 @@ Shows you how to implement your own keptn service and listen for certain events.
 
 ## About
 
-The goal of this section is to describe how you can add additional functionality to your keptn installation by implementing your own services. 
-You can react to certain events that occur during your CD pipeline runs, and, integrate additional tools into your pipeline by accessing their REST interfaces with your custom services. At the moment the events you can subscribe to include:
+The goal of this section is to describe how you can add additional functionality to your keptn installation by implementing your own custom services. You can react to certain events that occur during your continuous delivery pipeline runs and integrate additional tools into your pipeline by accessing their REST interfaces with your custom services. At the moment the events you can subscribe to include:
 
 - sh.keptn.events.new-artifact
 - sh.keptn.events.configuration-changed
@@ -22,314 +21,124 @@ You can react to certain events that occur during your CD pipeline runs, and, in
 
 ## Writing your own service
 
-As a reference for writing your own service, please have a look at our implementation of the [GitHub Service](https://github.com/keptn-contrib/github-service/tree/release-0.1.x). Essentially, this service is a *nodeJS express* application that accepts POST requests at its `/` endpoint. This endpoint is called by the *knative channel controller* as soon as an event has been pushed to the queue your service is subscribed to. Of course, you can write your own service in any language, as long as it provides the endpoint to receive events.
+As a reference for writing your own service, please have a look at our implementation of the [JMeter Service](https://github.com/keptn/keptn/blob/develop/jmeter-service). Essentially, this service is a *Go* application that accepts POST requests at its `/` endpoint. To be more specific, the request body needs to follow the [Cloud Event specification](https://github.com/keptn/keptn/blob/master/specification/cloudevents.md) and the HTTP header attribute `Content-Type` has to be set to `application/cloudevents+json`. Of course, you can write your own service in any language, as long as it provides the endpoint to receive events.
 
-Services in keptn are implemented as [knative services](https://cloud.google.com/knative/). The template manifest for the *GitHub service* can be found in the [config/service.yaml](https://github.com/keptn-contrib/github-service/blob/release-0.1.x/config/service.yaml) file in the GitHub repo:
+A keptn service is a regular Kubernetes service with a deployment and service template. The deployment and service manifest for the *jmeter-service* can be found in the [deploy/service.yaml](https://github.com/keptn/keptn/blob/master/jmeter-service/deploy/service.yaml) file in `jmeter-service` directory of the keptn GitHub repo:
 
-  ```yaml
-  apiVersion: serving.knative.dev/v1alpha1
-  kind: Service
-  metadata:
-    name: github-service
-    namespace: keptn
-  spec:
-    runLatest:
-      configuration:
-        build:
-          apiVersion: build.knative.dev/v1alpha1
-          kind: Build
-          metadata:
-            name: service-builder
-            namespace: keptn
-          spec:
-            serviceAccountName: build-bot
-            source:
-              git:
-                url: https://github.com/keptn-contrib/github-service.git
-                revision: master
-            template:
-              name: kaniko
-              arguments:
-                - name: IMAGE
-                  value: docker-registry.keptn.svc.cluster.local:5000/keptn/github-service:latest
-        revisionTemplate:
-          spec:
-            container:
-              image: REGISTRY_URI_PLACEHOLDER:5000/keptn/github-service:latest
-  ---
-  apiVersion: eventing.knative.dev/v1alpha1
-  kind: Subscription
-  metadata:
-    name: github-new-artifact-subscription
-    namespace: keptn
-  spec:
-    channel:
-      apiVersion: eventing.knative.dev/v1alpha1
-      kind: Channel
-      name: new-artifact
-    subscriber:
-      ref:
-        apiVersion: serving.knative.dev/v1alpha1
-        kind: Service
-        name: github-service
-  ```
+```yaml
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jmeter-service
+  namespace: keptn
+spec:
+  selector:
+    matchLabels:
+      run: jmeter-service
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: jmeter-service
+    spec:
+      containers:
+      - name: helm-service
+        image: keptn/jmeter-service:0.5.0
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jmeter-service
+  namespace: keptn
+  labels:
+    run: jmeter-service
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+  selector:
+    run: jmeter-service
+```
 
-As you can see in the manifest file, it consists of a *knative service*, as well as a *knative eventing subscription*. The service makes use of knative's source-to-url feature, meaning that knative will take care of building and deploying your service, using the build specification in the manifest file. The build specification accepts the link to a github repository containing a Dockerfile (which you will need to provide) for your application and will use the *kaniko* build template to build the container and push it to the registry specified in the build spec. In this case, the template references the docker registry that has been deployed within the keptn namespace of the cluster. Also, note that there is a placeholder for the IP address of the registry (`REGISTRY_URI_PLACEHOLDER`). This is because currently it is not possible to reference the cluster-internal DNS name for the container image the service should pull when it is being invoked.
+## Subscribe service to keptn events 
 
-The *Subscription* defines to which kind of event the service should listen to. To subscribe your service to a queue, set the property *spec.channel.name* to one of the following:
+To subscribe your service to certain keptn event, a **distributor** is required. A distributor also comes with a deployment manifest as shown below:
 
-  ```
-  new-artifact
-  configuration-changed
-  deployment-finished
-  tests-finished
-  evaluation-done
-  problem
-  ```
+```yaml
+## jmeter-service: sh.keptn.events.deployment-finished
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jmeter-service-deployment-distributor
+  namespace: keptn
+spec:
+  selector:
+    matchLabels:
+      run: distributor
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: distributor
+    spec:
+      containers:
+      - name: distributor
+        image: keptn/distributor:latest
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            memory: "32Mi"
+            cpu: "50m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        env:
+        - name: PUBSUB_URL
+          value: 'nats://keptn-nats-cluster'
+        - name: PUBSUB_TOPIC
+          value: 'sh.keptn.events.deployment-finished'
+        - name: PUBSUB_RECIPIENT
+          value: 'jmeter-service'
+```
 
-Additionally, you will need to provide a name for the subscription (*metadata.name*), and reference the name of your service (*spec.subscriber.ref.name*).
+To configure this distributor for the `jmeter-service`, two environment variables need to be set:
+1. `PUBSUB_RECIPIENT` - Defines the service name.
+1. `PUBSUB_TOPIC` - Defines the event type the service is listening to. 
 
-To deploy the service, we use a script that will first retrieve the IP of the cluster-internal docker registry, and replace the `REGISTRY_URI_PLACEHOLDER` in the manifest file with that value. The resulting manifest file will be stored in the *[config/gen](https://github.com/keptn-contrib/github-service/tree/release-0.1.x/config/gen)* directory. By executing the script with
+## Deploy service and distributor
 
-  ```console
-  ./deploy.sh
-  ```
+With a service and deployment manifest for your custom service (`service.yaml`) as well as a deployment manifest for the distributor (`distributor.yaml`), you are ready to deploy both components:
 
-any previous revisions of the service will be deleted and the newest version will be deployed.
+```console
+kubectl apply -f service.yaml
+```
 
-*To summarize*, you will need to provide the following when you want to write a custom service:
+```console
+kubectl apply -f distributor.yaml
+```
 
-- A Github repo, containing the source code, as well as a Dockerfile for your application.
+## To summarize
+You will need to provide the following when you want to write a custom service:
+
+- Your service implementation including a Docker container, we recommend writing the service in *Go*
 - The application needs to provide a REST endpoint at `/` that accepts `POST` requests for JSON objects.
-- The `config` directory, containing the template for the manifest file (see description above), as well as the `config/gen` directory.
-- The `deploy.sh` script.
+- A `service.yaml` file containing the templates for the service and deployment manifest of your service.
+- A `distributor.yaml` file containing the template for the distributor and properly configured for your service.
 
-*Note:* this documentation will be replaced with an extensive step-by-step guide in the future.
+> **Note:** This documentation will be replaced with an extensive step-by-step guide in the future.
 
-## CloudEvents
+## Cloud Events
 
-Please note that cloudevents have to be sent with with the HTTP header `Content-Type: application/cloudevents+json` to be set.
-
-Depending on the channel your service is subscribed to, it will receive the payload in the following format:
-
-### sh.keptn.new-artifact
-
-```json
-{  
-   "specversion":"0.2",
-   "type":"sh.keptn.events.new-artifact",
-   "id":"1234",
-   "time":"2018-04-05T17:31:00Z",
-   "contenttype":"application/json",
-   "shkeptncontext":"db51be80-4fee-41af-bb53-1b093d2b694c",
-   "data":{  
-      "githuborg":"keptn-tiger",
-      "project":"sockshop",
-      "teststrategy":"functional",
-      "deploymentstrategy":"direct",
-      "stage":"dev",
-      "service":"carts",
-      "image":"10.11.245.27:5000/sockshopcr/carts",
-      "tag":"0.6.7-16"
-   }
-}
-```
-
-### sh.keptn.configuration-changed
-
-```json
-{  
-   "specversion":"0.2",
-   "time":"2018-04-05T17:31:00Z",
-   "contenttype":"application/json",
-   "data":{  
-      "service":"carts",
-      "image":"10.11.245.27:5000/sockshopcr/carts",
-      "tag":"0.6.7-16",
-      "project":"sockshop",
-      "stage":"dev",
-      "githuborg":"keptn-tiger",
-      "teststrategy":"functional",
-      "deploymentstrategy":"direct"
-   },
-   "type":"sh.keptn.events.configuration-changed",
-   "shkeptncontext":"db51be80-4fee-41af-bb53-1b093d2b694c"
-}
-```
-
-### sh.keptn.deployment-finished
-
-```json
-{  
-   "specversion":"0.2",
-   "type":"sh.keptn.events.deployment-finished",
-   "id":"1234",
-   "time":"2018-04-05T17:31:00Z",
-   "contenttype":"application/json",
-   "shkeptncontext":"db51be80-4fee-41af-bb53-1b093d2b694c",
-   "data":{  
-      "githuborg":"keptn-tiger",
-      "project":"sockshop",
-      "teststrategy":"functional",
-      "deploymentstrategy":"direct",
-      "stage":"dev",
-      "service":"carts",
-      "image":"10.11.245.27:5000/sockshopcr/carts",
-      "tag":"0.6.7-16"
-   }
-}
-```
-
-### sh.keptn.tests-finished
-
-```json
-{  
-   "specversion":"0.2",
-   "type":"sh.keptn.events.tests-finished",
-   "id":"1234",
-   "time":"2018-04-05T17:31:00Z",
-   "contenttype":"application/json",
-   "shkeptncontext":"db51be80-4fee-41af-bb53-1b093d2b694c",
-   "data":{  
-      "githuborg":"keptn-tiger",
-      "project":"sockshop",
-      "teststrategy":"functional",
-      "deploymentstrategy":"direct",
-      "stage":"dev",
-      "service":"carts",
-      "image":"10.11.245.27:5000/sockshopcr/carts",
-      "tag":"0.6.7-16"
-   }
-}
-```
-
-### sh.keptn.evaluation-done
-
-- Example for a successful evaluation:
-
-```json
-{  
-   "specversion":"0.2",
-   "type":"sh.keptn.events.evaluation-done",
-   "id":"1234",
-   "time":"2018-04-05T17:31:00Z",
-   "contenttype":"application/json",
-   "shkeptncontext":"db51be80-4fee-41af-bb53-1b093d2b694c",
-   "data":{  
-      "githuborg":"keptn-tiger",
-      "project":"sockshop",
-      "teststrategy":"functional",
-      "deploymentstrategy":"direct",
-      "stage":"dev",
-      "service":"carts",
-      "image":"10.11.245.27:5000/sockshopcr/carts",
-      "tag":"0.6.7-16",
-      "evaluationpassed": true,
-      "evaluationdetails": { // NOTE: the evaluationdetails object is not strictly typed
-        "options":{
-            "timeStart":1557838126,
-            "timeEnd":1557838317
-        },
-        "totalScore":100,
-        "objectives":{
-            "pass":90,
-            "warning":75
-        },
-        "indicatorResults":[
-            {
-              "id":"ResponseTime_Backend",
-              "violations":[
-
-              ],
-              "score":100
-            }
-        ],
-        "result":"pass"
-      },
-      "tag":"0.6.7-16"
-   }
-}
-```
-
-- Example for a failed evaluation:
-
-```json
-{  
-   "specversion":"0.2",
-   "type":"sh.keptn.events.evaluation-done",
-   "id":"1234",
-   "time":"2018-04-05T17:31:00Z",
-   "contenttype":"application/json",
-   "shkeptncontext":"db51be80-4fee-41af-bb53-1b093d2b694c",
-   "data":{  
-      "githuborg":"keptn-tiger",
-      "project":"sockshop",
-      "teststrategy":"functional",
-      "deploymentstrategy":"direct",
-      "stage":"dev",
-      "service":"carts",
-      "image":"10.11.245.27:5000/sockshopcr/carts",
-      "tag":"0.6.7-16",
-      "evaluationpassed": false,
-      "evaluationdetails": { // NOTE: the evaluationdetails object is not strictly typed
-        "options":{
-          "timeStart":1557839081,
-          "timeEnd":1557839741
-        },
-        "totalScore":0,
-        "objectives":{
-          "pass":90,
-          "warning":75
-        },
-        "indicatorResults":[
-          {
-            "id":"ResponseTime_Backend",
-            "violations":[
-                {
-                  "value":1014676.0082135524,
-                  "key":"SERVICE-64F930D2B8E888FF",
-                  "breach":"upperSevere",
-                  "threshold":1000000
-                }
-            ],
-            "score":0
-          }
-        ],
-        "result":"fail"
-      },
-      "tag":"0.6.7-16"
-   }
-}
-```
-
-### sh.keptn.problem
-
-To receive events in this channel, please follow the instructions of the [Runbook Automation and Self-healing](https://keptn.sh/docs/0.2.0/usecases/runbook-automation-and-self-healing/) section.
-
-```json
-{
-    "specversion":"0.2",
-    "type":"sh.keptn.events.problem",
-    "source":"dynatrace",
-    "id":"{PID}",
-    "time":"2018-04-05T17:31:00Z",
-    "contenttype":"application/json",
-    "shkeptncontext":"{PID}",
-    "data": {
-        "State":"{State}",
-        "ProblemID":"{ProblemID}",
-        "PID":"{PID}",
-        "ProblemTitle":"{ProblemTitle}",
-        "ProblemDetails":{ProblemDetailsJSON},
-        "ImpactedEntities":{ImpactedEntities},
-        "ImpactedEntity":"{ImpactedEntity}"
-    }
-}
-```
+Please note that Cloud Events have to be sent with with the HTTP header `Content-Type: application/cloudevents+json` to be set.
+For a detailed look into Cloud Events, please go the keptn [Cloud Event specification](https://github.com/keptn/keptn/blob/master/specification/cloudevents.md). 
 
 ## Logging
 
-To inspect your service's log messages for a specific pipeline run, as described in the [keptn's log](https://keptn.sh/docs/0.2.0/reference/keptnslog/) section, you can use the `shkeptncontext` property of the incoming CloudEvents. Your service has to output its log messages in the following format:
+To inspect your service's log messages for a specific pipeline run, as described in the [keptn's log](https://keptn.sh/docs/0.2.0/reference/keptnslog/) section, you can use the `shkeptncontext` property of the incoming Cloud Events. Your service has to output its log messages in the following format:
 
 ```json
 {
@@ -339,3 +148,5 @@ To inspect your service's log messages for a specific pipeline run, as described
   "message": "logging message"
 }
 ```
+
+> **Note:** For implementing logging into your *Go* service, you can import the [go-utils](https://github.com/keptn/go-utils) package that already provides common logging functions. 
