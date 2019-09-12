@@ -1,11 +1,11 @@
 ---
-title: What is keptn?
-description: The overall goal of keptn is to make continuous delivery and operations automation a commodity for modern cloud-native applications.
+title: What is Keptn?
+description: The overall goal of Keptn is to make continuous delivery and operations automation a commodity for modern cloud-native applications.
 weight: 10
 keywords: [keptn, cloud-native, cd]
 ---
 
-The overall goal of keptn is to make continuous delivery and operations automation a commodity for modern cloud-native applications. 
+The overall goal of Keptn is to make continuous delivery and operations automation a commodity for modern cloud-native applications. 
 
 Keptn was started by Dynatrace because we saw that continuous delivery—as it’s currently practiced—is broken. We’re on a mission to solve the biggest problems of continuous delivery that exist today. 
 
@@ -37,14 +37,14 @@ Keptn integrations are merely translations of well-defined Cloud Events into pro
 
 Most continuous delivery and operations automation solutions have large runtime requirements, especially within enterprise settings. Most tools also consume resources even when they’re idle, either because no deployment is currently active or operations actions are still running.
 
-**The solution - keptn is fully serverless**
+**The solution - Keptn is fully serverless**
 
-Keptn is built on Knative serverless services, so components only consume resources when they are actively doing something. This massively reduces the costs of running continuous delivery pipelines. With keptn you can run an enterprise-grade continuous delivery and operations automation layer from your laptop for less than the cost of a burger and fries.
+Keptn is built on Knative serverless services, so components only consume resources when they are actively doing something. This massively reduces the costs of running continuous delivery pipelines. With Keptn you can run an enterprise-grade continuous delivery and operations automation layer from your laptop for less than the cost of a burger and fries.
 
 ## The problem - Auditing for continuous delivery and operations is hard
 
 There are a lot of operations management and workflow solutions out there that provide auditing. However, most of this auditing visibility breaks once you move towards customized tool integrations. Suddenly, understanding the cause and effect of actions taken by your platform becomes a mystery. 
 
-**The solution - keptn provides tracing for continuous delivery and operations automation**
+**The solution - Keptn provides tracing for continuous delivery and operations automation**
 
-Keptn was created by Dynatrace, the inventor of distributed transaction tracing. So it should be no surprise that we’ve embedded tracing capabilities into keptn. All cloud events in keptn use the W3C trace context headers. This enables the stitching together of individual actions into traces. This represents a new level of visibility into your continuous delivery pipeline that wasn’t previously possible.
+Keptn was created by Dynatrace, the inventor of distributed transaction tracing. So it should be no surprise that we’ve embedded tracing capabilities into Keptn. All cloud events in Keptn use the W3C trace context headers. This enables the stitching together of individual actions into traces. This represents a new level of visibility into your continuous delivery pipeline that wasn’t previously possible.

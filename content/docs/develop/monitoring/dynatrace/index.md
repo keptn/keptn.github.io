@@ -115,15 +115,15 @@ In your Dynatrace tenant, when you navigate to **Settings > Tags > Automatically
 
 This means that Dynatrace will automatically apply tags to your onboarded services.
 
-In addition, a Problem Notification has automatically been set up to inform your keptn installation of any problems with your services to allow auto-remediation. This will be described in more detail in the [runbook automation and self-healing use case](../../usecases/runbook-automation-and-self-healing/). You can check the problem notification by navigating to **Settings > Integration > Problem notifications** and you will find a **keptn remediation** problem notification.
+In addition, a Problem Notification has automatically been set up to inform your Keptn installation of any problems with your services to allow auto-remediation. This will be described in more detail in the [runbook automation and self-healing use case](../../usecases/runbook-automation-and-self-healing/). You can check the problem notification by navigating to **Settings > Integration > Problem notifications** and you will find a **keptn remediation** problem notification.
 
 
-## See keptn events in Dynatrace
+## See Keptn events in Dynatrace
 
-The Dynatrace service will take care of pushing events of the keptn workflow to the artifacts that have been onboarded with keptn. For example, the deployment as well as custom infos like starting and finishing of tests will appear in the details screen of your services in your Dynatrace tenant.
+The Dynatrace service will take care of pushing events of the Keptn workflow to the artifacts that have been onboarded with Keptn. For example, the deployment as well as custom infos like starting and finishing of tests will appear in the details screen of your services in your Dynatrace tenant.
     {{< popup_image
     link="./assets/custom_events.png"
-    caption="keptn events"
+    caption="Keptn events"
     width="500px">}}
 
 
@@ -145,7 +145,7 @@ The Dynatrace service will take care of pushing events of the keptn workflow to 
 
 ## Uninstall Dynatrace
 
-If you want to uninstall Dynatrace, there are scripts provided to do so. Uninstalling keptn will not automatically uninstall Dynatrace.
+If you want to uninstall Dynatrace, there are scripts provided to do so. Uninstalling Keptn will not automatically uninstall Dynatrace.
 
 1. (optional) If you do not have the *dynatrace-service* repository, clone the latest release using:
 

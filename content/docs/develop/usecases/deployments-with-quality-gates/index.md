@@ -26,9 +26,9 @@ This quality gate checks whether the average response time of the service is und
 
 In overview, we will conduct these two scenarios:
 
-First, we will *try* to deploy the *slow* version of the carts service (v0.9.2). Therefore, keptn will deploy this new version into the `dev` environment where functional tests will be executed. After passing these functional tests, keptn will promote this service into the `staging` environment by releasing it as the blue or green version next to the previous version of the service. Then, keptn will route traffic to this new version by changing the configuration of the virtual service (i.e., by setting weights for the routes between blue and green) and keptn will start the defined performance test. Using the monitoring results of this performance test will allow [Pitometer](https://github.com/keptn/pitometer) to evaluate the quality gate. This *slow* version will not pass the quality gate and, hence, the deployment will be rejected. Furthermore, keptn will direct the requests to the service to the previous working deployment of the service. 
+First, we will *try* to deploy the *slow* version of the carts service (v0.9.2). Therefore, Keptn will deploy this new version into the `dev` environment where functional tests will be executed. After passing these functional tests, Keptn will promote this service into the `staging` environment by releasing it as the blue or green version next to the previous version of the service. Then, Keptn will route traffic to this new version by changing the configuration of the virtual service (i.e., by setting weights for the routes between blue and green) and Keptn will start the defined performance test. Using the monitoring results of this performance test will allow [Pitometer](https://github.com/keptn/pitometer) to evaluate the quality gate. This *slow* version will not pass the quality gate and, hence, the deployment will be rejected. Furthermore, Keptn will direct the requests to the service to the previous working deployment of the service. 
 
-Second, we will deploy the *regular* version of the carts service (v0.9.3). Therefore, keptn will conduct the same steps as before except that this version will now pass the quality gate. Hence, this *regular* version will be promoted into the `production` environment.
+Second, we will deploy the *regular* version of the carts service (v0.9.3). Therefore, Keptn will conduct the same steps as before except that this version will now pass the quality gate. Hence, this *regular* version will be promoted into the `production` environment.
 
 ## Prerequisites
 In this use case, we will be using either the open source monitoring solution *Prometheus* or *Dynatrace*.
@@ -44,7 +44,6 @@ The [Pitometer](https://github.com/keptn/pitometer) service will then evaluate t
 For using the quality gate, Pitometer requires a performance specification.
 This performance specification has to be located in a repository having the name of 
 your service (for this use case `carts`) in the configured GitHub organization (i.e. used in [keptn configure](../../reference/cli/#keptn-configure)).
-
 
 ### Option 1: Prometheus
 <details><summary>Expand instructions</summary>
@@ -123,7 +122,7 @@ Now, you have quality gates in place, which will check whether the average respo
 
 ## Try to deploy the slow carts version
 
-1. Use the keptn CLI to send a version of the `carts` artifact, which contains an artificial
+1. Use the Keptn CLI to send a version of the `carts` artifact, which contains an artificial
 slowdown of 1 second in each request. 
   ```console
   keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.9.2
@@ -147,7 +146,7 @@ Here, you see that the version of the carts service has not changed.
 
 ## Deploy the regular carts version
 
-1. Use the keptn CLI to send a new version of the `carts` artifact, which does **not** contain any slowdown.
+1. Use the Keptn CLI to send a new version of the `carts` artifact, which does **not** contain any slowdown.
   ```console
   keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.9.3
   ```
