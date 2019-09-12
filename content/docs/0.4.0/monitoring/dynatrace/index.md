@@ -8,6 +8,23 @@ keywords: setup
 
 In order to evaluate the quality gates and allow self-healing in production, we have to set up monitoring to provide the needed data.
 
+## Install local tools
+
+Please make sure to have the following tools installed:
+- [yq](https://mikefarah.github.io/yq/) - a lightweight and portable command-line YAML processor. 
+- [jq](https://stedolan.github.io/jq/) - a lightweight and flexible command-line JSON processor.
+<details><summary>Open for installation instructions</summary>
+<p>
+
+  ```console
+  sudo apt-get update
+  sudo apt install yq -y
+  sudo apt install jq -y
+  ```
+
+</p>
+</details>
+
 ## Setup Dynatrace
 
 1. Bring your Dynatrace SaaS or Dynatrace-managed tenant
@@ -37,7 +54,7 @@ In order to evaluate the quality gates and allow self-healing in production, we 
 
 1. Clone the install repository and setup your credentials by executing the following steps:
   ```console
-  git clone --branch 0.2.0 https://github.com/keptn/dynatrace-service --single-branch
+  git clone --branch 0.2.0 https://github.com/keptn-contrib/dynatrace-service --single-branch
   cd dynatrace-service/deploy/scripts
   ./defineDynatraceCredentials.sh
   ```
@@ -89,13 +106,12 @@ kubectl delete pods --all --namespace=sockshop-production
 
 In your Dynatrace tenant, when you navigate to **Settings > Tags > Automatically applied tags** you will find two entries:
 
-- environemnt
+- environment
 - service
 
-This means that Dynatrace will automatially apply tags on your onboarded services.
+This means that Dynatrace will automatically apply tags to your onboarded services.
 
 In addition, a Problem Notification has automatically been set up to inform your keptn installation of any problems with your services to allow auto-remediation. This will be described in more detail in the [runbook automation and self-healing use case](../../usecases/runbook-automation-and-self-healing/). You can check the problem notification by navigating to **Settings > Integration > Problem notifications** and you will find a **keptn remediation** problem notification.
-
 
 ## See keptn events in Dynatrace
 
@@ -106,7 +122,7 @@ The Dynatrace service will take care of pushing events of the keptn workflow to 
     width="500px">}}
 
 
-## (Optional) Create process group naming rule in Dynatrace
+## (optional) Create process group naming rule in Dynatrace
 
 1. Create a naming rule for process groups
     1. Go to **Settings**, **Process and containers**, and click on **Process group naming**.
@@ -126,7 +142,7 @@ The Dynatrace service will take care of pushing events of the keptn workflow to 
 
 If you want to uninstall Dynatrace, there are scripts provided to do so. Uninstalling keptn will not automatically uninstall Dynatrace.
 
-1. (Optional) If you do not have the *dynatrace-service* repository, clone the latest release using:
+1. (optional) If you do not have the *dynatrace-service* repository, clone the latest release using:
 
   ```console
   git clone --branch 0.2.0 https://github.com/keptn/dynatrace-service --single-branch
