@@ -137,8 +137,11 @@ In order to simulate user traffic that is causing an unhealthy behavior in the c
 
 1. (optional:) Verify load in Prometheus:
 
-    ![](./assets/prometheus-load.png)
-    
+    {{< popup_image
+        link="./assets/prometheus-load.png"
+        caption="Prometheus load"
+        width="700px">}}
+
     TODO: update image
 
 ### 3. Watch self-healing in action
