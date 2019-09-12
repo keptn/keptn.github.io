@@ -39,7 +39,7 @@ Click here to learn more on the service-indicator, service-objective, and remedi
 indicators:
 - metric: cpu_usage_sockshop_carts
   source: Prometheus
-  query: avg(rate(container_cpu_usage_seconds_total{namespace="sockshop-$ENVIRONMENT",pod_name=~"carts-blue-.*|carts-green-.*"}[$DURATION_MINUTES]))
+  query: avg(rate(container_cpu_usage_seconds_total{namespace="sockshop-$ENVIRONMENT",pod_name=~"carts-primary-.*"}[$DURATION_MINUTES]))
 - metric: request_latency_seconds
   source: Prometheus
   query: rate(requests_latency_seconds_sum{job='carts-sockshop-$ENVIRONMENT'}[$DURATION_MINUTESm])/rate(requests_latency_seconds_count{job='carts-sockshop-$ENVIRONMENT'}[$DURATION_MINUTESm])
