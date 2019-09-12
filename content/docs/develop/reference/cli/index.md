@@ -235,7 +235,7 @@ To push a new artifact, use the command `send event new-artifact`, which sends a
 Therefore, this command takes the project (`--project` flag), the service (`--service` flag), as well as the image (`--image` flage) and tag (`--tag` flag) of the new artifact.
 
 ```console
-keptn send event new-artifact --project=your_project --service=your_service --image=docker.io/keptnexamples/carts --tag=0.8.1
+keptn send event new-artifact --project=your_project --service=your_service --image=docker.io/keptnexamples/carts --tag=0.9.1
 ```
 
 ## keptn send event
