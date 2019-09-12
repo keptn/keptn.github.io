@@ -109,10 +109,10 @@ After creating the project, you are ready to onboard the first services.
 
 Since the carts service requires a mongodb database, a second service needs to be onboarded.
 
-* Onboard the `carts-db` service using the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command:
+* Onboard the `carts-db` service using the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command.
 
   ```console
-  keptn onboard service carts-db --project=sockshop --chart=carts-db-0.1.0.tgz
+  keptn onboard service carts-db --project=sockshop --chart=carts-db-0.1.0.tgz --direct
   ```
 
 <!--
