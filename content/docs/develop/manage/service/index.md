@@ -14,7 +14,7 @@ After creating a project the keptn CLI allows to onboard services into this proj
 When onboarding your own service instead of the provided demo example, the Helm chart _has_ to contain a `values.yaml` file with at least the `image` and `replicas` parameter for the deployment and service template. An example is shown below:
 
 ```yaml
-image: docker.io/keptnexamples/carts:0.8.1
+image: docker.io/keptnexamples/carts:0.9.1
 replicas: 1
 ```
 <!--
