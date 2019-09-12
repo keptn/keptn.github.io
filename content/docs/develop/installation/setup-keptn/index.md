@@ -6,7 +6,7 @@ icon: setup
 keywords: setup
 ---
 
-## Prerequisites of local tools
+## Prerequisites
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 - For Linux: [bc](https://www.gnu.org/software/bc/manual/html_mono/bc.html)
 
@@ -100,7 +100,7 @@ Select one of the following options:
     pks create-cluster $CLUSTER_NAME --external-hostname $HOST_NAME --plan $PLAN
     ```
 
-* > **Note:** For the Keptn installation, the *Cluster CIDR Range* and *Services CIDR Range* are required. The values for these two properties you find in your PCF OpsManager. 
+* **Note:** For the Keptn installation, the *Cluster CIDR Range* and *Services CIDR Range* are required. The values for these two properties you find in your PCF OpsManager. 
 
     * Login to your PCF OpsManager
     * Click on the **Enterprise PKS** tile and go to **Networking**
@@ -196,33 +196,39 @@ Every release of Keptn provides binaries for the Keptn CLI. These binaries are a
       .\keptn.exe --help
       ```
 
-Please note that for the rest of the documentation we will stick to the Mac OS / Linux version of the commands.
+**Note:** For the rest of the documentation we will stick to the Mac OS / Linux version of the commands.
 
 ## Install Keptn
 
 - Execute the CLI command `keptn install` and provide the requested information. This command will install Keptn in the version of the latest release. Since v0.3 of Keptn, the install command accepts a parameter to select the platform you would like to install Keptn on. <!--Currently supported platforms are Google Kubernetes Engine (GKE), OpenShift and Azure Kubernetes Services (AKS). Depending on your platform, enter the following command to start the installation:-->
 
 <!--
-  - For **AKS**:
+- For **AKS**:
+
     ```console
     keptn install --platform=aks
     ```
   
-  - For **EKS**:
+- For **EKS**:
+
     ```console
     keptn install --platform=eks
     ```
 -->
-  - For **GKE**:
+- For **GKE**:
+
     ```console
     keptn install --platform=gke
     ```
+
 <!--
   - For **OpenShift**:
+
     ```console
     keptn install --platform=openshift
     ```
 -->
+
 In your cluster, this command installs the complete infrastructure necessary to run Keptn. 
     <details><summary>This includes:</summary>
         <ul>
@@ -304,7 +310,7 @@ keptn configure domain YOUR_DOMAIN
   openshift-route-service-create-project-distributor-7d4454cs44xp   1/1       Running   0          33s (OpenShift only)
   ```
 
-  In the `keptn-datastore` namespace, you should see the following pods:
+- In the `keptn-datastore` namespace, you should see the following pods:
 
   ```console
   kubectl get pods -n keptn-datastore
@@ -337,7 +343,7 @@ keptn configure domain YOUR_DOMAIN
   istio-sidecar-injector-bcf445789-gkfjf    1/1     Running     0          76m
   ```
 
-  If that is not the case, there may have been a problem during the installation. In that case, we kindly ask you to clean your cluster and restart the installation described in the **Troubleshooting** section below.
+  If that is not the case, there may have been a problem during the installation. In this case, we kindly ask you to clean your cluster and restart the installation described in the **Troubleshooting** section below.
 
 ## Uninstall
 
@@ -346,7 +352,7 @@ keptn configure domain YOUR_DOMAIN
     keptn uninstall
     ``` 
 
- - To verify the cleanup, retrieve the list of namespaces in your cluster and ensure that the `keptn` namespace is not included in the output of the following command:
+- To verify the cleanup, retrieve the list of namespaces in your cluster and ensure that the `keptn` namespace is not included in the output of the following command:
 
     ```console
     kubectl get namespaces

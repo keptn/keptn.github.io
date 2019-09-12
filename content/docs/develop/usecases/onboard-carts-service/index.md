@@ -44,6 +44,9 @@ To illustrate the scenario this use case addresses, Keptn relies on the followin
 
     ```console
     git clone --branch 0.5.0 https://github.com/keptn/examples.git --single-branch
+    ```
+
+    ```console
     cd examples/onboarding-carts
     ```
 
@@ -130,20 +133,22 @@ in the deployment.
 
 * Send a new artifact event for the carts service using the  command.
 The used artifact is stored on Docker Hub.
+
   ```console
   keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.9.1
   ```
 
 * Go to the Keptn's bridge and check which events have already been generated. You can access it by a port-forward from your local machine to the Kubernetes cluster:
+
   ```console 
   kubectl port-forward svc/bridge -n keptn 9000:8080
   ```
 
 * Now access the bridge from your browser on http://localhost:9000. 
-  
-  > **_NOTE:_**  Keptn's bridge is available via GCP cloud shell. Click the "Web Preview" button, change the port to `9000` and view.
-  
-  The Keptn's bridge shows all deployments that have been triggered. On the left-hand side you can see the deployment start events, such as the one that is selected. Over time, more and more events will show up in Keptn's bridge to allow you to check what is going on in your Keptn installation. Please note that if events happen at the same time, their order in the Keptn's bridge might be arbitrary since they are only sorted on the granularity of one second. 
+
+    The Keptn's bridge shows all deployments that have been triggered. On the left-hand side you can see the deployment start events, such as the one that is selected. Over time, more and more events will show up in Keptn's bridge to allow you to check what is going on in your Keptn installation. Please note that if events happen at the same time, their order in the Keptn's bridge might be arbitrary since they are only sorted on the granularity of one second. 
+
+    **Note**  Keptn's bridge is available via GCP cloud shell. Click the **Web Preview** button, change the port to `9000` and view.
 
     {{< popup_image
       link="./assets/bridge.png"
@@ -155,13 +160,17 @@ The used artifact is stored on Docker Hub.
 
   ```console
   echo http://carts.sockshop-dev.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
+  ```
+  ```console
   echo http://carts.sockshop-staging.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
+  ```
+  ```console
   echo http://carts.sockshop-production.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
   ```
 
-Navigate to the URLs to inspect your carts service. In the production namespace, you should receive an output similar to this:
+- Navigate to the URLs to inspect your carts service. In the production namespace, you should receive an output similar to this:
 
-  {{< popup_image
+    {{< popup_image
     link="./assets/carts-production.png"
     caption="carts service in production"
     width="50%">}}

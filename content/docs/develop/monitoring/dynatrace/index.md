@@ -8,10 +8,12 @@ keywords: setup
 
 In order to evaluate the quality gates and allow self-healing in production, we have to set up monitoring to provide the needed data.
 
-## Install local tools
+## Prerequisites
 
 Please make sure to have the following tool(s) installed:
-- [jq](https://stedolan.github.io/jq/) - a lightweight and flexible command-line JSON processor.
+
+- [jq](https://stedolan.github.io/jq/) - a lightweight and flexible command-line JSON processor. 
+
 <details><summary>Open for installation instructions</summary>
 <p>
 
@@ -53,7 +55,11 @@ Please make sure to have the following tool(s) installed:
 1. Clone the install repository and setup your credentials by executing the following steps:
   ```console
   git clone --branch 0.2.0 https://github.com/keptn-contrib/dynatrace-service --single-branch
+  ```
+  ```console
   cd dynatrace-service/deploy/scripts
+  ```
+  ```console
   ./defineDynatraceCredentials.sh
   ```
     When the  script asks for your Dynatrace tenant, please enter your tenant according to the appropriate pattern:
@@ -86,7 +92,7 @@ Please make sure to have the following tool(s) installed:
     ./deployDynatraceOnOpenshift.sh
     ```
 
-When this script is finished, the Dynatrace OneAgent and the dynatrace-service are deployed in your cluster. Execute the following command to verify the deployment of the dynatrace-service.
+When this script is finished, the Dynatrace OneAgent and the *dynatrace-service* are deployed in your cluster. Execute the following command to verify the deployment of the *dynatrace-service*.
 
 ```console
 kubectl get svc dynatrace-service -n keptn
@@ -97,14 +103,18 @@ NAME                TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)    AGE
 dynatrace-service   ClusterIP   10.0.44.191   <none>        8080/TCP   2m48s
 ```
 
-> **Note 1:** To monitor the services that are already onboarded in the `dev`, `staging`, and `production` namespace, make sure to restart the pods. If you defined different environments in your shipyard file, please adjust the values accordingly. 
+**Note 1:** To monitor the services that are already onboarded in the `dev`, `staging`, and `production` namespace, make sure to restart the pods. If you defined different environments in your shipyard file, please adjust the values accordingly. 
 ```console
 kubectl delete pods --all --namespace=sockshop-dev
+```
+```console
 kubectl delete pods --all --namespace=sockshop-staging
+```
+```console
 kubectl delete pods --all --namespace=sockshop-production
 ```
 
-> **Note 2:** If the nodes in your cluster run on *Container-Optimized OS (cos)*, make sure to [follow the instructions](https://www.dynatrace.com/support/help/cloud-platforms/google-cloud-platform/google-kubernetes-engine/deploy-oneagent-on-google-kubernetes-engine-clusters/#expand-134parameter-for-container-optimized-os-early-access) for setting up the Dynatrace OneAgent Operator. This means that after the initial setup with `deployDynatrace.sh`, which is a step below, the `cr.yml` has to be edited and applied again. In addition, all pods have to be restarted.
+**Note 2:** If the nodes in your cluster run on *Container-Optimized OS (cos)*, make sure to [follow the instructions](https://www.dynatrace.com/support/help/cloud-platforms/google-cloud-platform/google-kubernetes-engine/deploy-oneagent-on-google-kubernetes-engine-clusters/#expand-134parameter-for-container-optimized-os-early-access) for setting up the Dynatrace OneAgent Operator. This means that after the initial setup with `deployDynatrace.sh`, which is a step below, the `cr.yml` has to be edited and applied again. In addition, all pods have to be restarted.
 
 ### What was set up?
 
@@ -135,7 +145,7 @@ The Dynatrace service will take care of pushing events of the Keptn workflow to 
     1. Edit that rule:
         * Rule name: `Container.Namespace`
         * Process group name format: `{ProcessGroup:KubernetesContainerName}.{ProcessGroup:KubernetesNamespace}`
-        * Condition: `Kubernetes namespace`> `exits`
+        * Condition: `Kubernetes namespace` > `exits`
     1. Click on **Preview** and **Save**.
 
     Screenshot shows this rule definition.
@@ -153,9 +163,12 @@ If you want to uninstall Dynatrace, there are scripts provided to do so. Uninsta
   git clone --branch 0.2.0 https://github.com/keptn-contrib/dynatrace-service --single-branch
   ```
 
-1. Go to correct folder and execute the uninstallDynatrace.sh script:
+1. Go to correct folder and execute the `uninstallDynatrace.sh` script:
 
   ```console
   cd dynatrace-service/deploy/scripts
+  ```
+
+  ```console
   ./uninstallDynatrace.sh
   ```

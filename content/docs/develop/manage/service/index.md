@@ -27,7 +27,7 @@ To onboard a service, use the command `onboard service` and provide the service 
 keptn onboard service my-service --project=your-project --chart=my-service.tgz
 ```
 
-> **Note:** If you are using custom configurations and you would like to have the environment variables `KEPTN_PROJECT`, `KEPTN_STAGE`, and `KEPTN_SERVICE` within your service, add the following environment variables to your deployment configuration.
+**Note:** If you are using custom configurations and you would like to have the environment variables `KEPTN_PROJECT`, `KEPTN_STAGE`, and `KEPTN_SERVICE` within your service, add the following environment variables to your deployment configuration.
 
 ```yaml
 env:
@@ -42,7 +42,7 @@ env:
       fieldPath: "metadata.namespace"
 ```
 
-> **Note:** If you need to store resources (e.g., test files, configuration files, etc.) that are needed by a service, use the keptn cli with the `add-resource` command and specifiy the `--project`, `--stage`, and `--service` as shown below:
+**Note:** If you need to store resources (e.g., test files, configuration files, etc.) that are required by a service, use the Keptn CLI with the `add-resource` command and specifiy the `--project`, `--stage`, and `--service` as shown below:
 
 ```console
 keptn add-resource --project=your-project --service=my-service --stage=staging --resource=jmeter/load.jmx

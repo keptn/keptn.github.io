@@ -51,7 +51,11 @@ Currently, the Keptn CLI does not support the deletion of a project. However, a 
 
   ```console
   helm delete --purge sockshop-dev
+  ```
+  ```console
   helm delete --purge sockshop-production
+  ```
+  ```console
   helm delete --purge sockshop-staging
   ```
 
