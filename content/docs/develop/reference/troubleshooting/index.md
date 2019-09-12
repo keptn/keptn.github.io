@@ -1,11 +1,11 @@
 ---
 title: Troubleshooting
-description: The sections describes tips and tricks to deal with troubles that may occur when using keptn. 
+description: The sections describes tips and tricks to deal with troubles that may occur when using Keptn. 
 weight: 30
 keywords: [troubleshooting]
 ---
 
-In this section, instructions are summarized that help to trouble shoot known issues that may occur when using keptn.
+In this section, instructions are summarized that help to trouble shoot known issues that may occur when using Keptn.
 
 ### Installation on Azure aborting
 <details><summary>Expand instructions</summary>
@@ -13,7 +13,7 @@ In this section, instructions are summarized that help to trouble shoot known is
 
 **Investigation:**
 
-The keptn installation is aborting with the following error:
+The Keptn installation is aborting with the following error:
 
 ```console
 Cannot obtain the cluster/pod IP CIDR

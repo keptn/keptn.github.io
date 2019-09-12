@@ -1,6 +1,6 @@
 ---
-title: Install keptn
-description: How to setup keptn.
+title: Install Keptn
+description: How to setup Keptn.
 weight: 10
 icon: setup
 keywords: setup
@@ -100,7 +100,7 @@ Select one of the following options:
     pks create-cluster $CLUSTER_NAME --external-hostname $HOST_NAME --plan $PLAN
     ```
 
-* > **Note:** For the keptn installation, the *Cluster CIDR Range* and *Services CIDR Range* are required. The values for these two properties you find in your PCF OpsManager. 
+* > **Note:** For the Keptn installation, the *Cluster CIDR Range* and *Services CIDR Range* are required. The values for these two properties you find in your PCF OpsManager. 
 
     * Login to your PCF OpsManager
     * Click on the **Enterprise PKS** tile and go to **Networking**
@@ -171,8 +171,8 @@ Select one of the following options:
 </p>
 </details>
 --> 
-## Install keptn CLI
-Every release of keptn provides binaries for the keptn CLI. These binaries are available for Linux, macOS, and Windows.
+## Install Keptn CLI
+Every release of Keptn provides binaries for the Keptn CLI. These binaries are available for Linux, macOS, and Windows.
 
 - Download the version for your operating system from https://github.com/keptn/keptn/releases/tag/0.5.0.beta
 - Unpack the download
@@ -185,7 +185,7 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
 
     move/copy the executable to the desired folder and, optionally, add the executable to your PATH environment variable for a more convenient experience.
 
-- Now, you should be able to run the keptn CLI: 
+- Now, you should be able to run the Keptn CLI: 
     - Linux / macOS
       ```console
       keptn --help
@@ -198,9 +198,9 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
 
 Please note that for the rest of the documentation we will stick to the Mac OS / Linux version of the commands.
 
-## Install keptn
+## Install Keptn
 
-- Execute the CLI command `keptn install` and provide the requested information. This command will install keptn in the version of the latest release. Since v0.3 of keptn, the install command accepts a parameter to select the platform you would like to install keptn on. <!--Currently supported platforms are Google Kubernetes Engine (GKE), OpenShift and Azure Kubernetes Services (AKS). Depending on your platform, enter the following command to start the installation:-->
+- Execute the CLI command `keptn install` and provide the requested information. This command will install Keptn in the version of the latest release. Since v0.3 of Keptn, the install command accepts a parameter to select the platform you would like to install Keptn on. <!--Currently supported platforms are Google Kubernetes Engine (GKE), OpenShift and Azure Kubernetes Services (AKS). Depending on your platform, enter the following command to start the installation:-->
 
 <!--
   - For **AKS**:
@@ -223,13 +223,13 @@ Please note that for the rest of the documentation we will stick to the Mac OS /
     keptn install --platform=openshift
     ```
 -->
-In your cluster, this command installs the complete infrastructure necessary to run keptn. 
+In your cluster, this command installs the complete infrastructure necessary to run Keptn. 
     <details><summary>This includes:</summary>
         <ul>
         <li>Istio</li>
-        <li>A mongoDb database for the keptn's log</li>
+        <li>A mongoDb database for the Keptn's log</li>
         <li>A NATS cluster</li>
-        <li>The keptn core services:</li>
+        <li>The Keptn core services:</li>
             <ul>
                 <li>api</li>
                 <li>bridge</li>
@@ -260,14 +260,14 @@ In your cluster, this command installs the complete infrastructure necessary to 
 ## Configure a custom domain (required for EKS)
   
 In case you have a custom domain or cannot use xip.io (e.g., because you are running in AWS which will create ELBs for you), there is a 
-CLI command provided to configure keptn to use your custom domain:
+CLI command provided to configure Keptn to use your custom domain:
 ```console
 keptn configure domain YOUR_DOMAIN
 ```
 -->
 ## Verifying the installation
 
-- To verify your keptn installation, retrieve the pods running in the `keptn` namespace.
+- To verify your Keptn installation, retrieve the pods running in the `keptn` namespace.
 
   ```console
   kubectl get pods -n keptn
@@ -341,7 +341,7 @@ keptn configure domain YOUR_DOMAIN
 
 ## Uninstall
 
-- In order to uninstall keptn from your cluster, run the uninstall command using the keptn CLI:
+- In order to uninstall Keptn from your cluster, run the uninstall command using the Keptn CLI:
     ``` console
     keptn uninstall
     ``` 

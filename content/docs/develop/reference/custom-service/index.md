@@ -1,16 +1,16 @@
 ---
-title: Write your own keptn service
-description: Shows you how to implement your own keptn service and listen for certain events.
+title: Write your own Keptn service
+description: Shows you how to implement your own Keptn service and listen for certain events.
 weight: 30
 keywords: [service, custom]
 aliases:
 ---
 
-Shows you how to implement your own keptn service and listen for certain events.
+Shows you how to implement your own Keptn service and listen for certain events.
 
 ## About
 
-The goal of this section is to describe how you can add additional functionality to your keptn installation by implementing your own custom services. You can react to certain events that occur during your continuous delivery pipeline runs and integrate additional tools into your pipeline by accessing their REST interfaces with your custom services. At the moment the events you can subscribe to include:
+The goal of this section is to describe how you can add additional functionality to your Keptn installation by implementing your own custom services. You can react to certain events that occur during your continuous delivery pipeline runs and integrate additional tools into your pipeline by accessing their REST interfaces with your custom services. At the moment the events you can subscribe to include:
 
 - sh.keptn.events.new-artifact
 - sh.keptn.events.configuration-changed
@@ -23,7 +23,7 @@ The goal of this section is to describe how you can add additional functionality
 
 As a reference for writing your own service, please have a look at our implementation of the [JMeter Service](https://github.com/keptn/keptn/blob/develop/jmeter-service). Essentially, this service is a *Go* application that accepts POST requests at its `/` endpoint. To be more specific, the request body needs to follow the [Cloud Event specification](https://github.com/keptn/keptn/blob/master/specification/cloudevents.md) and the HTTP header attribute `Content-Type` has to be set to `application/cloudevents+json`. Of course, you can write your own service in any language, as long as it provides the endpoint to receive events.
 
-A keptn service is a regular Kubernetes service with a deployment and service template. The deployment and service manifest for the *jmeter-service* can be found in the [deploy/service.yaml](https://github.com/keptn/keptn/blob/master/jmeter-service/deploy/service.yaml) file in `jmeter-service` directory of the keptn GitHub repo:
+A Keptn service is a regular Kubernetes service with a deployment and service template. The deployment and service manifest for the *jmeter-service* can be found in the [deploy/service.yaml](https://github.com/keptn/keptn/blob/master/jmeter-service/deploy/service.yaml) file in `jmeter-service` directory of the Keptn GitHub repository:
 
 ```yaml
 ---
@@ -63,9 +63,9 @@ spec:
     run: jmeter-service
 ```
 
-## Subscribe service to keptn events 
+## Subscribe service to Keptn events 
 
-To subscribe your service to certain keptn event, a **distributor** is required. A distributor also comes with a deployment manifest as shown below:
+To subscribe your service to certain Keptn event, a **distributor** is required. A distributor also comes with a deployment manifest as shown below:
 
 ```yaml
 ## jmeter-service: sh.keptn.events.deployment-finished
@@ -134,11 +134,11 @@ You will need to provide the following when you want to write a custom service:
 ## Cloud Events
 
 Please note that Cloud Events have to be sent with with the HTTP header `Content-Type: application/cloudevents+json` to be set.
-For a detailed look into Cloud Events, please go the keptn [Cloud Event specification](https://github.com/keptn/keptn/blob/master/specification/cloudevents.md). 
+For a detailed look into Cloud Events, please go the Keptn [Cloud Event specification](https://github.com/keptn/keptn/blob/master/specification/cloudevents.md). 
 
 ## Logging
 
-To inspect your service's log messages for a specific pipeline run, as described in the [keptn's log](https://keptn.sh/docs/0.2.0/reference/keptnslog/) section, you can use the `shkeptncontext` property of the incoming Cloud Events. Your service has to output its log messages in the following format:
+To inspect your service's log messages for a specific pipeline run, as described in the [Keptn's log](https://keptn.sh/docs/0.2.0/reference/keptnslog/) section, you can use the `shkeptncontext` property of the incoming Cloud Events. Your service has to output its log messages in the following format:
 
 ```json
 {
