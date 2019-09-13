@@ -32,7 +32,19 @@ In order to evaluate the quality gates, we have to set up monitoring to provide 
 
 ## Verify installation
 
-To verify the Prometheus installation, you can browse to the Prometheus web interface:
+- To verify the Prometheus installation, retrieve the pods running in the `monitoring` namespace.
+
+  ```console
+  kubectl get pods -n monitoring
+  ```
+
+  ```console
+  NAME                                     READY   STATUS    RESTARTS   AGE
+  alertmanager-79f667b965-dm5nb            1/1     Running   0          21s
+  prometheus-deployment-7d75b5fbdd-dpftz   1/1     Running   0          23s
+  ```
+
+Besides, you can browse to the Prometheus web interface:
 
 1. Enable port-forwarding for the `prometheus-service`:
 

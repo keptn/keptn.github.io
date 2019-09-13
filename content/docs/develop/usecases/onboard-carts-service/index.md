@@ -50,7 +50,7 @@ To illustrate the scenario this use case addresses, Keptn relies on the followin
     cd examples/onboarding-carts
     ```
 
-## Authenticate and configure Keptn
+## Authenticate Keptn CLI
 
 If you have not yet authenticated and configured the Keptn CLI, please follow these instructions. If you have already done this [during the installation](../../installation/setup-keptn-gke/#authenticate-keptn-cli-and-configure-keptn), please skip this part and continue with [creating a project](#create-project-sockshop).
 
