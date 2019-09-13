@@ -115,10 +115,8 @@ kubectl get pods -n sockshop-production
 
 ```console
 NAME                              READY   STATUS    RESTARTS   AGE
-carts-blue-856559f565-jnrsc       1/1     Running   0          6h
-carts-db-blue-554d575dcc-h76s4    1/1     Running   0          6h
-carts-db-green-859b98755c-jpq72   1/1     Running   0          6h
-carts-green-579fc5cd59-z62gw      1/1     Running   0          6h
+carts-db-57cd95557b-r6cg8        1/1     Running   0          18m
+carts-primary-7c96d87df9-75pg7   1/1     Running   0          13m
 ```
 
 ### Generate load for the service
