@@ -32,7 +32,19 @@ In order to evaluate the quality gates, we have to set up monitoring to provide 
 
 ## Verify installation
 
-To verify the Prometheus installation, you can browse to the Prometheus web interface:
+- To verify the Prometheus installation, retrieve the pods running in the `monitoring` namespace.
+
+  ```console
+  kubectl get pods -n monitoring
+  ```
+
+  ```console
+  NAME                                     READY   STATUS    RESTARTS   AGE
+  alertmanager-79f667b965-dm5nb            1/1     Running   0          21s
+  prometheus-deployment-7d75b5fbdd-dpftz   1/1     Running   0          23s
+  ```
+
+Besides, you can browse to the Prometheus web interface:
 
 1. Enable port-forwarding for the `prometheus-service`:
 
@@ -53,7 +65,7 @@ If you want to uninstall Prometheus, there are scripts provided to do so. Uninst
 1. (optional) If you do not have the *examples* repository, clone the latest release using:
 
     ```console
-    git clone --branch 0.4.0 https://github.com/keptn/examples.git --single-branch
+    git clone --branch 0.5.0 https://github.com/keptn/examples.git --single-branch
     ```
 
 1. Go to correct folder and execute the `uninstallPrometheus.sh` script:
