@@ -96,19 +96,19 @@ After creating the project, you are ready to onboard the first services.
 * After onboarding the service, a couple of tests need to be added to its configuration for testig it in the different stages:
 
   ```console
-  keptn add-resource --project=sockshop --service=carts --stage=dev --resource=jmeter/basiccheck.jmx
+  keptn add-resource --project=sockshop --service=carts --stage=dev --resource=jmeter/basiccheck.jmx --resourceUri=jmeter/basiccheck.jmx
   ```
 
   ```console
-  keptn add-resource --project=sockshop --service=carts --stage=dev --resource=jmeter/load.jmx
+  keptn add-resource --project=sockshop --service=carts --stage=dev --resource=jmeter/load.jmx --resourceUri=jmeter/load.jmx
   ```
 
   ```console
-  keptn add-resource --project=sockshop --service=carts --stage=staging --resource=jmeter/basiccheck.jmx
+  keptn add-resource --project=sockshop --service=carts --stage=staging --resource=jmeter/basiccheck.jmx --resourceUri=jmeter/basiccheck.jmx
   ```
 
   ```console
-  keptn add-resource --project=sockshop --service=carts --stage=staging --resource=jmeter/load.jmx
+  keptn add-resource --project=sockshop --service=carts --stage=staging --resource=jmeter/load.jmx --resourceUri=jmeter/load.jmx
   ```
 
 Since the carts service requires a mongodb database, a second service needs to be onboarded.
