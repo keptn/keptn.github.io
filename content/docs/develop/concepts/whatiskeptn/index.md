@@ -7,7 +7,7 @@ keywords: [keptn, cloud-native, cd]
 
 The overall goal of Keptn is to make continuous delivery and operations automation a commodity for modern cloud-native applications. 
 
-Keptn was started by Dynatrace because we saw that continuous delivery—as it’s currently practiced—is broken. We’re on a mission to solve the biggest problems of continuous delivery that exist today. 
+Keptn was started by Dynatrace because we saw that continuous delivery — as it’s currently practiced — is broken. We are on a mission to solve the biggest problems of continuous delivery that exist today. 
 
 ## The problem - Too much work 
 
@@ -15,7 +15,7 @@ Today most companies build their continuous delivery and operations pipelines by
 
 **The solution - Automate the plumbing**
 
-Keptn uses a simple, declarative approach that allows you to specify what you want your continuous delivery pipelines to look like, using so-called “shipyard files.” These files are used to automatically generate all the required plumbing that underlies your delivery pipeline. A multi-stage pipeline can be set up from scratch in ten minutes or less. Keptn is like Kubernetes, but for your continuous delivery pipeline.
+Keptn uses a simple, declarative approach that allows you to specify what you want your continuous delivery pipelines to look like, using so-called *shipyard* files. These files are used to automatically generate all the required plumbing that underlies your delivery pipeline. A multi-stage pipeline can be set up from scratch in ten minutes or less. Keptn is like Kubernetes, but for your continuous delivery pipeline.
 
 ## The problem - Maintainability is too low
 
@@ -23,7 +23,7 @@ Delivery pipelines and operations automation are often built ad-hoc. Code is spr
 
 **The solution - Separate the control plane from the actual tool plumbing**
 
-Keptn uses well-defined Cloud Events for pretty much everything that can happen during continuous delivery and operations automation. Knative services register these events and then translate them into API calls for specific tools. Keptn acts as a central control plane for continuous delivery, putting all your automation code in one place, as well as separating tool integrations from the definition of continuous delivery “applications.”
+Keptn uses well-defined Cloud Events for pretty much everything that can happen during continuous delivery and operations automation. Keptn services register these events and then translate them into API calls for specific tools. Keptn acts as a central control plane for continuous delivery, putting all your automation code in one place as well as separating tool integrations from the definition of continuous delivery *applications*.
 
 ## The problem - Massive vendor lock-in
 
@@ -31,15 +31,17 @@ As most tool integrations today are done on a 1:1 basis based on proprietary API
 
 **The solution - Provide standards for building continuous delivery**
 
-Keptn integrations are merely translations of well-defined Cloud Events into proprietary vendor APIs. This makes exchanging tools much easier from a continuous delivery perspective. Keptn, for example, uses a new artifact event instead of requiring a direct integration to container registries, and it issues deployment events rather than directly calling deployment tools. All tool integrations are defined in uniform files which allow for the building of “integrations-as-code”
+Keptn integrations are merely translations of well-defined Cloud Events into proprietary vendor APIs. This makes exchanging tools much easier from a continuous delivery perspective. Keptn, for example, uses a *new-artifact event* instead of requiring a direct integration to container registries, and it issues deployment events rather than directly calling deployment tools. All tool integrations are defined in uniform files which allow for the building of *integrations-as-code*.
 
+<!--
 ## The problem - Heavy runtime footprint
 
-Most continuous delivery and operations automation solutions have large runtime requirements, especially within enterprise settings. Most tools also consume resources even when they’re idle, either because no deployment is currently active or operations actions are still running.
+Most continuous delivery and operations automation solutions have large runtime requirements, especially within enterprise settings. Most tools also consume resources even when they are idle, either because no deployment is currently active or operations actions are still running.
 
 **The solution - Keptn is fully serverless**
 
 Keptn is built on Knative serverless services, so components only consume resources when they are actively doing something. This massively reduces the costs of running continuous delivery pipelines. With Keptn you can run an enterprise-grade continuous delivery and operations automation layer from your laptop for less than the cost of a burger and fries.
+--> 
 
 ## The problem - Auditing for continuous delivery and operations is hard
 
@@ -47,4 +49,6 @@ There are a lot of operations management and workflow solutions out there that p
 
 **The solution - Keptn provides tracing for continuous delivery and operations automation**
 
-Keptn was created by Dynatrace, the inventor of distributed transaction tracing. So it should be no surprise that we’ve embedded tracing capabilities into Keptn. All cloud events in Keptn use the W3C trace context headers. This enables the stitching together of individual actions into traces. This represents a new level of visibility into your continuous delivery pipeline that wasn’t previously possible.
+Keptn stores the configuration of your environment and applications in git following the GitOps approach. Based on that, it is easy to trace the configuration changes that were made. Besides, the git repository is setup in a way to separate the configuration for each stage defined in the shipyard file.
+
+Keptn was created by Dynatrace, the inventor of distributed transaction tracing. So it should be no surprise that we have embedded tracing capabilities into Keptn. All Cloud Events in Keptn use the W3C trace context headers. This enables the stitching together of individual actions into traces. This represents a new level of visibility into your continuous delivery pipeline that was not previously possible.

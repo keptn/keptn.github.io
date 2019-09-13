@@ -11,7 +11,7 @@ date: 2018-02-12T15:37:57+07:00
     An opinionated open-source framework for <strong>event-based, automated continuous operations in cloud-native environments</strong>.
     <br>
 
-    With keptn ...
+    With Keptn ...
 
     <ul>
       <li><strong>Developers</strong> can focus on code instead of creating YAML files</li>
