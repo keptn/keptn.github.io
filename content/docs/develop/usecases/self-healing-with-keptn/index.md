@@ -19,7 +19,7 @@ In this use case you will learn how to use the capabilities of Keptn to provide 
     git clone --branch 0.5.0 https://github.com/keptn/examples.git --single-branch
     ```
 
-- Finish [onboarding a service](../onboard-carts-service/) use case
+- Finish the [onboarding a service](../onboard-carts-service/) use case.
 
 ## Configure monitoring
 
@@ -29,7 +29,7 @@ For the configuration, Keptn relies on different specification files that define
 
 <details>
 <summary>
-Click here to learn more on the service-indicator, service-objective, and remediation files.
+Click here to learn more on the *service-indicator*, *service-objective*, and *remediation* files.
 </summary>
 <p>
 
@@ -94,7 +94,7 @@ Executing this command will perform the following tasks:
 
 ## Run the use case
 
-### 1. Deploy an unhealthy service version
+### Deploy an unhealthy service version
 
 In order to test the self-healing capabilities, deploy an unhealthy version of our carts microservice. This version has some issues that are not detected by the automated quality gates since the tests generate artificial traffic while in production real user traffic might reveal untested parts of the microservice that have issues.
 
@@ -121,7 +121,7 @@ carts-db-green-859b98755c-jpq72   1/1     Running   0          6h
 carts-green-579fc5cd59-z62gw      1/1     Running   0          6h
 ```
 
-### 2. Generate load for the service
+### Generate load for the service
 
 In order to simulate user traffic that is causing an unhealthy behavior in the carts service, please execute the following script. This will add special items into the shopping cart that cause some extensive calculation.
 
@@ -144,7 +144,7 @@ In order to simulate user traffic that is causing an unhealthy behavior in the c
 
     TODO: update image
 
-### 3. Watch self-healing in action
+### Watch self-healing in action
 
 After a couple of minutes the *Prometheus Alert Manager* will send out an alert since the service level objective is not met anymore. 
 

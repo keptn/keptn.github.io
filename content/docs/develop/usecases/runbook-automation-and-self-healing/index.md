@@ -21,8 +21,10 @@ Configuration changes during runtime are sometimes necessary to increase flexibi
   - Please note that for this use case the use case [Onboarding a Service](../onboard-carts-service/) has to be completed exactly as it is described. The scripts provided in the current use case rely on values that are set during the onboarding of the carts service. Thus, this use case might not work as expected if values are changed.
 - Clone the GitHub repository with the necessary files for the use case:
   
-  ```
+  ```console
   git clone --branch 0.1.3 https://github.com/keptn-contrib/servicenow-service.git --single-branch
+  ```
+  ```console
   cd servicenow-service
   ```
 
@@ -52,11 +54,14 @@ metadata:
 
 The `DT_API_TOKEN` and the `DT_TENANT` need to be stored in an environment variable. Therefore, copy and paste the following command to make sure that `DT_TENANT` stores a url that follows the pattern `{your-domain}/e/{your-environment-id}` for a managed Dynatrace tenant or `{your-environment-id}.live.dynatrace.com` for a SaaS tenant.
 
-```
+```console
 export DT_TENANT=$(kubectl get secret dynatrace -n keptn -o=jsonpath='{.data.DT_TENANT}' | base64 --decode)
+```
+```console
 export DT_API_TOKEN=$(kubectl get secret dynatrace -n keptn -o=jsonpath='{.data.DT_API_TOKEN}' | base64 --decode)
-echo $DT_TENANT
-echo $DT_API_TOKEN
+```
+```console
+echo $DT_TENANT $DT_API_TOKEN
 ```
 
 ### ServiceNow secret 
@@ -66,7 +71,8 @@ Create the ServiceNow secret to allow Keptn to create/update incidents in Servic
 ```
 kubectl -n keptn create secret generic servicenow --from-literal="tenant=xxx" --from-literal="user=xxx" --from-literal="token=xxx"
 ```
-Please note that if your ServiceNow password has some special characters in it, you need to [escape them](https://kubernetes.io/docs/concepts/configuration/secret/).
+
+**Note:** If your ServiceNow password has some special characters in it, you need to [escape them](https://kubernetes.io/docs/concepts/configuration/secret/).
 
 ## Setup the workflow in ServiceNow
 
@@ -99,7 +105,7 @@ A ServiceNow *Update Set* is provided to run this use case. To install the *Upda
 
 1. Click on **New** and enter your Dynatrace API token as well as your Dynatrace tenant.
 
-1. *(Optional)* You can also take a look at the predefined workflow that is able to handle Dynatrace problem notifications and remediate issues.
+1. *(optional)* You can also take a look at the predefined workflow that is able to handle Dynatrace problem notifications and remediate issues.
     - Navigate to the workflow editor by typing **Workflow Editor** and clicking on the item **Workflow** > **Workflow Editor**
     - The workflow editor is opened in a new window/tab
     - Look for the workflow **keptn_demo_remediation** (it might as well be on the second or third page)
@@ -183,10 +189,9 @@ Now, all pieces are in place to run the use case. Therefore, we will start by ge
 
 1. Open another terminal to make sure the load generation is still running and again, navigate to the _servicenow-service/usecase_ folder.
 
-1. _(Optional:)_ Verify that the environment variables you set earlier are still available:
+1. _(optional:)_ Verify that the environment variables you set earlier are still available:
     ```
-    echo $DT_TENANT
-    echo $DT_API_TOKEN
+    echo $DT_TENANT $DT_API_TOKEN
     ```
 
     If the environment variables are not set, you can easily set them by [following the instructions on how to extract information from the Dynatrace secret](#dynatrace-secret). 
@@ -196,7 +201,7 @@ Now, all pieces are in place to run the use case. Therefore, we will start by ge
     ```
     ./enable-promotion.sh "carts.sockshop-production.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')" 30
     ```
-    Please note the parameter `30` at the end, which is the value for the configuration change and can be interpreted as for 30 % of the shopping cart interactions a special item is added to the shopping cart. This value can be set from `0` to `100`. For this use case the value `30` is just fine.
+    **Note:** The parameter `30` at the end, which is the value for the configuration change and can be interpreted as for 30 % of the shopping cart interactions a special item is added to the shopping cart. This value can be set from `0` to `100`. For this use case the value `30` is just fine.
 
 1. You will notice that your load generation script output will include some error messages after applying the script:
     ```

@@ -40,7 +40,7 @@ Every release of Keptn provides binaries for the Keptn CLI. These binaries are a
 In the following, the commands provided by the Keptn CLI are described.
 All of these commands provide a help flag (`--help`), which describes details of the respective command (e.g., usage of the command or description of flags).
 
-> **Note:** In the current version, Keptn is missing checks whether the sent command is executed correctly.
+**Note:** In the current version, Keptn is missing checks whether the sent command is executed correctly.
 In order to guarantee the expected behavior, please strictly use the following commands in the specified order.
 In future releases, we add additional checks whether the executed commands succeeded or failed.
 
@@ -76,10 +76,10 @@ a Google Kubernetes Engine (GKE), and on OpenShift. Further details are provided
 
 The Keptn CLI allows to configure your custom domain. This is mandatory if you cannot use xip.io (e.g., because you are running in AWS that will create ELBs for you).
 
-> **Note:** This command requires a *kubernetes current context* pointing to the cluster where you would like to uninstall Keptn. After installing Keptn this is guaranteed.
+**Note:** This command requires a *kubernetes current context* pointing to the cluster where you would like to uninstall Keptn. After installing Keptn this is guaranteed.
 
 ```console
-keptn domain YOUR_CUSTOM_DOMAIN
+keptn configure domain YOUR.CUSTOM.DOMAIN
 ```
 
 ### keptn auth 
@@ -104,7 +104,7 @@ Authenticate to the Keptn cluster.
 keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN
 ```
 
-> **Note**: If you receive a warning `Using a file-based storage for the key because the password-store seems to be not set up.` this is because a password store could not be found in your environment. In this case, the credentials are stored in `~/.keptn/.password-store` in your home directory.
+**Note**: If you receive a warning `Using a file-based storage for the key because the password-store seems to be not set up.` this is because a password store could not be found in your environment. In this case, the credentials are stored in `~/.keptn/.password-store` in your home directory.
 </p>
 </details>
 
@@ -203,7 +203,7 @@ keptn create project my-project shipyard.yml
 
 ### keptn onboard service
 
-To onboard a service, use the command `onboard service` and provide the service name (e.g., `my-service`), project name (`--project` flag) and its Helm chart (`--chart` flag):
+To onboard a service, use the command `onboard service` and provide the service name (e.g., `my-service`), project name (`--project`) and its Helm chart (`--chart`):
 
 ```console
 keptn onboard service my-service --project=my-project --chart=my-service.tgz
@@ -212,7 +212,8 @@ keptn onboard service my-service --project=my-project --chart=my-service.tgz
 To learn more about onboarding a service, please see the [Onboarding a Service](../../usecases/onboard-carts-service) use case.
 
 ### keptn add-resource
-To add a resource to the configuration store (i.e., git repository) of a service, the `add-resource` command is provided. This command takes a local resource (`--resource` flag) and stores it for further use in Keptn. Thus, this command allows you to add, for example, *test files* to your service, which will then be executed by a test-service (e.g., jmeter-service) during the continuous delivery.  
+
+To add a resource to the configuration store (i.e., git repository) of a service, the `add-resource` command is provided. This command takes a local resource (`--resource`) and stores it for further use in Keptn. Thus, this command allows you to add, for example, *test files* to your service, which will then be executed by a test-service (e.g., jmeter-service) during the continuous delivery.  
 
 ```console
 keptn add-resource --project=my-project --service=my-service --stage=dev --resource=jmeter/basiccheck.jmx
@@ -220,35 +221,35 @@ keptn add-resource --project=my-project --service=my-service --stage=dev --resou
 
 ### keptn configure monitoring
 
-To configure a monitoring solution for your Keptn cluster, the `configure monitoring` command is provided. This command sets up monotoring in case it is not installed yet. Afterwards, the command configures the monitoring solution for a service based on the provided service indicators (`--service-indicators` flag), and service objectives (`--service-objectives` flag). The currently supported monitoring solution is *Prometheus*, as shown below:
+To configure a monitoring solution for your Keptn cluster, the `configure monitoring` command is provided. This command sets up monotoring in case it is not installed yet. Afterwards, the command configures the monitoring solution for a service based on the provided service indicators (`--service-indicators`), and service objectives (`--service-objectives`). The currently supported monitoring solution is *Prometheus*, as shown below:
 
 ```console
 keptn configure monitoring prometheus --project=my-project --service=my-service --service-indicators=service-indicators.yaml --service-objectives=service-objectives.yaml --remediation=remediation.yaml
 ```
 
-## keptn send event new-artifact
+### keptn send event new-artifact
 
 After onboarding a service, the Keptn CLI allows pushing a new artifact for the service. This artifact is a Docker image, which can be located at Docker Hub, Quay, or any other registry storing docker images. The new artifact is pushed in the first stage specified in the `shipyard.yaml` file (usually this will be the dev stage).
 Afterwards, Keptn takes care of deploying this new artifact to the other stages.
 
 To push a new artifact, use the command `send event new-artifact`, which sends a new-artifact-event to keptn in order to deploy a new artifact for the specified service in the provided project.
-Therefore, this command takes the project (`--project` flag), the service (`--service` flag), as well as the image (`--image` flage) and tag (`--tag` flag) of the new artifact.
+Therefore, this command takes the project (`--project`), the service (`--service`), as well as the image (`--image`) and tag (`--tag`) of the new artifact.
 
 ```console
 keptn send event new-artifact --project=your_project --service=your_service --image=docker.io/keptnexamples/carts --tag=0.9.1
 ```
 
-## keptn send event
+### keptn send event
 
-To send an arbitrary Keptn event the `send event` command is provided. An event has to follow the [Cloud Events](https://cloudevents.io/) specification and has to be written in JSON. Then you can pass it in by referencing the JSON file (`--file` flag).
+To send an arbitrary Keptn event the `send event` command is provided. An event has to follow the [Cloud Events](https://cloudevents.io/) specification and has to be written in JSON. Then you can pass it in by referencing the JSON file (`--file`).
 
->**Note:** This command is not required for any use case and requires precise Keptn event definitions as you can find [here](https://github.com/keptn/keptn/blob/develop/specification/cloudevents.md).
+**Note:** This command is not required for any use case and requires precise Keptn event definitions as you can find [here](https://github.com/keptn/keptn/blob/develop/specification/cloudevents.md).
 
 ```console
 keptn send event --file=new_artifact.json
 ```
 
-## keptn version
+### keptn version
 
 To show the current version of the Keptn CLI, the `version` command is provided.
 
@@ -256,11 +257,11 @@ To show the current version of the Keptn CLI, the `version` command is provided.
 keptn version
 ```
 
-## keptn uninstall
+### keptn uninstall
 
 To uninstall Keptn from your cluster, the `uninstall` command is provided.
 
-> **Note:** This command requires a *kubernetes current context* pointing to the cluster where you would like to uninstall Keptn.
+**Note:** This command requires a *kubernetes current context* pointing to the cluster where you would like to uninstall Keptn.
 
 ```console
 keptn uninstall
