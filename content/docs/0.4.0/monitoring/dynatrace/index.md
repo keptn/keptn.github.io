@@ -11,8 +11,10 @@ In order to evaluate the quality gates and allow self-healing in production, we 
 ## Install local tools
 
 Please make sure to have the following tools installed:
+
 - [yq](https://mikefarah.github.io/yq/) - a lightweight and portable command-line YAML processor. 
 - [jq](https://stedolan.github.io/jq/) - a lightweight and flexible command-line JSON processor.
+
 <details><summary>Open for installation instructions</summary>
 <p>
 
@@ -130,7 +132,7 @@ The Dynatrace service will take care of pushing events of the keptn workflow to 
     1. Edit that rule:
         * Rule name: `Container.Namespace`
         * Process group name format: `{ProcessGroup:KubernetesContainerName}.{ProcessGroup:KubernetesNamespace}`
-        * Condition: `Kubernetes namespace`> `exits`
+        * Condition: `Kubernetes namespace` > `exits`
     1. Click on **Preview** and **Save**.
 
     Screenshot shows this rule definition.

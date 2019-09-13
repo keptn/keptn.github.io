@@ -24,7 +24,7 @@ In order to evaluate the quality gates, we have to set up monitoring to provide 
 
     - If you already have [onboarded the carts service](../../usecases/onboard-carts-service/), navigate to the directory `examples/onboarding-carts`. 
 
-1. In this directory, you will find the `service-indicators.yaml`, `service-objectives.yaml`, and `remediation.yaml` file that are specific to the carts service, but can be replaced for any custom service. If Prometheus is currently not installed in your Cluster, the following command will set up Prometheus and configures it according to the provided files:
+1. In this directory, you will find the `service-indicators.yaml`, `service-objectives.yaml`, and `remediation.yaml` file that are specific to the carts service, but can be replaced for any custom service. If Prometheus is currently not installed in your Kubernetes cluster, the following command will set up Prometheus and configures it according to the provided files:
 
     ```console
     keptn configure monitoring prometheus --project=sockshop --service=carts --service-indicators=service-indicators.yaml --service-objectives=service-objectives.yaml --remediation=remediation.yaml 
@@ -44,7 +44,7 @@ To verify the Prometheus installation, you can browse to the Prometheus web inte
 
     {{< popup_image link="./assets/prometheus-targets.png" caption="Prometheus Targets">}}
 
-    Please note that if you have not onboarded the carts service yet, the Prometheus dashboard will report _down_ in the state column.
+    **Note:** If you have not onboarded the carts service yet, the Prometheus dashboard will report _down_ in the state column.
 
 ## Uninstall Prometheus
 

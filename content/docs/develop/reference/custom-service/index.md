@@ -129,7 +129,7 @@ You will need to provide the following when you want to write a custom service:
 - A `service.yaml` file containing the templates for the service and deployment manifest of your service.
 - A `distributor.yaml` file containing the template for the distributor and properly configured for your service.
 
-> **Note:** This documentation will be replaced with an extensive step-by-step guide in the future.
+**Note:** This documentation will be replaced with an extensive step-by-step guide in the future.
 
 ## Cloud Events
 
@@ -149,4 +149,4 @@ To inspect your service's log messages for a specific pipeline run, as described
 }
 ```
 
-> **Note:** For implementing logging into your *Go* service, you can import the [go-utils](https://github.com/keptn/go-utils) package that already provides common logging functions. 
+**Note:** For implementing logging into your *Go* service, you can import the [go-utils](https://github.com/keptn/go-utils) package that already provides common logging functions. 
