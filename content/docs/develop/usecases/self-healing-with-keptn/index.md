@@ -134,6 +134,11 @@ In order to simulate user traffic that is causing an unhealthy behavior in the c
     ```
 
 1. (optional:) Verify load in Prometheus:
+    ```console
+    kubectl port-forward svc/prometheus-service -n monitoring 8080:8080
+    ```
+    
+    Now access the Prometheus from your browser on http://localhost:8080.
 
     {{< popup_image
         link="./assets/prometheus-load.png"
@@ -144,7 +149,7 @@ In order to simulate user traffic that is causing an unhealthy behavior in the c
 
 ### Watch self-healing in action
 
-After a couple of minutes the *Prometheus Alert Manager* will send out an alert since the service level objective is not met anymore. 
+After approximately five minutes the *Prometheus Alert Manager* will send out an alert since the service level objective is not met anymore. 
 
 INSERT IMAGE OF ALERT MANAGER
 
@@ -160,10 +165,9 @@ In this use case, the number of pods will be increased to remediate the issue of
 
     ```console
     NAME             DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-    carts-blue       2         2         2            2           6h
-    carts-db-blue    1         1         1            1           6h
-    carts-db-green   1         1         1            1           6h
-    carts-green      1         1         1            1           6h
+    carts           0         0         0            0           34m
+    carts-db        1         1         1            1           37m
+    carts-primary   2         2         2            2           32m
     ```
 
 1. Also you should see an additional pod running when you execute:
@@ -173,11 +177,8 @@ In this use case, the number of pods will be increased to remediate the issue of
 
     ```console
     NAME                              READY   STATUS    RESTARTS   AGE
-    carts-blue-856559f565-jnrsc       1/1     Running   0          6h
-    carts-blue-424559f425-ldoev       1/1     Running   0          1m
-    carts-db-blue-554d575dcc-h76s4    1/1     Running   0          6h
-    carts-db-green-859b98755c-jpq72   1/1     Running   0          6h
-    carts-green-579fc5cd59-z62gw      1/1     Running   0          6h
+    carts-db-57cd95557b-r6cg8        1/1     Running   0          38m
+    carts-primary-7c96d87df9-75pg7   2/2     Running   0          33m
     ```
 
 ## Summary
