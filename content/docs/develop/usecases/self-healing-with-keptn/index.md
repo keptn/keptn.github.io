@@ -125,12 +125,12 @@ In order to simulate user traffic that is causing an unhealthy behavior in the c
 
 1. Move to the correct folder:
     ```console
-    cd ../loadgeneration
+    cd ../load-generation/bin
     ```
 
-1. Start the load generation script:
+1. Start the load generation script depending on your OS (replace \_OS\_ with linux, mac, or win):
     ```console
-    ./add-to-cart.sh "carts.sockshop-production.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')"
+    ./loadgenerator-_OS_ "http://carts.sockshop-production.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')"
     ```
 
 1. (optional:) Verify load in Prometheus:
