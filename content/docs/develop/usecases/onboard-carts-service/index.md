@@ -74,6 +74,7 @@ stages:
     test_strategy: "performance"
   - name: "production"
     deployment_strategy: "blue_green_service"
+    remediation_strategy: "automated"
 ```
 
 Create a new project for your carts service using the [keptn create project](../../reference/cli/#keptn-create-project) command. In this example, the project is called *sockshop*. Before executing the following command, 

@@ -144,54 +144,21 @@ Here, you see that the version of the carts service has not changed.
     ``` 
 
     ```console
-    NAME             DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-    carts-blue       1         1         1            0           1h
-    carts-db-blue    1         1         1            0           1h
-    carts-db-green   1         1         1            0           1h
-    carts-green      1         1         1            0           1h
+    NAME            DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+    carts           0         0         0            0           99m
+    carts-db        1         1         1            1           63m
+    carts-primary   1         1         1            1           98m
     ```
 
     ```console
-    kubectl describe deployment carts-blue -n sockshop-production
+    kubectl describe deployment carts-primary -n sockshop-production
     ``` 
     
     ```console
     ...
     Pod Template:
-      Labels:  app=sockshop-selector-carts
-               deployment=carts-blue
+      Labels:  app=carts-primary
       Containers:
-      carts:
-        Image:      docker.io/keptnexamples/carts:0.9.3
-    ```
-
-    ```console
-    kubectl describe deployment carts-green -n sockshop-production
-    ``` 
-    
-    ```console
-    ...
-    Pod Template:
-      Labels:  app=sockshop-selector-carts
-               deployment=carts-green
-      Containers:
-      carts:
-        Image:      docker.io/keptnexamples/carts:0.9.1
-    ```
-
-    ```console
-    kubectl describe virtualService -n sockshop-production
-    ``` 
-    
-    ```console   
-    ...
-    Route:
-      Destination:
-        Host:    carts.sockshop-production.svc.cluster.local
-        Subset:  blue
-      Weight:    100
-      Destination:
-        Host:    carts.sockshop-production.svc.cluster.local
-        Subset:  green
-      Weight:    0
+        carts:
+          Image:      docker.io/keptnexamples/carts:0.9.3
     ```
