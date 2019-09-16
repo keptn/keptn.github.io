@@ -16,8 +16,8 @@ For this use case, we prepared a *slow* and a *regular* version of the carts ser
 
 | Image                                 | Description                                        |
 |---------------------------------------|----------------------------------------------------|
-| docker.io/keptnexamples/carts:0.8.2   | Processes each request with a slowdown of 1 second |
-| docker.io/keptnexamples/carts:0.8.3   | Processes each request without any slowdown        |
+| docker.io/keptnexamples/carts:0.9.2   | Processes each request with a slowdown of 1 second |
+| docker.io/keptnexamples/carts:0.9.3   | Processes each request without any slowdown        |
 
 In this use case, we will try to deploy these two versions.
 During this deployment process, the versions have to pass a quality gate
@@ -26,10 +26,9 @@ This quality gate checks whether the average response time of the service is und
 
 In overview, we will conduct these two scenarios:
 
-First, we will *try* to deploy the *slow* version of the carts service (v0.8.2). Therefore, keptn will deploy this new version into the `dev` environment where functional tests will be executed. After passing these functional tests, keptn will promote this service into the `staging` environment by releasing it as the blue or green version next to the previous version of the service. Then, keptn will route traffic to this new version by changing the configuration of the virtual service (i.e., by setting weights for the routes between blue and green) and keptn will start the defined performance test. Using the monitoring results of this performance test will allow [Pitometer](https://github.com/keptn/pitometer) to evaluate the quality gate. This *slow* version will not pass the quality gate and, hence, the deployment will be rejected. Furthermore, keptn will direct the requests to the service to the previous working deployment of the service. 
+First, we will *try* to deploy the *slow* version of the carts service (v0.9.2). Therefore, Keptn will deploy this new version into the `dev` environment where functional tests will be executed. After passing these functional tests, Keptn will promote this service into the `staging` environment by releasing it as the blue or green version next to the previous version of the service. Then, Keptn will route traffic to this new version by changing the configuration of the virtual service (i.e., by setting weights for the routes between blue and green) and Keptn will start the defined performance test. Using the monitoring results of this performance test will allow [Pitometer](https://github.com/keptn/pitometer) to evaluate the quality gate. This *slow* version will not pass the quality gate and, hence, the deployment will be rejected. Furthermore, Keptn will direct the requests to the service to the previous working deployment of the service. 
 
-Second, we will deploy the *regular* version of the carts service (v0.8.3). Therefore, keptn will conduct the same steps as before except that this version will now pass the quality gate. Hence, this *regular* version will be promoted into the `production` environment.
-
+Second, we will deploy the *regular* version of the carts service (v0.9.3). Therefore, Keptn will conduct the same steps as before except that this version will now pass the quality gate. Hence, this *regular* version will be promoted into the `production` environment.
 
 ## Prerequisites
 In this use case, we will be using either the open source monitoring solution *Prometheus* or *Dynatrace*.
@@ -43,27 +42,20 @@ Since this use case relies on the concept of quality gates, you will need to set
 The [Pitometer](https://github.com/keptn/pitometer) service will then evaluate the data coming from the monitoring solution to determine a score for the quality gate.
 
 For using the quality gate, Pitometer requires a performance specification.
-This performance specification has to be located in a repository having the name of 
-your service (for this use case `carts`) in the configured GitHub organization (i.e. used in [keptn configure](../../reference/cli/#keptn-configure)).
-
+This performance specification has to be stored in a file called `perfspec.json`, located in your application's config repository.
 
 ### Option 1: Prometheus
 <details><summary>Expand instructions</summary>
 <p>
 Please make sure you have followed the instructions for setting up [Prometheus](../../monitoring/prometheus).
 
-To set up the quality gates for the carts service, please navigate to the `perfspec` folder of your carts service. This folder contains files defining the quality gate that will be evaluated against Prometheus. 
-
-1. Make sure you are in the `carts/perfspec` folder.
-1. Rename the file `perfspec_prometheus.json` to `perfspec.json`. 
-1. Commit and push the file.
+To set up the quality gates for the carts service, please navigate to the `examples/onboarding-carts` folder. This folder contains a file called `perfspec_prometheus.json`. To set this file as a quality gate, upload it via the following command:
 
   ```console
-  git add .
-  git commit -m "use prometheus perfspec"
-  git push
+  keptn add-resource --project=sockshop --service=carts --stage=staging --resource=perfspec_prometheus.json --resourceUri=perfspec.json
   ```
 
+This will upload the content of `perfspec_prometheus.json` to your config repository and store it as `perfspec.json`.
 Now, you have quality gates in place, which will check whether the average response time of the service is under 1&nbsp;second.
  </p>
 </details>
@@ -73,18 +65,13 @@ Now, you have quality gates in place, which will check whether the average respo
 <p>
 Please make sure you have followed the instructions for setting up [Dynatrace](../../monitoring/dynatrace).
 
-To set up the quality gates for the carts service, please navigate to the `perfspec` folder of your carts service. This file contains the quality gate that will be evaluated against Dynatrace. 
-
-1. Make sure you are in the `carts/perfspec` folder.
-1. Rename the file `perfspec_dynatrace.json` to `perfspec.json`. 
-1. Commit and push the file.
+To set up the quality gates for the carts service, please navigate to the `examples/onboarding-carts` folder. This folder contains a file called `perfspec_dynatrace.json`. To set this file as a quality gate, upload it via the following command:
 
   ```console
-  git add .
-  git commit -m "use dynatrace perfspec"
-  git push
+  keptn add-resource --project=sockshop --service=carts --stage=staging --resource=perfspec_dynatrace.json --resourceUri=perfspec.json
   ```
 
+This will upload the content of `perfspec_dynatrace.json` to your config repository and store it as `perfspec.json`.
 Now, you have quality gates in place, which will check whether the average response time of the service is under 1&nbsp;second.
 </p>
 </details>
@@ -97,11 +84,15 @@ Now, you have quality gates in place, which will check whether the average respo
 
   ```console
   echo http://carts.sockshop-dev.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
+  ```
+  ```console
   echo http://carts.sockshop-staging.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
+  ```
+  ```console
   echo http://carts.sockshop-production.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
   ```
 
-- Navigate to `http://carts.sockshop-production.YOURDOMAIN` for viewing the carts service in your `production` environment and you should receive an output similar to the following:
+- Navigate to `http://carts.sockshop-production.YOUR.DOMAIN` for viewing the carts service in your `production` environment and you should receive an output similar to the following:
 
     {{< popup_image
       link="./assets/carts-production.png"
@@ -111,10 +102,10 @@ Now, you have quality gates in place, which will check whether the average respo
 
 ## Try to deploy the slow carts version
 
-1. Use the keptn CLI to send a version of the `carts` artifact, which contains an artificial
+1. Use the Keptn CLI to send a version of the `carts` artifact, which contains an artificial
 slowdown of 1 second in each request. 
   ```console
-  keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.8.2
+  keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.9.2
   ```
 
 1. This automatically changes the configuration of the service and automatically triggers the following services:
@@ -130,21 +121,21 @@ slowdown of 1 second in each request.
       * **gatekeeper-service**: This service receives a `sh.keptn.events.evaluation-done` event, which contains the result of the evaluation of the pitometer-service. Since in this case the performance test run failed, the gatekeeper-service automatically re-routes traffic to the previous colored blue or green version in `staging` and the artifact won't be promoted to `production`.
       
   **Outcome**: This slow version is **not** promoted to the `production` namespace because of the active quality gate in place.
-For verifying this, open a browser and navigate to `http://carts.sockshop-production.YOURDOMAIN`.
+For verifying this, open a browser and navigate to `http://carts.sockshop-production.YOUR.DOMAIN`.
 Here, you see that the version of the carts service has not changed.
 
 ## Deploy the regular carts version
 
-1. Use the keptn CLI to send a new version of the `carts` artifact, which does **not** contain any slowdown.
+1. Use the Keptn CLI to send a new version of the `carts` artifact, which does **not** contain any slowdown.
   ```console
-  keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.8.3
+  keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.9.3
   ```
 
 1. This automatically changes the configuration of the service and automatically triggers the deployment.
 
 1. In this case, the quality gate is passed and the service gets deployed in the `production` namespace. 
 
-1. To verify the deployment in `production`, open a browser an navigate to `http://carts.sockshop-production.YOURDOMAIN`. As a result, you see `Version: v3`.
+1. To verify the deployment in `production`, open a browser an navigate to `http://carts.sockshop-production.YOUR.DOMAIN`. As a result, you see `Version: v3`.
 
 1. Besides, you can verify the deployments in your Kubernetes cluster using the following commands: 
 
@@ -153,54 +144,21 @@ Here, you see that the version of the carts service has not changed.
     ``` 
 
     ```console
-    NAME             DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-    carts-blue       1         1         1            0           1h
-    carts-db-blue    1         1         1            0           1h
-    carts-db-green   1         1         1            0           1h
-    carts-green      1         1         1            0           1h
+    NAME            DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+    carts           0         0         0            0           99m
+    carts-db        1         1         1            1           63m
+    carts-primary   1         1         1            1           98m
     ```
 
     ```console
-    kubectl describe deployment carts-blue -n sockshop-production
+    kubectl describe deployment carts-primary -n sockshop-production
     ``` 
     
     ```console
     ...
     Pod Template:
-      Labels:  app=sockshop-selector-carts
-               deployment=carts-blue
+      Labels:  app=carts-primary
       Containers:
-      carts:
-        Image:      docker.io/keptnexamples/carts:0.8.3
-    ```
-
-    ```console
-    kubectl describe deployment carts-green -n sockshop-production
-    ``` 
-    
-    ```console
-    ...
-    Pod Template:
-      Labels:  app=sockshop-selector-carts
-               deployment=carts-green
-      Containers:
-      carts:
-        Image:      docker.io/keptnexamples/carts:0.8.1
-    ```
-
-    ```console
-    kubectl describe virtualService -n sockshop-production
-    ``` 
-    
-    ```console   
-    ...
-    Route:
-      Destination:
-        Host:    carts.sockshop-production.svc.cluster.local
-        Subset:  blue
-      Weight:    100
-      Destination:
-        Host:    carts.sockshop-production.svc.cluster.local
-        Subset:  green
-      Weight:    0
+        carts:
+          Image:      docker.io/keptnexamples/carts:0.9.3
     ```

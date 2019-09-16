@@ -8,19 +8,17 @@ keywords: setup
 
 In order to evaluate the quality gates and allow self-healing in production, we have to set up monitoring to provide the needed data.
 
-## Install local tools
+## Prerequisites
 
-Please make sure to have the following tools installed:
+Please make sure to have the following tool(s) installed:
 
-- [yq](https://mikefarah.github.io/yq/) - a lightweight and portable command-line YAML processor. 
-- [jq](https://stedolan.github.io/jq/) - a lightweight and flexible command-line JSON processor.
+- [jq](https://stedolan.github.io/jq/) - a lightweight and flexible command-line JSON processor. 
 
 <details><summary>Open for installation instructions</summary>
 <p>
 
   ```console
   sudo apt-get update
-  sudo apt install yq -y
   sudo apt install jq -y
   ```
 
@@ -56,8 +54,12 @@ Please make sure to have the following tools installed:
 
 1. Clone the install repository and setup your credentials by executing the following steps:
   ```console
-  git clone --branch 0.2.0 https://github.com/keptn-contrib/dynatrace-service --single-branch
+  git clone --branch 0.3.0 https://github.com/keptn-contrib/dynatrace-service --single-branch
+  ```
+  ```console
   cd dynatrace-service/deploy/scripts
+  ```
+  ```console
   ./defineDynatraceCredentials.sh
   ```
     When the  script asks for your Dynatrace tenant, please enter your tenant according to the appropriate pattern:
@@ -66,7 +68,19 @@ Please make sure to have the following tools installed:
 
 1. Execute the installation script for your platform:
 
-  - If you are on **GKE**, please execute
+  - If you are on **Azure AKS**, please execute
+
+    ```console
+    ./deployDynatraceOnAKS.sh
+    ```
+
+    - If you are on **AWS EKS**, please execute
+
+    ```console
+    ./deployDynatraceOnEKS.sh
+    ```
+
+  - If you are on **Google GKE**, please execute
 
     ```console
     ./deployDynatraceOnGKE.sh
@@ -78,13 +92,7 @@ Please make sure to have the following tools installed:
     ./deployDynatraceOnOpenshift.sh
     ```
 
-  - If you are on **Azure AKS**, please execute
-
-    ```console
-    ./deployDynatraceOnAKS.sh
-    ```
-
-When this script is finished, the Dynatrace OneAgent and the dynatrace-service are deployed in your cluster. Execute the following command to verify the deployment of the dynatrace-service.
+When this script is finished, the Dynatrace OneAgent and the *dynatrace-service* are deployed in your cluster. Execute the following command to verify the deployment of the *dynatrace-service*.
 
 ```console
 kubectl get svc dynatrace-service -n keptn
@@ -98,7 +106,11 @@ dynatrace-service   ClusterIP   10.0.44.191   <none>        8080/TCP   2m48s
 **Note 1:** To monitor the services that are already onboarded in the `dev`, `staging`, and `production` namespace, make sure to restart the pods. If you defined different environments in your shipyard file, please adjust the values accordingly. 
 ```console
 kubectl delete pods --all --namespace=sockshop-dev
+```
+```console
 kubectl delete pods --all --namespace=sockshop-staging
+```
+```console
 kubectl delete pods --all --namespace=sockshop-production
 ```
 
@@ -113,14 +125,15 @@ In your Dynatrace tenant, when you navigate to **Settings > Tags > Automatically
 
 This means that Dynatrace will automatically apply tags to your onboarded services.
 
-In addition, a Problem Notification has automatically been set up to inform your keptn installation of any problems with your services to allow auto-remediation. This will be described in more detail in the [runbook automation and self-healing use case](../../usecases/runbook-automation-and-self-healing/). You can check the problem notification by navigating to **Settings > Integration > Problem notifications** and you will find a **keptn remediation** problem notification.
+In addition, a Problem Notification has automatically been set up to inform your Keptn installation of any problems with your services to allow auto-remediation. This will be described in more detail in the [runbook automation and self-healing use case](../../usecases/runbook-automation-and-self-healing/). You can check the problem notification by navigating to **Settings > Integration > Problem notifications** and you will find a **keptn remediation** problem notification.
 
-## See keptn events in Dynatrace
 
-The Dynatrace service will take care of pushing events of the keptn workflow to the artifacts that have been onboarded with keptn. For example, the deployment as well as custom infos like starting and finishing of tests will appear in the details screen of your services in your Dynatrace tenant.
+## See Keptn events in Dynatrace
+
+The Dynatrace service will take care of pushing events of the Keptn workflow to the artifacts that have been onboarded with Keptn. For example, the deployment as well as custom infos like starting and finishing of tests will appear in the details screen of your services in your Dynatrace tenant.
     {{< popup_image
     link="./assets/custom_events.png"
-    caption="keptn events"
+    caption="Keptn events"
     width="500px">}}
 
 
@@ -142,17 +155,20 @@ The Dynatrace service will take care of pushing events of the keptn workflow to 
 
 ## Uninstall Dynatrace
 
-If you want to uninstall Dynatrace, there are scripts provided to do so. Uninstalling keptn will not automatically uninstall Dynatrace.
+If you want to uninstall Dynatrace, there are scripts provided to do so. Uninstalling Keptn will not automatically uninstall Dynatrace.
 
 1. (optional) If you do not have the *dynatrace-service* repository, clone the latest release using:
 
   ```console
-  git clone --branch 0.2.0 https://github.com/keptn/dynatrace-service --single-branch
+  git clone --branch 0.3.0 https://github.com/keptn-contrib/dynatrace-service --single-branch
   ```
 
-1. Go to correct folder and execute the uninstallDynatrace.sh script:
+1. Go to correct folder and execute the `uninstallDynatrace.sh` script:
 
   ```console
   cd dynatrace-service/deploy/scripts
+  ```
+
+  ```console
   ./uninstallDynatrace.sh
   ```

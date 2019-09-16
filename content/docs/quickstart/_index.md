@@ -9,6 +9,8 @@ menu: main
 
 ### 1. Setup your platform
 
+* [Preparing Azure Kubernetes Engine (AKS)](/docs/quickstart/setup_platform/setup_aks)
+* [Preparing Amazon Elastic Kubernetes Service (EKS)](/docs/quickstart/setup_platform/setup_eks)
 * [Preparing Google Kubernetes Engine (GKE)](/docs/quickstart/setup_platform/setup_gke)
 * [Preparing Azure Kubernetes Engine (AKS)](/docs/quickstart/setup_platform/setup_aks)
 * [Preparing OpenShift](/docs/quickstart/setup_platform/setup_openshift)
@@ -36,7 +38,7 @@ Depending on the platform, keptn install will prompt you different information n
 Keptn will also prompt you for a GitHub Organization, GitHub Username and Token as keptn follows GitOps where all configuration is stored in a repository in your GitHub Org.
 
 ```console
-keptn install --platform=[gke|aks|openshift|kubernetes]
+keptn install --platform=[aks|eks|gke|openshift|kubernetes]
 ```
 
 keptn is now ready to be used.
@@ -56,19 +58,6 @@ Review the [reference documentation](/docs/0.4.0/) for a full reference on all c
 Join [our slack channel](https://join.slack.com/t/keptn/shared_invite/enQtNTUxMTQ1MzgzMzUxLTcxMzE0OWU1YzU5YjY3NjFhYTJlZTNjOTZjY2EwYzQyYWRkZThhY2I3ZDMzN2MzOThkZjIzOTdhOGViMDNiMzI) for any questions that may arise.
 
 ### 7. Uninstalling keptn
-##### 7.1. Clone Installer Repo
 ```console
-git  clone --branch 0.4.0 https://github.com/keptn/installer
-```
-
-##### 7.2a. Uninstall for GKE, AKS, k8s
-```console
-cd  ./installer/scripts/common
-./uninstallKeptn.sh
-```
-
-##### 7.2b. Uninstall for OpenShift
-```console
-cd  ./installer/scripts/openshift
-./uninstallKeptn.sh
+keptn uninstall
 ```
