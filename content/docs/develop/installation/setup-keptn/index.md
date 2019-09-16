@@ -204,7 +204,7 @@ Every release of Keptn provides binaries for the Keptn CLI. These binaries are a
 
 ## Install Keptn
 
-- Execute the CLI command `keptn install` and provide the requested information. This command will install Keptn in the version of the latest release. Since v0.3 of Keptn, the install command accepts a parameter to select the platform you would like to install Keptn on. <!--Currently supported platforms are Google Kubernetes Engine (GKE), OpenShift and Azure Kubernetes Services (AKS). Depending on your platform, enter the following command to start the installation:-->
+- Execute the CLI command `keptn install --keptn-version=release-0.5.0.beta` and provide the requested information. This command will install Keptn in the version of the latest release. Since v0.3 of Keptn, the install command accepts a parameter to select the platform you would like to install Keptn on. <!--Currently supported platforms are Google Kubernetes Engine (GKE), OpenShift and Azure Kubernetes Services (AKS). Depending on your platform, enter the following command to start the installation:-->
 
 <!--
 - For **AKS**:
@@ -222,7 +222,7 @@ Every release of Keptn provides binaries for the Keptn CLI. These binaries are a
 - For **GKE**:
 
     ```console
-    keptn install --platform=gke
+    keptn install --platform=gke --keptn-version=release-0.5.0.beta
     ```
 
 <!--

@@ -22,7 +22,7 @@ Configuration changes during runtime are sometimes necessary to increase flexibi
 - Clone the GitHub repository with the necessary files for the use case:
   
   ```console
-  git clone --branch 0.1.3 https://github.com/keptn-contrib/servicenow-service.git --single-branch
+  git clone --branch 0.1.4 https://github.com/keptn-contrib/servicenow-service.git --single-branch
   ```
   ```console
   cd servicenow-service
