@@ -76,7 +76,7 @@ a Google Kubernetes Engine (GKE), and on OpenShift. Further details are provided
 
 The Keptn CLI allows to configure your custom domain. This is mandatory if you cannot use xip.io (e.g., because you are running in AWS that will create ELBs for you).
 
-**Note:** This command requires a *kubernetes current context* pointing to the cluster where you would like to uninstall Keptn. After installing Keptn this is guaranteed.
+**Note:** This command requires a *kubernetes current context* pointing to the cluster where you would like to configure your domain. After installing Keptn this is guaranteed.
 
 ```console
 keptn configure domain YOUR.CUSTOM.DOMAIN
@@ -241,7 +241,7 @@ keptn send event new-artifact --project=your_project --service=your_service --im
 
 ### keptn send event
 
-To send an arbitrary Keptn event the `send event` command is provided. An event has to follow the [Cloud Events](https://cloudevents.io/) specification and has to be written in JSON. Then you can pass it in by referencing the JSON file (`--file`).
+To send an arbitrary Keptn event the `send event` command is provided. An event has to follow the [Cloud Events](https://cloudevents.io/) specification in version 0.2 and has to be written in JSON. Then you can pass it in by referencing the JSON file (`--file`).
 
 **Note:** This command is not required for any use case and requires precise Keptn event definitions as you can find [here](https://github.com/keptn/keptn/blob/develop/specification/cloudevents.md).
 
@@ -259,7 +259,7 @@ keptn version
 
 ### keptn uninstall
 
-To uninstall Keptn from your cluster, the `uninstall` command is provided.
+To uninstall Keptn from your cluster, the `uninstall` command is provided. This command does not delete e.g. Istio, Dynatrace, or your onboarded services.
 
 **Note:** This command requires a *kubernetes current context* pointing to the cluster where you would like to uninstall Keptn.
 

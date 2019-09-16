@@ -29,6 +29,7 @@ In order to evaluate the quality gates, we have to set up monitoring to provide 
     ```console
     keptn configure monitoring prometheus --project=sockshop --service=carts --service-indicators=service-indicators.yaml --service-objectives=service-objectives.yaml --remediation=remediation.yaml 
     ```
+    **Note:** If the keptn CLI does not show any output for approximately 30 seconds, abort the command (i.e. press Ctrl + C). Afterwards, please retry this command.
 
 ## Verify installation
 

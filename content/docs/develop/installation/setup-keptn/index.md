@@ -49,6 +49,10 @@ Select one of the following options:
 </p>
 </details>
 -->
+
+**Note**: This beta release is only tested for a single platform, i.e. Google Kubernetes Engine (GKE). 
+The final release will also support Azure Kubernetes Service (AKS), Amazon Elastic Container Service (EKS), and OpenShift 3.11.
+
 <details><summary>Google Kubernetes Engine (GKE)</summary>
 <p>
 

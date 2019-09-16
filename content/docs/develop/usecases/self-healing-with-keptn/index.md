@@ -107,7 +107,7 @@ keptn send event new-artifact --project=sockshop --service=carts --image=docker.
 ```
 -->
 
-You can check if the service is already running in your production stage by executing the following command and reviewing the output (it should show 4 pods in total).
+You can check if the service is already running in your production stage by executing the following command and reviewing the output (it should show 2 pods in total).
 
 ```console
 kubectl get pods -n sockshop-production
@@ -133,25 +133,40 @@ In order to simulate user traffic that is causing an unhealthy behavior in the c
     ./loadgenerator-_OS_ "http://carts.sockshop-production.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')"
     ```
 
-1. (optional:) Verify load in Prometheus:
+1. (optional:) Verify the load in Prometheus.
+    - Make a port forward to access Prometheus:
+
     ```console
     kubectl port-forward svc/prometheus-service -n monitoring 8080:8080
     ```
     
-    Now access the Prometheus from your browser on http://localhost:8080.
+    - Access the Prometheus from your browser on http://localhost:8080.
+
+    - In the graph tab,add the expression 
+
+    ```console
+    avg(rate(container_cpu_usage_seconds_total{namespace="sockshop-production",pod_name=~"carts-primary-.*"}[5m]))
+    ```
+    
+    - Select the graph tab to see your CPU metrics of the `carts-primary` pods in the `sockshop-production` environment.
+
+    - You should see a graph which locks similar to this:
 
     {{< popup_image
         link="./assets/prometheus-load.png"
         caption="Prometheus load"
         width="700px">}}
 
-    TODO: update image
-
 ### Watch self-healing in action
 
 After approximately five minutes the *Prometheus Alert Manager* will send out an alert since the service level objective is not met anymore. 
 
-INSERT IMAGE OF ALERT MANAGER
+1. To verify that an alert was fired, select the "Alerts" view where you should see that the alert `cpu_usage_sockshop_carts` is in the `firing` state:
+
+    {{< popup_image
+        link="./assets/alert-manager.png"
+        caption="Alert manager"
+        width="700px">}}
 
 The alert will be received by the Prometheus service that will translate it into a Keptn CloudEvent. This event will eventually be received by the remediation service that will look for a remediation action specified for this type of problem and, if found, executes it.
 
@@ -162,6 +177,8 @@ In this use case, the number of pods will be increased to remediate the issue of
     ```console
     kubectl get deployments -n sockshop-production
     ```
+
+    You can see that the `carts-primary` deployment is now served by two pods:
 
     ```console
     NAME             DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
@@ -181,4 +198,9 @@ In this use case, the number of pods will be increased to remediate the issue of
     carts-primary-7c96d87df9-75pg7   2/2     Running   0          33m
     ```
 
-## Summary
+1. Furthermore, you can use Prometheus to double-check the CPU usage:
+
+    {{< popup_image
+        link="./assets/prometheus-load-reduced.png"
+        caption="Prometheus load"
+        width="700px">}}
