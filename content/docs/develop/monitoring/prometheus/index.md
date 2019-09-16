@@ -15,7 +15,7 @@ In order to evaluate the quality gates, we have to set up monitoring to provide 
     - If you have not yet onboarded the carts service, please execute the following commands to receive the needed files:
     
       ```console
-      git clone --branch 0.5.0 https://github.com/keptn/examples.git --single-branch
+      git clone --branch 0.5.0.beta https://github.com/keptn/examples.git --single-branch
       ```
 
       ```console 
@@ -66,7 +66,7 @@ If you want to uninstall Prometheus, there are scripts provided to do so. Uninst
 1. (optional) If you do not have the *examples* repository, clone the latest release using:
 
     ```console
-    git clone --branch 0.5.0 https://github.com/keptn/examples.git --single-branch
+    git clone --branch 0.5.0.beta https://github.com/keptn/examples.git --single-branch
     ```
 
 1. Go to correct folder and execute the `uninstallPrometheus.sh` script:

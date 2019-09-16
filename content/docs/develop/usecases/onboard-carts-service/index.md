@@ -43,7 +43,7 @@ To illustrate the scenario this use case addresses, Keptn relies on the followin
 * Clone example files used for this use case:
 
     ```console
-    git clone --branch 0.5.0 https://github.com/keptn/examples.git --single-branch
+    git clone --branch 0.5.0.beta https://github.com/keptn/examples.git --single-branch
     ```
 
     ```console
