@@ -62,7 +62,7 @@ The final release will also support Azure Kubernetes Service (AKS), Amazon Elast
 
 2. Create GKE cluster
   - Master version >= `1.11.x` (tested version: `1.12.8-gke.10`)
-  - One **n1-standard-4** node
+  - One **n1-standard-8** node
   - Image type `ubuntu` or `cos` (if you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../monitoring/dynatrace/))
   - Sample script to create such cluster (adapt the values according to your needs)
 
