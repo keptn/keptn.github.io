@@ -56,8 +56,8 @@ objectives:
   timeframe: 5m
   score: 50
 - metric: cpu_usage_sockshop_carts
-  threshold: 0.5
-  timeframe: 5m
+  threshold: 0.02
+  timeframe: 15m
   score: 50
 ```
 
@@ -145,7 +145,7 @@ In order to simulate user traffic that is causing an unhealthy behavior in the c
     - In the graph tab,add the expression 
 
     ```console
-    avg(rate(container_cpu_usage_seconds_total{namespace="sockshop-production",pod_name=~"carts-primary-.*"}[5m]))
+    avg(rate(container_cpu_usage_seconds_total{namespace="sockshop-production",pod_name=~"carts-primary-.*"}[15m]))
     ```
     
     - Select the graph tab to see your CPU metrics of the `carts-primary` pods in the `sockshop-production` environment.
@@ -159,7 +159,7 @@ In order to simulate user traffic that is causing an unhealthy behavior in the c
 
 ### Watch self-healing in action
 
-After approximately five minutes the *Prometheus Alert Manager* will send out an alert since the service level objective is not met anymore. 
+After approximately 15 minutes the *Prometheus Alert Manager* will send out an alert since the service level objective is not met anymore. 
 
 1. To verify that an alert was fired, select the "Alerts" view where you should see that the alert `cpu_usage_sockshop_carts` is in the `firing` state:
 
