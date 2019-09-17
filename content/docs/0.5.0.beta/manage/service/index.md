@@ -1,6 +1,6 @@
 ---
 title: Service
-description: Learn how to onbaord your own service in Keptn.
+description: Learn how to onboard your own service in Keptn.
 weight: 30
 keywords: [manage]
 aliases:
@@ -10,16 +10,47 @@ Learn how to manage your services in Keptn.
 
 ## Onboard your own service
 
-After creating a project the Keptn CLI allows to onboard services into this project. Please note that for describing the Kubernetes resources, [Helm charts](https://Helm.sh/) are used. 
-When onboarding your own service instead of the provided demo example, the Helm chart _has_ to contain a `values.yaml` file with at least the `image` and `replicas` parameter for the deployment and service template. An example is shown below:
+After creating a project, the Keptn CLI allows creating new Keptn-managed services (i.e. to "onboard" services into Keptn). 
+The onboarded services are organized in the before created project.
+For describing the Kubernetes resources, [Helm charts](https://Helm.sh/) are used.
+More precisely, the user has to provide a Helm chart package which has to fulfill the following requirements:
 
-```yaml
-image: docker.io/keptnexamples/carts:0.9.1
-replicas: 1
-```
-<!--
-First, define how many instances of your deployment should be running by providing this number as the `replicaCount`. Next, the `image repository` and `tag` can be set to null since they will be set with the Keptn CLI command `keptn send event new-artifact`. For the `service`, provide the name of your service as well as the internal port you want your service to be reachable. For the `container name` provide a name you want to call your container. Additionally, make sure that your actual service provides a `/health` endpoint at port `8080` since this is needed for the [liveness and readiness probe](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/) of Kubernetes.
--->
+1. The Helm chart _has_ to contain exactly one [deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/).
+In this deployment, the properties `spec.selector.matchLabels.app` and `spec.template.metadata.labels.app` have to be set.
+
+1. The Helm chart requires _at least one_ [service](https://kubernetes.io/docs/concepts/services-networking/service/).
+In each service, the property `spec.selector.app` has to be set.
+
+1. The Helm chart _has_ to contain a `values.yaml` file with at least the `image` and `replicas` parameters for the deployment (i.e. these parameters are used in the deployment). An example is shown below:
+  
+  ```yaml
+  image: docker.io/keptnexamples/carts:0.9.1
+  replicas: 1
+  ```
+
+  ```yaml
+  --- 
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: your_deployment
+  spec:
+    replicas: {{ .Values.replicas }}
+    selector:
+      matchLabels:
+        app: your_service
+    template:
+      metadata: 
+        labels:
+          app: your_service
+      spec:
+        containers:
+        - name: your_service
+          image: "{{ .Values.image }}"
+  ```
+
+<!-- Make sure that your actual service provides a `/health` endpoint at port `8080` since this is needed for the [liveness and readiness probe](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/) of Kubernetes. -->
+
 
 To onboard a service, use the command `onboard service` and provide the service name (e.g., `my-service`), project name (`--project` flag) and the Helm chart (`--chart` flag):
 
@@ -42,7 +73,7 @@ env:
       fieldPath: "metadata.namespace"
 ```
 
-**Note:** If you need to store resources (e.g., test files, configuration files, etc.) that are required by a service, use the Keptn CLI with the `add-resource` command and specifiy the `--project`, `--stage`, and `--service` as shown below:
+**Note:** If you need to store resources (e.g., test files, configuration files, etc.) that are required by a service, use the Keptn CLI with the [`add-resource`](../../reference/cli#keptn-add-resource) command and specifiy the `--project`, `--stage`, and `--service` as shown below:
 
 ```console
 keptn add-resource --project=your-project --service=my-service --stage=staging --resource=jmeter/load.jmx
