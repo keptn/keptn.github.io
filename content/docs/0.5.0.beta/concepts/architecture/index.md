@@ -49,7 +49,7 @@ The *Keptn's bridge* lets a user browse the Keptn's log by providing a user inte
 
 ### configuration-service
 
-The *configuration-service* is a Keptn core component and used to manage resources for Keptn project-related entities, i.e., project, stage, and service. The entity model is shown below. To store the resources with version control, a git repository is used that is mounted as persistent volume. Besides, this service has functionality to upload the git repository to any Git-based service such as GitLab, GitHub, Bitbucket, etc.
+The *configuration-service* is a Keptn core component and used to manage resources for Keptn project-related entities, i.e., project, stage, and service. The entity model is shown below. To store the resources with version control, a Git repository is used that is mounted as persistent volume. Besides, this service has functionality to upload the Git repository to any Git-based service such as GitLab, GitHub, Bitbucket, etc.
 
 **Entity model**
 ```
