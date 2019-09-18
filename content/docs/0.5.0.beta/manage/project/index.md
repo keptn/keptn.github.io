@@ -20,14 +20,21 @@ Keptn will manage a project in an internal Git repository. To upstream this repo
 
 1. If you do not have a GitHub user, create a user by [signing up](https://github.com/join?source=header-home). 
 
-1. Go to your account or the previously create GitHub organization and create a [GitHub repository](https://help.github.com/en/articles/create-a-repo).
-
 1. Create a [personal access token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line) for your user with *repo* scope:
 
     {{< popup_image 
     link="./assets/github-access-token.png" 
     caption="GitHub access token" 
-    width="60%">}}
+    width="50%">}}
+
+1. Go to your account or the previously create GitHub organization and create a [GitHub repository](https://help.github.com/en/articles/create-a-repo).
+
+    **Note:** Click the **Initialize this repository with a README** checkbox to initialize the repository.
+
+    {{< popup_image 
+    link="./assets/github-create-repo.png" 
+    caption="GitHub create repository" 
+    width="50%">}} 
 
 </p>
 </details>
@@ -67,12 +74,12 @@ Allowed values for the **deployment_strategies** are `direct`, which means that 
 
 * **Option A:** Create a project with the [Keptn CLI](../../reference/cli) without a Git upstream. 
   ```console
-  keptn create project your_project shipyard.yml
+  keptn create project <your_project> <shipyard.yaml>
   ```
 
 * **Option B:** Create a project with the [Keptn CLI](../../reference/cli) using a Git upstream. 
   ```console
-  keptn create project your-project shipyard.yml --git-user=your-user --git-token=your-token --git-remote-url=repository-remote-url
+  keptn create project <your-project> <shipyard.yaml> --git-user=<your-user> --git-token=<your-token> --git-remote-url=<repository-remote-url>
   ```
 
 ## Delete a project
