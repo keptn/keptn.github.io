@@ -25,7 +25,7 @@ Keptn will manage a project in an internal Git repository. To upstream this repo
     {{< popup_image 
     link="./assets/github-access-token.png" 
     caption="GitHub access token" 
-    width="40%">}}
+    width="600px">}} 
 
 1. Go to your account or the previously create GitHub organization and create a [GitHub repository](https://help.github.com/en/articles/create-a-repo).
 
@@ -34,7 +34,7 @@ Keptn will manage a project in an internal Git repository. To upstream this repo
     {{< popup_image 
     link="./assets/git_create_repo.png" 
     caption="GitHub create repository" 
-    width="40%">}} 
+    width="600px">}}  
 
 </p>
 </details>
@@ -50,7 +50,7 @@ Keptn will manage a project in an internal Git repository. To upstream this repo
     {{< popup_image 
     link="./assets/gitlab_access_token.png" 
     caption="GitHub access token" 
-    width="40%">}}
+    width="600px">}} 
 
 1. Go to your account and create a [GitLab project](https://docs.gitlab.com/ee/gitlab-basics/create-project.html).
 
@@ -59,7 +59,7 @@ Keptn will manage a project in an internal Git repository. To upstream this repo
     {{< popup_image 
     link="./assets/gitlab_create_project.png" 
     caption="GitLab create project" 
-    width="40%">}} 
+    width="600px">}} 
 
 </p>
 </details>
@@ -70,21 +70,21 @@ Keptn will manage a project in an internal Git repository. To upstream this repo
 
 1. If you do not have a Bitbucket user, create a user by [signing up for a free trial](https://bitbucket.org/account/signup/). 
 
-1. Create a [app password](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html) for your user with *Write* scope. Therefore, select your User > **View profile** > **Settings** > **App passwords** > **Create app password**
+1. Create a [app password](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html) for your user with *Write* permissions. Therefore, select your User > **View profile** > **Settings** > **App passwords** > **Create app password**
 
     {{< popup_image 
     link="./assets/bitbucket_access_token.png" 
     caption="Bitbucket access token" 
-    width="40%">}}
+    width="600px">}} 
 
 1. Go to your account and create a [Bitbucket repository](https://docs.gitlab.com/ee/gitlab-basics/create-project.html).
 
-    **Note:** Select *Include a README* **Yes, with a template** to initialize the repository.
+    **Note:** Select *Include a README?* - **Yes, with a template** to initialize the repository.
 
     {{< popup_image 
     link="./assets/bitbucket_create_repo.png" 
     caption="Bitbucket create repository" 
-    width="40%">}} 
+    width="600px">}} 
 
 </p>
 </details>
