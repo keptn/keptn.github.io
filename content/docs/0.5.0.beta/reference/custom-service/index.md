@@ -6,7 +6,7 @@ keywords: [service, custom]
 aliases:
 ---
 
-Shows you how to implement your own Keptn service and listen for certain events.
+Learn how to implement your own Keptn service and listen for certain events.
 
 ## About
 
