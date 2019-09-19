@@ -91,7 +91,8 @@ Keptn will manage a project in an internal Git repository. To upstream this repo
 
 ## Create a project
 
-In Keptn, a project is a structure that allows to organize your services and it is represented as a repository. This project contains branches representing the multi-stage environment (e.g., dev, staging, and production stage). In other words, the separation of stage configurations is based on repository branches. To describe the stages, a `shipyard.yaml` file is needed that specifies the name, deployment strategy, test strategy, and remediation strategy as shown by an example below:
+In Keptn, a project is a structure that allows to organize your services. 
+A project is stored as a repository and contains contains branches representing the multi-stage environment (e.g., dev, staging, and production stage). In other words, the separation of stage configurations is based on repository branches. To describe the stages, a `shipyard.yaml` file is needed that specifies the name, deployment strategy, test strategy, and remmediation strategy as shown by an example below:
 
 ```yaml
 stages:
@@ -106,7 +107,13 @@ stages:
     remediation_strategy: "automated"
 ```
 
-Allowed values for the **deployment_strategies** are `direct`, which means that the old version of the artifact is replaced, or `blue_green_service`, which means that a new version is deployed . Allowed values for the **test_strategy** are `functional` or `performance`. More deployment and testing strategies are planned to be incorporated in the next releases.
+For the **deployment_strategies** `direct` and `blue_green_service` is allowed. 
+When `direct` is used, the old version of an artifact is replaced.
+When `blue_green_service` is used, a new version of an artifact is deployed next to the old one.
+After a successful validation of this new version, it replaces the old one and is marked as stable (i.e. it becomes the `primary`-version). 
+For the **test_strategy** `functional` and `performance` is allowed.
+This test strategy selects the executed tests.
+More deployment and testing strategies are planned to be incorporated in the next releases.
 
 * **Option A:** Create a project with the [Keptn CLI](../../reference/cli) without a Git upstream: 
   ```console
@@ -123,6 +130,7 @@ Allowed values for the **deployment_strategies** are `direct`, which means that 
 Currently, the Keptn CLI does not support the deletion of a project. However, a project can be deleted manually by following the next steps:
 
 - Delete the remote repository for your project.
+
 - Delete all namespaces that have been created by Keptn in your Kubernetes cluster, e.g.,
   - sockshop-dev
   - sockshop-staging
