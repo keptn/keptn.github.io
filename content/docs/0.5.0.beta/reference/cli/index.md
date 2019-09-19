@@ -195,11 +195,21 @@ In the Windows Command Line, a couple of steps are necessary.
 
 ### keptn create project 
 
-To create a new project, use the command `create project` and specify the name of the project as well as the `shipyard.yaml` file. Learn here more [about writing a shipyard file](../../manage/project/#create-a-project).
+* **Option A:** Create a project without Git upstream: 
 
-```console
-keptn create project my-project shipyard.yml
-```
+    To create a new project, use the command `create project` and specify at least the name of the project as well as the `shipyard.yaml` file (`--shipyard`) . Learn here more about [writing a shipyard file](../../manage/project/#create-a-project). 
+
+    ```console
+    keptn create project PROJECTNAME --shipyard=FILEPATH
+    ```
+
+* **Option B:** Create a project using a Git upstream: 
+
+    By executing the `create project` command, Keptn initializes a internal Git repository that is used to maintain all project-related resources. To upstream this internal Git repository to a remote repository, the Git user (`--git-user`), an access token (`--git-token`), and the remote URL (`--git-remote-url`) are required. If you miss one of the requirements, go to [select Git-based upstream](../../manage/project/#select-git-based-upstream) where instructions for GitHub, GitLab, and Bitbucket are provided.
+
+    ```console
+    keptn create project PROJECTNAME --shipyard=FILEPATH --git-user=GIT_USER --git-token=GIT_TOKEN --git-remote-url=GIT_REMOTE_URL
+    ```
 
 ### keptn onboard service
 
@@ -209,7 +219,7 @@ To onboard a service, use the command `onboard service` and provide the service 
 keptn onboard service my-service --project=my-project --chart=my-service.tgz
 ```
 
-To learn more about onboarding a service, please see the [Onboarding a Service](../../usecases/onboard-carts-service) use case.
+To learn more about onboarding a service, please see the [onboarding a service](../../usecases/onboard-carts-service) use case.
 
 ### keptn add-resource
 

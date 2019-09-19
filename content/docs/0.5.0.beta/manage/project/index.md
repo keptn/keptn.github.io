@@ -10,7 +10,7 @@ Learn how to manage your projects in Keptn.
 
 ## Select Git-based upstream  
 
-Keptn will manage a project in an internal Git repository. To upstream this repository to a remote place, you can create a GitHub, GitLab repository or a Bitbucket project and then tell Keptn where to find it during creating the project, explained below. Select one of the three options and make sure to have the Git *user*, *token*, and *remote url* before continuing.
+Keptn will manage a project in an internal Git repository. To upstream this repository to a remote place, you can create a GitHub, Bitbucket repository or a GitLab project and then tell Keptn where to find it during creating the project, explained below. Select one of the three options and make sure to have the Git *user*, *token*, and *remote url* before continuing.
 
 ### GitHub
 <details><summary>Create user, token, and repository</summary>
@@ -25,30 +25,66 @@ Keptn will manage a project in an internal Git repository. To upstream this repo
     {{< popup_image 
     link="./assets/github-access-token.png" 
     caption="GitHub access token" 
-    width="50%">}}
+    width="40%">}}
 
 1. Go to your account or the previously create GitHub organization and create a [GitHub repository](https://help.github.com/en/articles/create-a-repo).
 
     **Note:** Click the **Initialize this repository with a README** checkbox to initialize the repository.
 
     {{< popup_image 
-    link="./assets/github-create-repo.png" 
+    link="./assets/git_create_repo.png" 
     caption="GitHub create repository" 
-    width="50%">}} 
+    width="40%">}} 
 
 </p>
 </details>
 
 ### GitLab
-<details><summary>Create user, token, and repository</summary>
+<details><summary>Create user, token, and project</summary>
 <p>
+
+1. If you do not have a GitLab user, create a user by [signing up for a free trial](https://customers.gitlab.com/trials/new?gl_com=true). 
+
+1. Create a [personal access token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html) for your user with *write_repo* scope:
+
+    {{< popup_image 
+    link="./assets/gitlab_access_token.png" 
+    caption="GitHub access token" 
+    width="40%">}}
+
+1. Go to your account and create a [GitLab project](https://docs.gitlab.com/ee/gitlab-basics/create-project.html).
+
+    **Note:** Click the **Initialize this repository with a README** checkbox to initialize the repository.
+
+    {{< popup_image 
+    link="./assets/gitlab_create_project.png" 
+    caption="GitLab create project" 
+    width="40%">}} 
 
 </p>
 </details>
 
 ### Bitbucket
-<details><summary>Create user, token, and project</summary>
+<details><summary>Create user, token, and repository</summary>
 <p>
+
+1. If you do not have a Bitbucket user, create a user by [signing up for a free trial](https://bitbucket.org/account/signup/). 
+
+1. Create a [app password](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html) for your user with *Write* scope. Therefore, select your User > **View profile** > **Settings** > **App passwords** > **Create app password**
+
+    {{< popup_image 
+    link="./assets/bitbucket_access_token.png" 
+    caption="Bitbucket access token" 
+    width="40%">}}
+
+1. Go to your account and create a [Bitbucket repository](https://docs.gitlab.com/ee/gitlab-basics/create-project.html).
+
+    **Note:** Select *Include a README* **Yes, with a template** to initialize the repository.
+
+    {{< popup_image 
+    link="./assets/bitbucket_create_repo.png" 
+    caption="Bitbucket create repository" 
+    width="40%">}} 
 
 </p>
 </details>
@@ -72,14 +108,14 @@ stages:
 
 Allowed values for the **deployment_strategies** are `direct`, which means that the old version of the artifact is replaced, or `blue_green_service`, which means that a new version is deployed . Allowed values for the **test_strategy** are `functional` or `performance`. More deployment and testing strategies are planned to be incorporated in the next releases.
 
-* **Option A:** Create a project with the [Keptn CLI](../../reference/cli) without a Git upstream. 
+* **Option A:** Create a project with the [Keptn CLI](../../reference/cli) without a Git upstream: 
   ```console
-  keptn create project <your_project> <shipyard.yaml>
+  keptn create project PROJECTNAME --shipyard=FILEPATH
   ```
 
-* **Option B:** Create a project with the [Keptn CLI](../../reference/cli) using a Git upstream. 
+* **Option B:** Create a project with the [Keptn CLI](../../reference/cli) using a Git upstream: 
   ```console
-  keptn create project <your-project> <shipyard.yaml> --git-user=<your-user> --git-token=<your-token> --git-remote-url=<repository-remote-url>
+  keptn create project PROJECTNAME --shipyard=FILEPATH --git-user=GIT_USER --git-token=GIT_TOKEN --git-remote-url=GIT_REMOTE_URL
   ```
 
 ## Delete a project
