@@ -77,12 +77,28 @@ stages:
     remediation_strategy: "automated"
 ```
 
-Create a new project for your carts service using the [keptn create project](../../reference/cli/#keptn-create-project) command. In this example, the project is called *sockshop*. Before executing the following command, 
-make sure you are in the folder `examples/onboarding-carts`.
+Create a new project for your carts service using the [keptn create project](../../reference/cli/#keptn-create-project) command. In this example, the project is called *sockshop*. Before executing the following command, make sure you are in the folder `examples/onboarding-carts` and then select one of the two options:
+
+<details><summary>**Option 1:** Create a new project without Git upstream</summary>
+<p>
 
 ```console
-keptn create project sockshop shipyard.yaml
+keptn create project sockshop --shipyard=./shipyard.yaml
 ```
+</p>
+</details>
+
+<details><summary>**Option 2:** Create a new project with Git upstream</summary>
+<p>
+
+To configure a Git upstream for this use case, the Git user (`--git-user`), an access token (`--git-token`), and the remote URL (`--git-remote-url`) are required. If you miss one of the requirements, go to [select Git-based upstream](../../manage/project/#select-git-based-upstream) where instructions for GitHub, GitLab, and Bitbucket are provided.
+
+```console
+keptn create project sockshop --shipyard=./shipyard.yaml --git-user=GIT_USER --git-token=GIT_TOKEN --git-remote-url=GIT_REMOTE_URL
+```
+</p>
+</details>
+
 
 ## Onboard carts service and carts database
 After creating the project, you are ready to onboard the first services.

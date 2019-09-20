@@ -49,6 +49,6 @@ There are a lot of operations management and workflow solutions out there that p
 
 **The solution - Keptn provides tracing for continuous delivery and operations automation**
 
-Keptn stores the configuration of your environment and applications in git following the GitOps approach. Based on that, it is easy to trace the configuration changes that were made. Besides, the git repository is setup in a way to separate the configuration for each stage defined in the shipyard file.
+Keptn stores the configuration of your environment and applications in Git following the GitOps approach. Based on that, it is easy to trace the configuration changes that were made. Besides, the Git repository is setup in a way to separate the configuration for each stage defined in the shipyard file.
 
 Keptn was created by Dynatrace, the inventor of distributed transaction tracing. So it should be no surprise that we have embedded tracing capabilities into Keptn. All Cloud Events in Keptn use the W3C trace context headers. This enables the stitching together of individual actions into traces. This represents a new level of visibility into your continuous delivery pipeline that was not previously possible.
