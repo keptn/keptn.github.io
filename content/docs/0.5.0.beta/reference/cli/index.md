@@ -229,8 +229,7 @@ keptn configure monitoring prometheus --project=my-project --service=my-service 
 
 ### keptn send event new-artifact
 
-After onboarding a service, the Keptn CLI allows pushing a new artifact for the service. This artifact is a Docker image, which can be located at Docker Hub, Quay, or any other registry storing docker images. The new artifact is pushed in the first stage specified in the `shipyard.yaml` file (usually this will be the dev stage).
-Afterwards, Keptn takes care of deploying this new artifact to the other stages.
+After onboarding a service, the Keptn CLI allows pushing a new artifact for the service. This artifact is a Docker image, which can be located at Docker Hub, Quay, or any other registry storing docker images. The new artifact is pushed in the first stage specified in the `shipyard.yaml` file (usually this will be the dev stage). Afterwards, Keptn takes care of deploying this new artifact to the other stages.
 
 To push a new artifact, use the command `send event new-artifact`, which sends a new-artifact-event to keptn in order to deploy a new artifact for the specified service in the provided project.
 Therefore, this command takes the project (`--project`), the service (`--service`), as well as the image (`--image`) and tag (`--tag`) of the new artifact.
@@ -241,7 +240,7 @@ keptn send event new-artifact --project=your_project --service=your_service --im
 
 ### keptn send event
 
-To send an arbitrary Keptn event the `send event` command is provided. An event has to follow the [Cloud Events](https://cloudevents.io/) specification in version 0.2 and has to be written in JSON. Then the event can be passed in by referencing the JSON file (`--file`). Additionally, this command offers the `--stream-websocket` flag to open a web socket communication to Keptn. Consequently, messages that occur during processing the sent event are displayed in the console.
+To send an arbitrary Keptn event the `send event` command is provided. An event has to follow the [Cloud Events](https://cloudevents.io/) specification in version 0.2 and has to be written in JSON. Then the event can be passed in by referencing the JSON file (`--file`). Additionally, this command offers the `--stream-websocket` flag to open a web socket communication to Keptn. Consequently, messages from the receiving Keptn service, which processes the event, are sent to the CLI via websocket.
 
 **Note:** This command is not required for any use case and requires precise Keptn event definitions as you can find [here](https://github.com/keptn/keptn/blob/develop/specification/cloudevents.md).
 
@@ -259,7 +258,7 @@ keptn version
 
 ### keptn uninstall
 
-To uninstall Keptn from a cluster, the `uninstall` command is provided. This command does not delete, e.g., Istio, Dynatrace, or onboarded services.
+To uninstall Keptn from a cluster, the `uninstall` command is provided. This command does not delete, e.g., Istio, Tiller, Dynatrace, or onboarded services.
 
 **Note:** This command requires a *kubernetes current context* pointing to the cluster where Keptn should get uninstalled.
 
