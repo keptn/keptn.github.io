@@ -25,7 +25,7 @@ Every release of Keptn provides binaries for the Keptn CLI. These binaries are a
 
     move/copy the executable to the desired folder and, optionally, add the executable to your PATH environment variable for a more convenient experience.
 
-4. Now, you should be able to run the Keptn CLI by 
+4. Now, the Keptn CLI help can be shown by: 
     ```console
     keptn --help
     ```
@@ -74,7 +74,7 @@ a Google Kubernetes Engine (GKE), and on OpenShift. Further details are provided
 
 ### keptn configure domain
 
-The Keptn CLI allows to configure your custom domain. This is mandatory if you cannot use xip.io (e.g., because you are running in AWS that will create ELBs for you).
+The Keptn CLI allows to configure a custom domain. This is mandatory if you cannot use xip.io (e.g., because you are running in AWS that will create ELBs for you).
 
 **Note:** This command requires a *kubernetes current context* pointing to the cluster where you would like to configure your domain. After installing Keptn this is guaranteed.
 
@@ -231,7 +231,7 @@ keptn add-resource --project=my-project --service=my-service --stage=dev --resou
 
 ### keptn configure monitoring
 
-To configure a monitoring solution for your Keptn cluster, the `configure monitoring` command is provided. This command sets up monotoring in case it is not installed yet. Afterwards, the command configures the monitoring solution for a service based on the provided service indicators (`--service-indicators`), and service objectives (`--service-objectives`). The currently supported monitoring solution is *Prometheus*, as shown below:
+To configure a monitoring solution for a Keptn cluster, the `configure monitoring` command is provided. This command sets up monotoring in case it is not installed yet. Afterwards, the command configures the monitoring solution for a service based on the provided service indicators (`--service-indicators`), and service objectives (`--service-objectives`). The currently supported monitoring solution is *Prometheus*, as shown below:
 
 ```console
 keptn configure monitoring prometheus --project=my-project --service=my-service --service-indicators=service-indicators.yaml --service-objectives=service-objectives.yaml --remediation=remediation.yaml
@@ -239,8 +239,7 @@ keptn configure monitoring prometheus --project=my-project --service=my-service 
 
 ### keptn send event new-artifact
 
-After onboarding a service, the Keptn CLI allows pushing a new artifact for the service. This artifact is a Docker image, which can be located at Docker Hub, Quay, or any other registry storing docker images. The new artifact is pushed in the first stage specified in the `shipyard.yaml` file (usually this will be the dev stage).
-Afterwards, Keptn takes care of deploying this new artifact to the other stages.
+After onboarding a service, the Keptn CLI allows pushing a new artifact for the service. This artifact is a Docker image, which can be located at Docker Hub, Quay, or any other registry storing docker images. The new artifact is pushed in the first stage specified in the `shipyard.yaml` file (usually this will be the dev stage). Afterwards, Keptn takes care of deploying this new artifact to the other stages.
 
 To push a new artifact, use the command `send event new-artifact`, which sends a new-artifact-event to keptn in order to deploy a new artifact for the specified service in the provided project.
 Therefore, this command takes the project (`--project`), the service (`--service`), as well as the image (`--image`) and tag (`--tag`) of the new artifact.
@@ -251,12 +250,12 @@ keptn send event new-artifact --project=your_project --service=your_service --im
 
 ### keptn send event
 
-To send an arbitrary Keptn event the `send event` command is provided. An event has to follow the [Cloud Events](https://cloudevents.io/) specification in version 0.2 and has to be written in JSON. Then you can pass it in by referencing the JSON file (`--file`).
+To send an arbitrary Keptn event the `send event` command is provided. An event has to follow the [Cloud Events](https://cloudevents.io/) specification in version 0.2 and has to be written in JSON. Then the event can be passed in by referencing the JSON file (`--file`). Additionally, this command offers the `--stream-websocket` flag to open a web socket communication to Keptn. Consequently, messages from the receiving Keptn service, which processes the event, are sent to the CLI via websocket.
 
 **Note:** This command is not required for any use case and requires precise Keptn event definitions as you can find [here](https://github.com/keptn/keptn/blob/develop/specification/cloudevents.md).
 
 ```console
-keptn send event --file=new_artifact.json
+keptn send event --file=FILEPATH --stream-websocket
 ```
 
 ### keptn version
@@ -269,9 +268,9 @@ keptn version
 
 ### keptn uninstall
 
-To uninstall Keptn from your cluster, the `uninstall` command is provided. This command does not delete e.g. Istio, Dynatrace, or your onboarded services.
+To uninstall Keptn from a cluster, the `uninstall` command is provided. This command does not delete, e.g., Istio, Tiller, Dynatrace, or onboarded services.
 
-**Note:** This command requires a *kubernetes current context* pointing to the cluster where you would like to uninstall Keptn.
+**Note:** This command requires a *kubernetes current context* pointing to the cluster where Keptn should get uninstalled.
 
 ```console
 keptn uninstall
