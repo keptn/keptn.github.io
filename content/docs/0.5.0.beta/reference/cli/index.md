@@ -241,7 +241,7 @@ keptn send event new-artifact --project=your_project --service=your_service --im
 
 ### keptn send event
 
-To send an arbitrary Keptn event the `send event` command is provided. An event has to follow the [Cloud Events](https://cloudevents.io/) specification in version 0.2 and has to be written in JSON. Then the event can be passed in by referencing the JSON file (`--file`). Additionally, this command offers the `--stream-websocket` flag to open a web socket communication to Keptn. Consequently, messages that occurre during processing the sent event are displayed in the console.
+To send an arbitrary Keptn event the `send event` command is provided. An event has to follow the [Cloud Events](https://cloudevents.io/) specification in version 0.2 and has to be written in JSON. Then the event can be passed in by referencing the JSON file (`--file`). Additionally, this command offers the `--stream-websocket` flag to open a web socket communication to Keptn. Consequently, messages that occur during processing the sent event are displayed in the console.
 
 **Note:** This command is not required for any use case and requires precise Keptn event definitions as you can find [here](https://github.com/keptn/keptn/blob/develop/specification/cloudevents.md).
 
