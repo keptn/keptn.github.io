@@ -213,10 +213,14 @@ In the Windows Command Line, a couple of steps are necessary.
 
 ### keptn onboard service
 
-To onboard a service, use the command `onboard service` and provide the service name (e.g., `my-service`), project name (`--project`) and its Helm chart (`--chart`):
+To onboard a service, use the command `onboard service` and provide the service name (e.g., `my-service`), project name (`--project` flag), as well as the root direcotry of a Helm chart or the path to an already packed Helm chart (`--chart` flag). 
 
 ```console
-keptn onboard service my-service --project=my-project --chart=my-service.tgz
+keptn onboard service SERVICENAME --project=PROJECTNAME --chart=FILEPATH
+```
+
+```console
+keptn onboard service SERVICENAME --project=PROJECTNAME --chart=HELM_CHART.tgz
 ```
 
 To learn more about onboarding a service, please see the [onboarding a service](../../usecases/onboard-carts-service) use case.
