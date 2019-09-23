@@ -106,10 +106,10 @@ After creating the project, you are ready to onboard the first services.
 * Onboard the `carts` service using the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command:
 
   ```console
-  keptn onboard service carts --project=sockshop --chart=carts-0.1.0.tgz
+  keptn onboard service carts --project=sockshop --chart=./carts
   ```
 
-* After onboarding the service, a couple of tests need to be added to its configuration for testig it in the different stages:
+* After onboarding the service, a couple of tests (functional checks as well as performanc tests) need to be added as the basis for the quality gates in the different stages:
 
   ```console
   keptn add-resource --project=sockshop --service=carts --stage=dev --resource=jmeter/basiccheck.jmx --resourceUri=jmeter/basiccheck.jmx
@@ -129,12 +129,11 @@ After creating the project, you are ready to onboard the first services.
 
 Since the carts service requires a mongodb database, a second service needs to be onboarded.
 
-* Onboard the `carts-db` service using the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command. The `--direct` flag tells keptn that for this service a direct deployment stratgy in all stages should be used regardless of the deployment strategy specified in the shipyard.
-Thus, the database is not blue/green deployed.
+* Onboard the `carts-db` service using the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command. The `--direct` flag tells keptn that for this service a direct deployment stratgy in all stages should be used regardless of the deployment strategy specified in the shipyard. Thus, the database is not blue/green deployed.
 
 
   ```console
-  keptn onboard service carts-db --project=sockshop --chart=carts-db-0.1.0.tgz --direct
+  keptn onboard service carts-db --project=sockshop --chart=./carts-db --direct
   ```
 
 <!--
