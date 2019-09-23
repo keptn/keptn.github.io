@@ -22,12 +22,12 @@ In order to evaluate the quality gates, we have to set up monitoring to provide 
       cd ./examples/onboarding-carts
       ```
 
-    - If you already have [onboarded the carts service](../../usecases/onboard-carts-service/), navigate to the directory `examples/onboarding-carts`. 
+    - If you already have [onboarded the carts service](../../usecases/onboard-carts-service/), navigate to the directory `examples/onboarding-carts`.
 
-1. In this directory, you will find the `service-indicators.yaml`, `service-objectives.yaml`, and `remediation.yaml` file that are specific to the carts service, but can be replaced for any custom service. If Prometheus is currently not installed in your Kubernetes cluster, the following command will set up Prometheus and configures it according to the provided files:
+1. If Prometheus is currently not installed in your Kubernetes cluster, the following command will set up Prometheus and the Alerting Manager:
 
     ```console
-    keptn configure monitoring prometheus --project=sockshop --service=carts --service-indicators=service-indicators.yaml --service-objectives=service-objectives.yaml --remediation=remediation.yaml 
+    keptn configure monitoring prometheus --project=sockshop --service=carts
     ```
     **Note:** If the keptn CLI does not show any output for approximately 30 seconds, abort the command (i.e. press Ctrl + C). Afterwards, please retry this command.
 

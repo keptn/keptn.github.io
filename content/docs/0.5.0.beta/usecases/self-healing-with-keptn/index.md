@@ -82,7 +82,10 @@ In order to add these files to Keptn and to automatically configure Prometheus, 
 
 1. Configure Prometheus with the Keptn CLI:
     ```console
-    keptn configure monitoring prometheus --project=sockshop --service=carts --service-objectives=service-objectives.yaml --service-indicators=service-indicators.yaml --remediation=remediation.yaml
+    keptn add-resource --project=sockshop --service=carts --stage=production --resource=service-indicators.yaml
+    keptn add-resource --project=sockshop --service=carts --stage=production --resource=service-objectives-prometheus-only.yaml --resourceUri=service-objectives.yaml
+    keptn add-resource --project=sockshop --service=carts --stage=production --resource=remediation.yaml
+    keptn configure monitoring prometheus --project=sockshop --service=carts
     ```
 
 Executing this command will perform the following tasks:

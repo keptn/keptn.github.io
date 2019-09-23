@@ -42,20 +42,21 @@ Since this use case relies on the concept of quality gates, you will need to set
 The [Pitometer](https://github.com/keptn/pitometer) service will then evaluate the data coming from the monitoring solution to determine a score for the quality gate.
 
 For using the quality gate, Pitometer requires a performance specification.
-This performance specification has to be stored in a file called `perfspec.json`, located in your application's config repository.
+This performance specification is described by two files, namely the `service-indicatory` file, which describes the available types of metrics and their data sources (e.g., Prometheus or Dynatrace), and the `service-objectives`, which describe the desired values for those metrics.
 
 ### Option 1: Prometheus
 <details><summary>Expand instructions</summary>
 <p>
 Please make sure you have followed the instructions for setting up [Prometheus](../../monitoring/prometheus).
 
-To set up the quality gates for the carts service, please navigate to the `examples/onboarding-carts` folder. This folder contains a file called `perfspec_prometheus.json`. To set this file as a quality gate, upload it via the following command:
+To set up the quality gates for the carts service, please navigate to the `examples/onboarding-carts` folder. This folder contains the files `service-indicators.yaml`, `service-objectives.yaml`, and `remediation.yaml`. To set the quality gates based on those files, upload it via the following command:
 
   ```console
-  keptn add-resource --project=sockshop --service=carts --stage=staging --resource=perfspec_prometheus.json --resourceUri=perfspec.json
+  keptn add-resource --project=sockshop --service=carts --stage=staging --resource=service-indicators.yaml
+  keptn add-resource --project=sockshop --service=carts --stage=staging --resource=service-objectives-prometheus-only.yaml --resourceUri=service-objectives.yaml
   ```
 
-This will upload the content of `perfspec_prometheus.json` to your config repository and store it as `perfspec.json`.
+This will store t.
 Now, you have quality gates in place, which will check whether the average response time of the service is under 1&nbsp;second.
  </p>
 </details>
@@ -68,7 +69,8 @@ Please make sure you have followed the instructions for setting up [Dynatrace](.
 To set up the quality gates for the carts service, please navigate to the `examples/onboarding-carts` folder. This folder contains a file called `perfspec_dynatrace.json`. To set this file as a quality gate, upload it via the following command:
 
   ```console
-  keptn add-resource --project=sockshop --service=carts --stage=staging --resource=perfspec_dynatrace.json --resourceUri=perfspec.json
+  keptn add-resource --project=sockshop --service=carts --stage=staging --resource=service-indicators.yaml
+  keptn add-resource --project=sockshop --service=carts --stage=staging --resource=service-objectives-with-dynatrace.yaml --resourceUri=service-objectives.yaml
   ```
 
 This will upload the content of `perfspec_dynatrace.json` to your config repository and store it as `perfspec.json`.
