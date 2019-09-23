@@ -49,15 +49,19 @@ This performance specification is described by two files, namely the `service-in
 <p>
 Please make sure you have followed the instructions for setting up [Prometheus](../../monitoring/prometheus).
 
-To set up the quality gates for the carts service, please navigate to the `examples/onboarding-carts` folder. This folder contains the files `service-indicators.yaml`, `service-objectives.yaml`, and `remediation.yaml`. To set the quality gates based on those files, upload it via the following command:
+To set up the quality gates for the carts service, please navigate to the `examples/onboarding-carts` folder. This folder contains the files `service-indicators.yaml`, `service-objectives-prometheus-only.yaml`, and `remediation.yaml`. To set the quality gates based on those files, upload it via the following command:
 
   ```console
   keptn add-resource --project=sockshop --service=carts --stage=staging --resource=service-indicators.yaml
   keptn add-resource --project=sockshop --service=carts --stage=staging --resource=service-objectives-prometheus-only.yaml --resourceUri=service-objectives.yaml
   ```
 
-This will store t.
-Now, you have quality gates in place, which will check whether the average response time of the service is under 1&nbsp;second.
+Afterwards, execute the the following command to set up the rules for the Prometheus Alerting Manager based on those quality gates:
+
+```
+keptn configure-monitoring prometheus --project=sockshop --service=carts
+```
+
  </p>
 </details>
 
@@ -66,15 +70,13 @@ Now, you have quality gates in place, which will check whether the average respo
 <p>
 Please make sure you have followed the instructions for setting up [Dynatrace](../../monitoring/dynatrace).
 
-To set up the quality gates for the carts service, please navigate to the `examples/onboarding-carts` folder. This folder contains a file called `perfspec_dynatrace.json`. To set this file as a quality gate, upload it via the following command:
+To set up the quality gates for the carts service, please navigate to the `examples/onboarding-carts` folder. This folder contains the files `service-indicators.yaml`, `service-objectives-with-dynatrace.yaml`, and `remediation.yaml`. To set the quality gates based on those files, upload it via the following command:
 
   ```console
   keptn add-resource --project=sockshop --service=carts --stage=staging --resource=service-indicators.yaml
   keptn add-resource --project=sockshop --service=carts --stage=staging --resource=service-objectives-with-dynatrace.yaml --resourceUri=service-objectives.yaml
   ```
 
-This will upload the content of `perfspec_dynatrace.json` to your config repository and store it as `perfspec.json`.
-Now, you have quality gates in place, which will check whether the average response time of the service is under 1&nbsp;second.
 </p>
 </details>
 
