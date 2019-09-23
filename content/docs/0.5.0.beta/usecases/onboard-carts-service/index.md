@@ -93,7 +93,7 @@ After creating the project, you are ready to onboard the first services.
   keptn onboard service carts --project=sockshop --chart=carts-0.1.0.tgz
   ```
 
-* After onboarding the service, a couple of tests need to be added to its configuration for testig it in the different stages:
+* After onboarding the service, a couple of tests (functional checks as well as performanc tests) need to be added as the basis for the quality gates in the different stages:
 
   ```console
   keptn add-resource --project=sockshop --service=carts --stage=dev --resource=jmeter/basiccheck.jmx --resourceUri=jmeter/basiccheck.jmx
