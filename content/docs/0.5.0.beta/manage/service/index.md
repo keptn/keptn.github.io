@@ -19,7 +19,7 @@ In this deployment, the properties `spec.selector.matchLabels.app` and `spec.tem
 1. The Helm chart requires _at least one_ [service](https://kubernetes.io/docs/concepts/services-networking/service/).
 In each service, the property `spec.selector.app` has to be set.
 
-1. The Helm chart _has_ to contain a `values.yaml` file with at least the `image` and `replicas` parameters for the deployment (i.e., these parameters are used in the deployment). An example is shown below:
+1. The Helm chart _has_ to contain a `values.yaml` file with at least the `image` and `replicas` parameters for the deployment. These parameters are used in the deployment and Keptn references exactly their names. An example is shown below:
   
   ```yaml
   image: docker.io/keptnexamples/carts:0.9.1
