@@ -10,10 +10,8 @@ Learn how to manage your services in Keptn.
 
 ## Onboard your own service
 
-After creating a project, the Keptn CLI allows creating new Keptn-managed services (i.e. to "onboard" services into Keptn). 
-The onboarded services are organized in the before created project.
-For describing the Kubernetes resources, [Helm charts](https://Helm.sh/) are used.
-More precisely, the user has to provide a Helm chart package which has to fulfill the following requirements:
+After creating a project, the Keptn CLI allows creating new Keptn-managed services (i.e., to *onboard* services into Keptn). The onboarded services are organized in the before created project.
+For describing the Kubernetes resources, [Helm charts](https://Helm.sh/) are used. More precisely, the user has to provide a Helm chart package, which has to fulfill the following requirements:
 
 1. The Helm chart _has_ to contain exactly one [deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/).
 In this deployment, the properties `spec.selector.matchLabels.app` and `spec.template.metadata.labels.app` have to be set.
@@ -21,7 +19,7 @@ In this deployment, the properties `spec.selector.matchLabels.app` and `spec.tem
 1. The Helm chart requires _at least one_ [service](https://kubernetes.io/docs/concepts/services-networking/service/).
 In each service, the property `spec.selector.app` has to be set.
 
-1. The Helm chart _has_ to contain a `values.yaml` file with at least the `image` and `replicas` parameters for the deployment (i.e. these parameters are used in the deployment). An example is shown below:
+1. The Helm chart _has_ to contain a `values.yaml` file with at least the `image` and `replicas` parameters for the deployment (i.e., these parameters are used in the deployment). An example is shown below:
   
   ```yaml
   image: docker.io/keptnexamples/carts:0.9.1
@@ -52,10 +50,14 @@ In each service, the property `spec.selector.app` has to be set.
 <!-- Make sure that your actual service provides a `/health` endpoint at port `8080` since this is needed for the [liveness and readiness probe](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/) of Kubernetes. -->
 
 
-To onboard a service, use the command `onboard service` and provide the service name (e.g., `my-service`), project name (`--project` flag) and the Helm chart (`--chart` flag):
+To onboard a service, use the command `onboard service` and provide the service name (e.g., `my-service`), project name (`--project` flag), as well as the root direcotry of a Helm chart or the path to an already packed Helm chart (`--chart` flag). 
 
 ```console
-keptn onboard service my-service --project=your-project --chart=my-service.tgz
+keptn onboard service SERVICENAME --project=PROJECTNAME --chart=FILEPATH
+```
+
+```console
+keptn onboard service SERVICENAME --project=PROJECTNAME --chart=HELM_CHART.tgz
 ```
 
 **Note:** If you are using custom configurations and you would like to have the environment variables `KEPTN_PROJECT`, `KEPTN_STAGE`, and `KEPTN_SERVICE` within your service, add the following environment variables to your deployment configuration.
