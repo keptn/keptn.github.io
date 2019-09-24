@@ -82,7 +82,8 @@ A ServiceNow *Update Set* is provided to run this use case. To install the *Upda
 1. Look for *update set* in the left search box and navigate to **Update Sets to Commit** 
     {{< popup_image
     link="./assets/service-now-update-set-overview.png"
-    caption="ServiceNow Update Set">}}
+    caption="ServiceNow Update Set"
+    width="700px">}}
 
 1. Click on **Import Update Set from XML** 
 
@@ -91,17 +92,20 @@ A ServiceNow *Update Set* is provided to run this use case. To install the *Upda
 1. Open the *Update Set*
     {{< popup_image
     link="./assets/service-now-update-set-list.png"
-    caption="ServiceNow Update Sets List">}}
+    caption="ServiceNow Update Sets List"
+    width="700px">}}
 
 1. In the right upper corner, click on **Preview Update Set** and once previewed, click on **Commit Update Set** to apply it to your instance
     {{< popup_image
     link="./assets/service-now-update-set-commit.png"
-    caption="ServiceNow Update Set Commit">}}
+    caption="ServiceNow Update Set Commit"
+    width="700px">}}
 
 1. After importing, enter **keptn** as the search term into the upper left search box.
     {{< popup_image 
     link="./assets/service-now-keptn-creds.png"
-    caption="ServiceNow keptn credentials">}}
+    caption="ServiceNow keptn credentials"
+    width="700px">}}
 
 1. Click on **New** and enter your Dynatrace API token as well as your Dynatrace tenant.
 
@@ -111,11 +115,13 @@ A ServiceNow *Update Set* is provided to run this use case. To install the *Upda
     - Look for the workflow **keptn_demo_remediation** (it might as well be on the second or third page)
     {{< popup_image 
     link="./assets/service-now-workflow-list.png"
-    caption="ServiceNow Keptn workflow">}}
+    caption="ServiceNow Keptn workflow"
+    width="700px">}}
     - Open the workflow by clicking on it. It will look similar to the following image. By clicking on the workflow notes you can further investigate each step of the workflow.
     {{< popup_image 
     link="./assets/service-now-keptn-workflow.png"
-    caption="ServiceNow Keptn workflow">}}
+    caption="ServiceNow Keptn workflow"
+    width="700px">}}
 
 ## (optional): Verify Dynatrace problem notification
 
@@ -130,7 +136,7 @@ During the [setup of Dynatrace](../../monitoring/dynatrace) a problem notificati
     {{< popup_image
     link="./assets/dynatrace-problem-notification-integration.png"
     caption="Dynatrace Problem Notification Integration"
-    width="600px">}}
+    width="700px">}}
 
 ## Adjust anomaly detection in Dynatrace
 
@@ -243,7 +249,8 @@ The Dynatrace problem ticket notification is sent out to Keptn which puts it int
 In your ServiceNow instance, you can take a look at all incidents by typing in **incidents** in the top-left search box and click on **Service Desk** > **Incidents**. You should be able to see the newly created incident, click on it to view some details.
     {{< popup_image
         link="./assets/service-now-incident.png"
-        caption="ServiceNow incident">}}
+        caption="ServiceNow incident"
+        width="700px">}}
 
 After creation of the incident, a workflow is triggered in ServiceNow that has been setup during the import of the *Update Set* earlier. The workflow takes a look at the incident, resolves the URL that is stored in the *Remediation* tab in the incident detail screen. Along with that, a new custom configuration change is sent to Dynatrace. Besides, the ServiceNow service running in Keptn sends comments to the Dynatrace problem to be able to keep track of executed steps.
 
@@ -252,7 +259,8 @@ You can check both the new _custom configuration change_ on the service overview
 Once the problem is resolved, Dynatrace sends out another notification which again is handled by the ServiceNow service. Now the incidents gets resolved and another comment is sent to Dynatrace. The image shows the updated incident in ServiceNow. The comment can be found if you navigate to the closed problem ticket in Dynatrace. 
     {{< popup_image
         link="./assets/service-now-incident-resolved.png"
-        caption="Resolved ServiceNow incident">}}
+        caption="Resolved ServiceNow incident"
+        width="700px">}}
 
 ## Troubleshooting
 
@@ -266,9 +274,7 @@ To disable this feature:
     {{< popup_image
         link="./assets/service-now-systemlog.png"
         caption="ServiceNow System Log"
-        width="80%">}}
-
-
+        width="700px">}}
 
 - In case Dynatrace detected a problem before the [ServiceNow secret was created](#servicenow-secret) in your Kubernetes cluster, the remediation will not work. Resolution:
     1. [Create the secret](#servicenow-secret).
