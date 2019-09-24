@@ -39,7 +39,7 @@ Click here to learn more on the *service-indicator*, *service-objective*, and *r
 indicators:
 - metric: cpu_usage_sockshop_carts
   source: Prometheus
-  query: avg(rate(container_cpu_usage_seconds_total{namespace="sockshop-$ENVIRONMENT",pod_name=~"carts-primary-.*"}[$DURATION_MINUTES]))
+  query: avg(rate(container_cpu_usage_seconds_total{namespace="sockshop-$ENVIRONMENT",pod_name=~"carts-primary-.*"}[5m]))
 - metric: request_latency_seconds
   source: Prometheus
   query: rate(requests_latency_seconds_sum{job='carts-sockshop-$ENVIRONMENT'}[$DURATION_MINUTESm])/rate(requests_latency_seconds_count{job='carts-sockshop-$ENVIRONMENT'}[$DURATION_MINUTESm])
@@ -56,8 +56,8 @@ objectives:
   timeframe: 5m
   score: 50
 - metric: cpu_usage_sockshop_carts
-  threshold: 0.02
-  timeframe: 15m
+  threshold: 0.2
+  timeframe: 5m
   score: 50
 ```
 
@@ -133,7 +133,7 @@ In order to simulate user traffic that is causing an unhealthy behavior in the c
 
 1. Start the load generation script depending on your OS (replace \_OS\_ with linux, mac, or win):
     ```console
-    ./loadgenerator-_OS_ "http://carts.sockshop-production.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')"
+    ./loadgenerator-_OS_ "http://carts.sockshop-production.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')" cpu
     ```
 
 1. (optional:) Verify the load in Prometheus.
@@ -148,7 +148,7 @@ In order to simulate user traffic that is causing an unhealthy behavior in the c
     - In the graph tab,add the expression 
 
     ```console
-    avg(rate(container_cpu_usage_seconds_total{namespace="sockshop-production",pod_name=~"carts-primary-.*"}[15m]))
+    avg(rate(container_cpu_usage_seconds_total{namespace="sockshop-production",pod_name=~"carts-primary-.*"}[5m]))
     ```
     
     - Select the graph tab to see your CPU metrics of the `carts-primary` pods in the `sockshop-production` environment.
