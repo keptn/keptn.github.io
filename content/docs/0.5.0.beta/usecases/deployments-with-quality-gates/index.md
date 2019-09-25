@@ -59,7 +59,7 @@ To set up the quality gates for the carts service, please navigate to the `examp
 Afterwards, execute the the following command to set up the rules for the Prometheus Alerting Manager based on those quality gates:
 
 ```
-keptn configure-monitoring prometheus --project=sockshop --service=carts
+keptn configure monitoring prometheus --project=sockshop --service=carts
 ```
 
  </p>
