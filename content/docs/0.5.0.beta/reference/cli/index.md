@@ -1,6 +1,6 @@
 ---
 title: Keptn CLI
-description: The following description explains how to connect the Keptn CLI to your Keptn cluster and which commands are available.
+description: The following description explains how to connect the Keptn CLI to a Keptn cluster and which commands are available.
 weight: 10
 keywords: [cli, setup]
 ---
@@ -23,7 +23,7 @@ Every release of Keptn provides binaries for the Keptn CLI. These binaries are a
 
   - Windows
 
-    move/copy the executable to the desired folder and, optionally, add the executable to your PATH environment variable for a more convenient experience.
+    move/copy the executable to the desired folder and, optionally, add the executable to the PATH environment variable for a more convenient experience.
 
 4. Now, the Keptn CLI help can be shown by: 
     ```console
@@ -74,7 +74,7 @@ a Google Kubernetes Engine (GKE), and on OpenShift. Further details are provided
 
 ### keptn configure domain
 
-The Keptn CLI allows to configure a custom domain. This is mandatory if you cannot use xip.io (e.g., because you are running in AWS that will create ELBs for you).
+The Keptn CLI allows to configure a custom domain. This is mandatory if *xip.io* cannot be used (e.g., when running Keptn on EKS, AWS will create an ELB).
 
 **Note:** This command requires a *kubernetes current context* pointing to the cluster where you would like to configure your domain. After installing Keptn this is guaranteed.
 
@@ -118,7 +118,7 @@ Please expand the corresponding section matching your CLI tool.
 
 For the Windows PowerShell, a small script is provided that installs the `PSYaml` module and sets the environment variables. Please note that the PowerShell might have to be started with **Run as Administrator** privileges to install the module.
 
-1. Copy the following snippet and paste it in your PowerShell. The snippet will be automatically executed line by line.
+1. Copy the following snippet and paste it in the PowerShell. The snippet will be automatically executed line by line.
 
     ```
     $tokenEncoded = $(kubectl get secret keptn-api-token -n keptn -ojsonpath='{.data.keptn-api-token}')
@@ -126,7 +126,7 @@ For the Windows PowerShell, a small script is provided that installs the `PSYaml
     $Env:KEPTN_ENDPOINT = 'https://api.keptn.'+$(kubectl get cm -n keptn keptn-domain -ojsonpath='{.data.app_domain}')
     ```
 
-1. Now that everything we need is stored in environment variables, we can proceed with authorizing the Keptn CLI. To authenticate against the Keptn cluster use command auth and your endpoint and API token:
+1. Now that everything we need is stored in environment variables, we can proceed with authorizing the Keptn CLI. To authenticate against the Keptn cluster, use the `auth` command with the Keptn endpoint and API token:
 
     ```
     keptn.exe auth --endpoint=$Env:KEPTN_ENDPOINT --api-token=$Env:KEPTN_API_TOKEN
@@ -161,7 +161,7 @@ In the Windows Command Line, a couple of steps are necessary.
 1. Open the newly created file `keptn-api-token.txt`, copy the value and paste it into the next command
 
     ```
-    set KEPTN_API_TOKEN=value-of-your-token
+    set KEPTN_API_TOKEN=keptn-api-token
     ```
 
 1. Get the Keptn cluster endpoint 
@@ -182,10 +182,10 @@ In the Windows Command Line, a couple of steps are necessary.
 
 1. Now that everything we need is stored in environment variables, we can proceed with authorizing the Keptn CLI.
 
-    To authenticate against the Keptn cluster use command `auth` and your endpoint and API token:
+    To authenticate against the Keptn cluster, use the `auth` command with the Keptn endpoint and API token:
 
     ```
-    keptn.exe auth --endpoint=%KEPTN_ENDPOINT% --api-token=%KEPTN_API_TOKEN%
+    keptn.exe auth --endpoint=KEPTN_ENDPOINT --api-token=KEPTN_API_TOKEN
     ```
 
 </p>
@@ -219,7 +219,7 @@ To onboard a service, use the command `onboard service` and provide the service 
 keptn onboard service SERVICENAME --project=PROJECTNAME --chart=FILEPATH
 ```
 
-If you have already an archived Helm chart, the archive with ending `.tgz` can be referenced. In this case, the Helm chart will be stored unpacked. 
+If an archived Helm chart is already available, the archive with ending `.tgz` can be referenced. In this case, the Helm chart will be stored unpacked. 
 
 ```console
 keptn onboard service SERVICENAME --project=PROJECTNAME --chart=HELM_CHART.tgz
@@ -229,10 +229,10 @@ To learn more about onboarding a service, please see the [onboarding a service](
 
 ### keptn add-resource
 
-To add a resource to the configuration store (i.e., Git repository) of a service, the `add-resource` command is provided. This command takes a local resource (`--resource`) and stores it for further use in Keptn. Thus, this command allows you to add, for example, *test files* to your service, which will then be executed by a test-service (e.g., jmeter-service) during the continuous delivery.  
+To add a resource to the configuration store (i.e., Git repository) of a service, the `add-resource` command is provided. This command takes a local resource (`--resource`) and stores it for further use in Keptn. Thus, this command allows adding, for example, *test files* to a service, which will then be executed by a test-service (e.g., jmeter-service) during the continuous delivery.  
 
 ```console
-keptn add-resource --project=my-project --service=my-service --stage=dev --resource=jmeter/basiccheck.jmx
+keptn add-resource --project=PROJECTNAME --stage=STAGE --service=SERVICENAME --resource=jmeter/basiccheck.jmx
 ```
 
 ### keptn configure monitoring
@@ -240,7 +240,7 @@ keptn add-resource --project=my-project --service=my-service --stage=dev --resou
 To configure a monitoring solution for a Keptn cluster, the `configure monitoring` command is provided. This command sets up monotoring in case it is not installed yet. Afterwards, the command configures the monitoring solution for a service based on the provided service indicators (`--service-indicators`), and service objectives (`--service-objectives`). The currently supported monitoring solution is *Prometheus*, as shown below:
 
 ```console
-keptn configure monitoring prometheus --project=my-project --service=my-service --service-indicators=service-indicators.yaml --service-objectives=service-objectives.yaml --remediation=remediation.yaml
+keptn configure monitoring prometheus --project=PROJECTNAME --service=SERVICENAME --service-indicators=service-indicators.yaml --service-objectives=service-objectives.yaml --remediation=remediation.yaml
 ```
 
 ### keptn send event new-artifact
@@ -251,14 +251,14 @@ To push a new artifact, use the command `send event new-artifact`, which sends a
 Therefore, this command takes the project (`--project`), the service (`--service`), as well as the image (`--image`) and tag (`--tag`) of the new artifact.
 
 ```console
-keptn send event new-artifact --project=your_project --service=your_service --image=docker.io/keptnexamples/carts --tag=0.9.1
+keptn send event new-artifact --project=PROJECTNAME --service=SERVICENAME --image=docker.io/keptnexamples/carts --tag=0.9.1
 ```
 
 ### keptn send event
 
 To send an arbitrary Keptn event the `send event` command is provided. An event has to follow the [Cloud Events](https://cloudevents.io/) specification in version 0.2 and has to be written in JSON. Then the event can be passed in by referencing the JSON file (`--file`). Additionally, this command offers the `--stream-websocket` flag to open a web socket communication to Keptn. Consequently, messages from the receiving Keptn service, which processes the event, are sent to the CLI via websocket.
 
-**Note:** This command is not required for any use case and requires precise Keptn event definitions as you can find [here](https://github.com/keptn/keptn/blob/develop/specification/cloudevents.md).
+**Note:** This command is not required for any use case and requires precise Keptn event definitions as defined find [here](https://github.com/keptn/keptn/blob/develop/specification/cloudevents.md).
 
 ```console
 keptn send event --file=FILEPATH --stream-websocket
@@ -274,7 +274,15 @@ keptn version
 
 ### keptn uninstall
 
-To uninstall Keptn from a cluster, the `uninstall` command is provided. This command does not delete, e.g., Istio, Tiller, Dynatrace, or onboarded services.
+To uninstall Keptn from a cluster, the `uninstall` command is provided. 
+
+This command does *not* delete: 
+* Istio
+* Tiller 
+* Dynatrace monitoring
+* Prometheus monitoring
+
+Besides, onboarded services also remain on the Git upstream (i.e., GitHub, GitLab, or Bitbucket).
 
 **Note:** This command requires a *kubernetes current context* pointing to the cluster where Keptn should get uninstalled.
 
