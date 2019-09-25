@@ -352,6 +352,7 @@ keptn configure domain YOUR_DOMAIN
 ## Uninstall
 
 - In order to uninstall Keptn from your cluster, run the uninstall command using the Keptn CLI:
+
     ``` console
     keptn uninstall
     ``` 
