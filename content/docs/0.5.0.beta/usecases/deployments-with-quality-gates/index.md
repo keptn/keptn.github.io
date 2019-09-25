@@ -52,7 +52,7 @@ Please make sure you have followed the instructions for setting up [Prometheus](
 To set up the quality gates for the carts service, please navigate to the `examples/onboarding-carts` folder. This folder contains the files `service-indicators.yaml`, `service-objectives-prometheus-only.yaml`, and `remediation.yaml`. To set the quality gates based on those files, upload it via the following command:
 
   ```console
-  keptn add-resource --project=sockshop --service=carts --stage=staging --resource=service-indicators.yaml
+  keptn add-resource --project=sockshop --service=carts --stage=staging --resource=service-indicators.yaml --resourceUri=service-indicators.yaml
   keptn add-resource --project=sockshop --service=carts --stage=staging --resource=service-objectives-prometheus-only.yaml --resourceUri=service-objectives.yaml
   ```
 
@@ -73,7 +73,7 @@ Please make sure you have followed the instructions for setting up [Dynatrace](.
 To set up the quality gates for the carts service, please navigate to the `examples/onboarding-carts` folder. This folder contains the files `service-indicators.yaml`, `service-objectives-with-dynatrace.yaml`, and `remediation.yaml`. To set the quality gates based on those files, upload it via the following command:
 
   ```console
-  keptn add-resource --project=sockshop --service=carts --stage=staging --resource=service-indicators.yaml
+  keptn add-resource --project=sockshop --service=carts --stage=staging --resource=service-indicators.yaml --resourceUri=service-indicators.yaml
   keptn add-resource --project=sockshop --service=carts --stage=staging --resource=service-objectives-with-dynatrace.yaml --resourceUri=service-objectives.yaml
   ```
 
