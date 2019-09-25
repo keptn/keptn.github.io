@@ -21,7 +21,7 @@ Keptn will manage a project in an internal Git repository. To upstream this repo
 1. Create a [personal access token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line) for your user with *repo* scope:
 
     {{< popup_image 
-    link="./assets/github-access-token.png" 
+    link="./assets/github_access_token.png" 
     caption="GitHub access token" 
     width="600px">}} 
 
@@ -32,7 +32,7 @@ Keptn will manage a project in an internal Git repository. To upstream this repo
     **Note:** Click the **Initialize this repository with a README** checkbox to initialize the repository, which is a prerequisite.
 
     {{< popup_image 
-    link="./assets/git_create_repo.png" 
+    link="./assets/github_create_repo.png" 
     caption="GitHub create repository" 
     width="600px">}}  
 
