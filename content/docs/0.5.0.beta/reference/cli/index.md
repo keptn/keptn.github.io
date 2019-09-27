@@ -211,6 +211,16 @@ In the Windows Command Line, a couple of steps are necessary.
     keptn create project PROJECTNAME --shipyard=FILEPATH --git-user=GIT_USER --git-token=GIT_TOKEN --git-remote-url=GIT_REMOTE_URL
     ```
 
+### keptn delete project
+
+To delete a project, use the command `delete project` and specify the project name.
+
+    ```console
+    keptn delete project PROJECTNAME
+    ```
+
+**Note:** If a Git upstream is configured for this project, the referenced repository or project will not be deleted. Besides, deployed services are also not deleted by this command. 
+
 ### keptn onboard service
 
 To onboard a service, use the command `onboard service` and provide the service name, project name (`--project` flag), and the root directory of a Helm chart (`--chart` flag). 
