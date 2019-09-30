@@ -121,23 +121,21 @@ stages:
 
 ## Delete a project
 
-Currently, the Keptn CLI does not support the deletion of a project. However, a project can be deleted manually by following the next steps:
-
-- Delete the remote repository for your project.
-
-- Delete all namespaces that have been created by Keptn in your Kubernetes cluster, e.g.,
-  - sockshop-dev
-  - sockshop-staging
-  - sockshop-production
-
-  by executing:
-
+To delete a Keptn projet, the `delete project` command is provided:
   ```console
-  kubectl delete namespace sockshop-dev sockshop-staging sockshop-production
+  keptn delete project PROJECTNAME
   ```
 
-- In addition, the Helm releases have to be deleted:
+**Note:** If a Git upstream is configured for this project, the referenced repository or project will not be deleted. Besides, deployed services are also not deleted by this command. 
+To clean-up all resources created by Keptn: 
 
+- delete the remote repository for your project
+
+- delete the Helm releases that have been deployed by Keptn, e.g.:
+
+  ```console
+  helm ls
+  ```
   ```console
   helm delete --purge sockshop-dev
   ```
@@ -148,6 +146,17 @@ Currently, the Keptn CLI does not support the deletion of a project. However, a 
   helm delete --purge sockshop-staging
   ```
 
+- delete all Kubernetes namespaces that have been created by Keptn in your cluster, e.g.:
+  - sockshop-dev
+  - sockshop-staging
+  - sockshop-production
+
+  by executing:
+
+  ```console
+  kubectl delete namespace sockshop-dev sockshop-staging sockshop-production
+  ```
+
 ## Update a project
 
-Updating a project is currently only supported by following the steps of [deleting](#delete-a-project) a project and [creating](#create-a-project) the project with updated settings again.
+Updating a project is currently supported by following the steps of [deleting](#delete-a-project) a project and [creating](#create-a-project) the project with updated settings again.
