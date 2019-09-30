@@ -12,6 +12,8 @@ This use case shows how to onboard the carts service including its database. Bes
 
 The goal of this use case is to automatically deploy a service into a multi-stage environment using Keptn. The stages of the environment are described in a *shipyard* file that defines the name, deployment strategy, and test strategy of each stage. In case an additional stage is needed, the shipyard file can be easily extended by a stage definition before creating the project. After creating the project, the service that is going to be managed by Keptn needs to be onboarded. Therefore, Keptn provides the functionality to create the deployment and service definition of the onboarded service for each stage. Finally, an artifact of the carts service will be deployed by Keptn.  
 
+<details><summary>Click here to learn about Keptn internal services</summary>
+<p>
 To illustrate the scenario this use case addresses, Keptn relies on the following services: *shipyard-service*, *helm-service*, *jmeter-service*, and *gatekeeper-service*. These services have the following responsibilities: 
 
 **shipyard-service:** 
@@ -33,6 +35,9 @@ To illustrate the scenario this use case addresses, Keptn relies on the followin
 **gatekeeper-service**:
 
   * Evaluates the test result to decide whether the deployment can be promoted to the next stage or not.
+
+ </p>
+</details>
 
 ## Prerequisites
 <!--
@@ -129,11 +134,11 @@ After creating the project, you are ready to onboard the first services.
 
 Since the carts service requires a mongodb database, a second service needs to be onboarded.
 
-* Onboard the `carts-db` service using the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command. The `--direct` flag tells keptn that for this service a direct deployment stratgy in all stages should be used regardless of the deployment strategy specified in the shipyard. Thus, the database is not blue/green deployed.
+* Onboard the `carts-db` service using the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command. The `--deployment-strategy` flag specifies that for this service a *direct* deployment stratgy in all stages should be used regardless of the deployment strategy specified in the shipyard. Thus, the database is not blue/green deployed.
 
 
   ```console
-  keptn onboard service carts-db --project=sockshop --chart=./carts-db --direct
+  keptn onboard service carts-db --project=sockshop --chart=./carts-db --deployment-strategy=direct
   ```
 
 <!--
