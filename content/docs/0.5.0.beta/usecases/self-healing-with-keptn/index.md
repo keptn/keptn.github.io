@@ -23,55 +23,9 @@ In this use case you will learn how to use the capabilities of Keptn to provide 
 
 ## Configure monitoring
 
-Monitoring has to be set up to inform Keptn about any issues in a production system. The Keptn CLI helps with automated setup and configuration of Prometheus as the monitoring solution running in the Kubernetes cluster.
+To inform Keptn about any issues in a production environment, monitoring has to be set up. The Keptn CLI helps with automated setup and configuration of Prometheus as the monitoring solution running in the Kubernetes cluster. 
 
-For the configuration, Keptn relies on different specification files that define service level indicators (SLI), service level objectives (SLO), as well as remediation actions for self-healing if service level objectives are not met. 
-
-<details>
-<summary>
-Click here to learn more on the *service-indicator*, *service-objective*, and *remediation* files.
-</summary>
-<p>
-
-**SLI: service-indicators.yaml**: This file holds the indicators that can be used to define objectives on. These indicators are metrics gathered from different sources, e.g., Prometheus, and define the query how to obtain the metrics. This indicators can be reused to define service objectives.
-
-```yaml
-indicators:
-- metric: cpu_usage_sockshop_carts
-  source: Prometheus
-  query: avg(rate(container_cpu_usage_seconds_total{namespace="sockshop-$ENVIRONMENT",pod_name=~"carts-primary-.*"}[5m]))
-- metric: request_latency_seconds
-  source: Prometheus
-  query: rate(requests_latency_seconds_sum{job='carts-sockshop-$ENVIRONMENT'}[$DURATION_MINUTESm])/rate(requests_latency_seconds_count{job='carts-sockshop-$ENVIRONMENT'}[$DURATION_MINUTESm])
-```
-
-**SLO: service-objectives.yaml**: This file defines the service level objectives for one or more services. In this case, the CPU saturation metric of the carts service (defined in the service-indicators.yaml file) is reused and augmented with a threshold and a timeframe. The timeframe indicates the duration in which the metrics is evaluated. 
-
-```yaml
-pass: 90
-warning: 75
-objectives:
-- metric: request_latency_seconds
-  threshold: 0.8
-  timeframe: 5m
-  score: 50
-- metric: cpu_usage_sockshop_carts
-  threshold: 0.2
-  timeframe: 5m
-  score: 50
-```
-
-**remediation.yaml**: This file defines remediation actions to execute in response to a problem related to the defined problem pattern / service objective. 
-
-```yaml
-remediations:
-- name: cpu_usage_sockshop_carts
-  actions:
-  - action: scaling
-    value: +1
-```
-</p>
-</details>
+For the configuration, Keptn relies on different specification files that define *service level indicators* (SLI), *service level objectives* (SLO), and *remediation actions* for self-healing if service level objectives are not achieved. To learn more about the *service-indicator*, *service-objective*, and *remediation* file, click here [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/keptn/blob/master/specification/sre.md).
 
 In order to add these files to Keptn and to automatically configure Prometheus, execute the following commands:
 
@@ -118,8 +72,8 @@ kubectl get pods -n sockshop-production
 
 ```console
 NAME                              READY   STATUS    RESTARTS   AGE
-carts-db-57cd95557b-r6cg8        1/1     Running   0          18m
-carts-primary-7c96d87df9-75pg7   1/1     Running   0          13m
+carts-db-57cd95557b-r6cg8         1/1     Running   0          18m
+carts-primary-7c96d87df9-75pg7    1/1     Running   0          13m
 ```
 
 ### Generate load for the service
@@ -185,9 +139,9 @@ In this use case, the number of pods will be increased to remediate the issue of
 
     ```console
     NAME             DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-    carts           0         0         0            0           34m
-    carts-db        1         1         1            1           37m
-    carts-primary   2         2         2            2           32m
+    carts            0         0         0            0           34m
+    carts-db         1         1         1            1           37m
+    carts-primary    2         2         2            2           32m
     ```
 
 1. Also you should see an additional pod running when you execute:
@@ -197,8 +151,8 @@ In this use case, the number of pods will be increased to remediate the issue of
 
     ```console
     NAME                              READY   STATUS    RESTARTS   AGE
-    carts-db-57cd95557b-r6cg8        1/1     Running   0          38m
-    carts-primary-7c96d87df9-75pg7   2/2     Running   0          33m
+    carts-db-57cd95557b-r6cg8         1/1     Running   0          38m
+    carts-primary-7c96d87df9-75pg7    2/2     Running   0          33m
     ```
 
 1. Furthermore, you can use Prometheus to double-check the CPU usage:
