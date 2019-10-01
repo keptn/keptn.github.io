@@ -12,7 +12,6 @@ menu: main
 * [Preparing Azure Kubernetes Engine (AKS)](/docs/quickstart/setup_platform/setup_aks)
 * [Preparing Amazon Elastic Kubernetes Service (EKS)](/docs/quickstart/setup_platform/setup_eks)
 * [Preparing Google Kubernetes Engine (GKE)](/docs/quickstart/setup_platform/setup_gke)
-* [Preparing Azure Kubernetes Engine (AKS)](/docs/quickstart/setup_platform/setup_aks)
 * [Preparing OpenShift](/docs/quickstart/setup_platform/setup_openshift)
 
 ### 2. Install keptn
