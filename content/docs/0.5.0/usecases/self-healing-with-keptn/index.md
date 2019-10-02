@@ -55,7 +55,7 @@ Executing this command will perform the following tasks:
 
 In order to test the self-healing capabilities, deploy an unhealthy version of our carts microservice. This version has some issues that are not detected by the automated quality gates since the tests generate artificial traffic while in production real user traffic might reveal untested parts of the microservice that have issues.
 
-Therefore, please make sure that you have completed the [onboard carts](../onboard-carts-service/) or the [deployment with quality gates](../deployments-with-quality-gates/) use case. 
+Therefore, please make sure that you have completed the [onboard carts](../onboard-carts-service/) or the [deployment with quality gates](../deployments-with-quality-gates/) use case (i.e. all version show contain issues that are not detected by the quality gates).
 
 <!--
 Send a new version of the artifact to Keptn:
@@ -99,7 +99,7 @@ In order to simulate user traffic that is causing an unhealthy behavior in the c
     
     - Access the Prometheus from your browser on http://localhost:8080.
 
-    - In the graph tab,add the expression 
+    - In the graph tab, add the expression 
 
     ```console
     avg(rate(container_cpu_usage_seconds_total{namespace="sockshop-production",pod_name=~"carts-primary-.*"}[5m]))
@@ -139,7 +139,6 @@ In this use case, the number of pods will be increased to remediate the issue of
 
     ```console
     NAME             DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-    carts            0         0         0            0           34m
     carts-db         1         1         1            1           37m
     carts-primary    2         2         2            2           32m
     ```
@@ -164,16 +163,16 @@ In this use case, the number of pods will be increased to remediate the issue of
 
 1. Finally, to get an overview of the actions that got triggered by the Prometheus alert, you can use the bridge. You can access it by a port-forward from your local machine to the Kubernetes cluster:
 
-  ```console 
-  kubectl port-forward svc/bridge -n keptn 9000:8080
-  ```
+    ```console 
+    kubectl port-forward svc/bridge -n keptn 9000:8080
+    ```
 
-Now access the bridge from your browser on http://localhost:9000. 
+    Now access the bridge from your browser on http://localhost:9000. 
 
-The Keptn's bridge shows all deployments that have been triggered. On the left-hand side you can see the deployment start events, such as the one that is selected. Over time, more and more events will show up in Keptn's bridge to allow you to check what is going on in your Keptn installation. Please note that if events happen at the same time, their order in the Keptn's bridge might be arbitrary since they are only sorted on the granularity of one second. 
+    The Keptn's bridge shows all deployments that have been triggered. On the left-hand side you can see the deployment start events, such as the one that is selected. Over time, more and more events will show up in Keptn's bridge to allow you to check what is going on in your Keptn installation. Please note that if events happen at the same time, their order in the Keptn's bridge might be arbitrary since they are only sorted on the granularity of one second. 
 
-{{< popup_image
-  link="./assets/bridge_remediation.png"
-  caption="Keptn's bridge">}}
+    {{< popup_image
+    link="./assets/bridge_remediation.png"
+    caption="Keptn's bridge">}}
 
-In this example, the bridge tells us that the remediation service triggered an update of the configuration of the carts service by increasing the number of replicas to 2. When the additional replica was available, the wait-service waited for some time (three minutes) for the remediation action to take effect. Afterwards, an evaluation by the pitometer-service was triggered to check if the remediation action resolved the problem. In this case, increasing the number of replicas achieved the desired effect, since the evaluation of the service level objectives has been successful.
+    In this example, the bridge tells us that the remediation service triggered an update of the configuration of the carts service by increasing the number of replicas to 2. When the additional replica was available, the wait-service waited for some time (three minutes) for the remediation action to take effect. Afterwards, an evaluation by the pitometer-service was triggered to check if the remediation action resolved the problem. In this case, increasing the number of replicas achieved the desired effect, since the evaluation of the service level objectives has been successful.
