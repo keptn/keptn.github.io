@@ -199,7 +199,7 @@ Every release of Keptn provides binaries for the Keptn CLI. These binaries are a
 
 ## Install Keptn
 
-To install the latest release of Keptn on a Kuberntes cluster, execute the command `keptn install` and provide the requested information. Since v0.3 of Keptn, the install command accepts a parameter to select the platform you would like to install Keptn on. Currently supported platforms are: Azure Kubernetes Services (AKS), Amazon Elastic Container Service (EKS), Google Kubernetes Engine (GKE), and OpenShift. Depending on the target platform, execute the following command to start the installation:
+To install the latest release of Keptn on a Kuberntes cluster, execute the [keptn install](../../reference/cli/#keptn-install) command and provide the requested information. Since v0.3 of Keptn, the install command accepts a parameter to select the platform you would like to install Keptn on. Currently supported platforms are: Azure Kubernetes Services (AKS), Amazon Elastic Container Service (EKS), Google Kubernetes Engine (GKE), and OpenShift. Depending on the target platform, execute the following command to start the installation:
 
 - For **AKS**:
 
