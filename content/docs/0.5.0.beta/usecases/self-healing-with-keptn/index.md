@@ -161,3 +161,19 @@ In this use case, the number of pods will be increased to remediate the issue of
         link="./assets/prometheus-load-reduced.png"
         caption="Prometheus load"
         width="700px">}}
+
+1. Finally, to get an overview of the actions that got triggered by the Prometheus alert, you can use the bridge. You can access it by a port-forward from your local machine to the Kubernetes cluster:
+
+  ```console 
+  kubectl port-forward svc/bridge -n keptn 9000:8080
+  ```
+
+Now access the bridge from your browser on http://localhost:9000. 
+
+The Keptn's bridge shows all deployments that have been triggered. On the left-hand side you can see the deployment start events, such as the one that is selected. Over time, more and more events will show up in Keptn's bridge to allow you to check what is going on in your Keptn installation. Please note that if events happen at the same time, their order in the Keptn's bridge might be arbitrary since they are only sorted on the granularity of one second. 
+
+{{< popup_image
+  link="./assets/bridge_remediation.png"
+  caption="Keptn's bridge">}}
+
+In this example, the bridge tells us that the remediation service triggered an update of the configuration of the carts service by increasing the number of replicas to 2. When the additional replica was available, the wait-service waited for some time (three minutes) for the remediation action to take effect. Afterwards, an evaluation by the pitometer-service was triggered to check if the remediation action resolved the problem. In this case, increasing the number of replicas achieved the desired effect, since the evaluation of the service level objectives has been successful.
