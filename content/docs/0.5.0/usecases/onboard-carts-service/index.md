@@ -154,8 +154,7 @@ in the deployment.
   keptn send event new-artifact --project=sockshop --service=carts-db --image=mongo
   ```
 
-* Send a new artifact event for the carts service using the  command.
-The used artifact is stored on Docker Hub.
+* Send a new artifact event for the carts service. The used artifact is stored on Docker Hub.
 
   ```console
   keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.9.1
@@ -169,9 +168,7 @@ The used artifact is stored on Docker Hub.
 
 * Now access the bridge from your browser on http://localhost:9000. 
 
-    The Keptn's bridge shows all deployments that have been triggered. On the left-hand side you can see the deployment start events, such as the one that is selected. Over time, more and more events will show up in Keptn's bridge to allow you to check what is going on in your Keptn installation. Please note that if events happen at the same time, their order in the Keptn's bridge might be arbitrary since they are only sorted on the granularity of one second. 
-
-    **Note**  Keptn's bridge is available via GCP cloud shell. Click the **Web Preview** button, change the port to `9000` and view.
+    The Keptn's bridge shows all deployments that have been triggered. On the left-hand side you can see the deployment start events (i.e. so-called `Configuration change` events). During a deployment, Keptn generates events for controlling the deployment process. These events will also show up in Keptn's bridge. Please note that if events are sent at the same time, their order in the Keptn's bridge might be arbitrary since they are sorted on the granularity of one second. 
 
     {{< popup_image
       link="./assets/bridge.png"
