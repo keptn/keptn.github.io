@@ -155,7 +155,6 @@ Here, you see that the version of the carts service has not changed.
 
     ```console
     NAME            DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-    carts           0         0         0            0           99m
     carts-db        1         1         1            1           63m
     carts-primary   1         1         1            1           98m
     ```
