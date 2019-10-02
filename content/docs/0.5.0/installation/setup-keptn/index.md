@@ -173,7 +173,7 @@ Select one of the following options:
 ## Install Keptn CLI
 Every release of Keptn provides binaries for the Keptn CLI. These binaries are available for Linux, macOS, and Windows.
 
-- Download the version for your operating system from https://github.com/keptn/keptn/releases/tag/0.5.0.beta
+- Download the version for your operating system from https://github.com/keptn/keptn/releases/tag/0.5.0
 - Unpack the download
 - Find the `keptn` binary in the unpacked directory.
   - Linux / macOS
@@ -199,9 +199,8 @@ Every release of Keptn provides binaries for the Keptn CLI. These binaries are a
 
 ## Install Keptn
 
-- Execute the CLI command `keptn install --keptn-version=release-0.5.0.beta` and provide the requested information. This command will install Keptn in the version of the latest release. Since v0.3 of Keptn, the install command accepts a parameter to select the platform you would like to install Keptn on. <!--Currently supported platforms are Google Kubernetes Engine (GKE), OpenShift and Azure Kubernetes Services (AKS). Depending on your platform, enter the following command to start the installation:-->
+To install the latest release of Keptn on a Kuberntes cluster, execute the command `keptn install` and provide the requested information. Since v0.3 of Keptn, the install command accepts a parameter to select the platform you would like to install Keptn on. Currently supported platforms are: Azure Kubernetes Services (AKS), Amazon Elastic Container Service (EKS), Google Kubernetes Engine (GKE), and OpenShift. Depending on the target platform, execute the following command to start the installation:
 
-<!--
 - For **AKS**:
 
     ```console
@@ -213,47 +212,43 @@ Every release of Keptn provides binaries for the Keptn CLI. These binaries are a
     ```console
     keptn install --platform=eks
     ```
--->
+
 - For **GKE**:
 
     ```console
-    keptn install --platform=gke --keptn-version=release-0.5.0.beta
+    keptn install --platform=gke
     ```
 
-<!--
-  - For **OpenShift**:
+- For **OpenShift**:
 
     ```console
     keptn install --platform=openshift
     ```
--->
 
-In your cluster, this command installs the complete infrastructure necessary to run Keptn. 
+In the Kubernetes cluster, this command installs the complete infrastructure necessary to run Keptn. 
     <details><summary>This includes:</summary>
         <ul>
         <li>Istio</li>
-        <li>A mongoDb database for the Keptn's log</li>
-        <li>A NATS cluster</li>
+        <li>mongoDb database for the Keptn's log</li>
+        <li>NATS cluster</li>
         <li>The Keptn core services:</li>
             <ul>
                 <li>api</li>
                 <li>bridge</li>
                 <li>configuration-service</li>
                 <li>distributors</li>
-                <li>eventbroker</li>
-                <li>eventbroker</li>
-                <li>gatekeeper service</li>
+                <li>event-broker</li>
+                <li>gatekeeper-service</li>
+                <li>helm-service</li>
+                <li>jmeter-service</li>
                 <li>mongodb-datastore</li>
+                <li>pitometer-service</li>
                 <li>remediation-service</li>
                 <li>shipyard-service</li>
                 <li>wait-service</li>
             </ul>
         <li>The services are required to deploy artifacts and to demonstrate the self-healing use cases:</li>
             <ul>
-                <li>helm-service</li>
-                <li>jmeter-service</li>
-                <li>gatekeeper-service</li>
-                <li>pitometer-service</li>
                 <li>prometheus-service</li>
                 <li>servicenow-service</li>
                 <li>openshift-route-service (OpenShift only)</li>
@@ -261,15 +256,16 @@ In your cluster, this command installs the complete infrastructure necessary to 
         </ul>
     </details>
     
-<!--
+
 ## Configure a custom domain (required for EKS)
-  
-In case you have a custom domain or cannot use xip.io (e.g., because you are running in AWS which will create ELBs for you), there is a 
-CLI command provided to configure Keptn to use your custom domain:
+
+In case you have a custom domain or cannot use *xip.io* (e.g., when running Keptn on EKS, AWS will create an ELB), there is a 
+CLI command to configure Keptn for your custom domain:
+
 ```console
 keptn configure domain YOUR_DOMAIN
 ```
--->
+
 ## Verifying the installation
 
 - To verify your Keptn installation, retrieve the pods running in the `keptn` namespace.
