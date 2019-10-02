@@ -16,10 +16,10 @@ In this use case you will learn how to use the capabilities of Keptn to provide 
 - Clone the example repository, which contains specification files:
 
     ```console
-    git clone --branch 0.5.0.beta https://github.com/keptn/examples.git --single-branch
+    git clone --branch 0.5.0 https://github.com/keptn/examples.git --single-branch
     ```
 
-- Finish the [onboarding a service](../onboard-carts-service/) use case.
+- Finish the [Onboarding a Service](../onboard-carts-service/) use case.
 
 ## Configure monitoring
 

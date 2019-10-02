@@ -10,7 +10,7 @@ This use case gives an overview of deployments using quality gates and blue/gree
 
 ## About this use case
 
-When developing an application, sooner or later you need to update a service in a `production` environment. To conduct this in a controlled manner and without impacting end-user experience, the quality of the new service has to be ensured and adequate deployment strategies must be in place. For example, blue-green deployments are well-known strategies to roll out a new service version by also keeping the previous service version available if something goes wrong.
+When developing an application, sooner or later you need to update a service in a *production* environment. To conduct this in a controlled manner and without impacting end-user experience, the quality of the new service has to be ensured and adequate deployment strategies must be in place. For example, blue-green deployments are well-known strategies to roll out a new service version by also keeping the previous service version available if something goes wrong.
 
 For this use case, we prepared a *slow* and a *regular* version of the carts service:
 
@@ -21,7 +21,7 @@ For this use case, we prepared a *slow* and a *regular* version of the carts ser
 
 In this use case, we will try to deploy these two versions.
 During this deployment process, the versions have to pass a quality gate
-in the `staging` environment in order to get promoted to the `production` environment.
+in the *staging* environment in order to get promoted to the *production* environment.
 This quality gate checks whether the average response time of the service is under 1&nbsp;second. If the response time exceeds this threshold, the performance evaluation will be marked as failed.
 
 In overview, we will conduct these two scenarios:
@@ -74,7 +74,10 @@ To set up the quality gates for the carts service, please navigate to the `examp
 
   ```console
   keptn add-resource --project=sockshop --service=carts --stage=staging --resource=service-indicators.yaml --resourceUri=service-indicators.yaml
-  keptn add-resource --project=sockshop --service=carts --stage=staging --resource=service-objectives-with-dynatrace.yaml --resourceUri=service-objectives.yaml
+  ```
+  
+  ```console
+  keptn add-resource --project=sockshop --service=carts --stage=staging --resource=service-objectives-dynatrace-only.yaml --resourceUri=service-objectives.yaml
   ```
 
 </p>

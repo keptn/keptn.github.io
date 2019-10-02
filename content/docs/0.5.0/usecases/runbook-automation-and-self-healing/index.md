@@ -17,7 +17,7 @@ Configuration changes during runtime are sometimes necessary to increase flexibi
 - ServiceNow instance or [free ServiceNow developer instance](https://developer.servicenow.com) 
   - Use case tested on [London](https://docs.servicenow.com/category/london) and [Madrid](https://docs.servicenow.com/category/london) releases
 - [Setup of Dynatrace](../../monitoring/dynatrace/) for monitoring is mandatory for this use case 
-- Complete [onboarding a service](../onboard-carts-service) use case
+- Complete [Onboarding a Service](../onboard-carts-service) use case
   - Please note that for this use case the use case [Onboarding a Service](../onboard-carts-service/) has to be completed exactly as it is described. The scripts provided in the current use case rely on values that are set during the onboarding of the carts service. Thus, this use case might not work as expected if values are changed.
 - Clone the GitHub repository with the necessary files for the use case:
   
@@ -170,7 +170,7 @@ Before you adjust this setting, make sure to have some traffic on the service in
 
 ## Run the use case
 
-Now, all pieces are in place to run the use case. Therefore, we will start by generating some load on the `carts` service in our production environment. Afterwards, we will change configuration of this service at runtime. This will cause some troubles in our production environment, Dynatrace will detect the issue, and will create a problem ticket. Due to the problem notification we just set up, Keptn will be informed about the problem and will forward it to the ServiceNow service that in turn creates an incident in ServiceNow. This incident will trigger a workflow that is able to remediate the issue at runtime. Along the remediation, comments, and details on configuration changes are posted to Dynatrace.
+Now, all pieces are in place to run the use case. Therefore, we will start by generating some load on the *carts* service in our production environment. Afterwards, we will change configuration of this service at runtime. This will cause some troubles in our production environment, Dynatrace will detect the issue, and will create a problem ticket. Due to the problem notification we just set up, Keptn will be informed about the problem and will forward it to the ServiceNow service that in turn creates an incident in ServiceNow. This incident will trigger a workflow that is able to remediate the issue at runtime. Along the remediation, comments, and details on configuration changes are posted to Dynatrace.
 
 ### Load generation
 
