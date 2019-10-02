@@ -16,7 +16,7 @@ In order to evaluate the quality gates, we have to set up monitoring to provide 
 
 1. Navigate to the directory `examples/onboarding-carts`.
 
-1. The following command will set up Prometheus and its Alerting Manager:
+1. Set up Prometheus and its Alerting Manager:
 
     ```console
     keptn configure monitoring prometheus --project=sockshop --service=carts
