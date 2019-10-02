@@ -54,7 +54,7 @@ Please make sure to have the following tool(s) installed:
 
 1. Clone the install repository and setup your credentials by executing the following steps:
   ```console
-  git clone --branch 0.3.0 https://github.com/keptn-contrib/dynatrace-service --single-branch
+  git clone --branch 0.3.1 https://github.com/keptn-contrib/dynatrace-service --single-branch
   ```
   ```console
   cd dynatrace-service/deploy/scripts
@@ -122,20 +122,19 @@ In your Dynatrace tenant, when you navigate to **Settings > Tags > Automatically
 
 - environment
 - service
+- test-subject
 
 This means that Dynatrace will automatically apply tags to your onboarded services.
 
-In addition, a Problem Notification has automatically been set up to inform your Keptn installation of any problems with your services to allow auto-remediation. This will be described in more detail in the [runbook automation and self-healing use case](../../usecases/runbook-automation-and-self-healing/). You can check the problem notification by navigating to **Settings > Integration > Problem notifications** and you will find a **keptn remediation** problem notification.
-
+In addition, a *Problem Notification* has automatically been set up to inform a Keptn of any problems with your services to allow auto-remediation. This will be described in more detail in the [Runbook Automation](../../usecases/runbook-automation-and-self-healing/) use case. You can check the problem notification by navigating to **Settings > Integration > Problem notifications** and you will find a **keptn remediation** problem notification.
 
 ## See Keptn events in Dynatrace
 
-The Dynatrace service will take care of pushing events of the Keptn workflow to the artifacts that have been onboarded with Keptn. For example, the deployment as well as custom infos like starting and finishing of tests will appear in the details screen of your services in your Dynatrace tenant.
+The dynatrace-service in Keptn will take care of pushing events of the Keptn workflow to the artifacts that have been onboarded. For example, the deployment as well as custom infos like starting and finishing of tests will appear in the details screen of your services in your Dynatrace tenant.
     {{< popup_image
     link="./assets/custom_events.png"
     caption="Keptn events"
     width="500px">}}
-
 
 ## (optional) Create process group naming rule in Dynatrace
 
@@ -160,7 +159,7 @@ If you want to uninstall Dynatrace, there are scripts provided to do so. Uninsta
 1. (optional) If you do not have the *dynatrace-service* repository, clone the latest release using:
 
   ```console
-  git clone --branch 0.3.0 https://github.com/keptn-contrib/dynatrace-service --single-branch
+  git clone --branch 0.3.1 https://github.com/keptn-contrib/dynatrace-service --single-branch
   ```
 
 1. Go to correct folder and execute the `uninstallDynatrace.sh` script:

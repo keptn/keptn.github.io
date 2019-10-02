@@ -12,7 +12,7 @@ This use case shows how to onboard the carts service including its database. Bes
 
 The goal of this use case is to automatically deploy a service into a multi-stage environment using Keptn. The stages of the environment are described in a *shipyard* file that defines the name, deployment strategy, and test strategy of each stage. In case an additional stage is needed, the shipyard file can be easily extended by a stage definition before creating the project. After creating the project, the service that is going to be managed by Keptn needs to be onboarded. Therefore, Keptn provides the functionality to create the deployment and service definition of the onboarded service for each stage. Finally, an artifact of the carts service will be deployed by Keptn.  
 
-<details><summary>Click here to learn about Keptn internal services</summary>
+<details><summary>*Click here to learn about Keptn internal services.*</summary>
 <p>
 To illustrate the scenario this use case addresses, Keptn relies on the following services: *shipyard-service*, *helm-service*, *jmeter-service*, and *gatekeeper-service*. These services have the following responsibilities: 
 
@@ -48,7 +48,7 @@ To illustrate the scenario this use case addresses, Keptn relies on the followin
 * Clone example files used for this use case:
 
     ```console
-    git clone --branch 0.5.0.beta https://github.com/keptn/examples.git --single-branch
+    git clone --branch 0.5.0 https://github.com/keptn/examples.git --single-branch
     ```
 
     ```console
