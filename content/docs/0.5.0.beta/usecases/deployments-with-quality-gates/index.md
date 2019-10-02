@@ -80,8 +80,6 @@ To set up the quality gates for the carts service, please navigate to the `examp
 </p>
 </details>
 
-
-
 ## View carts service
 
 - Get the URL for your carts service with the following commands in the respective namespaces:

@@ -65,7 +65,7 @@ spec:
 
 ## Subscribe service to Keptn events 
 
-To subscribe your service to certain Keptn event, a **distributor** is required. A distributor also comes with a deployment manifest as shown below:
+To subscribe your service to certain Keptn event, a **distributor** is required. A distributor comes with a deployment manifest as shown below:
 
 ```yaml
 ## jmeter-service: sh.keptn.events.deployment-finished
