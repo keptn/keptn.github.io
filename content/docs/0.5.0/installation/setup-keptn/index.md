@@ -57,18 +57,18 @@ Select one of the following options:
   - [python 2.7](https://www.python.org/downloads/release/python-2716/) (required for Ubuntu 19.04)
 
 2. Create GKE cluster
-  - Master version >= `1.11.x` (tested version: `1.12.8-gke.10`)
+  - Master version >= `1.12.x` (tested version: `1.13.7-gke.24`)
   - One **n1-standard-8** node
   - Image type `ubuntu` or `cos` (if you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../monitoring/dynatrace/))
   - Sample script to create such cluster (adapt the values according to your needs)
 
     ```console
     // set environment variables
-    PROJECT=nameofgcloudproject
-    CLUSTER_NAME=nameofcluster
+    PROJECT=name_of_gcloud_project
+    CLUSTER_NAME=name_of_cluster
     ZONE=us-central1-a
     REGION=us-central1
-    GKE_VERSION="1.12.8-gke.10"
+    GKE_VERSION="1.13.7-gke.24"
     ```
 
     ```console
