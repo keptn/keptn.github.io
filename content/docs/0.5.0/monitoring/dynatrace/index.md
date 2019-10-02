@@ -6,7 +6,7 @@ icon: setup
 keywords: setup
 ---
 
-In order to evaluate the quality gates and allow self-healing in production, we have to set up monitoring to provide the needed data.
+In order to evaluate the quality gates and allow self-healing in production, we have to set up monitoring to get the needed data.
 
 ## Prerequisites
 
