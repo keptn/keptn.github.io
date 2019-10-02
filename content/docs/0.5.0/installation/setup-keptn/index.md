@@ -11,7 +11,7 @@ keywords: setup
 - For Linux: [bc](https://www.gnu.org/software/bc/manual/html_mono/bc.html)
 
 ## Setup Kubernetes cluster
-<!--
+
 Select one of the following options:
 
 <details><summary>Azure Kubernetes Service (AKS)</summary>
@@ -48,10 +48,6 @@ Select one of the following options:
 
 </p>
 </details>
--->
-
-**Note**: This beta release is only tested for a single platform, i.e. Google Kubernetes Engine (GKE). 
-The final release will also support Azure Kubernetes Service (AKS), Amazon Elastic Container Service (EKS), and OpenShift 3.11.
 
 <details><summary>Google Kubernetes Engine (GKE)</summary>
 <p>
@@ -115,7 +111,6 @@ The final release will also support Azure Kubernetes Service (AKS), Amazon Elast
 </details>
 -->
 
-<!--
 <details><summary>OpenShift 3.11</summary>
 <p>
 
@@ -174,7 +169,7 @@ The final release will also support Azure Kubernetes Service (AKS), Amazon Elast
 
 </p>
 </details>
---> 
+
 ## Install Keptn CLI
 Every release of Keptn provides binaries for the Keptn CLI. These binaries are available for Linux, macOS, and Windows.
 
