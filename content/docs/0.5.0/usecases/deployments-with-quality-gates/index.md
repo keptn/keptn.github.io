@@ -1,12 +1,12 @@
 ---
 title: Deployments with Quality Gates
-description: Gives an overview of deployments using quality gates and blue/green deployments of a new service version.
+description: This use case describes how Keptn allows to deploy an artifact using automatic quality gates and blue/green deployments.
 weight: 25
 keywords: []
 aliases:
 ---
 
-This use case gives an overview of deployments using quality gates and blue/green deployments of a new service version.
+This use case describes how Keptn allows to deploy an artifact using automatic quality gates and blue/green deployments.
 
 ## About this use case
 
@@ -31,9 +31,6 @@ First, we will *try* to deploy the *slow* version of the carts service (v0.9.2).
 Second, we will deploy the *regular* version of the carts service (v0.9.3). Therefore, Keptn will conduct the same steps as before except that this version will now pass the quality gate. Hence, this *regular* version will be promoted into the `production` environment.
 
 ## Prerequisites
-In this use case, we will be using either the open source monitoring solution *Prometheus* or *Dynatrace*.
-
-1. Either [Prometheus](../../monitoring/prometheus) or [Dynatrace](../../monitoring/dynatrace) monitoring set up.
 
 1. In order to start this use case, please deploy the `carts` service by completing the use case [Onboarding a Service](../onboard-carts-service/).
 
@@ -44,23 +41,34 @@ The [Pitometer](https://github.com/keptn/pitometer) service will then evaluate t
 For using the quality gate, Pitometer requires a performance specification.
 This performance specification is described by two files, namely the `service-indicatory` file, which describes the available types of metrics and their data sources (e.g., Prometheus or Dynatrace), and the `service-objectives`, which describe the desired values for those metrics.
 
+In this use case, we will be using either the open source monitoring solution *Prometheus* or *Dynatrace*.
+
 ### Option 1: Prometheus
 <details><summary>Expand instructions</summary>
 <p>
-Please make sure you have followed the instructions for setting up [Prometheus](../../monitoring/prometheus).
 
-To set up the quality gates for the carts service, please navigate to the `examples/onboarding-carts` folder. This folder contains the files `service-indicators.yaml`, `service-objectives-prometheus-only.yaml`, and `remediation.yaml`. To set the quality gates based on those files, upload it via the following command:
+To set up the quality gates for the carts service, please navigate to the `examples/onboarding-carts` folder. This folder contains the files `service-indicators.yaml` and `service-objectives-prometheus-only.yaml`. To set the quality gates based on those files, upload it via the following command:
 
-  ```console
-  keptn add-resource --project=sockshop --service=carts --stage=staging --resource=service-indicators.yaml --resourceUri=service-indicators.yaml
-  keptn add-resource --project=sockshop --service=carts --stage=staging --resource=service-objectives-prometheus-only.yaml --resourceUri=service-objectives.yaml
-  ```
+```console
+keptn add-resource --project=sockshop --service=carts --stage=staging --resource=service-indicators.yaml --resourceUri=service-indicators.yaml
+keptn add-resource --project=sockshop --service=carts --stage=staging --resource=service-objectives-prometheus-only.yaml --resourceUri=service-objectives.yaml
+```
 
-Afterwards, execute the the following command to set up the rules for the Prometheus Alerting Manager based on those quality gates:
+Afterwards, execute the following command to set up the rules for the Prometheus Alerting Manager based on those quality gates:
 
 ```
 keptn configure monitoring prometheus --project=sockshop --service=carts
 ```
+
+To verify that the rules are correctly set up, you can access Prometheus by enabling port-forwarding for the `prometheus-service`
+
+```console
+kubectl port-forward svc/prometheus-service 8080 -n monitoring
+```
+
+and opening the URL [localhost:8080/targets](http://localhost:8080/targets) in your browser to see the three targets for the carts service:
+
+  {{< popup_image link="./assets/prometheus-targets.png" caption="Prometheus Targets">}}
 
  </p>
 </details>
@@ -70,7 +78,7 @@ keptn configure monitoring prometheus --project=sockshop --service=carts
 <p>
 Please make sure you have followed the instructions for setting up [Dynatrace](../../monitoring/dynatrace).
 
-To set up the quality gates for the carts service, please navigate to the `examples/onboarding-carts` folder. This folder contains the files `service-indicators.yaml`, `service-objectives-with-dynatrace.yaml`, and `remediation.yaml`. To set the quality gates based on those files, upload it via the following command:
+To set up the quality gates for the carts service, please navigate to the `examples/onboarding-carts` folder. This folder contains the files `service-indicators.yaml` and `service-objectives-with-dynatrace.yaml`. To set the quality gates based on those files, upload it via the following command:
 
   ```console
   keptn add-resource --project=sockshop --service=carts --stage=staging --resource=service-indicators.yaml --resourceUri=service-indicators.yaml
