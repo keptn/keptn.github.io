@@ -116,7 +116,7 @@ kubectl delete pods --all --namespace=sockshop-production
 
 **Note 2:** If the nodes in your cluster run on *Container-Optimized OS (cos)*, make sure to [follow the instructions](https://www.dynatrace.com/support/help/cloud-platforms/google-cloud-platform/google-kubernetes-engine/deploy-oneagent-on-google-kubernetes-engine-clusters/#expand-134parameter-for-container-optimized-os-early-access) for setting up the Dynatrace OneAgent Operator. This means that after the initial setup with `deployDynatrace.sh`, which is a step below, the `cr.yml` has to be edited and applied again. In addition, all pods have to be restarted.
 
-### What was set up?
+### What has been set up?
 
 In your Dynatrace tenant, when you navigate to **Settings > Tags > Automatically applied tags** you will find two entries:
 
