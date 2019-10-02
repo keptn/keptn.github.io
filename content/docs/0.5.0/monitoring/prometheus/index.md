@@ -8,28 +8,19 @@ keywords: setup
 
 In order to evaluate the quality gates, we have to set up monitoring to provide the needed data. The setup provided in this documenation is specific to the carts service that is used throughout all use cases. This requires that the created project is called *sockshop* and the service is called *carts* as described in the use case [onboarding a service](../onboard-carts-service).
 
+## Prerequisite
+
+1. Complete the [Onboarding a Service](../../usecases/onboard-carts-service/) use case.
+
 ## Setup Prometheus
 
-1. Checkout the needed files.
+1. Navigate to the directory `examples/onboarding-carts`.
 
-    - If you have not yet onboarded the carts service, please execute the following commands to receive the needed files:
-    
-      ```console
-      git clone --branch 0.5.0.beta https://github.com/keptn/examples.git --single-branch
-      ```
-
-      ```console 
-      cd ./examples/onboarding-carts
-      ```
-
-    - If you already have [onboarded the carts service](../../usecases/onboard-carts-service/), navigate to the directory `examples/onboarding-carts`.
-
-1. If Prometheus is currently not installed in your Kubernetes cluster, the following command will set up Prometheus and the Alerting Manager:
+1. The following command will set up Prometheus and its Alerting Manager:
 
     ```console
     keptn configure monitoring prometheus --project=sockshop --service=carts
     ```
-    **Note:** If the keptn CLI does not show any output for approximately 30 seconds, abort the command (i.e. press Ctrl + C). Afterwards, please retry this command.
 
 ## Verify installation
 

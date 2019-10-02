@@ -10,7 +10,7 @@ This use case shows how to onboard the carts service including its database. Bes
 
 ## About this use case
 
-The goal of this use case is to automatically deploy a service into a multi-stage environment using Keptn. The stages of the environment are described in a *shipyard* file that defines the name, deployment strategy, and test strategy of each stage. In case an additional stage is needed, the shipyard file can be easily extended by a stage definition before creating the project. After creating the project, the service that is going to be managed by Keptn needs to be onboarded. Therefore, Keptn provides the functionality to create the deployment and service definition of the onboarded service for each stage. Finally, an artifact of the carts service will be deployed by Keptn.  
+The goal of this use case is to automatically deploy a service into a multi-stage environment using Keptn. The stages of the environment are described in a *shipyard* file that defines the name, deployment strategy, and test strategy of each stage. In case an additional stage is needed, the shipyard file can be easily extended by a stage definition before creating the project. After creating the project, the service that is going to be managed by Keptn needs to be onboarded. Finally, an artifact of the carts service will be deployed by Keptn.  
 
 <details><summary>*Click here to learn about Keptn internal services.*</summary>
 <p>
@@ -57,7 +57,7 @@ To illustrate the scenario this use case addresses, Keptn relies on the followin
 
 ## Authenticate Keptn CLI
 
-If you have not yet authenticated and configured the Keptn CLI, please follow these instructions. If you have already done this [during the installation](../../installation/setup-keptn-gke/#authenticate-keptn-cli-and-configure-keptn), please skip this part and continue with [creating a project](#create-project-sockshop).
+If you have not yet authenticated the Keptn CLI, please follow these instructions. If you have already done this [during the installation](../../installation/setup-keptn-gke/#authenticate-keptn-cli-and-configure-keptn), please skip this part and continue with [creating a project](#create-project-sockshop).
 
 The Keptn CLI needs to be authenticated against the Keptn server. Therefore, please follow the [keptn auth](../../reference/cli/#keptn-auth) instructions.
 
