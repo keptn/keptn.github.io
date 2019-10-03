@@ -66,6 +66,12 @@ a Google Kubernetes Engine (GKE), and on OpenShift.
     keptn install --platform=gke
     ```
 
+- **PKS**:
+
+    ```console
+    keptn install --platform=pks
+    ```
+
 - **OpenShift**:
 
     ```console
