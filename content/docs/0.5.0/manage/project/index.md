@@ -107,7 +107,7 @@ stages:
     remediation_strategy: "automated"
 ```
 
-**Note:**  To learn more about a *shipyard* file, click here [Shipyard specification](https://github.com/keptn/keptn/blob/master/specification/shipyard.md).
+**Note:**  To learn more about a *shipyard* file, click here [Shipyard specification](https://github.com/keptn/keptn/blob/0.5.0/specification/shipyard.md).
 
 * **Option A:** Create a project with the [Keptn CLI](../../reference/cli) without a Git upstream: 
   ```console

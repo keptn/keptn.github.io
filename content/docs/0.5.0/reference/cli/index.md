@@ -287,6 +287,7 @@ keptn version
 To uninstall Keptn from a cluster, the `uninstall` command is provided. 
 
 This command does *not* delete: 
+
 * Istio
 * Tiller 
 * Dynatrace monitoring

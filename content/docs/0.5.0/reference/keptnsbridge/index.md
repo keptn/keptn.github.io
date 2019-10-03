@@ -14,7 +14,8 @@ The Keptn's bridge is not publicly accessible, but can be retrieved by enabling 
 ```console
 kubectl port-forward svc/bridge -n keptn 9000:8080
 ```
-Now you can access the bridge from your browser on http://localhost:9000.
+
+It is then available on: http://localhost:9000.
 
 The Keptn's bridge provides an easy way to browse all events that are sent within Keptn and to filter on a specific Keptn context. When you access the Keptn's bridge, all Keptn entry points will be listed in the left column. Please note that this list only represents the start of a deployment of a new artifact and, thus, more information on the executed steps can be revealed when you click on one event.
 

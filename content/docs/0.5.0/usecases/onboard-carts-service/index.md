@@ -80,6 +80,8 @@ stages:
     remediation_strategy: "automated"
 ```
 
+**Note:**  To learn more about a *shipyard* file, click here [Shipyard specification](https://github.com/keptn/keptn/blob/0.5.0/specification/shipyard.md).
+
 Create a new project for your services using the [keptn create project](../../reference/cli/#keptn-create-project) command. In this example, the project is called *sockshop*. Before executing the following command, make sure you are in the `examples/onboarding-carts` folder and then select one of the two options:
 
 <details><summary>**Option 1:** Create a new project without Git upstream</summary>
