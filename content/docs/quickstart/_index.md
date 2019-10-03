@@ -24,7 +24,7 @@ The keptn CLI is the one-stop-shop for all operations related to keptn.
 curl -sL https://get.keptn.sh | sudo -E bash
 ```
 
-This will download the *latest version*, unpack it and move it to `/usr/local/keptn`.
+This will download the *latest version*, unpack it and move it to `/usr/local/bin/keptn`.
 
 ##### 2.1.2 Manual install of the keptn CLI
 1. Download a release for your platform from the [release page](https://github.com/keptn/keptn/releases)
@@ -36,7 +36,7 @@ This will download the *latest version*, unpack it and move it to `/usr/local/ke
 Depending on the platform, keptn install will prompt you different information needed to perform the installation.
 
 ```console
-keptn install --platform=[aks|eks|gke|openshift|kubernetes]
+keptn install --platform=[aks|eks|gke|openshift|pks]
 ```
 
 keptn is now ready to be used.
@@ -46,7 +46,8 @@ With keptn installed, have a look at the different [use cases](/docs/0.5.0/useca
 
 * [Onboarding a new service](/docs/0.5.0/usecases/onboard-carts-service/)
 * [Using quality gates for deployments](/docs/0.5.0/usecases/deployments-with-quality-gates/)
-* [Runbook automation and self-healing](/docs/0.5.0/usecases/runbook-automation-and-self-healing/)
+* [Self-healing](/docs/0.5.0/usecases/self-healing-with-keptn/)
+* [Runbook automation](/docs/0.5.0/usecases/runbook-automation-and-self-healing/)
 * [Unbreakable delivery](/docs/0.5.0/usecases/unbreakable-delivery-pipeline/)
 
 ### 5. Learn how keptn works under the hood and how it can be adapted to your usecases
