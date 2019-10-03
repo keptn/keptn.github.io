@@ -16,14 +16,13 @@ For describing the Kubernetes resources, [Helm charts](https://Helm.sh/) are use
 1. The Helm chart _has_ to contain exactly one [deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/).
 In this deployment, the properties `spec.selector.matchLabels.app` and `spec.template.metadata.labels.app` have to be set.
 
-1. The Helm chart requires _at least one_ [service](https://kubernetes.io/docs/concepts/services-networking/service/).
-In each service, the property `spec.selector.app` has to be set.
+1. The Helm chart _has_ to contain exactly one [service](https://kubernetes.io/docs/concepts/services-networking/service/).
+In this service, the property `spec.selector.app` has to be set.
 
-1. The Helm chart _has_ to contain a `values.yaml` file with at least the `image` and `replicas` parameters for the deployment. These parameters are used in the deployment and Keptn references exactly their names. An example is shown below:
+1. The Helm chart _has_ to contain a `values.yaml` file with at least the `image` parameter for the deployment. This `image` parameter has to be used in the deployment. An example is shown below:
   
   ```yaml
   image: docker.io/keptnexamples/carts:0.9.1
-  replicas: 1
   ```
 
   ```yaml
@@ -33,7 +32,7 @@ In each service, the property `spec.selector.app` has to be set.
   metadata:
     name: your_deployment
   spec:
-    replicas: {{ .Values.replicas }}
+    replicas: 2
     selector:
       matchLabels:
         app: your_service
@@ -50,7 +49,7 @@ In each service, the property `spec.selector.app` has to be set.
 <!-- Make sure that your actual service provides a `/health` endpoint at port `8080` since this is needed for the [liveness and readiness probe](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/) of Kubernetes. -->
 
 
-To onboard a service, use the command `onboard service` and provide the service name, project name (`--project` flag), and the root directory of a Helm chart (`--chart` flag). 
+To onboard a service, use the command [`onboard service`](../../reference/cli#keptn-onboard-service) and provide the service name, project name (`--project` flag), and the root directory of a Helm chart (`--chart` flag). 
 
 ```console
 keptn onboard service SERVICENAME --project=PROJECTNAME --chart=FILEPATH
