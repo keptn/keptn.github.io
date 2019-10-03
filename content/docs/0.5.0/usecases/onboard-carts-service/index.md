@@ -104,42 +104,61 @@ keptn create project sockshop --shipyard=./shipyard.yaml --git-user=GIT_USER --g
 </p>
 </details>
 
-
 ## Onboard carts service and carts database
 After creating the project, services can be onboard to this project.
 
-* Onboard the `carts` service using the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command:
+* Onboard the `carts` service using the [onboard service](../../reference/cli/#keptn-onboard-service) command:
 
   ```console
   keptn onboard service carts --project=sockshop --chart=./carts
   ```
 
-* After onboarding the service, a couple of tests (i.e., functional checks and performance tests) need to be added as basis for quality gates in the different stages:
+* After onboarding the service, a couple of tests (i.e., functional tests and performance tests) need to be added as basis for quality gates in the different stages:
 
-  ```console
-  keptn add-resource --project=sockshop --service=carts --stage=dev --resource=jmeter/basiccheck.jmx --resourceUri=jmeter/basiccheck.jmx
-  ```
+  * Functional tests: 
 
-  ```console
-  keptn add-resource --project=sockshop --service=carts --stage=dev --resource=jmeter/load.jmx --resourceUri=jmeter/load.jmx
-  ```
+    ```console
+    keptn add-resource --project=sockshop --service=carts --stage=dev --resource=jmeter/basiccheck.jmx --resourceUri=jmeter/basiccheck.jmx
+    ```
 
-  ```console
-  keptn add-resource --project=sockshop --service=carts --stage=staging --resource=jmeter/basiccheck.jmx --resourceUri=jmeter/basiccheck.jmx
-  ```
+    ```console
+    keptn add-resource --project=sockshop --service=carts --stage=staging --resource=jmeter/basiccheck.jmx --resourceUri=jmeter/basiccheck.jmx
+    ```
 
-  ```console
-  keptn add-resource --project=sockshop --service=carts --stage=staging --resource=jmeter/load.jmx --resourceUri=jmeter/load.jmx
-  ```
+  * Performance tests: 
+
+    ```console
+    keptn add-resource --project=sockshop --service=carts --stage=dev --resource=jmeter/load.jmx --resourceUri=jmeter/load.jmx
+    ```
+
+    ```console
+    keptn add-resource --project=sockshop --service=carts --stage=staging --resource=jmeter/load.jmx --resourceUri=jmeter/load.jmx
+    ```
 
 Since the carts service requires a mongodb database, a second service needs to be onboarded.
 
-* Onboard the `carts-db` service using the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command. The `--deployment-strategy` flag specifies that for this service a *direct* deployment stratgy in all stages should be used regardless of the deployment strategy specified in the shipyard. Thus, the database is not blue/green deployed.
-
+* Onboard the `carts-db` service using the [onboard service](../../reference/cli/#keptn-onboard-service) command. The `--deployment-strategy` flag specifies that for this service a *direct* deployment strategy in all stages should be used regardless of the deployment strategy specified in the shipyard. Thus, the database is not blue/green deployed.
 
   ```console
   keptn onboard service carts-db --project=sockshop --chart=./carts-db --deployment-strategy=direct
   ```
+
+During the onboarding of the services, Keptn creates a namespace for each stage based on the pattern: `projectname-stagename`.
+
+* To verify the new namespaces, execute the following command:
+
+  ```console
+  kubectl get namespaces
+  ```
+
+  ```console
+  NAME                  STATUS   AGE
+  ...
+  sockshop-dev          Active   2m
+  sockshop-production   Active   30s
+  sockshop-staging      Active   1m
+  ```
+
 
 ## Send new artifacts and watch Keptn doing the deployment 
 

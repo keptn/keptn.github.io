@@ -293,7 +293,7 @@ This command does *not* delete:
 * Dynatrace monitoring
 * Prometheus monitoring
 
-Besides, onboarded services also remain on the Git upstream (i.e., GitHub, GitLab, or Bitbucket).
+Besides, deployed services and the configuration on the Git upstream (i.e., GitHub, GitLab, or Bitbucket) are not deleted. To clean-up created projects and services, instructions are provided [here](../../manage/project#delete-a-project).
 
 **Note:** This command requires a *kubernetes current context* pointing to the cluster where Keptn should get uninstalled.
 

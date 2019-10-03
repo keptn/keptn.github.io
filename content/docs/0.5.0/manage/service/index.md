@@ -50,7 +50,7 @@ In each service, the property `spec.selector.app` has to be set.
 <!-- Make sure that your actual service provides a `/health` endpoint at port `8080` since this is needed for the [liveness and readiness probe](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/) of Kubernetes. -->
 
 
-To onboard a service, use the command `onboard service` and provide the service name, project name (`--project` flag), and the root directory of a Helm chart (`--chart` flag). 
+To onboard a service, use the [onboard service](../../reference/cli#keptn-onboard-service) command and provide the service name, project name (`--project` flag), and the root directory of a Helm chart (`--chart` flag). 
 
 ```console
 keptn onboard service SERVICENAME --project=PROJECTNAME --chart=FILEPATH
@@ -77,7 +77,7 @@ env:
       fieldPath: "metadata.namespace"
 ```
 
-**Note:** If you need to store resources (e.g., test files, configuration files, etc.) that are required by a service, use the Keptn CLI with the [`add-resource`](../../reference/cli#keptn-add-resource) command and specifiy the `--project`, `--stage`, and `--service` as shown below:
+**Note:** If you need to store resources (e.g., test files, configuration files, etc.) that are required by a service, use the Keptn CLI with the [add-resource](../../reference/cli#keptn-add-resource) command and specifiy the `--project`, `--stage`, and `--service` as shown below:
 
 ```console
 keptn add-resource --project=your-project --service=my-service --stage=staging --resource=jmeter/load.jmx

@@ -225,13 +225,12 @@ To install the latest release of Keptn on a Kuberntes cluster, execute the [kept
     keptn install --platform=openshift
     ```
 
-In the Kubernetes cluster, this command installs the complete infrastructure necessary to run Keptn. 
-    <details><summary>This includes:</summary>
+In the Kubernetes cluster, this command creates the `keptn`, `keptn-datastore` and `istio-system` namespace. While `istio-system` contains all Istio related resources, `keptn` and `keptn-datastore` contain the complete infrastructure to run Keptn. 
+    <details><summary>The `keptn` and `keptn-datastore` namespace contain:</summary>
         <ul>
-        <li>Istio</li>
         <li>mongoDb database for the Keptn's log</li>
         <li>NATS cluster</li>
-        <li>The Keptn core services:</li>
+        <li>Keptn core services:</li>
             <ul>
                 <li>api</li>
                 <li>bridge</li>
@@ -247,7 +246,7 @@ In the Kubernetes cluster, this command installs the complete infrastructure nec
                 <li>shipyard-service</li>
                 <li>wait-service</li>
             </ul>
-        <li>The services are required to deploy artifacts and to demonstrate the self-healing use cases:</li>
+        <li>Services to deploy artifacts and to demonstrate the self-healing use cases:</li>
             <ul>
                 <li>prometheus-service</li>
                 <li>servicenow-service</li>
@@ -282,4 +281,8 @@ keptn configure domain YOUR_DOMAIN
 
 ## Troubleshooting
 
-Please note that in case of any errors, the install process might leave some files in an inconsistent state. Therefore `keptn install` cannot be executed a second time without an uninstall.
+Please note that in case of any errors, the install process might leave some files in an inconsistent state. Therefore `keptn install` cannot be executed a second time without `keptn uninstall`. To address a unsuccessful installation: 
+
+1. [Verify the Keptn installation](../../reference/troubleshooting#verifying-a-keptn-installation).
+
+1. Uninstall Keptn by executing the [keptn uninstall](../../reference/cli#keptn-uninstall) command before conducting a re-installation.  
