@@ -77,7 +77,6 @@ Select one of the following options:
  </p>
 </details>
 
-<!--
 <details><summary>Pivotal Container Service (PKS)</summary>
 <p>
 
@@ -91,25 +90,16 @@ Select one of the following options:
 
     ```console
     // set environment variables
-    CLUSTER_NAME=nameofcluster
-    HOST_NAME=hostname
+    CLUSTER_NAME=name_of_cluster
+    HOST_NAME=host_name
     PLAN=small
     ```
 
     ```console
     pks create-cluster $CLUSTER_NAME --external-hostname $HOST_NAME --plan $PLAN
     ```
-
-* **Note:** For the Keptn installation, the *Cluster CIDR Range* and *Services CIDR Range* are required. The values for these two properties you find in your PCF OpsManager. 
-
-    * Login to your PCF OpsManager
-    * Click on the **Enterprise PKS** tile and go to **Networking**
-    * The networking configuration shows the values for the *Kubernetes Pod Network CIDR Range* (Cluster CIDR Range) and *Kubernetes Service Network CIDR Range* (Services CIDR Range).
-    {{< popup_image link="./assets/cluster-services-ip.png" caption="Kubernetes Pod and Services Network CIDR Range" width="40%">}}
-
 </p>
 </details>
--->
 
 <details><summary>OpenShift 3.11</summary>
 <p>
@@ -217,6 +207,12 @@ To install the latest release of Keptn on a Kuberntes cluster, execute the [kept
 
     ```console
     keptn install --platform=gke
+    ```
+
+- Pivotal Container Service (PKS):
+
+    ```console
+    keptn install --platform=pks
     ```
 
 - OpenShift 3.11:
