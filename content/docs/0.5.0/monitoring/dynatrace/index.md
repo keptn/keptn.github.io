@@ -14,7 +14,7 @@ Please make sure to have the following tool(s) installed:
 
 - [jq](https://stedolan.github.io/jq/) - a lightweight and flexible command-line JSON processor. 
 
-<details><summary>Open for installation instructions</summary>
+<details><summary>*Open for installation instructions*</summary>
 <p>
 
   ```console

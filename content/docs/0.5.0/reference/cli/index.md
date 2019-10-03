@@ -47,26 +47,26 @@ In future releases, we add additional checks whether the executed commands succe
 ### keptn install 
 
 The Keptn CLI allows to install Keptn on an Azure Kubernetes Services (AKS), an Amazon Elastic Kubernetes Service (EKS),
-a Google Kubernetes Engine (GKE), and on OpenShift. Further details are provided [here](../../installation/#install-keptn).
+a Google Kubernetes Engine (GKE), and on OpenShift.
 
-- For **AKS**:
+- **AKS**:
 
     ```console
     keptn install --platform=aks
     ```
-- For **EKS**:
+- **EKS**:
 
     ```console
     keptn install --platform=eks
     ```
 
-- For **GKE**:
+- **GKE**:
 
     ```console
     keptn install --platform=gke
     ```
 
-- For **OpenShift**:
+- **OpenShift**:
 
     ```console
     keptn install --platform=openshift
@@ -235,7 +235,7 @@ If an archived Helm chart is already available, the archive with ending `.tgz` c
 keptn onboard service SERVICENAME --project=PROJECTNAME --chart=HELM_CHART.tgz
 ```
 
-To learn more about onboarding a service, please see the [onboarding a service](../../usecases/onboard-carts-service) use case.
+To learn more about onboarding a service, please see the [Onboarding a Service](../../usecases/onboard-carts-service) use case.
 
 ### keptn add-resource
 
@@ -268,7 +268,7 @@ keptn send event new-artifact --project=PROJECTNAME --service=SERVICENAME --imag
 
 To send an arbitrary Keptn event the `send event` command is provided. An event has to follow the [Cloud Events](https://cloudevents.io/) specification in version 0.2 and has to be written in JSON. Then the event can be passed in by referencing the JSON file (`--file`). Additionally, this command offers the `--stream-websocket` flag to open a web socket communication to Keptn. Consequently, messages from the receiving Keptn service, which processes the event, are sent to the CLI via websocket.
 
-**Note:** This command is not required for any use case and requires precise Keptn event definitions as defined find [here](https://github.com/keptn/keptn/blob/develop/specification/cloudevents.md).
+**Note:** This command is not required for any use case and requires precise Keptn event definitions as defined find [here](https://github.com/keptn/keptn/blob/0.5.0/specification/cloudevents.md).
 
 ```console
 keptn send event --file=FILEPATH --stream-websocket

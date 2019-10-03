@@ -138,7 +138,7 @@ For a detailed look into Cloud Events, please go the Keptn [Cloud Event specific
 
 ## Logging
 
-To inspect your service's log messages for a specific pipeline run, as described in the [Keptn's log](https://keptn.sh/docs/0.2.0/reference/keptnslog/) section, you can use the `shkeptncontext` property of the incoming Cloud Events. Your service has to output its log messages in the following format:
+To inspect your service's log messages for a specific deployment run, you can use the `shkeptncontext` property of the incoming Cloud Events. Your service has to output its log messages in the following format:
 
 ```json
 {
