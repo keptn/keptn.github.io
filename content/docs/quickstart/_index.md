@@ -24,7 +24,7 @@ The keptn CLI is the one-stop-shop for all operations related to keptn.
 curl -sL https://get.keptn.sh | sudo -E bash
 ```
 
-This will download the *latest version*, unpack it and move it to `/usr/local/keptn`.
+This will download the *latest version*, unpack it and move it to `/usr/local/bin/keptn`.
 
 ##### 2.1.2 Manual install of the keptn CLI
 1. Download a release for your platform from the [release page](https://github.com/keptn/keptn/releases)
