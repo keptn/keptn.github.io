@@ -86,6 +86,12 @@ Please make sure to have the following tool(s) installed:
     ./deployDynatraceOnGKE.sh
     ```
 
+  - If you are on **Pivotal PKS**, please execute
+
+    ```console
+    ./deployDynatraceOnPKS.sh
+    ```
+
   - If you are on **OpenShift**, please execute
 
     ```console
