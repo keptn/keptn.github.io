@@ -107,7 +107,7 @@ keptn create project sockshop --shipyard=./shipyard.yaml --git-user=GIT_USER --g
 ## Onboard carts service and carts database
 After creating the project, services can be onboard to this project.
 
-* Onboard the `carts` service using the [onboard service](../../reference/cli/#keptn-onboard-service) command:
+* Onboard the **carts** service using the [onboard service](../../reference/cli/#keptn-onboard-service) command:
 
   ```console
   keptn onboard service carts --project=sockshop --chart=./carts
@@ -137,7 +137,7 @@ After creating the project, services can be onboard to this project.
 
 Since the carts service requires a mongodb database, a second service needs to be onboarded.
 
-* Onboard the `carts-db` service using the [onboard service](../../reference/cli/#keptn-onboard-service) command. The `--deployment-strategy` flag specifies that for this service a *direct* deployment strategy in all stages should be used regardless of the deployment strategy specified in the shipyard. Thus, the database is not blue/green deployed.
+* Onboard the **carts-db** service using the [onboard service](../../reference/cli/#keptn-onboard-service) command. The `--deployment-strategy` flag specifies that for this service a *direct* deployment strategy in all stages should be used regardless of the deployment strategy specified in the shipyard. Thus, the database is not blue/green deployed.
 
   ```console
   keptn onboard service carts-db --project=sockshop --chart=./carts-db --deployment-strategy=direct
@@ -184,7 +184,7 @@ After onboarding the services, a built artifact of each service can be deployed.
 
 * The Keptn's bridge is then available on: http://localhost:9000. 
 
-    It shows all deployments that have been triggered. On the left-hand side you can see the deployment start events (i.e. so-called `Configuration change` events). During a deployment, Keptn generates events for controlling the deployment process. These events will also show up in Keptn's bridge. Please note that if events are sent at the same time, their order in the Keptn's bridge might be arbitrary since they are sorted on the granularity of one second. 
+    It shows all deployments that have been triggered. On the left-hand side you can see the deployment start events (i.e., so-called `Configuration change` events). During a deployment, Keptn generates events for controlling the deployment process. These events will also show up in Keptn's bridge. Please note that if events are sent at the same time, their order in the Keptn's bridge might be arbitrary since they are sorted on the granularity of one second. 
 
     {{< popup_image
       link="./assets/bridge.png"

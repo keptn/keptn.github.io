@@ -53,18 +53,11 @@ Executing this command will perform the following tasks:
 
 ### Deploy an unhealthy service version
 
-In order to test the self-healing capabilities, deploy an unhealthy version of our carts microservice. This version has some issues that are not detected by the automated quality gates since the tests generate artificial traffic while in production real user traffic might reveal untested parts of the microservice that have issues.
+In order to test the self-healing capabilities, deploy an unhealthy version of the carts microservice. This version has some issues that are not detected by the automated quality gates since the tests generate artificial traffic while in production real user traffic might reveal untested parts of the microservice that have issues.
 
-Therefore, please make sure that you have completed the [onboard carts](../onboard-carts-service/) or the [deployment with quality gates](../deployments-with-quality-gates/) use case (i.e. all version show contain issues that are not detected by the quality gates).
+Therefore, please make sure that you have completed the [Onboarding a Service](../onboard-carts-service/) or the [Deployment with Quality Gates](../deployments-with-quality-gates/) use case (i.e., all shown versions contain issues that are not detected by the quality gates).
 
-<!--
-Send a new version of the artifact to Keptn:
-```console
-keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.9.0
-```
--->
-
-You can check if the service is already running in your production stage by executing the following command and reviewing the output (it should show 2 pods in total).
+You can check if the service is already running in your production stage by executing the following command and reviewing the output. It should show two pods in total.
 
 ```console
 kubectl get pods -n sockshop-production
@@ -81,11 +74,13 @@ carts-primary-7c96d87df9-75pg7    1/1     Running   0          13m
 In order to simulate user traffic that is causing an unhealthy behavior in the carts service, please execute the following script. This will add special items into the shopping cart that cause some extensive calculation.
 
 1. Move to the correct folder:
+
     ```console
     cd ../load-generation/bin
     ```
 
 1. Start the load generation script depending on your OS (replace \_OS\_ with linux, mac, or win):
+
     ```console
     ./loadgenerator-_OS_ "http://carts.sockshop-production.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')" cpu
     ```
@@ -97,7 +92,7 @@ In order to simulate user traffic that is causing an unhealthy behavior in the c
     kubectl port-forward svc/prometheus-service -n monitoring 8080:8080
     ```
     
-    - Access the Prometheus from your browser on http://localhost:8080.
+    - Access Prometheus from your browser on http://localhost:8080.
 
     - In the graph tab, add the expression 
 
@@ -116,9 +111,9 @@ In order to simulate user traffic that is causing an unhealthy behavior in the c
 
 ### Watch self-healing in action
 
-After approximately 15 minutes the *Prometheus Alert Manager* will send out an alert since the service level objective is not met anymore. 
+After approximately 15 minutes, the *Prometheus Alert Manager* will send out an alert since the service level objective is not met anymore. 
 
-1. To verify that an alert was fired, select the "Alerts" view where you should see that the alert `cpu_usage_sockshop_carts` is in the `firing` state:
+1. To verify that an alert was fired, select the *Alerts* view where you should see that the alert `cpu_usage_sockshop_carts` is in the `firing` state:
 
     {{< popup_image
         link="./assets/alert-manager.png"
