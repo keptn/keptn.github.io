@@ -77,30 +77,6 @@ Select one of the following options:
  </p>
 </details>
 
-<details><summary>Pivotal Container Service (PKS)</summary>
-<p>
-
-1. Install local tools
-  - [pks CLI - v1.0.4](https://docs.pivotal.io/runtimes/pks/1-4/installing-pks-cli.html)
-
-1. Create PKS cluster on GCP
-  - Use the provided instructions for [Enterprise Pivotal Container Service (Enterprise PKS) installation on GCP](https://docs.pivotal.io/runtimes/pks/1-4/gcp-index.html)
-
-  - Create a PKS cluster by using the PKS CLI and executing the following command:
-
-    ```console
-    // set environment variables
-    CLUSTER_NAME=name_of_cluster
-    HOST_NAME=host_name
-    PLAN=small
-    ```
-
-    ```console
-    pks create-cluster $CLUSTER_NAME --external-hostname $HOST_NAME --plan $PLAN
-    ```
-</p>
-</details>
-
 <details><summary>OpenShift 3.11</summary>
 <p>
 
@@ -156,7 +132,30 @@ Select one of the following options:
         exit
       fi
       ```
+</p>
+</details>
 
+<details><summary>Pivotal Container Service (PKS)</summary>
+<p>
+
+1. Install local tools
+  - [pks CLI - v1.0.4](https://docs.pivotal.io/runtimes/pks/1-4/installing-pks-cli.html)
+
+1. Create PKS cluster on GCP
+  - Use the provided instructions for [Enterprise Pivotal Container Service (Enterprise PKS) installation on GCP](https://docs.pivotal.io/runtimes/pks/1-4/gcp-index.html)
+
+  - Create a PKS cluster by using the PKS CLI and executing the following command:
+
+    ```console
+    // set environment variables
+    CLUSTER_NAME=name_of_cluster
+    HOST_NAME=host_name
+    PLAN=small
+    ```
+
+    ```console
+    pks create-cluster $CLUSTER_NAME --external-hostname $HOST_NAME --plan $PLAN
+    ```
 </p>
 </details>
 
@@ -209,17 +208,25 @@ To install the latest release of Keptn on a Kuberntes cluster, execute the [kept
     keptn install --platform=gke
     ```
 
-- Pivotal Container Service (PKS):
-
-    ```console
-    keptn install --platform=pks
-    ```
-
 - OpenShift 3.11:
 
     ```console
     keptn install --platform=openshift
     ```
+
+- Pivotal Container Service (PKS):
+
+    - Please make sure that your local `kubectl` CLI is configured for your target PKS cluster:
+
+        ```console
+        kubectl config current-context
+        ```
+
+    - Install Keptn on PKS:
+
+        ```console
+        keptn install --platform=kubernetes
+        ```
 
 In the Kubernetes cluster, this command creates the `keptn`, `keptn-datastore` and `istio-system` namespace. While `istio-system` contains all Istio related resources, `keptn` and `keptn-datastore` contain the complete infrastructure to run Keptn. 
     <details><summary>The `keptn` and `keptn-datastore` namespace contain:</summary>
