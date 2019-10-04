@@ -127,7 +127,7 @@ The [send event new-artifact](../../reference/cli/#keptn-send-event-new-artifact
 * **Phase 1**: Deploying, testing and evaluating the test in the *dev* stage:
     * **helm-service**: This service deploys the new artifact to *dev*.
     * **jmeter-service**: This service runs a basic health check and a functional tests in *dev*. Afterwards, this service sends an event of type `sh.keptn.events.tests-finished`. 
-    * **pitometer-service**: This service picks up the event and evaluates the test runs based on the  performance signature. Since in the *dev* environment, only functional tests are executed, the pitometer-service will mark the test run as successful (functional failures would have been detected by the **jmeter-service**).
+    * **pitometer-service**: This service picks up the event and evaluates the test runs based on the  performance signature. Since in the *dev* environment only functional tests are executed, the pitometer-service will mark the test run as successful (functional failures would have been detected by the **jmeter-service**).
     * **gatekeeper-service**: This service promotes the artifact to the next stage, i.e., *staging*.
 
 * **Phase 2**: Deploying, testing and evaluating the test in the *staging* stage:
@@ -146,7 +146,7 @@ After triggering the deployment of the carts service in version v0.9.2, the foll
 * **Dev stage:** The new version is deployed in the dev namespace and the functional tests passed.
   * To verify, open a browser and navigate to: `http://carts.sockshop-dev.YOUR.DOMAIN`
 
-* **Staging stage:** In this stage, version v9.0.2 will be deployed and the performance test starts to run for about 10 minutes. After the test is completed, Keptn triggers the test evaluation and identifies the slowdown. Consequently, a roll-back to version v0.9.1 in this stage is conducted and the promotion to production is not triggered.
+* **Staging stage:** In this stage, version v0.9.2 will be deployed and the performance test starts to run for about 10 minutes. After the test is completed, Keptn triggers the test evaluation and identifies the slowdown. Consequently, a roll-back to version v0.9.1 in this stage is conducted and the promotion to production is not triggered.
   * To verify, the [Keptn's bridge](../../reference/keptnsbridge/#usage) shows the deployment of v0.9.2 and then the failed test in staging including the roll-back:
 
     {{< popup_image
