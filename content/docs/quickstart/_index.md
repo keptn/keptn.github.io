@@ -36,7 +36,7 @@ This will download the *latest version*, unpack it and move it to `/usr/local/bi
 Depending on the platform, keptn install will prompt you different information needed to perform the installation.
 
 ```console
-keptn install --platform=[aks|eks|gke|openshift|pks]
+keptn install --platform=[aks|eks|gke|openshift|kubernetes]
 ```
 
 keptn is now ready to be used.
