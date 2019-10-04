@@ -89,7 +89,7 @@ Please make sure to have the following tool(s) installed:
   - If you are on **Pivotal PKS**, please execute
 
     ```console
-    ./deployDynatraceOnGKE.sh
+    ./deployDynatraceOnPKS.sh
     ```
 
   - If you are on **OpenShift**, please execute
