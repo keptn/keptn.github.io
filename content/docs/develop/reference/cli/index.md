@@ -221,9 +221,9 @@ In the Windows Command Line, a couple of steps are necessary.
 
 To delete a project, use the command `delete project` and specify the project name.
 
-    ```console
-    keptn delete project PROJECTNAME
-    ```
+```console
+keptn delete project PROJECTNAME
+```
 
 **Note:** If a Git upstream is configured for this project, the referenced repository or project will not be deleted. Besides, deployed services are also not deleted by this command. 
 
