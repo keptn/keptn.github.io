@@ -19,7 +19,7 @@ Configuration changes during runtime are sometimes necessary to increase flexibi
 
 - ServiceNow instance or [free ServiceNow developer instance](https://developer.servicenow.com) 
   - **Note:** Tutorial tested on [London](https://docs.servicenow.com/category/london) and [Madrid](https://docs.servicenow.com/category/london) releases
-- [Setup of Dynatrace](../../monitoring/dynatrace/) for monitoring is mandatory
+- [Setup of Dynatrace](../../manage/monitoring/dynatrace/) for monitoring is mandatory
 
 - Clone the GitHub repository with the necessary files for the tutorial:
   
@@ -36,7 +36,7 @@ In order for Keptn to use both ServiceNow and Dynatrace, the corresponding crede
 
 ### Dynatrace secret 
 
-The Dynatrace secret should already have been created while setting up [Dynatrace monitoring](../../monitoring/dynatrace/). Please verify your Dynatrace secret by executing the following commands:
+The Dynatrace secret should already have been created while setting up [Dynatrace monitoring](../../manage/monitoring/dynatrace/). Please verify your Dynatrace secret by executing the following commands:
 
 ```
 kubectl get secret dynatrace -n keptn -o yaml
@@ -127,7 +127,7 @@ A ServiceNow *Update Set* is provided to run this tutorial. To install the *Upda
 
 ## (optional): Verify Dynatrace problem notification
 
-During the [setup of Dynatrace](../../monitoring/dynatrace) a problem notification has already been set up for you. You can verify the correct setup by following the instructions: 
+During the [setup of Dynatrace](../../manage/monitoring/dynatrace) a problem notification has already been set up for you. You can verify the correct setup by following the instructions: 
 
 1. Login to your Dynatrace tenant.
 1. Navigate to **Settings** > **Integration** > **Problem notifications**
