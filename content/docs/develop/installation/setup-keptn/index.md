@@ -216,17 +216,9 @@ To install the latest release of Keptn on a Kuberntes cluster, execute the [kept
 
 - Pivotal Container Service (PKS):
 
-    - Please make sure that your local `kubectl` CLI is configured for your target PKS cluster:
-
-        ```console
-        kubectl config current-context
-        ```
-
-    - Install Keptn on PKS:
-
-        ```console
-        keptn install --platform=kubernetes
-        ```
+    ```console
+    keptn install --platform=pks
+    ```
 
 In the Kubernetes cluster, this command creates the `keptn`, `keptn-datastore` and `istio-system` namespace. While `istio-system` contains all Istio related resources, `keptn` and `keptn-datastore` contain the complete infrastructure to run Keptn. 
     <details><summary>The `keptn` and `keptn-datastore` namespace contain:</summary>
