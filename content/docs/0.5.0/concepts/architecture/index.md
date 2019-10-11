@@ -1,6 +1,6 @@
 ---
 title: Architecture
-description: Learn about the architecture of Keptn
+description: Learn about the architecture, how Keptn works internally and can be extended.
 weight: 20
 keywords: [keptn, architecture]
 ---
@@ -85,4 +85,4 @@ This category of services reacts on Keptn events and perform: (1) initial tasks 
 
 To enrich the continuous delivery as well as the continuous operations use cases, Keptn relies on services from the community. Those services can be easily plugged into the workflows to enrich the delivery pipeline or to further automate operations.
 
-**Note:** A dedicated section is provided [here](../../reference/custom-service/), which helps you to implement a custom service for Keptn.
+**Note:** A dedicated tutorial is provided [here](../../usecases/custom-service/), which helps you to implement a custom service for Keptn.

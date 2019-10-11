@@ -1,25 +1,25 @@
 ---
 title: Self-healing with Keptn
-description: This use case presents how to use the self-healing mechanisms Keptn provides to self-heal a demo service, which runs into issues, by providing automated upscaling.
+description: Demonstrates how to use the self-healing mechanisms of Keptn to self-heal a demo service, which runs into issues, by providing automated upscaling.
 weight: 30
 keywords: [self-healing]
 aliases:
 ---
-This use case presents how to use the self-healing mechanisms Keptn provides to self-heal a demo service, which runs into issues, by providing automated upscaling.
+Demonstrates how to use the self-healing mechanisms of Keptn to self-heal a demo service, which runs into issues, by providing automated upscaling.
 
-## About this use case
+## About this tutorial
 
-In this use case you will learn how to use the capabilities of Keptn to provide self-healing for an application without modifying any of the applications code. The use case presented in the following will scale up the pods of an application if the application undergoes heavy CPU saturation. 
+In this tutorial you will learn how to use the capabilities of Keptn to provide self-healing for an application without modifying any of the applications code. The tutorial presented in the following will scale up the pods of an application if the application undergoes heavy CPU saturation. 
 
 ## Prerequisites
+
+- Finish the [Onboarding a Service](../onboard-carts-service/) tutorial.
 
 - Clone the example repository, which contains specification files:
 
     ```console
     git clone --branch 0.5.0 https://github.com/keptn/examples.git --single-branch
     ```
-
-- Finish the [Onboarding a Service](../onboard-carts-service/) use case.
 
 ## Configure monitoring
 
@@ -49,13 +49,13 @@ Executing this command will perform the following tasks:
 - Set up the [Alert Manager](https://prometheus.io/docs/alerting/configuration/) to manage alerts
 - Add the `service-indicators.yaml`, `service-objectives.yaml` and `remediation.yaml` to your Keptn configuration repository
 
-## Run the use case
+## Run the tutorial
 
 ### Deploy an unhealthy service version
 
 In order to test the self-healing capabilities, deploy an unhealthy version of the carts microservice. This version has some issues that are not detected by the automated quality gates since the tests generate artificial traffic while in production real user traffic might reveal untested parts of the microservice that have issues.
 
-Therefore, please make sure that you have completed the [Onboarding a Service](../onboard-carts-service/) or the [Deployment with Quality Gates](../deployments-with-quality-gates/) use case (i.e., all shown versions contain issues that are not detected by the quality gates).
+Therefore, please make sure that you have completed the [Onboarding a Service](../onboard-carts-service/) or the [Deployment with Quality Gates](../deployments-with-quality-gates/) tutorial (i.e., all shown versions contain issues that are not detected by the quality gates).
 
 You can check if the service is already running in your production stage by executing the following command and reviewing the output. It should show two pods in total.
 
@@ -122,7 +122,7 @@ After approximately 15 minutes, the *Prometheus Alert Manager* will send out an 
 
 The alert will be received by the Prometheus service that will translate it into a Keptn CloudEvent. This event will eventually be received by the remediation service that will look for a remediation action specified for this type of problem and, if found, executes it.
 
-In this use case, the number of pods will be increased to remediate the issue of the CPU saturation. 
+In this tutorial, the number of pods will be increased to remediate the issue of the CPU saturation. 
 
 1. Check the executed remediation actions by executing:
 

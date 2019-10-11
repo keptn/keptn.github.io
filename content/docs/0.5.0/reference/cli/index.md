@@ -1,6 +1,6 @@
 ---
 title: Keptn CLI
-description: The following description explains how to connect the Keptn CLI to a Keptn cluster and which commands are available.
+description: Explains how to connect the Keptn CLI to a Keptn cluster and which commands are available.
 weight: 10
 keywords: [cli, setup]
 ---
@@ -241,7 +241,7 @@ If an archived Helm chart is already available, the archive with ending `.tgz` c
 keptn onboard service SERVICENAME --project=PROJECTNAME --chart=HELM_CHART.tgz
 ```
 
-To learn more about onboarding a service, please see the [Onboarding a Service](../../usecases/onboard-carts-service) use case.
+To learn more about onboarding a service, please see the [Onboarding a Service](../../usecases/onboard-carts-service) tutorial.
 
 ### keptn add-resource
 
@@ -274,7 +274,7 @@ keptn send event new-artifact --project=PROJECTNAME --service=SERVICENAME --imag
 
 To send an arbitrary Keptn event the `send event` command is provided. An event has to follow the [Cloud Events](https://cloudevents.io/) specification in version 0.2 and has to be written in JSON. Then the event can be passed in by referencing the JSON file (`--file`). Additionally, this command offers the `--stream-websocket` flag to open a web socket communication to Keptn. Consequently, messages from the receiving Keptn service, which processes the event, are sent to the CLI via websocket.
 
-**Note:** This command is not required for any use case and requires precise Keptn event definitions as defined find [here](https://github.com/keptn/keptn/blob/0.5.0/specification/cloudevents.md).
+**Note:** This command requires precise Keptn event definitions as defined find [here](https://github.com/keptn/keptn/blob/0.5.0/specification/cloudevents.md).
 
 ```console
 keptn send event --file=FILEPATH --stream-websocket

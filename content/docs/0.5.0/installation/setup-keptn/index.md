@@ -1,6 +1,6 @@
 ---
 title: Install Keptn
-description: How to setup Keptn.
+description: How to install Keptn on one of the supported Kubernetes platforms.
 weight: 10
 icon: setup
 keywords: setup

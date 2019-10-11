@@ -1,26 +1,25 @@
 ---
 title: Deployments with Quality Gates
-description: This use case describes how Keptn allows to deploy an artifact using automatic quality gates and blue/green deployments.
+description: Describes how Keptn allows to deploy an artifact using automatic quality gates and blue/green deployments.
 weight: 25
 keywords: []
 aliases:
 ---
 
-This use case describes how Keptn allows to deploy an artifact using automatic quality gates and blue/green deployments.
+Describes how Keptn allows to deploy an artifact using automatic quality gates and blue/green deployments.
 
-## About this use case
+## About this tutorial
 
 When developing an application, sooner or later you need to update a service in a *production* environment. To conduct this in a controlled manner and without impacting end-user experience, the quality of the new service has to be ensured and adequate deployment strategies must be in place. For example, blue-green deployments are well-known strategies to roll out a new service version by also keeping the previous service version available if something goes wrong.
 
-For this use case, we prepared a *slow* and a *regular* version of the carts service:
+For this tutorial, we prepared a *slow* and a *regular* version of the carts service:
 
 | Image                                 | Description                                        |
 |---------------------------------------|----------------------------------------------------|
 | docker.io/keptnexamples/carts:0.9.2   | Processes each request with a slowdown of 1 second |
 | docker.io/keptnexamples/carts:0.9.3   | Processes each request without any slowdown        |
 
-In this use case, we will Deploy these two versions.
-During this deployment process, the versions have to pass a quality gate
+In this tutorial, we will deploy these two versions. During this deployment process, the versions have to pass a quality gate
 in the *staging* environment in order to get promoted to the *production* environment.
 This quality gate checks whether the average response time of the service is under 1&nbsp;second. If the response time exceeds this threshold, the performance evaluation will be marked as failed.
 
@@ -32,16 +31,16 @@ Second, we will deploy the *regular* version of the carts service (v0.9.3). Ther
 
 ## Prerequisites
 
-- Finish the [Onboarding a Service](../onboard-carts-service/) use case.
+- Finish the [Onboarding a Service](../onboard-carts-service/) tutorial.
 
 ## Set up of monitoring for the carts service
-Since this use case relies on the concept of quality gates, you will need to set up monitoring for your carts service.
+Since this tutorial relies on the concept of quality gates, you will need to set up monitoring for your carts service.
 The [Pitometer](https://github.com/keptn/pitometer) service will then evaluate the data coming from the monitoring solution to determine a score for the quality gate.
 
 For using the quality gate, Pitometer requires a performance specification.
 This performance specification is described by two files, namely the `service-indicators.yaml` file, which describes the available types of metrics and their data sources (e.g., Prometheus or Dynatrace), and the `service-objectives.yaml`, which describe the desired values for those metrics. To learn more about the *service-indicator*, and *service-objective* file, click here [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/keptn/blob/0.5.0/specification/sre.md).
 
-In this use case, we will be using either the open source monitoring solution *Prometheus* or *Dynatrace*.
+In this tutorial, we will be using either the open source monitoring solution *Prometheus* or *Dynatrace*.
 
 ### Option 1: Prometheus
 <details><summary>Expand instructions</summary>

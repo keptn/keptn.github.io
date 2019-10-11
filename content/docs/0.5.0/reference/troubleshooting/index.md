@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: The sections describes tips and tricks to deal with troubles that may occur when using Keptn. 
+description: Find tips and tricks to deal with troubles that may occur when using Keptn. 
 weight: 30
 keywords: [troubleshooting]
 ---
@@ -8,6 +8,8 @@ keywords: [troubleshooting]
 In this section, instructions are summarized that help to trouble shoot known issues that may occur when using Keptn.
 
 ## Verifying a Keptn installation
+<details><summary>Expand instructions</summary>
+<p>
 
 - To verify your Keptn installation, retrieve the pods running in the `keptn` namespace.
 
@@ -78,8 +80,9 @@ In this section, instructions are summarized that help to trouble shoot known is
   istio-security-post-install-1.2.5-glswk   0/1     Completed   0          6m
   istio-sidecar-injector-bcf445789-gkfjf    1/1     Running     0          6m
   ```
+</p></details>
 
-### Installation on Azure aborting
+## Installation on Azure aborts
 <details><summary>Expand instructions</summary>
 <p>
 

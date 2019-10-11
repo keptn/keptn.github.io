@@ -6,27 +6,29 @@ keywords: [self-healing]
 aliases:
 ---
 
-This use case gives an overview of how to leverage the power of runbook automation to build self-healing applications. Therefore, you will use ServiceNow workflows that are triggered to remediate incidents.
+Gives an overview of how to leverage the power of runbook automation to build self-healing applications. Therefore, you will use ServiceNow workflows that are triggered to remediate incidents.
 
-## About this use case
+## About this tutorial
 
-Configuration changes during runtime are sometimes necessary to increase flexibility. A prominent example are feature flags that can be toggled also in a production environment. In this use case, we will change the promotion rate of a shopping cart service, which means that a defined percentage of interactions with the shopping cart will add promotional items (e.g., small gifts) to the shopping carts of our customers. However, we will experience troubles with this configuration change. Therefore, we will set means in place that are capable of auto-remediating issues at runtime. In fact, we will leverage workflows in ServiceNow. 
+Configuration changes during runtime are sometimes necessary to increase flexibility. A prominent example are feature flags that can be toggled also in a production environment. In this tutorial, we will change the promotion rate of a shopping cart service, which means that a defined percentage of interactions with the shopping cart will add promotional items (e.g., small gifts) to the shopping carts of our customers. However, we will experience troubles with this configuration change. Therefore, we will set means in place that are capable of auto-remediating issues at runtime. In fact, we will leverage workflows in ServiceNow. 
 
 ## Prerequisites
 
+- Finish the [Onboarding a Service](../onboard-carts-service) tutorial.
+  - **Note:** For this tutorial, the [Onboarding a Service](../onboard-carts-service/) tutorial has to be completed exactly as it is described. The scripts provided in the current tutorial rely on values that are set during the onboarding of the carts service. Thus, this tutorial might not work as expected if values are changed.
+
 - ServiceNow instance or [free ServiceNow developer instance](https://developer.servicenow.com) 
-  - Use case tested on [London](https://docs.servicenow.com/category/london) and [Madrid](https://docs.servicenow.com/category/london) releases
-- [Setup of Dynatrace](../../monitoring/dynatrace/) for monitoring is mandatory for this use case 
-- Complete [Onboarding a Service](../onboard-carts-service) use case
-  - Please note that for this use case the use case [Onboarding a Service](../onboard-carts-service/) has to be completed exactly as it is described. The scripts provided in the current use case rely on values that are set during the onboarding of the carts service. Thus, this use case might not work as expected if values are changed.
-- Clone the GitHub repository with the necessary files for the use case:
+  - **Note:** Tutorial tested on [London](https://docs.servicenow.com/category/london) and [Madrid](https://docs.servicenow.com/category/london) releases
+- [Setup of Dynatrace](../../monitoring/dynatrace/) for monitoring is mandatory
+
+- Clone the GitHub repository with the necessary files for the tutorial:
   
-  ```console
-  git clone --branch 0.1.4 https://github.com/keptn-contrib/servicenow-service.git --single-branch
-  ```
-  ```console
-  cd servicenow-service
-  ```
+    ```console
+    git clone --branch 0.1.4 https://github.com/keptn-contrib/servicenow-service.git --single-branch
+    ```
+    ```console
+    cd servicenow-service
+    ```
 
 ## Configure Keptn
 
@@ -76,7 +78,7 @@ kubectl -n keptn create secret generic servicenow --from-literal="tenant=xxx" --
 
 ## Setup the workflow in ServiceNow
 
-A ServiceNow *Update Set* is provided to run this use case. To install the *Update Set* follow these steps:
+A ServiceNow *Update Set* is provided to run this tutorial. To install the *Update Set* follow these steps:
 
 1. Login to your ServiceNow instance.
 1. Look for *update set* in the left search box and navigate to **Update Sets to Commit** 
@@ -168,9 +170,9 @@ Before you adjust this setting, make sure to have some traffic on the service in
         caption="Edit Anomaly Detection"
         width="700px">}}
 
-## Run the use case
+## Run the tutorial
 
-Now, all pieces are in place to run the use case. Therefore, we will start by generating some load on the *carts* service in our production environment. Afterwards, we will change configuration of this service at runtime. This will cause some troubles in our production environment, Dynatrace will detect the issue, and will create a problem ticket. Due to the problem notification we just set up, Keptn will be informed about the problem and will forward it to the ServiceNow service that in turn creates an incident in ServiceNow. This incident will trigger a workflow that is able to remediate the issue at runtime. Along the remediation, comments, and details on configuration changes are posted to Dynatrace.
+Now, all pieces are in place to run the use case of a production incident. Therefore, we will start by generating some load on the *carts* service in our production environment. Afterwards, we will change configuration of this service at runtime. This will cause some troubles in our production environment, Dynatrace will detect the issue, and will create a problem ticket. Due to the problem notification we just set up, Keptn will be informed about the problem and will forward it to the ServiceNow service that in turn creates an incident in ServiceNow. This incident will trigger a workflow that is able to remediate the issue at runtime. Along the remediation, comments, and details on configuration changes are posted to Dynatrace.
 
 ### Load generation
 
@@ -264,7 +266,7 @@ Once the problem is resolved, Dynatrace sends out another notification which aga
 
 ## Troubleshooting
 
-- Please note that Dynatrace has its feature called **Frequent Issue Detection** enabled by default. This means, that if Dynatrace detects the same problem multiple times, it will be classified as a frequent issue and problem notifications won't be sent out to third party tools. Therefore, the use case might not be able to be run a couple of times in a row. 
+- Please note that Dynatrace has its feature called **Frequent Issue Detection** enabled by default. This means, that if Dynatrace detects the same problem multiple times, it will be classified as a frequent issue and problem notifications won't be sent out to third party tools. Therefore, the tutorial might not be able to be run a couple of times in a row. 
 To disable this feature:
   1. Login to your Dynatrace tenant.
   1. Navigate to **Settings** > **Anomaly detection** > **Frequent issue detection**
