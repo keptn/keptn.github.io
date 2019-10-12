@@ -27,7 +27,7 @@ Select one of the following options:
  </p>
 </details>
 
-<details><summary>Amazon Elastic Container Service (EKS)</summary>
+<details><summary>Amazon Elastic Kubernetes Service (EKS)</summary>
 <p>
 
 1. Install local tools
@@ -196,7 +196,7 @@ To install the latest release of Keptn on a Kuberntes cluster, execute the [kept
     keptn install --platform=aks
     ```
   
-- Amazon Elastic Container Service (EKS):
+- Amazon Elastic Kubernetes Service (EKS):
 
     ```console
     keptn install --platform=eks
