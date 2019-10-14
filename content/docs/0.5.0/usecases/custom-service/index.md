@@ -1,16 +1,16 @@
 ---
-title: Write your own Keptn service
-description: Shows you how to implement your own Keptn service and listen for certain events.
-weight: 30
+title: Write your own Keptn Service
+description: Explains you how to implement your own Keptn service that listens to Keptn events and extends your Keptn with a certain functionality.
+weight: 90
 keywords: [service, custom]
 aliases:
 ---
 
-Learn how to implement your own Keptn service and listen for certain events.
+Explains you how to implement your own Keptn service that listens to Keptn events and extends your Keptn with a certain functionality.
 
-## About
+## About this tutorial
 
-The goal of this section is to describe how you can add additional functionality to your Keptn installation by implementing your own custom services. You can react to certain events that occur during your continuous delivery pipeline runs and integrate additional tools into your pipeline by accessing their REST interfaces with your custom services. At the moment the events you can subscribe to include:
+The goal of this tutorial is to describe how you can add additional functionality to your Keptn installation by implementing your own custom services. You can react to certain events that occur during your continuous delivery pipeline runs and integrate additional tools into your pipeline by accessing their REST interfaces with your custom services. At the moment the events you can subscribe to include:
 
 - sh.keptn.events.new-artifact
 - sh.keptn.events.configuration-changed
@@ -121,7 +121,7 @@ kubectl apply -f service.yaml
 kubectl apply -f distributor.yaml
 ```
 
-## To summarize
+## Conclusion
 You will need to provide the following when you want to write a custom service:
 
 - Your service implementation including a Docker container, we recommend writing the service in *Go*

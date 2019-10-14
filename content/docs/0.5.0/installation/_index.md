@@ -1,6 +1,6 @@
 ---
 title: Install Keptn
-description: How to install Keptn on one of the provided platforms.
+description: How to install Keptn on one of the supported platforms.
 weight: 20
 icon: setup
 ---

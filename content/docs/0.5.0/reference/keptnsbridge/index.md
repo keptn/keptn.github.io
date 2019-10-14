@@ -1,6 +1,6 @@
 ---
 title: Keptn's bridge
-description: The following description explains how to access the Keptn's log using Kibana.
+description: Explains how the access the Keptn's bridge.
 weight: 21
 keywords: [bridge]
 ---
