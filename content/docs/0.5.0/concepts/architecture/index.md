@@ -1,7 +1,7 @@
 ---
 title: Architecture
 description: Learn about the architecture, how Keptn works internally and can be extended.
-weight: 20
+weight: 90
 keywords: [keptn, architecture]
 ---
 
