@@ -75,7 +75,7 @@ It is then available on [localhost:8080/targets](http://localhost:8080/targets) 
 ### Option 2: Dynatrace
 <details><summary>Expand instructions</summary>
 <p>
-Please make sure you have followed the instructions for setting up [Dynatrace](../../manage/monitoring/dynatrace).
+Please make sure you have followed the instructions for setting up [Dynatrace](../../reference/monitoring/dynatrace).
 
 To set up the quality gates for the carts service, please navigate to the `examples/onboarding-carts` folder. This folder contains the files `service-indicators.yaml` and `service-objectives-with-dynatrace.yaml`. To set the quality gates based on those files, upload it via the following command:
 

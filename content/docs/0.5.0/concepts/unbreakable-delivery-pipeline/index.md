@@ -6,11 +6,7 @@ keywords: [self-healing, quality gates]
 aliases:
 ---
 
-Reviews and consolidates the concepts of a continuous delivery pipeline that prevents bad code changes from impacting your end users.
-
-## About this tutorial
-
-The goal of the *Unbreakable Delivery Pipeline* is to implement a pipeline that prevents bad code changes from impacting your end users. This pipeline relies on three concepts known as Shift-Left, Shift-Right, and Self-Healing. More precisely,
+ The goal of the *Unbreakable Delivery Pipeline* is to implement a pipeline that prevents bad code changes from impacting your end users. This pipeline relies on three concepts known as Shift-Left, Shift-Right, and Self-Healing. More precisely,
 
 * **Shift-Left** is the ability to pull data for specific entities (processes, services, or applications) through an automation API and feed it into the tools that are used to decide on whether to stop the pipeline or keep it running,
 

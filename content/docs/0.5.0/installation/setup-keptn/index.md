@@ -59,7 +59,7 @@ Select one of the following options:
 2. Create GKE cluster
   - Master version >= `1.12.x` (tested version: `1.13.7-gke.24`)
   - One **n1-standard-8** node
-  - Image type `ubuntu` or `cos` (if you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../manage/monitoring/dynatrace/))
+  - Image type `ubuntu` or `cos` (if you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../reference/monitoring/dynatrace/))
   - Sample script to create such cluster (adapt the values according to your needs)
 
     ```console
