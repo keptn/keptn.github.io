@@ -1,6 +1,6 @@
 ---
 title: Install Keptn
-description: How to setup Keptn.
+description: How to install Keptn on one of the supported Kubernetes platforms.
 weight: 10
 icon: setup
 keywords: setup
@@ -27,7 +27,7 @@ Select one of the following options:
  </p>
 </details>
 
-<details><summary>Amazon Elastic Container Service (EKS)</summary>
+<details><summary>Amazon Elastic Kubernetes Service (EKS)</summary>
 <p>
 
 1. Install local tools
@@ -59,7 +59,7 @@ Select one of the following options:
 2. Create GKE cluster
   - Master version >= `1.12.x` (tested version: `1.13.7-gke.24`)
   - One **n1-standard-8** node
-  - Image type `ubuntu` or `cos` (if you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../monitoring/dynatrace/))
+  - Image type `ubuntu` or `cos` (if you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../reference/monitoring/dynatrace/))
   - Sample script to create such cluster (adapt the values according to your needs)
 
     ```console
@@ -196,7 +196,7 @@ To install the latest release of Keptn on a Kuberntes cluster, execute the [kept
     keptn install --platform=aks
     ```
   
-- Amazon Elastic Container Service (EKS):
+- Amazon Elastic Kubernetes Service (EKS):
 
     ```console
     keptn install --platform=eks
