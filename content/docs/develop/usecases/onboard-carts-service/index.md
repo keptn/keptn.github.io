@@ -1,20 +1,20 @@
 ---
 title: Onboarding a Service
-description: Shows you how to onboard the carts service including its database to a Keptn managed project. Besides, this use case builds a new artifact that will be automatically deployed via Keptn.
+description: Shows you how to onboard the carts service including its database to a Keptn managed project. Besides, this tutorial shows how to deployed a new version of carts via Keptn.
 weight: 20
 keywords: [onboarding]
 aliases:
 ---
 
-This use case shows how to onboard the carts service including its database. Besides this, a new artifact will be automatically deployed by Keptn.
+Shows you how to onboard the carts service including its database to a Keptn managed project. Besides, this tutorial shows how to deployed a new version of carts via Keptn.
 
-## About this use case
+## About this tutorial
 
-The goal of this use case is to automatically deploy a service into a multi-stage environment using Keptn. The stages of the environment are described in a *shipyard* file that defines the name, deployment strategy, and test strategy of each stage. In case an additional stage is needed, the shipyard file can be easily extended by a stage definition before creating the project. After creating the project, the service that is going to be managed by Keptn needs to be onboarded. Finally, an artifact of the carts service will be deployed by Keptn.  
+The goal of this tutorial is to automatically deploy a service into a multi-stage environment using Keptn. The stages of the environment are described in a *shipyard* file that defines the name, deployment strategy, and test strategy of each stage. In case an additional stage is needed, the shipyard file can be easily extended by a stage definition before creating the project. After creating the project, the service that is going to be managed by Keptn needs to be onboarded. Finally, an artifact of the carts service will be deployed by Keptn.  
 
 <details><summary>*Click here to learn more about Keptn internal services.*</summary>
 <p>
-To illustrate the scenario this use case addresses, Keptn relies on following internal services: *shipyard-service*, *helm-service*, *jmeter-service*, and *gatekeeper-service*. These services have the following responsibilities: 
+To illustrate the scenario this tutorial addresses, Keptn relies on following internal services: *shipyard-service*, *helm-service*, *jmeter-service*, and *gatekeeper-service*. These services have the following responsibilities: 
 
 **shipyard-service:** 
   
@@ -43,7 +43,7 @@ To illustrate the scenario this use case addresses, Keptn relies on following in
 
 * The endpoint and API token provided by the Keptn installation.
 
-* Clone example files used for this use case:
+* Clone example files used for this tutorial:
 
     ```console
     git clone --branch 0.5.0 https://github.com/keptn/examples.git --single-branch
@@ -65,7 +65,7 @@ keptn auth --endpoint=https://api.keptn.$(kubectl get cm -n keptn keptn-domain -
 
 ## Create project sockshop
 
-For creating a project, this use case relies on the `shipyard.yaml` file shown below:
+For creating a project, this tutorial relies on the `shipyard.yaml` file shown below:
 
 ```yaml
 stages:
@@ -96,7 +96,7 @@ keptn create project sockshop --shipyard=./shipyard.yaml
 <details><summary>**Option 2:** Create a new project with Git upstream</summary>
 <p>
 
-To configure a Git upstream for this use case, the Git user (`--git-user`), an access token (`--git-token`), and the remote URL (`--git-remote-url`) are required. If a requirement is not met, go to [select Git-based upstream](../../manage/project/#select-git-based-upstream) where instructions for GitHub, GitLab, and Bitbucket are provided.
+To configure a Git upstream for this tutorial, the Git user (`--git-user`), an access token (`--git-token`), and the remote URL (`--git-remote-url`) are required. If a requirement is not met, go to [select Git-based upstream](../../manage/project/#select-git-based-upstream) where instructions for GitHub, GitLab, and Bitbucket are provided.
 
 ```console
 keptn create project sockshop --shipyard=./shipyard.yaml --git-user=GIT_USER --git-token=GIT_TOKEN --git-remote-url=GIT_REMOTE_URL
