@@ -262,7 +262,7 @@ keptn configure monitoring prometheus --project=PROJECTNAME --service=SERVICENAM
 ### keptn send event new-artifact
 
 After onboarding a service, the Keptn CLI allows to trigger the deployment of an artifact.
-This artifact is a Docker image, which can be located at Docker Hub, Quay, or any other registry storing docker images. The new artifact is pushed in the first stage specified in the `shipyard.yaml` file (usually this will be the dev stage). Afterwards, Keptn takes care of deploying this new artifact to the other stages.
+This artifact is a Docker image, which can be located at Docker Hub, Quay, or any other container registry which is accessible from within the cluster. The new artifact is pushed in the first stage specified in the `shipyard.yaml` file (usually this will be the dev stage). Afterwards, Keptn takes care of deploying this new artifact to the other stages.
 
 For notifying Keptn to deploy a new artifact for a service, use the command `send event new-artifact`.
 The CLI sends a new-artifact-event containing the image name and tag (not the image itself) to Keptn and then Keptn takes care
@@ -274,10 +274,10 @@ keptn send event new-artifact --project=PROJECTNAME --service=SERVICENAME --imag
 ```
 
 **Note:** This command does not send the Docker image to Keptn. Instead, Keptn uses Kubernetes functionalities for pulling this image.
-Therefore, the used Docker registry has to accessible form your cluster. For pulling an image from a private registry,
+Therefore, the used Docker registry has to be accessible from your cluster. For pulling an image from a private registry,
 we would like to refer to the [Kubernetes documentation](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/).
 Furthermore, please note that the value provided in the `image` flag has to contain your Docker registry. The only exception is `docker.io` because
-this is the default in Kubernetes and, hence, can be omitted.
+this is the default in Kubernetes and, hence, can be omitted (e.g., `--image=docker.io/mongo` is the same as `--image=mongo`).
 
 ### keptn send event
 
