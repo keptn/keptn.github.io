@@ -76,21 +76,21 @@ date: 2018-02-12T15:37:57+07:00
     </a>
   </div>
   <div class="col">
-    <a href="#controlplane">
+    <a href="#keptndev">
       <div class="btnarea">
         Keptn for Developers
       </div>
     </a>
   </div>
   <div class="col">
-    <a href="#controlplane">
+    <a href="#keptndevops">
       <div class="btnarea">
         Keptn for DevOps
       </div>
     </a>
   </div>
   <div class="col">
-    <a href="#controlplane">
+    <a href="#keptnsre">
       <div class="btnarea">
         Keptn for SREs<br/><br/>
       </div>
