@@ -56,7 +56,7 @@ date: 2018-02-12T15:37:57+07:00
 <div class="row">
   <div class="col">
     <a href="#control_plane">
-      <div class="btn btn-primary">
+      <div class="btnarea">
         Message-driven control plane
       </div>
     </a>
