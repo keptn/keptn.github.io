@@ -5,7 +5,8 @@ date: 2018-02-12T15:37:57+07:00
 <div class="row">
   <div class="col-md-12">
       <div class="btn-group" role="group" aria-label="Basic example">
-        <a class="btn" href=" https://github.com/keptn/keptn/releases/0.5.0"> <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/keptn/keptn?logo=github&logoColor=white&style=flat" />
+        <a class="btn" href=" https://github.com/keptn/keptn/releases/">
+        <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/keptn/keptn?label=latest%20release&logo=github&logoColor=white">
         </a>
         <a class="btn" href="https://github.com/keptn/keptn">
           <img alt="GitHub All Releases" src="https://img.shields.io/github/downloads/keptn/keptn/total?logo=github&logoColor=white">
