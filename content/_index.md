@@ -27,30 +27,25 @@ date: 2018-02-12T15:37:57+07:00
       <li>Keptn for SREs</li>
     </ul>
     <br>
-
-    <a href="https://github.com/keptn/keptn/releases/0.5.0">
-    <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/keptn/keptn?logo=github&logoColor=white&style=flat" />
-    </a>
-    <a href="https://github.com/keptn/keptn">
-    <img alt="GitHub All Releases" src="https://img.shields.io/github/downloads/keptn/keptn/total?logo=github&logoColor=white">
-    </a>
-    <a href="https://github.com/keptn/keptn">
-    <img alt="GitHub stars" src="https://img.shields.io/github/stars/keptn/keptn?logo=github&logoColor=white">
-    </a>
-    <a href="https://travis-ci.org/keptn/keptn">
-    <img alt="Travis (.org) branch" src="https://img.shields.io/travis/keptn/keptn/master?logo=travis&logoColor=white">
-    </a>
-    <a href="https://twitter.com/keptnProject">
-    <img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/keptnProject">
-    </a>
-
-    
-    
-
-    <h2>Keptn Use Cases</h2>
-    Learn more about Keptns core features LINK and how Keptn can help different roles in detail.
-
-    
+    <div class="row">
+    <div class="col-md-6 pb-sm-2">
+      <a href="https://github.com/keptn/keptn/releases/0.5.0">
+      <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/keptn/keptn?logo=github&logoColor=white&style=flat" />
+      </a>
+      <a href="https://github.com/keptn/keptn">
+      <img alt="GitHub All Releases" src="https://img.shields.io/github/downloads/keptn/keptn/total?logo=github&logoColor=white">
+      </a>
+      <a href="https://github.com/keptn/keptn">
+      <img alt="GitHub stars" src="https://img.shields.io/github/stars/keptn/keptn?logo=github&logoColor=white">
+      </a>
+      <a href="https://travis-ci.org/keptn/keptn">
+      <img alt="Travis (.org) branch" src="https://img.shields.io/travis/keptn/keptn/master?logo=travis&logoColor=white">
+      </a>
+      <a href="https://twitter.com/keptnProject">
+      <img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/keptnProject">
+      </a>
+    </div>
+    </div>
 
   </div>
   <div class="col-md-6">
