@@ -85,6 +85,7 @@ Please make sure to have the following tool(s) installed:
     ```console
     ./deployDynatraceOnGKE.sh
     ```
+        Also, please read **Note 2** after this section in case you are running GKE Container-optimized os.
 
   - If you are on **Pivotal PKS**, please execute
 
@@ -98,7 +99,7 @@ Please make sure to have the following tool(s) installed:
     ./deployDynatraceOnOpenshift.sh
     ```
 
-When this script is finished, the Dynatrace OneAgent and the *dynatrace-service* are deployed in your cluster. Execute the following command to verify the deployment of the *dynatrace-service*.
+When this script is finished, the Dynatrace OneAgent and the *dynatrace-service* are deployed in your cluster. Execute the following commands to verify the deployment of the OneAgent as well as of the *dynatrace-service*.
 
 ```console
 kubectl get svc dynatrace-service -n keptn
@@ -107,6 +108,17 @@ kubectl get svc dynatrace-service -n keptn
 ```console
 NAME                TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)    AGE
 dynatrace-service   ClusterIP   10.0.44.191   <none>        8080/TCP   2m48s
+```
+
+```console
+kubectl get pods -n dynatrace
+```
+
+```console
+NAME                                           READY   STATUS    RESTARTS   AGE
+dynatrace-oneagent-operator-7f477bf78d-dgwb6   1/1     Running   0          12m
+oneagent-5lcqh                                 0/1     Running   0          3s
+oneagent-ps6t4                                 0/1     Running   0          3s
 ```
 
 **Note 1:** To monitor the services that are already onboarded in the `dev`, `staging`, and `production` namespace, make sure to restart the pods. If you defined different environments in your shipyard file, please adjust the values accordingly. 
@@ -120,7 +132,25 @@ kubectl delete pods --all --namespace=sockshop-staging
 kubectl delete pods --all --namespace=sockshop-production
 ```
 
-**Note 2:** If the nodes in your cluster run on *Container-Optimized OS (cos)*, make sure to [follow the instructions](https://www.dynatrace.com/support/help/cloud-platforms/google-cloud-platform/google-kubernetes-engine/deploy-oneagent-on-google-kubernetes-engine-clusters/#expand-134parameter-for-container-optimized-os-early-access) for setting up the Dynatrace OneAgent Operator. This means that after the initial setup with `deployDynatrace.sh`, which is a step below, the `cr.yml` has to be edited and applied again. In addition, all pods have to be restarted.
+**Note 2:** If the nodes in your cluster run on *Container-Optimized OS (cos)* (default for GKE), the Dynatrace OneAgent might not work properly, and another step is necessary. To verify that the OneAgent does not work properly, the output of `kubectl get pods -n dynatrace` might look as follows:
+```console
+NAME                                           READY   STATUS             RESTARTS   AGE
+dynatrace-oneagent-operator-7f477bf78d-dgwb6   1/1     Running            0          8m21s
+oneagent-b22m4                                 0/1     Error              6          8m15s
+oneagent-k7jn6                                 0/1     CrashLoopBackOff   6          8m15s
+```
+Please [follow the instructions](https://www.dynatrace.com/support/help/cloud-platforms/google-cloud-platform/google-kubernetes-engine/deploy-oneagent-on-google-kubernetes-engine-clusters/#expand-134parameter-for-container-optimized-os-early-access) for setting up the Dynatrace OneAgent Operator. This means that after the initial setup with `deployDynatrace.sh`, which is a step below, the `cr.yml` has to be edited and applied again. 
+You can do that by editing the already downloaded `cr.yml` in `../manifests/dynatrace/gen`. Change
+```yaml
+  env: []
+```
+to
+```yaml
+  env:
+  - name: ONEAGENT_ENABLE_VOLUME_STORAGE
+    value: "true"
+```
+Don't forget to restart all pods afterwards.
 
 ### What has been set up?
 
