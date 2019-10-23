@@ -1,4 +1,4 @@
-{{ define "title" }}keptn | Opinionated framework for event-driven automated continuous operations{{ end}}
+{{ define "title" }}keptn | A message-driven control plane for application delivery and automated operations{{ end}}
 {{ define "header_css" }}{{ end }}
 {{ define "body_classes" }}page-home{{ end }}
 {{ define "header_classes" }}header-transparent{{ end }}
@@ -7,7 +7,7 @@
 {{end}}
 {{ define "meta"}}
 <meta property="og:description" content="Building the fabric for cloud-native lifecycle automation at enterprise scale">
-<meta property="og:title" content="Keptn - Continuous Delivery and Operations for Kubernetes">
+<meta property="og:title" content="Keptn - A message-driven control plane for application delivery and automated operations">
 <meta property="og:image" content="https://keptn.sh/favicon.png">
 <meta property="og:url" content="https://keptn.sh/index.html">
 <meta name="twitter:card" content="summary_large_image">
@@ -22,167 +22,93 @@
   </div>
 </div>
 
+
+
 <div class="strip strip-grey">
   <div class="container  pt-sm-4 pb-sm-4">
     <div class="row justify-content-center">
       <div class="col-12">
-        <h2 class="text-dark mb-3">Use cases</h2>
-      </div>
-
-      <div class="col-12">
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-
-          <li class="nav-item">
-            <a class="nav-link active" id="developer-tab" data-toggle="tab" href="#developer" role="tab" aria-controls="developer" aria-selected="true">Developer</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="devops-tab" data-toggle="tab" href="#devops" role="tab" aria-controls="devops" aria-selected="false">DevOps Engineer</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="sre-tab" data-toggle="tab" href="#sre" role="tab" aria-controls="sre" aria-selected="false">Site Reliability Engineer</a>
-          </li>
-
-        </ul>
-        <div class="tab-content" id="myTabContent">
-          <div class="tab-pane fade show active" id="developer" role="tabpanel" aria-labelledby="developer-tab">
-            <img src="/images/dev_usecase_animated.gif" alt="Keptn for developers" />
-          </div>
-          <div class="tab-pane fade" id="devops" role="tabpanel" aria-labelledby="devops-tab">
-              <img class="img-fluid" src="/images/devops_usecase_animated.gif" alt="Keptn for DevOps"/>
-            </div>
-          <div class="tab-pane fade" id="sre" role="tabpanel" aria-labelledby="sre-tab">
-              <img class="img-fluid" src="/images/sre_usecase_animated.gif" alt="Keptn for SREe"/>
-          </div>
-
+        <h2 class="text-dark mb-3">Keptn Core Features</h2>
+        <h4 id="control_plane">Message-driven Control Plane</h4>
+        Keptn is a <strong></strong>message-driven control plane</strong> that can be used for <strong>Application Delivery</strong> and
+        <strong>Automated Operations</strong>. Here are two examples how Keptn orchestrates both delivery and
+        operations. Please note that the tools that deploy, tests, monitor, etc. are left out for simplicity. This
+        section focuses on the control-plane aspect of Keptn.
+        <br/><br/>
+        <a href="#top">Back to top</a>
+        <h4 id="application_delivery">Application Delivery</h4>
+        <strong>Application Delivery</strong> starts when a new artifact is available, e.g. a container that has been
+        built in a CI pipeline has been pushed to a container registry (1). Keptn gets notified about the new artifact
+        by either a webhook or a user that sends an event to Keptn (2). Keptn updates the project configuration in git
+        (3) and dispatches an event to start a dark deployment (4), . After a successful deployment tests are executed
+        (5). Keptn gathers metrics from a monitoring provider (6) and evaluates against the specified quality criteria
+        (quality gate) and decides that the artifact gets promoted to the next stage. Keptn updates the configuration
+        (7) and triggers a blue/green deployment (8). As before, Keptn gathers metrics (9) and finds that the metrics
+        don't pass the specified quality gate. Keptn rolls back changes in the configuration (10) and undeploys the new
+        artifact from the current stage (11). Eventually, Keptn notifies the user that the application delivery workflow
+        wasn't successful.
+        <br /><br />
+        <div>
+          <img src="/images/application_delivery.png" alt="Application Delivery" />
         </div>
+        <br/><br/>
+        <a href="#top">Back to top</a>
+        <h4 id="automated_operations">Automated Operations</h4>
+        <strong>Automated Operations</strong> starts by adding service level indicators (SLI), service level objectives
+        (SLO), and remediation instructions to the project configuration in Keptn (1)(2). Based on this information,
+        Keptn configures the monitoring provider with alerting rules (3). As the monitoring of the application takes
+        place (4), the monitoring provider finds that a SLO is not met anymore (5) and sends an alert to Keptn (6).
+        Keptn finds an appropriate remediation action in the configuration (7) and executes said remediation action (8).
+        The monitoring provider oversees the process and gives feedback if the problem has been solved (9).
+        <br /><br />
+        <img src="/images/automated_operations.png" alt="Automated Operations" />
+        <br/><br/>
+        <a href="#top">Back to top</a>
       </div>
-
     </div>
   </div>
 </div>
 
 <div class="container pt-2 pt-md-2 pb-md-2">
-  <div class="row justify-content-start">
+  <div class="row justify-content-center">
     <div class="col-12">
-      <h2 class="mb-3">Advantages of Keptn</h2>
-      <br>
+      <h2 class="text-dark mb-3" id="keptndev">Keptn for Developers</h2>
+      <img src="/images/dev_usecase_animated.gif" alt="Keptn for developers" />
+      <br/><br/>
+        <a href="#top">Back to top</a>
     </div>
-
-    <div class="col-12 col-md-6 col-lg-4 mb-2">
-      <div class="feature">
-        <div class="feature-image"><img alt="" src="/images/fixpack-gray700.png" /></div>
-        <h2 class="feature-title">Best practices out-of-the box</h2>
-        <div class="feature-content">Keptn supports best practices and the latest delivery platforms utilized by modern applications while ensuring that you can easily get started in minutes.</div>
-      </div>
-    </div>
-
-    <div class="col-12 col-md-6 col-lg-4 mb-2">
-      <div class="feature">
-        <div class="feature-image"><img alt="" src="/images/astronaut-helmet.png" /></div>
-        <h2 class="feature-title">Future-proof and pluggable</h2>
-        <div class="feature-content">One-off implementations often lead to eventual maintenance problems. Keptn provides a core framework that you can use to build cohesive, standardized cloud native-fabric for your organization. Keptn also enables you to replace tools as you wish and avoid vendor lock-in.</div>
-      </div>
-    </div>
-
-    <div class="col-12 col-md-6 col-lg-4 mb-2">
-      <div class="feature">
-        <div class="feature-image"><img alt="" src="/images/swiss-army-knife.png" /></div>
-        <h2 class="feature-title">Smart and flexible</h2>
-        <div class="feature-content">Concepts like GitOps, self-healing, and unbreakable deployments can be implemented in different ways, varying from one organization to the next. While keptn has built-in intelligence that assists you in taking advantage of these industry best practices, it’s flexible enough to address your specific needs.</div>
-      </div>
-    </div>
-
   </div>
+  <br>
 </div>
-
 
 <div class="strip strip-grey">
-  <div class="container pt-5 pb-5 pt-md-8 pb-md-8">
+  <div class="container  pt-sm-4 pb-sm-4">
     <div class="row justify-content-center">
       <div class="col-12">
-        <h2 class="text-center text-dark mb-3">Core capabilities</h2>
+        <h2 class="text-dark mb-3" id="keptndevops">Keptn for DevOps Engineers</h2>
+        <img class="img-fluid" src="/images/devops_usecase_animated.gif" alt="Keptn for DevOps" />
+        <br/><br/>
+        <a href="#top">Back to top</a>
       </div>
-
-      <div class="col-12 col-md-6 col-lg-4 mb-2">
-        <div class="feature">
-          <div class="feature-image"><img alt="" src="/images/water-pipe-100.png" /></div>
-          <h2 class="feature-title">Automated multistage unbreakable delivery pipelines</h2>
-          <div class="feature-content">GitOps-enabled delivery pipelines with automated quality gates support automated testing and monitoring-as-a-service.</div>
-        </div>
-      </div>
-      <div class="col-12 col-md-6 col-lg-4 mb-2">
-        <div class="feature">
-          <div class="feature-image"><img alt="" src="/images/fixpack-gray700.png" /></div>
-          <h2 class="feature-title">Self-healing blue/green deployments</h2>
-          <div class="feature-content">Deployments that follow the “Operations as Code” paradigm automatically remediate problems and get your deployment pipeline working again in under a minute.</div>
-        </div>
-      </div>
-      <div class="col-12 col-md-6 col-lg-4 mb-2">
-        <div class="feature">
-          <div class="feature-image"><img alt="" src="/images/repair-gray700.png" /></div>
-          <h2 class="feature-title">Event-driven runbook automation</h2>
-          <div class="feature-content">Production problems can be automatically remediated in real-time by executing runbooks that require no manual intervention.</div>
-        </div>
-      </div>
-
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-12">
-        <br><br>
-        <h2 class="text-center text-dark mb-3">Design principles</h2>
-      </div>
-
-      <div class="col-12 col-md-6 col-lg-4 mb-2">
-        <div class="feature">
-          <div class="feature-image"><img alt="" src="/images/git-signet-gray700.png" /></div>
-          <h2 class="feature-title">GitOps-based collaboration</h2>
-          <div class="feature-content">All Keptn workflows are based on the GitOps paradigm.</div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-6 col-lg-4 mb-2">
-        <div class="feature">
-          <div class="feature-image"><img alt="" src="/images/services-gray700.png" /></div>
-          <h2 class="feature-title">Operator patterns for all logic components</h2>
-          <div class="feature-content">Logic components can be reused for other operational tasks.</div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-6 col-lg-4 mb-2">
-        <div class="feature">
-          <div class="feature-image"><img alt="" src="images/coding-gray700.png" /></div>
-          <h2 class="feature-title">Monitoring and operations as code</h2>
-          <div class="feature-content">Developer-friendly definition of monitoring and operational tasks.</div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-6 col-lg-4 mb-2">
-        <div class="feature">
-          <div class="feature-image"><img alt="" src="images/kubernetes-signet-gray700.png" /></div>
-          <h2 class="feature-title">Built on and for Kubernetes</h2>
-          <div class="feature-content">Built for modern cloud-native environments.</div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-6 col-lg-4 mb-2">
-        <div class="feature">
-          <div class="feature-image"><img alt="" src="images/serverless-icon.png" /></div>
-          <h2 class="feature-title">Event-driven and serverless</h2>
-          <div class="feature-content">Powerful with a minimal resource footprint.</div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-6 col-lg-4 mb-2">
-        <div class="feature">
-          <div class="feature-image"><img alt="" src="images/plug-in-connection-gray700.png" /></div>
-          <h2 class="feature-title">Pluggable tooling</h2>
-          <div class="feature-content">All tools leveraged by Keptn can be replaced based on your tool preferences.</div>
-        </div>
-      </div>
-
     </div>
   </div>
 </div>
+
+<div class="container pt-2 pt-md-2 pb-md-2">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <h2 class="text-dark mb-3" id="keptnsre">Keptn for SREs</h2>
+      <img class="img-fluid" src="/images/sre_usecase_animated.gif" alt="Keptn for SREe" />
+      <br/><br/>
+      <a href="#top">Back to top</a>
+    </div>
+  </div>
+  <br>
+</div>
+
+<br>
+
+
 {{ end }}
 
 {{ define "footer_js" }}
