@@ -14,7 +14,7 @@ Perform the following steps to create a copy of this repository on your local ma
 	Where UserName is your github username. The keptn.github.io directory is available in the local directory.
 	
 1. Install [Hugo](http://gohugo.io)
-	The Keptn website uses the hugo serif theme, which is available at https://github.com/jugglerx/hugo-serif-theme. The themes directory on your local machine (localdirectory/keptn.github.io/themes) is empty because you need to install the hugo serif theme from the jugglerx repository, which is the next step.
+	The Keptn website uses the hugo serif theme, which is available at https://github.com/jugglerx/hugo-serif-theme. The themes directory on your local machine (localdirectory/keptn.github.io/themes) is empty because you need to install the hugo serif theme, which is the next step.
 
 1. Install the git submodule in the themes directory
     ```
