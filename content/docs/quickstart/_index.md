@@ -48,7 +48,6 @@ With keptn installed, have a look at the different [use cases](/docs/0.5.0/useca
 * [Using quality gates for deployments](/docs/0.5.0/usecases/deployments-with-quality-gates/)
 * [Self-healing](/docs/0.5.0/usecases/self-healing-with-keptn/)
 * [Runbook automation](/docs/0.5.0/usecases/runbook-automation-and-self-healing/)
-* [Unbreakable delivery](/docs/0.5.0/usecases/unbreakable-delivery-pipeline/)
 
 ### 5. Learn how keptn works under the hood and how it can be adapted to your usecases
 Review the [reference documentation](/docs/0.5.0/) for a full reference on all components of keptn and how they can be combined and extended to your needs.
