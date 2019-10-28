@@ -227,9 +227,17 @@ keptn delete project PROJECTNAME
 
 **Note:** If a Git upstream is configured for this project, the referenced repository or project will not be deleted. Besides, deployed services are also not deleted by this command.
 
+### keptn create service
+
+To create a service, use the command `create service` and provide the service name and project name (`--project` flag).
+
+```console
+keptn create service SERVICENAME --project=PROJECTNAME
+```
+
 ### keptn onboard service
 
-To onboard a service, use the command `onboard service` and provide the service name, project name (`--project` flag), and the root directory of a Helm chart (`--chart` flag). 
+To onboard a service and its Helm chart, use the command `onboard service` and provide the service name, project name (`--project` flag), and the root directory of the service's Helm chart (`--chart` flag). 
 
 ```console
 keptn onboard service SERVICENAME --project=PROJECTNAME --chart=FILEPATH
