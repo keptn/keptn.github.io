@@ -49,6 +49,57 @@ Executing this command will perform the following tasks:
 - Set up the [Alert Manager](https://prometheus.io/docs/alerting/configuration/) to manage alerts
 - Add the `service-indicators.yaml`, `service-objectives.yaml` and `remediation.yaml` to your Keptn configuration repository
 
+<details><summary>Inspect the files that have been added here</summary>
+
+- `service-indicators.yaml`
+
+  ```yaml
+  indicators:
+  - metric: cpu_usage_sockshop_carts
+  source: Prometheus
+  query: avg(rate(container_cpu_usage_seconds_total{namespace="sockshop-$ENVIRONMENT",pod_name=~"carts-primary-.*"}[5m]))
+  - metric: request_latency_seconds
+  source: Prometheus
+  query: rate(requests_latency_seconds_sum{job='carts-sockshop-$ENVIRONMENT'}[$DURATION])/rate(requests_latency_seconds_count{job='carts-sockshop-$ENVIRONMENT'}[$DURATION])
+  - metric: request_latency_dt
+  source: Dynatrace
+  queryObject:
+    - key: timeseriesId
+    value: com.dynatrace.builtin:service.responsetime
+    - key: aggregation
+    value: AVG
+  ```
+
+
+- `service-objectives.yaml`
+
+  ```yaml
+  pass: 90
+  warning: 75
+  objectives:
+  - metric: request_latency_seconds
+  threshold: 0.8
+  timeframe: 5m
+  score: 50
+  - metric: cpu_usage_sockshop_carts
+  threshold: 0.2
+  timeframe: 5m
+  score: 50
+  ```
+
+
+- `remediation.yaml`
+
+  ```yaml
+  remediations:
+  - name: cpu_usage_sockshop_carts
+  actions:
+  - action: scaling
+      value: +1
+  ```
+
+</details>
+
 ## Run the tutorial
 
 ### Deploy an unhealthy service version
