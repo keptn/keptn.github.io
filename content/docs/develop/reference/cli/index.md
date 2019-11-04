@@ -267,14 +267,21 @@ To configure a monitoring solution for a Keptn cluster, the `configure monitorin
 keptn configure monitoring prometheus --project=PROJECTNAME --service=SERVICENAME --service-indicators=service-indicators.yaml --service-objectives=service-objectives.yaml --remediation=remediation.yaml
 ```
 
+### keptn get event evaluation-done
+
+To retrieve an evaluation-done event from Keptn, the `get event evaluation-done` command is provided. This command takes the keptn context ID (`--kepnt-context`) from which the event should be returned.
+
+```console
+keptn get event evaluation-done --keptn-context=KEPTNCONTEXTID
+```
+
 ### keptn send event new-artifact
 
 After onboarding a service, the Keptn CLI allows to trigger the deployment of an artifact.
 This artifact is a Docker image, which can be located at Docker Hub, Quay, or any other registry storing docker images. The new artifact is pushed in the first stage specified in the `shipyard.yaml` file (usually this will be the dev stage). Afterwards, Keptn takes care of deploying this new artifact to the other stages.
 
-For notifying Keptn to deploy a new artifact for a service, use the command `send event new-artifact`.
-The CLI sends a new-artifact-event containing the image name and tag (not the image itself) to Keptn and then Keptn takes care
-of deploying this new artifact.
+To notify Keptn to deploy a new artifact for a service, use the command `send event new-artifact`.
+The CLI sends a new-artifact event containing the image name and tag (not the image itself) to Keptn and then Keptn takes care of deploying this new artifact.
 This command takes the project (`--project`), the service (`--service`), as well as the image (`--image`) and tag (`--tag`) of the new artifact.
 
 ```console
@@ -286,6 +293,14 @@ Therefore, the used Docker registry has to accessible form your cluster. For pul
 we would like to refer to the [Kubernetes documentation](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/).
 Furthermore, please note that the value provided in the `image` flag has to contain your Docker registry. The only exception is `docker.io` because
 this is the default in Kubernetes and, hence, can be omitted.
+
+### keptn send event start-evaluation
+
+To notify Keptn to start the evaluation of a service, use the command `send event start-evaluation`. This command takes the project (`--project`), stage (`--stage`), and the service (`--service`), which should be evaluated. Besides, it is necessary to specify a time frame (`--timeframe`) of the evaluation. If, for example, the flag is set to `--timeframe=5m`, the evaluation is conducted for the last 5 minutes. To specify a particular starting point, the flag `--start` can be used. In this case, the specified time frame is added to the starting point. 
+
+```console
+keptn send event start-evaluation --project=PROJECTNAME --service=SERVICENAME --timeframe=[duration]m --start=[2019-10-24T10:17:12]
+```
 
 ### keptn send event
 
