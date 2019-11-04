@@ -294,12 +294,12 @@ we would like to refer to the [Kubernetes documentation](https://kubernetes.io/d
 Furthermore, please note that the value provided in the `image` flag has to contain your Docker registry. The only exception is `docker.io` because
 this is the default in Kubernetes and, hence, can be omitted.
 
-### keptn send event evaluation.start
+### keptn send event start-evaluation
 
-To notify Keptn to start the evaluation of a service, use the command `send event evaluation.start`. This command takes the project (`--project`) and the service (`--service`), which should be evaluated.
+To notify Keptn to start the evaluation of a service, use the command `send event start-evaluation`. This command takes the project (`--project`), stage (`--stage`), and the service (`--service`), which should be evaluated. Besides, it is necessary to specify a time frame (`--timeframe`) of the evaluation. If, for example, the flag is set to `--timeframe=5m`, the evaluation is conducted for the last 5 minutes. To specify a particular starting point, the flag `--start` can be used. In this case, the specified time frame is added to the starting point. 
 
 ```console
-keptn send event evaluation.start --project=PROJECTNAME --service=SERVICENAME 
+keptn send event start-evaluation --project=PROJECTNAME --service=SERVICENAME --timeframe=[duration]m --start=[2019-10-24T10:17:12]
 ```
 
 ### keptn send event
