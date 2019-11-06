@@ -253,10 +253,12 @@ To learn more about onboarding a service, please see the [Onboarding a Service](
 
 ### keptn add-resource
 
-To add a resource to the configuration store (i.e., Git repository) of a service, the `add-resource` command is provided. This command takes a local resource (`--resource`) and stores it for further use in Keptn. Thus, this command allows adding, for example, *test files* to a service, which will then be executed by a test-service (e.g., jmeter-service) during the continuous delivery.  
+To add a resource to the configuration store (i.e., Git repository), the `add-resource` command is provided. This command takes a local resource (`--resource`) and stores it for further use in Keptn. To specify a unique resource identifier (URI) for this resource, the optional URI (`--resourceUri`) flag can be set to a file path. By default, the URI is set to the file path specified at the `--resource` flag. From a technical perspective, `--resourceUri=jmeter/basiccheck.jmx` stores the resource in a *jmeter* folder and renames the file to  *basiccheck.jmx*.  
+
+This command allows adding, for example, *test files* to a service, which will then be used by a test service (e.g., jmeter-service) during the continuous delivery.  
 
 ```console
-keptn add-resource --project=PROJECTNAME --stage=STAGE --service=SERVICENAME --resource=jmeter/basiccheck.jmx
+keptn add-resource --project=PROJECTNAME --stage=STAGE --service=SERVICENAME --resource=./basiccheck.jmx --resourceUri=jmeter/basiccheck.jmx
 ```
 
 ### keptn configure monitoring
