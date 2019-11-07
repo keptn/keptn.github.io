@@ -50,7 +50,7 @@ date: 2018-02-12T15:37:57+07:00
 </div>
 <div class="row">
   <div class="col-md-12">
-      <h3>Learn more about Keptn, its components, and its use cases</h3>
+      <h3>Read more about Keptn, its components, and its use cases</h3>
   </div>
 </div>
 <div class="row">
@@ -95,5 +95,27 @@ date: 2018-02-12T15:37:57+07:00
         Keptn for SREs<br/><br/>
       </div>
     </a>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+      <h3>See and hear more about Keptn!</h3>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/0vXURzikTac" allowfullscreen></iframe>
+      </div>
+  </div>
+  <div class="col-md-4">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/h_KlIK1DIKM" allowfullscreen></iframe>
+      </div>
+  </div>
+  <div class="col-md-4">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/tM9prBoxOWA" allowfullscreen></iframe>
+      </div>
   </div>
 </div>
