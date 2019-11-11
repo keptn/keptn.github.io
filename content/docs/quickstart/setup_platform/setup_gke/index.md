@@ -9,20 +9,20 @@ keywords: setup
   - [gcloud](https://cloud.google.com/sdk/gcloud/)
   - [python 2.7](https://www.python.org/downloads/release/python-2716/) (required for Ubuntu 19.04)
 
-## 2a. Create GKE cluster through Cloud Console
-  - Master version >= `1.11.x` (`1.12.8-gke.10`)
-  - One `n1-standard-4` node
-  - Image type `ubuntu` or `cos` (if you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../monitoring/dynatrace/))
-  - Sample script to create such cluster (adapt the values according to your needs)
+## 2a. Create a GKE cluster through Cloud Console
+  - Master version: Default
+  - Machine type: One `n1-standard-4` node
+  - Image type: `ubuntu` or `cos` (For Dynatrace monitoring, select Ubuntu)
+  - Disable `auto-upgrade` and `Enable VPC-native (using alias IP)` 
 
-## 2b. Create through gcloud cli
+## 2b. Create a GKE cluster through gcloud cli
 ```console
 // set environment variables
 PROJECT=nameofgcloudproject
 CLUSTER_NAME=nameofcluster
 ZONE=us-central1-a
 REGION=us-central1
-GKE_VERSION="1.12.8-gke.10"
+GKE_VERSION="1.13.11-gke.9 (default)"
 ```
 
 ```console

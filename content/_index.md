@@ -6,21 +6,18 @@ date: 2018-02-12T15:37:57+07:00
   <div class="col-md-12">
       <div class="btn-group" role="group" aria-label="Basic example">
         <a class="btn" href=" https://github.com/keptn/keptn/releases/">
-        <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/keptn/keptn?label=latest%20release&logo=github&logoColor=white">
+        <img alt="GitHub latest release (latest by date)" src="https://img.shields.io/github/v/release/keptn/keptn?label=latest%20release&logo=github&logoColor=white">
         </a>
         <a class="btn" href="https://github.com/keptn/keptn">
-          <img alt="GitHub All Releases" src="https://img.shields.io/github/downloads/keptn/keptn/total?logo=github&logoColor=white">
+          <img alt="GitHub all releases" src="https://img.shields.io/github/downloads/keptn/keptn/total?logo=github&logoColor=white">
         </a>
         <a class="btn" href="https://github.com/keptn/keptn">
           <img alt="GitHub stars" src="https://img.shields.io/github/stars/keptn/keptn?logo=github&logoColor=white">
         </a>
         <a class="btn" href="https://travis-ci.org/keptn/keptn">
-          <img alt="Travis (.org) branch" src="https://img.shields.io/travis/keptn/keptn/master?logo=travis&logoColor=white">
+          <img alt="Travis CI builds" src="https://img.shields.io/travis/keptn/keptn/master?logo=travis&logoColor=white">
         </a>
-        <a class="btn" href="https://twitter.com/keptnProject">
-          <img alt="Twitter Follow" src="https://img.shields.io/twitter/follow/keptnProject">
-        </a>
-      </div>
+		</div>
   </div>
 </div>
 <br/><br/>
@@ -28,16 +25,17 @@ date: 2018-02-12T15:37:57+07:00
   <div class="col-md-6 pb-sm-2">
     <h1 style="font-family: lora, 'Open Sans', Arial, sans-serif, -apple-system">/keptn/</h1>
     <br>
-    is a <strong>message-driven control plane</strong> for <strong>application delivery</strong> and <strong>automated operations</strong>, that allows
+    <strong> A message-driven control plane for application delivery and automated operations.</strong>
+	<br>
     <br>
-    <br>
+	<strong>With Keptn, you can focus on:</strong>
     <ul>
-      <li><strong>Developers</strong> to focus on code instead of creating YAML files</li>
-      <li><strong>DevOps</strong> to focus on tools instead of building pipelines</li>
-      <li><strong>SREs</strong> to enforce processes instead of debugging problems</li>
+      <li>Code instead of YAML files</li>
+      <li>Tools instead of deployment pipelines</li>
+      <li>Service Reliability instead of incident overload</li>
     </ul>
-    <a href="/docs/quickstart/" class="mt-2 btn btn-primary btn-block">Quick Start</a>
-  </div>
+	<a href="/docs/quickstart/" class="mt-1 btn btn-primary btn-block">Get Started</a>
+    </div>
   <div class="col-md-6">
 
     <div class="terminal-window">
@@ -48,6 +46,7 @@ date: 2018-02-12T15:37:57+07:00
 
   </div>
 </div>
+
 <div class="row">
   <div class="col-md-12">
       <h3>Read more about Keptn, its components, and its use cases</h3>
@@ -95,27 +94,5 @@ date: 2018-02-12T15:37:57+07:00
         Keptn for SREs<br/><br/>
       </div>
     </a>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-      <h3>See and hear more about Keptn!</h3>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-4">
-      <div class="embed-responsive embed-responsive-16by9">
-        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/0vXURzikTac" allowfullscreen></iframe>
-      </div>
-  </div>
-  <div class="col-md-4">
-      <div class="embed-responsive embed-responsive-16by9">
-        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/h_KlIK1DIKM" allowfullscreen></iframe>
-      </div>
-  </div>
-  <div class="col-md-4">
-      <div class="embed-responsive embed-responsive-16by9">
-        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/tM9prBoxOWA" allowfullscreen></iframe>
-      </div>
   </div>
 </div>
