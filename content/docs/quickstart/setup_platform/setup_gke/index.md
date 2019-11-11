@@ -1,6 +1,6 @@
 ---
 title: Setup GKE
-description: How to setup a GKE cluster to be used for keptn.
+description: How to setup a GKE cluster for keptn.
 weight: 22
 keywords: setup
 ---
