@@ -15,7 +15,7 @@ date: 2018-02-12T15:37:57+07:00
           <img alt="GitHub stars" src="https://img.shields.io/github/stars/keptn/keptn?logo=github&logoColor=white">
         </a>
         <a class="btn" href="https://travis-ci.org/keptn/keptn">
-          <img alt="Travis CI builds" src="https://img.shields.io/travis/keptn/keptn/master?logo=travis&logoColor=white">
+          <img alt="Travis CI build" src="https://img.shields.io/travis/keptn/keptn/master?logo=travis&logoColor=white">
         </a>
 		</div>
   </div>
