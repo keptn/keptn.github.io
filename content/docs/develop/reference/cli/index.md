@@ -324,7 +324,7 @@ keptn version
 
 ### keptn status
 
-To show the current status of the Keptn CLI, the `status command is provided. This command shows whether the CLI is authenticated and the used endpoint of the Keptn API.
+To show the current status of the Keptn CLI, the `status` command is provided. This command shows whether the CLI is authenticated and the used endpoint of the Keptn API.
 
 ```console
 keptn status
