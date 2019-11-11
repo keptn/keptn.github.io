@@ -322,6 +322,14 @@ To show the current version of the Keptn CLI, the `version` command is provided.
 keptn version
 ```
 
+### keptn status
+
+To show the current status of the Keptn CLI, the `status command is provided. This command shows whether the CLI is authenticated and the used endpoint of the Keptn API.
+
+```console
+keptn status
+```
+
 ### keptn uninstall
 
 To uninstall Keptn from a cluster, the `uninstall` command is provided. 
