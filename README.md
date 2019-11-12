@@ -13,7 +13,7 @@ This repository contains the content for the https://keptn.sh website. The site 
     ```
     git submodule update --init --recursive --force
     ```
-1. Execute the `huge server -D` command from the root folder:
+1. Execute the `hugo server -D` command from the root folder:
     ```
     # start the hugo web server
     hugo server -D
