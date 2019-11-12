@@ -170,10 +170,10 @@ After onboarding the services, a built artifact of each service can be deployed.
   keptn send event new-artifact --project=sockshop --service=carts-db --image=mongo
   ```
 
-* Deploy the carts service by specifying the built artifact, which is stored on DockerHub and tagged with version 0.9.1.
+* Deploy the carts service by specifying the built artifact, which is stored on DockerHub and tagged with version 0.10.1.
 
   ```console
-  keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.9.1
+  keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.10.1
   ```
 
 * Go to Keptn's bridge and check which events have already been generated. You can access it by a port-forward from your local machine to the Kubernetes cluster:
