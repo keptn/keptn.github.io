@@ -121,7 +121,7 @@ oneagent-5lcqh                                 0/1     Running   0          3s
 oneagent-ps6t4                                 0/1     Running   0          3s
 ```
 
-**Note 1:** To monitor the services that are already onboarded in the `dev`, `staging`, and `production` namespace, make sure to restart the pods. If you defined different environments in your shipyard file, please adjust the values accordingly. 
+**Note 1:** To monitor the services that are already onboarded in the `dev`, `staging`, and `production` namespace, make sure to restart the pods. If you defined different environments in your shipyard file, please adjust the parameters accordingly. 
 ```console
 kubectl delete pods --all --namespace=sockshop-dev
 ```
@@ -150,7 +150,12 @@ to
   - name: ONEAGENT_ENABLE_VOLUME_STORAGE
     value: "true"
 ```
-Don't forget to restart all pods afterwards.
+and apply the file using
+```console
+kubectl apply -f cr.yml
+```
+
+After that, don't forget to restart all pods.
 
 ### What has been set up?
 
