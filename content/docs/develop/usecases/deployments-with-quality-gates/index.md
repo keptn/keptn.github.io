@@ -99,7 +99,7 @@ data:
     response_time_p95: histogram_quantile(0.95, sum by(le) (rate(http_response_time_milliseconds_bucket{handler="ItemsController.addToCart",job="$SERVICE-$PROJECT-$STAGE-canary"}[$DURATION_SECONDS])))
 kind: ConfigMap
 metadata:
-  name: prometheus-sli-service-config-sockshop
+  name: prometheus-sli-config-sockshop
   namespace: keptn
 ```
 
@@ -156,7 +156,7 @@ data:
     response_time_P50: "com.dynatrace.builtin:service.responsetime,percentile,50"
 kind: ConfigMap
 metadata:
-  name: dynatrace-sli-service-config-sockshop
+  name: dynatrace-sli-config-sockshop
   namespace: keptn
 ```
 
