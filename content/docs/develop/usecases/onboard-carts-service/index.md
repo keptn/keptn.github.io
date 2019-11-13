@@ -80,20 +80,37 @@ stages:
     remediation_strategy: "automated"
 ```
 
-**Note:**  To learn more about a *shipyard* file, click here [Shipyard specification](https://github.com/keptn/keptn/blob/0.5.0/specification/shipyard.md).
-
-Create a new project for your services using the [keptn create project](../../reference/cli/#keptn-create-project) command. In this example, the project is called *sockshop*. Before executing the following command, make sure you are in the `examples/onboarding-carts` folder and then select one of the two options:
-
-<details><summary>**Option 1:** Create a new project without Git upstream</summary>
+<details>
+<summary>Click here for a short explaination about this shipyard file.</summary>
 <p>
-
-```console
-keptn create project sockshop --shipyard=./shipyard.yaml
-```
+<ul>
+<li>
+  There are three stages: dev, staging and production (this result in three additional namespaces within Kubernetes: sockshop-dev, sockshop-staging, sockshop-production)
+</li>
+<li>
+  dev stage should be a direct (big bang) deployment and execute only functional tests
+</li>
+<li>
+  staging will have a blue green deployment strategy and execute performance tests
+</li>
+<li>
+finally, production will have a blue green deployment strategy without any further testing. The configured remediation strategy is used for the [self-healing with Keptn](../self-healing-with-keptn/) tutorial.
+</li> 
 </p>
 </details>
 
-<details><summary>**Option 2:** Create a new project with Git upstream</summary>
+**Note:**  To learn more about a *shipyard* file, please take a look at the [Shipyard specification](https://github.com/keptn/spec/blob/master/shipyard.md).
+
+
+
+Create a new project for your services using the [keptn create project](../../reference/cli/#keptn-create-project) command. In this example, the project is called *sockshop*. Before executing the following command, make sure you are in the `examples/onboarding-carts` folder.
+
+Create a new project without Git upstream:
+```console
+keptn create project sockshop --shipyard=./shipyard.yaml
+```
+
+<details><summary>**Optional:** Create a new project with Git upstream</summary>
 <p>
 
 To configure a Git upstream for this tutorial, the Git user (`--git-user`), an access token (`--git-token`), and the remote URL (`--git-remote-url`) are required. If a requirement is not met, go to [select Git-based upstream](../../manage/project/#select-git-based-upstream) where instructions for GitHub, GitLab, and Bitbucket are provided.
@@ -115,25 +132,19 @@ After creating the project, services can be onboard to this project.
 
 * After onboarding the service, a couple of tests (i.e., functional tests and performance tests) need to be added as basis for quality gates in the different stages:
 
-  * Functional tests: 
+  * Functional tests for dev stage (as specified in the shipyard file):
 
     ```console
     keptn add-resource --project=sockshop --service=carts --stage=dev --resource=jmeter/basiccheck.jmx --resourceUri=jmeter/basiccheck.jmx
     ```
 
-    ```console
-    keptn add-resource --project=sockshop --service=carts --stage=staging --resource=jmeter/basiccheck.jmx --resourceUri=jmeter/basiccheck.jmx
-    ```
-
-  * Performance tests: 
-
-    ```console
-    keptn add-resource --project=sockshop --service=carts --stage=dev --resource=jmeter/load.jmx --resourceUri=jmeter/load.jmx
-    ```
+  * Performance tests for staging stage (as specified in the shipyard file):
 
     ```console
     keptn add-resource --project=sockshop --service=carts --stage=staging --resource=jmeter/load.jmx --resourceUri=jmeter/load.jmx
     ```
+  
+    **Note**: A basic health-check (accessing `/health` of the carts-service) is always executed before the functional and/or performance tests are executed.
 
 Since the carts service requires a mongodb database, a second service needs to be onboarded.
 
@@ -189,6 +200,21 @@ After onboarding the services, a built artifact of each service can be deployed.
     {{< popup_image
       link="./assets/bridge.png"
       caption="Keptn's bridge">}}
+
+* Optional: Verify the pods that should have been created for services carts and carts-db
+
+  ```console
+  kubectl get pods --all-namespaces | grep carts
+  ```
+    You should see the following output after roughtly 10 minutes (check with Keptn's bridge if every stage got deployed):
+    ```
+    sockshop-dev          carts-77dfdc664b-25b74                                            1/1     Running     0          10m
+    sockshop-dev          carts-db-54d9b6775-lmhf6                                          1/1     Running     0          13m
+    sockshop-production   carts-db-54d9b6775-4hlwn                                          2/2     Running     0          12m
+    sockshop-production   carts-primary-79bcc7c99f-bwdhg                                    2/2     Running     0          2m15s
+    sockshop-staging      carts-db-54d9b6775-rm8rw                                          2/2     Running     0          12m
+    sockshop-staging      carts-primary-79bcc7c99f-mbbgq                                    2/2     Running     0          7m24s
+    ```
 
 ## View carts service
 
