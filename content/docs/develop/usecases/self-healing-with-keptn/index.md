@@ -59,13 +59,12 @@ Executing this command will perform the following tasks:
   comparison:
     compare_with: "single_result"
     include_result_with_score: "pass"
-    number_of_comparison_results: 3
     aggregate_function: avg
   objectives:
     - sli: cpu_usage
       pass:
         - criteria:
-            - "<0.1"
+            - "<0.2"
   total_score:  # maximum score = sum of weights
     pass: "90%" # by default this is interpreted as ">="
     warning: 75%
