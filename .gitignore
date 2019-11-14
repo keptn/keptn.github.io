@@ -2,3 +2,7 @@
 public
 resources/_gen/**/*.content
 .DS_Store
+
+# IDE files
+.idea/
+.vscode/
