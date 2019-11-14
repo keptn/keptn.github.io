@@ -20,7 +20,7 @@ The themes directory on your local machine (localdirectory/keptn.github.io/theme
     ```
     git submodule update --init --recursive --force
     ```
-1. Start the Hugo server from the keptn.github.io directory.
+1. Execute the `hugo server -D` command from the root folder:
     ```
     hugo server -D    
     ```

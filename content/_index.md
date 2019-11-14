@@ -49,7 +49,7 @@ date: 2018-02-12T15:37:57+07:00
 
 <div class="row">
   <div class="col-md-12">
-      <h3>Read more about Keptn, its components, and its use cases</h3>
+      <h3>Learn more about Keptn, its components, and its use cases</h3>
   </div>
 </div>
 <div class="row">

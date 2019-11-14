@@ -1,6 +1,6 @@
 ---
 title: Setup AKS
-description: How to setup an AKS cluster to be used for keptn.
+description: How to setup an AKS cluster to be used for Keptn.
 weight: 20
 keywords: setup
 ---
