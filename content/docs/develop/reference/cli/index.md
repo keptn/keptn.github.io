@@ -92,6 +92,12 @@ The Keptn CLI allows to install Keptn on Azure Kubernetes Services (AKS), Amazon
     keptn install --gateway=[NodePort|LoadBalancer]
     ```
 
+* `use-case` - To install Keptn for just the quality gates use-case.
+
+    ```console
+    keptn install --use-case=quality-gates
+    ```
+
 * `creds` - To specify a JSON file containing cluster information needed for the installation. This allows to skip user prompts to execute a *silent* Keptn installation.
 
     ```console
