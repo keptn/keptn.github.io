@@ -22,7 +22,7 @@ For this tutorial, we prepared a *slow* and a *regular* version of the carts ser
 In this tutorial, we will deploy these two versions. During this deployment process, the versions have to pass a quality gate in the *staging* environment in order to get promoted to the *production* environment.
 This quality gate checks whether the average response time of the service is under 1&nbsp;second. If the response time exceeds this threshold, the performance evaluation will be marked as failed.
 
-<details><summary>*Click to learn more about the tutorial*</summary>
+<details><summary>*Click here to learn more about the tutorial.*</summary>
 <p>
 
 1. We will *try* to deploy the *slow* version of the carts service (0.10.2). Therefore, Keptn will deploy this new version into the **dev** environment where functional tests will be executed. After passing these functional tests, Keptn will promote this service into the **staging** environment by releasing it as the blue or green version next to the previous version of the service. Then, Keptn will route traffic to this new version by changing the configuration of the virtual service (i.e., by setting weights for the routes between blue and green) and Keptn will start the defined performance test (e.g., using JMeter). Using the monitoring results of this performance test will allow [lighthouse](https://github.com/keptn/keptn/tree/master/lighthouse-service) to evaluate the quality gate. The *slow* version of carts (0.10.2) will not pass the quality gate and, hence, the new version will not be promoted to the **production** stage (in other words: the deployment will be rejected). Furthermore, Keptn will change the weights within the **staging** stage back to the previous working deployment of the service. 
@@ -40,7 +40,7 @@ This quality gate checks whether the average response time of the service is und
 ### Set up of monitoring for the carts service
 Since this tutorial relies on the concept of quality gates, you will need to set up monitoring for the carts service, either using the open-source monitoring solution *Prometheus* (automatically installed with Keptn) or *Dynatrace* (optional). 
 
-For using the quality gate, Keptn requires a performance specification. This specification is described in a file called `slo.yaml`, which contains a description of Service Level Objectives (SLO) that should be met by a service. To learn more about the *slo.yaml* file, click here [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/spec/blob/master/design_docs/keptn_quality_gates.md).
+For using the quality gate, Keptn requires a performance specification. This specification is described in a file called `slo.yaml`, which contains a description of Service Level Objectives (SLO) that should be met by a service. To learn more about the *slo.yaml* file, go to [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/spec/blob/master/design_docs/keptn_quality_gates.md).
 
 #### Option 1: Prometheus
 <details><summary>Expand instructions</summary>
@@ -194,7 +194,7 @@ This can be done by storing the following `ConfigMap` in the `keptn` namespace:
     * Tenant id for Dynatrace API
     * API token for Dynatrace API
 
-  Example: 
+    Example: 
 
   ```yaml
   tenant: your_tenant_id.live.dynatracelabs.com

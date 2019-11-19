@@ -81,27 +81,18 @@ stages:
 ```
 
 <details>
-<summary>Click here for a short explaination about this shipyard file.</summary>
+<summary>*Click here for a short explanation of this shipyard file.*</summary>
 <p>
-<ul>
-<li>
-  There are three stages: dev, staging and production (this result in three additional namespaces within Kubernetes: sockshop-dev, sockshop-staging, sockshop-production)
-</li>
-<li>
-  dev stage should be a direct (big bang) deployment and execute only functional tests
-</li>
-<li>
-  staging will have a blue green deployment strategy and execute performance tests
-</li>
-<li>
-finally, production will have a blue green deployment strategy without any further testing. The configured remediation strategy is used for the [self-healing with Keptn](../self-healing-with-keptn/) tutorial.
-</li> 
+This shipyard contains three stages: dev, staging, and production. This results in three namespaces within Kubernetes: sockshop-dev, sockshop-staging, and sockshop-production.
+
+* **dev** will have a direct (big bang) deployment strategy and functional tests are executed
+* **staging** will have a blue-green deployment strategy and performance tests are executed
+* **production** will have a blue-green deployment strategy without any further testing. The configured remediation strategy is used for the [Self-healing with Keptn](../self-healing-with-keptn/) tutorial.
+
 </p>
 </details>
 
 **Note:**  To learn more about a *shipyard* file, please take a look at the [Shipyard specification](https://github.com/keptn/spec/blob/master/shipyard.md).
-
-
 
 Create a new project for your services using the [keptn create project](../../reference/cli/#keptn-create-project) command. In this example, the project is called *sockshop*. Before executing the following command, make sure you are in the `examples/onboarding-carts` folder.
 
@@ -124,21 +115,21 @@ keptn create project sockshop --shipyard=./shipyard.yaml --git-user=GIT_USER --g
 ## Onboard carts service and carts database
 After creating the project, services can be onboard to this project.
 
-* Onboard the **carts** service using the [onboard service](../../reference/cli/#keptn-onboard-service) command:
+* Onboard the **carts** service using the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command:
 
   ```console
   keptn onboard service carts --project=sockshop --chart=./carts
   ```
 
-* After onboarding the service, a couple of tests (i.e., functional tests and performance tests) need to be added as basis for quality gates in the different stages:
+* After onboarding the service, tests (i.e., functional- and performance tests) need to be added as basis for quality gates in the different stages:
 
-  * Functional tests for dev stage (as specified in the shipyard file):
+  * Functional tests for dev stage:
 
     ```console
     keptn add-resource --project=sockshop --service=carts --stage=dev --resource=jmeter/basiccheck.jmx --resourceUri=jmeter/basiccheck.jmx
     ```
 
-  * Performance tests for staging stage (as specified in the shipyard file):
+  * Performance tests for staging stage:
 
     ```console
     keptn add-resource --project=sockshop --service=carts --stage=staging --resource=jmeter/load.jmx --resourceUri=jmeter/load.jmx
@@ -148,7 +139,7 @@ After creating the project, services can be onboard to this project.
 
 Since the carts service requires a mongodb database, a second service needs to be onboarded.
 
-* Onboard the **carts-db** service using the [onboard service](../../reference/cli/#keptn-onboard-service) command. The `--deployment-strategy` flag specifies that for this service a *direct* deployment strategy in all stages should be used regardless of the deployment strategy specified in the shipyard. Thus, the database is not blue/green deployed.
+* Onboard the **carts-db** service using the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command. The `--deployment-strategy` flag specifies that for this service a *direct* deployment strategy in all stages should be used regardless of the deployment strategy specified in the shipyard. Thus, the database is not blue/green deployed.
 
   ```console
   keptn onboard service carts-db --project=sockshop --chart=./carts-db --deployment-strategy=direct
@@ -201,20 +192,22 @@ After onboarding the services, a built artifact of each service can be deployed.
       link="./assets/bridge.png"
       caption="Keptn's bridge">}}
 
-* Optional: Verify the pods that should have been created for services carts and carts-db
+* **Optional:** Verify the pods that should have been created for services carts and carts-db
 
   ```console
   kubectl get pods --all-namespaces | grep carts
   ```
-    You should see the following output after roughtly 10 minutes (check with Keptn's bridge if every stage got deployed):
-    ```
-    sockshop-dev          carts-77dfdc664b-25b74                                            1/1     Running     0          10m
-    sockshop-dev          carts-db-54d9b6775-lmhf6                                          1/1     Running     0          13m
-    sockshop-production   carts-db-54d9b6775-4hlwn                                          2/2     Running     0          12m
-    sockshop-production   carts-primary-79bcc7c99f-bwdhg                                    2/2     Running     0          2m15s
-    sockshop-staging      carts-db-54d9b6775-rm8rw                                          2/2     Running     0          12m
-    sockshop-staging      carts-primary-79bcc7c99f-mbbgq                                    2/2     Running     0          7m24s
-    ```
+
+  You should see the following output after roughtly 10 minutes (check with Keptn's bridge if every stage got deployed):
+  
+  ```
+  sockshop-dev          carts-77dfdc664b-25b74                                            1/1     Running     0          10m
+  sockshop-dev          carts-db-54d9b6775-lmhf6                                          1/1     Running     0          13m
+  sockshop-production   carts-db-54d9b6775-4hlwn                                          2/2     Running     0          12m
+  sockshop-production   carts-primary-79bcc7c99f-bwdhg                                    2/2     Running     0          2m15s
+  sockshop-staging      carts-db-54d9b6775-rm8rw                                          2/2     Running     0          12m
+  sockshop-staging      carts-primary-79bcc7c99f-mbbgq                                    2/2     Running     0          7m24s
+  ```
 
 ## View carts service
 
