@@ -301,7 +301,7 @@ this is the default in Kubernetes and, hence, can be omitted.
 To notify Keptn to start the evaluation of a service, use the command `send event start-evaluation`. This command takes the project (`--project`), stage (`--stage`), and the service (`--service`), which should be evaluated. Besides, it is necessary to specify a time frame (`--timeframe`) of the evaluation. If, for example, the flag is set to `--timeframe=5m`, the evaluation is conducted for the last 5 minutes. To specify a particular starting point, the flag `--start` can be used. In this case, the specified time frame is added to the starting point. 
 
 ```console
-keptn send event start-evaluation --project=PROJECTNAME --service=SERVICENAME --timeframe=[duration]m --start=[2019-10-24T10:17:12]
+keptn send event start-evaluation --project=PROJECTNAME --stage=STAGE --service=SERVICENAME --timeframe=[duration]m --start=[2019-10-24T10:17:12]
 ```
 
 ### keptn send event

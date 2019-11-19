@@ -139,35 +139,44 @@ dynatrace-oneagent-operator-7f477bf78d-dgwb6   1/1     Running            0     
 oneagent-b22m4                                 0/1     Error              6          8m15s
 oneagent-k7jn6                                 0/1     CrashLoopBackOff   6          8m15s
 ```
-Please [follow the instructions](https://www.dynatrace.com/support/help/cloud-platforms/google-cloud-platform/google-kubernetes-engine/deploy-oneagent-on-google-kubernetes-engine-clusters/#expand-134parameter-for-container-optimized-os-early-access) for setting up the Dynatrace OneAgent Operator. This means that after the initial setup with `deployDynatrace.sh`, which is a step below, the `cr.yml` has to be edited and applied again. 
-You can do that by editing the already downloaded `cr.yml` in `../manifests/dynatrace/gen`. Change
-```yaml
-  env: []
-```
-to
+Please [follow the instructions](https://www.dynatrace.com/support/help/cloud-platforms/google-cloud-platform/google-kubernetes-engine/deploy-oneagent-on-google-kubernetes-engine-clusters/#expand-134parameter-for-container-optimized-os-early-access) for setting up the Dynatrace OneAgent Operator. This means that after the initial setup with `deployDynatrace.sh`, which is a step below, the `cr.yml` has to be edited and applied again.  You can do that by editing the already downloaded `cr.yml` in `../manifests/dynatrace/gen` and set the environemnt variable as follows:
+
 ```yaml
   env:
   - name: ONEAGENT_ENABLE_VOLUME_STORAGE
     value: "true"
 ```
-and apply the file using
+
+Then apply the file using:
 ```console
 kubectl apply -f cr.yml
 ```
 
 After that, don't forget to restart all pods.
 
-### What has been set up?
+### Verify setup in Dynatrace
 
-In your Dynatrace tenant, when you navigate to **Settings > Tags > Automatically applied tags** you will find two entries:
+In your Dynatrace tenant, when you navigate to **Settings > Tags > Automatically applied tags** you will find following tagging rules:
 
-- environment
-- service
-- test-subject
+- keptn_deployment
+- keptn_project
+- keptn_service
+- keptn_stage
 
 This means that Dynatrace will automatically apply tags to your onboarded services.
 
-In addition, a *Problem Notification* has automatically been set up to inform a Keptn of any problems with your services to allow auto-remediation. This will be described in more detail in the [Runbook Automation](../../usecases/runbook-automation-and-self-healing/) tutorial. You can check the problem notification by navigating to **Settings > Integration > Problem notifications** and you will find a **keptn remediation** problem notification.
+In addition, a *Problem Notification* has automatically been set up to inform Keptn of any problems with your services to allow auto-remediation. This will be described in more detail in the [Runbook Automation](../../usecases/runbook-automation-and-self-healing/) tutorial. You can check the problem notification by navigating to **Settings > Integration > Problem notifications** and you will find a **keptn remediation** problem notification.
+
+## Set DT_CUSTOM_PROP before onboarding a service
+
+The created tagging rules in Dynatrace expect the environment variable `DT_CUSTOM_PROP` for your onboarded service. Consequently, make sure to specify the environment variable for deployment in the Helm chart of the service you are going to onboard with the following value: 
+
+```yaml
+  env:
+  - name: DT_CUSTOM_PROP
+    value: "keptn_project={{ .Values.keptn.project }} keptn_service={{ .Values.keptn.service }} keptn_stage={{ .Values.keptn.stage }} keptn_deployment={{ .Values.keptn.deployment }}"
+        
+```
 
 ## See Keptn events in Dynatrace
 

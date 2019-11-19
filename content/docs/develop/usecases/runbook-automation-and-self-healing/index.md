@@ -225,7 +225,7 @@ Now, all pieces are in place to run the use case of a production incident. There
 
 ### Problem detection by Dynatrace
 
-Navigate to the ItemsController service by clicking on **Transactions & services** and look for your ItemsController. Since our service is running in three different environment (dev, staging, and production) it is recommended to filter by the `environment:sockshop-production` to make sure to find the correct service.
+Navigate to the ItemsController service by clicking on **Transactions & services** and look for your ItemsController. Since our service is running in three different environment (dev, staging, and production) it is recommended to filter by the `keptn_stage:production` to make sure to find the correct service.
     {{< popup_image
         link="./assets/dynatrace-services.png"
         caption="Dynatrace Transactions & Services"
