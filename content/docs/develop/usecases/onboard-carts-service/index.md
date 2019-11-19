@@ -198,9 +198,9 @@ After onboarding the services, a built artifact of each service can be deployed.
   kubectl get pods --all-namespaces | grep carts
   ```
 
-  You should see the following output after roughtly 10 minutes (check with Keptn's bridge if every stage got deployed):
+    You should see the following output after roughtly 10 minutes (check with Keptn's bridge if every stage got deployed):
   
-  ```
+  ```console
   sockshop-dev          carts-77dfdc664b-25b74                                            1/1     Running     0          10m
   sockshop-dev          carts-db-54d9b6775-lmhf6                                          1/1     Running     0          13m
   sockshop-production   carts-db-54d9b6775-4hlwn                                          2/2     Running     0          12m

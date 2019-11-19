@@ -34,7 +34,7 @@ This quality gate checks whether the average response time of the service is und
 
 ## Prerequisites
 
-- Finish the [Onboarding a Service](../onboard-carts-service/) tutorial (deploys carts version 0.10.1)
+- Finish the [Onboarding a Service](../onboard-carts-service/) tutorial (deploys carts version 0.10.1).
 - Set up monitoring for the carts service (see below)
 
 ### Set up of monitoring for the carts service
@@ -121,7 +121,7 @@ Please make sure you have followed the installation instructions for setting up 
     keptn add-resource --project=sockshop --service=carts --stage=staging --resource=slo_quality-gates.yaml --resourceUri=slo.yaml
     ```
 
-* The evaluation of the test runs will be performed by an internal Keptn service, called the `lighthouse-service`. While this service is responsible for evaluating the SLI results based on the criteria found in the `slo.yaml` file, it depends on an SLI-source service to retrieve the actual values of the SLIs. In this example, we are using the `dynatrace-sli-service`.
+The evaluation of the test runs will be performed by an internal Keptn service, called the `lighthouse-service`. While this service is responsible for evaluating the SLI results based on the criteria found in the `slo.yaml` file, it depends on an SLI-source service to retrieve the actual values of the SLIs. In this example, we are using the `dynatrace-sli-service`.
 To inform the `lighthouse-service` to use the `dynatrace-sli-service` for the **sockshop** project, the following `ConfigMap` will be used:
 
     ```yaml
@@ -148,7 +148,7 @@ To inform the `lighthouse-service` to use the `dynatrace-sli-service` for the **
     kubectl apply -f deploy/
     ```
 
-* This should deploy the dynatrace-sli-service and its distributor. The output should look something like this:
+    This should deploy the dynatrace-sli-service and its distributor. The output should look something like this:
     
     ```console
     deployment.apps/dynatrace-sli-service-monitoring-configure-distributor created
@@ -167,7 +167,7 @@ To inform the `lighthouse-service` to use the `dynatrace-sli-service` for the **
     * dynatrace-sli-service
     * dynatrace-sli-service-monitoring-configure-distributor
 
-* During an evaluation of the quality gates, an internal Keptn service, the `dynatrace-sli-service` will fetch the values for the `response_time_p95` SLI that is referenced in the `slo.yaml` file. To tell the service how to acquire this value from the Dynatrace Timeseries API some parameters need to be configured.
+During an evaluation of the quality gates, an internal Keptn service, the `dynatrace-sli-service` will fetch the values for the `response_time_p95` SLI that is referenced in the `slo.yaml` file. To tell the service how to acquire this value from the Dynatrace Metrics API some parameters need to be configured.
 This can be done by storing the following `ConfigMap` in the `keptn` namespace:
 
     ```yaml
@@ -191,8 +191,8 @@ This can be done by storing the following `ConfigMap` in the `keptn` namespace:
 
 * Last but not least, the Dynatrace-SLI-Service needs a secret containing the following data:
 
-    * Tenant id for Dynatrace API
-    * API token for Dynatrace API
+    * Tenant id
+    * API token
 
     Example: 
 
