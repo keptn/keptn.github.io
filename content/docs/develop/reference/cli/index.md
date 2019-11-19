@@ -46,14 +46,14 @@ In future releases, we add additional checks whether the executed commands succe
 
 ### keptn install 
 
-The Keptn CLI allows to install Keptn on an Azure Kubernetes Services (AKS), an Amazon Elastic Kubernetes Service (EKS),
-a Google Kubernetes Engine (GKE), and on OpenShift.
+The Keptn CLI allows to install Keptn on Azure Kubernetes Services (AKS), Amazon Elastic Kubernetes Service (EKS), Google Kubernetes Engine (GKE), Pivotal Container Service (PKS), and on OpenShift.
 
 - **AKS**:
 
     ```console
     keptn install --platform=aks
     ```
+
 - **EKS**:
 
     ```console
@@ -77,6 +77,27 @@ a Google Kubernetes Engine (GKE), and on OpenShift.
     ```console
     keptn install --platform=openshift
     ```
+
+#### Optional keptn install flags
+
+* `keptn-version`: To specify a specfic Keptn release to install. 
+
+    ```console
+    keptn install --keptn-version=0.6.0
+    ```
+
+* `gateway`: To specify the gateway type which can be *NodePort* or *LoadBalancer*. 
+
+    ```console
+    keptn install --gateway=[NodePort|LoadBalancer]
+    ```
+
+* `creds`: To specify a JSON file containing cluster information needed for the installation. This allows to skip user prompts to execute a *silent* Keptn installation.
+
+    ```console
+    keptn install --creds=./creds.json
+    ```
+
 
 ### keptn configure domain
 
