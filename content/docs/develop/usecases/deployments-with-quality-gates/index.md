@@ -143,7 +143,7 @@ To inform the `lighthouse-service` to use the `dynatrace-sli-service` for the **
 * Last but not least, the Dynatrace-SLI-Service needs to be installed using
     
     ```console
-    git clone --branch 0.1.0 https://github.com/keptn-contrib/dynatrace-sli-service --single-branch
+    git clone --branch release-0.1.0 https://github.com/keptn-contrib/dynatrace-sli-service --single-branch
     cd dynatrace-sli-service
     kubectl apply -f deploy/
     ```
