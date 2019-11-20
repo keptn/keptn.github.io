@@ -173,7 +173,7 @@ Every release of Keptn provides binaries for the Keptn CLI. These binaries are a
 
     move/copy the executable to the desired folder and, optionally, add the executable to your PATH environment variable for a more convenient experience.
 
-- Now, you should be able to run the Keptn CLI: 
+- Now, you are able to run the Keptn CLI: 
     - Linux / macOS
       ```console
       keptn --help

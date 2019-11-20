@@ -85,7 +85,8 @@ Please make sure to have the following tool(s) installed:
     ```console
     ./deployDynatraceOnGKE.sh
     ```
-        Also, please read **Note 2** after this section in case you are running GKE Container-optimized os.
+        
+    Please read **Note 2** after this section in case you are running GKE Container-optimized os.
 
   - If you are on **Pivotal PKS**, please execute
 
@@ -156,7 +157,7 @@ After that, don't forget to restart all pods.
 
 ### Verify setup in Dynatrace
 
-In your Dynatrace tenant, when you navigate to **Settings > Tags > Automatically applied tags** you will find following tagging rules:
+When you navigate to **Settings > Tags > Automatically applied tags** in your Dynatrace tenant, you will find following tagging rules:
 
 - keptn_deployment
 - keptn_project

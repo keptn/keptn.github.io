@@ -25,7 +25,7 @@ In this tutorial you will learn how to use the capabilities of Keptn to provide 
 
 To inform Keptn about any issues in a production environment, monitoring has to be set up. The Keptn CLI helps with automated setup and configuration of Prometheus as the monitoring solution running in the Kubernetes cluster. 
 
-For the configuration, Keptn relies on different specification files that define *service level indicators* (SLI), *service level objectives* (SLO), and *remediation actions* for self-healing if service level objectives are not achieved. To learn more about the *service-indicator*, *service-objective*, and *remediation* file, click here [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/keptn/blob/0.5.0/specification/sre.md).
+For the configuration, Keptn relies on different specification files that define *service level indicators* (SLI), *service level objectives* (SLO), and *remediation actions* for self-healing if service level objectives are not achieved. To learn more about the *service-indicator*, *service-objective*, and *remediation* file, click here [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/keptn/blob/0.6.0/specification/sre.md).
 
 In order to add these files to Keptn and to automatically configure Prometheus, execute the following commands:
 
@@ -36,8 +36,7 @@ In order to add these files to Keptn and to automatically configure Prometheus, 
 
 1. Configure Prometheus with the Keptn CLI:
     ```console
-    keptn add-resource --project=sockshop --service=carts --stage=production --resource=service-indicators.yaml --resourceUri=service-indicators.yaml
-    keptn add-resource --project=sockshop --service=carts --stage=production --resource=service-objectives-prometheus-only.yaml --resourceUri=service-objectives.yaml
+    keptn add-resource --project=sockshop --service=carts --stage=production --resource=slo_self-healing_prometheus.yaml --resourceUri=slo.yaml
     keptn add-resource --project=sockshop --service=carts --stage=production --resource=remediation.yaml --resourceUri=remediation.yaml
     keptn configure monitoring prometheus --project=sockshop --service=carts
     ```
@@ -47,52 +46,35 @@ Executing this command will perform the following tasks:
 - Set up [Prometheus](https://prometheus.io) 
 - Configure Prometheus with scrape jobs and alerting rules for the service
 - Set up the [Alert Manager](https://prometheus.io/docs/alerting/configuration/) to manage alerts
-- Add the `service-indicators.yaml`, `service-objectives.yaml` and `remediation.yaml` to your Keptn configuration repository
+- Add the files `slo.yaml` and `remediation.yaml` to the `production` branch of your Keptn configuration repository
 
 <details><summary>Inspect the files that have been added here</summary>
 
-- `service-indicators.yaml`
+- `slo.yaml`
 
   ```yaml
-  indicators:
-  - metric: cpu_usage_sockshop_carts
-  source: Prometheus
-  query: avg(rate(container_cpu_usage_seconds_total{namespace="sockshop-$ENVIRONMENT",pod_name=~"carts-primary-.*"}[5m]))
-  - metric: request_latency_seconds
-  source: Prometheus
-  query: rate(requests_latency_seconds_sum{job='carts-sockshop-$ENVIRONMENT'}[$DURATION])/rate(requests_latency_seconds_count{job='carts-sockshop-$ENVIRONMENT'}[$DURATION])
-  - metric: request_latency_dt
-  source: Dynatrace
-  queryObject:
-    - key: timeseriesId
-    value: com.dynatrace.builtin:service.responsetime
-    - key: aggregation
-    value: AVG
-  ```
-
-
-- `service-objectives.yaml`
-
-  ```yaml
-  pass: 90
-  warning: 75
+  ---
+  spec_version: '1.0'
+  filter:
+  comparison:
+    compare_with: "single_result"
+    include_result_with_score: "pass"
+    aggregate_function: avg
   objectives:
-  - metric: request_latency_seconds
-  threshold: 0.8
-  timeframe: 5m
-  score: 50
-  - metric: cpu_usage_sockshop_carts
-  threshold: 0.2
-  timeframe: 5m
-  score: 50
+    - sli: cpu_usage
+      pass:
+        - criteria:
+            - "<0.2"
+  total_score:  # maximum score = sum of weights
+    pass: "90%" # by default this is interpreted as ">="
+    warning: 75%
   ```
-
 
 - `remediation.yaml`
 
   ```yaml
   remediations:
-  - name: cpu_usage_sockshop_carts
+  - name: cpu_usage
   actions:
   - action: scaling
       value: +1
