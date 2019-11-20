@@ -54,7 +54,7 @@ Executing this command will perform the following tasks:
 
   ```yaml
   ---
-  spec_version: '1.0'
+  spec_version: '0.1.0'
   filter:
   comparison:
     compare_with: "single_result"
