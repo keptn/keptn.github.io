@@ -25,7 +25,7 @@ In this tutorial you will learn how to use the capabilities of Keptn to provide 
 
 To inform Keptn about any issues in a production environment, monitoring has to be set up. The Keptn CLI helps with automated setup and configuration of Prometheus as the monitoring solution running in the Kubernetes cluster. 
 
-For the configuration, Keptn relies on different specification files that define *service level indicators* (SLI), *service level objectives* (SLO), and *remediation actions* for self-healing if service level objectives are not achieved. To learn more about the *service-indicator*, *service-objective*, and *remediation* file, click here [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/keptn/blob/0.6.0/specification/sre.md).
+For the configuration, Keptn relies on different specification files that define *service level indicators* (SLI), *service level objectives* (SLO), and *remediation actions* for self-healing if service level objectives are not achieved. To learn more about the *service-indicator*, *service-objective*, and *remediation* file, click here [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/spec/blob/0.1.0.beta/sre.md).
 
 In order to add these files to Keptn and to automatically configure Prometheus, execute the following commands:
 
@@ -37,18 +37,24 @@ In order to add these files to Keptn and to automatically configure Prometheus, 
 1. Configure Prometheus with the Keptn CLI:
     ```console
     keptn add-resource --project=sockshop --service=carts --stage=production --resource=slo_self-healing_prometheus.yaml --resourceUri=slo.yaml
+    ```
+
+    ```console
     keptn add-resource --project=sockshop --service=carts --stage=production --resource=remediation.yaml --resourceUri=remediation.yaml
+    ```
+
+    ```console
     keptn configure monitoring prometheus --project=sockshop --service=carts
     ```
 
 Executing this command will perform the following tasks:
 
-- Set up [Prometheus](https://prometheus.io) 
-- Configure Prometheus with scrape jobs and alerting rules for the service
-- Set up the [Alert Manager](https://prometheus.io/docs/alerting/configuration/) to manage alerts
-- Add the files `slo.yaml` and `remediation.yaml` to the `production` branch of your Keptn configuration repository
+  - Adds the files `slo.yaml` and `remediation.yaml` to the `production` branch of your Keptn configuration repository
+  - Configures Prometheus with scrape jobs and alerting rules for the service
+  - Sets up the [Alert Manager](https://prometheus.io/docs/alerting/configuration/) to manage alerts
 
-<details><summary>Inspect the files that have been added here</summary>
+
+<details><summary>*Click here to inspect the files that have been added.*</summary>
 
 - `slo.yaml`
 
@@ -127,13 +133,13 @@ In order to simulate user traffic that is causing an unhealthy behavior in the c
     
     - Access Prometheus from your browser on http://localhost:8080.
 
-    - In the graph tab, add the expression 
+    - In the **Graph** tab, add the expression 
 
     ```console
     avg(rate(container_cpu_usage_seconds_total{namespace="sockshop-production",pod_name=~"carts-primary-.*"}[5m]))
     ```
     
-    - Select the graph tab to see your CPU metrics of the `carts-primary` pods in the `sockshop-production` environment.
+    - Select the **Graph** tab to see your CPU metrics of the `carts-primary` pods in the `sockshop-production` environment.
 
     - You should see a graph which locks similar to this:
 
@@ -142,7 +148,7 @@ In order to simulate user traffic that is causing an unhealthy behavior in the c
         caption="Prometheus load"
         width="700px">}}
 
-### Watch self-healing in action
+### Self-healing in action
 
 After approximately 15 minutes, the *Prometheus Alert Manager* will send out an alert since the service level objective is not met anymore. 
 

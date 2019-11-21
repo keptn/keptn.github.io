@@ -10,9 +10,9 @@ Shows you how to onboard the carts service including its database to a Keptn man
 
 ## About this tutorial
 
-The goal of this tutorial is to automatically deploy a service into a multi-stage environment using Keptn. The stages of the environment are described in a *shipyard* file that defines the name, deployment strategy, and test strategy of each stage. In case an additional stage is needed, the shipyard file can be easily extended by a stage definition before creating the project. After creating the project, the service that is going to be managed by Keptn needs to be onboarded. Finally, an artifact of the carts service will be deployed by Keptn.  
+The goal of this tutorial is to automatically deploy a service into a multi-stage environment using Keptn. The stages of the environment are described in a *shipyard* file that defines the name, deployment strategy, and test strategy of each stage. After creating the project, the service that is going to be managed by Keptn needs to be onboarded. Finally, an artifact of the carts service will be deployed by Keptn.  
 
-<details><summary>*Click here to learn more about Keptn internal services.*</summary>
+<details><summary>*Click here to learn more about Keptn internal services for this tutorial.*</summary>
 <p>
 To illustrate the scenario this tutorial addresses, Keptn relies on following internal services: *shipyard-service*, *helm-service*, *jmeter-service*, and *gatekeeper-service*. These services have the following responsibilities: 
 
@@ -22,7 +22,7 @@ To illustrate the scenario this tutorial addresses, Keptn relies on following in
 
  **helm-service**:
   
-  * Creates a new service entity, manipulates the Helm chart, and uploades the Helm chart to the configuration store.
+  * Creates a new service entity, duplicates the provided Helm chart, and uploades the Helm chart to the configuration store.
 
   * Updates the service configuration when a new artifact is available.
 
@@ -46,7 +46,7 @@ To illustrate the scenario this tutorial addresses, Keptn relies on following in
 * Clone example files used for this tutorial:
 
     ```console
-    git clone --branch 0.5.0 https://github.com/keptn/examples.git --single-branch
+    git clone --branch 0.6.0.beta https://github.com/keptn/examples.git --single-branch
     ```
 
     ```console
@@ -57,7 +57,7 @@ To illustrate the scenario this tutorial addresses, Keptn relies on following in
 
 If you have not yet authenticated the Keptn CLI, please follow these instructions. If you have already done this [during the installation](../../installation/setup-keptn/#install-keptn), please skip this part and continue with [creating a project](#create-project-sockshop).
 
-The Keptn CLI needs to be authenticated against the Keptn server by executing the [keptn auth](../../reference/cli/#keptn-auth) command:
+The Keptn CLI needs to be authenticated against the Keptn server by executing the [auth](../../reference/cli/#keptn-auth) command:
 
 ```console
 keptn auth --endpoint=https://api.keptn.$(kubectl get cm -n keptn keptn-domain -ojsonpath={.data.app_domain}) --api-token=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
@@ -83,18 +83,18 @@ stages:
 <details>
 <summary>*Click here for a short explanation of this shipyard file.*</summary>
 <p>
-This shipyard contains three stages: dev, staging, and production. This results in three namespaces within Kubernetes: sockshop-dev, sockshop-staging, and sockshop-production.
+This shipyard contains three stages: dev, staging, and production. This results in the three Kubernetes namespaces: sockshop-dev, sockshop-staging, and sockshop-production.
 
 * **dev** will have a direct (big bang) deployment strategy and functional tests are executed
-* **staging** will have a blue-green deployment strategy and performance tests are executed
-* **production** will have a blue-green deployment strategy without any further testing. The configured remediation strategy is used for the [Self-healing with Keptn](../self-healing-with-keptn/) tutorial.
+* **staging** will have a blue/green deployment strategy and performance tests are executed
+* **production** will have a blue/green deployment strategy without any further testing. The configured remediation strategy is used for the [Self-healing with Keptn](../self-healing-with-keptn/) tutorial.
 
 </p>
 </details>
 
 **Note:**  To learn more about a *shipyard* file, please take a look at the [Shipyard specification](https://github.com/keptn/spec/blob/master/shipyard.md).
 
-Create a new project for your services using the [keptn create project](../../reference/cli/#keptn-create-project) command. In this example, the project is called *sockshop*. Before executing the following command, make sure you are in the `examples/onboarding-carts` folder.
+Create a new project for your services using the [create project](../../reference/cli/#keptn-create-project) command. In this example, the project is called *sockshop*. Before executing the following command, make sure you are in the `examples/onboarding-carts` folder.
 
 Create a new project without Git upstream:
 ```console
@@ -115,7 +115,7 @@ keptn create project sockshop --shipyard=./shipyard.yaml --git-user=GIT_USER --g
 ## Onboard carts service and carts database
 After creating the project, services can be onboard to this project.
 
-* Onboard the **carts** service using the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command:
+* Onboard the **carts** service using the [onboard service](../../reference/cli/#keptn-onboard-service) command:
 
   ```console
   keptn onboard service carts --project=sockshop --chart=./carts
@@ -135,11 +135,11 @@ After creating the project, services can be onboard to this project.
     keptn add-resource --project=sockshop --service=carts --stage=staging --resource=jmeter/load.jmx --resourceUri=jmeter/load.jmx
     ```
   
-    **Note**: A basic health-check (accessing `/health` of the carts-service) is always executed before the functional and/or performance tests are executed.
+    **Note**: A basic health-check (i.e., accessing `/health` of the carts-service) is always executed before the functional and performance tests are executed.
 
 Since the carts service requires a mongodb database, a second service needs to be onboarded.
 
-* Onboard the **carts-db** service using the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command. The `--deployment-strategy` flag specifies that for this service a *direct* deployment strategy in all stages should be used regardless of the deployment strategy specified in the shipyard. Thus, the database is not blue/green deployed.
+* Onboard the **carts-db** service using the [onboard service](../../reference/cli/#keptn-onboard-service) command. The `--deployment-strategy` flag specifies that for this service a *direct* deployment strategy in all stages should be used regardless of the deployment strategy specified in the shipyard. Thus, the database is not blue/green deployed.
 
   ```console
   keptn onboard service carts-db --project=sockshop --chart=./carts-db --deployment-strategy=direct
@@ -161,7 +161,6 @@ During the onboarding of the services, Keptn creates a namespace for each stage 
   sockshop-staging      Active   1m
   ```
 
-
 ## Send new artifacts and watch Keptn doing the deployment 
 
 After onboarding the services, a built artifact of each service can be deployed.
@@ -172,7 +171,7 @@ After onboarding the services, a built artifact of each service can be deployed.
   keptn send event new-artifact --project=sockshop --service=carts-db --image=mongo
   ```
 
-* Deploy the carts service by specifying the built artifact, which is stored on DockerHub and tagged with version 0.10.1.
+* Deploy the carts service by specifying the built artifact, which is stored on DockerHub and tagged with version 0.10.1:
 
   ```console
   keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.10.1
@@ -192,21 +191,19 @@ After onboarding the services, a built artifact of each service can be deployed.
       link="./assets/bridge.png"
       caption="Keptn's bridge">}}
 
-* **Optional:** Verify the pods that should have been created for services carts and carts-db
+* **Optional:** Verify the pods that should have been created for services carts and carts-db:
 
   ```console
   kubectl get pods --all-namespaces | grep carts
   ```
 
-    You should see the following output after roughtly 10 minutes (check with Keptn's bridge if every stage got deployed):
-  
   ```console
-  sockshop-dev          carts-77dfdc664b-25b74                                            1/1     Running     0          10m
-  sockshop-dev          carts-db-54d9b6775-lmhf6                                          1/1     Running     0          13m
-  sockshop-production   carts-db-54d9b6775-4hlwn                                          2/2     Running     0          12m
-  sockshop-production   carts-primary-79bcc7c99f-bwdhg                                    2/2     Running     0          2m15s
-  sockshop-staging      carts-db-54d9b6775-rm8rw                                          2/2     Running     0          12m
-  sockshop-staging      carts-primary-79bcc7c99f-mbbgq                                    2/2     Running     0          7m24s
+  sockshop-dev          carts-77dfdc664b-25b74                            1/1     Running     0          10m
+  sockshop-dev          carts-db-54d9b6775-lmhf6                          1/1     Running     0          13m
+  sockshop-production   carts-db-54d9b6775-4hlwn                          2/2     Running     0          12m
+  sockshop-production   carts-primary-79bcc7c99f-bwdhg                    2/2     Running     0          2m15s
+  sockshop-staging      carts-db-54d9b6775-rm8rw                          2/2     Running     0          12m
+  sockshop-staging      carts-primary-79bcc7c99f-mbbgq                    2/2     Running     0          7m24s
   ```
 
 ## View carts service
