@@ -140,7 +140,7 @@ To inform the `lighthouse-service` to use the `dynatrace-sli-service` for the **
     kubectl apply -f lighthouse-source-dynatrace.yaml
     ```
 
-* Last but not least, the Dynatrace-SLI-Service needs to be installed using
+* Next, the Dynatrace-SLI-Service needs to be installed using
     
     ```console
     git clone --branch release-0.1.0 https://github.com/keptn-contrib/dynatrace-sli-service --single-branch
@@ -167,28 +167,6 @@ To inform the `lighthouse-service` to use the `dynatrace-sli-service` for the **
     * dynatrace-sli-service
     * dynatrace-sli-service-monitoring-configure-distributor
 
-During an evaluation of the quality gates, an internal Keptn service, the `dynatrace-sli-service` will fetch the values for the `response_time_p95` SLI that is referenced in the `slo.yaml` file. To tell the service how to acquire this value from the Dynatrace Metrics API some parameters need to be configured.
-This can be done by storing the following `ConfigMap` in the `keptn` namespace:
-
-    ```yaml
-    apiVersion: v1
-    data:
-      custom-queries: |
-        error_count_4xx: "com.dynatrace.builtin:service.errorcounthttp4xx,,0"
-        error_count_5xx: "com.dynatrace.builtin:service.errorcounthttp5xx,,0"
-        response_time_P50: "com.dynatrace.builtin:service.responsetime,percentile,50"
-    kind: ConfigMap
-    metadata:
-      name: dynatrace-sli-config-sockshop
-      namespace: keptn
-    ```
-
-* Apply the ConfigMap by executing the following command from within the `onboarding-carts` folder:
-
-    ```console
-    kubectl apply -f dynatrace-sli-config.yaml
-    ```
-
 * Last but not least, the Dynatrace-SLI-Service needs a secret containing the following data:
 
     * Tenant id
@@ -197,8 +175,8 @@ This can be done by storing the following `ConfigMap` in the `keptn` namespace:
     Example: 
 
   ```yaml
-  tenant: your_tenant_id.live.dynatracelabs.com
-  apiToken: XYZ123456789
+  DT_TENANT: your_tenant_id.live.dynatracelabs.com
+  DT_API_TOKEN: XYZ123456789
   ```
 
 * Add the credential in the **keptn namespace** using
