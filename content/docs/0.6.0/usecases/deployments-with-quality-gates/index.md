@@ -25,9 +25,16 @@ This quality gate checks whether the average response time of the service is und
 <details><summary>*Click here to learn more about the tutorial.*</summary>
 <p>
 
-1. We will *try* to deploy the *slow* version of the carts service (0.10.2). Therefore, Keptn will deploy this new version into the **dev** environment where functional tests will be executed. After passing these functional tests, Keptn will promote this service into the **staging** environment by releasing it as the blue or green version next to the previous version of the service. Then, Keptn will route traffic to this new version by changing the configuration of the virtual service (i.e., by setting weights for the routes between blue and green) and Keptn will start the defined performance test (e.g., using JMeter). Using the monitoring results of this performance test will allow [lighthouse](https://github.com/keptn/keptn/tree/master/lighthouse-service) to evaluate the quality gate. The *slow* version of carts (0.10.2) will not pass the quality gate and, hence, the new version will not be promoted to the **production** stage (in other words: the deployment will be rejected). Furthermore, Keptn will change the weights within the **staging** stage back to the previous working deployment of the service. 
+1. We will *try* to deploy the *slow* version of the carts service (0.10.2). 
+  * Keptn will deploy this new version into the **dev** environment where functional tests will be executed. 
+  * After passing these functional tests, Keptn will promote this service into the **staging** environment by releasing it as the blue or green version next to the previous version of the service. 
+  * Then, Keptn will route traffic to this new version by changing the configuration of the virtual service (i.e., by setting weights for the routes between blue and green) and Keptn will start the defined performance test (e.g., using JMeter). Using the monitoring results of this performance test will allow [lighthouse](https://github.com/keptn/keptn/tree/master/lighthouse-service) to evaluate the quality gate. 
+  * The *slow* version of carts (0.10.2) will not pass the quality gate and, hence, the new version will not be promoted to the **production** stage (i.e., the deployment will be rejected).
+  * Furthermore, Keptn will change the weights within the **staging** stage back to the previous working deployment of the service. 
 
-2. We will deploy the *regular* version of the carts service (v0.10.3). Therefore, Keptn will conduct the same steps as before except that this version will pass the quality gate. Hence, this *regular* version will be promoted into the **production** environment.
+2. We will deploy the *regular* version of the carts service (v0.10.3). 
+  * Keptn will conduct the same steps as before except that this version will pass the quality gate. 
+  * Hence, this *regular* version will be promoted into the **production** environment.
 
 </p>
 </details>
@@ -38,21 +45,23 @@ This quality gate checks whether the average response time of the service is und
 - Set up monitoring for the carts service (see below)
 
 ### Set up of monitoring for the carts service
-Since this tutorial relies on the concept of quality gates, you will need to set up monitoring for the carts service, either using the open-source monitoring solution *Prometheus* (automatically installed with Keptn) or *Dynatrace* (optional). 
+For this tutorial you will need to set up monitoring for the carts service, either using the open-source monitoring solution *Prometheus* (automatically installed with Keptn) or *Dynatrace* (optional). 
 
-For using the quality gate, Keptn requires a performance specification. This specification is described in a file called `slo.yaml`, which contains a description of Service Level Objectives (SLO) that should be met by a service. To learn more about the *slo.yaml* file, go to [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/spec/blob/master/design_docs/keptn_quality_gates.md).
+Additionally, Keptn requires a performance specification for the quality gate. This specification is described in a file called `slo.yaml`, which contains a description of Service Level Objectives (SLO) that should be met by a service. To learn more about the *slo.yaml* file, go to [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/spec/blob/master/design_docs/keptn_quality_gates.md).
+
+Option 1 and Option 2 set up monitoring and configure the quality gate with based on pre-defined SLOs.
 
 #### Option 1: Prometheus
 <details><summary>Expand instructions</summary>
 <p>
 
-* To set up the quality gates for the carts service, please navigate to the `examples/onboarding-carts` folder. This folder contains the file `slo_quality-gates.yaml`. To set the quality gates based on those files, upload it via the following command:
+* To set up the quality gates for the carts service, please navigate to the `examples/onboarding-carts` folder. This folder contains the file `slo_quality-gates.yaml`. Upload it with the [add-resource](../../reference/cli/#keptn-add-resource) command:
 
     ```console
     keptn add-resource --project=sockshop --service=carts --stage=staging --resource=slo_quality-gates.yaml --resourceUri=slo.yaml
     ```
 
-* Afterwards, execute the following command to set up the rules for the Prometheus Alerting Manager based on those quality gates:
+* Execute the following command to set up the rules for the *Prometheus Alerting Manager* based on those quality gates:
 
     ```
     keptn configure monitoring prometheus --project=sockshop --service=carts
@@ -64,12 +73,12 @@ For using the quality gate, Keptn requires a performance specification. This spe
     kubectl port-forward svc/prometheus-service 8080 -n monitoring
     ```
 
-    It is then available on [localhost:8080/targets](http://localhost:8080/targets) where you can see the three targets for the carts service:
+    Prometheus is then available on [localhost:8080/targets](http://localhost:8080/targets) where you can see the three targets for the carts service:
 
-  {{< popup_image link="./assets/prometheus-targets.png" caption="Prometheus Targets">}}
+    {{< popup_image link="./assets/prometheus-targets.png" caption="Prometheus Targets">}}
 
 
-* The evaluation of the test runs will be performed by an internal Keptn service, called the `lighthouse-service`. While this service is responsible for evaluating the SLI results based on the criteria found in the `slo.yaml` file, it depends on an SLI-source service to retrieve the actual values of the SLIs. In this example, we are using the `prometheus-sli-service`. To inform the `lighthouse-service` to use the `prometheus-sli-service` for the **sockshop** project, the following `ConfigMap` will be used:
+* **Note:** The evaluation of the test runs will be performed by an internal Keptn service, called the **lighthouse-service**. While this service is responsible for evaluating the SLI results based on the criteria found in the `slo.yaml` file, it depends on an SLI-source service to retrieve the actual values of the SLIs. In this example, we are using the **prometheus-sli-service**. To inform the **lighthouse-service** to use the **prometheus-sli-service** for the **sockshop** project, the following `ConfigMap` will be used:
 
     ```yaml
     apiVersion: v1
@@ -81,13 +90,13 @@ For using the quality gate, Keptn requires a performance specification. This spe
       namespace: keptn
     ```
 
-* Apply the ConfigMap by executing the following command from within the `onboarding-carts` folder:
+* Apply the ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
 
     ```console
     kubectl apply -f lighthouse-source-prometheus.yaml
     ```
 
-* During an evaluation of the quality gates, an internal Keptn service, the `prometheus-sli-service` will fetch the values for the `response_time_p95` SLI that is referenced in the `slo.yaml` file. To tell the service how to acquire this value, the correct query needs to be configured. This can be done by storing the following `ConfigMap` in the `keptn` namespace:
+* **Note** During an evaluation of the quality gates, an internal Keptn service, the **prometheus-sli-service** will fetch the values for the `response_time_p95` SLI that is referenced in the `slo.yaml` file. To tell the service how to acquire this value, the correct query needs to be configured. This can be done by storing the following `ConfigMap` in the `keptn` namespace:
 
     ```yaml
     apiVersion: v1
@@ -101,7 +110,7 @@ For using the quality gate, Keptn requires a performance specification. This spe
       namespace: keptn
     ```
 
-* Apply the ConfigMap by executing the following command from within the `onboarding-carts` folder:
+* Apply the ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
 
     ```console
     kubectl apply -f prometheus-sli-config.yaml
@@ -113,16 +122,16 @@ For using the quality gate, Keptn requires a performance specification. This spe
 #### Option 2: Dynatrace
 <details><summary>Expand instructions</summary>
 <p>
-Please make sure you have followed the installation instructions for setting up [Dynatrace OneAgent](../../reference/monitoring/dynatrace).
+Please make sure you have completed the installation instructions for setting up [Dynatrace OneAgent](../../reference/monitoring/dynatrace).
 
-* To set up the quality gates for the carts service, please navigate to the `examples/onboarding-carts` folder. This folder contains the file `slo_quality-gates.yaml`. To set the quality gates based on those files, upload it via the following command:
+* To set up the quality gates for the carts service, please navigate to the `examples/onboarding-carts` folder. This folder contains the file `slo_quality-gates.yaml`. Upload it with the [add-resource](../../reference/cli/#keptn-add-resource) command:
 
     ```console
     keptn add-resource --project=sockshop --service=carts --stage=staging --resource=slo_quality-gates.yaml --resourceUri=slo.yaml
     ```
 
-The evaluation of the test runs will be performed by an internal Keptn service, called the `lighthouse-service`. While this service is responsible for evaluating the SLI results based on the criteria found in the `slo.yaml` file, it depends on an SLI-source service to retrieve the actual values of the SLIs. In this example, we are using the `dynatrace-sli-service`.
-To inform the `lighthouse-service` to use the `dynatrace-sli-service` for the **sockshop** project, the following `ConfigMap` will be used:
+* **Note:** The evaluation of the test runs will be performed by an internal Keptn service, called the **lighthouse-service**. While this service is responsible for evaluating the SLI results based on the criteria found in the `slo.yaml` file, it depends on an SLI-source service to retrieve the actual values of the SLIs. In this example, we are using the **dynatrace-sli-service**.
+To inform the **lighthouse-service** to use the **dynatrace-sli-service** for the **sockshop** project, the following `ConfigMap` will be used:
 
     ```yaml
     apiVersion: v1
@@ -134,41 +143,38 @@ To inform the `lighthouse-service` to use the `dynatrace-sli-service` for the **
       namespace: keptn
     ```
 
-* Apply the ConfigMap by executing the following command from within the `onboarding-carts` folder:
+* Apply the ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
 
     ```console
     kubectl apply -f lighthouse-source-dynatrace.yaml
     ```
 
-* Last but not least, the Dynatrace-SLI-Service needs to be installed using
+* The **dynatrace-sli-service** needs to be installed using:
     
     ```console
     git clone --branch release-0.1.0 https://github.com/keptn-contrib/dynatrace-sli-service --single-branch
+    ```
+
+    ```console
     cd dynatrace-sli-service
+    ```
+    
+    ```console
     kubectl apply -f deploy/
     ```
 
-    This should deploy the dynatrace-sli-service and its distributor. The output should look something like this:
-    
-    ```console
-    deployment.apps/dynatrace-sli-service-monitoring-configure-distributor created
-    deployment.apps/dynatrace-sli-service created
-    service/dynatrace-sli-service created
-    ```
-
-* To verify that the deployment has worked, use
+* To verify that the deployment has worked, execute:
 
     ```console
     kubectl get pods -n keptn | grep dynatrace-sli
     ```
 
-    Which should display two pods: 
+    ```console
+    dynatrace-sli-service
+    dynatrace-sli-service-monitoring-configure-distributor
+    ```
 
-    * dynatrace-sli-service
-    * dynatrace-sli-service-monitoring-configure-distributor
-
-During an evaluation of the quality gates, an internal Keptn service, the `dynatrace-sli-service` will fetch the values for the `response_time_p95` SLI that is referenced in the `slo.yaml` file. To tell the service how to acquire this value from the Dynatrace Metrics API some parameters need to be configured.
-This can be done by storing the following `ConfigMap` in the `keptn` namespace:
+* **Note:** During an evaluation of the quality gates, an internal Keptn service, the **dynatrace-sli-service** will fetch the values for the `response_time_p95` SLI that is referenced in the `slo.yaml` file. To tell the service how to acquire this value from the Dynatrace Metrics API some parameters need to be configured. This can be done by storing the following `ConfigMap` in the `keptn` namespace:
 
     ```yaml
     apiVersion: v1
@@ -183,13 +189,13 @@ This can be done by storing the following `ConfigMap` in the `keptn` namespace:
       namespace: keptn
     ```
 
-* Apply the ConfigMap by executing the following command from within the `onboarding-carts` folder:
+* Apply the ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
 
     ```console
     kubectl apply -f dynatrace-sli-config.yaml
     ```
 
-* Last but not least, the Dynatrace-SLI-Service needs a secret containing the following data:
+* Last but not least, the **dynatrace-sli-service** needs a secret containing the following data:
 
     * Tenant id
     * API token
@@ -201,7 +207,7 @@ This can be done by storing the following `ConfigMap` in the `keptn` namespace:
   apiToken: XYZ123456789
   ```
 
-* Add the credential in the **keptn namespace** using
+* Add the credential in the **keptn namespace** using:
 
   ```console
   kubectl create secret generic dynatrace-credentials-sockshop -n "keptn" --from-file=dynatrace-credentials=your_credential_file.yaml
@@ -243,13 +249,13 @@ This can be done by storing the following `ConfigMap` in the `keptn` namespace:
 <p>
 The [send event new-artifact](../../reference/cli/#keptn-send-event-new-artifact) command changes the configuration of the service and automatically triggers the following Keptn services:
 
-* **Phase 1**: Deploying, testing and evaluating the test in the *dev* stage:
+* **Phase 1**: Deploying, testing, and evaluating the test in the *dev* stage:
     * **helm-service**: This service deploys the new artifact to *dev*.
     * **jmeter-service**: This service runs a basic health check and a functional tests in *dev*. Afterwards, this service sends an event of type `sh.keptn.events.tests-finished`. 
     * **lighthouse-service**: This service picks up the event and evaluates the test runs based on the  performance signature. Since in the *dev* environment only functional tests are executed, the lighthouse-service will mark the test run as successful (functional failures would have been detected by the **jmeter-service**).
     * **gatekeeper-service**: This service promotes the artifact to the next stage, i.e., *staging*.
 
-* **Phase 2**: Deploying, testing and evaluating the test in the *staging* stage:
+* **Phase 2**: Deploying, testing, and evaluating the test in the *staging* stage:
     * **helm-service**: This service deploys the new artifact to *staging* using a blue/green deployment strategy.
     * **jmeter-service**: This service runs a performance test in *staging* and sends the `sh.keptn.events.tests-finished` event.
     * **lighthouse-service**: This service picks up the event and this time, the quality gates of the service will be evaluated because we are using the performance-test-strategy for this stage. This means that the lighthouse-service will send a `get-sli` event to fetch the metrics for the *carts* service from either Prometheus or Dynatrace, depending on how you set up the monitoring for your service earlier. Based on the results of that evaluation, the lighthouse-service will mark the test run execution as successful or failed. In our scenario, the lighthouse-service will mark it as failed since the response time thresholds will be exceeded.
@@ -278,13 +284,11 @@ After triggering the deployment of the carts service in version v0.10.2, the fol
 
 ## Deploy the regular carts version
 
-1. Use the Keptn CLI to send a new version of the *carts* artifact, which does **not** contain any slowdown.
+1. Use the Keptn CLI to send a new version of the *carts* artifact, which does **not** contain any slowdown:
  
    ```console
    keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.10.3
    ```
-
-    This automatically changes the configuration of the service and automatically triggers the deployment. In this case, the quality gate is passed and the service gets deployed in the *production* namespace. 
 
 1. To verify the deployment in *production*, open a browser an navigate to `http://carts.sockshop-production.YOUR.DOMAIN`. As a result, you see `Version: v3`.
 
