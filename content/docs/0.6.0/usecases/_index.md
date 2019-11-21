@@ -21,7 +21,7 @@ The above list of tutorials helps you to explore the functionalities of Keptn ba
 
 ## Application and environment
 
-In the tutorials, a very simple application is used that provides the functionalities for an online shopping cart. This application is composed of a stateless Java service that implements the business logic and a MongoDB that stores items added to the cart by an end-user. The following image show the architecture of the application:
+In these tutorials, a very simple application is used that provides the functionalities for an online shopping cart. This application is composed of a stateless Java service that implements the business logic and a MongoDB that stores items added to the cart by an end-user. The following image show the architecture of the application:
 
 {{< popup_image
   link="./assets/carts-app.png"

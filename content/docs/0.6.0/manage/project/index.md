@@ -10,7 +10,7 @@ Learn how to manage your projects in Keptn.
 
 ## Select Git-based upstream  
 
-Keptn will manage a project in an internal Git repository. To upstream this repository to a remote place, you can create a GitHub, Bitbucket repository or a GitLab project and then tell Keptn where to find it during creating the project, explained below. Select one of the three options and make sure to have the Git *user*, *token*, and *remote url* before continuing.
+Keptn will manage a project in an internal Git repository. To upstream this repository to a remote place, you can create a GitHub, Bitbucket repository, or a GitLab project and then tell Keptn where to find it during creating the project explained below. Select one of the three options and make sure to have the Git *user*, *token*, and *remote url* before continuing.
 
 ### GitHub
 <details><summary>Create user, token, and repository</summary>
@@ -109,12 +109,12 @@ stages:
 
 **Note:**  To learn more about a *shipyard* file, click here [Shipyard specification](https://github.com/keptn/keptn/blob/0.5.0/specification/shipyard.md).
 
-* **Option A:** Create a project with the [Keptn CLI](../../reference/cli) without a Git upstream: 
+* **Option A:** Create a project with the Keptn CLI without a Git upstream: 
   ```console
   keptn create project PROJECTNAME --shipyard=FILEPATH
   ```
 
-* **Option B:** Create a project with the [Keptn CLI](../../reference/cli) using a Git upstream: 
+* **Option B:** Create a project with the Keptn CLI using a Git upstream: 
   ```console
   keptn create project PROJECTNAME --shipyard=FILEPATH --git-user=GIT_USER --git-token=GIT_TOKEN --git-remote-url=GIT_REMOTE_URL
   ```
@@ -129,9 +129,9 @@ To delete a Keptn project, the [delete project](../../reference/cli#keptn-delete
 **Note:** If a Git upstream is configured for this project, the referenced repository or project will not be deleted. Besides, deployed services are also not deleted by this command. 
 To clean-up all resources created by Keptn: 
 
-- delete the remote repository for your project
+- Delete the remote repository for your project
 
-- delete the Helm releases that have been deployed by Keptn, e.g.:
+- Delete the Helm releases that have been deployed by Keptn, e.g.:
 
   ```console
   helm ls
@@ -146,12 +146,12 @@ To clean-up all resources created by Keptn:
   helm delete --purge sockshop-staging
   ```
 
-- delete all Kubernetes namespaces that have been created by Keptn in your cluster, e.g.:
+- Delete all Kubernetes namespaces that have been created by Keptn in your cluster, e.g.:
   - sockshop-dev
   - sockshop-staging
   - sockshop-production
 
-  by executing:
+    by executing:
 
   ```console
   kubectl delete namespace sockshop-dev sockshop-staging sockshop-production
@@ -159,4 +159,4 @@ To clean-up all resources created by Keptn:
 
 ## Update a project
 
-Updating a project is currently supported by following the steps of [deleting](#delete-a-project) a project and [creating](#create-a-project) the project with updated settings again.
+Updating a project is currently supported by following the steps of [deleting](#delete-a-project) a project and [creating](#create-a-project) the project with updated settings.
