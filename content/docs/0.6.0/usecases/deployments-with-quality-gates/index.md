@@ -174,27 +174,6 @@ To inform the **lighthouse-service** to use the **dynatrace-sli-service** for th
     dynatrace-sli-service-monitoring-configure-distributor
     ```
 
-* **Note:** During an evaluation of the quality gates, an internal Keptn service, the **dynatrace-sli-service** will fetch the values for the `response_time_p95` SLI that is referenced in the `slo.yaml` file. To tell the service how to acquire this value from the Dynatrace Metrics API some parameters need to be configured. This can be done by storing the following `ConfigMap` in the `keptn` namespace:
-
-    ```yaml
-    apiVersion: v1
-    data:
-      custom-queries: |
-        error_count_4xx: "com.dynatrace.builtin:service.errorcounthttp4xx,,0"
-        error_count_5xx: "com.dynatrace.builtin:service.errorcounthttp5xx,,0"
-        response_time_P50: "com.dynatrace.builtin:service.responsetime,percentile,50"
-    kind: ConfigMap
-    metadata:
-      name: dynatrace-sli-config-sockshop
-      namespace: keptn
-    ```
-
-* Apply the ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
-
-    ```console
-    kubectl apply -f dynatrace-sli-config.yaml
-    ```
-
 * Last but not least, the **dynatrace-sli-service** needs a secret containing the following data:
 
     * Tenant id
@@ -203,8 +182,8 @@ To inform the **lighthouse-service** to use the **dynatrace-sli-service** for th
     Example: 
 
   ```yaml
-  tenant: your_tenant_id.live.dynatracelabs.com
-  apiToken: XYZ123456789
+  DT_TENANT: your_tenant_id.live.dynatracelabs.com
+  DT_API_TOKEN: XYZ123456789
   ```
 
 * Add the credential in the **keptn namespace** using:
