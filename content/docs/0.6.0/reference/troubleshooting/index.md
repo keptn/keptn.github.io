@@ -19,32 +19,37 @@ In this section, instructions are summarized that help to trouble shoot known is
 
   ```console
   NAME                                                              READY     STATUS    RESTARTS   AGE
-  api-55b57db797-8kgxd                                              1/1       Running   0          2m
-  bridge-6fc5bd679b-745fz                                           1/1       Running   0          2m
-  configuration-service-845997dd7d-sf5f6                            1/1       Running   0          2m
-  eventbroker-go-68d5f9d789-pp7n4                                   1/1       Running   0          2m
-  gatekeeper-service-6469d5f4f7-96cjl                               1/1       Running   0          2m
-  gatekeeper-service-evaluation-done-distributor-5b5f77c6ff-pf8hb   1/1       Running   0          2m
-  helm-service-569dc7d48f-dzs6n                                     1/1       Running   0          2m
-  helm-service-configuration-change-distributor-55ddcdbc94-6v8jj    1/1       Running   0          2m
-  helm-service-service-create-distributor-7896c55ccf-fn8cj          1/1       Running   0          2m
-  jmeter-service-57c9d4d999-mfxlr                                   1/1       Running   0          2m
-  jmeter-service-deployment-distributor-687b778dfd-hvd8q            1/1       Running   0          2m
-  keptn-nats-cluster-1                                              1/1       Running   0          2m
-  nats-operator-67d8dd94d5-7929b                                    1/1       Running   0          2m
-  pitometer-service-775dfb4bf4-6bqqm                                1/1       Running   0          2m
-  pitometer-service-tests-finished-distributor-785bdc79d4-xgwdd     1/1       Running   0          2m
-  prometheus-service-5d84cd45df-kcft8                               1/1       Running   0          4m
-  prometheus-service-monitoring-configure-distributor-5f4f9f54jks   1/1       Running   0          4m
-  remediation-service-a7pysw4bb-q0mzk                               1/1       Running   0          4m
-  remediation-service-problem-distributor-u2dfa5f5cfb-8n8cb         1/1       Running   0          4m
-  servicenow-service-64cb58c879-f868m                               1/1       Running   0          4m
-  servicenow-service-problem-distributor-6d4fc577d9-8b97g           1/1       Running   0          4m
-  shipyard-service-58b5d5df74-2k8d5                                 1/1       Running   0          3m
-  shipyard-service-create-project-distributor-5d56b4fcfd-6hmt6      1/1       Running   0          3m
-  wait-service-d749fc4bb-qzfzk                                      1/1       Running   0          3m
-  wait-service-deployment-distributor-7cd55f5cfb-7f7cb              1/1       Running   0          2m
-  openshift-route-service-57b45c4dfc-4x5lm                          1/1       Running   0          33s (OpenShift only)
+  api-5cfd44687-b2sqr                                               1/1       Running   0          34m
+  bridge-54d65cd4c5-9hwsl                                           1/1       Running   0          34m
+  configuration-service-75df569979-qvg8t                            1/1       Running   0          34m
+  eventbroker-go-f44576fcb-z2ddv                                    1/1       Running   0          34m
+  gatekeeper-service-6d5d798ccd-d442x                               1/1       Running   0          34m
+  gatekeeper-service-evaluation-done-distributor-7556c87d9b-xbffs   1/1       Running   0          34m
+  helm-service-596b4855b4-zkb77                                     1/1       Running   0          34m
+  helm-service-configuration-change-distributor-58d97df957-2msfs    1/1       Running   0          34m
+  helm-service-service-create-distributor-58584b6f7-4l9rr           1/1       Running   0          34m
+  jmeter-service-7d9c654c9c-xgz7s                                   1/1       Running   0          34m
+  jmeter-service-deployment-distributor-6dbd4858bf-v2stj            1/1       Running   0          34m
+  keptn-nats-cluster-1                                              1/1       Running   0          34m
+  lighthouse-service-6497f48947-vvs5g                               1/1       Running   0          34m
+  lighthouse-service-get-sli-done-distributor-56896bb59c-d6tlp      1/1       Running   0          34m
+  lighthouse-service-start-evaluation-distributor-5fb47dcfd-mklxx   1/1       Running   0          34m
+  lighthouse-service-tests-finished-distributor-5dfc978bd4-7hl44    1/1       Running   0          34m
+  nats-operator-7dcd546854-nhpm5                                    1/1       Running   0          34m
+  prometheus-service-6db877499c-vvvg5                               1/1       Running   0          33m
+  prometheus-service-monitoring-configure-distributor-5f789fvn69f   1/1       Running   0          33m
+  prometheus-sli-service-66f8b8d86f-stgzr                           1/1       Running   0          33m
+  prometheus-sli-service-monitoring-configure-distributor-675x5kp   1/1       Running   0          33m
+  remediation-service-f6bbc48b5-g47kt                               1/1       Running   0          34m
+  remediation-service-problem-distributor-79885bd957-nz74j          1/1       Running   0          34m
+  servicenow-service-7cd9b8784-xxj7z                                1/1       Running   0          33m
+  servicenow-service-problem-distributor-666fbf4b6-l62dj            1/1       Running   0          33m
+  shipyard-service-565b96cb9c-mz2cl                                 1/1       Running   0          34m
+  shipyard-service-create-project-distributor-c65b7c677-nkmnk       1/1       Running   0          34m
+  shipyard-service-delete-project-distributor-55b86db7b-kd28z       1/1       Running   0          34m
+  wait-service-7b4d74b4d9-b4lk7                                     1/1       Running   0          34m
+  wait-service-deployment-distributor-55cd8fc655-n5px7              1/1       Running   0          34m
+  openshift-route-service-57b45c4dfc-4x5lm                          1/1       Running   0          32s (OpenShift only)
   openshift-route-service-create-project-distributor-7d4454cs44xp   1/1       Running   0          33s (OpenShift only)
   ```
 

@@ -57,10 +57,10 @@ Select one of the following options:
   - [python 2.7](https://www.python.org/downloads/release/python-2716/) (required for Ubuntu 19.04)
 
 2. Create GKE cluster
-  - Master version >= `1.12.x` (tested version: `1.13.7-gke.24`)
+  - Master version >= `1.12.x` (tested version: `1.13.11-gke.14`)
   - One **n1-standard-8** node
-  - Image type `ubuntu` or `cos` (if you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../reference/monitoring/dynatrace/))
-  - Sample script to create such cluster (adapt the values according to your needs)
+  - Image type `ubuntu` or `cos` (**Note:** If you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../reference/monitoring/dynatrace/).)
+  - Sample script to create such cluster:
 
     ```console
     // set environment variables
@@ -162,16 +162,13 @@ Select one of the following options:
 ## Install Keptn CLI
 Every release of Keptn provides binaries for the Keptn CLI. These binaries are available for Linux, macOS, and Windows.
 
-- Download the version for your operating system from https://github.com/keptn/keptn/releases/tag/0.5.0
+- Download the version for your operating system from https://github.com/keptn/keptn/releases/tag/0.6.0.beta
 - Unpack the download
-- Find the `keptn` binary in the unpacked directory.
-  - Linux / macOS
-    
-    add executable permissions (``chmod +x keptn``), and move it to the desired destination (e.g. `mv keptn /usr/local/bin/keptn`)
+- Find the `keptn` binary in the unpacked directory
 
-  - Windows
+  - *Linux / macOS*: Add executable permissions (``chmod +x keptn``), and move it to the desired destination (e.g. `mv keptn /usr/local/bin/keptn`)
 
-    move/copy the executable to the desired folder and, optionally, add the executable to your PATH environment variable for a more convenient experience.
+  - *Windows*: Copy the executable to the desired folder and add the executable to your PATH environment variable.
 
 - Now, you should be able to run the Keptn CLI: 
     - Linux / macOS
@@ -184,7 +181,7 @@ Every release of Keptn provides binaries for the Keptn CLI. These binaries are a
       .\keptn.exe --help
       ```
 
-**Note:** For the rest of the documentation we will stick to the Mac OS / Linux version of the commands.
+**Note:** For the rest of the documentation we will stick to the *Linux / macOS* version of the commands.
 
 ## Install Keptn
 
@@ -220,8 +217,8 @@ To install the latest release of Keptn on a Kuberntes cluster, execute the [kept
     keptn install --platform=pks
     ```
 
-In the Kubernetes cluster, this command creates the `keptn`, `keptn-datastore` and `istio-system` namespace. While `istio-system` contains all Istio related resources, `keptn` and `keptn-datastore` contain the complete infrastructure to run Keptn. 
-    <details><summary>The `keptn` and `keptn-datastore` namespace contain:</summary>
+In the Kubernetes cluster, this command creates the **keptn**, **keptn-datastore**, and **istio-system** namespace. While istio-system contains all Istio related resources, keptn and keptn-datastore contain the complete infrastructure to run Keptn. 
+    <details><summary>The *keptn* and *keptn-datastore* namespace contain:</summary>
         <ul>
         <li>mongoDb database for the Keptn's log</li>
         <li>NATS cluster</li>
@@ -231,12 +228,12 @@ In the Kubernetes cluster, this command creates the `keptn`, `keptn-datastore` a
                 <li>bridge</li>
                 <li>configuration-service</li>
                 <li>distributors</li>
-                <li>event-broker</li>
+                <li>eventbroker</li>
                 <li>gatekeeper-service</li>
                 <li>helm-service</li>
                 <li>jmeter-service</li>
+                <li>lighthouse-service</li>
                 <li>mongodb-datastore</li>
-                <li>pitometer-service</li>
                 <li>remediation-service</li>
                 <li>shipyard-service</li>
                 <li>wait-service</li>
@@ -253,8 +250,8 @@ In the Kubernetes cluster, this command creates the `keptn`, `keptn-datastore` a
 
 ## Configure a custom domain (required for EKS)
 
-In case you have a custom domain or cannot use *xip.io* (e.g., when running Keptn on EKS, AWS will create an ELB), there is a 
-CLI command to configure Keptn for your custom domain:
+If you have a custom domain or cannot use *xip.io* (e.g., when running Keptn on EKS with an ELB (Elastic Load Balancer) from AWS), there is the 
+CLI command [keptn configure domain](../../reference/cli/#keptn-configure-domain) to configure Keptn for your custom domain:
 
 ```console
 keptn configure domain YOUR_DOMAIN
@@ -262,13 +259,13 @@ keptn configure domain YOUR_DOMAIN
 
 ## Uninstall
 
-- In order to uninstall Keptn from your cluster, run the uninstall command using the Keptn CLI:
+- To uninstall Keptn from your cluster, run the uninstall command using the Keptn CLI:
 
     ``` console
     keptn uninstall
     ``` 
 
-- To verify the cleanup, retrieve the list of namespaces in your cluster and ensure that the `keptn` namespace is not included in the output of the following command:
+- To verify the cleanup, retrieve the list of namespaces in your cluster and ensure that the **keptn** namespace is not included in the output of the following command:
 
     ```console
     kubectl get namespaces
@@ -276,7 +273,7 @@ keptn configure domain YOUR_DOMAIN
 
 ## Troubleshooting
 
-Please note that in case of any errors, the install process might leave some files in an inconsistent state. Therefore `keptn install` cannot be executed a second time without `keptn uninstall`. To address a unsuccessful installation: 
+Please note that in case of any errors, the install process might leave some files in an inconsistent state. Therefore [keptn install](../../reference/cli/#keptn-install) cannot be executed a second time without [keptn uninstall](../../reference/cli/#keptn-uninstall). To address a unsuccessful installation: 
 
 1. [Verify the Keptn installation](../../reference/troubleshooting#verifying-a-keptn-installation).
 
