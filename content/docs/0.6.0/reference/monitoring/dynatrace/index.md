@@ -54,7 +54,7 @@ Please make sure to have the following tool(s) installed:
 
 1. Clone the install repository and setup your credentials by executing the following steps:
   ```console
-  git clone --branch 0.3.1 https://github.com/keptn-contrib/dynatrace-service --single-branch
+  git clone --branch 0.4.0 https://github.com/keptn-contrib/dynatrace-service --single-branch
   ```
   ```console
   cd dynatrace-service/deploy/scripts
