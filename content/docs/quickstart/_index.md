@@ -43,15 +43,15 @@ keptn install --platform=[aks|eks|gke|openshift|pks|kubernetes]
 Keptn is now ready to be used.
 
 ### 4. Explore the usecases
-With Keptn installed, have a look at the different [use cases](/docs/0.6.0.beta/usecases) like
+With Keptn installed, have a look at the different [use cases](/docs/0.6.0/usecases) like
 
-* [Onboarding a new Service](/docs/0.6.0.beta/usecases/onboard-carts-service/)
-* [Using Quality Gates for Deployments](/docs/0.6.0.beta/usecases/deployments-with-quality-gates/)
-* [Self-healing with Keptn](/docs/0.6.0.beta/usecases/self-healing-with-keptn/)
-* [Runbook Automation](/docs/0.6.0.beta/usecases/runbook-automation-and-self-healing/)
+* [Onboarding a new Service](/docs/0.6.0/usecases/onboard-carts-service/)
+* [Using Quality Gates for Deployments](/docs/0.6.0/usecases/deployments-with-quality-gates/)
+* [Self-healing with Keptn](/docs/0.6.0/usecases/self-healing-with-keptn/)
+* [Runbook Automation](/docs/0.6.0/usecases/runbook-automation-and-self-healing/)
 
 ### 5. Learn how Keptn works under the hood and how it can be adapted to your usecases
-Review the [reference documentation](/docs/0.6.0.beta/) for a full reference on all components of Keptn and how they can be combined and extended to your needs.
+Review the [reference documentation](/docs/0.6.0/) for a full reference on all components of Keptn and how they can be combined and extended to your needs.
 
 ### 6. In case you need help
 Join [our slack channel](https://join.slack.com/t/keptn/shared_invite/enQtNTUxMTQ1MzgzMzUxLTcxMzE0OWU1YzU5YjY3NjFhYTJlZTNjOTZjY2EwYzQyYWRkZThhY2I3ZDMzN2MzOThkZjIzOTdhOGViMDNiMzI) for any questions that may arise.
