@@ -140,7 +140,7 @@ dynatrace-oneagent-operator-7f477bf78d-dgwb6   1/1     Running            0     
 oneagent-b22m4                                 0/1     Error              6          8m15s
 oneagent-k7jn6                                 0/1     CrashLoopBackOff   6          8m15s
 ```
-Please [follow the instructions](https://www.dynatrace.com/support/help/cloud-platforms/google-cloud-platform/google-kubernetes-engine/deploy-oneagent-on-google-kubernetes-engine-clusters/#expand-134parameter-for-container-optimized-os-early-access) for setting up the Dynatrace OneAgent Operator. This means that after the initial setup with `deployDynatrace.sh`, which is a step below, the `cr.yml` has to be edited and applied again.  You can do that by editing the already downloaded `cr.yml` in `../manifests/dynatrace/gen` and set the environemnt variable as follows:
+This means that after the initial setup with `deployDynatrace.sh`, which is a step below, the `cr.yml` has to be edited and applied again.  You can do that by editing the already downloaded `cr.yml` in `../manifests/dynatrace/gen` and set the environemnt variable as follows:
 
 ```yaml
   env:
@@ -153,7 +153,10 @@ Then apply the file using:
 kubectl apply -f cr.yml
 ```
 
-After that, don't forget to restart all pods.
+Don't forget to restart all pods in the `keptn` namespace afterwards:
+```console
+kubectl delete pods --all --namespace=keptn
+```
 
 ### Verify setup in Dynatrace
 
