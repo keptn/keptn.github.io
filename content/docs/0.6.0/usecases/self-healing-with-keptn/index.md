@@ -35,6 +35,11 @@ In order to add these files to Keptn and to automatically configure Prometheus, 
     ```
 
 1. Configure Prometheus with the Keptn CLI:
+
+    ```console
+    kubectl apply -f prometheus-sli-config.yaml
+    ```
+
     ```console
     keptn add-resource --project=sockshop --service=carts --stage=production --resource=slo_self-healing_prometheus.yaml --resourceUri=slo.yaml
     ```
