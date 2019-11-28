@@ -1,6 +1,6 @@
 ---
 title: Install Keptn
-description: How to setup Keptn.
+description: How to install Keptn on one of the supported Kubernetes platforms.
 weight: 10
 icon: setup
 keywords: setup
@@ -27,7 +27,7 @@ Select one of the following options:
  </p>
 </details>
 
-<details><summary>Amazon Elastic Container Service (EKS)</summary>
+<details><summary>Amazon Elastic Kubernetes Service (EKS)</summary>
 <p>
 
 1. Install local tools
@@ -59,7 +59,7 @@ Select one of the following options:
 2. Create GKE cluster
   - Master version >= `1.12.x` (tested version: `1.13.7-gke.24`)
   - One **n1-standard-8** node
-  - Image type `ubuntu` or `cos` (if you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../monitoring/dynatrace/))
+  - Image type `ubuntu` or `cos` (if you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../reference/monitoring/dynatrace/))
   - Sample script to create such cluster (adapt the values according to your needs)
 
     ```console
@@ -76,40 +76,6 @@ Select one of the following options:
     ```
  </p>
 </details>
-
-<!--
-<details><summary>Pivotal Container Service (PKS)</summary>
-<p>
-
-1. Install local tools
-  - [pks CLI - v1.0.4](https://docs.pivotal.io/runtimes/pks/1-4/installing-pks-cli.html)
-
-1. Create PKS cluster on GCP
-  - Use the provided instructions for [Enterprise Pivotal Container Service (Enterprise PKS) installation on GCP](https://docs.pivotal.io/runtimes/pks/1-4/gcp-index.html)
-
-  - Create a PKS cluster by using the PKS CLI and executing the following command:
-
-    ```console
-    // set environment variables
-    CLUSTER_NAME=nameofcluster
-    HOST_NAME=hostname
-    PLAN=small
-    ```
-
-    ```console
-    pks create-cluster $CLUSTER_NAME --external-hostname $HOST_NAME --plan $PLAN
-    ```
-
-* **Note:** For the Keptn installation, the *Cluster CIDR Range* and *Services CIDR Range* are required. The values for these two properties you find in your PCF OpsManager. 
-
-    * Login to your PCF OpsManager
-    * Click on the **Enterprise PKS** tile and go to **Networking**
-    * The networking configuration shows the values for the *Kubernetes Pod Network CIDR Range* (Cluster CIDR Range) and *Kubernetes Service Network CIDR Range* (Services CIDR Range).
-    {{< popup_image link="./assets/cluster-services-ip.png" caption="Kubernetes Pod and Services Network CIDR Range" width="40%">}}
-
-</p>
-</details>
--->
 
 <details><summary>OpenShift 3.11</summary>
 <p>
@@ -166,7 +132,30 @@ Select one of the following options:
         exit
       fi
       ```
+</p>
+</details>
 
+<details><summary>Pivotal Container Service (PKS)</summary>
+<p>
+
+1. Install local tools
+  - [pks CLI - v1.0.4](https://docs.pivotal.io/runtimes/pks/1-4/installing-pks-cli.html)
+
+1. Create PKS cluster on GCP
+  - Use the provided instructions for [Enterprise Pivotal Container Service (Enterprise PKS) installation on GCP](https://docs.pivotal.io/runtimes/pks/1-4/gcp-index.html)
+
+  - Create a PKS cluster by using the PKS CLI and executing the following command:
+
+    ```console
+    // set environment variables
+    CLUSTER_NAME=name_of_cluster
+    HOST_NAME=host_name
+    PLAN=small
+    ```
+
+    ```console
+    pks create-cluster $CLUSTER_NAME --external-hostname $HOST_NAME --plan $PLAN
+    ```
 </p>
 </details>
 
@@ -184,7 +173,7 @@ Every release of Keptn provides binaries for the Keptn CLI. These binaries are a
 
     move/copy the executable to the desired folder and, optionally, add the executable to your PATH environment variable for a more convenient experience.
 
-- Now, you should be able to run the Keptn CLI: 
+- Now, you are able to run the Keptn CLI: 
     - Linux / macOS
       ```console
       keptn --help
@@ -207,7 +196,7 @@ To install the latest release of Keptn on a Kuberntes cluster, execute the [kept
     keptn install --platform=aks
     ```
   
-- Amazon Elastic Container Service (EKS):
+- Amazon Elastic Kubernetes Service (EKS):
 
     ```console
     keptn install --platform=eks
@@ -224,6 +213,20 @@ To install the latest release of Keptn on a Kuberntes cluster, execute the [kept
     ```console
     keptn install --platform=openshift
     ```
+
+- Pivotal Container Service (PKS):
+
+    - Please make sure that your local `kubectl` CLI is configured for your target PKS cluster:
+
+        ```console
+        kubectl config current-context
+        ```
+
+    - Install Keptn on PKS:
+
+        ```console
+        keptn install --platform=kubernetes
+        ```
 
 In the Kubernetes cluster, this command creates the `keptn`, `keptn-datastore` and `istio-system` namespace. While `istio-system` contains all Istio related resources, `keptn` and `keptn-datastore` contain the complete infrastructure to run Keptn. 
     <details><summary>The `keptn` and `keptn-datastore` namespace contain:</summary>
