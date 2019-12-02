@@ -35,6 +35,11 @@ In order to add these files to Keptn and to automatically configure Prometheus, 
     ```
 
 1. Configure Prometheus with the Keptn CLI:
+
+    ```console
+    kubectl apply -f prometheus-sli-config.yaml
+    ```
+
     ```console
     keptn add-resource --project=sockshop --service=carts --stage=production --resource=slo_self-healing_prometheus.yaml --resourceUri=slo.yaml
     ```
@@ -186,6 +191,7 @@ In this tutorial, the number of pods will be increased to remediate the issue of
     NAME                              READY   STATUS    RESTARTS   AGE
     carts-db-57cd95557b-r6cg8         1/1     Running   0          38m
     carts-primary-7c96d87df9-75pg7    2/2     Running   0          33m
+    carts-primary-7c96d87df9-78fh2    2/2     Running   0          5m
     ```
 
 1. Furthermore, you can use Prometheus to double-check the CPU usage:
