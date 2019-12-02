@@ -22,7 +22,7 @@ The Keptn CLI is the one-stop-shop for all operations related to Keptn.
 
 ##### 2.1.1 Automatic install of the Keptn CLI (Linux and Mac)
 ```console
-curl -sL https://s3.amazonaws.com/get.keptn.sh/get.sh | sudo -E bash
+curl -sL https://get.keptn.sh | sudo -E bash
 ```
 
 This will download the *latest version*, unpack it and move it to `/usr/local/bin/keptn`.
