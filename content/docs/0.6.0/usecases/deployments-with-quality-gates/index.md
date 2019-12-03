@@ -47,7 +47,7 @@ This quality gate checks whether the average response time of the service is und
 ### Set up of monitoring for the carts service
 For this tutorial you will need to set up monitoring for the carts service, either using the open-source monitoring solution *Prometheus* (automatically installed with Keptn) or *Dynatrace* (optional). 
 
-Additionally, Keptn requires a performance specification for the quality gate. This specification is described in a file called `slo.yaml`, which contains a description of Service Level Objectives (SLO) that should be met by a service. To learn more about the *slo.yaml* file, go to [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/spec/blob/master/design_docs/keptn_quality_gates.md).
+Additionally, Keptn requires a performance specification for the quality gate. This specification is described in a file called `slo.yaml`, which contains a description of Service Level Objectives (SLO) that should be met by a service. To learn more about the *slo.yaml* file, go to [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/spec/blob/0.1.1/sre.md).
 
 Option 1 and Option 2 set up monitoring and configure the quality gate with based on pre-defined SLOs.
 
