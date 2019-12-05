@@ -152,7 +152,7 @@ To inform the **lighthouse-service** to use the **dynatrace-sli-service** for th
 * The **dynatrace-sli-service** needs to be installed using:
     
     ```console
-    git clone --branch 0.1.0 https://github.com/keptn-contrib/dynatrace-sli-service --single-branch
+    git clone --branch 0.2.0 https://github.com/keptn-contrib/dynatrace-sli-service --single-branch
     ```
 
     ```console
