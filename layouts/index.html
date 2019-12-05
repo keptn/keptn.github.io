@@ -27,140 +27,197 @@ page-home
 
 {{ define "main" }}
 {{/* Intro */}}
-<div class="section-white">
-  <div class="container pt-sm-4 pb-sm-4">
-    <div class="row justify-content-center">
+<div class="intro section-background-image-lines">
+  <div class="container pt-sm-5 pb-sm-4">
+    <div class="row pt-sm-5 pb-sm-4 justify-content-center">
       <div class="col-12">
-        INTRO
+        <div class="col-6 p-0">
+          {{ with .Site.GetPage "section" "home/intro" }}
+            {{ .Content }}
+          {{ end }}
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-{{/* Content Section 1 */}}
-<div class="section-white">
+{{/* Usage */}}
+<div class="usage">
   <div class="container pt-sm-4 pb-sm-4">
-    <div class="row">
+    <div class="row pt-sm-4 pb-sm-4">
       <div class="col-12 pb-sm-2">
-        CONTENT SECTION 1 HEADLINE
+        {{ with .Site.GetPage "section" "home/usage-top" }}
+          {{ .Content }}
+        {{ end }}
       </div>
       <div class="col-4">
-        CONTENT SECTION 2 LEFT
+        {{ with .Site.GetPage "section" "home/usage-left" }}
+          {{ .Content }}
+        {{ end }}
       </div>
       <div class="col-4">
-        CONTENT SECTION 2 MIDDLE
+        {{ with .Site.GetPage "section" "home/usage-middle" }}
+          {{ .Content }}
+        {{ end }}
       </div>
       <div class="col-4">
-        CONTENT SECTION 2 RIGHT
+        {{ with .Site.GetPage "section" "home/usage-right" }}
+          {{ .Content }}
+        {{ end }}
       </div>
     </div>
   </div>
 </div>
 
-{{/* Content Section 2 */}}
-<div class="section-white">
-    <div class="container pt-sm-4 pb-sm-4">
+{{/* Kubernetes Cluster */}}
+<div class="kubernetes-cluster">
+  <div class="container pt-sm-5 pb-sm-5">
     <div class="row">
-      <div class="col-12 text-center pb-sm-2">
-        CONTENT SECTION 2 HEADLINE
+      <div class="col-12 pb-sm-4">
+        <div class="col-6 p-0">
+          {{ with .Site.GetPage "section" "home/kubernetes-cluster-top" }}
+            {{ .Content }}
+          {{ end }}
+        </div>
       </div>
-      <div class="col-12 text-center">
-        CONTENT SECTION 2 CONTENT
+
+      <div class="col-8 offset-4">
+        {{ with .Site.GetPage "section" "home/kubernetes-cluster-bottom" }}
+          {{ .Content }}
+        {{ end }}
       </div>
     </div>
   </div>
 </div>
 
-{{/* Content Section 3 */}}
-<div class="section-background-image-waves">
-    <div class="container pt-sm-4 pb-sm-4">
-    <div class="row">
-      <div class="col-6">
-        CONTENT SECTION 3 LEFT
-      </div>
-
-      <div class="col-6">
-        CONTENT SECTION 3 RIGHT
-      </div>
-    </div>
-  </div>
-</div>
-
-{{/* Content Section 4 */}}
-<div class="section-white">
+{{/* Delivery Flow */}}
+<div class="delivery-flow section-background-image-waves">
   <div class="container pt-sm-4 pb-sm-4">
     <div class="row">
-      <div class="col-12 pb-sm-2 text-center">
-        CONTENT SECTION 4 HEADLINE
+      <div class="col-12">
+        <div class="col-6 p-0">
+          {{ with .Site.GetPage "section" "home/delivery-flow-top" }}
+            {{ .Content }}
+          {{ end }}
+        </div>
       </div>
+
       <div class="col-6">
-        CONTENT SECTION 4 LEFT
+        {{ with .Site.GetPage "section" "home/delivery-flow-left" }}
+          {{ .Content }}
+        {{ end }}
       </div>
+
       <div class="col-6">
-        CONTENT SECTION 4 RIGHT
+        {{ with .Site.GetPage "section" "home/delivery-flow-right" }}
+          {{ .Content }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>
+
+{{/* Onboard Services */}}
+<div class="onboard-services">
+  <div class="container pt-sm-5 pb-sm-5">
+    <div class="row pt-sm-4 pb-sm-4">
+      <div class="col-12 pb-sm-5 text-center">
+        {{ with .Site.GetPage "section" "home/onboard-services-top" }}
+          {{ .Content }}
+        {{ end }}
+      </div>
+
+      <div class="col-6">
+        {{ with .Site.GetPage "section" "home/onboard-services-left" }}
+          {{ .Content }}
+        {{ end }}
+      </div>
+
+      <div class="col-6">
+        {{ with .Site.GetPage "section" "home/onboard-services-right" }}
+          {{ .Content }}
+        {{ end }}
       </div>
     </div>
   </div>
 </div>
 
 {{/* Divider */}}
-<div class="section-white">
-  <div class="container pt-sm-2 pb-sm-2">
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <hr>
+    </div>
+  </div>
+</div>
+
+{{/* Integration Workflow */}}
+<div class="integration-workflow">
+  <div class="container pt-sm-5 pb-sm-5">
     <div class="row">
+      <div class="col-6">
+        {{ with .Site.GetPage "section" "home/integration-workflow-left" }}
+          {{ .Content }}
+        {{ end }}
+      </div>
+
+      <div class="col-6">
+        {{ with .Site.GetPage "section" "home/integration-workflow-right" }}
+          {{ .Content }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>
+
+{{/* Keptn Workflows */}}
+<div class="keptn-workflows section-primary-opacity">
+  <div class="container pt-sm-5 pb-sm-5">
+    <div class="row pt-sm-4 pb-sm-4">
+      <div class="col-6">
+        {{ with .Site.GetPage "section" "home/keptn-workflows-left" }}
+          {{ .Content }}
+        {{ end }}
+      </div>
+
+      <div class="col-6">
+        {{ with .Site.GetPage "section" "home/keptn-workflows-right" }}
+          {{ .Content }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>
+
+{{/* Automatic Remediation */}}
+<div class="automatic-remediation">
+  <div class="container pt-sm-5 pb-sm-5">
+    <div class="row pt-sm-4 pb-sm-4">
       <div class="col-12">
-        <hr>
-      </div>
-    </div>
-  </div>
-</div>
-
-{{/* Content Section 5 */}}
-<div class="section-white">
-  <div class="container pt-sm-4 pb-sm-4">
-    <div class="row">
-      <div class="col-6">
-        CONTENT SECTION 5 LEFT
+        <div class="col-6 p-0">
+          {{ with .Site.GetPage "section" "home/automatic-remediation-top" }}
+            {{ .Content }}
+          {{ end }}
+        </div>
       </div>
 
       <div class="col-6">
-        CONTENT SECTION 5 RIGHT
-      </div>
-    </div>
-  </div>
-</div>
-
-{{/* Content Section 6 */}}
-<div class="section-primary-opacity">
-  <div class="container pt-sm-4 pb-sm-4">
-    <div class="row">
-      <div class="col-6">
-        CONTENT SECTION 6 LEFT
+        {{ with .Site.GetPage "section" "home/automatic-remediation-left" }}
+          {{ .Content }}
+        {{ end }}
       </div>
 
       <div class="col-6">
-        CONTENT SECTION 6 RIGHT
-      </div>
-    </div>
-  </div>
-</div>
-
-{{/* Content Section 7 */}}
-<div class="section-white">
-  <div class="container pt-sm-4 pb-sm-4">
-    <div class="row">
-      <div class="col-6">
-        CONTENT SECTION 7 LEFT
-      </div>
-
-      <div class="col-6">
-        CONTENT SECTION 7 RIGHT
+        {{ with .Site.GetPage "section" "home/automatic-remediation-right" }}
+          {{ .Content }}
+        {{ end }}
       </div>
     </div>
   </div>
 </div>
 
 {{/* Teaser */}}
-<div class="section-primary">
+<div class="teaser section-primary">
   <div class="container pt-sm-5 pb-sm-5">
     <div class="row pt-sm-4 pb-sm-4">
       <div class="col-12 d-flex flex-column text-center">
@@ -177,15 +234,25 @@ page-home
 </div>
 
 {{/* Contact */}}
-<div class="section-primary-opacity">
-  <div class="container pt-sm-4 pb-sm-4">
+<div class="contact section-primary-opacity">
+  <div class="container pt-sm-5 pb-sm-5">
     <div class="row">
-      <div class="col-6">
-        CONTACT LEFT
+      <div class="col-12">
+        {{ with .Site.GetPage "section" "home/contact-top" }}
+          {{ .Content }}
+        {{ end }}
       </div>
 
       <div class="col-6">
-        CONTACT RIGHT
+        {{ with .Site.GetPage "section" "home/contact-left" }}
+          {{ .Content }}
+        {{ end }}
+      </div>
+
+      <div class="col-5 offset-1">
+        {{ with .Site.GetPage "section" "home/contact-right" }}
+          {{ .Content }}
+        {{ end }}
       </div>
     </div>
   </div>

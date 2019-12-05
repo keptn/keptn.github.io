@@ -1,0 +1,32 @@
+.page-home {
+  // Intro
+  .intro {
+    p:first-of-type {
+      margin-bottom: 32px;
+    }
+
+    p:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  // Intro, Contact and Usage
+  .intro,
+  .usage,
+  .contact {
+    p {
+      font-size: 1.125rem;
+    }
+  }
+
+  // Teaser
+  .teaser {
+    h1 {
+      font-weight: $font-weight-semibold;
+    }
+
+    h2 {
+      font-weight: $font-weight-base;
+    }
+  }
+}

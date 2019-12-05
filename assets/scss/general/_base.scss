@@ -1,9 +1,18 @@
 body.page {
-  margin-top: 112px;
+  margin-top: 80px;
+  margin-bottom: 50px;
   font-family: $font-family-base;
   font-size: 1rem;
+
+  a {
+    font-family: $font-family-base;
+    color: $textColor;
+    text-decoration: underline;
+  }
 }
 
-a {
-  font-family: $font-family-base;
+body.page-home {
+  .header-link {
+    display: none;
+  }
 }

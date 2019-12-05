@@ -20,34 +20,31 @@
 @import "bootstrap/list-group";
 @import 'bootstrap/utilities';
 
-// Libraries
-@import 'libraries/hamburgers/hamburgers';
-
 // General
 @import 'general/variables';
 @import 'general/base';
 @import 'general/typography';
 
 // Components
-@import 'components/reset';
-@import 'components/page';
-@import 'components/header';
-@import 'components/footer';
-@import 'components/sub-footer';
-@import 'components/logo';
-@import 'components/main-menu';
-@import 'components/main-menu-mobile';
-@import 'components/hamburger';
 @import 'components/buttons';
 @import 'components/call';
 @import 'components/content';
-@import 'components/sections';
-@import 'components/whitebox';
 @import 'components/feature';
-
-// Styles for documentation pages
-@import 'components/doc';
+@import 'components/footer';
+@import 'components/hamburger';
+@import 'components/header';
+@import 'components/logo';
+@import 'components/main-menu-mobile';
+@import 'components/main-menu';
+@import 'components/page';
 @import 'components/pagenav';
+@import 'components/reset';
 @import 'components/section-index';
+@import 'components/sections';
 @import 'components/sidebar';
 @import 'components/toc';
+@import 'components/whitebox';
+
+// Pages
+@import 'pages/doc';
+@import 'pages/home';
