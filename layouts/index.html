@@ -13,6 +13,10 @@ header-transparent
 <script src="https://cdn.jsdelivr.net/npm/typeit@6.0.3/dist/typeit.min.js" />
 {{ end }}
 
+{{ define "body_classes" }}
+page-home
+{{ end }}
+
 {{ define "meta" }}
 <meta property="og:description" content="Building the fabric for cloud-native lifecycle automation at enterprise scale">
 <meta property="og:title" content="Keptn - A message-driven control plane for application delivery and automated operations">
@@ -23,7 +27,7 @@ header-transparent
 
 {{ define "main" }}
 {{/* Intro */}}
-<div class="section section--white">
+<div class="section-white">
   <div class="container pt-sm-4 pb-sm-4">
     <div class="row justify-content-center">
       <div class="col-12">
@@ -33,100 +37,155 @@ header-transparent
   </div>
 </div>
 
-{{/* CONTENT SECTION 1 */}}
-<div class="section section--white">
+{{/* Content Section 1 */}}
+<div class="section-white">
   <div class="container pt-sm-4 pb-sm-4">
-    <div class="row justify-content-center">
-      <div class="col-12">
-        CONTENT SECTION 1
+    <div class="row">
+      <div class="col-12 pb-sm-2">
+        CONTENT SECTION 1 HEADLINE
+      </div>
+      <div class="col-4">
+        CONTENT SECTION 2 LEFT
+      </div>
+      <div class="col-4">
+        CONTENT SECTION 2 MIDDLE
+      </div>
+      <div class="col-4">
+        CONTENT SECTION 2 RIGHT
       </div>
     </div>
   </div>
 </div>
 
 {{/* Content Section 2 */}}
-<div class="section section--white">
+<div class="section-white">
     <div class="container pt-sm-4 pb-sm-4">
-    <div class="row justify-content-center">
-      <div class="col-12">
-        CONTENT SECTION 2
+    <div class="row">
+      <div class="col-12 text-center pb-sm-2">
+        CONTENT SECTION 2 HEADLINE
+      </div>
+      <div class="col-12 text-center">
+        CONTENT SECTION 2 CONTENT
       </div>
     </div>
   </div>
 </div>
 
 {{/* Content Section 3 */}}
-<div class="section section--white">
+<div class="section-background-image-waves">
     <div class="container pt-sm-4 pb-sm-4">
-    <div class="row justify-content-center">
-      <div class="col-12">
-        CONTENT SECTION 3
+    <div class="row">
+      <div class="col-6">
+        CONTENT SECTION 3 LEFT
+      </div>
+
+      <div class="col-6">
+        CONTENT SECTION 3 RIGHT
       </div>
     </div>
   </div>
 </div>
 
 {{/* Content Section 4 */}}
-<div class="section section--white">
-    <div class="container pt-sm-4 pb-sm-4">
-    <div class="row justify-content-center">
+<div class="section-white">
+  <div class="container pt-sm-4 pb-sm-4">
+    <div class="row">
+      <div class="col-12 pb-sm-2 text-center">
+        CONTENT SECTION 4 HEADLINE
+      </div>
+      <div class="col-6">
+        CONTENT SECTION 4 LEFT
+      </div>
+      <div class="col-6">
+        CONTENT SECTION 4 RIGHT
+      </div>
+    </div>
+  </div>
+</div>
+
+{{/* Divider */}}
+<div class="section-white">
+  <div class="container pt-sm-2 pb-sm-2">
+    <div class="row">
       <div class="col-12">
-        CONTENT SECTION 4
+        <hr>
       </div>
     </div>
   </div>
 </div>
 
 {{/* Content Section 5 */}}
-<div class="section section--white">
-    <div class="container pt-sm-4 pb-sm-4">
-    <div class="row justify-content-center">
-      <div class="col-12">
-        CONTENT SECTION 5
+<div class="section-white">
+  <div class="container pt-sm-4 pb-sm-4">
+    <div class="row">
+      <div class="col-6">
+        CONTENT SECTION 5 LEFT
+      </div>
+
+      <div class="col-6">
+        CONTENT SECTION 5 RIGHT
       </div>
     </div>
   </div>
 </div>
 
 {{/* Content Section 6 */}}
-<div class="section section--primary-opacity">
-    <div class="container pt-sm-4 pb-sm-4">
-    <div class="row justify-content-center">
-      <div class="col-12">
-        CONTENT SECTION 6
+<div class="section-primary-opacity">
+  <div class="container pt-sm-4 pb-sm-4">
+    <div class="row">
+      <div class="col-6">
+        CONTENT SECTION 6 LEFT
+      </div>
+
+      <div class="col-6">
+        CONTENT SECTION 6 RIGHT
       </div>
     </div>
   </div>
 </div>
 
 {{/* Content Section 7 */}}
-<div class="section section--white">
-    <div class="container pt-sm-4 pb-sm-4">
-    <div class="row justify-content-center">
-      <div class="col-12">
-        CONTENT SECTION 7
+<div class="section-white">
+  <div class="container pt-sm-4 pb-sm-4">
+    <div class="row">
+      <div class="col-6">
+        CONTENT SECTION 7 LEFT
+      </div>
+
+      <div class="col-6">
+        CONTENT SECTION 7 RIGHT
       </div>
     </div>
   </div>
 </div>
 
 {{/* Teaser */}}
-<div class="section section--primary">
-  <div class="container pt-sm-4 pb-sm-4">
-    <div class="row justify-content-center">
-      <div class="col-12">
-        TEASER
+<div class="section-primary">
+  <div class="container pt-sm-5 pb-sm-5">
+    <div class="row pt-sm-4 pb-sm-4">
+      <div class="col-12 d-flex flex-column text-center">
+        {{ with .Site.GetPage "section" "home/teaser" }}
+          {{ .Content }}
+        {{ end }}
+
+        <div class="d-flex justify-content-center pt-sm-4">
+          <a href="/docs/quickstart/" class="button button-secondary">Quick Start</a>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 {{/* Contact */}}
-<div class="section section--primary-opacity">
+<div class="section-primary-opacity">
   <div class="container pt-sm-4 pb-sm-4">
-    <div class="row justify-content-center">
-      <div class="col-12">
-        CONTACT
+    <div class="row">
+      <div class="col-6">
+        CONTACT LEFT
+      </div>
+
+      <div class="col-6">
+        CONTACT RIGHT
       </div>
     </div>
   </div>

@@ -1,36 +1,36 @@
 {{ define "main" }}
 <div class="container">
-{{ partial "primary-top.html" . }}
+  {{ partial "primary-top.html" . }}
 
-{{ $questions := .Resources.ByType "page" }}
-{{ $sorted_questions := sort $questions ".Params.weight" }}
+  {{ $questions := .Resources.ByType "page" }}
+  {{ $sorted_questions := sort $questions ".Params.weight" }}
 
-<nav class="toc-inlined toc-forced">
-    <hr/>
+  <nav class="toc-inlined toc-forced">
+    <hr />
     <div class="directory" role="directory">
-        <nav id="InlineTableOfContents">
-            <ul>
-                {{ range $q := $sorted_questions }}
-                    <li><a href="#{{ $q.File.BaseFileName | urlize }}">{{ $q.Title }}</a></li>
-                {{ end }}
-            </ul>
-        </nav>
+      <nav id="InlineTableOfContents">
+        <ul>
+          {{ range $q := $sorted_questions }}
+          <li><a href="#{{ $q.File.BaseFileName | urlize }}">{{ $q.Title }}</a></li>
+          {{ end }}
+        </ul>
+      </nav>
     </div>
-    <hr/>
-</nav>
+    <hr />
+  </nav>
 
-{{ .Content }}
+  {{ .Content }}
 
-<div class="faq">
+  <div class="faq">
     {{ range $q := $sorted_questions }}
-        <h5 id="{{ $q.File.BaseFileName | urlize }}" class="question">{{ $q.Title }}</h5>
-        <div class="answer">
-            {{ $q.Content }}
-        </div>
+    <h5 id="{{ $q.File.BaseFileName | urlize }}" class="question">{{ $q.Title }}</h5>
+    <div class="answer">
+      {{ $q.Content }}
+    </div>
     {{ end }}
-</div>
+  </div>
 
-{{ partial "primary-bottom.html" . }}
+  {{ partial "primary-bottom.html" . }}
 </div>
 
 {{ end }}

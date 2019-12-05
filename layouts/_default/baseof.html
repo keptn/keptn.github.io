@@ -170,14 +170,14 @@
   <script>
     var branchName = "{{ .Site.Data.args.source_branch_name }}";
     var docTitle = "{{ .Title }}";
-    var iconFile = "{{ .Site.BaseURL}}/img/icons.svg";
+    var iconFile = "{{ .Site.BaseURL}}/images/icons.svg";
     var buttonCopy = '{{ i18n "button_copy" }}';
     var buttonPrint = '{{ i18n "button_print" }}';
     var buttonDownload = '{{ i18n "button_download" }}';
   </script>
 </head>
 
-<body class='page {{ block "body_classes" . }}{{ end }}'>
+<body class="page {{ block "body_classes" . }}{{ end }}">
   {{ partial "main-menu-mobile.html" . }}
 
   <div class="wrapper">

@@ -1,16 +1,25 @@
 .button {
-  margin-left: 24px;
-  padding: 10px 24px;
+  padding: 10px 32px;
   border-radius: 24px;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
+  font-weight: $font-weight-semibold;
   text-decoration: none !important;
 }
 
-.button--primary {
+.button-primary {
   color: $white;
   background-color: $primary;
 
   &:hover {
     color: $white;
+  }
+}
+
+.button-secondary {
+  color: $primary;
+  background-color: $white;
+
+  &:hover {
+    color: $primary;
   }
 }

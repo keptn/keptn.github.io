@@ -1,8 +1,9 @@
 {{ define "main" }}
 <div class="container-fluid">
-{{ partial "primary-top.html" . }}
+  {{ partial "primary-top.html" . }}
 
-{{ .Content }}
-{{ partial "primary-bottom.html" . }}
+  {{ .Content }}
+
+  {{ partial "primary-bottom.html" . }}
 </div>
 {{ end }}
