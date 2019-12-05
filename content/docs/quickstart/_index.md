@@ -17,18 +17,19 @@ menu: main
 
 ### 2. Install Keptn
 
+The following instructions will install the **latest stable Keptn version (0.5.2)** in a quick way.
+- If you want to follow the detailed install instructions, please go to [Keptn 0.5.2 installation](/docs/0.5.0/installation/setup-keptn/).
+- If you want to try out *Keptn 0.6.0.beta2*, please go to [Keptn 0.6.0.beta2 installation](/docs/0.6.0/installation/setup-keptn/)
+
 #### 2.1 Install the Keptn CLI
 The Keptn CLI is the one-stop-shop for all operations related to Keptn.
 
 ##### 2.1.1 Automatic install of the Keptn CLI (Linux and Mac)
-
-The following will download the **latest stable Keptn version (0.5.2)**, unpack it and move it to `/usr/local/bin/keptn`.
+This will download the *latest stable Keptn version*, unpack it and move it to `/usr/local/bin/keptn`.
 
 ```console
 curl -sL https://get.keptn.sh | sudo -E bash
 ```
-
-**Note:** If you want to try *Keptn 0.6.0.beta2*, please follow this [Keptn installation](/docs/0.6.0/installation/setup-keptn/).
 
 ##### 2.1.2 Manual install of the Keptn CLI
 1. Download a release for your platform from the [release page](https://github.com/keptn/keptn/releases)
