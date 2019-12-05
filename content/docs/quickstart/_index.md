@@ -33,7 +33,7 @@ curl -sL https://get.keptn.sh | sudo -E bash
 ##### 2.1.2 Manual install of the Keptn CLI
 1. Download a release for your platform from the [release page](https://github.com/keptn/keptn/releases)
 2. Unpack it
-3. Run `keptn`
+3. Run `keptn version`
 
 #### 3. Run the Keptn installer
 Depending on the platform, Keptn install will prompt you different information needed to perform the installation.
@@ -52,8 +52,8 @@ With Keptn installed, have a look at the different [use cases](/docs/0.6.0/useca
 * [Self-healing with Keptn](/docs/0.5.0/usecases/self-healing-with-keptn/)
 * [Runbook Automation](/docs/0.5.0/usecases/runbook-automation-and-self-healing/)
 
-### 5. Learn how Keptn works under the hood and how it can be adapted to your usecases
-Review the [reference documentation](/docs/0.6.0/) for a full reference on all components of Keptn and how they can be combined and extended to your needs.
+### 5. Learn how Keptn works under the hood and how it can be adapted to your use cases
+Review the [reference documentation](/docs/0.5.0/) for a full reference on all components of Keptn and how they can be combined and extended to your needs.
 
 ### 6. In case you need help
 Join [our slack channel](https://join.slack.com/t/keptn/shared_invite/enQtNTUxMTQ1MzgzMzUxLTcxMzE0OWU1YzU5YjY3NjFhYTJlZTNjOTZjY2EwYzQyYWRkZThhY2I3ZDMzN2MzOThkZjIzOTdhOGViMDNiMzI) for any questions that may arise.

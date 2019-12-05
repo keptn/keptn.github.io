@@ -162,7 +162,7 @@ Select one of the following options:
 ## Install Keptn CLI
 Every release of Keptn provides binaries for the Keptn CLI. These binaries are available for Linux, macOS, and Windows.
 
-- Download the version for your operating system from https://github.com/keptn/keptn/releases/tag/0.6.0.beta2
+- Download the version for your operating system from [github.com/keptn/](https://github.com/keptn/keptn/releases/tag/0.6.0.beta2)
 - Unpack the download
 - Find the `keptn` binary in the unpacked directory
 
@@ -190,31 +190,31 @@ To install the latest release of Keptn on a Kuberntes cluster, execute the [kept
 - Azure Kubernetes Services (AKS):
 
     ```console
-    keptn install --platform=aks --keptn-version=release-0.6.0.beta
+    keptn install --platform=aks --keptn-version=release-0.6.0.beta2
     ```
   
 - Amazon Elastic Kubernetes Service (EKS):
 
     ```console
-    keptn install --platform=eks --keptn-version=release-0.6.0.beta
+    keptn install --platform=eks --keptn-version=release-0.6.0.beta2
     ```
 
 - Google Kubernetes Engine (GKE):
 
     ```console
-    keptn install --platform=gke --keptn-version=release-0.6.0.beta
+    keptn install --platform=gke --keptn-version=release-0.6.0.beta2
     ```
 
 - OpenShift 3.11:
 
     ```console
-    keptn install --platform=openshift --keptn-version=release-0.6.0.beta
+    keptn install --platform=openshift --keptn-version=release-0.6.0.beta2
     ```
 
 - Pivotal Container Service (PKS):
 
     ```console
-    keptn install --platform=pks --keptn-version=release-0.6.0.beta
+    keptn install --platform=pks --keptn-version=release-0.6.0.beta2
     ```
 
 In the Kubernetes cluster, this command creates the **keptn**, **keptn-datastore**, and **istio-system** namespace. While istio-system contains all Istio related resources, keptn and keptn-datastore contain the complete infrastructure to run Keptn. 
