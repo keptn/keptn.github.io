@@ -156,11 +156,15 @@ To inform the **lighthouse-service** to use the **dynatrace-sli-service** for th
     ```
 
     ```console
-    cd dynatrace-sli-service
+    cd dynatrace-sli-service/deploy
     ```
     
     ```console
-    kubectl apply -f deploy/
+    kubectl apply -f distributor.yaml
+    ```
+
+    ```console
+    kubectl apply -f service.yaml
     ```
 
 * To verify that the deployment has worked, execute:
