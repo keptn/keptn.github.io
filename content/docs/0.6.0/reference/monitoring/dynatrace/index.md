@@ -153,10 +153,7 @@ Then apply the file using:
 kubectl apply -f cr.yml
 ```
 
-Don't forget to restart all pods in the `keptn` namespace afterwards:
-```console
-kubectl delete pods --all --namespace=keptn
-```
+Finally, don't forget to restart the pods as described in **Note 1** above.
 
 ### Verify setup in Dynatrace
 
