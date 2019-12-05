@@ -18,6 +18,7 @@ menu: main
 ### 2. Install Keptn
 
 The following instructions will install the **latest stable Keptn version (0.5.2)** in a quick way.
+
 - If you want to follow the detailed install instructions, please go to [Keptn 0.5.2 installation](/docs/0.5.0/installation/setup-keptn/).
 - If you want to try out *Keptn 0.6.0.beta2*, please go to [Keptn 0.6.0.beta2 installation](/docs/0.6.0/installation/setup-keptn/)
 
