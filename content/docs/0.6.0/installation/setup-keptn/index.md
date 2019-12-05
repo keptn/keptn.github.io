@@ -254,7 +254,7 @@ If you have a custom domain or cannot use *xip.io* (e.g., when running Keptn on 
 CLI command [keptn configure domain](../../reference/cli/#keptn-configure-domain) to configure Keptn for your custom domain:
 
 ```console
-keptn configure domain YOUR_DOMAIN
+keptn configure domain YOUR_DOMAIN --keptn-version=release-0.6.0.beta2
 ```
 
 ## Uninstall
