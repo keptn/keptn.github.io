@@ -1,35 +1,42 @@
-.strip {
-  background: white;
-  background-repeat: no-repeat;
+.section---white {
+  background-color: $white;
 }
-.strip-white {
-  background-color: white;
-}
-.strip-grey {
+
+.section---grey {
   background-color: #f4f5fb;
 }
-.strip-diagonal {
+
+.section---diagonal {
   transform: skewY(5deg);
   padding-bottom: 50px;
   margin-bottom: 65px;
+
   > div {
     transform: skewY(-5deg);
   }
 }
-.strip-primary-gradient {
+
+.section--primary-gradient {
   background-image: linear-gradient(to right, $primary, $secondary);
 }
-.strip-primary-gradient-top-bottom {
+
+.section--primary-gradient-top-bottom {
   background-image: linear-gradient(to bottom, $primary, $secondary);
 }
-.strip-primary {
+
+.section--primary {
   background-color: $primary;
 }
-.strip-secondary {
+
+.section--primary-opacity {
+  background-color: $primary-opacity;
+}
+
+.section--secondary {
   background-color: $secondary;
 }
 
-.strip-diagonal-right {
+.section--diagonal-right {
   margin-top: -100px;
   transform: skewY(-5deg);
   padding-bottom: 100px;
@@ -38,7 +45,7 @@
   }
 }
 
-.strip-diagonal-left {
+.section--diagonal-left {
   margin-top: -100px;
   transform: skewY(5deg);
   padding-bottom: 100px;
@@ -47,10 +54,10 @@
   }
 }
 
-.strip-bg-contain {
+.section--bg-contain {
   background-size: contain;
 }
 
-.strip-bg-cover {
+.section--bg-cover {
   background-size: cover;
 }

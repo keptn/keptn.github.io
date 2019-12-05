@@ -3,13 +3,15 @@
   <ul>
     {{ $currentPage := . }}
     {{ range .Site.Menus.main }}
-    <li class="menu-item-{{ .Name | lower }}{{ if $currentPage.IsMenuCurrent "main" . }} active{{ end }}">
-      <a href="{{.URL}}">
+    <li class="menu-item-{{ .Name | lower }} {{ if $currentPage.IsMenuCurrent "main" . }} active {{ end }}">
+      <a href="{{ .URL }}">
         {{ .Pre }}
         <span>{{ .Name }}</span>
       </a>
     </li>
-    {{end}}
+    {{ end }}
   </ul>
+
+  <a href="/docs/quickstart/" class="button button--primary">Quick Start</a>
 </div>
-{{end}}
+{{ end }}

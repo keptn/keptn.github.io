@@ -1,114 +1,136 @@
-{{ define "title" }}keptn | A message-driven control plane for application delivery and automated operations{{ end}}
-{{ define "header_css" }}{{ end }}
-{{ define "body_classes" }}page-home{{ end }}
-{{ define "header_classes" }}header-transparent{{ end }}
-{{ define "header_js"}}
+{{ define "title" }}
+keptn | A message-driven control plane for application delivery and automated operations
+{{ end }}
+
+{{ define "header_css" }}
+{{ end }}
+
+{{ define "header_classes" }}
+header-transparent
+{{ end }}
+
+{{ define "header_js" }}
 <script src="https://cdn.jsdelivr.net/npm/typeit@6.0.3/dist/typeit.min.js" />
-{{end}}
-{{ define "meta"}}
+{{ end }}
+
+{{ define "meta" }}
 <meta property="og:description" content="Building the fabric for cloud-native lifecycle automation at enterprise scale">
 <meta property="og:title" content="Keptn - A message-driven control plane for application delivery and automated operations">
 <meta property="og:image" content="https://keptn.sh/favicon.png">
 <meta property="og:url" content="https://keptn.sh/index.html">
 <meta name="twitter:card" content="summary_large_image">
-
 {{ end }}
 
 {{ define "main" }}
-
-<div class="intro">
-  <div class="container">
-    {{ .Content }}
-  </div>
-</div>
-
-
-
-<div class="strip strip-grey">
-  <div class="container  pt-sm-4 pb-sm-4">
+{{/* Intro */}}
+<div class="section section--white">
+  <div class="container pt-sm-4 pb-sm-4">
     <div class="row justify-content-center">
       <div class="col-12">
-        <h2 class="text-dark mb-3">Keptn Core Features</h2>
-        <h4 id="control_plane">Message-driven Control Plane</h4>
-        Keptn is a <strong></strong>message-driven control plane</strong> that can be used for <strong>Application Delivery</strong> and
-        <strong>Automated Operations</strong>. Here are two examples how Keptn orchestrates both delivery and
-        operations. Please note that the tools that deploy, tests, monitor, etc. are left out for simplicity. This
-        section focuses on the control-plane aspect of Keptn.
-        <br/><br/>
-        <a href="#top">Back to top</a>
-        <h4 id="application_delivery">Application Delivery</h4>
-        <strong>Application Delivery</strong> starts when a new artifact is available, e.g. a container that has been
-        built in a CI pipeline has been pushed to a container registry (1). Keptn gets notified about the new artifact
-        by either a webhook or a user that sends an event to Keptn (2). Keptn updates the project configuration in git
-        (3) and dispatches an event to start a dark deployment (4), . After a successful deployment tests are executed
-        (5). Keptn gathers metrics from a monitoring provider (6) and evaluates against the specified quality criteria
-        (quality gate) and decides that the artifact gets promoted to the next stage. Keptn updates the configuration
-        (7) and triggers a blue/green deployment (8). As before, Keptn gathers metrics (9) and finds that the metrics
-        don't pass the specified quality gate. Keptn rolls back changes in the configuration (10) and undeploys the new
-        artifact from the current stage (11). Eventually, Keptn notifies the user that the application delivery workflow
-        wasn't successful.
-        <br /><br />
-        <div>
-          <img src="/images/application_delivery.png" alt="Application Delivery" />
-        </div>
-        <br/><br/>
-        <a href="#top">Back to top</a>
-        <h4 id="automated_operations">Automated Operations</h4>
-        <strong>Automated Operations</strong> starts by adding service level indicators (SLI), service level objectives
-        (SLO), and remediation instructions to the project configuration in Keptn (1)(2). Based on this information,
-        Keptn configures the monitoring provider with alerting rules (3). As the monitoring of the application takes
-        place (4), the monitoring provider finds that a SLO is not met anymore (5) and sends an alert to Keptn (6).
-        Keptn finds an appropriate remediation action in the configuration (7) and executes said remediation action (8).
-        The monitoring provider oversees the process and gives feedback if the problem has been solved (9).
-        <br /><br />
-        <img src="/images/automated_operations.png" alt="Automated Operations" />
-        <br/><br/>
-        <a href="#top">Back to top</a>
+        INTRO
       </div>
     </div>
   </div>
 </div>
 
-<div class="container pt-2 pt-md-2 pb-md-2">
-  <div class="row justify-content-center">
-    <div class="col-12">
-      <h2 class="text-dark mb-3" id="keptndev">Keptn for Developers</h2>
-      <img src="/images/dev_usecase_animated.gif" alt="Keptn for developers" />
-      <br/><br/>
-        <a href="#top">Back to top</a>
-    </div>
-  </div>
-  <br>
-</div>
-
-<div class="strip strip-grey">
-  <div class="container  pt-sm-4 pb-sm-4">
+{{/* CONTENT SECTION 1 */}}
+<div class="section section--white">
+  <div class="container pt-sm-4 pb-sm-4">
     <div class="row justify-content-center">
       <div class="col-12">
-        <h2 class="text-dark mb-3" id="keptndevops">Keptn for DevOps Engineers</h2>
-        <img class="img-fluid" src="/images/devops_usecase_animated.gif" alt="Keptn for DevOps" />
-        <br/><br/>
-        <a href="#top">Back to top</a>
+        CONTENT SECTION 1
       </div>
     </div>
   </div>
 </div>
 
-<div class="container pt-2 pt-md-2 pb-md-2">
-  <div class="row justify-content-center">
-    <div class="col-12">
-      <h2 class="text-dark mb-3" id="keptnsre">Keptn for SREs</h2>
-      <img class="img-fluid" src="/images/sre_usecase_animated.gif" alt="Keptn for SREe" />
-      <br/><br/>
-      <a href="#top">Back to top</a>
+{{/* Content Section 2 */}}
+<div class="section section--white">
+    <div class="container pt-sm-4 pb-sm-4">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        CONTENT SECTION 2
+      </div>
     </div>
   </div>
-  <br>
 </div>
 
-<br>
+{{/* Content Section 3 */}}
+<div class="section section--white">
+    <div class="container pt-sm-4 pb-sm-4">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        CONTENT SECTION 3
+      </div>
+    </div>
+  </div>
+</div>
 
+{{/* Content Section 4 */}}
+<div class="section section--white">
+    <div class="container pt-sm-4 pb-sm-4">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        CONTENT SECTION 4
+      </div>
+    </div>
+  </div>
+</div>
 
+{{/* Content Section 5 */}}
+<div class="section section--white">
+    <div class="container pt-sm-4 pb-sm-4">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        CONTENT SECTION 5
+      </div>
+    </div>
+  </div>
+</div>
+
+{{/* Content Section 6 */}}
+<div class="section section--primary-opacity">
+    <div class="container pt-sm-4 pb-sm-4">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        CONTENT SECTION 6
+      </div>
+    </div>
+  </div>
+</div>
+
+{{/* Content Section 7 */}}
+<div class="section section--white">
+    <div class="container pt-sm-4 pb-sm-4">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        CONTENT SECTION 7
+      </div>
+    </div>
+  </div>
+</div>
+
+{{/* Teaser */}}
+<div class="section section--primary">
+  <div class="container pt-sm-4 pb-sm-4">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        TEASER
+      </div>
+    </div>
+  </div>
+</div>
+
+{{/* Contact */}}
+<div class="section section--primary-opacity">
+  <div class="container pt-sm-4 pb-sm-4">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        CONTACT
+      </div>
+    </div>
+  </div>
+</div>
 {{ end }}
 
 {{ define "footer_js" }}

@@ -7,7 +7,9 @@
   <title>{{ block "title" . }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google-site-verification" content="wDzKASaTgmwGTtV-z_O-NU_6e1wOgA7spKT96o9r8XE" />
-  {{ block "meta" . }}{{end}}
+
+  {{ block "meta" . }}
+  {{ end }}
 
   <link rel="icon" href="/favicon.png">
 
@@ -17,10 +19,16 @@
   {{- $cssOptions := cond ($inServerMode) (dict "targetPath" $cssTarget "enableSourceMap" true) (dict "targetPath" $cssTarget "outputStyle" "compressed") }}
   {{- $style := resources.Get "scss/style.scss" | toCSS $cssOptions }}
   {{ $lightbox := resources.Get "js/libs/doc/lightbox/css/lightbox.min.css" }}
+
   <link rel="stylesheet" href="{{ ($style | minify | fingerprint).RelPermalink }}">
   <link rel="stylesheet" href="{{ ($lightbox | minify | fingerprint).RelPermalink }}">
-  {{ block "header_css" . }}{{ end }}
-  {{ block "header_js" . }}{{end}}
+
+  {{ block "header_css" . }}
+  {{ end }}
+
+  {{ block "header_js" . }}
+  {{ end }}
+
   <script type="text/javascript">
     (function () {
       (function () {
@@ -157,9 +165,8 @@
         }
       })();
     }).call(this);
-
-
   </script>
+
   <script>
     var branchName = "{{ .Site.Data.args.source_branch_name }}";
     var docTitle = "{{ .Title }}";
@@ -172,22 +179,18 @@
 
 <body class='page {{ block "body_classes" . }}{{ end }}'>
   {{ partial "main-menu-mobile.html" . }}
-  <div class="wrapper">
 
+  <div class="wrapper">
     {{ partial "header.html" . }}
-    {{ partial "github-corner.html" . }}
+  
     <div class="main">
       {{ block "main" . }}
+      {{ end }}
     </div>
-    {{ end }}
-
+  
+    {{ partial "footer.html" . }}
   </div>
 
-  {{ partial "footer.html" . }}
-
-  <!--
-  {{ partial "sub-footer.html" . }}
-  -->
   {{ $scripts := resources.Get "js/scripts.js" }}
   {{ $docutils := resources.Get "js/libs/doc/utils.js" }}
   {{ $docmisc := resources.Get "js/libs/doc/misc.js" }}
@@ -216,7 +219,6 @@
   {{ end }}
 
   {{ partial "google-analytics.html" . }}
-
 </body>
 
 </html>

@@ -56,22 +56,17 @@
 @import 'components/call';
 @import 'components/title';
 @import 'components/content';
-@import 'components/intro';
-@import 'components/strip';
+@import 'components/sections';
 @import 'components/whitebox';
 @import 'components/feature';
-@import 'components/github-corner';
 
 // Styles for documentation pages
 @import 'components/doc';
+@import 'components/section-index';
 @import 'components/sidebar';
 @import 'components/toc';
-@import 'components/section-index';
 
 @import 'components/pagenav';
-
-// Pages
-@import 'pages/home';
 
 body {
   font-size: 1rem;
@@ -110,7 +105,6 @@ body {
   padding: 10px;
 }
 
-
 .terminal {
   margin: 20px;
   font-family: monospace;
@@ -126,6 +120,7 @@ body {
     color: #22da26;
     font-size: 14px;
     font-weight: bold;
+
     &:before {
       content: '$ ';
       color: #22da26;
@@ -138,10 +133,10 @@ body {
   border-right: 1px solid rgb(222, 226, 230);
   border-bottom: 1px solid rgb(222, 226, 230);
   background-color: #ffffff;
+
   .tab-pane {
     padding: 15px;
   }
-
 }
 
 .nav-tabs {

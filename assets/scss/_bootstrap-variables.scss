@@ -18,7 +18,7 @@ $grid-gutter-width: 20px;
 $white: #ffffff;
 $black: #000000;
 $primary: #006BB8;
-$mainBrandColor: #006BB8;
+$primary-opacity: rgba(#006BB8, 0.05);
 $secondary: #002C66;
 
 // Links
@@ -173,7 +173,7 @@ $headerDarkShadowColor: rgba(0, 0, 0, .28);
 $figureBackgroundColor: $backgroundColor;
 $figureCaptionColor: $textColor;
 
-$heroLogoColor: $mainBrandColor;
+$heroLogoColor: $primary;
 $landingPanelBackgroundColor: $light-gray;
 $landingPanelBorderColor: #dddddd;
 $landingPanelTextColor: $textColor;
