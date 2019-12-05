@@ -151,10 +151,8 @@ to
     value: "true"
 ```
 
-Don't forget to restart all pods in the `keptn` namespace afterwards:
-```console
-kubectl delete pods --all --namespace=keptn
-```
+Finally, don't forget to restart the pods as described in **Note 1** above.
+
 
 ### What has been set up?
 
