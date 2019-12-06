@@ -1,0 +1,115 @@
+{{ define "title" }}
+keptn
+{{ end }}
+
+{{ define "header_css" }}
+{{ end }}
+
+{{ define "header_classes" }}
+header-transparent
+{{ end }}
+
+{{ define "header_js" }}
+<script src="https://cdn.jsdelivr.net/npm/typeit@6.0.3/dist/typeit.min.js" />
+{{ end }}
+
+{{ define "body_classes" }}
+page-why-keptn
+{{ end }}
+
+{{ define "meta" }}
+<meta property="og:description" content="Building the fabric for cloud-native lifecycle automation at enterprise scale">
+<meta property="og:title" content="Keptn - A message-driven control plane for application delivery and automated operations">
+<meta property="og:image" content="https://keptn.sh/favicon.png">
+<meta property="og:url" content="https://keptn.sh/index.html">
+<meta name="twitter:card" content="summary_large_image">
+{{ end }}
+
+{{ define "main" }}
+{{/* Intro */}}
+<div class="intro">
+  <div class="container pt-5 pb-5">
+    <div class="row">
+      <div class="col-12">
+        {{ with .Site.GetPage "section" "why-keptn/intro" }}
+          {{ .Content }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>
+
+{{/* Maintenance */}}
+<div class="maintenance">
+  <div class="container pt-5 pb-5">
+    <div class="row">
+      <div class="col-12">
+        {{ with .Site.GetPage "section" "why-keptn/maintenance" }}
+          {{ .Content }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>
+
+{{/* Higher Compliance */}}
+<div class="higher-compliance section-primary-opacity">
+  <div class="container pt-5 pb-5">
+    <div class="row">
+      <div class="col-12">
+        {{ with .Site.GetPage "section" "why-keptn/higher-compliance" }}
+          {{ .Content }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>
+
+{{/* Easy Extensibility */}}
+<div class="easy-extensibility">
+  <div class="container pt-5 pb-5">
+    <div class="row">
+      <div class="col-12">
+        {{ with .Site.GetPage "section" "why-keptn/easy-extensibility" }}
+          {{ .Content }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>
+
+{{/* Tool Integrations */}}
+<div class="tool-integrations section-primary-opacity">
+  <div class="container pt-5 pb-5">
+    <div class="row">
+      <div class="col-12">
+        {{ with .Site.GetPage "section" "why-keptn/tool-integrations" }}
+          {{ .Content }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>
+
+{{/* Observability */}}
+<div class="observability">
+  <div class="container pt-5 pb-5">
+    <div class="row">
+      <div class="col-12">
+        {{ with .Site.GetPage "section" "why-keptn/observability" }}
+          {{ .Content }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>
+
+{{/* Teaser */}}
+{{ partial "teaser.html" . }}
+
+{{/* Contact */}}
+{{ partial "contact.html" . }}
+{{ end }}
+
+{{ define "footer_js" }}
+{{ end }}

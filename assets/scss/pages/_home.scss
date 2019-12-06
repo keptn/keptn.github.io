@@ -1,4 +1,12 @@
 .page-home {
+  // Intro & Usage
+  .intro,
+  .usage {
+    p {
+      font-size: 1.125rem;
+    }
+  }
+
   // Intro
   .intro {
     background-image: url('/images/home/background-lines.png');
@@ -23,15 +31,6 @@
       height: 22px;
       margin-top: -3px;
       margin-left: 8px;
-    }
-  }
-
-  // Intro, Usage and Contact
-  .intro,
-  .usage,
-  .contact {
-    p {
-      font-size: 1.125rem;
     }
   }
 
@@ -105,36 +104,6 @@
   .keptn-workflows {
     .text p:last-of-type {
       margin-bottom: 40px;
-    }
-  }
-
-  // Teaser
-  .teaser {
-    h1 {
-      font-weight: $font-weight-semibold;
-    }
-
-    h2 {
-      font-weight: $font-weight-base;
-    }
-  }
-
-  // Contact
-  .contact {
-    position: relative;
-
-    .back-to-top {
-      position: absolute;
-      top: -32px;
-      right: 112px;
-      width: 72px;
-      height: 72px;
-    }
-
-    .icon {
-      width: 40px;
-      height: 40px;
-      margin-right: 16px;
     }
   }
 }

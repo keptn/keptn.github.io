@@ -1,0 +1,21 @@
+.contact {
+  position: relative;
+
+  p {
+    font-size: 1.125rem !important;
+  }
+
+  .back-to-top {
+    position: absolute;
+    top: -32px;
+    right: 112px;
+    width: 72px;
+    height: 72px;
+  }
+
+  .icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 16px;
+  }
+}
