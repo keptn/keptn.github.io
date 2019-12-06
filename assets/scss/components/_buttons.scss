@@ -1,5 +1,5 @@
 .button {
-  padding: 10px 32px;
+  padding: 10px 24px;
   border-radius: 24px;
   font-size: 0.9rem;
   font-weight: $font-weight-semibold;
@@ -18,4 +18,19 @@
 .button-secondary {
   color: $primary;
   background-color: $white;
+}
+
+.button-tertiary {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: $textColor;
+  background-color: $white;
+  font-weight: $font-weight-bold;
+  border: 2px solid #222222;
+  box-sizing: border-box;
+
+  &:hover {
+    color: $textColor;
+    font-weight: $font-weight-bold;
+  }
 }

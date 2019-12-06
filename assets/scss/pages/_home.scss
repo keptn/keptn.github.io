@@ -1,6 +1,15 @@
 .page-home {
   // Intro
   .intro {
+    background-image: url('/images/home/background-lines.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 20%;
+
+    h1 {
+      color: $primary;
+    }
+
     p:first-of-type {
       margin-bottom: 32px;
     }
@@ -8,9 +17,16 @@
     p:last-of-type {
       margin-bottom: 0;
     }
+
+    .icon {
+      width: 22px;
+      height: 22px;
+      margin-top: -3px;
+      margin-left: 8px;
+    }
   }
 
-  // Intro, Contact and Usage
+  // Intro, Usage and Contact
   .intro,
   .usage,
   .contact {
@@ -19,11 +35,76 @@
     }
   }
 
+  // Usage
+  .usage {
+    .usage-item img {
+      width: 48px;
+      height: 48px;
+      margin-right: 32px;
+    }
+  }
+
+  // Kubernetes Cluster
+  .kubernetes-cluster {
+    counter-reset: step;
+
+    .step {
+      position: relative;
+
+      &:before {
+        content: counter(step);
+        counter-increment: step;
+        position: absolute;
+        top: 50%;
+        left: -80px;
+        transform: translateY(-50%);
+        color: $primary;
+        font-size: 3.36rem;
+        font-weight: $font-weight-bold;
+      }
+    }
+  }
+
+  // Delivery Flow
+  .delivery-flow {
+    position: relative;
+
+    .background-image {
+      position: absolute;
+      bottom: -30%;
+      left: 0;
+    }
+
+    .text p:first-of-type {
+      margin-bottom: 24px;
+    }
+  }
+
+  // Onboard Services & Keptn Workflows
+  .onboard-services,
+  .keptn-workflows {
+    .image {
+      margin-top: -8px;
+      margin-left: -8px;
+
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
+
   // Onboard Services
   .onboard-services {
-    .col-6 p:first-of-type {
+    .text p:first-of-type {
       margin-bottom: 32px;
       font-size: 1.125rem;
+    }
+  }
+
+  // Keptn Workflows
+  .keptn-workflows {
+    .text p:last-of-type {
+      margin-bottom: 40px;
     }
   }
 
@@ -35,6 +116,25 @@
 
     h2 {
       font-weight: $font-weight-base;
+    }
+  }
+
+  // Contact
+  .contact {
+    position: relative;
+
+    .back-to-top {
+      position: absolute;
+      top: -32px;
+      right: 112px;
+      width: 72px;
+      height: 72px;
+    }
+
+    .icon {
+      width: 40px;
+      height: 40px;
+      margin-right: 16px;
     }
   }
 }

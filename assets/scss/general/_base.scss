@@ -1,5 +1,9 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body.page {
-  margin-top: 100px;
+  margin-top: 80px;
   margin-bottom: 50px;
   font-family: $font-family-base;
   font-size: 1rem;
@@ -7,35 +11,29 @@ body.page {
 
 body.page-home,
 body.page-why-keptn {
+  hr {
+    border-top: 1px solid rgba(#333333, 0.2);
+  }
+
   .header-link {
     display: none;
   }
 
-  a {
-    font-family: $font-family-base;
-    color: $textColor;
-    text-decoration: underline;
-  }
+  .toolbar {
+    pre {
+      margin: 0;
+      border-radius: 14px;
+      border: none;
+      box-shadow: 0 12px 24px 0 rgba(#006bb8, 0.11);
 
-  p {
-    margin-top: 0;
-    margin-bottom: 16px;
-    font-size: 1.35rem;
-  }
+      code {
+        padding: 16px 20px;
+        color: #14ba5a;
+        font-size: 15px;
+      }
+    }
 
-  h1 {
-    font-size: 2.8rem;
-    line-height: 1.4;
-  }
-
-  h2 {
-    margin-top: 0;
-    margin-bottom: 16px;
-    font-size: 2.3rem;
-    line-height: 1.4;
-    font-weight: $font-weight-semibold;
-
-    &:before {
+    button {
       display: none;
     }
   }

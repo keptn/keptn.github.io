@@ -2,4 +2,7 @@ Keptn will create the proper Helm charts and Istio configuration behind the scen
 
 **Just call**
 
-CODE SNIPPET
+```console
+keptn onboard service carts
+--project=sockshop --chart=./carts
+```

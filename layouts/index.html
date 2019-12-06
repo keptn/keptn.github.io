@@ -27,14 +27,19 @@ page-home
 
 {{ define "main" }}
 {{/* Intro */}}
-<div class="intro section-background-image-lines">
-  <div class="container pt-sm-5 pb-sm-4">
-    <div class="row pt-sm-5 pb-sm-4 justify-content-center">
-      <div class="col-12">
-        <div class="col-6 p-0">
-          {{ with .Site.GetPage "section" "home/intro" }}
-            {{ .Content }}
-          {{ end }}
+<div class="intro">
+  <div class="container pt-5 pb-5">
+    <div class="row pt-5 pb-5">
+      <div class="col-7 p-0">
+        {{ with .Site.GetPage "section" "home/intro" }}
+          {{ .Content }}
+        {{ end }}
+
+        <div class="d-flex pt-2">
+          <a class="button button-tertiary" href="https://github.com/keptn/keptn.github.io">
+            keptn on Github
+            <img class="icon" src="/images/general/icon-github.svg" alt="Github">
+          </a>
         </div>
       </div>
     </div>
@@ -43,24 +48,27 @@ page-home
 
 {{/* Usage */}}
 <div class="usage">
-  <div class="container pt-sm-4 pb-sm-4">
-    <div class="row pt-sm-4 pb-sm-4">
-      <div class="col-12 pb-sm-2">
+  <div class="container pt-4 pb-4">
+    <div class="row pt-2 pb-4">
+      <div class="col-12 pb-2">
         {{ with .Site.GetPage "section" "home/usage-top" }}
           {{ .Content }}
         {{ end }}
       </div>
-      <div class="col-4">
+
+      <div class="usage-item col-4 d-flex flex-row">
         {{ with .Site.GetPage "section" "home/usage-left" }}
           {{ .Content }}
         {{ end }}
       </div>
-      <div class="col-4">
+
+      <div class="usage-item col-4 d-flex flex-row">
         {{ with .Site.GetPage "section" "home/usage-middle" }}
           {{ .Content }}
         {{ end }}
       </div>
-      <div class="col-4">
+
+      <div class="usage-item col-4 d-flex flex-row">
         {{ with .Site.GetPage "section" "home/usage-right" }}
           {{ .Content }}
         {{ end }}
@@ -71,9 +79,9 @@ page-home
 
 {{/* Kubernetes Cluster */}}
 <div class="kubernetes-cluster">
-  <div class="container pt-sm-5 pb-sm-5">
+  <div class="container pt-5 pb-5">
     <div class="row">
-      <div class="col-12 pb-sm-4">
+      <div class="col-12 pb-4">
         <div class="col-6 p-0">
           {{ with .Site.GetPage "section" "home/kubernetes-cluster-top" }}
             {{ .Content }}
@@ -81,8 +89,18 @@ page-home
         </div>
       </div>
 
-      <div class="col-8 offset-4">
-        {{ with .Site.GetPage "section" "home/kubernetes-cluster-bottom" }}
+      <div class="step col-8 offset-4">
+        {{ with .Site.GetPage "section" "home/kubernetes-cluster-step1" }}
+          {{ .Content }}
+        {{ end }}
+      </div>
+
+      <div class="col-8 offset-4 pt-4 pb-4">
+        {{/* Placeholder */}}
+      </div>
+
+      <div class="step col-8 offset-4">
+        {{ with .Site.GetPage "section" "home/kubernetes-cluster-step2" }}
           {{ .Content }}
         {{ end }}
       </div>
@@ -91,9 +109,11 @@ page-home
 </div>
 
 {{/* Delivery Flow */}}
-<div class="delivery-flow section-background-image-waves">
-  <div class="container pt-sm-4 pb-sm-4">
-    <div class="row">
+<div class="delivery-flow">
+  <img class="background-image" src="/images/home/background-flow.png" alt="Background Image">
+
+  <div class="container pt-5 pb-5">
+    <div class="row pb-5">
       <div class="col-12">
         <div class="col-6 p-0">
           {{ with .Site.GetPage "section" "home/delivery-flow-top" }}
@@ -102,13 +122,13 @@ page-home
         </div>
       </div>
 
-      <div class="col-6">
+      <div class="text col-5 pb-5">
         {{ with .Site.GetPage "section" "home/delivery-flow-left" }}
           {{ .Content }}
         {{ end }}
       </div>
 
-      <div class="col-6">
+      <div class="col-6 offset-1 pb-5">
         {{ with .Site.GetPage "section" "home/delivery-flow-right" }}
           {{ .Content }}
         {{ end }}
@@ -119,21 +139,21 @@ page-home
 
 {{/* Onboard Services */}}
 <div class="onboard-services">
-  <div class="container pt-sm-5 pb-sm-5">
-    <div class="row pt-sm-4 pb-sm-4">
-      <div class="col-12 pb-sm-5 text-center">
+  <div class="container pt-5 pb-4">
+    <div class="row b-2">
+      <div class="col-12 pb-5 text-center">
         {{ with .Site.GetPage "section" "home/onboard-services-top" }}
           {{ .Content }}
         {{ end }}
       </div>
 
-      <div class="col-6">
+      <div class="image col-6 pl-0 pr-4 pb-1">
         {{ with .Site.GetPage "section" "home/onboard-services-left" }}
           {{ .Content }}
         {{ end }}
       </div>
 
-      <div class="col-6">
+      <div class="text col-5 pb-1">
         {{ with .Site.GetPage "section" "home/onboard-services-right" }}
           {{ .Content }}
         {{ end }}
@@ -153,15 +173,23 @@ page-home
 
 {{/* Integration Workflow */}}
 <div class="integration-workflow">
-  <div class="container pt-sm-5 pb-sm-5">
-    <div class="row">
-      <div class="col-6">
+  <div class="container pt-5 pb-5">
+    <div class="row pb-4">
+      <div class="col-12">
+        <div class="col-5 p-0">
+          {{ with .Site.GetPage "section" "home/integration-workflow-top" }}
+            {{ .Content }}
+          {{ end }}
+        </div>
+      </div>
+
+      <div class="col-5">
         {{ with .Site.GetPage "section" "home/integration-workflow-left" }}
           {{ .Content }}
         {{ end }}
       </div>
 
-      <div class="col-6">
+      <div class="col-6 offset-1">
         {{ with .Site.GetPage "section" "home/integration-workflow-right" }}
           {{ .Content }}
         {{ end }}
@@ -172,15 +200,15 @@ page-home
 
 {{/* Keptn Workflows */}}
 <div class="keptn-workflows section-primary-opacity">
-  <div class="container pt-sm-5 pb-sm-5">
-    <div class="row pt-sm-4 pb-sm-4">
-      <div class="col-6">
+  <div class="container pt-5 pb-5">
+    <div class="row pt-4 pb-2">
+      <div class="image col-6 pl-0 pr-4">
         {{ with .Site.GetPage "section" "home/keptn-workflows-left" }}
           {{ .Content }}
         {{ end }}
       </div>
 
-      <div class="col-6">
+      <div class="text col-6 d-flex flex-column justify-content-center">
         {{ with .Site.GetPage "section" "home/keptn-workflows-right" }}
           {{ .Content }}
         {{ end }}
@@ -191,9 +219,9 @@ page-home
 
 {{/* Automatic Remediation */}}
 <div class="automatic-remediation">
-  <div class="container pt-sm-5 pb-sm-5">
-    <div class="row pt-sm-4 pb-sm-4">
-      <div class="col-12">
+  <div class="container pt-5 pb-5">
+    <div class="row pt-4 pb-5">
+      <div class="col-12 pb-4">
         <div class="col-6 p-0">
           {{ with .Site.GetPage "section" "home/automatic-remediation-top" }}
             {{ .Content }}
@@ -201,13 +229,13 @@ page-home
         </div>
       </div>
 
-      <div class="col-6">
+      <div class="col-5">
         {{ with .Site.GetPage "section" "home/automatic-remediation-left" }}
           {{ .Content }}
         {{ end }}
       </div>
 
-      <div class="col-6">
+      <div class="col-5 offset-1">
         {{ with .Site.GetPage "section" "home/automatic-remediation-right" }}
           {{ .Content }}
         {{ end }}
@@ -218,15 +246,15 @@ page-home
 
 {{/* Teaser */}}
 <div class="teaser section-primary">
-  <div class="container pt-sm-5 pb-sm-5">
-    <div class="row pt-sm-4 pb-sm-4">
+  <div class="container pt-5 pb-5">
+    <div class="row pt-4 pb-4">
       <div class="col-12 d-flex flex-column text-center">
         {{ with .Site.GetPage "section" "home/teaser" }}
           {{ .Content }}
         {{ end }}
 
-        <div class="d-flex justify-content-center pt-sm-4">
-          <a href="/docs/quickstart/" class="button button-secondary">Quick Start</a>
+        <div class="d-flex justify-content-center pt-4">
+          <a class="button button-secondary" href="/docs/quickstart/">Quick Start</a>
         </div>
       </div>
     </div>
@@ -235,24 +263,53 @@ page-home
 
 {{/* Contact */}}
 <div class="contact section-primary-opacity">
-  <div class="container pt-sm-5 pb-sm-5">
-    <div class="row">
-      <div class="col-12">
+  <a href="#top">
+    <img class="back-to-top" src="/images/general/icon-back-to-top.svg" alt="Back to top">
+  </a>
+
+  <div class="container pt-4 pb-4">
+    <div class="row pt-2 pb-3">
+      <div class="col-12 pt-3">
         {{ with .Site.GetPage "section" "home/contact-top" }}
           {{ .Content }}
         {{ end }}
       </div>
 
-      <div class="col-6">
-        {{ with .Site.GetPage "section" "home/contact-left" }}
-          {{ .Content }}
-        {{ end }}
+      <div class="col-12 d-flex flex-row">
+        <div class="col-6 p-0">
+          {{ with .Site.GetPage "section" "home/contact-left" }}
+            {{ .Content }}
+          {{ end }}
+        </div>
+
+        <div class="col-5 offset-1 p-0">
+          {{ with .Site.GetPage "section" "home/contact-right" }}
+            {{ .Content }}
+          {{ end }}
+        </div>
       </div>
 
-      <div class="col-5 offset-1">
-        {{ with .Site.GetPage "section" "home/contact-right" }}
-          {{ .Content }}
-        {{ end }}
+      <div class="col-12 d-flex flex-row pt-4 pb-4">
+        <div class="col-6 p-0">
+          <a class="no-underline" href="https://join.slack.com/t/keptn/shared_invite/enQtNTUxMTQ1MzgzMzUxLWMzNmM1NDc4MmE0MmQ0MDgwYzMzMDc4NjM5ODk0ZmFjNTE2YzlkMGE4NGU5MWUxODY1NTBjNjNmNmI1NWQ1NGY" target="_blank">
+            <img class="icon" src="/images/general/icon-slack.svg" alt="Slack">
+          </a>
+
+          <a class="no-underline" href="https://twitter.com/keptnproject" target="_blank">
+            <img class="icon" src="/images/general/icon-twitter.svg" alt="Twitter">
+          </a>
+
+          <a class="no-underline" href="mailto:keptn@dynatrace.com">
+            <img class="icon" src="/images/general/icon-mail.svg" alt="Mail">
+          </a>
+        </div>
+
+        <div class="col-5 offset-1 p-0">
+          <img class="icon" src="/images/general/icon-calendar.svg" alt="Mail">
+          <a href="https://calendar.google.com/calendar/embed?src=dynatrace.com_abjrh1ukf18ih477tb1ekag2ag%40group.calendar.google.com" target="_blank">Public Google Calendar</a>,
+          <a href="https://calendar.google.com/calendar/ical/dynatrace.com_abjrh1ukf18ih477tb1ekag2ag%40group.calendar.google.com/public/basic.ics" target="_blank">iCal</a>
+          </a>          
+        </div>
       </div>
     </div>
   </div>

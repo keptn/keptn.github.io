@@ -1,3 +1,6 @@
-Define your delivery process using a shipyard file & create a new project using your shipyard.yaml file:
+Define your delivery process using a shipyard file & **create a new project** using your shipyard.yaml file:
 
-CODE SNIPPET
+```console
+keptn create project sockshop
+--shipyard=./shipyard.yaml
+```
