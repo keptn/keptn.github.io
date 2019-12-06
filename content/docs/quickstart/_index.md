@@ -47,7 +47,7 @@ keptn install --platform=[aks|eks|gke|openshift|pks|kubernetes]
 Keptn is now ready to be used.
 
 ### 4. Explore the usecases
-With Keptn installed, have a look at the different [use cases](/docs/0.6.0/usecases) like
+With Keptn installed, have a look at the different [use cases](/docs/0.5.0/usecases) like
 
 * [Onboarding a new Service](/docs/0.5.0/usecases/onboard-carts-service/)
 * [Using Quality Gates for Deployments](/docs/0.5.0/usecases/deployments-with-quality-gates/)
