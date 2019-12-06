@@ -92,7 +92,7 @@ This shipyard contains three stages: dev, staging, and production. This results 
 </p>
 </details>
 
-**Note:**  To learn more about a *shipyard* file, please take a look at the [Shipyard specification](https://github.com/keptn/spec/blob/master/shipyard.md).
+**Note:**  To learn more about a *shipyard* file, please take a look at the [Shipyard specification](https://github.com/keptn/spec/blob/0.1.1/shipyard.md).
 
 Create a new project for your services using the [create project](../../reference/cli/#keptn-create-project) command. In this example, the project is called *sockshop*. Before executing the following command, make sure you are in the `examples/onboarding-carts` folder.
 

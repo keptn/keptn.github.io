@@ -335,7 +335,7 @@ keptn send event start-evaluation --project=PROJECTNAME --stage=STAGE --service=
 
 To send an arbitrary Keptn event the `send event` command is provided. An event has to follow the [Cloud Events](https://cloudevents.io/) specification in version 0.2 and has to be written in JSON. Then the event can be passed in by referencing the JSON file (`--file`). Additionally, this command offers the `--stream-websocket` flag to open a web socket communication to Keptn. Consequently, messages from the receiving Keptn service, which processes the event, are sent to the CLI via websocket.
 
-**Note:** This command requires precise Keptn event definitions as defined find [here](https://github.com/keptn/keptn/blob/0.5.0/specification/cloudevents.md).
+**Note:** This command requires precise Keptn event definitions as defined find [here](https://github.com/keptn/spec/blob/0.1.1/cloudevents.md).
 
 ```console
 keptn send event --file=FILEPATH --stream-websocket
