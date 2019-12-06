@@ -30,11 +30,11 @@ body.page-why-keptn {
   a {
     font-family: $font-family-base;
     text-decoration: underline;
-  
+
     &:not(.button) {
       color: $textColor;
     }
-  
+
     &.no-underline {
       text-decoration: none;
     }
