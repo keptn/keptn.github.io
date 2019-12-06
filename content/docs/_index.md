@@ -1,6 +1,6 @@
 ---
 title: Docs
-linktitle: Documentation
+linktitle: Docs
 description: Learn how to use Keptn.
 sidebar_multicard: true
 icon: docs

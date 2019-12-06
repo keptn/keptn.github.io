@@ -4,6 +4,7 @@ $color-link: #ffffff;
 
 $button-height: 27px;
 $button-width: 35px;
+
 .button_container {
   position: fixed;
   top: 5%;
@@ -13,23 +14,28 @@ $button-width: 35px;
   cursor: pointer;
   z-index: 100;
   transition: opacity 0.25s ease;
+
   &:hover {
     opacity: 0.7;
   }
+
   &.active {
     .top {
       transform: translateY(11px) translateX(0) rotate(45deg);
       background: $color-active;
     }
+  
     .middle {
       opacity: 0;
       background: $color-active;
     }
+  
     .bottom {
       transform: translateY(-11px) translateX(0) rotate(-45deg);
       background: $color-active;
     }
   }
+
   span {
     background: $color-main;
     border: none;
@@ -40,14 +46,17 @@ $button-width: 35px;
     left: 0;
     transition: all 0.35s ease;
     cursor: pointer;
+
     &:nth-of-type(2) {
       top: 11px;
     }
+
     &:nth-of-type(3) {
       top: 22px;
     }
   }
 }
+
 .main-menu-mobile {
   position: fixed;
   background: $color-main;
@@ -63,31 +72,39 @@ $button-width: 35px;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
   &.open {
     opacity: 0.9;
     visibility: visible;
     height: 100%;
     z-index: 10;
+  
     li {
       animation: fadeInRight 0.5s ease forwards;
       animation-delay: 0.35s;
+  
       &:nth-of-type(2) {
         animation-delay: 0.4s;
       }
+  
       &:nth-of-type(3) {
         animation-delay: 0.45s;
       }
+  
       &:nth-of-type(4) {
         animation-delay: 0.5s;
       }
+
       &:nth-of-type(5) {
         animation-delay: 0.55s;
       }
+  
       &:nth-of-type(6) {
         animation-delay: 0.6s;
       }
     }
   }
+
   ul {
     font-size: 2rem;
     font-family: $font-family-heading;
@@ -96,21 +113,25 @@ $button-width: 35px;
     padding: 0;
     margin: 0;
     flex: 0;
+
     li {
       display: block;
       position: relative;
       opacity: 0;
+
       a {
         display: block;
         position: relative;
         color: $color-link;
         text-decoration: none;
         overflow: hidden;
+
         &:hover::after,
         &:focus::after,
         &:active::after {
           width: 100%;
         }
+
         &::after {
           content: '';
           position: absolute;
@@ -126,16 +147,19 @@ $button-width: 35px;
     }
   }
 }
+
 @keyframes fadeInRight {
   0% {
     opacity: 0;
     left: 20%;
   }
+
   100% {
     opacity: 1;
     left: 0;
   }
 }
+
 .lock-scroll {
   overflow: hidden;
 }
