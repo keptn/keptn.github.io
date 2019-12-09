@@ -22,12 +22,6 @@ body.page {
     overflow: hidden;
   }
 
-  ul,
-  ol {
-    margin: 0;
-    padding: 0;
-  }
-
   .wrapper {
     flex: 1;
   }
@@ -46,6 +40,12 @@ body.page {
 
 body.page-home,
 body.page-why-keptn {
+  ul,
+  ol {
+    margin: 0;
+    padding: 0;
+  }
+
   hr {
     margin-top: 0;
     margin-bottom: 0;
