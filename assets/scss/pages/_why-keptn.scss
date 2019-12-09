@@ -1,0 +1,33 @@
+.page-why-keptn {
+  // Intro
+  .intro {
+    background-image: url('/images/why-keptn/background-lines.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 20%;
+
+    h1 {
+      display: inline-block;
+      margin-bottom: 16px;
+      font-size: 3.36rem;
+      font-weight: $font-weight-bold;
+
+      & .colored {
+        color: $primary;
+      }
+    }
+
+    .image {
+      margin-top: -80px;
+    }
+  }
+
+  // Higher Compliance, Tool Integrations & Observability
+  .higher-compliance,
+  .tool-integrations,
+  .observability {
+    p:last-of-type {
+      font-size: 1.125rem;
+    }
+  }
+}

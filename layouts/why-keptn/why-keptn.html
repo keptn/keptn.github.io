@@ -29,9 +29,27 @@ page-why-keptn
 {{/* Intro */}}
 <div class="intro">
   <div class="container pt-5 pb-5">
-    <div class="row">
-      <div class="col-12">
-        {{ with .Site.GetPage "section" "why-keptn/intro" }}
+    <div class="row pt-5">
+      <div class="col-6 pt-4 pb-2">
+        <h1>Why <span class="colored">keptn?</span></h1>
+
+        {{ with .Site.GetPage "section" "why-keptn/intro-top" }}
+          {{ .Content }}
+        {{ end }}
+      </div>
+
+      <div class="col-6 pt-4 pb-2">
+        {{/* Placeholder */}}
+      </div>
+
+      <div class="text col-6">
+        {{ with .Site.GetPage "section" "why-keptn/intro-left" }}
+          {{ .Content }}
+        {{ end }}
+      </div>
+
+      <div class="image col-6 p-0">
+        {{ with .Site.GetPage "section" "why-keptn/intro-right" }}
           {{ .Content }}
         {{ end }}
       </div>
@@ -42,8 +60,8 @@ page-why-keptn
 {{/* Maintenance */}}
 <div class="maintenance">
   <div class="container pt-5 pb-5">
-    <div class="row">
-      <div class="col-12">
+    <div class="row d-flex flex-row justify-content-center pt-4 pb-3">
+      <div class="col-6 pt-2 text-center">
         {{ with .Site.GetPage "section" "why-keptn/maintenance" }}
           {{ .Content }}
         {{ end }}
@@ -55,8 +73,8 @@ page-why-keptn
 {{/* Higher Compliance */}}
 <div class="higher-compliance section-primary-opacity">
   <div class="container pt-5 pb-5">
-    <div class="row">
-      <div class="col-12">
+    <div class="row d-flex flex-row justify-content-center pt-4 pb-3">
+      <div class="col-6 pt-2 text-center">
         {{ with .Site.GetPage "section" "why-keptn/higher-compliance" }}
           {{ .Content }}
         {{ end }}
@@ -68,8 +86,8 @@ page-why-keptn
 {{/* Easy Extensibility */}}
 <div class="easy-extensibility">
   <div class="container pt-5 pb-5">
-    <div class="row">
-      <div class="col-12">
+    <div class="row d-flex flex-row justify-content-center pt-4 pb-3">
+      <div class="col-6 pt-2 text-center">
         {{ with .Site.GetPage "section" "why-keptn/easy-extensibility" }}
           {{ .Content }}
         {{ end }}
@@ -81,8 +99,8 @@ page-why-keptn
 {{/* Tool Integrations */}}
 <div class="tool-integrations section-primary-opacity">
   <div class="container pt-5 pb-5">
-    <div class="row">
-      <div class="col-12">
+    <div class="row d-flex flex-row justify-content-center pt-4 pb-3">
+      <div class="col-6 pt-2 text-center">
         {{ with .Site.GetPage "section" "why-keptn/tool-integrations" }}
           {{ .Content }}
         {{ end }}
@@ -94,8 +112,8 @@ page-why-keptn
 {{/* Observability */}}
 <div class="observability">
   <div class="container pt-5 pb-5">
-    <div class="row">
-      <div class="col-12">
+    <div class="row d-flex flex-row justify-content-center pt-4 pb-3">
+      <div class="col-6 pt-2 text-center">
         {{ with .Site.GetPage "section" "why-keptn/observability" }}
           {{ .Content }}
         {{ end }}
