@@ -1,5 +1,5 @@
 {{ define "title" }}
-keptn
+keptn | A message-driven control plane for application delivery and automated operations
 {{ end }}
 
 {{ define "header_css" }}
@@ -28,9 +28,9 @@ page-why-keptn
 {{ define "main" }}
 {{/* Intro */}}
 <div class="intro">
-  <div class="container pt-5 pb-5">
-    <div class="row pt-5">
-      <div class="col-6 pt-4 pb-2">
+  <div class="container pt-5 pb-3 pb-md-5">
+    <div class="row pt-md-5">
+      <div class="col-12 col-md-6 pt-md-4 pb-2">
         <h1>Why <span class="colored">keptn?</span></h1>
 
         {{ with .Site.GetPage "section" "why-keptn/intro-top" }}
@@ -38,17 +38,17 @@ page-why-keptn
         {{ end }}
       </div>
 
-      <div class="col-6 pt-4 pb-2">
+      <div class="col-12 col-md-6">
         {{/* Placeholder */}}
       </div>
 
-      <div class="text col-6">
+      <div class="text col-12 col-md-6">
         {{ with .Site.GetPage "section" "why-keptn/intro-left" }}
           {{ .Content }}
         {{ end }}
       </div>
 
-      <div class="image col-6 p-0">
+      <div class="image col-12 col-md-6 p-0">
         {{ with .Site.GetPage "section" "why-keptn/intro-right" }}
           {{ .Content }}
         {{ end }}
@@ -60,8 +60,8 @@ page-why-keptn
 {{/* Maintenance */}}
 <div class="maintenance">
   <div class="container pt-5 pb-5">
-    <div class="row d-flex flex-row justify-content-center pt-4 pb-3">
-      <div class="col-6 pt-2 text-center">
+    <div class="row d-flex flex-row justify-content-center pt-3 pt-md-4 pb-md-3">
+      <div class="col-12 col-md-6 pt-md-2 text-center">
         {{ with .Site.GetPage "section" "why-keptn/maintenance" }}
           {{ .Content }}
         {{ end }}
@@ -73,8 +73,8 @@ page-why-keptn
 {{/* Higher Compliance */}}
 <div class="higher-compliance section-primary-opacity">
   <div class="container pt-5 pb-5">
-    <div class="row d-flex flex-row justify-content-center pt-4 pb-3">
-      <div class="col-6 pt-2 text-center">
+    <div class="row d-flex flex-row justify-content-center pt-3 pt-md-4 pb-md-3">
+      <div class="col-12 col-md-6 pt-md-2 text-center">
         {{ with .Site.GetPage "section" "why-keptn/higher-compliance" }}
           {{ .Content }}
         {{ end }}
@@ -86,8 +86,8 @@ page-why-keptn
 {{/* Easy Extensibility */}}
 <div class="easy-extensibility">
   <div class="container pt-5 pb-5">
-    <div class="row d-flex flex-row justify-content-center pt-4 pb-3">
-      <div class="col-6 pt-2 text-center">
+    <div class="row d-flex flex-row justify-content-center pt-3 pt-md-4 pb-md-3">
+      <div class="col-12 col-md-6 pt-md-2 text-center">
         {{ with .Site.GetPage "section" "why-keptn/easy-extensibility" }}
           {{ .Content }}
         {{ end }}
@@ -96,24 +96,26 @@ page-why-keptn
   </div>
 </div>
 
-{{/* Tool Integrations */}}
-<div class="tool-integrations section-primary-opacity">
-  <div class="container pt-5 pb-5">
-    <div class="row d-flex flex-row justify-content-center pt-4 pb-3">
-      <div class="col-6 pt-2 text-center">
-        {{ with .Site.GetPage "section" "why-keptn/tool-integrations" }}
-          {{ .Content }}
-        {{ end }}
-      </div>
+{{/* Divider */}}
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <hr>
     </div>
   </div>
 </div>
 
-{{/* Observability */}}
-<div class="observability">
+{{/* Tool Integrations & Observability */}}
+<div class="tool-integrations observability">
   <div class="container pt-5 pb-5">
-    <div class="row d-flex flex-row justify-content-center pt-4 pb-3">
-      <div class="col-6 pt-2 text-center">
+    <div class="row d-flex flex-row justify-content-center">
+      <div class="col-12 col-md-6 pt-3 pt-md-4 pb-5 pb-md-3 pr-md-5 text-center text-md-left">
+        {{ with .Site.GetPage "section" "why-keptn/tool-integrations" }}
+          {{ .Content }}
+        {{ end }}
+      </div>
+
+      <div class="col-12 col-md-6 pt-md-4 pb-md-3 pl-md-5 text-center text-md-left">
         {{ with .Site.GetPage "section" "why-keptn/observability" }}
           {{ .Content }}
         {{ end }}

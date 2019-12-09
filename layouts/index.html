@@ -29,8 +29,8 @@ page-home
 {{/* Intro */}}
 <div class="intro">
   <div class="container pt-5 pb-5">
-    <div class="row pt-5 pb-5">
-      <div class="col-7">
+    <div class="row pt-md-5 pb-md-5">
+      <div class="col-12 col-md-6">
         {{ with .Site.GetPage "section" "home/intro" }}
           {{ .Content }}
         {{ end }}
@@ -48,27 +48,27 @@ page-home
 
 {{/* Usage */}}
 <div class="usage">
-  <div class="container pt-4 pb-4">
-    <div class="row pt-2 pb-4">
+  <div class="container pt-4 pb-3 pb-md-4">
+    <div class="row pt-md-2 pb-md-4">
       <div class="col-12 pb-2">
         {{ with .Site.GetPage "section" "home/usage-top" }}
           {{ .Content }}
         {{ end }}
       </div>
 
-      <div class="usage-item col-4 d-flex flex-row">
+      <div class="usage-item col-12 col-md-4 d-flex flex-row">
         {{ with .Site.GetPage "section" "home/usage-left" }}
           {{ .Content }}
         {{ end }}
       </div>
 
-      <div class="usage-item col-4 d-flex flex-row">
+      <div class="usage-item col-12 col-md-4 d-flex flex-row">
         {{ with .Site.GetPage "section" "home/usage-middle" }}
           {{ .Content }}
         {{ end }}
       </div>
 
-      <div class="usage-item col-4 d-flex flex-row">
+      <div class="usage-item col-12 col-md-4 d-flex flex-row">
         {{ with .Site.GetPage "section" "home/usage-right" }}
           {{ .Content }}
         {{ end }}
@@ -82,24 +82,24 @@ page-home
   <div class="container pt-5 pb-5">
     <div class="row">
       <div class="col-12 pb-4">
-        <div class="col-6 p-0">
+        <div class="col-12 col-md-6 p-0">
           {{ with .Site.GetPage "section" "home/kubernetes-cluster-top" }}
             {{ .Content }}
           {{ end }}
         </div>
       </div>
 
-      <div class="step col-8 offset-4">
+      <div class="step col-12 col-md-8 offset-md-4">
         {{ with .Site.GetPage "section" "home/kubernetes-cluster-step1" }}
           {{ .Content }}
         {{ end }}
       </div>
 
-      <div class="col-8 offset-4 pt-4 pb-4">
+      <div class="col-12 col-md-8 offset-md-4 pt-4 pb-4">
         {{/* Placeholder */}}
       </div>
 
-      <div class="step col-8 offset-4">
+      <div class="step col-12 col-md-8 offset-md-4">
         {{ with .Site.GetPage "section" "home/kubernetes-cluster-step2" }}
           {{ .Content }}
         {{ end }}
@@ -113,22 +113,22 @@ page-home
   <img class="background-image" src="/images/home/background-flow.png" alt="Background Image">
 
   <div class="container pt-5 pb-5">
-    <div class="row pb-5">
+    <div class="row pb-md-5">
       <div class="col-12">
-        <div class="col-6 p-0">
+        <div class="col-12 col-md-6 p-0">
           {{ with .Site.GetPage "section" "home/delivery-flow-top" }}
             {{ .Content }}
           {{ end }}
         </div>
       </div>
 
-      <div class="text col-5 pb-5">
+      <div class="text col-12 col-md-5 pb-3 pb-md-5">
         {{ with .Site.GetPage "section" "home/delivery-flow-left" }}
           {{ .Content }}
         {{ end }}
       </div>
 
-      <div class="col-6 offset-1 pb-5">
+      <div class="col-12 col-md-6 offset-md-1 pb-md-5">
         {{ with .Site.GetPage "section" "home/delivery-flow-right" }}
           {{ .Content }}
         {{ end }}
@@ -139,21 +139,21 @@ page-home
 
 {{/* Onboard Services */}}
 <div class="onboard-services">
-  <div class="container pt-5 pb-4">
+  <div class="container pt-5 pb-5 pb-md-4">
     <div class="row b-2">
-      <div class="col-12 pb-5 text-center">
+      <div class="col-12 pb-1 pb-md-5 text-md-center">
         {{ with .Site.GetPage "section" "home/onboard-services-top" }}
           {{ .Content }}
         {{ end }}
       </div>
 
-      <div class="image col-6 pl-0 pr-4 pb-1">
+      <div class="image col-12 col-md-6 pl-0 pr-0 pr-md-4 pb-1">
         {{ with .Site.GetPage "section" "home/onboard-services-left" }}
           {{ .Content }}
         {{ end }}
       </div>
 
-      <div class="text col-5 pb-1">
+      <div class="text col-12 col-md-5 pb-3 pb-md-1">
         {{ with .Site.GetPage "section" "home/onboard-services-right" }}
           {{ .Content }}
         {{ end }}
@@ -176,20 +176,20 @@ page-home
   <div class="container pt-5 pb-5">
     <div class="row pb-4">
       <div class="col-12">
-        <div class="col-5 p-0">
+        <div class="col-12 col-md-5 p-0">
           {{ with .Site.GetPage "section" "home/integration-workflow-top" }}
             {{ .Content }}
           {{ end }}
         </div>
       </div>
 
-      <div class="col-5">
+      <div class="col-12 col-md-5">
         {{ with .Site.GetPage "section" "home/integration-workflow-left" }}
           {{ .Content }}
         {{ end }}
       </div>
 
-      <div class="col-6 offset-1">
+      <div class="col-12 col-md-6 offset-md-1">
         {{ with .Site.GetPage "section" "home/integration-workflow-right" }}
           {{ .Content }}
         {{ end }}
@@ -201,14 +201,14 @@ page-home
 {{/* Keptn Workflows */}}
 <div class="keptn-workflows section-primary-opacity">
   <div class="container pt-5 pb-5">
-    <div class="row pt-4 pb-2">
-      <div class="image col-6 pl-0 pr-4">
+    <div class="row pt-2 pt-md-4 pb-md-2">
+      <div class="image col-12 col-md-6 pl-0 pr-0 pr-md-4 pb-3 pb-md-0">
         {{ with .Site.GetPage "section" "home/keptn-workflows-left" }}
           {{ .Content }}
         {{ end }}
       </div>
 
-      <div class="text col-6 d-flex flex-column justify-content-center">
+      <div class="text col-12 col-md-6 d-flex flex-column justify-content-center">
         {{ with .Site.GetPage "section" "home/keptn-workflows-right" }}
           {{ .Content }}
         {{ end }}
@@ -220,22 +220,22 @@ page-home
 {{/* Automatic Remediation */}}
 <div class="automatic-remediation">
   <div class="container pt-5 pb-5">
-    <div class="row pt-4 pb-5">
+    <div class="row pt-md-4 pb-4 pb-md-5">
       <div class="col-12 pb-4">
-        <div class="col-6 p-0">
+        <div class="col-12 col-md-6 p-0">
           {{ with .Site.GetPage "section" "home/automatic-remediation-top" }}
             {{ .Content }}
           {{ end }}
         </div>
       </div>
 
-      <div class="col-5">
+      <div class="col-12 col-md-5">
         {{ with .Site.GetPage "section" "home/automatic-remediation-left" }}
           {{ .Content }}
         {{ end }}
       </div>
 
-      <div class="col-5 offset-1">
+      <div class="col-12 col-md-5 offset-md-1">
         {{ with .Site.GetPage "section" "home/automatic-remediation-right" }}
           {{ .Content }}
         {{ end }}

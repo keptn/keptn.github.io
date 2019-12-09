@@ -3,19 +3,26 @@
   .intro,
   .usage {
     p {
-      font-size: 1.125rem;
+      font-size: 1em;
+
+      @media screen and (min-width: $bp-md) {
+        font-size: 1.125rem;
+      }
     }
   }
 
   // Intro
   .intro {
-    background-image: url('/images/home/background-lines.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 0 20%;
+    @media screen and (min-width: $bp-md) {
+      background-image: url('/images/home/background-lines.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: 0 30%;
+    }
 
     h1 {
       color: $primary;
+      font-family: $font-family-intro;
     }
 
     p:first-of-type {
@@ -51,6 +58,7 @@
       position: relative;
 
       &:before {
+        display: none;
         content: counter(step);
         counter-increment: step;
         position: absolute;
@@ -60,6 +68,10 @@
         color: $primary;
         font-size: 3.36rem;
         font-weight: $font-weight-bold;
+
+        @media screen and (min-width: $bp-md) {
+          display: block;
+        }
       }
     }
   }
@@ -69,9 +81,14 @@
     position: relative;
 
     .background-image {
+      display: none;
       position: absolute;
       bottom: -30%;
       left: 0;
+
+      @media screen and (min-width: $bp-md) {
+        display: block;
+      }
     }
 
     .text p:first-of-type {
@@ -83,8 +100,10 @@
   .onboard-services,
   .keptn-workflows {
     .image {
-      margin-top: -8px;
-      margin-left: -8px;
+      @media screen and (min-width: $bp-md) {
+        margin-top: -8px;
+        margin-left: -8px;
+      }
 
       p {
         margin-bottom: 0;
@@ -96,14 +115,20 @@
   .onboard-services {
     .text p:first-of-type {
       margin-bottom: 32px;
-      font-size: 1.125rem;
+      font-size: 1rem;
+
+      @media screen and (min-width: $bp-md) {
+        font-size: 1.125rem;
+      }
     }
   }
 
   // Keptn Workflows
   .keptn-workflows {
     .text p:last-of-type {
-      margin-bottom: 40px;
+      @media screen and (min-width: $bp-md) {
+        margin-bottom: 40px;
+      }
     }
   }
 }

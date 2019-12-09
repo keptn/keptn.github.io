@@ -29,6 +29,8 @@ body.page {
 body.page-home,
 body.page-why-keptn {
   hr {
+    margin-top: 0;
+    margin-bottom: 0;
     border-top: 1px solid rgba(#333333, 0.2);
   }
 
@@ -37,15 +39,19 @@ body.page-why-keptn {
   }
 
   .toolbar {
+    padding: 16px 20px;
+    background-color: $white;
+    border-radius: 14px;
+    box-shadow: 0 12px 24px 0 rgba(#006bb8, 0.11);
+
     pre {
       margin: 0;
-      border-radius: 14px;
       border: none;
-      box-shadow: 0 12px 24px 0 rgba(#006bb8, 0.11);
+      box-shadow: none;
 
       code {
-        padding: 16px 20px;
-        color: #14ba5a;
+        padding: 0;
+        color: $primary;
         font-size: 15px;
       }
     }
