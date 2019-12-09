@@ -60,10 +60,6 @@
   vertical-align: middle;
 }
 
-.page_icon {
-  margin-right: 0.3em;
-}
-
 @media screen {
   :target::before {
     content: "";
@@ -577,10 +573,6 @@ blockquote {
   fill: $textColor;
   stroke: $textColor;
   vertical-align: middle;
-}
-
-.page_icon {
-  margin-right: 0.3em;
 }
 
 .flipped {
