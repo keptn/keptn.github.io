@@ -1,0 +1,15 @@
+<div class="teaser section-primary">
+  <div class="container pt-5 pb-5">
+    <div class="row pt-4 pb-4">
+      <div class="col-12 d-flex flex-column text-center">
+        {{ with .Site.GetPage "section" "home/teaser" }}
+          {{ .Content }}
+        {{ end }}
+
+        <div class="d-flex justify-content-center pt-4">
+          <a class="button button-secondary" href="/docs/quickstart/">Quick Start</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

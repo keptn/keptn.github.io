@@ -1,9 +1,8 @@
 // Font
-@import url('https://fonts.googleapis.com/css?family=Lora:400,700|Open+Sans:300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Playfair+Display&display=swap');
 
 // Bootstrap
 @import 'bootstrap/functions';
-@import 'bootstrap-variables';
 @import 'bootstrap/variables';
 @import 'bootstrap/mixins';
 @import 'bootstrap/root';
@@ -12,152 +11,41 @@
 @import 'bootstrap/type';
 @import 'bootstrap/tables';
 @import "bootstrap/images";
-// @import "bootstrap/code";
-// @import "bootstrap/forms";
 @import "bootstrap/buttons";
 @import "bootstrap/transitions";
-// @import "bootstrap/dropdown";
-// @import "bootstrap/button-group";
-// @import "bootstrap/input-group";
-// @import "bootstrap/custom-forms";
 @import "bootstrap/nav";
 @import "bootstrap/navbar";
 @import "bootstrap/card";
 @import "bootstrap/breadcrumb";
-// @import "bootstrap/pagination";
-// @import "bootstrap/badge";
-// @import "bootstrap/jumbotron";
-// @import "bootstrap/alert";
-// @import "bootstrap/progress";
-// @import "bootstrap/media";
 @import "bootstrap/list-group";
-// @import "bootstrap/close";
-// @import "bootstrap/modal";
-// @import "bootstrap/tooltip";
-// @import "bootstrap/popover";
-// @import "bootstrap/carousel";
-// @import "bootstrap/print";
 @import 'bootstrap/utilities';
+
+// General
+@import 'general/variables';
+@import 'general/base';
+@import 'general/typography';
 
 // Libraries
 @import 'libraries/hamburgers/hamburgers';
 
 // Components
-@import 'components/reset';
-@import 'components/page';
-@import 'components/header';
-@import 'components/footer';
-@import 'components/sub-footer';
-@import 'components/logo';
-@import 'components/main-menu';
-@import 'components/main-menu-mobile';
-@import 'components/hamburger';
 @import 'components/buttons';
-@import 'components/call';
-@import 'components/title';
-@import 'components/content';
-@import 'components/intro';
-@import 'components/strip';
-@import 'components/whitebox';
-@import 'components/feature';
-@import 'components/github-corner';
-
-// Styles for documentation pages
-@import 'components/doc';
-@import 'components/sidebar';
-@import 'components/toc';
-@import 'components/section-index';
-
+@import 'components/contact';
+@import 'components/footer';
+@import 'components/hamburger';
+@import 'components/header';
+@import 'components/logo';
+@import 'components/main-menu-mobile';
+@import 'components/main-menu';
 @import 'components/pagenav';
+@import 'components/section-index';
+@import 'components/sections';
+@import 'components/sidebar';
+@import 'components/teaser';
+@import 'components/toc';
 
 // Pages
+@import 'pages/404';
+@import 'pages/doc';
 @import 'pages/home';
-
-body {
-  font-size: 1rem;
-  font-family: $font-family-base;
-
-  // -webkit-font-smoothing: antialiased;
-  // -moz-osx-font-smoothing: grayscale;
-  // -webkit-text-size-adjust: 100%;
-  // -ms-text-size-adjust: 100%;
-}
-
-// Display breakpoints for DEV
-// body:after {
-//   color: #000000;
-//   font-size: 12px;
-//   padding: 5px;
-//   font-weight: bold;
-//   right: 10px;
-//   position: fixed;
-//   text-align: center;
-//   text-transform: uppercase;
-//   bottom: 10px;
-//   width: 200px;
-//   z-index: 9999;
-//   border: solid 1px #000000;
-//   @each $name, $value in $grid-breakpoints {
-//     @include media-breakpoint-up($name) {
-//       content: '#{$name} - min-width: #{$value}';
-//     }
-//   }
-// }
-
-.terminal-window {
-  background-color: rgba(0,0,0,.7);
-  width: 100%;
-  padding: 10px;
-}
-
-
-.terminal {
-  margin: 20px;
-  font-family: monospace;
-  font-size: 12px;
-  color: #22da26;
-  height: 240px;
-
-  .command {
-    width: 0%;
-    white-space: nowrap;
-    overflow: hidden;
-    animation: write-command 5s both;
-    color: #22da26;
-    font-size: 14px;
-    font-weight: bold;
-    &:before {
-      content: '$ ';
-      color: #22da26;
-    }
-  }
-}
-
-.tab-content {
-  border-left: 1px solid rgb(222, 226, 230);
-  border-right: 1px solid rgb(222, 226, 230);
-  border-bottom: 1px solid rgb(222, 226, 230);
-  background-color: #ffffff;
-  .tab-pane {
-    padding: 15px;
-  }
-
-}
-
-.nav-tabs {
-  margin: 0 !important;
-  padding-left: 10px;
-}
-
-.badges {
-  width: 100px;
-}
-
-.btnarea {
-  background: #016BBA;
-  border: 1px solid black;
-  color: white;
-  font-weight: 600;
-  padding: 40px 20px;
-  text-align: center;
-}
+@import 'pages/why-keptn';

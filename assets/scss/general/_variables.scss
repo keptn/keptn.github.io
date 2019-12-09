@@ -1,0 +1,208 @@
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1300px,
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+);
+
+$grid-gutter-width: 20px;
+
+$white: #ffffff;
+$black: #000000;
+$primary: #006BB8;
+$primary-opacity: rgba(#006BB8, 0.05);
+$secondary: #002C66;
+
+// Links
+$link-color: $primary;
+$link-decoration: none;
+$link-hover-color: lighten($primary, 20%);
+$link-hover-decoration: underline;
+
+// Fonts
+$font-family-base: 'Open Sans', Arial, sans-serif, -apple-system;
+$font-family-intro: 'Playfair Display', 'Open Sans', Arial, sans-serif, -apple-system;
+$font-family-heading: $font-family-base;
+$font-weight-thin: 200;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-base: $font-weight-normal;
+$line-height-base: 1.6;
+$headings-font-weight: 400;
+
+$spacer: 1rem;
+$spacers: ();
+$spacers: map-merge(
+  (
+    0: 0,
+    1: 10px,
+    2: 20px,
+    3: 30px,
+    4: 40px,
+    5: 50px,
+    6: 60px,
+    7: 70px,
+    8: 80px,
+    9: 90px,
+    10: 100px,
+    11: 110px,
+    12: 120px,
+    13: 130px,
+    14: 140px,
+    15: 150px,
+    16: 160px,
+    17: 170px,
+    18: 180px,
+    19: 190px,
+    20: 200px,
+  ),
+  $spacers
+);
+
+// doc
+// Responsive breakpoints, corresponds to the BootStrap V4 ones
+// Added for docs section
+// Font
+$font-size--primary         : 1rem;
+$font-size--xxs             : .8rem;
+$font-size--xs              : 1rem;
+$font-size--s               : 1.15rem;
+$font-size--m               : 1.65rem;
+$font-size--l               : 1.85rem;
+$font-size--xl              : 2rem;
+$font-size--xxl             : 2.5rem;
+
+// Responsive breakpoints, corresponds to the BootStrap V4 ones
+$bp-xs: 0;
+$bp-sm: 576px;
+$bp-md: 768px;
+$bp-lg: 992px;
+$bp-xl: 1200px;
+
+// Embellishments
+$headerHeight: 95px;
+$footerHeight: 0;
+
+$sidebarLinkWeight: 400;
+$sidebarCurrentPageWeight: 600;
+$linkActiveColor: #006BB8;
+$backgroundColor: #ffffff;
+$floatingButtonColor: rgba(0, 0, 0, .4);
+$textBrandHighlightColor: #de7d40;
+$dividerBarColor: #eeeeee;
+$tocLinkWeight: 400;
+
+$linkColor: #002C66;
+$linkHoverColor: #eeeeee;
+
+$footerHeight: 0;
+
+$textColor: #000000;
+$linkWeight: 400;
+$linkDisabledColor: #eeeeee;
+$textBrandColor: #006BB8;
+$secondBrandColor: #002C66;
+$tableHeaderWeight: 600;
+$boxBorderColor: #eeeeee;
+$textCodeColor: #000000;
+$textCodeWeight: 400;
+
+$black: #2E2E2E;
+$white: #FFFFFF;
+$gray: #737373;
+$light-gray: lighten($gray, 52%);
+$dark-gray: darken($gray, 20%);
+
+$backgroundColor: $white;
+
+$textColor: #535f61;
+$textCodeColor: #d14;
+
+$linkColor: #469Bdd;
+$linkHoverColor: darken($linkColor, 20%);
+$linkDisabledColor: #CCCCCC;
+$linkActiveColor: #b05464;
+
+$h1Color: $black;
+$h2Color: $black;
+$h3Color: $dark-gray;
+$h4Color: $dark-gray;
+$h5Color: $dark-gray;
+$h6Color: $dark-gray;
+$h2UnderlineColor: #006BB8;
+
+$buttonActiveColor: #b05464;
+$dividerBarColor: rgba(0, 0, 0, .1);
+$glossaryHeaderColor: lighten($gray, 35%);
+$blockQuoteBackgroundColor: $light-gray;
+$tipCalloutBackgroundColor: #f2fff2;
+$ideaCalloutBackgroundColor: lightyellow;
+$warningCalloutBackgroundColor: #ffeeee;
+$deprecatedBackgroundColor: silver;
+$preBlockShadowColor: #a7a7a7;
+$preBlockBorderColor: #f2f2f2;
+$preBlockBackgroundColor: $backgroundColor;
+$preBlockCommandOutputTextColor: $textColor;
+$preBlockCommandOutputBackgroundColor: lighten($gray, 50%);
+$boxBorderColor: $secondBrandColor;
+
+$dropdownBorderColor: black;
+$dropdownCheck: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='black' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3E%3C/svg%3E");
+$dropdownHoverCheck: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='white' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3E%3C/svg%3E");
+
+$popoverBorderColor: #777777;
+$popoverShadowColor: #777777;
+$popoverHeaderBackgroundColor: $light-gray;
+$popoverHeaderTextColor: $textColor;
+$popoverBackgroundColor: $backgroundColor;
+$popoverTextColor: $textColor;
+
+$headerLightShadowColor: rgba(0, 0, 0, .14);
+$headerDarkShadowColor: rgba(0, 0, 0, .28);
+
+$figureBackgroundColor: $backgroundColor;
+$figureCaptionColor: $textColor;
+
+$heroLogoColor: $primary;
+$landingPanelBackgroundColor: $light-gray;
+$landingPanelBorderColor: #dddddd;
+$landingPanelTextColor: $textColor;
+$landingPanelShadowColor: #a7a7a7;
+$landingPanelShadowHoverColor: #a7a7ee;
+
+$floatingButtonColor: rgba(0, 0, 0, .4);
+
+$companyLogoBackgroundColor: $backgroundColor;
+$companyLogoTaglineColor: $textColor;
+
+$textWeight: 400;
+$linkWeight: 400;
+$h1Weight: 400;
+$h2Weight: 400;
+$h3Weight: 500;
+$h4Weight: 500;
+$h5Weight: 500;
+$h6Weight: 500;
+$tableHeaderWeight: 400;
+$boldTextWeight: 700;
+$heroLeadWeight: 300;
+$blogAttributeWeight: 600;
+$sectionIndexLinkWeight: 400;
+$buttonWeight: 400;
+$tocLinkWeight: 400;
+$sidebarLinkWeight: 400;
+$sidebarCurrentPageWeight: 500;
+$glossaryHeaderWeight: 300;
+$glossaryWordWeight: 500;
+$figureCaptionWeight: 400;
+$textCodeWeight: $textWeight;

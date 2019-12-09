@@ -1,0 +1,69 @@
+.page-why-keptn {
+  // Intro
+  .intro {
+    @media screen and (min-width: $bp-md) {
+      background-image: url('/images/why-keptn/background-lines.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: 0 20%;
+    }
+
+    h1 {
+      display: inline-block;
+      margin-bottom: 16px;
+      font-size: 3.36rem;
+      font-weight: $font-weight-bold;
+
+      & .colored {
+        color: $primary;
+      }
+    }
+
+    .image {
+      @media screen and (min-width: $bp-md) {
+        margin-top: -80px;
+      }
+    }
+  }
+
+  // Maintenance, Higher Compliance, Easy Extensibility & Tool Integrations & Observability
+  .maintenance,
+  .higher-compliance,
+  .easy-extensibility,
+  .tool-integrations,
+  .observability  {
+    h2:after {
+      display: block;
+      content: " ";
+      width: 80px;
+      margin-top: 24px;
+      margin-bottom: 24px;
+      margin-left: auto;
+      margin-right: auto;
+      border-bottom: 4px solid #006bb8;
+    }
+  }
+
+  // Higher Compliance, Tool Integrations & Observability
+  .higher-compliance,
+  .tool-integrations,
+  .observability {
+    p:last-of-type {
+      font-size: 1rem;
+
+      @media screen and (min-width: $bp-md) {
+        font-size: 1.125rem;
+      }
+    }
+  }
+
+  // Tool Integrations & Observability
+  .tool-integrations,
+  .observability {
+    h2:after {
+      @media screen and (min-width: $bp-md) {
+        margin-left: 0;
+      }
+    }
+  }
+}

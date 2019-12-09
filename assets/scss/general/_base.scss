@@ -1,0 +1,81 @@
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  &.lock-scroll {
+    overflow: hidden;
+  }
+}
+
+body.page {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  margin-top: 80px;
+  margin-bottom: 50px;
+  font-family: $font-family-base;
+  font-size: 1rem;
+
+  &.lock-scroll {
+    overflow: hidden;
+  }
+
+  .wrapper {
+    flex: 1;
+  }
+
+  .main {
+    margin-bottom: 0;
+  }
+
+  .hamburger.is-active {
+    .hamburger-inner,
+    .hamburger-inner:after {
+      background-color: $primary;
+    }
+  }
+}
+
+body.page-home,
+body.page-why-keptn {
+  ul,
+  ol {
+    margin: 0;
+    padding: 0;
+  }
+
+  hr {
+    margin-top: 0;
+    margin-bottom: 0;
+    border-top: 1px solid rgba(#333333, 0.2);
+  }
+
+  .header-link {
+    display: none;
+  }
+
+  .toolbar {
+    padding: 16px 20px;
+    background-color: $white;
+    border-radius: 14px;
+    box-shadow: 0 12px 24px 0 rgba(#006bb8, 0.11);
+
+    pre {
+      margin: 0;
+      border: none;
+      box-shadow: none;
+
+      code {
+        padding: 0;
+        color: $primary;
+        font-size: 15px;
+      }
+    }
+
+    button {
+      display: none;
+    }
+  }
+}

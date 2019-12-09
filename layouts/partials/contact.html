@@ -1,0 +1,49 @@
+<div class="contact section-primary-opacity">
+  <a onclick="window.scrollTo({ top: 0 });" href="javascript: void(0)">
+    <img class="back-to-top" src="/images/general/icon-back-to-top.svg" alt="Back to top">
+  </a>
+
+  <div class="container pt-5 pb-5">
+    <div class="row pt-2 pb-2 pb-md-3">
+      <div class="col-12">
+        {{ with .Site.GetPage "section" "home/contact-top" }}
+          {{ .Content }}
+        {{ end }}
+      </div>
+
+      <div class="col-12 d-md-flex flex-md-row">
+        <div class="col-12 col-md-6 d-flex flex-column justify-content-md-between pl-0 pr-0 pb-4 pb-md-0">
+          {{ with .Site.GetPage "section" "home/contact-left" }}
+            {{ .Content }}
+          {{ end }}
+
+          <div>
+            <a class="no-underline" href="https://join.slack.com/t/keptn/shared_invite/enQtNTUxMTQ1MzgzMzUxLWMzNmM1NDc4MmE0MmQ0MDgwYzMzMDc4NjM5ODk0ZmFjNTE2YzlkMGE4NGU5MWUxODY1NTBjNjNmNmI1NWQ1NGY" target="_blank">
+              <img class="icon" src="/images/general/icon-slack.svg" alt="Slack">
+            </a>
+
+            <a class="no-underline" href="https://twitter.com/keptnproject" target="_blank">
+              <img class="icon" src="/images/general/icon-twitter.svg" alt="Twitter">
+            </a>
+
+            <a class="no-underline" href="mailto:keptn@dynatrace.com">
+              <img class="icon" src="/images/general/icon-mail.svg" alt="Mail">
+            </a>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-5 offset-md-1 d-flex flex-column justify-content-md-between pl-0 pr-0 pt-2 pt-md-0">
+          {{ with .Site.GetPage "section" "home/contact-right" }}
+            {{ .Content }}
+          {{ end }}
+
+          <div>
+            <img class="icon" src="/images/general/icon-calendar.svg" alt="Mail">
+            <a href="https://calendar.google.com/calendar/embed?src=dynatrace.com_abjrh1ukf18ih477tb1ekag2ag%40group.calendar.google.com" target="_blank">Public Google Calendar</a>,
+            <a href="https://calendar.google.com/calendar/ical/dynatrace.com_abjrh1ukf18ih477tb1ekag2ag%40group.calendar.google.com/public/basic.ics" target="_blank">iCal</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,10 +1,9 @@
 ---
 title: Quick Start
 description: Learn how to get keptn running in five minutes.
-weight: 1
 icon: setup
 layout: quickstart
-menu: main
+weight: 1
 ---
 
 ### 1. Setup your platform

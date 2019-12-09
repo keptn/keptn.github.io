@@ -1,0 +1,1 @@
+Whether you are an end-user with a strong opinion or you want to participate in the project, we’d love to hear from you! You can find more information in the [keptn community repo](https://github.com/keptn/keptn)

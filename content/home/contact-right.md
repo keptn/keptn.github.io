@@ -1,0 +1,1 @@
+Be part of the movement and participate in our public community meetings every other Monday!

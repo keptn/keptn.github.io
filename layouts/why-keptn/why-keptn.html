@@ -1,0 +1,135 @@
+{{ define "title" }}
+keptn | A message-driven control plane for application delivery and automated operations
+{{ end }}
+
+{{ define "header_css" }}
+{{ end }}
+
+{{ define "header_classes" }}
+header-transparent
+{{ end }}
+
+{{ define "header_js" }}
+<script src="https://cdn.jsdelivr.net/npm/typeit@6.0.3/dist/typeit.min.js" />
+{{ end }}
+
+{{ define "body_classes" }}
+page-why-keptn
+{{ end }}
+
+{{ define "meta" }}
+<meta property="og:description" content="Building the fabric for cloud-native lifecycle automation at enterprise scale">
+<meta property="og:title" content="Keptn - A message-driven control plane for application delivery and automated operations">
+<meta property="og:image" content="https://keptn.sh/favicon.png">
+<meta property="og:url" content="https://keptn.sh/index.html">
+<meta name="twitter:card" content="summary_large_image">
+{{ end }}
+
+{{ define "main" }}
+{{/* Intro */}}
+<div class="intro">
+  <div class="container pt-5 pb-3 pb-md-5">
+    <div class="row pt-md-5">
+      <div class="col-12 col-md-6 pb-2">
+        <h1>Why <span class="colored">keptn?</span></h1>
+
+        {{ with .Site.GetPage "section" "why-keptn/intro-top" }}
+          {{ .Content }}
+        {{ end }}
+      </div>
+
+      <div class="col-12 col-md-6">
+        {{/* Placeholder */}}
+      </div>
+
+      <div class="text col-12 col-md-6">
+        {{ with .Site.GetPage "section" "why-keptn/intro-left" }}
+          {{ .Content }}
+        {{ end }}
+      </div>
+
+      <div class="image col-12 col-md-6 p-0">
+        {{ with .Site.GetPage "section" "why-keptn/intro-right" }}
+          {{ .Content }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>
+
+{{/* Maintenance */}}
+<div class="maintenance">
+  <div class="container pt-5 pb-5">
+    <div class="row d-flex flex-row justify-content-center pt-3 pt-md-4 pb-md-3">
+      <div class="col-12 col-md-6 pt-md-2 text-center">
+        {{ with .Site.GetPage "section" "why-keptn/maintenance" }}
+          {{ .Content }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>
+
+{{/* Higher Compliance */}}
+<div class="higher-compliance section-primary-opacity">
+  <div class="container pt-5 pb-5">
+    <div class="row d-flex flex-row justify-content-center pt-3 pt-md-4 pb-md-3">
+      <div class="col-12 col-md-6 pt-md-2 text-center">
+        {{ with .Site.GetPage "section" "why-keptn/higher-compliance" }}
+          {{ .Content }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>
+
+{{/* Easy Extensibility */}}
+<div class="easy-extensibility">
+  <div class="container pt-5 pb-5">
+    <div class="row d-flex flex-row justify-content-center pt-3 pt-md-4 pb-md-3">
+      <div class="col-12 col-md-6 pt-md-2 text-center">
+        {{ with .Site.GetPage "section" "why-keptn/easy-extensibility" }}
+          {{ .Content }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>
+
+{{/* Divider */}}
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <hr>
+    </div>
+  </div>
+</div>
+
+{{/* Tool Integrations & Observability */}}
+<div class="tool-integrations observability">
+  <div class="container pt-5 pb-5">
+    <div class="row d-flex flex-row justify-content-center">
+      <div class="col-12 col-md-6 pt-3 pt-md-4 pb-5 pb-md-3 pr-md-5 text-center text-md-left">
+        {{ with .Site.GetPage "section" "why-keptn/tool-integrations" }}
+          {{ .Content }}
+        {{ end }}
+      </div>
+
+      <div class="col-12 col-md-6 pt-md-4 pb-md-3 pl-md-5 text-center text-md-left">
+        {{ with .Site.GetPage "section" "why-keptn/observability" }}
+          {{ .Content }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>
+
+{{/* Teaser */}}
+{{ partial "teaser.html" . }}
+
+{{/* Contact */}}
+{{ partial "contact.html" . }}
+{{ end }}
+
+{{ define "footer_js" }}
+{{ end }}

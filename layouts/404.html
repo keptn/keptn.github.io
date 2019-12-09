@@ -1,35 +1,41 @@
-<!DOCTYPE html>
-<html>
+{{ define "title" }}
+keptn | A message-driven control plane for application delivery and automated operations
+{{ end }}
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Page Not Found</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+{{ define "header_css" }}
+{{ end }}
 
-  <link href='/css/style.min.css' rel='stylesheet' />
+{{ define "header_classes" }}
+header-transparent
+{{ end }}
 
-</head>
+{{ define "header_js" }}
+<script src="https://cdn.jsdelivr.net/npm/typeit@6.0.3/dist/typeit.min.js" />
+{{ end }}
 
-<body>
-  <div id="wrapper" class="wrapper">
+{{ define "body_classes" }}
+page-not-found
+{{ end }}
 
-    <div class="container pt-9 pb-9 pt-md-13 pb-md-13">
-      <div class="row justify-content-center align-content-between">
-        <div class="col-9 text-center">
-          <h1 class="display-1 text-primary mb-4">Page not found</h1>
-        </div>
-        <div class="col-9 text-center mb-2">
-          <a href="/" class="btn btn-primary">Home</a>
-        </div>
-        <div class="col-9 text-center mb-2">
-          <a href="/contact" class="btn btn-primary">Contact Us</a>
-        </div>
-      </div>
+{{ define "meta" }}
+<meta property="og:description" content="Building the fabric for cloud-native lifecycle automation at enterprise scale">
+<meta property="og:title" content="Keptn - A message-driven control plane for application delivery and automated operations">
+<meta property="og:image" content="https://keptn.sh/favicon.png">
+<meta property="og:url" content="https://keptn.sh/index.html">
+<meta name="twitter:card" content="summary_large_image">
+{{ end }}
+
+{{ define "main" }}
+<div class="container pt-5">
+  <div class="row">
+    <div class="col-12">
+      <h2>404</h2>
+      <p>The requested page could not be found!</p>
+
+      <p><a href="/" class="no-underline">Home</a></p>
+      <p><a class="no-underline" href="mailto:keptn@dynatrace.com">Contact us</a></p>
     </div>
-
   </div>
-</body>
+</div>
 
-</html>
+{{ end }}
