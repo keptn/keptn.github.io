@@ -21,9 +21,9 @@ The goal of this tutorial is to describe how you can add additional functionalit
 
 ## Writing your own service
 
-As a reference for writing your own service, please have a look at our implementation of the [JMeter Service](https://github.com/keptn/keptn/blob/0.5.0/jmeter-service). Essentially, this service is a *Go* application that accepts POST requests at its `/` endpoint. To be more specific, the request body needs to follow the [Cloud Event specification](https://github.com/keptn/spec/blob/0.1.1/cloudevents.md) and the HTTP header attribute `Content-Type` has to be set to `application/cloudevents+json`. Of course, you can write your own service in any language, as long as it provides the endpoint to receive events.
+As a reference for writing your own service, please have a look at our implementation of the [JMeter Service](https://github.com/keptn/keptn/blob/0.6.0.beta2/jmeter-service). Essentially, this service is a *Go* application that accepts POST requests at its `/` endpoint. To be more specific, the request body needs to follow the [Cloud Event specification](https://github.com/keptn/spec/blob/0.1.1/cloudevents.md) and the HTTP header attribute `Content-Type` has to be set to `application/cloudevents+json`. Of course, you can write your own service in any language, as long as it provides the endpoint to receive events.
 
-A Keptn service is a regular Kubernetes service with a deployment and service template. The deployment and service manifest for the *jmeter-service* can be found in the [deploy/service.yaml](https://github.com/keptn/keptn/blob/0.5.0/jmeter-service/deploy/service.yaml) file in `jmeter-service` directory of the Keptn GitHub repository:
+A Keptn service is a regular Kubernetes service with a deployment and service template. The deployment and service manifest for the *jmeter-service* can be found in the [deploy/service.yaml](https://github.com/keptn/keptn/blob/0.6.0.beta2/jmeter-service/deploy/service.yaml) file in `jmeter-service` directory of the Keptn GitHub repository:
 
 ```yaml
 ---
@@ -43,8 +43,8 @@ spec:
         run: jmeter-service
     spec:
       containers:
-      - name: helm-service
-        image: keptn/jmeter-service:0.5.0
+      - name: jmeter-service
+        image: keptn/jmeter-service:0.6.0.beta2
         ports:
         - containerPort: 8080
 ---
