@@ -1,1 +1,1 @@
-## keptn only requires a plain Kubernetes cluster (v 1.13) 
+## keptn only requires a plain Kubernetes cluster (version >1.13)

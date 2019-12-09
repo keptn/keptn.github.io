@@ -57,6 +57,16 @@
     .step {
       position: relative;
 
+      &:last-of-type {
+        p:last-of-type {
+          font-size: 1rem;
+
+          @media screen and (min-width: $bp-md) {
+            font-size: 1.125rem;
+          }
+        }
+      }
+
       &:before {
         display: none;
         content: counter(step);
@@ -80,14 +90,31 @@
   .delivery-flow {
     position: relative;
 
+    a {
+      color: $primary !important;
+      text-decoration: none;
+    }
+
     .background-image {
       display: none;
       position: absolute;
-      bottom: -30%;
+      bottom: 0;
       left: 0;
 
       @media screen and (min-width: $bp-md) {
         display: block;
+      }
+
+      @media screen and (min-width: $bp-xl) {
+        bottom: -10%;
+      }
+
+      @media screen and (min-width: 1440px) {
+        bottom: -20%;
+      }
+
+      @media screen and (min-width: 1920px) {
+        bottom: -30%;
       }
     }
 
@@ -123,11 +150,20 @@
     }
   }
 
-  // Keptn Workflows
-  .keptn-workflows {
-    .text p:last-of-type {
+  // Integration Workflow
+  .integration-workflow {
+    .image {
       @media screen and (min-width: $bp-md) {
-        margin-bottom: 40px;
+        margin-top: -8px;
+        margin-left: -8px;
+      }
+    }
+
+    .text:last-of-type p {
+      font-size: 1rem;
+
+      @media screen and (min-width: $bp-md) {
+        font-size: 1.125rem;
       }
     }
   }

@@ -1,4 +1,4 @@
 ![SREs](/images/home/icon-wheel.svg)
 
 **SREs** \
-to enforce processes instead of debugging problems
+to automate processes instead of manually handling issues
