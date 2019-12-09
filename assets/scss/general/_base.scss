@@ -2,6 +2,13 @@ html {
   scroll-behavior: smooth;
 }
 
+html,
+body {
+  &.lock-scroll {
+    overflow: hidden;
+  }
+}
+
 body.page {
   display: flex;
   min-height: 100vh;
@@ -10,6 +17,10 @@ body.page {
   margin-bottom: 50px;
   font-family: $font-family-base;
   font-size: 1rem;
+
+  &.lock-scroll {
+    overflow: hidden;
+  }
 
   ul,
   ol {
@@ -23,6 +34,13 @@ body.page {
 
   .main {
     margin-bottom: 0;
+  }
+
+  .hamburger.is-active {
+    .hamburger-inner,
+    .hamburger-inner:after {
+      background-color: $primary;
+    }
   }
 }
 

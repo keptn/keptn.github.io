@@ -59,14 +59,10 @@ $button-width: 35px;
 
 .main-menu-mobile {
   position: fixed;
-  background: $color-main;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.35s, visibility 0.35s, height 0.35s;
+  height: 100%;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -74,33 +70,28 @@ $button-width: 35px;
   flex-direction: column;
 
   &.open {
-    opacity: 0.9;
-    visibility: visible;
-    height: 100%;
+    animation: fadeIn 0.3s ease forwards;
+    background: $color-main;
     z-index: 10;
   
     li {
       animation: fadeInRight 0.5s ease forwards;
-      animation-delay: 0.35s;
+      animation-delay: 0.2s;
   
       &:nth-of-type(2) {
-        animation-delay: 0.4s;
+        animation-delay: 0.25s;
       }
   
       &:nth-of-type(3) {
-        animation-delay: 0.45s;
+        animation-delay: 0.3s;
       }
   
       &:nth-of-type(4) {
-        animation-delay: 0.5s;
+        animation-delay: 0.35s;
       }
 
       &:nth-of-type(5) {
-        animation-delay: 0.55s;
-      }
-  
-      &:nth-of-type(6) {
-        animation-delay: 0.6s;
+        animation-delay: 0.4s;
       }
     }
   }
@@ -110,41 +101,48 @@ $button-width: 35px;
     font-family: $font-family-heading;
     text-align: center;
     list-style: none;
-    padding: 0;
-    margin: 0;
     flex: 0;
 
     li {
       display: block;
       position: relative;
+      margin: 0;
+      padding: 1rem;
       opacity: 0;
+
+      &:last-of-type {
+        margin-top: 1rem;
+      }
 
       a {
         display: block;
         position: relative;
-        color: $color-link;
         text-decoration: none;
         overflow: hidden;
+
+        span {
+          color: $white;
+        }
 
         &:hover::after,
         &:focus::after,
         &:active::after {
           width: 100%;
         }
-
-        &::after {
-          content: '';
-          position: absolute;
-          bottom: 0;
-          left: 50%;
-          width: 0%;
-          transform: translateX(-50%);
-          height: 3px;
-          background: $color-link;
-          transition: 0.35s;
-        }
       }
     }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  100% {
+    opacity: 0.9;
+    visibility: visible;
   }
 }
 
@@ -158,8 +156,4 @@ $button-width: 35px;
     opacity: 1;
     left: 0;
   }
-}
-
-.lock-scroll {
-  overflow: hidden;
 }
