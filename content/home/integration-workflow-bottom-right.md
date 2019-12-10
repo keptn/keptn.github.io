@@ -1,1 +1,1 @@
-Keptn will then start automatically deploying new artefacts following the strategy defined in the shipyard. After deployment they will be automatically tested. Quality gates will be validated and in case of problems releases will be rolled back automatically.
+Keptn will then start the deployment automatically, following the strategy defined in the shipyard file. After the deployment, Keptn starts the tests, evaluates the quality gates, and in case of a problem, Keptn rolls back the last changes.

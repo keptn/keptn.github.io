@@ -1,1 +1,1 @@
-New workflow in Keptn are triggered by send new-artefact events either via the CLI or Keptn API. You can easily add this your Continuous Integration scripts.
+New workflows in Keptn are triggered by sending a new-artifact event either via the CLI or the Keptn API. You can easily add this your Continuous Integration scripts.
