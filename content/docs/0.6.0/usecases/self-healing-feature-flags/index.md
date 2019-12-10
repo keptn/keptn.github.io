@@ -1,7 +1,7 @@
 ---
 title: Self-healing with Feature Flags
 description: Demonstrates how to use the self-healing mechanisms of Keptn to automatically set feature flags in an Unleash feature flag server.
-weight: 30
+weight: 40
 keywords: [self-healing]
 aliases:
 ---
