@@ -1,7 +1,7 @@
 ---
 title: Self-healing with Keptn
 description: Demonstrates how to use the self-healing mechanisms of Keptn to self-heal a demo service, which runs into issues, by providing automated upscaling.
-weight: 30
+weight: 35
 keywords: [self-healing]
 aliases:
 ---
