@@ -1,6 +1,7 @@
 var body = document.querySelector('body');
 var menuTrigger = document.querySelector('#toggle-main-menu-mobile');
 var menuContainer = document.querySelector('#main-menu-mobile');
+var copyToClipboardButton = document.querySelector('button.copy');
 
 if (menuTrigger) {
   menuTrigger.onclick = function () {

@@ -1,5 +1,5 @@
 {{ define "title" }}
-keptn | A message-driven control plane for application delivery and automated operations
+keptn | An event-based control plane for continuous delivery and automated operations for cloud-native applications
 {{ end }}
 
 {{ define "header_css" }}
@@ -232,22 +232,28 @@ page-home
 {{/* Automatic Remediation */}}
 <div class="automatic-remediation">
   <div class="container pt-5 pb-5">
-    <div class="row pt-md-4 pb-4 pb-md-5">
-      <div class="col-12 pb-4">
-        <div class="col-12 col-md-8 col-lg-6 p-0">
-          {{ with .Site.GetPage "section" "home/automatic-remediation-top" }}
+    <div class="row pt-md-5 pb-4 pb-md-5">
+      <div class="col-12 col-md-6 pl-0 pr-md-4">
+        <div class="text col-12">
+          {{ with .Site.GetPage "section" "home/automatic-remediation-left-top" }}
+            {{ .Content }}
+          {{ end }}
+        </div>
+
+        <div class="image col-12 pl-0 pr-0">
+          {{ with .Site.GetPage "section" "home/automatic-remediation-left-middle" }}
+            {{ .Content }}
+          {{ end }}
+        </div>
+
+        <div class="text col-12">
+          {{ with .Site.GetPage "section" "home/automatic-remediation-left-bottom" }}
             {{ .Content }}
           {{ end }}
         </div>
       </div>
 
-      <div class="col-12 col-md-5 pb-4 pb-md-0">
-        {{ with .Site.GetPage "section" "home/automatic-remediation-left" }}
-          {{ .Content }}
-        {{ end }}
-      </div>
-
-      <div class="col-12 col-md-5 offset-md-1">
+      <div class="code col-12 col-md-6">
         {{ with .Site.GetPage "section" "home/automatic-remediation-right" }}
           {{ .Content }}
         {{ end }}
@@ -261,6 +267,9 @@ page-home
 
 {{/* Contact */}}
 {{ partial "contact.html" . }}
+
+{{/* Copy Indicator */}}
+{{ partial "copy-indicator.html" . }}
 {{ end }}
 
 {{ define "footer_js" }}
