@@ -1,1 +1,1 @@
-## Link keptn to your continuous integration workflow
+## Link Keptn to your CI workflow
