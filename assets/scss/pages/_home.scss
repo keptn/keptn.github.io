@@ -1,4 +1,6 @@
 .page-home {
+  position: relative;
+
   // Intro & Usage
   .intro,
   .usage {
@@ -164,6 +166,22 @@
 
       @media screen and (min-width: $bp-md) {
         font-size: 1.125rem;
+      }
+    }
+  }
+
+  // Automatic Remediation
+  .automatic-remediation {
+    .image {
+      @media screen and (min-width: $bp-md) {
+        margin-top: 24px;
+        margin-left: -8px;
+      }
+    }
+
+    .code {
+      .toolbar {
+        margin-bottom: 16px;
       }
     }
   }

@@ -159,6 +159,8 @@ function handleDOMLoaded() {
 
             var copyCode = new ClipboardJS('button.copy', {
                 text: function (trigger) {
+                    showCopyIndicator(document.querySelector('.copy-indicator'));
+
                     return getToolbarDivText(trigger.parentElement);
                 }
             });
@@ -166,6 +168,17 @@ function handleDOMLoaded() {
             copyCode.on('error', function (event) {
                 alert("Sorry, but copying is not supported by your browser");
             });
+        }
+
+        function showCopyIndicator(copyIndicator) {
+            console.log(copyIndicator);
+            if (copyIndicator) {
+                copyIndicator.classList.add('shown');
+
+                setTimeout(function() {
+                    copyIndicator.classList.remove('shown');
+                }, 3000);
+            }
         }
 
         function getToolbarDivText(div) {
