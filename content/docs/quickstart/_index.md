@@ -57,7 +57,8 @@ With Keptn installed, have a look at the different [use cases](/docs/0.5.0/useca
 Review the [reference documentation](/docs/0.5.0/) for a full reference on all components of Keptn and how they can be combined and extended to your needs.
 
 ### 6. In case you need help
-Join [our slack channel](https://join.slack.com/t/keptn/shared_invite/enQtNTUxMTQ1MzgzMzUxLTcxMzE0OWU1YzU5YjY3NjFhYTJlZTNjOTZjY2EwYzQyYWRkZThhY2I3ZDMzN2MzOThkZjIzOTdhOGViMDNiMzI) for any questions that may arise.
+Join [our slack channel](https://join.slack.com/t/keptn/shared_invite/enQtNTUxMTQ1MzgzMzUxLWMzNmM1NDc4MmE0MmQ0MDgwYzMzMDc4NjM5ODk0ZmFjNTE2YzlkMGE4NGU5MWUxODY1NTBjNjNmNmI1NWQ1NGY)
+ for any questions that may arise.
 
 ### 7. Uninstalling Keptn
 ```console
