@@ -1,8 +1,8 @@
 ---
 title: Keptn Quality Gates only
-description: Describes how Keptn allows to ...
+description: Describes how Keptn allows to use quality gates without deployment and testing features of Keptn.
 weight: 26
-keywords: []
+keywords: [quality-gates]
 aliases:
 ---
 
@@ -12,17 +12,17 @@ Describes how Keptn allows to use quality gates without deployment and testing f
 
 Let's say you want to use your existing tools for deploying and testing your applications - you can still use Keptn Quality Gates for extensive evaluation of service level objectives (SLOs).
 
-*A quick recap of SLOs and SLIs:* A service level objective (SLO) is a target value or range of values for a service level that is measured by a service level indicator (SLI). An SLI is a carefully defined quantitative measure of some aspect of the level of service that is provided. By default, the following SLIs can be used for evaluation, inspired by the Site Reliability Engineering book from Google ([SRE Book](https://landing.google.com/sre/sre-book/chapters/service-level-objectives)):
+*A quick recap of SLOs and SLIs:* A service level objective (SLO) is a target value or range of values for a service level that is measured by a service level indicator (SLI). An SLI is a carefully defined quantitative measure of some aspect of the level of service that is provided. By default, the following SLIs can be used for evaluation, inspired by the [Site Reliability Engineering](https://landing.google.com/sre/sre-book/chapters/service-level-objectives) book from Google:
 
 * *Response Time*: The time it takes for a service to execute and complete a task or how long it takes to return a response to a request.
 * *System Throughput*: The number of requests per second that have been processed.
 * *Error Rate*: The fraction of all received requests that produced an error.
 
-For more information about SLO and SLI, please the a look at [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/spec/blob/0.1.1/sre.md).
+For more information about SLO and SLI, please take a look at [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/spec/blob/0.1.1/sre.md).
 
 ## Prerequisites
 
-* Running Keptn installation or a quality gates only installation as shown below
+* Running Keptn installation or a quality gates only installation as explained below
 
 * Clone example files used for this tutorial:
 
@@ -142,7 +142,7 @@ At a specific point in time, e.g., after you have executed your tests or you hav
   keptn send event start-evaluation --project=sockshop --stage=hardening --service=carts --period=5m
   ```
 
-  The event `start-evaluation` will trigger the evaluation of the service level objects of the specified service in the specified project over the last 5 minutes. This command will return a `KeptnContext` ID that you will need for querying the results of the evaluation.
+  The event `start-evaluation` will trigger the evaluation of the service level objects of the specified service in the specified project over the last 5 minutes. This command will return a `keptnContext` ID that you will need for querying the results of the evaluation.
 
 * Use the Keptn CLI to [get event evaluation-done](../../reference/cli/#keptn-send-event-start-evaluation): 
     
