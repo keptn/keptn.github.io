@@ -13,6 +13,7 @@ Describes how Keptn allows to use quality gates without deployment and testing f
 Let's say you want to use your existing tools for deploying and testing your applications - you can still use Keptn Quality Gates for extensive evaluation of service level objectives (SLOs).
 
 *A quick recap of SLOs and SLIs:* A service level objective (SLO) is a target value or range of values for a service level that is measured by a service level indicator (SLI). An SLI is a carefully defined quantitative measure of some aspect of the level of service that is provided. By default, the following SLIs can be used for evaluation, inspired by the Site Reliability Engineering book from Google ([SRE Book](https://landing.google.com/sre/sre-book/chapters/service-level-objectives)):
+
 * *Response Time*: The time it takes for a service to execute and complete a task or how long it takes to return a response to a request.
 * *System Throughput*: The number of requests per second that have been processed.
 * *Error Rate*: The fraction of all received requests that produced an error.
