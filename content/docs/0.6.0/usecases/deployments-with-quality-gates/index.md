@@ -52,7 +52,7 @@ Keptn requires a performance specification for the quality gate. This specificat
 keptn add-resource --project=sockshop --service=carts --stage=staging --resource=slo_quality-gates.yaml --resourceUri=slo.yaml
 ```
 
-For this tutorial you will need to set up monitoring for the carts service, either using the open-source monitoring solution *Prometheus* or *Dynatrace*. Option 1 and option 2 set up monitoring based on pre-defined SLOs. 
+For this tutorial you will need to set up monitoring for the carts service, either using the open-source monitoring solution *Prometheus* or *Dynatrace*.
 
 ### Option 1: Prometheus
 <details><summary>Expand instructions</summary>

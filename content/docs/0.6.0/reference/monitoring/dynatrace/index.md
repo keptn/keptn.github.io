@@ -122,7 +122,7 @@ oneagent-5lcqh                                 0/1     Running   0          3s
 oneagent-ps6t4                                 0/1     Running   0          3s
 ```
 
-**Note 1:** To monitor the services that are already onboarded in the `dev`, `staging`, and `production` namespace, make sure to restart the pods. If you defined different environments in your shipyard file, please adjust the parameters accordingly. 
+**Note 1:** To monitor the services that are already onboarded in the **dev**, **staging**, and **production** namespace, make sure to restart the pods. If you defined different environments in your shipyard file, please adjust the parameters accordingly. 
 ```console
 kubectl delete pods --all --namespace=sockshop-dev
 ```
@@ -210,7 +210,7 @@ During the evaluation of a quality gate, the Dynatrace SLI provider is required 
   DT_API_TOKEN: XYZ123456789
   ```
 
-* Before executing the next command, please adapt the instruction to match the name of your project. Then, create the secret in the `keptn namespace` using:
+* Before executing the next command, please adapt the instruction to match the name of your project. Then, create the secret in the **keptn** namespace using:
 
   ```console
   kubectl create secret generic dynatrace-credentials-PROJECTNAME -n "keptn" --from-file=dynatrace-credentials=your_credential_file.yaml

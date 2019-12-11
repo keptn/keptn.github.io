@@ -11,6 +11,7 @@ The above list of tutorials helps you to explore the functionalities of Keptn ba
 * As a **Developer** you might be most interested in:
   * [Onboarding a Service](./onboard-carts-service/)
   * [Deployments with Quality Gates](./deployments-with-quality-gates/)
+  * [Keptn Quality Gates only](./quality-gates/)
 
 * As a **DevOps Engineer** you might be most interested in:
   * [Write your own Keptn Service](./custom-service/)
