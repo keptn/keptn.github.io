@@ -136,7 +136,7 @@ At a specific point in time, e.g., after you have executed your tests or you hav
 
 ### Keptn CLI
 
-* Execute a quality gate evaluation, by using the Keptn CLI to [send event start-evaluation](../../reference/cli/#keptn-send-event-start-evaluation): 
+* Execute a quality gate evaluation by using the Keptn CLI to [send event start-evaluation](../../reference/cli/#keptn-send-event-start-evaluation): 
 
   ```console
   keptn send event start-evaluation --project=sockshop --stage=hardening --service=carts --period=5m
@@ -149,7 +149,7 @@ At a specific point in time, e.g., after you have executed your tests or you hav
   ID of Keptn context: 6cd3e469-cbd3-4f73-xxxx-8b2fb341bb11
   ```
 
-* Retrieve the evaluation results, by using the Keptn CLI to [get event evaluation-done](../../reference/cli/#keptn-send-event-start-evaluation): 
+* Retrieve the evaluation results by using the Keptn CLI to [get event evaluation-done](../../reference/cli/#keptn-send-event-start-evaluation): 
     
   ```console
   keptn get evaluation-results --keptnContext=6cd3e469-cbd3-4f73-xxxx-8b2fb341bb11
@@ -159,14 +159,14 @@ At a specific point in time, e.g., after you have executed your tests or you hav
 
 ### Keptn API
 
-* First, get the Keptn API endpoint and token, by executing the following commands: 
+* First, get the Keptn API endpoint and token by executing the following commands: 
 
   ```console
   KEPTN_ENDPOINT=https://api.keptn.$(kubectl get cm keptn-domain -n keptn -ojsonpath={.data.app_domain})
   KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
   ```
 
-* Prepare the POST request body, by filling out the next JSON object: 
+* Prepare the POST request body by filling out the next JSON object: 
 
   ```yaml
   {
@@ -182,7 +182,7 @@ At a specific point in time, e.g., after you have executed your tests or you hav
   }
   ```
 
-* Execute a quality gate evaluation, by sending the POST request to trigger an evaluation using the curl command:
+* Execute a quality gate evaluation by sending the POST request to trigger an evaluation using the curl command:
 
   ```console
   curl -X POST "http://api.keptn.12.34.56.78.xip.io/v1/event" -H "accept: application/json" -H "x-token: YOUR_KEPTN_TOKEN" -H "Content-Type: application/json" -d "{ \"data\": { \"end\": \"2019-11-21T11:05:00.000Z\", \"project\": \"sockshop\", \"service\": \"carts\", \"stage\": \"hardening\", \"start\": \"2019-11-21T11:00:00.000Z\", \"teststrategy\": \"manual\" }, \"type\": \"sh.keptn.event.start-evaluation\"}"
