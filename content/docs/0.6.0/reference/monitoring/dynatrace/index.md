@@ -170,7 +170,7 @@ In addition, a *Problem Notification* has automatically been set up to inform Ke
 
 ## Setup Dynatrace SLI provider
 
-During the evaluation of a quality gate, the Dynatrace SLI provider is required that is implemented by an internal Keptn service, the *dynatrace-sli-service*. This servcie will fetch the values for the SLIs that are referenced in SLO file.
+During the evaluation of a quality gate, the Dynatrace SLI provider is required that is implemented by an internal Keptn service, the *dynatrace-sli-service*. This servcie will fetch the values for the SLIs that are referenced in a SLO configuration.
 
 * To install the *dynatrace-sli-service*, complete the following tasks:
     

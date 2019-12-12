@@ -31,7 +31,7 @@ After creating a project and service, you can setup Prometheus monitoring and co
 
     {{< popup_image link="./assets/prometheus-targets.png" caption="Prometheus Targets">}}
 
-* Finally, the *prometheus-service* need to be deployed in Keptn to make Keptn aware of Prometheus. To deploy this service, please complete following tasks: 
+* Finally, the **prometheus-service** need to be deployed to make Keptn aware of Prometheus. To deploy this service, please complete following tasks: 
 
   ```console
   git clone --branch 0.3.0 https://github.com/keptn-contrib/prometheus-service --single-branch
@@ -51,9 +51,9 @@ After creating a project and service, you can setup Prometheus monitoring and co
   
 ## Setup Prometheus SLI provider 
 
-During the evaluation of a quality gate, the Prometheus SLI provider is required that is implemented by an internal Keptn service, the **prometheus-sli-service**. This servcie will fetch the values for the SLIs that are referenced in SLO file.
+During the evaluation of a quality gate, the Prometheus SLI provider is required that is implemented by an internal Keptn service, the *prometheus-sli-service*. This service will fetch the values for the SLIs that are referenced in a SLO configuration.
 
-* To install the **prometheus-sli-service**, complete the following commands:
+* To install the *prometheus-sli-service*, complete the following commands:
 
   ```console
   git clone --branch 0.1.0 https://github.com/keptn-contrib/prometheus-sli-service --single-branch
@@ -77,7 +77,7 @@ During the evaluation of a quality gate, the Prometheus SLI provider is required
   kubectl get pods -n keptn | grep prometheus-sli
   ```
 
-To tell the **prometheus-sli-service** how to acquire the values of a SLI, the correct query needs to be configured. This can be done by storing the following ConfigMap in the `keptn` namespace:
+To tell the *prometheus-sli-service* how to acquire the values of a SLI, the correct query needs to be configured. This is done by storing the following ConfigMap in the **keptn** namespace:
 
 ```yaml
 apiVersion: v1
