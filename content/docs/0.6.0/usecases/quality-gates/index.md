@@ -22,17 +22,45 @@ For more information about SLO and SLI, please take a look at [Specifications fo
 
 ## Prerequisites
 
+* **Bring your own monitored service**: This tutorial is slightly different to the others because you need to bring you own monitored service depending on the monitoring solution you want use. For the sake of clarification, this tutorial uses project *musicshop* and service *catalogue* - adapt the commands to match your project and service. 
+
+    <details><summary>*Service monitored by Prometheus*</summary>
+    <p>
+    
+    * requirements for Prometheus
+
+    </p>
+    </details>
+
+    <details><summary>*Service monitored by Dynatrace*</summary>
+    <p>
+
+    * Please make sure that your service has the tags: **keptn_project**, **keptn_stage**, **keptn_service** set, as shown below:
+      {{< popup_image
+        link="./assets/monitored_service.png"
+        caption="catalogue service"
+        width="50%">}}
+    
+    </p>
+    </details>
+
 * Running Keptn installation or a quality gates only installation as explained below
 
 * Clone example files used for this tutorial:
 
     ```console
-    git clone --branch 0.6.0.beta https://github.com/keptn/examples.git --single-branch
+    git clone --branch 0.6.0.beta2 https://github.com/keptn/examples.git --single-branch
     ```
 
     ```console
     cd examples/onboarding-carts
     ```
+
+    The files you need are:
+
+    * `shipyard_quality_gates.yaml` 
+    * `slo_quality-gates.yaml`
+    * `lighthouse-source-prometheus.yaml` (for Prometheus only)
 
 ## Install Keptn just for this use case
 
@@ -42,41 +70,39 @@ If you want to install Keptn just to explore the capabilities of Keptn quality g
 keptn install --platform=[aks|eks|gke|openshift|pks|kubernetes] --use-case=quality-gates
 ```
 
-## Configure Keptn
+## Configure Keptn and activate quality gate
 
-If you have completed another tutorial with the sockshop project and carts service, you can either delete the project using the [delete project](../../reference/cli/#keptn-delete-project) command or you use another project name throughout this tutorial, e.g., *rockshop*.
 
-* Create the Keptn project *sockshop* with only one the *hardening* stage declared in the `shipyard_quality_gates.yaml` file:
+* Create a Keptn project (e.g., *musicshop*) with only one the *hardening* stage declared in the `shipyard_quality_gates.yaml` file:
 
   ```
-  keptn create project sockshop --shipyard=shipyard_quality_gates.yaml
+  keptn create project musicshop --shipyard=shipyard_quality_gates.yaml
   ```
 
-* Create the Keptn service *carts* that you want to evaluate using Keptn quality gates:
+* Create a Keptn service for your service (e.g., *catalogue*) you want to evaluate:
 
   ```console
-  keptn create service carts --project=sockshop
+  keptn create service catalogue --project=musicshop
   ```
 
-## Activate quality gate and monitoring
+  **Note:** Since you are not deploying a service in this tutorial [keptn create service](../../reference/cli/#keptn-create-service) does not require you to provide a Helm chart compared to the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command. 
 
-* Activate the quality gate for the carts service. Therefore, upload the `slo_quality-gates.yaml` file using the [add-resource](../../reference/cli/#keptn-add-resource) command:
+* To activate the quality gate for your service, upload the `slo_quality-gates.yaml` file using the [add-resource](../../reference/cli/#keptn-add-resource) command:
 
   ```console
-  keptn add-resource --project=sockshop --service=carts --stage=hardening --resource=slo_quality-gates.yaml --resourceUri=slo.yaml
+  keptn add-resource --project=musicshop --service=catalogue --stage=hardening --resource=slo_quality-gates.yaml --resourceUri=slo.yaml
   ```
 
-For this tutorial you will need to set up monitoring, either using the open-source monitoring solution *Prometheus* or *Dynatrace*. 
+## Install SLI provider
 
-### Option 1: Prometheus
-<details><summary>Expand instructions</summary>
+For this tutorial you need to deploy the correspondig SLI provider for your monitoring solution. This can be for either the open-source monitoring solution *Prometheus* or *Dynatrace*. 
+
+<details><summary>Prometheus SLI provider</summary>
 <p>
 
-1. Configure Prometheus monitoring for the **sockshop** project and **carts** service as explained [here](../../reference/monitoring/prometheus/#setup-prometheus).
+1. Configure the Prometheus SLI provider for your project as explained [here](../../reference/monitoring/prometheus/#setup-prometheus-sli-provider). The ConfigMap that need to be applied is provided in the `examples/onboarding-carts` folder.
 
-1. Configure the Prometheus SLI provider for the **sockshop** project as explained [here](../../reference/monitoring/prometheus/#setup-prometheus-sli-provider). The ConfigMap that need to be applied is provided in the `examples/onboarding-carts` folder.
-
-1. To configure Keptn to use the Prometheus SLI provider for the **sockshop** project, apply the below ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
+1. To configure Keptn to use the Prometheus SLI provider for your project, first adapt the ConfigMap in the `lighthouse-source-prometheus.yaml` file at the `metatdata.name` property. Afterwards, apply the ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
 
     ```console
     kubectl apply -f lighthouse-source-prometheus.yaml
@@ -88,25 +114,22 @@ For this tutorial you will need to set up monitoring, either using the open-sour
       sli-provider: prometheus
     kind: ConfigMap
     metadata:
-      name: lighthouse-config-sockshop
+      name: lighthouse-config-PROJECTNAME
       namespace: keptn
     ```
 
 </p>
 </details>
 
-### Option 2: Dynatrace
-<details><summary>Expand instructions</summary>
+<details><summary>Dynatrace SLI provider</summary>
 <p>
 
-1. Please complete the instructions for setting up [Dynatrace monitoring](../../reference/monitoring/dynatrace#setup-dynatrace).
+1. Configure the Dynatrace SLI provider for your project as explained [here](../../reference/monitoring/dynatrace/#setup-dynatrace-sli-provider).
 
-1. Configure the Dynatrace SLI provider for the **sockshop** project as explained [here](../../reference/monitoring/dynatrace/#setup-dynatrace-sli-provider).
-
-1. To configure Keptn to use the Dynatrace SLI provider for the **sockshop** project, apply the below ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
+1. To configure Keptn to use the Dynatrace SLI provider for your project, first adapt the ConfigMap in the `lighthouse-source-dynatrace.yaml` file at the `metatdata.name` property. Afterwards, apply the ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
 
     ```console
-    kubectl apply -f lighthouse-source-prometheus.yaml
+    kubectl apply -f lighthouse-source-dynatrace.yaml
     ```
 
     ```yaml
@@ -115,7 +138,7 @@ For this tutorial you will need to set up monitoring, either using the open-sour
       sli-provider: dynatrace
     kind: ConfigMap
     metadata:
-      name: lighthouse-config-sockshop
+      name: lighthouse-config-PROJECTNAME
       namespace: keptn
     ```
 
@@ -124,7 +147,7 @@ For this tutorial you will need to set up monitoring, either using the open-sour
 
 ## Keptn quality gates in action 
 
-At this point, your carts service is ready and we can now start triggering evaluations of the SLO. The Keptn quality gates is a two step procedure that consists of starting the evaluation and polling for the results.
+At this point, your service is ready and we can now start triggering evaluations of the SLO. The Keptn quality gates is a two step procedure that consists of starting the evaluation and polling for the results.
 
 At a specific point in time, e.g., after you have executed your tests or you have waited for enough live traffic, you can either start the evaluation of the Keptn quality gates manually using the Keptn CLI, or automate it by either including the Keptn CLI calls in your automation scripts, or by directly accessing the Keptn REST API. 
 
@@ -133,13 +156,13 @@ At a specific point in time, e.g., after you have executed your tests or you hav
 * Execute a quality gate evaluation by using the Keptn CLI to [send event start-evaluation](../../reference/cli/#keptn-send-event-start-evaluation): 
 
   ```console
-  keptn send event start-evaluation --project=sockshop --stage=hardening --service=carts --period=5m
+  keptn send event start-evaluation --project=musicshop --stage=hardening --service=catalogue --period=5m
   ```
 
-  This `start-evaluation` event will kick off the evaluation of the SLO of the carts service over the last 5 minutes. Evaluations can be done in seconds but may also take a while as every SLI provider needs to query each SLIs first. This is why the Keptn CLI will return the `keptnContext`, which is basically a token we can use to poll the status of this particular evaluation. The output of the previous command looks like this:
+  This `start-evaluation` event will kick off the evaluation of the SLO of the catalogue service over the last 5 minutes. Evaluations can be done in seconds but may also take a while as every SLI provider needs to query each SLIs first. This is why the Keptn CLI will return the `keptnContext`, which is basically a token we can use to poll the status of this particular evaluation. The output of the previous command looks like this:
 
   ```console
-  Starting to send a start-evaluation event to evaluate the service sampleservice in project sample
+  Starting to send a start-evaluation event to evaluate the service catalogue in project musicshop
   ID of Keptn context: 6cd3e469-cbd3-4f73-xxxx-8b2fb341bb11
   ```
 
@@ -168,9 +191,9 @@ At a specific point in time, e.g., after you have executed your tests or you hav
     "data": {
       "start": "2019-11-21T11:00:00.000Z",
       "end": "2019-11-21T11:05:00.000Z",
-      "project": "sockshop",
+      "project": "musicshop",
       "stage": "hardening",
-      "service": "carts",
+      "service": "catalogue",
       "teststrategy": "manual"
     }
   }
@@ -179,10 +202,10 @@ At a specific point in time, e.g., after you have executed your tests or you hav
 * Execute a quality gate evaluation by sending a POST request with the Keptn API toke and the prepared payload:
 
   ```console
-  curl -X POST "http://api.keptn.12.34.56.78.xip.io/v1/event" -H "accept: application/json" -H "x-token: YOUR_KEPTN_TOKEN" -H "Content-Type: application/json" -d "{ \"data\": { \"end\": \"2019-11-21T11:05:00.000Z\", \"project\": \"sockshop\", \"service\": \"carts\", \"stage\": \"hardening\", \"start\": \"2019-11-21T11:00:00.000Z\", \"teststrategy\": \"manual\" }, \"type\": \"sh.keptn.event.start-evaluation\"}"
+  curl -X POST "http://api.keptn.12.34.56.78.xip.io/v1/event" -H "accept: application/json" -H "x-token: YOUR_KEPTN_TOKEN" -H "Content-Type: application/json" -d "{ \"data\": { \"end\": \"2019-11-21T11:05:00.000Z\", \"project\": \"musicshop\", \"service\": \"catalogue\", \"stage\": \"hardening\", \"start\": \"2019-11-21T11:00:00.000Z\", \"teststrategy\": \"manual\" }, \"type\": \"sh.keptn.event.start-evaluation\"}"
   ```
 
-  This request will kick off the evaluation of the SLO of the carts service over the last 5 minutes. Evaluations can be done in seconds but may also take a while as every SLI provider needs to query each SLIs first. This is why the Keptn CLI will return the `keptnContext`, which is basically a token we can use to poll the status of this particular evaluation. The response to the POST request looks like this:
+  This request will kick off the evaluation of the SLO of the catalogue service over the last 5 minutes. Evaluations can be done in seconds but may also take a while as every SLI provider needs to query each SLIs first. This is why the Keptn CLI will return the `keptnContext`, which is basically a token we can use to poll the status of this particular evaluation. The response to the POST request looks like this:
 
   ```console
   {"keptnContext":"384dae76-2d31-41e6-9204-39f2c1513906","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDU0NDA4ODl9.OdkhIoJ9KuT4bm7imvEXHdEPjnU0pl5S7DqGibNa924"}
@@ -194,4 +217,4 @@ At a specific point in time, e.g., after you have executed your tests or you hav
   curl -X GET "http://api.keptn.12.34.56.78.xip.io/v1/event?keptnContext=KEPTN_CONTEXT_ID&type=sh.keptn.events.evaluation-done" -H "accept: application/json" -H "x-token: YOUR_KEPTN_TOKEN"
   ```
 
-  The result comes in the form of the `evaluation-done` event, that is specified [here](https://github.com/keptn/spec/blob/0.1.1/cloudevents.md#evaluation-done).
+  The result comes in the form of the `evaluation-done` event, which is specified [here](https://github.com/keptn/spec/blob/0.1.1/cloudevents.md#evaluation-done).
