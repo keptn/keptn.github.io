@@ -1,12 +1,12 @@
 ---
 title: Keptn Quality Gates only
-description: Describes how Keptn allows to use quality gates without deployment and testing features of Keptn.
+description: Describes how Keptn allows to use quality gates without delivery and testing capabilities of Keptn.
 weight: 26
 keywords: [quality-gates]
 aliases:
 ---
 
-Describes how Keptn allows to use quality gates without deployment and testing features of Keptn.
+Describes how Keptn allows to use quality gates without delivery and testing capabilities of Keptn.
 
 ## About this tutorial
 
@@ -14,37 +14,15 @@ Let's say you want to use your existing tools for deploying and testing your app
 
 *A brief recap of SLO and SLI:* A service level objective (SLO) is a target value or range of values for a service level that is measured by a service level indicator (SLI). An SLI is a carefully defined quantitative measure of some aspect of the level of service that is provided. By default, the following SLIs can be used for evaluation, inspired by the [Site Reliability Engineering](https://landing.google.com/sre/sre-book/chapters/service-level-objectives) book from Google:
 
-* *Response Time*: The time it takes for a service to execute and complete a task or how long it takes to return a response to a request.
-* *System Throughput*: The number of requests per second that have been processed.
-* *Error Rate*: The fraction of all received requests that produced an error.
+* *Response time*: The time it takes for a service to execute and complete a task or how long it takes to return a response to a request.
+* *System throughput*: The number of requests per second that have been processed.
+* *Error rate*: The fraction of all received requests that produced an error.
 
 For more information about SLO and SLI, please take a look at [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/spec/blob/0.1.1/sre.md).
 
 ## Prerequisites
 
-* **Bring your own monitored service**: This tutorial is slightly different to the others because you need to bring you own monitored service depending on the monitoring solution you want use. For the sake of clarification, this tutorial uses project *musicshop* and service *catalogue* - adapt the commands to match your project and service. 
-
-    <details><summary>*Service monitored by Prometheus*</summary>
-    <p>
-    
-    * requirements for Prometheus
-
-    </p>
-    </details>
-
-    <details><summary>*Service monitored by Dynatrace*</summary>
-    <p>
-
-    * Please make sure that your service has the tags: **keptn_project**, **keptn_stage**, **keptn_service** set, as shown below:
-      {{< popup_image
-        link="./assets/monitored_service.png"
-        caption="catalogue service"
-        width="50%">}}
-    
-    </p>
-    </details>
-
-* Running Keptn installation or a quality gates only installation as explained below
+* Running Keptn installation or a quality gates only installation as explained below.
 
 * Clone example files used for this tutorial:
 
@@ -62,9 +40,31 @@ For more information about SLO and SLI, please take a look at [Specifications fo
     * `slo_quality-gates.yaml`
     * `lighthouse-source-prometheus.yaml` (for Prometheus only)
 
+* **Bring your own monitored service**: This tutorial is slightly different compared to the others because you need to bring your own monitored service depending on the monitoring solution you want to use. For the sake of clarification, this tutorial uses project *musicshop* and service *catalogue* meaning that you must adapt the commands to match your project and service name. 
+
+    <details><summary>*Details for a service monitored by Prometheus*</summary>
+    <p>
+    
+    * requirements for Prometheus
+
+    </p>
+    </details>
+
+    <details><summary>*Details for a service monitored by Dynatrace*</summary>
+    <p>
+
+    * Please make sure that your service has the tags: **keptn_project**, **keptn_stage**, **keptn_service** set, as shown below:
+      {{< popup_image
+        link="./assets/monitored_service.png"
+        caption="catalogue service"
+        width="50%">}}
+    
+    </p>
+    </details>
+
 ## Install Keptn just for this use case
 
-If you want to install Keptn just to explore the capabilities of Keptn quality gates, you have the option to roll-out Keptn **without** components for automated delivery and operations. Therefore, set the `use-case` flag to `quality-gates` when executing the [install](../../reference/cli/#keptn-install) command as shown below:
+If you want to install Keptn just to explore the capabilities of Keptn quality gates, you have the option to roll-out Keptn **without** components for automated delivery and operations. Therefore, set the `use-case` flag to `quality-gates` when executing the [install](../../reference/cli/#keptn-install) command:
 
 ```console
 keptn install --platform=[aks|eks|gke|openshift|pks|kubernetes] --use-case=quality-gates
@@ -85,9 +85,9 @@ keptn install --platform=[aks|eks|gke|openshift|pks|kubernetes] --use-case=quali
   keptn create service catalogue --project=musicshop
   ```
 
-  **Note:** Since you are not deploying a service in this tutorial [keptn create service](../../reference/cli/#keptn-create-service) does not require you to provide a Helm chart compared to the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command. 
+  **Note:** Since you are not actively deploying a service in this tutorial, [keptn create service](../../reference/cli/#keptn-create-service) does not require you to provide a Helm chart compared to the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command. 
 
-* To activate the quality gate for your service, upload the `slo_quality-gates.yaml` file using the [add-resource](../../reference/cli/#keptn-add-resource) command:
+* To activate the quality gate for your service, upload the `slo_quality-gates.yaml` file:
 
   ```console
   keptn add-resource --project=musicshop --service=catalogue --stage=hardening --resource=slo_quality-gates.yaml --resourceUri=slo.yaml
@@ -102,7 +102,7 @@ For this tutorial you need to deploy the correspondig SLI provider for your moni
 
 1. Configure the Prometheus SLI provider for your project as explained [here](../../reference/monitoring/prometheus/#setup-prometheus-sli-provider). The ConfigMap that need to be applied is provided in the `examples/onboarding-carts` folder.
 
-1. To configure Keptn to use the Prometheus SLI provider for your project, first adapt the ConfigMap in the `lighthouse-source-prometheus.yaml` file at the `metatdata.name` property. Afterwards, apply the ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
+1. To configure Keptn to use the deployed Prometheus SLI provider for your project, first adapt the ConfigMap in the `lighthouse-source-prometheus.yaml` file at the `metatdata.name` property. Afterwards, apply the ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
 
     ```console
     kubectl apply -f lighthouse-source-prometheus.yaml
@@ -126,7 +126,7 @@ For this tutorial you need to deploy the correspondig SLI provider for your moni
 
 1. Configure the Dynatrace SLI provider for your project as explained [here](../../reference/monitoring/dynatrace/#setup-dynatrace-sli-provider).
 
-1. To configure Keptn to use the Dynatrace SLI provider for your project, first adapt the ConfigMap in the `lighthouse-source-dynatrace.yaml` file at the `metatdata.name` property. Afterwards, apply the ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
+1. To configure Keptn to use the deployed Dynatrace SLI provider for your project, first adapt the ConfigMap in the `lighthouse-source-dynatrace.yaml` file at the `metatdata.name` property. Afterwards, apply the ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
 
     ```console
     kubectl apply -f lighthouse-source-dynatrace.yaml
@@ -147,7 +147,7 @@ For this tutorial you need to deploy the correspondig SLI provider for your moni
 
 ## Keptn quality gates in action 
 
-At this point, your service is ready and we can now start triggering evaluations of the SLO. The Keptn quality gates is a two step procedure that consists of starting the evaluation and polling for the results.
+At this point, your service is ready and you can now start triggering evaluations of the SLO. The Keptn quality gates is a two step procedure that consists of starting the evaluation and polling for the results.
 
 At a specific point in time, e.g., after you have executed your tests or you have waited for enough live traffic, you can either start the evaluation of the Keptn quality gates manually using the Keptn CLI, or automate it by either including the Keptn CLI calls in your automation scripts, or by directly accessing the Keptn REST API. 
 
