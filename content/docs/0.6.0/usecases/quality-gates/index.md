@@ -42,14 +42,6 @@ For more information about SLO and SLI, please take a look at [Specifications fo
 
 * **Bring your own monitored service**: This tutorial is slightly different compared to the others because you need to bring your own monitored service depending on the monitoring solution you want to use. For the sake of clarification, this tutorial uses a service called *catalogue* from the project *musicshop* meaning that you must adapt the commands to match your service and project name.  
 
-    <details><summary>*Details for a service monitored by Prometheus*</summary>
-    <p>
-
-    * requirements for Prometheus
-
-    </p>
-    </details>
-
     <details><summary>*Details for a service monitored by Dynatrace*</summary>
     <p>
 
