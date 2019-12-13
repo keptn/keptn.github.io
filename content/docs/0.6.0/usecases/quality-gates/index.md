@@ -38,13 +38,13 @@ For more information about SLO and SLI, please take a look at [Specifications fo
 
     * `shipyard_quality_gates.yaml` 
     * `slo_quality-gates.yaml`
-    * `lighthouse-source-prometheus.yaml` (for Prometheus only)
+    * `lighthouse-source-prometheus.yaml` (Prometheus only)
 
-* **Bring your own monitored service**: This tutorial is slightly different compared to the others because you need to bring your own monitored service depending on the monitoring solution you want to use. For the sake of clarification, this tutorial uses project *musicshop* and service *catalogue* meaning that you must adapt the commands to match your project and service name. 
+* **Bring your own monitored service**: This tutorial is slightly different compared to the others because you need to bring your own monitored service depending on the monitoring solution you want to use. For the sake of clarification, this tutorial uses a service called *catalogue* from the project *musicshop* meaning that you must adapt the commands to match your service and project name.  
 
     <details><summary>*Details for a service monitored by Prometheus*</summary>
     <p>
-    
+
     * requirements for Prometheus
 
     </p>
@@ -53,12 +53,28 @@ For more information about SLO and SLI, please take a look at [Specifications fo
     <details><summary>*Details for a service monitored by Dynatrace*</summary>
     <p>
 
-    * Please make sure that your service has the tags: **keptn_project**, **keptn_stage**, **keptn_service** set, as shown below:
+    To gather the monitoring data of your service, it must have the tags **keptn_project**, **keptn_stage**, and **keptn_service** attached: 
       {{< popup_image
         link="./assets/monitored_service.png"
         caption="catalogue service"
         width="50%">}}
-    
+
+    To add those tags:
+
+    * Add the environment variable [DT_CUSTOM_PROP](../../reference/monitoring/dynatrace/#set-dt-custom-prop-before-onboarding-a-service) with a key-value pair for each tag to your deployment manifest and deploy your service: 
+
+      ```
+      env:
+      - name: DT_CUSTOM_PROP
+        value: "keptn_project=musicshop keptn_service=catalogue keptn_stage=hardening"
+      ``` 
+
+    * Afterwards, you have to add tagging rules in Dynatrace to catch up these values and to create the tags for your monitored entity. Therefore, you can use the script [applyAutoTaggingRules.sh](https://github.com/keptn-contrib/dynatrace-service/blob/release-0.5.0/deploy/scripts/applyAutoTaggingRules.sh) with the parameters Tenant ID and API Token: 
+
+      ```console
+      .\applyAutoTaggingRules.sh $DT_TENANT $DT_API_TOKEN
+      ```
+      
     </p>
     </details>
 
@@ -102,7 +118,7 @@ For this tutorial you need to deploy the correspondig SLI provider for your moni
 
 1. Configure the Prometheus SLI provider for your project as explained [here](../../reference/monitoring/prometheus/#setup-prometheus-sli-provider). The ConfigMap that need to be applied is provided in the `examples/onboarding-carts` folder.
 
-1. To configure Keptn to use the deployed Prometheus SLI provider for your project, first adapt the ConfigMap in the `lighthouse-source-prometheus.yaml` file at the `metatdata.name` property. Afterwards, apply the ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
+1. To tell Keptn to use the deployed Prometheus SLI provider for your project, first adapt the ConfigMap in the `lighthouse-source-prometheus.yaml` file at the `metatdata.name` property to reference your project. Afterwards, apply the ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
 
     ```console
     kubectl apply -f lighthouse-source-prometheus.yaml
@@ -126,7 +142,7 @@ For this tutorial you need to deploy the correspondig SLI provider for your moni
 
 1. Configure the Dynatrace SLI provider for your project as explained [here](../../reference/monitoring/dynatrace/#setup-dynatrace-sli-provider).
 
-1. To configure Keptn to use the deployed Dynatrace SLI provider for your project, first adapt the ConfigMap in the `lighthouse-source-dynatrace.yaml` file at the `metatdata.name` property. Afterwards, apply the ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
+1. To tell Keptn to use the deployed Dynatrace SLI provider for your project, first adapt the ConfigMap in the `lighthouse-source-dynatrace.yaml` file at the `metatdata.name` property to reference your project. Afterwards, apply the ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
 
     ```console
     kubectl apply -f lighthouse-source-dynatrace.yaml
