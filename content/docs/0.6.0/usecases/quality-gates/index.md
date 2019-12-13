@@ -1,5 +1,5 @@
 ---
-title: Keptn Quality Gates only
+title: Quality Gates for external Deployments
 description: Describes how Keptn allows to use quality gates without delivery and testing capabilities of Keptn.
 weight: 26
 keywords: [quality-gates]
@@ -10,9 +10,9 @@ Describes how Keptn allows to use quality gates without delivery and testing cap
 
 ## About this tutorial
 
-Let's say you want to use your existing tools for deploying and testing your applications - you can still use Keptn Quality Gates for extensive evaluation of Service Level Objectives (SLOs).
+Let's say you want to use your existing tools to deploy and test your applications - you can still use *Keptn`s Quality Gates* for the evaluation of Service Level Objectives (SLOs).
 
-*A brief recap of SLO and SLI:* A service level objective (SLO) is a target value or range of values for a service level that is measured by a service level indicator (SLI). An SLI is a carefully defined quantitative measure of some aspect of the level of service that is provided. By default, the following SLIs can be used for evaluation, inspired by the [Site Reliability Engineering](https://landing.google.com/sre/sre-book/chapters/service-level-objectives) book from Google:
+*A brief recap of SLO and SLI:* A Service Level Objective (SLO) is a target value or range of values for a service level that is measured by a Service Level Indicator (SLI). An SLI is a carefully defined quantitative measure of some aspect of the level of service that is provided. By default, the following SLIs can be used for evaluation, inspired by the [Site Reliability Engineering](https://landing.google.com/sre/sre-book/chapters/service-level-objectives) book from Google:
 
 * *Response time*: The time it takes for a service to execute and complete a task or how long it takes to return a response to a request.
 * *System throughput*: The number of requests per second that have been processed.
@@ -80,7 +80,7 @@ For more information about SLO and SLI, please take a look at [Specifications fo
 
 ## Install Keptn just for this use case
 
-If you want to install Keptn just to explore the capabilities of Keptn quality gates, you have the option to roll-out Keptn **without** components for automated delivery and operations. Therefore, set the `use-case` flag to `quality-gates` when executing the [install](../../reference/cli/#keptn-install) command:
+If you want to install Keptn just to explore the capabilities of quality gates, you have the option to roll-out Keptn **without** components for automated delivery and operations. Therefore, set the `use-case` flag to `quality-gates` when executing the [install](../../reference/cli/#keptn-install) command:
 
 ```console
 keptn install --platform=[aks|eks|gke|openshift|pks|kubernetes] --use-case=quality-gates
@@ -163,11 +163,11 @@ For this tutorial you need to deploy the correspondig SLI provider for your moni
 </p>
 </details>
 
-## Keptn quality gates in action 
+## Quality gates in action 
 
-At this point, your service is ready and you can now start triggering evaluations of the SLO. The Keptn quality gates is a two step procedure that consists of starting the evaluation and polling for the results.
+At this point, your service is ready and you can now start triggering evaluations of the SLO. A quality gate is a two step procedure that consists of starting the evaluation and polling for the results.
 
-At a specific point in time, e.g., after you have executed your tests or you have waited for enough live traffic, you can either start the evaluation of the Keptn quality gates manually using the Keptn CLI, or automate it by either including the Keptn CLI calls in your automation scripts, or by directly accessing the Keptn REST API. 
+At a specific point in time, e.g., after you have executed your tests or you have waited for enough live traffic, you can either start the evaluation of a quality gate manually using the Keptn CLI, or automate it by either including the Keptn CLI calls in your automation scripts, or by directly accessing the Keptn REST API. 
 
 ### Keptn CLI
 
