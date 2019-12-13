@@ -38,7 +38,7 @@ For more information about SLO and SLI, please take a look at [Specifications fo
 
     * `shipyard_quality_gates.yaml` 
     * `slo_quality-gates.yaml`
-    * `lighthouse-source-prometheus.yaml` (Prometheus only)
+    * `lighthouse-source-prometheus.yaml` | `lighthouse-source-dynatrace.yaml`
 
 * **Bring your own monitored service**: This tutorial is slightly different compared to the others because you need to bring your own monitored service depending on the monitoring solution you want to use. For the sake of clarification, this tutorial uses a service called *catalogue* from the project *musicshop* meaning that you must adapt the commands to match your service and project name.  
 
@@ -108,6 +108,8 @@ keptn install --platform=[aks|eks|gke|openshift|pks|kubernetes] --use-case=quali
   ```console
   keptn add-resource --project=musicshop --service=catalogue --stage=hardening --resource=slo_quality-gates.yaml --resourceUri=slo.yaml
   ```
+
+  **Note:** The activated quality gates is passed when the absolute value of the response time is below 600ms and the relative change of the response time compared to the previous evaluation is below 10%. The quality gates raises a warning when the absolute value of the response time is below 800ms.
 
 ## Install SLI provider
 
