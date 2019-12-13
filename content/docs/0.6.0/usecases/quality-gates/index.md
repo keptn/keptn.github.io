@@ -118,7 +118,13 @@ For this tutorial you need to deploy the correspondig SLI provider for your moni
 <details><summary>Prometheus SLI provider</summary>
 <p>
 
-1. Configure the Prometheus SLI provider for your project as explained [here](../../reference/monitoring/prometheus/#setup-prometheus-sli-provider). The ConfigMap that need to be applied is provided in the `examples/onboarding-carts` folder.
+1. Check if the Prometheus SLI provider is already available in your Keptn: 
+
+    ```console
+    kubectl get deployment -n keptn prometheus-sli-service
+    ```
+
+1. If the Prometheus SLI provider is not available, deploy and configure it for your project as explained [here](../../reference/monitoring/prometheus/#setup-prometheus-sli-provider). The ConfigMap that need to be applied is provided in the `examples/onboarding-carts` folder.
 
 1. To tell Keptn to use the deployed Prometheus SLI provider for your project, first adapt the ConfigMap in the `lighthouse-source-prometheus.yaml` file at the `metatdata.name` property to reference your project. Afterwards, apply the ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
 
@@ -142,7 +148,13 @@ For this tutorial you need to deploy the correspondig SLI provider for your moni
 <details><summary>Dynatrace SLI provider</summary>
 <p>
 
-1. Configure the Dynatrace SLI provider for your project as explained [here](../../reference/monitoring/dynatrace/#setup-dynatrace-sli-provider).
+1. Check if the Dynatrace SLI provider is already available in your Keptn: 
+
+    ```console
+    kubectl get deployment -n keptn dynatrace-sli-service
+    ```
+
+1. If the Dynatrace SLI provider is not available, deploy and configure it for your project as explained [here](../../reference/monitoring/dynatrace/#setup-dynatrace-sli-provider).
 
 1. To tell Keptn to use the deployed Dynatrace SLI provider for your project, first adapt the ConfigMap in the `lighthouse-source-dynatrace.yaml` file at the `metatdata.name` property to reference your project. Afterwards, apply the ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
 
