@@ -122,7 +122,7 @@ oneagent-5lcqh                                 0/1     Running   0          3s
 oneagent-ps6t4                                 0/1     Running   0          3s
 ```
 
-**Note 1:** To monitor the services that are already onboarded in the `dev`, `staging`, and `production` namespace, make sure to restart the pods. If you defined different environments in your shipyard file, please adjust the parameters accordingly. 
+**Note 1:** To monitor the services that are already onboarded in the **dev**, **staging**, and **production** namespace, make sure to restart the pods. If you defined different environments in your shipyard file, please adjust the parameters accordingly. 
 ```console
 kubectl delete pods --all --namespace=sockshop-dev
 ```
@@ -168,6 +168,54 @@ This means that Dynatrace will automatically apply tags to your onboarded servic
 
 In addition, a *Problem Notification* has automatically been set up to inform Keptn of any problems with your services to allow auto-remediation. This will be described in more detail in the [Runbook Automation](../../usecases/runbook-automation-and-self-healing/) tutorial. You can check the problem notification by navigating to **Settings > Integration > Problem notifications** and you will find a **keptn remediation** problem notification.
 
+## Setup Dynatrace SLI provider
+
+During the evaluation of a quality gate, the Dynatrace SLI provider is required that is implemented by an internal Keptn service, the *dynatrace-sli-service*. This servcie will fetch the values for the SLIs that are referenced in a SLO configuration.
+
+* To install the *dynatrace-sli-service*, complete the following tasks:
+    
+  ```console
+  git clone --branch 0.2.0 https://github.com/keptn-contrib/dynatrace-sli-service --single-branch
+  ```
+
+  ```console
+  cd dynatrace-sli-service/deploy
+  ```
+  
+  ```console
+  kubectl apply -f distributor.yaml
+  ```
+
+  ```console
+  kubectl apply -f service.yaml
+  ```
+
+* To verify the deplyoment, execute:
+
+  ```console
+  kubectl get pods -n keptn | grep dynatrace-sli
+  ```
+
+  ```console
+  dynatrace-sli-service
+  dynatrace-sli-service-monitoring-configure-distributor
+  ```
+
+**Note:** If you don't monitor your Kubernetes cluster with Dynatrace (i.e., you have not completed the steps from [Setup Dynatrace](./#setup-dynatrace)), the *dynatrace-sli-service* needs a *secret* containing the **Tenant ID** and **API token** in a yaml file as shown below.
+
+* Provide a the file `your_credential_file.yaml` with following content:
+  
+  ```yaml
+  DT_TENANT: YOUR_TENANT_ID.live.dynatracelabs.com
+  DT_API_TOKEN: XYZ123456789
+  ```
+
+* Before executing the next command, please adapt the instruction to match the name of your project. Then, create the secret in the **keptn** namespace using:
+
+  ```console
+  kubectl create secret generic dynatrace-credentials-PROJECTNAME -n "keptn" --from-file=dynatrace-credentials=your_credential_file.yaml
+  ```
+
 ## Set DT_CUSTOM_PROP before onboarding a service
 
 The created tagging rules in Dynatrace expect the environment variable `DT_CUSTOM_PROP` for your onboarded service. Consequently, make sure to specify the environment variable for deployment in the Helm chart of the service you are going to onboard with the following value: 
@@ -187,19 +235,20 @@ The dynatrace-service in Keptn will take care of pushing events of the Keptn wor
     caption="Keptn events"
     width="500px">}}
 
-## (optional) Create process group naming rule in Dynatrace
+## Create process group naming rule in Dynatrace
 
-1. Create a naming rule for process groups
-    1. Go to **Settings**, **Process and containers**, and click on **Process group naming**.
-    1. Create a new process group naming rule with **Add new rule**.
-    1. Edit that rule:
-        * Rule name: `Container.Namespace`
-        * Process group name format: `{ProcessGroup:KubernetesContainerName}.{ProcessGroup:KubernetesNamespace}`
-        * Condition: `Kubernetes namespace` > `exits`
-    1. Click on **Preview** and **Save**.
+While it is not a technical requirement, we encourage you setting up a process group naming rule within Dynatrace.
+
+  1. Go to **Settings**, **Process and containers**, and click on **Process group naming**.
+  1. Create a new process group naming rule with **Add new rule**.
+  1. Edit that rule:
+      * Rule name: `Container.Namespace`
+      * Process group name format: `{ProcessGroup:KubernetesContainerName}.{ProcessGroup:KubernetesNamespace}`
+      * Condition: `Kubernetes namespace` > `exits`
+  1. Click on **Preview** and **Save**.
 
     Screenshot shows this rule definition.
-    {{< popup_image
+    {{< popup_image 
     link="./assets/pg_naming.png"
     caption="Dynatrace naming rule">}}
 

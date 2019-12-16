@@ -42,43 +42,31 @@ This quality gate checks whether the average response time of the service is und
 ## Prerequisites
 
 - Finish the [Onboarding a Service](../onboard-carts-service/) tutorial (deploys carts version 0.10.1).
-- Set up monitoring for the carts service (see below)
 
-### Set up of monitoring for the carts service
-For this tutorial you will need to set up monitoring for the carts service, either using the open-source monitoring solution *Prometheus* (automatically installed with Keptn) or *Dynatrace* (optional). 
+## Set up quality gate and monitoring
+Keptn requires a performance specification for the quality gate. This specification is described in a file called `slo.yaml`, which contains a description of Service Level Objectives (SLO) that should be met by a service. To learn more about the *slo.yaml* file, go to [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/spec/blob/0.1.1/sre.md).
 
-Additionally, Keptn requires a performance specification for the quality gate. This specification is described in a file called `slo.yaml`, which contains a description of Service Level Objectives (SLO) that should be met by a service. To learn more about the *slo.yaml* file, go to [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/spec/blob/0.1.1/sre.md).
+* Activate the quality gates for the carts service. Therefore, navigate to the `examples/onboarding-carts` folder and upload the `slo_quality-gates.yaml` file using the [add-resource](../../reference/cli/#keptn-add-resource) command:
 
-Option 1 and Option 2 set up monitoring and configure the quality gate with based on pre-defined SLOs.
+```console
+keptn add-resource --project=sockshop --service=carts --stage=staging --resource=slo_quality-gates.yaml --resourceUri=slo.yaml
+```
 
-#### Option 1: Prometheus
+For this tutorial you will need to set up monitoring for the carts service, either using the open-source monitoring solution *Prometheus* or *Dynatrace*.
+
+### Option 1: Prometheus
 <details><summary>Expand instructions</summary>
 <p>
 
-* To set up the quality gates for the carts service, please navigate to the `examples/onboarding-carts` folder. This folder contains the file `slo_quality-gates.yaml`. Upload it with the [add-resource](../../reference/cli/#keptn-add-resource) command:
+1. Configure Prometheus monitoring for the **sockshop** project and **carts** service as explained [here](../../reference/monitoring/prometheus/#setup-prometheus).
+
+1. Configure the Prometheus SLI provider for the **sockshop** project as explained [here](../../reference/monitoring/prometheus/#setup-prometheus-sli-provider). The ConfigMap that need to be applied is provided in the `examples/onboarding-carts` folder.
+
+1. To configure Keptn to use the Prometheus SLI provider for the **sockshop** project, apply the below ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
 
     ```console
-    keptn add-resource --project=sockshop --service=carts --stage=staging --resource=slo_quality-gates.yaml --resourceUri=slo.yaml
+    kubectl apply -f lighthouse-source-prometheus.yaml
     ```
-
-* Execute the following command to set up the rules for the *Prometheus Alerting Manager* based on those quality gates:
-
-    ```
-    keptn configure monitoring prometheus --project=sockshop --service=carts
-    ```
-
-* To verify that the Prometheus scrape jobs are correctly set up, you can access Prometheus by enabling port-forwarding for the prometheus-service:
-
-    ```console
-    kubectl port-forward svc/prometheus-service 8080 -n monitoring
-    ```
-
-    Prometheus is then available on [localhost:8080/targets](http://localhost:8080/targets) where you can see the three targets for the carts service:
-
-    {{< popup_image link="./assets/prometheus-targets.png" caption="Prometheus Targets">}}
-
-
-* **Note:** The evaluation of the test runs will be performed by an internal Keptn service, called the **lighthouse-service**. While this service is responsible for evaluating the SLI results based on the criteria found in the `slo.yaml` file, it depends on an SLI-source service to retrieve the actual values of the SLIs. In this example, we are using the **prometheus-sli-service**. To inform the **lighthouse-service** to use the **prometheus-sli-service** for the **sockshop** project, the following `ConfigMap` will be used:
 
     ```yaml
     apiVersion: v1
@@ -90,48 +78,22 @@ Option 1 and Option 2 set up monitoring and configure the quality gate with base
       namespace: keptn
     ```
 
-* Apply the ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
+</p>
+</details>
+
+### Option 2: Dynatrace
+<details><summary>Expand instructions</summary>
+<p>
+
+1. Please complete the instructions for setting up [Dynatrace monitoring](../../reference/monitoring/dynatrace#setup-dynatrace).
+
+1. Configure the Dynatrace SLI provider for the **sockshop** project as explained [here](../../reference/monitoring/dynatrace/#setup-dynatrace-sli-provider).
+
+1. To configure Keptn to use the Dynatrace SLI provider for the **sockshop** project, apply the below ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
 
     ```console
     kubectl apply -f lighthouse-source-prometheus.yaml
     ```
-
-* **Note** During an evaluation of the quality gates, an internal Keptn service, the **prometheus-sli-service** will fetch the values for the `response_time_p95` SLI that is referenced in the `slo.yaml` file. To tell the service how to acquire this value, the correct query needs to be configured. This can be done by storing the following `ConfigMap` in the `keptn` namespace:
-
-    ```yaml
-    apiVersion: v1
-    data:
-      custom-queries: |
-        cpu_usage: avg(rate(container_cpu_usage_seconds_total{namespace="$PROJECT-$STAGE",pod_name=~"$SERVICE-primary-.*"}[5m]))
-        response_time_p95: histogram_quantile(0.95, sum by(le) (rate(http_response_time_milliseconds_bucket{handler="ItemsController.addToCart",job="$SERVICE-$PROJECT-$STAGE-canary"}[$DURATION_SECONDS])))
-    kind: ConfigMap
-    metadata:
-      name: prometheus-sli-config-sockshop
-      namespace: keptn
-    ```
-
-* Apply the ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
-
-    ```console
-    kubectl apply -f prometheus-sli-config.yaml
-    ```
-
- </p>
-</details>
-
-#### Option 2: Dynatrace
-<details><summary>Expand instructions</summary>
-<p>
-Please make sure you have completed the installation instructions for setting up [Dynatrace OneAgent](../../reference/monitoring/dynatrace).
-
-* To set up the quality gates for the carts service, please navigate to the `examples/onboarding-carts` folder. This folder contains the file `slo_quality-gates.yaml`. Upload it with the [add-resource](../../reference/cli/#keptn-add-resource) command:
-
-    ```console
-    keptn add-resource --project=sockshop --service=carts --stage=staging --resource=slo_quality-gates.yaml --resourceUri=slo.yaml
-    ```
-
-* **Note:** The evaluation of the test runs will be performed by an internal Keptn service, called the **lighthouse-service**. While this service is responsible for evaluating the SLI results based on the criteria found in the `slo.yaml` file, it depends on an SLI-source service to retrieve the actual values of the SLIs. In this example, we are using the **dynatrace-sli-service**.
-To inform the **lighthouse-service** to use the **dynatrace-sli-service** for the **sockshop** project, the following `ConfigMap` will be used:
 
     ```yaml
     apiVersion: v1
@@ -142,59 +104,6 @@ To inform the **lighthouse-service** to use the **dynatrace-sli-service** for th
       name: lighthouse-config-sockshop
       namespace: keptn
     ```
-
-* Apply the ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
-
-    ```console
-    kubectl apply -f lighthouse-source-dynatrace.yaml
-    ```
-
-* The **dynatrace-sli-service** needs to be installed using:
-    
-    ```console
-    git clone --branch 0.2.0 https://github.com/keptn-contrib/dynatrace-sli-service --single-branch
-    ```
-
-    ```console
-    cd dynatrace-sli-service/deploy
-    ```
-    
-    ```console
-    kubectl apply -f distributor.yaml
-    ```
-
-    ```console
-    kubectl apply -f service.yaml
-    ```
-
-* To verify that the deployment has worked, execute:
-
-    ```console
-    kubectl get pods -n keptn | grep dynatrace-sli
-    ```
-
-    ```console
-    dynatrace-sli-service
-    dynatrace-sli-service-monitoring-configure-distributor
-    ```
-
-* Last but not least, the **dynatrace-sli-service** needs a secret containing the following data:
-
-    * Tenant id
-    * API token
-
-    Example: 
-
-  ```yaml
-  DT_TENANT: your_tenant_id.live.dynatracelabs.com
-  DT_API_TOKEN: XYZ123456789
-  ```
-
-* Add the credential in the **keptn namespace** using:
-
-  ```console
-  kubectl create secret generic dynatrace-credentials-sockshop -n "keptn" --from-file=dynatrace-credentials=your_credential_file.yaml
-  ```
 
 </p>
 </details>

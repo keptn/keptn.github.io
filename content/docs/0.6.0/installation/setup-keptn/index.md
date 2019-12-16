@@ -185,7 +185,7 @@ Every release of Keptn provides binaries for the Keptn CLI. These binaries are a
 
 ## Install Keptn
 
-To install the latest release of Keptn on a Kuberntes cluster, execute the [keptn install](../../reference/cli/#keptn-install) command and provide the requested information. Since v0.3 of Keptn, the install command accepts a parameter to select the platform you would like to install Keptn on. Currently supported platforms are: 
+To install the latest release of Keptn on a Kuberntes cluster, execute the [keptn install](../../reference/cli/#keptn-install) command and provide the requested information. Since v0.3 of Keptn, the install command accepts the platform flag to select the target platform you would like to install Keptn on. Currently supported platforms are: 
 
 - Azure Kubernetes Services (AKS):
 
@@ -247,6 +247,12 @@ In the Kubernetes cluster, this command creates the **keptn**, **keptn-datastore
         </ul>
     </details>
     
+
+**Note:** If you want to install Keptn just for the use case of [Keptn Quality Gates](../../usecases/quality-gates/), you have the option to roll-out Keptn **without** components for automated delivery and operations. Therefore, the use-case flag must be set to `quality-gates`:
+
+```console
+keptn install --platform=[aks|eks|gke|openshift|pks|kubernetes] --keptn-version=release-0.6.0.beta2 --use-case=quality-gates
+```
 
 ## Configure a custom domain (required for EKS)
 
