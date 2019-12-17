@@ -36,8 +36,8 @@ For more information about SLO and SLI, please take a look at [Specifications fo
 
     The files you need are:
 
-    * `shipyard_quality_gates.yaml` 
-    * `slo_quality-gates.yaml`
+    * `shipyard-quality-gates.yaml` 
+    * `slo-quality-gates.yaml`
     * `lighthouse-source-prometheus.yaml` | `lighthouse-source-dynatrace.yaml`
 
 * **Bring your own monitored service**: This tutorial is slightly different compared to the others because you need to bring your own monitored service depending on the monitoring solution you want to use. For the sake of clarification, this tutorial uses a service called *catalogue* from the project *musicshop* meaning that you must adapt the commands to match your service and project name.  
@@ -95,10 +95,10 @@ keptn install --platform=[aks|eks|gke|openshift|pks|kubernetes] --use-case=quali
 
   **Note:** Since you are not actively deploying a service in this tutorial, [keptn create service](../../reference/cli/#keptn-create-service) does not require you to provide a Helm chart compared to the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command. 
 
-* To activate the quality gate for your service, upload the `slo_quality-gates.yaml` file:
+* To activate the quality gate for your service, upload the `slo-quality-gates.yaml` file:
 
   ```console
-  keptn add-resource --project=musicshop --service=catalogue --stage=hardening --resource=slo_quality-gates.yaml --resourceUri=slo.yaml
+  keptn add-resource --project=musicshop --service=catalogue --stage=hardening --resource=slo-quality-gates.yaml --resourceUri=slo.yaml
   ```
 
   **Note:** The activated quality gates is passed when the absolute value of the response time is below 600ms and the relative change of the response time compared to the previous evaluation is below 10%. The quality gates raises a warning when the absolute value of the response time is below 800ms.
@@ -134,6 +134,12 @@ For this tutorial you need to deploy the correspondig SLI provider for your moni
       namespace: keptn
     ```
 
+1. Finally, upload the Prometheus-specific SLI configuration as stored in the `sli-config-prometheus.yaml` file:
+
+    ```console
+    keptn add-resource --project=sockshop --service=carts --stage=staging --resource=sli-config-prometheus.yaml --resourceUri=prometheus/sli.yaml
+    ```
+
 </p>
 </details>
 
@@ -162,6 +168,12 @@ For this tutorial you need to deploy the correspondig SLI provider for your moni
     metadata:
       name: lighthouse-config-PROJECTNAME
       namespace: keptn
+    ```
+
+1. Finally, upload the Dynatrace-specific SLI configuration as stored in the `sli-config-dynatrace.yaml` file:
+
+    ```console
+    keptn add-resource --project=sockshop --service=carts --stage=staging --resource=sli-config-dynatrace.yaml --resourceUri=dynatrace/sli.yaml
     ```
 
 </p>
