@@ -41,7 +41,7 @@ In order to add these files to Keptn and to automatically configure Prometheus, 
     ```
 
     ```console
-    keptn add-resource --project=sockshop --service=carts --stage=production --resource=slo_self-healing_prometheus.yaml --resourceUri=slo.yaml
+    keptn add-resource --project=sockshop --service=carts --stage=production --resource=slo-self-healing-prometheus.yaml --resourceUri=slo.yaml
     ```
 
     ```console

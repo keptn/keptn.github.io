@@ -44,12 +44,12 @@ This quality gate checks whether the average response time of the service is und
 - Finish the [Onboarding a Service](../onboard-carts-service/) tutorial (deploys carts version 0.10.1).
 
 ## Set up quality gate and monitoring
-Keptn requires a performance specification for the quality gate. This specification is described in a file called `slo.yaml`, which contains a description of Service Level Objectives (SLO) that should be met by a service. To learn more about the *slo.yaml* file, go to [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/spec/blob/0.1.1/sre.md).
+Keptn requires a performance specification for the quality gate. This specification is described in a file called `slo.yaml`, which contains a description of Service Level Objectives (SLO) that should be met by a service. To learn more about the *slo.yaml* and *sli.yaml* files, go to [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/spec/blob/0.1.1/sre.md).
 
-* Activate the quality gates for the carts service. Therefore, navigate to the `examples/onboarding-carts` folder and upload the `slo_quality-gates.yaml` file using the [add-resource](../../reference/cli/#keptn-add-resource) command:
+* Activate the quality gates for the carts service. Therefore, navigate to the `examples/onboarding-carts` folder and upload the `slo-quality-gates.yaml` file using the [add-resource](../../reference/cli/#keptn-add-resource) command:
 
 ```console
-keptn add-resource --project=sockshop --service=carts --stage=staging --resource=slo_quality-gates.yaml --resourceUri=slo.yaml
+keptn add-resource --project=sockshop --service=carts --stage=staging --resource=slo-quality-gates.yaml --resourceUri=slo.yaml
 ```
 
 For this tutorial you will need to set up monitoring for the carts service, either using the open-source monitoring solution *Prometheus* or *Dynatrace*.
@@ -78,6 +78,12 @@ For this tutorial you will need to set up monitoring for the carts service, eith
       namespace: keptn
     ```
 
+1. Finally, upload the Prometheus-specific SLI configuration as stored in the `sli-config-prometheus.yaml` file:
+
+    ```console
+    keptn add-resource --project=sockshop --service=carts --stage=staging --resource=sli-config-prometheus.yaml --resourceUri=prometheus/sli.yaml
+    ```
+
 </p>
 </details>
 
@@ -103,6 +109,12 @@ For this tutorial you will need to set up monitoring for the carts service, eith
     metadata:
       name: lighthouse-config-sockshop
       namespace: keptn
+    ```
+
+1. Finally, upload the Dynatrace-specific SLI configuration as stored in the `sli-config-dynatrace.yaml` file:
+
+    ```console
+    keptn add-resource --project=sockshop --service=carts --stage=staging --resource=sli-config-dynatrace.yaml --resourceUri=dynatrace/sli.yaml
     ```
 
 </p>
