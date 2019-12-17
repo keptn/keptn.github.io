@@ -21,6 +21,8 @@ In this tutorial you will learn how to use the capabilities of Keptn to provide 
     git clone --branch 0.6.0.beta2 https://github.com/keptn/examples.git --single-branch
     ```
 
+- [Setup monitoring with Dynatrace](../../reference/monitoring/dynatrace/)
+
 - Access to an Unleash server with an access token (see below).
 
 ## Onboard and deploy the Unleash server with Keptn
