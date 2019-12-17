@@ -18,46 +18,23 @@ In this tutorial you will learn how to use the capabilities of Keptn to provide 
 - Clone the example repository, which contains specification files:
 
     ```console
-    git clone --branch 0.6.0.beta https://github.com/keptn/examples.git --single-branch
+    git clone --branch 0.6.0.beta2 https://github.com/keptn/examples.git --single-branch
     ```
 
-## Onboard and deploy the Unleash server
+- Access to an Unleash server with an access token (see below).
 
-For the sake of this tutorial, the Unleash server is setup in the same Kubernetes cluster as Keptn, but in fact it does not matter where to run the server, the only requirement is that its API must be available for Keptn. 
+## Onboard and deploy the Unleash server with Keptn
 
-1. First, we are going to onboard the Unleash server and its database using the [onboard service](../../reference/cli/#keptn-onboard-service) command:
+**Note**: You can skip this step if you already have access to an Unleash server. 
 
-    ```console
-    keptn onboard service unleash-db --project=sockshop --chart=./unleash-db --deployment-strategy=direct
-    ```
+To quickly get an Unleash server up and running with Keptn, follow the instructions provided here: https://github.com/keptn/examples/tree/master/unleash-server .
 
-    ```console
-    keptn onboard service unleash --project=sockshop --chart=./unleash --deployment-strategy=direct
-    ``` 
+In the end you should be able to access your unleash server using the url provided by the following command:
+```console
+echo http://unleash.sockshop-production.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
+```
 
-2. We can deploy both the database and the actual Unleash server by executing the [keptn send event new-artifact](../../reference/cli/#keptn-send-event-new-artifact) command:
-
-    ```console
-    keptn send event new-artifact --project=sockshop --service=unleash-db --image=postgres:10.4
-    ```
-
-    ```console
-    keptn send event new-artifact --project=sockshop --service=unleash --image=docker.io/jetzlstorfer/unleash-server:0.1
-    ```
-
-3. To retrieve the frontend of the Unleash server, visit the URL in the respective namespace by copy and pasting the following commands in your terminal:
-
-    ```console
-    echo http://unleash.sockshop-dev.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
-    ```
-
-    ```console
-    echo http://unleash.sockshop-staging.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
-    ```
-
-    ```console
-    echo http://unleash.sockshop-production.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
-    ```
+You should be able to login using the credentials *keptn/keptn*.
 
 ## Configure the Unleash server
 
@@ -67,29 +44,23 @@ In this tutorial, we are going to introduce feature toggles for two scenarios:
 
 1. Feature flag for a promotion campaign that can be enabled whenever you want to run a promotional campaign on top of your shopping cart.
 
-To set up both feature flags, navigate to your Unleash server in your production environment and log in with *keptn / keptn*. 
+To set up both feature flags, navigate to your Unleash server and log in. 
 
-1. Again you can find the URL by executing the following command:
-
-    ```console
-    echo http://unleash.sockshop-production.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
-    ```
-
-2. Click on the red **+** to add a new feature toggle.
+1. Click on the red **+** to add a new feature toggle.
 
     {{< popup_image
         link="./assets/unleash-add.png"
         caption="Add new feature toggle"
         width="700px">}}
 
-3. Name the feature toggle **EnableItemsCache** and add **carts** in the description field.
+1. Name the feature toggle **EnableItemsCache** and add **carts** in the description field.
 
     {{< popup_image
         link="./assets/unleash-cache.png"
         caption="Add new feature toggle"
         width="700px">}}
 
-4. Create another feature toggle by following the same procedure and by naming it the feature toggle **EnablePromotion** and by adding **carts** in the description field.
+1. Create another feature toggle by following the same procedure and by naming it the feature toggle **EnablePromotion** and by adding **carts** in the description field.
 
     {{< popup_image
         link="./assets/unleash-promotion.png"
@@ -98,12 +69,17 @@ To set up both feature flags, navigate to your Unleash server in your production
 
 ## Configure Keptn
 
-Now everything is set up in the Unleash server. For Keptn to be able to connect to the Unleash server, we have to add a secret with the Unleash API URL as well as the Unleash tokens. #
+Now everything is set up in the Unleash server. For Keptn to be able to connect to the Unleash server, we have to add a secret with the Unleash API URL as well as the Unleash tokens.
 
-1. Execute the following command but replace *xxx* with the actual URL of the Unleash server.
+1. Execute the following command but replace *$URL* with the actual URL, $USER with the user and $TOKEN with the token of your Unleash server.
 
     ```console
-    kubectl -n keptn create secret generic unleash --from-literal="UNLEASH_SERVER_URL=http://unleash.sockshop-production/api" --from-literal="UNLEASH_USER=keptn" --from-literal="UNLEASH_TOKEN=keptn"
+    kubectl -n keptn create secret generic unleash --from-literal="UNLEASH_SERVER_URL=$URL/api" --from-literal="UNLEASH_USER=$USER" --from-literal="UNLEASH_TOKEN=$TOKEN"
+    ```
+
+    If you have onboarded unleash using Keptn, you can use the following command:
+    ```console
+    kubectl -n keptn create secret generic unleash --from-literal="UNLEASH_SERVER_URL=unleash.unleash-dev/api" --from-literal="UNLEASH_USER=keptn" --from-literal="UNLEASH_TOKEN=keptn"
     ```
 
 2. Keptn has to be aware of the new secret and have to load it for it to connect to the Unleash server to set the feature toggles. Therefore, the remediation service must be restarted:
@@ -112,39 +88,36 @@ Now everything is set up in the Unleash server. For Keptn to be able to connect 
     kubectl delete pod -l=run=remediation-service -n keptn
     ```
 
-3. Finally, remediation instructions in case something goes wrong have to be added to Keptn.
+3. Finally, switch to the carts example (`cd examples/onboarding-carts`) and add the following remediation instructions
+    ```
+    remediations:
+    - name: "Response time degradation"
+      actions:
+        - action: featuretoggle
+          value: EnableItemCache:on
+    - name: "Failure rate increase"
+      actions:
+        - action: featuretoggle
+          value: EnablePromotion:off
+    ```
+    using the command:
 
     ```console
-    keptn add-resource --project=sockshop --service=carts --stage=production --resource=remediation.yaml --resourceUri=remediation.yaml
+    keptn add-resource --project=sockshop --service=carts --stage=production --resource=remediation_feature_toggle.yaml --resourceUri=remediation.yaml
     ```
 
-**Note:** The file holds the following content, which is a declarative way to define remediation actions in response to problems/alerts that are sent to Keptn.
-    
-```yaml
-remediations:
-- name: cpu_usage
-actions:
-- action: scaling
-    value: +1
-- name: "Response time degradation"
-actions:
-- action: featuretoggle
-    value: EnableItemCache:on
-- name: "Failure rate increase"
-actions:
-- action: featuretoggle
-    value: EnablePromotion:off
-```
+    **Note:** The file describes remediation actions (e.g., `featuretoggle`) in response to problems/alerts (e.g., `Response time degradation`) that are sent to Keptn.
 
-Now everything is set up, next we are going to hit the application with some load and toggle the feature flags.
+Now that everything is set up, next we are going to hit the application with some load and toggle the feature flags.
 
 ## Run the tutorial
 
 In order to simulate user traffic, we are going to execute the following script that will constantly add items to the shopping cart.
 
-1. Move to the folder with the load generation program. 
+1. Change into the folder with the load generation program within the examples repo:
+
     ```console
-    cd ../load-generation/bin
+    cd load-generation/bin
     ```
 
 2. Start the according load generation program depending on your operating system (replace *_OS_ with either *linux, mac* or *win*).
