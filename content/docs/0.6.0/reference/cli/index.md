@@ -80,12 +80,6 @@ The Keptn CLI allows to install Keptn on Azure Kubernetes Services (AKS), Amazon
 
 **Optional keptn install flags**
 
-* `keptn-version` - To specify a specfic Keptn release to install. 
-
-    ```console
-    keptn install --keptn-version=0.6.0
-    ```
-
 * `gateway` - To specify the gateway type which can be *NodePort* or *LoadBalancer*. 
 
     ```console
