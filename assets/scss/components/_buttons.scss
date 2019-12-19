@@ -37,8 +37,10 @@
   border: 2px solid #222222;
   box-sizing: border-box;
 
-  .icon--hover {
-    display: none;
+  .icon {
+    &--hover {
+      display: none;
+    }
   }
 
   &:hover {
@@ -48,10 +50,10 @@
 
     .icon {
       display: none;
-    }
 
-    .icon--hover {
-      display: inline;
+      &--hover {
+        display: inline;
+      }
     }
   }
 }
