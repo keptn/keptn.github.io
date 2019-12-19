@@ -8,23 +8,6 @@ keywords: setup
 
 In order to evaluate the quality gates and allow self-healing in production, we have to set up monitoring to get the needed data.
 
-## Prerequisites
-
-Please make sure to have the following tool(s) installed:
-
-- [jq](https://stedolan.github.io/jq/) - a lightweight and flexible command-line JSON processor. 
-
-<details><summary>*Open for installation instructions*</summary>
-<p>
-
-  ```console
-  sudo apt-get update
-  sudo apt install jq -y
-  ```
-
-</p>
-</details>
-
 ## Setup Dynatrace
 
 1. Bring your Dynatrace SaaS or Dynatrace-managed tenant
@@ -52,55 +35,33 @@ Please make sure to have the following tool(s) installed:
 
     In your Dynatrace tenant, go to **Settings > Integration > Platform as a Service**, and create a new PaaS Token.
 
-1. Clone the install repository and setup your credentials by executing the following steps:
+1. Store your credentials in a Kubernetes secret by executing the following command:
+
   ```console
-  git clone --branch 0.5.0 https://github.com/keptn-contrib/dynatrace-service --single-branch
+  kubectl -n keptn create secret generic dynatrace --from-literal="DT_API_TOKEN=<DT_API_TOKEN>" --from-literal="DT_TENANT=<DT_TENANT>" --from-literal="DT_PAAS_TOKEN=<DT_PAAS_TOKEN>"
   ```
-  ```console
-  cd dynatrace-service/deploy/scripts
-  ```
-  ```console
-  ./defineDynatraceCredentials.sh
-  ```
-    When the  script asks for your Dynatrace tenant, please enter your tenant according to the appropriate pattern:
+
+  **Note:** The $DT_TENANT has to be set according to the appropriate pattern:
       - Dynatrace SaaS tenant: `{your-environment-id}.live.dynatrace.com`
       - Dynatrace-managed tenant: `{your-domain}/e/{your-environment-id}`
 
-1. Execute the installation script for your platform:
+1. Get the latest dynatrace-service version and deploy it: 
 
-  - If you are on **Azure AKS**, please execute
+  ```console
+  git clone --branch master https://github.com/keptn-contrib/dynatrace-service --single-branch
+  ```
 
-    ```console
-    ./deployDynatraceOnAKS.sh
-    ```
+  ```console
+  kubectl apply -f deploy/manifests/dynatrace-service/dynatrace-service.yaml
+  ```
 
-    - If you are on **AWS EKS**, please execute
+1. When the service is deployed, use the following command to let the dynatrace-service install Dynatrace on your cluster. If Dynatrace is already deployed, the current deployment of Dynatrace will not be modified.
 
-    ```console
-    ./deployDynatraceOnEKS.sh
-    ```
+  ```console
+  keptn configure monitoring dynatrace
+  ```
 
-  - If you are on **Google GKE**, please execute
-
-    ```console
-    ./deployDynatraceOnGKE.sh
-    ```
-        
-    Please read **Note 2** after this section in case you are running GKE Container-optimized os.
-
-  - If you are on **Pivotal PKS**, please execute
-
-    ```console
-    ./deployDynatraceOnPKS.sh
-    ```
-
-  - If you are on **OpenShift**, please execute
-
-    ```console
-    ./deployDynatraceOnOpenshift.sh
-    ```
-
-When this script is finished, the Dynatrace OneAgent and the *dynatrace-service* are deployed in your cluster. Execute the following commands to verify the deployment of the OneAgent as well as of the *dynatrace-service*.
+When this step is finished, the Dynatrace OneAgent is deployed in your cluster. Execute the following commands to verify the deployment of the OneAgent as well as of the *dynatrace-service*.
 
 ```console
 kubectl get svc dynatrace-service -n keptn
@@ -122,7 +83,12 @@ oneagent-5lcqh                                 0/1     Running   0          3s
 oneagent-ps6t4                                 0/1     Running   0          3s
 ```
 
-**Note 1:** To monitor the services that are already onboarded in the **dev**, **staging**, and **production** namespace, make sure to restart the pods. If you defined different environments in your shipyard file, please adjust the parameters accordingly. 
+**Note 1:** If you already have created a project using Keptn and would like to enable Dynatrace monitoring for that project afterwards, please execute the following command:
+  ```console
+  keptn configure monitoring dynatrace --project=PROJECTNAME
+  ```
+
+**Note 2:** To monitor the services that are already onboarded in the **dev**, **staging**, and **production** namespace, make sure to restart the pods. If you defined different environments in your shipyard file, please adjust the parameters accordingly. 
 ```console
 kubectl delete pods --all --namespace=sockshop-dev
 ```
@@ -133,7 +99,7 @@ kubectl delete pods --all --namespace=sockshop-staging
 kubectl delete pods --all --namespace=sockshop-production
 ```
 
-**Note 2:** If the nodes in your cluster run on *Container-Optimized OS (cos)* (default for GKE), the Dynatrace OneAgent might not work properly, and another step is necessary. To verify that the OneAgent does not work properly, the output of `kubectl get pods -n dynatrace` might look as follows:
+**Note 3:** If the nodes in your cluster run on *Container-Optimized OS (cos)* (default for GKE), the Dynatrace OneAgent might not work properly, and another step is necessary. To verify that the OneAgent does not work properly, the output of `kubectl get pods -n dynatrace` might look as follows:
 ```console
 NAME                                           READY   STATUS             RESTARTS   AGE
 dynatrace-oneagent-operator-7f477bf78d-dgwb6   1/1     Running            0          8m21s
@@ -153,7 +119,7 @@ Then apply the file using:
 kubectl apply -f cr.yml
 ```
 
-Finally, don't forget to restart the pods as described in **Note 1** above.
+Finally, don't forget to restart the pods as described in **Note 2** above.
 
 ### Verify setup in Dynatrace
 
@@ -259,15 +225,11 @@ If you want to uninstall Dynatrace, there are scripts provided to do so. Uninsta
 1. (optional) If you do not have the *dynatrace-service* repository, clone the latest release using:
 
   ```console
-  git clone --branch 0.5.0 https://github.com/keptn-contrib/dynatrace-service --single-branch
+  git clone --branch master https://github.com/keptn-contrib/dynatrace-service --single-branch
   ```
 
 1. Go to correct folder and execute the `uninstallDynatrace.sh` script:
 
   ```console
-  cd dynatrace-service/deploy/scripts
-  ```
-
-  ```console
-  ./uninstallDynatrace.sh
+  ./dynatrace-service/deploy/scripts/uninstallDynatrace.sh
   ```
