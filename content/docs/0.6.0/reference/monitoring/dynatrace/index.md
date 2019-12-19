@@ -6,7 +6,7 @@ icon: setup
 keywords: setup
 ---
 
-In order to evaluate the quality gates and allow self-healing in production, we have to set up monitoring to get the needed data.
+To evaluate the quality gates and allow self-healing in production, we have to set up monitoring to get the needed data.
 
 ## Setup Dynatrace
 
@@ -95,7 +95,7 @@ oneagent-ps6t4                                 0/1     Running   0          3s
 
 - *Problem notification:* Automatically a problem notification has been set up to inform Keptn of any problems with your services to allow auto-remediation. You can check the problem notification by navigating to **Settings > Integration > Problem notifications** and you will find a **keptn remediation** problem notification.
 
-- *Dashboard:* When creating a new Keptn project or executing the keptn configure monitoring command for a particular project (see Note 1), a Dashboard will be geenrated reflecting the environment as specified in the shipyard file.
+- *Dashboard:* When creating a new Keptn project or executing the keptn configure monitoring command for a particular project (see Note 1), a Dashboard will be generated reflecting the environment as specified in the shipyard file.
 
 ---
 
@@ -123,7 +123,7 @@ oneagent-b22m4                                 0/1     Error              6     
 oneagent-k7jn6                                 0/1     CrashLoopBackOff   6          8m15s
 ```
 
-1. This means that after the initial setup with `deployDynatrace.sh`, which is a step below, the `cr.yml` has to be edited and applied again.  You can do that by editing the already downloaded `cr.yml` in `../manifests/dynatrace/gen` and set the environemnt variable as follows:
+1. This means that after the initial setup with `deployDynatrace.sh`, which is a step below, the `cr.yml` has to be edited and applied again.  You can do that by editing the already downloaded `cr.yml` in `../manifests/dynatrace/gen` and set the environment variable as follows:
 
         env:
         - name: ONEAGENT_ENABLE_VOLUME_STORAGE
@@ -139,7 +139,7 @@ oneagent-k7jn6                                 0/1     CrashLoopBackOff   6     
 
 ## Setup Dynatrace SLI provider
 
-During the evaluation of a quality gate, the Dynatrace SLI provider is required that is implemented by an internal Keptn service, the *dynatrace-sli-service*. This servcie will fetch the values for the SLIs that are referenced in a SLO configuration.
+During the evaluation of a quality gate, the Dynatrace SLI provider is required that is implemented by an internal Keptn service, the *dynatrace-sli-service*. This service will fetch the values for the SLIs that are referenced in an SLO configuration.
 
 * To install the *dynatrace-sli-service*, complete the following tasks:
     
@@ -202,15 +202,15 @@ The created tagging rules in Dynatrace expect the environment variable `DT_CUSTO
 
 ## See Keptn events in Dynatrace
 
-The dynatrace-service in Keptn will take care of pushing events of the Keptn workflow to the artifacts that have been onboarded. For example, the deployment as well as custom infos like starting and finishing of tests will appear in the details screen of your services in your Dynatrace tenant.
+The dynatrace-service in Keptn will take care of pushing events of the Keptn workflow to the artifacts that have been onboarded. For example, the deployment and custom infos - like starting and finishing of tests - will appear in the details screen of your services in your Dynatrace tenant.
     {{< popup_image
     link="./assets/custom_events.png"
     caption="Keptn events"
     width="500px">}}
 
-## Create process group naming rule in Dynatrace
+## Create a process group naming rule in Dynatrace
 
-While it is not a technical requirement, we encourage you setting up a process group naming rule within Dynatrace.
+While it is not a technical requirement, we encourage you to set up a process group naming rule within Dynatrace.
 
   1. Go to **Settings**, **Process and containers**, and click on **Process group naming**.
   1. Create a new process group naming rule with **Add new rule**.
