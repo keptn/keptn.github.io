@@ -221,7 +221,7 @@ At a specific point in time, e.g., after you have executed your tests or you hav
 
   ```yaml
   {
-    "type": "sh.keptn.event.start-evaluation"
+    "type": "sh.keptn.event.start-evaluation",
     "data": {
       "start": "2019-11-21T11:00:00.000Z",
       "end": "2019-11-21T11:05:00.000Z",
