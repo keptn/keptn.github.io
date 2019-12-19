@@ -91,6 +91,7 @@ Now everything is set up in the Unleash server. For Keptn to be able to connect 
     ```
 
 3. Finally, switch to the carts example (`cd examples/onboarding-carts`) and add the following remediation instructions
+
     ```
     remediations:
     - name: "Response time degradation"
