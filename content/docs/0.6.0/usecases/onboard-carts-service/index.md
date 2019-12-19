@@ -134,8 +134,6 @@ After creating the project, services can be onboard to this project.
     ```console
     keptn add-resource --project=sockshop --service=carts --stage=staging --resource=jmeter/load.jmx --resourceUri=jmeter/load.jmx
     ```
-  
-    **Note**: A basic health-check (i.e., accessing `/health` of the carts-service) is always executed before the functional and performance tests are executed.
 
 Since the carts service requires a mongodb database, a second service needs to be onboarded.
 
