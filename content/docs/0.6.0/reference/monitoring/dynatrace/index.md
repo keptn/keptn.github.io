@@ -45,6 +45,8 @@ To evaluate the quality gates and allow self-healing in production, we have to s
 
 1. Get the latest *dynatrace-service* version and deploy it: 
 
+    **Attention:** There is no official release of the dynatrace-service yet. It will be available with the Keptn 0.6.0 release, which is planned for mid of January 2020. For an experimental try, you can use the master branch as shown below:
+
     ```console
     git clone --branch master https://github.com/keptn-contrib/dynatrace-service --single-branch
     ```
