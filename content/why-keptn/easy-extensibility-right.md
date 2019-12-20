@@ -1,1 +1,1 @@
-![Easy Extensibility](/images/why-keptn/easy-extensibility.jpg)
+![Easy Extensibility](/images/why-keptn/easy-extensibility.png)

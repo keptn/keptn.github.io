@@ -1,1 +1,1 @@
-![Maintenance](/images/why-keptn/maintenance.jpg)
+![Maintenance](/images/why-keptn/maintenance.png)

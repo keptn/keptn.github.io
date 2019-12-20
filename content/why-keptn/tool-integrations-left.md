@@ -1,1 +1,1 @@
-![Tool Integrations](/images/why-keptn/tool-integrations.jpg)
+![Tool Integrations](/images/why-keptn/tool-integrations.png)

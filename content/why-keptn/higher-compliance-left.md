@@ -1,1 +1,1 @@
-![Higher Compliance](/images/why-keptn/higher-compliance.jpg)
+![Higher Compliance](/images/why-keptn/higher-compliance.png)

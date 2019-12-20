@@ -1,1 +1,1 @@
-![Observability](/images/why-keptn/observability.jpg)
+![Observability](/images/why-keptn/observability.png)
