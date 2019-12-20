@@ -126,13 +126,13 @@ After creating the project, services can be onboard to this project.
   * Functional tests for dev stage:
 
     ```console
-    keptn add-resource --project=sockshop --service=carts --stage=dev --resource=jmeter/basiccheck.jmx --resourceUri=jmeter/basiccheck.jmx
+    keptn add-resource --project=sockshop --stage=dev --service=carts --resource=jmeter/basiccheck.jmx --resourceUri=jmeter/basiccheck.jmx
     ```
 
   * Performance tests for staging stage:
 
     ```console
-    keptn add-resource --project=sockshop --service=carts --stage=staging --resource=jmeter/load.jmx --resourceUri=jmeter/load.jmx
+    keptn add-resource --project=sockshop --stage=staging --service=carts --resource=jmeter/load.jmx --resourceUri=jmeter/load.jmx
     ```
   
     **Note**: A basic health-check (i.e., accessing `/health` of the carts-service) is always executed before the functional and performance tests are executed.

@@ -49,7 +49,7 @@ Keptn requires a performance specification for the quality gate. This specificat
 * Activate the quality gates for the carts service. Therefore, navigate to the `examples/onboarding-carts` folder and upload the `slo-quality-gates.yaml` file using the [add-resource](../../reference/cli/#keptn-add-resource) command:
 
 ```console
-keptn add-resource --project=sockshop --service=carts --stage=staging --resource=slo-quality-gates.yaml --resourceUri=slo.yaml
+keptn add-resource --project=sockshop --stage=staging --service=carts --resource=slo-quality-gates.yaml --resourceUri=slo.yaml
 ```
 
 For this tutorial, you will need to set up monitoring for the carts service, either using the open-source monitoring solution *Prometheus* or *Dynatrace*.
