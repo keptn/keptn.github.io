@@ -44,19 +44,18 @@ Clicking on an endpoint reveals more details how to use it, including definition
     caption="Keptn Swagger API documentation - Example"
     width="700px">}}
 
-## Technical Details of the Gateway
+## Technical Details of the Cluster Gateway
 
-**Note:** The following descriptions are only valid for a full Keptn installation 
-(i.e., a Keptn installation which was not installed with `keptn install --use-case=quality-gates`).
+The following descriptions are only valid for a full Keptn installation 
+(i.e., a Keptn installation which was not installed for the quality-gates use case).
 
-Keptn uses [Istio](https://istio.io/) for connecting and controling the traffic.
+Keptn uses [Istio](https://istio.io/) for connecting and controlling the traffic.
 In order to receive incoming and outgoing connections,
 a [Gateway](https://istio.io/docs/reference/config/networking/gateway/) named `public-gateway` is available in the `istio-system` namespace.
 
 <details><summary>Details of the Gateway</summary>
     <p>
 
-    ```source
     apiVersion: networking.istio.io/v1alpha3
     kind: Gateway
     metadata:
@@ -82,7 +81,6 @@ a [Gateway](https://istio.io/docs/reference/config/networking/gateway/) named `p
         mode: SIMPLE
         privateKey: /etc/istio/ingressgateway-certs/tls.key
         serverCertificate: /etc/istio/ingressgateway-certs/tls.crt
-    ```
 
 </p>
 </details>
