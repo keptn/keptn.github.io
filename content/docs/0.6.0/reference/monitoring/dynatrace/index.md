@@ -43,7 +43,7 @@ To evaluate the quality gates and allow self-healing in production, we have to s
     kubectl -n keptn create secret generic dynatrace --from-literal="DT_API_TOKEN=<DT_API_TOKEN>" --from-literal="DT_TENANT=<DT_TENANT>" --from-literal="DT_PAAS_TOKEN=<DT_PAAS_TOKEN>"
     ```
 
-1. Get the latest dynatrace-service version and deploy it: 
+1. Get the latest *dynatrace-service* version and deploy it: 
 
     ```console
     git clone --branch master https://github.com/keptn-contrib/dynatrace-service --single-branch
@@ -53,7 +53,7 @@ To evaluate the quality gates and allow self-healing in production, we have to s
     kubectl apply -f deploy/manifests/dynatrace-service/dynatrace-service.yaml
     ```
 
-1. When the service is deployed, use the following command to let the dynatrace-service install Dynatrace on your cluster. If Dynatrace is already deployed, the current deployment of Dynatrace will not be modified.
+1. When the service is deployed, use the following command to install Dynatrace on your cluster. If Dynatrace is already deployed, the current deployment of Dynatrace will not be modified.
 
     ```console
     keptn configure monitoring dynatrace
@@ -95,7 +95,7 @@ oneagent-ps6t4                                 0/1     Running   0          3s
 
 - *Problem notification:* Automatically a problem notification has been set up to inform Keptn of any problems with your services to allow auto-remediation. You can check the problem notification by navigating to **Settings > Integration > Problem notifications** and you will find a **keptn remediation** problem notification.
 
-- *Dashboard:* When creating a new Keptn project or executing the keptn configure monitoring command for a particular project (see Note 1), a Dashboard will be generated reflecting the environment as specified in the shipyard file.
+- *Dashboard and Mangement zone:* When creating a new Keptn project or executing the [keptn configure monitoring](../../cli/#keptn-configure-monitoring) command for a particular project (see Note 1), a Dashboard and Management zone will be generated reflecting the environment as specified in the shipyard file.
 
 ---
 
@@ -201,7 +201,7 @@ The created tagging rules in Dynatrace expect the environment variable `DT_CUSTO
 
 ## See Keptn events in Dynatrace
 
-The dynatrace-service in Keptn will take care of pushing events of the Keptn workflow to the artifacts that have been onboarded. For example, the deployment and custom infos - like starting and finishing of tests - will appear in the details screen of your services in your Dynatrace tenant.
+The *dynatrace-service* in Keptn will take care of pushing events of the Keptn workflow to the artifacts that have been onboarded. For example, the deployment and custom infos - like starting and finishing of tests - will appear in the details screen of your services in your Dynatrace tenant.
     {{< popup_image
     link="./assets/custom_events.png"
     caption="Keptn events"

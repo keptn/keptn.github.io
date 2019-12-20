@@ -98,7 +98,7 @@ keptn install --platform=[aks|eks|gke|openshift|pks|kubernetes] --use-case=quali
 * To activate the quality gate for your service, upload the `slo-quality-gates.yaml` file:
 
   ```console
-  keptn add-resource --project=musicshop --service=catalogue --stage=hardening --resource=slo-quality-gates.yaml --resourceUri=slo.yaml
+  keptn add-resource --project=musicshop --stage=hardening --service=catalogue --resource=slo-quality-gates.yaml --resourceUri=slo.yaml
   ```
 
   **Note:** The activated quality gate is passed when the absolute value of the response time is below 600ms and the relative change of the response time compared to the previous evaluation is below 10%. The quality gate raises a warning when the absolute value of the response time is below 800ms.

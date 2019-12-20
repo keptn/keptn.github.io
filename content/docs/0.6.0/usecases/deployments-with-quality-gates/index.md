@@ -81,7 +81,7 @@ For this tutorial, you will need to set up monitoring for the carts service, eit
 1. Finally, upload the Prometheus-specific SLI configuration as stored in the `sli-config-prometheus.yaml` file:
 
     ```console
-    keptn add-resource --project=sockshop --service=carts --stage=staging --resource=sli-config-prometheus.yaml --resourceUri=prometheus/sli.yaml
+    keptn add-resource --project=sockshop --stage=staging --service=carts --resource=sli-config-prometheus.yaml --resourceUri=prometheus/sli.yaml
     ```
 
 </p>
@@ -114,7 +114,7 @@ For this tutorial, you will need to set up monitoring for the carts service, eit
 1. Finally, upload the Dynatrace-specific SLI configuration as stored in the `sli-config-dynatrace.yaml` file:
 
     ```console
-    keptn add-resource --project=sockshop --service=carts --stage=staging --resource=sli-config-dynatrace.yaml --resourceUri=dynatrace/sli.yaml
+    keptn add-resource --project=sockshop --stage=staging --service=carts --resource=sli-config-dynatrace.yaml --resourceUri=dynatrace/sli.yaml
     ```
 
 </p>
