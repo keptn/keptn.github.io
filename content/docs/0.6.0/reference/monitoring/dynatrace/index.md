@@ -197,7 +197,6 @@ The created tagging rules in Dynatrace expect the environment variable `DT_CUSTO
   env:
   - name: DT_CUSTOM_PROP
     value: "keptn_project={{ .Values.keptn.project }} keptn_service={{ .Values.keptn.service }} keptn_stage={{ .Values.keptn.stage }} keptn_deployment={{ .Values.keptn.deployment }}"
-        
 ```
 
 ## See Keptn events in Dynatrace

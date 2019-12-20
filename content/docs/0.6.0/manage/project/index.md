@@ -91,7 +91,7 @@ Keptn will manage a project in an internal Git repository. To upstream this repo
 
 ## Create a project
 
-In Keptn, a project is a structure that allows to organize your services. 
+In Keptn, a project is a structure that allows organizing your services. 
 A project is stored as a repository and contains branches representing the multi-stage environment (e.g., dev, staging, and production stage). In other words, the separation of stage configurations is based on repository branches. To describe the stages, a `shipyard.yaml` file is needed that specifies the name, deployment strategy, test strategy, and remediation strategy as shown by an example below:
 
 ```yaml
