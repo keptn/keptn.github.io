@@ -98,7 +98,7 @@ For this tutorial, you will need to set up monitoring for the carts service, eit
 1. To configure Keptn to use the Dynatrace SLI provider for the **sockshop** project, apply the below ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
 
     ```console
-    kubectl apply -f lighthouse-source-prometheus.yaml
+    kubectl apply -f lighthouse-source-dynatrace.yaml
     ```
 
     ```yaml
