@@ -63,7 +63,7 @@ To evaluate the quality gates and allow self-healing in production, we have to s
 
 **Verify deployment in your cluster**
 
-When keptn configure monitoring is finished, the Dynatrace OneAgent is deployed in your cluster. Execute the following commands to verify the deployment of the OneAgent as well as of the *dynatrace-service*:
+When [keptn configure monitoring](../../cli/#keptn-configure-monitoring) is finished, the Dynatrace OneAgent is deployed in your cluster. Execute the following commands to verify the deployment of the OneAgent as well as of the *dynatrace-service*:
 
 ```console
 kubectl get svc dynatrace-service -n keptn
@@ -125,16 +125,16 @@ oneagent-b22m4                                 0/1     Error              6     
 oneagent-k7jn6                                 0/1     CrashLoopBackOff   6          8m15s
 ```
 
-1. This means that after the initial setup with `deployDynatrace.sh`, which is a step below, the `cr.yml` has to be edited and applied again.  You can do that by editing the already downloaded `cr.yml` in `../manifests/dynatrace/gen` and set the environment variable as follows:
+1. This means that after the initial setup you need to edit the OneAgent custom resource in the Dynatrace namespace and add the following entry to the env section:
 
         env:
         - name: ONEAGENT_ENABLE_VOLUME_STORAGE
           value: "true"
 
-1. Then apply the file using:
+1. To edit the OneAgent custom resource: 
 
     ```console
-    kubectl apply -f cr.yml
+    kubectl edit oneagent -n dynatrace
     ```
 
 1. Finally, don't forget to restart the pods as described in **Note 2** above.

@@ -296,6 +296,8 @@ To configure a monitoring solution for a Keptn cluster, the `configure monitorin
 keptn configure monitoring [dynatrace|prometheus] --project=PROJECTNAME --service=SERVICENAME 
 ```
 
+**Note:** If you are executing `keptn configure monitoring dynatrace`, the service flag is optional since Keptn automatically detects the services of a project.
+
 ### keptn get event evaluation-done
 
 To retrieve an evaluation-done event from Keptn, the `get event evaluation-done` command is provided. This command takes the keptn context ID (`--kepnt-context`) from which the event should be returned.
