@@ -1,12 +1,12 @@
 ---
 title: Deployments with Quality Gates
-description: Describes how Keptn allows to deploy an artifact using automatic quality gates and blue/green deployments.
+description: Describes how Keptn allows deploying an artifact using automatic quality gates and blue/green deployments.
 weight: 25
 keywords: []
 aliases:
 ---
 
-Describes how Keptn allows to deploy an artifact using automatic quality gates and blue/green deployments.
+Describes how Keptn allows deploying an artifact using automatic quality gates and blue/green deployments.
 
 ## About this tutorial
 
@@ -19,7 +19,7 @@ For this tutorial, we prepared a *slow* and a *regular* version of the carts ser
 | docker.io/keptnexamples/carts:0.10.2  | Processes each request with a slowdown of 1 second |
 | docker.io/keptnexamples/carts:0.10.3  | Processes each request without any slowdown        |
 
-In this tutorial, we will deploy these two versions. During this deployment process, the versions have to pass a quality gate in the *staging* environment in order to get promoted to the *production* environment.
+In this tutorial, we will deploy these two versions. During this deployment process, the versions have to pass a quality gate in the *staging* environment to get promoted to the *production* environment.
 This quality gate checks whether the average response time of the service is under 1&nbsp;second. If the response time exceeds this threshold, the performance evaluation will be marked as failed.
 
 <details><summary>*Click here to learn more about the tutorial.*</summary>
@@ -43,7 +43,7 @@ This quality gate checks whether the average response time of the service is und
 
 - Finish the [Onboarding a Service](../onboard-carts-service/) tutorial (deploys carts version 0.10.1).
 
-## Set up quality gate and monitoring
+## Set up the quality gate and monitoring
 Keptn requires a performance specification for the quality gate. This specification is described in a file called `slo.yaml`, which contains a description of Service Level Objectives (SLO) that should be met by a service. To learn more about the *slo.yaml* and *sli.yaml* files, go to [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/spec/blob/0.1.1/sre.md).
 
 * Activate the quality gates for the carts service. Therefore, navigate to the `examples/onboarding-carts` folder and upload the `slo-quality-gates.yaml` file using the [add-resource](../../reference/cli/#keptn-add-resource) command:
@@ -52,7 +52,7 @@ Keptn requires a performance specification for the quality gate. This specificat
 keptn add-resource --project=sockshop --service=carts --stage=staging --resource=slo-quality-gates.yaml --resourceUri=slo.yaml
 ```
 
-For this tutorial you will need to set up monitoring for the carts service, either using the open-source monitoring solution *Prometheus* or *Dynatrace*.
+For this tutorial, you will need to set up monitoring for the carts service, either using the open-source monitoring solution *Prometheus* or *Dynatrace*.
 
 ### Option 1: Prometheus
 <details><summary>Expand instructions</summary>
@@ -60,7 +60,7 @@ For this tutorial you will need to set up monitoring for the carts service, eith
 
 1. Configure Prometheus monitoring for the **sockshop** project and **carts** service as explained [here](../../reference/monitoring/prometheus/#setup-prometheus).
 
-1. Configure the Prometheus SLI provider for the **sockshop** project as explained [here](../../reference/monitoring/prometheus/#setup-prometheus-sli-provider). The ConfigMap that need to be applied is provided in the `examples/onboarding-carts` folder.
+1. Configure the Prometheus SLI provider for the **sockshop** project as explained [here](../../reference/monitoring/prometheus/#setup-prometheus-sli-provider). The ConfigMap that needs to be applied is provided in the `examples/onboarding-carts` folder.
 
 1. To configure Keptn to use the Prometheus SLI provider for the **sockshop** project, apply the below ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
 
@@ -81,7 +81,7 @@ For this tutorial you will need to set up monitoring for the carts service, eith
 1. Finally, upload the Prometheus-specific SLI configuration as stored in the `sli-config-prometheus.yaml` file:
 
     ```console
-    keptn add-resource --project=sockshop --service=carts --stage=staging --resource=sli-config-prometheus.yaml --resourceUri=prometheus/sli.yaml
+    keptn add-resource --project=sockshop --stage=staging --service=carts --resource=sli-config-prometheus.yaml --resourceUri=prometheus/sli.yaml
     ```
 
 </p>
@@ -114,7 +114,7 @@ For this tutorial you will need to set up monitoring for the carts service, eith
 1. Finally, upload the Dynatrace-specific SLI configuration as stored in the `sli-config-dynatrace.yaml` file:
 
     ```console
-    keptn add-resource --project=sockshop --service=carts --stage=staging --resource=sli-config-dynatrace.yaml --resourceUri=dynatrace/sli.yaml
+    keptn add-resource --project=sockshop --stage=staging --service=carts --resource=sli-config-dynatrace.yaml --resourceUri=dynatrace/sli.yaml
     ```
 
 </p>
@@ -155,15 +155,15 @@ The [send event new-artifact](../../reference/cli/#keptn-send-event-new-artifact
 
 * **Phase 1**: Deploying, testing, and evaluating the test in the *dev* stage:
     * **helm-service**: This service deploys the new artifact to *dev*.
-    * **jmeter-service**: This service runs a basic health check and a functional tests in *dev*. Afterwards, this service sends an event of type `sh.keptn.events.tests-finished`. 
-    * **lighthouse-service**: This service picks up the event and evaluates the test runs based on the  performance signature. Since in the *dev* environment only functional tests are executed, the lighthouse-service will mark the test run as successful (functional failures would have been detected by the **jmeter-service**).
+    * **jmeter-service**: This service runs a basic health check and a functional test in *dev*. Afterwards, this service sends an event of type `sh.keptn.events.tests-finished`. 
+    * **lighthouse-service**: This service picks up the event and evaluates the test runs based on the performance signature. Since in the *dev* environment only functional tests are executed, the lighthouse-service will mark the test run as successful (functional failures would have been detected by the **jmeter-service**).
     * **gatekeeper-service**: This service promotes the artifact to the next stage, i.e., *staging*.
 
 * **Phase 2**: Deploying, testing, and evaluating the test in the *staging* stage:
     * **helm-service**: This service deploys the new artifact to *staging* using a blue/green deployment strategy.
     * **jmeter-service**: This service runs a performance test in *staging* and sends the `sh.keptn.events.tests-finished` event.
     * **lighthouse-service**: This service picks up the event and this time, the quality gates of the service will be evaluated because we are using the performance-test-strategy for this stage. This means that the lighthouse-service will send a `get-sli` event to fetch the metrics for the *carts* service from either Prometheus or Dynatrace, depending on how you set up the monitoring for your service earlier. Based on the results of that evaluation, the lighthouse-service will mark the test run execution as successful or failed. In our scenario, the lighthouse-service will mark it as failed since the response time thresholds will be exceeded.
-    * **gatekeeper-service**: This service receives a `sh.keptn.events.evaluation-done` event, which contains the result of the evaluation of the lighthouse-service. Since in this case the performance test run failed, the gatekeeper-service automatically initiates an rollback to the previous version in *staging* and the artifact won't be promoted to *production*.
+    * **gatekeeper-service**: This service receives a `sh.keptn.events.evaluation-done` event, which contains the result of the evaluation of the lighthouse-service. Since in this case the performance test failed, the gatekeeper-service automatically initiates a rollback to the previous version in *staging* and the artifact won't be promoted to *production*.
 
 </p>
 </details>
@@ -194,7 +194,7 @@ After triggering the deployment of the carts service in version v0.10.2, the fol
    keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.10.3
    ```
 
-1. To verify the deployment in *production*, open a browser an navigate to `http://carts.sockshop-production.YOUR.DOMAIN`. As a result, you see `Version: v3`.
+1. To verify the deployment in *production*, open a browser and navigate to `http://carts.sockshop-production.YOUR.DOMAIN`. As a result, you see `Version: v3`.
 
 1. Besides, you can verify the deployments in your Kubernetes cluster using the following commands: 
 
