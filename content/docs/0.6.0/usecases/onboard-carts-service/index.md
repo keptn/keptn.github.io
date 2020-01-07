@@ -1,12 +1,12 @@
 ---
 title: Onboarding a Service
-description: Shows you how to onboard the carts service including its database to a Keptn managed project. Besides, this tutorial shows how to deployed a new version of carts via Keptn.
+description: Shows you how to onboard the carts service including its database to a Keptn-managed project. Besides, this tutorial shows how to deploy  a new version of carts via Keptn.
 weight: 20
 keywords: [onboarding]
 aliases:
 ---
 
-Shows you how to onboard the carts service including its database to a Keptn managed project. Besides, this tutorial shows how to deployed a new version of carts via Keptn.
+Shows you how to onboard the carts service including its database to a Keptn-managed project. Besides, this tutorial shows how to deploy  a new version of carts via Keptn.
 
 ## About this tutorial
 
@@ -22,7 +22,7 @@ To illustrate the scenario this tutorial addresses, Keptn relies on following in
 
  **helm-service**:
   
-  * Creates a new service entity, duplicates the provided Helm chart, and uploades the Helm chart to the configuration store.
+  * Creates a new service entity, duplicates the provided Helm chart, and uploads the Helm chart to the configuration store.
 
   * Updates the service configuration when a new artifact is available.
 
@@ -46,7 +46,7 @@ To illustrate the scenario this tutorial addresses, Keptn relies on following in
 * Clone example files used for this tutorial:
 
     ```console
-    git clone --branch 0.6.0.beta https://github.com/keptn/examples.git --single-branch
+    git clone https://github.com/keptn/examples.git --single-branch
     ```
 
     ```console
@@ -185,7 +185,7 @@ After onboarding the services, a built artifact of each service can be deployed.
 
 * The Keptn's bridge is then available on: http://localhost:9000. 
 
-    It shows all deployments that have been triggered. On the left-hand side you can see the deployment start events (i.e., so-called `Configuration change` events). During a deployment, Keptn generates events for controlling the deployment process. These events will also show up in Keptn's bridge. Please note that if events are sent at the same time, their order in the Keptn's bridge might be arbitrary since they are sorted on the granularity of one second. 
+    It shows all deployments that have been triggered. On the left-hand side, you can see the deployment start events (i.e., so-called `Configuration change` events). During a deployment, Keptn generates events for controlling the deployment process. These events will also show up in Keptn's bridge. Please note that if events are sent at the same time, their order in the Keptn's bridge might be arbitrary since they are sorted on the granularity of one second. 
 
     {{< popup_image
       link="./assets/bridge.png"

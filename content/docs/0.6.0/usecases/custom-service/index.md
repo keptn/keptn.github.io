@@ -1,12 +1,12 @@
 ---
 title: Write your own Keptn Service
-description: Explains you how to implement your own Keptn service that listens to Keptn events and extends your Keptn with a certain functionality.
+description: Explains you how to implement your own Keptn service that listens to Keptn events and extends your Keptn with certain functionality.
 weight: 90
 keywords: [service, custom]
 aliases:
 ---
 
-Explains you how to implement your own Keptn service that listens to Keptn events and extends your Keptn with a certain functionality.
+Explains you how to implement your own Keptn service that listens to Keptn events and extends your Keptn with certain functionality.
 
 ## About this tutorial
 
@@ -133,7 +133,7 @@ You will need to provide the following when you want to write a custom service:
 
 ## Cloud Events
 
-Please note that Cloud Events have to be sent with with the HTTP header `Content-Type: application/cloudevents+json` to be set.
+Please note that Cloud Events have to be sent with the HTTP header `Content-Type: application/cloudevents+json` to be set.
 For a detailed look into Cloud Events, please go the Keptn [Cloud Event specification](https://github.com/keptn/spec/blob/0.1.1/cloudevents.md). 
 
 ## Logging
