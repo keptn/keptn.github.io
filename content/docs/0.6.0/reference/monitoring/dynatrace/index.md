@@ -164,7 +164,7 @@ During the evaluation of a quality gate, the Dynatrace SLI provider is required 
 * To verify that the deployment has worked, execute:
 
   ```console
-  kubectl get pods -n keptn | grep dynatrace-sli
+  kubectl get pods -n keptn --selector run=dynatrace-sli-service
   ```
 
 ---
@@ -179,7 +179,7 @@ To tell the *dynatrace-sli-service* how to acquire the values of an SLI, the cor
   keptn add-resource --project=sockshop --stage=hardening --service=carts --resource=sli-config-dynatrace.yaml --resourceUri=dynatrace/sli.yaml
   ```
 
-**Note:** The add-resource command can be used to store a configuration on project-, stage-, or service-level. The overwriting strategy of Keptn is from the most generic to the more specific entity, meaning that a configuration on service-level overrides a configuration on stage-level, which overrides a configuration on the project-level. If, for example, an SLI is configured on service-level and on project-level, the configuration on service level overrules the other. 
+**Note:** The add-resource command can be used to store a configuration on project-, stage-, or service-level. In the context of an SLI configuration, Keptn first uses SLI configuration stored on the service-level, then on the stage-level, and finally Keptn uses SLI configuration stored on the project-level.
 
 ---
 
