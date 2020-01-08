@@ -149,22 +149,31 @@ During the evaluation of a quality gate, the Dynatrace SLI provider is required 
   kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-sli-service/master/deploy/service.yaml
   ```
 
-**Verify deployment in your cluster:**
-
- Execute the following commands to verify the deployment of the Dynatrace SLI provider:
+* To verify that the deployment has worked, execute:
 
   ```console
-  kubectl get pods -n keptn | grep dynatrace-sli
-  ```
-
-  ```console
-  dynatrace-sli-service
-  dynatrace-sli-service-monitoring-configure-distributor
+  kubectl get pods -n keptn --selector run=dynatrace-sli-service
   ```
 
 ---
 
-**Note:** If you don't monitor your Kubernetes cluster with Dynatrace (i.e., you have not completed the steps from [Setup Dynatrace](./#setup-dynatrace)), the *dynatrace-sli-service* needs a *secret* containing the **Tenant ID** and **API token** in a yaml file as shown below.
+**Provider configuration:**
+
+To tell the *dynatrace-sli-service* how to acquire the values of an SLI, the correct query needs to be configured. This is done by adding an SLI configuration to a project, stage, or service using the [add-resource](../../cli/#keptn-add-resource) command. The resource identifier must be `dynatrace/sli.yaml`.
+
+* In the below example, the SLI configuration as specified in the `sli-config-dynatrace.yaml` file is added to the service `carts` in stage `hardening` from project `sockshop`. 
+
+  ```console
+  keptn add-resource --project=sockshop --stage=hardening --service=carts --resource=sli-config-dynatrace.yaml --resourceUri=dynatrace/sli.yaml
+  ```
+
+**Note:** The add-resource command can be used to store a configuration on project-, stage-, or service-level. In the context of an SLI configuration, Keptn first uses SLI configuration stored on the service-level, then on the stage-level, and finally Keptn uses SLI configuration stored on the project-level.
+
+---
+
+**Provider secret:** 
+
+If you don't monitor your Kubernetes cluster with Dynatrace (i.e., you have not completed the steps from [Setup Dynatrace](./#setup-dynatrace)), the *dynatrace-sli-service* needs a *secret* containing the **Tenant ID** and **API token** in a yaml file as shown below.
 
 * Provide a the file `your_credential_file.yaml` with following content:
   

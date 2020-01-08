@@ -182,7 +182,7 @@ For this tutorial, you need to deploy the corresponding SLI provider for your mo
     kubectl get deployment -n keptn prometheus-sli-service
     ```
 
-1. If the Prometheus SLI provider is not available, deploy and configure it for your project as explained [here](../../reference/monitoring/prometheus/#setup-prometheus-sli-provider). The ConfigMap that needs to be applied is provided in the `examples/onboarding-carts` folder.
+1. If the Prometheus SLI provider is not available, deploy and configure it for your project as explained [here](../../reference/monitoring/prometheus/#setup-prometheus-sli-provider).
 
 1. To tell Keptn to use the deployed Prometheus SLI provider for your project, first adapt the ConfigMap in the `lighthouse-source-prometheus.yaml` file at the `metatdata.name` property to reference your project. Afterwards, apply the ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
 

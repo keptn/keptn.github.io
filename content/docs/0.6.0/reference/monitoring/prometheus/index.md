@@ -58,25 +58,19 @@ During the evaluation of a quality gate, the Prometheus SLI provider is required
 * To verify that the deployment has worked, execute:
 
   ```console
-  kubectl get pods -n keptn | grep prometheus-sli
+  kubectl get pods -n keptn --selector run=prometheus-sli-service
   ```
 
-To tell the *prometheus-sli-service* how to acquire the values of a SLI, the correct query needs to be configured. This is done by storing the following ConfigMap in the **keptn** namespace:
+---
 
-```yaml
-apiVersion: v1
-data:
-  custom-queries: |
-    cpu_usage: avg(rate(container_cpu_usage_seconds_total{namespace="$PROJECT-$STAGE",pod_name=~"$SERVICE-primary-.*"}[5m]))
-    response_time_p95: histogram_quantile(0.95, sum by(le) (rate(http_response_time_milliseconds_bucket{handler="ItemsController.addToCart",job="$SERVICE-$PROJECT-$STAGE-canary"}[$DURATION_SECONDS])))
-kind: ConfigMap
-metadata:
-  name: prometheus-sli-config-PROJECTNAME
-  namespace: keptn
-```
+**Provider configuration:**
 
-* Before executing the next command, please adapt the `metadata.name` property of the ConfigMap to match the name of your project. Then, apply the ConfigMap:
+To tell the *prometheus-sli-service* how to acquire the values of an SLI, the correct query needs to be configured. This is done by adding an SLI configuration to a project, stage, or service using the [add-resource](../../cli/#keptn-add-resource) command. The resource identifier must be `prometheus/sli.yaml`.
 
-```console
-kubectl apply -f prometheus-sli-config.yaml
-```
+* In the below example, the SLI configuration as specified in the `sli-config-prometheus.yaml` file is added to the service `carts` in stage `hardening` from project `sockshop`. 
+
+  ```console
+  keptn add-resource --project=sockshop --stage=hardening --service=carts --resource=sli-config-prometheus.yaml --resourceUri=prometheus/sli.yaml
+  ```
+
+**Note:** The add-resource command can be used to store a configuration on project-, stage-, or service-level. In the context of an SLI configuration, Keptn first uses SLI configuration stored on the service-level, then on the stage-level, and finally Keptn uses SLI configuration stored on the project-level.
