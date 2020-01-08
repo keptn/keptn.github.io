@@ -1,12 +1,12 @@
 ---
 title: Quality Gates for external Deployments
-description: Describes how Keptn allows to use quality gates without delivery and testing capabilities of Keptn.
+description: Describes how Keptn allows using quality gates without delivery and testing capabilities of Keptn.
 weight: 26
 keywords: [quality-gates]
 aliases:
 ---
 
-Describes how Keptn allows to use quality gates without delivery and testing capabilities of Keptn.
+Describes how Keptn allows using quality gates without delivery and testing capabilities of Keptn.
 
 ## About this tutorial
 
@@ -61,7 +61,7 @@ For more information about SLO and SLI, please take a look at [Specifications fo
         value: "keptn_project=musicshop keptn_service=catalogue keptn_stage=hardening"
       ``` 
 
-    * Afterwards, you have to add tagging rules in Dynatrace to catch up these values and to create the tags for your monitored entity. Therefore, you can use the script [applyAutoTaggingRules.sh](https://github.com/keptn-contrib/dynatrace-service/blob/release-0.5.0/deploy/scripts/applyAutoTaggingRules.sh) with the parameters Tenant ID and API Token: 
+    * Afterwards, you have to add tagging rules in Dynatrace to detect these values and to create the tags for your monitored entity. Therefore, you can use the script [applyAutoTaggingRules.sh](https://github.com/keptn-contrib/dynatrace-service/blob/release-0.5.0/deploy/scripts/applyAutoTaggingRules.sh) with the parameters Tenant ID and API Token: 
 
       ```console
       .\applyAutoTaggingRules.sh $DT_TENANT $DT_API_TOKEN
@@ -78,7 +78,7 @@ If you want to install Keptn just to explore the capabilities of quality gates, 
 keptn install --platform=[aks|eks|gke|openshift|pks|kubernetes] --use-case=quality-gates
 ```
 
-## Configure Keptn and activate quality gate
+## Configure Keptn and activate the quality gate
 
 
 * Create a Keptn project (e.g., *musicshop*) with only one the *hardening* stage declared in the `shipyard_quality_gates.yaml` file:
@@ -98,14 +98,14 @@ keptn install --platform=[aks|eks|gke|openshift|pks|kubernetes] --use-case=quali
 * To activate the quality gate for your service, upload the `slo-quality-gates.yaml` file:
 
   ```console
-  keptn add-resource --project=musicshop --service=catalogue --stage=hardening --resource=slo-quality-gates.yaml --resourceUri=slo.yaml
+  keptn add-resource --project=musicshop --stage=hardening --service=catalogue --resource=slo-quality-gates.yaml --resourceUri=slo.yaml
   ```
 
-  **Note:** The activated quality gates is passed when the absolute value of the response time is below 600ms and the relative change of the response time compared to the previous evaluation is below 10%. The quality gates raises a warning when the absolute value of the response time is below 800ms.
+  **Note:** The activated quality gate is passed when the absolute value of the response time is below 600ms and the relative change of the response time compared to the previous evaluation is below 10%. The quality gate raises a warning when the absolute value of the response time is below 800ms.
 
 ## Install SLI provider
 
-For this tutorial you need to deploy the correspondig SLI provider for your monitoring solution. This can be for either the open-source monitoring solution *Prometheus* or *Dynatrace*. 
+For this tutorial, you need to deploy the corresponding SLI provider for your monitoring solution. This can be for either the open-source monitoring solution *Prometheus* or *Dynatrace*. 
 
 <details><summary>Prometheus SLI provider</summary>
 <p>
@@ -116,7 +116,7 @@ For this tutorial you need to deploy the correspondig SLI provider for your moni
     kubectl get deployment -n keptn prometheus-sli-service
     ```
 
-1. If the Prometheus SLI provider is not available, deploy and configure it for your project as explained [here](../../reference/monitoring/prometheus/#setup-prometheus-sli-provider). The ConfigMap that need to be applied is provided in the `examples/onboarding-carts` folder.
+1. If the Prometheus SLI provider is not available, deploy and configure it for your project as explained [here](../../reference/monitoring/prometheus/#setup-prometheus-sli-provider). The ConfigMap that needs to be applied is provided in the `examples/onboarding-carts` folder.
 
 1. To tell Keptn to use the deployed Prometheus SLI provider for your project, first adapt the ConfigMap in the `lighthouse-source-prometheus.yaml` file at the `metatdata.name` property to reference your project. Afterwards, apply the ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
 
@@ -181,7 +181,7 @@ For this tutorial you need to deploy the correspondig SLI provider for your moni
 
 ## Quality gates in action 
 
-At this point, your service is ready and you can now start triggering evaluations of the SLO. A quality gate is a two step procedure that consists of starting the evaluation and polling for the results.
+At this point, your service is ready and you can now start triggering evaluations of the SLO. A quality gate is a two-step procedure that consists of starting the evaluation and polling for the results.
 
 At a specific point in time, e.g., after you have executed your tests or you have waited for enough live traffic, you can either start the evaluation of a quality gate manually using the Keptn CLI, or automate it by either including the Keptn CLI calls in your automation scripts, or by directly accessing the Keptn REST API. 
 
@@ -193,7 +193,7 @@ At a specific point in time, e.g., after you have executed your tests or you hav
   keptn send event start-evaluation --project=musicshop --stage=hardening --service=catalogue --period=5m
   ```
 
-  This `start-evaluation` event will kick off the evaluation of the SLO of the catalogue service over the last 5 minutes. Evaluations can be done in seconds but may also take a while as every SLI provider needs to query each SLIs first. This is why the Keptn CLI will return the `keptnContext`, which is basically a token we can use to poll the status of this particular evaluation. The output of the previous command looks like this:
+  This `start-evaluation` event will kick off the evaluation of the SLO of the catalogue service over the last 5 minutes. Evaluations can be done in seconds but may also take a while as every SLI provider needs to query each SLI first. This is why the Keptn CLI will return the `keptnContext`, which is basically a token we can use to poll the status of this particular evaluation. The output of the previous command looks like this:
 
   ```console
   Starting to send a start-evaluation event to evaluate the service catalogue in project musicshop
@@ -221,7 +221,7 @@ At a specific point in time, e.g., after you have executed your tests or you hav
 
   ```yaml
   {
-    "type": "sh.keptn.event.start-evaluation"
+    "type": "sh.keptn.event.start-evaluation",
     "data": {
       "start": "2019-11-21T11:00:00.000Z",
       "end": "2019-11-21T11:05:00.000Z",
@@ -239,7 +239,7 @@ At a specific point in time, e.g., after you have executed your tests or you hav
   curl -X POST "http://api.keptn.12.34.56.78.xip.io/v1/event" -H "accept: application/json" -H "x-token: YOUR_KEPTN_TOKEN" -H "Content-Type: application/json" -d "{ \"data\": { \"end\": \"2019-11-21T11:05:00.000Z\", \"project\": \"musicshop\", \"service\": \"catalogue\", \"stage\": \"hardening\", \"start\": \"2019-11-21T11:00:00.000Z\", \"teststrategy\": \"manual\" }, \"type\": \"sh.keptn.event.start-evaluation\"}"
   ```
 
-  This request will kick off the evaluation of the SLO of the catalogue service over the last 5 minutes. Evaluations can be done in seconds but may also take a while as every SLI provider needs to query each SLIs first. This is why the Keptn CLI will return the `keptnContext`, which is basically a token we can use to poll the status of this particular evaluation. The response to the POST request looks like this:
+  This request will kick off the evaluation of the SLO of the catalogue service over the last 5 minutes. Evaluations can be done in seconds but may also take a while as every SLI provider needs to query each SLI first. This is why the Keptn CLI will return the `keptnContext`, which is basically a token we can use to poll the status of this particular evaluation. The response to the POST request looks like this:
 
   ```console
   {"keptnContext":"384dae76-2d31-41e6-9204-39f2c1513906","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDU0NDA4ODl9.OdkhIoJ9KuT4bm7imvEXHdEPjnU0pl5S7DqGibNa924"}

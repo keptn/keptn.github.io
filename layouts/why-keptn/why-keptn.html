@@ -60,9 +60,15 @@ page-why-keptn
 {{/* Maintenance */}}
 <div class="maintenance">
   <div class="container pt-5 pb-5">
-    <div class="row d-flex flex-row justify-content-center pt-3 pt-md-4 pb-md-3">
-      <div class="col-12 col-md-6 pt-md-2 text-center">
-        {{ with .Site.GetPage "section" "why-keptn/maintenance" }}
+    <div class="row pt-4 pb-4">
+      <div class="text col-12 col-md-6 pb-5 pb-md-0">
+        {{ with .Site.GetPage "section" "why-keptn/maintenance-left" }}
+          {{ .Content }}
+        {{ end }}
+      </div>
+
+      <div class="image col-12 col-md-5 offset-md-1 d-flex flex-column justify-content-center align-items-center">
+        {{ with .Site.GetPage "section" "why-keptn/maintenance-right" }}
           {{ .Content }}
         {{ end }}
       </div>
@@ -73,9 +79,15 @@ page-why-keptn
 {{/* Higher Compliance */}}
 <div class="higher-compliance section-primary-opacity">
   <div class="container pt-5 pb-5">
-    <div class="row d-flex flex-row justify-content-center pt-3 pt-md-4 pb-md-3">
-      <div class="col-12 col-md-6 pt-md-2 text-center">
-        {{ with .Site.GetPage "section" "why-keptn/higher-compliance" }}
+    <div class="row pt-4 pb-4">
+      <div class="image col-12 col-md-5 d-flex flex-column justify-content-center align-items-center">
+        {{ with .Site.GetPage "section" "why-keptn/higher-compliance-left" }}
+          {{ .Content }}
+        {{ end }}
+      </div>
+
+      <div class="text col-12 col-md-6 offset-md-1 pb-5 pb-md-0">
+        {{ with .Site.GetPage "section" "why-keptn/higher-compliance-right" }}
           {{ .Content }}
         {{ end }}
       </div>
@@ -86,9 +98,15 @@ page-why-keptn
 {{/* Easy Extensibility */}}
 <div class="easy-extensibility">
   <div class="container pt-5 pb-5">
-    <div class="row d-flex flex-row justify-content-center pt-3 pt-md-4 pb-md-3">
-      <div class="col-12 col-md-6 pt-md-2 text-center">
-        {{ with .Site.GetPage "section" "why-keptn/easy-extensibility" }}
+    <div class="row pt-4 pb-4">
+      <div class="text col-12 col-md-6 pb-5 pb-md-0">
+        {{ with .Site.GetPage "section" "why-keptn/easy-extensibility-left" }}
+          {{ .Content }}
+        {{ end }}
+      </div>
+
+      <div class="image col-12 col-md-5 offset-md-1 d-flex flex-column justify-content-center align-items-center">
+        {{ with .Site.GetPage "section" "why-keptn/easy-extensibility-right" }}
           {{ .Content }}
         {{ end }}
       </div>
@@ -96,27 +114,37 @@ page-why-keptn
   </div>
 </div>
 
-{{/* Divider */}}
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <hr>
-    </div>
-  </div>
-</div>
-
-{{/* Tool Integrations & Observability */}}
-<div class="tool-integrations observability">
+{{/* Tool Integrations */}}
+<div class="tool-integrations section-primary-opacity">
   <div class="container pt-5 pb-5">
-    <div class="row d-flex flex-row justify-content-center">
-      <div class="col-12 col-md-6 pt-3 pt-md-4 pb-5 pb-md-3 pr-md-5 text-center text-md-left">
-        {{ with .Site.GetPage "section" "why-keptn/tool-integrations" }}
+    <div class="row pt-4 pb-4">
+      <div class="image col-12 col-md-5 d-flex flex-column justify-content-center align-items-center">
+        {{ with .Site.GetPage "section" "why-keptn/tool-integrations-left" }}
           {{ .Content }}
         {{ end }}
       </div>
 
-      <div class="col-12 col-md-6 pt-md-4 pb-md-3 pl-md-5 text-center text-md-left">
-        {{ with .Site.GetPage "section" "why-keptn/observability" }}
+      <div class="text col-12 col-md-6 offset-md-1 pb-5 pb-md-0">
+        {{ with .Site.GetPage "section" "why-keptn/tool-integrations-right" }}
+          {{ .Content }}
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>
+
+{{/* Observability */}}
+<div class="observability">
+  <div class="container pt-5 pb-5">
+    <div class="row pt-4 pb-4">
+      <div class="text col-12 col-md-6 pb-5 pb-md-0">
+        {{ with .Site.GetPage "section" "why-keptn/observability-left" }}
+          {{ .Content }}
+        {{ end }}
+      </div>
+
+      <div class="image col-12 col-md-5 offset-md-1 d-flex flex-column justify-content-center align-items-center">
+        {{ with .Site.GetPage "section" "why-keptn/observability-right" }}
           {{ .Content }}
         {{ end }}
       </div>
