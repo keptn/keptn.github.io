@@ -134,8 +134,8 @@ After creating the project, services can be onboard to this project.
     ```console
     keptn add-resource --project=sockshop --service=carts --stage=staging --resource=jmeter/load.jmx --resourceUri=jmeter/load.jmx
     ```
-  
-    **Note**: A basic health-check (i.e., accessing `/health` of the carts-service) is always executed before the functional and performance tests are executed.
+
+**Note**: A basic health-check (i.e., accessing `/health` of the carts-service) is always triggered before the functional and performance tests are executed. This means, that if a `basiccheck.jmx` file is available, it will be executed first. The reason is that performance tests should not be executed if a basic health check fails.
 
 Since the carts service requires a mongodb database, a second service needs to be onboarded.
 

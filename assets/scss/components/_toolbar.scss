@@ -45,6 +45,10 @@ body.page-why-keptn {
       &:focus {
         outline: 0;
       }
+
+      &:hover {
+        background-image: url('/images/general/icon-copy-to-clipboard-hover.svg');
+      }
     }
 
     &:hover {
