@@ -34,11 +34,11 @@ After creating a project and service, you can setup Prometheus monitoring and co
 * Finally, the **prometheus-service** need to be deployed to make Keptn aware of Prometheus. To deploy this service, please complete following tasks: 
 
   ```console
-  kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/0.3.0/deploy/distributor.yaml
+  kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/master/deploy/distributor.yaml
   ```
 
   ```console
-  kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/0.3.0/deploy/service.yaml
+  kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/master/deploy/service.yaml
   ```
   
 ## Setup Prometheus SLI provider 
@@ -48,11 +48,11 @@ During the evaluation of a quality gate, the Prometheus SLI provider is required
 * To install the *prometheus-sli-service*, complete the following commands:
   
   ```console
-  kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-sli-service/0.1.0/deploy/distributor.yaml
+  kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-sli-service/master/deploy/distributor.yaml
   ```
 
   ```console
-  kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-sli-service/0.1.0/deploy/service.yaml
+  kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-sli-service/master/deploy/service.yaml
   ```
 
 * To verify that the deployment has worked, execute:

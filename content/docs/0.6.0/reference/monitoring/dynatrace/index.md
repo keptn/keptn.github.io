@@ -48,11 +48,7 @@ To evaluate the quality gates and allow self-healing in production, we have to s
     **Attention:** There is no official release of the dynatrace-service yet. It will be available with the Keptn 0.6.0 release, which is planned for mid of January 2020. For an experimental try, you can use the master branch as shown below:
 
     ```console
-    git clone --branch master https://github.com/keptn-contrib/dynatrace-service --single-branch
-    ```
-
-    ```console
-    kubectl apply -f deploy/manifests/dynatrace-service/dynatrace-service.yaml
+    kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-service/master/deploy/manifests/dynatrace-service/dynatrace-service.yaml
     ```
 
 1. When the service is deployed, use the following command to install Dynatrace on your cluster. If Dynatrace is already deployed, the current deployment of Dynatrace will not be modified.
@@ -144,21 +140,13 @@ oneagent-k7jn6                                 0/1     CrashLoopBackOff   6     
 During the evaluation of a quality gate, the Dynatrace SLI provider is required that is implemented by an internal Keptn service, the *dynatrace-sli-service*. This service will fetch the values for the SLIs that are referenced in an SLO configuration.
 
 * To install the *dynatrace-sli-service*, complete the following tasks:
-    
-  ```console
-  git clone --branch 0.2.0 https://github.com/keptn-contrib/dynatrace-sli-service --single-branch
-  ```
-
-  ```console
-  cd dynatrace-sli-service/deploy
-  ```
   
   ```console
-  kubectl apply -f distributor.yaml
+  kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-sli-service/master/deploy/distributor.yaml
   ```
 
   ```console
-  kubectl apply -f service.yaml
+  kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-sli-service/master/deploy/service.yaml
   ```
 
 **Verify deployment in your cluster:**
