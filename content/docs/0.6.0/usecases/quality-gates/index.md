@@ -45,15 +45,30 @@ For more information about SLO and SLI, please take a look at [Specifications fo
     <details><summary>*Details for a service monitored by Prometheus*</summary>
     <p>
     
-    This tutorial assumes that you have Prometheus monitoring configured with:
+    This tutorial assumes that you have Prometheus that is either managed by Keptn or not. 
+
+    * To use a Prometheus instance other than the one that is being managed by Keptn for a certain project, a secret containing the URL and the access credentials has to be deployed into the `keptn` namespace. The secret must have the following format:
+
+          ```yaml
+          user: username
+          password: ***
+          url: http://prometheus-service.monitoring.svc.cluster.local:8080
+          ```
+
+          If this information is stored in a file, e.g. `prometheus-creds.yaml`, the secret can be created with the following command. Please note that there is a naming convention for the secret because this can be configured per **project**. Thus, the secret has to have the name `prometheus-credentials-<project>`. Do not forget to replace the `<project>` placeholder with the name of your project:
+
+          ```console
+          kubectl create secret -n keptn generic prometheus-credentials-<project> --from-file=prometheus-credentials=./prometheus-creds.yaml
+          ```
+  
+    Besides, this tutorial assumes that the service is properly monitored by Prometheus. Therefore, a *scrape job* and an *alert rule* are required:
 
     * A **scrape job** for your service. For more information about configuring a scrape job, see the official Prometheus documentation at section [scrape_config](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config). 
     
-        To configure a scrape job for a Prometheus deployed on Kubernetes, you need to update the `prometheus-server-conf` at the `prometheus.yml` section with an additional scrape job:
+        To configure a scrape job for a Prometheus deployed on Kubernetes, you need to update the `prometheus-server-conf` ConfigMap at the `prometheus.yml` section with an additional scrape job:
 
             prometheus.yaml:
             ----
-            
             scrape_configs: 
             - job_name: catalogue-musicshop-hardening
               honor_timestamps: false
@@ -62,10 +77,9 @@ For more information about SLO and SLI, please take a look at [Specifications fo
               - targets:
                 - catalogue.musicshop-hardening:80
 
-
     * An **alert rule** for the SLI and the scrape job. For more information about configuring alert rules, see the official Prometheus documentation at section [alerting_rules](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/). 
     
-        To add an alert rule to a Prometheus deployed on Kubernetes, you need to update the ConfigMap *prometheus-server-conf* at the `prometheus.rules` section with an additional group:
+        To add an alert rule to a Prometheus deployed on Kubernetes, you need to update the `prometheus-server-conf` ConfigMap at the `prometheus.rules` section with an additional group. Please be aware that the values of the label service, stage, and project must match your service, stage, and project as created in the [below step](./#configure-keptn-and-activate-the-quality-gate).
 
               prometheus.rules:
               ----
@@ -132,7 +146,6 @@ keptn install --platform=[aks|eks|gke|openshift|pks|kubernetes] --use-case=quali
 ```
 
 ## Configure Keptn and activate the quality gate
-
 
 * Create a Keptn project (e.g., *musicshop*) with only one the *hardening* stage declared in the `shipyard_quality_gates.yaml` file:
 
