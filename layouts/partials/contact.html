@@ -1,6 +1,7 @@
 <div class="contact section-primary-opacity">
-  <a onclick="window.scrollTo({ top: 0 });" href="javascript: void(0)">
-    <img class="back-to-top" src="/images/general/icon-back-to-top.svg" alt="Back to top">
+  <a class="back-to-top-wrapper" onclick="window.scrollTo({ top: 0 });" href="javascript: void(0)">
+    <img class="icon" src="/images/general/icon-back-to-top.svg" alt="Back to top">
+    <img class="icon icon--hover" src="/images/general/icon-back-to-top-hover.svg" alt="Back to top">
   </a>
 
   <div class="container pt-5 pb-5">
@@ -18,16 +19,19 @@
           {{ end }}
 
           <div>
-            <a class="no-underline" href="https://join.slack.com/t/keptn/shared_invite/enQtNTUxMTQ1MzgzMzUxLWMzNmM1NDc4MmE0MmQ0MDgwYzMzMDc4NjM5ODk0ZmFjNTE2YzlkMGE4NGU5MWUxODY1NTBjNjNmNmI1NWQ1NGY" target="_blank">
+            <a class="contact-wrapper no-underline" href="https://join.slack.com/t/keptn/shared_invite/enQtNTUxMTQ1MzgzMzUxLWMzNmM1NDc4MmE0MmQ0MDgwYzMzMDc4NjM5ODk0ZmFjNTE2YzlkMGE4NGU5MWUxODY1NTBjNjNmNmI1NWQ1NGY" target="_blank">
               <img class="icon" src="/images/general/icon-slack.svg" alt="Slack">
+              <img class="icon icon--hover" src="/images/general/icon-slack-hover.svg" alt="Slack">
             </a>
 
-            <a class="no-underline" href="https://twitter.com/keptnproject" target="_blank">
+            <a class="contact-wrapper no-underline" href="https://twitter.com/keptnproject" target="_blank">
               <img class="icon" src="/images/general/icon-twitter.svg" alt="Twitter">
+              <img class="icon icon--hover" src="/images/general/icon-twitter-hover.svg" alt="Twitter">
             </a>
 
-            <a class="no-underline" href="mailto:keptn@dynatrace.com">
+            <a class="contact-wrapper no-underline" href="mailto:keptn@dynatrace.com">
               <img class="icon" src="/images/general/icon-mail.svg" alt="Mail">
+              <img class="icon icon--hover" src="/images/general/icon-mail-hover.svg" alt="Mail">
             </a>
           </div>
         </div>
@@ -37,8 +41,9 @@
             {{ .Content }}
           {{ end }}
 
-          <div>
-            <img class="icon" src="/images/general/icon-calendar.svg" alt="Mail">
+          <div class="calendar-wrapper">
+            <img class="icon" src="/images/general/icon-calendar.svg" alt="Calendar">
+            <img class="icon icon--hover" src="/images/general/icon-calendar-hover.svg" alt="Calendar">
             <a href="https://calendar.google.com/calendar/embed?src=dynatrace.com_abjrh1ukf18ih477tb1ekag2ag%40group.calendar.google.com" target="_blank">Public Google Calendar</a>,
             <a href="https://calendar.google.com/calendar/ical/dynatrace.com_abjrh1ukf18ih477tb1ekag2ag%40group.calendar.google.com/public/basic.ics" target="_blank">iCal</a>
           </div>
