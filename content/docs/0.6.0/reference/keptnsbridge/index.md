@@ -23,7 +23,7 @@ The Keptn's bridge provides an easy way to browse all events that are sent withi
   link="./assets/bridge_empty.png"
   caption="Keptn's bridge start page">}}
 
-When selecting an event, the Keptn's bridge displays all other events that are in the same Keptn context and, thus, belong to the selected entry point. As can be seen in the screenshot below, the entry point around 4:22 pm has been selected and all events belonging to this entry point are shown. The detail section lists the _timestamp_ as well as _payload_ of the event. Additionally, the _service_ that sent this event is also shown.
+When selecting an event, the Keptn's bridge displays all other events that are in the same Keptn context and, thus, belong to the selected entry point. As can be seen in the screenshot below, the entry point around 4:22pm has been selected and all events belonging to this entry point are shown. The detail section lists the _timestamp_ as well as _payload_ of the event. Additionally, the _service_ that sent this event is also shown.
 
   {{< popup_image
   link="./assets/bridge_details.png"

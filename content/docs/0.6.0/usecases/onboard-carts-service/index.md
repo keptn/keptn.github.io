@@ -1,12 +1,12 @@
 ---
 title: Onboarding a Service
-description: Shows you how to onboard the carts service including its database to a Keptn-managed project. Besides, this tutorial shows how to deploy  a new version of carts via Keptn.
+description: Shows you how to onboard the carts service including its database to a Keptn managed project. Besides, this tutorial shows how to deployed a new version of carts via Keptn.
 weight: 20
 keywords: [onboarding]
 aliases:
 ---
 
-Shows you how to onboard the carts service including its database to a Keptn-managed project. Besides, this tutorial shows how to deploy  a new version of carts via Keptn.
+Shows you how to onboard the carts service including its database to a Keptn managed project. Besides, this tutorial shows how to deployed a new version of carts via Keptn.
 
 ## About this tutorial
 
@@ -22,7 +22,7 @@ To illustrate the scenario this tutorial addresses, Keptn relies on following in
 
  **helm-service**:
   
-  * Creates a new service entity, duplicates the provided Helm chart, and uploads the Helm chart to the configuration store.
+  * Creates a new service entity, duplicates the provided Helm chart, and uploades the Helm chart to the configuration store.
 
   * Updates the service configuration when a new artifact is available.
 
@@ -46,7 +46,7 @@ To illustrate the scenario this tutorial addresses, Keptn relies on following in
 * Clone example files used for this tutorial:
 
     ```console
-    git clone https://github.com/keptn/examples.git --single-branch
+    git clone --branch 0.6.0.beta2 https://github.com/keptn/examples.git --single-branch
     ```
 
     ```console
@@ -134,8 +134,8 @@ After creating the project, services can be onboard to this project.
     ```console
     keptn add-resource --project=sockshop --service=carts --stage=staging --resource=jmeter/load.jmx --resourceUri=jmeter/load.jmx
     ```
-
-**Note**: A basic health-check (i.e., accessing `/health` of the carts-service) is always triggered before the functional and performance tests are executed. This means, that if a `basiccheck.jmx` file is available, it will be executed first. The reason is that performance tests should not be executed if a basic health check fails.
+  
+    **Note**: A basic health-check (i.e., accessing `/health` of the carts-service) is always executed before the functional and performance tests are executed.
 
 Since the carts service requires a mongodb database, a second service needs to be onboarded.
 
@@ -185,7 +185,7 @@ After onboarding the services, a built artifact of each service can be deployed.
 
 * The Keptn's bridge is then available on: http://localhost:9000. 
 
-    It shows all deployments that have been triggered. On the left-hand side, you can see the deployment start events (i.e., so-called `Configuration change` events). During a deployment, Keptn generates events for controlling the deployment process. These events will also show up in Keptn's bridge. Please note that if events are sent at the same time, their order in the Keptn's bridge might be arbitrary since they are sorted on the granularity of one second. 
+    It shows all deployments that have been triggered. On the left-hand side you can see the deployment start events (i.e., so-called `Configuration change` events). During a deployment, Keptn generates events for controlling the deployment process. These events will also show up in Keptn's bridge. Please note that if events are sent at the same time, their order in the Keptn's bridge might be arbitrary since they are sorted on the granularity of one second. 
 
     {{< popup_image
       link="./assets/bridge.png"
