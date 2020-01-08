@@ -9,17 +9,37 @@
     }
   }
 
-  .back-to-top {
-    position: absolute;
-    top: -32px;
-    right: 6%;
-    width: 72px;
-    height: 72px;
-  }
-
   .icon {
     width: 40px;
     height: 40px;
     margin-right: 16px;
+
+    &--hover {
+      display: none;
+    }
+  }
+
+  .back-to-top-wrapper {
+    .icon {
+      position: absolute;
+      top: -32px;
+      right: 6%;
+      width: 72px;
+      height: 72px;
+      cursor: pointer;
+    }
+  }
+
+  // Hover states
+  .back-to-top-wrapper:hover,
+  .contact-wrapper:hover,
+  .calendar-wrapper:hover {
+    .icon {
+      display: none;
+
+      &--hover {
+        display: inline;
+      }
+    }
   }
 }

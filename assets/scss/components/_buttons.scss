@@ -13,11 +13,21 @@
 .button-primary {
   color: $white !important;
   background-color: $primary;
+  transition: all 0.25s ease-in-out;
+
+  &:hover {
+    background-color: #1b4c86;
+  }
 }
 
 .button-secondary {
   color: $primary;
   background-color: $white;
+  transition: all 0.25s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 12px 24px 0 rgba($black, 0.2);
+  }
 }
 
 .button-tertiary {
@@ -27,8 +37,23 @@
   border: 2px solid #222222;
   box-sizing: border-box;
 
+  .icon {
+    &--hover {
+      display: none;
+    }
+  }
+
   &:hover {
-    color: $textColor;
+    color: $white;
+    background-color: #222222;
     font-weight: $font-weight-bold;
+
+    .icon {
+      display: none;
+
+      &--hover {
+        display: inline;
+      }
+    }
   }
 }
