@@ -55,7 +55,7 @@ To set up both feature flags, navigate to your Unleash server and log in.
         caption="Add new feature toggle"
         width="700px">}}
 
-1. Name the feature toggle **EnableItemsCache** and add **carts** in the description field.
+1. Name the feature toggle **EnableItemCache** and add **carts** in the description field.
 
     {{< popup_image
         link="./assets/unleash-cache.png"
@@ -81,7 +81,7 @@ Now everything is set up in the Unleash server. For Keptn to be able to connect 
 
     If you have onboarded unleash using Keptn, you can use the following command:
     ```console
-    kubectl -n keptn create secret generic unleash --from-literal="UNLEASH_SERVER_URL=unleash.unleash-dev/api" --from-literal="UNLEASH_USER=keptn" --from-literal="UNLEASH_TOKEN=keptn"
+    kubectl -n keptn create secret generic unleash --from-literal="UNLEASH_SERVER_URL=http://unleash.unleash-dev/api" --from-literal="UNLEASH_USER=keptn" --from-literal="UNLEASH_TOKEN=keptn"
     ```
 
 2. Keptn has to be aware of the new secret and have to load it for it to connect to the Unleash server to set the feature toggles. Therefore, the remediation service must be restarted:
