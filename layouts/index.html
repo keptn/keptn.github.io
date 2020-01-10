@@ -26,6 +26,23 @@ page-home
 {{ end }}
 
 {{ define "main" }}
+
+{{/* Promo */}}
+<div class="promo section-primary">
+  <div class="container pt-1 pb-1 text-center">
+    <div class="row pt-md-5 pb-md-5">
+      <div class="col-12 col-md-12 col-lg-12">
+        {{ with .Site.GetPage "section" "home/promo" }}
+          {{ .Content }}
+        {{ end }}
+        <br>
+        <a class="button button-secondary" href="https://cloud.google.com/partners/partnercredit/?pcn_code=0014M00001h35IHQAQ" target="_blank">Sign up and use Keptn in GKE</a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
 {{/* Intro */}}
 <div class="intro">
   <div class="container pt-5 pb-5">
