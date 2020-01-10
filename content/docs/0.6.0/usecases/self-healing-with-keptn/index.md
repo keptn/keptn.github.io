@@ -9,7 +9,7 @@ Demonstrates how to use the self-healing mechanisms of Keptn to self-heal a demo
 
 ## About this tutorial
 
-In this tutorial, you will learn how to use the capabilities of Keptn to provide self-healing for an application without modifying any of the applications code. The tutorial presented in the following will scale up the pods of an application if the application undergoes heavy CPU saturation. 
+In this tutorial you will learn how to use the capabilities of Keptn to provide self-healing for an application without modifying any of the applications code. The tutorial presented in the following will scale up the pods of an application if the application undergoes heavy CPU saturation. 
 
 ## Prerequisites
 
@@ -23,11 +23,11 @@ In this tutorial, you will learn how to use the capabilities of Keptn to provide
 
 ## Configure monitoring
 
-To inform Keptn about any issues in a production environment, monitoring has to be set up. The Keptn CLI helps with the automated setup and configuration of Prometheus as the monitoring solution running in the Kubernetes cluster. 
+To inform Keptn about any issues in a production environment, monitoring has to be set up. The Keptn CLI helps with automated setup and configuration of Prometheus as the monitoring solution running in the Kubernetes cluster. 
 
 For the configuration, Keptn relies on different specification files that define *service level indicators* (SLI), *service level objectives* (SLO), and *remediation actions* for self-healing if service level objectives are not achieved. To learn more about the *service-indicator*, *service-objective*, and *remediation* file, click here [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/spec/blob/0.1.1/sre.md).
 
-To add these files to Keptn and to automatically configure Prometheus, execute the following commands:
+In order to add these files to Keptn and to automatically configure Prometheus, execute the following commands:
 
 1. Make sure you are in the correct folder of your examples directory:
     ```
@@ -41,7 +41,7 @@ To add these files to Keptn and to automatically configure Prometheus, execute t
     ```
 
     ```console
-    keptn add-resource --project=sockshop --service=carts --stage=production --resource=slo-self-healing-prometheus.yaml --resourceUri=slo.yaml
+    keptn add-resource --project=sockshop --service=carts --stage=production --resource=slo_self-healing_prometheus.yaml --resourceUri=slo.yaml
     ```
 
     ```console
@@ -97,7 +97,7 @@ Executing this command will perform the following tasks:
 
 ### Deploy an unhealthy service version
 
-To test the self-healing capabilities, deploy an unhealthy version of the carts microservice. This version has some issues that are not detected by the automated quality gates since the tests generate artificial traffic while in production real user traffic might reveal untested parts of the microservice that have issues.
+In order to test the self-healing capabilities, deploy an unhealthy version of the carts microservice. This version has some issues that are not detected by the automated quality gates since the tests generate artificial traffic while in production real user traffic might reveal untested parts of the microservice that have issues.
 
 Therefore, please make sure that you have completed the [Onboarding a Service](../onboard-carts-service/) or the [Deployment with Quality Gates](../deployments-with-quality-gates/) tutorial (i.e., all shown versions contain issues that are not detected by the quality gates).
 
@@ -115,7 +115,7 @@ carts-primary-7c96d87df9-75pg7    1/1     Running   0          13m
 
 ### Generate load for the service
 
-To simulate user traffic that is causing an unhealthy behavior in the carts service, please execute the following script. This will add special items into the shopping cart that cause some extensive calculation.
+In order to simulate user traffic that is causing an unhealthy behavior in the carts service, please execute the following script. This will add special items into the shopping cart that cause some extensive calculation.
 
 1. Move to the correct folder:
 

@@ -5,7 +5,7 @@ weight: 80
 keywords: [troubleshooting]
 ---
 
-In this section, instructions have been summarized that help to troubleshoot known issues that may occur when using Keptn.
+In this section, instructions are summarized that help to trouble shoot known issues that may occur when using Keptn.
 
 ## Verifying a Keptn installation
 <details><summary>Expand instructions</summary>
@@ -67,7 +67,7 @@ In this section, instructions have been summarized that help to troubleshoot kno
   mongodb-datastore-distributor-6cc947d554-tn6kr   1/1     Running   0          5m7s
   ```
 
-- To verify the Istio installation, retrieve all pods within the `istio-system` namespace and check whether they are running:
+- To verify the Istio installation, retrieve all pods within the `istio-system` namespace and check whether they are in a running state:
 
   ```console
   kubectl get pods -n istio-system

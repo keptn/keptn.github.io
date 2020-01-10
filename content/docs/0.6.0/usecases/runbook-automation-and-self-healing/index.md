@@ -10,7 +10,7 @@ Gives an overview of how to leverage the power of runbook automation to build se
 
 ## About this tutorial
 
-Configuration changes during runtime are sometimes necessary to increase flexibility. A prominent example is feature flags that can be toggled also in a production environment. In this tutorial, we will change the promotion rate of a shopping cart service, which means that a defined percentage of interactions with the shopping cart will add promotional items (e.g., small gifts) to the shopping carts of our customers. However, we will experience troubles with this configuration change. Therefore, we will set means in place that are capable of auto-remediating issues at runtime. In fact, we will leverage workflows in ServiceNow. 
+Configuration changes during runtime are sometimes necessary to increase flexibility. A prominent example are feature flags that can be toggled also in a production environment. In this tutorial, we will change the promotion rate of a shopping cart service, which means that a defined percentage of interactions with the shopping cart will add promotional items (e.g., small gifts) to the shopping carts of our customers. However, we will experience troubles with this configuration change. Therefore, we will set means in place that are capable of auto-remediating issues at runtime. In fact, we will leverage workflows in ServiceNow. 
 
 ## Prerequisites
 
@@ -32,7 +32,7 @@ Configuration changes during runtime are sometimes necessary to increase flexibi
 
 ## Configure Keptn
 
-For Keptn to use both ServiceNow and Dynatrace, the corresponding credentials have to be stored as Kubernetes secrets in the cluster. 
+In order for Keptn to use both ServiceNow and Dynatrace, the corresponding credentials have to be stored as Kubernetes secrets in the cluster. 
 
 ### Dynatrace secret 
 
@@ -54,7 +54,7 @@ metadata:
   ...
 ```
 
-The `DT_API_TOKEN` and the `DT_TENANT` need to be stored in an environment variable. Therefore, copy and paste the following command to make sure that `DT_TENANT` stores a URL that follows the pattern `{your-domain}/e/{your-environment-id}` for a managed Dynatrace tenant or `{your-environment-id}.live.dynatrace.com` for a SaaS tenant.
+The `DT_API_TOKEN` and the `DT_TENANT` need to be stored in an environment variable. Therefore, copy and paste the following command to make sure that `DT_TENANT` stores a url that follows the pattern `{your-domain}/e/{your-environment-id}` for a managed Dynatrace tenant or `{your-environment-id}.live.dynatrace.com` for a SaaS tenant.
 
 ```console
 export DT_TENANT=$(kubectl get secret dynatrace -n keptn -o=jsonpath='{.data.DT_TENANT}' | base64 --decode)
@@ -80,7 +80,7 @@ kubectl -n keptn create secret generic servicenow --from-literal="tenant=xxx" --
 
 A ServiceNow *Update Set* is provided to run this tutorial. To install the *Update Set* follow these steps:
 
-1. Log in to your ServiceNow instance.
+1. Login to your ServiceNow instance.
 1. Look for *update set* in the left search box and navigate to **Update Sets to Commit** 
     {{< popup_image
     link="./assets/service-now-update-set-overview.png"
@@ -111,7 +111,7 @@ A ServiceNow *Update Set* is provided to run this tutorial. To install the *Upda
 
 1. Click on **New** and enter your Dynatrace API token as well as your Dynatrace tenant.
 
-1. *(optional)* You can also take a look at the predefined workflow that can handle Dynatrace problem notifications and remediate issues.
+1. *(optional)* You can also take a look at the predefined workflow that is able to handle Dynatrace problem notifications and remediate issues.
     - Navigate to the workflow editor by typing **Workflow Editor** and clicking on the item **Workflow** > **Workflow Editor**
     - The workflow editor is opened in a new window/tab
     - Look for the workflow **keptn_demo_remediation** (it might as well be on the second or third page)
@@ -142,9 +142,9 @@ During the [setup of Dynatrace](../../reference/monitoring/dynatrace) a problem 
 
 ## Adjust anomaly detection in Dynatrace
 
-The Dynatrace platform is built on top of AI, which is great for production use cases, but for this demo we have to override some default settings for Dynatrace to trigger the problem.
+The Dynatrace platform is built on top of AI, which is great for production use cases, but for this demo we have to override some default settings in order for Dynatrace to trigger the problem.
 
-Before you adjust this setting, make sure to have some traffic on the service for Dynatrace to detect and list the service. The easiest way to generate traffic is to use the provided file `add-to-carts.sh` in the `./usecase` folder. This script will add items to the shopping cart and can be stopped after a couple of added items by hitting <kbd>CTRL</kbd>+<kbd>C</kbd>.
+Before you adjust this setting, make sure to have some traffic on the service in order for Dynatrace to detect and list the service. The easiest way to generate traffic is to use the provided file `add-to-carts.sh` in the `./usecase` folder. This script will add items to the shopping cart and can be stopped after a couple of added items by hitting <kbd>CTRL</kbd>+<kbd>C</kbd>.
 
 1. Navigate to the _servicenow-service/usecase_ folder: 
     ```
@@ -164,7 +164,7 @@ Before you adjust this setting, make sure to have some traffic on the service fo
         caption="Edit Service"
         width="700px">}}
 
-1. In the section **Anomaly detection** override the global anomaly detection and set the value for the **failure rate** to use **fixed thresholds** and to alert if **10%** custom failure rate is exceeded. Finally, set the **Sensitivity** to **High**.
+1. In the section **Anomaly detection** override the global anomaly detection and set the value for the **failure rate** to use **fixed thresholds** and to alert if **10%** custom failure rate are exceeded. Finally, set the **Sensitiviy** to **High**.
     {{< popup_image
         link="./assets/dynatrace-service-anomaly-detection.png"
         caption="Edit Anomaly Detection"
@@ -172,7 +172,7 @@ Before you adjust this setting, make sure to have some traffic on the service fo
 
 ## Run the tutorial
 
-Now, all pieces are in place to run the use case of a production incident. Therefore, we will start by generating some load on the *carts* service in our production environment. Afterwards, we will change the configuration of this service at runtime. This will cause some troubles in our production environment, Dynatrace will detect the issue, and will create a problem ticket. Due to the problem notification we just set up, Keptn will be informed about the problem and will forward it to the ServiceNow service that in turn creates an incident in ServiceNow. This incident will trigger a workflow that can is able to remediate the issue at runtime. Along with the remediation, comments, and details on configuration changes are posted to Dynatrace.
+Now, all pieces are in place to run the use case of a production incident. Therefore, we will start by generating some load on the *carts* service in our production environment. Afterwards, we will change configuration of this service at runtime. This will cause some troubles in our production environment, Dynatrace will detect the issue, and will create a problem ticket. Due to the problem notification we just set up, Keptn will be informed about the problem and will forward it to the ServiceNow service that in turn creates an incident in ServiceNow. This incident will trigger a workflow that is able to remediate the issue at runtime. Along the remediation, comments, and details on configuration changes are posted to Dynatrace.
 
 ### Load generation
 
@@ -225,7 +225,7 @@ Now, all pieces are in place to run the use case of a production incident. There
 
 ### Problem detection by Dynatrace
 
-Navigate to the ItemsController service by clicking on **Transactions & services** and look for your ItemsController. Since our service is running in three different environments (dev, staging, and production) it is recommended to filter by the `keptn_stage:production` to make sure to find the correct service.
+Navigate to the ItemsController service by clicking on **Transactions & services** and look for your ItemsController. Since our service is running in three different environment (dev, staging, and production) it is recommended to filter by the `keptn_stage:production` to make sure to find the correct service.
     {{< popup_image
         link="./assets/dynatrace-services.png"
         caption="Dynatrace Transactions & Services"
@@ -238,7 +238,7 @@ When clicking on the service, in the right bottom corner you can validate in Dyn
         width="700px">}}
 
 
-After a couple of minutes, Dynatrace will open a problem ticket based on the increase in the failure rate.
+After a couple of minutes, Dynatrace will open a problem ticket based on the increase of the failure rate.
     {{< popup_image
         link="./assets/dynatrace-problem-open.png"
         caption="Dynatrace Open Problem"
@@ -254,11 +254,11 @@ In your ServiceNow instance, you can take a look at all incidents by typing in *
         caption="ServiceNow incident"
         width="700px">}}
 
-After the creation of the incident, a workflow is triggered in ServiceNow that has been set up during the import of the *Update Set* earlier. The workflow takes a look at the incident, resolves the URL that is stored in the *Remediation* tab in the incident detail screen. Along with that, a new custom configuration change is sent to Dynatrace. Besides, the ServiceNow service running in Keptn sends comments to the Dynatrace problem to be able to keep track of executed steps.
+After creation of the incident, a workflow is triggered in ServiceNow that has been setup during the import of the *Update Set* earlier. The workflow takes a look at the incident, resolves the URL that is stored in the *Remediation* tab in the incident detail screen. Along with that, a new custom configuration change is sent to Dynatrace. Besides, the ServiceNow service running in Keptn sends comments to the Dynatrace problem to be able to keep track of executed steps.
 
 You can check both the new _custom configuration change_ on the service overview page in Dynatrace as well as the added comment on the problem ticket in Dynatrace.
 
-Once the problem is resolved, Dynatrace sends out another notification which again is handled by the ServiceNow service. Now the incident gets resolved and another comment is sent to Dynatrace. The image shows the updated incident in ServiceNow. The comment can be found if you navigate to the closed problem ticket in Dynatrace. 
+Once the problem is resolved, Dynatrace sends out another notification which again is handled by the ServiceNow service. Now the incidents gets resolved and another comment is sent to Dynatrace. The image shows the updated incident in ServiceNow. The comment can be found if you navigate to the closed problem ticket in Dynatrace. 
     {{< popup_image
         link="./assets/service-now-incident-resolved.png"
         caption="Resolved ServiceNow incident"
@@ -266,7 +266,7 @@ Once the problem is resolved, Dynatrace sends out another notification which aga
 
 ## Troubleshooting
 
-- Please note that Dynatrace has its feature called **Frequent Issue Detection** enabled by default. This means, that if Dynatrace detects the same problem multiple times, it will be classified as a frequent issue and problem notifications won't be sent out to third-party tools. Therefore, the tutorial might not be able to be run a couple of times in a row. 
+- Please note that Dynatrace has its feature called **Frequent Issue Detection** enabled by default. This means, that if Dynatrace detects the same problem multiple times, it will be classified as a frequent issue and problem notifications won't be sent out to third party tools. Therefore, the tutorial might not be able to be run a couple of times in a row. 
 To disable this feature:
   1. Login to your Dynatrace tenant.
   1. Navigate to **Settings** > **Anomaly detection** > **Frequent issue detection**

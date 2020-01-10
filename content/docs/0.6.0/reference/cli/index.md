@@ -41,12 +41,12 @@ In the following, the commands provided by the Keptn CLI are described.
 All of these commands provide a help flag (`--help`), which describes details of the respective command (e.g., usage of the command or description of flags).
 
 **Note:** In the current version, Keptn is missing checks whether the sent command is executed correctly.
-To guarantee the expected behavior, please strictly use the following commands in the specified order.
+In order to guarantee the expected behavior, please strictly use the following commands in the specified order.
 In future releases, we add additional checks whether the executed commands succeeded or failed.
 
 ### keptn install 
 
-The Keptn CLI allows installing Keptn on Azure Kubernetes Services (AKS), Amazon Elastic Kubernetes Service (EKS), Google Kubernetes Engine (GKE), Pivotal Container Service (PKS), and on OpenShift.
+The Keptn CLI allows to install Keptn on Azure Kubernetes Services (AKS), Amazon Elastic Kubernetes Service (EKS), Google Kubernetes Engine (GKE), Pivotal Container Service (PKS), and on OpenShift.
 
 - **AKS**:
 
@@ -80,19 +80,25 @@ The Keptn CLI allows installing Keptn on Azure Kubernetes Services (AKS), Amazon
 
 **Optional keptn install flags**
 
+* `keptn-version` - To specify a specfic Keptn release to install. 
+
+    ```console
+    keptn install --keptn-version=0.6.0
+    ```
+
 * `gateway` - To specify the gateway type which can be *NodePort* or *LoadBalancer*. 
 
     ```console
     keptn install --gateway=[NodePort|LoadBalancer]
     ```
 
-* `use-case` - To install Keptn for just the quality gates use case.
+* `use-case` - To install Keptn for just the quality gates use-case.
 
     ```console
     keptn install --use-case=quality-gates
     ```
 
-* `creds` - To specify a JSON file containing cluster information needed for the installation. This allows skipping user prompts to execute a *silent* Keptn installation.
+* `creds` - To specify a JSON file containing cluster information needed for the installation. This allows to skip user prompts to execute a *silent* Keptn installation.
 
     ```console
     keptn install --creds=./creds.json
@@ -101,7 +107,7 @@ The Keptn CLI allows installing Keptn on Azure Kubernetes Services (AKS), Amazon
 
 ### keptn configure domain
 
-The Keptn CLI allows configuring a custom domain. This is mandatory if *xip.io* cannot be used (e.g., when running Keptn on EKS, AWS will create an ELB).
+The Keptn CLI allows to configure a custom domain. This is mandatory if *xip.io* cannot be used (e.g., when running Keptn on EKS, AWS will create an ELB).
 
 **Note:** This command requires a *kubernetes current context* pointing to the cluster where you would like to configure your domain. After installing Keptn this is guaranteed.
 
@@ -224,7 +230,7 @@ In the Windows Command Line, a couple of steps are necessary.
 
 * **Option A:** Create a project without Git upstream: 
 
-    To create a new project, use the command `create project` and specify at least the name of the project as well as the `shipyard.yaml` file (`--shipyard`). Learn here more about [writing a shipyard file](../../manage/project/#create-a-project). 
+    To create a new project, use the command `create project` and specify at least the name of the project as well as the `shipyard.yaml` file (`--shipyard`) . Learn here more about [writing a shipyard file](../../manage/project/#create-a-project). 
 
     ```console
     keptn create project PROJECTNAME --shipyard=FILEPATH
@@ -276,13 +282,7 @@ To learn more about onboarding a service, please see the [Onboarding a Service](
 
 To add a resource to the configuration store (i.e., Git repository), the `add-resource` command is provided. This command takes a local resource (`--resource`) and stores it for further use in Keptn. To specify a unique resource identifier (URI) for this resource, the optional URI (`--resourceUri`) flag can be set to a file path. By default, the URI is set to the file path specified at the `--resource` flag. From a technical perspective, `--resourceUri=jmeter/basiccheck.jmx` stores the resource in a *jmeter* folder and renames the file to  *basiccheck.jmx*.  
 
-This command allows adding, for example, *test files* to a service, which will then be used by a test service (e.g., jmeter-service) during the continuous delivery.
-
-**The target location of the resource:**
-
-- `--project` - is mandatory. The resource will be added to the root folder in the master branch. 
-- `--stage` - is optional (when the `--service` flag is not used). The resource will be added to the root folder in the stage branch.
-- `--service` - is optional. The resource will be added to the service folder in the stage branch.
+This command allows adding, for example, *test files* to a service, which will then be used by a test service (e.g., jmeter-service) during the continuous delivery.  
 
 ```console
 keptn add-resource --project=PROJECTNAME --stage=STAGE --service=SERVICENAME --resource=./basiccheck.jmx --resourceUri=jmeter/basiccheck.jmx
@@ -290,13 +290,11 @@ keptn add-resource --project=PROJECTNAME --stage=STAGE --service=SERVICENAME --r
 
 ### keptn configure monitoring
 
-To configure a monitoring solution for a Keptn cluster, the `configure monitoring` command is provided. This command sets up Dynatrace or Prometheus monitoring in case it is not installed yet. 
+To configure a monitoring solution for a Keptn cluster, the `configure monitoring` command is provided. This command sets up monotoring in case it is not installed yet. Afterwards, the command configures the monitoring solution for a service based on the provided service indicators (`--service-indicators`), and service objectives (`--service-objectives`). The currently supported monitoring solution is *Prometheus*, as shown below:
 
 ```console
-keptn configure monitoring [dynatrace|prometheus] --project=PROJECTNAME --service=SERVICENAME 
+keptn configure monitoring prometheus --project=PROJECTNAME --service=SERVICENAME --service-indicators=service-indicators.yaml --service-objectives=service-objectives.yaml --remediation=remediation.yaml
 ```
-
-**Note:** If you are executing `keptn configure monitoring dynatrace`, the service flag is optional since Keptn automatically detects the services of a project.
 
 ### keptn get event evaluation-done
 
@@ -308,7 +306,7 @@ keptn get event evaluation-done --keptn-context=KEPTNCONTEXTID
 
 ### keptn send event new-artifact
 
-After onboarding a service, the Keptn CLI allows triggering the deployment of an artifact.
+After onboarding a service, the Keptn CLI allows to trigger the deployment of an artifact.
 This artifact is a Docker image, which can be located at Docker Hub, Quay, or any other registry storing docker images. The new artifact is pushed in the first stage specified in the `shipyard.yaml` file (usually this will be the dev stage). Afterwards, Keptn takes care of deploying this new artifact to the other stages.
 
 To notify Keptn to deploy a new artifact for a service, use the command `send event new-artifact`.
@@ -335,7 +333,7 @@ keptn send event start-evaluation --project=PROJECTNAME --stage=STAGE --service=
 
 ### keptn send event
 
-To send an arbitrary Keptn event the `send event` command is provided. An event has to follow the [Cloud Events](https://cloudevents.io/) specification in version 0.2 and has to be written in JSON. Then the event can be passed in by referencing the JSON file (`--file`). Additionally, this command offers the `--stream-websocket` flag to open a web socket communication to Keptn. Consequently, messages from the receiving Keptn service, which processes the event, are sent to the CLI via WebSocket.
+To send an arbitrary Keptn event the `send event` command is provided. An event has to follow the [Cloud Events](https://cloudevents.io/) specification in version 0.2 and has to be written in JSON. Then the event can be passed in by referencing the JSON file (`--file`). Additionally, this command offers the `--stream-websocket` flag to open a web socket communication to Keptn. Consequently, messages from the receiving Keptn service, which processes the event, are sent to the CLI via websocket.
 
 **Note:** This command requires precise Keptn event definitions as defined find [here](https://github.com/keptn/spec/blob/0.1.1/cloudevents.md).
 
