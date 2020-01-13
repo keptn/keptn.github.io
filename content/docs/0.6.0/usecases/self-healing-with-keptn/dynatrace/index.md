@@ -23,11 +23,11 @@ In this tutorial, you will learn how to use the capabilities of Keptn to provide
 
 ## Configure monitoring
 
-To inform Keptn about any issues in a production environment, monitoring has to be set up. The Keptn CLI helps with the automated setup and configuration of Prometheus as the monitoring solution running in the Kubernetes cluster. 
+To inform Keptn about any issues in a production environment, monitoring has to be set up. The Keptn CLI helps with the automated setup and configuration of Dynatrace as the monitoring solution running in the Kubernetes cluster. 
 
 For the configuration, Keptn relies on different specification files that define *service level indicators* (SLI), *service level objectives* (SLO), and *remediation actions* for self-healing if service level objectives are not achieved. To learn more about the *service-indicator*, *service-objective*, and *remediation* file, click here [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/spec/blob/0.1.1/sre.md).
 
-To add these files to Keptn and to automatically configure Prometheus, execute the following commands:
+To add these files to Keptn and to automatically configure Dynatrace, execute the following commands:
 
 1. Make sure you are in the correct folder of your examples directory:
     ```
@@ -90,6 +90,25 @@ Executing this command will perform the following tasks:
 
 </details>
 </p>
+
+
+### Configure Dynatrace Problem Detection
+
+For the sake of this demo, we will configure Dynatrace to detect Problems based on fixed thresholds. To do so, navigate to your Dynatrace Tenant in your browser,
+and go to *Settings -> Anomaly Detection -> Services*.
+
+Within this menu, select the option **Detect response time degradations using fixed thresholds**, set the limit to **1000ms**, and select **Medium** for the sensitivity (see the screenshot below).
+
+![](images/anomaly_detection.png)
+
+Next, we will edit the default alerting profile to send problem notifications to Keptn immediately after a problem has been detected. In your Dynatrace tenant, navigate to 
+**Settings -> Alerting Profiles**, and select the **Default** alerting profile:
+
+![](images/alerting_profiles.png)
+
+Next, select the section **Slowdown alert**, and set the time to wait before sending a notification to **0 minutes**. The remaining options can be left untouched. (see screenshot below).
+
+![](images/default_alerting_profile.png)
 
 
 ## Run the tutorial
