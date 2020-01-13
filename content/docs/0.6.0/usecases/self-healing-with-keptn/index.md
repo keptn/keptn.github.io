@@ -23,6 +23,8 @@ In this tutorial, you will learn how to use the capabilities of Keptn to provide
 
 ## Configure monitoring
 
+<details><summary>Prometheus monitoring</summary>
+<p>
 To inform Keptn about any issues in a production environment, monitoring has to be set up. The Keptn CLI helps with the automated setup and configuration of Prometheus as the monitoring solution running in the Kubernetes cluster. 
 
 For the configuration, Keptn relies on different specification files that define *service level indicators* (SLI), *service level objectives* (SLO), and *remediation actions* for self-healing if service level objectives are not achieved. To learn more about the *service-indicator*, *service-objective*, and *remediation* file, click here [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/spec/blob/0.1.1/sre.md).
@@ -41,7 +43,7 @@ To add these files to Keptn and to automatically configure Prometheus, execute t
     ```
 
     ```console
-    keptn add-resource --project=sockshop --stage=production --service=carts --resource=slo-self-healing-prometheus.yaml --resourceUri=slo.yaml
+    keptn add-resource --project=sockshop --stage=production --service=carts --resource=slo-self-healing.yaml --resourceUri=slo.yaml
     ```
 
     ```console
@@ -65,33 +67,42 @@ Executing this command will perform the following tasks:
 
   ```yaml
   ---
-  spec_version: '0.1.0'
-  filter:
+  spec_version: '0.1.1'
   comparison:
     compare_with: "single_result"
     include_result_with_score: "pass"
     aggregate_function: avg
   objectives:
-    - sli: cpu_usage
-      pass:
+    - sli: response_time_p90
+      pass:        # pass if (relative change <= 10% AND absolute value is < 500)
         - criteria:
-            - "<0.2"
-  total_score:  # maximum score = sum of weights
-    pass: "90%" # by default this is interpreted as ">="
-    warning: 75%
+            - "<=+10%" # relative values require a prefixed sign (plus or minus)
+            - "<1000"   # absolute values only require a logical operator
+      warning:     # if the response time is below 800ms, the result should be a warning
+        - criteria:
+            - "<=1200"
+  total_score:
+    pass: "90%"
+    warning: 40%
   ```
 
 - `remediation.yaml`
 
   ```yaml
   remediations:
-  - name: cpu_usage
+  - name: response_time_p90
   actions:
   - action: scaling
       value: +1
   ```
 
 </details>
+</p>
+
+<details><summary>Dynatrace monitoring</summary>
+<p>
+
+</p>
 
 ## Run the tutorial
 
@@ -126,7 +137,7 @@ To simulate user traffic that is causing an unhealthy behavior in the carts serv
 1. Start the load generation script depending on your OS (replace \_OS\_ with linux, mac, or win):
 
     ```console
-    ./loadgenerator-_OS_ "http://carts.sockshop-production.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')" cpu
+    ./loadgenerator-_OS_ "http://carts.sockshop-production.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')" cpu 3
     ```
 
 1. (optional:) Verify the load in Prometheus.
@@ -141,10 +152,10 @@ To simulate user traffic that is causing an unhealthy behavior in the carts serv
     - In the **Graph** tab, add the expression 
 
     ```console
-    avg(rate(container_cpu_usage_seconds_total{namespace="sockshop-production",pod_name=~"carts-primary-.*"}[5m]))
+    histogram_quantile(0.9, sum by(le) (rate(http_response_time_milliseconds_bucket{job="carts-sockshop-production"}[3m])))
     ```
     
-    - Select the **Graph** tab to see your CPU metrics of the `carts-primary` pods in the `sockshop-production` environment.
+    - Select the **Graph** tab to see your Response time metrics of the `carts` service in the `sockshop-production` environment.
 
     - You should see a graph which locks similar to this:
 
@@ -155,18 +166,20 @@ To simulate user traffic that is causing an unhealthy behavior in the carts serv
 
 ### Self-healing in action
 
-After approximately 15 minutes, the *Prometheus Alert Manager* will send out an alert since the service level objective is not met anymore. 
+After approximately 10-15 minutes, your monitoring solution will send out an alert since the service level objective is not met anymore. 
 
-1. To verify that an alert was fired, select the *Alerts* view where you should see that the alert `cpu_usage_sockshop_carts` is in the `firing` state:
+1. To verify that an alert was fired, select the *Alerts* view where you should see that the alert `response_time_p90` is in the `firing` state:
 
     {{< popup_image
         link="./assets/alert-manager.png"
         caption="Alert manager"
         width="700px">}}
 
-The alert will be received by the Prometheus service that will translate it into a Keptn CloudEvent. This event will eventually be received by the remediation service that will look for a remediation action specified for this type of problem and, if found, executes it.
+Depending on your monitoring solution, the proper Keptn service (i.e., either the `prometheus-service` or the `dynatrace-service`) will receive the sent alert 
+and translate it into a Keptn CloudEvent. This event will eventually be received by the remediation service that will look for a 
+remediation action specified for this type of problem and, if found, execute it.
 
-In this tutorial, the number of pods will be increased to remediate the issue of the CPU saturation. 
+In this tutorial, the number of pods will be increased to remediate the issue of the response time increase. 
 
 1. Check the executed remediation actions by executing:
 
@@ -194,14 +207,7 @@ In this tutorial, the number of pods will be increased to remediate the issue of
     carts-primary-7c96d87df9-78fh2    2/2     Running   0          5m
     ```
 
-1. Furthermore, you can use Prometheus to double-check the CPU usage:
-
-    {{< popup_image
-        link="./assets/prometheus-load-reduced.png"
-        caption="Prometheus load"
-        width="700px">}}
-
-1. Finally, to get an overview of the actions that got triggered by the Prometheus alert, you can use the bridge. You can access it by a port-forward from your local machine to the Kubernetes cluster:
+1. To get an overview of the actions that got triggered by the response time SLO violation, you can use the bridge. You can access it by a port-forward from your local machine to the Kubernetes cluster:
 
     ```console 
     kubectl port-forward svc/bridge -n keptn 9000:8080
@@ -209,9 +215,18 @@ In this tutorial, the number of pods will be increased to remediate the issue of
 
     Now access the bridge from your browser on http://localhost:9000. 
 
-    In this example, the bridge shows that the remediation service triggered an update of the configuration of the carts service by increasing the number of replicas to 2. When the additional replica was available, the wait-service waited for ten minutes for the remediation action to take effect. Afterwards, an evaluation by the pitometer-service was triggered to check if the remediation action resolved the problem. In this case, increasing the number of replicas achieved the desired effect, since the evaluation of the service level objectives has been successful.
+    In this example, the bridge shows that the remediation service triggered an update of the configuration of the carts service by increasing the number of replicas to 2. When the additional replica was available, the wait-service waited for ten minutes for the remediation action to take effect. Afterwards, an evaluation by the lighthouse-service was triggered to check if the remediation action resolved the problem. In this case, increasing the number of replicas achieved the desired effect, since the evaluation of the service level objectives has been successful.
     
     {{< popup_image
     link="./assets/bridge_remediation.png"
     caption="Keptn's bridge">}}
+    
+1. Furthermore, you can use Prometheus to double-check the CPU usage:
+
+    {{< popup_image
+        link="./assets/prometheus-load-reduced.png"
+        caption="Prometheus load"
+        width="700px">}}
+
+
 
