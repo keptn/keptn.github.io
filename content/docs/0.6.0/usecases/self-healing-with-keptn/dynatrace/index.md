@@ -1,6 +1,6 @@
 ---
 title: Self-healing with Keptn
-description: Demonstrates how to use the self-healing mechanisms of Keptn to self-heal a demo service, which runs into issues, by providing automated upscaling.
+description: Demonstrates how to use the self-healing mechanisms of Keptn with Dynatrace
 weight: 30
 keywords: [self-healing]
 aliases:
@@ -18,13 +18,11 @@ In this tutorial, you will learn how to use the capabilities of Keptn to provide
 - Clone the example repository, which contains specification files:
 
     ```console
-    git clone --branch 0.6.0.beta https://github.com/keptn/examples.git --single-branch
+    git clone --branch 0.6.0 https://github.com/keptn/examples.git --single-branch
     ```
 
 ## Configure monitoring
 
-<details><summary>Prometheus monitoring</summary>
-<p>
 To inform Keptn about any issues in a production environment, monitoring has to be set up. The Keptn CLI helps with the automated setup and configuration of Prometheus as the monitoring solution running in the Kubernetes cluster. 
 
 For the configuration, Keptn relies on different specification files that define *service level indicators* (SLI), *service level objectives* (SLO), and *remediation actions* for self-healing if service level objectives are not achieved. To learn more about the *service-indicator*, *service-objective*, and *remediation* file, click here [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/spec/blob/0.1.1/sre.md).
@@ -36,11 +34,7 @@ To add these files to Keptn and to automatically configure Prometheus, execute t
     cd examples/onboarding-carts
     ```
 
-1. Configure Prometheus with the Keptn CLI:
-
-    ```console
-    kubectl apply -f prometheus-sli-config.yaml
-    ```
+1. Configure your SLOs and remediation actions with the Keptn CLI:
 
     ```console
     keptn add-resource --project=sockshop --stage=production --service=carts --resource=slo-self-healing.yaml --resourceUri=slo.yaml
@@ -51,14 +45,12 @@ To add these files to Keptn and to automatically configure Prometheus, execute t
     ```
 
     ```console
-    keptn configure monitoring prometheus --project=sockshop --service=carts
+    keptn configure monitoring dynatrace --project=sockshop
     ```
 
 Executing this command will perform the following tasks:
 
   - Adds the files `slo.yaml` and `remediation.yaml` to the `production` branch of your Keptn configuration repository
-  - Configures Prometheus with scrape jobs and alerting rules for the service
-  - Sets up the [Alert Manager](https://prometheus.io/docs/alerting/configuration/) to manage alerts
 
 
 <details><summary>*Click here to inspect the files that have been added.*</summary>
@@ -90,7 +82,7 @@ Executing this command will perform the following tasks:
 
   ```yaml
   remediations:
-  - name: response_time_p90
+  - name: Response time degradation
   actions:
   - action: scaling
       value: +1
@@ -99,10 +91,6 @@ Executing this command will perform the following tasks:
 </details>
 </p>
 
-<details><summary>Dynatrace monitoring</summary>
-<p>
-
-</p>
 
 ## Run the tutorial
 
@@ -140,33 +128,12 @@ To simulate user traffic that is causing an unhealthy behavior in the carts serv
     ./loadgenerator-_OS_ "http://carts.sockshop-production.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')" cpu 3
     ```
 
-1. (optional:) Verify the load in Prometheus.
-    - Make a port forward to access Prometheus:
+1. (optional:) Verify the load in Dynatrace.
 
-    ```console
-    kubectl port-forward svc/prometheus-service -n monitoring 8080:8080
-    ```
-    
-    - Access Prometheus from your browser on http://localhost:8080.
-
-    - In the **Graph** tab, add the expression 
-
-    ```console
-    histogram_quantile(0.9, sum by(le) (rate(http_response_time_milliseconds_bucket{job="carts-sockshop-production"}[3m])))
-    ```
-    
-    - Select the **Graph** tab to see your Response time metrics of the `carts` service in the `sockshop-production` environment.
-
-    - You should see a graph which locks similar to this:
-
-    {{< popup_image
-        link="./assets/prometheus-load.png"
-        caption="Prometheus load"
-        width="700px">}}
 
 ### Self-healing in action
 
-After approximately 10-15 minutes, your monitoring solution will send out an alert since the service level objective is not met anymore. 
+After approximately 10-15 minutes, Dynatrace will send out a problem notification because of the response time degradation. 
 
 1. To verify that an alert was fired, select the *Alerts* view where you should see that the alert `response_time_p90` is in the `firing` state:
 
@@ -175,8 +142,7 @@ After approximately 10-15 minutes, your monitoring solution will send out an ale
         caption="Alert manager"
         width="700px">}}
 
-Depending on your monitoring solution, the proper Keptn service (i.e., either the `prometheus-service` or the `dynatrace-service`) will receive the sent alert 
-and translate it into a Keptn CloudEvent. This event will eventually be received by the remediation service that will look for a 
+After receiving the problem notification, the `dynatrace-service` will translate it into a Keptn CloudEvent. This event will eventually be received by the remediation service that will look for a 
 remediation action specified for this type of problem and, if found, execute it.
 
 In this tutorial, the number of pods will be increased to remediate the issue of the response time increase. 
@@ -221,12 +187,8 @@ In this tutorial, the number of pods will be increased to remediate the issue of
     link="./assets/bridge_remediation.png"
     caption="Keptn's bridge">}}
     
-1. Furthermore, you can use Prometheus to double-check the CPU usage:
+1. Furthermore, you can see how the response time of the service decreased by viewing the time series chart in Dynatrace:
 
-    {{< popup_image
-        link="./assets/prometheus-load-reduced.png"
-        caption="Prometheus load"
-        width="700px">}}
 
 
 
