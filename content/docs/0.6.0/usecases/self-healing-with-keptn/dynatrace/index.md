@@ -144,22 +144,29 @@ To simulate user traffic that is causing an unhealthy behavior in the carts serv
 1. Start the load generation script depending on your OS (replace \_OS\_ with linux, mac, or win):
 
     ```console
-    ./loadgenerator-_OS_ "http://carts.sockshop-production.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')" cpu 3
+    ./loadgenerator-_OS_ "http://carts.sockshop-production.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')" cpu
     ```
 
 1. (optional:) Verify the load in Dynatrace.
 
+In your Dynatrace Tenant, inspect the Response Time chart of the correlating service entity of the carts microservice. Hint: You can find the service 
+in Dynatrace easier by selecting the management tone **Keptn: sockshop production**:
+
+    {{< popup_image
+        link="./assets/dt-services.png"
+        caption="Select the ItemsController service in the management zone 'Keptn: sockshop production'"
+        width="700px">}}
+        
+    {{< popup_image
+        link="./assets/dt_response_time.png"
+        caption="Response Time Series"
+        width="700px">}}
+
+As you can see in the time series Chart, the load generation script causes a significant increase in the response time.
 
 ### Self-healing in action
 
 After approximately 10-15 minutes, Dynatrace will send out a problem notification because of the response time degradation. 
-
-1. To verify that an alert was fired, select the *Alerts* view where you should see that the alert `response_time_p90` is in the `firing` state:
-
-    {{< popup_image
-        link="./assets/alert-manager.png"
-        caption="Alert manager"
-        width="700px">}}
 
 After receiving the problem notification, the `dynatrace-service` will translate it into a Keptn CloudEvent. This event will eventually be received by the remediation service that will look for a 
 remediation action specified for this type of problem and, if found, execute it.
@@ -207,6 +214,15 @@ In this tutorial, the number of pods will be increased to remediate the issue of
     caption="Keptn's bridge">}}
     
 1. Furthermore, you can see how the response time of the service decreased by viewing the time series chart in Dynatrace:
+
+As previously, go to the response time chart of the ItemsController Service. Here you will see that the additional instance has helped to bring down the response time.
+Eventually, the Problem that has been detected earlier will be closed automatically.
+
+    {{< popup_image
+    link="./assets/dt-problem-closed.png"
+    caption="Keptn's bridge">}}
+
+
 
 
 

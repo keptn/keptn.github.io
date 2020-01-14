@@ -131,7 +131,7 @@ To simulate user traffic that is causing an unhealthy behavior in the carts serv
 1. Start the load generation script depending on your OS (replace \_OS\_ with linux, mac, or win):
 
     ```console
-    ./loadgenerator-_OS_ "http://carts.sockshop-production.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')" cpu 3
+    ./loadgenerator-_OS_ "http://carts.sockshop-production.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')" cpu
     ```
 
 1. (optional:) Verify the load in Prometheus.
