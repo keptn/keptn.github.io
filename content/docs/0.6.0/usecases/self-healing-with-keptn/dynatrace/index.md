@@ -99,17 +99,33 @@ and go to *Settings -> Anomaly Detection -> Services*.
 
 Within this menu, select the option **Detect response time degradations using fixed thresholds**, set the limit to **1000ms**, and select **Medium** for the sensitivity (see the screenshot below).
 
-![](images/anomaly_detection.png)
+    {{< popup_image
+        link="./assets/anomaly_detection.png"
+        caption="Anomaly detection settings"
+        width="700px">}}
 
 Next, we will edit the default alerting profile to send problem notifications to Keptn immediately after a problem has been detected. In your Dynatrace tenant, navigate to 
 **Settings -> Alerting Profiles**, and select the **Default** alerting profile:
 
-![](images/alerting_profiles.png)
+    {{< popup_image
+        link="./assets/alerting_profiles.png"
+        caption="Alerting profiles"
+        width="700px">}}
 
 Next, select the section **Slowdown alert**, and set the time to wait before sending a notification to **0 minutes**. The remaining options can be left untouched. (see screenshot below).
 
-![](images/default_alerting_profile.png)
+    {{< popup_image
+        link="./assets/default_alerting_profile.png"
+        caption="Configuration of the default alerting profile"
+        width="700px">}}
 
+As a last configuration step, we will disable the Frequent Issue Detection to make the demo more reproducable. To do so, go to **Settings -> Anomaly Detection -> Frequent Issue Detection**,
+and disable all switches found in this menu:
+
+    {{< popup_image
+        link="./assets/disable-fid.png"
+        caption="Disabling frequent issue detection"
+        width="700px">}}
 
 ## Run the tutorial
 
