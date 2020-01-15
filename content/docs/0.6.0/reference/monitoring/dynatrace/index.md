@@ -93,7 +93,10 @@ oneagent-ps6t4                                 0/1     Running   0          3s
 
 - *Problem notification:* Automatically a problem notification has been set up to inform Keptn of any problems with your services to allow auto-remediation. You can check the problem notification by navigating to **Settings > Integration > Problem notifications** and you will find a **keptn remediation** problem notification.
 
+- *Alerting profile:* In addition to the problem notification, an alerting profile with all problems set to *0 minutes* (immediate) is created. You can review this profile by navigating to **Settings > Alerting > Alerting profiles**.
+
 - *Dashboard and Mangement zone:* When creating a new Keptn project or executing the [keptn configure monitoring](../../cli/#keptn-configure-monitoring) command for a particular project (see Note 1), a Dashboard and Management zone will be generated reflecting the environment as specified in the shipyard file.
+
 
 ---
 
@@ -205,6 +208,15 @@ The *dynatrace-service* in Keptn will take care of pushing events of the Keptn w
     link="./assets/custom_events.png"
     caption="Keptn events"
     width="500px">}}
+
+## Disable Frequent Issue Detection
+
+Keptn relies on Dynatrace sending *brand new* alerts everytime a problem is detected. Therefore we need to disable the *Frequent Issue Detection* within Dynatrace. To do so, go to **Settings -> Anomaly Detection -> Frequent Issue Detection**, and disable all switches found in this menu:
+
+{{< popup_image
+    link="./assets/disable-fid.png"
+    caption="Disabling frequent issue detection"
+    width="700px">}}
 
 ## Create a process group naming rule in Dynatrace
 
