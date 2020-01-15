@@ -1,8 +1,8 @@
 ---
-title: Self-healing with Keptn
+title: Up-scale with Dynatrace
 description: Demonstrates how to use the self-healing mechanisms of Keptn with Dynatrace
-weight: 30
-keywords: [self-healing]
+weight: 5
+keywords: [self-healing-dynatrace]
 aliases:
 ---
 Demonstrates how to use the self-healing mechanisms of Keptn to self-heal a demo service, which runs into issues, by providing automated upscaling.
@@ -13,19 +13,12 @@ In this tutorial, you will learn how to use the capabilities of Keptn to provide
 
 ## Prerequisites
 
-- Finish the [Onboarding a Service](../onboard-carts-service/) tutorial.
-
-- Clone the example repository, which contains specification files:
-
-    ```console
-    git clone --branch 0.6.0 https://github.com/keptn/examples.git --single-branch
-    ```
+- See [Self-healing](../#prerequisites).
+- Double-check that you have [Disabled Frequent Issue Detection](../../../reference/monitoring/dynatrace/#disable-frequent-issue-detection) within Dynatrace.
 
 ## Configure monitoring
 
 To inform Keptn about any issues in a production environment, monitoring has to be set up. The Keptn CLI helps with the automated setup and configuration of Dynatrace as the monitoring solution running in the Kubernetes cluster. 
-
-For the configuration, Keptn relies on different specification files that define *service level indicators* (SLI), *service level objectives* (SLO), and *remediation actions* for self-healing if service level objectives are not achieved. To learn more about the *service-indicator*, *service-objective*, and *remediation* file, click here [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/spec/blob/0.1.1/sre.md).
 
 To add these files to Keptn and to automatically configure Dynatrace, execute the following commands:
 
@@ -34,118 +27,43 @@ To add these files to Keptn and to automatically configure Dynatrace, execute th
     cd examples/onboarding-carts
     ```
 
-1. Configure your SLOs and remediation actions with the Keptn CLI:
-
-    ```console
-    keptn add-resource --project=sockshop --stage=production --service=carts --resource=slo-self-healing.yaml --resourceUri=slo.yaml
-    ```
+1. Configure remediation actions for up-scaling based on Dynatrace alerts:
 
     ```console
     keptn add-resource --project=sockshop --stage=production --service=carts --resource=remediation.yaml --resourceUri=remediation.yaml
     ```
 
+    `remediation.yaml` example:
+
+        remediations:
+        - name: Response time degradation
+          actions:
+          - action: scaling
+            value: +1
+
+1. Configure Dynatrace with the Keptn CLI:
+
     ```console
     keptn configure monitoring dynatrace --project=sockshop
     ```
 
-Executing this command will perform the following tasks:
 
-  - Adds the files `slo.yaml` and `remediation.yaml` to the `production` branch of your Keptn configuration repository
+### Configure Dynatrace Problem Detection with a fixed threshold
 
-
-<details><summary>*Click here to inspect the files that have been added.*</summary>
-
-- `slo.yaml`
-
-  ```yaml
-  ---
-  spec_version: '0.1.1'
-  comparison:
-    compare_with: "single_result"
-    include_result_with_score: "pass"
-    aggregate_function: avg
-  objectives:
-    - sli: response_time_p90
-      pass:        # pass if (relative change <= 10% AND absolute value is < 500)
-        - criteria:
-            - "<=+10%" # relative values require a prefixed sign (plus or minus)
-            - "<1000"   # absolute values only require a logical operator
-      warning:     # if the response time is below 800ms, the result should be a warning
-        - criteria:
-            - "<=1200"
-  total_score:
-    pass: "90%"
-    warning: 40%
-  ```
-
-- `remediation.yaml`
-
-  ```yaml
-  remediations:
-  - name: Response time degradation
-  actions:
-  - action: scaling
-      value: +1
-  ```
-
-</details>
-</p>
-
-
-### Configure Dynatrace Problem Detection
-
-For the sake of this demo, we will configure Dynatrace to detect Problems based on fixed thresholds. To do so, navigate to your Dynatrace Tenant in your browser,
+For the sake of this demo, we will configure Dynatrace to detect Problems based on fixed thresholds (rather than automatic). To do so, navigate to your Dynatrace Tenant in your browser,
 and go to *Settings -> Anomaly Detection -> Services*.
 
 Within this menu, select the option **Detect response time degradations using fixed thresholds**, set the limit to **1000ms**, and select **Medium** for the sensitivity (see the screenshot below).
 
-    {{< popup_image
-        link="./assets/anomaly_detection.png"
-        caption="Anomaly detection settings"
-        width="700px">}}
+{{< popup_image
+    link="./assets/anomaly_detection.png"
+    caption="Anomaly detection settings"
+    width="700px">}}
 
-Next, we will edit the default alerting profile to send problem notifications to Keptn immediately after a problem has been detected. In your Dynatrace tenant, navigate to 
-**Settings -> Alerting Profiles**, and select the **Default** alerting profile:
-
-    {{< popup_image
-        link="./assets/alerting_profiles.png"
-        caption="Alerting profiles"
-        width="700px">}}
-
-Next, select the section **Slowdown alert**, and set the time to wait before sending a notification to **0 minutes**. The remaining options can be left untouched. (see screenshot below).
-
-    {{< popup_image
-        link="./assets/default_alerting_profile.png"
-        caption="Configuration of the default alerting profile"
-        width="700px">}}
-
-As a last configuration step, we will disable the Frequent Issue Detection to make the demo more reproducable. To do so, go to **Settings -> Anomaly Detection -> Frequent Issue Detection**,
-and disable all switches found in this menu:
-
-    {{< popup_image
-        link="./assets/disable-fid.png"
-        caption="Disabling frequent issue detection"
-        width="700px">}}
+Please note, you can configure those fixed thresholds per service, instead of globally.
 
 ## Run the tutorial
 
-### Deploy an unhealthy service version
-
-To test the self-healing capabilities, deploy an unhealthy version of the carts microservice. This version has some issues that are not detected by the automated quality gates since the tests generate artificial traffic while in production real user traffic might reveal untested parts of the microservice that have issues.
-
-Therefore, please make sure that you have completed the [Onboarding a Service](../onboard-carts-service/) or the [Deployment with Quality Gates](../deployments-with-quality-gates/) tutorial (i.e., all shown versions contain issues that are not detected by the quality gates).
-
-You can check if the service is already running in your production stage by executing the following command and reviewing the output. It should show two pods in total.
-
-```console
-kubectl get pods -n sockshop-production
-```
-
-```console
-NAME                              READY   STATUS    RESTARTS   AGE
-carts-db-57cd95557b-r6cg8         1/1     Running   0          18m
-carts-primary-7c96d87df9-75pg7    1/1     Running   0          13m
-```
 
 ### Generate load for the service
 
@@ -165,8 +83,8 @@ To simulate user traffic that is causing an unhealthy behavior in the carts serv
 
 1. (optional:) Verify the load in Dynatrace.
 
-In your Dynatrace Tenant, inspect the Response Time chart of the correlating service entity of the carts microservice. Hint: You can find the service 
-in Dynatrace easier by selecting the management tone **Keptn: sockshop production**:
+    In your Dynatrace Tenant, inspect the Response Time chart of the correlating service entity of the carts microservice. Hint: You can find the service 
+    in Dynatrace easier by selecting the management tone **Keptn: sockshop production**:
 
     {{< popup_image
         link="./assets/dt-services.png"
@@ -180,7 +98,7 @@ in Dynatrace easier by selecting the management tone **Keptn: sockshop productio
 
 As you can see in the time series Chart, the load generation script causes a significant increase in the response time.
 
-### Self-healing in action
+### Watch self-healing in action
 
 After approximately 10-15 minutes, Dynatrace will send out a problem notification because of the response time degradation. 
 
@@ -231,8 +149,8 @@ In this tutorial, the number of pods will be increased to remediate the issue of
     
 1. Furthermore, you can see how the response time of the service decreased by viewing the time series chart in Dynatrace:
 
-As previously, go to the response time chart of the ItemsController Service. Here you will see that the additional instance has helped to bring down the response time.
-Eventually, the Problem that has been detected earlier will be closed automatically.
+    As previously, go to the response time chart of the ItemsController Service. Here you will see that the additional instance has helped to bring down the response time.
+    Eventually, the Problem that has been detected earlier will be closed automatically.
 
     {{< popup_image
     link="./assets/dt-problem-closed.png"

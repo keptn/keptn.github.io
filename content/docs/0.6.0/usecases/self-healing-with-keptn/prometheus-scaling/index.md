@@ -1,8 +1,8 @@
 ---
-title: Self-healing with Keptn
+title: Up-scale with Prometheus
 description: Demonstrates how to use the self-healing mechanisms of Keptn with Prometheus
-weight: 30
-keywords: [self-healing]
+weight: 10
+keywords: [self-healing-prometheus]
 aliases:
 ---
 Demonstrates how to use the self-healing mechanisms of Keptn to self-heal a demo service, which runs into issues, by providing automated upscaling.
@@ -13,19 +13,11 @@ In this tutorial, you will learn how to use the capabilities of Keptn to provide
 
 ## Prerequisites
 
-- Finish the [Onboarding a Service](../onboard-carts-service/) tutorial.
-
-- Clone the example repository, which contains specification files:
-
-    ```console
-    git clone --branch 0.6.0 https://github.com/keptn/examples.git --single-branch
-    ```
+- See [Self-healing](../#prerequisites).
 
 ## Configure monitoring
 
 To inform Keptn about any issues in a production environment, monitoring has to be set up. The Keptn CLI helps with the automated setup and configuration of Prometheus as the monitoring solution running in the Kubernetes cluster. 
-
-For the configuration, Keptn relies on different specification files that define *service level indicators* (SLI), *service level objectives* (SLO), and *remediation actions* for self-healing if service level objectives are not achieved. To learn more about the *service-indicator*, *service-objective*, and *remediation* file, click here [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/spec/blob/0.1.1/sre.md).
 
 To add these files to Keptn and to automatically configure Prometheus, execute the following commands:
 
@@ -34,55 +26,20 @@ To add these files to Keptn and to automatically configure Prometheus, execute t
     cd examples/onboarding-carts
     ```
 
-1. Configure Prometheus with the Keptn CLI:
-
-    ```console
-    kubectl apply -f prometheus-sli-config.yaml
-    ```
-
-    ```console
-    keptn add-resource --project=sockshop --stage=production --service=carts --resource=slo-self-healing.yaml --resourceUri=slo.yaml
-    ```
+1. Configure remediation actions for up-scaling based on Prometheus alerts:
 
     ```console
     keptn add-resource --project=sockshop --stage=production --service=carts --resource=remediation.yaml --resourceUri=remediation.yaml
     ```
 
+1. Configure Prometheus with the Keptn CLI (this configures the [Alert Manager](https://prometheus.io/docs/alerting/configuration/ based on the slo.yaml file):
+
+
     ```console
     keptn configure monitoring prometheus --project=sockshop --service=carts
     ```
 
-Executing this command will perform the following tasks:
-
-  - Adds the files `slo.yaml` and `remediation.yaml` to the `production` branch of your Keptn configuration repository
-  - Configures Prometheus with scrape jobs and alerting rules for the service
-  - Sets up the [Alert Manager](https://prometheus.io/docs/alerting/configuration/) to manage alerts
-
-
 <details><summary>*Click here to inspect the files that have been added.*</summary>
-
-- `slo.yaml`
-
-  ```yaml
-  ---
-  spec_version: '0.1.1'
-  comparison:
-    compare_with: "single_result"
-    include_result_with_score: "pass"
-    aggregate_function: avg
-  objectives:
-    - sli: response_time_p90
-      pass:        # pass if (relative change <= 10% AND absolute value is < 500)
-        - criteria:
-            - "<=+10%" # relative values require a prefixed sign (plus or minus)
-            - "<1000"   # absolute values only require a logical operator
-      warning:     # if the response time is below 800ms, the result should be a warning
-        - criteria:
-            - "<=1200"
-  total_score:
-    pass: "90%"
-    warning: 40%
-  ```
 
 - `remediation.yaml`
 
@@ -99,24 +56,6 @@ Executing this command will perform the following tasks:
 
 
 ## Run the tutorial
-
-### Deploy an unhealthy service version
-
-To test the self-healing capabilities, deploy an unhealthy version of the carts microservice. This version has some issues that are not detected by the automated quality gates since the tests generate artificial traffic while in production real user traffic might reveal untested parts of the microservice that have issues.
-
-Therefore, please make sure that you have completed the [Onboarding a Service](../onboard-carts-service/) or the [Deployment with Quality Gates](../deployments-with-quality-gates/) tutorial (i.e., all shown versions contain issues that are not detected by the quality gates).
-
-You can check if the service is already running in your production stage by executing the following command and reviewing the output. It should show two pods in total.
-
-```console
-kubectl get pods -n sockshop-production
-```
-
-```console
-NAME                              READY   STATUS    RESTARTS   AGE
-carts-db-57cd95557b-r6cg8         1/1     Running   0          18m
-carts-primary-7c96d87df9-75pg7    1/1     Running   0          13m
-```
 
 ### Generate load for the service
 
@@ -158,7 +97,7 @@ To simulate user traffic that is causing an unhealthy behavior in the carts serv
         caption="Prometheus load"
         width="700px">}}
 
-### Self-healing in action
+### Watch self-healing in action
 
 After approximately 10-15 minutes, the Alert Manager will send out an alert since the service level objective is not met anymore. 
 
