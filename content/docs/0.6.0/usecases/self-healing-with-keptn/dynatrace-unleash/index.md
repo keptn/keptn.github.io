@@ -21,7 +21,43 @@ In this tutorial you will learn how to use the capabilities of Keptn to provide 
 
 **Note**: For the sake of this tutorial we will onboard Unleash as a Keptn Project. The carts microservice is already pre-configured for this.
 
-To quickly get an Unleash server up and running with Keptn, follow the instructions provided here: https://github.com/keptn/examples/tree/master/unleash-server .
+To quickly get an Unleash server up and running with Keptn, follow these instructions:
+
+1. Make sure you are in the correct folder of your examples directory:
+
+    ```console
+    cd examples/unleash
+    ```
+
+1. Create a new project
+
+    ```console
+    keptn create project unleash --shipyard=./shipyard.yaml
+    ```
+
+1. Onboard unleash and unleash-db using the `keptn onboard service` command:
+
+    ```console
+    keptn onboard service unleash-db --project=unleash --chart=./unleash-db
+    keptn onboard service unleash --project=unleash --chart=./unleash
+    ```
+
+1. Send new artifacts for unleash and unleash-db using the `keptn send new-artifact` command:
+
+    ```console
+    keptn send event new-artifact --project=unleash --service=unleash-db --image=postgres:10.4
+    keptn send event new-artifact --project=unleash --service=unleash --image=docker.io/keptnexamples/unleash:1.0.0
+    ```
+
+1. Get the url (`unleash.unelash-dev.KEPTN_DOMAIN`):
+
+    ```console
+    echo http://unleash.unleash-dev.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
+    ```
+
+1. Open the url in your browser and log in using the following credentials:
+   * username: keptn
+   * password: keptn
 
 In the end you should be able to access your unleash server using the url provided by the following command:
 ```console
