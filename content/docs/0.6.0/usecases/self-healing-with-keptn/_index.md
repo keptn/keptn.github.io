@@ -2,6 +2,7 @@
 title: Self Healing
 weight: 30
 icon: setup
+description: Provides details about self-healing using upscaling and feature toggle.
 ---
 
 ## About this tutorial
