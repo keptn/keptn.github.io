@@ -39,7 +39,7 @@ Select one of the following options:
   - Sample script using [eksctl](https://eksctl.io/introduction/installation/) to create such a cluster
 
     ```console
-    eksctl create cluster --version=1.13 --name=keptn-cluster --node-type=m5.xlarge --nodes=1 --region=eu-west-3
+    eksctl create cluster --version=1.13 --name=keptn-cluster --node-type=m5.2xlarge --nodes=1 --region=eu-west-3
     ```
     In our testing we learned that the default CoreDNS that comes with certain EKS versions has a bug. In order to solve that issue we can use eksctl to update the CoreDNS service like this: 
     ```console
