@@ -168,7 +168,7 @@ After onboarding the services, a built artifact of each service can be deployed.
 * Deploy the carts-db service by executing the [keptn send event new-artifact](../../reference/cli/#keptn-send-event-new-artifact) command:
 
   ```console
-  keptn send event new-artifact --project=sockshop --service=carts-db --image=mongo
+  keptn send event new-artifact --project=sockshop --service=carts-db --image=mongo:4.2.2
   ```
 
 * Deploy the carts service by specifying the built artifact, which is stored on DockerHub and tagged with version 0.10.1:
