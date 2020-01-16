@@ -4,6 +4,20 @@ description: How to setup a GKE cluster to be used for Keptn.
 weight: 22
 keywords: setup
 ---
+<div class="promo section-primary">
+  <div class="container pt-1 pb-1 text-center">
+    <div class="row pt-md-5 pb-md-5">
+      <div class="col-12 col-md-12 col-lg-12">
+        Keptn loves <strong>Google Kubernetes Engine</strong> and so do they.
+        <br>
+        Sign up via Keptn and get an extra <strong>$200</strong> in <strong>Google Cloud Platform</strong> credit.
+        <br><br>
+        <a class="button button-secondary" href="http://bit.ly/keptnongke" target="_blank">Sign up and use Keptn in GKE</a>
+        
+      </div>
+    </div>
+  </div>
+</div>
 
 ## 1. Install local tools
   - [gcloud](https://cloud.google.com/sdk/gcloud/)

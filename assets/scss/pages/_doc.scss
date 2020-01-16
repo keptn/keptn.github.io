@@ -15,6 +15,10 @@
     min-width: 5em;
   }
 
+  .promo {
+    color: white;
+  }
+
   display: grid;
   grid-template-columns: [article] 100%;
   grid-column-gap: 1rem;
