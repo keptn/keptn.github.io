@@ -25,6 +25,11 @@ To add these files to Keptn and to automatically configure Prometheus, execute t
     ```
     cd examples/onboarding-carts
     ```
+1. Tell the Prometheus service how to retrieve the SLI value you would like to inspect:
+
+    ```
+    keptn add-resource --project=sockshop --stage=production --service=carts --resource=sli-config-prometheus.yaml --resourceUri=prometheus/sli.yaml
+    ```
 
 1. Configure remediation actions for up-scaling based on Prometheus alerts:
 
