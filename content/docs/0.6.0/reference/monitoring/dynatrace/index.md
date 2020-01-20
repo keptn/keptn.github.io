@@ -16,7 +16,7 @@ To evaluate the quality gates and allow self-healing in production, we have to s
 
 1. Create a Dynatrace API Token
 
-    Log in to your Dynatrace tenant, and go to **Settings > Integration > Dynatrace API**. Then, create a new API token with the following permissions:
+    Log in to your Dynatrace tenant and go to **Settings > Integration > Dynatrace API**. Then, create a new API token with the following permissions:
 
     - Access problem and event feed, metrics and topology
     - Access logs

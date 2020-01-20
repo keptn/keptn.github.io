@@ -9,7 +9,7 @@ Demonstrates how to use the self-healing mechanisms of Keptn to self-heal a demo
 
 ## About this tutorial
 
-In this tutorial, you will learn how to use the capabilities of Keptn to provide self-healing for an application without modifying any of the applications code. The tutorial presented in the following will scale up the pods of an application if the application undergoes heavy CPU saturation. 
+In this tutorial, you will learn how to use the capabilities of Keptn to provide self-healing for an application without modifying code. The following tutorial will scale up the pods of an application if the application undergoes heavy CPU saturation. 
 
 ## Prerequisites
 
@@ -22,6 +22,7 @@ To inform Keptn about any issues in a production environment, monitoring has to 
 To add these files to Keptn and to automatically configure Prometheus, execute the following commands:
 
 1. Make sure you are in the correct folder of your examples directory:
+
     ```
     cd examples/onboarding-carts
     ```
@@ -34,26 +35,24 @@ To add these files to Keptn and to automatically configure Prometheus, execute t
 
 1. Configure Prometheus with the Keptn CLI (this configures the [Alert Manager](https://prometheus.io/docs/alerting/configuration/ based on the slo.yaml file):
 
-
     ```console
     keptn configure monitoring prometheus --project=sockshop --service=carts
     ```
 
-<details><summary>*Click here to inspect the files that have been added.*</summary>
+<details><summary>*Click here to inspect the file that has been added.*</summary>
 
 - `remediation.yaml`
 
   ```yaml
   remediations:
   - name: response_time_p90
-  actions:
-  - action: scaling
+    actions:
+    - action: scaling
       value: +1
   ```
 
 </details>
 </p>
-
 
 ## Run the tutorial
 
@@ -99,7 +98,7 @@ To simulate user traffic that is causing an unhealthy behavior in the carts serv
 
 ### Watch self-healing in action
 
-After approximately 10-15 minutes, the Alert Manager will send out an alert since the service level objective is not met anymore. 
+After approximately 10-15 minutes, the *Alert Manager* will send out an alert since the service level objective is not met anymore. 
 
 1. To verify that an alert was fired, select the *Alerts* view where you should see that the alert `response_time_p90` is in the `firing` state:
 
@@ -108,8 +107,7 @@ After approximately 10-15 minutes, the Alert Manager will send out an alert sinc
         caption="Alert manager"
         width="700px">}}
 
-After receiving the problem notification, the `prometheus-service` will translate it into a Keptn CloudEvent. This event will eventually be received by the remediation service that will look for a 
-remediation action specified for this type of problem and, if found, execute it.
+After receiving the problem notification, the *prometheus-service* will translate it into a Keptn CloudEvent. This event will eventually be received by the *remediation-service* that will look for a remediation action specified for this type of problem and, if found, execute it.
 
 In this tutorial, the number of pods will be increased to remediate the issue of the response time increase. 
 
@@ -128,6 +126,7 @@ In this tutorial, the number of pods will be increased to remediate the issue of
     ```
 
 1. Also you should see an additional pod running when you execute:
+
     ```console
     kubectl get pods -n sockshop-production
     ```
@@ -139,13 +138,13 @@ In this tutorial, the number of pods will be increased to remediate the issue of
     carts-primary-7c96d87df9-78fh2    2/2     Running   0          5m
     ```
 
-1. To get an overview of the actions that got triggered by the response time SLO violation, you can use the bridge. You can access it by a port-forward from your local machine to the Kubernetes cluster:
+1. To get an overview of the actions that got triggered by the response time SLO violation, you can use the Keptn's bridge. You can access it by a port-forward from your local machine to the Kubernetes cluster:
 
     ```console 
     kubectl port-forward svc/bridge -n keptn 9000:8080
     ```
 
-    Now access the bridge from your browser on http://localhost:9000. 
+    Now, access the bridge from your browser on http://localhost:9000. 
 
     In this example, the bridge shows that the remediation service triggered an update of the configuration of the carts service by increasing the number of replicas to 2. When the additional replica was available, the wait-service waited for ten minutes for the remediation action to take effect. Afterwards, an evaluation by the lighthouse-service was triggered to check if the remediation action resolved the problem. In this case, increasing the number of replicas achieved the desired effect, since the evaluation of the service level objectives has been successful.
     
@@ -159,6 +158,3 @@ In this tutorial, the number of pods will be increased to remediate the issue of
         link="./assets/prometheus-load-reduced.png"
         caption="Prometheus load"
         width="700px">}}
-
-
-
