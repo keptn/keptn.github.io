@@ -147,10 +147,10 @@ keptn install --platform=[aks|eks|gke|openshift|pks|kubernetes] --use-case=quali
 
 ## Configure Keptn and activate the quality gate
 
-* Create a Keptn project (e.g., *musicshop*) with only one the *hardening* stage declared in the `shipyard_quality_gates.yaml` file:
+* Create a Keptn project (e.g., *musicshop*) with only one the *hardening* stage declared in the `shipyard-quality-gates.yaml` file:
 
   ```
-  keptn create project musicshop --shipyard=shipyard_quality_gates.yaml
+  keptn create project musicshop --shipyard=shipyard-quality-gates.yaml
   ```
 
 * Create a Keptn service for your service (e.g., *catalogue*) you want to evaluate:
@@ -256,7 +256,7 @@ At a specific point in time, e.g., after you have executed your tests or you hav
 * Execute a quality gate evaluation by using the Keptn CLI to [send event start-evaluation](../../reference/cli/#keptn-send-event-start-evaluation): 
 
   ```console
-  keptn send event start-evaluation --project=musicshop --stage=hardening --service=catalogue --period=5m
+  keptn send event start-evaluation --project=musicshop --stage=hardening --service=catalogue --timeframe=5m
   ```
 
   This `start-evaluation` event will kick off the evaluation of the SLO of the catalogue service over the last 5 minutes. Evaluations can be done in seconds but may also take a while as every SLI provider needs to query each SLI first. This is why the Keptn CLI will return the `keptnContext`, which is basically a token we can use to poll the status of this particular evaluation. The output of the previous command looks like this:
