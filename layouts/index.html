@@ -27,21 +27,6 @@ page-home
 
 {{ define "main" }}
 
-{{/* Promo */}}
-<div class="promo section-primary">
-  <div class="container pt-1 pb-1 text-center">
-    <div class="row pt-md-5 pb-md-5">
-      <div class="col-12 col-md-12 col-lg-12">
-        {{ with .Site.GetPage "section" "home/promo" }}
-          {{ .Content }}
-        {{ end }}
-        <br>
-        <a class="button button-secondary" href="http://bit.ly/keptnongke" target="_blank">Sign up and use Keptn in GKE</a>
-        
-      </div>
-    </div>
-  </div>
-</div>
 
 {{/* Intro */}}
 <div class="intro">
@@ -57,6 +42,10 @@ page-home
             keptn on Github
             <img class="icon" src="/images/general/icon-github.svg" alt="Github">
             <img class="icon icon--hover" src="/images/general/icon-github-hover.svg" alt="Github">
+          </a>
+          &nbsp;&nbsp;&nbsp;
+          <a class="button button-primary" href="./docs/quickstart/">
+            Quickstart with credits on GKE
           </a>
         </div>
       </div>
