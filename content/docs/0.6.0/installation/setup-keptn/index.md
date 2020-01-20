@@ -52,19 +52,9 @@ Select one of the following options:
 <details><summary>Google Kubernetes Engine (GKE)</summary>
 <p>
 
-<div class="promo section-primary">
-  <div class="container pt-1 pb-1 text-center">
-    <div class="row pt-md-1 pb-md-1">
-      <div class="col-12 col-md-12 col-lg-12">
-        Run your Keptn installation for free on GKE!
-        If you sign up for a Google Cloud account, Google gives you an initial $300 credit. For deploying Keptn you can apply for an additional $200 credit which you can use towards that GKE cluster needed to run Keptn.<br><br>
-        <a class="button button-secondary" href="http://bit.ly/keptnongke" target="_blank">Sign up here</a>
-        
-      </div>
-    </div>
-  </div>
-</div>
-
+1. Run your Keptn installation for free on GKE!
+If you sign up for a Google Cloud account, Google gives you an initial $300 credit. For deploying Keptn you can apply for an additional $200 credit which you can use towards that GKE cluster needed to run Keptn.<br><br>
+<a class="button button-primary" href="http://bit.ly/keptnongke" target="_blank">Sign up here</a><br><br>
 
 1. Install local tools
   - [gcloud](https://cloud.google.com/sdk/gcloud/)
