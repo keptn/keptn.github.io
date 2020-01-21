@@ -29,7 +29,7 @@ To quickly get an Unleash server up and running with Keptn, follow these instruc
     cd examples/unleash
     ```
 
-1. Create a new project sing the [keptn create project](../../../reference/cli/#keptn-create-project) command:
+1. Create a new project using the [keptn create project](../../../reference/cli/#keptn-create-project) command:
 
     ```console
     keptn create project unleash --shipyard=./shipyard.yaml
@@ -49,17 +49,18 @@ To quickly get an Unleash server up and running with Keptn, follow these instruc
     keptn send event new-artifact --project=unleash --service=unleash --image=docker.io/keptnexamples/unleash:1.0.0
     ```
 
-1. Get the url (`unleash.unelash-dev.KEPTN_DOMAIN`):
+1. Get the URL (`unleash.unelash-dev.KEPTN_DOMAIN`):
 
     ```console
     echo http://unleash.unleash-dev.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
     ```
 
-1. Open the url in your browser and log in using the following credentials:
+1. Open the URL in your browser and log in using the following credentials:
    * username: keptn
    * password: keptn
 
-In the end you should be able to access your unleash server using the url provided by the following command:
+In the end, you should be able to access your unleash server using the URL provided by the following command:
+
 ```console
 echo http://unleash.sockshop-production.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
 ```
@@ -70,9 +71,9 @@ You should be able to login using the credentials *keptn/keptn*.
 
 In this tutorial, we are going to introduce feature toggles for two scenarios:
 
-1. Feature flag for a very simple caching mechanism that can speed up the delivery of the website  since it skips the calls to the database but instead replies with static content.
+1. Feature flag for a very simple caching mechanism that can speed up the delivery of the website since it skips the calls to the database but instead replies with static content.
 
-1. Feature flag for a promotion campaign that can be enabled whenever you want to run a promotional campaign on top of your shopping cart.
+1. Feature flag for a promotional campaign that can be enabled whenever you want to run a promotional campaign on top of your shopping cart.
 
 To set up both feature flags, navigate to your Unleash server and log in. 
 
@@ -137,7 +138,7 @@ Now that everything is set up, next we are going to hit the application with som
 
 ## Run the tutorial
 
-In order to simulate user traffic, we are going to execute the following script that will constantly add items to the shopping cart.
+To simulate user traffic, we are going to execute the following script that will constantly add items to the shopping cart.
 
 1. Change into the folder with the load generation program within the examples repo:
 
@@ -151,7 +152,7 @@ In order to simulate user traffic, we are going to execute the following script 
     ./loadgenerator-_OS_ "http://carts.sockshop-production.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')" 
     ```
 
-3. Now, go back to your Unleash server in your browser. In this tutorial we are going to turn on the promotional campaign, which purpose is to add promotional gifts to about 30&nbsp;% of the user interactions that put items in their shopping cart. 
+3. Now, go back to your Unleash server in your browser. In this tutorial, we are going to turn on the promotional campaign, which purpose is to add promotional gifts to about 30&nbsp;% of the user interactions that put items in their shopping cart. 
 
 4. Click on the toggle next to **EnablePromotion** to enable this feature flag.
 
@@ -160,7 +161,7 @@ In order to simulate user traffic, we are going to execute the following script 
         caption="Enable feature toggle"
         width="700px">}}
 
-5. In the output of the load generation program you should see that errors in terms of exceptions are shown. Taking a closer look will tell you that the promotional campaign has actually never been implemented. After a couple of minutes, the monitoring tool will detect an increase of the failure rate and will send out a problem notification to Keptn.
+5. In the output of the load generation program you should see that errors in terms of exceptions are shown. Taking a closer look will tell you that the promotional campaign has never been implemented. After a couple of minutes, the monitoring tool will detect an increase in the failure rate and will send out a problem notification to Keptn.
 
 6. Keptn will receive the problem notification/alert and look for a remediation action that matches this problem. Since we have added the `remediation.yaml` before, Keptn will find a remediation action and will trigger the corresponding action that will disable the feature flag.
 
