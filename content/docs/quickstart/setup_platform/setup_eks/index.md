@@ -10,4 +10,4 @@ keywords: setup
 
 ## 2. Create EKS cluster
   - version >= `1.13` (tested version: `1.13`)
-  - One `m5.xlarge` node
+  - One `m5.2xlarge` node
