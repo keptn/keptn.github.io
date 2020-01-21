@@ -35,7 +35,7 @@ Select one of the following options:
 
 1. Create EKS cluster on AWS
   - version >= `1.13` (tested version: `1.13`)
-  - One `m5.xlarge` node
+  - One `m5.2xlarge` node
   - Sample script using [eksctl](https://eksctl.io/introduction/installation/) to create such a cluster
 
     ```console
