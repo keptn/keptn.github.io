@@ -128,7 +128,7 @@ For more information about SLO and SLI, please take a look at [Specifications fo
         value: "keptn_project=musicshop keptn_service=catalogue keptn_stage=hardening"
       ``` 
 
-    * Add tagging rules in Dynatrace to detect these values and to create the tags for your monitored service. Therefore, you can use the script [applyAutoTaggingRules.sh](https://github.com/keptn-contrib/dynatrace-service/blob/release-0.5.0/deploy/scripts/applyAutoTaggingRules.sh) with the parameters Tenant ID and API Token: 
+    * Add tagging rules in Dynatrace to detect these values and to create the tags for your monitored service. Therefore, you can use the script [applyAutoTaggingRules.sh](https://github.com/keptn-contrib/dynatrace-service/blob/release-0.6.0/deploy/scripts/applyAutoTaggingRules.sh) with the parameters Tenant ID and API Token: 
 
       ```console
       .\applyAutoTaggingRules.sh $DT_TENANT $DT_API_TOKEN
