@@ -53,11 +53,12 @@ With Keptn installed, have a look at the different [use cases](/docs/0.6.0/useca
 ### 5. Learn how Keptn works under the hood and how it can be adapted to your use cases
 Review the [reference documentation](/docs/0.6.0/) for a full reference on all components of Keptn and how they can be combined and extended to your needs.
 
-### 6. In case you need help
+### 6. You need help?
 Join [our slack channel](https://join.slack.com/t/keptn/shared_invite/enQtNTUxMTQ1MzgzMzUxLWMzNmM1NDc4MmE0MmQ0MDgwYzMzMDc4NjM5ODk0ZmFjNTE2YzlkMGE4NGU5MWUxODY1NTBjNjNmNmI1NWQ1NGY)
  for any questions that may arise.
 
-### 7. Uninstalling Keptn
+### 7. Uninstall Keptn
+
 ```console
 keptn uninstall
 ```

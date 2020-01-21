@@ -11,7 +11,7 @@ In this tutorial, you will learn how to use the capabilities of Keptn to provide
 
 The tutorial presented in the following will provide information about the self-healing actions *scale up*  and *feature toggle*.
 
-For the configuration, Keptn relies on several specification files that define *service level indicators* (SLI), *service level objectives* (SLO), and *remediation actions* for self-healing if service level objectives are not achieved. To learn more about the *service-indicator*, *service-objective*, and *remediation* file, click here [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/spec/blob/0.1.1/sre.md).
+For the configuration, Keptn relies on several specification files that define *service level indicators* (SLI), *service level objectives* (SLO), and *remediation actions* for self-healing if service level objectives are not achieved. To learn more about the *service-indicator*, *service-objective*, and *remediation* file, click here [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/spec/blob/0.1.2/sre.md).
 
 ## Prerequisites
 

@@ -46,7 +46,7 @@ To illustrate the scenario this tutorial addresses, Keptn relies on following in
 * Clone example files used for this tutorial:
 
     ```console
-    git clone https://github.com/keptn/examples.git --single-branch
+    git clone --branch 0.6.0 https://github.com/keptn/examples.git --single-branch
     ```
 
     ```console
@@ -92,7 +92,7 @@ This shipyard contains three stages: dev, staging, and production. This results 
 </p>
 </details>
 
-**Note:**  To learn more about a *shipyard* file, please take a look at the [Shipyard specification](https://github.com/keptn/spec/blob/0.1.1/shipyard.md).
+**Note:**  To learn more about a *shipyard* file, please take a look at the [Shipyard specification](https://github.com/keptn/spec/blob/0.1.2/shipyard.md).
 
 Create a new project for your services using the [create project](../../reference/cli/#keptn-create-project) command. In this example, the project is called *sockshop*. Before executing the following command, make sure you are in the `examples/onboarding-carts` folder.
 
