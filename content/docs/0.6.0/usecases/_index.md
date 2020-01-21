@@ -18,7 +18,7 @@ The above list of tutorials helps you to explore the functionalities of Keptn ba
 
 * As a **Site Reliability Engineer** you might be most interested in:
   * [Self-healing with Keptn](./self-healing-with-keptn/)
-  * [Runbook Automation](./runbook-automation-and-self-healing/)
+<!--  * [Runbook Automation](./runbook-automation-and-self-healing/) -->
 
 ## Application and environment
 

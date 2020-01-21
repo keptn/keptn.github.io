@@ -5,6 +5,7 @@ theme = "hugo-serif-theme"
 relativeUrls = true
 
 ignoreFiles = [ 
+"^(.*/docs/0.6.0/usecases/runbook-automation-and-self-healing*)$",    
 "^(.*/docs/0.3.0/*)$", 
 "^(.*/docs/0.2.2/*)$", 
 "^(.*/docs/0.2.1/*)$", 
