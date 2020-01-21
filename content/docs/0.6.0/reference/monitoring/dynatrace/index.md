@@ -16,7 +16,7 @@ To evaluate the quality gates and allow self-healing in production, we have to s
 
 1. Create a Dynatrace API Token
 
-    Log in to your Dynatrace tenant, and go to **Settings > Integration > Dynatrace API**. Then, create a new API token with the following permissions:
+    Log in to your Dynatrace tenant and go to **Settings > Integration > Dynatrace API**. Then, create a new API token with the following permissions:
 
     - Access problem and event feed, metrics and topology
     - Access logs
@@ -236,7 +236,7 @@ If you want to uninstall Dynatrace, there are scripts provided to do so. Uninsta
 1. (optional) If you do not have the *dynatrace-service* repository, clone the latest release using:
 
   ```console
-  git clone --branch 0.3.0 https://github.com/keptn-contrib/dynatrace-service --single-branch
+  git clone --branch 0.6.0 https://github.com/keptn-contrib/dynatrace-service --single-branch
   ```
 
 1. Go to correct folder and execute the `uninstallDynatrace.sh` script:

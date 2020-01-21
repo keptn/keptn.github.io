@@ -321,4 +321,4 @@ At a specific point in time, e.g., after you have executed your tests or you hav
   curl -X GET "http://api.keptn.12.34.56.78.xip.io/v1/event?keptnContext=KEPTN_CONTEXT_ID&type=sh.keptn.events.evaluation-done" -H "accept: application/json" -H "x-token: YOUR_KEPTN_TOKEN"
   ```
 
-  The result comes in the form of the `evaluation-done` event, which is specified [here](https://github.com/keptn/spec/blob/0.1.1/cloudevents.md#evaluation-done).
+  The result comes in the form of the `evaluation-done` event, which is specified [here](https://github.com/keptn/spec/blob/0.1.2/cloudevents.md#evaluation-done).

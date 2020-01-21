@@ -46,7 +46,7 @@ To illustrate the scenario this tutorial addresses, Keptn relies on following in
 * Clone example files used for this tutorial:
 
     ```console
-    git clone https://github.com/keptn/examples.git --single-branch
+    git clone --branch 0.6.0 https://github.com/keptn/examples.git --single-branch
     ```
 
     ```console
@@ -92,9 +92,9 @@ This shipyard contains three stages: dev, staging, and production. This results 
 </p>
 </details>
 
-**Note:**  To learn more about a *shipyard* file, please take a look at the [Shipyard specification](https://github.com/keptn/spec/blob/0.1.1/shipyard.md).
+**Note:**  To learn more about a *shipyard* file, please take a look at the [Shipyard specification](https://github.com/keptn/spec/blob/0.1.2/shipyard.md).
 
-Create a new project for your services using the [create project](../../reference/cli/#keptn-create-project) command. In this example, the project is called *sockshop*. Before executing the following command, make sure you are in the `examples/onboarding-carts` folder.
+Create a new project for your services using the [keptn create project](../../reference/cli/#keptn-create-project) command. In this example, the project is called *sockshop*. Before executing the following command, make sure you are in the `examples/onboarding-carts` folder.
 
 Create a new project without Git upstream:
 ```console
@@ -115,7 +115,7 @@ keptn create project sockshop --shipyard=./shipyard.yaml --git-user=GIT_USER --g
 ## Onboard carts service and carts database
 After creating the project, services can be onboard to this project.
 
-* Onboard the **carts** service using the [onboard service](../../reference/cli/#keptn-onboard-service) command:
+* Onboard the **carts** service using the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command:
 
   ```console
   keptn onboard service carts --project=sockshop --chart=./carts
@@ -139,7 +139,7 @@ After creating the project, services can be onboard to this project.
 
 Since the carts service requires a mongodb database, a second service needs to be onboarded.
 
-* Onboard the **carts-db** service using the [onboard service](../../reference/cli/#keptn-onboard-service) command. The `--deployment-strategy` flag specifies that for this service a *direct* deployment strategy in all stages should be used regardless of the deployment strategy specified in the shipyard. Thus, the database is not blue/green deployed.
+* Onboard the **carts-db** service using the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command. The `--deployment-strategy` flag specifies that for this service a *direct* deployment strategy in all stages should be used regardless of the deployment strategy specified in the shipyard. Thus, the database is not blue/green deployed.
 
   ```console
   keptn onboard service carts-db --project=sockshop --chart=./carts-db --deployment-strategy=direct

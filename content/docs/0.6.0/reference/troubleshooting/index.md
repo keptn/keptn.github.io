@@ -61,7 +61,6 @@ In this section, instructions have been summarized that help to troubleshoot kno
 
   ```console
   NAME                                             READY   STATUS    RESTARTS   AGE
-  fluent-bit-s8drm                                 1/1     Running   0          5m14s
   mongodb-7d956d5775-mkxv5                         1/1     Running   0          5m16s
   mongodb-datastore-d65b468d7-tmwfm                1/1     Running   0          5m14s
   mongodb-datastore-distributor-6cc947d554-tn6kr   1/1     Running   0          5m7s
