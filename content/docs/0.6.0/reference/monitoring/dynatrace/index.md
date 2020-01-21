@@ -43,9 +43,7 @@ To evaluate the quality gates and allow self-healing in production, we have to s
     kubectl -n keptn create secret generic dynatrace --from-literal="DT_API_TOKEN=<DT_API_TOKEN>" --from-literal="DT_TENANT=<DT_TENANT>" --from-literal="DT_PAAS_TOKEN=<DT_PAAS_TOKEN>"
     ```
 
-1. Get the latest *dynatrace-service* version and deploy it: 
-
-    **Attention:** There is no official release of the dynatrace-service yet. It will be available with the Keptn 0.6.0 release, which is planned for mid of January 2020. For an experimental try, you can use the master branch as shown below:
+1. * To install the *dynatrace-service*, execute:
 
     ```console
     kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-service/master/deploy/manifests/dynatrace-service/dynatrace-service.yaml
@@ -142,11 +140,7 @@ oneagent-k7jn6                                 0/1     CrashLoopBackOff   6     
 
 During the evaluation of a quality gate, the Dynatrace SLI provider is required that is implemented by an internal Keptn service, the *dynatrace-sli-service*. This service will fetch the values for the SLIs that are referenced in an SLO configuration.
 
-* To install the *dynatrace-sli-service*, complete the following tasks:
-
-  ```console
-  kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-sli-service/master/deploy/distributor.yaml
-  ```
+* To install the *dynatrace-sli-service*, execute:
 
   ```console
   kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-sli-service/master/deploy/service.yaml

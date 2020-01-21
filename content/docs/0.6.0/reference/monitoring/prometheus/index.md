@@ -16,6 +16,12 @@ In order to evaluate the quality gates and allow self-healing in production, we 
 
 After creating a project and service, you can setup Prometheus monitoring and configure scrape jobs using the Keptn CLI. 
 
+* To install the *prometheus-service*, execute: 
+
+  ```console
+  kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/master/deploy/service.yaml
+  ```
+
 * Execute the following command to set up the rules for the *Prometheus Alerting Manager*:
 
   ```
@@ -31,25 +37,12 @@ After creating a project and service, you can setup Prometheus monitoring and co
 
     {{< popup_image link="./assets/prometheus-targets.png" caption="Prometheus Targets">}}
 
-* Finally, the **prometheus-service** need to be deployed to make Keptn aware of Prometheus. To deploy this service, please complete following tasks: 
-
-  ```console
-  kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/master/deploy/distributor.yaml
-  ```
-
-  ```console
-  kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/master/deploy/service.yaml
-  ```
   
 ## Setup Prometheus SLI provider 
 
 During the evaluation of a quality gate, the Prometheus SLI provider is required that is implemented by an internal Keptn service, the *prometheus-sli-service*. This service will fetch the values for the SLIs that are referenced in a SLO configuration.
 
-* To install the *prometheus-sli-service*, complete the following commands:
-  
-  ```console
-  kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-sli-service/master/deploy/distributor.yaml
-  ```
+* To install the *prometheus-sli-service*, execute:
 
   ```console
   kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-sli-service/master/deploy/service.yaml
