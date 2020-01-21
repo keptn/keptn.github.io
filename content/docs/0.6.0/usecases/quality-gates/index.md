@@ -27,7 +27,7 @@ For more information about SLO and SLI, please take a look at [Specifications fo
 * Clone example files used for this tutorial:
 
     ```console
-    git clone --branch 0.6.0.beta2 https://github.com/keptn/examples.git --single-branch
+    git clone --branch 0.6.0 https://github.com/keptn/examples.git --single-branch
     ```
 
     ```console
