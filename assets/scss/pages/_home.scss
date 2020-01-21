@@ -1,16 +1,6 @@
 .page-home {
   position: relative;
 
-  .promo {
-    a:not(.button) {
-      color: white;
-    }
-    strong a {
-      font-weight: 700;
-    }
-    padding-bottom: 10px;
-  }
-
   // Intro & Usage
   .intro,
   .usage {
