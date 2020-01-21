@@ -26,7 +26,7 @@ The [Keptn CloudEvents](#cloudevents) a service can subscribe to include:
 
 ### Implement custom Keptn service
 
-As a reference for writing your service, please have a look at our implementation of the [jmeter-service](https://github.com/keptn/keptn/blob/0.6.0.beta2/jmeter-service), which is an implementation of Keptn service to execute JMeter tests. 
+As a reference for writing your service, please have a look at our implementation of the [jmeter-service](https://github.com/keptn/keptn/blob/0.6.0/jmeter-service), which is an implementation of Keptn service to execute JMeter tests. 
 
 **Incoming Keptn CloudEvent:** The *jmeter-service* is a *Go* application that accepts POST requests at its `/` endpoint. To be more specific, the request body needs to follow the [CloudEvent specification](https://github.com/keptn/spec/blob/0.1.1/cloudevents.md) and the HTTP header attribute `Content-Type` has to be set to `application/cloudevents+json`. Of course, you can write your service in any language, as long as it provides the endpoint to receive events.
 
@@ -34,7 +34,7 @@ As a reference for writing your service, please have a look at our implementatio
 
 **Outgoing Keptn CloudEvent:** After your *Keptn service* has completed its functionality, it has to send a  CloudEvent to Keptn's event broker. This informs Keptn to continue a particular workflow.  
 
-**Deployment and service template:** A *Keptn service* is a regular Kubernetes service with a deployment and service template. As a starting point for your service the deployment and service manifest of the *jmeter-service* can be used, which can be found in the [deploy/service.yaml](https://github.com/keptn/keptn/blob/0.6.0.beta2/jmeter-service/deploy/service.yaml):
+**Deployment and service template:** A *Keptn service* is a regular Kubernetes service with a deployment and service template. As a starting point for your service the deployment and service manifest of the *jmeter-service* can be used, which can be found in the [deploy/service.yaml](https://github.com/keptn/keptn/blob/0.6.0/jmeter-service/deploy/service.yaml):
 
 ```yaml
 ---
@@ -55,7 +55,7 @@ spec:
     spec:
       containers:
       - name: jmeter-service
-        image: keptn/jmeter-service:0.6.0.beta2
+        image: keptn/jmeter-service:0.6.0
         ports:
         - containerPort: 8080
 ---
@@ -97,7 +97,7 @@ spec:
     spec:
       containers:
       - name: distributor
-        image: keptn/distributor:0.6.0.beta2
+        image: keptn/distributor:0.6.0
         ports:
         - containerPort: 8080
         resources:
@@ -182,7 +182,7 @@ spec:
     spec:
       containers:
       - name: distributor
-        image: keptn/distributor:0.6.0.beta2
+        image: keptn/distributor:0.6.0
         ports:
         - containerPort: 8080
         resources:
