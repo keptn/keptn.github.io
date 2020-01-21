@@ -36,7 +36,7 @@ Please make sure to have the following tool(s) installed:
     Log in to your Dynatrace tenant, and go to **Settings > Integration > Dynatrace API**. Then, create a new API token with the following permissions:
 
     - Access problem and event feed, metrics and topology
-    - Access logs
+    - Read logs
     - Configure maintenance windows
     - Read configuration
     - Write configuration
