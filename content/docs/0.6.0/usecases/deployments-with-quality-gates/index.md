@@ -28,7 +28,7 @@ This quality gate checks whether the average response time of the service is und
 1. We will *try* to deploy the *slow* version of the carts service (0.10.2). 
   * Keptn will deploy this new version into the **dev** environment where functional tests will be executed. 
   * After passing these functional tests, Keptn will promote this service into the **staging** environment by releasing it as the blue or green version next to the previous version of the service. 
-  * Then, Keptn will route traffic to this new version by changing the configuration of the virtual service (i.e., by setting weights for the routes between blue and green) and Keptn will start the defined performance test (e.g., using JMeter). Using the monitoring results of this performance test will allow [lighthouse](https://github.com/keptn/keptn/tree/master/lighthouse-service) to evaluate the quality gate. 
+  * Then, Keptn will route traffic to this new version by changing the configuration of the virtual service (i.e., by setting weights for the routes between blue and green) and Keptn will start the defined performance test (e.g., using JMeter). Using the monitoring results of this performance test will allow [lighthouse](https://github.com/keptn/keptn/tree/0.6.0/lighthouse-service) to evaluate the quality gate. 
   * The *slow* version of carts (0.10.2) will not pass the quality gate and, hence, the new version will not be promoted to the **production** stage (i.e., the deployment will be rejected).
   * Furthermore, Keptn will change the weights within the **staging** stage back to the previous working deployment of the service. 
 
