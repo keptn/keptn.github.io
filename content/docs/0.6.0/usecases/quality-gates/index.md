@@ -128,7 +128,9 @@ For more information about SLO and SLI, please take a look at [Specifications fo
         value: "keptn_project=musicshop keptn_service=catalogue keptn_stage=hardening"
       ``` 
 
-    * Add tagging rules in Dynatrace to detect these values and to create the tags for your monitored service. Therefore, you can use the script [applyAutoTaggingRules.sh](https://github.com/keptn-contrib/dynatrace-service/blob/release-0.6.0/deploy/scripts/applyAutoTaggingRules.sh) with the parameters Tenant ID and API Token: 
+    * Add tagging rules in Dynatrace to detect these values and to create the tags for your monitored service. Therefore, you can use the scripts [applyAutoTaggingRules.sh](https://github.com/keptn-contrib/dynatrace-service/blob/release-0.5.0/deploy/scripts/applyAutoTaggingRules.sh) and
+    [utils.sh](https://github.com/keptn-contrib/dynatrace-service/blob/release-0.5.0/deploy/scripts/utils.sh). Please run the following command with
+    your Tenant ID and API Token as parameters: 
 
       ```console
       .\applyAutoTaggingRules.sh $DT_TENANT $DT_API_TOKEN
@@ -142,8 +144,10 @@ For more information about SLO and SLI, please take a look at [Specifications fo
 If you want to install Keptn just to explore the capabilities of quality gates, you have the option to roll-out Keptn **without** components for automated delivery and operations. Therefore, set the `use-case` flag to `quality-gates` when executing the [install](../../reference/cli/#keptn-install) command:
 
 ```console
-keptn install --platform=[aks|eks|gke|openshift|pks|kubernetes] --use-case=quality-gates
+keptn install --platform=[aks|eks|gke|kubernetes] --use-case=quality-gates
 ```
+
+**Note:** Currently, Keptn does not supported to install the use-case `quality-gates` on OpenShift or PKS.
 
 ## Configure Keptn and activate the quality gate
 
