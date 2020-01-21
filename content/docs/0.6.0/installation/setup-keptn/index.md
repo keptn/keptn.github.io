@@ -77,7 +77,7 @@ Select one of the following options:
  </p>
 </details>
 
-<details><summary>OpenShift 3.11</summary>
+<!-- <details><summary>OpenShift 3.11</summary>
 <p>
 
 1. Install local tools
@@ -157,7 +157,7 @@ Select one of the following options:
     pks create-cluster $CLUSTER_NAME --external-hostname $HOST_NAME --plan $PLAN
     ```
 </p>
-</details>
+</details> -->
 
 ## Install Keptn CLI
 Every release of Keptn provides binaries for the Keptn CLI. These binaries are available for Linux, macOS, and Windows.
