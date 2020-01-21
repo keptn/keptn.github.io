@@ -19,7 +19,7 @@ After creating a project and service, you can setup Prometheus monitoring and co
 * To install the *prometheus-service*, execute: 
 
   ```console
-  kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/master/deploy/service.yaml
+  kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/0.3.1/deploy/service.yaml
   ```
 
 * Execute the following command to set up the rules for the *Prometheus Alerting Manager*:
@@ -45,7 +45,7 @@ During the evaluation of a quality gate, the Prometheus SLI provider is required
 * To install the *prometheus-sli-service*, execute:
 
   ```console
-  kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-sli-service/master/deploy/service.yaml
+  kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-sli-service/0.2.0/deploy/service.yaml
   ```
 
 * To verify that the deployment has worked, execute:
