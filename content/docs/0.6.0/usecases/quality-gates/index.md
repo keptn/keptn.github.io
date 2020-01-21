@@ -18,7 +18,7 @@ Let's say you want to use your existing tools to deploy and test your applicatio
 * *System throughput*: The number of requests per second that have been processed.
 * *Error rate*: The fraction of all received requests that produced an error.
 
-For more information about SLO and SLI, please take a look at [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/spec/blob/0.1.1/sre.md).
+For more information about SLO and SLI, please take a look at [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/spec/blob/0.1.2/sre.md).
 
 ## Prerequisites
 
