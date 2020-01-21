@@ -1,5 +1,5 @@
 ---
-title: Self Healing
+title: Self-healing
 weight: 30
 icon: setup
 description: Provides details about self-healing using upscaling and feature toggle.
@@ -69,21 +69,21 @@ keptn send event new-artifact --project=sockshop --service=carts --image=docker.
     cd examples/onboarding-carts
     ```
 
-1. Add a SLO file for the *production* stage using the Keptn CLIs [add-resource](../../reference/cli/#keptn-add-resource) command:
+1. Add an SLO file for the *production* stage using the Keptn CLIs [add-resource](../../reference/cli/#keptn-add-resource) command:
 
     ```console
     keptn add-resource --project=sockshop --stage=production --service=carts --resource=slo-self-healing.yaml --resourceUri=slo.yaml
     ```
 
-    Note: The SLO file contains an objective for `response_time_p90`.
+    **Note:** The SLO file contains an objective for `response_time_p90`.
 
 
 ## Follow the specific tutorial
 
 Please follow the steps detailed in the following tutorials:
 
-* Self-healing using upscaling
-  * [with Dynatrace](dynatrace-scaling/)
-  * [with Prometheus](prometheus-scaling/)
-* Self-healing using feature toggle (based on unleash)
-  * [with Dynatrace](dynatrace-unleash/)
+* Self-healing using upscaling with:
+  * [Dynatrace](dynatrace-scaling/)
+  * [Prometheus](prometheus-scaling/)
+* Self-healing using feature toggle based on [Unleash](https://unleash.github.io/) with:
+  * [Dynatrace](dynatrace-unleash/)

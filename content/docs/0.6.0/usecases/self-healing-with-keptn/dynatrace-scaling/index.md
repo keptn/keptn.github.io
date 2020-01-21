@@ -9,7 +9,7 @@ Demonstrates how to use the self-healing mechanisms of Keptn to self-heal a demo
 
 ## About this tutorial
 
-In this tutorial, you will learn how to use the capabilities of Keptn to provide self-healing for an application without modifying any of the applications code. The tutorial presented in the following will scale up the pods of an application if the application undergoes heavy CPU saturation. 
+In this tutorial, you will learn how to use the capabilities of Keptn to provide self-healing for an application without modifying code. The following tutorial will scale up the pods of an application if the application undergoes heavy CPU saturation. 
 
 ## Prerequisites
 
@@ -33,34 +33,39 @@ To add these files to Keptn and to automatically configure Dynatrace, execute th
     keptn add-resource --project=sockshop --stage=production --service=carts --resource=remediation.yaml --resourceUri=remediation.yaml
     ```
 
-    `remediation.yaml` example:
-
-        remediations:
-        - name: Response time degradation
-          actions:
-          - action: scaling
-            value: +1
-
 1. Configure Dynatrace with the Keptn CLI:
 
     ```console
     keptn configure monitoring dynatrace --project=sockshop
     ```
 
+<details><summary>*Click here to inspect the file that has been added.*</summary>
 
-### Configure Dynatrace Problem Detection with a fixed threshold
+- `remediation.yaml`
 
-For the sake of this demo, we will configure Dynatrace to detect Problems based on fixed thresholds (rather than automatic). To do so, navigate to your Dynatrace Tenant in your browser,
-and go to *Settings -> Anomaly Detection -> Services*.
+  ```yaml
+  remediations:
+  - name: Response time degradation
+    actions:
+    - action: scaling
+      value: +1
+  ```
 
-Within this menu, select the option **Detect response time degradations using fixed thresholds**, set the limit to **1000ms**, and select **Medium** for the sensitivity (see the screenshot below).
+</details>
+</p>
+
+**Configure Dynatrace problem detection with a fixed threshold:** For the sake of this demo, we will configure Dynatrace to detect problems based on fixed thresholds rather than automatically. 
+
+* Log in to your Dynatrace tenant and go to **Settings > Anomaly Detection > Services**.
+
+* Within this menu, select the option **Detect response time degradations using fixed thresholds**, set the limit to **1000ms**, and select **Medium** for the sensitivity as shown below.
 
 {{< popup_image
     link="./assets/anomaly_detection.png"
     caption="Anomaly detection settings"
     width="700px">}}
 
-Please note, you can configure those fixed thresholds per service, instead of globally.
+**Note:** You can configure those fixed thresholds per service instead of globally.
 
 ## Run the tutorial
 
@@ -81,9 +86,9 @@ To simulate user traffic that is causing an unhealthy behavior in the carts serv
     ./loadgenerator-_OS_ "http://carts.sockshop-production.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')" cpu
     ```
 
-1. (optional:) Verify the load in Dynatrace.
+1. (optional:) Verify the load in Dynatrace
 
-    In your Dynatrace Tenant, inspect the Response Time chart of the correlating service entity of the carts microservice. Hint: You can find the service 
+    In your Dynatrace Tenant, inspect the *Response Time* chart of the correlating service entity of the carts microservice. *Hint:* You can find the service 
     in Dynatrace easier by selecting the management tone **Keptn: sockshop production**:
 
     {{< popup_image
@@ -96,14 +101,13 @@ To simulate user traffic that is causing an unhealthy behavior in the carts serv
         caption="Response Time Series"
         width="700px">}}
 
-As you can see in the time series Chart, the load generation script causes a significant increase in the response time.
+As you can see in the time series chart, the load generation script causes a significant increase in the response time.
 
 ### Watch self-healing in action
 
 After approximately 10-15 minutes, Dynatrace will send out a problem notification because of the response time degradation. 
 
-After receiving the problem notification, the `dynatrace-service` will translate it into a Keptn CloudEvent. This event will eventually be received by the remediation service that will look for a 
-remediation action specified for this type of problem and, if found, execute it.
+After receiving the problem notification, the *dynatrace-service* will translate it into a Keptn CloudEvent. This event will eventually be received by the *remediation-service* that will look for a remediation action specified for this type of problem and, if found, execute it.
 
 In this tutorial, the number of pods will be increased to remediate the issue of the response time increase. 
 
@@ -121,7 +125,8 @@ In this tutorial, the number of pods will be increased to remediate the issue of
     carts-primary    2         2         2            2           32m
     ```
 
-1. Also you should see an additional pod running when you execute:
+1. Besides, you should see an additional pod running when you execute:
+
     ```console
     kubectl get pods -n sockshop-production
     ```
@@ -133,7 +138,7 @@ In this tutorial, the number of pods will be increased to remediate the issue of
     carts-primary-7c96d87df9-78fh2    2/2     Running   0          5m
     ```
 
-1. To get an overview of the actions that got triggered by the response time SLO violation, you can use the bridge. You can access it by a port-forward from your local machine to the Kubernetes cluster:
+1. To get an overview of the actions that got triggered by the response time SLO violation, you can use the Keptn's bridge. You can access it by a port-forward from your local machine to the Kubernetes cluster:
 
     ```console 
     kubectl port-forward svc/bridge -n keptn 9000:8080
@@ -141,7 +146,7 @@ In this tutorial, the number of pods will be increased to remediate the issue of
 
     Now access the bridge from your browser on http://localhost:9000. 
 
-    In this example, the bridge shows that the remediation service triggered an update of the configuration of the carts service by increasing the number of replicas to 2. When the additional replica was available, the wait-service waited for ten minutes for the remediation action to take effect. Afterwards, an evaluation by the lighthouse-service was triggered to check if the remediation action resolved the problem. In this case, increasing the number of replicas achieved the desired effect, since the evaluation of the service level objectives has been successful.
+    In this example, the bridge shows that the remediation service triggered an update of the configuration of the carts service by increasing the number of replicas to 2. When the additional replica was available, the wait-service waited for 10 minutes for the remediation action to take effect. Afterwards, an evaluation by the lighthouse-service was triggered to check if the remediation action resolved the problem. In this case, increasing the number of replicas achieved the desired effect since the evaluation of the service level objectives has been successful.
     
     {{< popup_image
     link="./assets/bridge_remediation.png"
@@ -149,15 +154,9 @@ In this tutorial, the number of pods will be increased to remediate the issue of
     
 1. Furthermore, you can see how the response time of the service decreased by viewing the time series chart in Dynatrace:
 
-    As previously, go to the response time chart of the ItemsController Service. Here you will see that the additional instance has helped to bring down the response time.
-    Eventually, the Problem that has been detected earlier will be closed automatically.
+    As previously, go to the response time chart of the *ItemsController* service. Here you will see that the additional instance has helped to bring down the response time.
+    Eventually, the problem that has been detected earlier will be closed automatically.
 
     {{< popup_image
     link="./assets/dt-problem-closed.png"
     caption="Keptn's bridge">}}
-
-
-
-
-
-
