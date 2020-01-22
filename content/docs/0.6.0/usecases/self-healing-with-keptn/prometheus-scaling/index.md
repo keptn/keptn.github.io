@@ -5,7 +5,7 @@ weight: 10
 keywords: [self-healing-prometheus]
 aliases:
 ---
-Demonstrates how to use the self-healing mechanisms of Keptn to self-heal a demo service, which runs into issues, by providing automated upscaling.
+Demonstrates how to use the self-healing mechanisms of Keptn to self-heal a demo service, which runs into issues by providing automated upscaling.
 
 ## About this tutorial
 
@@ -26,7 +26,7 @@ To add these files to Keptn and to automatically configure Prometheus, execute t
     ```
     cd examples/onboarding-carts
     ```
-    
+
 1. Tell the Prometheus service how to retrieve the SLI value you would like to inspect:
 
     ```

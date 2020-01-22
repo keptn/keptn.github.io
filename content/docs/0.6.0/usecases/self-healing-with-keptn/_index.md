@@ -21,13 +21,13 @@ For the configuration, Keptn relies on several specification files that define *
 
 - Clone the example repository, which contains specification files:
 
-    ```console
-    git clone --branch 0.6.0 https://github.com/keptn/examples.git --single-branch
-    ```
+```console
+git clone --branch 0.6.0 https://github.com/keptn/examples.git --single-branch
+```
 
 ### Difference to Deployment with Quality Gates
 
-Within this tutorial we will use a version of the carts microservice that has already passed the quality gate for *staging*. However, the carts service deployed has some issues that only arise in production with real user traffic (this indicates that there might be untested parts of the microservice that have issues).
+Within this tutorial we will use a version of the carts microservice that has already passed the quality gate for *staging*. However, the deployed carts service has some issues that only arise in production with real user traffic - this indicates that there might be untested parts of the microservice that have issues.
 
 <details><summary>Click here for details on how to check if you are running the correct version</summary>
 <p>You can check if the service is already running in your production stage by executing the following command and reviewing the output. It should show two pods in total.
@@ -80,7 +80,7 @@ keptn send event new-artifact --project=sockshop --service=carts --image=docker.
 
 ## Follow the specific tutorial
 
-Please follow the steps detailed in the following tutorials:
+Please follow the steps detailed in the following tutorials.
 
 * Self-healing using upscaling with:
   * [Dynatrace](dynatrace-scaling/)
