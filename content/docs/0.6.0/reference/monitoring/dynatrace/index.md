@@ -43,7 +43,7 @@ To evaluate the quality gates and allow self-healing in production, we have to s
     kubectl -n keptn create secret generic dynatrace --from-literal="DT_API_TOKEN=<DT_API_TOKEN>" --from-literal="DT_TENANT=<DT_TENANT>" --from-literal="DT_PAAS_TOKEN=<DT_PAAS_TOKEN>"
     ```
 
-1. * To install the *dynatrace-service*, execute:
+1. * The Dynatrace integration into Keptn is handled by the *dynatrace-service*. To install the *dynatrace-service*, execute:
 
     ```console
     kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-service/0.6.0/deploy/manifests/dynatrace-service/dynatrace-service.yaml
@@ -89,21 +89,22 @@ oneagent-ps6t4                                 0/1     Running   0          3s
   
     This means that Dynatrace will automatically apply tags to your onboarded services.
 
-- *Problem notification:* Automatically a problem notification has been set up to inform Keptn of any problems with your services to allow auto-remediation. You can check the problem notification by navigating to **Settings > Integration > Problem notifications** and you will find a **keptn remediation** problem notification.
+- *Problem notification:* A problem notification has been set up to inform Keptn of any problems with your services to allow auto-remediation. You can check the problem notification by navigating to **Settings > Integration > Problem notifications** and you will find a **keptn remediation** problem notification.
 
-- *Alerting profile:* In addition to the problem notification, an alerting profile with all problems set to *0 minutes* (immediate) is created. You can review this profile by navigating to **Settings > Alerting > Alerting profiles**.
+- *Alerting profile:* An alerting profile with all problems set to *0 minutes* (immediate) is created. You can review this profile by navigating to **Settings > Alerting > Alerting profiles**.
 
-- *Dashboard and Mangement zone:* When creating a new Keptn project or executing the [keptn configure monitoring](../../cli/#keptn-configure-monitoring) command for a particular project (see Note 1), a Dashboard and Management zone will be generated reflecting the environment as specified in the shipyard file.
-
+- *Dashboard and Mangement zone:* When creating a new Keptn project or executing the [keptn configure monitoring](../../cli/#keptn-configure-monitoring) command for a particular project (see Note 1), a dashboard and management zone will be generated reflecting the environment as specified in the shipyard file.
 
 ---
 
-**Note 1:** If you already have created a project using Keptn and would like to enable Dynatrace monitoring for that project afterwards, please execute the following command:
-  ```console
-  keptn configure monitoring dynatrace --project=PROJECTNAME
-  ```
+**Note 1:** If you already have created a project using Keptn and would like to enable Dynatrace monitoring for that project, please execute the following command:
+
+```console
+keptn configure monitoring dynatrace --project=PROJECTNAME
+```
 
 **Note 2:** To monitor the services that are already onboarded in the **dev**, **staging**, and **production** namespace, make sure to restart the pods. If you defined different environments in your shipyard file, please adjust the parameters accordingly. 
+
 ```console
 kubectl delete pods --all --namespace=sockshop-dev
 ```
@@ -115,6 +116,7 @@ kubectl delete pods --all --namespace=sockshop-production
 ```
 
 **Note 3:** If the nodes in your cluster run on *Container-Optimized OS (cos)* (default for GKE), the Dynatrace OneAgent might not work properly, and another step is necessary. To verify that the OneAgent does not work properly, the output of `kubectl get pods -n dynatrace` might look as follows:
+
 ```console
 NAME                                           READY   STATUS             RESTARTS   AGE
 dynatrace-oneagent-operator-7f477bf78d-dgwb6   1/1     Running            0          8m21s
@@ -142,15 +144,20 @@ During the evaluation of a quality gate, the Dynatrace SLI provider is required 
 
 * To install the *dynatrace-sli-service*, execute:
 
-  ```console
-  kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-sli-service/0.3.0/deploy/service.yaml
-  ```
+```console
+kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-sli-service/0.3.0/deploy/service.yaml
+```
 
 * To verify that the deployment has worked, execute:
 
-  ```console
-  kubectl get pods -n keptn --selector run=dynatrace-sli-service
-  ```
+```console
+kubectl get pods -n keptn --selector run=dynatrace-sli-service
+```
+
+```console
+NAME                                    READY   STATUS    RESTARTS   AGE
+dynatrace-sli-service-c59764cdf-pcd7m   1/1     Running   0          9s
+```
 
 ---
 
@@ -160,9 +167,9 @@ To tell the *dynatrace-sli-service* how to acquire the values of an SLI, the cor
 
 * In the below example, the SLI configuration as specified in the `sli-config-dynatrace.yaml` file is added to the service `carts` in stage `hardening` from project `sockshop`. 
 
-  ```console
-  keptn add-resource --project=sockshop --stage=hardening --service=carts --resource=sli-config-dynatrace.yaml --resourceUri=dynatrace/sli.yaml
-  ```
+```console
+keptn add-resource --project=sockshop --stage=hardening --service=carts --resource=sli-config-dynatrace.yaml --resourceUri=dynatrace/sli.yaml
+```
 
 **Note:** The add-resource command can be used to store a configuration on project-, stage-, or service-level. In the context of an SLI configuration, Keptn first uses SLI configuration stored on the service-level, then on the stage-level, and finally Keptn uses SLI configuration stored on the project-level.
 
@@ -173,26 +180,26 @@ To tell the *dynatrace-sli-service* how to acquire the values of an SLI, the cor
 If you don't monitor your Kubernetes cluster with Dynatrace (i.e., you have not completed the steps from [Setup Dynatrace](./#setup-dynatrace)), the *dynatrace-sli-service* needs a *secret* containing the **Tenant ID** and **API token** in a yaml file as shown below.
 
 * Provide a the file `your_credential_file.yaml` with following content:
-  
-  ```yaml
+
+```yaml
   DT_TENANT: YOUR_TENANT_ID.live.dynatracelabs.com
   DT_API_TOKEN: XYZ123456789
-  ```
+```
 
 * Before executing the next command, please adapt the instruction to match the name of your project. Then, create the secret in the **keptn** namespace using:
 
-  ```console
-  kubectl create secret generic dynatrace-credentials-PROJECTNAME -n "keptn" --from-file=dynatrace-credentials=your_credential_file.yaml
-  ```
+```console
+kubectl create secret generic dynatrace-credentials-PROJECTNAME -n "keptn" --from-file=dynatrace-credentials=your_credential_file.yaml
+```
 
 ## Set DT_CUSTOM_PROP before onboarding a service
 
 The created tagging rules in Dynatrace expect the environment variable `DT_CUSTOM_PROP` for your onboarded service. Consequently, make sure to specify the environment variable for deployment in the Helm chart of the service you are going to onboard with the following value: 
 
 ```yaml
-  env:
-  - name: DT_CUSTOM_PROP
-    value: "keptn_project={{ .Values.keptn.project }} keptn_service={{ .Values.keptn.service }} keptn_stage={{ .Values.keptn.stage }} keptn_deployment={{ .Values.keptn.deployment }}"
+env:
+- name: DT_CUSTOM_PROP
+  value: "keptn_project={{ .Values.keptn.project }} keptn_service={{ .Values.keptn.service }} keptn_stage={{ .Values.keptn.stage }} keptn_deployment={{ .Values.keptn.deployment }}"
 ```
 
 ## See Keptn events in Dynatrace
@@ -235,12 +242,12 @@ If you want to uninstall Dynatrace, there are scripts provided to do so. Uninsta
 
 1. (optional) If you do not have the *dynatrace-service* repository, clone the latest release using:
 
-  ```console
-  git clone --branch 0.6.0 https://github.com/keptn-contrib/dynatrace-service --single-branch
-  ```
+```console
+git clone --branch 0.6.0 https://github.com/keptn-contrib/dynatrace-service --single-branch
+```
 
 1. Go to correct folder and execute the `uninstallDynatrace.sh` script:
 
-  ```console
-  ./dynatrace-service/deploy/scripts/uninstallDynatrace.sh
-  ```
+```console
+./dynatrace-service/deploy/scripts/uninstallDynatrace.sh
+```

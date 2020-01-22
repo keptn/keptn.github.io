@@ -117,19 +117,19 @@ After creating the project, services can be onboard to this project.
 
 * Onboard the **carts** service using the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command:
 
-  ```console
-  keptn onboard service carts --project=sockshop --chart=./carts
-  ```
+```console
+keptn onboard service carts --project=sockshop --chart=./carts
+```
 
 * After onboarding the service, tests (i.e., functional- and performance tests) need to be added as basis for quality gates in the different stages:
 
-  * Functional tests for dev stage:
+  * Functional tests for *dev* stage:
 
     ```console
     keptn add-resource --project=sockshop --stage=dev --service=carts --resource=jmeter/basiccheck.jmx --resourceUri=jmeter/basiccheck.jmx
     ```
 
-  * Performance tests for staging stage:
+  * Performance tests for *staging* stage:
 
     ```console
     keptn add-resource --project=sockshop --stage=staging --service=carts --resource=jmeter/load.jmx --resourceUri=jmeter/load.jmx
@@ -141,25 +141,25 @@ Since the carts service requires a mongodb database, a second service needs to b
 
 * Onboard the **carts-db** service using the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command. The `--deployment-strategy` flag specifies that for this service a *direct* deployment strategy in all stages should be used regardless of the deployment strategy specified in the shipyard. Thus, the database is not blue/green deployed.
 
-  ```console
-  keptn onboard service carts-db --project=sockshop --chart=./carts-db --deployment-strategy=direct
-  ```
+```console
+keptn onboard service carts-db --project=sockshop --chart=./carts-db --deployment-strategy=direct
+```
 
 During the onboarding of the services, Keptn creates a namespace for each stage based on the pattern: `projectname-stagename`.
 
 * To verify the new namespaces, execute the following command:
 
-  ```console
-  kubectl get namespaces
-  ```
+```console
+kubectl get namespaces
+```
 
-  ```console
-  NAME                  STATUS   AGE
-  ...
-  sockshop-dev          Active   2m
-  sockshop-production   Active   30s
-  sockshop-staging      Active   1m
-  ```
+```console
+NAME                  STATUS   AGE
+...
+sockshop-dev          Active   2m
+sockshop-production   Active   30s
+sockshop-staging      Active   1m
+```
 
 ## Send new artifacts and watch Keptn doing the deployment 
 
@@ -167,21 +167,21 @@ After onboarding the services, a built artifact of each service can be deployed.
 
 * Deploy the carts-db service by executing the [keptn send event new-artifact](../../reference/cli/#keptn-send-event-new-artifact) command:
 
-  ```console
-  keptn send event new-artifact --project=sockshop --service=carts-db --image=mongo:4.2.2
-  ```
+```console
+keptn send event new-artifact --project=sockshop --service=carts-db --image=mongo:4.2.2
+```
 
 * Deploy the carts service by specifying the built artifact, which is stored on DockerHub and tagged with version 0.10.1:
 
-  ```console
-  keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.10.1
-  ```
+```console
+keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.10.1
+```
 
 * Go to Keptn's bridge and check which events have already been generated. You can access it by a port-forward from your local machine to the Kubernetes cluster:
 
-  ```console 
-  kubectl port-forward svc/bridge -n keptn 9000:8080
-  ```
+```console 
+kubectl port-forward svc/bridge -n keptn 9000:8080
+```
 
 * The Keptn's bridge is then available on: http://localhost:9000. 
 
@@ -193,32 +193,32 @@ After onboarding the services, a built artifact of each service can be deployed.
 
 * **Optional:** Verify the pods that should have been created for services carts and carts-db:
 
-  ```console
-  kubectl get pods --all-namespaces | grep carts
-  ```
+```console
+kubectl get pods --all-namespaces | grep carts
+```
 
-  ```console
-  sockshop-dev          carts-77dfdc664b-25b74                            1/1     Running     0          10m
-  sockshop-dev          carts-db-54d9b6775-lmhf6                          1/1     Running     0          13m
-  sockshop-production   carts-db-54d9b6775-4hlwn                          2/2     Running     0          12m
-  sockshop-production   carts-primary-79bcc7c99f-bwdhg                    2/2     Running     0          2m15s
-  sockshop-staging      carts-db-54d9b6775-rm8rw                          2/2     Running     0          12m
-  sockshop-staging      carts-primary-79bcc7c99f-mbbgq                    2/2     Running     0          7m24s
-  ```
+```console
+sockshop-dev          carts-77dfdc664b-25b74                            1/1     Running     0          10m
+sockshop-dev          carts-db-54d9b6775-lmhf6                          1/1     Running     0          13m
+sockshop-production   carts-db-54d9b6775-4hlwn                          2/2     Running     0          12m
+sockshop-production   carts-primary-79bcc7c99f-bwdhg                    2/2     Running     0          2m15s
+sockshop-staging      carts-db-54d9b6775-rm8rw                          2/2     Running     0          12m
+sockshop-staging      carts-primary-79bcc7c99f-mbbgq                    2/2     Running     0          7m24s
+```
 
 ## View carts service
 
 - Get the URL for your carts service with the following commands in the respective namespaces:
 
-  ```console
-  echo http://carts.sockshop-dev.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
-  ```
-  ```console
-  echo http://carts.sockshop-staging.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
-  ```
-  ```console
-  echo http://carts.sockshop-production.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
-  ```
+```console
+echo http://carts.sockshop-dev.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
+```
+```console
+echo http://carts.sockshop-staging.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
+```
+```console
+echo http://carts.sockshop-production.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
+```
 
 - Navigate to the URLs to inspect the carts service. In the production namespace, you should receive an output similar to this:
 

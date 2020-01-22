@@ -26,6 +26,7 @@ To add these files to Keptn and to automatically configure Prometheus, execute t
     ```
     cd examples/onboarding-carts
     ```
+    
 1. Tell the Prometheus service how to retrieve the SLI value you would like to inspect:
 
     ```

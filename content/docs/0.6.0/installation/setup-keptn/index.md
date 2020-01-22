@@ -189,33 +189,33 @@ To install the latest release of Keptn on a Kuberntes cluster, execute the [kept
 
 - Azure Kubernetes Services (AKS):
 
-    ```console
-    keptn install --platform=aks
-    ```
+```console
+keptn install --platform=aks
+```
   
 - Amazon Elastic Kubernetes Service (EKS):
 
-    ```console
-    keptn install --platform=eks
-    ```
+```console
+keptn install --platform=eks
+```
 
 - Google Kubernetes Engine (GKE):
 
-    ```console
-    keptn install --platform=gke
-    ```
+```console
+keptn install --platform=gke
+```
 
 - OpenShift 3.11:
 
-    ```console
-    keptn install --platform=openshift
-    ```
+```console
+keptn install --platform=openshift
+```
 
 - Pivotal Container Service (PKS):
 
-    ```console
-    keptn install --platform=pks
-    ```
+```console
+keptn install --platform=pks
+```
 
 In the Kubernetes cluster, this command creates the **keptn**, **keptn-datastore**, and **istio-system** namespace. While istio-system contains all Istio related resources, keptn and keptn-datastore contain the complete infrastructure to run Keptn. 
     <details><summary>The *keptn* and *keptn-datastore* namespace contain:</summary>
@@ -267,15 +267,15 @@ keptn configure domain YOUR_DOMAIN
 
 - To uninstall Keptn from your cluster, run the uninstall command using the Keptn CLI:
 
-    ``` console
-    keptn uninstall
-    ``` 
+``` console
+keptn uninstall
+``` 
 
 - To verify the cleanup, retrieve the list of namespaces in your cluster and ensure that the **keptn** namespace is not included in the output of the following command:
 
-    ```console
-    kubectl get namespaces
-    ```
+```console
+kubectl get namespaces
+```
 
 ## Troubleshooting
 

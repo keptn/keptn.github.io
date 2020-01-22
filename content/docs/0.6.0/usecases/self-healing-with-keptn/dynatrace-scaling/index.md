@@ -43,13 +43,13 @@ To add these files to Keptn and to automatically configure Dynatrace, execute th
 
 - `remediation.yaml`
 
-  ```yaml
-  remediations:
-  - name: Response time degradation
-    actions:
-    - action: scaling
-      value: +1
-  ```
+```yaml
+remediations:
+- name: Response time degradation
+actions:
+- action: scaling
+    value: +1
+```
 
 </details>
 </p>
@@ -60,10 +60,10 @@ To add these files to Keptn and to automatically configure Dynatrace, execute th
 
 * Within this menu, select the option **Detect response time degradations using fixed thresholds**, set the limit to **1000ms**, and select **Medium** for the sensitivity as shown below.
 
-{{< popup_image
-    link="./assets/anomaly_detection.png"
-    caption="Anomaly detection settings"
-    width="700px">}}
+    {{< popup_image
+        link="./assets/anomaly_detection.png"
+        caption="Anomaly detection settings"
+        width="700px">}}
 
 **Note:** You can configure those fixed thresholds per service instead of globally.
 
