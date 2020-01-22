@@ -43,7 +43,7 @@ To evaluate the quality gates and allow self-healing in production, we have to s
     kubectl -n keptn create secret generic dynatrace --from-literal="DT_API_TOKEN=<DT_API_TOKEN>" --from-literal="DT_TENANT=<DT_TENANT>" --from-literal="DT_PAAS_TOKEN=<DT_PAAS_TOKEN>"
     ```
 
-1. * The Dynatrace integration into Keptn is handled by the *dynatrace-service*. To install the *dynatrace-service*, execute:
+1. The Dynatrace integration into Keptn is handled by the *dynatrace-service*. To install the *dynatrace-service*, execute:
 
     ```console
     kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-service/0.6.0/deploy/manifests/dynatrace-service/dynatrace-service.yaml
@@ -55,7 +55,7 @@ To evaluate the quality gates and allow self-healing in production, we have to s
     keptn configure monitoring dynatrace
     ```
 
-**Verify deployment in your cluster**
+### Verify deployment in your cluster
 
 When [keptn configure monitoring](../../cli/#keptn-configure-monitoring) is finished, the Dynatrace OneAgent is deployed in your cluster. Execute the following commands to verify the deployment of the OneAgent as well as of the *dynatrace-service*:
 
@@ -79,7 +79,7 @@ oneagent-5lcqh                                 0/1     Running   0          3s
 oneagent-ps6t4                                 0/1     Running   0          3s
 ```
 
-**Verify setup in Dynatrace**
+### Verify setup in Dynatrace
 
 - *Tagging rules:* When you navigate to **Settings > Tags > Automatically applied tags** in your Dynatrace tenant, you will find following tagging rules:
     - keptn_deployment
@@ -95,7 +95,7 @@ oneagent-ps6t4                                 0/1     Running   0          3s
 
 - *Dashboard and Mangement zone:* When creating a new Keptn project or executing the [keptn configure monitoring](../../cli/#keptn-configure-monitoring) command for a particular project (see Note 1), a dashboard and management zone will be generated reflecting the environment as specified in the shipyard file.
 
----
+### Notes
 
 **Note 1:** If you already have created a project using Keptn and would like to enable Dynatrace monitoring for that project, please execute the following command:
 
@@ -142,26 +142,23 @@ oneagent-k7jn6                                 0/1     CrashLoopBackOff   6     
 
 During the evaluation of a quality gate, the Dynatrace SLI provider is required that is implemented by an internal Keptn service, the *dynatrace-sli-service*. This service will fetch the values for the SLIs that are referenced in an SLO configuration.
 
-* To install the *dynatrace-sli-service*, execute:
+1. To install the *dynatrace-sli-service*, execute:
+    ```console
+    kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-sli-service/0.3.0/deploy/service.yaml
+    ```
 
-```console
-kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-sli-service/0.3.0/deploy/service.yaml
-```
+1. The Dynatrace SLI provider needs access to a Dynatrace tenant. If you have completed the steps from [Setup Dynatrace](./#setup-dynatrace), the *dynatrace-sli-service* 
+uses the already provided credentials. Otherwise, create a *secret* containing the **Tenant ID** and **API token**.
 
-* To verify that the deployment has worked, execute:
+    The `DT_TENANT` has to be set according to the appropriate pattern:
+  - Dynatrace SaaS tenant: `{your-environment-id}.live.dynatrace.com`
+  - Dynatrace-managed tenant: `{your-domain}/e/{your-environment-id}`
 
-```console
-kubectl get pods -n keptn --selector run=dynatrace-sli-service
-```
+    ```console
+    kubectl -n keptn create secret generic dynatrace --from-literal="DT_API_TOKEN=<DT_API_TOKEN>" --from-literal="DT_TENANT=<DT_TENANT>"
+    ```
 
-```console
-NAME                                    READY   STATUS    RESTARTS   AGE
-dynatrace-sli-service-c59764cdf-pcd7m   1/1     Running   0          9s
-```
-
----
-
-**Provider configuration:**
+## Configure custom SLIs
 
 To tell the *dynatrace-sli-service* how to acquire the values of an SLI, the correct query needs to be configured. This is done by adding an SLI configuration to a project, stage, or service using the [add-resource](../../cli/#keptn-add-resource) command. The resource identifier must be `dynatrace/sli.yaml`.
 
@@ -172,25 +169,6 @@ keptn add-resource --project=sockshop --stage=hardening --service=carts --resour
 ```
 
 **Note:** The add-resource command can be used to store a configuration on project-, stage-, or service-level. In the context of an SLI configuration, Keptn first uses SLI configuration stored on the service-level, then on the stage-level, and finally Keptn uses SLI configuration stored on the project-level.
-
----
-
-**Provider secret:** 
-
-If you don't monitor your Kubernetes cluster with Dynatrace (i.e., you have not completed the steps from [Setup Dynatrace](./#setup-dynatrace)), the *dynatrace-sli-service* needs a *secret* containing the **Tenant ID** and **API token** in a yaml file as shown below.
-
-* Create a file `dt_credentials.yaml` with the following content (please note the two space indentation):
-  
-```yaml
-DT_TENANT: YOUR_TENANT_ID.live.dynatrace.com
-DT_API_TOKEN: XYZ123456789
-```
-
-* Before executing the next command, please adapt the instruction to match the name of your project. Then, create the secret in the **keptn** namespace using:
-
-```console
-kubectl create secret generic dynatrace-credentials-PROJECTNAME -n "keptn" --from-file=dynatrace-credentials=dt_credentials.yaml
-```
 
 ## Set DT_CUSTOM_PROP before onboarding a service
 

@@ -91,9 +91,9 @@ For this tutorial, you will need to set up monitoring for the carts service eith
 <details><summary>Expand instructions</summary>
 <p>
 
-1. Please complete the instructions for setting up [Dynatrace monitoring](../../reference/monitoring/dynatrace#setup-dynatrace).
+1. Complete steps from the section [Setup Dynatrace](../../reference/monitoring/dynatrace#setup-dynatrace).
 
-1. Configure the Dynatrace SLI provider for the **sockshop** project as explained [here](../../reference/monitoring/dynatrace/#setup-dynatrace-sli-provider).
+1. Complete steps from section [Setup Dynatrace SLI provider](../../reference/monitoring/dynatrace/#setup-dynatrace-sli-provider).
 
 1. To configure Keptn to use the Dynatrace SLI provider for the **sockshop** project, apply the below ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
 
@@ -111,7 +111,7 @@ For this tutorial, you will need to set up monitoring for the carts service eith
       namespace: keptn
     ```
 
-1. Finally, upload the Dynatrace-specific SLI configuration as stored in the `sli-config-dynatrace.yaml` file:
+1. Configure custom SLIs for the Dynatrace SLI provider as specified in `sli-config-dynatrace.yaml`:
 
     ```console
     keptn add-resource --project=sockshop --stage=staging --service=carts --resource=sli-config-dynatrace.yaml --resourceUri=dynatrace/sli.yaml

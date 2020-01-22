@@ -216,15 +216,10 @@ For this tutorial, you need to deploy the corresponding SLI provider for your mo
 <details><summary>Dynatrace SLI provider</summary>
 <p>
 
-1. Check if the Dynatrace SLI provider is already available in your Keptn: 
 
-    ```console
-    kubectl get deployment -n keptn dynatrace-sli-service
-    ```
+1. Complete steps from section [Setup Dynatrace SLI provider](../../reference/monitoring/dynatrace/#setup-dynatrace-sli-provider).
 
-1. If the Dynatrace SLI provider is not available, deploy and configure it for your project as explained [here](../../reference/monitoring/dynatrace/#setup-dynatrace-sli-provider).
-
-1. To tell Keptn to use the deployed Dynatrace SLI provider for your project, first adapt the ConfigMap in the `lighthouse-source-dynatrace.yaml` file at the `metatdata.name` property to reference your project. Afterwards, apply the ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
+1. To configure Keptn to use the Dynatrace SLI provider for your project (e.g. **musicshop**), first adapt the ConfigMap in the `lighthouse-source-dynatrace.yaml` file at the `metatdata.name` property to reference your project. Afterwards, apply the ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
 
     ```console
     kubectl apply -f lighthouse-source-dynatrace.yaml
@@ -240,7 +235,7 @@ For this tutorial, you need to deploy the corresponding SLI provider for your mo
       namespace: keptn
     ```
 
-1. Finally, upload the Dynatrace-specific SLI configuration as stored in the `sli-config-dynatrace.yaml` file:
+1. Configure custom SLIs for the Dynatrace SLI provider as specified in `sli-config-dynatrace.yaml`:
 
     ```console
     keptn add-resource --project=musicshop --stage=hardening --service=catalogue --resource=sli-config-dynatrace.yaml --resourceUri=dynatrace/sli.yaml
