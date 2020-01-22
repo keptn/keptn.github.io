@@ -26,7 +26,7 @@ To quickly get an Unleash server up and running with Keptn, follow these instruc
 1. Make sure you are in the correct folder of your examples directory:
 
     ```console
-    cd examples/unleash
+    cd examples/unleash-server
     ```
 
 1. Create a new project using the [keptn create project](../../../reference/cli/#keptn-create-project) command:
@@ -56,14 +56,8 @@ To quickly get an Unleash server up and running with Keptn, follow these instruc
     ```
 
 1. Open the URL in your browser and log in using the following credentials:
-   * username: keptn
-   * password: keptn
-
-In the end, you should be able to access your unleash server using the URL provided by the following command:
-
-```console
-echo http://unleash.sockshop-production.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
-```
+   * Username: keptn
+   * Password: keptn
 
 You should be able to login using the credentials *keptn/keptn*.
 
@@ -161,7 +155,7 @@ To simulate user traffic, we are going to execute the following script that will
         caption="Enable feature toggle"
         width="700px">}}
 
-5. In the output of the load generation program you should see that errors in terms of exceptions are shown. Taking a closer look will tell you that the promotional campaign has never been implemented. After a couple of minutes, the monitoring tool will detect an increase in the failure rate and will send out a problem notification to Keptn.
+5. By enabling this feature flag, a not implemented function is called resulting in a *NotImplementedFunction* error in the source code and a failed response. After a couple of minutes, the monitoring tool will detect an increase in the failure rate and will send out a problem notification to Keptn.
 
 6. Keptn will receive the problem notification/alert and look for a remediation action that matches this problem. Since we have added the `remediation.yaml` before, Keptn will find a remediation action and will trigger the corresponding action that will disable the feature flag.
 
