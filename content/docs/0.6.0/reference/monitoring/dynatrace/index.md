@@ -175,7 +175,7 @@ If you don't monitor your Kubernetes cluster with Dynatrace (i.e., you have not 
 * Create a file `dt_credentials.yaml` with the following content (please note the two space indentation):
   
   ```yaml
-  DT_TENANT: YOUR_TENANT_ID.live.dynatracelabs.com
+  DT_TENANT: YOUR_TENANT_ID.live.dynatrace.com
   DT_API_TOKEN: XYZ123456789
   ```
 
