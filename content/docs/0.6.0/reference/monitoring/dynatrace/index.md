@@ -172,7 +172,7 @@ To tell the *dynatrace-sli-service* how to acquire the values of an SLI, the cor
 
 If you don't monitor your Kubernetes cluster with Dynatrace (i.e., you have not completed the steps from [Setup Dynatrace](./#setup-dynatrace)), the *dynatrace-sli-service* needs a *secret* containing the **Tenant ID** and **API token** in a yaml file as shown below.
 
-* Provide a the file `your_credential_file.yaml` with following content:
+* Create a file `dt_credentials.yaml` with the following content (please note the two space indentation):
   
   ```yaml
   DT_TENANT: YOUR_TENANT_ID.live.dynatracelabs.com
@@ -182,7 +182,7 @@ If you don't monitor your Kubernetes cluster with Dynatrace (i.e., you have not 
 * Before executing the next command, please adapt the instruction to match the name of your project. Then, create the secret in the **keptn** namespace using:
 
   ```console
-  kubectl create secret generic dynatrace-credentials-PROJECTNAME -n "keptn" --from-file=dynatrace-credentials=your_credential_file.yaml
+  kubectl create secret generic dynatrace-credentials-PROJECTNAME -n "keptn" --from-file=dynatrace-credentials=dt_credentials.yaml
   ```
 
 ## Set DT_CUSTOM_PROP before onboarding a service
