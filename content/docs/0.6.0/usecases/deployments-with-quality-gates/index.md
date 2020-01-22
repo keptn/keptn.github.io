@@ -58,9 +58,9 @@ For this tutorial, you will need to set up monitoring for the carts service eith
 <details><summary>Expand instructions</summary>
 <p>
 
-1. Configure Prometheus monitoring for the **sockshop** project and **carts** service as explained [here](../../reference/monitoring/prometheus/#setup-prometheus).
+1. Complete steps from the section [Setup Prometheus](../../reference/monitoring/prometheus/#setup-prometheus).
 
-1. Configure the Prometheus SLI provider for the **sockshop** project as explained [here](../../reference/monitoring/prometheus/#setup-prometheus-sli-provider).
+1. Complete steps from section [Setup Prometheus SLI provider](../../reference/monitoring/prometheus/#setup-prometheus-sli-provider).
 
 1. To configure Keptn to use the Prometheus SLI provider for the **sockshop** project, apply the below ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
 
@@ -78,7 +78,7 @@ For this tutorial, you will need to set up monitoring for the carts service eith
       namespace: keptn
     ```
 
-1. Finally, upload the Prometheus-specific SLI configuration as stored in the `sli-config-prometheus.yaml` file:
+1. Configure custom SLIs for the Prometheus SLI provider as specified in `sli-config-prometheus.yaml`:
 
     ```console
     keptn add-resource --project=sockshop --stage=staging --service=carts --resource=sli-config-prometheus.yaml --resourceUri=prometheus/sli.yaml

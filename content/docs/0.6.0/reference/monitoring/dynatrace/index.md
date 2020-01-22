@@ -55,7 +55,7 @@ To evaluate the quality gates and allow self-healing in production, we have to s
     keptn configure monitoring dynatrace
     ```
 
-### Verify deployment in your cluster
+### Verify Dynatrace setup in your cluster
 
 When [keptn configure monitoring](../../cli/#keptn-configure-monitoring) is finished, the Dynatrace OneAgent is deployed in your cluster. Execute the following commands to verify the deployment of the OneAgent as well as of the *dynatrace-service*:
 
@@ -79,7 +79,7 @@ oneagent-5lcqh                                 0/1     Running   0          3s
 oneagent-ps6t4                                 0/1     Running   0          3s
 ```
 
-### Verify setup in Dynatrace
+### Verify Dynatrace configuration
 
 - *Tagging rules:* When you navigate to **Settings > Tags > Automatically applied tags** in your Dynatrace tenant, you will find following tagging rules:
     - keptn_deployment
@@ -147,7 +147,7 @@ During the evaluation of a quality gate, the Dynatrace SLI provider is required 
     kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-sli-service/0.3.0/deploy/service.yaml
     ```
 
-1. The Dynatrace SLI provider needs access to a Dynatrace tenant. If you have completed the steps from [Setup Dynatrace](./#setup-dynatrace), the *dynatrace-sli-service* 
+1. The *dynatrace-sli-service* needs access to a Dynatrace tenant. If you have completed the steps from [Setup Dynatrace](./#setup-dynatrace), the *dynatrace-sli-service* 
 uses the already provided credentials. Otherwise, create a *secret* containing the **Tenant ID** and **API token**.
 
     The `DT_TENANT` has to be set according to the appropriate pattern:
