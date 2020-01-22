@@ -175,7 +175,7 @@ keptn add-resource --project=musicshop --stage=hardening --service=catalogue --r
 
 ## Install SLI provider
 
-For this tutorial, you need to deploy the corresponding SLI provider for your monitoring solution. This can be for either the open-source monitoring solution *Prometheus* or *Dynatrace*. 
+For this tutorial, you need to deploy the corresponding SLI provider for your monitoring solution. This can be either the open-source monitoring solution *Prometheus* or *Dynatrace*. 
 
 <details><summary>Prometheus SLI provider</summary>
 <p>
@@ -270,10 +270,10 @@ Starting to send a start-evaluation event to evaluate the service catalogue in p
 ID of Keptn context: 6cd3e469-cbd3-4f73-xxxx-8b2fb341bb11
 ```
 
-* Retrieve the evaluation results by using the Keptn CLI to [get event evaluation-done](../../reference/cli/#keptn-send-event-start-evaluation): 
+* Retrieve the evaluation results by using the Keptn CLI to [get event evaluation-done](../../reference/cli/#keptn-get-event-evaluation-done): 
     
 ```console
-keptn get evaluation-results --keptnContext=6cd3e469-cbd3-4f73-xxxx-8b2fb341bb11
+keptn get event evaluation-done --keptn-context=6cd3e469-cbd3-4f73-xxxx-8b2fb341bb11
 ```
 
 The result comes in the form of the `evaluation-done` event, which is specified [here](https://github.com/keptn/spec/blob/0.1.2/cloudevents.md#evaluation-done).
