@@ -154,7 +154,7 @@ kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/release-0.6.0/ins
 
 Please only update the services if you have them installed
 
-* *dynatrace-service*: `kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-service/release-0.6.0/deploy/service.yaml`
+* *dynatrace-service*: `kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-service/release-0.6.0/deploy/manifests/dynatrace-service/dynatrace-service.yaml`
 * *dynatrace-sli-service*: `kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-sli-service/release-0.3.0/deploy/service.yaml`
 * *prometheus-service*: `kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/release-0.3.1/deploy/service.yaml`
 * *prometheus-sli-service*: `kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-sli-service/release-0.2.0/deploy/service.yaml`

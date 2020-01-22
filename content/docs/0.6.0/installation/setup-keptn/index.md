@@ -77,7 +77,7 @@ Select one of the following options:
  </p>
 </details>
 
-<!-- <details><summary>OpenShift 3.11</summary>
+<details><summary>OpenShift 3.11</summary>
 <p>
 
 1. Install local tools
@@ -157,7 +157,29 @@ Select one of the following options:
     pks create-cluster $CLUSTER_NAME --external-hostname $HOST_NAME --plan $PLAN
     ```
 </p>
-</details> -->
+</details>
+
+<details><summary>Minikube 1.2</summary>
+<p>
+
+1. Install MiniKube in [version 1.2](https://github.com/kubernetes/minikube/releases/tag/v1.2.0) (newer versions do not work).
+
+1. Setup a minikube VM with at least 6 CPU cores and 12 GB memory using
+
+       ```console
+       minikube stop # optional
+       minikube delete # optional
+       minikube start --cpus 6 --memory 12200
+       ``` 
+
+1. Start the minikube LoadBalancer service in a second terminal by executing
+
+    ```console
+   minikube tunnel 
+   ``` 
+
+</p>
+</details>
 
 ## Install Keptn CLI
 Every release of Keptn provides binaries for the Keptn CLI. These binaries are available for Linux, macOS, and Windows.
@@ -189,33 +211,40 @@ To install the latest release of Keptn on a Kuberntes cluster, execute the [kept
 
 - Azure Kubernetes Services (AKS):
 
-    ```console
-    keptn install --platform=aks
-    ```
+```console
+keptn install --platform=aks
+```
   
 - Amazon Elastic Kubernetes Service (EKS):
 
-    ```console
-    keptn install --platform=eks
-    ```
+```console
+keptn install --platform=eks
+```
 
 - Google Kubernetes Engine (GKE):
 
-    ```console
-    keptn install --platform=gke
-    ```
+```console
+keptn install --platform=gke
+```
 
 - OpenShift 3.11:
 
-    ```console
-    keptn install --platform=openshift
-    ```
+```console
+keptn install --platform=openshift
+```
 
 - Pivotal Container Service (PKS):
 
-    ```console
-    keptn install --platform=pks
-    ```
+```console
+keptn install --platform=pks
+```
+
+- Minikube 1.2:
+
+```console
+keptn install --platform=kubernetes
+```
+
 
 In the Kubernetes cluster, this command creates the **keptn**, **keptn-datastore**, and **istio-system** namespace. While istio-system contains all Istio related resources, keptn and keptn-datastore contain the complete infrastructure to run Keptn. 
     <details><summary>The *keptn* and *keptn-datastore* namespace contain:</summary>
@@ -267,15 +296,15 @@ keptn configure domain YOUR_DOMAIN
 
 - To uninstall Keptn from your cluster, run the uninstall command using the Keptn CLI:
 
-    ``` console
-    keptn uninstall
-    ``` 
+``` console
+keptn uninstall
+``` 
 
 - To verify the cleanup, retrieve the list of namespaces in your cluster and ensure that the **keptn** namespace is not included in the output of the following command:
 
-    ```console
-    kubectl get namespaces
-    ```
+```console
+kubectl get namespaces
+```
 
 ## Troubleshooting
 

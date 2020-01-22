@@ -5,7 +5,7 @@ weight: 5
 keywords: [self-healing-dynatrace]
 aliases:
 ---
-Demonstrates how to use the self-healing mechanisms of Keptn to self-heal a demo service, which runs into issues, by providing automated upscaling.
+Demonstrates how to use the self-healing mechanisms of Keptn to self-heal a demo service, which runs into issues by providing automated upscaling.
 
 ## About this tutorial
 
@@ -43,13 +43,13 @@ To add these files to Keptn and to automatically configure Dynatrace, execute th
 
 - `remediation.yaml`
 
-  ```yaml
-  remediations:
-  - name: Response time degradation
-    actions:
-    - action: scaling
-      value: +1
-  ```
+```yaml
+remediations:
+- name: Response time degradation
+actions:
+- action: scaling
+    value: +1
+```
 
 </details>
 </p>
@@ -60,10 +60,10 @@ To add these files to Keptn and to automatically configure Dynatrace, execute th
 
 * Within this menu, select the option **Detect response time degradations using fixed thresholds**, set the limit to **1000ms**, and select **Medium** for the sensitivity as shown below.
 
-{{< popup_image
-    link="./assets/anomaly_detection.png"
-    caption="Anomaly detection settings"
-    width="700px">}}
+    {{< popup_image
+        link="./assets/anomaly_detection.png"
+        caption="Anomaly detection settings"
+        width="700px">}}
 
 **Note:** You can configure those fixed thresholds per service instead of globally.
 
@@ -89,7 +89,7 @@ To simulate user traffic that is causing an unhealthy behavior in the carts serv
 1. (optional:) Verify the load in Dynatrace
 
     In your Dynatrace Tenant, inspect the *Response Time* chart of the correlating service entity of the carts microservice. *Hint:* You can find the service 
-    in Dynatrace easier by selecting the management tone **Keptn: sockshop production**:
+    in Dynatrace easier by selecting the management zone **Keptn: sockshop production**:
 
     {{< popup_image
         link="./assets/dt-services.png"

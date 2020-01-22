@@ -49,17 +49,17 @@ For more information about SLO and SLI, please take a look at [Specifications fo
 
     * To use a Prometheus instance other than the one that is being managed by Keptn for a certain project, a secret containing the URL and the access credentials has to be deployed into the `keptn` namespace. The secret must have the following format:
 
-          ```yaml
-          user: username
-          password: ***
-          url: http://prometheus-service.monitoring.svc.cluster.local:8080
-          ```
+        ```yaml
+        user: username
+        password: ***
+        url: http://prometheus-service.monitoring.svc.cluster.local:8080
+        ```
 
           If this information is stored in a file, e.g. `prometheus-creds.yaml`, the secret can be created with the following command. Please note that there is a naming convention for the secret because this can be configured per **project**. Thus, the secret has to have the name `prometheus-credentials-<project>`. Do not forget to replace the `<project>` placeholder with the name of your project:
 
-          ```console
-          kubectl create secret -n keptn generic prometheus-credentials-<project> --from-file=prometheus-credentials=./prometheus-creds.yaml
-          ```
+        ```console
+        kubectl create secret -n keptn generic prometheus-credentials-<project> --from-file=prometheus-credentials=./prometheus-creds.yaml
+        ```
   
     Besides, this tutorial assumes that the service is properly monitored by Prometheus. Therefore, a *scrape job* and an *alert rule* are required:
 
@@ -81,30 +81,30 @@ For more information about SLO and SLI, please take a look at [Specifications fo
     
         To add an alert rule to a Prometheus deployed on Kubernetes, you need to update the `prometheus-server-conf` ConfigMap at the `prometheus.rules` section with an additional group. Please be aware that the values of the label service, stage, and project must match your service, stage, and project as created in the [below step](./#configure-keptn-and-activate-the-quality-gate).
 
-              prometheus.rules:
-              ----
-              groups:
-              - name: catalogue musicshop-hardening alerts
-                rules:
-                - alert: response_time_p95>600
-                  expr: histogram_quantile(0.95,sum(rate(http_response_time_milliseconds_bucket{job='catalogue-musicshop-hardening'}[180s]))by(le))>600
-                  for: 5m
-                  labels:
-                    severity: webhook
-                    pod_name: catalogue
-                    service: catalogue
-                    stage: hardening
-                    project: musicshop
-                  annotations:
-                    summary: response_time_p95>600
-                    descriptions: Pod name {{ $labels.pod_name }}
+            prometheus.rules:
+            ----
+            groups:
+            - name: catalogue musicshop-hardening alerts
+              rules:
+              - alert: response_time_p95>600
+                expr: histogram_quantile(0.95,sum(rate(http_response_time_milliseconds_bucket{job='catalogue-musicshop-hardening'}[180s]))by(le))>600
+                for: 5m
+                labels:
+                  severity: webhook
+                  pod_name: catalogue
+                  service: catalogue
+                  stage: hardening
+                  project: musicshop
+                annotations:
+                  summary: response_time_p95>600
+                  descriptions: Pod name {{ $labels.pod_name }}
 
     * Before continue, please verify that you have an alert rule as shown below: 
 
         {{< popup_image
           link="./assets/prometheus_alert.png"
           caption="Prometheus Alert for SLI"
-          width="35%">}}
+          width="50%">}}
 
     </p>
     </details>
@@ -116,25 +116,25 @@ For more information about SLO and SLI, please take a look at [Specifications fo
       {{< popup_image
         link="./assets/monitored_service.png"
         caption="Tags on catalogue service"
-        width="35%">}}
+        width="50%">}}
 
     To add those tags:
 
     * Set the environment variable [DT_CUSTOM_PROP](../../reference/monitoring/dynatrace/#set-dt-custom-prop-before-onboarding-a-service) with a key-value pair for each tag in your deployment manifest and deploy your service: 
 
-      ```
-      env:
-      - name: DT_CUSTOM_PROP
-        value: "keptn_project=musicshop keptn_service=catalogue keptn_stage=hardening"
-      ``` 
+    ```
+    env:
+    - name: DT_CUSTOM_PROP
+      value: "keptn_project=musicshop keptn_service=catalogue keptn_stage=hardening"
+    ``` 
 
     * Add tagging rules in Dynatrace to detect these values and to create the tags for your monitored service. Therefore, you can use the scripts [applyAutoTaggingRules.sh](https://github.com/keptn-contrib/dynatrace-service/blob/release-0.5.0/deploy/scripts/applyAutoTaggingRules.sh) and
     [utils.sh](https://github.com/keptn-contrib/dynatrace-service/blob/release-0.5.0/deploy/scripts/utils.sh). Please run the following command with
     your Tenant ID and API Token as parameters: 
 
-      ```console
-      .\applyAutoTaggingRules.sh $DT_TENANT $DT_API_TOKEN
-      ```
+    ```console
+    .\applyAutoTaggingRules.sh $DT_TENANT $DT_API_TOKEN
+    ```
       
     </p>
     </details>
@@ -153,23 +153,23 @@ keptn install --platform=[aks|eks|gke|kubernetes] --use-case=quality-gates
 
 * Create a Keptn project (e.g., *musicshop*) with only one the *hardening* stage declared in the `shipyard-quality-gates.yaml` file:
 
-  ```
-  keptn create project musicshop --shipyard=shipyard-quality-gates.yaml
-  ```
+```
+keptn create project musicshop --shipyard=shipyard-quality-gates.yaml
+```
 
 * Create a Keptn service for your service (e.g., *catalogue*) you want to evaluate:
 
-  ```console
-  keptn create service catalogue --project=musicshop
-  ```
+```console
+keptn create service catalogue --project=musicshop
+```
 
   **Note:** Since you are not actively deploying a service in this tutorial, [keptn create service](../../reference/cli/#keptn-create-service) does not require you to provide a Helm chart compared to the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command. 
 
 * To activate the quality gate for your service, upload the `slo-quality-gates.yaml` file:
 
-  ```console
-  keptn add-resource --project=musicshop --stage=hardening --service=catalogue --resource=slo-quality-gates.yaml --resourceUri=slo.yaml
-  ```
+```console
+keptn add-resource --project=musicshop --stage=hardening --service=catalogue --resource=slo-quality-gates.yaml --resourceUri=slo.yaml
+```
 
   **Note:** The activated quality gate is passed when the absolute value of the response time is below 600ms and the relative change of the response time compared to the previous evaluation is below 10%. The quality gate raises a warning when the absolute value of the response time is below 800ms.
 
@@ -259,49 +259,49 @@ At a specific point in time, e.g., after you have executed your tests or you hav
 
 * Execute a quality gate evaluation by using the Keptn CLI to [send event start-evaluation](../../reference/cli/#keptn-send-event-start-evaluation): 
 
-  ```console
-  keptn send event start-evaluation --project=musicshop --stage=hardening --service=catalogue --timeframe=5m
-  ```
+```console
+keptn send event start-evaluation --project=musicshop --stage=hardening --service=catalogue --timeframe=5m
+```
 
   This `start-evaluation` event will kick off the evaluation of the SLO of the catalogue service over the last 5 minutes. Evaluations can be done in seconds but may also take a while as every SLI provider needs to query each SLI first. This is why the Keptn CLI will return the `keptnContext`, which is basically a token we can use to poll the status of this particular evaluation. The output of the previous command looks like this:
 
-  ```console
-  Starting to send a start-evaluation event to evaluate the service catalogue in project musicshop
-  ID of Keptn context: 6cd3e469-cbd3-4f73-xxxx-8b2fb341bb11
-  ```
+```console
+Starting to send a start-evaluation event to evaluate the service catalogue in project musicshop
+ID of Keptn context: 6cd3e469-cbd3-4f73-xxxx-8b2fb341bb11
+```
 
 * Retrieve the evaluation results by using the Keptn CLI to [get event evaluation-done](../../reference/cli/#keptn-get-event-evaluation-done): 
     
-  ```console
-  keptn get event evaluation-done --keptn-context=6cd3e469-cbd3-4f73-xxxx-8b2fb341bb11
-  ```
+```console
+keptn get event evaluation-done --keptn-context=6cd3e469-cbd3-4f73-xxxx-8b2fb341bb11
+```
 
-  The result comes in the form of the `evaluation-done` event, which is specified [here](https://github.com/keptn/spec/blob/0.1.2/cloudevents.md#evaluation-done).
+The result comes in the form of the `evaluation-done` event, which is specified [here](https://github.com/keptn/spec/blob/0.1.2/cloudevents.md#evaluation-done).
 
 ### Keptn API
 
 * First, get the Keptn API endpoint and token by executing the following commands: 
 
-  ```console
-  KEPTN_ENDPOINT=https://api.keptn.$(kubectl get cm keptn-domain -n keptn -ojsonpath={.data.app_domain})
-  KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
-  ```
+```console
+KEPTN_ENDPOINT=https://api.keptn.$(kubectl get cm keptn-domain -n keptn -ojsonpath={.data.app_domain})
+KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
+```
 
 * Prepare the POST request body by filling out the next JSON object: 
 
-  ```yaml
-  {
-    "type": "sh.keptn.event.start-evaluation",
-    "data": {
-      "start": "2019-11-21T11:00:00.000Z",
-      "end": "2019-11-21T11:05:00.000Z",
-      "project": "musicshop",
-      "stage": "hardening",
-      "service": "catalogue",
-      "teststrategy": "manual"
-    }
+```yaml
+{
+  "type": "sh.keptn.event.start-evaluation",
+  "data": {
+    "start": "2019-11-21T11:00:00.000Z",
+    "end": "2019-11-21T11:05:00.000Z",
+    "project": "musicshop",
+    "stage": "hardening",
+    "service": "catalogue",
+    "teststrategy": "manual"
   }
-  ```
+}
+```
 
 * Execute a quality gate evaluation by sending a POST request with the Keptn API token and the prepared payload:
 
@@ -311,14 +311,14 @@ At a specific point in time, e.g., after you have executed your tests or you hav
 
   This request will kick off the evaluation of the SLO of the catalogue service over the last 5 minutes. Evaluations can be done in seconds but may also take a while as every SLI provider needs to query each SLI first. This is why the Keptn API will return the `keptnContext`, which is basically a token we can use to poll the status of this particular evaluation. The response to the POST request looks like this:
 
-  ```console
-  {"keptnContext":"384dae76-2d31-41e6-9204-39f2c1513906","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDU0NDA4ODl9.OdkhIoJ9KuT4bm7imvEXHdEPjnU0pl5S7DqGibNa924"}
-  ```
+```console
+{"keptnContext":"384dae76-2d31-41e6-9204-39f2c1513906","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDU0NDA4ODl9.OdkhIoJ9KuT4bm7imvEXHdEPjnU0pl5S7DqGibNa924"}
+```
 
 * Send a GET request to retrieve the evaluation result: 
 
-  ```console
-  curl -X GET "http://api.keptn.12.34.56.78.xip.io/v1/event?keptnContext=KEPTN_CONTEXT_ID&type=sh.keptn.events.evaluation-done" -H "accept: application/json" -H "x-token: YOUR_KEPTN_TOKEN"
-  ```
+```console
+curl -X GET "http://api.keptn.12.34.56.78.xip.io/v1/event?keptnContext=KEPTN_CONTEXT_ID&type=sh.keptn.events.evaluation-done" -H "accept: application/json" -H "x-token: YOUR_KEPTN_TOKEN"
+```
 
-  The result comes in the form of the `evaluation-done` event, which is specified [here](https://github.com/keptn/spec/blob/0.1.2/cloudevents.md#evaluation-done).
+The result comes in the form of the `evaluation-done` event, which is specified [here](https://github.com/keptn/spec/blob/0.1.2/cloudevents.md#evaluation-done).
