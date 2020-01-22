@@ -45,23 +45,8 @@ For more information about SLO and SLI, please take a look at [Specifications fo
     <details><summary>*Details for a service monitored by Prometheus*</summary>
     <p>
     
-    This tutorial assumes that you have Prometheus that is either managed by Keptn or not. 
-
-    * To use a Prometheus instance other than the one that is being managed by Keptn for a certain project, a secret containing the URL and the access credentials has to be deployed into the `keptn` namespace. The secret must have the following format:
-
-        ```yaml
-        user: username
-        password: ***
-        url: http://prometheus-service.monitoring.svc.cluster.local:8080
-        ```
-
-          If this information is stored in a file, e.g. `prometheus-creds.yaml`, the secret can be created with the following command. Please note that there is a naming convention for the secret because this can be configured per **project**. Thus, the secret has to have the name `prometheus-credentials-<project>`. Do not forget to replace the `<project>` placeholder with the name of your project:
-
-        ```console
-        kubectl create secret -n keptn generic prometheus-credentials-<project> --from-file=prometheus-credentials=./prometheus-creds.yaml
-        ```
-  
-    Besides, this tutorial assumes that the service is properly monitored by Prometheus. Therefore, a *scrape job* and an *alert rule* are required:
+    This tutorial assumes that you have Prometheus that is either managed by Keptn or not.
+    Furthermore, the service has to be monitored by Prometheus. Therefore, a *scrape job* and an *alert rule* are required:
 
     * A **scrape job** for your service. For more information about configuring a scrape job, see the official Prometheus documentation at section [scrape_config](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config). 
     
@@ -180,15 +165,9 @@ For this tutorial, you need to deploy the corresponding SLI provider for your mo
 <details><summary>Prometheus SLI provider</summary>
 <p>
 
-1. Check if the Prometheus SLI provider is already available in your Keptn: 
+1. Complete steps from section [Setup Prometheus SLI provider](../../reference/monitoring/prometheus/#setup-prometheus-sli-provider).
 
-    ```console
-    kubectl get deployment -n keptn prometheus-sli-service
-    ```
-
-1. If the Prometheus SLI provider is not available, deploy and configure it for your project as explained [here](../../reference/monitoring/prometheus/#setup-prometheus-sli-provider).
-
-1. To tell Keptn to use the deployed Prometheus SLI provider for your project, first adapt the ConfigMap in the `lighthouse-source-prometheus.yaml` file at the `metatdata.name` property to reference your project. Afterwards, apply the ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
+1. To configure Keptn to use the Dynatrace SLI provider for your project (e.g. **musicshop**), first adapt the ConfigMap in the `lighthouse-source-prometheus.yaml` file at the `metatdata.name` property to reference your project. Afterwards, apply the ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
 
     ```console
     kubectl apply -f lighthouse-source-prometheus.yaml
@@ -204,7 +183,7 @@ For this tutorial, you need to deploy the corresponding SLI provider for your mo
       namespace: keptn
     ```
 
-1. Finally, upload the Prometheus-specific SLI configuration as stored in the `sli-config-prometheus.yaml` file:
+1. Configure custom SLIs for the Dynatrace SLI provider as specified in `sli-config-prometheus.yaml`:
 
     ```console
     keptn add-resource --project=musicshop --stage=hardening --service=catalogue --resource=sli-config-prometheus.yaml --resourceUri=prometheus/sli.yaml
@@ -216,15 +195,10 @@ For this tutorial, you need to deploy the corresponding SLI provider for your mo
 <details><summary>Dynatrace SLI provider</summary>
 <p>
 
-1. Check if the Dynatrace SLI provider is already available in your Keptn: 
 
-    ```console
-    kubectl get deployment -n keptn dynatrace-sli-service
-    ```
+1. Complete steps from section [Setup Dynatrace SLI provider](../../reference/monitoring/dynatrace/#setup-dynatrace-sli-provider).
 
-1. If the Dynatrace SLI provider is not available, deploy and configure it for your project as explained [here](../../reference/monitoring/dynatrace/#setup-dynatrace-sli-provider).
-
-1. To tell Keptn to use the deployed Dynatrace SLI provider for your project, first adapt the ConfigMap in the `lighthouse-source-dynatrace.yaml` file at the `metatdata.name` property to reference your project. Afterwards, apply the ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
+1. To configure Keptn to use the Dynatrace SLI provider for your project (e.g. **musicshop**), first adapt the ConfigMap in the `lighthouse-source-dynatrace.yaml` file at the `metatdata.name` property to reference your project. Afterwards, apply the ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
 
     ```console
     kubectl apply -f lighthouse-source-dynatrace.yaml
@@ -240,7 +214,7 @@ For this tutorial, you need to deploy the corresponding SLI provider for your mo
       namespace: keptn
     ```
 
-1. Finally, upload the Dynatrace-specific SLI configuration as stored in the `sli-config-dynatrace.yaml` file:
+1. Configure custom SLIs for the Dynatrace SLI provider as specified in `sli-config-dynatrace.yaml`:
 
     ```console
     keptn add-resource --project=musicshop --stage=hardening --service=catalogue --resource=sli-config-dynatrace.yaml --resourceUri=dynatrace/sli.yaml
@@ -303,13 +277,13 @@ KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.
 }
 ```
 
-* Execute a quality gate evaluation by sending a POST request with the Keptn API toke and the prepared payload:
+* Execute a quality gate evaluation by sending a POST request with the Keptn API token and the prepared payload:
 
-```console
-curl -X POST "http://api.keptn.12.34.56.78.xip.io/v1/event" -H "accept: application/json" -H "x-token: YOUR_KEPTN_TOKEN" -H "Content-Type: application/json" -d "{ \"data\": { \"end\": \"2019-11-21T11:05:00.000Z\", \"project\": \"musicshop\", \"service\": \"catalogue\", \"stage\": \"hardening\", \"start\": \"2019-11-21T11:00:00.000Z\", \"teststrategy\": \"manual\" }, \"type\": \"sh.keptn.event.start-evaluation\"}"
-```
-  
-  This request will kick off the evaluation of the SLO of the catalogue service over the last 5 minutes. Evaluations can be done in seconds but may also take a while as every SLI provider needs to query each SLI first. This is why the Keptn CLI will return the `keptnContext`, which is basically a token we can use to poll the status of this particular evaluation. The response to the POST request looks like this:
+  ```console
+  curl -X POST "http://api.keptn.12.34.56.78.xip.io/v1/event" -H "accept: application/json" -H "x-token: YOUR_KEPTN_TOKEN" -H "Content-Type: application/json" -d "{ \"data\": { \"end\": \"2019-11-21T11:05:00.000Z\", \"project\": \"musicshop\", \"service\": \"catalogue\", \"stage\": \"hardening\", \"start\": \"2019-11-21T11:00:00.000Z\", \"teststrategy\": \"manual\" }, \"type\": \"sh.keptn.event.start-evaluation\"}"
+  ```
+
+  This request will kick off the evaluation of the SLO of the catalogue service over the last 5 minutes. Evaluations can be done in seconds but may also take a while as every SLI provider needs to query each SLI first. This is why the Keptn API will return the `keptnContext`, which is basically a token we can use to poll the status of this particular evaluation. The response to the POST request looks like this:
 
 ```console
 {"keptnContext":"384dae76-2d31-41e6-9204-39f2c1513906","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDU0NDA4ODl9.OdkhIoJ9KuT4bm7imvEXHdEPjnU0pl5S7DqGibNa924"}
