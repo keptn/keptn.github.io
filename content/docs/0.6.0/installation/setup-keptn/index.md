@@ -22,7 +22,7 @@ Select one of the following options:
 
 2. Create AKS cluster
   - Master version >= `1.12.x` (tested version: `1.12.8`)
-  - One **B4ms** node
+  - One **D8s_v3** node
  
  </p>
 </details>
