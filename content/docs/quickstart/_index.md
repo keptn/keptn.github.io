@@ -8,6 +8,8 @@ weight: 1
 
 ### 1. Setup your platform
 
+**Note**: For running the tutorials with Keptn 0.5 and newer we recommend having at least **6 vCPUs** and **12 GB memory**.
+
 * [Preparing Azure Kubernetes Engine (AKS)](/docs/quickstart/setup_platform/setup_aks)
 * [Preparing Amazon Elastic Kubernetes Service (EKS)](/docs/quickstart/setup_platform/setup_eks)
 * [Preparing Google Kubernetes Engine (GKE)](/docs/quickstart/setup_platform/setup_gke)
