@@ -52,30 +52,30 @@ a Google Kubernetes Engine (GKE), and on OpenShift.
 - **AKS**:
 
     ```console
-    keptn install --platform=aks
+    keptn install --platform=aks --keptn-version=0.5.2
     ```
 - **EKS**:
 
     ```console
-    keptn install --platform=eks
+    keptn install --platform=eks --keptn-version=0.5.2
     ```
 
 - **GKE**:
 
     ```console
-    keptn install --platform=gke
+    keptn install --platform=gke --keptn-version=0.5.2
     ```
 
 - **PKS**:
 
     ```console
-    keptn install --platform=pks
+    keptn install --platform=pks --keptn-version=0.5.2
     ```
 
 - **OpenShift**:
 
     ```console
-    keptn install --platform=openshift
+    keptn install --platform=openshift --keptn-version=0.5.2
     ```
 
 ### keptn configure domain
@@ -85,7 +85,7 @@ The Keptn CLI allows to configure a custom domain. This is mandatory if *xip.io*
 **Note:** This command requires a *kubernetes current context* pointing to the cluster where you would like to configure your domain. After installing Keptn this is guaranteed.
 
 ```console
-keptn configure domain YOUR.CUSTOM.DOMAIN
+keptn configure domain YOUR.CUSTOM.DOMAIN --keptn-version=0.5.2
 ```
 
 ### keptn auth 

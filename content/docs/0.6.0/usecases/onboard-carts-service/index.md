@@ -1,12 +1,12 @@
 ---
 title: Onboarding a Service
-description: Shows you how to onboard the carts service including its database to a Keptn managed project. Besides, this tutorial shows how to deployed a new version of carts via Keptn.
+description: Shows you how to onboard the carts service including its database to a Keptn-managed project. Besides, this tutorial shows how to deploy  a new version of carts via Keptn.
 weight: 20
 keywords: [onboarding]
 aliases:
 ---
 
-Shows you how to onboard the carts service including its database to a Keptn managed project. Besides, this tutorial shows how to deployed a new version of carts via Keptn.
+Shows you how to onboard the carts service including its database to a Keptn-managed project. Besides, this tutorial shows how to deploy  a new version of carts via Keptn.
 
 ## About this tutorial
 
@@ -22,7 +22,7 @@ To illustrate the scenario this tutorial addresses, Keptn relies on following in
 
  **helm-service**:
   
-  * Creates a new service entity, duplicates the provided Helm chart, and uploades the Helm chart to the configuration store.
+  * Creates a new service entity, duplicates the provided Helm chart, and uploads the Helm chart to the configuration store.
 
   * Updates the service configuration when a new artifact is available.
 
@@ -46,7 +46,7 @@ To illustrate the scenario this tutorial addresses, Keptn relies on following in
 * Clone example files used for this tutorial:
 
     ```console
-    git clone --branch 0.6.0.beta2 https://github.com/keptn/examples.git --single-branch
+    git clone --branch 0.6.0 https://github.com/keptn/examples.git --single-branch
     ```
 
     ```console
@@ -92,9 +92,9 @@ This shipyard contains three stages: dev, staging, and production. This results 
 </p>
 </details>
 
-**Note:**  To learn more about a *shipyard* file, please take a look at the [Shipyard specification](https://github.com/keptn/spec/blob/0.1.1/shipyard.md).
+**Note:**  To learn more about a *shipyard* file, please take a look at the [Shipyard specification](https://github.com/keptn/spec/blob/0.1.2/shipyard.md).
 
-Create a new project for your services using the [create project](../../reference/cli/#keptn-create-project) command. In this example, the project is called *sockshop*. Before executing the following command, make sure you are in the `examples/onboarding-carts` folder.
+Create a new project for your services using the [keptn create project](../../reference/cli/#keptn-create-project) command. In this example, the project is called *sockshop*. Before executing the following command, make sure you are in the `examples/onboarding-carts` folder.
 
 Create a new project without Git upstream:
 ```console
@@ -115,51 +115,51 @@ keptn create project sockshop --shipyard=./shipyard.yaml --git-user=GIT_USER --g
 ## Onboard carts service and carts database
 After creating the project, services can be onboard to this project.
 
-* Onboard the **carts** service using the [onboard service](../../reference/cli/#keptn-onboard-service) command:
+* Onboard the **carts** service using the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command:
 
-  ```console
-  keptn onboard service carts --project=sockshop --chart=./carts
-  ```
+```console
+keptn onboard service carts --project=sockshop --chart=./carts
+```
 
 * After onboarding the service, tests (i.e., functional- and performance tests) need to be added as basis for quality gates in the different stages:
 
-  * Functional tests for dev stage:
+  * Functional tests for *dev* stage:
 
     ```console
-    keptn add-resource --project=sockshop --service=carts --stage=dev --resource=jmeter/basiccheck.jmx --resourceUri=jmeter/basiccheck.jmx
+    keptn add-resource --project=sockshop --stage=dev --service=carts --resource=jmeter/basiccheck.jmx --resourceUri=jmeter/basiccheck.jmx
     ```
 
-  * Performance tests for staging stage:
+  * Performance tests for *staging* stage:
 
     ```console
-    keptn add-resource --project=sockshop --service=carts --stage=staging --resource=jmeter/load.jmx --resourceUri=jmeter/load.jmx
+    keptn add-resource --project=sockshop --stage=staging --service=carts --resource=jmeter/load.jmx --resourceUri=jmeter/load.jmx
     ```
-  
-    **Note**: A basic health-check (i.e., accessing `/health` of the carts-service) is always executed before the functional and performance tests are executed.
+
+**Note**: A basic health-check (i.e., accessing `/health` of the carts-service) is always triggered before the functional and performance tests are executed. This means, that if a `basiccheck.jmx` file is available, it will be executed first. The reason is that performance tests should not be executed if a basic health check fails.
 
 Since the carts service requires a mongodb database, a second service needs to be onboarded.
 
-* Onboard the **carts-db** service using the [onboard service](../../reference/cli/#keptn-onboard-service) command. The `--deployment-strategy` flag specifies that for this service a *direct* deployment strategy in all stages should be used regardless of the deployment strategy specified in the shipyard. Thus, the database is not blue/green deployed.
+* Onboard the **carts-db** service using the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command. The `--deployment-strategy` flag specifies that for this service a *direct* deployment strategy in all stages should be used regardless of the deployment strategy specified in the shipyard. Thus, the database is not blue/green deployed.
 
-  ```console
-  keptn onboard service carts-db --project=sockshop --chart=./carts-db --deployment-strategy=direct
-  ```
+```console
+keptn onboard service carts-db --project=sockshop --chart=./carts-db --deployment-strategy=direct
+```
 
 During the onboarding of the services, Keptn creates a namespace for each stage based on the pattern: `projectname-stagename`.
 
 * To verify the new namespaces, execute the following command:
 
-  ```console
-  kubectl get namespaces
-  ```
+```console
+kubectl get namespaces
+```
 
-  ```console
-  NAME                  STATUS   AGE
-  ...
-  sockshop-dev          Active   2m
-  sockshop-production   Active   30s
-  sockshop-staging      Active   1m
-  ```
+```console
+NAME                  STATUS   AGE
+...
+sockshop-dev          Active   2m
+sockshop-production   Active   30s
+sockshop-staging      Active   1m
+```
 
 ## Send new artifacts and watch Keptn doing the deployment 
 
@@ -167,25 +167,25 @@ After onboarding the services, a built artifact of each service can be deployed.
 
 * Deploy the carts-db service by executing the [keptn send event new-artifact](../../reference/cli/#keptn-send-event-new-artifact) command:
 
-  ```console
-  keptn send event new-artifact --project=sockshop --service=carts-db --image=mongo
-  ```
+```console
+keptn send event new-artifact --project=sockshop --service=carts-db --image=mongo:4.2.2
+```
 
 * Deploy the carts service by specifying the built artifact, which is stored on DockerHub and tagged with version 0.10.1:
 
-  ```console
-  keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.10.1
-  ```
+```console
+keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.10.1
+```
 
 * Go to Keptn's bridge and check which events have already been generated. You can access it by a port-forward from your local machine to the Kubernetes cluster:
 
-  ```console 
-  kubectl port-forward svc/bridge -n keptn 9000:8080
-  ```
+```console 
+kubectl port-forward svc/bridge -n keptn 9000:8080
+```
 
 * The Keptn's bridge is then available on: http://localhost:9000. 
 
-    It shows all deployments that have been triggered. On the left-hand side you can see the deployment start events (i.e., so-called `Configuration change` events). During a deployment, Keptn generates events for controlling the deployment process. These events will also show up in Keptn's bridge. Please note that if events are sent at the same time, their order in the Keptn's bridge might be arbitrary since they are sorted on the granularity of one second. 
+    It shows all deployments that have been triggered. On the left-hand side, you can see the deployment start events (i.e., so-called `Configuration change` events). During a deployment, Keptn generates events for controlling the deployment process. These events will also show up in Keptn's bridge. Please note that if events are sent at the same time, their order in the Keptn's bridge might be arbitrary since they are sorted on the granularity of one second. 
 
     {{< popup_image
       link="./assets/bridge.png"
@@ -193,32 +193,32 @@ After onboarding the services, a built artifact of each service can be deployed.
 
 * **Optional:** Verify the pods that should have been created for services carts and carts-db:
 
-  ```console
-  kubectl get pods --all-namespaces | grep carts
-  ```
+```console
+kubectl get pods --all-namespaces | grep carts
+```
 
-  ```console
-  sockshop-dev          carts-77dfdc664b-25b74                            1/1     Running     0          10m
-  sockshop-dev          carts-db-54d9b6775-lmhf6                          1/1     Running     0          13m
-  sockshop-production   carts-db-54d9b6775-4hlwn                          2/2     Running     0          12m
-  sockshop-production   carts-primary-79bcc7c99f-bwdhg                    2/2     Running     0          2m15s
-  sockshop-staging      carts-db-54d9b6775-rm8rw                          2/2     Running     0          12m
-  sockshop-staging      carts-primary-79bcc7c99f-mbbgq                    2/2     Running     0          7m24s
-  ```
+```console
+sockshop-dev          carts-77dfdc664b-25b74                            1/1     Running     0          10m
+sockshop-dev          carts-db-54d9b6775-lmhf6                          1/1     Running     0          13m
+sockshop-production   carts-db-54d9b6775-4hlwn                          2/2     Running     0          12m
+sockshop-production   carts-primary-79bcc7c99f-bwdhg                    2/2     Running     0          2m15s
+sockshop-staging      carts-db-54d9b6775-rm8rw                          2/2     Running     0          12m
+sockshop-staging      carts-primary-79bcc7c99f-mbbgq                    2/2     Running     0          7m24s
+```
 
 ## View carts service
 
 - Get the URL for your carts service with the following commands in the respective namespaces:
 
-  ```console
-  echo http://carts.sockshop-dev.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
-  ```
-  ```console
-  echo http://carts.sockshop-staging.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
-  ```
-  ```console
-  echo http://carts.sockshop-production.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
-  ```
+```console
+echo http://carts.sockshop-dev.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
+```
+```console
+echo http://carts.sockshop-staging.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
+```
+```console
+echo http://carts.sockshop-production.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
+```
 
 - Navigate to the URLs to inspect the carts service. In the production namespace, you should receive an output similar to this:
 
