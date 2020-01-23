@@ -4,6 +4,16 @@ title = "keptn | Opinionated framework for event-driven automated continuous ope
 theme = "hugo-serif-theme"
 relativeUrls = true
 
+ignoreFiles = [ 
+"^(.*/docs/0.6.0/usecases/runbook-automation-and-self-healing*)$",    
+"^(.*/docs/0.3.0/*)$", 
+"^(.*/docs/0.2.2/*)$", 
+"^(.*/docs/0.2.1/*)$", 
+"^(.*/docs/0.2.0/*)$", 
+"^(.*/docs/0.1.3/*)$", 
+"^(.*/docs/0.1.2/*)$", 
+"^(.*/docs/0.1.1/*)$", 
+"^(.*/docs/0.1.0/*)$" ]
 
 [params]
     google_analytics_id="UA-133584243-1"

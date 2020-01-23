@@ -4,7 +4,8 @@ if(lang.startsWith("command")){lang="bash";}else if(lang===""){lang="txt";}
 downloadas=docTitle+"."+lang;}
 saveFile(downloadas,text);}
 return true;};var printButton=document.createElement("BUTTON");printButton.title=buttonPrint;printButton.className="print";printButton.innerHTML="<svg><use xlink:href='"+iconFile+"#printer'/></svg>";printButton.setAttribute("aria-label",printButton.title);printButton.onclick=function(e){var div=e.currentTarget.parentElement;var text=getToolbarDivText(div);printText(text);return true;};var div=document.createElement("DIV");div.className="toolbar";pre[i].parentElement.insertBefore(div,pre[i]);div.appendChild(pre[i]);div.appendChild(printButton);div.appendChild(downloadButton);div.appendChild(copyButton);}
-var copyCode=new ClipboardJS('button.copy',{text:function(trigger){return getToolbarDivText(trigger.parentElement);}});copyCode.on('error',function(event){alert("Sorry, but copying is not supported by your browser");});}
+var copyCode=new ClipboardJS('button.copy',{text:function(trigger){showCopyIndicator(document.querySelector('.copy-indicator'));return getToolbarDivText(trigger.parentElement);}});copyCode.on('error',function(event){alert("Sorry, but copying is not supported by your browser");});}
+function showCopyIndicator(copyIndicator){console.log(copyIndicator);if(copyIndicator){copyIndicator.classList.add('shown');setTimeout(function(){copyIndicator.classList.remove('shown');},3000);}}
 function getToolbarDivText(div){var commands=div.getElementsByClassName("command");if((commands!==null)&&(commands.length>0)){var lines=commands[0].innerText.split("\n");var cmd="";for(var i=0;i<lines.length;i++){if(lines[i].startsWith("$ ")){lines[i]=lines[i].substring(2);}
 if(cmd!==""){cmd=cmd+"\n";}
 cmd+=lines[i];}

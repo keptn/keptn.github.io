@@ -22,7 +22,7 @@ Select one of the following options:
 
 2. Create AKS cluster
   - Master version >= `1.12.x` (tested version: `1.12.8`)
-  - One **B4ms** node
+  - One **D8s_v3** node
  
  </p>
 </details>
@@ -35,11 +35,11 @@ Select one of the following options:
 
 1. Create EKS cluster on AWS
   - version >= `1.13` (tested version: `1.13`)
-  - One `m5.xlarge` node
+  - One `m5.2xlarge` node
   - Sample script using [eksctl](https://eksctl.io/introduction/installation/) to create such a cluster
 
     ```console
-    eksctl create cluster --version=1.13 --name=keptn-cluster --node-type=m5.xlarge --nodes=1 --region=eu-west-3
+    eksctl create cluster --version=1.13 --name=keptn-cluster --node-type=m5.2xlarge --nodes=1 --region=eu-west-3
     ```
     In our testing we learned that the default CoreDNS that comes with certain EKS versions has a bug. In order to solve that issue we can use eksctl to update the CoreDNS service like this: 
     ```console
@@ -89,48 +89,48 @@ Select one of the following options:
 
     - Set up the required permissions for your user:
 
-      ```
-      oc adm policy --as system:admin add-cluster-role-to-user cluster-admin <OPENSHIFT_USER_NAME>
+      ```console
+    oc adm policy --as system:admin add-cluster-role-to-user cluster-admin <OPENSHIFT_USER_NAME>
       ```
 
     - Set up the required permissions for the installer pod:
 
-      ```
-      oc adm policy  add-cluster-role-to-user cluster-admin system:serviceaccount:default:default
-      oc adm policy  add-cluster-role-to-user cluster-admin system:serviceaccount:kube-system:default
+      ```console
+    oc adm policy  add-cluster-role-to-user cluster-admin system:serviceaccount:default:default
+    oc adm policy  add-cluster-role-to-user cluster-admin system:serviceaccount:kube-system:default
       ```
 
     - Enable admission WebHooks on your OpenShift master node:
 
-      ```
-      sudo -i
-      cp -n /etc/origin/master/master-config.yaml /etc/origin/master/master-config.yaml.backup
-      oc ex config patch /etc/origin/master/master-config.yaml --type=merge -p '{
-        "admissionConfig": {
-          "pluginConfig": {
-            "ValidatingAdmissionWebhook": {
-              "configuration": {
-                "apiVersion": "apiserver.config.k8s.io/v1alpha1",
-                "kind": "WebhookAdmission",
-                "kubeConfigFile": "/dev/null"
-              }
-            },
-            "MutatingAdmissionWebhook": {
-              "configuration": {
-                "apiVersion": "apiserver.config.k8s.io/v1alpha1",
-                "kind": "WebhookAdmission",
-                "kubeConfigFile": "/dev/null"
-              }
+      ```console
+    sudo -i
+    cp -n /etc/origin/master/master-config.yaml /etc/origin/master/master-config.yaml.backup
+    oc ex config patch /etc/origin/master/master-config.yaml --type=merge -p '{
+      "admissionConfig": {
+        "pluginConfig": {
+          "ValidatingAdmissionWebhook": {
+            "configuration": {
+              "apiVersion": "apiserver.config.k8s.io/v1alpha1",
+              "kind": "WebhookAdmission",
+              "kubeConfigFile": "/dev/null"
+            }
+          },
+          "MutatingAdmissionWebhook": {
+            "configuration": {
+              "apiVersion": "apiserver.config.k8s.io/v1alpha1",
+              "kind": "WebhookAdmission",
+              "kubeConfigFile": "/dev/null"
             }
           }
         }
-      }' >/etc/origin/master/master-config.yaml.patched
-      if [ $? == 0 ]; then
-        mv -f /etc/origin/master/master-config.yaml.patched /etc/origin/master/master-config.yaml
-        /usr/local/bin/master-restart api && /usr/local/bin/master-restart controllers
-      else
-        exit
-      fi
+      }
+    }' >/etc/origin/master/master-config.yaml.patched
+    if [ $? == 0 ]; then
+      mv -f /etc/origin/master/master-config.yaml.patched /etc/origin/master/master-config.yaml
+      /usr/local/bin/master-restart api && /usr/local/bin/master-restart controllers
+    else
+      exit
+    fi
       ```
 </p>
 </details>
@@ -159,10 +159,32 @@ Select one of the following options:
 </p>
 </details>
 
+<details><summary>Minikube 1.2</summary>
+<p>
+
+1. Install Minikube in [version 1.2](https://github.com/kubernetes/minikube/releases/tag/v1.2.0) (newer versions do not work).
+
+1. Setup a Minikube VM with at least 6 CPU cores and 12 GB memory using:
+
+       ```console
+    minikube stop # optional
+    minikube delete # optional
+    minikube start --cpus 6 --memory 12200
+       ``` 
+
+1. Start the Minikube LoadBalancer service in a second terminal by executing:
+
+    ```console
+   minikube tunnel 
+   ``` 
+
+</p>
+</details>
+
 ## Install Keptn CLI
 Every release of Keptn provides binaries for the Keptn CLI. These binaries are available for Linux, macOS, and Windows.
 
-- Download the version for your operating system from [github.com/keptn/](https://github.com/keptn/keptn/releases/tag/0.6.0.beta2)
+- Download the version for your operating system from [github.com/keptn/](https://github.com/keptn/keptn/releases/tag/0.6.0)
 - Unpack the download
 - Find the `keptn` binary in the unpacked directory
 
@@ -185,37 +207,44 @@ Every release of Keptn provides binaries for the Keptn CLI. These binaries are a
 
 ## Install Keptn
 
-To install the latest release of Keptn on a Kuberntes cluster, execute the [keptn install](../../reference/cli/#keptn-install) command and provide the requested information. Since v0.3 of Keptn, the install command accepts a parameter to select the platform you would like to install Keptn on. Currently supported platforms are: 
+To install the latest release of Keptn on a Kuberntes cluster, execute the [keptn install](../../reference/cli/#keptn-install) command and provide the requested information. Since v0.3 of Keptn, the install command accepts the platform flag to select the target platform you would like to install Keptn on. Currently, supported platforms are:
 
 - Azure Kubernetes Services (AKS):
 
-    ```console
-    keptn install --platform=aks --keptn-version=release-0.6.0.beta2
-    ```
+```console
+keptn install --platform=aks
+```
   
 - Amazon Elastic Kubernetes Service (EKS):
 
-    ```console
-    keptn install --platform=eks --keptn-version=release-0.6.0.beta2
-    ```
+```console
+keptn install --platform=eks
+```
 
 - Google Kubernetes Engine (GKE):
 
-    ```console
-    keptn install --platform=gke --keptn-version=release-0.6.0.beta2
-    ```
+```console
+keptn install --platform=gke
+```
 
 - OpenShift 3.11:
 
-    ```console
-    keptn install --platform=openshift --keptn-version=release-0.6.0.beta2
-    ```
+```console
+keptn install --platform=openshift
+```
 
 - Pivotal Container Service (PKS):
 
-    ```console
-    keptn install --platform=pks --keptn-version=release-0.6.0.beta2
-    ```
+```console
+keptn install --platform=pks
+```
+
+- Minikube 1.2:
+
+```console
+keptn install --platform=kubernetes
+```
+
 
 In the Kubernetes cluster, this command creates the **keptn**, **keptn-datastore**, and **istio-system** namespace. While istio-system contains all Istio related resources, keptn and keptn-datastore contain the complete infrastructure to run Keptn. 
     <details><summary>The *keptn* and *keptn-datastore* namespace contain:</summary>
@@ -246,7 +275,13 @@ In the Kubernetes cluster, this command creates the **keptn**, **keptn-datastore
             </ul>
         </ul>
     </details>
-    
+
+
+**Note:** If you want to install Keptn just for the use case of [Keptn Quality Gates](../../usecases/quality-gates/), you have the option to roll-out Keptn **without** components for automated delivery and operations. Therefore, the `use-case` flag must be set to `quality-gates`:
+
+```console
+keptn install --platform=[aks|eks|gke|openshift|pks|kubernetes] --use-case=quality-gates
+```
 
 ## Configure a custom domain (required for EKS)
 
@@ -254,22 +289,22 @@ If you have a custom domain or cannot use *xip.io* (e.g., when running Keptn on 
 CLI command [keptn configure domain](../../reference/cli/#keptn-configure-domain) to configure Keptn for your custom domain:
 
 ```console
-keptn configure domain YOUR_DOMAIN --keptn-version=release-0.6.0.beta2
+keptn configure domain YOUR_DOMAIN
 ```
 
 ## Uninstall
 
 - To uninstall Keptn from your cluster, run the uninstall command using the Keptn CLI:
 
-    ``` console
-    keptn uninstall
-    ``` 
+``` console
+keptn uninstall
+``` 
 
 - To verify the cleanup, retrieve the list of namespaces in your cluster and ensure that the **keptn** namespace is not included in the output of the following command:
 
-    ```console
-    kubectl get namespaces
-    ```
+```console
+kubectl get namespaces
+```
 
 ## Troubleshooting
 

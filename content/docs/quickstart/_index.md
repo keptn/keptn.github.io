@@ -18,10 +18,7 @@ weight: 1
 
 ### 2. Install Keptn
 
-The following instructions will install the **latest stable Keptn version (0.5.2)** in a quick way.
-
-- If you want to follow the detailed install instructions, please go to [Keptn 0.5.2 installation](/docs/0.5.0/installation/setup-keptn/).
-- If you want to try out *Keptn 0.6.0.beta2*, please go to [Keptn 0.6.0.beta2 installation](/docs/0.6.0/installation/setup-keptn/)
+The following instructions will install the **latest stable Keptn version (0.6.0)** in a quick way.
 
 #### 2.1 Install the Keptn CLI
 The Keptn CLI is the one-stop-shop for all operations related to Keptn.
@@ -48,21 +45,22 @@ keptn install --platform=[aks|eks|gke|openshift|pks|kubernetes]
 Keptn is now ready to be used.
 
 ### 4. Explore the use cases
-With Keptn installed, have a look at the different [use cases](/docs/0.5.0/usecases) like
+With Keptn installed, have a look at the different [use cases](/docs/0.6.0/usecases) like
 
-* [Onboarding a new Service](/docs/0.5.0/usecases/onboard-carts-service/)
-* [Using Quality Gates for Deployments](/docs/0.5.0/usecases/deployments-with-quality-gates/)
-* [Self-healing with Keptn](/docs/0.5.0/usecases/self-healing-with-keptn/)
-* [Runbook Automation](/docs/0.5.0/usecases/runbook-automation-and-self-healing/)
+* [Onboarding a new Service](/docs/0.6.0/usecases/onboard-carts-service/)
+* [Deployments with Quality Gates](/docs/0.6.0/usecases/deployments-with-quality-gates/)
+* [Self-healing with Keptn](/docs/0.6.0/usecases/self-healing-with-keptn/)
+<!-- * [Runbook Automation](/docs/0.6.0/usecases/runbook-automation-and-self-healing/) -->
 
 ### 5. Learn how Keptn works under the hood and how it can be adapted to your use cases
-Review the [reference documentation](/docs/0.5.0/) for a full reference on all components of Keptn and how they can be combined and extended to your needs.
+Review the [reference documentation](/docs/0.6.0/) for a full reference on all components of Keptn and how they can be combined and extended to your needs.
 
-### 6. In case you need help
+### 6. You need help?
 Join [our slack channel](https://join.slack.com/t/keptn/shared_invite/enQtNTUxMTQ1MzgzMzUxLWMzNmM1NDc4MmE0MmQ0MDgwYzMzMDc4NjM5ODk0ZmFjNTE2YzlkMGE4NGU5MWUxODY1NTBjNjNmNmI1NWQ1NGY)
  for any questions that may arise.
 
-### 7. Uninstalling Keptn
+### 7. Uninstall Keptn
+
 ```console
 keptn uninstall
 ```
