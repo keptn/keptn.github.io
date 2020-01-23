@@ -39,7 +39,7 @@ To add these files to Keptn and to automatically configure Prometheus, execute t
     keptn add-resource --project=sockshop --stage=production --service=carts --resource=remediation.yaml --resourceUri=remediation.yaml
     ```
 
-1. Configure Prometheus with the Keptn CLI (this configures the [Alert Manager](https://prometheus.io/docs/alerting/configuration/ based on the slo.yaml file):
+1. Configure Prometheus with the Keptn CLI (this configures the [Alert Manager](https://prometheus.io/docs/alerting/configuration/) based on the slo.yaml file):
 
     ```console
     keptn configure monitoring prometheus --project=sockshop --service=carts

@@ -14,7 +14,7 @@ In this tutorial, you will learn how to use the capabilities of Keptn to provide
 ## Prerequisites
 
 - See [Self-healing](../#prerequisites).
-- Double-check that you have [Disabled Frequent Issue Detection](../../../reference/monitoring/dynatrace/#disable-frequent-issue-detection) within Dynatrace.
+- Double-check that you have [disabled frequent issue detection](../../../reference/monitoring/dynatrace/#disable-frequent-issue-detection) within Dynatrace.
 
 ## Configure monitoring
 

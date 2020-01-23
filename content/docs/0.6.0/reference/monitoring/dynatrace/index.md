@@ -188,7 +188,7 @@ The *dynatrace-service* in Keptn will take care of pushing events of the Keptn w
     caption="Keptn events"
     width="500px">}}
 
-## Disable Frequent Issue Detection
+## Disable frequent issue detection
 
 Keptn relies on Dynatrace sending *brand new* alerts everytime a problem is detected. Therefore we need to disable the *Frequent Issue Detection* within Dynatrace. To do so, go to **Settings > Anomaly Detection > Frequent Issue Detection**, and disable all switches found in this menu:
 

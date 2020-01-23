@@ -16,10 +16,10 @@ aliases:
 
 Exactly these three concepts have been applied in the tutorials:
 
-1. [Deployments with Quality Gates](../deployments-with-quality-gates/): 
+1. [Deployments with Quality Gates](../../usecases/deployments-with-quality-gates/): 
     In this particular tutorial, the *carts* service has been changed, which intentionally slowed down the execution of the *addToCarts* function. After changing the service, it has been deployed to the development environment. Although the service has passed the quality gates (functional checks) in the development environment, the service has not passed the quality gate in the staging environment due to the increase of the response time detected by a performance test. This demonstrates an early break of the delivery pipeline based on automated quality gates. Hence, exploiting the concepts of **Shift-Left**, the delivery pipeline has been stopped and immediate feedback to the development team can be provided.
 
     Additionally, the used pipelines for deploying, testing, and evaluating have pushed information to our monitoring solution (Dynatrace in this case). This information can be used in following steps and provides the basis for **Shift-Right**. Summarizing, the pipeline stopped due to a - intentionally introduced - failure in a service. This was early enough to not deploy this faulty service version into production.
 
-1. [Self-healing with Keptn](./self-healing-with-keptn/): 
+1. [Self-healing with Keptn](../../usecases/self-healing-with-keptn/): 
     This tutorial has leveraged the power a remediation service to build **Self-healing** applications. Thus, a configuration change in the production environment caused troubles that were detected by Dynatrace, which then created a problem ticket. Due to this problem ticket and a corresponding notification, Keptn became aware of it. Subsequently, Keptn forwarded this problem to a remediation service, which triggers a remediation action. This action triggered a workflow that was able to remediate the issue at runtime and healed the application.

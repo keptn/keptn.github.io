@@ -89,48 +89,48 @@ Select one of the following options:
 
     - Set up the required permissions for your user:
 
-      ```
-      oc adm policy --as system:admin add-cluster-role-to-user cluster-admin <OPENSHIFT_USER_NAME>
+      ```console
+    oc adm policy --as system:admin add-cluster-role-to-user cluster-admin <OPENSHIFT_USER_NAME>
       ```
 
     - Set up the required permissions for the installer pod:
 
-      ```
-      oc adm policy  add-cluster-role-to-user cluster-admin system:serviceaccount:default:default
-      oc adm policy  add-cluster-role-to-user cluster-admin system:serviceaccount:kube-system:default
+      ```console
+    oc adm policy  add-cluster-role-to-user cluster-admin system:serviceaccount:default:default
+    oc adm policy  add-cluster-role-to-user cluster-admin system:serviceaccount:kube-system:default
       ```
 
     - Enable admission WebHooks on your OpenShift master node:
 
-      ```
-      sudo -i
-      cp -n /etc/origin/master/master-config.yaml /etc/origin/master/master-config.yaml.backup
-      oc ex config patch /etc/origin/master/master-config.yaml --type=merge -p '{
-        "admissionConfig": {
-          "pluginConfig": {
-            "ValidatingAdmissionWebhook": {
-              "configuration": {
-                "apiVersion": "apiserver.config.k8s.io/v1alpha1",
-                "kind": "WebhookAdmission",
-                "kubeConfigFile": "/dev/null"
-              }
-            },
-            "MutatingAdmissionWebhook": {
-              "configuration": {
-                "apiVersion": "apiserver.config.k8s.io/v1alpha1",
-                "kind": "WebhookAdmission",
-                "kubeConfigFile": "/dev/null"
-              }
+      ```console
+    sudo -i
+    cp -n /etc/origin/master/master-config.yaml /etc/origin/master/master-config.yaml.backup
+    oc ex config patch /etc/origin/master/master-config.yaml --type=merge -p '{
+      "admissionConfig": {
+        "pluginConfig": {
+          "ValidatingAdmissionWebhook": {
+            "configuration": {
+              "apiVersion": "apiserver.config.k8s.io/v1alpha1",
+              "kind": "WebhookAdmission",
+              "kubeConfigFile": "/dev/null"
+            }
+          },
+          "MutatingAdmissionWebhook": {
+            "configuration": {
+              "apiVersion": "apiserver.config.k8s.io/v1alpha1",
+              "kind": "WebhookAdmission",
+              "kubeConfigFile": "/dev/null"
             }
           }
         }
-      }' >/etc/origin/master/master-config.yaml.patched
-      if [ $? == 0 ]; then
-        mv -f /etc/origin/master/master-config.yaml.patched /etc/origin/master/master-config.yaml
-        /usr/local/bin/master-restart api && /usr/local/bin/master-restart controllers
-      else
-        exit
-      fi
+      }
+    }' >/etc/origin/master/master-config.yaml.patched
+    if [ $? == 0 ]; then
+      mv -f /etc/origin/master/master-config.yaml.patched /etc/origin/master/master-config.yaml
+      /usr/local/bin/master-restart api && /usr/local/bin/master-restart controllers
+    else
+      exit
+    fi
       ```
 </p>
 </details>
@@ -162,17 +162,17 @@ Select one of the following options:
 <details><summary>Minikube 1.2</summary>
 <p>
 
-1. Install MiniKube in [version 1.2](https://github.com/kubernetes/minikube/releases/tag/v1.2.0) (newer versions do not work).
+1. Install Minikube in [version 1.2](https://github.com/kubernetes/minikube/releases/tag/v1.2.0) (newer versions do not work).
 
-1. Setup a minikube VM with at least 6 CPU cores and 12 GB memory using
+1. Setup a Minikube VM with at least 6 CPU cores and 12 GB memory using:
 
        ```console
-       minikube stop # optional
-       minikube delete # optional
-       minikube start --cpus 6 --memory 12200
+    minikube stop # optional
+    minikube delete # optional
+    minikube start --cpus 6 --memory 12200
        ``` 
 
-1. Start the minikube LoadBalancer service in a second terminal by executing
+1. Start the Minikube LoadBalancer service in a second terminal by executing:
 
     ```console
    minikube tunnel 

@@ -58,7 +58,7 @@ For this tutorial, you will need to set up monitoring for the carts service eith
 <details><summary>Expand instructions</summary>
 <p>
 
-1. Complete steps from the section [Setup Prometheus](../../reference/monitoring/prometheus/#setup-prometheus).
+1. Complete steps from section [Setup Prometheus](../../reference/monitoring/prometheus/#setup-prometheus).
 
 1. Complete steps from section [Setup Prometheus SLI provider](../../reference/monitoring/prometheus/#setup-prometheus-sli-provider).
 
@@ -91,7 +91,7 @@ For this tutorial, you will need to set up monitoring for the carts service eith
 <details><summary>Expand instructions</summary>
 <p>
 
-1. Complete steps from the section [Setup Dynatrace](../../reference/monitoring/dynatrace#setup-dynatrace).
+1. Complete steps from section [Setup Dynatrace](../../reference/monitoring/dynatrace#setup-dynatrace).
 
 1. Complete steps from section [Setup Dynatrace SLI provider](../../reference/monitoring/dynatrace/#setup-dynatrace-sli-provider).
 

@@ -32,7 +32,9 @@ Several changes to Helm charts have been made. If you want to stay compatible, p
 
   See example: https://github.com/keptn/examples/blob/release-0.6.0/onboarding-carts/carts/templates/deployment.yaml#L7
 
-* Then, set a new value in `values.yaml` for each service: `replicaCount`. See example: https://github.com/keptn/examples/blob/release-0.6.0/onboarding-carts/carts/values.yaml
+* Then, set a new value in `values.yaml` for each service: `replicaCount`. 
+
+  See example: https://github.com/keptn/examples/blob/release-0.6.0/onboarding-carts/carts/values.yaml
 
 * Dynatrace integration: We have removed `DT_TAGS` and introduced `DT_CUSTOM_PROP`:
 
@@ -45,7 +47,7 @@ Several changes to Helm charts have been made. If you want to stay compatible, p
 
 ## New Lighthouse / Pitometer was removed
 
-Pitometer was removed including the support support for PerfSpec files. Instead, a new service called *lighthouse* has been introduced. Please follow the [Deployment with Quality Gates tutorial](../../usecases/deployments-with-quality-gates/) to learn more about the new file formats used for quality gates.
+Pitometer was removed including the support support for PerfSpec files. Instead, a new service called *lighthouse* has been introduced. Please follow the [Deployment with Quality Gates](../../usecases/deployments-with-quality-gates/) tutorial to learn more about the new file formats used for quality gates.
 
 # Upgrade from 0.6.0beta(2) to 0.6.0
 
@@ -53,7 +55,7 @@ When we introduced the new lighthouse-service with custom SLIs in 0.6.0.beta we 
 
 ## Lighthouse: Custom SLIs in Git repo
 
-For Keptn 0.6.0.beta(2), we asked you to create custom SLI by creating a Kubernetes ConfigMap for Prometheus that looked like this:
+For Keptn 0.6.0.beta(2), custom SLIs were configured by creating a Kubernetes ConfigMap for Prometheus that looked like this:
 
 ```yaml
 apiVersion: v1
@@ -67,7 +69,7 @@ metadata:
   namespace: keptn
 ```
 
-With Keptn 0.6.0, custom SLIs need to be added for the project/service/stage by using `keptn add-resource`. With this change in mind, we also had to slightly adapt the format of the file. Above file would now look as follows:
+With Keptn 0.6.0, custom SLIs need to be added for the project/service/stage by using [keptn add-resource](../../reference/cli/#keptn-add-resource). With this change in mind, we also had to slightly adapt the format of the file. Above file would now look as follows:
 
 ```yaml
 ---

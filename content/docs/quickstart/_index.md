@@ -48,7 +48,7 @@ Keptn is now ready to be used.
 With Keptn installed, have a look at the different [use cases](/docs/0.6.0/usecases) like
 
 * [Onboarding a new Service](/docs/0.6.0/usecases/onboard-carts-service/)
-* [Using Quality Gates for Deployments](/docs/0.6.0/usecases/deployments-with-quality-gates/)
+* [Deployments with Quality Gates](/docs/0.6.0/usecases/deployments-with-quality-gates/)
 * [Self-healing with Keptn](/docs/0.6.0/usecases/self-healing-with-keptn/)
 <!-- * [Runbook Automation](/docs/0.6.0/usecases/runbook-automation-and-self-healing/) -->
 
