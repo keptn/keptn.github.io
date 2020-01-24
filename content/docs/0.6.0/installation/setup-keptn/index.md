@@ -68,7 +68,7 @@ Select one of the following options:
     CLUSTER_NAME=name_of_cluster
     ZONE=us-central1-a
     REGION=us-central1
-    GKE_VERSION="1.13.7-gke.24"
+    GKE_VERSION="1.13.11-gke.14"
     ```
 
     ```console
