@@ -22,7 +22,7 @@ if(output!==""){var prefix="language-command-output-as-";if(cl.startsWith(prefix
 html+="<div class='output'>"+output+"</div>";}
 code.innerHTML=html;code.classList.remove(cl);code.classList.add("command-output");}else{Prism.highlightElement(code,false);}}else{Prism.highlightElement(code,false);}}}
 function attachLink(node){var anchor=document.createElement("a");anchor.className="header-link";anchor.href="#"+node.id;anchor.setAttribute("aria-hidden","true");anchor.innerHTML="<svg class='icon'><use xlink:href='"+iconFile+"#links'/></svg>";node.appendChild(anchor);}
-function attachLinksToHeaders(){for(var level=2;level<=6;level++){var headers=document.getElementsByTagName("h"+level.toString());for(var i=0;i<headers.length;i++){var header=headers[i];if(header.id!==""){attachLink(header);}}}}
+function attachLinksToHeaders(){for(var level=1;level<=6;level++){var headers=document.getElementsByTagName("h"+level.toString());for(var i=0;i<headers.length;i++){var header=headers[i];if(header.id!==""){attachLink(header);}}}}
 function attachLinksToDefinedTerms(){var terms=document.getElementsByTagName("dt");for(var i=0;i<terms.length;i++){var term=terms[i];if(term.id!==""){attachLink(term);}}}
 function makeOutsideLinksOpenInTabs(){var links=document.getElementsByTagName("a");for(var i=0;i<links.length;i++){var link=links[i];if(link.hostname&&link.hostname!==location.hostname){link.setAttribute("target","_blank");link.setAttribute("rel","noopener");}}}
 function loadExternalPreBlocks(){function fetchFile(elem,url){fetch(url).then(function(response){return response.text();}).then(function(data){elem.firstChild.textContent=data;Prism.highlightElement(elem.firstChild,false);});}
