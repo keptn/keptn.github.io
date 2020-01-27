@@ -1,29 +1,40 @@
 ---
-title: Write your own Keptn Service
-description: Explains you how to implement your own Keptn service that listens to Keptn events and extends your Keptn with a certain functionality.
+title: Write your Keptn Service
+description:  Explains to you how to implement your Keptn service that listens to Keptn events and extends your Keptn with certain functionality.
 weight: 90
 keywords: [service, custom]
 aliases:
 ---
 
-Explains you how to implement your own Keptn service that listens to Keptn events and extends your Keptn with a certain functionality.
+Explains to you how to implement your Keptn service that listens to Keptn events and extends your Keptn with certain functionality.
 
 ## About this tutorial
 
-The goal of this tutorial is to describe how you can add additional functionality to your Keptn installation by implementing your own custom services. You can react to certain events that occur during your continuous delivery pipeline runs and integrate additional tools into your pipeline by accessing their REST interfaces with your custom services. At the moment the events you can subscribe to include:
+The goal of this tutorial is to describe how you can add additional functionality to your Keptn installation with a custom [*Keptn service*](#keptn-service) or [*SLI provider*](#sli-provider). While a *Keptn service* enriches a continuous delivery or operational workflow with additional functionality or with an extra tool, a *SLI provider* is used to query Service Level Indicators (SLI) from an external source like a monitoring or testing solution.  
 
-- sh.keptn.events.new-artifact
+## Keptn service
+
+A *Keptn service* is intended to react to certain events that occur during a continuous delivery or operational workflow. After getting triggered by an event, a *Keptn service* processes some functionality and can therefore integrate additional tools by accessing their REST interfaces.
+
+The [Keptn CloudEvents](#cloudevents) a service can subscribe to include:
+
 - sh.keptn.events.configuration-changed
 - sh.keptn.events.deployment-finished
 - sh.keptn.events.tests-finished
 - sh.keptn.events.evaluation-done
 - sh.keptn.events.problem
 
-## Writing your own service
+### Implement custom Keptn service
 
-As a reference for writing your own service, please have a look at our implementation of the [JMeter Service](https://github.com/keptn/keptn/blob/0.5.0/jmeter-service). Essentially, this service is a *Go* application that accepts POST requests at its `/` endpoint. To be more specific, the request body needs to follow the [Cloud Event specification](https://github.com/keptn/spec/blob/0.1.1/cloudevents.md) and the HTTP header attribute `Content-Type` has to be set to `application/cloudevents+json`. Of course, you can write your own service in any language, as long as it provides the endpoint to receive events.
+As a reference for writing your service, please have a look at our implementation of the [jmeter-service](https://github.com/keptn/keptn/blob/0.6.0/jmeter-service), which is an implementation of Keptn service to execute JMeter tests. 
 
-A Keptn service is a regular Kubernetes service with a deployment and service template. The deployment and service manifest for the *jmeter-service* can be found in the [deploy/service.yaml](https://github.com/keptn/keptn/blob/0.5.0/jmeter-service/deploy/service.yaml) file in `jmeter-service` directory of the Keptn GitHub repository:
+**Incoming Keptn CloudEvent:** The *jmeter-service* is a *Go* application that accepts POST requests at its `/` endpoint. To be more specific, the request body needs to follow the [CloudEvent specification](https://github.com/keptn/spec/blob/0.1.2/cloudevents.md) and the HTTP header attribute `Content-Type` has to be set to `application/cloudevents+json`. Of course, you can write your service in any language, as long as it provides the endpoint to receive events.
+
+**Functionality:** The functionality of your *Keptn service* depends on the capability you want to add to the continuous delivery or operational Keptn workflow. In many cases, the event payload -- containing meta-data such as the project, stage, or service name as well as shipyard information -- is first processed and then used to call the REST API of another tool.  
+
+**Outgoing Keptn CloudEvent:** After your *Keptn service* has completed its functionality, it has to send a  CloudEvent to Keptn's event broker. This informs Keptn to continue a particular workflow.  
+
+**Deployment and service template:** A *Keptn service* is a regular Kubernetes service with a deployment and service template. As a starting point for your service the deployment and service manifest of the *jmeter-service* can be used, which can be found in the [deploy/service.yaml](https://github.com/keptn/keptn/blob/0.6.0/jmeter-service/deploy/service.yaml):
 
 ```yaml
 ---
@@ -43,8 +54,8 @@ spec:
         run: jmeter-service
     spec:
       containers:
-      - name: helm-service
-        image: keptn/jmeter-service:0.5.0
+      - name: jmeter-service
+        image: keptn/jmeter-service:0.6.0
         ports:
         - containerPort: 8080
 ---
@@ -63,9 +74,9 @@ spec:
     run: jmeter-service
 ```
 
-## Subscribe service to Keptn events 
+### Subscribe service to Keptn event
 
-To subscribe your service to certain Keptn event, a **distributor** is required. A distributor comes with a deployment manifest as shown below:
+**Distributor:** To subscribe your service to a Keptn event, a distributor is required. A distributor comes with a deployment manifest as shown by the example below:
 
 ```yaml
 ## jmeter-service: sh.keptn.events.deployment-finished
@@ -86,7 +97,7 @@ spec:
     spec:
       containers:
       - name: distributor
-        image: keptn/distributor:latest
+        image: keptn/distributor:0.6.0
         ports:
         - containerPort: 8080
         resources:
@@ -105,13 +116,96 @@ spec:
           value: 'jmeter-service'
 ```
 
-To configure this distributor for the `jmeter-service`, two environment variables need to be set:
-1. `PUBSUB_RECIPIENT` - Defines the service name.
-1. `PUBSUB_TOPIC` - Defines the event type the service is listening to. 
+To configure this distributor for your *Keptn service*, two environment variables need to be adapted: 
 
-## Deploy service and distributor
+* `PUBSUB_RECIPIENT`: Defines the service name as specified in the Kubernetes service manifest.
+* `PUBSUB_TOPIC`: Defines the event type your *Keptn service* is listening to. 
 
-With a service and deployment manifest for your custom service (`service.yaml`) as well as a deployment manifest for the distributor (`distributor.yaml`), you are ready to deploy both components:
+## SLI provider
+
+An *SLI provider* is an implementation of a *Keptn service* with a dedicated purpose. This type of service is responsible to query an external data source for SLIs that are then used by Keptn to evaluate an SLO. To configure a query for an indicator, Keptn provides the concept of an [SLI configuration](https://github.com/keptn/spec/blob/0.1.2/sre.md#service-level-indicators-sli-configuration).
+
+* Create a SLI configuration defining tool-specific queries for indicators. An example of an SLI configuration looks as follows:
+
+```yaml
+spec_version: '1.0'
+indicators:
+ throughput: "builtin:service.requestCount.total:merge(0):count?scope=tag(keptn_project:$PROJECT),tag(keptn_stage:$STAGE),tag(keptn_service:$SERVICE),tag(keptn_deployment:$DEPLOYMENT)"
+ error_rate: "builtin:service.errors.total.count:merge(0):avg?scope=tag(keptn_project:$PROJECT),tag(keptn_stage:$STAGE),tag(keptn_service:$SERVICE),tag(keptn_deployment:$DEPLOYMENT)"
+```
+
+**Note:** This SLI configuration file will then be stored in Keptn's configuration store using the [keptn add-resource](../../reference/cli/#keptn-add-resource) command.
+
+
+The [Keptn CloudEvents](#cloudevents) a SLI provider has to subscribe to is:
+
+- sh.keptn.internal.event.get-sli
+
+### Implement SLI provider
+
+**Incoming Keptn CloudEvent:** An *SLI provider* listens to one specific Keptn CloudEvent type, which is the [sh.keptn.internal.event.get-sli](https://github.com/keptn/spec/blob/0.1.2/cloudevents.md#get-sli) event. Next to event meta-data such as project, stage or service name, this type of event contains information about the indicators, time frame, and labels to query. For more details, please see the specification [here](https://github.com/keptn/spec/blob/0.1.2/cloudevents.md#get-sli). 
+
+**Functionality:** The functionality of an *SLI provider* focuses on querying indicator values from an external data source. Before a query can be fired towards the data source, the following steps are necessary:
+
+1. Process the incoming event to get the project, stage, and service name. Besides, you will need the indicators and time frame to query.  
+
+1. Get the SLI configuration from Keptn's configuration-service. This SLI configuration is identified by the `resourceURI`, which follows the pattern: `[tool-name]/sli.yaml` (e.g., `dynatrace/sli.yaml`). 
+  * Service URL: http://configuration-service.keptn.svc.cluster.local:8080
+  * Endpoint: `v1/project/{projectName}/stage/{stageName}/service/{serviceName}/resource/{resourceURI}`
+
+1. Process the SLI configuration and use the defined queries to retrieve the values of each indicator. 
+
+**Outgoing Keptn CloudEvent:** An *SLI provider* returns one specific Keptn CloudEvent type, which is the [sh.keptn.internal.event.get-sli.done](https://github.com/keptn/spec/blob/0.1.2/cloudevents.md#get-sli-done) event. This event contains the retrieved value of each queried indicator.  
+
+**Deployment and service template:** Like any custom *Keptn service*, an SLI provider is a regular Kubernetes service with a deployment and service template. See above how to define those templates for your SLI provider. 
+
+### Subscribe SLI provider to Keptn event
+
+**Distributor:** To subscribe your SLI provider to the `sh.keptn.internal.event.get-sli` event, a distributor is required. A distributor comes with a deployment manifest as shown by the example below:
+
+```yaml
+## jmeter-service: sh.keptn.events.deployment-finished
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dynatrace-sli-provider-distributor
+  namespace: keptn
+spec:
+  selector:
+    matchLabels:
+      run: distributor
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: distributor
+    spec:
+      containers:
+      - name: distributor
+        image: keptn/distributor:0.6.0
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            memory: "32Mi"
+            cpu: "50m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        env:
+        - name: PUBSUB_URL
+          value: 'nats://keptn-nats-cluster'
+        - name: PUBSUB_TOPIC
+          value: 'sh.keptn.internal.event.get-sli'
+        - name: PUBSUB_RECIPIENT
+          value: 'dynatrace-sli-provider'
+```
+
+To configure this distributor for your *SLI provider*, the environment variables `PUBSUB_RECIPIENT` has to refer to the service name of the SLI provider in the Kubernetes service manifest. Besides, make sure the environment variable `PUBSUB_TOPIC` has the value `sh.keptn.internal.event.get-sli`.
+
+## Deploy Keptn service and distributor
+
+With a service and deployment manifest for your custom *Keptn service* (`service.yaml`) and a deployment manifest for the distributor (`distributor.yaml`), you are ready to deploy both components in the K8s cluster where Keptn is installed: 
 
 ```console
 kubectl apply -f service.yaml
@@ -121,24 +215,23 @@ kubectl apply -f service.yaml
 kubectl apply -f distributor.yaml
 ```
 
-## Conclusion
+## Summary
 You will need to provide the following when you want to write a custom service:
 
-- Your service implementation including a Docker container, we recommend writing the service in *Go*
+- Your *Keptn service* implementation including a Docker container. We recommend writing the service in *Go*
 - The application needs to provide a REST endpoint at `/` that accepts `POST` requests for JSON objects.
-- A `service.yaml` file containing the templates for the service and deployment manifest of your service.
-- A `distributor.yaml` file containing the template for the distributor and properly configured for your service.
+- A `service.yaml` file containing the templates for the service and deployment manifest of your *Keptn service*.
+- A `distributor.yaml` file containing the template for the distributor and properly configured for your *Keptn service*.
 
-**Note:** This documentation will be replaced with an extensive step-by-step guide in the future.
 
-## Cloud Events
+## CloudEvents
 
-Please note that Cloud Events have to be sent with with the HTTP header `Content-Type: application/cloudevents+json` to be set.
-For a detailed look into Cloud Events, please go the Keptn [Cloud Event specification](https://github.com/keptn/spec/blob/0.1.1/cloudevents.md). 
+Please note that CloudEvents have to be sent with the HTTP header `Content-Type: application/cloudevents+json` to be set.
+For a detailed look into CloudEvents, please go the Keptn [CloudEvent specification](https://github.com/keptn/spec/blob/0.1.2/cloudevents.md). 
 
 ## Logging
 
-To inspect your service's log messages for a specific deployment run, you can use the `shkeptncontext` property of the incoming Cloud Events. Your service has to output its log messages in the following format:
+To inspect your service's log messages for a specific deployment run, you can use the `shkeptncontext` property of the incoming CloudEvents. Your service has to output its log messages in the following format:
 
 ```json
 {

@@ -1,7 +1,7 @@
 ---
 title: Self-healing with Keptn
 description: Demonstrates how to use the self-healing mechanisms of Keptn to self-heal a demo service, which runs into issues, by providing automated upscaling.
-weight: 30
+weight: 35
 keywords: [self-healing]
 aliases:
 ---
@@ -124,7 +124,7 @@ carts-primary-7c96d87df9-75pg7    1/1     Running   0          13m
 
 In order to simulate user traffic that is causing an unhealthy behavior in the carts service, please execute the following script. This will add special items into the shopping cart that cause some extensive calculation.
 
-1. Move to the correct folder:
+1. Change into the folder with the load generation program within the examples repo:
 
     ```console
     cd ../load-generation/bin

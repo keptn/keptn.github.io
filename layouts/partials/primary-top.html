@@ -46,7 +46,9 @@
                 {{ end }}
             {{ end }}
 
-
+            {{ if .Params.unsupported }}
+                <p class="unsupported">{{ .Params.unsupported }}</p>
+            {{ end }}
 
             {{ if $needTOC }}
                 <nav class="toc-inlined{{ if .Params.force_inline_toc }} toc-forced{{ end }}">

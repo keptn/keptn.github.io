@@ -193,25 +193,25 @@ To install the latest release of Keptn on a Kuberntes cluster, execute the [kept
 - Azure Kubernetes Services (AKS):
 
     ```console
-    keptn install --platform=aks
+    keptn install --platform=aks --keptn-version=0.5.2
     ```
   
 - Amazon Elastic Kubernetes Service (EKS):
 
     ```console
-    keptn install --platform=eks
+    keptn install --platform=eks --keptn-version=0.5.2
     ```
 
 - Google Kubernetes Engine (GKE):
 
     ```console
-    keptn install --platform=gke
+    keptn install --platform=gke --keptn-version=0.5.2
     ```
 
 - OpenShift 3.11:
 
     ```console
-    keptn install --platform=openshift
+    keptn install --platform=openshift --keptn-version=0.5.2
     ```
 
 - Pivotal Container Service (PKS):
@@ -225,7 +225,7 @@ To install the latest release of Keptn on a Kuberntes cluster, execute the [kept
     - Install Keptn on PKS:
 
         ```console
-        keptn install --platform=kubernetes
+        keptn install --platform=kubernetes --keptn-version=0.5.2
         ```
 
 In the Kubernetes cluster, this command creates the `keptn`, `keptn-datastore` and `istio-system` namespace. While `istio-system` contains all Istio related resources, `keptn` and `keptn-datastore` contain the complete infrastructure to run Keptn. 
@@ -265,7 +265,7 @@ In case you have a custom domain or cannot use *xip.io* (e.g., when running Kept
 CLI command to configure Keptn for your custom domain:
 
 ```console
-keptn configure domain YOUR_DOMAIN
+keptn configure domain YOUR_DOMAIN --keptn-version=0.5.2
 ```
 
 ## Uninstall

@@ -11,13 +11,14 @@ The above list of tutorials helps you to explore the functionalities of Keptn ba
 * As a **Developer** you might be most interested in:
   * [Onboarding a Service](./onboard-carts-service/)
   * [Deployments with Quality Gates](./deployments-with-quality-gates/)
+  * [Quality Gates for external Deployments](./quality-gates/)
 
 * As a **DevOps Engineer** you might be most interested in:
-  * [Write your own Keptn Service](./custom-service/)
+  * [Write your Keptn Service](./custom-service/)
 
 * As a **Site Reliability Engineer** you might be most interested in:
   * [Self-healing with Keptn](./self-healing-with-keptn/)
-  * [Runbook Automation](./runbook-automation-and-self-healing/)
+<!--  * [Runbook Automation](./runbook-automation-and-self-healing/) -->
 
 ## Application and environment
 

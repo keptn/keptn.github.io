@@ -10,4 +10,4 @@ keywords: setup
 
 ## 2. Create AKS cluster
   - Master version >= `1.12.x` (tested version: `1.12.8`)
-  - One `D16s_v3` node
+  - One `D8s_v3` node

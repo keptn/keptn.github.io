@@ -438,6 +438,7 @@ h6 {
   font-size: 0.6em;
 }
 
+h1:hover .header-link,
 h2:hover .header-link,
 h3:hover .header-link,
 h4:hover .header-link,
@@ -585,6 +586,14 @@ blockquote {
   margin-bottom: 0;
   padding: 0 0 0 0;
   font-size: 125%;
+}
+
+.unsupported {
+  margin-top: 0.15rem;
+  margin-bottom: 0;
+  padding: 0 0 0 0;
+  color: red;
+  font-size: 90%;
 }
 
 .byline {
