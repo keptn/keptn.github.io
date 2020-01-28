@@ -52,6 +52,10 @@ Select one of the following options:
 <details><summary>Google Kubernetes Engine (GKE)</summary>
 <p>
 
+Run your Keptn installation for free on GKE!
+If you [sign up for a Google Cloud account](https://console.cloud.google.com/getting-started), Google gives you an initial $300 credit. For deploying Keptn you can apply for an additional $200 credit which you can use towards that GKE cluster needed to run Keptn.<br><br>
+<a class="button button-primary" href="http://bit.ly/keptnongke" target="_blank">Apply for your credit here</a>
+
 1. Install local tools
   - [gcloud](https://cloud.google.com/sdk/gcloud/)
   - [python 2.7](https://www.python.org/downloads/release/python-2716/) (required for Ubuntu 19.04)
