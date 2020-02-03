@@ -199,20 +199,29 @@ Keptn relies on Dynatrace sending *brand new* alerts everytime a problem is dete
 
 ## Create a process group naming rule in Dynatrace
 
-While it is not a technical requirement, we encourage you to set up a process group naming rule within Dynatrace.
+While it is not a technical requirement, we encourage you to set up a process group naming rule within Dynatrace for better visibility of services, e.g.:
+
+Screenshot shows the applied rules in action
+{{< popup_image 
+link="./assets/pg_example.png"
+caption="Dynatrace naming rule in action"
+width="800px">}}
+
+To configure this rule, follow these steps:
 
   1. Go to **Settings**, **Process and containers**, and click on **Process group naming**.
   1. Create a new process group naming rule with **Add new rule**.
   1. Edit that rule:
-      * Rule name: `Container.Namespace`
-      * Process group name format: `{ProcessGroup:KubernetesContainerName}.{ProcessGroup:KubernetesNamespace}`
-      * Condition: `Kubernetes namespace` > `exits`
+      * Rule name: `Keptn Processgroup Naming`
+      * Process group name format: `{ProcessGroup:Environment:keptn_project}.{ProcessGroup:Environment:keptn_stage}.{ProcessGroup:Environment:keptn_service} [{ProcessGroup:Environment:keptn_deployment}]`
+      * Condition: `keptn_deployment (Environment)` > `exits`
   1. Click on **Preview** and **Save**.
 
     Screenshot shows this rule definition.
     {{< popup_image 
     link="./assets/pg_naming.png"
-    caption="Dynatrace naming rule">}}
+    caption="Dynatrace naming rule"
+    width="400px">}}
 
 ## Uninstall Dynatrace
 
