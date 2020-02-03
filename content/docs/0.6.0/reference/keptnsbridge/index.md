@@ -43,9 +43,11 @@ There is an early access version of Keptn's Bridge available (compatible with Ke
 To install it, you have to update the Docker images of *Keptn's Bridge* and the *mongodb-datastore* deployment by executing the following commands:
 
 ```console
-kubectl -n keptn set image deployment/bridge bridge=keptn/bridge2:0.6.1.EAP.20200131.1010 --record
+kubectl -n keptn set image deployment/bridge bridge=keptn/bridge2:0.6.1.EAP.20200203.0924 --record
 kubectl -n keptn-datastore set image deployment/mongodb-datastore mongodb-datastore=keptn/mongodb-datastore:0.6.1.EAP.20200131.1010 --record
 ```
+
+**Note**: You can check for an updated EAP version for Keptn's Bridge [on DockerHub](https://hub.docker.com/r/keptn/bridge2/tags?page=1&ordering=last_updated&name=0.6.1.EAP).
 
 If you want to access the new Keptn's Bridge you have to use `port-forward` again:
 
