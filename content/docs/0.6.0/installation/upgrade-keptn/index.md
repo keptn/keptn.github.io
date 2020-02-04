@@ -47,7 +47,7 @@ Several changes to Helm charts have been made. If you want to stay compatible, p
 
 ## New Lighthouse / Pitometer was removed
 
-Pitometer was removed including the support support for PerfSpec files. Instead, a new service called *lighthouse* has been introduced. Please follow the [Deployment with Quality Gates](../../usecases/deployments-with-quality-gates/) tutorial to learn more about the new file formats used for quality gates.
+Pitometer was removed including the support for PerfSpec files. Instead, a new service called *lighthouse* has been introduced. Please follow the [Deployment with Quality Gates](../../usecases/deployments-with-quality-gates/) tutorial to learn more about the new file formats used for quality gates.
 
 # Upgrade from 0.6.0beta(2) to 0.6.0
 
