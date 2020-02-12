@@ -55,7 +55,7 @@ If you are using Ubuntu, you can install Keptn using the following commands:
   export KUBECONFIG=./kubeconfig
   kubectl apply -f https://raw.githubusercontent.com/google/metallb/v0.8.3/manifests/metallb.yaml
 
-  keptn install --platform=kubernetes --keptn-installer-image=keptn/installer:0.6.0 --use-case=quality-gates --gateway=NodePort
+  keptn install --platform=kubernetes --use-case=quality-gates --gateway=NodePort
   ```
 
 Afterwards, you are ready to use Keptn for the use case of [Keptn Quality Gates](../../usecases/quality-gates/).
