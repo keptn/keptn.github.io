@@ -138,7 +138,7 @@ In this tutorial, the number of pods will be increased to remediate the issue of
     carts-primary-7c96d87df9-78fh2    2/2     Running   0          5m
     ```
 
-1. To get an overview of the actions that got triggered by the response time SLO violation, you can use the Keptn's bridge. You can access it by a port-forward from your local machine to the Kubernetes cluster:
+1. To get an overview of the actions that got triggered by the response time SLO violation, you can use the Keptn's Bridge. You can access it by a port-forward from your local machine to the Kubernetes cluster:
 
     ```console 
     kubectl port-forward svc/bridge -n keptn 9000:8080
@@ -150,7 +150,7 @@ In this tutorial, the number of pods will be increased to remediate the issue of
     
     {{< popup_image
     link="./assets/bridge_remediation.png"
-    caption="Keptn's bridge">}}
+    caption="Keptn's Bridge">}}
     
 1. Furthermore, you can see how the response time of the service decreased by viewing the time series chart in Dynatrace:
 
@@ -159,4 +159,4 @@ In this tutorial, the number of pods will be increased to remediate the issue of
 
     {{< popup_image
     link="./assets/dt-problem-closed.png"
-    caption="Keptn's bridge">}}
+    caption="Keptn's Bridge">}}

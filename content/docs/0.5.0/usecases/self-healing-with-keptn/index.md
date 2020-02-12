@@ -219,5 +219,5 @@ In this tutorial, the number of pods will be increased to remediate the issue of
     
     {{< popup_image
     link="./assets/bridge_remediation.png"
-    caption="Keptn's bridge">}}
+    caption="Keptn's Bridge">}}
 
