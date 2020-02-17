@@ -43,9 +43,9 @@ The *mongodb-datastore* provides means to store event and log data in a mongodb 
 
 ### bridge
 
-The *Keptn's bridge* lets a user browse the Keptn's log by providing a user interface that shows all Keptn events and log messages correlated to those events.
+The *Keptn's Bridge* lets a user browse the Keptn's log by providing a user interface that shows all Keptn events and log messages correlated to those events.
 
-**Note:** A dedicated section for the Keptn's bridge is provided [here](../../reference/keptnsbridge/), which explains how to access it and shows the user interface.
+**Note:** A dedicated section for the Keptn's Bridge is provided [here](../../reference/keptnsbridge/), which explains how to access it and shows the user interface.
 
 ### configuration-service
 
