@@ -40,89 +40,93 @@ For more information about SLO and SLI, please take a look at [Specifications fo
     * `slo-quality-gates.yaml`
     * `lighthouse-source-prometheus.yaml` | `lighthouse-source-dynatrace.yaml`
 
-* **Bring your own monitored service**: This tutorial is slightly different compared to the others because you need to bring your own monitored service depending on the monitoring solution you want to use. For the sake of clarification, this tutorial uses a service called *catalogue* from the project *musicshop* meaning that you must adapt the commands to match your service and project name.  
+### Bring your own monitored service
 
-    <details><summary>*Details for a service monitored by Prometheus*</summary>
-    <p>
-    
-    This tutorial assumes that you have Prometheus that is either managed by Keptn or not.
-    Furthermore, the service has to be monitored by Prometheus. Therefore, a *scrape job* and an *alert rule* are required:
+This tutorial is slightly different compared to the others because you need to bring your own monitored service depending on the monitoring solution you want to use. For the sake of clarification, this tutorial uses a service called *catalogue* from the project *musicshop* meaning that you must adapt the commands to match your service and project name.  
 
-    * A **scrape job** for your service. For more information about configuring a scrape job, see the official Prometheus documentation at section [scrape_config](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config). 
-    
-        To configure a scrape job for a Prometheus deployed on Kubernetes, you need to update the `prometheus-server-conf` ConfigMap at the `prometheus.yml` section with an additional scrape job:
+Once you have deployed your service in your cluster, make sure to configure the monitoring solution so Keptn can gather the right data.
 
-            prometheus.yaml:
-            ----
-            scrape_configs: 
-            - job_name: catalogue-musicshop-hardening
-              honor_timestamps: false
-              metrics_path: /prometheus
-              static_configs:
-              - targets:
-                - catalogue.musicshop-hardening:80
+<details><summary>**Option 1: Instructions for Prometheus**</summary>
+<p>
 
-    * An **alert rule** for the SLI and the scrape job. For more information about configuring alert rules, see the official Prometheus documentation at section [alerting_rules](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/). 
-    
-        To add an alert rule to a Prometheus deployed on Kubernetes, you need to update the `prometheus-server-conf` ConfigMap at the `prometheus.rules` section with an additional group. Please be aware that the values of the label service, stage, and project must match your service, stage, and project as created in the [below step](./#configure-keptn-and-activate-the-quality-gate).
+This tutorial assumes that you have Prometheus that is either managed by Keptn or not.
+Furthermore, the service has to be monitored by Prometheus. Therefore, a *scrape job* and an *alert rule* are required:
 
-            prometheus.rules:
-            ----
-            groups:
-            - name: catalogue musicshop-hardening alerts
-              rules:
-              - alert: response_time_p95>600
-                expr: histogram_quantile(0.95,sum(rate(http_response_time_milliseconds_bucket{job='catalogue-musicshop-hardening'}[180s]))by(le))>600
-                for: 5m
-                labels:
-                  severity: webhook
-                  pod_name: catalogue
-                  service: catalogue
-                  stage: hardening
-                  project: musicshop
-                annotations:
-                  summary: response_time_p95>600
-                  descriptions: Pod name {{ $labels.pod_name }}
+* A **scrape job** for your service. For more information about configuring a scrape job, see the official Prometheus documentation at section [scrape_config](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config). 
 
-    * Before continue, please verify that you have an alert rule as shown below: 
+    To configure a scrape job for a Prometheus deployed on Kubernetes, you need to update the `prometheus-server-conf` ConfigMap at the `prometheus.yml` section with an additional scrape job:
 
-        {{< popup_image
-          link="./assets/prometheus_alert.png"
-          caption="Prometheus Alert for SLI"
-          width="50%">}}
+        prometheus.yaml:
+        ----
+        scrape_configs: 
+        - job_name: catalogue-musicshop-hardening
+          honor_timestamps: false
+          metrics_path: /prometheus
+          static_configs:
+          - targets:
+            - catalogue.musicshop-hardening:80
 
-    </p>
-    </details>
+* An **alert rule** for the SLI and the scrape job. For more information about configuring alert rules, see the official Prometheus documentation at section [alerting_rules](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/). 
 
-    <details><summary>*Details for a service monitored by Dynatrace*</summary>
-    <p>
+    To add an alert rule to a Prometheus deployed on Kubernetes, you need to update the `prometheus-server-conf` ConfigMap at the `prometheus.rules` section with an additional group. Please be aware that the values of the label service, stage, and project must match your service, stage, and project as created in the [below step](./#configure-keptn-and-activate-the-quality-gate).
 
-    To gather the monitoring data of your service, it must have the tags **keptn_project**, **keptn_stage**, and **keptn_service** attached: 
-      {{< popup_image
-        link="./assets/monitored_service.png"
-        caption="Tags on catalogue service"
-        width="50%">}}
+        prometheus.rules:
+        ----
+        groups:
+        - name: catalogue musicshop-hardening alerts
+          rules:
+          - alert: response_time_p95>600
+            expr: histogram_quantile(0.95,sum(rate(http_response_time_milliseconds_bucket{job='catalogue-musicshop-hardening'}[180s]))by(le))>600
+            for: 5m
+            labels:
+              severity: webhook
+              pod_name: catalogue
+              service: catalogue
+              stage: hardening
+              project: musicshop
+            annotations:
+              summary: response_time_p95>600
+              descriptions: Pod name {{ $labels.pod_name }}
 
-    To add those tags:
+* Before continue, please verify that you have an alert rule as shown below: 
 
-    * Set the environment variable [DT_CUSTOM_PROP](../../reference/monitoring/dynatrace/#set-dt-custom-prop-before-onboarding-a-service) with a key-value pair for each tag in your deployment manifest and deploy your service: 
+    {{< popup_image
+      link="./assets/prometheus_alert.png"
+      caption="Prometheus Alert for SLI"
+      width="50%">}}
 
-    ```
-    env:
-    - name: DT_CUSTOM_PROP
-      value: "keptn_project=musicshop keptn_service=catalogue keptn_stage=hardening"
-    ``` 
+</p>
+</details>
 
-    * Add tagging rules in Dynatrace to detect these values and to create the tags for your monitored service. Therefore, you can use the scripts [applyAutoTaggingRules.sh](https://github.com/keptn-contrib/dynatrace-service/blob/release-0.5.0/deploy/scripts/applyAutoTaggingRules.sh) and
-    [utils.sh](https://github.com/keptn-contrib/dynatrace-service/blob/release-0.5.0/deploy/scripts/utils.sh). Please run the following command with
-    your Tenant ID and API Token as parameters: 
+<details><summary>**Option 2: Instructions for Dynatrace**</summary>
+<p>
 
-    ```console
-    .\applyAutoTaggingRules.sh $DT_TENANT $DT_API_TOKEN
-    ```
-      
-    </p>
-    </details>
+To gather the monitoring data of your service, it must have the tags **keptn_project**, **keptn_stage**, **keptn_service**, and **keptn_deployment** attached: 
+  {{< popup_image
+    link="./assets/monitored_service.png"
+    caption="Tags on catalogue service"
+    width="50%">}}
+
+Example how to add those tags:
+
+* Set the environment variable [DT_CUSTOM_PROP](../../reference/monitoring/dynatrace/#set-dt-custom-prop-before-onboarding-a-service) with a key-value pair for the tags `keptn_stage`, `keptn_project`, and `keptn_service` as well as the tag `keptn_deployment` in your deployment manifest and deploy your service: 
+
+```
+env:
+- name: DT_CUSTOM_PROP
+  value: "keptn_stage=hardening keptn_project=musicshop keptn_service=catalogue keptn_deployment"
+``` 
+
+* Add tagging rules in Dynatrace to detect these values and to create the tags for your monitored service. Therefore, you can use the scripts [applyAutoTaggingRules.sh](https://github.com/keptn-contrib/dynatrace-service/blob/release-0.5.0/deploy/scripts/applyAutoTaggingRules.sh) and
+[utils.sh](https://github.com/keptn-contrib/dynatrace-service/blob/release-0.5.0/deploy/scripts/utils.sh). Please run the following command with
+your Tenant ID and API Token as parameters: 
+
+```console
+.\applyAutoTaggingRules.sh $DT_TENANT $DT_API_TOKEN
+```
+  
+</p>
+</details>
 
 ## Install Keptn just for this use case
 
