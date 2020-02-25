@@ -320,7 +320,7 @@ keptn send event new-artifact --project=PROJECTNAME --service=SERVICENAME --imag
 ```
 
 **Note:** This command does not send the Docker image to Keptn. Instead, Keptn uses Kubernetes functionalities for pulling this image.
-Therefore, the used Docker registry has to accessible form your cluster. For pulling an image from a private registry,
+Therefore, the used Docker registry has to be accessible from your cluster. For pulling an image from a private registry,
 we would like to refer to the [Kubernetes documentation](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/).
 Furthermore, please note that the value provided in the `image` flag has to contain your Docker registry. The only exception is `docker.io` because
 this is the default in Kubernetes and, hence, can be omitted.
