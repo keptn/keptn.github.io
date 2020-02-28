@@ -8,7 +8,7 @@ weight: 1
 
 ### 1. Setup your platform
 
-**Note**: For running the tutorials with Keptn 0.5 and newer we recommend having at least **6 vCPUs** and **12 GB memory**.
+**Note**: For running the tutorials with Keptn 0.5 and newer we recommend using a cluster with at least **6 vCPUs** and **12 GB memory**.
 
 * [Preparing Azure Kubernetes Engine (AKS)](/docs/quickstart/setup_platform/setup_aks)
 * [Preparing Amazon Elastic Kubernetes Service (EKS)](/docs/quickstart/setup_platform/setup_eks)
@@ -18,13 +18,17 @@ weight: 1
 
 ### 2. Install Keptn
 
-The following instructions will install the **latest stable Keptn version (0.6.0)** in a quick way.
+The following instructions will install the **latest stable Keptn CLI (0.6.0)** in a quick way. Please also look 
+at our [detailed installation guide for Keptn 0.6.0](/docs/0.6.0/installation/setup-keptn/) if you need more information.
 
 #### 2.1 Install the Keptn CLI
 The Keptn CLI is the one-stop-shop for all operations related to Keptn.
 
+Please make sure you have `kubectl` installed (see [kubernetes.io/docs/tasks/tools/install-kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)).
+
 ##### 2.1.1 Automatic install of the Keptn CLI (Linux and Mac)
-This will download the *latest stable Keptn version*, unpack it and move it to `/usr/local/bin/keptn`.
+This will download the *latest stable Keptn version* from [GitHub](https://github.com/keptn/keptn/releases), unpack it
+ and move it to `/usr/local/bin/keptn`.
 
 ```console
 curl -sL https://get.keptn.sh | sudo -E bash
@@ -40,6 +44,12 @@ Depending on the platform, Keptn install will prompt you different information n
 
 ```console
 keptn install --platform=[aks|eks|gke|openshift|pks|kubernetes]
+```
+
+After a successful installation, you can verify that Keptn is working by executing
+
+```console
+keptn status
 ```
 
 Keptn is now ready to be used.
