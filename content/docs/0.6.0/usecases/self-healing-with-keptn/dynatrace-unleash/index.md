@@ -9,7 +9,7 @@ Demonstrates how to use the self-healing mechanisms of Keptn to automatically se
 
 ## About this tutorial
 
-In this tutorial, you will learn how to use the capabilities of Keptn to provide self-healing for an application with feature flags based on the [Unleash feature toggle framework](https://unleash.github.io/). Please note that the _carts_ microservice that we used earlier is already prepared to work with feature toggles. 
+In this tutorial, you will learn how to use the capabilities of Keptn to provide self-healing for an application with feature flags based on the [Unleash feature toggle framework](https://unleash.github.io/). Please note that within this tutorial we use the carts microservice (see prerequesits below) which is already prepared to work with feature toggles.
 
 ## Prerequisites
 
