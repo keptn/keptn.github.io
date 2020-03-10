@@ -162,6 +162,15 @@ Please only update the services if you have them installed
 * *prometheus-sli-service*: `kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-sli-service/release-0.2.0/deploy/service.yaml`
 * *notification-service*: `kubectl -n keptn set image deployment/notification-service notification-service=keptncontrib/notification-service:0.3.0 --record`
 
+# Update from 0.6.0 to 0.6.1
+
+To update from 0.6.0 to 0.6.1 you can deploy a Kubernetes Job that will take care of updating all components to the 0.6.1 release.
+To do so, please execute:
+
+```
+kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.6.1/upgrade-060-061/upgrade-job.yaml
+```
+
 # Install new Keptn CLI
 
 Please refer to the [install section](../setup-keptn) to install the latest Keptn CLI for version 0.6.0.
