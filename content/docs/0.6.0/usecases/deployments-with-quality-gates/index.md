@@ -101,6 +101,7 @@ For this tutorial, you will need to set up monitoring for the carts service eith
     kubectl apply -f lighthouse-source-dynatrace.yaml
     ```
 
+    <details><summary>Contents of the file for the interested reader</summary>
     ```yaml
     apiVersion: v1
     data:
@@ -110,8 +111,10 @@ For this tutorial, you will need to set up monitoring for the carts service eith
       name: lighthouse-config-sockshop
       namespace: keptn
     ```
+  </details>
+  
 
-1. Configure custom SLIs for the Dynatrace SLI provider as specified in `sli-config-dynatrace.yaml`:
+1. *(Optional)* Configure custom SLIs for the Dynatrace SLI provider as specified in `sli-config-dynatrace.yaml`:
 
     ```console
     keptn add-resource --project=sockshop --stage=staging --service=carts --resource=sli-config-dynatrace.yaml --resourceUri=dynatrace/sli.yaml
