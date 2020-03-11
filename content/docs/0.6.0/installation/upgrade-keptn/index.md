@@ -182,6 +182,273 @@ upgrader            1/1           17s        20h
 
 When the job is completed, your Keptn version has been updated to 0.6.1.
 
+<details><summary>*Inspecting the upgrader logs*</summary>
+To see the log of the upgrader, execute:
+
+```
+kubectl logs job/upgrader
+```
+
+The expected log output should look as follows:
+
+```
+X-Content-Type-Options: nosniff
+X-Frame-Options: deny
+X-XSS-Protection: 1; mode=block
+ETag: W/"62410fda329f5beff601663f21cf70e7ef22ba0d72201a71e4583742d5a894ce"
+Cache-Control: max-age=300
+X-Geo-Block-List:
+Via: 1.1 varnish (Varnish/6.0)
+X-GitHub-Request-Id: EA38:03B6:2FB4D:40878:5E68D9A4
+Content-Length: 185
+Accept-Ranges: bytes
+Date: Wed, 11 Mar 2020 12:29:27 GMT
+Via: 1.1 varnish
+Connection: keep-alive
+X-Served-By: cache-mdw17332-MDW
+X-Cache: MISS, MISS
+X-Cache-Hits: 0, 0
+X-Timer: S1583929768.602904,VS0,VE141
+Vary: Authorization,Accept-Encoding
+Access-Control-Allow-Origin: *
+X-Fastly-Request-ID: 9dd59ca82cfb8b58daeccf1c941cda68f0c41559
+Expires: Wed, 11 Mar 2020 12:34:27 GMT
+Source-Age: 0
+
+HTTP/1.1 200 OK
+Content-Type: text/plain; charset=utf-8
+Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'; sandbox
+Strict-Transport-Security: max-age=31536000
+X-Content-Type-Options: nosniff
+X-Frame-Options: deny
+X-XSS-Protection: 1; mode=block
+ETag: W/"bd599b4f1a452ac2f017b03fefbc1f290c0ee9d8c698fd47462521a0f4d514bc"
+Cache-Control: max-age=300
+X-Geo-Block-List:
+Via: 1.1 varnish (Varnish/6.0)
+X-GitHub-Request-Id: 14EA:2261:5CD15:7C5E6:5E68D9A7
+Content-Length: 931
+Accept-Ranges: bytes
+Date: Wed, 11 Mar 2020 12:29:27 GMT
+Via: 1.1 varnish
+Connection: keep-alive
+X-Served-By: cache-mdw17354-MDW
+X-Cache: MISS, MISS
+X-Cache-Hits: 0, 0
+X-Timer: S1583929768.815580,VS0,VE119
+Vary: Authorization,Accept-Encoding
+Access-Control-Allow-Origin: *
+X-Fastly-Request-ID: 5a6a439ec8e8dd3baa8eb976e3ec4c7311afb3a6
+Expires: Wed, 11 Mar 2020 12:34:27 GMT
+Source-Age: 0
+
+HTTP/1.1 200 OK
+Content-Type: text/plain; charset=utf-8
+Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'; sandbox
+Strict-Transport-Security: max-age=31536000
+X-Content-Type-Options: nosniff
+X-Frame-Options: deny
+X-XSS-Protection: 1; mode=block
+ETag: W/"73130e0bcf52bb8b5de6a31d5b71398b6872b796bd967581e330d5dfa963eb4c"
+Cache-Control: max-age=300
+X-Geo-Block-List:
+Via: 1.1 varnish (Varnish/6.0)
+X-GitHub-Request-Id: BAA4:61F0:329AB:43B6A:5E68D9A6
+Content-Length: 185
+Accept-Ranges: bytes
+Date: Wed, 11 Mar 2020 12:29:28 GMT
+Via: 1.1 varnish
+Connection: keep-alive
+X-Served-By: cache-mdw17347-MDW
+X-Cache: MISS, MISS
+X-Cache-Hits: 0, 0
+X-Timer: S1583929768.007367,VS0,VE122
+Vary: Authorization,Accept-Encoding
+Access-Control-Allow-Origin: *
+X-Fastly-Request-ID: db1cbe1861e8c02f6915c6cf08276cf3583b3543
+Expires: Wed, 11 Mar 2020 12:34:28 GMT
+Source-Age: 0
+
+HTTP/1.1 200 OK
+Content-Type: text/plain; charset=utf-8
+Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'; sandbox
+Strict-Transport-Security: max-age=31536000
+X-Content-Type-Options: nosniff
+X-Frame-Options: deny
+X-XSS-Protection: 1; mode=block
+ETag: W/"cf93aec85784b32ea6db38007e73173e45cc358e1c6fea212655965d3c55a926"
+Cache-Control: max-age=300
+X-Geo-Block-List:
+Via: 1.1 varnish (Varnish/6.0)
+X-GitHub-Request-Id: 7F68:7400:66E52:87C3C:5E68D9A8
+Content-Length: 9180
+Accept-Ranges: bytes
+Date: Wed, 11 Mar 2020 12:29:28 GMT
+Via: 1.1 varnish
+Connection: keep-alive
+X-Served-By: cache-mdw17346-MDW
+X-Cache: MISS, MISS
+X-Cache-Hits: 0, 0
+X-Timer: S1583929768.229165,VS0,VE109
+Vary: Authorization,Accept-Encoding
+Access-Control-Allow-Origin: *
+X-Fastly-Request-ID: 4dbedcfa191cbe06b8db7314ef1f6cac911dcabc
+Expires: Wed, 11 Mar 2020 12:34:28 GMT
+Source-Age: 0
+
+HTTP/1.1 200 OK
+Content-Type: text/plain; charset=utf-8
+Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'; sandbox
+Strict-Transport-Security: max-age=31536000
+X-Content-Type-Options: nosniff
+X-Frame-Options: deny
+X-XSS-Protection: 1; mode=block
+ETag: W/"92d5830bbf6cdb6063dbd6b21e338603a2eb9b17c7b08a9a8888bc54875abf8f"
+Cache-Control: max-age=300
+X-Geo-Block-List:
+Via: 1.1 varnish (Varnish/6.0)
+X-GitHub-Request-Id: E6C6:26D5:A1F2:EBC2:5E68D9A7
+Content-Length: 2060
+Accept-Ranges: bytes
+Date: Wed, 11 Mar 2020 12:29:28 GMT
+Via: 1.1 varnish
+Connection: keep-alive
+X-Served-By: cache-mdw17338-MDW
+X-Cache: MISS, MISS
+X-Cache-Hits: 0, 0
+X-Timer: S1583929768.410886,VS0,VE150
+Vary: Authorization,Accept-Encoding
+Access-Control-Allow-Origin: *
+X-Fastly-Request-ID: c40bed9f09e89a884ccfb50b7a06e01992fdfe29
+Expires: Wed, 11 Mar 2020 12:34:28 GMT
+Source-Age: 0
+
+HTTP/1.1 200 OK
+Content-Type: text/plain; charset=utf-8
+Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'; sandbox
+Strict-Transport-Security: max-age=31536000
+X-Content-Type-Options: nosniff
+X-Frame-Options: deny
+X-XSS-Protection: 1; mode=block
+ETag: W/"c03cd2606cf51c583f102cd41e5fcf78886ab8df91a4f159833d8b7c0cc02b60"
+Cache-Control: max-age=300
+X-Geo-Block-List:
+Via: 1.1 varnish (Varnish/6.0)
+X-GitHub-Request-Id: 4CF2:1FEB:5D0AD:7C5E8:5E68D9A7
+Content-Length: 4381
+Accept-Ranges: bytes
+Date: Wed, 11 Mar 2020 12:29:28 GMT
+Via: 1.1 varnish
+Connection: keep-alive
+X-Served-By: cache-mdw17345-MDW
+X-Cache: MISS, MISS
+X-Cache-Hits: 0, 0
+X-Timer: S1583929769.632244,VS0,VE100
+Vary: Authorization,Accept-Encoding
+Access-Control-Allow-Origin: *
+X-Fastly-Request-ID: 592cdff071a491a9b6dc3f432e711a19273d45ea
+Expires: Wed, 11 Mar 2020 12:34:28 GMT
+Source-Age: 0
+
+HTTP/1.1 200 OK
+Content-Type: text/plain; charset=utf-8
+Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'; sandbox
+Strict-Transport-Security: max-age=31536000
+X-Content-Type-Options: nosniff
+X-Frame-Options: deny
+X-XSS-Protection: 1; mode=block
+ETag: W/"87e9df799f257992b7526b47c65481c0601847caa5c31fba9308f84a8a8e59e6"
+Cache-Control: max-age=300
+X-Geo-Block-List:
+Via: 1.1 varnish (Varnish/6.0)
+X-GitHub-Request-Id: C12E:6C2D:66F73:88323:5E68D9A7
+Content-Length: 3876
+Accept-Ranges: bytes
+Date: Wed, 11 Mar 2020 12:29:28 GMT
+Via: 1.1 varnish
+Connection: keep-alive
+X-Served-By: cache-mdw17343-MDW
+X-Cache: MISS, MISS
+X-Cache-Hits: 0, 0
+X-Timer: S1583929769.802585,VS0,VE84
+Vary: Authorization,Accept-Encoding
+Access-Control-Allow-Origin: *
+X-Fastly-Request-ID: ffb1f45f5f9b495b53c9737294bdcceaab6b18bc
+Expires: Wed, 11 Mar 2020 12:34:28 GMT
+Source-Age: 0
+
+[keptn|DEBUG] [2020-03-11 12:29:28] Check if Keptn 0.6.0 is currently installed
+[keptn|DEBUG] [2020-03-11 12:29:29] Exporting events from previous Keptn installation.
+2020-03-11T12:29:29.345+0000    connected to: localhost
+2020-03-11T12:29:29.369+0000    exported 208 records
+[keptn|DEBUG] [2020-03-11 12:29:29] Updating MongoDB.
+deployment.extensions "mongodb" deleted
+persistentvolumeclaim/mongodata configured
+deployment.apps/mongodb created
+service/mongodb configured
+Waiting for deployment "mongodb" rollout to finish: 0 of 1 updated replicas are available...
+deployment "mongodb" successfully rolled out
+[keptn|DEBUG] [2020-03-11 12:29:34] Deployment mongodb in keptn-datastore namespace available.
+deployment "mongodb" successfully rolled out
+[keptn|DEBUG] [2020-03-11 12:29:34] Deployment mongodb-datastore in keptn-datastore namespace available.
+deployment "mongodb" successfully rolled out
+[keptn|DEBUG] [2020-03-11 12:29:34] Deployment mongodb-datastore-distributor in keptn-datastore namespace available.
+[keptn|DEBUG] [2020-03-11 12:29:34] Importing events from previous installation to updated MongoDB.
+2020-03-11T12:29:37.691+0000    [........................] keptn.events 0B/110KB (0.0%)
+2020-03-11T12:29:37.742+0000    connected to: localhost
+2020-03-11T12:29:37.768+0000    [########################] keptn.events 110KB/110KB (100.0%)
+2020-03-11T12:29:37.768+0000    imported 208 documents
+[keptn|DEBUG] [2020-03-11 12:29:37] Updating mongodb-datastore.
+deployment.extensions/mongodb-datastore image updated
+deployment.extensions/mongodb-datastore-distributor image updated
+[keptn|DEBUG] [2020-03-11 12:29:37] Updating Keptn core.
+deployment.apps/api configured
+service/api unchanged
+deployment.apps/bridge configured
+service/bridge unchanged
+deployment.apps/eventbroker-go configured
+service/event-broker unchanged
+deployment.apps/helm-service configured
+service/helm-service unchanged
+deployment.apps/helm-service-service-create-distributor configured
+deployment.apps/shipyard-service configured
+service/shipyard-service unchanged
+deployment.apps/shipyard-service-create-project-distributor configured
+deployment.apps/shipyard-service-delete-project-distributor configured
+persistentvolumeclaim/configuration-volume configured
+deployment.apps/configuration-service configured
+service/configuration-service unchanged
+deployment.apps/lighthouse-service configured
+service/lighthouse-service unchanged
+deployment.apps/lighthouse-service-distributor created
+NAME                 TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)    AGE
+gatekeeper-service   ClusterIP   10.48.2.161   <none>        8080/TCP   7d20h
+[keptn|DEBUG] [2020-03-11 12:29:40] Full installation detected. Upgrading CD and CO services
+deployment.apps/gatekeeper-service configured
+service/gatekeeper-service unchanged
+deployment.apps/gatekeeper-service-evaluation-done-distributor configured
+deployment.apps/helm-service-configuration-change-distributor configured
+deployment.apps/jmeter-service configured
+service/jmeter-service unchanged
+deployment.apps/jmeter-service-deployment-distributor configured
+deployment.apps/wait-service configured
+service/wait-service unchanged
+deployment.apps/wait-service-deployment-distributor configured
+deployment.apps/remediation-service configured
+service/remediation-service unchanged
+deployment.apps/remediation-service-problem-distributor configured
+Error from server (NotFound): services "dynatrace-service" not found
+Error from server (NotFound): services "dynatrace-sli-service" not found
+Error from server (NotFound): services "prometheus-service" not found
+Error from server (NotFound): services "prometheus-sli-service" not found
+Error from server (NotFound): services "servicenow-service" not found
+```
+
+NOTE: The messages at the end of the log output, such as `Error from server (NotFound): services "dynatrace-service" not found` does not mean that the upgrade has not been successful.
+This message simply means that the respective service, e.g. the dynatrace-service has not been installed in your cluster in the previous Keptn version. 
+If the service has indeed been deployed previously, it will be updated to the latest compatible version.
+</details>
+
 # Install new Keptn CLI
 
 Please refer to the [install section](../setup-keptn) to install the latest Keptn CLI for version 0.6.0.
