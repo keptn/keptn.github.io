@@ -9,7 +9,7 @@ Demonstrates how to use the self-healing mechanisms of Keptn to automatically se
 
 ## About this tutorial
 
-In this tutorial, you will learn how to use the capabilities of Keptn to provide self-healing for an application with feature flags based on the [Unleash feature toggle framework](https://unleash.github.io/).
+In this tutorial, you will learn how to use the capabilities of Keptn to provide self-healing for an application with feature flags based on the [Unleash feature toggle framework](https://unleash.github.io/). Please note that within this tutorial we use the carts microservice (see prerequesits below) which is already prepared to work with feature toggles.
 
 ## Prerequisites
 
@@ -95,7 +95,8 @@ To set up both feature flags, navigate to your Unleash server and log in.
 
 Now, everything is set up in the Unleash server. For Keptn to be able to connect to the Unleash server, we have to add a secret with the Unleash API URL as well as the Unleash tokens.
 
-1. Execute the following command but replace *$URL* with the actual URL, $USER with the user, and $TOKEN with the token of your Unleash server. As you have already onboarded unleash using Keptn, you can use the following command:
+1. In order for Keptn to be able to use the Unleash API, we need to add the credentials as a secret to our Keptn namespace. In this tutorial, we do not have to change the values for UNLEASH_SERVER, UNLEASH_USER, and UNLEASH_TOKEN, but in your own custom scenario this might be needed to change it to your actual Unleash URL, user and token. 
+As said, in this tutorial we can use the following command as it is:
 
     ```console
     kubectl -n keptn create secret generic unleash --from-literal="UNLEASH_SERVER_URL=http://unleash.unleash-dev/api" --from-literal="UNLEASH_USER=keptn" --from-literal="UNLEASH_TOKEN=keptn"

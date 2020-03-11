@@ -166,7 +166,7 @@ keptn add-resource --project=musicshop --stage=hardening --service=catalogue --r
 
 For this tutorial, you need to deploy the corresponding SLI provider for your monitoring solution. This can be either the open-source monitoring solution *Prometheus* or *Dynatrace*. 
 
-<details><summary>Prometheus SLI provider</summary>
+<details><summary>**Prometheus SLI provider**</summary>
 <p>
 
 1. Complete steps from section [Setup Prometheus SLI provider](../../reference/monitoring/prometheus/#setup-prometheus-sli-provider).
@@ -196,7 +196,7 @@ For this tutorial, you need to deploy the corresponding SLI provider for your mo
 </p>
 </details>
 
-<details><summary>Dynatrace SLI provider</summary>
+<details><summary>**Dynatrace SLI provider**</summary>
 <p>
 
 
@@ -207,7 +207,8 @@ For this tutorial, you need to deploy the corresponding SLI provider for your mo
     ```console
     kubectl apply -f lighthouse-source-dynatrace.yaml
     ```
-
+    <details><summary>Contents of the file for the interested reader</summary>
+    
     ```yaml
     apiVersion: v1
     data:
@@ -217,6 +218,7 @@ For this tutorial, you need to deploy the corresponding SLI provider for your mo
       name: lighthouse-config-PROJECTNAME
       namespace: keptn
     ```
+  </details>
 
 1. Configure custom SLIs for the Dynatrace SLI provider as specified in `sli-config-dynatrace-no-deployment-tag.yaml`:
 

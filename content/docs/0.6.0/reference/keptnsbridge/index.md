@@ -40,14 +40,13 @@ There is an early access version of Keptn's Bridge available (compatible with Ke
   link="./assets/bridge_eap.png"
   caption="Keptn's Bridge EAP">}}
 
-To install it, you have to update the Docker images of *Keptn's Bridge* and the *mongodb-datastore* deployment by executing the following commands:
+To install it, you have to update the Docker images of *Keptn's Bridge*, *configuration-service* and the *mongodb-datastore* deployment by executing the following commands:
 
 ```console
-kubectl -n keptn set image deployment/bridge bridge=keptn/bridge2:0.6.1.EAP.20200221.1458 --record
-kubectl -n keptn-datastore set image deployment/mongodb-datastore mongodb-datastore=keptn/mongodb-datastore:0.6.1.EAP.20200131.1010 --record
+kubectl -n keptn set image deployment/bridge bridge=keptn/bridge2:20200308.0859 --record
+kubectl -n keptn set image deployment/configuration-service configuration-service=keptn/configuration-service:20200308.0859 --record
+kubectl -n keptn-datastore set image deployment/mongodb-datastore mongodb-datastore=keptn/mongodb-datastore:20200308.0859 --record
 ```
-
-**Note**: You can check for an updated EAP version for Keptn's Bridge [on DockerHub](https://hub.docker.com/r/keptn/bridge2/tags?page=1&ordering=last_updated&name=0.6.1.EAP).
 
 If you want to access the new Keptn's Bridge you have to use `port-forward` again:
 
@@ -55,10 +54,11 @@ If you want to access the new Keptn's Bridge you have to use `port-forward` agai
 kubectl port-forward svc/bridge -n keptn 9000:8080
 ```
 
-If you want to restore the old version of bridge and mongodb-datastore (as delivered with Keptn 0.6.0), you can use the following commands:
+If you want to restore the old version of bridge, configuration-service and mongodb-datastore (as delivered with Keptn 0.6.0), you can use the following commands:
 
 ```console
 kubectl -n keptn set image deployment/bridge bridge=keptn/bridge:0.6.0 --record
+kubectl -n keptn set image deployment/configuration-service bridge=keptn/configuration-service:0.6.0 --record
 kubectl -n keptn-datastore set image deployment/mongodb-datastore mongodb-datastore=keptn/mongodb-datastore:0.6.0 --record
 ```
 
