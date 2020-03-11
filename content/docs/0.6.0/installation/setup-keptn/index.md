@@ -21,7 +21,7 @@ Select one of the following options:
   - [az](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
 
 2. Create AKS cluster
-  - Master version >= `1.12.x` (tested version: `1.12.8`)
+  - Master version >= `1.13.x` (tested version: `1.14.8`)
   - One **D8s_v3** node
  
  </p>
@@ -188,7 +188,7 @@ If you [sign up for a Google Cloud account](https://console.cloud.google.com/get
 ## Install Keptn CLI
 Every release of Keptn provides binaries for the Keptn CLI. These binaries are available for Linux, macOS, and Windows.
 
-- Download the version for your operating system from [github.com/keptn/](https://github.com/keptn/keptn/releases/tag/0.6.0)
+- Download the version for your operating system from [github.com/keptn/](https://github.com/keptn/keptn/releases/tag/0.6.1)
 - Unpack the download
 - Find the `keptn` binary in the unpacked directory
 
@@ -211,7 +211,7 @@ Every release of Keptn provides binaries for the Keptn CLI. These binaries are a
 
 ## Install Keptn
 
-To install the latest release of Keptn on a Kuberntes cluster, execute the [keptn install](../../reference/cli/#keptn-install) command and provide the requested information. Since v0.3 of Keptn, the install command accepts the platform flag to select the target platform you would like to install Keptn on. Currently, supported platforms are:
+To install the latest release of Keptn on a Kuberntes cluster, execute the [keptn install](../../reference/cli/#keptn-install) command with the ``platform`` flag specifying the target platform you would like to install Keptn on. Currently, supported platforms are:
 
 - Azure Kubernetes Services (AKS):
 
