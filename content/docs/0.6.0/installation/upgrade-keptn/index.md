@@ -171,6 +171,17 @@ To do so, please execute:
 kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.6.1/upgrade-060-061/upgrade-job.yaml
 ```
 
+The check the status of the update job, please execute 
+
+```
+$ kubectl get job
+
+NAME                COMPLETIONS   DURATION   AGE
+upgrader            1/1           17s        20h
+```
+
+When the job is completed, your Keptn version has been updated to 0.6.1.
+
 # Install new Keptn CLI
 
 Please refer to the [install section](../setup-keptn) to install the latest Keptn CLI for version 0.6.0.
