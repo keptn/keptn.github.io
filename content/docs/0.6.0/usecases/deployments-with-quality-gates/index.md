@@ -62,20 +62,10 @@ For this tutorial, you will need to set up monitoring for the carts service eith
 
 1. Complete steps from section [Setup Prometheus SLI provider](../../reference/monitoring/prometheus/#setup-prometheus-sli-provider).
 
-1. To configure Keptn to use the Prometheus SLI provider for the **sockshop** project, apply the below ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
+1. To configure Keptn to use the Prometheus SLI provider for the **sockshop** project, execute the following command:
 
     ```console
-    kubectl apply -f lighthouse-source-prometheus.yaml
-    ```
-
-    ```yaml
-    apiVersion: v1
-    data:
-      sli-provider: prometheus
-    kind: ConfigMap
-    metadata:
-      name: lighthouse-config-sockshop
-      namespace: keptn
+    keptn configure monitoring prometheus --project=sockshop --service=carts
     ```
 
 1. Configure custom SLIs for the Prometheus SLI provider as specified in `sli-config-prometheus.yaml`:
@@ -95,24 +85,11 @@ For this tutorial, you will need to set up monitoring for the carts service eith
 
 1. Complete steps from section [Setup Dynatrace SLI provider](../../reference/monitoring/dynatrace/#setup-dynatrace-sli-provider).
 
-1. To configure Keptn to use the Dynatrace SLI provider for the **sockshop** project, apply the below ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
+1. To configure Keptn to use the Dynatrace SLI provider for the **sockshop** project, execute the following command:
 
     ```console
-    kubectl apply -f lighthouse-source-dynatrace.yaml
+    keptn configure monitoring dynatrace --project=sockshop
     ```
-
-    <details><summary>Contents of the file for the interested reader</summary>
-    ```yaml
-    apiVersion: v1
-    data:
-      sli-provider: dynatrace
-    kind: ConfigMap
-    metadata:
-      name: lighthouse-config-sockshop
-      namespace: keptn
-    ```
-  </details>
-  
 
 1. *(Optional)* Configure custom SLIs for the Dynatrace SLI provider as specified in `sli-config-dynatrace.yaml`:
 
