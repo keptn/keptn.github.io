@@ -58,6 +58,9 @@ spec:
         image: keptn/jmeter-service:0.6.0
         ports:
         - containerPort: 8080
+        env:
+        - name: EVENTBROKER
+          value: 'http://event-broker.keptn.svc.cluster.local/keptn'
 ---
 apiVersion: v1
 kind: Service
