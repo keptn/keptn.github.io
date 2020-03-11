@@ -46,7 +46,7 @@ To illustrate the scenario this tutorial addresses, Keptn relies on following in
 * Clone example files used for this tutorial:
 
     ```console
-    git clone --branch 0.6.0 https://github.com/keptn/examples.git --single-branch
+    git clone --branch 0.6.1 https://github.com/keptn/examples.git --single-branch
     ```
 
     ```console
