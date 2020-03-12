@@ -135,9 +135,7 @@ keptn onboard service carts --project=sockshop --chart=./carts
     keptn add-resource --project=sockshop --stage=staging --service=carts --resource=jmeter/load.jmx --resourceUri=jmeter/load.jmx
     ```
 
-  **Note 1:**  To validate the availability of the service that will be tested, the `basiccheck.jmx` is always executed before the `load.jmx` gets executed. Therefore, if performance tests should be executed, a `basiccheck.jmx` also has to be available.
-
-  **Note 2:** You can adapt the tests in `basiccheck.jmx` as well as `load.jmx` for your service. However you must not rename the files, as there is a hardcoded dependency on these file names in the current implementation of Keptn's jmeter-service. 
+  **Note:** You can adapt the tests in `basiccheck.jmx` as well as `load.jmx` for your service. However you must not rename the files, as there is a hardcoded dependency on these file names in the current implementation of Keptn's jmeter-service. 
 
 Since the carts service requires a mongodb database, a second service needs to be onboarded.
 
