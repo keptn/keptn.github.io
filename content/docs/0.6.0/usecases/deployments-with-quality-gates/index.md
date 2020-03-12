@@ -62,12 +62,18 @@ For this tutorial, you will need to set up monitoring for the carts service eith
 
 1. Complete steps from section [Setup Prometheus SLI provider](../../reference/monitoring/prometheus/#setup-prometheus-sli-provider).
 
-1. To configure Keptn to use the Prometheus SLI provider for the **sockshop** project, apply the below ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
+1. To configure Keptn to use the Prometheus SLI provider for the **sockshop** project, execute the following command:
 
     ```console
-    kubectl apply -f lighthouse-source-prometheus.yaml
+    keptn configure monitoring prometheus --project=sockshop --service=carts
     ```
 
+    NOTE: if you are using Keptn 0.6.0 instead of 0.6.1, you will have to also apply the following ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
+    
+    ```
+    kubectl apply -f lighthouse-source-prometheus.yaml
+    ```
+    
     ```yaml
     apiVersion: v1
     data:
@@ -95,13 +101,18 @@ For this tutorial, you will need to set up monitoring for the carts service eith
 
 1. Complete steps from section [Setup Dynatrace SLI provider](../../reference/monitoring/dynatrace/#setup-dynatrace-sli-provider).
 
-1. To configure Keptn to use the Dynatrace SLI provider for the **sockshop** project, apply the below ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
+1. To configure Keptn to use the Dynatrace SLI provider for the **sockshop** project, execute the following command:
 
     ```console
-    kubectl apply -f lighthouse-source-dynatrace.yaml
+    keptn configure monitoring dynatrace --project=sockshop
     ```
 
-    <details><summary>Contents of the file for the interested reader</summary>
+    NOTE: if you are using Keptn 0.6.0 instead of 0.6.1, you will also have to apply the following ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
+    
+    ```
+    kubectl apply -f lighthouse-source-dynatrace.yaml
+    ```
+    
     ```yaml
     apiVersion: v1
     data:
@@ -111,9 +122,7 @@ For this tutorial, you will need to set up monitoring for the carts service eith
       name: lighthouse-config-sockshop
       namespace: keptn
     ```
-  </details>
-  
-
+   
 1. *(Optional)* Configure custom SLIs for the Dynatrace SLI provider as specified in `sli-config-dynatrace.yaml`:
 
     ```console
