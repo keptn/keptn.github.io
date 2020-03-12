@@ -58,14 +58,12 @@ For this tutorial, you will need to set up monitoring for the carts service eith
 <p>
 
 1. Complete steps from section [Setup Prometheus](../../reference/monitoring/prometheus/#setup-prometheus).
-
-1. Complete steps from section [Setup Prometheus SLI provider](../../reference/monitoring/prometheus/#setup-prometheus-sli-provider).
-
-1. To configure Keptn to use the Prometheus SLI provider for the **sockshop** project, execute the following command:
-
+In these steps, you configured Keptn (more precisely the lighthouse-service) to use the Prometheus SLI provider for the project **sockshop** and service **carts** with the command 
     ```console
     keptn configure monitoring prometheus --project=sockshop --service=carts
     ```
+
+1. Complete steps from section [Setup Prometheus SLI provider](../../reference/monitoring/prometheus/#setup-prometheus-sli-provider).
 
     <details><summary>**Note:** If you are using Keptn 0.6.0 instead of 0.6.1, you will have to apply a ConfigMap</summary>
  
@@ -99,14 +97,12 @@ For this tutorial, you will need to set up monitoring for the carts service eith
 <p>
 
 1. Complete steps from section [Setup Dynatrace](../../reference/monitoring/dynatrace#setup-dynatrace).
-
-1. Complete steps from section [Setup Dynatrace SLI provider](../../reference/monitoring/dynatrace/#setup-dynatrace-sli-provider).
-
-1. To configure Keptn to use the Dynatrace SLI provider for the **sockshop** project, execute the following command:
-
+In these steps, you configured Keptn (more precisely the lighthouse-service) to use the Dynatrace SLI provider for the project **sockshop** with the command 
     ```console
     keptn configure monitoring dynatrace --project=sockshop
     ```
+
+1. Complete steps from section [Setup Dynatrace SLI provider](../../reference/monitoring/dynatrace/#setup-dynatrace-sli-provider).
 
     <details><summary>**Note:** If you are using Keptn 0.6.0 instead of 0.6.1, you will have to apply a ConfigMap</summary>
  
