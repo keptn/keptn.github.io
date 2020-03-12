@@ -101,15 +101,15 @@ Furthermore, the service has to be monitored by Prometheus. Therefore, a *scrape
 <details><summary>**Option 2: Instructions for Dynatrace**</summary>
 <p>
 
-To gather the monitoring data of your service, it must have the tags **keptn_project**, **keptn_stage**, and **keptn_service** attached: 
+In order for Keptn to extract monitoring data of your specific service it is recommended that you tag your services in Dynatrace in a way that the tags uniquely identify your services. The Keptn best practice is to put a tag for project, stage and service. The following shows an example of a service in Dynatrace that is tagged with  **keptn_project**, **keptn_stage**, and **keptn_service**: 
   {{< popup_image
     link="./assets/monitored_service.png"
     caption="Tags on catalogue service"
     width="50%">}}
 
-Example how to add those tags:
-
-* Set the environment variable [DT_CUSTOM_PROP](../../reference/monitoring/dynatrace/#set-dt-custom-prop-before-onboarding-a-service) with a key-value pair for the tags `keptn_stage`, `keptn_project`, and `keptn_service` in your deployment manifest and deploy your service: 
+Please consult the Dynatrace documentation on [Tags and Metadata](https://www.dynatrace.com/support/help/how-to-use-dynatrace/tags-and-metadata/) to learn more about manual or automated tagging.
+For this tutorial you can pass the meta data via an environment variable and then let Dynatrace convert that meta data into tags through Automated Tagging rules:
+* Step 1: Set the environment variable [DT_CUSTOM_PROP](../../reference/monitoring/dynatrace/#set-dt-custom-prop-before-onboarding-a-service) with a key-value pair for the tags `keptn_stage`, `keptn_project`, and `keptn_service` in your deployment manifest and deploy your service: 
 
 ```
 env:
@@ -117,14 +117,17 @@ env:
   value: "keptn_stage=hardening keptn_project=musicshop keptn_service=catalogue"
 ``` 
 
-* Add tagging rules in Dynatrace to detect these values and to create the tags for your monitored service. Therefore, you can use the scripts [applyAutoTaggingRules.sh](https://github.com/keptn-contrib/dynatrace-service/blob/release-0.5.0/deploy/scripts/applyAutoTaggingRules.sh) and
-[utils.sh](https://github.com/keptn-contrib/dynatrace-service/blob/release-0.5.0/deploy/scripts/utils.sh). Please run the following command with
-your Tenant ID and API Token as parameters: 
+* Step 2: In Dynatrace, create 3 automated tagging rules named **keptn_project**, **keptn_stage**, and **keptn_service** that extract the respective meta data from the passed environment variable 
 
-```console
-.\applyAutoTaggingRules.sh $DT_TENANT $DT_API_TOKEN
+An alternative option is to use the [DT_TAGS environment variable](https://www.dynatrace.com/support/help/how-to-use-dynatrace/tags-and-metadata/setup/define-tags-based-on-environment-variables/) which will automatically convert the passed values into tags:
 ```
-  
+env:
+- name: DT_TAGS
+  value: "keptn_stage=hardening keptn_project=musicshop keptn_service=catalogue"
+``` 
+
+If you decide to use different tag names or a different set of tags make sure to adapt the Dynatrace sli.yaml file which you will configure later in this tutorial to reflect the tags you put on your service.
+
 </p>
 </details>
 
