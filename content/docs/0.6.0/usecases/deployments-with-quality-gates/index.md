@@ -44,7 +44,7 @@ This quality gate checks whether the average response time of the service is und
 - Finish the [Onboarding a Service](../onboard-carts-service/) tutorial (deploys carts version v0.10.1).
 
 ## Set up the quality gate and monitoring
-Keptn requires a performance specification for the quality gate. This specification is described in a file called `slo.yaml`, which specifies a Service Level Objective (SLO) that should be met by a service. To learn more about the *slo.yaml* file, go to [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/spec/blob/0.1.2/sre.md).
+Keptn requires a performance specification for the quality gate. This specification is described in a file called `slo.yaml`, which specifies a Service Level Objective (SLO) that should be met by a service. To learn more about the *slo.yaml* file, go to [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/spec/blob/0.1.3/sre.md).
 
 * Activate the quality gates for the carts service. Therefore, navigate to the `examples/onboarding-carts` folder and upload the `slo-quality-gates.yaml` file using the [add-resource](../../reference/cli/#keptn-add-resource) command:
 
@@ -54,8 +54,7 @@ keptn add-resource --project=sockshop --stage=staging --service=carts --resource
 
 For this tutorial, you will need to set up monitoring for the carts service either using *Prometheus* or *Dynatrace*.
 
-### Option 1: Prometheus
-<details><summary>Expand instructions</summary>
+<details><summary>**Option 1: Instructions for Prometheus**</summary>
 <p>
 
 1. Complete steps from section [Setup Prometheus](../../reference/monitoring/prometheus/#setup-prometheus).
@@ -68,6 +67,7 @@ For this tutorial, you will need to set up monitoring for the carts service eith
     kubectl apply -f lighthouse-source-prometheus.yaml
     ```
 
+    <details><summary>Content of the file for the interested reader</summary>
     ```yaml
     apiVersion: v1
     data:
@@ -77,6 +77,7 @@ For this tutorial, you will need to set up monitoring for the carts service eith
       name: lighthouse-config-sockshop
       namespace: keptn
     ```
+    </details>
 
 1. Configure custom SLIs for the Prometheus SLI provider as specified in `sli-config-prometheus.yaml`:
 
@@ -87,8 +88,7 @@ For this tutorial, you will need to set up monitoring for the carts service eith
 </p>
 </details>
 
-### Option 2: Dynatrace
-<details><summary>Expand instructions</summary>
+<details><summary>**Option 2: Instructions for Dynatrace**</summary>
 <p>
 
 1. Complete steps from section [Setup Dynatrace](../../reference/monitoring/dynatrace#setup-dynatrace).
@@ -101,7 +101,7 @@ For this tutorial, you will need to set up monitoring for the carts service eith
     kubectl apply -f lighthouse-source-dynatrace.yaml
     ```
 
-    <details><summary>Contents of the file for the interested reader</summary>
+    <details><summary>Content of the file for the interested reader</summary>
     ```yaml
     apiVersion: v1
     data:
@@ -111,7 +111,7 @@ For this tutorial, you will need to set up monitoring for the carts service eith
       name: lighthouse-config-sockshop
       namespace: keptn
     ```
-  </details>
+    </details>
   
 
 1. *(Optional)* Configure custom SLIs for the Dynatrace SLI provider as specified in `sli-config-dynatrace.yaml`:
