@@ -69,11 +69,12 @@ For this tutorial, you will need to set up monitoring for the carts service eith
 
     <details><summary>**Note:** If you are using Keptn 0.6.0 instead of 0.6.1, you will have to apply a ConfigMap</summary>
  
-   Please apply the following ConfigMap by executing the command from within the `examples/onboarding-carts` folder:
+    Please apply the following ConfigMap by executing the command from within the `examples/onboarding-carts` folder:
     
     ```console
     kubectl apply -f lighthouse-source-prometheus.yaml
     ```
+    
     ```yaml
     apiVersion: v1
     data:
