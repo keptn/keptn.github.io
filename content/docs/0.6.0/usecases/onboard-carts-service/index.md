@@ -158,9 +158,9 @@ kubectl get namespaces
 ```console
 NAME                  STATUS   AGE
 ...
-sockshop-dev          Active   2m
-sockshop-production   Active   30s
-sockshop-staging      Active   1m
+sockshop-dev          Active   2m16s
+sockshop-production   Active   2m16s
+sockshop-staging      Active   2m16s
 ```
 
 ## Send new artifacts and watch Keptn doing the deployment 
