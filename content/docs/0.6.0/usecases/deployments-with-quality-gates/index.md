@@ -68,6 +68,22 @@ For this tutorial, you will need to set up monitoring for the carts service eith
     keptn configure monitoring prometheus --project=sockshop --service=carts
     ```
 
+    NOTE: if you are using Keptn 0.6.0 instead of 0.6.1, you will have to also apply the following ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
+    
+    ```
+    kubectl apply -f lighthouse-source-prometheus.yaml
+    ```
+    
+    ```yaml
+    apiVersion: v1
+    data:
+      sli-provider: prometheus
+    kind: ConfigMap
+    metadata:
+      name: lighthouse-config-sockshop
+      namespace: keptn
+    ```
+
 1. Configure custom SLIs for the Prometheus SLI provider as specified in `sli-config-prometheus.yaml`:
 
     ```console
@@ -91,6 +107,22 @@ For this tutorial, you will need to set up monitoring for the carts service eith
     keptn configure monitoring dynatrace --project=sockshop
     ```
 
+    NOTE: if you are using Keptn 0.6.0 instead of 0.6.1, you will also have to apply the following ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
+    
+    ```
+    kubectl apply -f lighthouse-source-dynatrace.yaml
+    ```
+    
+    ```yaml
+    apiVersion: v1
+    data:
+      sli-provider: dynatrace
+    kind: ConfigMap
+    metadata:
+      name: lighthouse-config-sockshop
+      namespace: keptn
+    ```
+   
 1. *(Optional)* Configure custom SLIs for the Dynatrace SLI provider as specified in `sli-config-dynatrace.yaml`:
 
     ```console
