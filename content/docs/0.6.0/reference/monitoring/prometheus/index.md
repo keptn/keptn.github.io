@@ -46,7 +46,7 @@ During the evaluation of a quality gate, the Prometheus SLI provider is required
 1. To install the *prometheus-sli-service*, execute:
 
     ```console
-    kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-sli-service/0.2.0/deploy/service.yaml
+    kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-sli-service/0.2.1/deploy/service.yaml
     ```
 
 1. The *prometheus-sli-service* needs access to a Prometheues instance. If you have completed the steps from [Setup Prometheus](./#setup-prometheus), the *prometheus-sli-service* uses the Prometheus instance running in the cluster. Otherwise,
