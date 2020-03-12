@@ -67,13 +67,13 @@ For this tutorial, you will need to set up monitoring for the carts service eith
     keptn configure monitoring prometheus --project=sockshop --service=carts
     ```
 
-    <details><summary>Content of the file for the interested reader</summary>
-    **Note:** If you are using Keptn 0.6.0 instead of 0.6.1, you will have to also apply the following ConfigMap by executing the command from within the `examples/onboarding-carts` folder:
+    <details><summary>**Note:** If you are using Keptn 0.6.0 instead of 0.6.1, you will have to apply a ConfigMap</summary>
+ 
+   Please apply the following ConfigMap by executing the command from within the `examples/onboarding-carts` folder:
     
-    ```
+    ```console
     kubectl apply -f lighthouse-source-prometheus.yaml
     ```
-    
     ```yaml
     apiVersion: v1
     data:
@@ -107,10 +107,11 @@ For this tutorial, you will need to set up monitoring for the carts service eith
     keptn configure monitoring dynatrace --project=sockshop
     ```
 
-    <details><summary>Content of the file for the interested reader</summary>
-    **Note**: If you are using Keptn 0.6.0 instead of 0.6.1, you will also have to apply the following ConfigMap by executing the command from within the `examples/onboarding-carts` folder:
+    <details><summary>**Note:** If you are using Keptn 0.6.0 instead of 0.6.1, you will have to apply a ConfigMap</summary>
+ 
+    Please apply the following ConfigMap by executing the command from within the `examples/onboarding-carts` folder:
     
-    ```
+    ```console
     kubectl apply -f lighthouse-source-dynatrace.yaml
     ```
     
