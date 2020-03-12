@@ -174,7 +174,7 @@ For this tutorial, you need to deploy the corresponding SLI provider for your mo
 1. To configure Keptn to use the Prometheus SLI provider for your project (e.g. **musicshop**), execute the following command:
 
     ```console
-    keptn configure monitoring prometheus --project=musicshop --suppress-websocket
+    keptn configure monitoring prometheus --project=musicshop --service=catalogue --suppress-websocket
     ```
 
     NOTE: if you are using Keptn 0.6.0 instead of 0.6.1, you will have to apply the following ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
