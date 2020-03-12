@@ -27,7 +27,7 @@ For more information about SLO and SLI, please take a look at [Specifications fo
 * Clone example files used for this tutorial:
 
     ```console
-    git clone --branch 0.6.0 https://github.com/keptn/examples.git --single-branch
+    git clone --branch 0.6.1 https://github.com/keptn/examples.git --single-branch
     ```
 
     ```console
@@ -101,7 +101,7 @@ Furthermore, the service has to be monitored by Prometheus. Therefore, a *scrape
 <details><summary>**Option 2: Instructions for Dynatrace**</summary>
 <p>
 
-To gather the monitoring data of your service, it must have the tags **keptn_project**, **keptn_stage**, **keptn_service**, and **keptn_deployment** attached: 
+To gather the monitoring data of your service, it must have the tags **keptn_project**, **keptn_stage**, and **keptn_service** attached: 
   {{< popup_image
     link="./assets/monitored_service.png"
     caption="Tags on catalogue service"
@@ -109,12 +109,12 @@ To gather the monitoring data of your service, it must have the tags **keptn_pro
 
 Example how to add those tags:
 
-* Set the environment variable [DT_CUSTOM_PROP](../../reference/monitoring/dynatrace/#set-dt-custom-prop-before-onboarding-a-service) with a key-value pair for the tags `keptn_stage`, `keptn_project`, and `keptn_service` as well as the tag `keptn_deployment` in your deployment manifest and deploy your service: 
+* Set the environment variable [DT_CUSTOM_PROP](../../reference/monitoring/dynatrace/#set-dt-custom-prop-before-onboarding-a-service) with a key-value pair for the tags `keptn_stage`, `keptn_project`, and `keptn_service` in your deployment manifest and deploy your service: 
 
 ```
 env:
 - name: DT_CUSTOM_PROP
-  value: "keptn_stage=hardening keptn_project=musicshop keptn_service=catalogue keptn_deployment"
+  value: "keptn_stage=hardening keptn_project=musicshop keptn_service=catalogue"
 ``` 
 
 * Add tagging rules in Dynatrace to detect these values and to create the tags for your monitored service. Therefore, you can use the scripts [applyAutoTaggingRules.sh](https://github.com/keptn-contrib/dynatrace-service/blob/release-0.5.0/deploy/scripts/applyAutoTaggingRules.sh) and
@@ -177,6 +177,22 @@ For this tutorial, you need to deploy the corresponding SLI provider for your mo
     keptn configure monitoring prometheus --project=musicshop --suppress-websocket
     ```
 
+    NOTE: if you are using Keptn 0.6.0 instead of 0.6.1, you will have to apply the following ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
+    
+    ```
+    kubectl apply -f lighthouse-source-prometheus.yaml
+    ```
+    
+    ```yaml
+    apiVersion: v1
+    data:
+      sli-provider: prometheus
+    kind: ConfigMap
+    metadata:
+      name: lighthouse-config-PROJECTNAME
+      namespace: keptn
+    ```
+
 1. Configure custom SLIs for the Prometheus SLI provider as specified in `sli-config-prometheus.yaml`:
 
     ```console
@@ -197,11 +213,27 @@ For this tutorial, you need to deploy the corresponding SLI provider for your mo
     ```console
     keptn configure monitoring dynatrace --project=musicshop --suppress-websocket
     ```
+    
+    NOTE: if you are using Keptn 0.6.0 instead of 0.6.1, you will have to apply the following ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
+    
+    ```
+    kubectl apply -f lighthouse-source-dynatrace.yaml
+    ```
+    
+    ```yaml
+    apiVersion: v1
+    data:
+      sli-provider: dynatrace
+    kind: ConfigMap
+    metadata:
+      name: lighthouse-config-PROJECTNAME
+      namespace: keptn
+    ```
 
-1. Configure custom SLIs for the Dynatrace SLI provider as specified in `sli-config-dynatrace.yaml`:
+1. Configure custom SLIs for the Dynatrace SLI provider as specified in `sli-config-dynatrace-no-deployment-tag.yaml`:
 
     ```console
-    keptn add-resource --project=musicshop --stage=hardening --service=catalogue --resource=sli-config-dynatrace.yaml --resourceUri=dynatrace/sli.yaml
+    keptn add-resource --project=musicshop --stage=hardening --service=catalogue --resource=sli-config-dynatrace-no-deployment-tag.yaml --resourceUri=dynatrace/sli.yaml
     ```
 
 </p>
