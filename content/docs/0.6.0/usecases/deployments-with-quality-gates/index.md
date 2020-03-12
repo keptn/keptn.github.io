@@ -136,7 +136,7 @@ For this tutorial, you will need to set up monitoring for the carts service eith
 
 ## View carts service
 
-1. Get the URL for your carts service with the following commands in the respective namespaces:
+1. Get the URL for your carts service with the following commands in the respective stages:
 
     ```console
     echo http://carts.sockshop-dev.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
@@ -186,7 +186,7 @@ The [send event new-artifact](../../reference/cli/#keptn-send-event-new-artifact
 
 After triggering the deployment of the carts service in version v0.10.2, the following status is expected:
 
-* **Dev stage:** The new version is deployed in the dev namespace and the functional tests passed.
+* **Dev stage:** The new version is deployed in the dev stage and the functional tests passed.
   * To verify, open a browser and navigate to: `http://carts.sockshop-dev.YOUR.DOMAIN`
 
 * **Staging stage:** In this stage, version v0.10.2 will be deployed and the performance test starts to run for about 10 minutes. After the test is completed, Keptn triggers the test evaluation and identifies the slowdown. Consequently, a roll-back to version v0.10.1 in this stage is conducted and the promotion to production is not triggered.
@@ -197,10 +197,10 @@ After triggering the deployment of the carts service in version v0.10.2, the fol
       caption="Quality gate in staging"
       width="100%">}}
 
-* **Production stage:** The slow version is **not promoted** to the production namespace because of the active quality gate in place. Thus, still version v0.10.1 is expected to be in production.
+* **Production stage:** The slow version is **not promoted** to the production stage because of the active quality gate in place. Thus, still version v0.10.1 is expected to be in production.
   * To verify, navigate to: `http://carts.sockshop-production.YOUR.DOMAIN`
 
-## Deploy the regular carts version
+## Deploy a regular carts version
 
 1. Use the Keptn CLI to send a new version of the *carts* artifact, which does **not** contain any slowdown:
    ```console
