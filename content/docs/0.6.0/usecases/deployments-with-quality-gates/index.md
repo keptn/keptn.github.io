@@ -44,7 +44,7 @@ This quality gate checks whether the average response time of the service is und
 - Finish the [Onboarding a Service](../onboard-carts-service/) tutorial (deploys carts version v0.10.1).
 
 ## Set up the quality gate and monitoring
-Keptn requires a performance specification for the quality gate. This specification is described in a file called `slo.yaml`, which specifies a Service Level Objective (SLO) that should be met by a service. To learn more about the *slo.yaml* file, go to [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/spec/blob/0.1.2/sre.md).
+Keptn requires a performance specification for the quality gate. This specification is described in a file called `slo.yaml`, which specifies a Service Level Objective (SLO) that should be met by a service. To learn more about the *slo.yaml* file, go to [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/spec/blob/0.1.3/sre.md).
 
 * Activate the quality gates for the carts service. Therefore, navigate to the `examples/onboarding-carts` folder and upload the `slo-quality-gates.yaml` file using the [add-resource](../../reference/cli/#keptn-add-resource) command:
 
@@ -54,8 +54,7 @@ keptn add-resource --project=sockshop --stage=staging --service=carts --resource
 
 For this tutorial, you will need to set up monitoring for the carts service either using *Prometheus* or *Dynatrace*.
 
-### Option 1: Prometheus
-<details><summary>Expand instructions</summary>
+<details><summary>**Option 1: Instructions for Prometheus**</summary>
 <p>
 
 1. Complete steps from section [Setup Prometheus](../../reference/monitoring/prometheus/#setup-prometheus).
@@ -68,7 +67,8 @@ For this tutorial, you will need to set up monitoring for the carts service eith
     keptn configure monitoring prometheus --project=sockshop --service=carts
     ```
 
-    NOTE: if you are using Keptn 0.6.0 instead of 0.6.1, you will have to also apply the following ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
+    <details><summary>Content of the file for the interested reader</summary>
+    **Note:** If you are using Keptn 0.6.0 instead of 0.6.1, you will have to also apply the following ConfigMap by executing the command from within the `examples/onboarding-carts` folder:
     
     ```
     kubectl apply -f lighthouse-source-prometheus.yaml
@@ -83,6 +83,7 @@ For this tutorial, you will need to set up monitoring for the carts service eith
       name: lighthouse-config-sockshop
       namespace: keptn
     ```
+    </details>
 
 1. Configure custom SLIs for the Prometheus SLI provider as specified in `sli-config-prometheus.yaml`:
 
@@ -93,8 +94,7 @@ For this tutorial, you will need to set up monitoring for the carts service eith
 </p>
 </details>
 
-### Option 2: Dynatrace
-<details><summary>Expand instructions</summary>
+<details><summary>**Option 2: Instructions for Dynatrace**</summary>
 <p>
 
 1. Complete steps from section [Setup Dynatrace](../../reference/monitoring/dynatrace#setup-dynatrace).
@@ -107,7 +107,8 @@ For this tutorial, you will need to set up monitoring for the carts service eith
     keptn configure monitoring dynatrace --project=sockshop
     ```
 
-    NOTE: if you are using Keptn 0.6.0 instead of 0.6.1, you will also have to apply the following ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
+    <details><summary>Content of the file for the interested reader</summary>
+    **Note**: If you are using Keptn 0.6.0 instead of 0.6.1, you will also have to apply the following ConfigMap by executing the command from within the `examples/onboarding-carts` folder:
     
     ```
     kubectl apply -f lighthouse-source-dynatrace.yaml
@@ -122,6 +123,7 @@ For this tutorial, you will need to set up monitoring for the carts service eith
       name: lighthouse-config-sockshop
       namespace: keptn
     ```
+    </details>
    
 1. *(Optional)* Configure custom SLIs for the Dynatrace SLI provider as specified in `sli-config-dynatrace.yaml`:
 
@@ -134,7 +136,7 @@ For this tutorial, you will need to set up monitoring for the carts service eith
 
 ## View carts service
 
-1. Get the URL for your carts service with the following commands in the respective namespaces:
+1. Get the URL for your carts service with the following commands in the respective stages:
 
     ```console
     echo http://carts.sockshop-dev.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
@@ -184,7 +186,7 @@ The [send event new-artifact](../../reference/cli/#keptn-send-event-new-artifact
 
 After triggering the deployment of the carts service in version v0.10.2, the following status is expected:
 
-* **Dev stage:** The new version is deployed in the dev namespace and the functional tests passed.
+* **Dev stage:** The new version is deployed in the dev stage and the functional tests passed.
   * To verify, open a browser and navigate to: `http://carts.sockshop-dev.YOUR.DOMAIN`
 
 * **Staging stage:** In this stage, version v0.10.2 will be deployed and the performance test starts to run for about 10 minutes. After the test is completed, Keptn triggers the test evaluation and identifies the slowdown. Consequently, a roll-back to version v0.10.1 in this stage is conducted and the promotion to production is not triggered.
@@ -195,10 +197,10 @@ After triggering the deployment of the carts service in version v0.10.2, the fol
       caption="Quality gate in staging"
       width="100%">}}
 
-* **Production stage:** The slow version is **not promoted** to the production namespace because of the active quality gate in place. Thus, still version v0.10.1 is expected to be in production.
+* **Production stage:** The slow version is **not promoted** to the production stage because of the active quality gate in place. Thus, still version v0.10.1 is expected to be in production.
   * To verify, navigate to: `http://carts.sockshop-production.YOUR.DOMAIN`
 
-## Deploy the regular carts version
+## Deploy a regular carts version
 
 1. Use the Keptn CLI to send a new version of the *carts* artifact, which does **not** contain any slowdown:
    ```console
