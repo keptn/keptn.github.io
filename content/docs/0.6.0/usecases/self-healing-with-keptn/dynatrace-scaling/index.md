@@ -43,13 +43,17 @@ To add these files to Keptn and to automatically configure Dynatrace, execute th
 
 - `remediation.yaml`
 
-```yaml
-remediations:
-- name: Response time degradation
-actions:
-- action: scaling
-    value: +1
-```
+  ```yaml
+  remediations:
+  - name: response_time_p90
+    actions:
+    - action: scaling
+      value: +1
+  - name: Response time degradation
+    actions:
+    - action: scaling
+      value: +1
+  ```
 
 </details>
 </p>
@@ -86,7 +90,7 @@ To simulate user traffic that is causing an unhealthy behavior in the carts serv
     ./loadgenerator-_OS_ "http://carts.sockshop-production.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')" cpu
     ```
 
-1. (optional:) Verify the load in Dynatrace
+1. **Optional:** Verify the load in Dynatrace
 
     In your Dynatrace Tenant, inspect the *Response Time* chart of the correlating service entity of the carts microservice. *Hint:* You can find the service 
     in Dynatrace easier by selecting the management zone **Keptn: sockshop production**:
@@ -98,7 +102,7 @@ To simulate user traffic that is causing an unhealthy behavior in the carts serv
         
     {{< popup_image
         link="./assets/dt_response_time.png"
-        caption="Response Time Series"
+        caption="Response Time Series in Dynatrace"
         width="700px">}}
 
 As you can see in the time series chart, the load generation script causes a significant increase in the response time.
@@ -150,7 +154,7 @@ In this tutorial, the number of pods will be increased to remediate the issue of
     
     {{< popup_image
     link="./assets/bridge_remediation.png"
-    caption="Keptn's Bridge">}}
+    caption="Problem event in Keptn's Bridge">}}
     
 1. Furthermore, you can see how the response time of the service decreased by viewing the time series chart in Dynatrace:
 
@@ -159,4 +163,4 @@ In this tutorial, the number of pods will be increased to remediate the issue of
 
     {{< popup_image
     link="./assets/dt-problem-closed.png"
-    caption="Keptn's Bridge">}}
+    caption="Response Time Series in Dynatrace">}}
