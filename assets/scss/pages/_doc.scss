@@ -202,7 +202,7 @@ thead + tbody tr:first-child td:last-child {
 
 code {
   color: $textCodeColor;
-  font-size: 80%;
+  font-size: 100%;
   font-weight: $textCodeWeight;
   word-break: normal;
 }
@@ -232,7 +232,7 @@ pre {
     display: block;
     padding: 0.5em;
     color: $textColor;
-    font-size: 80%;
+    font-size: 100%;
     font-weight: $textCodeWeight;
     word-break: normal;
   }
