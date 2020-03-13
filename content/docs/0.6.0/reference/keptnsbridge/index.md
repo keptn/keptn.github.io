@@ -15,23 +15,29 @@ The Keptn's Bridge is not publicly accessible, but can be retrieved by enabling 
 kubectl port-forward svc/bridge -n keptn 9000:8080
 ```
 
-It is then available on: http://localhost:9000.
+It is then available on: http://localhost:9000
 
-The Keptn's Bridge provides an easy way to browse all events that are sent within Keptn and to filter on a specific Keptn context. When you access the Keptn's Bridge, all Keptn entry points will be listed in the left column. Please note that this list only represents the start of a deployment of a new artifact and, thus, more information on the executed steps can be revealed when you click on one event.
+**Important Note**: The Keptn's Bridge exposes sensitive information. We do not recommend exposing it publicly via LoadBalancer, NodePort, VirtualServices or alike.
+
+## Project view
+
+The Keptn's Bridge provides an easy way to browse all events that are sent within Keptn. When you access the Keptn's Bridge, all projects will be shown on the start screen. When clicking on a project, the stages of this project and all onboarded services are shown on the next view.
 
   {{< popup_image
   link="./assets/bridge_empty.png"
-  caption="Keptn's Bridge start page">}}
+  caption="Keptn's Bridge project view">}}
 
-When selecting an event, the Keptn's Bridge displays all other events that are in the same Keptn context and, thus, belong to the selected entry point. As can be seen in the screenshot below, the entry point around 4:22 pm has been selected and all events belonging to this entry point are shown. The detail section lists the _timestamp_ as well as _payload_ of the event. Additionally, the _service_ that sent this event is also shown.
+When selecting one service, all events that belong to this service are listed on the right side. Please note that this list only represents the start of a deployment (or problem) of a new artifact. More information on the executed steps can be revealed when you click on one event.
+
+## Event stream
+
+When selecting an event, the Keptn's Bridge displays all other events that are in the same Keptn context and belong to the selected entry point. As can be seen in the screenshot below, the entry point around 4:03 pm has been selected and all events belonging to this entry point are displayed on the right side.
 
   {{< popup_image
   link="./assets/bridge_details.png"
-  caption="Keptn's Bridge detailed view">}}
+  caption="Keptn's Bridge event stream">}}
 
-**Please note**: Keptn's Bridge exposes sensitive information. We do not recommend exposing it publicly via LoadBalancer, NodePort, VirtualServices or alike.
-
-
+<!--
 ## Early Access Version of Keptn's Bridge
 
 There is an early access version of Keptn's Bridge available (compatible with Keptn 0.6.0):
@@ -63,3 +69,4 @@ kubectl -n keptn-datastore set image deployment/mongodb-datastore mongodb-datast
 ```
 
 If you have any questions or feedback regarding the EAP of Keptn's Bridge, please contact us through our [Keptn Community Channels](https://github.com/keptn/community)!
+-->

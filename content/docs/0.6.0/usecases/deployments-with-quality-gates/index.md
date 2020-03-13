@@ -10,7 +10,7 @@ Describes how Keptn allows deploying an artifact using automatic quality gates a
 
 ## About this tutorial
 
-When developing an application, sooner or later you need to update a service in a *production* environment. To conduct this in a controlled manner and without impacting end-user experience, the quality of the new service has to be ensured and adequate deployment strategies must be in place. For example, blue-green deployments are well-known strategies to roll out a new service version by also keeping the previous service version available if something goes wrong.
+When developing an application, sooner or later you need to update a service in a *production* environment. To conduct this in a controlled manner and without impacting end-user experience, the quality of the new service has to be ensured and adequate deployment strategies must be in place. For example, blue/green deployments are well-known strategies to roll out a new service version by also keeping the previous service version available if something goes wrong.
 
 For this tutorial, we prepared a *slow* and a *regular* version of the carts service:
 
@@ -41,7 +41,7 @@ This quality gate checks whether the average response time of the service is und
 
 ## Prerequisites
 
-- Finish the [Onboarding a Service](../onboard-carts-service/) tutorial (deploys carts version v0.10.1).
+- Finish the [Onboarding a Service](../onboard-carts-service/) tutorial (deployed carts version v0.10.1).
 
 ## Set up the quality gate and monitoring
 Keptn requires a performance specification for the quality gate. This specification is described in a file called `slo.yaml`, which specifies a Service Level Objective (SLO) that should be met by a service. To learn more about the *slo.yaml* file, go to [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/spec/blob/0.1.3/sre.md).
@@ -59,15 +59,11 @@ For this tutorial, you will need to set up monitoring for the carts service eith
 
 1. Complete steps from section [Setup Prometheus](../../reference/monitoring/prometheus/#setup-prometheus).
  
-    <details><summary>*Click here to learn more about what you have setup.*</summary>
-    <p>
-    In these steps, you configured Keptn (more precisely the lighthouse-service) to use the Prometheus SLI provider for the       project **sockshop** and service **carts** with the command 
+    * In these steps, you configured Keptn (more precisely the lighthouse-service) to use the Prometheus SLI provider for the project **sockshop** and service **carts** with the command:
  
     ```console
     keptn configure monitoring prometheus --project=sockshop --service=carts
     ```
-    </p>
-    </details>
 
 1. Complete steps from section [Setup Prometheus SLI provider](../../reference/monitoring/prometheus/#setup-prometheus-sli-provider).
 
@@ -98,16 +94,11 @@ For this tutorial, you will need to set up monitoring for the carts service eith
 <p>
 
 1. Complete steps from section [Setup Dynatrace](../../reference/monitoring/dynatrace#setup-dynatrace).
-
-    <details><summary>*Click here to learn more about what you have setup.*</summary>
-    <p>
-    In these steps, you configured Keptn (more precisely the lighthouse-service) to use the Dynatrace SLI provider for the project **sockshop** with the command 
+    * In these steps, you configured Keptn (more precisely the lighthouse-service) to use the Dynatrace SLI provider for the project **sockshop** with the command:
     
     ```console
     keptn configure monitoring dynatrace --project=sockshop
     ```
-    </p>
-    </details>
 
 1. Complete steps from section [Setup Dynatrace SLI provider](../../reference/monitoring/dynatrace/#setup-dynatrace-sli-provider).
 
@@ -131,7 +122,7 @@ For this tutorial, you will need to set up monitoring for the carts service eith
     </p>
     </details>
    
-1. *(Optional)* Configure custom SLIs for the Dynatrace SLI provider as specified in `sli-config-dynatrace.yaml`:
+1. **Optional:** Configure custom SLIs for the Dynatrace SLI provider as specified in `sli-config-dynatrace.yaml`:
 
     ```console
     keptn add-resource --project=sockshop --stage=staging --service=carts --resource=sli-config-dynatrace.yaml --resourceUri=dynatrace/sli.yaml
