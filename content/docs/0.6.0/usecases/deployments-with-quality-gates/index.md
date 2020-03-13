@@ -91,12 +91,6 @@ For this tutorial, you will need to set up monitoring for the carts service eith
     </p>
     </details>
 
-1. Configure custom SLIs for the Prometheus SLI provider as specified in `sli-config-prometheus.yaml`:
-
-    ```console
-    keptn add-resource --project=sockshop --stage=staging --service=carts --resource=sli-config-prometheus.yaml --resourceUri=prometheus/sli.yaml
-    ```
-
 </p>
 </details>
 
