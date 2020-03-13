@@ -1,1 +1,1 @@
-Be part of the movement and participate in our public community meetings every other Monday!
+Be part of the movement and participate in our [public community meetings](https://github.com/keptn/community) every other Thursday!
