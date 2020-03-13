@@ -107,3 +107,25 @@ The root cause of this issue is that `kubenet` is not used in your AKS cluster. 
 Please select the **Kubenet network plugin (basic)** when setting up your AKS cluster, instead of *Azure network plugin (advanced)* and retry the installation. You can find more information here: https://docs.microsoft.com/en-us/azure/aks/configure-kubenet 
 
 </p></details>
+
+## Verify Kubernetes Context with Keptn Installation
+
+If you are performing critical operations, such as installing new Keptn services or upgrading something, please verify
+that you are connected to the correct cluster.
+
+An easy way to accomplish this is to compare the domain stored in the Kubernetes ConfigMap `keptn-domain` with the output of `keptn status`.
+
+```console
+$ kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}'
+
+123.45.67.89.xip.io
+``` 
+vs.
+```console
+$ keptn status
+Starting to authenticate
+Successfully authenticated
+CLI is authenticated against the Keptn cluster https://api.keptn.123.45.67.89.xip.io
+```
+
+As you can see, the domains match (despite the `https://api.keptn.` prefix in the output of `keptn status`).
