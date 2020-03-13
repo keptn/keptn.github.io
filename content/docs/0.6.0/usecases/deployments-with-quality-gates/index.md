@@ -60,17 +60,19 @@ For this tutorial, you will need to set up monitoring for the carts service eith
 1. Complete steps from section [Setup Prometheus](../../reference/monitoring/prometheus/#setup-prometheus).
  
     <details><summary>*Click here to learn more about what you have setup.*</summary>
+    <p>
     In these steps, you configured Keptn (more precisely the lighthouse-service) to use the Prometheus SLI provider for the       project **sockshop** and service **carts** with the command 
  
     ```console
     keptn configure monitoring prometheus --project=sockshop --service=carts
     ```
+    </p>
     </details>
 
 1. Complete steps from section [Setup Prometheus SLI provider](../../reference/monitoring/prometheus/#setup-prometheus-sli-provider).
 
     <details><summary>**Note:** If you are using Keptn 0.6.0 instead of 0.6.1, you will have to apply a ConfigMap</summary>
- 
+    <p>
     Please apply the following ConfigMap by executing the command from within the `examples/onboarding-carts` folder:
     
     ```console
@@ -86,6 +88,7 @@ For this tutorial, you will need to set up monitoring for the carts service eith
       name: lighthouse-config-sockshop
       namespace: keptn
     ```
+    </p>
     </details>
 
 1. Configure custom SLIs for the Prometheus SLI provider as specified in `sli-config-prometheus.yaml`:
@@ -102,18 +105,20 @@ For this tutorial, you will need to set up monitoring for the carts service eith
 
 1. Complete steps from section [Setup Dynatrace](../../reference/monitoring/dynatrace#setup-dynatrace).
 
-   <details><summary>*Click here to learn more about what you have setup.*</summary>
+    <details><summary>*Click here to learn more about what you have setup.*</summary>
+    <p>
     In these steps, you configured Keptn (more precisely the lighthouse-service) to use the Dynatrace SLI provider for the project **sockshop** with the command 
     
     ```console
     keptn configure monitoring dynatrace --project=sockshop
     ```
+    </p>
     </details>
 
 1. Complete steps from section [Setup Dynatrace SLI provider](../../reference/monitoring/dynatrace/#setup-dynatrace-sli-provider).
 
     <details><summary>**Note:** If you are using Keptn 0.6.0 instead of 0.6.1, you will have to apply a ConfigMap</summary>
- 
+    <p>
     Please apply the following ConfigMap by executing the command from within the `examples/onboarding-carts` folder:
     
     ```console
@@ -129,6 +134,7 @@ For this tutorial, you will need to set up monitoring for the carts service eith
       name: lighthouse-config-sockshop
       namespace: keptn
     ```
+    </p>
     </details>
    
 1. *(Optional)* Configure custom SLIs for the Dynatrace SLI provider as specified in `sli-config-dynatrace.yaml`:
