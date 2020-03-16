@@ -108,6 +108,30 @@ Please select the **Kubenet network plugin (basic)** when setting up your AKS cl
 
 </p></details>
 
+## Helm upgrade runs into a time-out on EKS
+<details><summary>Expand instructions</summary>
+<p>
+
+**Investigation:**
+
+The Helm upgrade runs into a time-out.
+This can e.g. happen when you would like to deploy a new version of your service using
+
+```console
+keptn send event new-artifact
+```
+
+**Reason:** 
+
+We have experinced this issue using a _single_ worker node on EKS.
+
+**Solution:** 
+
+Increase the number of worker nodes. For example, you can therefore use the `eksctl` CLI:
+https://eksctl.io/usage/managing-nodegroups/
+
+</p></details>
+
 ## Verify Kubernetes Context with Keptn Installation
 
 If you are performing critical operations, such as installing new Keptn services or upgrading something, please verify
