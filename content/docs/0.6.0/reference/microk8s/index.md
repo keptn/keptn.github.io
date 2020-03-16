@@ -2,7 +2,6 @@
 title: Keptn on Microk8s (experimental)
 description: Explains how to install the quality-gates standalone version of Keptn on Microk8s. 
 weight: 80
-icon: setup
 ---
 
 ## Installation Guide

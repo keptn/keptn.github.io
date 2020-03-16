@@ -55,7 +55,7 @@ keptn status
 Keptn is now ready to be used.
 
 ### 4. Explore the use cases
-With Keptn installed, have a look at the different [use cases](/docs/0.6.0/usecases) like
+With Keptn installed, have a look at the different [tutorials](/docs/0.6.0/usecases) like:
 
 * [Onboarding a new Service](/docs/0.6.0/usecases/onboard-carts-service/)
 * [Deployments with Quality Gates](/docs/0.6.0/usecases/deployments-with-quality-gates/)
