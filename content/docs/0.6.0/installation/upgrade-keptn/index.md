@@ -30,11 +30,11 @@ Several changes to Helm charts have been made. If you want to stay compatible, p
   replicas: {{ .Values.replicaCount }}
   ```
 
-  See example: https://github.com/keptn/examples/blob/release-0.6.0/onboarding-carts/carts/templates/deployment.yaml#L7
+  See example: https://github.com/keptn/examples/blob/release-0.6.1/onboarding-carts/carts/templates/deployment.yaml#L7
 
 * Then, set a new value in `values.yaml` for each service: `replicaCount`. 
 
-  See example: https://github.com/keptn/examples/blob/release-0.6.0/onboarding-carts/carts/values.yaml
+  See example: https://github.com/keptn/examples/blob/release-0.6.1/onboarding-carts/carts/values.yaml
 
 * Dynatrace integration: We have removed `DT_TAGS` and introduced `DT_CUSTOM_PROP`:
 
@@ -43,7 +43,7 @@ Several changes to Helm charts have been made. If you want to stay compatible, p
     value: "keptn_project={{ .Values.keptn.project }} keptn_service={{ .Values.keptn.service }} keptn_stage={{ .Values.keptn.stage }} keptn_deployment={{ .Values.keptn.deployment }}"
   ```
   
-  See example: https://github.com/keptn/examples/blob/release-0.6.0/onboarding-carts/carts/templates/deployment.yaml#L29-L30
+  See example: https://github.com/keptn/examples/blob/release-0.6.1/onboarding-carts/carts/templates/deployment.yaml#L29-L30
 
 ## New Lighthouse / Pitometer was removed
 
@@ -136,6 +136,9 @@ If you want to stay compatible, you need to perform the following steps:
 
 ## Update services from 0.6.0.beta2 to 0.6.0
 
+Please [verify that you are connected to the correct Kubernetes cluster](../../reference/troubleshooting/#verify-kubernetes-context-with-keptn-installation)
+before performing this operation.
+
 ### Update services in keptn-datastore namespace
 
 ```console
@@ -154,7 +157,10 @@ kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/release-0.6.0/ins
 
 ### Update keptn-contrib services 
 
-Please only update the services if you have them installed
+Please [verify that you are connected to the correct Kubernetes cluster](../../reference/troubleshooting/#verify-kubernetes-context-with-keptn-installation)
+before performing this operation.
+
+Also, only update the services if you have them installed:
 
 * *dynatrace-service*: `kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-service/release-0.6.0/deploy/manifests/dynatrace-service/dynatrace-service.yaml`
 * *dynatrace-sli-service*: `kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-sli-service/release-0.3.0/deploy/service.yaml`
@@ -165,7 +171,8 @@ Please only update the services if you have them installed
 # Update from 0.6.0 to 0.6.1
 
 To update from 0.6.0 to 0.6.1 you can deploy a Kubernetes Job that will take care of updating all components to the 0.6.1 release.
-To do so, please execute:
+Please [verify that you are connected to the correct Kubernetes cluster](../../reference/troubleshooting/#verify-kubernetes-context-with-keptn-installation)
+before performing this operation.
 
 ```
 kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.6.1/upgrade-060-061/upgrade-job.yaml
@@ -181,6 +188,99 @@ upgrader            1/1           17s        20h
 ```
 
 When the job is completed, your Keptn version has been updated to 0.6.1.
+
+<details><summary>*Verifying that the upgrade works*</summary>
+
+To verify that the upgrade process worked, please check the iamges and their tags using `kubectl` as described below. 
+
+**Before the upgrade**:
+
+```console
+$ kubectl -n keptn get deployments -owide
+
+NAME                                                      READY   UP-TO-DATE   AVAILABLE   AGE     CONTAINERS               IMAGES                                      SELECTOR
+api                                                       1/1     1            1           4h25m   api                      keptn/api:0.6.0                             run=api
+bridge                                                    1/1     1            1           4h25m   bridge                   keptn/bridge2:20200308.0859                 run=bridge
+configuration-service                                     1/1     1            1           4h25m   configuration-service    keptn/configuration-service:20200308.0859   run=configuration-service
+eventbroker-go                                            1/1     1            1           4h25m   eventbroker-go           keptn/eventbroker-go:0.6.0                  run=eventbroker-go
+gatekeeper-service                                        1/1     1            1           4h24m   gatekeeper-service       keptn/gatekeeper-service:0.6.0              run=gatekeeper-service
+gatekeeper-service-evaluation-done-distributor            1/1     1            1           4h24m   distributor              keptn/distributor:0.6.0                     run=distributor
+helm-service                                              1/1     1            1           4h25m   helm-service             keptn/helm-service:0.6.0                    run=helm-service
+helm-service-configuration-change-distributor             1/1     1            1           4h24m   distributor              keptn/distributor:0.6.0                     run=distributor
+helm-service-service-create-distributor                   1/1     1            1           4h25m   distributor              keptn/distributor:0.6.0                     run=distributor
+jmeter-service                                            1/1     1            1           4h24m   jmeter-service           keptn/jmeter-service:0.6.0                  run=jmeter-service
+jmeter-service-deployment-distributor                     1/1     1            1           4h24m   distributor              keptn/distributor:0.6.0                     run=distributor
+lighthouse-service                                        1/1     1            1           4h24m   lighthouse-service       keptn/lighthouse-service:0.6.0              run=lighthouse-service
+lighthouse-service-get-sli-done-distributor               1/1     1            1           4h24m   distributor              keptn/distributor:0.6.0                     run=distributor
+lighthouse-service-start-evaluation-distributor           1/1     1            1           4h24m   distributor              keptn/distributor:0.6.0                     run=distributor
+lighthouse-service-tests-finished-distributor             1/1     1            1           4h24m   distributor              keptn/distributor:0.6.0                     run=distributor
+nats-operator                                             1/1     1            1           4h25m   nats-operator            connecteverything/nats-operator:0.6.0       name=nats-operator
+prometheus-service                                        1/1     1            1           27m     prometheus-service       keptn/prometheus-service:0.3.1              run=prometheus-service
+prometheus-service-monitoring-configure-distributor       1/1     1            1           27m     distributor              keptn/distributor:0.5.0                     run=distributor
+prometheus-sli-service                                    1/1     1            1           24m     prometheus-sli-service   keptn/prometheus-sli-service:0.2.0          run=prometheus-sli-service
+prometheus-sli-service-monitoring-configure-distributor   1/1     1            1           24m     distributor              keptn/distributor:0.5.0                     run=distributor
+remediation-service                                       1/1     1            1           4h24m   remediation-service      keptn/remediation-service:0.6.0             run=remediation-service
+remediation-service-problem-distributor                   1/1     1            1           4h24m   distributor              keptn/distributor:0.6.0                     run=distributor
+shipyard-service                                          1/1     1            1           4h25m   shipyard-service         keptn/shipyard-service:0.6.0                run=shipyard-service
+shipyard-service-create-project-distributor               1/1     1            1           4h25m   distributor              keptn/distributor:0.6.0                     run=distributor
+shipyard-service-delete-project-distributor               1/1     1            1           4h25m   distributor              keptn/distributor:0.6.0                     run=distributor
+wait-service                                              1/1     1            1           4h24m   wait-service             keptn/wait-service:0.6.0                    run=wait-service
+wait-service-deployment-distributor                       1/1     1            1           4h24m   distributor              keptn/distributor:0.6.0                     run=distributor
+```
+
+```console
+$ kubectl -n keptn-datastore get deployments -owide
+
+NAME                            READY   UP-TO-DATE   AVAILABLE   AGE     CONTAINERS          IMAGES                                  SELECTOR
+mongodb                         1/1     1            1           4h25m   mongodb             centos/mongodb-36-centos7:1             name=mongodb
+mongodb-datastore               1/1     1            1           4h25m   mongodb-datastore   keptn/mongodb-datastore:20200308.0859   run=mongodb-datastore
+mongodb-datastore-distributor   1/1     1            1           4h25m   distributor         keptn/distributor:0.6.0                 run=distributor
+```
+
+**After the upgrade**
+
+```console
+$ kubectl -n keptn get deployments -owide
+
+NAME                                                      READY   UP-TO-DATE   AVAILABLE   AGE     CONTAINERS               IMAGES                                  SELECTOR
+api                                                       1/1     1            1           4h39m   api                      keptn/api:0.6.1                         run=api
+bridge                                                    1/1     1            1           4h39m   bridge                   keptn/bridge2:0.6.1                     run=bridge
+configuration-service                                     1/1     1            1           4h39m   configuration-service    keptn/configuration-service:0.6.1       run=configuration-service
+eventbroker-go                                            1/1     1            1           4h39m   eventbroker-go           keptn/eventbroker-go:0.6.1              run=eventbroker-go
+gatekeeper-service                                        1/1     1            1           4h39m   gatekeeper-service       keptn/gatekeeper-service:0.6.1          run=gatekeeper-service
+gatekeeper-service-evaluation-done-distributor            1/1     1            1           4h39m   distributor              keptn/distributor:0.6.1                 run=distributor
+helm-service                                              1/1     1            1           4h39m   helm-service             keptn/helm-service:0.6.1                run=helm-service
+helm-service-configuration-change-distributor             1/1     1            1           4h39m   distributor              keptn/distributor:0.6.1                 run=distributor
+helm-service-service-create-distributor                   1/1     1            1           4h39m   distributor              keptn/distributor:0.6.1                 run=distributor
+jmeter-service                                            1/1     1            1           4h39m   jmeter-service           keptn/jmeter-service:0.6.1              run=jmeter-service
+jmeter-service-deployment-distributor                     1/1     1            1           4h39m   distributor              keptn/distributor:0.6.1                 run=distributor
+lighthouse-service                                        1/1     1            1           4h39m   lighthouse-service       keptn/lighthouse-service:0.6.1          run=lighthouse-service
+lighthouse-service-distributor                            1/1     1            1           72s     distributor              keptn/distributor:0.6.1                 run=distributor
+nats-operator                                             1/1     1            1           4h40m   nats-operator            connecteverything/nats-operator:0.6.0   name=nats-operator
+prometheus-service                                        1/1     1            1           41m     prometheus-service       keptn/prometheus-service:0.3.1          run=prometheus-service
+prometheus-service-monitoring-configure-distributor       1/1     1            1           41m     distributor              keptn/distributor:0.5.0                 run=distributor
+prometheus-sli-service                                    1/1     1            1           38m     prometheus-sli-service   keptn/prometheus-sli-service:0.2.1      run=prometheus-sli-service
+prometheus-sli-service-monitoring-configure-distributor   1/1     1            1           38m     distributor              keptn/distributor:latest                run=distributor
+remediation-service                                       1/1     1            1           4h39m   remediation-service      keptn/remediation-service:0.6.1         run=remediation-service
+remediation-service-problem-distributor                   1/1     1            1           4h39m   distributor              keptn/distributor:0.6.1                 run=distributor
+shipyard-service                                          1/1     1            1           4h39m   shipyard-service         keptn/shipyard-service:0.6.1            run=shipyard-service
+shipyard-service-create-project-distributor               1/1     1            1           4h39m   distributor              keptn/distributor:0.6.1                 run=distributor
+shipyard-service-delete-project-distributor               1/1     1            1           4h39m   distributor              keptn/distributor:0.6.1                 run=distributor
+wait-service                                              1/1     1            1           4h39m   wait-service             keptn/wait-service:0.6.1                run=wait-service
+wait-service-deployment-distributor                       1/1     1            1           4h39m   distributor              keptn/distributor:0.6.1                 run=distributor
+
+```
+
+```console
+$ kubectl -n keptn-datastore get deployments -owide
+
+NAME                            READY   UP-TO-DATE   AVAILABLE   AGE     CONTAINERS          IMAGES                          SELECTOR
+mongodb                         1/1     1            1           2m41s   mongodb             centos/mongodb-36-centos7:1     name=mongodb
+mongodb-datastore               1/1     1            1           4h40m   mongodb-datastore   keptn/mongodb-datastore:0.6.1   run=mongodb-datastore
+mongodb-datastore-distributor   1/1     1            1           4h40m   distributor         keptn/distributor:0.6.1         run=distributor
+```
+
+</details>
 
 <details><summary>*Inspecting the upgrader logs*</summary>
 To see the log of the upgrader, execute:
@@ -448,6 +548,20 @@ NOTE: The messages at the end of the log output, such as `Error from server (Not
 This message simply means that the respective service, e.g. the dynatrace-service has not been installed in your cluster in the previous Keptn version. 
 If the service has indeed been deployed previously, it will be updated to the latest compatible version.
 </details>
+
+<details><summary>Upgrade didn't work, what to do next?</summary>
+
+Please create a [new bug report](https://github.com/keptn/keptn/issues/new?assignees=&labels=bug&template=bug_report.md&title=) 
+and provide us more information (log output, etc...), e.g.:
+
+* `kubectl logs job/upgrader`
+* `kubectl get pods -n keptn`
+* `kubectl -n keptn get deployments -owide`
+* `kubectl get pods -n keptn-datastore`
+* `kubectl -n keptn-datastore get deployments -owide`
+
+</details>
+
 
 # Install new Keptn CLI
 

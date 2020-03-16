@@ -135,7 +135,7 @@ keptn onboard service carts --project=sockshop --chart=./carts
     keptn add-resource --project=sockshop --stage=staging --service=carts --resource=jmeter/load.jmx --resourceUri=jmeter/load.jmx
     ```
 
-  **Note:** You can adapt the tests in `basiccheck.jmx` as well as `load.jmx` for your service. However you must not rename the files, as there is a hardcoded dependency on these file names in the current implementation of Keptn's jmeter-service. 
+    **Note:** You can adapt the tests in `basiccheck.jmx` as well as `load.jmx` for your service. However, you must not rename the files because there is a hardcoded dependency on these file names in the current implementation of Keptn's jmeter-service. 
 
 Since the carts service requires a mongodb database, a second service needs to be onboarded.
 
