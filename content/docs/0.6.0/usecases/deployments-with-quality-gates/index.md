@@ -10,7 +10,7 @@ Describes how Keptn allows deploying an artifact using automatic quality gates a
 
 ## About this tutorial
 
-When developing an application, sooner or later you need to update a service in a *production* environment. To conduct this in a controlled manner and without impacting end-user experience, the quality of the new service has to be ensured and adequate deployment strategies must be in place. For example, blue-green deployments are well-known strategies to roll out a new service version by also keeping the previous service version available if something goes wrong.
+When developing an application, sooner or later you need to update a service in a *production* environment. To conduct this in a controlled manner and without impacting end-user experience, the quality of the new service has to be ensured and adequate deployment strategies must be in place. For example, blue/green deployments are well-known strategies to roll out a new service version by also keeping the previous service version available if something goes wrong.
 
 For this tutorial, we prepared a *slow* and a *regular* version of the carts service:
 
@@ -28,7 +28,7 @@ This quality gate checks whether the average response time of the service is und
 1. We will *try* to deploy the *slow* version of the carts service (v0.10.2). 
   * Keptn will deploy this new version into the **dev** environment where functional tests will be executed. 
   * After passing these functional tests, Keptn will promote this service into the **staging** environment by releasing it as the blue or green version next to the previous version of the service. 
-  * Then, Keptn will route traffic to this new version by changing the configuration of the virtual service (i.e., by setting weights for the routes between blue and green) and Keptn will start the defined performance test (e.g., using JMeter). Using the monitoring results of this performance test will allow [lighthouse](https://github.com/keptn/keptn/tree/0.6.0/lighthouse-service) to evaluate the quality gate. 
+  * Then, Keptn will route traffic to this new version by changing the configuration of the virtual service (i.e., by setting weights for the routes between blue and green) and Keptn will start the defined performance test (e.g., using JMeter). Using the monitoring results of this performance test will allow [lighthouse](https://github.com/keptn/keptn/tree/0.6.1/lighthouse-service) to evaluate the quality gate. 
   * The *slow* version of carts (v0.10.2) will not pass the quality gate and, hence, the new version will not be promoted to the **production** stage (i.e., the deployment will be rejected).
   * Furthermore, Keptn will change the weights within the **staging** stage back to the previous working deployment of the service. 
 
@@ -41,10 +41,10 @@ This quality gate checks whether the average response time of the service is und
 
 ## Prerequisites
 
-- Finish the [Onboarding a Service](../onboard-carts-service/) tutorial (deploys carts version v0.10.1).
+- Finish the [Onboarding a Service](../onboard-carts-service/) tutorial (deployed carts version v0.10.1).
 
 ## Set up the quality gate and monitoring
-Keptn requires a performance specification for the quality gate. This specification is described in a file called `slo.yaml`, which specifies a Service Level Objective (SLO) that should be met by a service. To learn more about the *slo.yaml* file, go to [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/spec/blob/0.1.2/sre.md).
+Keptn requires a performance specification for the quality gate. This specification is described in a file called `slo.yaml`, which specifies a Service Level Objective (SLO) that should be met by a service. To learn more about the *slo.yaml* file, go to [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/spec/blob/0.1.3/sre.md).
 
 * Activate the quality gates for the carts service. Therefore, navigate to the `examples/onboarding-carts` folder and upload the `slo-quality-gates.yaml` file using the [add-resource](../../reference/cli/#keptn-add-resource) command:
 
@@ -54,20 +54,27 @@ keptn add-resource --project=sockshop --stage=staging --service=carts --resource
 
 For this tutorial, you will need to set up monitoring for the carts service either using *Prometheus* or *Dynatrace*.
 
-### Option 1: Prometheus
-<details><summary>Expand instructions</summary>
+<details><summary>**Option 1: Instructions for Prometheus**</summary>
 <p>
 
 1. Complete steps from section [Setup Prometheus](../../reference/monitoring/prometheus/#setup-prometheus).
+ 
+    * In these steps, you configured Keptn (more precisely the lighthouse-service) to use the Prometheus SLI provider for the project **sockshop** and service **carts** with the command:
+ 
+    ```console
+    keptn configure monitoring prometheus --project=sockshop --service=carts
+    ```
 
 1. Complete steps from section [Setup Prometheus SLI provider](../../reference/monitoring/prometheus/#setup-prometheus-sli-provider).
 
-1. To configure Keptn to use the Prometheus SLI provider for the **sockshop** project, apply the below ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
-
+    <details><summary>**Note:** If you are using Keptn 0.6.0 instead of 0.6.1, you will have to apply a ConfigMap</summary>
+    <p>
+    Please apply the following ConfigMap by executing the command from within the `examples/onboarding-carts` folder:
+    
     ```console
     kubectl apply -f lighthouse-source-prometheus.yaml
     ```
-
+    
     ```yaml
     apiVersion: v1
     data:
@@ -77,31 +84,32 @@ For this tutorial, you will need to set up monitoring for the carts service eith
       name: lighthouse-config-sockshop
       namespace: keptn
     ```
-
-1. Configure custom SLIs for the Prometheus SLI provider as specified in `sli-config-prometheus.yaml`:
-
-    ```console
-    keptn add-resource --project=sockshop --stage=staging --service=carts --resource=sli-config-prometheus.yaml --resourceUri=prometheus/sli.yaml
-    ```
+    </p>
+    </details>
 
 </p>
 </details>
 
-### Option 2: Dynatrace
-<details><summary>Expand instructions</summary>
+<details><summary>**Option 2: Instructions for Dynatrace**</summary>
 <p>
 
 1. Complete steps from section [Setup Dynatrace](../../reference/monitoring/dynatrace#setup-dynatrace).
+    * In these steps, you configured Keptn (more precisely the lighthouse-service) to use the Dynatrace SLI provider for the project **sockshop** with the command:
+    
+    ```console
+    keptn configure monitoring dynatrace --project=sockshop
+    ```
 
 1. Complete steps from section [Setup Dynatrace SLI provider](../../reference/monitoring/dynatrace/#setup-dynatrace-sli-provider).
 
-1. To configure Keptn to use the Dynatrace SLI provider for the **sockshop** project, apply the below ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
-
+    <details><summary>**Note:** If you are using Keptn 0.6.0 instead of 0.6.1, you will have to apply a ConfigMap</summary>
+    <p>
+    Please apply the following ConfigMap by executing the command from within the `examples/onboarding-carts` folder:
+    
     ```console
     kubectl apply -f lighthouse-source-dynatrace.yaml
     ```
-
-    <details><summary>Contents of the file for the interested reader</summary>
+    
     ```yaml
     apiVersion: v1
     data:
@@ -111,10 +119,10 @@ For this tutorial, you will need to set up monitoring for the carts service eith
       name: lighthouse-config-sockshop
       namespace: keptn
     ```
-  </details>
-  
-
-1. *(Optional)* Configure custom SLIs for the Dynatrace SLI provider as specified in `sli-config-dynatrace.yaml`:
+    </p>
+    </details>
+   
+1. **Optional:** Configure custom SLIs for the Dynatrace SLI provider as specified in `sli-config-dynatrace.yaml`:
 
     ```console
     keptn add-resource --project=sockshop --stage=staging --service=carts --resource=sli-config-dynatrace.yaml --resourceUri=dynatrace/sli.yaml
@@ -125,7 +133,7 @@ For this tutorial, you will need to set up monitoring for the carts service eith
 
 ## View carts service
 
-1. Get the URL for your carts service with the following commands in the respective namespaces:
+1. Get the URL for your carts service with the following commands in the respective stages:
 
     ```console
     echo http://carts.sockshop-dev.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')
@@ -175,7 +183,7 @@ The [send event new-artifact](../../reference/cli/#keptn-send-event-new-artifact
 
 After triggering the deployment of the carts service in version v0.10.2, the following status is expected:
 
-* **Dev stage:** The new version is deployed in the dev namespace and the functional tests passed.
+* **Dev stage:** The new version is deployed in the dev stage and the functional tests passed.
   * To verify, open a browser and navigate to: `http://carts.sockshop-dev.YOUR.DOMAIN`
 
 * **Staging stage:** In this stage, version v0.10.2 will be deployed and the performance test starts to run for about 10 minutes. After the test is completed, Keptn triggers the test evaluation and identifies the slowdown. Consequently, a roll-back to version v0.10.1 in this stage is conducted and the promotion to production is not triggered.
@@ -186,10 +194,10 @@ After triggering the deployment of the carts service in version v0.10.2, the fol
       caption="Quality gate in staging"
       width="100%">}}
 
-* **Production stage:** The slow version is **not promoted** to the production namespace because of the active quality gate in place. Thus, still version v0.10.1 is expected to be in production.
+* **Production stage:** The slow version is **not promoted** to the production stage because of the active quality gate in place. Thus, still version v0.10.1 is expected to be in production.
   * To verify, navigate to: `http://carts.sockshop-production.YOUR.DOMAIN`
 
-## Deploy the regular carts version
+## Deploy a regular carts version
 
 1. Use the Keptn CLI to send a new version of the *carts* artifact, which does **not** contain any slowdown:
    ```console

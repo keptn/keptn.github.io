@@ -159,6 +159,12 @@ To simulate user traffic, we are going to execute the following script that will
 
 6. Keptn will receive the problem notification/alert and look for a remediation action that matches this problem. Since we have added the `remediation.yaml` before, Keptn will find a remediation action and will trigger the corresponding action that will disable the feature flag.
 
+7. Finally, take a look into the Keptn's Bridge to see that an open problem has been resolved:
+    
+    {{< popup_image
+    link="./assets/bridge_remediation.png"
+    caption="Problem event in Keptn's Bridge">}}
+
 ## Summary
 
 In this tutorial, you have seen how Keptn can be configured to automatically toggle feature flags in your Unleash server in response to a problem/alert sent by a monitoring solution. 
