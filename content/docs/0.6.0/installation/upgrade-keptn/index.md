@@ -29,11 +29,11 @@ Several changes to Helm charts have been made. If you want to stay compatible, p
   replicas: {{ .Values.replicaCount }}
   ```
 
-  See example: https://github.com/keptn/examples/blob/release-0.6.1/onboarding-carts/carts/templates/deployment.yaml#L7
+  See example: https://github.com/keptn/examples/blob/release-0.6.0/onboarding-carts/carts/templates/deployment.yaml#L7
 
 * Then, set a new value in `values.yaml` for each service: `replicaCount`. 
 
-  See example: https://github.com/keptn/examples/blob/release-0.6.1/onboarding-carts/carts/values.yaml
+  See example: https://github.com/keptn/examples/blob/release-0.6.0/onboarding-carts/carts/values.yaml
 
 * Dynatrace integration: We have removed `DT_TAGS` and introduced `DT_CUSTOM_PROP`:
 
@@ -42,7 +42,7 @@ Several changes to Helm charts have been made. If you want to stay compatible, p
     value: "keptn_project={{ .Values.keptn.project }} keptn_service={{ .Values.keptn.service }} keptn_stage={{ .Values.keptn.stage }} keptn_deployment={{ .Values.keptn.deployment }}"
   ```
   
-  See example: https://github.com/keptn/examples/blob/release-0.6.1/onboarding-carts/carts/templates/deployment.yaml#L29-L30
+  See example: https://github.com/keptn/examples/blob/release-0.6.0/onboarding-carts/carts/templates/deployment.yaml#L29-L30
 
 ## New Lighthouse / Pitometer was removed
 
