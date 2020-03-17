@@ -37,10 +37,20 @@ When selecting an event, the Keptn's Bridge displays all other events that are i
   link="./assets/bridge_details.png"
   caption="Keptn's Bridge event stream">}}
 
-<!--
+
 ## Early Access Version of Keptn's Bridge
 
-There is an early access version of Keptn's Bridge available (compatible with Keptn 0.6.0):
+Right now there is no early access version of Keptn's Bridge available. You can upgrade to the latest version (0.6.1) by executing the following commands:
+
+```console
+kubectl -n keptn set image deployment/bridge bridge=keptn/bridge:0.6.1 --record
+kubectl -n keptn set image deployment/configuration-service bridge=keptn/configuration-service:0.6.1 --record
+kubectl -n keptn-datastore set image deployment/mongodb-datastore mongodb-datastore=keptn/mongodb-datastore:0.6.1 --record
+```
+
+
+<!--
+There is an early access version of Keptn's Bridge available (compatible with Keptn 0.6.1):
 
   {{< popup_image
   link="./assets/bridge_eap.png"
@@ -60,13 +70,13 @@ If you want to access the new Keptn's Bridge you have to use `port-forward` agai
 kubectl port-forward svc/bridge -n keptn 9000:8080
 ```
 
-If you want to restore the old version of bridge, configuration-service and mongodb-datastore (as delivered with Keptn 0.6.0), you can use the following commands:
+If you want to restore the old version of bridge, configuration-service and mongodb-datastore (as delivered with Keptn 0.6.1), you can use the following commands:
 
 ```console
-kubectl -n keptn set image deployment/bridge bridge=keptn/bridge:0.6.0 --record
-kubectl -n keptn set image deployment/configuration-service bridge=keptn/configuration-service:0.6.0 --record
-kubectl -n keptn-datastore set image deployment/mongodb-datastore mongodb-datastore=keptn/mongodb-datastore:0.6.0 --record
+kubectl -n keptn set image deployment/bridge bridge=keptn/bridge:0.6.1 --record
+kubectl -n keptn set image deployment/configuration-service bridge=keptn/configuration-service:0.6.1 --record
+kubectl -n keptn-datastore set image deployment/mongodb-datastore mongodb-datastore=keptn/mongodb-datastore:0.6.1 --record
 ```
-
-If you have any questions or feedback regarding the EAP of Keptn's Bridge, please contact us through our [Keptn Community Channels](https://github.com/keptn/community)!
 -->
+
+If you have any questions or feedback regarding Keptn's Bridge, please contact us through our [Keptn Community Channels](https://github.com/keptn/community)!
