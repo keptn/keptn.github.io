@@ -18,8 +18,8 @@ weight: 1
 
 ### 2. Install Keptn
 
-The following instructions will install the **latest stable Keptn CLI (0.6.0)** in a quick way. Please also look 
-at our [detailed installation guide for Keptn 0.6.0](/docs/0.6.0/installation/setup-keptn/) if you need more information.
+The following instructions will install the **latest stable Keptn CLI (0.6.1)** in a quick way. Please also look 
+at our [detailed installation guide for Keptn 0.6.1](/docs/0.6.0/installation/setup-keptn/) if you need more information.
 
 #### 2.1 Install the Keptn CLI
 The Keptn CLI is the one-stop-shop for all operations related to Keptn.
@@ -34,10 +34,12 @@ This will download the *latest stable Keptn version* from [GitHub](https://githu
 curl -sL https://get.keptn.sh | sudo -E bash
 ```
 
+Verify that the installation has worked and that the version is correct by running `keptn version`
+
 ##### 2.1.2 Manual install of the Keptn CLI
 1. Download a release for your platform from the [release page](https://github.com/keptn/keptn/releases)
-2. Unpack it
-3. Run `keptn version`
+2. Unpack the binary and move it to a directory of your choice (e.g., `/usr/local/bin/`)
+3. Verify that the installation has worked and that the version is correct by running `keptn version`
 
 #### 3. Run the Keptn installer
 Depending on the platform, Keptn install will prompt you different information needed to perform the installation.
