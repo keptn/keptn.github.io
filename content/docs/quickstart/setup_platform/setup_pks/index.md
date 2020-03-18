@@ -1,7 +1,7 @@
 ---
 title: Setup PKS
-description: How to setup a PKS cluster to be used for keptn.
-weight: 23
+description: How to setup a PKS cluster to be used for Keptn.
+weight: 26
 keywords: setup
 ---
 

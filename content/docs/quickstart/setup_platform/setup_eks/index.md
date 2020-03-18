@@ -1,7 +1,7 @@
 ---
 title: Setup EKS
 description: How to setup an EKS cluster to be used for Keptn.
-weight: 21
+weight: 22
 keywords: setup
 ---
 
