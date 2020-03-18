@@ -13,6 +13,7 @@ weight: 1
 * [Preparing Azure Kubernetes Engine (AKS)](/docs/quickstart/setup_platform/setup_aks)
 * [Preparing Amazon Elastic Kubernetes Service (EKS)](/docs/quickstart/setup_platform/setup_eks)
 * [Preparing Google Kubernetes Engine (GKE)](/docs/quickstart/setup_platform/setup_gke)
+* [Preparing Minikube](/docs/quickstart/setup_platform/setup_minikube)
 * [Preparing OpenShift](/docs/quickstart/setup_platform/setup_openshift)
 * [Preparing Pivotal Container Service (PKS)](/docs/quickstart/setup_platform/setup_pks)
 
@@ -45,6 +46,7 @@ Depending on the platform, Keptn install will prompt you different information n
 ```console
 keptn install --platform=[aks|eks|gke|openshift|pks|kubernetes]
 ```
+**Note:** For a Minikube setup, use option `--platform=kubernetes`.
 
 After a successful installation, you can verify that Keptn is working by executing
 
