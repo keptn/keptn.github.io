@@ -5,7 +5,7 @@ weight: 10
 keywords: [self-healing-prometheus]
 aliases:
 ---
-Demonstrates how to use the self-healing mechanisms of Keptn to self-heal a demo service, which runs into issues by providing automated upscaling.
+Demonstrates how to use the self-healing mechanisms of Keptn to solve a problem in a production stage by providing automated upscaling.
 
 ## About this tutorial
 
@@ -52,6 +52,10 @@ To add these files to Keptn and to automatically configure Prometheus, execute t
   ```yaml
   remediations:
   - name: response_time_p90
+    actions:
+    - action: scaling
+      value: +1
+  - name: Response time degradation
     actions:
     - action: scaling
       value: +1
@@ -156,7 +160,7 @@ In this tutorial, the number of pods will be increased to remediate the issue of
     
     {{< popup_image
     link="./assets/bridge_remediation.png"
-    caption="Keptn's Bridge">}}
+    caption="Problem event in Keptn's Bridge">}}
     
 1. Furthermore, you can use Prometheus to double-check the response time:
 

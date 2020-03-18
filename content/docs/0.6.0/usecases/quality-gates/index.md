@@ -18,7 +18,7 @@ Let's say you want to use your existing tools to deploy and test your applicatio
 * *System throughput*: The number of requests per second that have been processed.
 * *Error rate*: The fraction of all received requests that produced an error.
 
-For more information about SLO and SLI, please take a look at [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/spec/blob/0.1.2/sre.md).
+For more information about SLO and SLI, please take a look at [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/spec/blob/0.1.3/sre.md).
 
 ## Prerequisites
 
@@ -101,30 +101,32 @@ Furthermore, the service has to be monitored by Prometheus. Therefore, a *scrape
 <details><summary>**Option 2: Instructions for Dynatrace**</summary>
 <p>
 
-To gather the monitoring data of your service, it must have the tags **keptn_project**, **keptn_stage**, and **keptn_service** attached: 
+In order for Keptn to extract monitoring data of your specific service it is recommended that you tag your services in Dynatrace in a way that the tags uniquely identify your services. The Keptn best practice is to put a tag for project, stage and service. The following shows an example of a service in Dynatrace that is tagged with  **keptn_project**, **keptn_stage**, and **keptn_service**: 
   {{< popup_image
     link="./assets/monitored_service.png"
     caption="Tags on catalogue service"
     width="50%">}}
 
-Example how to add those tags:
+Please consult the Dynatrace documentation on [Tags and Metadata](https://www.dynatrace.com/support/help/how-to-use-dynatrace/tags-and-metadata/) to learn more about manual or automated tagging.
+For this tutorial you can pass the metadata via an environment variable and then let Dynatrace convert that metadata into tags through Automated Tagging rules:
 
-* Set the environment variable [DT_CUSTOM_PROP](../../reference/monitoring/dynatrace/#set-dt-custom-prop-before-onboarding-a-service) with a key-value pair for the tags `keptn_stage`, `keptn_project`, and `keptn_service` in your deployment manifest and deploy your service: 
+1. Set the environment variable [DT_CUSTOM_PROP](../../reference/monitoring/dynatrace/#set-dt-custom-prop-before-onboarding-a-service) with a key-value pair for the tags `keptn_stage`, `keptn_project`, and `keptn_service` in your deployment manifest and deploy your service:
+        
+        env:
+        - name: DT_CUSTOM_PROP
+          value: "keptn_stage=hardening keptn_project=musicshop keptn_service=catalogue"
 
+1. In Dynatrace, create 3 automated tagging rules named **keptn_project**, **keptn_stage**, and **keptn_service** that extract the respective metadata from the passed environment variable 
+
+**Note 1:** If you decide to use different tag names or a different set of tags, make sure to adapt the Dynatrace `sli.yaml` file, which you will configure later in this tutorial to reflect the tags you put on your service.
+
+**Note 2:** An alternative option is to use the environment variable [DT_TAGS](https://www.dynatrace.com/support/help/how-to-use-dynatrace/tags-and-metadata/setup/define-tags-based-on-environment-variables/), which will automatically convert the passed values into tags:
 ```
 env:
-- name: DT_CUSTOM_PROP
+- name: DT_TAGS
   value: "keptn_stage=hardening keptn_project=musicshop keptn_service=catalogue"
 ``` 
 
-* Add tagging rules in Dynatrace to detect these values and to create the tags for your monitored service. Therefore, you can use the scripts [applyAutoTaggingRules.sh](https://github.com/keptn-contrib/dynatrace-service/blob/release-0.5.0/deploy/scripts/applyAutoTaggingRules.sh) and
-[utils.sh](https://github.com/keptn-contrib/dynatrace-service/blob/release-0.5.0/deploy/scripts/utils.sh). Please run the following command with
-your Tenant ID and API Token as parameters: 
-
-```console
-.\applyAutoTaggingRules.sh $DT_TENANT $DT_API_TOKEN
-```
-  
 </p>
 </details>
 
@@ -135,8 +137,6 @@ If you want to install Keptn just to explore the capabilities of quality gates, 
 ```console
 keptn install --platform=[aks|eks|gke|kubernetes] --use-case=quality-gates
 ```
-
-**Note:** Currently, Keptn does not supported to install the use-case `quality-gates` on OpenShift or PKS.
 
 ## Configure Keptn and activate the quality gate
 
@@ -171,12 +171,18 @@ For this tutorial, you need to deploy the corresponding SLI provider for your mo
 
 1. Complete steps from section [Setup Prometheus SLI provider](../../reference/monitoring/prometheus/#setup-prometheus-sli-provider).
 
-1. To configure Keptn to use the Dynatrace SLI provider for your project (e.g. **musicshop**), first adapt the ConfigMap in the `lighthouse-source-prometheus.yaml` file at the `metatdata.name` property to reference your project. Afterwards, apply the ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
+1. To configure Keptn to use the Prometheus SLI provider for your project (e.g. **musicshop**), execute the following command:
 
     ```console
-    kubectl apply -f lighthouse-source-prometheus.yaml
+    keptn configure monitoring prometheus --project=musicshop --service=catalogue --suppress-websocket
     ```
 
+    NOTE: if you are using Keptn 0.6.0 instead of 0.6.1, you will have to apply the following ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
+    
+    ```
+    kubectl apply -f lighthouse-source-prometheus.yaml
+    ```
+    
     ```yaml
     apiVersion: v1
     data:
@@ -202,12 +208,17 @@ For this tutorial, you need to deploy the corresponding SLI provider for your mo
 
 1. Complete steps from section [Setup Dynatrace SLI provider](../../reference/monitoring/dynatrace/#setup-dynatrace-sli-provider).
 
-1. To configure Keptn to use the Dynatrace SLI provider for your project (e.g. **musicshop**), first adapt the ConfigMap in the `lighthouse-source-dynatrace.yaml` file at the `metatdata.name` property to reference your project. Afterwards, apply the ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
+1. To configure Keptn to use the Dynatrace SLI provider for your project (e.g. **musicshop**), execute the following command:
 
     ```console
+    keptn configure monitoring dynatrace --project=musicshop --suppress-websocket
+    ```
+    
+    NOTE: if you are using Keptn 0.6.0 instead of 0.6.1, you will have to apply the following ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
+    
+    ```
     kubectl apply -f lighthouse-source-dynatrace.yaml
     ```
-    <details><summary>Contents of the file for the interested reader</summary>
     
     ```yaml
     apiVersion: v1
@@ -218,7 +229,6 @@ For this tutorial, you need to deploy the corresponding SLI provider for your mo
       name: lighthouse-config-PROJECTNAME
       namespace: keptn
     ```
-  </details>
 
 1. Configure custom SLIs for the Dynatrace SLI provider as specified in `sli-config-dynatrace-no-deployment-tag.yaml`:
 
@@ -256,7 +266,7 @@ ID of Keptn context: 6cd3e469-cbd3-4f73-xxxx-8b2fb341bb11
 keptn get event evaluation-done --keptn-context=6cd3e469-cbd3-4f73-xxxx-8b2fb341bb11
 ```
 
-The result comes in the form of the `evaluation-done` event, which is specified [here](https://github.com/keptn/spec/blob/0.1.2/cloudevents.md#evaluation-done).
+The result comes in the form of the `evaluation-done` event, which is specified [here](https://github.com/keptn/spec/blob/0.1.3/cloudevents.md#evaluation-done).
 
 ### Keptn API
 
@@ -301,4 +311,4 @@ KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.
 curl -X GET "http://api.keptn.12.34.56.78.xip.io/v1/event?keptnContext=KEPTN_CONTEXT_ID&type=sh.keptn.events.evaluation-done" -H "accept: application/json" -H "x-token: YOUR_KEPTN_TOKEN"
 ```
 
-The result comes in the form of the `evaluation-done` event, which is specified [here](https://github.com/keptn/spec/blob/0.1.2/cloudevents.md#evaluation-done).
+The result comes in the form of the `evaluation-done` event, which is specified [here](https://github.com/keptn/spec/blob/0.1.3/cloudevents.md#evaluation-done).

@@ -2,7 +2,6 @@
 title: Keptn on Microk8s (experimental)
 description: Explains how to install the quality-gates standalone version of Keptn on Microk8s. 
 weight: 80
-icon: setup
 ---
 
 ## Installation Guide
@@ -34,7 +33,7 @@ After you have installed multipass, you can install Keptn using the following co
   kubectl apply -f https://raw.githubusercontent.com/google/metallb/v0.8.3/manifests/metallb.yaml
   multipass exec microk8s-vm -- sudo ifconfig
 
-  keptn install --platform=kubernetes --keptn-installer-image=keptn/installer:0.6.0 --use-case=quality-gates --gateway=NodePort
+  keptn install --platform=kubernetes --keptn-installer-image=keptn/installer:0.6.1 --use-case=quality-gates --gateway=NodePort
   ```
 
 Afterwards, you are ready to use Keptn for the use case of [Keptn Quality Gates](../../usecases/quality-gates/).

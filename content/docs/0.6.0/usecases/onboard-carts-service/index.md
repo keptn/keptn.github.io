@@ -46,7 +46,7 @@ To illustrate the scenario this tutorial addresses, Keptn relies on following in
 * Clone example files used for this tutorial:
 
     ```console
-    git clone --branch 0.6.0 https://github.com/keptn/examples.git --single-branch
+    git clone --branch 0.6.1 https://github.com/keptn/examples.git --single-branch
     ```
 
     ```console
@@ -57,11 +57,11 @@ To illustrate the scenario this tutorial addresses, Keptn relies on following in
 
 If you have not yet authenticated the Keptn CLI, please follow these instructions. If you have already done this [during the installation](../../installation/setup-keptn/#install-keptn), please skip this part and continue with [creating a project](#create-project-sockshop).
 
-The Keptn CLI needs to be authenticated against the Keptn server by executing the [auth](../../reference/cli/#keptn-auth) command:
+* The Keptn CLI needs to be authenticated against the Keptn server by executing the [auth](../../reference/cli/#keptn-auth) command:
 
-```console
-keptn auth --endpoint=https://api.keptn.$(kubectl get cm -n keptn keptn-domain -ojsonpath={.data.app_domain}) --api-token=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
-```
+    ```console
+    keptn auth --endpoint=https://api.keptn.$(kubectl get cm -n keptn keptn-domain -ojsonpath={.data.app_domain}) --api-token=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
+    ```
 
 ## Create project sockshop
 
@@ -92,7 +92,7 @@ This shipyard contains three stages: dev, staging, and production. This results 
 </p>
 </details>
 
-**Note:**  To learn more about a *shipyard* file, please take a look at the [Shipyard specification](https://github.com/keptn/spec/blob/0.1.2/shipyard.md).
+**Note:**  To learn more about a *shipyard* file, please take a look at the [Shipyard specification](https://github.com/keptn/spec/blob/0.1.3/shipyard.md).
 
 Create a new project for your services using the [keptn create project](../../reference/cli/#keptn-create-project) command. In this example, the project is called *sockshop*. Before executing the following command, make sure you are in the `examples/onboarding-carts` folder.
 
@@ -135,9 +135,7 @@ keptn onboard service carts --project=sockshop --chart=./carts
     keptn add-resource --project=sockshop --stage=staging --service=carts --resource=jmeter/load.jmx --resourceUri=jmeter/load.jmx
     ```
 
-  **Note 1:**  To validate the availability of the service that will be tested, the `basiccheck.jmx` is always executed before the `load.jmx` gets executed. Therefore, if performance tests should be executed, a `basiccheck.jmx` also has to be available.
-
-  **Note 2:** You can adapt the tests in `basiccheck.jmx` as well as `load.jmx` for your service. However you must not rename the files, as there is a hardcoded dependency on these file names in the current implementation of Keptn's jmeter-service. 
+    **Note:** You can adapt the tests in `basiccheck.jmx` as well as `load.jmx` for your service. However, you must not rename the files because there is a hardcoded dependency on these file names in the current implementation of Keptn's jmeter-service. 
 
 Since the carts service requires a mongodb database, a second service needs to be onboarded.
 
@@ -158,9 +156,9 @@ kubectl get namespaces
 ```console
 NAME                  STATUS   AGE
 ...
-sockshop-dev          Active   2m
-sockshop-production   Active   30s
-sockshop-staging      Active   1m
+sockshop-dev          Active   2m16s
+sockshop-production   Active   2m16s
+sockshop-staging      Active   2m16s
 ```
 
 ## Send new artifacts and watch Keptn doing the deployment 
@@ -170,7 +168,7 @@ After onboarding the services, a built artifact of each service can be deployed.
 * Deploy the carts-db service by executing the [keptn send event new-artifact](../../reference/cli/#keptn-send-event-new-artifact) command:
 
 ```console
-keptn send event new-artifact --project=sockshop --service=carts-db --image=mongo --tag=4.2.2
+keptn send event new-artifact --project=sockshop --service=carts-db --image=docker.io/mongo --tag=4.2.2
 ```
 
 * Deploy the carts service by specifying the built artifact, which is stored on DockerHub and tagged with version 0.10.1:
