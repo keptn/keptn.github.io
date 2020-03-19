@@ -1,7 +1,7 @@
 ---
 title: Troubleshooting
 description: Find tips and tricks to deal with troubles that may occur when using Keptn. 
-weight: 80
+weight: 100
 keywords: [troubleshooting]
 ---
 

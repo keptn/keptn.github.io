@@ -246,7 +246,11 @@ To delete a project, use the command `delete project` and specify the project na
 keptn delete project PROJECTNAME
 ```
 
-**Note:** If a Git upstream is configured for this project, the referenced repository or project will not be deleted. Besides, deployed services are also not deleted by this command.
+**Known Limitations**:
+
+* If a Git upstream is configured for this project, the referenced repository (e.g., on GitHub) will not be deleted. 
+* Services that have been deployed to the Kubernetes cluster are not deleted.
+* Helm-releases created for deployments are not deleted - see [Helm - Clean-up after deleting a project](../helm/#clean-up-after-deleting-a-project)
 
 ### keptn create service
 
