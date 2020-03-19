@@ -5,22 +5,23 @@ weight: 80
 keywords: upgrade
 ---
 
-Please refer to the [install section](../setup-keptn) to install the latest Keptn CLI for version 0.6.1.
-
 ## Upgrade from 0.6.0 to 0.6.1
 
-To upgrade from 0.6.0 to 0.6.1, you can deploy a Kubernetes Job that will take care of updating all components to the 0.6.1 release. Please [verify that you are connected to the correct Kubernetes cluster](../../reference/troubleshooting/#verify-kubernetes-context-with-keptn-installation)
-before performing this operation.
+* To download and install the Keptn CLI for version 0.6.1, please refer to the [Install Keptn CLI section](../setup-keptn/#install-keptn-cli).
+
+* To upgrade your Keptn installation from 0.6.0 to 0.6.1, you can deploy a *Kubernetes Job* that will take care of updating all components to the 0.6.1 release. Please [verify that you are connected to the correct Kubernetes cluster](../../reference/troubleshooting/#verify-kubernetes-context-with-keptn-installation)
+before deploying the upgrading job with the next command:
 
 ```console
 kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.6.1/upgrade-060-061/upgrade-job.yaml
 ```
 
-To check the status of the update job, please execute:
+* To check the status of the update job, please execute:
 
 ```console
 kubectl get job
-
+```
+```
 NAME                COMPLETIONS   DURATION   AGE
 upgrader            1/1           17s        20h
 ```
@@ -35,7 +36,9 @@ To verify that the upgrade process worked, please check the images and their tag
 
 ```console
 kubectl -n keptn get deployments -owide
+```
 
+```
 NAME                                                      READY   UP-TO-DATE   AVAILABLE   AGE     CONTAINERS               IMAGES                                      SELECTOR
 api                                                       1/1     1            1           4h25m   api                      keptn/api:0.6.0                             run=api
 bridge                                                    1/1     1            1           4h25m   bridge                   keptn/bridge2:20200308.0859                 run=bridge
@@ -68,7 +71,9 @@ wait-service-deployment-distributor                       1/1     1            1
 
 ```console
 kubectl -n keptn-datastore get deployments -owide
+```
 
+```console
 NAME                            READY   UP-TO-DATE   AVAILABLE   AGE     CONTAINERS          IMAGES                                  SELECTOR
 mongodb                         1/1     1            1           4h25m   mongodb             centos/mongodb-36-centos7:1             name=mongodb
 mongodb-datastore               1/1     1            1           4h25m   mongodb-datastore   keptn/mongodb-datastore:20200308.0859   run=mongodb-datastore
@@ -79,7 +84,9 @@ mongodb-datastore-distributor   1/1     1            1           4h25m   distrib
 
 ```console
 kubectl -n keptn get deployments -owide
+```
 
+```console
 NAME                                                      READY   UP-TO-DATE   AVAILABLE   AGE     CONTAINERS               IMAGES                                  SELECTOR
 api                                                       1/1     1            1           4h39m   api                      keptn/api:0.6.1                         run=api
 bridge                                                    1/1     1            1           4h39m   bridge                   keptn/bridge2:0.6.1                     run=bridge
@@ -111,7 +118,9 @@ wait-service-deployment-distributor                       1/1     1            1
 
 ```console
 kubectl -n keptn-datastore get deployments -owide
+```
 
+```console
 NAME                            READY   UP-TO-DATE   AVAILABLE   AGE     CONTAINERS          IMAGES                          SELECTOR
 mongodb                         1/1     1            1           2m41s   mongodb             centos/mongodb-36-centos7:1     name=mongodb
 mongodb-datastore               1/1     1            1           4h40m   mongodb-datastore   keptn/mongodb-datastore:0.6.1   run=mongodb-datastore
@@ -447,15 +456,15 @@ The newly created file needs to be added to as follows:
 
 * Prometheus
 
-    ```console
-    keptn add-resource --project=sockshop --stage=staging --service=carts --resource=sli.yaml --resourceUri=prometheus/sli.yaml
-    ```
+```console
+keptn add-resource --project=sockshop --stage=staging --service=carts --resource=sli.yaml --resourceUri=prometheus/sli.yaml
+```
 
 * Dynatrace
 
-    ```console
-    keptn add-resource --project=sockshop --stage=staging --service=carts --resource=sli.yaml --resourceUri=dynatrace/sli.yaml
-    ```
+```console
+keptn add-resource --project=sockshop --stage=staging --service=carts --resource=sli.yaml --resourceUri=dynatrace/sli.yaml
+```
 
 ### Ingress Gateway
 
@@ -528,7 +537,7 @@ Unfortunatley, there are multiple breaking changes from Keptn 0.5.x to Keptn 0.6
 
 Instead of an upgrade script, we will highlight the most important changes that you need to do to get your services onboarded with a fresh Keptn 0.6.0 installation.
 
-**Note**: Advise for migrating from [Keptn 0.6.0.beta(2) to 0.6.0](#upgrade-from-0-6-0beta-2-to-0-6-0) is listed below.
+**Note:** Advise for migrating from [Keptn 0.6.0.beta(2) to 0.6.0](#upgrade-from-0-6-0beta-2-to-0-6-0) is listed above.
 
 ### Helm Charts
 
