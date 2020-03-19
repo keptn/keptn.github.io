@@ -8,6 +8,9 @@ keywords: [troubleshooting]
 In this section, instructions have been summarized that help to troubleshoot known issues that may occur when using Keptn.
 
 ## Verifying a Keptn installation
+
+Especially for troubleshooting purposes it is necessary to verify that all parts of the Keptn installation are running as intended (e.g., no crashed pods, all distributors running).
+
 <details><summary>Expand instructions</summary>
 <p>
 
@@ -108,14 +111,42 @@ Please select the **Kubenet network plugin (basic)** when setting up your AKS cl
 
 </p></details>
 
-## Helm upgrade runs into a time-out on EKS
+
+## Troubleshooting the Installer
+
+In some cases the installer is not running correctly or crashes.
+
 <details><summary>Expand instructions</summary>
 <p>
 
 **Investigation:**
 
-The Helm upgrade runs into a time-out.
-This can e.g. happen when you would like to deploy a new version of your service using
+The Keptn installation is aborting with an error. Investigation needs to be conducted using the following commands:
+
+* Show all deployed pods in the default namespace (should show the status of the installer pod): ``kubectl get pods``
+* Show status of the installer job: ``kubectl get jobs``
+* Get logs of the installer job: ``kubectl logs jobs/installer``
+* If the installer has partially finished, [verify your Keptn installation](#verifying-a-keptn-installation)
+
+**Possible solutions:**
+
+* If the installer pod shows an ImagePullBackOff error, verify that your cluster can connect to the Internet to pull images (e.g., from docker.io).
+* If the installer pod has started, but crashes, please create a [new bug report](https://github.com/keptn/keptn/issues/new?assignees=&labels=bug&template=bug_report.md&title=) with the output of above commands.
+
+
+</p></details>
+
+
+## Error: UPGRADE FAILED: timed out waiting for the condition
+
+This error often appears when executing `keptn send event new-artifact` in case of insufficient CPU and/or memory on the Kubernetes cluster.
+
+<details><summary>Expand instructions</summary>
+<p>
+
+**Investigation:**
+
+The Helm upgrade runs into a time-out when deploying a new artifact of your service using
 
 ```console
 keptn send event new-artifact
@@ -123,14 +154,33 @@ keptn send event new-artifact
 
 **Reason:** 
 
-We have experinced this issue using a _single_ worker node on EKS.
+In this case Helm creates a new Kubernetes Deployment with the new artifact, but Kubernetes fails to start the pod. 
+Unfortunately, there is no way to catch this error by Helm (right now). A good way to detect the error is to look at the Kubernetes events captured by the cluster:
+
+```console
+kubectl -n sockshop-dev get events  --sort-by='.metadata.creationTimestamp'
+```
+
+where `sockshop-dev` is the project and stage that you are trying to deploy to.
+
+*Note*: This error can also occur at a later stage (e.g., when using blue-green deployments).
+
+**Solution:** 
+
+Increase the number of vCPUs and/or memory, or add another Kubernetes worker node.
+
+</p></details>
+
+
+## Helm upgrade runs into a time-out on EKS
+
+Same as the error above, but this issue occurs sometimes using a _single_ worker node on EKS.
 
 **Solution:** 
 
 Increase the number of worker nodes. For example, you can therefore use the `eksctl` CLI:
 https://eksctl.io/usage/managing-nodegroups/
 
-</p></details>
 
 ## Verify Kubernetes Context with Keptn Installation
 
