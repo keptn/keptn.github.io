@@ -127,35 +127,7 @@ To delete a Keptn project, the [delete project](../../reference/cli#keptn-delete
   ```
 
 **Note:** If a Git upstream is configured for this project, the referenced repository or project will not be deleted. Besides, deployed services are also not deleted by this command. 
-To clean-up all resources created by Keptn: 
-
-- Delete the remote repository for your project
-
-- Delete the Helm releases that have been deployed by Keptn, e.g.:
-
-  ```console
-  helm ls
-  ```
-  ```console
-  helm delete --purge sockshop-dev
-  ```
-  ```console
-  helm delete --purge sockshop-production
-  ```
-  ```console
-  helm delete --purge sockshop-staging
-  ```
-
-- Delete all Kubernetes namespaces that have been created by Keptn in your cluster, e.g.:
-  - sockshop-dev
-  - sockshop-staging
-  - sockshop-production
-
-    by executing:
-
-  ```console
-  kubectl delete namespace sockshop-dev sockshop-staging sockshop-production
-  ```
+To clean-up all resources created by Keptn, please follow the information displayed here: [Helm - Clean-up after deleting a project](../../reference/helm/#clean-up-after-deleting-a-project)
 
 ## Update a project
 
