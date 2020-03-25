@@ -7,7 +7,7 @@ weight: 1001
 
 ## Integrations
 
-Please find here a list of all *Keptn-services* and *SLI-provider* that are available for supported Keptn releases. Feel free to install these integrations on a Keptn and to use them according to their documentation in the corresponding repository. The maintainers of those services are referenced in the CODEOWNERS file of each repo. Most of the repositories you can find in the [github.com/keptn-contrib](https://github.com/keptn-contrib) organization or a referenced below.  
+Please find here a list of all *Keptn-services* and *SLI-providers* that are available for the last Keptn release. Feel free to install these integrations on a Keptn and to use them according to their documentation in the corresponding repository. The maintainers of those services are referenced in the CODEOWNERS file of each repo. Most of the repositories you can find in the [github.com/keptn-contrib](https://github.com/keptn-contrib) organization and are referenced below.  
 
 - If you identify a bug you would like to report, please create an issue in the repository of the Keptn-service. 
 
@@ -25,11 +25,11 @@ Please find here a list of all *Keptn-services* and *SLI-provider* that are avai
 | SLI-provider | latest Release | supported Keptn | Repository  |
 | -------------------------- | --- | --- | --- |
 | **dynatrace-sli-service**  | [0.3.1](https://github.com/keptn-contrib/dynatrace-sli-service/releases/tag/0.3.1) | 0.6.1 | https://github.com/keptn-contrib/dynatrace-sli-service |
-| **prometheus-sli-service** |  [0.2.1](https://github.com/keptn-contrib/prometheus-sli-service/releases/tag/0.2.1) | 0.6.1 | https://github.com/keptn-contrib/prometheus-sli-service |
+| **prometheus-sli-service** | [0.2.1](https://github.com/keptn-contrib/prometheus-sli-service/releases/tag/0.2.1) | 0.6.1 | https://github.com/keptn-contrib/prometheus-sli-service |
 
 ## Sandbox
 
-A *Keptn-service* is classified as sandbox if it is under development and without any official version for supported Keptn releases. Please contact the maintainer of the repository before installing a sandbox service on your Keptn. Sandbox projects you can find in the [github.com/keptn-contrib](https://github.com/keptn-contrib) or [github.com/keptn-sandbox](https://github.com/keptn-sandbox) organizations. 
+A *Keptn-service* is classified as sandbox if it is under development and without any official version for a supported Keptn release. Please contact the maintainer of the repository before installing a sandbox service on your Keptn. Sandbox projects you can find in the [github.com/keptn-contrib](https://github.com/keptn-contrib) or [github.com/keptn-sandbox](https://github.com/keptn-sandbox) organizations. 
 
 | Keptn-service | in development for Keptn | Repository |
 | --- | --- | --- | 
