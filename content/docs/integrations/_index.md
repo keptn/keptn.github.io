@@ -25,6 +25,7 @@ Please find here a list of all *Keptn-services* and *SLI-providers* that are ava
 | SLI-provider | latest Release | supported Keptn | Repository  |
 | -------------------------- | --- | --- | --- |
 | **dynatrace-sli-service**  | [0.3.1](https://github.com/keptn-contrib/dynatrace-sli-service/releases/tag/0.3.1) | 0.6.1 | https://github.com/keptn-contrib/dynatrace-sli-service |
+| **neoload-sli-provider**  | [0.6.0](https://github.com/keptn-contrib/neoload-sli-provider/tree/0.6.0) | 0.6.0 | https://github.com/keptn-contrib/neoload-sli-provider |
 | **prometheus-sli-service** | [0.2.1](https://github.com/keptn-contrib/prometheus-sli-service/releases/tag/0.2.1) | 0.6.1 | https://github.com/keptn-contrib/prometheus-sli-service |
 
 ## Sandbox
