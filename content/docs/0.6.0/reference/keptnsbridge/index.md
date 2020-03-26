@@ -40,6 +40,7 @@ When selecting an event, the Keptn's Bridge displays all other events that are i
 
 ## Early Access Version of Keptn's Bridge
 
+<!--
 Right now there is no early access version of Keptn's Bridge available. You can upgrade to the latest version (0.6.1) by executing the following commands:
 
 ```console
@@ -47,9 +48,9 @@ kubectl -n keptn set image deployment/bridge bridge=keptn/bridge:0.6.1 --record
 kubectl -n keptn set image deployment/configuration-service bridge=keptn/configuration-service:0.6.1 --record
 kubectl -n keptn-datastore set image deployment/mongodb-datastore mongodb-datastore=keptn/mongodb-datastore:0.6.1 --record
 ```
+-->
 
 
-<!--
 There is an early access version of Keptn's Bridge available (compatible with Keptn 0.6.1):
 
   {{< popup_image
@@ -59,9 +60,7 @@ There is an early access version of Keptn's Bridge available (compatible with Ke
 To install it, you have to update the Docker images of *Keptn's Bridge*, *configuration-service* and the *mongodb-datastore* deployment by executing the following commands:
 
 ```console
-kubectl -n keptn set image deployment/bridge bridge=keptn/bridge2:20200308.0859 --record
-kubectl -n keptn set image deployment/configuration-service configuration-service=keptn/configuration-service:20200308.0859 --record
-kubectl -n keptn-datastore set image deployment/mongodb-datastore mongodb-datastore=keptn/mongodb-datastore:20200308.0859 --record
+kubectl -n keptn set image deployment/bridge bridge=keptn/bridge2:20200326.0744 --record
 ```
 
 If you want to access the new Keptn's Bridge you have to use `port-forward` again:
@@ -74,9 +73,7 @@ If you want to restore the old version of bridge, configuration-service and mong
 
 ```console
 kubectl -n keptn set image deployment/bridge bridge=keptn/bridge:0.6.1 --record
-kubectl -n keptn set image deployment/configuration-service bridge=keptn/configuration-service:0.6.1 --record
-kubectl -n keptn-datastore set image deployment/mongodb-datastore mongodb-datastore=keptn/mongodb-datastore:0.6.1 --record
 ```
--->
+
 
 If you have any questions or feedback regarding Keptn's Bridge, please contact us through our [Keptn Community Channels](https://github.com/keptn/community)!
