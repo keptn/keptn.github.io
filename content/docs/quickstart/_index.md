@@ -1,7 +1,7 @@
 ---
 title: Quick Start
 description: Learn how to get Keptn running in five minutes.
-icon: setup
+icon: concepts
 layout: quickstart
 weight: 1
 ---
