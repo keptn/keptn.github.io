@@ -43,7 +43,7 @@ Keptn allows building scalable automation for delivery and operations. Therefore
 
 **Evaluation:** The *evaluation* represents the quality gate of a stage by checking the SLO. 
 
-#### Quality Gate
+##### Quality Gate
 The quality gate is a concept that allows defining SLOs, which are determined by one or many SLIs. (Source: https://landing.google.com/sre/sre-book/chapters/service-level-objectives/) 
 
 **Service Level Indicator (SLI):** An SLI is a service level indicator, which is a defined quantitative measure of some metric of the service.
