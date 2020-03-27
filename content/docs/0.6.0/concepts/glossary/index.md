@@ -11,7 +11,7 @@ Keptn allows building scalable automation for delivery and operations. Therefore
 
 **Project:** A project is a structural element to maintain multiple services forming an application in stages.
 
-**Project stage:** A project stage (or just *stage*) defines a logical space (e.g., Kubernetes a namespace), which has a dedicated purpose for an application in a continuous delivery process. Typically a project has multipe project stages that are ordered.
+**Project stage:** A project stage (or just *stage*) defines a logical space (e.g., a namespace in Kubernetes), which has a dedicated purpose for an application in a continuous delivery process. Typically a project has multipe project stages that are ordered.
 
 **Service:** A service is the smallest deployable unit and is deployed in all project stages according to the order. Each service in a project follows the same workflow.
 
