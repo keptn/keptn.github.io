@@ -72,7 +72,7 @@ kubectl port-forward svc/bridge -n keptn 9000:8080
 If you want to restore the old version of bridge, configuration-service and mongodb-datastore (as delivered with Keptn 0.6.1), you can use the following commands:
 
 ```console
-kubectl -n keptn set image deployment/bridge bridge=keptn/bridge:0.6.1 --record
+kubectl -n keptn set image deployment/bridge bridge=keptn/bridge2:0.6.1 --record
 ```
 
 

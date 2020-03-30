@@ -35,8 +35,9 @@ A *Keptn-service* is classified as sandbox if it is under development and withou
 | Keptn-service | in development for Keptn | Repository |
 | --- | --- | --- | 
 | **alexa-service** | - | https://github.com/keptn-contrib/alexa-service |
-| **jira-service** | - | https://github.com/keptn-contrib/jira-service |
+| **jira-service** | 0.5.1 | https://github.com/keptn-sandbox/jira-service |
 | **slackbot-service** | 0.6.1 | https://github.com/keptn-contrib/slackbot-service |
 | **xmatters-service** | - | https://github.com/keptn-contrib/keptn-xmatters-service |
-
+| **istio + cert-manager tutorial** | 0.6.1 | https://github.com/keptn-sandbox/istio |
+| **osTicket-service** | 0.6.0 | https://github.com/keptn-sandbox/keptn-osticket-service |
 
