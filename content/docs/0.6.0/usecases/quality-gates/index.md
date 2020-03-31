@@ -293,6 +293,8 @@ KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.
 }
 ```
 
+**Note:** Please take attention that the above CloudEvent contains the property `"teststrategy": "manual"`. This is required to tell Keptn that a test had been manually executed; meaning that a test had been triggered by a tool other than Keptn. 
+
 * Execute a quality gate evaluation by sending a POST request with the Keptn API token and the prepared payload:
 
   ```console
