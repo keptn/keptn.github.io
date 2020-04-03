@@ -12,11 +12,15 @@ Explains to you how to implement your Keptn-service that listens to Keptn events
 
 The goal of this tutorial is to describe how you can add additional functionality to your Keptn installation with a custom [*Keptn-service*](#keptn-service) or [*SLI-provider*](#sli-provider). While a *Keptn-service* enriches a continuous delivery or operational workflow with additional functionality or with an extra tool, a *SLI-provider* is used to query Service Level Indicators (SLI) from an external source like a monitoring or testing solution.  
 
+## Template Repository
+
+We provide a fully functioning template for writing new services: [keptn-service-template-go](https://github.com/keptn-sandbox/keptn-service-template-go).
+
 ## Keptn-service
 
 A *Keptn-service* is intended to react to certain events that occur during a continuous delivery or operational workflow. After getting triggered by an event, a *Keptn-service* processes some functionality and can therefore integrate additional tools by accessing their REST interfaces.
 
-The [Keptn CloudEvents](#cloudevents) a service can subscribe to include:
+A Keptn-service can subscribe to various [Keptn CloudEvents](https://github.com/keptn/spec/blob/0.1.3/cloudevents.md), e.g.:
 
 - sh.keptn.events.configuration-changed
 - sh.keptn.events.deployment-finished
@@ -26,7 +30,9 @@ The [Keptn CloudEvents](#cloudevents) a service can subscribe to include:
 
 ### Implement custom Keptn-service
 
-As a reference for writing your service, please have a look at our implementation of the [jmeter-service](https://github.com/keptn/keptn/blob/0.6.1/jmeter-service), which is an implementation of Keptn-service to execute JMeter tests. 
+If you are interested in writing your own testing service, have a look at the [jmeter-service](https://github.com/keptn/keptn/blob/0.6.1/jmeter-service).
+
+### Example: JMeter Service
 
 **Incoming Keptn CloudEvent:** The *jmeter-service* is a *Go* application that accepts POST requests at its `/` endpoint. To be more specific, the request body needs to follow the [CloudEvent specification](https://github.com/keptn/spec/blob/0.1.3/cloudevents.md) and the HTTP header attribute `Content-Type` has to be set to `application/cloudevents+json`. Of course, you can write your service in any language, as long as it provides the endpoint to receive events.
 
