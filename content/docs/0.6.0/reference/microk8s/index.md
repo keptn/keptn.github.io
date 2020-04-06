@@ -50,8 +50,7 @@ If you are using Ubuntu, you can install Keptn using the following commands:
   sudo microk8s.enable dns
   sudo microk8s.enable dns ingress
   sudo microk8s.enable storage
-  sudo /snap/bin/microk8s.config > kubeconfig
-  export KUBECONFIG=./kubeconfig
+  sudo /snap/bin/microk8s.config > /home/$USER/.kube/config
   kubectl apply -f https://raw.githubusercontent.com/google/metallb/v0.8.3/manifests/metallb.yaml
 
   keptn install --platform=kubernetes --use-case=quality-gates --gateway=NodePort
