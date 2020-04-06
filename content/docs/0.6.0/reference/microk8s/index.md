@@ -1,18 +1,18 @@
 ---
-title: Keptn on Microk8s (experimental)
+title: Keptn on MicroK8s (experimental)
 description: Explains how to install the quality-gates standalone version of Keptn on Microk8s. 
 weight: 80
 ---
 
 ## Installation Guide
 
-If you would like to install the quality-gates standalone version of Keptn on [microk8s](https://microk8s.io/), please follow the instructions below.
+If you would like to install the quality-gates standalone version of Keptn on [MicroK8s](https://microk8s.io/), please follow the instructions below.
 
-**Please note**: Running Keptn on microk8s is currently an experimental feature.
+**Please note**: Running Keptn on MicroK8s is currently an experimental feature.
 
 <details><summary>On macOS via multipass</summary>
 <p>
-If you are using macOS, you will need to run microk8s using [multipass](https://multipass.run/). You can install multipass using either the [multipass installer](https://github.com/canonical/multipass/releases/download/v1.0.0/multipass-1.0.0%2Bmac-Darwin.pkg), or by using brew:
+If you are using macOS, you will need to run MicroK8s using [multipass](https://multipass.run/). You can install multipass using either the [multipass installer](https://github.com/canonical/multipass/releases/download/v1.0.0/multipass-1.0.0%2Bmac-Darwin.pkg), or by using brew:
 
   ```console
   brew cask install multipass

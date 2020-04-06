@@ -1,7 +1,7 @@
 ---
 title: Upgrade Keptn
 description: How to upgrade Keptn.
-weight: 80
+weight: 20
 keywords: upgrade
 ---
 
