@@ -33,7 +33,7 @@ Select one of the following options:
   - [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html) (version >= 1.16.156)
 
 1. Create EKS cluster on AWS
-  - Version >= `1.14` recommended (tested version: `1.14`)
+  - Version >= `1.14` and <= `1.15` recommended (tested version: `1.14`)
   - One `m5.2xlarge` node
   - Sample script using [eksctl](https://eksctl.io/introduction/installation/) to create such a cluster
 
@@ -66,7 +66,7 @@ If you [sign up for a Google Cloud account](https://console.cloud.google.com/get
   - [python 2.7](https://www.python.org/downloads/release/python-2716/) (required for Ubuntu 19.04)
 
 2. Create GKE cluster
-  - Master version >= `1.14.x` (tested version: `1.14.10-gke.24`)
+  - Master version >= `1.14.x` and <= `1.15.x` (tested version: `1.14.10-gke.24`)
   - One **n1-standard-8** node
   - Image type `Ubuntu` or `COS` (**Note:** If you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../reference/monitoring/dynatrace/).)
   - Sample script to create such cluster:

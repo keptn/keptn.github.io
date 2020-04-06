@@ -9,5 +9,5 @@ keywords: setup
   - [az](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
 
 ## 2. Create AKS cluster
-  - Master version >= `1.15.x` (tested version: `1.15.5`)
+  - Master version = `1.15.x` (tested version: `1.15.5`)
   - One `D8s_v3` node
