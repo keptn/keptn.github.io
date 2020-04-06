@@ -237,7 +237,7 @@ To configure this rule, follow these steps:
   1. Edit that rule:
       * Rule name: `Keptn Processgroup Naming`
       * Process group name format: `{ProcessGroup:Environment:keptn_project}.{ProcessGroup:Environment:keptn_stage}.{ProcessGroup:Environment:keptn_service} [{ProcessGroup:Environment:keptn_deployment}]`
-      * Condition: `keptn_deployment (Environment)` > `exits`
+      * Condition: `keptn_deployment (Environment)` > `exists`
   1. Click on **Preview** and **Save**.
 
     Screenshot shows this rule definition.

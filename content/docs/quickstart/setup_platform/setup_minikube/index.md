@@ -6,7 +6,7 @@ keywords: setup
 ---
 
 ## 1. Install local tools
-  - [minikube 1.2](https://github.com/kubernetes/minikube/releases/tag/v1.2.0) (newer versions do not work).
+  - [minikube 1.2](https://github.com/kubernetes/minikube/releases/tag/v1.2.0)
 
 ## 2. Create Minikube VM
 
