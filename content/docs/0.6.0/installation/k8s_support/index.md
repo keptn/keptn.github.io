@@ -16,10 +16,12 @@ Keptn versions are expressed as `x.y.z`, where `x` is the major version, `y` is 
 * **Control Plane**: Keptn components to run a Keptn and to manage projects, stages, and services, to handle events, and to provide integration points. Install option: `keptn install --use-case=quality-gates`
 * **Control & Execution Plane**: Keptn control plane including all Keptn-services for continuous delivery and automated operations. Install option: `keptn install`
 
-| Keptn Version /<br>Installation       | Kubernetes      | AKS    | EKS             | GKE             | OpenShift | Minikube | MicroK8s<br>(experimental) | Minishift<br>(experimental) |
-|---------------------------------------|-----------------|--------|-----------------|-----------------|-----------|----------|----------------------------|-----------------------------|
-| 0.6.x / <br>Control & Execution Plane | 1.15.x - 1.13.x | 1.15.x | 1.15.x - 1.14.x | 1.15.x - 1.13.x | 3.11      | 1.2      | 1.15.x - 1.13.x            | 1.34.2                      |
-| 0.6.x / <br>Control Plane             | 1.15.x - 1.13.x | 1.15.x | 1.15.x - 1.14.x | 1.15.x - 1.13.x | 3.11      | 1.2      | 1.15.x - 1.13.x            | 1.34.2                      |
+<!-- use https://www.tablesgenerator.com/markdown_tables# for editing -->
+
+| Keptn Version /<br>Installation       | Kubernetes      | AKS             | EKS         | GKE             | OpenShift | Minikube | MicroK8s<br>(experimental) | Minishift<br>(experimental) |
+|---------------------------------------|-----------------|-----------------|-------------|-----------------|-----------|----------|----------------------------|-----------------------------|
+| 0.6.x / <br>Control & Execution Plane | 1.15.x - 1.13.x | 1.15.x          | 1.15 - 1.14 | 1.15.x - 1.14.x | 3.11      | 1.2      | 1.15.x - 1.13.x            | 1.34.2                      |
+| 0.6.x / <br>Control Plane             | 1.16.x - 1.13.x | 1.16.x - 1.15.x | 1.15 - 1.14 | 1.15.x - 1.14.x | 3.11      | 1.2      | 1.16.x - 1.13.x            | 1.34.2                      |
 
 **Notes:**
 
