@@ -9,58 +9,26 @@ This document describes the maximum version skew supported between Keptn and Kub
 
 ## Supported Version Skew
 
-Keptn versions are expressed as `x.y.z`, where `x` is the major version, `y` is the minor version, and `z` is the patch version, following [Semantic Versioning](https://semver.org/spec/v2.0.0.html) terminology.
+Keptn versions are expressed as `x.y.z`, where `x` is the major version, `y` is the minor version, and `z` is the patch version, following [Semantic Versioning](https://semver.org/spec/v2.0.0.html) terminology. Please refer to the table below to determine what Keptn version is compatible with your cluster.
 
-Please refer to the tables below to determine what Keptn version is compatible with your cluster.
+**Keptn Installations:**
 
-| Keptn Version | Supported Kubernetes Versions |
-| --- | --- |
-| 0.6.x | 1.15.x - 1.14.x |
+* **Control Plane**: Keptn components to run a Keptn and to manage projects, stages, and services, to handle events, and to provide integration points. Install option: `keptn install --use-case=quality-gates`
+* **Control & Execution Plane**: Keptn control plane including all Keptn-services for continuous delivery and automated operations. Install option: `keptn install`
+
+| Keptn Version /<br>Installation       | Kubernetes      | AKS    | EKS             | GKE             | OpenShift | Minikube | MicroK8s<br>(experimental) | Minishift<br>(experimental) |
+|---------------------------------------|-----------------|--------|-----------------|-----------------|-----------|----------|----------------------------|-----------------------------|
+| 0.6.x / <br>Control & Execution Plane | 1.15.x - 1.14.x | 1.15.x | 1.15.x - 1.14.x | 1.15.x - 1.14.x | 3.11      | 1.2      | 1.15.x - 1.13.x            | 1.34.2                      |
+| 0.6.x / <br>Control Plane             |                 |        |                 |                 | 3.11      |          | 1.18.x - 1.13.x            | 1.34.2                      |
 
 **Notes:**
 
-* It is not recommended to use Keptn with a version of Kubernetes that is newer than the version it was tested against, as Keptn does not make any forward compatiblility guarantees.
+* It is not recommended to use Keptn with a version of Kubernetes that is newer than the version it was tested against, as Keptn does not make any forward-compatibility guarantees.
 
 * If you choose to use Keptn with a version of Kubernetes that it does not support, you are using it at your own risk.
 
-### Azure Kubernetes Service (AKS) 
+**Abbreviations:**
 
-| Keptn Version | Supported AKS Versions |
-| --- | --- |
-| 0.6.x | 1.15.x - 1.14.x |
-
-### Amazon Elastic Kubernetes Service (EKS)
-
-| Keptn Version | Supported EKS Versions |
-| --- | --- |
-| 0.6.x | 1.15.x - 1.14.x |
-
-### Google Kubernetes Engine (GKE)
-
-| Keptn Version | Supported GKE Versions |
-| --- | --- |
-| 0.6.x | 1.15.x - 1.14.x |
-
-### OpenShift
-
-| Keptn Version | OpenShift Versions |
-| --- | --- |
-| 0.6.x | 3.11 |
-
-### Minikube
-
-| Keptn Version | Minikube |
-| --- | --- |
-| 0.6.x | 1.2 |
-
-### MicroK8s (experimental)
-
-| Keptn Version | MicroK8s |
-| --- | --- |
-| 0.6.x | 1.2 |
-
-### Minishift (experimental)
-
-| Keptn Version | Minishift |
-| --- | --- |
-| 0.6.x | ? |
+* **AKS** ... Azure Kubernetes Service
+* **EKS** ... Amazon Elastic Kubernetes Service
+* **GKE** ... Google Kubernetes Engine

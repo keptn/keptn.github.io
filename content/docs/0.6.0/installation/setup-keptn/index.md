@@ -33,7 +33,7 @@ Select one of the following options:
   - [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html) (version >= 1.16.156)
 
 1. Create EKS cluster on AWS
-  - version >= `1.13`, version >= `1.14` recommended (tested version: `1.14`)
+  - Version >= `1.14` recommended (tested version: `1.14`)
   - One `m5.2xlarge` node
   - Sample script using [eksctl](https://eksctl.io/introduction/installation/) to create such a cluster
 
@@ -44,12 +44,12 @@ Select one of the following options:
     <details><summary>**Known bug in EKS 1.13**</summary>
 
     Please note that for EKS version `1.13` in our testing we learned that the default CoreDNS that comes with certain EKS versions has a bug. In order to solve that issue we can use eksctl to update the CoreDNS service like this: 
+    
     ```console
     eksctl utils update-coredns --name=keptn-cluster --region=eu-west-3 --approve
     ```
     
     </details>
-
 
 </p>
 </details>
@@ -68,7 +68,7 @@ If you [sign up for a Google Cloud account](https://console.cloud.google.com/get
 2. Create GKE cluster
   - Master version >= `1.14.x` (tested version: `1.14.10-gke.24`)
   - One **n1-standard-8** node
-  - Image type `ubuntu` or `cos` (**Note:** If you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../reference/monitoring/dynatrace/).)
+  - Image type `Ubuntu` or `COS` (**Note:** If you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../reference/monitoring/dynatrace/).)
   - Sample script to create such cluster:
 
     ```console
