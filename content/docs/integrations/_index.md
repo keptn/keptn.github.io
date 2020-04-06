@@ -30,14 +30,18 @@ Please find here a list of all *Keptn-services* and *SLI-providers* that are ava
 
 ## Sandbox
 
-A *Keptn-service* is classified as sandbox if it is under development and without any official version for a supported Keptn release. Please contact the maintainer of the repository before installing a sandbox service on your Keptn. Sandbox projects you can find in the [github.com/keptn-contrib](https://github.com/keptn-contrib) or [github.com/keptn-sandbox](https://github.com/keptn-sandbox) organizations. 
+A *Keptn-service* is classified as sandbox if it is under development and has not shown significant adoption yet. 
+Each project in the Keptn Sandbox organization is maintained by one or more individuals that can be found in the respective CODEOWNERS file of the repository. Please reach out to them or open issues on the repository in case of any questions.
+Sandbox projects can be found in [github.com/keptn-sandbox](https://github.com/keptn-sandbox).
+
+Below are projects that have been shown in any Keptn community or developer meeting and thus have successfully fulfilled the requirements listed in the [contributing guide](https://github.com/keptn-sandbox/contributing) of Keptn Sandbox. 
 
 | Keptn-service | in development for Keptn | Repository |
 | --- | --- | --- | 
-| **alexa-service** | - | https://github.com/keptn-contrib/alexa-service |
-| **jira-service** | 0.5.1 | https://github.com/keptn-sandbox/jira-service |
-| **slackbot-service** | 0.6.1 | https://github.com/keptn-contrib/slackbot-service |
-| **xmatters-service** | - | https://github.com/keptn-contrib/keptn-xmatters-service |
-| **istio + cert-manager tutorial** | 0.6.1 | https://github.com/keptn-sandbox/istio |
-| **osTicket-service** | 0.6.0 | https://github.com/keptn-sandbox/keptn-osticket-service |
+| **slackbot-service** | 0.6.1 | https://github.com/keptn-sandbox/slackbot-service |
 
+### Contribute your service
+
+Please find a template if you want to get started with writing your Keptn service here: https://github.com/keptn-sandbox/keptn-service-template-go
+
+Please follow the [contributions guide](https://github.com/keptn-sandbox/contributing) for contributing it to Keptn Sandbox.
