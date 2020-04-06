@@ -7,7 +7,7 @@ keywords: setup
 
 This document describes the maximum version skew supported between Keptn and Kubernetes.^
 
-## Supported Version Skew
+## Supported Version
 
 Keptn versions are expressed as `x.y.z`, where `x` is the major version, `y` is the minor version, and `z` is the patch version, following [Semantic Versioning](https://semver.org/spec/v2.0.0.html) terminology. Please refer to the table below to determine what Keptn version is compatible with your cluster.
 
@@ -18,10 +18,10 @@ Keptn versions are expressed as `x.y.z`, where `x` is the major version, `y` is 
 
 <!-- use https://www.tablesgenerator.com/markdown_tables# for editing -->
 
-| Keptn Version /<br>Installation       | Kubernetes      | AKS             | EKS         | GKE             | OpenShift | Minikube | MicroK8s<br>(experimental) | Minishift<br>(experimental) |
-|---------------------------------------|-----------------|-----------------|-------------|-----------------|-----------|----------|----------------------------|-----------------------------|
-| 0.6.x / <br>Control & Execution Plane | 1.15.x - 1.13.x | 1.15.x          | 1.15 - 1.14 | 1.15.x - 1.14.x | 3.11      | 1.2      | 1.15.x - 1.13.x            | 1.34.2                      |
-| 0.6.x / <br>Control Plane             | 1.16.x - 1.13.x | 1.16.x - 1.15.x | 1.15 - 1.14 | 1.15.x - 1.14.x | 3.11      | 1.2      | 1.16.x - 1.13.x            | 1.34.2                      |
+| Keptn Version /<br>Installation       | Kubernetes      | AKS             | EKS         | GKE             | OpenShift | Minikube              | MicroK8s<br>(experimental) | Minishift<br>(experimental) |
+|---------------------------------------|-----------------|-----------------|-------------|-----------------|-----------|-----------------------|----------------------------|-----------------------------|
+| 0.6.x / <br>Control & Execution Plane | 1.15.x - 1.13.x | 1.15.x          | 1.15 - 1.14 | 1.15.x - 1.14.x | 3.11      | -                     | -                          | 1.34.2<br>(K8s: 1.11.x)     |
+| 0.6.x / <br>Control Plane             | 1.16.x - 1.13.x | 1.16.x - 1.15.x | 1.15 - 1.14 | 1.15.x - 1.14.x | 3.11      | 1.2 <br>(K8s:1.15.x) | 1.18.x                     | 1.34.2<br>(K8s: 1.11.x)     |
 
 **Notes:**
 
