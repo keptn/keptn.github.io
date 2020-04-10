@@ -25,17 +25,23 @@ Please find here a list of all *Keptn-services* and *SLI-providers* that are ava
 | SLI-provider | latest Release | supported Keptn | Repository  |
 | -------------------------- | --- | --- | --- |
 | **dynatrace-sli-service**  | [0.3.1](https://github.com/keptn-contrib/dynatrace-sli-service/releases/tag/0.3.1) | 0.6.1 | https://github.com/keptn-contrib/dynatrace-sli-service |
+| **neoload-sli-provider**  | [0.6.0](https://github.com/keptn-contrib/neoload-sli-provider/tree/0.6.0) | 0.6.0 | https://github.com/keptn-contrib/neoload-sli-provider |
 | **prometheus-sli-service** | [0.2.1](https://github.com/keptn-contrib/prometheus-sli-service/releases/tag/0.2.1) | 0.6.1 | https://github.com/keptn-contrib/prometheus-sli-service |
 
 ## Sandbox
 
-A *Keptn-service* is classified as sandbox if it is under development and without any official version for a supported Keptn release. Please contact the maintainer of the repository before installing a sandbox service on your Keptn. Sandbox projects you can find in the [github.com/keptn-contrib](https://github.com/keptn-contrib) or [github.com/keptn-sandbox](https://github.com/keptn-sandbox) organizations. 
+A *Keptn-service* is classified as sandbox if it is under development and has not shown significant adoption yet. 
+Each project in the Keptn Sandbox organization is maintained by one or more individuals that can be found in the respective CODEOWNERS file of the repository. Please reach out to them or open issues on the repository in case of any questions.
+Sandbox projects can be found in [github.com/keptn-sandbox](https://github.com/keptn-sandbox).
+
+Below are projects that have been shown in any Keptn community or developer meeting and thus have successfully fulfilled the requirements listed in the [contributing guide](https://github.com/keptn-sandbox/contributing) of Keptn Sandbox. 
 
 | Keptn-service | in development for Keptn | Repository |
 | --- | --- | --- | 
-| **alexa-service** | - | https://github.com/keptn-contrib/alexa-service |
-| **jira-service** | - | https://github.com/keptn-contrib/jira-service |
-| **slackbot-service** | 0.6.1 | https://github.com/keptn-contrib/slackbot-service |
-| **xmatters-service** | - | https://github.com/keptn-contrib/keptn-xmatters-service |
+| **slackbot-service** | 0.6.1 | https://github.com/keptn-sandbox/slackbot-service |
 
+### Contribute your service
 
+Please find a template if you want to get started with writing your Keptn service here: https://github.com/keptn-sandbox/keptn-service-template-go
+
+Please follow the [contributions guide](https://github.com/keptn-sandbox/contributing) for contributing it to Keptn Sandbox.

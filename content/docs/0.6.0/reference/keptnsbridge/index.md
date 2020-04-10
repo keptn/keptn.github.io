@@ -60,7 +60,7 @@ There is an early access version of Keptn's Bridge available (compatible with Ke
 To install it, you have to update the Docker images of *Keptn's Bridge*, *configuration-service* and the *mongodb-datastore* deployment by executing the following commands:
 
 ```console
-kubectl -n keptn set image deployment/bridge bridge=keptn/bridge2:20200326.0744 --record
+kubectl -n keptn set image deployment/bridge bridge=keptn/bridge2:20200402.1046 --record
 ```
 
 If you want to access the new Keptn's Bridge you have to use `port-forward` again:
@@ -72,7 +72,7 @@ kubectl port-forward svc/bridge -n keptn 9000:8080
 If you want to restore the old version of bridge, configuration-service and mongodb-datastore (as delivered with Keptn 0.6.1), you can use the following commands:
 
 ```console
-kubectl -n keptn set image deployment/bridge bridge=keptn/bridge:0.6.1 --record
+kubectl -n keptn set image deployment/bridge bridge=keptn/bridge2:0.6.1 --record
 ```
 
 

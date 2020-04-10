@@ -68,6 +68,17 @@ create a *secret* containing the **user**, **password**, and **url**. The secret
 
 To tell the *prometheus-sli-service* how to acquire the values of an SLI, the correct query needs to be configured. This is done by adding an SLI configuration to a project, stage, or service using the [add-resource](../../cli/#keptn-add-resource) command. The resource identifier must be `prometheus/sli.yaml`.
 
+Please take a look at this snippet which implements a concrete SLI file to learn more about the structure of a SLI file. It is possible to use placeholders such as `$PROJECT`, `$SERVICE`, `$STAGE` and `$DURATION_SECONDS` in the queries.
+
+```yaml
+---
+spec_version: '1.0'
+indicators:
+  response_time_p50: histogram_quantile(0.5, sum by(le) (rate(http_response_time_milliseconds_bucket{job="$SERVICE-$PROJECT-$STAGE"}[$DURATION_SECONDS])))
+  response_time_p90: histogram_quantile(0.9, sum by(le) (rate(http_response_time_milliseconds_bucket{job="$SERVICE-$PROJECT-$STAGE"}[$DURATION_SECONDS])))
+  response_time_p95: histogram_quantile(0.95, sum by(le) (rate(http_response_time_milliseconds_bucket{job="$SERVICE-$PROJECT-$STAGE"}[$DURATION_SECONDS])))
+```
+
 * In the below example, the SLI configuration as specified in the `sli-config-prometheus.yaml` file is added to the service `carts` in stage `hardening` from project `sockshop`. 
 
 ```console
