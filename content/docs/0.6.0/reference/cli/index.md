@@ -5,8 +5,7 @@ weight: 10
 keywords: [cli, setup]
 ---
 
-In this section, the functionality and commands of the Keptn CLI are described. The Keptn CLI allows installing, configuring, and
-uninstalling Keptn. Furthermore, the CLI allows creating projects, onboarding services, and sending new artifact events.
+In this section, the functionality and commands of the Keptn CLI are described. The Keptn CLI allows installing, configuring, and uninstalling Keptn. Furthermore, the CLI allows creating projects, onboarding services, and sending new artifact events.
 
 ## Prerequisites
 - All prerequisites from the [setup](../../installation/setup-keptn#prerequisites) are needed.
@@ -33,7 +32,6 @@ Every release of Keptn provides binaries for the Keptn CLI. These binaries are a
     link="./assets/keptn-cli-help.png"
     caption="Keptn CLI"
     width="700px">}}
-
 
 ## Start using the Keptn CLI
 
@@ -111,9 +109,9 @@ keptn configure domain YOUR.CUSTOM.DOMAIN
 
 ### keptn auth 
 
-Before the keptn CLI can be used, it needs to be authenticated against a keptn cluster. Therefore, an endpoint and an API token are required.
+Before the Keptn CLI can be used, it needs to be authenticated against a Keptn cluster. Therefore, an endpoint and an API token are required.
 
-If the authentication is successful, keptn will inform the user and the endpoint as well as the API token are stored in a password store of the underlying operating system. More precisely, the keptn CLI stores the endpoint and API token using `pass` in case of Linux, using `Keychain` in case of macOS, or `Wincred` in case of Windows.
+If the authentication is successful, Keptn will inform the user and the endpoint as well as the API token are stored in a password store of the underlying operating system. More precisely, the Keptn CLI stores the endpoint and API token using `pass` in case of Linux, using `Keychain` in case of macOS, or `Wincred` in case of Windows.
 
 <details><summary>For Linux / macOS</summary>
 <p>
