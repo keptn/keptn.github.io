@@ -2,7 +2,7 @@
 title: Tutorials
 description: Explore the functionalities of Keptn based on examples.
 weight: 30
-url: /docs/0.6.0/usecases/
+url: /docs/develop/usecases/
 icon: tasks
 ---
 ## Quicklinks
