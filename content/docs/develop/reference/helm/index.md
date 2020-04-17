@@ -89,6 +89,7 @@ carts           0/0     0            0            1d   carts        docker.io/ke
 
 When executing `keptn delete project PROJECTNAME` (see [cli docs](../cli/#keptn-delete-project)), we do not clean up
 existing deployments nor Helm releases. To do so, delete all relevant namespaces:
+
 * For each stage defined the shipyard.yaml file, execute `kubectl delete namespace PROJECTNAME-STAGENAME`, e.g.:
 
   ```console
@@ -96,4 +97,4 @@ existing deployments nor Helm releases. To do so, delete all relevant namespaces
   kubectl delete namespace sockshop-staging
   kubectl delete namespace sockshop-production
   ```
-Note that this will also deletes the corresponding Helm releases, which are stored as Kuberentes secrets in the namespace.
+Note that this will also delete the corresponding Helm releases, which are stored as Kuberentes secrets in the namespaces.
