@@ -97,4 +97,4 @@ existing deployments nor Helm releases. To do so, delete all relevant namespaces
   kubectl delete namespace sockshop-staging
   kubectl delete namespace sockshop-production
   ```
-Note that this will also delete the corresponding Helm releases, which are stored as Kuberentes secrets in the namespaces.
+Note that this will also delete the corresponding Helm releases, which are stored as Kubernetes secrets in the namespaces.
