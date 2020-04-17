@@ -6,7 +6,7 @@ weight: 95
 
 ## Intro
 
-During `keptn install`, we are installing Tiller (Helm v2.12.3) on the Kubernetes cluster. Keptn then uses Helm for
+Keptn uses [Helm v3](https://helm.sh/) for
  deploying onboarded services to a Kubernetes cluster. This is currently implemented in Keptn's
  [helm-service](https://github.com/keptn/keptn/tree/0.6.1/helm-service).
 
@@ -88,29 +88,13 @@ carts           0/0     0            0            1d   carts        docker.io/ke
 ### Clean-up after deleting a project
 
 When executing `keptn delete project PROJECTNAME` (see [cli docs](../cli/#keptn-delete-project)), we do not clean up
- existing deployments nor helm releases. To do so, the following manual steps are necessary:
- 
-1. Delete all relevant helm releases:
-  * Connect directly to the helm-service using ``kubectl exec -it svc/helm-service -n keptn sh``
-  * Execute the following command to verify that releases still exists using `helm ls`, e.g.: 
-  
-    ```console
-    helm ls | grep sockshop
-    ```
-    
-    **Note**: Take special care and double check that this command only lists the releases related to the project, and no others!
-  
-  * Delete the relevant releases using ``helm delete --purge``, e.g.:
-  
-    ```console
-    helm delete --purge $(helm ls | grep sockshop | cut -f1 | tr '\n' ' ')
-    ```
+existing deployments nor Helm releases. To do so, delete all relevant namespaces:
 
-2. Delete all relevant namespaces:
-  * For each stage defined the shipyard.yaml file, execute `kubectl delete namespace PROJECTNAME-STAGENAME`, e.g.:
-  
-    ```console
-    kubectl delete namespace sockshop-dev
-    kubectl delete namespace sockshop-staging
-    kubectl delete namespace sockshop-production
-    ```
+* For each stage defined the shipyard.yaml file, execute `kubectl delete namespace PROJECTNAME-STAGENAME`, e.g.:
+
+  ```console
+  kubectl delete namespace sockshop-dev
+  kubectl delete namespace sockshop-staging
+  kubectl delete namespace sockshop-production
+  ```
+Note that this will also delete the corresponding Helm releases, which are stored as Kubernetes secrets in the namespaces.
