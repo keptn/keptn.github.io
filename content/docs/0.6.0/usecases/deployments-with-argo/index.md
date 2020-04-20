@@ -276,8 +276,13 @@ This version should not pass the quality gate and, hence, should not be promoted
     argocd app sync carts-production
     ```
 
-1. Follow the events in the Keptn's Bridge. 
+1. Follow the events in the Keptn's Bridge. Please note that the performance tests will take approx. 20 minutes.
 
+    {{< popup_image
+    link="./assets/quality-gate-not-passed.png"
+    caption="carts service"
+    width="50%">}}
+    
 1. Navigate to `http://EXTERNAL-IP` for viewing both versions of the `carts` service in your `production` environment.
 
 **Expected Result:** This version `0.10.2` should not pass the quality gate. The `primary` version should still show the last version `0.10.1`.
