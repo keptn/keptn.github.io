@@ -1,14 +1,16 @@
 ---
-title: Using Argo CD for Deploying
+title: Argo CD for Deploying and Keptn for Testing, Evaluating, and Promoting
 description: Describes how Argo CD can be used for deploying and Keptn for testing, evaluating, and promoting
 weight: 30
 keywords: []
 aliases:
 ---
 
+# Argo CD for Deploying and Keptn for Testing, Evaluating, and Promoting
+
 Describes how Argo CD can be used for deploying and Keptn can be used for testing, evaluating, and promoting.
 
-# About this tutorial
+## About this tutorial
 
 In this tutorial, [Argo CD](https://argoproj.github.io/argo-cd/) is used 
 for deploying a [Argo rollout](https://argoproj.github.io/argo-rollouts/)
@@ -30,7 +32,7 @@ In case it will be promoted, this service will be released to real-users.
 Note, that the following tutorial is a *first* proof-of-concept for using Argo CD as
 deployment tool.
 
-# Prerequisites
+## Prerequisites
 
 * A completed [Keptn installation](../../installation/setup-keptn)
 
@@ -50,9 +52,9 @@ deployment tool.
     cd examples/onboarding-carts
     ```
 
-# Configure Keptn
+## Configure Keptn
 
-## Install the Keptn Argo-service
+### Install the Keptn Argo-service
 The Keptn `argo-service` takes care of *promoting* or *aborting* a Rollout depending on the result of the quality gate.
 More precisely, the `argo-service` listens for `sh.keptn.events.evaluation-done` events and depending on the evaluation result (i.e. whether the quality gate is passed or not)
 the service promotes or aborts a rollout, respectively.
@@ -70,7 +72,7 @@ To install the Argo-service, execute:
     kubectl delete deployment gatekeeper-service-evaluation-done-distributor -n keptn
     ```
 
-## Create project sockshop
+### Create project sockshop
 This tutorial sets up a single stage environment containing a `production` environment.
 In this stage, performance tests are used to test new deployments.
 For creating the project, the following shipyard is used:
@@ -89,7 +91,7 @@ Before executing the following command, make sure you are in the `examples/onboa
     keptn create project sockshop --shipyard=./shipyard-argo.yaml --git-user=GIT_USER --git-token=GIT_TOKEN --git-remote-url=GIT_REMOTE_URL
     ```
 
-## Create carts service
+### Create carts service
 
 1. Keptn manages all service-related artifacts (like testing files, SLOs, etc.),
 in a so-called service. 
@@ -108,7 +110,7 @@ Create a service for *carts* using the [keptn create service](../../reference/cl
     ```
 
 
-## Set up the quality gate and monitoring
+### Set up the quality gate and monitoring
 Keptn's quality gate is specified by *Service Level Objectives* (SLOs).
 In order to pass this quality gate, the service has to meet the SLOs.
 These SLOs are described in a file called `slo.yaml`.
@@ -216,9 +218,9 @@ Therefore, create a config map and a secret with the Keptn endpoint and api-toke
     ```
 
 
-# Deploy with Argo and Test, Evaluate, and Promote with Keptn
+## Deploy with Argo and Test, Evaluate, and Promote with Keptn
 
-## Deploy a first version 
+### Deploy a first version 
 
 1. Sync the Argo app using the ArgoCD UI or the `argocd` CLI:
 
@@ -255,7 +257,7 @@ In order to access the website of the `carts` service, first query the external 
 
 **Expected Result:** This version has passed the quality gate. Hence, you should see that both services serve the same content.
 
-## Deploy a SLOW version 
+### Deploy a SLOW version 
 Next, we will deploy a slow version of the carts service, which contains an artificial slowdown of 1 second in each request.
 This version should not pass the quality gate and, hence, should not be promoted to serve real-user traffic.
 
@@ -282,12 +284,12 @@ This version should not pass the quality gate and, hence, should not be promoted
     link="./assets/quality-gate-not-passed.png"
     caption="carts service"
     width="50%">}}
-    
+
 1. Navigate to `http://EXTERNAL-IP` for viewing both versions of the `carts` service in your `production` environment.
 
 **Expected Result:** This version `0.10.2` should not pass the quality gate. The `primary` version should still show the last version `0.10.1`.
 
-## Deploy a fast version
+### Deploy a fast version
 Next, we will deploy a version which does _not_ contain the slowdown anymore.
 This version should now again pass the quality gate and, hence, should be promoted to serve real-user traffic.
 
