@@ -45,7 +45,7 @@ deployment tool.
 * Clone example files used in this tutorial:
 
     ```console
-    git clone --branch XXX https://github.com/keptn/examples.git --single-branch
+    git clone --branch master https://github.com/keptn/examples.git --single-branch
     ```
 
     ```console
