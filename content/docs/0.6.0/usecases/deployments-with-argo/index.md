@@ -24,7 +24,7 @@ which introduces a new custom resource called
 This tutorial provides a sample Helm chart, which contains the `carts` and `carts-db` service. 
 These services will be deployed into 
 a `production` environment using Argo CD. Afterwards, Keptn will be used to test the `carts` service 
-using performance tests. Using the resulting metrics, 
+using performance tests. Using the resulting metrics provided by Prometheus, 
 Keptn will then check whether this service passes the defined quality gate.
 Depending on whether the quality gate is passed or not, this service will be promoted or aborted.
 In case it will be promoted, this service will be released to real-users.
@@ -59,14 +59,14 @@ The Keptn `argo-service` takes care of *promoting* or *aborting* a Rollout depen
 More precisely, the `argo-service` listens for `sh.keptn.events.evaluation-done` events and depending on the evaluation result (i.e. whether the quality gate is passed or not)
 the service promotes or aborts a rollout, respectively.
 
-1. The Argo-service is not contained in the default installation of Keptn.
-To install the Argo-service, execute:
+1. The `argo-service` is not contained in the default installation of Keptn.
+To install the `argo-service`, execute:
 
     ```console
     kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/argo-service/master/deploy/service.yaml
     ```
 
-1. The gatekeeper-service, which is installed by the default installation of Keptn, has to be removed:
+1. The `gatekeeper-service` (which is installed by the default installation of Keptn) has to be removed:
 
     ```console
     kubectl delete deployment gatekeeper-service-evaluation-done-distributor -n keptn
@@ -123,7 +123,7 @@ To learn more about the *slo.yaml* file, go to [Specifications for Site Reliabil
     ```
 
 For evaluating the SLOs, metrics from a monitoring tool are required.
-Currently, *Prometheus* is supported as a monitoring tool, which is set up in the following steps:
+Currently, this tutorial supports *Prometheus* as a monitoring tool, which is set up in the following steps:
 
 1. Complete steps from section [Setup Prometheus](../../reference/monitoring/prometheus/#setup-prometheus).
 
@@ -146,7 +146,7 @@ This tutorial provides deployment resources (in the form of a [Helm chart](https
 The `carts` service is of type `rollout`, which allows a *blue/green deployment*.
 
 1. Argo CD requires a Git repo where this Helm chart is stored and, here, Keptn's config-repo is re-used.
-Execute the following command and replace `GIT_REMOTE_URL` with the URL as you used for creating the Keptn project:
+Execute the following command and replace `GIT_REMOTE_URL` with the URL as you used before when creating the Keptn project:
     ```console
     git clone GIT_REMOTE_URL
     cd sockshop
@@ -178,7 +178,7 @@ the namespace has to follow the format `ProjectName-StageName`:
 
 ### Add Argo Hook for triggering Keptn
 
-In order to infrom Keptn when Argo CD finished the deployment,
+In order to infrom Keptn when Argo CD does the deployment,
 an [Argo Resource Hook](https://argoproj.github.io/argo-cd/user-guide/resource_hooks/) is configured.
 This hook is triggered when Argo CD applies the manifests. This hook
 executes a script which sends a [`sh.keptn.events.deployment-finished`](https://github.com/keptn/spec/blob/master/cloudevents.md#deployment-finished) event to the Keptn API.
@@ -205,7 +205,7 @@ executes a script which sends a [`sh.keptn.events.deployment-finished`](https://
     ```
 In order to activate this hook, the Job has to be located in the Helm chart containing the deployment resources.
 The example chart in `onboarding-carts/argo/carts` already contains this Hook
-and, hence, it was already added in the step *Add deployment resources*.
+and, hence, it was already added in the step before.
 
 1. This hook needs to access the Keptn API and therefore requires the Keptn endpoint as well as the api-token.
 Therefore, create a config map and a secret with the Keptn endpoint and api-token:
@@ -240,7 +240,7 @@ You can access it by a port-forward from your local machine to the Kubernetes cl
 1. Follow the events in the Keptn's Bridge.
 
 1. The new version (i.e. the `canary`) as well as the released version (i.e. the `primary`) of the `carts` service are exposed via a LoadBalancer.
-In order to access the website of the `carts` service, first query the external IPs of the LoadBalancer:
+In order to access the website of the `carts` service, query the external IPs of the LoadBalancer:
 
     ```console
     kubectl get services -n sockshop-production
@@ -258,8 +258,8 @@ In order to access the website of the `carts` service, first query the external 
 **Expected Result:** This version has passed the quality gate. Hence, you should see that both services serve the same content.
 
 ### Deploy a SLOW version 
-Next, we will deploy a slow version of the carts service, which contains an artificial slowdown of 1 second in each request.
-This version should not pass the quality gate and, hence, should not be promoted to serve real-user traffic.
+Next, we will deploy a slow version of the carts service, which contains an artificial slowdown of 2 second in each request.
+This version must should not pass the quality gate and, hence, should not be promoted to serve real-user traffic.
 
 1. In your Git reposititory containing the Argo resources, go to the folder `carts/argo/carts` and open the `values.yaml` file.
 
@@ -290,7 +290,7 @@ This version should not pass the quality gate and, hence, should not be promoted
 **Expected Result:** This version `0.10.2` should not pass the quality gate. The `primary` version should still show the last version `0.10.1`.
 
 ### Deploy a fast version
-Next, we will deploy a version which does _not_ contain the slowdown anymore.
+Finally, we will deploy a version which does _not_ contain the slowdown anymore.
 This version should now again pass the quality gate and, hence, should be promoted to serve real-user traffic.
 
 1. In your Git reposititory containing the Argo resources, go to the folder `carts/argo/carts` and open the `values.yaml` file.
@@ -314,4 +314,4 @@ This version should now again pass the quality gate and, hence, should be promot
 
 1. Navigate to `http://EXTERNAL-IP` for viewing both versions of the `carts` service in your `production` environment.
 
-**Expected Result:** This version `0.10.3` should pass the quality gate. The `primary` version should show the `0.10.3`.
+**Expected Result:** This version `0.10.3` should pass the quality gate. The `primary` version should show version `0.10.3`.
