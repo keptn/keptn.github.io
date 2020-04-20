@@ -11,7 +11,8 @@ Describes how Argo CD can be used for deploying and Keptn can be used for testin
 # About this tutorial
 
 In this tutorial, [Argo CD](https://argoproj.github.io/argo-cd/) is used 
-for deploying and Keptn is used for testing, evaluating, and promoting.
+for deploying a [Argo rollout](https://argoproj.github.io/argo-rollouts/)
+and Keptn is used for testing, evaluating, and promoting this rollout.
 More precisely, in this tutorial, Argo CD is used as deployment tool
 and not the Keptn built-in tool called `helm-service`.
 Furthermore, this tutorial uses [Argo Rollouts](https://argoproj.github.io/argo-rollouts/),
@@ -66,7 +67,7 @@ To install the Argo-service, execute:
 1. The gatekeeper-service, which is installed by the default installation of Keptn, has to be removed:
 
     ```console
-    kubectl delete deployment -f gatekeeper-service-evaluation-done-distributor -n keptn
+    kubectl delete deployment gatekeeper-service-evaluation-done-distributor -n keptn
     ```
 
 ## Create project sockshop
@@ -126,22 +127,6 @@ Currently, *Prometheus* is supported as a monitoring tool, which is set up in th
 
 1. Complete steps from section [Setup Prometheus SLI provider](../../reference/monitoring/prometheus/#setup-prometheus-sli-provider).
 
-1. To configure Keptn to use the Prometheus SLI provider for the *sockshop* project, apply the below ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
-
-    ```console
-    kubectl apply -f lighthouse-source-prometheus.yaml
-    ```
-
-    ```yaml
-    apiVersion: v1
-    data:
-      sli-provider: prometheus
-    kind: ConfigMap
-    metadata:
-      name: lighthouse-config-sockshop
-      namespace: keptn
-    ```
-
 1. Configure custom SLIs for the Prometheus SLI provider as specified in `sli-config-argo-prometheus.yaml`:
 
     ```console
@@ -193,8 +178,7 @@ the namespace has to follow the format `ProjectName-StageName`:
 
 In order to infrom Keptn when Argo CD finished the deployment,
 an [Argo Resource Hook](https://argoproj.github.io/argo-cd/user-guide/resource_hooks/) is configured.
-Technically, this hook is triggered when Argo successfully finished 
-the sync operation (i.e. the deployment) and
+This hook is triggered when Argo CD applies the manifests. This hook
 executes a script which sends a [`sh.keptn.events.deployment-finished`](https://github.com/keptn/spec/blob/master/cloudevents.md#deployment-finished) event to the Keptn API.
 
 
@@ -202,20 +186,20 @@ executes a script which sends a [`sh.keptn.events.deployment-finished`](https://
     apiVersion: batch/v1
     kind: Job
     metadata:
-    generateName: app-keptn-notification-
-    annotations:
-        argocd.argoproj.io/hook: PostSync
+      generateName: app-keptn-notification-
+      annotations:
+        argocd.argoproj.io/hook: Sync
         argocd.argoproj.io/hook-delete-policy: HookSucceeded
     spec:
-    template:
+      template:
         spec:
-        containers:
-        - name: keptn-notification
+          containers:
+          - name: keptn-notification
             image: agrimmer/alpine-curl-uuid-kubectl:latest
             command: ["/bin/sh","-c"]
-            args: ['while [[ $(kubectl get rollout {{ .Values.keptn.service }}-{{ .Values.keptn.stage }} -n {{ .Values.keptn.project }}-{{ .Values.keptn.stage }} -o "jsonpath={..status.reason}") == "ReplicaSetUpdated" ]]; do echo "waiting for rollout" && sleep 1; done; UUID=$(uuidgen); KEPTN_ENDPOINT=https://api.keptn.$(kubectl get cm keptn-domain -n {{ .Values.keptn.project }}-{{ .Values.keptn.stage }} -ojsonpath={.data.app_domain}); KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n {{ .Values.keptn.project }}-{{ .Values.keptn.stage }} -ojsonpath={.data.keptn-api-token} | base64 -d);UUID=$(uuidgen); now=$(TZ=UTC date "+%FT%T.00Z"); curl -X POST -H "Content-Type: application/cloudevents+json" -H "x-token: ${KEPTN_API_TOKEN}" --insecure -d "{\"contenttype\": \"application/json\", \"data\": { \"project\": \"{{ .Values.keptn.project }}\", \"service\": \"{{ .Values.keptn.service }}\", \"stage\": \"{{ .Values.keptn.stage }}\", \"deploymentURILocal\": \"http://{{ .Values.keptn.service }}-canary.{{ .Values.keptn.project }}-{{ .Values.keptn.stage }}\", \"deploymentstrategy\": \"blue_green_service\", \"teststrategy\": \"performance\"}, \"id\": \"${UUID}\", \"source\": \"argo\", \"specversion\": \"0.2\", \"time\": \"${now}\", \"type\": \"sh.keptn.events.deployment-finished\", \"shkeptncontext\": \"${UUID}\"}" ${KEPTN_ENDPOINT}/v1/event']
-        restartPolicy: Never
-    backoffLimit: 2
+            args: ['while [[ $(kubectl get rollout {{ .Values.keptn.service }}-{{ .Values.keptn.stage }} -n {{ .Values.keptn.project }}-{{ .Values.keptn.stage }} -o "jsonpath={..status.conditions[?(@.type==\"Progressing\")].reason}") == "ReplicaSetUpdated" ]]; do echo "waiting for rollout" && sleep 1; done; UUID=$(uuidgen); KEPTN_ENDPOINT=https://api.keptn.$(kubectl get cm keptn-domain -n {{ .Values.keptn.project }}-{{ .Values.keptn.stage }} -ojsonpath={.data.app_domain}); KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n {{ .Values.keptn.project }}-{{ .Values.keptn.stage }} -ojsonpath={.data.keptn-api-token} | base64 -d);UUID=$(uuidgen); now=$(TZ=UTC date "+%FT%T.00Z"); curl -X POST -H "Content-Type: application/cloudevents+json" -H "x-token: ${KEPTN_API_TOKEN}" --insecure -d "{\"contenttype\": \"application/json\", \"data\": { \"project\": \"{{ .Values.keptn.project }}\", \"service\": \"{{ .Values.keptn.service }}\", \"stage\": \"{{ .Values.keptn.stage }}\", \"deploymentURILocal\": \"http://{{ .Values.keptn.service }}-canary.{{ .Values.keptn.project }}-{{ .Values.keptn.stage }}\", \"deploymentstrategy\": \"blue_green_service\", \"teststrategy\": \"performance\"}, \"id\": \"${UUID}\", \"source\": \"argo\", \"specversion\": \"0.2\", \"time\": \"${now}\", \"type\": \"sh.keptn.events.deployment-finished\", \"shkeptncontext\": \"${UUID}\"}" ${KEPTN_ENDPOINT}/v1/event']
+          restartPolicy: Never
+      backoffLimit: 2
     ```
 In order to activate this hook, the Job has to be located in the Helm chart containing the deployment resources.
 The example chart in `onboarding-carts/argo/carts` already contains this Hook
@@ -228,7 +212,7 @@ Therefore, create a config map and a secret with the Keptn endpoint and api-toke
     KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
     kubectl -n sockshop-production create secret generic keptn-api-token --from-literal="keptn-api-token=$KEPTN_API_TOKEN"
     kubectl -n sockshop-production create configmap keptn-domain --from-literal="app_domain=$KEPTN_ENDPOINT"
-    kubectl create clusterrolebinding sockshop-productiong --clusterrole=cluster-admin --serviceaccount=sockshop-production:default
+    kubectl create clusterrolebinding sockshop-production --clusterrole=cluster-admin --serviceaccount=sockshop-production:default
     ```
 
 
@@ -272,7 +256,7 @@ In order to access the website of the `carts` service, first query the external 
 **Expected Result:** This version has passed the quality gate. Hence, you should see that both services serve the same content.
 
 ## Deploy a SLOW version 
-Next, we will deploy a slow version of the carts service, which contains in each request an artificial slowdown of 1 second.
+Next, we will deploy a slow version of the carts service, which contains an artificial slowdown of 1 second in each request.
 This version should not pass the quality gate and, hence, should not be promoted to serve real-user traffic.
 
 1. In your Git reposititory containing the Argo resources, go to the folder `carts/argo/carts` and open the `values.yaml` file.
@@ -296,7 +280,31 @@ This version should not pass the quality gate and, hence, should not be promoted
 
 1. Navigate to `http://EXTERNAL-IP` for viewing both versions of the `carts` service in your `production` environment.
 
-**Expected Result:** This version of the artifact should not pass the quality. The `primary` version should still show the last version.
+**Expected Result:** This version `0.10.2` should not pass the quality gate. The `primary` version should still show the last version `0.10.1`.
 
-# Known Problems:
-- ArgoCD frequently has problems syncing a new version. Especially, when a Rollout was aborted.
+## Deploy a fast version
+Next, we will deploy a version which does _not_ contain the slowdown anymore.
+This version should now again pass the quality gate and, hence, should be promoted to serve real-user traffic.
+
+1. In your Git reposititory containing the Argo resources, go to the folder `carts/argo/carts` and open the `values.yaml` file.
+
+1. Edit the `tag` from `0.10.2` to `0.10.1`. 
+
+1. Add, commit, and push these changes:
+    ```console
+    git add .
+    git commit -m "Use slow version"
+    git push
+    ```
+
+1. Sync the Argo app using the ArgoCD UI or the `argocd` CLI:
+
+    ```console
+    argocd app sync carts-production
+    ```
+
+1. Follow the events in the Keptn's Bridge. 
+
+1. Navigate to `http://EXTERNAL-IP` for viewing both versions of the `carts` service in your `production` environment.
+
+**Expected Result:** This version `0.10.3` should pass the quality gate. The `primary` version should show the `0.10.3`.
