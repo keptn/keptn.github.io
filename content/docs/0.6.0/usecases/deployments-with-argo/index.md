@@ -29,8 +29,8 @@ Keptn will then check whether this service passes the defined quality gate.
 Depending on whether the quality gate is passed or not, this service will be promoted or aborted.
 In case it will be promoted, this service will be released to real-users.
 
-Note, that the following tutorial is a *first* proof-of-concept for using Argo CD as
-deployment tool.
+**Note, that the following tutorial is a first proof-of-concept for using Argo CD as
+deployment tool.**
 
 ## Prerequisites
 
