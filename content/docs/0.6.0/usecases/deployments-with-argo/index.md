@@ -6,8 +6,6 @@ keywords: []
 aliases:
 ---
 
-# Argo CD for Deploying and Keptn for Testing, Evaluating, and Promoting
-
 Describes how Argo CD can be used for deploying and Keptn can be used for testing, evaluating, and promoting.
 
 ## About this tutorial
