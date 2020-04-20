@@ -1,7 +1,7 @@
 ---
 title: Setup GKE
 description: How to setup a GKE cluster to be used for Keptn.
-weight: 22
+weight: 23
 keywords: setup
 ---
 
@@ -15,9 +15,9 @@ If you [sign up for a Google Cloud account](https://console.cloud.google.com/get
   - [python 2.7](https://www.python.org/downloads/release/python-2716/) (required for Ubuntu 19.04)
 
 ## 2a. Create GKE cluster through Cloud Console
-  - Master version >= `1.13.x` (tested with `1.13.11-gke.14`)
+  - [Master version:](/docs/0.6.0/installation/k8s-support/#supported-version)  `1.15.x` (tested version: `1.15.9-gke.22`)
   - One `n1-standard-8` node (or two `n1-standard-4` nodes)
-  - Image type `ubuntu` or `cos` (if you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../../0.6.0/reference/monitoring/dynatrace/#notes))
+  - Image type `Ubuntu` or `COS` (if you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../../0.6.0/reference/monitoring/dynatrace/#notes))
   - Sample script to create such cluster (adapt the values according to your needs)
 
 ## 2b. Create through gcloud cli
@@ -27,7 +27,7 @@ PROJECT=nameofgcloudproject
 CLUSTER_NAME=nameofcluster
 ZONE=us-central1-a
 REGION=us-central1
-GKE_VERSION="1.13"
+GKE_VERSION="1.14"
 ```
 
 ```console
