@@ -11,7 +11,7 @@ Describes how Argo CD can be used for deploying and Keptn can be used for testin
 ## About this tutorial
 
 In this tutorial, [Argo CD](https://argoproj.github.io/argo-cd/) is used 
-for deploying a [Argo rollout](https://argoproj.github.io/argo-rollouts/)
+for deploying a [Argo Rollout](https://argoproj.github.io/argo-rollouts/)
 and Keptn is used for testing, evaluating, and promoting this rollout.
 More precisely, in this tutorial, Argo CD is used as deployment tool
 and not the Keptn built-in tool called `helm-service`.
@@ -27,8 +27,8 @@ Keptn will then check whether this service passes the defined quality gate.
 Depending on whether the quality gate is passed or not, this service will be promoted or aborted.
 In case it will be promoted, this service will be released to real-users.
 
-**Note, that the following tutorial is a first proof-of-concept for using Argo CD as
-deployment tool.**
+**Note:** The following tutorial is a first proof-of-concept for using Argo CD as
+deployment tool.
 
 ## Prerequisites
 
@@ -74,6 +74,7 @@ To install the `argo-service`, execute:
 This tutorial sets up a single stage environment containing a `production` environment.
 In this stage, performance tests are used to test new deployments.
 For creating the project, the following shipyard is used:
+
 ```console
 stages:
   - name: "production"
@@ -81,10 +82,11 @@ stages:
     test_strategy: "performance"
 ```
 
-1. Create a new project for your services using the [keptn create project](../../reference/cli/#keptn-create-project) command. 
+* Create a new project for your services using the [keptn create project](../../reference/cli/#keptn-create-project) command. 
 In this tutorial, the project is called *sockshop*. The Git user (`--git-user`), an access token (`--git-token`), and the remote URL (`--git-remote-url`) are required for configuring an upstream.
 For details, please visit [select Git-based upstream](../../manage/project/#select-git-based-upstream) where instructions for GitHub, GitLab, and Bitbucket are provided. 
 Before executing the following command, make sure you are in the `examples/onboarding-carts` folder:
+
     ```console
     keptn create project sockshop --shipyard=./shipyard-argo.yaml --git-user=GIT_USER --git-token=GIT_TOKEN --git-remote-url=GIT_REMOTE_URL
     ```
@@ -145,15 +147,18 @@ The `carts` service is of type `rollout`, which allows a *blue/green deployment*
 
 1. Argo CD requires a Git repo where this Helm chart is stored and, here, Keptn's config-repo is re-used.
 Execute the following command and replace `GIT_REMOTE_URL` with the URL as you used before when creating the Keptn project:
+
     ```console
     git clone GIT_REMOTE_URL
     cd sockshop
     git checkout production
     ```
+    
 1. Copy the `argo` folder provided in the examples repo under `onboarding-carts/` into 
 the config repo in the folder `carts`.
 
 1. Add, commit, and push the changes:
+
     ```console
     git add .
     git commit -m "Add deployment resources"
@@ -182,31 +187,32 @@ This hook is triggered when Argo CD applies the manifests. This hook
 executes a script which sends a [`sh.keptn.events.deployment-finished`](https://github.com/keptn/spec/blob/master/cloudevents.md#deployment-finished) event to the Keptn API.
 
 
-    ```console
-    apiVersion: batch/v1
-    kind: Job
-    metadata:
-      generateName: app-keptn-notification-
-      annotations:
-        argocd.argoproj.io/hook: Sync
-        argocd.argoproj.io/hook-delete-policy: HookSucceeded
+```console
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: app-keptn-notification-
+  annotations:
+    argocd.argoproj.io/hook: Sync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
     spec:
-      template:
-        spec:
-          containers:
-          - name: keptn-notification
-            image: agrimmer/alpine-curl-uuid-kubectl:latest
-            command: ["/bin/sh","-c"]
-            args: ['while [[ $(kubectl get rollout {{ .Values.keptn.service }}-{{ .Values.keptn.stage }} -n {{ .Values.keptn.project }}-{{ .Values.keptn.stage }} -o "jsonpath={..status.conditions[?(@.type==\"Progressing\")].reason}") == "ReplicaSetUpdated" ]]; do echo "waiting for rollout" && sleep 1; done; UUID=$(uuidgen); KEPTN_ENDPOINT=https://api.keptn.$(kubectl get cm keptn-domain -n {{ .Values.keptn.project }}-{{ .Values.keptn.stage }} -ojsonpath={.data.app_domain}); KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n {{ .Values.keptn.project }}-{{ .Values.keptn.stage }} -ojsonpath={.data.keptn-api-token} | base64 -d);UUID=$(uuidgen); now=$(TZ=UTC date "+%FT%T.00Z"); curl -X POST -H "Content-Type: application/cloudevents+json" -H "x-token: ${KEPTN_API_TOKEN}" --insecure -d "{\"contenttype\": \"application/json\", \"data\": { \"project\": \"{{ .Values.keptn.project }}\", \"service\": \"{{ .Values.keptn.service }}\", \"stage\": \"{{ .Values.keptn.stage }}\", \"deploymentURILocal\": \"http://{{ .Values.keptn.service }}-canary.{{ .Values.keptn.project }}-{{ .Values.keptn.stage }}\", \"deploymentstrategy\": \"blue_green_service\", \"teststrategy\": \"performance\"}, \"id\": \"${UUID}\", \"source\": \"argo\", \"specversion\": \"0.2\", \"time\": \"${now}\", \"type\": \"sh.keptn.events.deployment-finished\", \"shkeptncontext\": \"${UUID}\"}" ${KEPTN_ENDPOINT}/v1/event']
-          restartPolicy: Never
-      backoffLimit: 2
-    ```
+      containers:
+      - name: keptn-notification
+        image: agrimmer/alpine-curl-uuid-kubectl:latest
+        command: ["/bin/sh","-c"]
+        args: ['while [[ $(kubectl get rollout {{ .Values.keptn.service }}-{{ .Values.keptn.stage }} -n {{ .Values.keptn.project }}-{{ .Values.keptn.stage }} -o "jsonpath={..status.conditions[?(@.type==\"Progressing\")].reason}") == "ReplicaSetUpdated" ]]; do echo "waiting for rollout" && sleep 1; done; UUID=$(uuidgen); KEPTN_ENDPOINT=https://api.keptn.$(kubectl get cm keptn-domain -n {{ .Values.keptn.project }}-{{ .Values.keptn.stage }} -ojsonpath={.data.app_domain}); KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n {{ .Values.keptn.project }}-{{ .Values.keptn.stage }} -ojsonpath={.data.keptn-api-token} | base64 -d);UUID=$(uuidgen); now=$(TZ=UTC date "+%FT%T.00Z"); curl -X POST -H "Content-Type: application/cloudevents+json" -H "x-token: ${KEPTN_API_TOKEN}" --insecure -d "{\"contenttype\": \"application/json\", \"data\": { \"project\": \"{{ .Values.keptn.project }}\", \"service\": \"{{ .Values.keptn.service }}\", \"stage\": \"{{ .Values.keptn.stage }}\", \"deploymentURILocal\": \"http://{{ .Values.keptn.service }}-canary.{{ .Values.keptn.project }}-{{ .Values.keptn.stage }}\", \"deploymentstrategy\": \"blue_green_service\", \"teststrategy\": \"performance\"}, \"id\": \"${UUID}\", \"source\": \"argo\", \"specversion\": \"0.2\", \"time\": \"${now}\", \"type\": \"sh.keptn.events.deployment-finished\", \"shkeptncontext\": \"${UUID}\"}" ${KEPTN_ENDPOINT}/v1/event']
+      restartPolicy: Never
+  backoffLimit: 2
+```
 In order to activate this hook, the Job has to be located in the Helm chart containing the deployment resources.
 The example chart in `onboarding-carts/argo/carts` already contains this Hook
 and, hence, it was already added in the step before.
 
-1. This hook needs to access the Keptn API and therefore requires the Keptn endpoint as well as the api-token.
+* This hook needs to access the Keptn API and therefore requires the Keptn endpoint as well as the api-token.
 Therefore, create a config map and a secret with the Keptn endpoint and api-token:
+
     ```console
     KEPTN_ENDPOINT=$(kubectl get cm keptn-domain -n keptn -ojsonpath={.data.app_domain})
     KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
@@ -246,9 +252,9 @@ In order to access the website of the `carts` service, query the external IPs of
 
     ```console
     NAME            TYPE           CLUSTER-IP    EXTERNAL-IP     PORT(S)        AGE
-    carts-canary    LoadBalancer   10.3.10.175   35.x.x.x   80:32475/TCP   47h
+    carts-canary    LoadBalancer   10.3.10.175   35.x.x.x        80:32475/TCP   47h
     carts-db        ClusterIP      10.3.1.153    <none>          27017/TCP      47h
-    carts-primary   LoadBalancer   10.3.14.82    35.x.x.x   80:32597/TCP   47h
+    carts-primary   LoadBalancer   10.3.14.82    35.x.x.x        80:32597/TCP   47h
     ```
 
 1. Navigate to `http://EXTERNAL-IP` for viewing both versions of the `carts` service in your `production` environment.
