@@ -109,9 +109,9 @@ keptn configure domain YOUR.CUSTOM.DOMAIN
 
 ### keptn auth 
 
-Before the Keptn CLI can be used, it needs to be authenticated against a Keptn cluster. Therefore, an endpoint and an API token are required.
+Before the keptn CLI can be used, it needs to be authenticated against a Keptn cluster. Therefore, an endpoint and an API token are required.
 
-If the authentication is successful, Keptn will inform the user and the endpoint as well as the API token are stored in a password store of the underlying operating system. More precisely, the Keptn CLI stores the endpoint and API token using `pass` in case of Linux, using `Keychain` in case of macOS, or `Wincred` in case of Windows.
+If the authentication is successful, Keptn will inform the user and the endpoint as well as the API token are stored in a password store of the underlying operating system. More precisely, the keptn CLI stores the endpoint and API token using `pass` in case of Linux, using `Keychain` in case of macOS, or `Wincred` in case of Windows.
 
 <details><summary>For Linux / macOS</summary>
 <p>
