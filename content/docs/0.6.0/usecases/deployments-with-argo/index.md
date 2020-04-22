@@ -299,7 +299,7 @@ This version should now again pass the quality gate and, hence, should be promot
 
 1. In your Git reposititory containing the Argo resources, go to the folder `carts/argo/carts` and open the `values.yaml` file.
 
-1. Edit the `tag` from `0.10.2` to `0.10.1`. 
+1. Edit the `tag` from `0.10.2` to `0.10.3`. 
 
 1. Add, commit, and push these changes:
     ```console
