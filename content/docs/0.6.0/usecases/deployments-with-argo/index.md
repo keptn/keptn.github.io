@@ -259,7 +259,21 @@ In order to access the website of the `carts` service, query the external IPs of
 
 1. Navigate to `http://EXTERNAL-IP` for viewing both versions of the `carts` service in your `production` environment.
 
+  {{< popup_image
+  link="./assets/argo-carts-v1.png"
+  caption="Carts V1"
+  width="50%">}}
+
+
 **Expected Result:** This version has passed the quality gate. Hence, you should see that both services serve the same content.
+
+You will see these events in the Keptn's Bridge:
+
+  {{< popup_image
+  link="./assets/argo-bridge-carts-v1.png"
+  caption="Bridge after first deployment"
+  width="50%">}}
+
 
 ### Deploy a SLOW version 
 Next, we will deploy a slow version of the carts service, which contains an artificial slowdown of 2 second in each request.
@@ -291,6 +305,16 @@ This version must should not pass the quality gate and, hence, should not be pro
 
 1. Navigate to `http://EXTERNAL-IP` for viewing both versions of the `carts` service in your `production` environment.
 
+  {{< popup_image
+  link="./assets/argo-carts-v2.png"
+  caption="Carts CANARY"
+  width="50%">}}
+
+  {{< popup_image
+  link="./assets/argo-carts-v1.png"
+  caption="Carts PRIMARY"
+  width="50%">}}
+
 **Expected Result:** This version `0.10.2` should not pass the quality gate. The `primary` version should still show the last version `0.10.1`.
 
 ### Deploy a fast version
@@ -304,7 +328,7 @@ This version should now again pass the quality gate and, hence, should be promot
 1. Add, commit, and push these changes:
     ```console
     git add .
-    git commit -m "Use slow version"
+    git commit -m "Use fast version"
     git push
     ```
 
@@ -319,3 +343,15 @@ This version should now again pass the quality gate and, hence, should be promot
 1. Navigate to `http://EXTERNAL-IP` for viewing both versions of the `carts` service in your `production` environment.
 
 **Expected Result:** This version `0.10.3` should pass the quality gate. The `primary` version should show version `0.10.3`.
+
+  {{< popup_image
+  link="./assets/argo-carts-v3.png"
+  caption="Carts CANARY and PRIMARY"
+  width="50%">}}
+
+Your Bridge should show an event flow similar to the one in this screenshot:
+
+  {{< popup_image
+  link="./assets/argo-bridge-carts-v3.png"
+  caption="Keptn's bridge after deploying all three versions"
+  width="80%">}}
