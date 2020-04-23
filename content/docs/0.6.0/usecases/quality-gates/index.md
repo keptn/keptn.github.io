@@ -140,7 +140,7 @@ keptn install --platform=[aks|eks|gke|kubernetes] --use-case=quality-gates
 
 ## Configure Keptn and activate the quality gate
 
-* Create a Keptn project (e.g., *musicshop*) with only one the *hardening* stage declared in the `shipyard-quality-gates.yaml` file:
+* Create a Keptn project (e.g., *musicshop*) with only one *hardening* stage declared in the `shipyard-quality-gates.yaml` file:
 
 ```
 keptn create project musicshop --shipyard=shipyard-quality-gates.yaml
