@@ -16,33 +16,64 @@ In this section, the functionality and commands of the Keptn REST API are descri
 ## Access the Keptn API
 
 The Keptn API is documented in terms of a [Swagger API documentation](https://swagger.io/).
-Use the Keptn CLI to retrieve the endpoint of your Keptn API via the command `keptn status`. 
+
+* Use the Keptn CLI to retrieve the endpoint of your Keptn API via the command `keptn status`:
 
 ```console
 keptn status
 ```
 
-Output:
 ```console
 Starting to authenticate
 Successfully authenticated
-CLI is authenticated against the Keptn cluster https://api.keptn.XX.XXX.XX.XXX.io
+CLI is authenticated against the Keptn cluster https://api.keptn.YOUR.DOMAIN
 ```
 
-Access the Keptn Swagger API documentation in your browser at https://api.keptn.XX.XXX.XX.XXX.io/swagger-ui/. You should see something similar to the screenshot:
+* Access the Keptn Swagger API documentation in your browser at: https://api.keptn.YOUR.DOMAIN/swagger-ui/
+
+* The index page of the Swagger API documentation looks as follows:
 
 {{< popup_image
     link="./assets/swagger.png"
     caption="Keptn Swagger API documentation"
     width="700px">}}
 
-## Explore the API
+## Explore the Keptn API
 
-Clicking on an endpoint reveals more details how to use it, including definitions and examples of the payload.
+* Select one of the two API collections: 
+
+    * `api-service` contains endpoints to create/delete a project, to create service, and to send/get events.
+
+    * `configuration-service` provides GET endpoints for project/stage/service and endpoints for resource management.
+
+{{< popup_image
+    link="./assets/select_api.png"
+    caption="Select API"
+    width="700px">}}
+
+* Clicking on an endpoint reveals more details how to use it, including definitions and examples of the payload.
 
 {{< popup_image
     link="./assets/swagger-example.png"
     caption="Keptn Swagger API documentation - Example"
+    width="700px">}}
+
+## Architecture of Keptn API
+
+- Keptn 0.6.2 introduced an NGINX as new K8s deployment and service. This NGINX allows to route the traffic and ensures that all requests are authenticated using the `/auth` endpoint of the `api-service`.
+- The `api-service` now does not implement endpoints of the `configuration-service` anymore.
+- The `configuration-service` is exposed to the public. Endpoints that are not intended to be used from the public (e.g., *deleting a project*) are marked and the description is accordingly adapted.
+
+**Architecture for the full installation:**
+{{< popup_image
+    link="./assets/api_architecture_full.png"
+    caption="Architecture for full installation"
+    width="700px">}}
+
+**Architecture for the quality gates installation:**
+{{< popup_image
+    link="./assets/api_architecture_quality_gate.png"
+    caption="Architecture for quality gate"
     width="700px">}}
 
 ## Technical Details of the Cluster Gateway
@@ -54,7 +85,7 @@ Keptn uses [Istio](https://istio.io/) for connecting and controlling the traffic
 In order to receive incoming and outgoing connections,
 a [Gateway](https://istio.io/docs/reference/config/networking/gateway/) named `public-gateway` is available in the `istio-system` namespace.
 
-<details><summary>Details of the Gateway</summary>
+<details><summary>*Details of the Gateway*</summary>
     <p>
 
     apiVersion: networking.istio.io/v1alpha3
