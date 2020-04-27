@@ -17,7 +17,7 @@ The Keptn Bridge is not publicly accessible by default.
 keptn configure bridge --action=expose
 ```
 
-**Note:** This command shows the warning: ''
+**Note:** This command shows the warning `Warning: Make sure to enable basic authentication as described here: ...`. Please follow the warning and enable basic authentication explained [below](./#enable-authentication).
 
 * To lockdown the Keptn Bridge:
 
@@ -34,7 +34,7 @@ The Keptn Bridge has a basic authentication feature, which can be controlled by 
 
 ### Enable Authentication
 
-To enable this feature, a secret has to be created that holds the two variables. This secret has to be apply within the Kubernetes deployment for the Keptn Bridge.
+To enable this feature, a secret has to be created that holds the two variables. This secret has to be applied within the Kubernetes deployment for the Keptn Bridge.
 
 * Create the secret using:
 
