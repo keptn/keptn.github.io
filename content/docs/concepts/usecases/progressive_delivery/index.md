@@ -7,6 +7,8 @@ keywords: [use-cases]
 
 Keptn follows the approach of *scriptless delivery*, thus, there is no need to write *any* imperative pipeline code. Instead, a multi-stage delivery workflow is defined declaratively. 
 
+## Shipyard for Delivery Declaration
+
 The definition is manifested in a so-called *shipyard* file that defines a delivery workflow. It can hold multiple stages, each with a dedicated *deployment strategy*, *test strategy*, as well as a *remediation strategy*. Following this declarative approach, there is no need to write imperative pipeline code. Keptn takes the shipyard file and creates a multi-stage workflow each stage having a deployment strategy (e.g., blue/green), testing strategy (e.g., functional tests or performance tests), as well as an optional automated remediation strategy to trigger self-healing actions.
 
   {{< popup_image
