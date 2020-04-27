@@ -1,25 +1,100 @@
 ---
-title: Keptn's Bridge
+title: Keptn Bridge
 description: Explains how the access the Keptn's Bridge.
 weight: 21
 keywords: [bridge]
 ---
 
-The Keptn's Bridge lets you browse the Keptn's log. It is automatically installed with your Keptn installation.
+The Keptn Bridge is the user interface of Keptn and presents all projects and services managed by Keptn. It is automatically installed with your Keptn deployment.
 
-## Usage
+## Expose/Lockdown Bridge
 
-The Keptn's Bridge is not publicly accessible, but can be retrieved by enabling port-forwarding from your local machine to the Keptn's Bridge:
+The Keptn Bridge is not publicly accessible by default.
+
+* To expose the Keptn Bridge, execute the following command. It is then available on: `https://bridge.keptn.YOUR.DOMAIN/`
 
 ```console
-kubectl port-forward svc/bridge -n keptn 9000:8080
+keptn configure bridge --action=expose
 ```
 
-It is then available on: http://localhost:9000
+**Note:** This command shows the warning `Warning: Make sure to enable basic authentication as described here: ...`. Please follow the warning and enable basic authentication explained [below](./#enable-authentication).
 
-**Important Note**: The Keptn's Bridge exposes sensitive information. We do not recommend exposing it publicly via LoadBalancer, NodePort, VirtualServices or alike.
+* To lockdown the Keptn Bridge:
 
-## Project view
+```console
+keptn configure bridge --action=lockdown
+```
+
+## Configure Basic Authentication
+
+The Keptn Bridge has a basic authentication feature, which can be controlled by setting the following two environment variables:
+
+* `BASIC_AUTH_USERNAME` - username
+* `BASIC_AUTH_PASSWORD` - password
+
+### Enable Authentication
+
+To enable this feature, a secret has to be created that holds the two variables. This secret has to be applied within the Kubernetes deployment for the Keptn Bridge.
+
+* Create the secret using:
+
+    ```console
+    kubectl -n keptn create secret generic bridge-credentials --from-literal="BASIC_AUTH_USERNAME=<USERNAME>" --from-literal="BASIC_AUTH_PASSWORD=<PASSWORD>"
+    ```
+
+    **Note:** Replace `<USERNAME>` and `<PASSWORD>` with the desired credentials.
+
+* If you are using Keptn 0.6.1 or older, edit the deployment using:
+
+    ```console
+    kubectl -n keptn edit deployment bridge
+    ```
+   
+    * Add the secret to the `bridge` container, as shown below:
+
+    ```yaml
+    ...
+    spec:
+      containers:
+      - name: bridge
+        image: keptn/bridge2:0.6.1
+        imagePullPolicy: Always
+        # EDIT STARTS HERE
+        envFrom:
+          - secretRef:
+              name: bridge-credentials
+              optional: true
+        # EDIT ENDS HERE
+        ports:
+        - containerPort: 3000
+        ...
+    ```
+
+* Restart the pod of the Keptn Bridge by executing:
+
+    ```console
+    kubectl -n keptn scale deployment bridge --replicas=0
+    kubectl -n keptn scale deployment bridge --replicas=1
+    ```
+
+### Disable Authentication
+
+* To disable the basic authentication, delete the secret by executing: 
+
+    ```console
+    kubectl -n keptn delete secret bridge-credentials
+    ```
+
+* Restart the respective pod of the Keptn Bridge by executing:
+
+    ```console
+    kubectl -n keptn scale deployment bridge --replicas=0
+    kubectl -n keptn scale deployment bridge --replicas=1
+    ```
+
+## Views in Keptn Bridge
+
+### Project view
 
 The Keptn's Bridge provides an easy way to browse all events that are sent within Keptn. When you access the Keptn's Bridge, all projects will be shown on the start screen. When clicking on a project, the stages of this project and all onboarded services are shown on the next view.
 
@@ -29,7 +104,7 @@ The Keptn's Bridge provides an easy way to browse all events that are sent withi
 
 When selecting one service, all events that belong to this service are listed on the right side. Please note that this list only represents the start of a deployment (or problem) of a new artifact. More information on the executed steps can be revealed when you click on one event.
 
-## Event stream
+### Event Stream
 
 When selecting an event, the Keptn's Bridge displays all other events that are in the same Keptn context and belong to the selected entry point. As can be seen in the screenshot below, the entry point around 4:03 pm has been selected and all events belonging to this entry point are displayed on the right side.
 
