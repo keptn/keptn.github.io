@@ -23,11 +23,11 @@ The process of evaluating a quality gate can be triggered (1) either via the Kep
 
 A service-level indicator is a *"carefully defined quantitative measure of some aspect of the level of service that is provided"* (as defined in the [Site-Reliability Engineering Book](https://landing.google.com/sre/sre-book/chapters/service-level-objectives/)). 
 
-An example of an SLI is the *response time* (also named request latency), which is the indicator of how long it takes for a request to respond with an answer. Other prominent SLIs are *error rate* (or failure rate), and throughput. Keptn defines all SLIs in a dedicated `sli.yaml` file to make SLIs reusable within several quality gates.
+An example of an SLI is the *response time* (also named request latency), which is the indicator of how long it takes for a request to respond with an answer. Other prominent SLIs are *error rate* (or failure rate), and throughput. Keptn defines all SLIs in a dedicated [sli.yaml file](https://github.com/keptn/spec/blob/master/sre.md#service-level-indicators-sli-configuration) to make SLIs reusable within several quality gates.
 
 
 ### What is a Service-Level Objective (SLO)?
 
 A service-level objective is *"a target value or range of values for a service level that is measured by an SLI."* (as defined in the [Site-Reliability Engineering Book](https://landing.google.com/sre/sre-book/chapters/service-level-objectives/)). 
 
-An example of an SLO can define that a specific request must return results within 100 milliseconds. Keptn quality gates can comprise of several SLOs that are all evaluated and scored, based even on different weights for each SLO to consider different importance of each SLO. Keptn defines SLOs in a dedicated `slo.yaml` file.
+An example of an SLO can define that a specific request must return results within 100 milliseconds. Keptn quality gates can comprise of several SLOs that are all evaluated and scored, based even on different weights for each SLO to consider different importance of each SLO. Keptn defines SLOs in a dedicated [slo.yaml file](https://github.com/keptn/spec/blob/master/sre.md#service-level-objectives-slo-configuration).
