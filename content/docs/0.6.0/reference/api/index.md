@@ -58,7 +58,7 @@ CLI is authenticated against the Keptn cluster https://api.keptn.YOUR.DOMAIN
     caption="Keptn Swagger API documentation - Example"
     width="700px">}}
 
-## Architecture of Keptn API
+## Architecture Details of Keptn API
 
 - Keptn 0.6.2 introduced an NGINX as new K8s deployment and service. This NGINX allows to route the traffic and ensures that all requests are authenticated using the `/auth` endpoint of the `api-service`.
 - The `api-service` now does not implement endpoints of the `configuration-service` anymore.
@@ -76,7 +76,7 @@ CLI is authenticated against the Keptn cluster https://api.keptn.YOUR.DOMAIN
     caption="Architecture for quality gate"
     width="700px">}}
 
-## Technical Details of the Cluster Gateway
+## Technical Details of Cluster Gateway
 
 The following descriptions are only valid for a full Keptn installation 
 (i.e., a Keptn installation which was not installed for the quality-gates use case).
