@@ -37,20 +37,37 @@ When selecting an event, the Keptn's Bridge displays all other events that are i
   link="./assets/bridge_details.png"
   caption="Keptn's Bridge event stream">}}
 
+## Deep links into Keptn Bridge
 
-## Early Access Version of Keptn's Bridge
+For integration of the Keptn Bridge into DevOps tools, a list of following deep links is provided: 
 
-<!--
-Right now there is no early access version of Keptn's Bridge available. You can upgrade to the latest version (0.6.1) by executing the following commands:
+- `project/:projectName`
+  - Opens project view of the project specified by `projectName`.
+- `project/:projectName/:serviceName`
+  - Opens project view of the project specified by `projectName` and expands the service specified by `serviceName`.
+- `project/:projectName/:serviceName/:contextId`
+  - Opens project view of `projectName`, expands the service specified by `serviceName`, and selects root event of *keptn context* specified by `contextId`.
+- `project/:projectName/:serviceName/:contextId/:eventId`: 
+  - Opens project view of `projectName`, expands the service specified by `serviceName`, and selects root event of *keptn context* specified by `contextId`. 
+  - Finally, Keptn Bridge scrolls to event with the `eventId`.
+- `trace/:shkeptncontext`
+  - Loads that root event and redirects to `project/:projectName/:serviceName/:contextId`
+- `trace/:shkeptncontext/:stage`
+  - Loads that root event and redirects to `project/:projectName/:serviceName/:contextId/:eventId` where eventId is the id of the first event of the specific stage.
+- `trace/:shkeptncontext/:eventtype`
+  - Loads that root event and redirects to `project/:projectName/:serviceName/:contextId/:eventId` where eventId is the id of the last event with the specific event type.
+
+## Early Access Version of Keptn Bridge
+
+Right now there is no early access version of Keptn's Bridge available. You can upgrade to the latest version (0.6.2) by executing the following commands:
 
 ```console
-kubectl -n keptn set image deployment/bridge bridge=keptn/bridge:0.6.1 --record
-kubectl -n keptn set image deployment/configuration-service bridge=keptn/configuration-service:0.6.1 --record
-kubectl -n keptn-datastore set image deployment/mongodb-datastore mongodb-datastore=keptn/mongodb-datastore:0.6.1 --record
+kubectl -n keptn set image deployment/bridge bridge=keptn/bridge:0.6.2 --record
+kubectl -n keptn set image deployment/configuration-service bridge=keptn/configuration-service:0.6.2 --record
+kubectl -n keptn-datastore set image deployment/mongodb-datastore mongodb-datastore=keptn/mongodb-datastore:0.6.2 --record
 ```
--->
 
-
+<!--
 There is an early access version of Keptn's Bridge available (compatible with Keptn 0.6.1):
 
   {{< popup_image
@@ -75,5 +92,6 @@ If you want to restore the old version of bridge, configuration-service and mong
 kubectl -n keptn set image deployment/bridge bridge=keptn/bridge2:0.6.1 --record
 ```
 
+-->
 
 If you have any questions or feedback regarding Keptn's Bridge, please contact us through our [Keptn Community Channels](https://github.com/keptn/community)!
