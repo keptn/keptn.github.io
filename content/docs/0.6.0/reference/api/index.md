@@ -9,8 +9,9 @@ In this section, the functionality and commands of the Keptn REST API are descri
 
 ## Prerequisites
 
-- To access the Keptn API, a running Keptn installation is needed. If you have not set up Keptn yet, [please start here](../../installation/setup-keptn).
+- To access the Keptn API, a running Keptn installation is needed. If you have not set up Keptn yet, please start [here](../../installation/setup-keptn).
 
+- To get the **API token** for authenticating API calls, please see [here](../cli/#keptn-auth).  
 
 ## Access the Keptn API
 
