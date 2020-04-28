@@ -28,7 +28,7 @@ $ kubectl get deployments -n sockshop-dev carts -owide
 
 ```
 NAME    READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS   IMAGES                                 SELECTOR
-carts   1/1     1            1           56m   carts        docker.io/keptnexamples/carts:0.10.1   app=carts
+carts   1/1     1            1           56m   carts        docker.io/keptnexamples/carts:0.11.1   app=carts
 ```
 
 When sending a new-artifact, we are updating the helm charts values.yaml file with the respective image name.
@@ -49,29 +49,29 @@ $ kubectl get deployments -n sockshop-staging carts carts-primary -owide
 
 ```
 NAME            READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS   IMAGES                                 SELECTOR
-carts-primary   1/1     1            1           56m   carts        docker.io/keptnexamples/carts:0.10.1   app=carts-primary
-carts           0/0     0            0            3m   carts        docker.io/keptnexamples/carts:0.10.2   app=carts
+carts-primary   1/1     1            1           56m   carts        docker.io/keptnexamples/carts:0.11.1   app=carts-primary
+carts           0/0     0            0            3m   carts        docker.io/keptnexamples/carts:0.11.2   app=carts
 ```
 
 
-When a new artifact is deployed (e.g., 0.10.2), a canary deployment will be modified and scaled up.
+When a new artifact is deployed (e.g., 0.11.2), a canary deployment will be modified and scaled up.
 
 ```
 NAME            READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS   IMAGES                                 SELECTOR
-carts-primary   1/1     1            1           57m   carts        docker.io/keptnexamples/carts:0.10.1   app=carts-primary
-carts           0/1     1            1            1m   carts        docker.io/keptnexamples/carts:0.10.2   app=carts
+carts-primary   1/1     1            1           57m   carts        docker.io/keptnexamples/carts:0.11.1   app=carts-primary
+carts           0/1     1            1            1m   carts        docker.io/keptnexamples/carts:0.11.2   app=carts
 ```
 
 The primary deployment is always available (and called `carts-primary`). The canary deployment (called `carts`) gets 
- scaled up in the case of a new-artifact event (e.g., in this case someone has sent a new-artifact for 0.10.2). Traffic 
+ scaled up in the case of a new-artifact event (e.g., in this case someone has sent a new-artifact for 0.11.2). Traffic 
  is shifted to the canary release. 
  
-Once testing has finished, the primary deployment is upgraded to the new version (0.10.2). 
+Once testing has finished, the primary deployment is upgraded to the new version (0.11.2). 
  
 ```
 NAME            READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS   IMAGES                                 SELECTOR
-carts-primary   1/1     1            1            3m   carts        docker.io/keptnexamples/carts:0.10.2   app=carts-primary
-carts           1/1     1            1            1d   carts        docker.io/keptnexamples/carts:0.10.2   app=carts
+carts-primary   1/1     1            1            3m   carts        docker.io/keptnexamples/carts:0.11.2   app=carts-primary
+carts           1/1     1            1            1d   carts        docker.io/keptnexamples/carts:0.11.2   app=carts
 ```
 
 After a new pod for the primary deployment has been successfully deployed, traffic is shifted to the primary deployment
@@ -79,8 +79,8 @@ After a new pod for the primary deployment has been successfully deployed, traff
 
 ```
 NAME            READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS   IMAGES                                 SELECTOR
-carts-primary   1/1     1            1            4m   carts        docker.io/keptnexamples/carts:0.10.2   app=carts-primary
-carts           0/0     0            0            1d   carts        docker.io/keptnexamples/carts:0.10.2   app=carts
+carts-primary   1/1     1            1            4m   carts        docker.io/keptnexamples/carts:0.11.2   app=carts-primary
+carts           0/0     0            0            1d   carts        docker.io/keptnexamples/carts:0.11.2   app=carts
 ```
 
 ### Clean-up after deleting a project
