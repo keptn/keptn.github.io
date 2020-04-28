@@ -5,8 +5,9 @@ weight: 2
 keywords: [keptn, use-cases]
 ---
 
-When developing an application, sooner or later you need to update an application or service in a production environment. To conduct this in a controlled manner and without impacting end-user experience, the quality of the new service has to be ensured in an automated way. Keptn quality gates provide you a *declarative way* to define quality criteria of your service and Keptn will collect, evaluate and score those metrics to decide if a new version is allowed to be promoted to the next stage in your continuous delivery pipelines or if it has to be held back.
+> **Challenge:** When developing an application, sooner or later you need to update an application or service in a production environment. To conduct this in a controlled manner and without impacting end-user experience, the quality of the new service has to be ensured in an automated way. 
 
+Keptn quality gates provide you a *declarative way* to define quality criteria of your service and Keptn will collect, evaluate, and score those metrics to decide if a new version is allowed to be promoted to the next stage in your continuous delivery pipelines or if it has to be held back.
 
 ## Keptn Quality Gate Process
 
