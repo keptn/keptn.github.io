@@ -16,3 +16,31 @@
     {{ partial "hamburger.html" . }}
   </div>
 </div>
+
+<!-- check if the current page or any of the parent pages has "unsupported" or "develop" set -->
+{{ $url := replace .Permalink ( printf "%s" .Site.BaseURL) "" }}
+
+{{ $unsupported := "" }}
+{{ $develop := "" }}
+{{ $page := .Page }}
+{{ range $index, $element := split $url "/" }}
+  {{ if $page }}
+    {{ if $page.Params.unsupported }}
+      <!-- unsupported found -->
+      {{ $unsupported = $page.Params.unsupported }}
+    {{ end }}
+    {{ if $page.Params.develop }}
+      <!-- develop found -->
+      {{ $develop = $page.Params.develop }}
+    {{ end }}
+    {{ $page = $page.Parent }}
+  {{ end }}
+{{ end }}
+
+{{ if $unsupported }}
+  <div class="note unsupported">{{ $unsupported }}</div>
+{{ end }}
+
+{{ if $develop }}
+  <div class="note develop">{{ $develop }}</div>
+{{ end }}
