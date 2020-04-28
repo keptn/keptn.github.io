@@ -8,10 +8,10 @@ weight: 80
 
 If you would like to install the quality-gates standalone version of Keptn on [MicroK8s](https://microk8s.io/), please follow the instructions below.
 
-**Please note**: Running Keptn on MicroK8s is currently an experimental feature.
+**Note**: Running Keptn on MicroK8s is currently an experimental feature.
 
-<details><summary>On macOS via multipass</summary>
-<p>
+### Guide for macOS via Multipass
+
 If you are using macOS, you will need to run MicroK8s using [multipass](https://multipass.run/). You can install multipass using either the [multipass installer](https://github.com/canonical/multipass/releases/download/v1.0.0/multipass-1.0.0%2Bmac-Darwin.pkg), or by using brew:
 
   ```console
@@ -37,11 +37,9 @@ After you have installed multipass, you can install Keptn using the following co
   ```
 
 Afterwards, you are ready to use Keptn for the use case of [Keptn Quality Gates](../../usecases/quality-gates/).
-</p>
-</details>
 
-<details><summary>On Ubuntu</summary>
-<p>
+### Guide for Ubuntu
+
 If you are using Ubuntu, you can install Keptn using the following commands:
 
   ```console
@@ -58,5 +56,3 @@ If you are using Ubuntu, you can install Keptn using the following commands:
   ```
 
 Afterwards, you are ready to use Keptn for the use case of [Keptn Quality Gates](../../usecases/quality-gates/).
-</p>
-</details>

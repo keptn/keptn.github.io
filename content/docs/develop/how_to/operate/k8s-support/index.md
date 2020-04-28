@@ -5,7 +5,7 @@ weight: 30
 keywords: setup
 ---
 
-This document describes the maximum version skew supported between Keptn and Kubernetes.^
+This document describes the maximum version skew supported between Keptn and Kubernetes.
 
 ## Supported Version
 
