@@ -5,7 +5,9 @@ weight: 1
 keywords: [use-cases]
 ---
 
-Keptn follows the approach of *scriptless delivery*, thus, there is no need to write *any* imperative pipeline code. Instead, a multi-stage delivery workflow is defined declaratively. 
+> **Challenge:** Today, many organization build their continuous delivery workflows by hand and in an imperative way. This can lead to a lot of manual work when, for example, a scripted delivery pipeline - with slight modifications - is spread across the organization and re-used by different teams. Just imagine the difficulty to keep all variations of this pipeline up-to-date and to consider future changes in the delivery workflow of a new artifact. 
+
+Keptn follows the approach of *scriptless delivery* meaning that there is no need to write *any* imperative pipeline code. Instead, a multi-stage delivery workflow is defined declaratively. 
 
 ## Shipyard for Delivery Declaration
 
