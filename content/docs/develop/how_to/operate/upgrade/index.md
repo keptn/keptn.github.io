@@ -1,10 +1,13 @@
 ---
-title: Upgrade
+title: Upgrade Keptn
 description: Upgrade your Keptn to 0.7
-weight: 20
+weight: 5
 keywords: upgrade
 ---
 
+## Upgrade from 0.6.x to 0.7
+
+<!--
 ## Upgrade from 0.6.0 to 0.6.1
 
 * To download and install the Keptn CLI for version 0.6.1, please refer to the [Install Keptn CLI section](../setup-keptn/#install-keptn-cli).
@@ -567,3 +570,5 @@ Several changes to Helm charts have been made. If you want to stay compatible, p
 ### New Lighthouse / Pitometer was removed
 
 Pitometer was removed including the support for PerfSpec files. Instead, a new service called *lighthouse* has been introduced. Please follow the [Deployment with Quality Gates](../../usecases/deployments-with-quality-gates/) tutorial to learn more about the new file formats used for quality gates.
+
+-->

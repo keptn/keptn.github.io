@@ -1,13 +1,12 @@
 ---
-title: Installation
+title: Install CLI and Keptn
 description: Install Keptn on one of the supported Kubernetes platforms
-weight: 10
+weight: 1
 keywords: setup
 ---
 
 ## Prerequisites
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
-- For Linux: [bc](https://www.gnu.org/software/bc/manual/html_mono/bc.html)
 
 ## Setup Kubernetes cluster
 
@@ -292,27 +291,13 @@ In the Kubernetes cluster, this command creates the **keptn**, **keptn-datastore
 keptn install --platform=[aks|eks|gke|openshift|pks|kubernetes] --use-case=quality-gates
 ```
 
-## Configure a custom domain (required for EKS)
+## Configure a custom domain
 
 If you have a custom domain or cannot use *xip.io* (e.g., when running Keptn on EKS with an ELB (Elastic Load Balancer) from AWS), there is the 
 CLI command [keptn configure domain](../../reference/cli/#keptn-configure-domain) to configure Keptn for your custom domain:
 
 ```console
 keptn configure domain YOUR_DOMAIN
-```
-
-## Uninstall
-
-- To uninstall Keptn from your cluster, run the uninstall command using the Keptn CLI:
-
-``` console
-keptn uninstall
-``` 
-
-- To verify the cleanup, retrieve the list of namespaces in your cluster and ensure that the **keptn** namespace is not included in the output of the following command:
-
-```console
-kubectl get namespaces
 ```
 
 ## Troubleshooting
