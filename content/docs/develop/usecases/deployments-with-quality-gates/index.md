@@ -16,8 +16,8 @@ For this tutorial, we prepared a *slow* and a *regular* version of the carts ser
 
 | Image                                 | Description                                        |
 |---------------------------------------|----------------------------------------------------|
-| docker.io/keptnexamples/carts:0.10.2  | Processes each request with a slowdown of 1 second |
-| docker.io/keptnexamples/carts:0.10.3  | Processes each request without any slowdown        |
+| docker.io/keptnexamples/carts:0.11.2  | Processes each request with a slowdown of 1 second |
+| docker.io/keptnexamples/carts:0.11.3  | Processes each request without any slowdown        |
 
 In this tutorial, we will deploy these two versions. During this deployment process, the versions have to pass a quality gate in the *staging* environment to get promoted to the *production* environment.
 This quality gate checks whether the average response time of the service is under 1&nbsp;second. If the response time exceeds this threshold, the performance evaluation will be marked as failed.
@@ -25,14 +25,14 @@ This quality gate checks whether the average response time of the service is und
 <details><summary>*Click here to learn more about the tutorial.*</summary>
 <p>
 
-1. We will *try* to deploy the *slow* version of the carts service (v0.10.2). 
+1. We will *try* to deploy the *slow* version of the carts service (v0.11.2). 
   * Keptn will deploy this new version into the **dev** environment where functional tests will be executed. 
   * After passing these functional tests, Keptn will promote this service into the **staging** environment by releasing it as the blue or green version next to the previous version of the service. 
   * Then, Keptn will route traffic to this new version by changing the configuration of the virtual service (i.e., by setting weights for the routes between blue and green) and Keptn will start the defined performance test (e.g., using JMeter). Using the monitoring results of this performance test will allow [lighthouse](https://github.com/keptn/keptn/tree/0.6.1/lighthouse-service) to evaluate the quality gate. 
-  * The *slow* version of carts (v0.10.2) will not pass the quality gate and, hence, the new version will not be promoted to the **production** stage (i.e., the deployment will be rejected).
+  * The *slow* version of carts (v0.11.2) will not pass the quality gate and, hence, the new version will not be promoted to the **production** stage (i.e., the deployment will be rejected).
   * Furthermore, Keptn will change the weights within the **staging** stage back to the previous working deployment of the service. 
 
-2. We will deploy the *regular* version of the carts service (v0.10.3). 
+2. We will deploy the *regular* version of the carts service (v0.11.3). 
   * Keptn will conduct the same steps as before except that this version will pass the quality gate. 
   * Hence, this *regular* version will be promoted into the **production** environment.
 
@@ -41,12 +41,12 @@ This quality gate checks whether the average response time of the service is und
 
 ## Prerequisites
 
-- Finish the [Onboarding a Service](../onboard-carts-service/) tutorial (deployed carts version v0.10.1).
+- Finish the [Onboarding a Service](../onboard-carts-service/) tutorial (deployed carts version v0.11.1).
 
 ## Set up the quality gate and monitoring
 Keptn requires a performance specification for the quality gate. This specification is described in a file called `slo.yaml`, which specifies a Service Level Objective (SLO) that should be met by a service. To learn more about the *slo.yaml* file, go to [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/spec/blob/0.1.3/sre.md).
 
-* Activate the quality gates for the carts service. Therefore, navigate to the `examples/onboarding-carts` folder and upload the `slo-quality-gates.yaml` file using the [add-resource](../../reference/cli/#keptn-add-resource) command:
+* Activate the quality gates for the carts service. Therefore, navigate to the `examples/onboarding-carts` folder and upload the `slo-quality-gates.yaml` file using the [add-resource](../../cli/commands/keptn_add-resource) command:
 
 ```console
 keptn add-resource --project=sockshop --stage=staging --service=carts --resource=slo-quality-gates.yaml --resourceUri=slo.yaml
@@ -157,12 +157,12 @@ For this tutorial, you will need to set up monitoring for the carts service eith
 * Use the Keptn CLI to deploy a version of the carts service, which contains an artificial **slowdown of 1 second** in each request.
 
 ```console
-keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.10.2
+keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.11.2
 ```
 
 <details><summary>*Click here to learn more about Keptn internal services.*</summary>
 <p>
-The [send event new-artifact](../../reference/cli/#keptn-send-event-new-artifact) command changes the configuration of the service and automatically triggers the following Keptn services:
+The [send event new-artifact](../../cli/commands/keptn_send_event_new-artifact) command changes the configuration of the service and automatically triggers the following Keptn services:
 
 * **Phase 1**: Deploying, testing, and evaluating the test in the *dev* stage:
     * **helm-service**: This service deploys the new artifact to *dev*.
@@ -181,27 +181,27 @@ The [send event new-artifact](../../reference/cli/#keptn-send-event-new-artifact
 
 ## Quality gate in action
 
-After triggering the deployment of the carts service in version v0.10.2, the following status is expected:
+After triggering the deployment of the carts service in version v0.11.2, the following status is expected:
 
 * **Dev stage:** The new version is deployed in the dev stage and the functional tests passed.
   * To verify, open a browser and navigate to: `http://carts.sockshop-dev.YOUR.DOMAIN`
 
-* **Staging stage:** In this stage, version v0.10.2 will be deployed and the performance test starts to run for about 10 minutes. After the test is completed, Keptn triggers the test evaluation and identifies the slowdown. Consequently, a roll-back to version v0.10.1 in this stage is conducted and the promotion to production is not triggered.
-  * To verify, the [Keptn's Bridge](../../reference/keptnsbridge/#usage) shows the deployment of v0.10.2 and then the failed test in staging including the roll-back:
+* **Staging stage:** In this stage, version v0.11.2 will be deployed and the performance test starts to run for about 10 minutes. After the test is completed, Keptn triggers the test evaluation and identifies the slowdown. Consequently, a roll-back to version v0.11.1 in this stage is conducted and the promotion to production is not triggered.
+  * To verify, the [Keptn's Bridge](../../reference/keptnsbridge/#usage) shows the deployment of v0.11.2 and then the failed test in staging including the roll-back:
 
     {{< popup_image
       link="./assets/quality_gates.png"
       caption="Quality gate in staging"
       width="100%">}}
 
-* **Production stage:** The slow version is **not promoted** to the production stage because of the active quality gate in place. Thus, still version v0.10.1 is expected to be in production.
+* **Production stage:** The slow version is **not promoted** to the production stage because of the active quality gate in place. Thus, still version v0.11.1 is expected to be in production.
   * To verify, navigate to: `http://carts.sockshop-production.YOUR.DOMAIN`
 
 ## Deploy a regular carts version
 
 1. Use the Keptn CLI to send a new version of the *carts* artifact, which does **not** contain any slowdown:
    ```console
-   keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.10.3
+   keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.11.3
    ```
 
 1. To verify the deployment in *production*, open a browser and navigate to `http://carts.sockshop-production.YOUR.DOMAIN`. As a result, you see `Version: v3`.
@@ -228,5 +228,5 @@ After triggering the deployment of the carts service in version v0.10.2, the fol
       Labels:  app=carts-primary
       Containers:
         carts:
-          Image:      docker.io/keptnexamples/carts:0.10.3
+          Image:      docker.io/keptnexamples/carts:0.11.3
     ```

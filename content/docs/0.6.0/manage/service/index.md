@@ -46,7 +46,7 @@ In this service, the property `spec.selector.app` has to be set.
           image: "{{ .Values.image }}"
   ```
 
-To onboard a service, use the [onboard service](../../reference/cli#keptn-onboard-service) command and provide the service name, project name (`--project` flag), and the root directory of a Helm chart (`--chart` flag). 
+To onboard a service, use the [onboard service](../../reference/cli/commands/keptn_onboard_service) command and provide the service name, project name (`--project` flag), and the root directory of a Helm chart (`--chart` flag). 
 
 ```console
 keptn onboard service SERVICENAME --project=PROJECTNAME --chart=FILEPATH
@@ -73,7 +73,7 @@ env:
   value: "{{ .Values.SERVICE_PLACEHOLDER_C.service.name }}"
 ```
 
-**Note:** If you need to store resources (e.g., test files, configuration files, etc.) that are required by a service, use the [add-resource](../../reference/cli#keptn-add-resource) command and specifiy the `--project`, `--stage`, and `--service` as shown below:
+**Note:** If you need to store resources (e.g., test files, configuration files, etc.) that are required by a service, use the [add-resource](../../reference/cli/commands/keptn_add-resource) command and specifiy the `--project`, `--stage`, and `--service` as shown below:
 
 ```console
 keptn add-resource --project=your-project --service=my-service --stage=staging --resource=jmeter/load.jmx
