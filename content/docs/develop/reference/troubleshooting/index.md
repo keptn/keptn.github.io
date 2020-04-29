@@ -10,7 +10,7 @@ In this section, instructions have been summarized that help to troubleshoot kno
 ## Generating a Support Archive
 
 The Keptn CLI allows to generate a support archive, which can be used as data source for debugging a Keptn installation.
-For generating a support archive, please checkout the CLI command [keptn generate support-archive](../cli/commands/keptn_generate_support-archive).
+For generating a support archive, please checkout the CLI command [keptn generate support-archive](../../cli/commands/keptn_generate_support-archive).
 
 
 ## Verifying a Keptn installation
