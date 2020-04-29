@@ -21,7 +21,7 @@ For the configuration, Keptn relies on several specification files that define *
 - Clone the example repository, which contains specification files:
 
 ```console
-git clone --branch 0.6.1 https://github.com/keptn/examples.git --single-branch
+git clone --branch 0.6.2 https://github.com/keptn/examples.git --single-branch
 ```
 
 ### Difference to Deployment with Quality Gates
