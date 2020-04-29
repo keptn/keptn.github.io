@@ -132,7 +132,7 @@ env:
 
 ## Install Keptn just for this use case
 
-If you want to install Keptn just to explore the capabilities of quality gates, you have the option to roll-out Keptn **without** components for automated delivery and operations. Therefore, set the `use-case` flag to `quality-gates` when executing the [install](../../reference/cli/#keptn-install) command:
+If you want to install Keptn just to explore the capabilities of quality gates, you have the option to roll-out Keptn **without** components for automated delivery and operations. Therefore, set the `use-case` flag to `quality-gates` when executing the [install](../../reference/cli/commands/keptn_install) command:
 
 ```console
 keptn install --platform=[aks|eks|gke|kubernetes] --use-case=quality-gates
@@ -152,7 +152,7 @@ keptn create project musicshop --shipyard=shipyard-quality-gates.yaml
 keptn create service catalogue --project=musicshop
 ```
 
-  **Note:** Since you are not actively deploying a service in this tutorial, [keptn create service](../../reference/cli/#keptn-create-service) does not require you to provide a Helm chart compared to the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command. 
+  **Note:** Since you are not actively deploying a service in this tutorial, [keptn create service](../../reference/cli/commands/keptn_create_service) does not require you to provide a Helm chart compared to the [keptn onboard service](../../reference/cli/commands/keptn_onboard_service) command. 
 
 * To activate the quality gate for your service, upload the `slo-quality-gates.yaml` file:
 
@@ -247,7 +247,7 @@ At a specific point in time, e.g., after you have executed your tests or you hav
 
 ### Keptn CLI
 
-* Execute a quality gate evaluation by using the Keptn CLI to [send event start-evaluation](../../reference/cli/#keptn-send-event-start-evaluation): 
+* Execute a quality gate evaluation by using the Keptn CLI to [send event start-evaluation](../../reference/cli/commands/keptn_send_event_start-evaluation): 
 
 ```console
 keptn send event start-evaluation --project=musicshop --stage=hardening --service=catalogue --timeframe=5m
@@ -260,7 +260,7 @@ Starting to send a start-evaluation event to evaluate the service catalogue in p
 ID of Keptn context: 6cd3e469-cbd3-4f73-xxxx-8b2fb341bb11
 ```
 
-* Retrieve the evaluation results by using the Keptn CLI to [get event evaluation-done](../../reference/cli/#keptn-get-event-evaluation-done): 
+* Retrieve the evaluation results by using the Keptn CLI to [get event evaluation-done](../../reference/cli/commands/keptn_get_event_evaluation-done): 
     
 ```console
 keptn get event evaluation-done --keptn-context=6cd3e469-cbd3-4f73-xxxx-8b2fb341bb11

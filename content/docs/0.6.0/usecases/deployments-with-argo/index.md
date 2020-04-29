@@ -82,7 +82,7 @@ stages:
     test_strategy: "performance"
 ```
 
-* Create a new project for your services using the [keptn create project](../../reference/cli/#keptn-create-project) command. 
+* Create a new project for your services using the [keptn create project](../../reference/cli/commands/keptn_create_project) command. 
 In this tutorial, the project is called *sockshop*. The Git user (`--git-user`), an access token (`--git-token`), and the remote URL (`--git-remote-url`) are required for configuring an upstream.
 For details, please visit [select Git-based upstream](../../manage/project/#select-git-based-upstream) where instructions for GitHub, GitLab, and Bitbucket are provided. 
 Before executing the following command, make sure you are in the `examples/onboarding-carts` folder:
@@ -95,13 +95,13 @@ Before executing the following command, make sure you are in the `examples/onboa
 
 1. Keptn manages all service-related artifacts (like testing files, SLOs, etc.),
 in a so-called service. 
-Create a service for *carts* using the [keptn create service](../../reference/cli/#keptn-create-service) command:
+Create a service for *carts* using the [keptn create service](../../reference/cli/commands/keptn_create_service) command:
 
     ```console
     keptn create service carts --project=sockshop
     ```
 
-    **Note:** Since you are not deploying a service with the `helm-service`, [keptn create service](../../reference/cli/#keptn-create-service) does not require any Helm chart compared to the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command. 
+    **Note:** Since you are not deploying a service with the `helm-service`, [keptn create service](../../reference/cli/commands/keptn_create_service) does not require any Helm chart compared to the [keptn onboard service](../../reference/cli/commands/keptn_onboard_service) command. 
 
 1. After creating the service, Keptn allows to add service-related artifacts like the performance test:
 
@@ -116,7 +116,7 @@ In order to pass this quality gate, the service has to meet the SLOs.
 These SLOs are described in a file called `slo.yaml`.
 To learn more about the *slo.yaml* file, go to [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/spec/blob/0.1.2/sre.md).
 
-1. Activate the quality gates for the `carts` service. Therefore, navigate to the `examples/onboarding-carts` folder and upload the `slo.yaml` file using the [add-resource](../../reference/cli/#keptn-add-resource) command:
+1. Activate the quality gates for the `carts` service. Therefore, navigate to the `examples/onboarding-carts` folder and upload the `slo.yaml` file using the [add-resource](../../reference/cli/commands/keptn_add-resource) command:
 
     ```console
     keptn add-resource --project=sockshop --stage=production --service=carts --resource=slo-quality-gates.yaml --resourceUri=slo.yaml

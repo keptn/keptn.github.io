@@ -46,7 +46,7 @@ This quality gate checks whether the average response time of the service is und
 ## Set up the quality gate and monitoring
 Keptn requires a performance specification for the quality gate. This specification is described in a file called `slo.yaml`, which specifies a Service Level Objective (SLO) that should be met by a service. To learn more about the *slo.yaml* file, go to [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/spec/blob/0.1.3/sre.md).
 
-* Activate the quality gates for the carts service. Therefore, navigate to the `examples/onboarding-carts` folder and upload the `slo-quality-gates.yaml` file using the [add-resource](../../reference/cli/#keptn-add-resource) command:
+* Activate the quality gates for the carts service. Therefore, navigate to the `examples/onboarding-carts` folder and upload the `slo-quality-gates.yaml` file using the [add-resource](../../reference/cli/commands/keptn_add-resource) command:
 
 ```console
 keptn add-resource --project=sockshop --stage=staging --service=carts --resource=slo-quality-gates.yaml --resourceUri=slo.yaml
@@ -162,7 +162,7 @@ keptn send event new-artifact --project=sockshop --service=carts --image=docker.
 
 <details><summary>*Click here to learn more about Keptn internal services.*</summary>
 <p>
-The [send event new-artifact](../../reference/cli/#keptn-send-event-new-artifact) command changes the configuration of the service and automatically triggers the following Keptn services:
+The [send event new-artifact](../../reference/cli/commands/keptn_send_event_new-artifact) command changes the configuration of the service and automatically triggers the following Keptn services:
 
 * **Phase 1**: Deploying, testing, and evaluating the test in the *dev* stage:
     * **helm-service**: This service deploys the new artifact to *dev*.

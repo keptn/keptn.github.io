@@ -68,7 +68,7 @@ keptn send event new-artifact --project=sockshop --service=carts --image=docker.
     cd examples/onboarding-carts
     ```
 
-1. Add an SLO file for the *production* stage using the Keptn CLIs [add-resource](../../reference/cli/#keptn-add-resource) command:
+1. Add an SLO file for the *production* stage using the Keptn CLIs [add-resource](../../reference/cli/commands/keptn_add-resource) command:
 
     ```console
     keptn add-resource --project=sockshop --stage=production --service=carts --resource=slo-self-healing.yaml --resourceUri=slo.yaml
