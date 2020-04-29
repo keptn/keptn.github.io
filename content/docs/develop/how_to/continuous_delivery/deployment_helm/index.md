@@ -4,22 +4,16 @@ description: Explains how Keptn uses Helm to deploy services
 weight: 95
 ---
 
-## Intro
+Keptn uses [Helm v3](https://helm.sh/) for deploying onboarded services to a Kubernetes cluster. This is currently implemented in Keptn's [helm-service](https://github.com/keptn/keptn/tree/0.6.1/helm-service). The helm-service supports two deployment strategies explained below:
 
-Keptn uses [Helm v3](https://helm.sh/) for deploying onboarded services to a Kubernetes cluster. This is currently implemented in Keptn's [helm-service](https://github.com/keptn/keptn/tree/0.6.1/helm-service).
+* **Direct deployments**
+* **Blue-green deployments**
 
-### Onboarding
+The explanation is based on the provided Helm Chart for the carts microservice, see [Charts](https://github.com/keptn/examples/tree/0.6.1/onboarding-carts/carts) for details.
 
-Based on the [onboarding the carts service tutorial](../../usecases/onboard-carts-service) we will describe the two
- different deployment types that the helm-service manages and what this does on Kubernetes level.
- 
-Those deployments are based on the provided helm-chart for the carts microservice, see https://github.com/keptn/examples/tree/0.6.1/onboarding-carts/carts
-for details.
+## Direct deployments
 
-### Direct deployments
-
-In case of `deployment_strategy: direct` (see 
- [shipyard.yaml](https://github.com/keptn/examples/blob/0.6.1/onboarding-carts/shipyard.yaml)), Helm deploys a 
+If the deployment strategy of a stage in the [shipyard](https://github.com/keptn/examples/blob/0.6.1/onboarding-carts/shipyard.yaml) is configured as `deployment_strategy: direct`, Helm deploys a 
  release called `sockshop-dev-carts` as `carts` in namespace `sockshop-dev`.
  
 ```console
@@ -31,16 +25,15 @@ NAME    READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS   IMAGES              
 carts   1/1     1            1           56m   carts        docker.io/keptnexamples/carts:0.11.1   app=carts
 ```
 
-When sending a new-artifact, we are updating the helm charts values.yaml file with the respective image name.
+When sending a new-artifact, we are updating the values.yaml file in the Helm Charts with the respective image name.
 
 * [chart/values.yaml](https://github.com/keptn/examples/blob/0.6.1/onboarding-carts/carts/values.yaml#L1)
 * [chart/templates/deployment.yaml](https://github.com/keptn/examples/blob/0.6.1/onboarding-carts/carts/templates/deployment.yaml#L22)
 
-### Blue-green deployments
+## Blue-green deployments
 
-In case of `deployment_strategy: blue_green_service` (see 
- [shipyard.yaml](https://github.com/keptn/examples/blob/0.6.1/onboarding-carts/shipyard.yaml)), Helm creates two
- deployments within the Kubernetes cluster: the primary and the canary deployment. This can be inspected using the
+If the deployment strategy of a stage in the [shipyard](https://github.com/keptn/examples/blob/0.6.1/onboarding-carts/shipyard.yaml) is configured as `deployment_strategy: blue_green_service`, Helm creates two
+ deployments within the Kubernetes cluster: (1) the primary and (2) the canary deployment. This can be inspected using the
  following command:
 
 ```console
@@ -83,16 +76,15 @@ carts-primary   1/1     1            1            4m   carts        docker.io/ke
 carts           0/0     0            0            1d   carts        docker.io/keptnexamples/carts:0.11.2   app=carts
 ```
 
-### Clean-up after deleting a project
+## Clean-up after deleting a project
 
-When executing `keptn delete project PROJECTNAME` (see [cli docs](../cli/#keptn-delete-project)), we do not clean up
-existing deployments nor Helm releases. To do so, delete all relevant namespaces:
+When executing [keptn delete project PROJECTNAME](../cli/#keptn-delete-project), Keptn does **not** clean up existing deployments nor Helm releases. To do so, delete all relevant namespaces:
 
-* For each stage defined the shipyard.yaml file, execute `kubectl delete namespace PROJECTNAME-STAGENAME`, e.g.:
+* For each stage defined the shipyard file, execute `kubectl delete namespace PROJECTNAME-STAGENAME`, e.g.:
 
   ```console
   kubectl delete namespace sockshop-dev
   kubectl delete namespace sockshop-staging
   kubectl delete namespace sockshop-production
   ```
-Note that this will also delete the corresponding Helm releases, which are stored as Kubernetes secrets in the namespaces.
+**Note:** This will also delete the corresponding Helm releases, which are stored as Kubernetes secrets in the namespaces.
