@@ -6,14 +6,14 @@ icon: help
 keywords: [cli, setup]
 ---
 
-In this section, the functionality and commands of the Keptn CLI are described. The Keptn CLI allows installing, configuring, and
+In this section, the functionality and commands of the keptn CLI are described. The keptn CLI allows installing, configuring, and
 uninstalling Keptn. Furthermore, the CLI allows creating projects, onboarding services, and sending new artifact events.
 
 ## Prerequisites
 - All prerequisites from the [setup](../../installation/setup-keptn#prerequisites) are needed.
 
-## Install the Keptn CLI
-Every release of Keptn provides binaries for the Keptn CLI. These binaries are available for Linux, macOS, and Windows.
+## Install the keptn CLI
+Every release of Keptn provides binaries for the keptn CLI. These binaries are available for Linux, macOS, and Windows.
 
 1. Download the [version matching your operating system](https://github.com/keptn/keptn/releases/)
 1. Unpack the download
@@ -26,14 +26,14 @@ Every release of Keptn provides binaries for the Keptn CLI. These binaries are a
 
     move/copy the executable to the desired folder and, optionally, add the executable to the PATH environment variable for a more convenient experience.
 
-4. Now, the Keptn CLI help can be shown by: 
+4. Now, the keptn CLI help can be shown by: 
     ```console
     keptn --help
     ```
 
-## Start using the Keptn CLI
+## Start using the keptn CLI
 
-In the following, the commands provided by the Keptn CLI are described.
+In the following, the commands provided by the keptn CLI are described.
 All of these commands provide a help flag (`--help`), which describes details of the respective command (e.g., usage of the command or description of flags).
 
 ## Authentication
@@ -41,7 +41,7 @@ All of these commands provide a help flag (`--help`), which describes details of
 To fully use the keptn CLI, it needs to be authenticated against a Kubernetes cluster with Keptn already installed on it. 
 Therefore, an endpoint and an API token are required.
 
-If the authentication is successful, keptn will inform the user. The specified endpoint as well as the API token are 
+If the authentication is successful, keptn CLI will inform the user. The specified endpoint as well as the API token are 
 stored in a password store of the underlying operating system. More precisely, the keptn CLI stores the endpoint and 
 API token using `pass` in case of Linux, using `Keychain` in case of macOS, or `Wincred` in case of Windows.
 
@@ -83,7 +83,7 @@ For the Windows PowerShell, a small script is provided that installs the `PSYaml
     $Env:KEPTN_ENDPOINT = 'https://api.keptn.'+$(kubectl get cm -n keptn keptn-domain -ojsonpath='{.data.app_domain}')
     ```
 
-1. Now that everything we need is stored in environment variables, we can proceed with authorizing the Keptn CLI. To authenticate against the Keptn cluster, use the `auth` command with the Keptn endpoint and API token:
+1. Now that everything we need is stored in environment variables, we can proceed with authorizing the keptn CLI. To authenticate against the Keptn cluster, use the `auth` command with the Keptn endpoint and API token:
 
     ```
     keptn.exe auth --endpoint=$Env:KEPTN_ENDPOINT --api-token=$Env:KEPTN_API_TOKEN
@@ -137,7 +137,7 @@ In the Windows Command Line, a couple of steps are necessary.
     set KEPTN_ENDPOINT=https://api.keptn.YOUR.DOMAIN
     ```
 
-1. Now that everything we need is stored in environment variables, we can proceed with authorizing the Keptn CLI.
+1. Now that everything we need is stored in environment variables, we can proceed with authorizing the keptn CLI.
 
     To authenticate against the Keptn cluster, use the `auth` command with the Keptn endpoint and API token:
 
