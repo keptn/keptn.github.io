@@ -19,8 +19,8 @@ weight: 1
 
 ### 2. Install Keptn
 
-The following instructions will install the **latest stable Keptn CLI (0.6.1)** in a quick way. Please also look 
-at our [detailed installation guide for Keptn 0.6.1](/docs/0.6.0/installation/setup-keptn/) if you need more information.
+The following instructions will install the **latest stable Keptn CLI (0.6.2)** in a quick way. Please also look 
+at our [detailed installation guide for Keptn 0.6.2](/docs/0.6.0/installation/setup-keptn/) if you need more information.
 
 #### 2.1 Install the Keptn CLI
 The Keptn CLI is the one-stop-shop for all operations related to Keptn.

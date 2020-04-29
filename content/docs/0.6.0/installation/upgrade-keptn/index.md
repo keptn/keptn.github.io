@@ -5,6 +5,8 @@ weight: 20
 keywords: upgrade
 ---
 
+## Upgrade from 0.6.1 to 0.6.2
+
 ## Upgrade from 0.6.0 to 0.6.1
 
 * To download and install the Keptn CLI for version 0.6.1, please refer to the [Install Keptn CLI section](../setup-keptn/#install-keptn-cli).

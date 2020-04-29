@@ -6,8 +6,7 @@ weight: 90
 
 ## Intro
 
-In case you want to re-use an existing Istio installation on a Kubernetes cluster (e.g., GKE), we are providing a hidden 
- flag `--istio-install-option=Reuse` starting with Keptn 0.6.1:
+In case you want to re-use an existing Istio installation on a Kubernetes cluster (e.g., GKE), we are providing a hidden  flag `--istio-install-option=Reuse` starting with Keptn 0.6.1:
 
 ```console
 keptn install --istio-install-option=Reuse --platform=gke
@@ -40,7 +39,7 @@ istio-sidecar-injector   1/1     1            1           32m   sidecar-injector
 istio-telemetry          1/1     1            1           32m   mixer,istio-proxy          gke.gcr.io/istio/mixer:1.2.10-gke.3,gke.gcr.io/istio/proxyv2:1.2.10-gke.3                                      istio=mixer,istio-mixer-type=telemetry
 ```
 
-**Please note**: Keptn 0.6.1 is installing Istio in version 1.3.
+**Please note**: Keptn 0.6.1/0.6.2 are installing Istio in version 1.3.
 
 After setting up the cluster you can install Keptn. Make sure to add the hidden option `--istio-install-option=Reuse` 
  to the `keptn install` command and verify that the installation has worked using `keptn status`.

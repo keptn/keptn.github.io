@@ -193,7 +193,7 @@ If you [sign up for a Google Cloud account](https://console.cloud.google.com/get
 ## Install Keptn CLI
 Every release of Keptn provides binaries for the Keptn CLI. These binaries are available for Linux, macOS, and Windows.
 
-- Download the version for your operating system from [github.com/keptn/](https://github.com/keptn/keptn/releases/tag/0.6.1)
+- Download the version for your operating system from [github.com/keptn/](https://github.com/keptn/keptn/releases/tag/0.6.2)
 - Unpack the download
 - Find the `keptn` binary in the unpacked directory
 
