@@ -114,12 +114,12 @@ Please select the **Kubenet network plugin (basic)** when setting up your AKS cl
 
 ## Broken Keptn project
 
-When creating a project fails, this can cause a problematic state that manifests in a way that it cannot be deleted and the Keptn Bridge does not show any project.
+When creating a project failed, this can cause a problematic state that manifests in a situation that the Keptn Bridge does not show any project.
 
 <details><summary>Expand instructions</summary>
 <p>
 
-**Situation**: Executing `keptn create project xyz` failed with following error messsage: 
+**Situation**: Executing [keptn create project](../cli/commands/keptn_create_project) failed with following error messsage: 
 
 ```console
 Starting to create project   
@@ -127,21 +127,25 @@ ID of Keptn context: 9d1a30cd-e00b-4354-a308-03e50368bc40
 Creating project sockshop failed. Could not commit changes.
 ```
 
-**Problem**: This project can neither be deleted with `keptn delete project`, nor does it work to create a new one with the same name. Besides, the Keptn Bridge does not show any project.
+**Problem**: The Keptn Bridge does not show any project even though other projects were already displayed. 
 
-**Solution**: Manually deleting the faulty project in the `configuration-service` pod.
+**Solution**: 
 
-* Connect to the pod of `configuration-service`: 
-```console
-kubectl -n keptn exec -it svc/configuration-service sh`
-```
+* Try to execute the command: [keptn delete project](../cli/commands/keptn_delete_project)
 
-* In the pod, go to: `/data/config/`
+* If the command did not work, manually delete the faulty project in the `configuration-service` pod.
 
-* Delete the directory with the name of the faulty project: 
-```console
-rm -f projectXYZ 
-```
+    1. Connect to the pod of `configuration-service`: 
+    ```console
+    kubectl -n keptn exec -it svc/configuration-service sh`
+    ```
+
+    1. In the pod, go to: `/data/config/`
+
+    1. Delete the directory with the name of the faulty project: 
+    ```console
+    rm -rf projectXYZ 
+    ```
 
 </p></details>
 
