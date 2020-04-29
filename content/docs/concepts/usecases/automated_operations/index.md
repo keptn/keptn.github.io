@@ -7,11 +7,11 @@ keywords: [keptn, use-cases]
 
 > **Challenge:** In modern microservices environments, you have to deal with systems that can expose unpredictable behavior due to the high number of interdependencies. For example, changing the configuration of one component might have an impact on a totally different part of the system. Besides, problems evolve over time and are often dynamic. The nature and impact of a problem can also change drastically over time.
 
-Keptn addresses this challenge by introducing the concept of micro operations that declare remediation actions for resolving certain problem types or operational tasks.
+Keptn addresses this challenge by introducing the concept of micro-operations that declare remediation actions for resolving certain problem types or operational tasks.
 
 ## Micro Operations
 
-Micro operations follow a declerative approach and are atomic building blocks.
+Micro operations follow a declarative approach and are atomic building blocks.
 
 ### Declarative Operations as Code
 
@@ -49,7 +49,7 @@ Assuming a developer has deployed a new artifact with a remediation file, the au
 
 1. Keptn receives this problem event and retrieves the remediation file from the Git repository.
 
-1. An internal Keptn-service interprets the remediation file and fires events for remediation provider. Remediation provider are microservices that implement a micro operation. 
+1. An internal Keptn-service interprets the remediation file and fires events for remediation providers. Remediation providers are microservices that implement a micro-operation. 
 
 1. Depending on the problem type, the remediation provider then executes its action and informs Keptn about the execution. 
 

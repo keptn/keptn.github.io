@@ -5,10 +5,13 @@ weight: 3
 keywords: [keptn, use-cases]
 ---
 
-With Keptn you can automate your tests by having Keptn triggering the test execution and evaluating the result, or even by letting Keptn deploying new versions of your applications to a test environment, triggering the test execution and eventually evaluating the result. 
+> **Challenge:** .
 
+Keptn helps automating your tests by having Keptn triggering the test execution and evaluating the result. You can even go one step further by letting Keptn deploying new versions of your applications to a test environment, which is then tested and evaluated. 
 
-The following image shows the general workflow of how Keptn is automating your tests:
+## Test Automation Process
+
+The following image shows the general process of how Keptn is automating your tests:
 
 1. Keptn gets triggered by an external event. 
 
@@ -18,7 +21,7 @@ The following image shows the general workflow of how Keptn is automating your t
 
 1. Keptn fetches the results of the test and service-level indicators (SLIs).
 
-1. Keptn evaluate and score the test execution as well as the service-level indicators (SLIs) based on service-level objectives(SLOs).
+1. Keptn evaluates and scores the test execution as well as the service-level indicators (SLIs) based on service-level objectives(SLOs).
 
 1. Finally, the quality evaluation of the tests is then returned as a result back to the user.
 
