@@ -19,7 +19,7 @@ During a Keptn installation, following components are installed on the Kubernete
 ## Keptn CLI
 The Keptn CLI needs to be installed on the local machine and is used to send commands to Keptn. To communicate with Keptn you need to know a shared secret that is generated during the installation and verified by the *api* component.
 
-**Note:** A dedicated Keptn CLI section is provided [here](../../reference/cli/), which helps you to get started and lists all commands that are currently available.
+**Note:** A dedicated Keptn CLI section is provided [here](../../cli/), which helps you to get started and lists all commands that are currently available.
 
 ## Keptn core components 
 

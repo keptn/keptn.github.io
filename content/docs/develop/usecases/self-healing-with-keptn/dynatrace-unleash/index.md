@@ -28,20 +28,20 @@ To quickly get an Unleash server up and running with Keptn, follow these instruc
     cd examples/unleash-server
     ```
 
-1. Create a new project using the [keptn create project](../../../reference/cli/#keptn-create-project) command:
+1. Create a new project using the [keptn create project](../../../cli/commands/keptn_create_project) command:
 
     ```console
     keptn create project unleash --shipyard=./shipyard.yaml
     ```
 
-1. Onboard unleash and unleash-db using the [keptn onboard service](../../../reference/cli/#keptn-onboard-service) command:
+1. Onboard unleash and unleash-db using the [keptn onboard service](../../../cli/commands/keptn_onboard_service) command:
 
     ```console
     keptn onboard service unleash-db --project=unleash --chart=./unleash-db
     keptn onboard service unleash --project=unleash --chart=./unleash
     ```
 
-1. Send new artifacts for unleash and unleash-db using the [keptn send new-artifact](../../../reference/cli/#keptn-send-new-artifact) command:
+1. Send new artifacts for unleash and unleash-db using the [keptn send new-artifact](../../../cli/commands/keptn_send_new_artifact) command:
 
     ```console
     keptn send event new-artifact --project=unleash --service=unleash-db --image=postgres:10.4

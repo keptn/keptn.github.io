@@ -41,7 +41,7 @@ carts-db-57cd95557b-r6cg8         1/1     Running   0          18m
 carts-primary-7c96d87df9-75pg7    1/1     Running   0          13m
 ```
 
-You should also verify that the image used for the deployments of `carts` and `carts-primary` is either the one with `0.10.1` or `0.10.3` within the tag by executing
+You should also verify that the image used for the deployments of `carts` and `carts-primary` is either the one with `0.11.1` or `0.11.3` within the tag by executing
 
 ```console
 kubectl get deployments -n sockshop-production -o wide
@@ -49,14 +49,14 @@ kubectl get deployments -n sockshop-production -o wide
 
 ```console
 NAME            READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS   IMAGES                                 SELECTOR
-carts           0/0     0            0           28h   carts        docker.io/keptnexamples/carts:0.10.3   app=carts
+carts           0/0     0            0           28h   carts        docker.io/keptnexamples/carts:0.11.3   app=carts
 carts-db        1/1     1            1           44h   carts-db     mongo:latest                           app=carts-db
-carts-primary   1/1     1            1           22h   carts        docker.io/keptnexamples/carts:0.10.3   app=carts-primary
+carts-primary   1/1     1            1           22h   carts        docker.io/keptnexamples/carts:0.11.3   app=carts-primary
 ```
 
-In case you do not have `0.10.1` or `0.10.3` deployed, please run
+In case you do not have `0.11.1` or `0.11.3` deployed, please run
 ```console
-keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.10.1
+keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.11.1
 ```
 </p>
 </details>

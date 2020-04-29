@@ -588,9 +588,7 @@ blockquote {
   font-size: 125%;
 }
 
-.unsupported {
-  background-color: #FFBABA;
-  color: #6A0E0E;
+.note{
   position: fixed;
   width: 100%;
   height: 30px;
@@ -598,6 +596,16 @@ blockquote {
   font-size: 14px;
   font-weight: bold;
   text-align: center;
+}
+
+.unsupported {
+  background-color: #FFBABA;
+  color: #6A0E0E;
+}
+
+.develop {
+  background-color: #FBBD05;
+  color: #801A00;
 }
 
 .byline {
