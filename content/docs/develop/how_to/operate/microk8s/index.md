@@ -1,6 +1,6 @@
 ---
 title: Keptn on MicroK8s (experimental)
-description: Explains how to install the quality-gates standalone version of Keptn on Microk8s. 
+description: Install the quality gates standalone version of Keptn on Microk8s. 
 weight: 80
 ---
 

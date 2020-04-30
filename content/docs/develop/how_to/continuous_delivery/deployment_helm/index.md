@@ -1,6 +1,6 @@
 ---
 title: Deployment with Helm
-description: Explains how Keptn uses Helm to deploy services
+description: Details about Keptn using Helm for deployment.
 weight: 95
 ---
 
@@ -55,9 +55,7 @@ carts-primary   1/1     1            1           57m   carts        docker.io/ke
 carts           0/1     1            1            1m   carts        docker.io/keptnexamples/carts:0.11.2   app=carts
 ```
 
-The primary deployment is always available (and called `carts-primary`). The canary deployment (called `carts`) gets 
- scaled up in the case of a new-artifact event (e.g., in this case someone has sent a new-artifact for 0.11.2). Traffic 
- is shifted to the canary release. 
+The primary deployment is always available (and called `carts-primary`). The canary deployment (called `carts`) gets scaled up in the case of a new-artifact event (e.g., in this case someone has sent a new-artifact for 0.11.2). Traffic is shifted to the canary release. 
  
 Once testing has finished, the primary deployment is upgraded to the new version (0.11.2). 
  

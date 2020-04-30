@@ -1,6 +1,6 @@
 ---
-title: Configure Service Level Objectives (SLO)
-description: Find how to ...
+title: Service Level Objectives (SLO)
+description: Configure and add Service Level Objectives (SLO) to your service.
 weight: 1
 ---
 

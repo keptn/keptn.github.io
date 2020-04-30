@@ -1,6 +1,6 @@
 ---
 title: Git-based upstream  
-description: Select a Get-based upstream for a project
+description: Select a Get-based upstream for a project.
 weight: 20
 keywords: [manage]
 aliases:

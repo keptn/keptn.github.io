@@ -1,6 +1,6 @@
 ---
 title: Quality Gate
-description: Find how to ...
+description: Customize the SLIs/SLOs of a quality gate.
 weight: 4
 icon: setup
 ---

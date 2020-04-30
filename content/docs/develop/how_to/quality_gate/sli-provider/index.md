@@ -1,5 +1,5 @@
 ---
-title: Add SLI-Provider
-description: Find how to ...
+title: SLI-Provider
+description: Add an SLI-Provider to Keptn for querying SLIs.
 weight: 3
 ---

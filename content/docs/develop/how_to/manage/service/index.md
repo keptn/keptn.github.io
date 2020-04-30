@@ -1,6 +1,6 @@
 ---
 title: Service
-description: Create or onboard your service in Keptn
+description: Create or onboard your service in Keptn.
 weight: 30
 keywords: [manage]
 aliases:

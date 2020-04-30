@@ -1,6 +1,6 @@
 ---
 title: Kubernetes Support
-description: Keptn and Kubernetes compatibility overview
+description: Overview of Keptn and Kubernetes compatibility
 weight: 30
 keywords: setup
 ---

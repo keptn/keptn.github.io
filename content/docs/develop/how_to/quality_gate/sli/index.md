@@ -1,6 +1,6 @@
 ---
-title: Configure Service Level Indicators (SLI)
-description: Find how to ...
+title: Service Level Indicators (SLI)
+description: Configure Service Level Indicators (SLIs) for your service.
 weight: 2
 ---
 

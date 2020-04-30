@@ -1,6 +1,6 @@
 ---
 title: Uninstall Keptn
-description: Install Keptn on one of the supported Kubernetes platforms
+description: Uninstall Keptn from a Kubernetes cluster.
 weight: 10
 keywords: setup
 ---

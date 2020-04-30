@@ -1,6 +1,6 @@
 ---
 title: Install CLI and Keptn
-description: Install Keptn on one of the supported Kubernetes platforms
+description: Install Keptn on one of the supported Kubernetes platforms.
 weight: 1
 keywords: setup
 ---

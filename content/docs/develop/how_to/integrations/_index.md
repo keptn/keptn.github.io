@@ -1,6 +1,6 @@
 ---
 title: Custom Integrations
-description: Find how to ...
+description: Build your custom integration to add functionality to Keptn.
 weight: 5
 icon: setup
 ---

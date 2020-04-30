@@ -1,6 +1,6 @@
 ---
 title: Write a Keptn-service
-description: Learn how to implement your Keptn-service that listens to Keptn events and extends your Keptn with certain functionality.
+description: Implement your Keptn-service that listens to Keptn events and extends your Keptn with certain functionality.
 weight: 1
 ---
 
