@@ -26,7 +26,7 @@ uses the already provided credentials. Otherwise, create a *secret* containing t
     kubectl -n keptn create secret generic dynatrace --from-literal="DT_API_TOKEN=<DT_API_TOKEN>" --from-literal="DT_TENANT=<DT_TENANT>"
     ```
 
-## Configure custom SLIs
+## Configure custom Dynatrace SLIs
 
 To tell the *dynatrace-sli-service* how to acquire the values of an SLI, the correct query needs to be configured. This is done by adding an SLI configuration to a project, stage, or service using the [add-resource](../../cli/#keptn-add-resource) command. The resource identifier must be `dynatrace/sli.yaml`.
 
@@ -36,11 +36,11 @@ To tell the *dynatrace-sli-service* how to acquire the values of an SLI, the cor
 keptn add-resource --project=sockshop --stage=hardening --service=carts --resource=sli-config-dynatrace.yaml --resourceUri=dynatrace/sli.yaml
 ```
 
-**Note:** The add-resource command can be used to store a configuration on project-, stage-, or service-level. In the context of an SLI configuration, Keptn first uses SLI configuration stored on the service-level, then on the stage-level, and finally Keptn uses SLI configuration stored on the project-level.
+**Note:** The add-resource command can be used to store a configuration on project-, stage-, or service-level. Please see [here](../../../quality_gates/sli/#add-sli-configuration-to-service-stage-or-project) an example of SLI configurations on different places.
 
 **Example for custom SLIs:**
 
-If you want to add your custom SLIs, take a look at the following example which can be used as a template for your own SLIs:
+If you want to add your custom SLIs, take a look at the following example, which can be used as a template for your SLIs:
 
 ```yaml
 ---

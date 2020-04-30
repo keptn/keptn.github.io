@@ -39,7 +39,7 @@ stages:
 
 ## Delete a project
 
-* To delete a  project, use the [keptn delete project](.../../../reference/cli/commands/keptn_delete_project): 
+* To delete a project, use the [keptn delete project](.../../../reference/cli/commands/keptn_delete_project) command: 
   ```console
   keptn delete project PROJECTNAME
   ```
