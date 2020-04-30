@@ -429,7 +429,7 @@ metadata:
   namespace: keptn
 ```
 
-With Keptn 0.6.0, custom SLIs need to be added for the project/service/stage by using [keptn add-resource](../../reference/cli/#keptn-add-resource). With this change in mind, we also had to slightly adapt the format of the file. Above file would now look as follows:
+With Keptn 0.6.0, custom SLIs need to be added for the project/service/stage by using [keptn add-resource](../../cli/commands/keptn_add-resource). With this change in mind, we also had to slightly adapt the format of the file. Above file would now look as follows:
 
 ```yaml
 ---
