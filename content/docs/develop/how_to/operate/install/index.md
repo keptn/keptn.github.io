@@ -215,7 +215,7 @@ Every release of Keptn provides binaries for the Keptn CLI. These binaries are a
 
 ## Install Keptn
 
-To install the latest release of Keptn on a Kuberntes cluster, execute the [keptn install](../../reference/cli/#keptn-install) command with the ``platform`` flag specifying the target platform you would like to install Keptn on. Currently, supported platforms are:
+To install the latest release of Keptn on a Kuberntes cluster, execute the [keptn install](../../cli/commands/keptn_install) command with the ``platform`` flag specifying the target platform you would like to install Keptn on. Currently, supported platforms are:
 
 - Azure Kubernetes Services (AKS):
 
@@ -294,7 +294,7 @@ keptn install --platform=[aks|eks|gke|openshift|pks|kubernetes] --use-case=quali
 ## Configure a custom domain
 
 If you have a custom domain or cannot use *xip.io* (e.g., when running Keptn on EKS with an ELB (Elastic Load Balancer) from AWS), there is the 
-CLI command [keptn configure domain](../../reference/cli/#keptn-configure-domain) to configure Keptn for your custom domain:
+CLI command [keptn configure domain](../../cli/commands/keptn_configure_domain) to configure Keptn for your custom domain:
 
 ```console
 keptn configure domain YOUR_DOMAIN
@@ -302,8 +302,8 @@ keptn configure domain YOUR_DOMAIN
 
 ## Troubleshooting
 
-Please note that in case of any errors, the install process might leave some files in an inconsistent state. Therefore [keptn install](../../reference/cli/#keptn-install) cannot be executed a second time without [keptn uninstall](../../reference/cli/#keptn-uninstall). To address a unsuccessful installation: 
+Please note that in case of any errors, the install process might leave some files in an inconsistent state. Therefore [keptn install](../../cli/commands/keptn_install) cannot be executed a second time without [keptn uninstall](../../cli/commands/keptn_uninstall). To address a unsuccessful installation: 
 
 1. [Verify the Keptn installation](../../reference/troubleshooting#verifying-a-keptn-installation).
 
-1. Uninstall Keptn by executing the [keptn uninstall](../../reference/cli#keptn-uninstall) command before conducting a re-installation.  
+1. Uninstall Keptn by executing the [keptn uninstall](../../cli/commands/keptn_uninstall) command before conducting a re-installation.  

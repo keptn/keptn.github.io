@@ -141,7 +141,7 @@ indicators:
  error_rate: "builtin:service.errors.total.count:merge(0):avg?scope=tag(keptn_project:$PROJECT),tag(keptn_stage:$STAGE),tag(keptn_service:$SERVICE),tag(keptn_deployment:$DEPLOYMENT)"
 ```
 
-**Note:** This SLI configuration file will then be stored in Keptn's configuration store using the [keptn add-resource](../../reference/cli/#keptn-add-resource) command.
+**Note:** This SLI configuration file will then be stored in Keptn's configuration store using the [keptn add-resource](../../cli/commands/keptn_add-resource) command.
 
 
 The [Keptn CloudEvents](#cloudevents) a SLI-provider has to subscribe to is:
