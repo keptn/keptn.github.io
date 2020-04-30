@@ -37,6 +37,12 @@ kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.6.1/installer/m
 kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.6.1/installer/manifests/logging/mongodb-datastore/mongodb-datastore-distributor.yaml
 ```
 
+1. Create a Keptn API-token
+```console
+KEPTN_API_TOKEN=$(head -c 16 /dev/urandom | base64)
+kubectl create secret generic -n keptn keptn-api-token --from-literal=keptn-api-token="$KEPTN_API_TOKEN"
+```
+
 1. Install Keptn Core
 ```console
 kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.6.1/installer/manifests/keptn/core.yaml
@@ -82,12 +88,6 @@ kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.6.1/installer/m
     
     </p>
     </details>
-
-1. Create a Keptn API-token
-```console
-KEPTN_API_TOKEN=$(head -c 16 /dev/urandom | base64)
-kubectl create secret generic -n keptn keptn-api-token --from-literal=keptn-api-token="$KEPTN_API_TOKEN"
-```
 
 ## Use the Keptn CLI
 For this installation, a **custom CLI** is needed which allows to use `http` as URL scheme.
