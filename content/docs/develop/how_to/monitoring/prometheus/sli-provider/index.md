@@ -1,14 +1,14 @@
 ---
-title: SLI Provider
+title: SLI-Provider
 description: Install SLI-Provider
 weight: 1
 icon: setup
 keywords: setup
 ---
 
-## Setup Prometheus SLI provider 
+## Setup Prometheus SLI-provider 
 
-During the evaluation of a quality gate, the Prometheus SLI provider is required that is implemented by an internal Keptn service, the *prometheus-sli-service*. This service will fetch the values for the SLIs that are referenced in a SLO configuration.
+During the evaluation of a quality gate, the Prometheus SLI-provider is required that is implemented by an internal Keptn service, the *prometheus-sli-service*. This service will fetch the values for the SLIs that are referenced in a SLO configuration.
 
 1. To install the *prometheus-sli-service*, execute:
 
@@ -41,7 +41,7 @@ To tell the *prometheus-sli-service* how to acquire the values of an SLI, the co
 keptn add-resource --project=sockshop --stage=hardening --service=carts --resource=sli-config-prometheus.yaml --resourceUri=prometheus/sli.yaml
 ```
 
-**Note:** The add-resource command can be used to store a configuration on project-, stage-, or service-level. Please see [here](../../../quality_gate/sli/#add-sli-configuration-to-service-stage-or-project) an example of SLI configurations on different places.
+**Note:** The add-resource command can be used to store a configuration on project-, stage-, or service-level. If you store SLI configurations on different levels, click [here](../../../quality_gate/sli/#add-sli-configuration-to-service-stage-or-project) to learn which configuration overrides the others based on an example.
 
 **Example for custom SLI:** 
 

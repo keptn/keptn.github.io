@@ -1,5 +1,35 @@
 ---
 title: SLI-Provider
-description: Add an SLI-Provider to Keptn for querying SLIs.
+description: Add an SLI-Provider to Keptn for querying provider-specific SLIs.
 weight: 3
 ---
+
+
+Depending on the monitoring solution you have in place and the SLIs you have configured for your services, you need to deploy the corresponding SLI-provider. In Keptn 0.7, this can be either *Dynatrace* or *Prometheus*. 
+
+## Dynatrace SLI-Provider
+
+* Complete steps from section [Setup Dynatrace SLI-provider](../../monitoring/dynatrace/sli_provider/#setup-dynatrace-sli-provider).
+
+* To configure Keptn to use the Dynatrace SLI-provider for your project (e.g. **musicshop**), execute the following command:
+
+    ```console
+    keptn configure monitoring dynatrace --project=musicshop --suppress-websocket
+    ```
+
+* Configure custom SLIs for the Dynatrace SLI-provider as explained [here](../../monitoring/dynatrace/sli_provider/#configure-custom-dynatrace-slis).
+
+## Prometheus SLI-Provider
+
+* Complete steps from section [Setup Prometheus SLI-provider](../../monitoring/prometheus/sli-provider/#setup-prometheus-sli-provider).
+
+* To configure Keptn to use the Prometheus SLI-provider for your project (e.g. **musicshop**), execute the following command:
+
+    ```console
+    keptn configure monitoring prometheus --project=musicshop --service=catalogue --suppress-websocket
+    ```
+
+* Configure custom SLIs for the Prometheus SLI-provider as explained [here](../../monitoring/prometheus/sli-provider/#configure-custom-prometheus-slis).
+
+
+

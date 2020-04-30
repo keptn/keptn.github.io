@@ -1,14 +1,14 @@
 ---
-title: SLI Provider
-description: Setup SLI Provider
+title: SLI-Provider
+description: Setup SLI-Provider
 weight: 4
 icon: setup
 keywords: setup
 ---
 
-## Setup Dynatrace SLI provider
+## Setup Dynatrace SLI-provider
 
-During the evaluation of a quality gate, the Dynatrace SLI provider is required that is implemented by an internal Keptn service, the *dynatrace-sli-service*. This service will fetch the values for the SLIs that are referenced in an SLO configuration.
+During the evaluation of a quality gate, the Dynatrace SLI-provider is required that is implemented by an internal Keptn service, the *dynatrace-sli-service*. This service will fetch the values for the SLIs that are referenced in an SLO configuration.
 
 1. To install the *dynatrace-sli-service*, execute:
     ```console
@@ -36,7 +36,7 @@ To tell the *dynatrace-sli-service* how to acquire the values of an SLI, the cor
 keptn add-resource --project=sockshop --stage=hardening --service=carts --resource=sli-config-dynatrace.yaml --resourceUri=dynatrace/sli.yaml
 ```
 
-**Note:** The add-resource command can be used to store a configuration on project-, stage-, or service-level. Please see [here](../../../quality_gate/sli/#add-sli-configuration-to-service-stage-or-project) an example of SLI configurations on different places.
+**Note:** The add-resource command can be used to store a configuration on project-, stage-, or service-level. If you store SLI configurations on different levels, click [here](../../../quality_gate/sli/#add-sli-configuration-to-service-stage-or-project) to learn which configuration overrides the others based on an example.
 
 **Example for custom SLIs:**
 
