@@ -1,5 +1,5 @@
 ---
-title: keptn CLI
+title: Keptn CLI
 description: Explains how to download and install the keptn CLI as well as which commands are available.
 weight: 30
 icon: help

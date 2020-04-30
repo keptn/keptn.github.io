@@ -1,5 +1,5 @@
 ---
-title: Keptn's Bridge
+title: Keptn Bridge
 description: Explains how the access the Keptn's Bridge.
 weight: 21
 keywords: [bridge]
