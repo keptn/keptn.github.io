@@ -40,7 +40,7 @@ kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.6.1/installer/m
 1. Install Keptn Core
 ```console
 kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.6.1/installer/manifests/keptn/core.yaml
-kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.6.1/installer/manifests/keptn/keptn-domain-configmap.yam
+kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.6.1/installer/manifests/keptn/keptn-domain-configmap.yaml
 ```
 
 1. Install Keptn Quality Gates
