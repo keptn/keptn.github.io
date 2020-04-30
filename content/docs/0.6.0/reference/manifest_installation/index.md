@@ -1,20 +1,17 @@
 ---
 title: Keptn Quality Gates Installation using manifests (experimental)
-description: Explains how to install Keptn Quality Gates on Kubernetes by applying manifests with kubectl
+description: Install Keptn Quality Gates on Kubernetes by applying manifests with kubectl
 weight: 92
 ---
 
-## Introduction
-The following installation instructions provide a way to manually install Keptn Quality Gates without any installer job.
-Furthermore, no NGINX will be installed using these instructions.
+The following installation instructions provide a way to manually install Keptn Quality Gates without any installer job. Furthermore, no NGINX will be installed using these instructions.
 
 Following these manual installation instructions is not the recommended way to install Keptn.
-But in case you cannot use the [prepared installer](../../installation/setup-keptn/) because you e.g. need to exactly control
-what is installed in your Kubernetes cluster, the instructions can be used.
+But in case you cannot use the [prepared installer](../../installation/setup-keptn/) because you e.g. need to exactly control what is installed in your Kubernetes cluster, the instructions can be used.
 
-**Important note:** These instructions are experimental.
+**Please note:** These instructions are experimental.
 
-**Important note:** No upgrade script or instructions are provided for a manual installation of Keptn.
+**Please note:** No upgrade script or instructions are provided for a manual installation of Keptn.
 
 ## Prerequisites
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
@@ -67,7 +64,7 @@ kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/$KEPTN-VERSION/in
 ```
 
 ## Access the Keptn API
-In order to access the Keptn API you can either use a `LoadBalancer` or a `Port-forward`.
+In order to access the Keptn API, you can either use a `LoadBalancer` or a `Port-forward`:
 
   <details><summary>Using a `LoadBalancer`</summary>
   <p>
@@ -88,7 +85,6 @@ In order to access the Keptn API you can either use a `LoadBalancer` or a `Port-
   
   </p>
   </details>
-
 
   <details><summary>Using a `Port-forward`</summary>
   <p>
@@ -116,10 +112,10 @@ In order to access the Keptn API you can either use a `LoadBalancer` or a `Port-
 ./keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN --scheme=http
 ```
 
-**Important Note:** Always add the flag `--scheme=http` to **all** CLI commands. Otherwise, the CLI uses `https` which is not configured in this installation. 
+**Please note:** Always add the flag `--scheme=http` to **all** CLI commands. Otherwise, the CLI uses `https` which is not configured in this installation. 
 
-**Important Note:** The Websocket communications cannot be used when the API is exposed via a `Port-forward`.
-Hence, please add `--suppress-websocket` to **all** CLI commands.
+**Please note:** The WebSocket communications cannot be used when the API is exposed via a `Port-forward`. Hence, please add `--suppress-websocket` to **all** CLI commands.
 
 ## Setup Quality Gates for your Existing Services
-Now you are able to continue with the use case as described [here](../../usecases/quality-gates).
+
+Now, you are able to continue with the use case as described [here](../../usecases/quality-gates).

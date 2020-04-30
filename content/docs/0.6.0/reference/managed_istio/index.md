@@ -1,14 +1,11 @@
 ---
 title: Keptn with pre-installed Istio/NGINX (experimental)
-description: Explains how to install Keptn with a pre-installed/managed Istio/NGINX installation.
+description: Install Keptn with a pre-installed/managed Istio/NGINX installation.
 weight: 90
 ---
 
-## Intro
-
-In case you want to re-use an existing Istio installation for the [full Keptn installation](../../installation/setup-keptn)
-or re-use an existing NGINX installation for the [quality gates Keptn installation](../../usecases/quality-gates),
-the Keptn CLI provides a hidden  flag `--ingress-install-option=Reuse` starting with Keptn 0.6.1:
+In case you want to re-use an existing Istio installation for the [full Keptn installation](../../installation/setup-keptn) or re-use an existing NGINX installation for the [quality gates Keptn installation](../../usecases/quality-gates),
+the Keptn CLI provides a hidden flag `--ingress-install-option=Reuse` starting with Keptn 0.6.1:
 
 ```console
 keptn install --ingress-install-option=Reuse --platform=gke
@@ -18,8 +15,7 @@ or
 keptn install --ingress-install-option=Reuse --use-case=quality-gates --platform=gke
 ```
 
-**Please note**: This flag is experimental, and a successful installation heavily depends on the Istio/NGINX version and 
- configuration that is used.
+**Please note**: This flag is experimental, and a successful installation heavily depends on the Istio/NGINX version and configuration that is used.
 
 ## Detailed Installation Guide for pre-installed Istio on GKE
 
