@@ -1,5 +1,5 @@
 ---
-title: Keptn Quality Gates Insllation using manifests (experimental)
+title: Keptn Quality Gates Installation using manifests (experimental)
 description: Explains how to install Keptn Quality Gates on Kubernetes by applying manifests with kubectl
 weight: 92
 ---
@@ -8,7 +8,7 @@ weight: 92
 The following installation instructions provide a way to manually install Keptn Quality Gates without any installer job.
 Furthermore, no NGINX will be installed using these instructions.
 
-Following these manual installation instructions is not the recommended way for installing Keptn.
+Following these manual installation instructions is not the recommended way to install Keptn.
 But in case you cannot use the [prepared installer](../../installation/setup-keptn/) because you e.g. need to exactly control
 what is installed in your Kubernetes cluster, the instructions can be used.
 
