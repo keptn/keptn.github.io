@@ -107,7 +107,9 @@ In order to access the Keptn API you can either use a `LoadBalancer` or a `Port-
 
 ## Use the Keptn CLI
 
-1. Follow the [Keptn CLI install instructions](../../installation/setup-keptn/#install-keptn-cli).
+1. Follow the [Keptn CLI install instructions](../../installation/setup-keptn/#install-keptn-cli). 
+
+    **Important:** The Keptn CLI in version 0.6.2 or above is required.
 
 1. Authenticate your CLI
 ```
