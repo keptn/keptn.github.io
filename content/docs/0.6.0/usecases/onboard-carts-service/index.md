@@ -177,13 +177,13 @@ keptn send event new-artifact --project=sockshop --service=carts-db --image=dock
 keptn send event new-artifact --project=sockshop --service=carts --image=docker.io/keptnexamples/carts --tag=0.11.1
 ```
 
-* Go to Keptn's Bridge and check which events have already been generated. You can access it by a port-forward from your local machine to the Kubernetes cluster:
+* Go to Keptn Bridge and check which events have already been generated. If you have not exposed the Bridge yet, execute the following command:
 
-```console 
-kubectl port-forward svc/bridge -n keptn 9000:8080
-```
+    ```console 
+    keptn configure bridge --action=expose
+    ```
 
-* The Keptn's Bridge is then available on: http://localhost:9000. 
+* The Keptn Bridge is then available on: `https://bridge.keptn.YOUR.DOMAIN/`
 
     It shows all deployments that have been triggered. On the left-hand side, you can see the deployment start events (i.e., so-called `Configuration change` events). During a deployment, Keptn generates events for controlling the deployment process. These events will also show up in Keptn's Bridge. Please note that if events are sent at the same time, their order in the Keptn's Bridge might be arbitrary since they are sorted on the granularity of one second. 
 

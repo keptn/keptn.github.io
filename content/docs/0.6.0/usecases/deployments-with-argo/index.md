@@ -232,16 +232,15 @@ Therefore, create a config map and a secret with the Keptn endpoint and api-toke
     argocd app sync carts-production
     ```
 
-1. Check whether the hook triggered Keptn. Therefore, go to Keptn's Bridge and check whether there is 
-a `sh.keptn.events.deployment-finished` event. 
-You can access it by a port-forward from your local machine to the Kubernetes cluster:
+1. Check whether the hook triggered Keptn. Therefore, go to Keptn Bridge and check whether there is 
+a `sh.keptn.events.deployment-finished` event. If you have not exposed the Bridge yet, execute the following command:
 
     ```console 
-    kubectl port-forward svc/bridge -n keptn 9000:8080
+    keptn configure bridge --action=expose
     ```
-    The Keptn's Bridge is then available on: http://localhost:9000. 
+    > The Keptn Bridge is then available on: `https://bridge.keptn.YOUR.DOMAIN/`
 
-1. Follow the events in the Keptn's Bridge.
+1. Follow the events in the Keptn Bridge.
 
 1. The new version (i.e. the `canary`) as well as the released version (i.e. the `primary`) of the `carts` service are exposed via a LoadBalancer.
 In order to access the website of the `carts` service, query the external IPs of the LoadBalancer:

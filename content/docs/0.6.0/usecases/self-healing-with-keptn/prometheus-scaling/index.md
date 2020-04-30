@@ -148,13 +148,12 @@ In this tutorial, the number of pods will be increased to remediate the issue of
     carts-primary-7c96d87df9-78fh2    2/2     Running   0          5m
     ```
 
-1. To get an overview of the actions that got triggered by the response time SLO violation, you can use the Keptn's Bridge. You can access it by a port-forward from your local machine to the Kubernetes cluster:
+1. To get an overview of the actions that got triggered by the response time SLO violation, you can use the Keptn Bridge. If you have not exposed the Bridge yet, execute the following command:
 
     ```console 
-    kubectl port-forward svc/bridge -n keptn 9000:8080
+    keptn configure bridge --action=expose
     ```
-
-    Now, access the bridge from your browser on http://localhost:9000. 
+    > The Keptn Bridge is then available on: `https://bridge.keptn.YOUR.DOMAIN/
 
     In this example, the bridge shows that the remediation service triggered an update of the configuration of the carts service by increasing the number of replicas to 2. When the additional replica was available, the wait-service waited for ten minutes for the remediation action to take effect. Afterwards, an evaluation by the lighthouse-service was triggered to check if the remediation action resolved the problem. In this case, increasing the number of replicas achieved the desired effect, since the evaluation of the service level objectives has been successful.
     
