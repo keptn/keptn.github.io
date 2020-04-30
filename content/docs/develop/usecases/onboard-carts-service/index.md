@@ -57,7 +57,7 @@ To illustrate the scenario this tutorial addresses, Keptn relies on following in
 
 If you have not yet authenticated the Keptn CLI, please follow these instructions. If you have already done this [during the installation](../../installation/setup-keptn/#install-keptn), please skip this part and continue with [creating a project](#create-project-sockshop).
 
-* The Keptn CLI needs to be authenticated against the Keptn server by executing the [auth](../../reference/cli/#keptn-auth) command:
+* The Keptn CLI needs to be authenticated against the Keptn server by executing the [auth](../../cli/#keptn-auth) command:
 
     ```console
     keptn auth --endpoint=https://api.keptn.$(kubectl get cm -n keptn keptn-domain -ojsonpath={.data.app_domain}) --api-token=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
@@ -94,7 +94,7 @@ This shipyard contains three stages: dev, staging, and production. This results 
 
 **Note:**  To learn more about a *shipyard* file, please take a look at the [Shipyard specification](https://github.com/keptn/spec/blob/0.1.3/shipyard.md).
 
-Create a new project for your services using the [keptn create project](../../reference/cli/#keptn-create-project) command. In this example, the project is called *sockshop*. Before executing the following command, make sure you are in the `examples/onboarding-carts` folder.
+Create a new project for your services using the [keptn create project](../../cli/commands/keptn_create_project) command. In this example, the project is called *sockshop*. Before executing the following command, make sure you are in the `examples/onboarding-carts` folder.
 
 Create a new project without Git upstream:
 ```console
@@ -115,7 +115,7 @@ keptn create project sockshop --shipyard=./shipyard.yaml --git-user=GIT_USER --g
 ## Onboard carts service and carts database
 After creating the project, services can be onboard to this project.
 
-* Onboard the **carts** service using the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command:
+* Onboard the **carts** service using the [keptn onboard service](../../cli/commands/keptn_onboard_service) command:
 
 ```console
 keptn onboard service carts --project=sockshop --chart=./carts
@@ -139,7 +139,7 @@ keptn onboard service carts --project=sockshop --chart=./carts
 
 Since the carts service requires a mongodb database, a second service needs to be onboarded.
 
-* Onboard the **carts-db** service using the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command. The `--deployment-strategy` flag specifies that for this service a *direct* deployment strategy in all stages should be used regardless of the deployment strategy specified in the shipyard. Thus, the database is not blue/green deployed.
+* Onboard the **carts-db** service using the [keptn onboard service](../../cli/commands/keptn_onboard_service) command. The `--deployment-strategy` flag specifies that for this service a *direct* deployment strategy in all stages should be used regardless of the deployment strategy specified in the shipyard. Thus, the database is not blue/green deployed.
 
 ```console
 keptn onboard service carts-db --project=sockshop --chart=./carts-db --deployment-strategy=direct
@@ -165,7 +165,7 @@ sockshop-staging      Active   2m16s
 
 After onboarding the services, a built artifact of each service can be deployed.
 
-* Deploy the carts-db service by executing the [keptn send event new-artifact](../../reference/cli/#keptn-send-event-new-artifact) command:
+* Deploy the carts-db service by executing the [keptn send event new-artifact](../../cli/commands/keptn_send_event_new-artifact) command:
 
 ```console
 keptn send event new-artifact --project=sockshop --service=carts-db --image=docker.io/mongo --tag=4.2.2
