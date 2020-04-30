@@ -66,7 +66,7 @@ indicators:
 ```
 
 ### Comparison
-By default, Keptn compares with the previous values of the SLIs. To support more advanced comparions strategies, the following properties are available: 
+By default, Keptn compares with the previous values of the SLIs. To support more advanced comparion strategies, the following properties are available: 
 
 * The **compare_with** config parameter controls how many previous results are compared: `single_result` or `several_results`. 
 
