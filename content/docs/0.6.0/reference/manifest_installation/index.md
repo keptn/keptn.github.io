@@ -67,7 +67,7 @@ kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.6.1/installer/m
 
       Query the IP:
       ```console
-      export KEPTN_ENDPOINT=$(kubectl get svc api -n keptn -ojsonpath='{.status.loadBalancer.ingress[0].ip}')
+      export KEPTN_ENDPOINT=http://$(kubectl get svc api -n keptn -ojsonpath='{.status.loadBalancer.ingress[0].ip}')
       ```
     
     </p>
@@ -83,7 +83,7 @@ kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.6.1/installer/m
       ```
 
       ```console
-      export KEPTN_ENDPOINT=localhost:8080
+      export KEPTN_ENDPOINT=http://localhost:8080
       ```
     
     </p>
