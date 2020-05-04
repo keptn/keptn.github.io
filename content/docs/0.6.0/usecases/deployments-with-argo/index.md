@@ -61,7 +61,7 @@ the service promotes or aborts a rollout, respectively.
 To install the `argo-service`, execute:
 
     ```console
-    kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/argo-service/master/deploy/service.yaml
+    kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/argo-service/0.1.0/deploy/service.yaml
     ```
 
 1. The `gatekeeper-service` (which is installed by the default installation of Keptn) has to be removed:
