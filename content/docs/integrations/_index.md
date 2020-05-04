@@ -15,18 +15,20 @@ Please find here a list of all *Keptn-services* and *SLI-providers* that are ava
 
 | Keptn-service | latest Release | supported Keptn | Repository  |
 | -------------------------- | --- | --- | --- |
-| **dynatrace-service**      | [0.6.2](https://github.com/keptn-contrib/dynatrace-service/releases/tag/0.6.2) | 0.6.1 | https://github.com/keptn-contrib/dynatrace-service |
+| **argo-service**      | [0.1.0](https://github.com/keptn-contrib/argo-service/releases/tag/0.1.0) | 0.6.2 | https://github.com/keptn-contrib/argo-service |
+| **dynatrace-service**      | [0.7.0](https://github.com/keptn-contrib/dynatrace-service/releases/tag/0.7.0) | 0.6.2 | https://github.com/keptn-contrib/dynatrace-service |
+| **jmeter-extended-service**      | [0.1.0](https://github.com/keptn-contrib/jmeter-extended-service/releases/tag/0.1.0) | 0.6.2 | https://github.com/keptn-contrib/jmeter-extended-service |
 | **neoload-service**        | [0.6.0](https://github.com/keptn-contrib/neoload-service/tree/0.6.0) | 0.6.0 | https://github.com/keptn-contrib/neoload-service |
-| **notification-service**   | [0.3.0](https://github.com/keptn-contrib/notification-service/releases/tag/0.3.0) | 0.6.0 | https://github.com/keptn-contrib/notification-service |
-| **prometheus-service**     | [0.3.2](https://github.com/keptn-contrib/prometheus-service/releases/tag/0.3.2) | 0.6.1 | https://github.com/keptn-contrib/prometheus-service |
-| **servicenow-service**     | [0.2.0](https://github.com/keptn-contrib/servicenow-service/releases/tag/0.2.0) | 0.6.0 | https://github.com/keptn-contrib/servicenow-service |
+| **notification-service**   | [0.3.0](https://github.com/keptn-contrib/notification-service/releases/tag/0.3.0) | 0.6.2 | https://github.com/keptn-contrib/notification-service |
+| **prometheus-service**     | [0.3.3](https://github.com/keptn-contrib/prometheus-service/releases/tag/0.3.3) | 0.6.2 | https://github.com/keptn-contrib/prometheus-service |
+| **servicenow-service**     | [0.2.0](https://github.com/keptn-contrib/servicenow-service/releases/tag/0.2.0) | 0.6.2 | https://github.com/keptn-contrib/servicenow-service |
 
 
 | SLI-provider | latest Release | supported Keptn | Repository  |
 | -------------------------- | --- | --- | --- |
-| **dynatrace-sli-service**  | [0.3.1](https://github.com/keptn-contrib/dynatrace-sli-service/releases/tag/0.3.1) | 0.6.1 | https://github.com/keptn-contrib/dynatrace-sli-service |
+| **dynatrace-sli-service**  | [0.4.0](https://github.com/keptn-contrib/dynatrace-sli-service/releases/tag/0.4.0) | 0.6.2 | https://github.com/keptn-contrib/dynatrace-sli-service |
 | **neoload-sli-provider**  | [0.6.0](https://github.com/keptn-contrib/neoload-sli-provider/tree/0.6.0) | 0.6.0 | https://github.com/keptn-contrib/neoload-sli-provider |
-| **prometheus-sli-service** | [0.2.1](https://github.com/keptn-contrib/prometheus-sli-service/releases/tag/0.2.1) | 0.6.1 | https://github.com/keptn-contrib/prometheus-sli-service |
+| **prometheus-sli-service** | [0.2.2](https://github.com/keptn-contrib/prometheus-sli-service/releases/tag/0.2.2) | 0.6.2 | https://github.com/keptn-contrib/prometheus-sli-service |
 
 ## Sandbox
 
@@ -38,6 +40,8 @@ Below are projects that have been shown in any Keptn community or developer meet
 
 | Keptn-service | in development for Keptn | Repository |
 | --- | --- | --- | 
+| **jenkins-service** | 0.6.1 | https://github.com/keptn-sandbox/jenkins-service |
+| **keptn-report** | 0.6.1 | https://github.com/keptn-sandbox/keptn-report |
 | **slackbot-service** | 0.6.1 | https://github.com/keptn-sandbox/slackbot-service |
 
 ### Contribute your service
