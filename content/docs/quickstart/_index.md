@@ -8,7 +8,7 @@ weight: 1
 
 ### 1. Setup your platform
 
-**Note**: For running the tutorials with Keptn 0.5 and newer we recommend using a cluster with at least **6 vCPUs** and **12 GB memory**.
+**Note**: For running the tutorials with Keptn 0.5 and newer, we recommend using a cluster with at least **6 vCPUs** and **12 GB memory**.
 
 * [Preparing Azure Kubernetes Engine (AKS)](/docs/quickstart/setup_platform/setup_aks)
 * [Preparing Amazon Elastic Kubernetes Service (EKS)](/docs/quickstart/setup_platform/setup_eks)
@@ -28,19 +28,25 @@ The Keptn CLI is the one-stop-shop for all operations related to Keptn.
 Please make sure you have `kubectl` installed (see [kubernetes.io/docs/tasks/tools/install-kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)).
 
 ##### 2.1.1 Automatic install of the Keptn CLI (Linux and Mac)
-This will download the *latest stable Keptn version* from [GitHub](https://github.com/keptn/keptn/releases), unpack it
- and move it to `/usr/local/bin/keptn`.
-
+1. This will download the *latest stable Keptn version* from [GitHub](https://github.com/keptn/keptn/releases), unpack it and move it to `/usr/local/bin/keptn`.
 ```console
 curl -sL https://get.keptn.sh | sudo -E bash
 ```
 
-Verify that the installation has worked and that the version is correct by running `keptn version`
+2. Verify that the installation has worked and that the version is correct by running:
+```console
+keptn version
+```
 
 ##### 2.1.2 Manual install of the Keptn CLI
 1. Download a release for your platform from the [release page](https://github.com/keptn/keptn/releases)
-2. Unpack the binary and move it to a directory of your choice (e.g., `/usr/local/bin/`)
-3. Verify that the installation has worked and that the version is correct by running `keptn version`
+
+1. Unpack the binary and move it to a directory of your choice (e.g., `/usr/local/bin/`)
+
+1. Verify that the installation has worked and that the version is correct by running:
+```console
+keptn version
+```
 
 #### 3. Run the Keptn installer
 Depending on the platform, Keptn install will prompt you different information needed to perform the installation.

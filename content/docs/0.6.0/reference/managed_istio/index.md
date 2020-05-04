@@ -4,13 +4,14 @@ description: Install Keptn with a pre-installed/managed Istio/NGINX installation
 weight: 90
 ---
 
-In case you want to re-use an existing Istio installation for the [full Keptn installation](../../installation/setup-keptn) or re-use an existing NGINX installation for the [quality gates Keptn installation](../../usecases/quality-gates),
-the Keptn CLI provides a hidden flag `--ingress-install-option=Reuse` starting with Keptn 0.6.1:
+In case you want to re-use an existing Istio installation for the [full Keptn installation](../../installation/setup-keptn) or re-use an existing NGINX installation for the [quality gates Keptn installation](../../usecases/quality-gates), the Keptn CLI provides a hidden flag `--ingress-install-option=Reuse` starting with Keptn 0.6.1:
 
 ```console
 keptn install --ingress-install-option=Reuse --platform=gke
 ``` 
+
 or 
+
 ```console
 keptn install --ingress-install-option=Reuse --use-case=quality-gates --platform=gke
 ```
