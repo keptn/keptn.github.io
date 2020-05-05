@@ -179,9 +179,9 @@ keptn send event new-artifact --project=sockshop --service=carts --image=docker.
 
 * Go to Keptn Bridge and check which events have already been generated. If you have not exposed the Bridge yet, execute the following command:
 
-    ```console 
-    keptn configure bridge --action=expose
-    ```
+```console 
+keptn configure bridge --action=expose
+```
 
 * The Keptn Bridge is then available on: `https://bridge.keptn.YOUR.DOMAIN/`
 
