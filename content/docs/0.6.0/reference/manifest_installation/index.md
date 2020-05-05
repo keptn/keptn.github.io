@@ -58,6 +58,11 @@ kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/$KEPTNVERSION/ins
 kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/$KEPTNVERSION/installer/manifests/keptn/keptn-domain-configmap.yaml
 ```
 
+1. Install Keptn API Gateway NGINX:
+```console
+kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/$KEPTNVERSION/installer/manifests/keptn/api-gateway-nginx.yaml
+```
+
 1. Install Keptn Quality Gates:
 ```console
 kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/$KEPTNVERSION/installer/manifests/keptn/quality-gates.yaml
