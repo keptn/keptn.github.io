@@ -67,7 +67,7 @@ For this tutorial, you will need to set up monitoring for the carts service eith
 
 1. Complete steps from section [Setup Prometheus SLI provider](../../reference/monitoring/prometheus/#setup-prometheus-sli-provider).
 
-    <details><summary>**Note:** If you are using Keptn 0.6.0 instead of 0.6.1/0.6.2, you will have to apply a ConfigMap</summary>
+    <details><summary>**Note:** If you are using Keptn 0.6.0 instead of 0.6.1 or 0.6.2, you will have to apply a ConfigMap</summary>
     <p>
     Please apply the following ConfigMap by executing the command from within the `examples/onboarding-carts` folder:
     
@@ -102,7 +102,7 @@ For this tutorial, you will need to set up monitoring for the carts service eith
 
 1. Complete steps from section [Setup Dynatrace SLI provider](../../reference/monitoring/dynatrace/#setup-dynatrace-sli-provider).
 
-    <details><summary>**Note:** If you are using Keptn 0.6.0 instead of 0.6.1/0.6.2, you will have to apply a ConfigMap</summary>
+    <details><summary>**Note:** If you are using Keptn 0.6.0 instead of 0.6.1 or 0.6.2, you will have to apply a ConfigMap</summary>
     <p>
     Please apply the following ConfigMap by executing the command from within the `examples/onboarding-carts` folder:
     

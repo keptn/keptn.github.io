@@ -177,7 +177,7 @@ For this tutorial, you need to deploy the corresponding SLI provider for your mo
     keptn configure monitoring prometheus --project=musicshop --service=catalogue --suppress-websocket
     ```
 
-    **Note:** if you are using Keptn 0.6.0 instead of 0.6.1/0.6.2, you will have to apply the following ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
+    **Note:** if you are using Keptn 0.6.0 instead of 0.6.1 or 0.6.2, you will have to apply the following ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
     
     ```
     kubectl apply -f lighthouse-source-prometheus.yaml
@@ -214,7 +214,7 @@ For this tutorial, you need to deploy the corresponding SLI provider for your mo
     keptn configure monitoring dynatrace --project=musicshop --suppress-websocket
     ```
     
-    **Note:** if you are using Keptn 0.6.0 instead of 0.6.1/0.6.2, you will have to apply the following ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
+    **Note:** if you are using Keptn 0.6.0 instead of 0.6.1 or 0.6.2, you will have to apply the following ConfigMap by executing the following command from within the `examples/onboarding-carts` folder:
     
     ```
     kubectl apply -f lighthouse-source-dynatrace.yaml
