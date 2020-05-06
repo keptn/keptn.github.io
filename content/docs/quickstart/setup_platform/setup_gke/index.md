@@ -8,7 +8,7 @@ keywords: setup
 ## 1. Sign up for Google Cloud Platform
 Run your Keptn installation for free on GKE!
 If you [sign up for a Google Cloud account](https://console.cloud.google.com/getting-started), Google gives you an initial $300 credit. For deploying Keptn you can apply for an additional $200 credit which you can use towards that GKE cluster needed to run Keptn.<br><br>
-<a class="button button-primary" href="http://bit.ly/keptnongke" target="_blank">Apply for your credit here</a>
+<a class="button button-primary" href="https://bit.ly/keptngkecredit" target="_blank">Apply for your credit here</a>
 
 ## 2. Install local tools
   - [gcloud](https://cloud.google.com/sdk/gcloud/)
