@@ -38,7 +38,7 @@ Select one of the following options:
   - Sample script using [eksctl](https://eksctl.io/introduction/installation/) to create such a cluster
 
     ```console
-    eksctl create cluster --version=1.14 --name=keptn-cluster --node-type=m5.2xlarge --nodes=1 --region=eu-west-3
+    eksctl create cluster --version=1.15 --name=keptn-cluster --node-type=m5.2xlarge --nodes=1 --region=eu-west-3
     ```
 
     <details><summary>**Known bug in EKS 1.13**</summary>
