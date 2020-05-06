@@ -23,11 +23,14 @@
                 </a>
             </div>
 
+            {{ if not $page.Params.hidechildren }}
             <div id="collapse{{ $count }}" class="collapse{{if .IsAncestor $current}} show{{end}}" role="tabpanel" aria-labelledby="header{{ $count }}">
                 <div class="card-body">
                     {{ partial "sidebar-level.html" (dict "pages" $pages "parent" $page "current" $current "collapse" false) }}
                 </div>
             </div>
+            {{ end }}
+
         </div>
         {{ end }}
         {{ end }}
