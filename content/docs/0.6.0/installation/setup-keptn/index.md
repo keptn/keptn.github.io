@@ -20,7 +20,7 @@ Select one of the following options:
   - [az](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
 
 2. Create AKS cluster
-  - [Master version:](../k8s-support/#supported-version) `1.15.x` (tested version: `1.15.5`)
+  - [Master version:](../k8s-support/#supported-version) `1.15.x` (tested version: `1.15.10`)
   - One **D8s_v3** node
  
  </p>
