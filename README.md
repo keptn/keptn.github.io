@@ -7,7 +7,7 @@ This is the repository of the [Keptn](https://keptn.sh) website, which uses the 
 Perform the following steps to create a copy of this repository on your local machine:
 
 1. Fork the Keptn repository.
-A copy of this repository is available in your github account.
+A copy of this repository is available in your GitHub account.
 
 2. Clone the forked repository in a local directory.
     ```

@@ -7,6 +7,12 @@ keywords: [troubleshooting]
 
 In this section, instructions have been summarized that help to troubleshoot known issues that may occur when using Keptn.
 
+## Generating a Support Archive
+
+The Keptn CLI allows to generate a support archive, which can be used as data source for debugging a Keptn installation.
+For generating a support archive, please checkout the CLI command [keptn generate support-archive](../../cli/commands/keptn_generate_support-archive).
+
+
 ## Verifying a Keptn installation
 
 Especially for troubleshooting purposes it is necessary to verify that all parts of the Keptn installation are running as intended (e.g., no crashed pods, all distributors running).

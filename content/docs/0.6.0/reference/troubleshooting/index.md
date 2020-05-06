@@ -7,9 +7,15 @@ keywords: [troubleshooting]
 
 In this section, instructions have been summarized that help to troubleshoot known issues that may occur when using Keptn.
 
+## Generating a Support Archive
+
+The Keptn CLI allows to generate a support archive, which can be used as data source for debugging a Keptn installation.
+For generating a support archive, please checkout the CLI command [keptn generate support-archive](../cli/commands/keptn_generate_support-archive).
+
+
 ## Verifying a Keptn installation
 
-Especially for troubleshooting purposes it is necessary to verify that all parts of the Keptn installation are running as intended (e.g., no crashed pods, all distributors running).
+Especially for troubleshooting purposes, it is necessary to verify that all parts of the Keptn installation are running as intended (e.g., no crashed pods, all distributors running).
 
 <details><summary>Expand instructions</summary>
 <p>
@@ -112,16 +118,53 @@ Please select the **Kubenet network plugin (basic)** when setting up your AKS cl
 </p></details>
 
 
-## Troubleshooting the Installer
+## Broken Keptn project
 
-In some cases the installer is not running correctly or crashes.
+When creating a project failed, this can cause a problematic state that manifests in a situation that the Keptn Bridge does not show any project.
+
+<details><summary>Expand instructions</summary>
+<p>
+
+**Situation**: Executing [keptn create project](../cli/commands/keptn_create_project) failed with following error messsage: 
+
+```console
+Starting to create project   
+ID of Keptn context: 9d1a30cd-e00b-4354-a308-03e50368bc40  
+Creating project sockshop failed. Could not commit changes.
+```
+
+**Problem**: The Keptn Bridge does not show any project even though other projects were already displayed. 
+
+**Solution**: 
+
+* Try to execute the command: [keptn delete project](../cli/commands/keptn_delete_project)
+
+* If the command did not work, manually delete the faulty project in the `configuration-service` pod.
+
+    1. Connect to the pod of `configuration-service`: 
+    ```console
+    kubectl -n keptn exec -it svc/configuration-service sh`
+    ```
+
+    1. In the pod, go to: `/data/config/`
+
+    1. Delete the directory with the name of the faulty project: 
+    ```console
+    rm -rf projectXYZ 
+    ```
+
+</p></details>
+
+## Troubleshooting the Installer Job
+
+In some cases, the installer is not running correctly or crashes.
 
 <details><summary>Expand instructions</summary>
 <p>
 
 **Investigation:**
 
-The Keptn installation is aborting with an error. Investigation needs to be conducted using the following commands:
+The Keptn installation is aborting with an error. The investigation needs to be conducted using the following commands:
 
 * Show all deployed pods in the default namespace (should show the status of the installer pod): ``kubectl get pods``
 * Show status of the installer job: ``kubectl get jobs``
@@ -154,7 +197,7 @@ keptn send event new-artifact
 
 **Reason:** 
 
-In this case Helm creates a new Kubernetes Deployment with the new artifact, but Kubernetes fails to start the pod. 
+In this case, Helm creates a new Kubernetes Deployment with the new artifact, but Kubernetes fails to start the pod. 
 Unfortunately, there is no way to catch this error by Helm (right now). A good way to detect the error is to look at the Kubernetes events captured by the cluster:
 
 ```console
@@ -204,7 +247,7 @@ CLI is authenticated against the Keptn cluster https://api.keptn.123.45.67.89.xi
 
 As you can see, the domains match (despite the `https://api.keptn.` prefix in the output of `keptn status`).
 
-## Nginx troubleshooting
+## NGNIX troubleshooting
 
 If a CLI command like, e.g., `keptn add resource` fails with the following error message:
 
@@ -247,3 +290,4 @@ $ keptn add-resource --project=sockshop --service=carts --stage=production --res
 Adding resource remediation.yaml to service carts in stage production in project sockshop
 Resource has been uploaded.
 ```
+
