@@ -73,8 +73,7 @@ To enable this feature, a secret has to be created that holds the two variables.
 * Restart the pod of the Keptn Bridge by executing:
 
     ```console
-    kubectl -n keptn scale deployment bridge --replicas=0
-    kubectl -n keptn scale deployment bridge --replicas=1
+    kubectl -n keptn delete pods --selector=run=bridge
     ```
 
 ### Disable Authentication
@@ -88,8 +87,7 @@ To enable this feature, a secret has to be created that holds the two variables.
 * Restart the respective pod of the Keptn Bridge by executing:
 
     ```console
-    kubectl -n keptn scale deployment bridge --replicas=0
-    kubectl -n keptn scale deployment bridge --replicas=1
+    kubectl -n keptn delete pods --selector=run=bridge
     ```
 
 ## Views in Keptn Bridge

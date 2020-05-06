@@ -12,6 +12,17 @@ In this section, instructions have been summarized that help to troubleshoot kno
 The Keptn CLI allows to generate a support archive, which can be used as data source for debugging a Keptn installation.
 For generating a support archive, please checkout the CLI command [keptn generate support-archive](../cli/commands/keptn_generate_support-archive).
 
+## Keptn API cannot be reached
+
+In rare cases (but especially after a new Keptn installation), the Keptn API cannot be reached.
+This prevents e.g. a successful communication between the Keptn CLI and the Keptn API.
+In order to solve this problem, please try to restart the `api-gateway-nginx` pod by executing:
+
+```console
+kubectl delete pods -n keptn --selector=run=api-gateway-nginx
+```
+
+
 
 ## Verifying a Keptn installation
 
@@ -28,7 +39,8 @@ kubectl get pods -n keptn
 
 ```console
 NAME                                                              READY     STATUS    RESTARTS   AGE
-api-5cfd44687-b2sqr                                               1/1       Running   0          34m
+api-gateway-nginx-794b946b9c-jjhsv                                1/1       Running   0          34m
+api-service-86dc967944-bx9n4                                      1/1       Running   0          34m
 bridge-54d65cd4c5-9hwsl                                           1/1       Running   0          34m
 configuration-service-75df569979-qvg8t                            1/1       Running   0          34m
 eventbroker-go-f44576fcb-z2ddv                                    1/1       Running   0          34m
