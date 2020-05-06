@@ -43,7 +43,7 @@ deployment tool.
 * Clone example files used in this tutorial:
 
     ```console
-    git clone --branch master https://github.com/keptn/examples.git --single-branch
+    git clone --branch 0.6.2 https://github.com/keptn/examples.git --single-branch
     ```
 
     ```console
@@ -184,7 +184,7 @@ the namespace has to follow the format `ProjectName-StageName`:
 In order to infrom Keptn when Argo CD does the deployment,
 an [Argo Resource Hook](https://argoproj.github.io/argo-cd/user-guide/resource_hooks/) is configured.
 This hook is triggered when Argo CD applies the manifests. This hook
-executes a script which sends a [`sh.keptn.events.deployment-finished`](https://github.com/keptn/spec/blob/master/cloudevents.md#deployment-finished) event to the Keptn API.
+executes a script which sends a [`sh.keptn.events.deployment-finished`](https://github.com/keptn/spec/blob/0.1.3/cloudevents.md#deployment-finished) event to the Keptn API.
 
 
 ```console
