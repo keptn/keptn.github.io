@@ -15,6 +15,7 @@ For generating a support archive, please checkout the CLI command [keptn generat
 ## Keptn API cannot be reached
 
 In rare cases (but especially after a new Keptn installation), the Keptn API cannot be reached.
+This prevents e.g. a successful communication between the Keptn CLI and the Keptn API.
 In order to solve this problem, please try to restart the `api-gateway-nginx` pod by executing:
 
 ```console
