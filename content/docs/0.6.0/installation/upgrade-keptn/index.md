@@ -14,7 +14,7 @@ before deploying the upgrading job with the next command:
 
 ```console
 kubectl delete job upgrader
-kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.6.2/upgrader/upgrade-061-062/upgrade-job.yaml
+kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/release-0.6.2/upgrader/upgrade-061-062/upgrade-job.yaml
 ```
 
 * To check the status of the update job, please execute:
