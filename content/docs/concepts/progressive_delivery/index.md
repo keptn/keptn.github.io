@@ -34,3 +34,9 @@ stages:
 ```
 
 According to the example, Keptn will perform a direct deployment (i.e., replacing the previous version of a microservice with a new one) and trigger functional tests in the *dev* stage. In the *hardening* stage, Keptn will perform a blue/green deployment (i.e., having two deployments at the same time but routing the traffic to only one) and trigger performance tests. Finally, the *production* stage even defines an automated remediation strategy to trigger counter actions to any issues detected by a monitoring system.
+
+### References
+
+- [How your delivery pipeline will become your next big legacy-code challenge](https://medium.com/keptn/how-your-delivery-pipeline-will-become-your-next-big-legacy-code-challenge-4e520999693f)
+- [Continuous Delivery without pipelines — How it works and why you need it
+](https://medium.com/keptn/continuous-delivery-without-pipelines-7e84db8c8261)

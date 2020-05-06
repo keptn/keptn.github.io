@@ -30,3 +30,7 @@ The following image shows the general process of how Keptn is providing continuo
   link="./assets/test-automation.png"
   caption="Keptn Test Automation"
   width="700px">}}
+
+### References
+
+- [SLO Validation as a self-service](https://www.neotys.com/blog/neotyspac-slo-validation-self-service-keptn-quality-gates/)

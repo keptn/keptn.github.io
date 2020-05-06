@@ -61,3 +61,8 @@ Assuming a developer has deployed a new artifact with a remediation file, the au
   link="./assets/automated_remediation.png"
   caption="Automated remediation workflow"
   width="700px">}}
+
+
+### References
+
+- [Micro operations — A new operations model for the micro services age](https://medium.com/@alois.reitbauer_97826/micro-operations-a-new-operations-model-for-the-micro-services-age-e29cd1bbd0cd)
