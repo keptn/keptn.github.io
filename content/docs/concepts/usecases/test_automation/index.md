@@ -1,17 +1,18 @@
 ---
-title: Test Automation
-description: Learn about test automation with Keptn.
+title: Continuous Performance Verification
+description: Learn about continuous performance verification with Keptn.
 weight: 3
 keywords: [keptn, use-cases]
 ---
 
-> **Challenge:** .
+> **Challenge:** Today, performance verification is often a manual task overseen by performance engineers that start performance tests, monitor them, and evalute the test results. However, this approach is cumbersome when it comes to microservice environments where the sheer amount of microservices  and tests for them can not be tackled in a manual approach. 
 
-Keptn helps automating your tests by having Keptn triggering the test execution and evaluating the result. You can even go one step further by letting Keptn deploying new versions of your applications to a test environment, which is then tested and evaluated. 
+Keptn helps automating your tests by having Keptn triggering the test execution and evaluating the result of these performance tests. The result can then be automatically processed or presented in the Keptn's Bridge to take further decisions. 
+You can even expand this use case by letting Keptn deploying new versions of your applications to a test environment, succeeded by triggering and evaluting the tests. 
 
 ## Test Automation Process
 
-The following image shows the general process of how Keptn is automating your tests:
+The following image shows the general process of how Keptn is providing continuous performance verification:
 
 1. Keptn gets triggered by an external event. 
 
@@ -23,7 +24,7 @@ The following image shows the general process of how Keptn is automating your te
 
 1. Keptn evaluates and scores the test execution as well as the service-level indicators (SLIs) based on service-level objectives(SLOs).
 
-1. Finally, the quality evaluation of the tests is then returned as a result back to the user.
+1. Finally, the performance verification of the tests is then returned as a result back to the user.
 
   {{< popup_image
   link="./assets/test-automation.png"

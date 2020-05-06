@@ -1,5 +1,5 @@
 ---
-title: Quality Gate
+title: Quality Gates
 description: Learn about the Keptn Quality Gates.
 weight: 2
 keywords: [keptn, use-cases]
