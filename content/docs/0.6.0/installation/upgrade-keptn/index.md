@@ -9,7 +9,7 @@ keywords: upgrade
 
 * To download and install the Keptn CLI for version 0.6.2, please refer to the [Install Keptn CLI section](../setup-keptn/#install-keptn-cli).
 
-* To upgrade your Keptn installation from 0.6.1 to 0.6.2, you can deploy a *Kubernetes Job* that will take care of updating all components to the 0.6.1 release. Please [verify that you are connected to the correct Kubernetes cluster](../../reference/troubleshooting/#verify-kubernetes-context-with-keptn-installation)
+* To upgrade your Keptn installation from 0.6.1 to 0.6.2, you can deploy a *Kubernetes Job* that will take care of updating all components to the 0.6.2 release. Please [verify that you are connected to the correct Kubernetes cluster](../../reference/troubleshooting/#verify-kubernetes-context-with-keptn-installation)
 before deploying the upgrading job with the next command:
 
 ```console
