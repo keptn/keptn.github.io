@@ -5,6 +5,491 @@ weight: 20
 keywords: upgrade
 ---
 
+## Upgrade from 0.6.1 to 0.6.2
+
+* To download and install the Keptn CLI for version 0.6.2, please refer to the [Install Keptn CLI section](../setup-keptn/#install-keptn-cli).
+
+* To upgrade your Keptn installation from 0.6.1 to 0.6.2, you can deploy a *Kubernetes Job* that will take care of updating all components to the 0.6.2 release. Please [verify that you are connected to the correct Kubernetes cluster](../../reference/troubleshooting/#verify-kubernetes-context-with-keptn-installation)
+before deploying the upgrading job with the next command:
+
+```console
+kubectl delete job upgrader
+kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/release-0.6.2/upgrader/upgrade-061-062/upgrade-job.yaml
+```
+
+* To check the status of the update job, please execute:
+
+```console
+kubectl get job
+```
+```
+NAME                COMPLETIONS   DURATION   AGE
+upgrader            1/1           17s        20h
+```
+
+When the job is completed, your Keptn version has been updated to 0.6.2.
+
+<details><summary>*Verifying that the upgrade worked*</summary>
+
+To verify that the upgrade process worked, please check the images and their tags using `kubectl` as described below. 
+
+**Before the upgrade**:
+
+```console
+kubectl -n keptn get deployments -owide
+```
+
+
+```console
+NAME                                                      READY   UP-TO-DATE   AVAILABLE   AGE     CONTAINERS               IMAGES                                  SELECTOR
+api                                                       1/1     1            1           4h39m   api                      keptn/api:0.6.1                         run=api
+bridge                                                    1/1     1            1           4h39m   bridge                   keptn/bridge2:0.6.1                     run=bridge
+configuration-service                                     1/1     1            1           4h39m   configuration-service    keptn/configuration-service:0.6.1       run=configuration-service
+eventbroker-go                                            1/1     1            1           4h39m   eventbroker-go           keptn/eventbroker-go:0.6.1              run=eventbroker-go
+gatekeeper-service                                        1/1     1            1           4h39m   gatekeeper-service       keptn/gatekeeper-service:0.6.1          run=gatekeeper-service
+gatekeeper-service-evaluation-done-distributor            1/1     1            1           4h39m   distributor              keptn/distributor:0.6.1                 run=distributor
+helm-service                                              1/1     1            1           4h39m   helm-service             keptn/helm-service:0.6.1                run=helm-service
+helm-service-configuration-change-distributor             1/1     1            1           4h39m   distributor              keptn/distributor:0.6.1                 run=distributor
+helm-service-service-create-distributor                   1/1     1            1           4h39m   distributor              keptn/distributor:0.6.1                 run=distributor
+jmeter-service                                            1/1     1            1           4h39m   jmeter-service           keptn/jmeter-service:0.6.1              run=jmeter-service
+jmeter-service-deployment-distributor                     1/1     1            1           4h39m   distributor              keptn/distributor:0.6.1                 run=distributor
+lighthouse-service                                        1/1     1            1           4h39m   lighthouse-service       keptn/lighthouse-service:0.6.1          run=lighthouse-service
+lighthouse-service-distributor                            1/1     1            1           72s     distributor              keptn/distributor:0.6.1                 run=distributor
+nats-operator                                             1/1     1            1           4h40m   nats-operator            connecteverything/nats-operator:0.6.0   name=nats-operator
+prometheus-service                                        1/1     1            1           41m     prometheus-service       keptn/prometheus-service:0.3.1          run=prometheus-service
+prometheus-service-monitoring-configure-distributor       1/1     1            1           41m     distributor              keptn/distributor:0.5.0                 run=distributor
+prometheus-sli-service                                    1/1     1            1           38m     prometheus-sli-service   keptn/prometheus-sli-service:0.2.1      run=prometheus-sli-service
+prometheus-sli-service-monitoring-configure-distributor   1/1     1            1           38m     distributor              keptn/distributor:latest                run=distributor
+remediation-service                                       1/1     1            1           4h39m   remediation-service      keptn/remediation-service:0.6.1         run=remediation-service
+remediation-service-problem-distributor                   1/1     1            1           4h39m   distributor              keptn/distributor:0.6.1                 run=distributor
+shipyard-service                                          1/1     1            1           4h39m   shipyard-service         keptn/shipyard-service:0.6.1            run=shipyard-service
+shipyard-service-create-project-distributor               1/1     1            1           4h39m   distributor              keptn/distributor:0.6.1                 run=distributor
+shipyard-service-delete-project-distributor               1/1     1            1           4h39m   distributor              keptn/distributor:0.6.1                 run=distributor
+wait-service                                              1/1     1            1           4h39m   wait-service             keptn/wait-service:0.6.1                run=wait-service
+wait-service-deployment-distributor                       1/1     1            1           4h39m   distributor              keptn/distributor:0.6.1                 run=distributor
+
+```
+
+```console
+kubectl -n keptn-datastore get deployments -owide
+```
+
+```console
+NAME                            READY   UP-TO-DATE   AVAILABLE   AGE     CONTAINERS          IMAGES                          SELECTOR
+mongodb                         1/1     1            1           2m41s   mongodb             centos/mongodb-36-centos7:1     name=mongodb
+mongodb-datastore               1/1     1            1           4h40m   mongodb-datastore   keptn/mongodb-datastore:0.6.1   run=mongodb-datastore
+mongodb-datastore-distributor   1/1     1            1           4h40m   distributor         keptn/distributor:0.6.1         run=distributor
+```
+
+**After the upgrade**
+
+```console
+kubectl -n keptn get deployments -owide
+```
+
+**Full version of Keptn:**
+
+```console
+NAME                                             READY   UP-TO-DATE   AVAILABLE   AGE     CONTAINERS              IMAGES                                  SELECTOR
+api-gateway-nginx                                1/1     1            1           3m6s    api-gateway-nginx       nginx:1.17.9                            run=api-gateway-nginx
+api-service                                      1/1     1            1           3m6s    api-service             keptn/api:0.6.2                         run=api-service
+bridge                                           1/1     1            1           9m38s   bridge                  keptn/bridge2:0.6.2                     run=bridge
+configuration-service                            1/1     1            1           9m37s   configuration-service   keptn/configuration-service:0.6.2       run=configuration-service
+eventbroker-go                                   1/1     1            1           9m38s   eventbroker-go          keptn/eventbroker-go:0.6.2              run=eventbroker-go
+gatekeeper-service                               1/1     1            1           9m12s   gatekeeper-service      keptn/gatekeeper-service:0.6.2          run=gatekeeper-service
+gatekeeper-service-evaluation-done-distributor   1/1     1            1           9m12s   distributor             keptn/distributor:0.6.2                 run=distributor
+helm-service                                     1/1     1            1           9m38s   helm-service            keptn/helm-service:0.6.2                run=helm-service
+helm-service-configuration-change-distributor    1/1     1            1           9m12s   distributor             keptn/distributor:0.6.2                 run=distributor
+helm-service-service-create-distributor          1/1     1            1           9m37s   distributor             keptn/distributor:0.6.2                 run=distributor
+jmeter-service                                   1/1     1            1           9m12s   jmeter-service          keptn/jmeter-service:0.6.2              run=jmeter-service
+jmeter-service-deployment-distributor            1/1     1            1           9m11s   distributor             keptn/distributor:0.6.2                 run=distributor
+lighthouse-service                               1/1     1            1           9m11s   lighthouse-service      keptn/lighthouse-service:0.6.2          run=lighthouse-service
+lighthouse-service-distributor                   1/1     1            1           9m11s   distributor             keptn/distributor:0.6.2                 run=distributor
+nats-operator                                    1/1     1            1           10m     nats-operator           connecteverything/nats-operator:0.6.0   name=nats-operator
+remediation-service                              1/1     1            1           9m10s   remediation-service     keptn/remediation-service:0.6.2         run=remediation-service
+remediation-service-problem-distributor          1/1     1            1           9m10s   distributor             keptn/distributor:0.6.2                 run=distributor
+shipyard-service                                 1/1     1            1           9m37s   shipyard-service        keptn/shipyard-service:0.6.2            run=shipyard-service
+shipyard-service-create-project-distributor      1/1     1            1           9m37s   distributor             keptn/distributor:0.6.2                 run=distributor
+shipyard-service-delete-project-distributor      1/1     1            1           9m37s   distributor             keptn/distributor:0.6.2                 run=distributor
+wait-service                                     1/1     1            1           9m10s   wait-service            keptn/wait-service:0.6.2                run=wait-service
+wait-service-deployment-distributor              1/1     1            1           9m10s   distributor             keptn/distributor:0.6.2                 run=distributor
+```
+
+**Quality Gates only version of Keptn:**
+
+```console
+NAME                                          READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS              IMAGES                                  SELECTOR
+api-gateway-nginx                             1/1     1            1           23h   api-gateway-nginx       nginx:1.17.9                            run=api-gateway-nginx
+api-service                                   1/1     1            1           23h   api-service             keptn/api:0.6.2                         run=api-service
+bridge                                        1/1     1            1           23h   bridge                  keptn/bridge2:0.6.2                     run=bridge
+configuration-service                         1/1     1            1           23h   configuration-service   keptn/configuration-service:0.6.2       run=configuration-service
+eventbroker-go                                1/1     1            1           23h   eventbroker-go          keptn/eventbroker-go:0.6.2              run=eventbroker-go
+helm-service                                  1/1     1            1           23h   helm-service            keptn/helm-service:0.6.2                run=helm-service
+helm-service-service-create-distributor       1/1     1            1           23h   distributor             keptn/distributor:0.6.2                 run=distributor
+lighthouse-service                            1/1     1            1           23h   lighthouse-service      keptn/lighthouse-service:0.6.2          run=lighthouse-service
+lighthouse-service-distributor                1/1     1            1           23h   distributor             keptn/distributor:0.6.2                 run=distributor
+nats-operator                                 1/1     1            1           23h   nats-operator           connecteverything/nats-operator:0.6.0   name=nats-operator
+shipyard-service                              1/1     1            1           23h   shipyard-service        keptn/shipyard-service:0.6.2            run=shipyard-service
+shipyard-service-create-project-distributor   1/1     1            1           23h   distributor             keptn/distributor:0.6.2                 run=distributor
+shipyard-service-delete-project-distributor   1/1     1            1           23h   distributor             keptn/distributor:0.6.2                 run=distributor
+```
+
+```console
+kubectl -n keptn-datastore get deployments -owide
+```
+
+```console
+NAME                            READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS          IMAGES                          SELECTOR
+mongodb                         1/1     1            1           10m   mongodb             centos/mongodb-36-centos7:1     name=mongodb
+mongodb-datastore               1/1     1            1           10m   mongodb-datastore   keptn/mongodb-datastore:0.6.1   run=mongodb-datastore
+mongodb-datastore-distributor   1/1     1            1           10m   distributor         keptn/distributor:0.6.1         run=distributor
+```
+
+</details>
+
+<details><summary>*Inspecting the upgrader logs*</summary>
+To see the log of the upgrader, execute:
+
+```
+kubectl logs job/upgrader
+```
+
+```
+[keptn|DEBUG] [2020-04-29 11:40:40] Upgrading from Keptn 0.6.1 to 0.6.2
+HTTP/1.1 200 OK
+Cache-Control: max-age=300
+Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'; sandbox
+Content-Type: text/plain; charset=utf-8
+ETag: W/"a817203eb7991e9b61d143a173f0f380edcd1fe3fecce9aaae7389728d42d503"
+Strict-Transport-Security: max-age=31536000
+X-Content-Type-Options: nosniff
+X-Frame-Options: deny
+X-XSS-Protection: 1; mode=block
+Via: 1.1 varnish (Varnish/6.0)
+X-GitHub-Request-Id: 964C:369C:96CB0:C05FA:5EA967B8
+Content-Length: 1008
+Accept-Ranges: bytes
+Date: Wed, 29 Apr 2020 11:40:40 GMT
+Via: 1.1 varnish
+Connection: keep-alive
+X-Served-By: cache-mdw17337-MDW
+X-Cache: MISS, MISS
+X-Cache-Hits: 0, 0
+X-Timer: S1588160441.776654,VS0,VE183
+Vary: Authorization,Accept-Encoding
+Access-Control-Allow-Origin: *
+X-Fastly-Request-ID: e0c4cb1362edbbeb8bb7ffbd55e50418a01c6c28
+Expires: Wed, 29 Apr 2020 11:45:40 GMT
+Source-Age: 0
+
+HTTP/1.1 200 OK
+Cache-Control: max-age=300
+Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'; sandbox
+Content-Type: text/plain; charset=utf-8
+ETag: W/"77f0748fec6e1b541317b92402d52fb4db2cfed2369f348b52320a6bb13719e3"
+Strict-Transport-Security: max-age=31536000
+X-Content-Type-Options: nosniff
+X-Frame-Options: deny
+X-XSS-Protection: 1; mode=block
+Via: 1.1 varnish (Varnish/6.0)
+X-GitHub-Request-Id: 16C6:0D43:90CF5:B9F34:5EA967B5
+Content-Length: 904
+Accept-Ranges: bytes
+Date: Wed, 29 Apr 2020 11:40:41 GMT
+Via: 1.1 varnish
+Connection: keep-alive
+X-Served-By: cache-mdw17333-MDW
+X-Cache: MISS, MISS
+X-Cache-Hits: 0, 0
+X-Timer: S1588160441.042223,VS0,VE95
+Vary: Authorization,Accept-Encoding
+Access-Control-Allow-Origin: *
+X-Fastly-Request-ID: a42f1ed936f729fecfcebdfe1ab38a2df9de4663
+Expires: Wed, 29 Apr 2020 11:45:41 GMT
+Source-Age: 0
+
+HTTP/1.1 200 OK
+Cache-Control: max-age=300
+Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'; sandbox
+Content-Type: text/plain; charset=utf-8
+ETag: W/"7d9edebef9621c1fa618ecc77df265aabf2a1fc1957fa5244b4bb1b4f71c0a96"
+Strict-Transport-Security: max-age=31536000
+X-Content-Type-Options: nosniff
+X-Frame-Options: deny
+X-XSS-Protection: 1; mode=block
+Via: 1.1 varnish (Varnish/6.0)
+X-GitHub-Request-Id: D612:0D43:90CFB:B9F62:5EA967B9
+Content-Length: 18013
+Accept-Ranges: bytes
+Date: Wed, 29 Apr 2020 11:40:41 GMT
+Via: 1.1 varnish
+Connection: keep-alive
+X-Served-By: cache-pwk4977-PWK
+X-Cache: MISS, MISS
+X-Cache-Hits: 0, 0
+X-Timer: S1588160441.236350,VS0,VE588
+Vary: Authorization,Accept-Encoding
+Access-Control-Allow-Origin: *
+X-Fastly-Request-ID: a59e0d3b5833318503811f12cec31cf8b626b3a5
+Expires: Wed, 29 Apr 2020 11:45:41 GMT
+Source-Age: 0
+
+HTTP/1.1 200 OK
+Cache-Control: max-age=300
+Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'; sandbox
+Content-Type: text/plain; charset=utf-8
+ETag: W/"64e8ef598d0f1272774d55539c1c9e39e8bbf0c665ccb5125dba54fe55226206"
+Strict-Transport-Security: max-age=31536000
+X-Content-Type-Options: nosniff
+X-Frame-Options: deny
+X-XSS-Protection: 1; mode=block
+Via: 1.1 varnish (Varnish/6.0)
+X-GitHub-Request-Id: FF32:4894:9E22E:C999F:5EA967B9
+Content-Length: 2060
+Accept-Ranges: bytes
+Date: Wed, 29 Apr 2020 11:40:42 GMT
+Via: 1.1 varnish
+Connection: keep-alive
+X-Served-By: cache-mdw17382-MDW
+X-Cache: MISS, MISS
+X-Cache-Hits: 0, 0
+X-Timer: S1588160442.899229,VS0,VE182
+Vary: Authorization,Accept-Encoding
+Access-Control-Allow-Origin: *
+X-Fastly-Request-ID: d81c48694b33d5dec8183a734e7aaa05d454f1ca
+Expires: Wed, 29 Apr 2020 11:45:42 GMT
+Source-Age: 0
+
+HTTP/1.1 200 OK
+Cache-Control: max-age=300
+Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'; sandbox
+Content-Type: text/plain; charset=utf-8
+ETag: W/"739bb6ce977407266fe6859f8315945634fb8637b014906f8d7eab707944563b"
+Strict-Transport-Security: max-age=31536000
+X-Content-Type-Options: nosniff
+X-Frame-Options: deny
+X-XSS-Protection: 1; mode=block
+Via: 1.1 varnish (Varnish/6.0)
+X-GitHub-Request-Id: 8F82:1DD2:98733:C3358:5EA967BA
+Content-Length: 4381
+Accept-Ranges: bytes
+Date: Wed, 29 Apr 2020 11:40:42 GMT
+Via: 1.1 varnish
+Connection: keep-alive
+X-Served-By: cache-pwk4947-PWK
+X-Cache: MISS, MISS
+X-Cache-Hits: 0, 0
+X-Timer: S1588160442.177454,VS0,VE482
+Vary: Authorization,Accept-Encoding
+Access-Control-Allow-Origin: *
+X-Fastly-Request-ID: f11ddeca5f000dd7b5d228edd95b6ce1eb378acc
+Expires: Wed, 29 Apr 2020 11:45:42 GMT
+Source-Age: 0
+
+HTTP/1.1 200 OK
+Cache-Control: max-age=300
+Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'; sandbox
+Content-Type: text/plain; charset=utf-8
+ETag: W/"565ee73e3f155e499a9e68d89acd0981a051a9a07afcf423bd8c2c7fc2ab8b2a"
+Strict-Transport-Security: max-age=31536000
+X-Content-Type-Options: nosniff
+X-Frame-Options: deny
+X-XSS-Protection: 1; mode=block
+Via: 1.1 varnish (Varnish/6.0)
+X-GitHub-Request-Id: AD94:4EC0:1DB4F:2529B:5EA967BA
+Content-Length: 3876
+Accept-Ranges: bytes
+Date: Wed, 29 Apr 2020 11:40:42 GMT
+Via: 1.1 varnish
+Connection: keep-alive
+X-Served-By: cache-mdw17375-MDW
+X-Cache: MISS, MISS
+X-Cache-Hits: 0, 0
+X-Timer: S1588160443.732970,VS0,VE101
+Vary: Authorization,Accept-Encoding
+Access-Control-Allow-Origin: *
+X-Fastly-Request-ID: abfca144d95a308587148d009e3c466a42806f49
+Expires: Wed, 29 Apr 2020 11:45:42 GMT
+Source-Age: 0
+
+HTTP/1.1 200 OK
+Cache-Control: max-age=300
+Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'; sandbox
+Content-Type: text/plain; charset=utf-8
+ETag: W/"6c4d9db74de5ac2df990abe19a895836e128b0488dfa9c221e14b2fd3c804589"
+Strict-Transport-Security: max-age=31536000
+X-Content-Type-Options: nosniff
+X-Frame-Options: deny
+X-XSS-Protection: 1; mode=block
+Via: 1.1 varnish (Varnish/6.0)
+X-GitHub-Request-Id: 229E:5B8B:933BA:BC864:5EA967B9
+Content-Length: 533
+Accept-Ranges: bytes
+Date: Wed, 29 Apr 2020 11:40:43 GMT
+Via: 1.1 varnish
+Connection: keep-alive
+X-Served-By: cache-mdw17379-MDW
+X-Cache: MISS, MISS
+X-Cache-Hits: 0, 0
+X-Timer: S1588160443.908553,VS0,VE172
+Vary: Authorization,Accept-Encoding
+Access-Control-Allow-Origin: *
+X-Fastly-Request-ID: 16a56fd2e3c230450502aaf18f8c0c76a0831dca
+Expires: Wed, 29 Apr 2020 11:45:43 GMT
+Source-Age: 0
+
+HTTP/1.1 200 OK
+Cache-Control: max-age=300
+Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'; sandbox
+Content-Type: text/plain; charset=utf-8
+ETag: W/"466ac509d5792ebc60035c573b98627b30ff730f9616bca60d96e050e49ffb42"
+Strict-Transport-Security: max-age=31536000
+X-Content-Type-Options: nosniff
+X-Frame-Options: deny
+X-XSS-Protection: 1; mode=block
+Via: 1.1 varnish (Varnish/6.0)
+X-GitHub-Request-Id: A3EE:1DD1:49C1A:60233:5EA967B9
+Content-Length: 579
+Accept-Ranges: bytes
+Date: Wed, 29 Apr 2020 11:40:43 GMT
+Via: 1.1 varnish
+Connection: keep-alive
+X-Served-By: cache-mdw17376-MDW
+X-Cache: MISS, MISS
+X-Cache-Hits: 0, 0
+X-Timer: S1588160443.155960,VS0,VE87
+Vary: Authorization,Accept-Encoding
+Access-Control-Allow-Origin: *
+X-Fastly-Request-ID: f4f04812d631d76bbfd21b018709e72ad2964501
+Expires: Wed, 29 Apr 2020 11:45:43 GMT
+Source-Age: 0
+
+HTTP/1.1 200 OK
+Cache-Control: max-age=300
+Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'; sandbox
+Content-Type: text/plain; charset=utf-8
+ETag: W/"aa38d7820269287dde8a4b543aca9d44685d5b5885d1d368dad12d23fa428baf"
+Strict-Transport-Security: max-age=31536000
+X-Content-Type-Options: nosniff
+X-Frame-Options: deny
+X-XSS-Protection: 1; mode=block
+Via: 1.1 varnish (Varnish/6.0)
+X-GitHub-Request-Id: 8A54:416B:4D9C4:65343:5EA967B8
+Content-Length: 967
+Accept-Ranges: bytes
+Date: Wed, 29 Apr 2020 11:40:43 GMT
+Via: 1.1 varnish
+Connection: keep-alive
+X-Served-By: cache-mdw17382-MDW
+X-Cache: MISS, MISS
+X-Cache-Hits: 0, 0
+X-Timer: S1588160443.321985,VS0,VE107
+Vary: Authorization,Accept-Encoding
+Access-Control-Allow-Origin: *
+X-Fastly-Request-ID: b6efbe76c22b376e59d09606da50df5836629b4c
+Expires: Wed, 29 Apr 2020 11:45:43 GMT
+Source-Age: 0
+
+HTTP/1.1 200 OK
+Cache-Control: max-age=300
+Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'; sandbox
+Content-Type: text/plain; charset=utf-8
+ETag: W/"90ccf47f72e9bb8a747cd91094f751e10c113eecd9e83890fe713399d6cdd475"
+Strict-Transport-Security: max-age=31536000
+X-Content-Type-Options: nosniff
+X-Frame-Options: deny
+X-XSS-Protection: 1; mode=block
+Via: 1.1 varnish (Varnish/6.0)
+X-GitHub-Request-Id: 1696:147C:1DBAE:24E56:5EA967BA
+Content-Length: 854
+Accept-Ranges: bytes
+Date: Wed, 29 Apr 2020 11:40:43 GMT
+Via: 1.1 varnish
+Connection: keep-alive
+X-Served-By: cache-pwk4959-PWK
+X-Cache: MISS, MISS
+X-Cache-Hits: 0, 0
+X-Timer: S1588160444.506694,VS0,VE87
+Vary: Authorization,Accept-Encoding
+Access-Control-Allow-Origin: *
+X-Fastly-Request-ID: 1da9f13b299021d793898c561f6ae46a112d2c6a
+Expires: Wed, 29 Apr 2020 11:45:43 GMT
+Source-Age: 0
+
+[keptn|DEBUG] [2020-04-29 11:40:43] Check if Keptn 0.6.1 is currently installed
+[keptn|DEBUG] [2020-04-29 11:40:43] Updating Keptn core.
+configmap/api-nginx-config created
+deployment.apps/api-gateway-nginx created
+service/api-gateway-nginx created
+deployment.apps/api-service created
+service/api-service created
+deployment.apps/bridge configured
+service/bridge unchanged
+deployment.apps/eventbroker-go configured
+service/event-broker unchanged
+deployment.apps/helm-service configured
+service/helm-service unchanged
+deployment.apps/helm-service-service-create-distributor configured
+deployment.apps/shipyard-service configured
+service/shipyard-service unchanged
+deployment.apps/shipyard-service-create-project-distributor configured
+deployment.apps/shipyard-service-delete-project-distributor configured
+persistentvolumeclaim/configuration-volume configured
+deployment.apps/configuration-service configured
+service/configuration-service unchanged
+deployment.apps/lighthouse-service configured
+service/lighthouse-service unchanged
+deployment.apps/lighthouse-service-distributor configured
+deployment.extensions "api" deleted
+service "api" deleted
+Error from server (NotFound): namespaces "openshift" not found
+NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)    AGE
+gatekeeper-service   ClusterIP   10.72.4.71   <none>        8080/TCP   6m9s
+[keptn|DEBUG] [2020-04-29 11:40:47] Full installation detected. Upgrading CD and CO services
+deployment.apps/gatekeeper-service configured
+service/gatekeeper-service unchanged
+deployment.apps/gatekeeper-service-evaluation-done-distributor configured
+deployment.apps/helm-service-configuration-change-distributor configured
+deployment.apps/jmeter-service configured
+service/jmeter-service unchanged
+deployment.apps/jmeter-service-deployment-distributor configured
+deployment.apps/wait-service configured
+service/wait-service unchanged
+deployment.apps/wait-service-deployment-distributor configured
+deployment.apps/remediation-service configured
+service/remediation-service unchanged
+deployment.apps/remediation-service-problem-distributor configured
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   533  100   533    0     0   6126      0 --:--:-- --:--:-- --:--:--  6126
+virtualservice.networking.istio.io/api configured
+destinationrule.networking.istio.io/api-gateway-nginx created
+Error from server (NotFound): services "dynatrace-service" not found
+Error from server (NotFound): services "dynatrace-sli-service" not found
+Error from server (NotFound): services "prometheus-service" not found
+Error from server (NotFound): services "prometheus-sli-service" not found
+Error from server (NotFound): services "servicenow-service" not found
+```
+
+**Note:** The messages at the end of the log output, such as `Error from server (NotFound): services "dynatrace-service" not found` does not mean that the upgrade has not been successful.
+This message simply means that the respective service, e.g. the dynatrace-service has not been installed in your cluster in the previous Keptn version. 
+If the service has indeed been deployed previously, it will be updated to the latest compatible version.
+</details>
+
+<details><summary>Upgrade didn't work, what to do next?</summary>
+
+Please create a [new bug report](https://github.com/keptn/keptn/issues/new?assignees=&labels=bug&template=bug_report.md&title=) 
+and provide us more information (log output, etc...), e.g.:
+
+* `kubectl logs job/upgrader`
+* `kubectl get pods -n keptn`
+* `kubectl -n keptn get deployments -owide`
+* `kubectl get pods -n keptn-datastore`
+* `kubectl -n keptn-datastore get deployments -owide`
+
+</details>
+
+
 ## Upgrade from 0.6.0 to 0.6.1
 
 * To download and install the Keptn CLI for version 0.6.1, please refer to the [Install Keptn CLI section](../setup-keptn/#install-keptn-cli).
@@ -429,7 +914,7 @@ metadata:
   namespace: keptn
 ```
 
-With Keptn 0.6.0, custom SLIs need to be added for the project/service/stage by using [keptn add-resource](../../reference/cli/#keptn-add-resource). With this change in mind, we also had to slightly adapt the format of the file. Above file would now look as follows:
+With Keptn 0.6.0, custom SLIs need to be added for the project/service/stage by using [keptn add-resource](../../reference/cli/commands/keptn_add-resource). With this change in mind, we also had to slightly adapt the format of the file. Above file would now look as follows:
 
 ```yaml
 ---

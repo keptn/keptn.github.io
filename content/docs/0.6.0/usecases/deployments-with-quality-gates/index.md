@@ -28,7 +28,7 @@ This quality gate checks whether the average response time of the service is und
 1. We will *try* to deploy the *slow* version of the carts service (v0.11.2). 
   * Keptn will deploy this new version into the **dev** environment where functional tests will be executed. 
   * After passing these functional tests, Keptn will promote this service into the **staging** environment by releasing it as the blue or green version next to the previous version of the service. 
-  * Then, Keptn will route traffic to this new version by changing the configuration of the virtual service (i.e., by setting weights for the routes between blue and green) and Keptn will start the defined performance test (e.g., using JMeter). Using the monitoring results of this performance test will allow [lighthouse](https://github.com/keptn/keptn/tree/0.6.1/lighthouse-service) to evaluate the quality gate. 
+  * Then, Keptn will route traffic to this new version by changing the configuration of the virtual service (i.e., by setting weights for the routes between blue and green) and Keptn will start the defined performance test (e.g., using JMeter). Using the monitoring results of this performance test will allow [lighthouse](https://github.com/keptn/keptn/tree/0.6.2/lighthouse-service) to evaluate the quality gate. 
   * The *slow* version of carts (v0.11.2) will not pass the quality gate and, hence, the new version will not be promoted to the **production** stage (i.e., the deployment will be rejected).
   * Furthermore, Keptn will change the weights within the **staging** stage back to the previous working deployment of the service. 
 
@@ -46,7 +46,7 @@ This quality gate checks whether the average response time of the service is und
 ## Set up the quality gate and monitoring
 Keptn requires a performance specification for the quality gate. This specification is described in a file called `slo.yaml`, which specifies a Service Level Objective (SLO) that should be met by a service. To learn more about the *slo.yaml* file, go to [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/spec/blob/0.1.3/sre.md).
 
-* Activate the quality gates for the carts service. Therefore, navigate to the `examples/onboarding-carts` folder and upload the `slo-quality-gates.yaml` file using the [add-resource](../../reference/cli/#keptn-add-resource) command:
+* Activate the quality gates for the carts service. Therefore, navigate to the `examples/onboarding-carts` folder and upload the `slo-quality-gates.yaml` file using the [add-resource](../../reference/cli/commands/keptn_add-resource) command:
 
 ```console
 keptn add-resource --project=sockshop --stage=staging --service=carts --resource=slo-quality-gates.yaml --resourceUri=slo.yaml
@@ -67,7 +67,7 @@ For this tutorial, you will need to set up monitoring for the carts service eith
 
 1. Complete steps from section [Setup Prometheus SLI provider](../../reference/monitoring/prometheus/#setup-prometheus-sli-provider).
 
-    <details><summary>**Note:** If you are using Keptn 0.6.0 instead of 0.6.1, you will have to apply a ConfigMap</summary>
+    <details><summary>**Note:** If you are using Keptn 0.6.0 instead of 0.6.1 or 0.6.2, you will have to apply a ConfigMap</summary>
     <p>
     Please apply the following ConfigMap by executing the command from within the `examples/onboarding-carts` folder:
     
@@ -102,7 +102,7 @@ For this tutorial, you will need to set up monitoring for the carts service eith
 
 1. Complete steps from section [Setup Dynatrace SLI provider](../../reference/monitoring/dynatrace/#setup-dynatrace-sli-provider).
 
-    <details><summary>**Note:** If you are using Keptn 0.6.0 instead of 0.6.1, you will have to apply a ConfigMap</summary>
+    <details><summary>**Note:** If you are using Keptn 0.6.0 instead of 0.6.1 or 0.6.2, you will have to apply a ConfigMap</summary>
     <p>
     Please apply the following ConfigMap by executing the command from within the `examples/onboarding-carts` folder:
     
@@ -162,7 +162,7 @@ keptn send event new-artifact --project=sockshop --service=carts --image=docker.
 
 <details><summary>*Click here to learn more about Keptn internal services.*</summary>
 <p>
-The [send event new-artifact](../../reference/cli/#keptn-send-event-new-artifact) command changes the configuration of the service and automatically triggers the following Keptn services:
+The [send event new-artifact](../../reference/cli/commands/keptn_send_event_new-artifact) command changes the configuration of the service and automatically triggers the following Keptn services:
 
 * **Phase 1**: Deploying, testing, and evaluating the test in the *dev* stage:
     * **helm-service**: This service deploys the new artifact to *dev*.
