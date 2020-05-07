@@ -44,12 +44,15 @@ To enable this feature, a secret has to be created that holds the two variables.
 
     **Note:** Replace `<USERNAME>` and `<PASSWORD>` with the desired credentials.
 
-* If you are using Keptn 0.6.1 or older, edit the deployment using:
+    <details><summary>*If you are using Keptn 0.6.1 or older, please click here.*</summary>
+    <p>
+
+    * Edit the deployment of the bridge using:
 
     ```console
     kubectl -n keptn edit deployment bridge
     ```
-   
+      
     * Add the secret to the `bridge` container, as shown below:
 
     ```yaml
@@ -70,11 +73,14 @@ To enable this feature, a secret has to be created that holds the two variables.
         ...
     ```
 
+    </p>
+    </details>
+
+
 * Restart the pod of the Keptn Bridge by executing:
 
     ```console
-    kubectl -n keptn scale deployment bridge --replicas=0
-    kubectl -n keptn scale deployment bridge --replicas=1
+    kubectl -n keptn delete pods --selector=run=bridge
     ```
 
 ### Disable Authentication
@@ -88,8 +94,7 @@ To enable this feature, a secret has to be created that holds the two variables.
 * Restart the respective pod of the Keptn Bridge by executing:
 
     ```console
-    kubectl -n keptn scale deployment bridge --replicas=0
-    kubectl -n keptn scale deployment bridge --replicas=1
+    kubectl -n keptn delete pods --selector=run=bridge
     ```
 
 ## Views in Keptn Bridge
