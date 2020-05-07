@@ -1,29 +1,27 @@
 ---
 title: Keptn with pre-installed Istio/NGINX (experimental)
-description: Explains how to install Keptn with a pre-installed/managed Istio/NGINX installation.
+description: Install Keptn with a pre-installed/managed Istio/NGINX installation.
 weight: 90
 ---
 
-## Intallation Guide
-
-In case you want to re-use an existing Istio installation for the [full Keptn installation](../../installation/setup-keptn)
-or re-use an existing NGINX installation for the [quality gates Keptn installation](../../usecases/quality-gates),
-the Keptn CLI provides a hidden  flag `--ingress-install-option=Reuse` starting with Keptn 0.6.1:
+In case you want to re-use an existing Istio installation for the [full Keptn installation](../../installation/setup-keptn) or re-use an existing NGINX installation for the [quality gates Keptn installation](../../usecases/quality-gates), the Keptn CLI provides a hidden flag `--ingress-install-option=Reuse` starting with Keptn 0.6.1:
 
 ```console
 keptn install --ingress-install-option=Reuse --platform=gke
 ``` 
+
 or 
+
 ```console
 keptn install --ingress-install-option=Reuse --use-case=quality-gates --platform=gke
 ```
 
-**Please note**: This flag is experimental, and a successful installation heavily depends on the Istio/NGINX version and 
- configuration that is used.
+**Please note**: This flag is experimental, and a successful installation heavily depends on the Istio/NGINX version and configuration that is used.
 
 ## Detailed Installation Guide for pre-installed Istio on GKE
 
-When creating a new cluster on GKE, make sure to select the option "Enable Istio" (hidden in the Features tab). Please find out more details [on the official product page](https://cloud.google.com/istio/docs/istio-on-gke/installing) of GKE.
+When creating a new cluster on GKE, make sure to select the option "Enable Istio" (hidden in the Features tab). Please
+ find out more details [on the official product page](https://cloud.google.com/istio/docs/istio-on-gke/installing) of GKE.
 
   {{< popup_image
   link="./assets/gke_istio.png"
