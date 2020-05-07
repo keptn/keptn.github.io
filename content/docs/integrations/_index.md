@@ -3,6 +3,7 @@ title: Integrations
 description: See all integrations available for Keptn and maintained by the community.
 icon: setup
 weight: 1001
+hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
 ---
 
 ## Integrations
