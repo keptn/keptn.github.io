@@ -43,7 +43,7 @@ deployment tool.
 * Clone example files used in this tutorial:
 
     ```console
-    git clone --branch master https://github.com/keptn/examples.git --single-branch
+    git clone --branch 0.6.2 https://github.com/keptn/examples.git --single-branch
     ```
 
     ```console
@@ -61,7 +61,7 @@ the service promotes or aborts a rollout, respectively.
 To install the `argo-service`, execute:
 
     ```console
-    kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/argo-service/master/deploy/service.yaml
+    kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/argo-service/0.1.0/deploy/service.yaml
     ```
 
 1. The `gatekeeper-service` (which is installed by the default installation of Keptn) has to be removed:
@@ -82,7 +82,7 @@ stages:
     test_strategy: "performance"
 ```
 
-* Create a new project for your services using the [keptn create project](../../reference/cli/#keptn-create-project) command. 
+* Create a new project for your services using the [keptn create project](../../reference/cli/commands/keptn_create_project) command. 
 In this tutorial, the project is called *sockshop*. The Git user (`--git-user`), an access token (`--git-token`), and the remote URL (`--git-remote-url`) are required for configuring an upstream.
 For details, please visit [select Git-based upstream](../../manage/project/#select-git-based-upstream) where instructions for GitHub, GitLab, and Bitbucket are provided. 
 Before executing the following command, make sure you are in the `examples/onboarding-carts` folder:
@@ -95,13 +95,13 @@ Before executing the following command, make sure you are in the `examples/onboa
 
 1. Keptn manages all service-related artifacts (like testing files, SLOs, etc.),
 in a so-called service. 
-Create a service for *carts* using the [keptn create service](../../reference/cli/#keptn-create-service) command:
+Create a service for *carts* using the [keptn create service](../../reference/cli/commands/keptn_create_service) command:
 
     ```console
     keptn create service carts --project=sockshop
     ```
 
-    **Note:** Since you are not deploying a service with the `helm-service`, [keptn create service](../../reference/cli/#keptn-create-service) does not require any Helm chart compared to the [keptn onboard service](../../reference/cli/#keptn-onboard-service) command. 
+    **Note:** Since you are not deploying a service with the `helm-service`, [keptn create service](../../reference/cli/commands/keptn_create_service) does not require any Helm chart compared to the [keptn onboard service](../../reference/cli/commands/keptn_onboard_service) command. 
 
 1. After creating the service, Keptn allows to add service-related artifacts like the performance test:
 
@@ -116,7 +116,7 @@ In order to pass this quality gate, the service has to meet the SLOs.
 These SLOs are described in a file called `slo.yaml`.
 To learn more about the *slo.yaml* file, go to [Specifications for Site Reliability Engineering with Keptn](https://github.com/keptn/spec/blob/0.1.2/sre.md).
 
-1. Activate the quality gates for the `carts` service. Therefore, navigate to the `examples/onboarding-carts` folder and upload the `slo.yaml` file using the [add-resource](../../reference/cli/#keptn-add-resource) command:
+1. Activate the quality gates for the `carts` service. Therefore, navigate to the `examples/onboarding-carts` folder and upload the `slo.yaml` file using the [add-resource](../../reference/cli/commands/keptn_add-resource) command:
 
     ```console
     keptn add-resource --project=sockshop --stage=production --service=carts --resource=slo-quality-gates.yaml --resourceUri=slo.yaml
@@ -184,7 +184,7 @@ the namespace has to follow the format `ProjectName-StageName`:
 In order to infrom Keptn when Argo CD does the deployment,
 an [Argo Resource Hook](https://argoproj.github.io/argo-cd/user-guide/resource_hooks/) is configured.
 This hook is triggered when Argo CD applies the manifests. This hook
-executes a script which sends a [`sh.keptn.events.deployment-finished`](https://github.com/keptn/spec/blob/master/cloudevents.md#deployment-finished) event to the Keptn API.
+executes a script which sends a [`sh.keptn.events.deployment-finished`](https://github.com/keptn/spec/blob/0.1.3/cloudevents.md#deployment-finished) event to the Keptn API.
 
 
 ```console
@@ -232,16 +232,15 @@ Therefore, create a config map and a secret with the Keptn endpoint and api-toke
     argocd app sync carts-production
     ```
 
-1. Check whether the hook triggered Keptn. Therefore, go to Keptn's Bridge and check whether there is 
-a `sh.keptn.events.deployment-finished` event. 
-You can access it by a port-forward from your local machine to the Kubernetes cluster:
+1. Check whether the hook triggered Keptn. Therefore, go to Keptn Bridge and check whether there is 
+a `sh.keptn.events.deployment-finished` event. If you have not exposed the Bridge yet, execute the following command:
 
     ```console 
-    kubectl port-forward svc/bridge -n keptn 9000:8080
+    keptn configure bridge --action=expose
     ```
-    The Keptn's Bridge is then available on: http://localhost:9000. 
+    > The Keptn Bridge is then available on: `https://bridge.keptn.YOUR.DOMAIN/`
 
-1. Follow the events in the Keptn's Bridge.
+1. Follow the events in the Keptn Bridge.
 
 1. The new version (i.e. the `canary`) as well as the released version (i.e. the `primary`) of the `carts` service are exposed via a LoadBalancer.
 In order to access the website of the `carts` service, query the external IPs of the LoadBalancer:

@@ -8,20 +8,20 @@ weight: 95
 
 During `keptn install`, we are installing Tiller (Helm v2.12.3) on the Kubernetes cluster. Keptn then uses Helm for
  deploying onboarded services to a Kubernetes cluster. This is currently implemented in Keptn's
- [helm-service](https://github.com/keptn/keptn/tree/0.6.1/helm-service).
+ [helm-service](https://github.com/keptn/keptn/tree/0.6.2/helm-service).
 
 ### Onboarding
 
 Based on the [onboarding the carts service tutorial](../../usecases/onboard-carts-service) we will describe the two
  different deployment types that the helm-service manages and what this does on Kubernetes level.
  
-Those deployments are based on the provided helm-chart for the carts microservice, see https://github.com/keptn/examples/tree/0.6.1/onboarding-carts/carts
+Those deployments are based on the provided helm-chart for the carts microservice, see https://github.com/keptn/examples/tree/0.6.2/onboarding-carts/carts
 for details.
 
 ### Direct deployments
 
 In case of `deployment_strategy: direct` (see 
- [shipyard.yaml](https://github.com/keptn/examples/blob/0.6.1/onboarding-carts/shipyard.yaml)), Helm deploys a 
+ [shipyard.yaml](https://github.com/keptn/examples/blob/0.6.2/onboarding-carts/shipyard.yaml)), Helm deploys a 
  release called `sockshop-dev-carts` as `carts` in namespace `sockshop-dev`.
  
 ```console
@@ -35,13 +35,13 @@ carts   1/1     1            1           56m   carts        docker.io/keptnexamp
 
 When sending a new-artifact, we are updating the helm charts values.yaml file with the respective image name.
 
-* [chart/values.yaml](https://github.com/keptn/examples/blob/0.6.1/onboarding-carts/carts/values.yaml#L1)
-* [chart/templates/deployment.yaml](https://github.com/keptn/examples/blob/0.6.1/onboarding-carts/carts/templates/deployment.yaml#L22)
+* [chart/values.yaml](https://github.com/keptn/examples/blob/0.6.2/onboarding-carts/carts/values.yaml#L1)
+* [chart/templates/deployment.yaml](https://github.com/keptn/examples/blob/0.6.2/onboarding-carts/carts/templates/deployment.yaml#L22)
 
 ### Blue-green deployments
 
 In case of `deployment_strategy: blue_green_service` (see 
- [shipyard.yaml](https://github.com/keptn/examples/blob/0.6.1/onboarding-carts/shipyard.yaml)), Helm creates two
+ [shipyard.yaml](https://github.com/keptn/examples/blob/0.6.2/onboarding-carts/shipyard.yaml)), Helm creates two
  deployments within the Kubernetes cluster: the primary and the canary deployment. This can be inspected using the
  following command:
 

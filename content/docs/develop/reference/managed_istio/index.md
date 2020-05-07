@@ -1,22 +1,27 @@
 ---
-title: Keptn with pre-installed Istio (experimental)
-description: Explains how to install Keptn on GKE with a pre-installed/managed Istio installation.
+title: Keptn with pre-installed Istio/NGINX (experimental)
+description: Explains how to install Keptn with a pre-installed/managed Istio/NGINX installation.
 weight: 90
 ---
 
 ## Intro
 
-In case you want to re-use an existing Istio installation on a Kubernetes cluster (e.g., GKE), we are providing a hidden 
- flag `--istio-install-option=Reuse` starting with Keptn 0.6.1:
+In case you want to re-use an existing Istio installation for the [full Keptn installation](../../installation/setup-keptn)
+or re-use an existing NGINX installation for the [quality gates Keptn installation](../../usecases/quality-gates),
+the Keptn CLI provides a hidden  flag `--ingress-install-option=Reuse` starting with Keptn 0.6.1:
 
 ```console
-keptn install --istio-install-option=Reuse --platform=gke
+keptn install --ingress-install-option=Reuse --platform=gke
+``` 
+or 
+```console
+keptn install --ingress-install-option=Reuse --use-case=quality-gates --platform=gke
 ```
 
-**Please note**: This flag is experimental, and a successful installation heavily depends on the Istio version and 
+**Please note**: This flag is experimental, and a successful installation heavily depends on the Istio/NGINX version and 
  configuration that is used.
 
-## Detailed Installation Guide on GKE
+## Detailed Installation Guide for pre-installed Istio on GKE
 
 When creating a new cluster on GKE, make sure to select the option "Enable Istio" (hidden in the Features tab). Please
  find out more details [on the official product page](https://cloud.google.com/istio/docs/istio-on-gke/installing) of GKE.
@@ -40,13 +45,13 @@ istio-sidecar-injector   1/1     1            1           32m   sidecar-injector
 istio-telemetry          1/1     1            1           32m   mixer,istio-proxy          gke.gcr.io/istio/mixer:1.2.10-gke.3,gke.gcr.io/istio/proxyv2:1.2.10-gke.3                                      istio=mixer,istio-mixer-type=telemetry
 ```
 
-**Please note**: Keptn 0.6.1 is installing Istio in version 1.3.
+**Note**: A default Keptn 0.6.1 and 0.6.2 installation would have installed Istio in version 1.3.
 
-After setting up the cluster you can install Keptn. Make sure to add the hidden option `--istio-install-option=Reuse` 
+After setting up the cluster you can install Keptn. Make sure to add the hidden option `--ingress-install-option=Reuse` 
  to the `keptn install` command and verify that the installation has worked using `keptn status`.
 
 Afterwards you can continue with the [tutorials](../../usecases/) as usual.
 
-Please note that this is an experimental feature and we can not cover all corner-cases. Any help in this regard is appreciated.
+Please note that this is an experimental feature and we cannot cover all corner-cases. Any help in this regard is appreciated.
 In case of any issues, feel free to create a [new bug report](https://github.com/keptn/keptn/issues/new?assignees=&labels=bug&template=bug_report.md&title=)
 and provide as much debug information as possible.

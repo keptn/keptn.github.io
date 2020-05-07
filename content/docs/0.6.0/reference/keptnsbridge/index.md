@@ -1,79 +1,172 @@
 ---
-title: Keptn's Bridge
-description: Explains how the access the Keptn's Bridge.
+title: Keptn Bridge
+description: Explains how the access the Keptn Bridge.
 weight: 21
 keywords: [bridge]
 ---
 
-The Keptn's Bridge lets you browse the Keptn's log. It is automatically installed with your Keptn installation.
+The Keptn Bridge is the user interface of Keptn and presents all projects and services managed by Keptn. It is automatically installed with your Keptn deployment.
 
-## Usage
+## Expose/Lockdown Bridge
 
-The Keptn's Bridge is not publicly accessible, but can be retrieved by enabling port-forwarding from your local machine to the Keptn's Bridge:
+The Keptn Bridge is not publicly accessible by default.
+
+* To expose the Keptn Bridge, execute the following command. It is then available on: `https://bridge.keptn.YOUR.DOMAIN/`
 
 ```console
-kubectl port-forward svc/bridge -n keptn 9000:8080
+keptn configure bridge --action=expose
 ```
 
-It is then available on: http://localhost:9000
+**Note:** This command shows the warning `Warning: Make sure to enable basic authentication as described here: ...`. Please follow the warning and enable basic authentication explained [below](./#enable-authentication).
 
-**Important Note**: The Keptn's Bridge exposes sensitive information. We do not recommend exposing it publicly via LoadBalancer, NodePort, VirtualServices or alike.
+* To lockdown the Keptn Bridge:
 
-## Project view
+```console
+keptn configure bridge --action=lockdown
+```
 
-The Keptn's Bridge provides an easy way to browse all events that are sent within Keptn. When you access the Keptn's Bridge, all projects will be shown on the start screen. When clicking on a project, the stages of this project and all onboarded services are shown on the next view.
+## Configure Basic Authentication
+
+The Keptn Bridge has a basic authentication feature, which can be controlled by setting the following two environment variables:
+
+* `BASIC_AUTH_USERNAME` - username
+* `BASIC_AUTH_PASSWORD` - password
+
+### Enable Authentication
+
+To enable this feature, a secret has to be created that holds the two variables. This secret has to be applied within the Kubernetes deployment for the Keptn Bridge.
+
+* Create the secret using:
+
+    ```console
+    kubectl -n keptn create secret generic bridge-credentials --from-literal="BASIC_AUTH_USERNAME=<USERNAME>" --from-literal="BASIC_AUTH_PASSWORD=<PASSWORD>"
+    ```
+
+    **Note:** Replace `<USERNAME>` and `<PASSWORD>` with the desired credentials.
+
+    <details><summary>*If you are using Keptn 0.6.1 or older, please click here.*</summary>
+    <p>
+
+    * Edit the deployment of the bridge using:
+
+    ```console
+    kubectl -n keptn edit deployment bridge
+    ```
+      
+    * Add the secret to the `bridge` container, as shown below:
+
+    ```yaml
+    ...
+    spec:
+      containers:
+      - name: bridge
+        image: keptn/bridge2:0.6.1
+        imagePullPolicy: Always
+        # EDIT STARTS HERE
+        envFrom:
+          - secretRef:
+              name: bridge-credentials
+              optional: true
+        # EDIT ENDS HERE
+        ports:
+        - containerPort: 3000
+        ...
+    ```
+
+    </p>
+    </details>
+
+
+* Restart the pod of the Keptn Bridge by executing:
+
+    ```console
+    kubectl -n keptn delete pods --selector=run=bridge
+    ```
+
+### Disable Authentication
+
+* To disable the basic authentication, delete the secret by executing: 
+
+    ```console
+    kubectl -n keptn delete secret bridge-credentials
+    ```
+
+* Restart the respective pod of the Keptn Bridge by executing:
+
+    ```console
+    kubectl -n keptn delete pods --selector=run=bridge
+    ```
+
+## Views in Keptn Bridge
+
+### Project view
+
+The Keptn Bridge provides an easy way to browse all events that are sent within Keptn. When you access the Keptn Bridge, all projects will be shown on the start screen. When clicking on a project, the stages of this project and all onboarded services are shown on the next view.
 
   {{< popup_image
   link="./assets/bridge_empty.png"
-  caption="Keptn's Bridge project view">}}
+  caption="Keptn Bridge project view">}}
 
 When selecting one service, all events that belong to this service are listed on the right side. Please note that this list only represents the start of a deployment (or problem) of a new artifact. More information on the executed steps can be revealed when you click on one event.
 
-## Event stream
+### Event Stream
 
-When selecting an event, the Keptn's Bridge displays all other events that are in the same Keptn context and belong to the selected entry point. As can be seen in the screenshot below, the entry point around 4:03 pm has been selected and all events belonging to this entry point are displayed on the right side.
+When selecting an event, the Keptn Bridge displays all other events that are in the same Keptn context and belong to the selected entry point. As can be seen in the screenshot below, the entry point around 4:03 pm has been selected and all events belonging to this entry point are displayed on the right side.
 
   {{< popup_image
   link="./assets/bridge_details.png"
-  caption="Keptn's Bridge event stream">}}
+  caption="Keptn Bridge event stream">}}
 
+## Deep links into Keptn Bridge
 
-## Early Access Version of Keptn's Bridge
+For integration of the Keptn Bridge into DevOps tools, a list of following deep links is provided: 
 
-<!--
-Right now there is no early access version of Keptn's Bridge available. You can upgrade to the latest version (0.6.1) by executing the following commands:
+- `project/:projectName`
+  - Opens project view of the project specified by `projectName`.
+- `project/:projectName/:serviceName`
+  - Opens project view of the project specified by `projectName` and expands the service specified by `serviceName`.
+- `project/:projectName/:serviceName/:contextId`
+  - Opens project view of `projectName`, expands the service specified by `serviceName`, and selects root event of *keptn context* specified by `contextId`.
+- `project/:projectName/:serviceName/:contextId/:eventId`: 
+  - Opens project view of `projectName`, expands the service specified by `serviceName`, and selects root event of *keptn context* specified by `contextId`. 
+  - Finally, Keptn Bridge scrolls to event with the `eventId`.
+- `trace/:shkeptncontext`
+  - Loads that root event and redirects to `project/:projectName/:serviceName/:contextId`
+- `trace/:shkeptncontext/:stage`
+  - Loads that root event and redirects to `project/:projectName/:serviceName/:contextId/:eventId` where eventId is the id of the first event of the specific stage.
+- `trace/:shkeptncontext/:eventtype`
+  - Loads that root event and redirects to `project/:projectName/:serviceName/:contextId/:eventId` where eventId is the id of the last event with the specific event type.
+
+## Early Access Version of Keptn Bridge
+
+Right now there is no early access version of Keptn Bridge available. You can upgrade to the latest version (0.6.2) by executing the following commands:
 
 ```console
-kubectl -n keptn set image deployment/bridge bridge=keptn/bridge:0.6.1 --record
-kubectl -n keptn set image deployment/configuration-service bridge=keptn/configuration-service:0.6.1 --record
-kubectl -n keptn-datastore set image deployment/mongodb-datastore mongodb-datastore=keptn/mongodb-datastore:0.6.1 --record
+kubectl -n keptn set image deployment/bridge bridge=keptn/bridge:0.6.2 --record
+kubectl -n keptn set image deployment/configuration-service bridge=keptn/configuration-service:0.6.2 --record
+kubectl -n keptn-datastore set image deployment/mongodb-datastore mongodb-datastore=keptn/mongodb-datastore:0.6.2 --record
 ```
--->
 
-
-There is an early access version of Keptn's Bridge available (compatible with Keptn 0.6.1):
+<!--
+There is an early access version of Keptn Bridge available (compatible with Keptn 0.6.2):
 
   {{< popup_image
   link="./assets/bridge_eap.png"
-  caption="Keptn's Bridge EAP">}}
+  caption="Keptn Bridge EAP">}}
 
-To install it, you have to update the Docker images of *Keptn's Bridge*, *configuration-service* and the *mongodb-datastore* deployment by executing the following commands:
+* To install it, you have to update the Docker images of *Keptn Bridge*, *configuration-service* and the *mongodb-datastore* deployment by executing the following commands:
 
 ```console
 kubectl -n keptn set image deployment/bridge bridge=keptn/bridge2:20200402.1046 --record
 ```
 
-If you want to access the new Keptn's Bridge you have to use `port-forward` again:
+
+* To restore the old version of bridge, configuration-service and mongodb-datastore (as delivered with Keptn 0.6.2), you can use the following commands:
 
 ```console
-kubectl port-forward svc/bridge -n keptn 9000:8080
+kubectl -n keptn set image deployment/bridge bridge=keptn/bridge2:0.6.2 --record
 ```
 
-If you want to restore the old version of bridge, configuration-service and mongodb-datastore (as delivered with Keptn 0.6.1), you can use the following commands:
+-->
 
-```console
-kubectl -n keptn set image deployment/bridge bridge=keptn/bridge2:0.6.1 --record
-```
-
-
-If you have any questions or feedback regarding Keptn's Bridge, please contact us through our [Keptn Community Channels](https://github.com/keptn/community)!
+If you have any questions or feedback regarding Keptn Bridge, please contact us through our [Keptn Community Channels](https://github.com/keptn/community)!
