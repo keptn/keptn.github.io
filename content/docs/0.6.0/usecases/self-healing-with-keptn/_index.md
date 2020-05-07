@@ -21,7 +21,7 @@ For the configuration, Keptn relies on several specification files that define *
 - Clone the example repository, which contains specification files:
 
 ```console
-git clone --branch 0.6.1 https://github.com/keptn/examples.git --single-branch
+git clone --branch 0.6.2 https://github.com/keptn/examples.git --single-branch
 ```
 
 ### Difference to Deployment with Quality Gates
@@ -68,7 +68,7 @@ keptn send event new-artifact --project=sockshop --service=carts --image=docker.
     cd examples/onboarding-carts
     ```
 
-1. Add an SLO file for the *production* stage using the Keptn CLIs [add-resource](../../reference/cli/#keptn-add-resource) command:
+1. Add an SLO file for the *production* stage using the Keptn CLIs [add-resource](../../reference/cli/commands/keptn_add-resource) command:
 
     ```console
     keptn add-resource --project=sockshop --stage=production --service=carts --resource=slo-self-healing.yaml --resourceUri=slo.yaml
