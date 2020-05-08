@@ -24,7 +24,7 @@ A Keptn-service can subscribe to various [Keptn CloudEvents](https://github.com/
 
 ### Implement custom Keptn-service
 
-If you are interested in writing your own testing service, have a look at the [jmeter-service](https://github.com/keptn/keptn/blob/0.6.1/jmeter-service).
+If you are interested in writing your own testing service, have a look at the [jmeter-service](https://github.com/keptn/keptn/blob/0.6.2/jmeter-service).
 
 ### Example: JMeter Service
 
@@ -34,7 +34,7 @@ If you are interested in writing your own testing service, have a look at the [j
 
 **Outgoing Keptn CloudEvent:** After your *Keptn-service* has completed its functionality, it has to send a  CloudEvent to Keptn's event broker. This informs Keptn to continue a particular workflow.  
 
-**Deployment and service template:** A *Keptn-service* is a regular Kubernetes service with a deployment and service template. As a starting point for your service the deployment and service manifest of the *jmeter-service* can be used, which can be found in the [deploy/service.yaml](https://github.com/keptn/keptn/blob/0.6.1/jmeter-service/deploy/service.yaml):
+**Deployment and service template:** A *Keptn-service* is a regular Kubernetes service with a deployment and service template. As a starting point for your service the deployment and service manifest of the *jmeter-service* can be used, which can be found in the [deploy/service.yaml](https://github.com/keptn/keptn/blob/0.6.2/jmeter-service/deploy/service.yaml):
 
 ```yaml
 ---
@@ -55,7 +55,7 @@ spec:
     spec:
       containers:
       - name: jmeter-service
-        image: keptn/jmeter-service:0.6.1
+        image: keptn/jmeter-service:0.6.2
         ports:
         - containerPort: 8080
         env:
@@ -100,7 +100,7 @@ spec:
     spec:
       containers:
       - name: distributor
-        image: keptn/distributor:0.6.1
+        image: keptn/distributor:0.6.2
         ports:
         - containerPort: 8080
         resources:
@@ -137,7 +137,7 @@ indicators:
  error_rate: "builtin:service.errors.total.count:merge(0):avg?scope=tag(keptn_project:$PROJECT),tag(keptn_stage:$STAGE),tag(keptn_service:$SERVICE),tag(keptn_deployment:$DEPLOYMENT)"
 ```
 
-**Note:** This SLI configuration file will then be stored in Keptn's configuration store using the [keptn add-resource](../../cli/commands/keptn_add-resource) command.
+**Note:** This SLI configuration file will then be stored in Keptn's configuration store using the [keptn add-resource](../../reference/cli/commands/keptn_add-resource) command.
 
 
 The [Keptn CloudEvents](#cloudevents) a SLI-provider has to subscribe to is:
@@ -185,7 +185,7 @@ spec:
     spec:
       containers:
       - name: distributor
-        image: keptn/distributor:0.6.1
+        image: keptn/distributor:0.6.2
         ports:
         - containerPort: 8080
         resources:
@@ -233,6 +233,20 @@ Please note that CloudEvents have to be sent with the HTTP header `Content-Type:
 For a detailed look into CloudEvents, please go the Keptn [CloudEvent specification](https://github.com/keptn/spec/blob/0.1.3/cloudevents.md). 
 
 ## Logging
+
+To inspect your service's log messages for a specific deployment run, you can use the `shkeptncontext` property of the incoming CloudEvents. Your service has to output its log messages in the following format:
+
+```json
+{
+  "keptnContext": "<KEPTN_CONTEXT>",
+  "logLevel": "INFO | DEBUG | WARNING | ERROR",
+  "keptnService": "<YOUR_SERVICE_NAME>",
+  "message": "logging message"
+}
+```
+
+**Note:** For implementing logging into your *Go* service, you can import the [go-utils](https://github.com/keptn/go-utils) package that already provides common logging functions. 
+
 
 To inspect your service's log messages for a specific deployment run, you can use the `shkeptncontext` property of the incoming CloudEvents. Your service has to output its log messages in the following format:
 

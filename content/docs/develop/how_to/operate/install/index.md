@@ -19,7 +19,7 @@ Select one of the following options:
   - [az](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
 
 2. Create AKS cluster
-  - [Master version:](../k8s-support/#supported-version) `1.15.x` (tested version: `1.15.5`)
+  - [Master version:](../k8s-support/#supported-version) `1.15.x` (tested version: `1.15.10`)
   - One **D8s_v3** node
  
  </p>
@@ -37,7 +37,7 @@ Select one of the following options:
   - Sample script using [eksctl](https://eksctl.io/introduction/installation/) to create such a cluster
 
     ```console
-    eksctl create cluster --version=1.14 --name=keptn-cluster --node-type=m5.2xlarge --nodes=1 --region=eu-west-3
+    eksctl create cluster --version=1.15 --name=keptn-cluster --node-type=m5.2xlarge --nodes=1 --region=eu-west-3
     ```
 
     <details><summary>**Known bug in EKS 1.13**</summary>
@@ -192,7 +192,7 @@ If you [sign up for a Google Cloud account](https://console.cloud.google.com/get
 ## Install Keptn CLI
 Every release of Keptn provides binaries for the Keptn CLI. These binaries are available for Linux, macOS, and Windows.
 
-- Download the version for your operating system from [github.com/keptn/](https://github.com/keptn/keptn/releases/tag/0.6.1)
+- Download the version for your operating system from [github.com/keptn/](https://github.com/keptn/keptn/releases/tag/0.6.2)
 - Unpack the download
 - Find the `keptn` binary in the unpacked directory
 
@@ -215,7 +215,7 @@ Every release of Keptn provides binaries for the Keptn CLI. These binaries are a
 
 ## Install Keptn
 
-To install the latest release of Keptn on a Kuberntes cluster, execute the [keptn install](../../cli/commands/keptn_install) command with the ``platform`` flag specifying the target platform you would like to install Keptn on. Currently, supported platforms are:
+To install the latest release of Keptn on a Kuberntes cluster, execute the [keptn install](../../reference/cli/commands/keptn_install) command with the ``platform`` flag specifying the target platform you would like to install Keptn on. Currently, supported platforms are:
 
 - Azure Kubernetes Services (AKS):
 

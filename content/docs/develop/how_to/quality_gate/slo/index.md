@@ -130,7 +130,7 @@ The actual evaluation result is divided by the maximum score and gives the `tota
 
 The pass and warning criteria for the `total_score` use the logical operator ">=" by default.
 
-## Add SLO configuration to Service
+## Add SLO configuration to a Service
 
 **Important:** In the following command, the value of the `resourceUri` must be set to `slo.yaml`.
 

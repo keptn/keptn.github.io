@@ -84,3 +84,37 @@ Keptn manages a project in an internal Git repository. To upstream this reposito
 
 </p>
 </details>
+
+## Azure DevOps Repo
+<details><summary>Create user, token, and repository</summary>
+<p>
+
+1. If you do not have an Azure DevOps user, create a user by [signing up for a free trial](https://azure.microsoft.com/en-us/services/devops/). 
+
+1. Create a [personal access token](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=preview-page) for your user with *Read & write* access for the Code:
+    
+    **Note:** Please carefully select the *Expiration date*.
+
+    {{< popup_image 
+    link="./assets/azure_devops_access_token.png" 
+    caption="Azure DevOps access token" 
+    width="600px">}} 
+
+1. Go to your account and create an Azure project
+    
+    {{< popup_image 
+    link="./assets/azure_devops_create_repo.png" 
+    caption="Azure DevOps repository" 
+    width="600px">}} 
+
+1. Retrieve the URL for your repository.
+
+    **Important:** Remove the User from the URL before passing it to Keptn. For example, in the picture below the URL would be https://dev.azure.com/YOUR-ORG/keptn/_git/keptn.
+
+    {{< popup_image 
+    link="./assets/azure_devops_clone_repo.png" 
+    caption="Azure DevOps clone repository" 
+    width="600px">}} 
+
+</p>
+</details>

@@ -33,7 +33,7 @@ A remediation action is configured based on two properties:
   * *scalling*: scales the Kubernetes pod of the deployment based on the specified value. 
   * *featuretoggle*: toggles a feature flag specified by the value and controlled by the Unleash framework.
 
-## Add a Remediation Action to Service
+## Add a Remediation Action to a Service
 
 **Important:** In the following command, the value of the `resourceUri` must be set to `remediation.yaml`.
 

@@ -31,7 +31,7 @@ Please follow the links to the provider-specific SLIs:
 
 * [Prometheus](../../monitoring/prometheus/sli-provider/#configure-custom-prometheus-slis) 
 
-## Add SLI configuration to Service, Stage, or Project
+## Add SLI configuration to a Service, Stage, or Project
 
 **Important:** In the following commands, the value of the `resourceUri` must specifiy the SLI-provider that can fetch the declared SLIs. In case of Dynatrace, for example, the value of the `resourceUri` must be: `dynatrace/sli.yaml`.
 
