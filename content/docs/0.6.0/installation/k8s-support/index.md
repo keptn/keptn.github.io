@@ -26,7 +26,7 @@ Keptn versions are expressed as `x.y.z`, where `x` is the major version, `y` is 
 
 **Remarks:**
 
-* (1): AKS with K8s version before 1.15.x fails [#1429](https://github.com/keptn/keptn/issues/1429)
+* (1): AKS with K8s version before 1.15 might fail [#1429](https://github.com/keptn/keptn/issues/1429), due to a known AKS issue: [#69262](https://github.com/kubernetes/kubernetes/issues/69262)
 
 **Notes:**
 
