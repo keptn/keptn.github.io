@@ -22,8 +22,6 @@ In order to solve this problem, please try to restart the `api-gateway-nginx` po
 kubectl delete pods -n keptn --selector=run=api-gateway-nginx
 ```
 
-
-
 ## Verifying a Keptn installation
 
 Especially for troubleshooting purposes, it is necessary to verify that all parts of the Keptn installation are running as intended (e.g., no crashed pods, all distributors running).

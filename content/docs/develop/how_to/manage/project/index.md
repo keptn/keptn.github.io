@@ -40,7 +40,7 @@ stages:
 
 ## Delete a project
 
-To delete a Keptn project, the [keptn delete project](../../reference/cli/commands/keptn_delete_project) command is provided:
+To delete a Keptn project, the [keptn delete project](../../../reference/cli/commands/keptn_delete_project) command is provided:
   ```console
   keptn delete project PROJECTNAME
   ```
