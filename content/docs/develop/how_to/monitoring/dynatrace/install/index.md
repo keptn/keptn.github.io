@@ -52,7 +52,7 @@ keywords: setup
 1. The Dynatrace integration into Keptn is handled by the *dynatrace-service*. To install the *dynatrace-service*, execute:
 
     ```console
-    kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-service/0.6.2/deploy/manifests/dynatrace-service/dynatrace-service.yaml
+    kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-service/0.7.0/deploy/manifests/dynatrace-service/dynatrace-service.yaml
     ```
 
 1. When the service is deployed, use the following command to install Dynatrace on your cluster. If Dynatrace is already deployed, the current deployment of Dynatrace will not be modified.
