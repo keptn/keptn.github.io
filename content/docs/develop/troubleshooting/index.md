@@ -11,7 +11,7 @@ In this section, instructions have been summarized that help to troubleshoot kno
 ## Generating a Support Archive
 
 The Keptn CLI allows to generate a support archive, which can be used as data source for debugging a Keptn installation.
-For generating a support archive, please checkout the CLI command [keptn generate support-archive](../cli/commands/keptn_generate_support-archive).
+For generating a support archive, please checkout the CLI command [keptn generate support-archive](../reference/cli/commands/keptn_generate_support-archive).
 
 ## Keptn API cannot be reached
 
@@ -25,7 +25,7 @@ kubectl delete pods -n keptn --selector=run=api-gateway-nginx
 
 ## Verifying a Keptn installation
 
-Especially for troubleshooting purposes, it is necessary to verify that all parts of the Keptn installation are running as intended (e.g., no crashed pods, all distributors running).
+Especially for troubleshooting purposes, it is necessary to verify that all parts of the Keptn installation are running as intended (i.e., no crashed pods, all distributors running).
 
 <details><summary>Expand instructions</summary>
 <p>
@@ -136,7 +136,7 @@ When creating a project failed, this can cause a problematic state that manifest
 <details><summary>Expand instructions</summary>
 <p>
 
-**Situation**: Executing [keptn create project](../cli/commands/keptn_create_project) failed with following error messsage: 
+**Situation**: Executing [keptn create project](../reference/cli/commands/keptn_create_project) failed with following error messsage: 
 
 ```console
 Starting to create project   
@@ -148,7 +148,7 @@ Creating project sockshop failed. Could not commit changes.
 
 **Solution**: 
 
-* Try to execute the command: [keptn delete project](../cli/commands/keptn_delete_project)
+* Try to execute the command [keptn delete project](../reference/cli/commands/keptn_delete_project):
 
 * If the command did not work, manually delete the faulty project in the `configuration-service` pod.
 
