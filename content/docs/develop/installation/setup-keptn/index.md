@@ -59,7 +59,7 @@ Select one of the following options:
 
 Run your Keptn installation for free on GKE!
 If you [sign up for a Google Cloud account](https://console.cloud.google.com/getting-started), Google gives you an initial $300 credit. For deploying Keptn you can apply for an additional $200 credit which you can use towards that GKE cluster needed to run Keptn.<br><br>
-<a class="button button-primary" href="http://bit.ly/keptnongke" target="_blank">Apply for your credit here</a>
+<a class="button button-primary" href="https://bit.ly/keptngkecredit" target="_blank">Apply for your credit here</a>
 
 1. Install local tools
   - [gcloud](https://cloud.google.com/sdk/gcloud/)
@@ -216,7 +216,7 @@ Every release of Keptn provides binaries for the Keptn CLI. These binaries are a
 
 ## Install Keptn
 
-To install the latest release of Keptn on a Kuberntes cluster, execute the [keptn install](../../reference/cli/#keptn-install) command with the ``platform`` flag specifying the target platform you would like to install Keptn on. Currently, supported platforms are:
+To install the latest release of Keptn on a Kuberntes cluster, execute the [keptn install](../../cli/commands/keptn_install) command with the ``platform`` flag specifying the target platform you would like to install Keptn on. Currently, supported platforms are:
 
 - Azure Kubernetes Services (AKS):
 
@@ -295,7 +295,7 @@ keptn install --platform=[aks|eks|gke|openshift|pks|kubernetes] --use-case=quali
 ## Configure a custom domain (required for EKS)
 
 If you have a custom domain or cannot use *xip.io* (e.g., when running Keptn on EKS with an ELB (Elastic Load Balancer) from AWS), there is the 
-CLI command [keptn configure domain](../../reference/cli/#keptn-configure-domain) to configure Keptn for your custom domain:
+CLI command [keptn configure domain](../../cli/commands/keptn_configure_domain) to configure Keptn for your custom domain:
 
 ```console
 keptn configure domain YOUR_DOMAIN
@@ -317,8 +317,8 @@ kubectl get namespaces
 
 ## Troubleshooting
 
-Please note that in case of any errors, the install process might leave some files in an inconsistent state. Therefore [keptn install](../../reference/cli/#keptn-install) cannot be executed a second time without [keptn uninstall](../../reference/cli/#keptn-uninstall). To address a unsuccessful installation: 
+Please note that in case of any errors, the install process might leave some files in an inconsistent state. Therefore [keptn install](../../cli/commands/keptn_install) cannot be executed a second time without [keptn uninstall](../../cli/commands/keptn_uninstall). To address a unsuccessful installation: 
 
 1. [Verify the Keptn installation](../../reference/troubleshooting#verifying-a-keptn-installation).
 
-1. Uninstall Keptn by executing the [keptn uninstall](../../reference/cli#keptn-uninstall) command before conducting a re-installation.  
+1. Uninstall Keptn by executing the [keptn uninstall](../../cli/commands/keptn_uninstall) command before conducting a re-installation.  

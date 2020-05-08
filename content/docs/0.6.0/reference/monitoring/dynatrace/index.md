@@ -54,7 +54,7 @@ To evaluate the quality gates and allow self-healing in production, we have to s
 1. The Dynatrace integration into Keptn is handled by the *dynatrace-service*. To install the *dynatrace-service*, execute:
 
     ```console
-    kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-service/0.6.2/deploy/manifests/dynatrace-service/dynatrace-service.yaml
+    kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-service/0.7.0/deploy/manifests/dynatrace-service/dynatrace-service.yaml
     ```
 
 1. When the service is deployed, use the following command to install Dynatrace on your cluster. If Dynatrace is already deployed, the current deployment of Dynatrace will not be modified.
@@ -152,7 +152,7 @@ During the evaluation of a quality gate, the Dynatrace SLI provider is required 
 
 1. To install the *dynatrace-sli-service*, execute:
     ```console
-    kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-sli-service/0.3.1/deploy/service.yaml
+    kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-sli-service/0.4.0/deploy/service.yaml
     ```
 
 1. The *dynatrace-sli-service* needs access to a Dynatrace tenant. If you have completed the steps from [Setup Dynatrace](./#setup-dynatrace), the *dynatrace-sli-service* 
@@ -253,7 +253,7 @@ If you want to uninstall Dynatrace, there are scripts provided to do so. Uninsta
 1. (optional) If you do not have the *dynatrace-service* repository, clone the latest release using:
 
 ```console
-git clone --branch 0.6.1 https://github.com/keptn-contrib/dynatrace-service --single-branch
+git clone --branch 0.7.0 https://github.com/keptn-contrib/dynatrace-service --single-branch
 ```
 
 1. Go to correct folder and execute the `uninstallDynatrace.sh` script:
