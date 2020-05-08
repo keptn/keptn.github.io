@@ -20,7 +20,7 @@ Keptn versions are expressed as `x.y.z`, where `x` is the major version, `y` is 
 
 | Keptn Version /<br>Installation       | Kubernetes      | AKS             | EKS         | GKE             | OpenShift | Minikube              | MicroK8s<br>(experimental) | Minishift<br>(experimental) |
 |---------------------------------------|-----------------|-----------------|-------------|-----------------|-----------|-----------------------|----------------------------|-----------------------------|
-| 0.6.x / <br>Control & Execution Plane | 1.15.x - 1.13.x | 1.15.x          | 1.15 - 1.14 | 1.15.x - 1.14.x | 3.11      | -                     | -                          | 1.34.2<br>(K8s: 1.11.x)     |
+| 0.6.x / <br>Control & Execution Plane | 1.15.x - 1.13.x | 1.15.x - 1.14.x | 1.15 - 1.14 | 1.15.x - 1.14.x | 3.11      | -                     | -                          | 1.34.2<br>(K8s: 1.11.x)     |
 | 0.6.x / <br>Control Plane             | 1.16.x - 1.13.x | 1.16.x - 1.15.x | 1.15 - 1.14 (1) | 1.15.x - 1.14.x (1) | 3.11      | 1.2 <br>(K8s:1.15.x) | 1.18.x                     | 1.34.2<br>(K8s: 1.11.x)     |
 
 **Remarks:**
