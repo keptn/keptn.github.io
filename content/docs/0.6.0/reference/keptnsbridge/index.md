@@ -142,7 +142,7 @@ For integration of the Keptn Bridge into DevOps tools, a list of following deep 
 Right now there is no early access version of Keptn Bridge available. You can upgrade to the latest version (0.6.2) by executing the following commands:
 
 ```console
-kubectl -n keptn set image deployment/bridge bridge=keptn/bridge:0.6.2 --record
+kubectl -n keptn set image deployment/bridge bridge=keptn/bridge2:0.6.2 --record
 kubectl -n keptn set image deployment/configuration-service bridge=keptn/configuration-service:0.6.2 --record
 kubectl -n keptn-datastore set image deployment/mongodb-datastore mongodb-datastore=keptn/mongodb-datastore:0.6.2 --record
 ```
