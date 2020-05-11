@@ -7,7 +7,7 @@ weight: 1
 hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
 ---
 
-### 1. Setup your platform
+### 1. Setup Kubernetes cluster
 
 Select one of the following options:
 
@@ -235,13 +235,29 @@ keptn status
 
 Keptn is now ready to be used.
 
-### 4. Explore the use cases
-With Keptn installed, have a look at the different **Tutorials**. LINK needed
+### 4. Explore tutorials to learn more about the Keptn use cases
 
-### 5. Learn how Keptn works under the hood and how it can be adapted to your use cases
-Review the [reference documentation](/docs/0.6.0/) for a full reference on all components of Keptn and how they can be combined and extended to your needs.
+With Keptn installed, have a look at the different [tutorials](https://tutorials.keptn.sh/) to learn hands-on about the Keptn use cases: 
+
+  {{< popup_image
+  link="./assets/tutorials.png"
+  caption="Keptn tutorials on: tutorials.keptn.sh"
+  width="700px">}}
+
+
+### 5. Learn how Keptn works and how it can be adapted to your use cases
+
+Review the documentaiton for a full reference on all Keptn cabilities and components and how they can be combined/extended to your needs:
+
+- [Operate Keptn](../operate)
+- [Manage Keptn](../manage)
+- [Continuous Delivery](../continuous_delivery)
+- [Quality Gates](../quality_gates)
+- [Automated Operations](../automated_operations)
+- [Custom Integrations](../integrations)
 
 ### 6. You need help?
+
 Join [our slack channel](https://join.slack.com/t/keptn/shared_invite/enQtNTUxMTQ1MzgzMzUxLWMzNmM1NDc4MmE0MmQ0MDgwYzMzMDc4NjM5ODk0ZmFjNTE2YzlkMGE4NGU5MWUxODY1NTBjNjNmNmI1NWQ1NGY)
  for any questions that may arise.
 
