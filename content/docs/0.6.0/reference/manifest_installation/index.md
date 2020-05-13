@@ -25,25 +25,25 @@ export KEPTNVERSION=0.6.2
 
 1. Apply the Keptn namespace:
 ```console
-kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.6.2/installer/manifests/keptn/namespace.yaml
+kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/$KEPTNVERSION/installer/manifests/keptn/namespace.yaml
 ```
 
 1. Apply NATS resources:
 ```console
-kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.6.2/installer/manifests/nats/nats-operator-prereqs.yaml
-kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.6.2/installer/manifests/nats/nats-operator-deploy.yaml
-kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.6.2/installer/manifests/nats/nats-cluster.yaml
-kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.6.2/installer/manifests/keptn/rbac.yaml
+kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/$KEPTNVERSION/installer/manifests/nats/nats-operator-prereqs.yaml
+kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/$KEPTNVERSION/installer/manifests/nats/nats-operator-deploy.yaml
+kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/$KEPTNVERSION/installer/manifests/nats/nats-cluster.yaml
+kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/$KEPTNVERSION/installer/manifests/keptn/rbac.yaml
 ```
 
 1. Install the Keptn Datastore:
 ```console
-kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.6.2/installer/manifests/logging/namespace.yaml
-kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.6.2/installer/manifests/logging/mongodb/pvc.yaml
-kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.6.2/installer/manifests/logging/mongodb/deployment.yaml
-kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.6.2/installer/manifests/logging/mongodb/svc.yaml
-kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.6.2/installer/manifests/logging/mongodb-datastore/k8s/mongodb-datastore.yaml
-kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.6.2/installer/manifests/logging/mongodb-datastore/mongodb-datastore-distributor.yaml
+kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/$KEPTNVERSION/installer/manifests/logging/namespace.yaml
+kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/$KEPTNVERSION/installer/manifests/logging/mongodb/pvc.yaml
+kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/$KEPTNVERSION/installer/manifests/logging/mongodb/deployment.yaml
+kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/$KEPTNVERSION/installer/manifests/logging/mongodb/svc.yaml
+kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/$KEPTNVERSION/installer/manifests/logging/mongodb-datastore/k8s/mongodb-datastore.yaml
+kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/$KEPTNVERSION/installer/manifests/logging/mongodb-datastore/mongodb-datastore-distributor.yaml
 ```
 
 1. Create a Keptn API-token:
@@ -54,18 +54,18 @@ kubectl create secret generic -n keptn keptn-api-token --from-literal=keptn-api-
 
 1. Install the Keptn Core:
 ```console
-kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.6.2/installer/manifests/keptn/core.yaml
-kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.6.2/installer/manifests/keptn/keptn-domain-configmap.yaml
+kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/$KEPTNVERSION/installer/manifests/keptn/core.yaml
+kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/$KEPTNVERSION/installer/manifests/keptn/keptn-domain-configmap.yaml
 ```
 
 1. Install Keptn API Gateway NGINX:
 ```console
-kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.6.2/installer/manifests/keptn/api-gateway-nginx.yaml
+kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/$KEPTNVERSION/installer/manifests/keptn/api-gateway-nginx.yaml
 ```
 
 1. Install Keptn Quality Gates:
 ```console
-kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.6.2/installer/manifests/keptn/quality-gates.yaml
+kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/$KEPTNVERSION/installer/manifests/keptn/quality-gates.yaml
 ```
 
 ## Summary of applied images
