@@ -104,8 +104,32 @@ An objective consists of:
 * The **SLI**  refers to an SLI from an SLI configuration. 
 * The **pass** criteria represents the upper limit up to which an evaluation is successful.
 * The (optional) **warning** criteria describes the border where the result is not pass and not fail, and a manual approval might be needed to decide.
-* The (optional) **weight** criteri is used to emphasize the importance of one SLI over the others. By default, `weight` is 1 for all SLIs and can be overwritten. The weight is important for calculating the score later.
+* The (optional) **weight** criteria emphasizes the importance of one SLI over the others. By default, `weight` has a value of 1 for all SLIs and can be overwritten. The weight is important for calculating the total score.
 * The (optional) **key_sli** flag can be set to true meaning that the objective is not met if this SLI fails.
+
+
+**Configuring the criteria:**
+
+The pass and warning criteria allow a list of boolean expressions with a logical operator [<, <=, >, >=] and a *absolute* or *relative* value. While the absolute value is a numberical number, the realtive value requires a (+/-) at the beginning and a % sign at the end, e.g.: `-10%`. 
+
+* All boolean expressions in the list are combined with a logical AND. According to the next example, the pass criteria is met when its measured absolute value is below 1000 **and** the increase of the relative value is lower/equals 10 percent. 
+
+```
+pass:
+  - criteria:
+    - "<1000"
+    - "<=+10%"
+```
+
+* The criteria of a pass and warning can also be splitted. This means that the two lists are combined with a logical OR. According to the next example, the pass criteria is met when either the measured absolute value is below 1000 **or** the increase of the relative value is lower/equals 10 percent. 
+
+```
+pass:
+  - criteria:
+    - "<1000"
+  - criteria:
+    - "<=+10%"
+```
 
 **Example of an Objective:**
 

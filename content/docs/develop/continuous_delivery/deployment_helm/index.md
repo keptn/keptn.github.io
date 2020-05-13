@@ -1,10 +1,10 @@
 ---
 title: Deployment with Helm
 description: Details about Keptn using Helm for deployment.
-weight: 95
+weight: 10
 ---
 
-Keptn uses [Helm v3](https://helm.sh/) for deploying onboarded services to a Kubernetes cluster. This is currently implemented in Keptn's [helm-service](https://github.com/keptn/keptn/tree/0.6.1/helm-service). The helm-service supports two deployment strategies explained below:
+Keptn uses [Helm v3](https://helm.sh/) for deploying onboarded services to a Kubernetes cluster. This is currently implemented in the [helm-service](https://github.com/keptn/keptn/tree/0.6.1/helm-service). The helm-service supports two deployment strategies explained below:
 
 * **Direct deployments**
 * **Blue-green deployments**

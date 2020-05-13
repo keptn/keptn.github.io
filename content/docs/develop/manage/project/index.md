@@ -11,7 +11,9 @@ In Keptn, a project is a structure that allows organizing your services. A proje
 ## Create a project
 
 In Keptn, a project is a structure that allows organizing your services.
-A project is stored as a repository and contains branches representing the multi-stage environment (e.g., dev, staging, and production stage). In other words, the separation of stage configurations is based on repository branches. To describe the stages, a `shipyard.yaml` file is needed that specifies the name, deployment strategy, test strategy, and remediation strategy as shown by an example below:
+A project is stored as a repository and contains branches representing the multi-stage environment (e.g., dev, staging, and production stage). In other words, the separation of stage configurations is based on repository branches. To describe the stages, a **shipyard** file is needed that specifies multi-stage delivery worklow as shown by an example below. 
+
+**Note:** To learn more about a shipyard file, see [declare shipyard before creating a project](../../continuous_delivery/multi_stage/#declare-shipyard-before-creating-a-project).
 
 ```yaml
 stages:
@@ -26,7 +28,7 @@ stages:
     remediation_strategy: "automated"
 ```
 
-**Note:**  To learn more about a *shipyard* file, click here [Shipyard specification](https://github.com/keptn/spec/blob/0.1.3/shipyard.md).
+
 
 * **Option A:** Create a project **without** a Git upstream: 
   ```console
