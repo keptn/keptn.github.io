@@ -1,6 +1,6 @@
 ---
 title: Manage Keptn
-description: Manage your own Keptn installation and setup monitoring.
-weight: 25
-icon: reference
+description: Manage your Keptn installation with projects and services.
+weight: 5
+icon: setup
 ---
