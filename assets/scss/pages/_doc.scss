@@ -637,3 +637,25 @@ figcaption {
   font-style: italic;
   padding-top: 8px;
 }
+
+
+.highlight-table {
+  background-color: $primary;
+  border-color:#fff;
+  color: white;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+.highlight-table tr, .highlight-table td {
+  border: 1px solid white !important;
+}
+
+.highlight-table td:hover {
+  background-color: $secondary;
+}
+
+.highlight-table a {
+  color: white;
+  font-family: $font-family-base;
+}
