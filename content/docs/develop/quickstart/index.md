@@ -237,6 +237,8 @@ Keptn is now ready to be used.
 
 ### 4. Explore tutorials to learn more about the Keptn use cases
 
+With Keptn installed, have a look at the different [tutorials](https://tutorials.keptn.sh/) to learn hands-on about the Keptn use cases: 
+
 <table class="highlight-table">
   <tr>
     <td colspan="6">
@@ -275,14 +277,6 @@ Keptn is now ready to be used.
     </td>
   </tr>
 </table>
-
-With Keptn installed, have a look at the different [tutorials](https://tutorials.keptn.sh/) to learn hands-on about the Keptn use cases: 
-
-  {{< popup_image
-  link="./assets/tutorials.png"
-  caption="Keptn tutorials on: tutorials.keptn.sh"
-  width="700px">}}
-
 
 ### 5. Learn how Keptn works and how it can be adapted to your use cases
 
