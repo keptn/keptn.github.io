@@ -131,4 +131,4 @@ stages:
 
 ## Create project with multi-stage delivery workflow
 
-After declaring the delivery workflow for a project in a shipyard, go to [create a project](../../manage/project/#create-a-project).
+After declaring the delivery workflow for a project in a shipyard, you are ready to create a Keptn project as explained in [create a project](../../manage/project/#create-a-project).
