@@ -13,14 +13,14 @@ keywords: upgrade
 before deploying the upgrading job with the next command:
 
 ```console
-kubectl delete job upgrader
+kubectl -n default delete job upgrader
 kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/release-0.6.2/upgrader/upgrade-061-062/upgrade-job.yaml
 ```
 
 * To check the status of the update job, please execute:
 
 ```console
-kubectl get job
+kubectl -n default get job
 ```
 ```
 NAME                COMPLETIONS   DURATION   AGE
@@ -151,7 +151,7 @@ mongodb-datastore-distributor   1/1     1            1           10m   distribut
 To see the log of the upgrader, execute:
 
 ```
-kubectl logs job/upgrader
+kubectl -n default logs job/upgrader
 ```
 
 ```
@@ -481,7 +481,7 @@ If the service has indeed been deployed previously, it will be updated to the la
 Please create a [new bug report](https://github.com/keptn/keptn/issues/new?assignees=&labels=bug&template=bug_report.md&title=) 
 and provide us more information (log output, etc...), e.g.:
 
-* `kubectl logs job/upgrader`
+* `kubectl -n default logs job/upgrader`
 * `kubectl get pods -n keptn`
 * `kubectl -n keptn get deployments -owide`
 * `kubectl get pods -n keptn-datastore`
@@ -498,13 +498,14 @@ and provide us more information (log output, etc...), e.g.:
 before deploying the upgrading job with the next command:
 
 ```console
+kubectl -n default delete job upgrader
 kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.6.1/upgrade-060-061/upgrade-job.yaml
 ```
 
 * To check the status of the update job, please execute:
 
 ```console
-kubectl get job
+kubectl -n default get job
 ```
 ```
 NAME                COMPLETIONS   DURATION   AGE
@@ -618,7 +619,7 @@ mongodb-datastore-distributor   1/1     1            1           4h40m   distrib
 To see the log of the upgrader, execute:
 
 ```
-kubectl logs job/upgrader
+kubectl -n default logs job/upgrader
 ```
 
 The expected log output should look as follows:
@@ -886,7 +887,7 @@ If the service has indeed been deployed previously, it will be updated to the la
 Please create a [new bug report](https://github.com/keptn/keptn/issues/new?assignees=&labels=bug&template=bug_report.md&title=) 
 and provide us more information (log output, etc...), e.g.:
 
-* `kubectl logs job/upgrader`
+* `kubectl -n default logs job/upgrader`
 * `kubectl get pods -n keptn`
 * `kubectl -n keptn get deployments -owide`
 * `kubectl get pods -n keptn-datastore`
