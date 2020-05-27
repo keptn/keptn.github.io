@@ -136,7 +136,7 @@ mongodb-datastore-distributor   1/1     1            1           4h40m   distrib
 To see the log of the upgrader, execute:
 
 ```
-kubectl logs job/upgrader
+kubectl -n default logs job/upgrader
 ```
 
 The expected log output should look as follows:
@@ -404,7 +404,7 @@ If the service has indeed been deployed previously, it will be updated to the la
 Please create a [new bug report](https://github.com/keptn/keptn/issues/new?assignees=&labels=bug&template=bug_report.md&title=) 
 and provide us more information (log output, etc...), e.g.:
 
-* `kubectl logs job/upgrader`
+* `kubectl -n default logs job/upgrader`
 * `kubectl get pods -n keptn`
 * `kubectl -n keptn get deployments -owide`
 * `kubectl get pods -n keptn-datastore`
