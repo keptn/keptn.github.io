@@ -167,20 +167,18 @@ If you [sign up for a Google Cloud account](https://console.cloud.google.com/get
 </p>
 </details>
 
-<details><summary>Minikube 1.2</summary>
+<details><summary>Minikube</summary>
 <p>
 
-1. Install Minikube in [version 1.2](https://github.com/kubernetes/minikube/releases/tag/v1.2.0) (newer versions do not work).
+1. Download and install [Minikube](https://github.com/kubernetes/minikube/releases) (tested with [versions 1.3 to 1.10](../k8s_support)).
 
-1. Setup a Minikube VM with at least 6 CPU cores and 12 GB memory using:
+1. Create a new Minikube profile (named keptn) with at least 6 CPU cores and 12 GB memory using:
 
-       ```console
-    minikube stop # optional
-    minikube delete # optional
-    minikube start --cpus 6 --memory 12200
-       ``` 
+    ```console
+    minikube start -p keptn --cpus 6 --memory 12200
+    ``` 
 
-1. Start the Minikube LoadBalancer service in a second terminal by executing:
+1. (Optional) Start the Minikube LoadBalancer service in a second terminal by executing:
 
     ```console
    minikube tunnel 
@@ -247,10 +245,12 @@ keptn install --platform=openshift
 keptn install --platform=pks
 ```
 
-- Minikube 1.2:
+- Minikube:
+
+    **Note**: If you are using `minikube tunnel` you don't need to use `--gateway=NodePort`.
 
 ```console
-keptn install --platform=kubernetes
+keptn install --platform=kubernetes --gateway=NodePort
 ```
 
 
