@@ -1,7 +1,7 @@
 ---
 title: Keptn Quality Gates Installation using manifests (experimental)
 description: Install Keptn Quality Gates on Kubernetes by applying manifests with kubectl
-weight: 92
+weight: 35
 ---
 
 The following installation instructions provide a way to manually install Keptn Quality Gates without any installer job. Furthermore, no NGINX will be installed using these instructions.
@@ -68,18 +68,44 @@ kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/$KEPTNVERSION/ins
 kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/$KEPTNVERSION/installer/manifests/keptn/quality-gates.yaml
 ```
 
+## Summary of applied images
+
+* Apply NATS resources:
+  * `connecteverything/nats-operator:0.6.0` - [DockerHub](https://hub.docker.com/layers/connecteverything/nats-operator/0.6.0/images/sha256-f83368baa5092a632c2e941ee7ba8cb6f925d0a068996a0a47ef4047edf2f12b?context=explore)
+
+* Install the Keptn Datastore:
+  * `centos/mongodb-36-centos7:1` - [DockerHub](https://hub.docker.com/r/centos/mongodb-36-centos7)
+  * `keptn/mongodb-datastore:0.6.2` - [Dockerfile](https://github.com/keptn/keptn/blob/0.6.2/mongodb-datastore/Dockerfile)
+  * `keptn/distributor:0.6.2` - [Dockerfile](https://github.com/keptn/keptn/blob/0.6.2/distributor/Dockerfile)
+
+* Install the Keptn Core:
+  * `keptn/api:0.6.2` - [Dockerfile](https://github.com/keptn/keptn/blob/0.6.2/api/Dockerfile)
+  * `keptn/bridge2:0.6.2` - [Dockerfile](https://github.com/keptn/keptn/blob/0.6.2/bridge/Dockerfile)
+  * `keptn/eventbroker-go:0.6.2` - [Dockerfile](https://github.com/keptn/keptn/blob/0.6.2/eventbroker/Dockerfile)
+  * `keptn/helm-service:0.6.2` - [Dockerfile](https://github.com/keptn/keptn/blob/0.6.2/helm-service/Dockerfile)
+  * `keptn/distributor:0.6.2` - [Dockerfile](https://github.com/keptn/keptn/blob/0.6.2/distributor/Dockerfile)
+  * `keptn/shipyard-service:0.6.2` - [Dockerfile](https://github.com/keptn/keptn/blob/0.6.2/shipyard-service/Dockerfile)
+  * `keptn/configuration-service:0.6.2` - [Dockerfile](https://github.com/keptn/keptn/blob/0.6.2/configuration-service/Dockerfile)
+
+* Install Keptn API Gateway NGINX:
+  * `nginx:1.17.9` - [DockerHub](https://hub.docker.com/layers/nginx/library/nginx/1.17.9/images/sha256-39f53d91433cac929ec9caadf8719c6dc205c74129c90b76054bee43337996b5?context=explore)
+
+* Install Keptn Quality Gates:
+  * `keptn/lighthouse-service:0.6.2` - [Dockerfile](https://github.com/keptn/keptn/blob/0.6.2/lighthouse-service/Dockerfile)
+  * `keptn/distributor:0.6.2` - [Dockerfile](https://github.com/keptn/keptn/blob/0.6.2/distributor/Dockerfile)
+
 ## Access the Keptn API
 In order to access the Keptn API, you can either use a `LoadBalancer` or a `Port-forward`:
 
   <details><summary>Using a `LoadBalancer`</summary>
   <p>
 
-  Expose the Keptn API by patching the service `api-gateway-nginx` :
+  Expose the Keptn API by patching the service `api-gateway-nginx`:
   ```console
   kubectl patch svc api-gateway-nginx -n keptn -p '{"spec": {"type": "LoadBalancer"}}'
   ```
 
-  Query the IP 
+  Query the IP:
   ```console
   export KEPTN_ENDPOINT=http://$(kubectl get svc api-gateway-nginx -n keptn -ojsonpath='{.status.loadBalancer.ingress[0].ip}')
   ```
@@ -113,6 +139,7 @@ In order to access the Keptn API, you can either use a `LoadBalancer` or a `Port
     **Important:** The Keptn CLI in version 0.6.2 or above is required.
 
 1. Authenticate your CLI
+
 ```
 ./keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN --scheme=http
 ```
@@ -121,6 +148,6 @@ In order to access the Keptn API, you can either use a `LoadBalancer` or a `Port
 
 **Please note:** The WebSocket communications cannot be used when the API is exposed via a `Port-forward`. Hence, please add `--suppress-websocket` to **all** CLI commands.
 
-## Setup Quality Gates for your Existing Services
+## Setup Quality Gates for your existing services
 
 Now, you are able to continue with the use case as described [here](../../usecases/quality-gates).
