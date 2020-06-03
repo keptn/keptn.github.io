@@ -1,7 +1,7 @@
 ---
 title: API Token
 description: Manage the API token of a Keptn installation.
-weight: 12
+weight: 35
 keywords: [api, setup]
 ---
 
@@ -113,3 +113,5 @@ In this section, the functionality and commands of the Keptn REST API are descri
     ```
 
 * Re-authenticate Keptn CLI as explained [here](../cli/#authentication).
+
+* **Don't forget** to replace the API token at tools that interact with the Keptn API, e.g., the *Problem Notification* setting of Dynatrace or *WebHook* of Prometheus.
