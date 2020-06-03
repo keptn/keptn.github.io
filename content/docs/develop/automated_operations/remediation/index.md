@@ -7,33 +7,100 @@ icon: setup
 
 The *Remediation Action* configuration defines micro-operations to execute in response to a problem. These micro-operations are interpreted by Keptn to trigger the proper remediation and to provide self-healing for an application without modifying code.
 
-## Remediation Action
+## Configure Remediation Action
 
-* A remediation maps to a problem.
-* A remediation declares an action to executed as a response to the problem. 
+A remediation action is configured based on two properties:
+
+* The **problemType** maps a problem to a remediation. 
+* The **actionsOnOpen** declares a list of actions triggered in course of the remediation.
 
 **Example of a remediation action configuration:**
 
 ```yaml
-remediations:
-- name: "Response time degradation"
-  actions:
-  - action: scaling
-    value: +1
-- name: "Failure rate increase"
-  actions:
-  - action: featuretoggle
-    value: EnablePromotion:off
+---
+version: 0.2.0
+kind: Remediation
+metadata:
+  name: remediation-service-abc
+spec:
+  remediations:  
+  - problemType: Response time degradation
+    actionsOnOpen:
+    - name: Scaling ReplicaSet by 1
+      description: Scaling the ReplicaSet of a Kubernetes Deployment by 1
+      action: scaling
+      values: 
+        increment: +1
 ```
 
-A remediation action is configured based on two properties:
+### Problem type
 
-* The **name** refers to the title of a problem. 
-* The **actions** takes a list of actions (currently only one is supported). An **action** can be set to `scaling` or `featuretoggle`. 
-  * *scalling*: scales the Kubernetes pod of the deployment based on the specified value. 
-  * *featuretoggle*: toggles a feature flag specified by the value and controlled by the Unleash framework.
+The problem type maps a problem to a remediation. Therefore, the problem title must match.
 
-## Add a Remediation Action to a Service
+* It is allows to specify multiple proplem types for a remediation: 
+
+```yaml
+version: 0.2.0
+kind: Remediation
+metadata:
+  name: remedation-service-abc
+spec:
+  remediations:  
+  - problemType: Response time degradation
+    actionsOnOpen:
+  - problemType: Failure rate increase
+    actionsOnOpen:
+```
+
+* For the case of triggering a remediation based on an unknown problem, the `default` proplem type is supported: 
+
+```yaml
+version: 0.2.0
+kind: Remediation
+metadata:
+  name: remedation-service-abc
+spec:
+  remediations:  
+  - problemType: Response time degradation
+    actionsOnOpen:
+  - problemType: Failure rate increase
+    actionsOnOpen:
+  - problemType: default
+    actionsOnOpen:
+```
+
+### Actions on open
+
+* An **action** has a name used for display purposes.
+* The **description** provides more details about the action.
+* The **action** property specifies a unique name required by the Keptn-service (action provider) that executes the action.
+* The **values** property allows to add an abritray list of values to the action (to configure the action).
+
+If multiple actions are specified, they are called in sequential order. Given the below example, the `scaling` action is triggered before the `featuretoggle` action is triggered. 
+
+```yaml
+---
+version: 0.2.0
+kind: Remediation
+metadata:
+  name: remediation-service-abc
+spec:
+  remediations:  
+  - problemType: Response time degradation
+    actionsOnOpen:
+    - name: Scaling ReplicaSet by 1
+      description: Scaling the ReplicaSet of a Kubernetes Deployment by 1
+      action: scaling
+      values: 
+        increment: +1
+    - name: Toogle feature flag
+      action: featuretoggle
+      description: Toggle feature flag EnablePromotion from ON to OFF.
+      values: 
+        EnablePromotion: off
+```
+
+## Add Remediation Action to a Service
 
 **Important:** In the following command, the value of the `resourceUri` must be set to `remediation.yaml`.
 
