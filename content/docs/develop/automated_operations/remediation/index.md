@@ -1,20 +1,20 @@
 ---
-title: Remediation Action
-description: Configure a remediation action and add it to your service.
+title: Remediation Config
+description: Configure a remediation and add it to your service.
 weight: 1
 icon: setup
 ---
 
-The *Remediation Action* configuration defines micro-operations to execute in response to a problem. These micro-operations are interpreted by Keptn to trigger the proper remediation and to provide self-healing for an application without modifying code.
+The *Remediation* configuration defines micro-operations to execute in response to a problem. These micro-operations are interpreted by Keptn to trigger the proper remediation and to provide self-healing for an application without modifying code.
 
-## Configure Remediation Action
+## Configure Remediation
 
-A remediation action is configured based on two properties:
+A remediation is configured based on two properties:
 
 * The **problemType** maps a problem to a remediation. 
 * The **actionsOnOpen** declares a list of actions triggered in course of the remediation.
 
-**Example of a remediation action configuration:**
+**Example of a remediation configuration:**
 
 ```yaml
 ---
@@ -37,7 +37,7 @@ spec:
 
 The problem type maps a problem to a remediation. Therefore, the problem title must match.
 
-* It is allows to specify multiple proplem types for a remediation: 
+* It is allowed to specify multiple proplem types for a remediation: 
 
 ```yaml
 version: 0.2.0
@@ -52,7 +52,7 @@ spec:
     actionsOnOpen:
 ```
 
-* For the case of triggering a remediation based on an unknown problem, the `default` proplem type is supported: 
+* For the case of triggering a remediation based on an unknown problem, the proplem type `default` is supported: 
 
 ```yaml
 version: 0.2.0
@@ -100,11 +100,11 @@ spec:
         EnablePromotion: off
 ```
 
-## Add Remediation Action to a Service
+## Add Remediation Config to a Service
 
-**Important:** In the following command, the value of the `resourceUri` must be set to `remediation.yaml`.
+**Important:** In the following command, the value of `resourceUri` must be set to `remediation.yaml`.
 
-* To add an remediation action to a service, use the [keptn add-resource](../../reference/cli/commands/keptn_add-resource) command:
+* To add an remediation config to a service, use the [keptn add-resource](../../reference/cli/commands/keptn_add-resource) command:
 
     ```console
     keptn add-resource --project=sockshop --stage=production --service=carts --resource=remediation.yaml --resourceUri=remediation.yaml
