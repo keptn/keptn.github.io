@@ -2,7 +2,7 @@
 title: API Token
 description: Manage the API token of a Keptn installation.
 weight: 12
-keywords: [api, setup]
+keywords: [api, api-token]
 ---
 
 In this section, the management of the API token of a Keptn installation is explained.
@@ -79,79 +79,81 @@ In this section, the management of the API token of a Keptn installation is expl
 
 ## Create API Token
 
-<details><summary>on Linux / macOS</summary>
-<p>
+* To create an API token, use means provided by the operating system: 
 
-* To generate a base64 encoded token use the following command and store it into the environment variable `KEPTN_API_TOKEN`: 
+    <details><summary>on Linux / macOS</summary>
+    <p>
 
-    ```console
-    KEPTN_API_TOKEN=$(head -c 16 /dev/urandom | base64)
-    ```
+    * To generate a base64 encoded token use the following command and store it into the environment variable `KEPTN_API_TOKEN`: 
 
-* To create an API token, execute:
-  
-    ```console
-    kubectl create secret generic -n keptn keptn-api-token --from-literal=keptn-api-token="$KEPTN_API_TOKEN"
-    ```
+        ```console
+        KEPTN_API_TOKEN=$(head -c 16 /dev/urandom | base64)
+        ```
 
-</p>
-</details>
+    * To create an API token, execute:
+    
+        ```console
+        kubectl create secret generic -n keptn keptn-api-token --from-literal=keptn-api-token="$KEPTN_API_TOKEN"
+        ```
 
-<details><summary>on Windows</summary>
-<p>
+    </p>
+    </details>
 
-Please expand the corresponding section matching your CLI tool.
+    <details><summary>on Windows</summary>
+    <p>
 
-<details><summary>PowerShell</summary>
-<p>
+    Please expand the corresponding section matching your CLI tool.
 
-* To generate a base64 encoded token use the following command and store it into the environment variable `$Env:KEPTN_API_TOKEN`: 
+    <details><summary>PowerShell</summary>
+    <p>
 
-    ```console
-    [Reflection.Assembly]::LoadWithPartialName("System.Web")
-    $token_bytes = [System.Text.Encoding]::Unicode.GetBytes([System.Web.Security.Membership]::GeneratePassword(16,2))
-    $Env:KEPTN_API_TOKEN = [Convert]::ToBase64String($token_bytes)
-    ```
+    * To generate a base64 encoded token use the following command and store it into the environment variable `$Env:KEPTN_API_TOKEN`: 
 
-* To create an API token, execute:
+        ```console
+        [Reflection.Assembly]::LoadWithPartialName("System.Web")
+        $token_bytes = [System.Text.Encoding]::Unicode.GetBytes([System.Web.Security.Membership]::GeneratePassword(16,2))
+        $Env:KEPTN_API_TOKEN = [Convert]::ToBase64String($token_bytes)
+        ```
 
-    ```console
-    kubectl create secret generic -n keptn keptn-api-token --from-literal=keptn-api-token="$Env:KEPTN_API_TOKEN"
-    ``` 
+    * To create an API token, execute:
 
-</p>
-</details>
+        ```console
+        kubectl create secret generic -n keptn keptn-api-token --from-literal=keptn-api-token="$Env:KEPTN_API_TOKEN"
+        ``` 
 
-<details><summary>Command Line</summary>
-<p>
+    </p>
+    </details>
 
-In the Windows Command Line, a couple of steps are necessary.
+    <details><summary>Command Line</summary>
+    <p>
 
-1. Generate a random token with at least 16 characters and save it in a text file: `keptn-api-token.txt`
+    In the Windows Command Line, a couple of steps are necessary.
 
-1. Encode the file using `certutil`:
+    1. Generate a random token with at least 16 characters and save it in a text file: `keptn-api-token.txt`
 
-    ```console
-    certutil -encode keptn-api-token.txt keptn-api-token-base64.txt
-    ```
+    1. Encode the file using `certutil`:
 
-1. Open the newly created file `keptn-api-token-base64.txt`, in which you find the base64 encoded API token. Then set the environment variable `KEPTN_API_TOKEN`:
+        ```console
+        certutil -encode keptn-api-token.txt keptn-api-token-base64.txt
+        ```
 
-    ```console
-    set KEPTN_API_TOKEN=
-    ```
+    1. Open the newly created file `keptn-api-token-base64.txt`, in which you find the base64 encoded API token. Then set the environment variable `KEPTN_API_TOKEN`:
 
-1. To create an API token, execute:
+        ```console
+        set KEPTN_API_TOKEN=
+        ```
 
-    ```console
-    kubectl create secret generic -n keptn keptn-api-token --from-literal=keptn-api-token="%KEPTN_API_TOKEN%"
-    ``` 
+    1. To create an API token, execute:
 
-</p>
-</details>
+        ```console
+        kubectl create secret generic -n keptn keptn-api-token --from-literal=keptn-api-token="%KEPTN_API_TOKEN%"
+        ``` 
 
-</p>
-</details>
+    </p>
+    </details>
+
+    </p>
+    </details>
 
 ## Reset API Token
 
@@ -171,4 +173,4 @@ In the Windows Command Line, a couple of steps are necessary.
 
 * Re-authenticate Keptn CLI as explained [here](../cli/#authentication).
 
-* **Don't forget** to replace the API token at tools that interact with the Keptn API, e.g., the *Problem Notification* setting of Dynatrace or *WebHook* of Prometheus.
+* **Don't forget** to replace the API token at tools that interact with the Keptn API, e.g., *Problem Notification* setting in Dynatrace or *WebHook* in Prometheus.

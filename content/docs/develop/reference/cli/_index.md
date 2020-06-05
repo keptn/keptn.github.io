@@ -63,14 +63,14 @@ API token using `pass` in case of Linux, using `Keychain` in case of macOS, or `
 <details><summary>For Linux / macOS</summary>
 <p>
 
-Set the needed environment variables.
+* Set the needed environment variables.
 
 ```console
 KEPTN_ENDPOINT=https://api.keptn.$(kubectl get cm keptn-domain -n keptn -ojsonpath={.data.app_domain})
 KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
 ```
 
-Authenticate to the Keptn cluster.
+* Authenticate to the Keptn cluster.
 
 ```console
 keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN
@@ -90,7 +90,7 @@ Please expand the corresponding section matching your CLI tool.
 
 For the Windows PowerShell, a small script is provided that installs the `PSYaml` module and sets the environment variables. Please note that the PowerShell might have to be started with **Run as Administrator** privileges to install the module.
 
-1. Copy the following snippet and paste it in the PowerShell. The snippet will be automatically executed line by line.
+* Copy the following snippet and paste it in the PowerShell. The snippet will be automatically executed line by line.
 
     ```
     $tokenEncoded = $(kubectl get secret keptn-api-token -n keptn -ojsonpath='{.data.keptn-api-token}')
@@ -98,7 +98,7 @@ For the Windows PowerShell, a small script is provided that installs the `PSYaml
     $Env:KEPTN_ENDPOINT = 'https://api.keptn.'+$(kubectl get cm -n keptn keptn-domain -ojsonpath='{.data.app_domain}')
     ```
 
-1. Now that everything we need is stored in environment variables, we can proceed with authorizing the keptn CLI. To authenticate against the Keptn cluster, use the `auth` command with the Keptn endpoint and API token:
+* Now that everything we need is stored in environment variables, we can proceed with authorizing the keptn CLI. To authenticate against the Keptn cluster, use the `auth` command with the Keptn endpoint and API token:
 
     ```
     keptn.exe auth --endpoint=$Env:KEPTN_ENDPOINT --api-token=$Env:KEPTN_API_TOKEN
