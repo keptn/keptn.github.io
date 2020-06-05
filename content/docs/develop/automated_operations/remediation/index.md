@@ -35,7 +35,7 @@ spec:
 
 ### Problem type
 
-The problem type maps a problem to a remediation. Therefore, the problem title must match.
+The problem type maps a problem to a remediation by a matching problem title.
 
 * It is allowed to specify multiple proplem types for a remediation: 
 
@@ -73,8 +73,8 @@ spec:
 
 * An **action** has a name used for display purposes.
 * The **description** provides more details about the action.
-* The **action** property specifies a unique name required by the Keptn-service (action provider) that executes the action.
-* The **values** property allows to add an abritray list of values to the action (to configure the action).
+* The **action** property specifies a unique name required by the action-provider (Keptn-service) that executes the action.
+* The **value** property allows adding an arbitrary list of values for configuring the action.
 
 If multiple actions are specified, they are called in sequential order. Given the below example, the `scaling` action is triggered before the `featuretoggle` action is triggered. 
 
@@ -91,12 +91,12 @@ spec:
     - name: Scaling ReplicaSet by 1
       description: Scaling the ReplicaSet of a Kubernetes Deployment by 1
       action: scaling
-      values: 
+      value: 
         increment: +1
     - name: Toogle feature flag
       action: featuretoggle
       description: Toggle feature flag EnablePromotion from ON to OFF.
-      values: 
+      value: 
         EnablePromotion: off
 ```
 

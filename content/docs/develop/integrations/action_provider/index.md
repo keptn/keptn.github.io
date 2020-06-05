@@ -4,7 +4,7 @@ description: Implement an action-provider that executes a remedation action as r
 weight: 10
 ---
 
-An *action-provider* is an implementation of a [*Keptn-service*](../custom_integration/#keptn-service) with a dedicated purpose. This type of service is responsible to execute a remediation action with a specific automation tool. 
+An *action-provider* is an implementation of a [*Keptn-service*](../custom_integration/#keptn-service) with a dedicated purpose. This type of service is responsible for executing a remediation action with a specific automation tool. 
 
 The [Keptn CloudEvents](#cloudevents) an action-provider has to subscribe to is:
 
@@ -12,13 +12,13 @@ The [Keptn CloudEvents](#cloudevents) an action-provider has to subscribe to is:
 
 ## Implement custom Action-provider
 
-**Incoming Keptn CloudEvent:** An *action-provider* listens to one specific Keptn CloudEvent type, which is the [sh.keptn.event.action.triggered](https://github.com/keptn/spec/blob/master/cloudevents.md#action-triggered) event. Next to event meta-data such as project, stage or service name, this type of event contains information about the action to execute and a value property. For more details, please see the specification [here](https://github.com/keptn/spec/blob/master/cloudevents.md#action-triggered). 
+**Incoming Keptn CloudEvent:** An *action-provider* listens to one specific Keptn CloudEvent type, which is the [sh.keptn.event.action.triggered](https://github.com/keptn/spec/blob/master/cloudevents.md#action-triggered) event. Next to event meta-data such as project, stage or service name, the event contains information about the action to execute and a value property. For more details, please see the specification [here](https://github.com/keptn/spec/blob/master/cloudevents.md#action-triggered). 
 
 **Functionality:** The functionality of an *action-provider* focuses on executing an action to resolve an open problem. 
 
 1. Process the incoming event to get the project, stage, and service name. Besides, you will need the `action` and `value` property. 
 
-1. Based on the `action` property it must be verified, whether the action-provider supports the action. If the action is not supported, do nothing. 
+1. Based on the `action` property it must be verified, whether the action-provider supports the action. If the action is not supported, no action required.
 
 1. If the action is supported, run the functionality the action-provider is designed for.
 
