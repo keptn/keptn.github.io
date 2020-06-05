@@ -10,16 +10,7 @@ Besides, the remediation config must be extended by the action to tell Keptn whi
 
 ## Unleash Action-Provider
 
-
-
-
-* To install the `unleash-service`, execute:
-
-```console
-kubectl apply -f https://github.com/keptn-contrib/unleash-service/blob/master/deploy/service.yaml
-```
-
-**Note:** The referenced service.yaml already contains the required distributor.
+This action-provider toggles the feature flag specified by the *key-value* map in the value property. While the key declares the name of the feature toggle, the value specifies the target setting.  
 
 * Action that needs to be added to [**actionsOnOpen**](../remediation/#actions-on-open) in the remediation config:  
 
@@ -31,11 +22,17 @@ kubectl apply -f https://github.com/keptn-contrib/unleash-service/blob/master/de
     EnablePromotion: off
 ```
 
-* **Functionality**: This action-provider toggles the feature flag specified by the *key-value* map in the value property. While the key declares the name of the feature toggle, the value specifies the target setting.   
+* To install the action-provider for Unleash, execute:
+
+```console
+kubectl apply -f https://github.com/keptn-contrib/unleash-service/blob/master/deploy/service.yaml
+```
+
+**Note:** The referenced service.yaml already contains the required distributor.
 
 ## Helm Action-Provider
 
-* The `helm-service` is installed by default. 
+This action-provider increases the ReplicaSet of a Kubernetes deployment by the number defined by the value *increment*.  
 
 * Action that needs to be added to [**actionsOnOpen**](../remediation/#actions-on-open) in the remediation config: 
 
@@ -47,8 +44,7 @@ kubectl apply -f https://github.com/keptn-contrib/unleash-service/blob/master/de
     increment: +1
 ```
 
-* **Functionality**: This action-provider increases the ReplicaSet of a Kubernetes deployment by the number defined by the value *increment*.  
-
+* The `helm-service` is installed by default. 
 
 ## Add custom Action-Provider
 
