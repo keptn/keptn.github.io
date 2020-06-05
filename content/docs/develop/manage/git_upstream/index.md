@@ -6,7 +6,9 @@ keywords: [manage]
 aliases:
 ---
 
-Keptn manages a project in an internal Git repository. To upstream this repository to a remote place, you can create a GitHub, Bitbucket repository, or a GitLab project and then tell Keptn where to find it when creating the project. Select one of the three options and make sure to have the Git **user**, **token**, and **remote url** before creating a project.
+Keptn will manage a project in an internal Git repository. To upstream this repository to a remote place that also works as backup, it is recommended to create, for example, a GitHub repository. This GitHub repository is then specified as upstream repo when creating a project explained below. 
+
+Select one of the four options and make sure to have the Git **user**, **token**, and **remote url** before continuing.
 
 ## GitHub
 <details><summary>Create user, token, and repository</summary>
