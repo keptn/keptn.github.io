@@ -46,11 +46,9 @@ kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/$KEPTNVERSION/ins
 kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/$KEPTNVERSION/installer/manifests/logging/mongodb-datastore/mongodb-datastore-distributor.yaml
 ```
 
-1. Create a Keptn API-token:
-```console
-KEPTN_API_TOKEN=$(head -c 16 /dev/urandom | base64)
-kubectl create secret generic -n keptn keptn-api-token --from-literal=keptn-api-token="$KEPTN_API_TOKEN"
-```
+1. Create a Keptn API-token, as explained [here](../api_token/#create-api-token).
+
+
 
 1. Install the Keptn Core:
 ```console
