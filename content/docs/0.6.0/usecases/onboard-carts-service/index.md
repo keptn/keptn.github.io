@@ -94,21 +94,22 @@ This shipyard contains three stages: dev, staging, and production. This results 
 
 **Note:**  To learn more about a *shipyard* file, please take a look at the [Shipyard specification](https://github.com/keptn/spec/blob/0.1.3/shipyard.md).
 
-Create a new project for your services using the [keptn create project](../../reference/cli/commands/keptn_create_project) command. In this example, the project is called *sockshop*. Before executing the following command, make sure you are in the `examples/onboarding-carts` folder.
+* Create a new project for your services using the [keptn create project](../../reference/cli/commands/keptn_create_project) command. In this example, the project is called *sockshop*. Before executing the following command, make sure you are in the `examples/onboarding-carts` folder.
+
+* Besides, the Git user (`--git-user`), an access token (`--git-token`), and the remote URL (`--git-remote-url`) are required. If a requirement is not met, go to [select Git-based upstream](../../manage/project/#select-git-based-upstream) where instructions for GitHub, GitLab, Bitbucket, and an Azure DevOps Repos are provided.
+
+```console
+keptn create project sockshop --shipyard=./shipyard.yaml --git-user=GIT_USER --git-token=GIT_TOKEN --git-remote-url=GIT_REMOTE_URL
+```
+
+<details><summary>**Optional:** Create a new project without Git upstream and **no** backup</summary>
+<p>
 
 Create a new project without Git upstream:
 ```console
 keptn create project sockshop --shipyard=./shipyard.yaml
 ```
 
-<details><summary>**Optional:** Create a new project with Git upstream</summary>
-<p>
-
-To configure a Git upstream for this tutorial, the Git user (`--git-user`), an access token (`--git-token`), and the remote URL (`--git-remote-url`) are required. If a requirement is not met, go to [select Git-based upstream](../../manage/project/#select-git-based-upstream) where instructions for GitHub, GitLab, and Bitbucket are provided.
-
-```console
-keptn create project sockshop --shipyard=./shipyard.yaml --git-user=GIT_USER --git-token=GIT_TOKEN --git-remote-url=GIT_REMOTE_URL
-```
 </p>
 </details>
 
