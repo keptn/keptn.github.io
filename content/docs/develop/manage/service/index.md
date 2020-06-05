@@ -28,10 +28,11 @@ For describing the deployable Kubernetes resources of a service that gets onboar
 
 1. The Helm chart _has_ to contain exactly one [service](https://kubernetes.io/docs/concepts/services-networking/service/). In this service, the property `spec.selector.app` has to be set.
 
-1. The Helm chart _has_ to contain a `values.yaml` file with at least the `image` parameter for the deployment. This `image` parameter has to be used in the deployment. An example is shown below:
+1. The Helm chart _has_ to contain a `values.yaml` file with at least the `image` and `replicaCount` parameter for the deployment. These `image` and `replicaCount` parameters have to be used in the deployment. An example is shown below:
   
   ```yaml
   image: docker.io/keptnexamples/carts:0.11.1
+  replicaCount: 1
   ```
 
   ```yaml
@@ -41,7 +42,7 @@ For describing the deployable Kubernetes resources of a service that gets onboar
   metadata:
     name: your_deployment
   spec:
-    replicas: 2
+    replicas: {{ .Values.replicaCount }}
     selector:
       matchLabels:
         app: your_service
