@@ -67,29 +67,31 @@ kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/$KEPTNVERSION/ins
 
 ## Summary of applied images
 
+By following the *DockerHub* link, you will find the built image on DockerHub. The referenced Dockerfile shows how the image was built. 
+
 * Apply NATS resources:
-  * `connecteverything/nats-operator:0.6.0` - [DockerHub](https://hub.docker.com/layers/connecteverything/nats-operator/0.6.0/images/sha256-f83368baa5092a632c2e941ee7ba8cb6f925d0a068996a0a47ef4047edf2f12b?context=explore)
+  * `connecteverything/nats-operator:0.6.0` - [DockerHub](https://hub.docker.com/layers/connecteverything/nats-operator/0.6.0/images/sha256-f83368baa5092a632c2e941ee7ba8cb6f925d0a068996a0a47ef4047edf2f12b)
 
 * Install the Keptn Datastore:
   * `centos/mongodb-36-centos7:1` - [DockerHub](https://hub.docker.com/r/centos/mongodb-36-centos7)
-  * `keptn/mongodb-datastore:0.6.2` - [Dockerfile](https://github.com/keptn/keptn/blob/0.6.2/mongodb-datastore/Dockerfile)
-  * `keptn/distributor:0.6.2` - [Dockerfile](https://github.com/keptn/keptn/blob/0.6.2/distributor/Dockerfile)
+  * `keptn/mongodb-datastore:0.6.2` - [[DockerHub](https://hub.docker.com/repository/docker/keptn/mongodb-datastore/tags?page=1&name=0.6.2), [Dockerfile](https://github.com/keptn/keptn/blob/0.6.2/mongodb-datastore/Dockerfile)]
+  * `keptn/distributor:0.6.2` - [[DockerHub](https://hub.docker.com/repository/docker/keptn/distributor/tags?page=1&name=0.6.2), [Dockerfile](https://github.com/keptn/keptn/blob/0.6.2/distributor/Dockerfile)]
 
 * Install the Keptn Core:
-  * `keptn/api:0.6.2` - [Dockerfile](https://github.com/keptn/keptn/blob/0.6.2/api/Dockerfile)
-  * `keptn/bridge2:0.6.2` - [Dockerfile](https://github.com/keptn/keptn/blob/0.6.2/bridge/Dockerfile)
-  * `keptn/eventbroker-go:0.6.2` - [Dockerfile](https://github.com/keptn/keptn/blob/0.6.2/eventbroker/Dockerfile)
-  * `keptn/helm-service:0.6.2` - [Dockerfile](https://github.com/keptn/keptn/blob/0.6.2/helm-service/Dockerfile)
-  * `keptn/distributor:0.6.2` - [Dockerfile](https://github.com/keptn/keptn/blob/0.6.2/distributor/Dockerfile)
-  * `keptn/shipyard-service:0.6.2` - [Dockerfile](https://github.com/keptn/keptn/blob/0.6.2/shipyard-service/Dockerfile)
-  * `keptn/configuration-service:0.6.2` - [Dockerfile](https://github.com/keptn/keptn/blob/0.6.2/configuration-service/Dockerfile)
+  * `keptn/api:0.6.2` - [[DockerHub](https://hub.docker.com/repository/docker/keptn/api/tags?page=1&name=0.6.2), [Dockerfile](https://github.com/keptn/keptn/blob/0.6.2/api/Dockerfile)]
+  * `keptn/bridge2:0.6.2` - [[DockerHub](https://hub.docker.com/repository/docker/keptn/bridge2/tags?page=1&name=0.6.2), [Dockerfile](https://github.com/keptn/keptn/blob/0.6.2/bridge/Dockerfile)]
+  * `keptn/eventbroker-go:0.6.2` - [[DockerHub](https://hub.docker.com/repository/docker/keptn/eventbroker-go/tags?page=1&name=0.6.2), [Dockerfile](https://github.com/keptn/keptn/blob/0.6.2/eventbroker/Dockerfile)]
+  * `keptn/helm-service:0.6.2` - [[DockerHub](https://hub.docker.com/repository/docker/keptn/helm-service/tags?page=1&name=0.6.2), [Dockerfile](https://github.com/keptn/keptn/blob/0.6.2/helm-service/Dockerfile)]
+  * `keptn/distributor:0.6.2` - [[DockerHub](https://hub.docker.com/repository/docker/keptn/distributor/tags?page=1&name=0.6.2), [Dockerfile](https://github.com/keptn/keptn/blob/0.6.2/distributor/Dockerfile)]
+  * `keptn/shipyard-service:0.6.2` - [[DockerHub](https://hub.docker.com/repository/docker/keptn/shipyard-service/tags?page=1&name=0.6.2), [Dockerfile](https://github.com/keptn/keptn/blob/0.6.2/shipyard-service/Dockerfile)]
+  * `keptn/configuration-service:0.6.2` - [[DockerHub](https://hub.docker.com/repository/docker/keptn/configuration-service/tags?page=1&name=0.6.2), [Dockerfile](https://github.com/keptn/keptn/blob/0.6.2/configuration-service/Dockerfile)]
 
 * Install Keptn API Gateway NGINX:
-  * `nginx:1.17.9` - [DockerHub](https://hub.docker.com/layers/nginx/library/nginx/1.17.9/images/sha256-39f53d91433cac929ec9caadf8719c6dc205c74129c90b76054bee43337996b5?context=explore)
+  * `nginx:1.17.9` - [DockerHub](https://hub.docker.com/layers/nginx/library/nginx/1.17.9/images/sha256-39f53d91433cac929ec9caadf8719c6dc205c74129c90b76054bee43337996b5)
 
 * Install Keptn Quality Gates:
-  * `keptn/lighthouse-service:0.6.2` - [Dockerfile](https://github.com/keptn/keptn/blob/0.6.2/lighthouse-service/Dockerfile)
-  * `keptn/distributor:0.6.2` - [Dockerfile](https://github.com/keptn/keptn/blob/0.6.2/distributor/Dockerfile)
+  * `keptn/lighthouse-service:0.6.2` - [[DockerHub](https://hub.docker.com/repository/docker/keptn/lighthouse-service/tags?page=1&name=0.6.2), [Dockerfile](https://github.com/keptn/keptn/blob/0.6.2/lighthouse-service/Dockerfile)]
+  * `keptn/distributor:0.6.2` - [[DockerHub](https://hub.docker.com/repository/docker/keptn/distributor/tags?page=1&name=0.6.2), [Dockerfile](https://github.com/keptn/keptn/blob/0.6.2/distributor/Dockerfile)]
 
 ## Access the Keptn API
 In order to access the Keptn API, you can either use a `LoadBalancer` or a `Port-forward`:
