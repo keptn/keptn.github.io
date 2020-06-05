@@ -12,7 +12,7 @@ Besides, the remediation config must be extended by the action to tell Keptn whi
 
 This action-provider toggles the feature flag specified by the *key-value* map in the value property. While the key declares the name of the feature toggle, the value specifies the target setting.  
 
-* Action that needs to be added to [**actionsOnOpen**](../remediation/#actions-on-open) in the remediation config:  
+* Action that needs to be added to [actionsOnOpen](../remediation/#actions-on-open) in the remediation config:  
 
 ```yaml
 - name: Toogle feature flag
@@ -34,7 +34,7 @@ kubectl apply -f https://github.com/keptn-contrib/unleash-service/blob/master/de
 
 This action-provider increases the ReplicaSet of a Kubernetes deployment by the number defined by the value *increment*.  
 
-* Action that needs to be added to [**actionsOnOpen**](../remediation/#actions-on-open) in the remediation config: 
+* Action that needs to be added to [actionsOnOpen](../remediation/#actions-on-open) in the remediation config: 
 
 ```yaml
 - name: Scaling ReplicaSet by 1
@@ -46,6 +46,6 @@ This action-provider increases the ReplicaSet of a Kubernetes deployment by the 
 
 * The `helm-service` is installed by default. 
 
-## Add custom Action-Provider
+## Add a custom Action-Provider
 
 * To create and add your custom SLI-Provider to Keptn, please follow the instructions [here](../../integrations/action_provider).
