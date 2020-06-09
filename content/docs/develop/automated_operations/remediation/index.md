@@ -5,14 +5,11 @@ weight: 1
 icon: setup
 ---
 
-The *Remediation* configuration defines micro-operations to execute in response to a problem. These micro-operations are interpreted by Keptn to trigger the proper remediation and to provide self-healing for an application without modifying code.
+The remediation config describes a remediation workflow in a declarative manner. Hence, it only defines what needs to be done and leaves all the details to other components. 
 
 ## Configure Remediation
 
-A remediation is configured based on two properties:
-
-* The **problemType** maps a problem to a remediation. 
-* The **actionsOnOpen** declares a list of actions triggered in course of the remediation.
+Below is an example of a declarative remediation config: 
 
 **Example of a remediation configuration:**
 
@@ -33,26 +30,19 @@ spec:
         increment: +1
 ```
 
+A remediation is configured based on two properties:
+
+* **problemType**: Maps a problem to a remediation. 
+* **actionsOnOpen**: Declares a list of actions triggered in course of the remediation.
+
 ### Problem type
 
-The problem type maps a problem to a remediation by a matching problem title.
+The problem type maps a problem to a remediation by a matching problem title. 
 
-* It is allowed to specify multiple proplem types for a remediation: 
+-	It is possible to declare multiple problem types for a remediation. 
+-	For the case of triggering a remediation based on an unknown problem, the problem type `default` is supported. 
 
-```yaml
-version: 0.2.0
-kind: Remediation
-metadata:
-  name: remedation-service-abc
-spec:
-  remediations:  
-  - problemType: Response time degradation
-    actionsOnOpen:
-  - problemType: Failure rate increase
-    actionsOnOpen:
-```
-
-* For the case of triggering a remediation based on an unknown problem, the proplem type `default` is supported: 
+The below example shows a remediation configured for the problem type *Response time degradation* and *Failure rate increase* as well as any unknown problem.
 
 ```yaml
 version: 0.2.0
@@ -76,7 +66,7 @@ spec:
 * The **action** property specifies a unique name required by the action-provider (Keptn-service) that executes the action.
 * The **value** property allows adding an arbitrary list of values for configuring the action.
 
-If multiple actions are specified, they are called in sequential order. Given the below example, the `scaling` action is triggered before the `featuretoggle` action is triggered. 
+If multiple actions are declared, Keptn sends out events in sequential order. Given the below example, the event for triggering `scaling` is sent out before the event for `featuretoggle` is fired. 
 
 ```yaml
 ---

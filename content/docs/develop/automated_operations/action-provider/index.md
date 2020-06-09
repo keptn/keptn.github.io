@@ -5,8 +5,9 @@ weight: 5
 icon: setup
 ---
 
-Depending on the automation tools you have in place, you need to deploy the corresponding action provider. 
-Besides, the remediation config must be extended by the action to tell Keptn which event to sent out. 
+Depending on the action that should be triggered in course of a remediation (or operational task), a corresponding action-provider must be deployed. This action-provider receives a Keptn event, performs its action, and notifies Keptn about the execution. 
+
+To plug-in an action-provider into a remediation, the remediation config must be extended by an action supported by the provider. Consequently, Keptn can send out the proper event.  
 
 ## Unleash Action-Provider
 
