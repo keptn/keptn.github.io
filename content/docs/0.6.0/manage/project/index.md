@@ -10,7 +10,9 @@ Learn how to manage your projects in Keptn.
 
 ## Select Git-based upstream  
 
-Keptn will manage a project in an internal Git repository. To upstream this repository to a remote place, you can create a GitHub, Bitbucket repository, or a GitLab project and then tell Keptn where to find it during creating the project explained below. Select one of the three options and make sure to have the Git *user*, *token*, and *remote url* before continuing.
+Keptn will manage a project in an internal Git repository. To upstream this repository to a remote place that also works as backup, it is recommended to create, for example, a GitHub repository. This GitHub repository is then specified as upstream repo when creating a project explained below. 
+
+Select one of the four options and make sure to have the Git **user**, **token**, and **remote url** before continuing.
 
 ### GitHub
 <details><summary>Create user, token, and repository</summary>
@@ -125,8 +127,7 @@ Keptn will manage a project in an internal Git repository. To upstream this repo
 
 ## Create a project
 
-In Keptn, a project is a structure that allows organizing your services.
-A project is stored as a repository and contains branches representing the multi-stage environment (e.g., dev, staging, and production stage). In other words, the separation of stage configurations is based on repository branches. To describe the stages, a `shipyard.yaml` file is needed that specifies the name, deployment strategy, test strategy, and remediation strategy as shown by an example below:
+In Keptn, a project is a structure that allows organizing your services. A project is stored as a repository and contains branches representing the multi-stage environment (e.g., dev, staging, and production stage). In other words, the separation of stage configurations is based on repository branches. To describe the stages, a `shipyard.yaml` file is needed that specifies the name, deployment strategy, test strategy, and remediation strategy as shown by an example below:
 
 ```yaml
 stages:
@@ -143,14 +144,14 @@ stages:
 
 **Note:**  To learn more about a *shipyard* file, click here [Shipyard specification](https://github.com/keptn/spec/blob/0.1.3/shipyard.md).
 
-* **Option A:** Create a project with the Keptn CLI without a Git upstream: 
-  ```console
-  keptn create project PROJECTNAME --shipyard=FILEPATH
-  ```
-
-* **Option B:** Create a project with the Keptn CLI using a Git upstream: 
+* **Recommended approach for Keptn in production:** Create a project with the Keptn CLI using a Git upstream: 
   ```console
   keptn create project PROJECTNAME --shipyard=FILEPATH --git-user=GIT_USER --git-token=GIT_TOKEN --git-remote-url=GIT_REMOTE_URL
+  ```
+
+* **Demo/Lab setting:** Create a project with the Keptn CLI without a Git upstream and **no** backup:
+  ```console
+  keptn create project PROJECTNAME --shipyard=FILEPATH
   ```
 
 ## Delete a project
@@ -160,8 +161,7 @@ To delete a Keptn project, the [delete project](../../reference/cli/commands/kep
   keptn delete project PROJECTNAME
   ```
 
-**Note:** If a Git upstream is configured for this project, the referenced repository or project will not be deleted. Besides, deployed services are also not deleted by this command. 
-To clean-up all resources created by Keptn, please follow the information displayed here: [Helm - Clean-up after deleting a project](../../reference/helm/#clean-up-after-deleting-a-project)
+**Note:** If a Git upstream is configured for this project, the referenced repository or project will not be deleted. Besides, deployed services are also not deleted by this command. To clean-up all resources created by Keptn, please follow the information displayed here: [Helm - Clean-up after deleting a project](../../reference/helm/#clean-up-after-deleting-a-project)
 
 ## Update a project
 
