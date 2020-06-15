@@ -167,20 +167,43 @@ If you [sign up for a Google Cloud account](https://console.cloud.google.com/get
 </p>
 </details>
 
-<details><summary>Minikube 1.2</summary>
+<details><summary>K3s</summary>
 <p>
 
-1. Install Minikube in [version 1.2](https://github.com/kubernetes/minikube/releases/tag/v1.2.0) (newer versions do not work).
+**Note**: Please refer to the [official homepage of K3s](https://k3s.io) for detailed installation instructions. Within 
+ this page we only provide a very short guide on how we run Keptn on K3s.
+ 
+1. Download, install [K3s](https://k3s.io/) (tested with [versions 1.16 to 1.18](../k8s_support)) and run K3s using the following command:
+   ```console
+   curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.18.3+k3s1 K3S_KUBECONFIG_MODE="644" sh -s - --no-deploy=traefik
+   ```
+   This installs version `v1.18.3+k3s1` (please refer to the [K3s GitHub releases page](https://github.com/rancher/k3s/releases) for newer releases), sets file permissions `644` on `/etc/rancher/k3s/k3s.yaml` and disables `traefik` as an ingress controller.
 
-1. Setup a Minikube VM with at least 6 CPU cores and 12 GB memory using:
+1. Export the Kubernetes profile using
+   ```console
+   export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+   ```
+   
+1. Verify that the connection to the cluster works
+   ```console
+   kubectl get nodes   
+   ```
 
-       ```console
-    minikube stop # optional
-    minikube delete # optional
-    minikube start --cpus 6 --memory 12200
-       ``` 
+</p>
+</details>
 
-1. Start the Minikube LoadBalancer service in a second terminal by executing:
+<details><summary>Minikube</summary>
+<p>
+
+1. Download and install [Minikube](https://github.com/kubernetes/minikube/releases) (tested with [versions 1.3 to 1.10](../k8s_support)).
+
+1. Create a new Minikube profile (named keptn) with at least 6 CPU cores and 12 GB memory using:
+
+    ```console
+    minikube start -p keptn --cpus 6 --memory 12200
+    ``` 
+
+1. (Optional) Start the Minikube LoadBalancer service in a second terminal by executing:
 
     ```console
    minikube tunnel 
@@ -247,10 +270,21 @@ keptn install --platform=openshift
 keptn install --platform=pks
 ```
 
-- Minikube 1.2:
+- K3s:
+
+    **Note**: If the Keptn installer is having trouble getting an IP address, try to install with `--gateway=NodePort`.
+
 
 ```console
 keptn install --platform=kubernetes
+```
+
+- Minikube:
+
+    **Note**: If you are using `minikube tunnel` you don't need to use `--gateway=NodePort`.
+
+```console
+keptn install --platform=kubernetes --gateway=NodePort
 ```
 
 
