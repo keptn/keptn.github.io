@@ -7,19 +7,69 @@ keywords: upgrade
 
 ## Upgrade from 0.6.2 to 0.7
 
-:warning: **Warning:** *Keptn 0.7 uses Helm 3.0 while previous Keptn releases rely on Helm 2.0*. By using this upgrader, **all** Helm releases are upgraded from Helm 2.0 to 3.0. This also includes Helm releases that are not managed by Keptn. If you have Helm releases on your cluster that are on version 2.0 and you do not want to upgrade, don't use this upgrader. Please take into account that the end-of-life period of Helm 2.0 begins on [August 13th, 2020](https://helm.sh/blog/covid-19-extending-helm-v2-bug-fixes/).  
+1. To download and install the Keptn CLI for version 0.7.0, please refer to the [Install Keptn CLI section](../setup-keptn/#install-keptn-cli).
 
-* To download and install the Keptn CLI for version 0.7.0, please refer to the [Install Keptn CLI section](../setup-keptn/#install-keptn-cli).
+1. To upgrade your Keptn installation from 0.6.2 to 0.7.0, a *Kubernetes Job* is provided that upgrades all components to the 0.7.0 release. 
 
-* To upgrade your Keptn installation from 0.6.2 to 0.7.0, you can deploy a *Kubernetes Job* that will take care of updating all components to the 0.7.0 release. Please [verify that you are connected to the correct Kubernetes cluster](../../reference/troubleshooting/#verify-kubernetes-context-with-keptn-installation)
-before deploying the upgrading job with the next command:
+    * Please [verify that you are connected to the correct Kubernetes cluster](../../reference/troubleshooting/#verify-kubernetes-context-with-keptn-installation)
+before deploying the upgrading job.
+
+    * Keptn 0.7 uses Helm 3 while previous Keptn releases rely on Helm 2. (Please take into account that the end-of-life period of Helm 2 begins on [August 13th, 2020](https://helm.sh/blog/covid-19-extending-helm-v2-bug-fixes/).)
+
+### Job without Helm 3 Upgrade
+
+:mag: **Info:** By using this upgrader job, Helm releases are **not** converted to Helm 3.0 and still on version Helm 2. After executing the upgrader job, you need to manually convert the releases as outlined below.
 
 ```console
 kubectl delete job upgrader -n default
 kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.7.0/upgrader/upgrade-062-070/upgrade-job.yaml
 ```
 
-* To check the status of the update job, please execute:
+**Manual converting Helm release from Helm 2 to 3:**
+
+* Install Helm v3.1.2 CLI and `2to3` plugin:
+
+```console
+wget https://get.helm.sh/helm-v3.1.2-linux-amd64.tar.gz
+tar -zxvf helm-v3.1.2-linux-amd64.tar.gz
+mv linux-amd64/helm /bin/helm3
+rm -rf linux-amd64
+
+helm3 plugin install https://github.com/helm/helm-2to3
+```
+
+* Run Helm init command (with Helm 2 CLI) and retrieve Helm releases from your cluster: 
+
+```console
+helm init --client-only
+helm list -aq
+```
+
+* Manually upgrade release by first doing a dry-run and then converting the release:
+
+```console
+helm3 2to3 convert RELEASE_NAME --dry-run
+helm3 2to3 convert RELEASE_NAME
+```
+
+* Cleanup Helm and remove Tiller: 
+
+```console
+helm3 2to3 cleanup --tiller-cleanup
+```
+
+### Job with Helm 3 Upgrade
+
+:warning: **Warning:** By using this upgrader job, **all** Helm releases are upgraded from Helm 2 to 3. This also includes Helm releases that are not managed by Keptn. If you have Helm releases on your cluster that are on version 2 and you do not want to upgrade, don't use this upgrader.
+
+```console
+kubectl delete job upgrader -n default
+kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.7.0/upgrader/upgrade-062-070/upgrade-job-helm3.yaml
+```
+
+### Verify Upgrader Job
+
+* To check the status of the update job, execute:
 
 ```console
 kubectl get job -n default
@@ -31,7 +81,7 @@ upgrader            1/1           17s        20h
 
 When the job is completed, your Keptn version has been updated to 0.7.0.
 
-<details><summary>*Verifying that the upgrade worked*</summary>
+<details><summary>*Verifying result*</summary>
 
 To verify that the upgrade process worked, please check the images and their tags using `kubectl` as described below. 
 
