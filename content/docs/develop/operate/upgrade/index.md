@@ -7,6 +7,8 @@ keywords: upgrade
 
 ## Upgrade from 0.6.2 to 0.7
 
+:warning: **Warning:** *Keptn 0.7 uses Helm 3.0 while previous Keptn releases rely on Helm 2.0*. By using this upgrader, **all** Helm releases are upgraded from Helm 2.0 to 3.0. This also includes Helm releases that are not managed by Keptn. If you have Helm releases on your cluster that are on version 2.0 and you do not want to upgrade, don't use this upgrader. Please take into account that the end-of-life period of Helm 2.0 begins on [August 13th, 2020](https://helm.sh/blog/covid-19-extending-helm-v2-bug-fixes/).  
+
 * To download and install the Keptn CLI for version 0.7.0, please refer to the [Install Keptn CLI section](../setup-keptn/#install-keptn-cli).
 
 * To upgrade your Keptn installation from 0.6.2 to 0.7.0, you can deploy a *Kubernetes Job* that will take care of updating all components to the 0.7.0 release. Please [verify that you are connected to the correct Kubernetes cluster](../../reference/troubleshooting/#verify-kubernetes-context-with-keptn-installation)
@@ -132,11 +134,13 @@ mongodb-datastore-distributor   1/1     1            1           4h40m   distrib
 
 </details>
 
-### Enabling manual approvals for existing projects
+### Configure delivery assistant for existing projects
 
-To enable the manual-approval feature described in the [Continuos delivery section](../../continuous_delivery/multi_stage/#approval-strategy), you can update the `shipyard.yaml` file of the project as follows:
+To add manual approvals steps to the delivery workflow as described in the [Continuos delivery section](../../continuous_delivery/multi_stage/#approval-strategy), you can update the `shipyard.yaml` file of the project as follows.
 
-For each stage you would like to enable the approval feature, you can add the `approval_strategy` property to the stage definition. So for example, when your existing `shipyard.yaml` is:
+For each stage you would like to enable the approval feature, you can add the `approval_strategy` property to the stage definition. 
+
+* Assuming your existing `shipyard.yaml` is:
 
 ```yaml
 stages:
@@ -148,7 +152,7 @@ stages:
     deployment_strategy: "blue_green_service"
 ```
 
-, and you would like to enable the approval feature for the `production` stage, you can add the following lines to the `shipyard.yaml`
+* You can add the following lines to the `shipyard.yaml`, if you would like to enable the approval feature for the `production` stage:
 
 ```yaml
 stages:
@@ -163,7 +167,7 @@ stages:
     deployment_strategy: "blue_green_service"
 ```
 
-**NOTE**: You can only enable the approval feature for existing stages. It is not possible to rename, add or remove stages.
+**Note**: You can only enable the approval feature for existing stages. It is **not possible** to rename, add, or remove stages.
 
 After finishing the changes within the `shipyard.yaml`, you can update it using the `keptn add-resource` command:
 
