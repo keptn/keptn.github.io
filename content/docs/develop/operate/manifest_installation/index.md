@@ -65,7 +65,7 @@ kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/$KEPTNVERSION/ins
 kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/$KEPTNVERSION/installer/manifests/keptn/quality-gates.yaml
 ```
 
-## Summary of applied images
+### Summary of applied images
 
 By following the *DockerHub* link, you will find the built image on DockerHub. The referenced Dockerfile shows how the image was built. 
 
