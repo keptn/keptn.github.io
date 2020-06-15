@@ -11,47 +11,6 @@ hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
 
 Select one of the following options:
 
-<details><summary>Azure Kubernetes Service (AKS)</summary>
-<p>
-
-1. Install local tools
-  - [az](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
-
-2. Create AKS cluster
-  - [Master version:](../k8s-support/#supported-version) `1.15.x` (tested version: `1.15.10`)
-  - One **D8s_v3** node
- 
- </p>
-</details>
-
-<details><summary>Amazon Elastic Kubernetes Service (EKS)</summary>
-<p>
-
-1. Install local tools
-  - [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html) (version >= 1.16.156)
-
-1. Create EKS cluster on AWS
-  - [Master version:](../k8s-support/#supported-version) `1.15` (tested version: `1.15`)
-  - One `m5.2xlarge` node
-  - Sample script using [eksctl](https://eksctl.io/introduction/installation/) to create such a cluster
-
-    ```console
-    eksctl create cluster --version=1.15 --name=keptn-cluster --node-type=m5.2xlarge --nodes=1 --region=eu-west-3
-    ```
-
-    <details><summary>**Known bug in EKS 1.13**</summary>
-
-    Please note that for EKS version `1.13` in our testing we learned that the default CoreDNS that comes with certain EKS versions has a bug. In order to solve that issue we can use eksctl to update the CoreDNS service like this: 
-    
-    ```console
-    eksctl utils update-coredns --name=keptn-cluster --region=eu-west-3 --approve
-    ```
-    
-    </details>
-
-</p>
-</details>
-
 <details><summary>Google Kubernetes Engine (GKE)</summary>
 <p>
 
@@ -84,106 +43,43 @@ If you [sign up for a Google Cloud account](https://console.cloud.google.com/get
  </p>
 </details>
 
-<details><summary>OpenShift 3.11</summary>
+
+<details><summary>K3s</summary>
 <p>
 
-1. Install local tools
+**Note**: Please refer to the [official homepage of K3s](https://k3s.io) for detailed installation instructions. Within 
+ this page we only provide a very short guide on how we run Keptn on K3s.
+ 
+1. Download, install [K3s](https://k3s.io/) (tested with [versions 1.16 to 1.18](../operate/k8s_support)) and run K3s using the following command:
+   ```console
+   curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.18.3+k3s1 K3S_KUBECONFIG_MODE="644" sh -s - --no-deploy=traefik
+   ```
+   This installs version `v1.18.3+k3s1` (please refer to the [K3s GitHub releases page](https://github.com/rancher/k3s/releases) for newer releases), sets file permissions `644` on `/etc/rancher/k3s/k3s.yaml` and disables `traefik` as an ingress controller.
 
-  - [oc CLI - v3.11](https://github.com/openshift/origin/releases/tag/v3.11.0)
+1. Export the Kubernetes profile using
+   ```console
+   export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+   ```
+   
+1. Verify that the connection to the cluster works
+   ```console
+   kubectl get nodes   
+   ```
 
-
-1. On the OpenShift master node, execute the following steps:
-
-    - Set up the required permissions for your user:
-
-      ```console
-    oc adm policy --as system:admin add-cluster-role-to-user cluster-admin <OPENSHIFT_USER_NAME>
-      ```
-
-    - Set up the required permissions for the installer pod:
-
-      ```console
-    oc adm policy  add-cluster-role-to-user cluster-admin system:serviceaccount:default:default
-    oc adm policy  add-cluster-role-to-user cluster-admin system:serviceaccount:kube-system:default
-      ```
-
-    - Enable admission WebHooks on your OpenShift master node:
-
-      ```console
-    sudo -i
-    cp -n /etc/origin/master/master-config.yaml /etc/origin/master/master-config.yaml.backup
-    oc ex config patch /etc/origin/master/master-config.yaml --type=merge -p '{
-      "admissionConfig": {
-        "pluginConfig": {
-          "ValidatingAdmissionWebhook": {
-            "configuration": {
-              "apiVersion": "apiserver.config.k8s.io/v1alpha1",
-              "kind": "WebhookAdmission",
-              "kubeConfigFile": "/dev/null"
-            }
-          },
-          "MutatingAdmissionWebhook": {
-            "configuration": {
-              "apiVersion": "apiserver.config.k8s.io/v1alpha1",
-              "kind": "WebhookAdmission",
-              "kubeConfigFile": "/dev/null"
-            }
-          }
-        }
-      }
-    }' >/etc/origin/master/master-config.yaml.patched
-    if [ $? == 0 ]; then
-      mv -f /etc/origin/master/master-config.yaml.patched /etc/origin/master/master-config.yaml
-      /usr/local/bin/master-restart api && /usr/local/bin/master-restart controllers
-    else
-      exit
-    fi
-      ```
 </p>
 </details>
 
-<details><summary>Pivotal Container Service (PKS)</summary>
+<details><summary>Other options</summary>
 <p>
+We also support installation on the following platforms:
 
-1. Install local tools
-  - [pks CLI - v1.0.4](https://docs.pivotal.io/runtimes/pks/1-4/installing-pks-cli.html)
+* AWS Elastic Kubernetes Service (EKS)
+* Azure Kubernetes Service (AKS)
+* Minikube
+* OpenShift 3.11
+* Pivotal Container Service
 
-1. Create PKS cluster on GCP
-  - Use the provided instructions for [Enterprise Pivotal Container Service (Enterprise PKS) installation on GCP](https://docs.pivotal.io/runtimes/pks/1-4/gcp-index.html)
-
-  - Create a PKS cluster by using the PKS CLI and executing the following command:
-
-    ```console
-    // set environment variables
-    CLUSTER_NAME=name_of_cluster
-    HOST_NAME=host_name
-    PLAN=small
-    ```
-
-    ```console
-    pks create-cluster $CLUSTER_NAME --external-hostname $HOST_NAME --plan $PLAN
-    ```
-</p>
-</details>
-
-<details><summary>Minikube 1.2</summary>
-<p>
-
-1. Install Minikube in [version 1.2](https://github.com/kubernetes/minikube/releases/tag/v1.2.0) (newer versions do not work).
-
-1. Setup a Minikube VM with at least 6 CPU cores and 12 GB memory using:
-
-       ```console
-    minikube stop # optional
-    minikube delete # optional
-    minikube start --cpus 6 --memory 12200
-       ``` 
-
-1. Start the Minikube LoadBalancer service in a second terminal by executing:
-
-    ```console
-   minikube tunnel 
-   ``` 
+For details on these, please visit our [detailed installation guide](../operate/install/).
 
 </p>
 </details>
@@ -191,7 +87,7 @@ If you [sign up for a Google Cloud account](https://console.cloud.google.com/get
 ### 2. Install Keptn
 
 The following instructions will install the **latest stable Keptn CLI (0.6.2)** in a quick way. Please also look 
-at our [detailed installation guide for Keptn 0.6.2](/docs/0.6.0/installation/setup-keptn/) if you need more information.
+at our [detailed installation guide for Keptn](../operate/install/) if you need more information.
 
 #### 2.1 Install the Keptn CLI
 The Keptn CLI is the one-stop-shop for all operations related to Keptn.
