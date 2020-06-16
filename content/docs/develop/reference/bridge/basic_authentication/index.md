@@ -10,7 +10,7 @@ The Keptn Bridge has a basic authentication feature, which can be controlled by 
 * `BASIC_AUTH_USERNAME` - username
 * `BASIC_AUTH_PASSWORD` - password
 
-### Enable Authentication
+## Enable Authentication
 
 To enable this feature, a secret has to be created that holds the two variables. This secret has to be applied within the Kubernetes deployment for the Keptn Bridge.
 
@@ -61,7 +61,7 @@ To enable this feature, a secret has to be created that holds the two variables.
     kubectl -n keptn delete pods --selector=run=bridge
     ```
 
-### Disable Authentication
+## Disable Authentication
 
 * To disable the basic authentication, delete the secret by executing: 
 
