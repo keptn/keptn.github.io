@@ -1,13 +1,13 @@
 ---
 title: Action-Provider
-description: Add an action-provider to Keptn to execte custom remediation actions.
+description: Add an action-provider to execte custom remediation actions.
 weight: 5
 icon: setup
 ---
 
-Depending on the action that should be triggered in course of a remediation (or operational task), a corresponding action-provider must be deployed. This action-provider receives a Keptn event, performs its action, and notifies Keptn about the execution. 
+Depending on the action that should be executed in course of a remediation (or operational) workflow, a corresponding action-provider must be deployed. This action-provider receives a Keptn event, performs its action, and notifies Keptn about the execution. 
 
-To plug-in an action-provider into a remediation, the remediation config must be extended by an action supported by the provider. Consequently, Keptn can send out the proper event.  
+To plug-in an action-provider into a remediation, the remediation config must be extended by an action supported by the provider. Consequently, Keptn - as control plane and responsible for orchestrating the remediation workflow - can send out the proper event for the action-provider.  
 
 ## Unleash Action-Provider
 
@@ -29,7 +29,7 @@ This action-provider toggles the feature flag specified by the *key-value* map i
 kubectl apply -f https://github.com/keptn-contrib/unleash-service/blob/master/deploy/service.yaml
 ```
 
-**Note:** The referenced service.yaml already contains the required distributor.
+**Note:** The referenced `service.yaml` already contains the required distributor.
 
 ## Helm Action-Provider
 
@@ -49,4 +49,4 @@ This action-provider increases the ReplicaSet of a Kubernetes deployment by the 
 
 ## Add a custom Action-Provider
 
-* To create and add your custom SLI-Provider to Keptn, please follow the instructions [here](../../integrations/action_provider).
+* To create and add your custom action-provider to Keptn, please follow the instructions [here](../../integrations/action_provider).

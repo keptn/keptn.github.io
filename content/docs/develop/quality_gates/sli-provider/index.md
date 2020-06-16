@@ -32,5 +32,5 @@ Depending on the monitoring solution you have in place and the SLIs you have con
 
 ## Add custom SLI-Provider
 
-* To create and add your custom SLI-Provider to Keptn, please follow the instructions [here](../../integrations/sli_provider).
+* To create and add your custom SLI-provider to Keptn, please follow the instructions [here](../../integrations/sli_provider).
 
