@@ -1,5 +1,5 @@
 ---
-title: Declarative multi-Stage Delivery
+title: Declarative Multi-Stage Delivery
 description: Learn about the core use-case of declerative multi-stage delivery.
 weight: 1
 keywords: [use-cases]
