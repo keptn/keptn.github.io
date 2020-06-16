@@ -1,5 +1,5 @@
 ---
-title: Daily version  check
+title: Daily Version Check
 description: Enable/Disable daily version check feature
 weight: 21
 keywords: [bridge]
