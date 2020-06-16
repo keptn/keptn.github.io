@@ -5,14 +5,13 @@ weight: 3
 keywords: [keptn, use-cases]
 ---
 
-> **Challenge:** Today, performance verification is often a manual task overseen by performance engineers that start performance tests, monitor them, and evalute the test results. However, this approach is cumbersome when it comes to microservice environments where the sheer amount of microservices  and tests for them can not be tackled in a manual approach. 
+> **Challenge:** Today, performance verification is often a manual task overseen by performance engineers that start performance tests, monitor the execution, and evaluate the test results. However, this approach is cumbersome when it comes to microservice environments where the sheer amount of microservices and tests for them cannot be tackled in a manual approach. 
 
-Keptn helps automating your tests by having Keptn triggering the test execution and evaluating the result of these performance tests. The result can then be automatically processed or presented in the Keptn's Bridge to take further decisions. 
-You can even expand this use case by letting Keptn deploying new versions of your applications to a test environment, succeeded by triggering and evaluting the tests. 
+Keptn helps automating your tests by having Keptn triggering the test execution and evaluating the result of these performance tests. The result can then be automatically processed or presented in the Keptn Bridge to take further decisions. You can even expand this use case by letting Keptn deploying new versions of your applications to a test environment, succeeded by triggering and evaluating the tests. 
 
 ## Test Automation Process
 
-The following image shows the general process of how Keptn is providing continuous performance verification:
+The following image shows the general process of how Keptn is providing continuous performance verification. An underlying core concept for this process it the SLO/SLI validation as explained in [Quality Gates](../quality_gates/).
 
 1. Keptn gets triggered by an external event. 
 
@@ -31,6 +30,6 @@ The following image shows the general process of how Keptn is providing continuo
   caption="Keptn Test Automation"
   width="700px">}}
 
-### References
+## References
 
-- [SLO Validation as a self-service](https://www.neotys.com/blog/neotyspac-slo-validation-self-service-keptn-quality-gates/)
+- [SLO Validation as a self-Service](https://www.neotys.com/blog/neotyspac-slo-validation-self-service-keptn-quality-gates/)

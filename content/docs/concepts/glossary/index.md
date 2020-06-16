@@ -23,9 +23,7 @@ Keptn allows building scalable automation for delivery and operations. Therefore
 
 **Keptn-service:** A Keptn-service is the unit executing a task. It can be responsible for executing one or many tasks and is is triggered by an event of a task.
 
-**Uniform:** The uniform declares a list of Keptn-services that represents the execution plane of a Keptn installation and are required to execute the respective tasks. 
-
-> **Note:** Currently, Keptn provides two hard-coded execution planes: (1) full - containing Keptn-services for delivery and automated operations use cases and (2) quality gates only. 
+**Uniform:** The uniform declares a list of Keptn-services that represents the execution plane of a Keptn installation and are required to execute the respective tasks. (*Note:* Currently, Keptn provides two hard-coded execution planes: (1) full - containing Keptn-services for delivery and automated operations use cases and (2) quality gates only.) 
 
 **Event:** An event triggers a task and contains relevant data for the respective task.
 
@@ -50,8 +48,8 @@ Keptn allows building scalable automation for delivery and operations. Therefore
 ### Quality Gate
 The quality gate is a concept that allows defining SLOs, which are determined by one or many SLIs. [Source](https://landing.google.com/sre/sre-book/chapters/service-level-objectives/) 
 
-**Service Level Indicator (SLI):** An SLI is a service level indicator, which is a defined quantitative measure of some metric of the service.
+**Service-Level Indicator (SLI):** An SLI is a service-level indicator, which is a defined quantitative measure of some metric of the service.
 
-**Service Level Objective (SLO):** An SLO is a service level objective, which is a target value or range of values for an SLI. A common structure for SLOs is: *SLI ≤ target value*, or *lower bound ≤ SLI ≤ upper bound*. 
+**Service-Level Objective (SLO):** An SLO is a service-level objective, which is a target value or range of values for an SLI. A common structure for SLOs is: *SLI ≤ target value*, or *lower bound ≤ SLI ≤ upper bound*. 
 
-**Service Level Agreement (SLA):** An SLA is a service level agreement, which is an explicit or implicit contract with your users that includes consequences of meeting (or missing) the SLOs the SLA contains.
+**Service-Level Agreement (SLA):** An SLA is a service-level agreement, which is an explicit or implicit contract with your users that includes consequences of meeting (or missing) the SLOs the SLA contains.

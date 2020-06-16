@@ -1,5 +1,5 @@
 ---
-title: Declerative multi-Stage Delivery
+title: Declarative multi-Stage Delivery
 description: Learn about the core use-case of declerative multi-stage delivery.
 weight: 1
 keywords: [use-cases]
@@ -7,13 +7,13 @@ keywords: [use-cases]
 
 > **Challenge:** Today, many organization build their continuous delivery workflows by hand and in an imperative way. This can lead to a lot of manual work when a scripted delivery pipeline - with slight modifications - is spread across the organization and re-used by different teams. Just imagine the difficulty to keep all variations of this pipeline up-to-date and to consider future changes in the delivery workflow of a new artifact. 
 
-Keptn follows the approach of *declerative multi-stage delivery* meaning that there is no need to write *any* imperative pipeline code. Instead, a multi-stage delivery workflow is defined declaratively by defining *what* needs to be done and all the details on *how* to achieve it is left to other components. 
+Keptn follows a *declarative multi-stage delivery* approach meaning that there is no need to write *any* imperative pipeline code. Instead, a multi-stage delivery workflow is defined declaratively by defining *what* needs to be done and all the details on *how* to achieve it is left to other components. 
 
 ## Shipyard for Delivery Declaration
 
-The definition is manifested in a so-called *shipyard* file that defines a delivery workflow. It can hold multiple stages, each with a dedicated *deployment strategy*, *test strategy*, as well as a *remediation strategy*. Following this declarative approach, there is no need to write imperative pipeline code. Keptn takes the shipyard file and creates a multi-stage workflow each stage having a deployment strategy (e.g., blue/green), testing strategy (e.g., functional tests or performance tests), and an optional automated remediation strategy to trigger self-healing actions.
+The definition is manifested in a so-called *shipyard* file that defines a delivery workflow. It can hold multiple stages, each with a dedicated *deployment strategy*, *test strategy*, as well as a *remediation strategy*. Following this declarative approach, there is no need to write imperative pipeline code. Keptn takes the shipyard file and creates a multi-stage workflow each stage having a deployment strategy (e.g., blue/green), testing strategy (e.g., functional tests or performance tests), and an optional automated remediation strategy to trigger self-healing actions. To learn more about a shipyard configuration, please continue [here](../../develop/continuous_delivery/multi_stage/).
 
-Please take a look at an example of a multi-stage delivery workflow with a *dev*, *hardening*, and *production* stage with blue/green deployment and automated problem remediation.
+Please take a look at an example of a multi-stage delivery workflow with a *dev*, *hardening*, and *production* stage with blue/green deployment and automated problem remediation.  
 
 ```yaml
 stages:
@@ -35,7 +35,7 @@ stages:
 
 According to the example, Keptn performs a direct deployment (i.e., replacing the previous version of a microservice with a new one) and triggers functional tests in the *dev* stage. In the *hardening* stage, Keptn performs a blue/green deployment (i.e., having two deployments at the same time but routing the traffic to only one) and triggers performance tests. Finally, the *production* stage even defines an automated remediation strategy to trigger counter actions to any issues detected by a monitoring system.
 
-### References
+## References
 
 - [How your delivery pipeline will become your next big legacy-code challenge](https://medium.com/keptn/how-your-delivery-pipeline-will-become-your-next-big-legacy-code-challenge-4e520999693f)
 - [Continuous Delivery without pipelines — How it works and why you need it](https://medium.com/keptn/continuous-delivery-without-pipelines-7e84db8c8261)

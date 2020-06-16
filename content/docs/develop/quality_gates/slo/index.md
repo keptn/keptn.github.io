@@ -1,19 +1,19 @@
 ---
-title: Service Level Objectives (SLO)
-description: Configure and add Service Level Objectives (SLO) to your service.
+title: Service-Level Objectives (SLO)
+description: Configure and add Service-Level Objectives (SLO) to your service.
 weight: 1
 ---
 
-The Service Level Objective (SLO) configuration specifies a target value or range of values for a service level that is measured by [Service Level Indicators (SLI)](../sli). 
+The Service-Level Objective (SLO) configuration specifies a target value or range of values for a service level that is measured by [Service-Level Indicators (SLI)](../sli). 
 
-## Service Level Objective
+## Service-Level Objective
 
 * An SLO is defined per service.
 * An SLO consists of a filter that uniquely identifies a deployment of a service.
 * An SLO defines objectives for the service that depend on the selected comparison strategy. 
 * An SLO returns a score represented by a value between 0 and 100. 
 
-**Example of Service Level Objective (SLO):**
+**Example of Service-Level Objective (SLO):**
 
 ```yaml
 spec_version: '1.0'

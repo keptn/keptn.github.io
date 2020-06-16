@@ -4,7 +4,7 @@ description: Implement your Keptn-service that listens to Keptn events and exten
 weight: 1
 ---
 
-Here you learn how to add additional functionality to your Keptn installation with a custom [*Keptn-service*](#keptn-service) or [*SLI-provider*](#sli-provider). While a *Keptn-service* enriches a continuous delivery or operational workflow with additional functionality or with an extra tool, a *SLI-provider* is used to query Service Level Indicators (SLI) from an external source like a monitoring or testing solution.  
+Here you learn how to add additional functionality to your Keptn installation with a custom [*Keptn-service*](#keptn-service) or [*SLI-provider*](#sli-provider). While a *Keptn-service* enriches a continuous delivery or operational workflow with additional functionality or with an extra tool, a *SLI-provider* is used to query Service-Level Indicators (SLI) from an external source like a monitoring or testing solution.  
 
 ## Template Repository
 
