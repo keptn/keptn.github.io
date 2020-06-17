@@ -52,7 +52,7 @@ helm3 2to3 convert RELEASE_NAME --dry-run
 helm3 2to3 convert RELEASE_NAME
 ```
 
-* Cleanup Helm and remove Tiller: 
+* *Optional:* Cleanup Helm and remove Tiller: 
 
 ```console
 helm3 2to3 cleanup --tiller-cleanup
@@ -60,7 +60,7 @@ helm3 2to3 cleanup --tiller-cleanup
 
 ### Job with Helm 3 Upgrade
 
-:warning: **Warning:** By using this upgrader job, **all** Helm releases are upgraded from Helm 2 to 3. This also includes Helm releases that are not managed by Keptn. If you have Helm releases on your cluster that are on version 2 and you do not want to upgrade, don't use this upgrader.
+:warning: **Warning:** By using this upgrader job, **all** Helm releases are upgraded from Helm 2 to 3 and Tiller will be removed. This also includes Helm releases that are not managed by Keptn. If you have Helm releases on your cluster that are on version 2 and you do not want to upgrade, don't use this upgrader.
 
 ```console
 kubectl delete job upgrader -n default
