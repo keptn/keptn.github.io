@@ -15,10 +15,10 @@ The Keptn Bridge has a basic authentication feature, which can be controlled by 
 * Basic authentication is enabled by default when executing the below command. This command creates a secret with the two variables: `BASIC_AUTH_USERNAME` and `BASIC_AUTH_PASSWORD`. 
 
     ```
-    keptn configure bridge --action=expose --username=<USERNAME> --password=<PASSWORD>
+    keptn configure bridge --action=expose --user=<USER> --password=<PASSWORD>
     ```
 
-    **Note:** Replace `<USERNAME>` and `<PASSWORD>` with the desired credentials.
+    **Note:** Replace `<USER>` and `<PASSWORD>` with the desired credentials.
 
 * Restart the pod of the Keptn Bridge by executing:
 
