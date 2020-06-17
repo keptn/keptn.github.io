@@ -33,7 +33,7 @@ The *api* component provides a publicly exposed REST API that allows communicati
 
 ### eventbroker
 
-The *eventbroker* is responsible for receiving all events, transferring non-Keptn events into valid Keptn CloudEvents, and sending those into NATS.
+The *eventbroker* is responsible for receiving all events and sending those into NATS.
 
 ### distributor
 
@@ -41,7 +41,7 @@ A *distributor* receives events from NATS and sends the events to services that 
 
 ### mongodb-datastore
 
-The *mongodb-datastore* provides means to store event data in a MongoDB deployed in your Keptn cluster. In its current implementation, the service provides two REST endpoints: (1) `/events` and (2) `/logs` (is marked as deprecated). Stored data can be requested by using those endpoints.
+The *mongodb-datastore* provides means to store event data in a MongoDB deployed in your Keptn cluster. Hence, the service provides the REST endpoint `/events` to query events.
 
 ### bridge
 

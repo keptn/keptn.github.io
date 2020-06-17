@@ -30,6 +30,7 @@ spec:
       value: 
         increment: +1
   - problemType: Failure rate increase
+    actionsOnOpen:
     - name: Toogle feature flag
       action: featuretoggle
       description: Toggle feature flag PromotionCampaign from ON to OFF.
@@ -37,11 +38,11 @@ spec:
         PromotionCampaign: off
 ```
 
-* This *remediation file* can be interpreted by an automation component and versioned in a Git repository
+* This *remediation file* is interpreted by the provided remediation-service and versioned in a Git repository
 
-* This *remediation file* declares what needs to be done and leaves all the details to other components. This approach also follows the operator pattern that is used prominently in Kubernetes.
+* This *remediation file* declares what needs to be done and leaves all the details to other components.
 
-* The *remediation actions* are defined by the developer for all artifacts (i.e., containers images) that are created. These operations instructions become additional metadata for each artifact.
+* The *remediation actions* are defined by the developer for all services that are created. These operations instructions become additional metadata for each service.
 
 * Using a declarative approach, there is no need to worry about the actual execution details. Developers can leave the details to the platform engineering teams while leveraging the functionality.
 
