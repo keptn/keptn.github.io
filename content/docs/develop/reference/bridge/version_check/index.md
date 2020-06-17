@@ -8,7 +8,7 @@ keywords: [bridge]
 The feature of a daily version check informs a Keptn user in the Keptn Bridge about:
 
 -	new Keptn versions;
--	security patches for the installed Keptn deployment;
+-	security patches for the installed Keptn control plane;
 -	security patches for installed Keptn-services. 
 
 *Implementation*: The feature is enabled when installing or upgrading Keptn and can be disabled as explained below. The feature requests a version file accessible on: https://get.keptn.sh/version.json via an HTTPS call on a daily basis. The version file is stored in an S3 bucket on AWS. The AWS account is owned by the maintainer of the Keptn project, Dynatrace. The S3 bucket is configured in a way that each request is logged into another S3 bucket. 
