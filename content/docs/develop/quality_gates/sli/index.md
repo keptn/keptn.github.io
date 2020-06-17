@@ -1,17 +1,17 @@
 ---
-title: Service Level Indicators (SLI)
-description: Configure Service Level Indicators (SLIs) for your service.
+title: Service-Level Indicators (SLI)
+description: Configure Service-Level Indicators (SLIs) for your service.
 weight: 2
 ---
 
-A Service Level Indicator (SLI) is a defined quantitative measure of some aspects of the service level. The query for an SLI is provider/tool-dependent. This is the reason why each SLI-provider relies on an individual SLI configuration. This SLI configuration lists those SLIs that are supported by the SLI-provider by their name and query whereas the query is provider specific. 
+A Service-Level Indicator (SLI) is a defined quantitative measure of some aspects of the service level. The query for an SLI is provider/tool-dependent. This is the reason why each SLI-provider relies on an individual SLI configuration. This SLI configuration lists those SLIs that are supported by the SLI-provider by their name and query whereas the query is provider specific. 
 
-## Service Level Indicator
+## Service-Level Indicator
 
 * An SLI is a key-value pair with the SLI name as key and the provider-specific query as value.
 * An SLI configuration can contain any number of SLIs.
 
-**Example of Service Level Indicators (SLIs):**
+**Example of Service-Level Indicators (SLIs):**
 
 ```yaml
 spec_version: "1.0"
