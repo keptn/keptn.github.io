@@ -14,11 +14,11 @@ keywords: upgrade
     * Please [verify that you are connected to the correct Kubernetes cluster](../../reference/troubleshooting/#verify-kubernetes-context-with-keptn-installation)
 before deploying the upgrading job.
 
-    * Keptn 0.7 uses Helm 3 while previous Keptn releases rely on Helm 2. (Please take into account that the end-of-life period of Helm 2 begins on [August 13th, 2020](https://helm.sh/blog/covid-19-extending-helm-v2-bug-fixes/).)
+    * Keptn 0.7 uses Helm 3 while previous Keptn releases rely on Helm 2. This means that you have to upgrade the Helm releases of your Keptn-managed services. Otherwise, a `keptn send new-artifact` does not work anymore. For upgrading Helm releases, two options are availble as outlined below. Please take into account that the end-of-life period of Helm 2 begins on [August 13th, 2020](https://helm.sh/blog/covid-19-extending-helm-v2-bug-fixes/).
 
 ### Job without Helm 3 Upgrade
 
-:mag: **Info:** By using this upgrader job, Helm releases are **not** converted to Helm 3.0 and still on version Helm 2. After executing the upgrader job, you need to manually convert the releases as outlined below.
+:mag: **Info:** By using this upgrader job, Helm releases are **not** converted to Helm 3.0 and still on version Helm 2. After executing the upgrader job, you need to manually convert the Helm releases on your Kubernetes cluster as explained below.
 
 ```console
 kubectl delete job upgrader -n default
@@ -27,7 +27,15 @@ kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.7.0/upgrader/up
 
 **Manual converting Helm release from Helm 2 to 3:**
 
-* Install Helm v3.1.2 CLI and `2to3` plugin:
+* Install Helm v2.14.3 CLI (*Note*: this CLI version is called to `helm`):
+```console
+wget https://get.helm.sh/helm-v2.14.3-linux-amd64.tar.gz
+tar -zxvf helm-v2.14.3-linux-amd64.tar.gz
+mv linux-amd64/helm /bin/helm
+rm -rf linux-amd64
+```
+
+* Install Helm v3.1.2 CLI and `2to3` plugin. (*Note*: this CLI version is renamed to `helm3`):
 
 ```console
 wget https://get.helm.sh/helm-v3.1.2-linux-amd64.tar.gz
@@ -59,6 +67,8 @@ helm3 2to3 cleanup --tiller-cleanup
 ```
 
 ### Job with Helm 3 Upgrade
+
+This option is recommended when you have a Kubernetes cluster with just Keptn installed. But please consider the warning: 
 
 :warning: **Warning:** By using this upgrader job, **all** Helm releases are upgraded from Helm 2 to 3 and Tiller will be removed. This also includes Helm releases that are not managed by Keptn. If you have Helm releases on your cluster that are on version 2 and you do not want to upgrade, don't use this upgrader.
 
