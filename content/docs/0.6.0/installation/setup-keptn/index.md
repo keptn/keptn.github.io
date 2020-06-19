@@ -19,6 +19,8 @@ Select one of the following options:
 1. Install local tools
   - [az](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
 
+1. Make sure you are logged in to your Azure account with `az login`
+
 2. Create AKS cluster
   - [Master version:](../k8s-support/#supported-version) `1.15.x` (tested version: `1.15.10`)
   - One **D8s_v3** node
@@ -89,10 +91,11 @@ If you [sign up for a Google Cloud account](https://console.cloud.google.com/get
 <details><summary>OpenShift 3.11</summary>
 <p>
 
+1. Please note that you have to bring your own OpenShift cluster in version 3.11
+
 1. Install local tools
 
   - [oc CLI - v3.11](https://github.com/openshift/origin/releases/tag/v3.11.0)
-
 
 1. On the OpenShift master node, execute the following steps:
 
