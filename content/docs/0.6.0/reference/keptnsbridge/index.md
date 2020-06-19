@@ -139,25 +139,24 @@ For integration of the Keptn Bridge into DevOps tools, a list of following deep 
 
 ## Early Access Version of Keptn Bridge
 
+<!--
 Right now there is no early access version of Keptn Bridge available. You can upgrade to the latest version (0.6.2) by executing the following commands:
 
 ```console
 kubectl -n keptn set image deployment/bridge bridge=keptn/bridge2:0.6.2 --record
-kubectl -n keptn set image deployment/configuration-service bridge=keptn/configuration-service:0.6.2 --record
-kubectl -n keptn-datastore set image deployment/mongodb-datastore mongodb-datastore=keptn/mongodb-datastore:0.6.2 --record
 ```
+-->
 
-<!--
 There is an early access version of Keptn Bridge available (compatible with Keptn 0.6.2):
 
   {{< popup_image
   link="./assets/bridge_eap.png"
   caption="Keptn Bridge EAP">}}
 
-* To install it, you have to update the Docker images of *Keptn Bridge*, *configuration-service* and the *mongodb-datastore* deployment by executing the following commands:
+* To install it, you have to update the Docker images of *Keptn Bridge* deployment by executing the following commands:
 
 ```console
-kubectl -n keptn set image deployment/bridge bridge=keptn/bridge2:20200402.1046 --record
+kubectl -n keptn set image deployment/bridge bridge=keptn/bridge2:0.7.0-eap20200617 --record
 ```
 
 
@@ -167,6 +166,5 @@ kubectl -n keptn set image deployment/bridge bridge=keptn/bridge2:20200402.1046 
 kubectl -n keptn set image deployment/bridge bridge=keptn/bridge2:0.6.2 --record
 ```
 
--->
 
 If you have any questions or feedback regarding Keptn Bridge, please contact us through our [Keptn Community Channels](https://github.com/keptn/community)!
