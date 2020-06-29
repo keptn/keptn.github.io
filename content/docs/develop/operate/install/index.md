@@ -294,7 +294,6 @@ keptn install --platform=kubernetes --gateway=NodePort
 
 In the Kubernetes cluster, this command creates the **keptn** and the **keptn-datastore** namespace containing all Keptn core components.
 This installation will allow you to use Keptn for the [Keptn Quality Gates](../../quality_gates/) and [Automated Operations](../../automated_operations/) use cases.
-
     <details><summary>The *keptn* and *keptn-datastore* namespace contain:</summary>
         <ul>
         <li>mongoDb database for the Keptn's log</li>
@@ -322,6 +321,7 @@ This installation will allow you to use Keptn for the [Keptn Quality Gates](../.
             </ul>
         </ul>
     </details>
+
 
 **Note:** If you want to install the complete Keptn version supporting [Keptn Continuous Delivery use case](../../continuous_delivery/), you have the option to roll-out Keptn **with** additional components for automated delivery and operations. Therefore, the `use-case` flag must be set to `continuous-delivery`:
 
