@@ -329,15 +329,6 @@ In the Kubernetes cluster, this command creates the **keptn**, **keptn-datastore
 keptn install --platform=[aks|eks|gke|openshift|pks|kubernetes] --use-case=quality-gates
 ```
 
-## Configure a custom domain
-
-If you have a custom domain or cannot use *xip.io* (e.g., when running Keptn on EKS with an ELB (Elastic Load Balancer) from AWS), there is the 
-CLI command [keptn configure domain](../../reference/cli/commands/keptn_configure_domain) to configure Keptn for your custom domain:
-
-```console
-keptn configure domain YOUR_DOMAIN
-```
-
 ## Configure an Istio Ingress (required for continuous delivery)
 
 To be able to reach your onboarded services, Istio has to be installed, and the `istio-ingressgateway` service, as well as the `public-gateway` in the `istio-system` namespace
