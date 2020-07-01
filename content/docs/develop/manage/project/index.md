@@ -27,7 +27,6 @@ stages:
     remediation_strategy: "automated"
 ```
 
-
 * **Recommended approach for Keptn in production:** Create a project with the Keptn CLI using a Git upstream: 
   ```console
   keptn create project PROJECTNAME --shipyard=FILEPATH --git-user=GIT_USER --git-token=GIT_TOKEN --git-remote-url=GIT_REMOTE_URL

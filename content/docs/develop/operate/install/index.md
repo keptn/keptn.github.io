@@ -338,6 +338,14 @@ CLI command [keptn configure domain](../../reference/cli/commands/keptn_configur
 keptn configure domain YOUR_DOMAIN
 ```
 
+## Configure an Ingress (required for continuous delivery)
+
+To be able to reach your onboarded services, Istio has to be installed, and the `istio-ingressgateway` service, as well as the `public-gateway` in the `istio-system` namespace
+have to be available. To install Istio, please refer to the [official Istio documentatio](https://istio.io/latest/docs/setup/install/).
+When that is done, the next step is to determine the IP and the port of your Istio ingress. To do so, please refer to the following section
+of the Istio documentation: [Determining the ingress IP and ports](https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/#determining-the-ingress-ip-and-ports).
+
+
 ## Troubleshooting
 
 Please note that in case of any errors, the install process might leave some files in an inconsistent state. Therefore [keptn install](../../reference/cli/commands/keptn_install) cannot be executed a second time without [keptn uninstall](../../reference/cli/commands/keptn_uninstall). To address a unsuccessful installation: 
