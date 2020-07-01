@@ -342,7 +342,7 @@ Once that is done, create the `ingress-config` ConfigMap in the `keptn` namespac
 INGRESS_IP=<IP_OF_YOUR_INGRESS>
 INGRESS_PORT=<PORT_OF_YOUR_INGRESS> 
 INGRESS_PROTOCOL=<PROTOCOL> # either "http" or "https"
-kubectl create configmap -n keptn ingress-config --from-literal=INGRESS_HOSTNAME_SUFFIX=${INGRESS_IP}.xip.io --from-literal=INGRESS_PORT=${INGRESS_PORT} --from-literal=INGRESS_PROTOCOL=${INGRESS_PROTOCOL} -oyaml --dry-run | kubectl replace -f -
+kubectl create configmap -n keptn ingress-config --from-literal=ingress_hostname_suffix=${INGRESS_IP}.xip.io --from-literal=ingress_port=${INGRESS_PORT} --from-literal=ingress_protocol=${INGRESS_PROTOCOL} -oyaml --dry-run | kubectl replace -f -
 ```
 
 If you have already set up set up a domain that points to your Istio Ingress, you can use that one for the `INGRESS_HOSTNAME_SUFFIX`. In this case, use the following command to create the ConfigMap:
@@ -351,7 +351,7 @@ If you have already set up set up a domain that points to your Istio Ingress, yo
 INGRESS_HOSTNAME=<YOUR_HOSTNAME>
 INGRESS_PORT=<PORT_OF_YOUR_INGRESS> 
 INGRESS_PROTOCOL=<PROTOCOL> # either "http" or "https"
-kubectl create configmap -n keptn ingress-config --from-literal=INGRESS_HOSTNAME_SUFFIX=${INGRESS_HOSTNAME} --from-literal=INGRESS_PORT=${INGRESS_PORT} --from-literal=INGRESS_PROTOCOL=${INGRESS_PROTOCOL} -oyaml --dry-run | kubectl replace -f -
+kubectl create configmap -n keptn ingress-config --from-literal=ingress_hostname_suffix=${INGRESS_HOSTNAME} --from-literal=ingress_port=${INGRESS_PORT} --from-literal=ingress_protocol=${INGRESS_PROTOCOL} -oyaml --dry-run | kubectl replace -f -
 ```
 
 After the ConfigMap has been created, restart the `helm-service`, using the following command:
