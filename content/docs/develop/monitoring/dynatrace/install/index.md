@@ -8,6 +8,19 @@ keywords: setup
 
 ## Install Dynatrace
 
+1. Create a secret containing the credentials for the Keptn API. To determine the values for `KEPTN_API_URL` and `KEPTN_API_TOKEN` please refer to the [Keptn docs](https://keptn.sh/docs/0.7.x/operate/install/) 
+
+    ```console
+    kubectl -n keptn create secret generic keptn-credentials --from-literal="KEPTN_API_URL=<KEPTN_API_URL>" --from-literal="KEPTN_API_TOKEN=<KEPTN_API_TOKEN>" 
+    ```
+   
+   If you would like to make use of the inclusion of backlinks to the bridge, you can add the `KEPTN_BRIDGE_URL` to the `keptn-credentials` secret.
+   To find the URL of the bridge, please refer to the following section of the [Keptn docs](../../../reference/bridge/#expose-lockdown-bridge)
+   
+   ```console
+   kubectl -n keptn create secret generic keptn-credentials --from-literal="KEPTN_API_URL=<KEPTN_API_URL>" --from-literal="KEPTN_API_TOKEN=<KEPTN_API_TOKEN>" --from-literal="KEPTN_BRIDGE_URL=<KEPTN_BRIDGE_URL>" -oyaml --dry-run | kubectl replace -f -
+   ```
+   
 1. Bring your Dynatrace SaaS or Dynatrace-managed tenant
 
     If you don't have a Dynatrace tenant, sign up for a [free trial](https://www.dynatrace.com/trial/) or a [developer account](https://www.dynatrace.com/developer/).
