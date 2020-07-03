@@ -119,10 +119,11 @@ keptn version
 Depending on the platform, Keptn install will prompt you different information needed to perform the installation.
 
 ```console
-keptn install --platform=[aks|eks|gke|openshift|pks|kubernetes]
+keptn install --platform=[aks|eks|gke|openshift|pks|kubernetes] --use-case=continuous-delivery
 ```
 **Note:** For a Minikube setup, use option `--platform=kubernetes`.
 
+This will install the full version of Keptn supporting all continuous-delivery use cases. 
 After a successful installation, you can verify that Keptn is working by executing
 
 ```console
