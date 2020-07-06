@@ -292,7 +292,8 @@ keptn install --platform=kubernetes --gateway=NodePort
 ```
 
 
-In the Kubernetes cluster, this command creates the **keptn**, **keptn-datastore**, and **istio-system** namespace. While istio-system contains all Istio related resources, keptn and keptn-datastore contain the complete infrastructure to run Keptn. 
+In the Kubernetes cluster, this command creates the **keptn** and the **keptn-datastore** namespace containing all Keptn core components.
+This installation will allow you to use Keptn for the [Keptn Quality Gates](../../quality_gates/) and [Automated Operations](../../automated_operations/) use cases.
     <details><summary>The *keptn* and *keptn-datastore* namespace contain:</summary>
         <ul>
         <li>mongoDb database for the Keptn's log</li>
@@ -306,7 +307,6 @@ In the Kubernetes cluster, this command creates the **keptn**, **keptn-datastore
                 <li>eventbroker</li>
                 <li>gatekeeper-service</li>
                 <li>helm-service</li>
-                <li>jmeter-service</li>
                 <li>lighthouse-service</li>
                 <li>mongodb-datastore</li>
                 <li>remediation-service</li>
@@ -323,19 +323,47 @@ In the Kubernetes cluster, this command creates the **keptn**, **keptn-datastore
     </details>
 
 
-**Note:** If you want to install Keptn just for the use case of [Keptn Quality Gates](../../usecases/quality-gates/), you have the option to roll-out Keptn **without** components for automated delivery and operations. Therefore, the `use-case` flag must be set to `quality-gates`:
+**Note:** If you want to install the complete Keptn version supporting [Keptn Continuous Delivery use case](../../continuous_delivery/), you have the option to roll-out Keptn **with** additional components for automated delivery and operations. Therefore, the `use-case` flag must be set to `continuous-delivery`:
 
 ```console
-keptn install --platform=[aks|eks|gke|openshift|pks|kubernetes] --use-case=quality-gates
+keptn install --platform=[aks|eks|gke|openshift|pks|kubernetes] --use-case=continuous-delivery
 ```
 
-## Configure a custom domain
+## Configure an Istio Ingress (required for continuous delivery)
 
-If you have a custom domain or cannot use *xip.io* (e.g., when running Keptn on EKS with an ELB (Elastic Load Balancer) from AWS), there is the 
-CLI command [keptn configure domain](../../reference/cli/commands/keptn_configure_domain) to configure Keptn for your custom domain:
+To be able to reach your onboarded services, Istio has to be installed, and the `istio-ingressgateway` service, as well as the `public-gateway` in the `istio-system` namespace
+have to be available. To install Istio, please refer to the [official Istio documentatio](https://istio.io/latest/docs/setup/install/).
+When that is done, the next step is to determine the IP and the port of your Istio ingress. To do so, please refer to the following section
+of the Istio documentation: [Determining the ingress IP and ports](https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/#determining-the-ingress-ip-and-ports).
 
-```console
-keptn configure domain YOUR_DOMAIN
+Once that is done, create the `ingress-config` ConfigMap in the `keptn` namespace:
+
+```
+INGRESS_IP=<IP_OF_YOUR_INGRESS>
+INGRESS_PORT=<PORT_OF_YOUR_INGRESS> 
+INGRESS_PROTOCOL=<PROTOCOL> # either "http" or "https"
+kubectl create configmap -n keptn ingress-config --from-literal=ingress_hostname_suffix=${INGRESS_IP}.xip.io --from-literal=ingress_port=${INGRESS_PORT} --from-literal=ingress_protocol=${INGRESS_PROTOCOL} -oyaml --dry-run | kubectl replace -f -
+```
+
+If you have already set up set up a domain that points to your Istio Ingress, you can use that one for the `INGRESS_HOSTNAME_SUFFIX`. In this case, use the following command to create the ConfigMap:
+
+```
+INGRESS_HOSTNAME=<YOUR_HOSTNAME>
+INGRESS_PORT=<PORT_OF_YOUR_INGRESS> 
+INGRESS_PROTOCOL=<PROTOCOL> # either "http" or "https"
+kubectl create configmap -n keptn ingress-config --from-literal=ingress_hostname_suffix=${INGRESS_HOSTNAME} --from-literal=ingress_port=${INGRESS_PORT} --from-literal=ingress_protocol=${INGRESS_PROTOCOL} -oyaml --dry-run | kubectl replace -f -
+```
+
+After the ConfigMap has been created, restart the `helm-service`, using the following command:
+
+```
+kubectl delete pod -n keptn -lrun=helm-service
+```
+
+If you are on OpenShift, also restart the `openshift-route-service`:
+
+```
+kubectl delete pod -n keptn -lrun=openshift-route-service
 ```
 
 ## Troubleshooting
