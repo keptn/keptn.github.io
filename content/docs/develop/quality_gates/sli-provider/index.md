@@ -4,7 +4,6 @@ description: Add an SLI-Provider to Keptn for querying provider-specific SLIs.
 weight: 3
 ---
 
-
 Depending on the monitoring solution you have in place and the SLIs you have configured for your services, you need to deploy the corresponding SLI-provider. In Keptn 0.7, this can be either *Dynatrace* or *Prometheus*. 
 
 ## Dynatrace SLI-Provider
@@ -31,5 +30,7 @@ Depending on the monitoring solution you have in place and the SLIs you have con
 
 * Configure custom SLIs for the Prometheus SLI-provider as explained [here](../../monitoring/prometheus/sli-provider/#configure-custom-prometheus-slis).
 
+## Add custom SLI-Provider
 
+* To create and add your custom SLI-provider to Keptn, please follow the instructions [here](../../integrations/sli_provider).
 
