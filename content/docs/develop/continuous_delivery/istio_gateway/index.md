@@ -1,18 +1,18 @@
 ---
-title: Configure an Istio Ingress
-description: ...
+title: Expose deployed services
+description: Configure Istio and create a ConfigMap for exposing services that are deployed by Keptn. 
 weight: 1
 ---
 
-To be able to access the services you are going to deploy with Keptn, Istio has to be installed. This means that the `istio-ingressgateway` service should already be available in the `istio-system` namespace. Besides, a `public-gateway` need to be created as explained next. 
+To be able to access the services you are going to deploy with Keptn, Istio has to be installed. This means that the `istio-ingressgateway` service should already be available in the `istio-system` namespace and a `public-gateway` need to be created as explained below. 
 
 ## Install Istio 
 
-* To install Istio, please see the official [Installation Guides](https://istio.io/latest/docs/setup/install/).
+* To install Istio, please refer to the official Istio [Installation Guides](https://istio.io/latest/docs/setup/install/).
 
 ## Create Istio gateway
 
-* Create an Istio `Gateway`, as described in the [Istio Docs](https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/#configuring-ingress-using-an-istio-gateway). An example of a gateway manifest is given below:
+* To create an Istio `Gateway`, please follow the offical Istio documentation on [Configuring Ingress using an Istio Gateway](https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/#configuring-ingress-using-an-istio-gateway). An example of a gateway manifest is given below:
 
 ```yaml
 ---
@@ -33,7 +33,7 @@ servers:
   - '*'
 ```
 
-## Configure Istio ingress
+## Create ConfigMap with Ingress Information
 
 * [Determining the ingress IP and port of Istio Ingress](https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/#determining-the-ingress-ip-and-ports):
 
