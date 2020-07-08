@@ -217,11 +217,13 @@ Every release of Keptn provides binaries for the Keptn CLI. These binaries are a
 
 ## Install Keptn
 
-When installing Keptn, you can choose how to expose the Keptn API and Keptn Bridge onto an external IP address, that's outside of your cluster. For doing so, the following three Kuberentes ServiceTypes are available: 
+When installing Keptn, you can choose how to expose Keptn onto an external IP address, that is outside of your cluster. For doing so, the following three Kuberentes ServiceTypes are available: 
 
-* **ClusterIP**: Exposes the Keptn API and Keptn Bridge on a cluster-internal IP.
-* **NodePort**: Exposes the Keptn API and Keptn Bridge on each Node's IP at a static port.
-* **LoadBalancer**: Exposes the Keptn API and Keptn Bridge externally using a cloud provider's load balancer.
+* **ClusterIP**: Exposes the Keptn on a cluster-internal IP.
+* **NodePort**: Exposes the Keptn on each Node's IP at a static port.
+* **LoadBalancer**: Exposes the Keptn externally using a cloud provider's load balancer.
+
+<!-- TODO: Reduce it to one endpoint -->
 
 To select the exposing mechanism that best fits your needs, you can set the two flags when triggering the Keptn installation:
 
@@ -230,7 +232,7 @@ To select the exposing mechanism that best fits your needs, you can set the two 
 --keptn-bridge-service-type=[ClusterIP | NodePort | LoadBalancer]
 ```
 
-Depending on the selected approach for exposing the Keptn API and Keptn Bridge and especially when going with *ClusterIP*, additional steps are required for a successful Keptn installation. The next flow chart guides you through the installation process depending on your decisions.   
+Depending on the selected approach for exposing Keptn and especially when going with *ClusterIP*, additional steps are required for a successful Keptn installation. The next flow chart guides you through the installation process depending on your decisions.   
 
 {{< popup_image
 link="./assets/installation_process.png"
@@ -238,7 +240,7 @@ caption="Installation process"
 width="500px">}}
 
 * When using *NodePort* or *LoadBalancer* for exposing Keptn, just the authentication of the Keptn CLI is required: [(5) Authenticate the Keptn CLI](./#5-authenticate-the-keptn-cli)
-* When using *ClusterIP* you then need to decide wether to use
+* When using *ClusterIP*, you then need to decide wether to use:
     * Ingress: [(3) Install and Configure an Ingress Controller](./#3-install-and-configure-an-ingress-controller) or,
     * Port-forward: [(4) Use Port-forward to access API and Bridge](./#4-use-port-forward-to-access-api-and-bridge) to accesss Keptn. 
 
@@ -246,21 +248,21 @@ width="500px">}}
 
 |            | LoadBalancer | NodePort | ClusterIP |
 |------------|:------------:|:--------:|:---------:|
-| Kubernetes |              |          |     ?     |
-| Azure Kubernetes Service (AKS)                 |     x (1)    |          |           |
-| Amazon Elastic Kubernetes Service (EKS)        |     x (1)    |          |           |
-| Google Kubernetes Engine (GKE)                 |     x (1)    |          |           |
-| OpenShift 3.11                                 |       ?      |     ?    |     ?     |
-| K3s                |              |          |     x     |
-| Minikube           |              |     x    |           |
-| MicroK8s (experimental)   |              |     x    |           |
-| Minishift (experimental)  |       ?      |     ?    |     ?     |
+| Kubernetes                                |              |          |     ?     |
+| Azure Kubernetes Service (AKS)            |     x (1)    |          |           |
+| Amazon Elastic Kubernetes Service (EKS)   |     x (1)    |          |           |
+| Google Kubernetes Engine (GKE)            |     x (1)    |          |           |
+| OpenShift 3.11                            |              |          |     x     |
+| K3s                                       |              |          |     x     |
+| Minikube                                  |              |     x    |           |
+| MicroK8s (experimental)                   |              |     x    |           |
+| Minishift (experimental)                  |       ?      |     ?    |     ?     |
 
 **Remarks:**
 
 * (1) Please be aware that the Cloud Provider will charge you for a LoadBalancer. 
 
-### (2) Install Keptn on cluster
+### (2) Install Keptn on your cluster
 
 **Keptn Control Plane**
 
@@ -273,14 +275,14 @@ This installation will allow you to use Keptn for the [Quality Gates](../../qual
     ```
 
 * By default, the service type *ClusterIP* is used for API and Bridge. Hence, set the flags `keptn-api-service-type` and `keptn-bridge-service-type` if you want to use another approach of exposing Keptn.
-
+    <!-- TODO: Set flag name -->
     ```console
-    keptn install --keptn-api-service-type=[ClusterIP | NodePort | LoadBalancer] --keptn-bridge-service-type=[ClusterIP | NodePort | LoadBalancer]
+    keptn install --keptn-api-service-type=[ClusterIP | NodePort | LoadBalancer]
     ```
 
-**Keptn Control Plane + Delivery Plane**
+**Keptn Control Plane + Execution Plane**
 
-If you want to install Keptn supporting [Continuous Delivery](../../continuous_delivery/) use cases, you have the option to roll-out Keptn **with** additional components for automated delivery. 
+If you want to install Keptn supporting [Continuous Delivery](../../continuous_delivery/) use cases, you have the option to roll-out Keptn **with** components for the execution plane. 
 
 * To install Keptn on a Kubernetes cluster with CD support, the `use-case` flag must be set to `continuous-delivery`:
 
@@ -293,7 +295,7 @@ If you want to install Keptn supporting [Continuous Delivery](../../continuous_d
 <details><summary>**Istio**</summary>
 <p>
 
-* To install Istio, please refer to the [official Istio documentation](https://istio.io/latest/docs/setup/install/).
+* To install an Istio Ingress Controller, please refer to the [official Istio documentation](https://istio.io/latest/docs/setup/install/).
 
 * [Determining the ingress IP and ports](https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/#determining-the-ingress-ip-and-ports):
 
@@ -301,7 +303,7 @@ If you want to install Keptn supporting [Continuous Delivery](../../continuous_d
 kubectl -n istio-system get svc istio-ingressgateway
 ```
 
-* Create the `ingress-manifest.yaml` manifest for an ingress object in which you set IP and port. Finally, apply the manifest:
+* Create the `ingress-manifest.yaml` manifest for an ingress object in which you set set IP-ADDRESS and PORT. Finally, apply the manifest:
 
 ```yaml
 apiVersion: networking.k8s.io/v1beta1
@@ -313,12 +315,12 @@ name: api-keptn-ingress
 namespace: keptn
 spec:
 rules:
-- host: api-keptn.IP-ADDRESS.nip.io
+- host: <IP-ADDRESS>
   http:
     paths:
     - backend:
         serviceName: api-gateway-nginx
-        servicePort: PORT
+        servicePort: <PORT>
 ```
 
 ```console
@@ -328,8 +330,14 @@ kubectl apply -f ingress-manifest.yaml
 </p>
 </details>
 
-<details><summary>**NGNIX-Ingress**</summary>
+<details><summary>**NGNIX Ingress**</summary>
 <p>
+
+* To install a NGINX Ingress Controller, please refer to the [official documentation](https://kubernetes.github.io/ingress-nginx/).
+
+* From where do we get the IP/PORT?
+
+* Create the `ingress-manifest.yaml` manifest for an ingress object in which you set IP-ADDRESS and PORT. Finally, apply the manifest:
 
 ```yaml
 apiVersion: networking.k8s.io/v1beta1
@@ -339,14 +347,17 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  rules:
-    - host: api-keptn.IP-ADDRESS.nip.io
-      http:
-        paths:
-          - path: /
-            backend:
-              serviceName: api-gateway-nginx
-              servicePort: PORT
+rules:
+- host: <IP-ADDRESS>
+  http:
+    paths:
+    - backend:
+        serviceName: api-gateway-nginx
+        servicePort: <PORT>
+```
+
+```console
+kubectl apply -f ingress-manifest.yaml
 ```
 
 </p>
@@ -355,32 +366,55 @@ spec:
 <details><summary>**Traefik**</summary>
 <p>
 
+* To install a Traefik Ingress Controller, please refer to the [official documentation](https://docs.traefik.io/getting-started/install-traefik).
+
+* From where do we get the IP/PORT? <!-- TODO: How to get IP/PORT? -->
+
+* Create the `ingress-manifest.yaml` manifest for an ingress object in which you set IP-ADDRESS and PORT. Finally, apply the manifest:
+
+```yaml
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: keptn-ingress
+spec:
+rules:
+- host: <IP-ADDRESS>
+  http:
+    paths:
+    - backend:
+        serviceName: api-gateway-nginx
+        servicePort: <PORT>
+```
+
+```console
+kubectl apply -f ingress-manifest.yaml
+```
+
 </p>
 </details>
 
 ### (4) Use Port-forward to access API and Bridge
 
-* Use port-forward to access the API:
+<!-- TODO: change svc/api-gateway-nginx -->
+
+* Use port-forward to access Keptn:
 
 ```console
 kubectl -n keptn port-forward svc/api-gateway-nginx 8080:80
 ```
 
-* Use port-forward to access the Bridge:
-
-```console
-kubectl -n keptn port-forward svc/bridge 8080:80
-```
-
 ### (5) Authenticate the Keptn CLI
 
-* Get the endpoint of the Keptn API: 
+* Get the endpoint of Keptn: 
+
+<!-- TODO: How is the SVC called? -->
 
 ```console
 kubectl -n keptn get svc api-gateway-nginx
 ```
 
-* Note down IP and prt of the `api-gateway-nginx` service, and manually authenticate the Keptn CLI, e.g.,
+* Note down IP and prt of the `api-gateway-nginx` service, and manually authenticate the Keptn CLI:
 
 ```console
 keptn auth --endpoint=http://IP:PORT/ --api-token=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode) --scheme=http
@@ -389,6 +423,8 @@ keptn auth --endpoint=http://IP:PORT/ --api-token=$(kubectl get secret keptn-api
 ## Change how to expose Keptn
 
 If you would like to change the way of exposing the Keptn API or Bridge, you can do this by changing the Kubernetes service type.
+
+<!-- TODO: Reduce it to one endpoint -->
 
 * Change api service type from ClusterIP to LoadBalancer:
 ```console
