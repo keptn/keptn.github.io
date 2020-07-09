@@ -1,43 +1,100 @@
 ---
-title: Remediation Action
-description: Configure a remediation action and add it to your service.
+title: Remediation Config
+description: Configure a remediation and add it to your service.
 weight: 1
 icon: setup
 ---
 
-The *Remediation Action* configuration defines micro-operations to execute in response to a problem. These micro-operations are interpreted by Keptn to trigger the proper remediation and to provide self-healing for an application without modifying code.
+The remediation config describes a remediation workflow in a declarative manner. Hence, it only defines what needs to be done and leaves all the details to other components. 
 
-## Remediation Action
+## Configure Remediation
 
-* A remediation maps to a problem.
-* A remediation declares an action to executed as a response to the problem. 
+Below is an example of a declarative remediation config: 
 
-**Example of a remediation action configuration:**
+**Example of a remediation configuration:**
 
 ```yaml
-remediations:
-- name: "Response time degradation"
-  actions:
-  - action: scaling
-    value: +1
-- name: "Failure rate increase"
-  actions:
-  - action: featuretoggle
-    value: EnablePromotion:off
+---
+version: 0.2.0
+kind: Remediation
+metadata:
+  name: remediation-service-abc
+spec:
+  remediations:  
+  - problemType: Response time degradation
+    actionsOnOpen:
+    - name: Scaling ReplicaSet by 1
+      description: Scaling the ReplicaSet of a Kubernetes Deployment by 1
+      action: scaling
+      values: 
+        increment: +1
 ```
 
-A remediation action is configured based on two properties:
+A remediation is configured based on two properties:
 
-* The **name** refers to the title of a problem. 
-* The **actions** takes a list of actions (currently only one is supported). An **action** can be set to `scaling` or `featuretoggle`. 
-  * *scalling*: scales the Kubernetes pod of the deployment based on the specified value. 
-  * *featuretoggle*: toggles a feature flag specified by the value and controlled by the Unleash framework.
+* **problemType**: Maps a problem to a remediation. 
+* **actionsOnOpen**: Declares a list of actions triggered in course of the remediation.
 
-## Add a Remediation Action to a Service
+### Problem type
 
-**Important:** In the following command, the value of the `resourceUri` must be set to `remediation.yaml`.
+The problem type maps a problem to a remediation by a matching problem title. 
 
-* To add an remediation action to a service, use the [keptn add-resource](../../reference/cli/commands/keptn_add-resource) command:
+-	It is possible to declare multiple problem types for a remediation. 
+-	For the case of triggering a remediation based on an unknown problem, the problem type `default` is supported. 
+
+The below example shows a remediation configured for the problem type *Response time degradation* and *Failure rate increase* as well as any unknown problem.
+
+```yaml
+version: 0.2.0
+kind: Remediation
+metadata:
+  name: remedation-service-abc
+spec:
+  remediations:  
+  - problemType: Response time degradation
+    actionsOnOpen:
+  - problemType: Failure rate increase
+    actionsOnOpen:
+  - problemType: default
+    actionsOnOpen:
+```
+
+### Actions on open
+
+* An **action** has a name used for display purposes.
+* The **description** provides more details about the action.
+* The **action** property specifies a unique name required by the action-provider (Keptn-service) that executes the action.
+* The **value** property allows adding an arbitrary list of values for configuring the action.
+
+If multiple actions are declared, Keptn sends out events in sequential order. Given the below example, the event for triggering `scaling` is sent out before the event for `featuretoggle` is fired. 
+
+```yaml
+---
+version: 0.2.0
+kind: Remediation
+metadata:
+  name: remediation-service-abc
+spec:
+  remediations:  
+  - problemType: Response time degradation
+    actionsOnOpen:
+    - name: Scaling ReplicaSet by 1
+      description: Scaling the ReplicaSet of a Kubernetes Deployment by 1
+      action: scaling
+      value: 
+        increment: +1
+    - name: Toogle feature flag
+      action: featuretoggle
+      description: Toggle feature flag EnablePromotion from ON to OFF.
+      value: 
+        EnablePromotion: off
+```
+
+## Add Remediation Config to a Service
+
+**Important:** In the following command, the value of `resourceUri` must be set to `remediation.yaml`.
+
+* To add an remediation config to a service, use the [keptn add-resource](../../reference/cli/commands/keptn_add-resource) command:
 
     ```console
     keptn add-resource --project=sockshop --stage=production --service=carts --resource=remediation.yaml --resourceUri=remediation.yaml
