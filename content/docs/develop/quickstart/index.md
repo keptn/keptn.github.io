@@ -117,12 +117,12 @@ Please make sure you have `kubectl` installed (see [kubernetes.io/docs/tasks/too
     keptn version
     ```
 
-#### 3. Install Keptn and auhtenticate Keptn CLI
+#### 3. Install Keptn and authenticate Keptn CLI
 
 * By executing the [keptn install](../../reference/cli/commands/keptn_install) command as shown next, Keptn will be installed on your Kuberentes cluster supporting all continuous delivery use cases (including quality gates and automated operations):
 
     ```console
-    keptn install --use-case=continuous-delivery
+    keptn install --platform=kubernetes --use-case=continuous-delivery
     ``` 
 
 * After a successful installation, you need to expose Keptn. The official [install Keptn CLI](../operate/install/#install-keptn) guide provides different ways of exposing your Keptn. In this quick start, the port-forwarding mechanism from Kubernetes is applied: 
@@ -199,10 +199,9 @@ Review the documentaiton for a full reference on all Keptn cabilities and compon
 - [Automated Operations](../automated_operations)
 - [Custom Integrations](../integrations)
 
-### 6. You need help?
+### 6. Do you need help?
 
-Join [our slack channel](https://join.slack.com/t/keptn/shared_invite/enQtNTUxMTQ1MzgzMzUxLWMzNmM1NDc4MmE0MmQ0MDgwYzMzMDc4NjM5ODk0ZmFjNTE2YzlkMGE4NGU5MWUxODY1NTBjNjNmNmI1NWQ1NGY)
- for any questions that may arise.
+Join [our slack channel](https://join.slack.com/t/keptn/shared_invite/enQtNTUxMTQ1MzgzMzUxLWMzNmM1NDc4MmE0MmQ0MDgwYzMzMDc4NjM5ODk0ZmFjNTE2YzlkMGE4NGU5MWUxODY1NTBjNjNmNmI1NWQ1NGY) for any questions that may arise.
 
 ### 7. Uninstall Keptn
 
