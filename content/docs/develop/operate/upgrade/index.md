@@ -7,17 +7,82 @@ keywords: upgrade
 
 ## Upgrade from 0.6.2 to 0.7
 
-* To download and install the Keptn CLI for version 0.7.0, please refer to the [Install Keptn CLI section](../setup-keptn/#install-keptn-cli).
+1. To download and install the Keptn CLI for version 0.7.0, please refer to the [Install Keptn CLI section](../setup-keptn/#install-keptn-cli).
 
-* To upgrade your Keptn installation from 0.6.2 to 0.7.0, you can deploy a *Kubernetes Job* that will take care of updating all components to the 0.7.0 release. Please [verify that you are connected to the correct Kubernetes cluster](../../reference/troubleshooting/#verify-kubernetes-context-with-keptn-installation)
-before deploying the upgrading job with the next command:
+1. To upgrade your Keptn installation from 0.6.2 to 0.7.0, a *Kubernetes Job* is provided that upgrades all components to the 0.7.0 release. 
+
+    * Please [verify that you are connected to the correct Kubernetes cluster](../../reference/troubleshooting/#verify-kubernetes-context-with-keptn-installation)
+before deploying the upgrading job.
+
+    * Keptn 0.7 uses Helm 3 while previous Keptn releases rely on Helm 2. This means that you have to upgrade the Helm releases of your Keptn-managed services. Otherwise, a `keptn send new-artifact` does not work anymore. For upgrading Helm releases, two options are availble as outlined below. Please take into account that the end-of-life period of Helm 2 begins on [August 13th, 2020](https://helm.sh/blog/covid-19-extending-helm-v2-bug-fixes/).
+
+### Job without Helm 3 Upgrade
+
+:mag: **Info:** By using this upgrader job, Helm releases are **not** converted to Helm 3.0 and still on version Helm 2. After executing the upgrader job, you need to manually convert the Helm releases on your Kubernetes cluster as explained below.
 
 ```console
 kubectl delete job upgrader -n default
 kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.7.0/upgrader/upgrade-062-070/upgrade-job.yaml
 ```
 
-* To check the status of the update job, please execute:
+**Manual converting Helm release from Helm 2 to 3:**
+
+The following guide to manually convert Helm releases is for Linux and MacOS. To perform these steps on a Windows machine, you can spin up a docker container that has already `kubectl`, `helm v2.14.3`, and `helm v3.1.2` installed. 
+
+* Install Helm v2.14.3 CLI (*Note*: this CLI version is called to `helm`):
+
+```console
+wget https://get.helm.sh/helm-v2.14.3-linux-amd64.tar.gz
+tar -zxvf helm-v2.14.3-linux-amd64.tar.gz
+mv linux-amd64/helm /bin/helm
+rm -rf linux-amd64
+```
+
+* Install Helm v3.1.2 CLI and `2to3` plugin. (*Note*: this CLI version is renamed to `helm3`):
+
+```console
+wget https://get.helm.sh/helm-v3.1.2-linux-amd64.tar.gz
+tar -zxvf helm-v3.1.2-linux-amd64.tar.gz
+mv linux-amd64/helm /bin/helm3
+rm -rf linux-amd64
+
+helm3 plugin install https://github.com/helm/helm-2to3
+```
+
+* Run Helm init command (with Helm 2 CLI) and retrieve Helm releases from your cluster: 
+
+```console
+helm init --client-only
+helm list -aq
+```
+
+* Manually upgrade release by first doing a dry-run and then converting the release:
+
+```console
+helm3 2to3 convert RELEASE_NAME --dry-run
+helm3 2to3 convert RELEASE_NAME
+```
+
+* *Optional:* Cleanup Helm and remove Tiller: 
+
+```console
+helm3 2to3 cleanup --tiller-cleanup
+```
+
+### Job with Helm 3 Upgrade
+
+This option is recommended when you have a Kubernetes cluster with just Keptn installed. But please consider the warning: 
+
+:warning: **Warning:** By using this upgrader job, **all** Helm releases are upgraded from Helm 2 to 3 and Tiller will be removed. This also includes Helm releases that are not managed by Keptn. If you have Helm releases on your cluster that are on version 2 and you do not want to upgrade, don't use this upgrader.
+
+```console
+kubectl delete job upgrader -n default
+kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.7.0/upgrader/upgrade-062-070/upgrade-job-helm3.yaml
+```
+
+### Verify Upgrader Job
+
+* To check the status of the update job, execute:
 
 ```console
 kubectl get job -n default
@@ -29,7 +94,7 @@ upgrader            1/1           17s        20h
 
 When the job is completed, your Keptn version has been updated to 0.7.0.
 
-<details><summary>*Verifying that the upgrade worked*</summary>
+<details><summary>*Verifying result*</summary>
 
 To verify that the upgrade process worked, please check the images and their tags using `kubectl` as described below. 
 
@@ -132,11 +197,13 @@ mongodb-datastore-distributor   1/1     1            1           4h40m   distrib
 
 </details>
 
-### Enabling manual approvals for existing projects
+### Configure delivery assistant for existing projects
 
-To enable the manual-approval feature described in the [Continuos delivery section](../../continuous_delivery/multi_stage/#approval-strategy), you can update the `shipyard.yaml` file of the project as follows:
+To add manual approvals steps to the delivery workflow as described in the [Continuos delivery section](../../continuous_delivery/multi_stage/#approval-strategy), you can update the `shipyard.yaml` file of the project as follows.
 
-For each stage you would like to enable the approval feature, you can add the `approval_strategy` property to the stage definition. So for example, when your existing `shipyard.yaml` is:
+For each stage you would like to enable the approval feature, you can add the `approval_strategy` property to the stage definition. 
+
+* Assuming your existing `shipyard.yaml` is:
 
 ```yaml
 stages:
@@ -148,7 +215,7 @@ stages:
     deployment_strategy: "blue_green_service"
 ```
 
-, and you would like to enable the approval feature for the `production` stage, you can add the following lines to the `shipyard.yaml`
+* You can add the following lines to the `shipyard.yaml`, if you would like to enable the approval feature for the `production` stage:
 
 ```yaml
 stages:
@@ -163,7 +230,7 @@ stages:
     deployment_strategy: "blue_green_service"
 ```
 
-**NOTE**: You can only enable the approval feature for existing stages. It is not possible to rename, add or remove stages.
+**Note**: You can only enable the approval feature for existing stages. It is **not possible** to rename, add, or remove stages.
 
 After finishing the changes within the `shipyard.yaml`, you can update it using the `keptn add-resource` command:
 
