@@ -22,8 +22,6 @@ In order to solve this problem, please try to restart the `api-gateway-nginx` po
 kubectl delete pods -n keptn --selector=run=api-gateway-nginx
 ```
 
-
-
 ## Verifying a Keptn installation
 
 Especially for troubleshooting purposes, it is necessary to verify that all parts of the Keptn installation are running as intended (e.g., no crashed pods, all distributors running).
@@ -303,3 +301,52 @@ Adding resource remediation.yaml to service carts in stage production in project
 Resource has been uploaded.
 ```
 
+
+## Keptn on Minikube causes a MongoDB issue after a reboot
+
+When rebooting the machine Minikube is installed on, the MongoDB pod in the `keptn-datastore` namespace runs in a `CrashLoopBackoff`. 
+
+<details><summary>Expand instructions</summary>
+<p>
+
+**Note:** Minikube is a K8s distribution for development environments. Please go with K3s for a more stable setup.
+
+**Investigation:**
+
+* To verify the problem, investigate the logs of the mongodb pod:
+
+```console
+kubectl logs -n keptn-datastore mongodb-578b4d8bcd-dhgb8
+```
+
+```console
+=> sourcing /usr/share/container-scripts/mongodb/pre-init//10-check-env-vars.sh ...
+=> sourcing /usr/share/container-scripts/mongodb/pre-init//20-setup-wiredtiger-cache.sh ...
+=> sourcing /usr/share/container-scripts/mongodb/pre-init//30-set-config-file.sh ...
+=> sourcing /usr/share/container-scripts/mongodb/pre-init//35-setup-default-datadir.sh ...
+ERROR: Couldn't write into /var/lib/mongodb/data
+CAUSE: current user doesn't have permissions for writing to /var/lib/mongodb/data directory
+DETAILS: current user id = 184, user groups: 184 0
+stat: failed to get security context of '/var/lib/mongodb/data': No data available
+DETAILS: directory permissions: drwxr-xr-x owned by 0:0, SELinux: ?
+```
+
+**Reason:** 
+
+The problem is a permission issue on the `/var/lib/mongodb/data` folder. See [kubernetes/minikube#1184](https://github.com/kubernetes/minikube/issues/1184) and Minikube 'none' driver: https://minikube.sigs.k8s.io/docs/reference/drivers/none/ which lay out complexity for persistence.
+
+**Solution:** 
+
+A workaround for this issue is to add an `initContainer` to the mongodb deployment as shown below. This container will be executed before the actual mongodb container and sets the right permissions on the `/var/lib/mongodb/data` folder. 
+
+```yaml
+initContainers:
+- name: volume-mount-hack
+    image: busybox
+    command: ["sh", "-c", "chown -R 184:184 /var/lib/mongodb/data"]
+    volumeMounts:
+    - name: mongodata
+      mountPath: /var/lib/mongodb/data
+```
+
+</p></details>
