@@ -27,7 +27,10 @@ kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.7.0/upgrader/up
 
 **Manual converting Helm release from Helm 2 to 3:**
 
+The following guide to manually convert Helm releases is for Linux and MacOS. To perform these steps on a Windows machine, you can spin up a docker container that has already `kubectl`, `helm v2.14.3`, and `helm v3.1.2` installed. 
+
 * Install Helm v2.14.3 CLI (*Note*: this CLI version is called to `helm`):
+
 ```console
 wget https://get.helm.sh/helm-v2.14.3-linux-amd64.tar.gz
 tar -zxvf helm-v2.14.3-linux-amd64.tar.gz
