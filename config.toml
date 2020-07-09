@@ -3,6 +3,7 @@ languageCode = "en-us"
 title = "keptn | Opinionated framework for event-driven automated continuous operations"
 theme = "hugo-serif-theme"
 relativeUrls = true
+enableEmoji = true
 
 ignoreFiles = [
 "^(.*/docs/0.4.0/*)$", 
