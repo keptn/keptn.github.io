@@ -58,8 +58,7 @@ To create a Kubernetes cluster, select one of the following options:
 <details><summary>Google Kubernetes Engine (GKE)</summary>
 <p>
 
-Run your Keptn installation for free on GKE!
-If you [sign up for a Google Cloud account](https://console.cloud.google.com/getting-started), Google gives you an initial $300 credit. For deploying Keptn you can apply for an additional $200 credit which you can use towards that GKE cluster needed to run Keptn.<br><br>
+Run your Keptn installation for free on GKE! If you [sign up for a Google Cloud account](https://console.cloud.google.com/getting-started), Google gives you an initial $300 credit. For deploying Keptn you can apply for an additional $200 credit which you can use towards that GKE cluster needed to run Keptn.<br><br>
 <a class="button button-primary" href="https://bit.ly/keptngkecredit" target="_blank">Apply for your credit here</a>
 
 1. Install local tools
@@ -74,8 +73,8 @@ If you [sign up for a Google Cloud account](https://console.cloud.google.com/get
 
     ```console
     // set environment variables
-    PROJECT=nameofgcloudproject
-    CLUSTER_NAME=nameofcluster
+    PROJECT=<NAME_OF_CLOUD_PROJECT>
+    CLUSTER_NAME=<NAME_OF_CLUSTER>
     ZONE=us-central1-a
     REGION=us-central1
     GKE_VERSION="1.15"
@@ -150,7 +149,7 @@ If you [sign up for a Google Cloud account](https://console.cloud.google.com/get
 <details><summary>K3s</summary>
 <p>
 
-Please refer to the [official homepage of K3s](https://k3s.io) for detailed installation instructions. Here a short guide on how we run Keptn on K3s is provided.
+Please refer to the [official homepage of K3s](https://k3s.io) for detailed installation instructions. Here a short guide on how to run Keptn on K3s is provided.
  
 1. Download, install [K3s](https://k3s.io/) (tested with [versions 1.16 to 1.18](../k8s_support)) and run K3s using the following command:
    ```console

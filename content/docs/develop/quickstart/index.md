@@ -7,20 +7,18 @@ weight: 1
 hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
 ---
 
-### 1. Setup Kubernetes cluster
+### 1. Create Kubernetes cluster
 
 Select one of the following options:
 
 <details><summary>Google Kubernetes Engine (GKE)</summary>
 <p>
 
-Run your Keptn installation for free on GKE!
-If you [sign up for a Google Cloud account](https://console.cloud.google.com/getting-started), Google gives you an initial $300 credit. For deploying Keptn you can apply for an additional $200 credit which you can use towards that GKE cluster needed to run Keptn.<br><br>
+Run your Keptn installation for free on GKE! If you [sign up for a Google Cloud account](https://console.cloud.google.com/getting-started), Google gives you an initial $300 credit. For deploying Keptn you can apply for an additional $200 credit, which you can use towards that GKE cluster needed to run Keptn.<br><br>
 <a class="button button-primary" href="https://bit.ly/keptngkecredit" target="_blank">Apply for your credit here</a>
 
 1. Install local tools
   - [gcloud](https://cloud.google.com/sdk/gcloud/)
-  - [python 2.7](https://www.python.org/downloads/release/python-2716/) (required for Ubuntu 19.04)
 
 2. Create GKE cluster
   - [Master version:](../k8s-support/#supported-version): `1.15.x` (tested version: `1.15.9-gke.22`)
@@ -30,8 +28,8 @@ If you [sign up for a Google Cloud account](https://console.cloud.google.com/get
 
     ```console
     // set environment variables
-    PROJECT=nameofgcloudproject
-    CLUSTER_NAME=nameofcluster
+    PROJECT=<NAME_OF_CLOUD_PROJECT>
+    CLUSTER_NAME=<NAME_OF_CLUSTER>
     ZONE=us-central1-a
     REGION=us-central1
     GKE_VERSION="1.15"
@@ -47,8 +45,7 @@ If you [sign up for a Google Cloud account](https://console.cloud.google.com/get
 <details><summary>K3s</summary>
 <p>
 
-**Note**: Please refer to the [official homepage of K3s](https://k3s.io) for detailed installation instructions. Within 
- this page we only provide a very short guide on how we run Keptn on K3s.
+Please refer to the [official homepage of K3s](https://k3s.io) for detailed installation instructions. Here a short guide on how to run Keptn on K3s is provided.
  
 1. Download, install [K3s](https://k3s.io/) (tested with [versions 1.16 to 1.18](../operate/k8s_support)) and run K3s using the following command:
    ```console
@@ -69,68 +66,84 @@ If you [sign up for a Google Cloud account](https://console.cloud.google.com/get
 </p>
 </details>
 
-<details><summary>Other options</summary>
+<details><summary>Other K8s options</summary>
 <p>
-We also support installation on the following platforms:
+We also support installation on:
 
 * AWS Elastic Kubernetes Service (EKS)
 * Azure Kubernetes Service (AKS)
 * Minikube
 * OpenShift 3.11
-* Pivotal Container Service
 
-For details on these, please visit our [detailed installation guide](../operate/install/).
+For details on the specific providers, please visit our [detailed installation guide](../operate/install/#create-kubernetes-cluster).
 
 </p>
 </details>
 
 ### 2. Install Keptn
 
-The following instructions will install the **latest stable Keptn CLI (0.6.2)** in a quick way. Please also look 
-at our [detailed installation guide for Keptn](../operate/install/) if you need more information.
+The following instructions will install the **latest stable Keptn CLI (0.7.0)** in a quick way. 
 
-#### 2.1 Install the Keptn CLI
+If you need more information, please look at the [install Keptn CLI](../operate/install/#install-keptn-cli) guide.
+
+#### 2.1 Install Keptn CLI
 The Keptn CLI is the one-stop-shop for all operations related to Keptn.
 
 Please make sure you have `kubectl` installed (see [kubernetes.io/docs/tasks/tools/install-kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)).
 
 ##### 2.1.1 Automatic install of the Keptn CLI (Linux and Mac)
+
 1. This will download the *latest stable Keptn version* from [GitHub](https://github.com/keptn/keptn/releases), unpack it and move it to `/usr/local/bin/keptn`.
-```console
-curl -sL https://get.keptn.sh | sudo -E bash
-```
+
+    ```console
+    curl -sL https://get.keptn.sh | sudo -E bash
+    ```
 
 2. Verify that the installation has worked and that the version is correct by running:
-```console
-keptn version
-```
+
+    ```console
+    keptn version
+    ```
 
 ##### 2.1.2 Manual install of the Keptn CLI
-1. Download a release for your platform from the [release page](https://github.com/keptn/keptn/releases)
+
+1. Download a release for your platform from the [GitHub](https://github.com/keptn/keptn/releases)
 
 1. Unpack the binary and move it to a directory of your choice (e.g., `/usr/local/bin/`)
 
 1. Verify that the installation has worked and that the version is correct by running:
-```console
-keptn version
-```
 
-#### 3. Run the Keptn installer
-Depending on the platform, Keptn install will prompt you different information needed to perform the installation.
+    ```console
+    keptn version
+    ```
 
-```console
-keptn install --platform=[aks|eks|gke|openshift|pks|kubernetes] --use-case=continuous-delivery
-```
-**Note:** For a Minikube setup, use option `--platform=kubernetes`.
+#### 3. Install Keptn and auhtenticate Keptn CLI
 
-This will install the full version of Keptn supporting all continuous-delivery use cases. 
-After a successful installation, you can verify that Keptn is working by executing
+* By executing the [keptn install](../../reference/cli/commands/keptn_install) command as shown next, Keptn will be installed on your Kuberentes cluster supporting all continuous delivery use cases (including quality gates and automated operations):
 
-```console
-keptn status
-```
+    ```console
+    keptn install --use-case=continuous-delivery
+    ``` 
 
-Keptn is now ready to be used.
+* After a successful installation, you need to expose Keptn. The official [install Keptn CLI](../operate/install/#install-keptn) guide provides different ways of exposing your Keptn. In this quick start, the port-forwarding mechanism from Kubernetes is applied: 
+
+    ```console
+    kubectl -n keptn port-forward service/api-gateway-nginx 8080:80
+    ```
+
+* When Keptn is exposed, the CLI can get authenticated: 
+
+    ```console
+    keptn auth --endpoint=http:/localhost:8080/api --api-token=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode) --scheme=http
+    ```
+
+* Finally, verify that Keptn is working by executing:
+
+    ```console
+    keptn status
+    ```
+
+:rocket: Keptn is now ready to be used.
 
 ### 4. Explore tutorials to learn more about the Keptn use cases
 
