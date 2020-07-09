@@ -11,10 +11,7 @@ Keptn is an event-based control plane for continuous delivery and automated oper
 
 ## Prerequisites
 
-During a Keptn installation, the following components are installed on the Kubernetes cluster:
-
-- [Istio](https://istio.io)
-- [NATS](https://nats.io/)  
+During a Keptn installation, [NATS](https://nats.io/) is installed on the Kubernetes cluster.
 
 ## Keptn CLI
 The Keptn CLI needs to be installed on the local machine and is used to send commands to Keptn by interacting with the API of Keptn. To communicate with Keptn you need to know a shared secret that is generated during the installation and verified by the *api* component.

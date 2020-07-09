@@ -1,6 +1,6 @@
 ---
 title: Monitoring
-description: Setup monitoring used as data source for the evaluation of the quality gates.
+description: Setup monitoring to get data for a quality gate evaluation and to receive problem notifications.
 weight: 15
 icon: setup
 ---
