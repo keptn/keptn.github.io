@@ -12,7 +12,7 @@ uninstalling Keptn. Furthermore, the CLI allows creating projects, onboarding se
 ## Prerequisites
 - All prerequisites from the [setup](../../installation/setup-keptn#prerequisites) are needed.
 
-## Automatic install of the Keptn CLI
+## Automatic install of Keptn CLI
 
 This works for Linux and Mac only.
 
@@ -26,7 +26,7 @@ curl -sL https://get.keptn.sh | sudo -E bash
 keptn version
 ```
 
-## Download and manual install of the Keptn CLI
+## Download and manual install of Keptn CLI
 Every release of Keptn provides binaries for the Keptn CLI. These binaries are available for Linux, macOS, and Windows.
 
 1. Download the [version matching your operating system](https://github.com/keptn/keptn/releases/)
@@ -41,7 +41,7 @@ Every release of Keptn provides binaries for the Keptn CLI. These binaries are a
 keptn version
 ```
 
-## Start using the Keptn CLI
+## Start using Keptn CLI
 
 In the following, the commands provided by the Keptn CLI are described. To list all available commands just execute:
     
@@ -51,7 +51,7 @@ keptn --help
 
 All of these commands also support the help flag (`--help`), which describes details of the respective command (e.g., usage of the command or description of flags).
 
-### Authenticate Keptn CLI
+## Authenticate Keptn CLI
 
 To authenticate the Keptn CLI against the Keptn cluster, the exposed Keptn endpoint and API token are required. 
 
