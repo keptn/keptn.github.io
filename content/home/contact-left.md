@@ -1,1 +1,1 @@
-Whether you are an end user with a strong opinion or you want to participate in the project, we’d love to hear from you! You can find more information about how to reach us in the [Keptn community repo](https://github.com/keptn/community)
+Whether you are an end user with a strong opinion or you want to participate in the project, we’d love to hear from you! You can find more information about how to reach us in the [Keptn community repo](https://github.com/keptn/community).
