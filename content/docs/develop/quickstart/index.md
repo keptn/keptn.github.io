@@ -122,7 +122,7 @@ Please make sure you have `kubectl` installed (see [kubernetes.io/docs/tasks/too
 * By executing the [keptn install](../../reference/cli/commands/keptn_install) command as shown next, Keptn will be installed on your Kuberentes cluster supporting all continuous delivery use cases (including quality gates and automated operations):
 
     ```console
-    keptn install --platform=kubernetes --use-case=continuous-delivery
+    keptn install --use-case=continuous-delivery
     ``` 
 
 * After a successful installation, you need to expose Keptn. The official [install Keptn CLI](../operate/install/#install-keptn) guide provides different ways of exposing your Keptn. In this quick start, the port-forwarding mechanism from Kubernetes is applied: 
@@ -134,7 +134,7 @@ Please make sure you have `kubectl` installed (see [kubernetes.io/docs/tasks/too
 * When Keptn is exposed, the CLI can get authenticated: 
 
     ```console
-    keptn auth --endpoint=http:/localhost:8080/api --api-token=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode) --scheme=http
+    keptn auth --endpoint=http:/localhost:8080 --api-token=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
     ```
 
 * Finally, verify that Keptn is working by executing:

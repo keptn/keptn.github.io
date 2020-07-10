@@ -270,16 +270,16 @@ Brief explanation of the flow chart for the installation process:
 
 This installation allows you to use Keptn for the [Quality Gates](../../quality_gates/) and [Automated Operations](../../automated_operations/) use cases.
 
-* To install Keptn on a Kubernetes cluster, execute the [keptn install](../../reference/cli/commands/keptn_install) command. If you want to roll-out Keptn on OpenShift, set the flag `--platform=openshift`
+* To install Keptn on a Kubernetes cluster, execute the [keptn install](../../reference/cli/commands/keptn_install) command. If you want to roll-out Keptn on OpenShift, set the flag `--platform=openshift`; by default, this flag is set to `--platform=kubernetes`
 
   ```console
-keptn install --platform=kubernetes
+keptn install
   ```
 
 * By default, the service type *ClusterIP* is used for exposing Keptn. Hence, set the flag `xyz` and `keptn-bridge-service-type` if you want to use another option.
 
   ```console
-keptn install --platform=kubernetes --keptn-api-service-type=[ClusterIP | NodePort | LoadBalancer]
+keptn install --keptn-api-service-type=[ClusterIP | NodePort | LoadBalancer]
   ```
 
 **Keptn Control Plane + Execution Plane (for Continous Delivery)**
@@ -289,7 +289,7 @@ If you want to install Keptn with [Continuous Delivery](../../continuous_deliver
 * To install Keptn on a Kubernetes cluster with CD support, the `use-case` flag must be set to `continuous-delivery`:
 
   ```console
-keptn install --platform=kubernetes --use-case=continuous-delivery
+keptn install --use-case=continuous-delivery
   ```
 
 ### (3) Install ingress controller and apply an ingress object
@@ -409,23 +409,125 @@ kubectl -n keptn port-forward service/api-gateway-nginx 8080:80
 
 ### (5) Authenticate Keptn CLI
 
-* Get them Keptn endpoint:
+To authenticate the Keptn CLI against the Keptn cluster, the exposed Keptn endpoint and API token are required. 
+
+* Get the Keptn endpoint from the `api-gateway-nginx`. (If you are using port-forward to expose Keptn, your endpoint is `localhost` and the `port` you forwarded Keptn to, e.g.: `http://localhost:8080`) 
 
   ```console
 kubectl -n keptn get service api-gateway-nginx
   ```
 
-* Note down IP and PORT of the `api-gateway-nginx` service and authenticate the Keptn CLI:
-
   ```console
-keptn auth --endpoint=http://<IP>:<PORT>/api --api-token=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode) --scheme=http
+NAME                TYPE        CLUSTER-IP    EXTERNAL-IP                  PORT(S)   AGE
+api-gateway-nginx   ClusterIP   10.107.0.20   <ENDPOINT_OF_API_GATEWAY>    80/TCP    44m
   ```
+
+<details><summary>Retrive API Token and Authenticate Keptn CLI on **Linux / MacOS**</summary>
+<p>
+
+* Set the environment variable `KEPTN_ENDPOINT`:
+
+```console
+KEPTN_ENDPOINT=<ENDPOINT_OF_API_GATEWAY>
+```
+
+* Set the environment variable `KEPTN_API_TOKEN`:
+
+```console
+KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
+```
+
+* To authenticate the CLI against the Keptn cluster, use the [keptn auth](../../reference/cli/commands/keptn_auth) command:
+
+```console
+keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN
+```
+
+**Note**: If you receive a warning `Using a file-based storage for the key because the password-store seems to be not set up.` this is because a password store could not be found in your environment. In this case, the credentials are stored in `~/.keptn/.password-store` in your home directory.
+</p>
+</details>
+
+<details><summary>Retrive API Token and Authenticate Keptn CLI on **Windows**</summary>
+<p>
+
+Please expand the corresponding section matching your CLI tool:
+
+<details><summary>PowerShell</summary>
+<p>
+
+For the Windows PowerShell, a small script is provided that installs the `PSYaml` module and sets the environment variables.
+
+* Set the environment variable `KEPTN_ENDPOINT`:
+
+```console
+$Env:KEPTN_ENDPOINT = '<ENDPOINT_OF_API_GATEWAY>'
+```
+
+* Copy the following snippet and paste it in the PowerShell. The snippet retrieves the API token and sets the environment variable `KEPTN_API_TOKEN`:
+
+```
+$tokenEncoded = $(kubectl get secret keptn-api-token -n keptn -ojsonpath='{.data.keptn-api-token}')
+$Env:KEPTN_API_TOKEN = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($tokenEncoded))
+```
+
+* To authenticate the CLI against the Keptn cluster, use the [keptn auth](../../reference/cli/commands/keptn_auth) command:
+
+```
+keptn auth --endpoint=$Env:KEPTN_ENDPOINT --api-token=$Env:KEPTN_API_TOKEN
+```
+
+</p>
+</details>
+
+<details><summary>Command Line</summary>
+<p>
+
+In the Windows Command Line, a couple of steps are necessary.
+
+* Set the environment variable `KEPTN_ENDPOINT`:
+
+```console
+set KEPTN_ENDPOINT=<ENDPOINT_OF_API_GATEWAY>
+```
+
+* Get the Keptn API Token encoded in base64:
+
+```console
+kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token}
+```
+
+```console
+abcdefghijkladfaea
+```
+
+* Take the encoded API token - it is the value from the key `keptn-api-token` (in this example, it is `abcdefghijkladfaea`) and save it in a text file, e.g., `keptn-api-token-base64.txt`
+
+* Decode the file:
+
+```
+certutil -decode keptn-api-token-base64.txt keptn-api-token.txt
+```
+
+* Open the newly created file `keptn-api-token.txt`, copy the value and paste it into the next command:
+
+```
+set KEPTN_API_TOKEN=keptn-api-token
+```
+
+* To authenticate the CLI against the Keptn cluster, use the [keptn auth](../../reference/cli/commands/keptn_auth) command:
+
+```
+keptn.exe auth --endpoint=$Env:KEPTN_ENDPOINT --api-token=$Env:KEPTN_API_TOKEN
+```
+
+</p>
+</details>
+</p>
+</details>
 
 ## Change how to expose Keptn
 
 If you would like to change the way of exposing Keptn, you can do this by changing the Kubernetes service type.
-
-<!-- TODO: Reduce it to one endpoint -->
 
 * Change api-gateway-nginx service type from ClusterIP to LoadBalancer:
 
@@ -433,7 +535,7 @@ If you would like to change the way of exposing Keptn, you can do this by changi
 kubectl patch service api-gateway-nginx -n keptn -p '{"spec": {"type": "LoadBalancer"}}'
   ```
 
-* Change api service type from ClusterIP to NodePort:
+* Change api-gateway-nginx service type from ClusterIP to NodePort:
 
   ```console
 kubectl patch service api-gateway-nginx -n keptn -p '{"spec": {"type": "NodePort"}}'
