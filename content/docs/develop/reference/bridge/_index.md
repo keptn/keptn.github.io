@@ -7,50 +7,52 @@ keywords: [bridge]
 
 ## Views in Keptn Bridge
 
-The Keptn Bridge provides an easy way to browse all events that are sent within Keptn. When you access the Keptn Bridge, all projects will be shown on the start screen. When clicking on a project, the stages of this project and all onboarded services are shown on the next view.
+The Keptn Bridge provides an easy way to browse all events that are sent within Keptn. When you access the Keptn Bridge, all projects will be shown on the start screen. When clicking on a project, the stages of this project, and all onboarded services are shown on the next view. An overview of those views is given below. 
 
 ### Project view
 
 * When you enter the Keptn Bridge and have not created a project yet, you will be guided to the instructions on how to setup a project and onboard a sample app. 
 
-{{< popup_image
-  link="./assets/bridge_empty.png"
-  caption="Keptn Bridge empty project view">}}
+    {{< popup_image
+      link="./assets/bridge_empty.png"
+      caption="Keptn Bridge empty project view">}}
 
-* If you have created projects, you will see it including their stages.
+* If you have created projects, you will see the project listed including their stages.
 
-{{< popup_image
-  link="./assets/bridge_projectoverview.png"
-  caption="Keptn Bridge project view">}}  
+    {{< popup_image
+      link="./assets/bridge_projectoverview.png"
+      caption="Keptn Bridge project view">}}  
 
-### Services
+### Services view
 
-* When you select a project, you see the deployed services. 
+* When you select a project, you see the services that are onboarded to this project.
 
-  {{< popup_image
-  link="./assets/bridge_services.png"
-  caption="Keptn Bridge services view with event stream">}}
+* The event stream that belongs to a service is shown when you expand the service. The event stream on the left side (i.e., root events like new deployment, or problem event) is only the entry point. By clicking on an event, you will see more information on the executed steps in the same Keptn context on the right side.
 
-The event stream that belongs to this service is shown when you expand the service. The event stream on the left side (i.e., root events like new deployment, or problem event) is only the entry point. By clicking on an event, you will see more information on the executed steps in the same Keptn context on the right side.
+* As shown in the screenshot below, the entry point around 16:53 has been selected and all events belonging to this entry point are displayed on the right side.
 
-As can be seen in the screenshot above, the entry point around 4:53 pm has been selected and all events belonging to this entry point are displayed on the right side.
+    {{< popup_image
+    link="./assets/bridge_services.png"
+    caption="Keptn Bridge services view with event stream">}}
 
-### Environment
+### Environment view
 
-* Next to the services screen, the Bridge also provides an environment screen. This view allows to easily see the current deployed services on each stage and if there are any errors or pending approvals for one stage.
+* Next to the services view, the Bridge also provides an environment view. 
+
+* This view allows to easily see the current deployed services on each stage and if there are any errors or pending approvals for one stage.
 By clicking on a stage you can see more information about the deployed services on the specific stage on the right side.
 
-  {{< popup_image
-  link="./assets/bridge_environment.png"
-  caption="Keptn Bridge environment view">}}
+    {{< popup_image
+    link="./assets/bridge_environment.png"
+    caption="Keptn Bridge environment view">}}
   
-### Evaluation Board
+### Evaluation board
 
-* Next to the evaluation comparison as a heatmap or chart in the "Services" view, we provide a link to the Evaluation Board, which shows only the evaluation comparison on this stage. 
+* Next to the evaluation comparison as a heatmap or chart in the *Services* view, we provide a link to the *Evaluation Board*, which displays only the evaluation comparison on this stage. 
   
-  {{< popup_image
-  link="./assets/bridge_evaluationboard.png"
-  caption="Keptn Bridge Evaluation Board">}}
+    {{< popup_image
+    link="./assets/bridge_evaluationboard.png"
+    caption="Keptn Bridge Evaluation Board">}}
 
 ## Early Access Version of Keptn Bridge
 
@@ -76,7 +78,6 @@ There is an early access version of Keptn Bridge available (compatible with Kept
 kubectl -n keptn set image deployment/bridge bridge=keptn/bridge2:20200402.1046 --record
 ```
 
-
 * To restore the old version of bridge, configuration-service and mongodb-datastore (as delivered with Keptn 0.6.2), you can use the following commands:
 
 ```console
@@ -84,4 +85,4 @@ kubectl -n keptn set image deployment/bridge bridge=keptn/bridge2:0.6.2 --record
 ```
 -->
 
-If you have any questions or feedback regarding Keptn Bridge, please contact us through our [Keptn Community Channels](https://github.com/keptn/community)!
+If you have any questions or feedback regarding Keptn Bridge, please contact us through our [Keptn Community Channels](https://github.com/keptn/community).

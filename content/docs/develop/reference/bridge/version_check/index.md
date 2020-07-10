@@ -39,7 +39,7 @@ Before processing the collected data, any personally-identifying information is 
 
 ## How to enable/disable the feature?
 
-* *Opt-in/Opt-out:* When you visit the Keptn Bridge for the first time, you will be asked to Opt-in or Opt-out for this feature.
+* *Opt-in/Opt-out:* When you visit the Keptn Bridge for the first time, you will be asked to opt-in or opt-out for this feature.
 
     {{< popup_image
         link="./assets/opt_in_feature.png"
