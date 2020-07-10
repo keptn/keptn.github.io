@@ -12,7 +12,7 @@ The Keptn Bridge has a basic authentication feature, which can be controlled by 
 
 ## Enable Authentication
 
-* Basic authentication is enabled by default when executing the below command. This command creates a secret with the two variables: `BASIC_AUTH_USERNAME` and `BASIC_AUTH_PASSWORD`. 
+* Basic authentication is enabled when executing the below command. This command creates a secret with the two variables: `BASIC_AUTH_USERNAME` and `BASIC_AUTH_PASSWORD`. 
 
     ```
     keptn configure bridge --user=<USER> --password=<PASSWORD>
