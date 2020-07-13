@@ -25,10 +25,11 @@ Keptn has several core components that are set up during the installation.
 
 ### api-gateway-nginx
 
+The *api-gateway-nginx* component is the single point used for exposing Keptn to the outside world. Besides, it is responsible to redirect incoming requests to the right internal Keptn endpoints, e.g., to api, bridge, or configuration-service.
 
 ### api-service
 
-The *api* component provides a publicly exposed REST API that allows communicating with Keptn. It receives the commands from the CLI and executes the requested tasks. However, the api component mostly uses other internal services or forwards events to the *eventbroker*. In addition to the REST API, the api component maintains a websocket server to forward Keptn messages to the *Keptn CLI*.
+The *api* component provides a REST API that allows communicating with Keptn. It receives the commands from the CLI and executes the requested tasks. However, the api component mostly uses other internal services or forwards events to the *eventbroker*. In addition to the REST API, the api component maintains a websocket server to forward Keptn messages to the *Keptn CLI*.
 
 **Note:** A dedicated Keptn API section is provided [here](../../develop/reference/api/), which helps you to access the API and to explore the available endpoints.
 
