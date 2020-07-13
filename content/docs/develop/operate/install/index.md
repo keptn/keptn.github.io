@@ -233,6 +233,8 @@ To select the approach of exposing Keptn that best fits your needs, you can set 
 
 Depending on the selected approach and especially when going with *ClusterIP*, additional steps are required for a successful Keptn installation. The next flow chart guides you through the installation process depending on your decisions.   
 
+
+<!-- https://drive.google.com/file/d/11yX6YLwfQbJo_ReCZneA2uQZlE2rNdxz/view?usp=sharing -->
 {{< popup_image
 link="./assets/installation_process.png"
 caption="Installation process"
