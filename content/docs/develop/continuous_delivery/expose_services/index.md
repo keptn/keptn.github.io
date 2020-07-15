@@ -50,7 +50,7 @@ spec:
 * Create the `ingress-config` ConfigMap in the `keptn` namespace:
 
     ```
-    INGRESS_IP=<IP_OF_YOUR_INGRESS>
+    INGRESS_IP=<IP_OF_YOUR_INGRESS>.xip.io
     INGRESS_PORT=<PORT_OF_YOUR_INGRESS> 
     INGRESS_PROTOCOL=<PROTOCOL>                            # "http" or "https"
     INGRESS_GATEWAY=<GATEWAY_NAME>.<NAMESPACE_OF_GATEWAY>  # e.g. public-gateway.istio-sysetm
