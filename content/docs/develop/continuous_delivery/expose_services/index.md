@@ -16,9 +16,9 @@ Please follow the steps in sequential order:
 
 * If you have not installed Istio during the [Keptn installation](../../operate/install/#3-install-ingress-controller-and-apply-an-ingress-object), please refer to the official [Installation Guides](https://istio.io/latest/docs/setup/install/) to install Istio on your cluster.
 
-## Create Istio gateway
+## Create Istio Gateway
 
-* To create an Istio `Gateway`, please follow the offical Istio documentation on [Configuring Ingress using an Istio Gateway](https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/#configuring-ingress-using-an-istio-gateway). An example of a gateway manifest is given below:
+* To create an Istio `Gateway`, please follow the offical Istio documentation on [Configuring Ingress using an Istio Gateway](https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/#configuring-ingress-using-an-istio-gateway). Use the below `gateway.yaml` manifest to create a Istio gateway with the name `public-gateway` in the `istio-system` namespace:
 
 ```yaml
 ---
@@ -37,6 +37,10 @@ spec:
       protocol: HTTP
     hosts:
     - '*'
+```
+
+```console
+kubectl apply -f gateway-manifest.yaml
 ```
 
 ## Create ConfigMap with ingress information
