@@ -366,12 +366,11 @@ kubectl apply -f ingress-manifest.yaml
 </p>
 </details>
 
+<!-- 
 <details><summary>**Traefik**</summary>
 <p>
 
 * To install a Traefik Ingress Controller, please refer to the [official documentation](https://docs.traefik.io/getting-started/install-traefik).
-
-* From where do we get the IP/PORT? <!-- TODO: How to get IP/PORT? -->
 
 * Create the `ingress-manifest.yaml` manifest for an ingress object in which you set IP-ADDRESS and PORT. Finally, apply the manifest:
 
@@ -396,6 +395,7 @@ kubectl apply -f ingress-manifest.yaml
 
 </p>
 </details>
+-->
 
 ### (4) Use port-forward to access Keptn
 
@@ -411,9 +411,11 @@ kubectl -n keptn port-forward service/api-gateway-nginx 8080:80
 
 ### (5) Authenticate Keptn CLI
 
-To authenticate the Keptn CLI against the Keptn cluster, the exposed Keptn endpoint and API token are required. 
+To authenticate the Keptn CLI against the Keptn cluster, the exposed Keptn API endpoint and API token are required. 
 
-* Get the Keptn endpoint from the `api-gateway-nginx`. (If you are using port-forward to expose Keptn, your endpoint is `localhost` and the `port` you forwarded Keptn to, e.g.: `http://localhost:8080`) 
+* If you are using port-forward to expose Keptn, the Keptn endpoint is on `localhost` and the `port` you forwarded Keptn to. For example, the Keptn API endpoint is: `http://localhost:8080/api`
+
+* In all other cases, get the EXTERNAL-IP of the `api-gateway-ngix` using the next command. Consequently, the Keptn API endpoint is: `http://<ENDPOINT_OF_API_GATEWAY>/api`
 
   ```console
 kubectl -n keptn get service api-gateway-nginx
@@ -430,7 +432,7 @@ api-gateway-nginx   ClusterIP   10.107.0.20   <ENDPOINT_OF_API_GATEWAY>    80/TC
 * Set the environment variable `KEPTN_ENDPOINT`:
 
 ```console
-KEPTN_ENDPOINT=<ENDPOINT_OF_API_GATEWAY>
+KEPTN_ENDPOINT=http://<ENDPOINT_OF_API_GATEWAY>/api
 ```
 
 * Set the environment variable `KEPTN_API_TOKEN`:
@@ -462,7 +464,7 @@ For the Windows PowerShell, a small script is provided that installs the `PSYaml
 * Set the environment variable `KEPTN_ENDPOINT`:
 
 ```console
-$Env:KEPTN_ENDPOINT = '<ENDPOINT_OF_API_GATEWAY>'
+$Env:KEPTN_ENDPOINT = 'http://<ENDPOINT_OF_API_GATEWAY>/api'
 ```
 
 * Copy the following snippet and paste it in the PowerShell. The snippet retrieves the API token and sets the environment variable `KEPTN_API_TOKEN`:
@@ -489,7 +491,7 @@ In the Windows Command Line, a couple of steps are necessary.
 * Set the environment variable `KEPTN_ENDPOINT`:
 
 ```console
-set KEPTN_ENDPOINT=<ENDPOINT_OF_API_GATEWAY>
+set KEPTN_ENDPOINT=http://<ENDPOINT_OF_API_GATEWAY>/api
 ```
 
 * Get the Keptn API Token encoded in base64:
