@@ -71,7 +71,7 @@ keywords: setup
 
 ## Verify Dynatrace setup in your cluster
 
-When [keptn configure monitoring](../../cli/#keptn-configure-monitoring) is finished, the Dynatrace OneAgent is deployed in your cluster. Execute the following commands to verify the deployment of the OneAgent as well as of the *dynatrace-service*:
+When [keptn configure monitoring](../../../reference/cli/commands/keptn_configure_monitoring) is finished, the Dynatrace OneAgent is deployed in your cluster. Execute the following commands to verify the deployment of the OneAgent as well as of the *dynatrace-service*:
 
 ```console
 kubectl get svc dynatrace-service -n keptn

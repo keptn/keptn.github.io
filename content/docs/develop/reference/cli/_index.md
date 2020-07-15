@@ -10,7 +10,7 @@ In this section, the functionality and commands of the keptn CLI are described. 
 uninstalling Keptn. Furthermore, the CLI allows creating projects, onboarding services, and sending new artifact events.
 
 ## Prerequisites
-- All prerequisites from the [setup](../../installation/setup-keptn#prerequisites) are needed.
+- All prerequisites from the [setup](../../operate/install/#prerequisites) are needed.
 
 ## Automatic install of the keptn CLI
 

@@ -171,6 +171,6 @@ In this section, the management of the API token of a Keptn installation is expl
     kubectl delete pods -n keptn --selector=run=api-service
     ```
 
-* Re-authenticate Keptn CLI as explained [here](../cli/#authentication).
+* Re-authenticate Keptn CLI as explained [here](../../reference/cli/commands/keptn_auth).
 
 * **Don't forget** to replace the API token at tools that interact with the Keptn API, e.g., *Problem Notification* setting in Dynatrace or *WebHook* in Prometheus.

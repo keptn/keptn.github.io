@@ -23,7 +23,7 @@ If you [sign up for a Google Cloud account](https://console.cloud.google.com/get
   - [python 2.7](https://www.python.org/downloads/release/python-2716/) (required for Ubuntu 19.04)
 
 2. Create GKE cluster
-  - [Master version:](../k8s-support/#supported-version): `1.15.x` (tested version: `1.15.9-gke.22`)
+  - [Master version](../operate/k8s_support/#supported-versions): `1.15.x` (tested version: `1.15.9-gke.22`)
   - One **n1-standard-8** node
   - Image type `Ubuntu` or `COS` (**Note:** If you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../reference/monitoring/dynatrace/).)
   - Sample script to create such cluster:
