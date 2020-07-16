@@ -37,18 +37,25 @@ The maintainer of the Keptn project collects the above-mentioned data for:
 
 Before processing the collected data, any personally-identifying information is exchanged by hash values. This builds the foundation to not disclose personally-identifying information in any statistics. 
 
-## How to enable/diable the feature?
+## How to enable/disable the feature?
+
+* *Opt-in/Opt-out:* When you visit the Keptn Bridge for the first time, you will be asked to opt-in or opt-out for this feature.
+
+    {{< popup_image
+        link="./assets/opt_in_feature.png"
+        caption="Opt-in/Opt-out for daily version check"
+        width="100%">}}
 
 * *To enable the feature:* Open the user menu by clicking on the user icon on the top right corner. On the bottom of the menu, toggle the feature flag from left to right to enable the feature.
 
     {{< popup_image
-        link="./assets/enable_feature.png"
+        link="./assets/disable_feature.png"
         caption="Enable daily version check"
-        width="400px">}}
+        width="220px">}}
 
-*	*To disable the feature:* Open the user menu by clicking on the user icon on the top right corner. On the bottom of the menu, toggle the feature flag from right to left to disable the feature.
+* *To disable the feature:* Open the user menu by clicking on the user icon on the top right corner. On the bottom of the menu, toggle the feature flag from right to left to disable the feature.
 
     {{< popup_image
-        link="./assets/disable_feature.png"
+        link="./assets/enable_feature.png"
         caption="Disable daily version check"
-        width="400px">}}
+        width="220px">}}
