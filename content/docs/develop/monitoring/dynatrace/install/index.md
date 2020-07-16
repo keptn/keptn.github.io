@@ -1,86 +1,22 @@
 ---
 title: Install
-description: Setup Dynatrace monitoring
+description: Setup Dynatrace monitoring and Keptn integration
 weight: 1
 icon: setup
 keywords: setup
 ---
 
-## Install Dynatrace
+## Deploy OneAgent Operator on Kubernetes
 
-1. Create a secret containing the credentials for the Keptn API. To get the values for `KEPTN_API_URL` and `KEPTN_API_TOKEN`, please see [here](../../../reference/api). 
+Bring your Dynatrace SaaS or Dynatrace-managed tenant. If you do not have a Dynatrace tenant, sign up for a [free trial](https://www.dynatrace.com/trial/) or a [developer account](https://www.dynatrace.com/developer/).
 
-    ```console
-    kubectl -n keptn create secret generic keptn-credentials --from-literal="KEPTN_API_URL=<KEPTN_API_URL>" --from-literal="KEPTN_API_TOKEN=<KEPTN_API_TOKEN>" 
-    ```
-   
-    *Optional:* If you would like to make use of the inclusion of backlinks to the bridge, you can add the `KEPTN_BRIDGE_URL` to the `keptn-credentials` secret. To get the URL of the bridge, please see [here](../../../reference/bridge/#expose-lockdown-bridge).
-   
-    ```console
-    kubectl -n keptn create secret generic keptn-credentials --from-literal="KEPTN_API_URL=<KEPTN_API_URL>" --from-literal="KEPTN_API_TOKEN=<KEPTN_API_TOKEN>" --from-literal="KEPTN_BRIDGE_URL=<KEPTN_BRIDGE_URL>" -oyaml --dry-run | kubectl replace -f -
-    ```
-   
-1. Bring your Dynatrace SaaS or Dynatrace-managed tenant: If you don't have a Dynatrace tenant, sign up for a [free trial](https://www.dynatrace.com/trial/) or a [developer account](https://www.dynatrace.com/developer/).
+### 1. Deploy OneAgent Operator
 
-1. Create a Dynatrace API Token
+To setup Dynatrace monitoring on your Kubernetes cluster, please follow the official Dynatrace documentation on [Deploy OneAgent Operator on Kubernetes](https://www.dynatrace.com/support/help/technology-support/cloud-platforms/kubernetes/deploy-oneagent-k8/).
 
-    Log in to your Dynatrace tenant and go to **Settings > Integration > Dynatrace API**. Then, create a new API token with the following permissions:
+### 2. Verify Dynatrace setup in your cluster
 
-    - Access problem and event feed, metrics, and topology
-    - Read log content
-    - Read configuration
-    - Write configuration
-    - Capture request data
-
-    {{< popup_image
-    link="./assets/dt_api_token.png"
-    caption="Dynatrace API Token"
-    width="500px">}}
-
-1. Create a Dynatrace PaaS Token
-
-    In your Dynatrace tenant, go to **Settings > Integration > Platform as a Service**, and create a new PaaS Token.
-
-1. Store your credentials in a Kubernetes secret by executing the following command. The `DT_TENANT` has to be set according to the appropriate pattern:
-  - Dynatrace SaaS tenant: `{your-environment-id}.live.dynatrace.com`
-  - Dynatrace-managed tenant: `{your-domain}/e/{your-environment-id}`
-
-    If running on a Unix/Linux based system, you can use variables for ease of use. Naturally, it is also fine to just replace the values in the `kubectl` command itself.
-
-    ```console
-    DT_TENANT=yourtenant.live.dynatrace.com
-    DT_API_TOKEN=yourAPItoken
-    DT_PAAS_TOKEN=yourPAAStoken
-    ```
-    If you used the variables, the next command can be copied and pasted without modifications. If you have not set the variable, please make sure to set the right values in the next command.
-    ```console
-    kubectl -n keptn create secret generic dynatrace --from-literal="DT_TENANT=$DT_TENANT" --from-literal="DT_API_TOKEN=$DT_API_TOKEN"  --from-literal="DT_PAAS_TOKEN=$DT_PAAS_TOKEN"
-    ```
-
-1. The Dynatrace integration into Keptn is handled by the *dynatrace-service*. To install the *dynatrace-service*, execute:
-
-    ```console
-    kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-service/0.7.0/deploy/manifests/dynatrace-service/dynatrace-service.yaml
-    ```
-
-1. When the service is deployed, use the following command to install Dynatrace on your cluster. If Dynatrace is already deployed, the current deployment of Dynatrace will not be modified.
-
-    ```console
-    keptn configure monitoring dynatrace
-    ```
-
-## Verify Dynatrace setup in your cluster
-
-When [keptn configure monitoring](../../../reference/cli/commands/keptn_configure_monitoring) is finished, the Dynatrace OneAgent is deployed in your cluster. Execute the following commands to verify the deployment of the OneAgent as well as of the *dynatrace-service*:
-
-```console
-kubectl get svc dynatrace-service -n keptn
-```
-
-```console
-NAME                TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)    AGE
-dynatrace-service   ClusterIP   10.0.44.191   <none>        8080/TCP   2m48s
-```
+When you deployed the Dynatrace OneAgent on your cluster, execute the following commands to verify the successful deployment:
 
 ```console
 kubectl get pods -n dynatrace
@@ -93,7 +29,87 @@ oneagent-5lcqh                                 1/1     Running   0          53s
 oneagent-ps6t4                                 1/1     Running   0          53s
 ```
 
+## Install Dynatrace Keptn integration
+
+To install the Dynatrace Keptn integration that is implemented by the *dynatrace-service*, two steps are required:
+
+1. Create a secret with credentials for the Keptn API and Dynatrace tenant
+1. Deploy the Dynatrace Keptn integration, known as *dynatrace-service*
+
+### 1. Create a secret with required credentials
+
+Create a secret containing the credentials for the *Dynatrace tenant* and *Keptn API*; this includes: 
+
+* `DT_TENANT`
+* `DT_API_TOKEN`
+* `KEPTN_API_URL` 
+* `KEPTN_API_TOKEN`
+* `KEPTN_BRIDGE_URL` (is optional)
+
+---
+
+* The `DT_TENANT` has to be set according to the appropriate pattern:
+      - Dynatrace SaaS tenant: `{your-environment-id}.live.dynatrace.com`
+      - Dynatrace-managed tenant: `{your-domain}/e/{your-environment-id}`
+
+* To create a Dynatrace API Token `DT_API_TOKEN`, log in to your Dynatrace tenant and go to **Settings > Integration > Dynatrace API**. In this settings page, create a new API token with the following permissions:
+    - Access problem and event feed, metrics, and topology
+    - Read log content
+    - Read configuration
+    - Write configuration
+    - Capture request data
+
+    {{< popup_image
+    link="./assets/dt_api_token.png"
+    caption="Dynatrace API Token"
+    width="500px">}}
+
+* To get the values for `KEPTN_API_URL` and `KEPTN_API_TOKEN`, please see [Authenticate Keptn CLI](https://keptn.sh/docs/0.7.x/operate/install/#5-authenticate-keptn-cli).
+   
+* If you would like to use backlinks from your Dynatrace tenant to the Keptn Bridge, you can add the `KEPTN_BRIDGE_URL` to the secret. The value of this setting is: `<KEPTN_API_URL>/bridge`
+
+* If running on a Unix/Linux based system, you can use environment variables to set the values of the credentials. (It is also fine to just replace the values in the `kubectl` command below.)
+
+    ```console
+    DT_API_TOKEN=<DT_API_TOKEN>
+    DT_TENANT=<DT_TENANT>
+    KEPTN_API_URL=<KEPTN_API_URL>
+    KEPTN_API_TOKEN=<KEPTN_API_TOKEN>
+    KEPTN_BRIDGE_URL=<KEPTN_BRIDGE_URL> # optional
+    ```
+
+* Create a secret with the credentials by executing the following command:
+
+    ```console
+    kubectl -n keptn create secret generic dynatrace
+    --from-literal="DT_API_TOKEN=<DT_API_TOKEN>" 
+    --from-literal="DT_TENANT=<DT_TENANT>" 
+    --from-literal="KEPTN_API_URL=<KEPTN_API_URL>" 
+    --from-literal="KEPTN_API_TOKEN=<KEPTN_API_TOKEN>"
+    -oyaml --dry-run | kubectl replace -f -
+    ```
+
+### 2. Deploy the Dynatrace Keptn integration
+
+* The Dynatrace integration into Keptn is handled by the *dynatrace-service*. To install the *dynatrace-service*, execute:
+
+    ```console
+    kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-service/$VERSION/deploy/service.yaml
+    ```
+   
+  **Note**: Replace `$VERSION` with the desired version number (e.g., 0.8.0) you want to install.
+   
+* This installs the `dynatrace-service` and a Keptn `distributor` in the `keptn` namespace, which you can verify using:
+
+    ```console
+    kubectl -n keptn get deployment dynatrace-service -o wide
+    kubectl -n keptn get deployment dynatrace-service-distributor -o wide
+    kubectl -n keptn get pods -l run=dynatrace-service
+    ```
+
 ## Verify Dynatrace configuration
+
+When you execute the [keptn configure monitoring](../../../reference/cli/commands/keptn_configure_monitoring/) command, the *dynatrace-service* will configure the Dynatrace tenant by creating *tagging rules*, a *problem notification*, an *alerting profile* as well as a project-specific *dashboard* and *management zone*.
 
 - *Tagging rules:* When you navigate to **Settings > Tags > Automatically applied tags** in your Dynatrace tenant, you will find following tagging rules:
     - keptn_deployment
@@ -107,7 +123,7 @@ oneagent-ps6t4                                 1/1     Running   0          53s
 
 - *Alerting profile:* An alerting profile with all problems set to *0 minutes* (immediate) is created. You can review this profile by navigating to **Settings > Alerting > Alerting profiles**.
 
-- *Dashboard and Mangement zone:* When creating a new Keptn project or executing the [keptn configure monitoring](../../cli/#keptn-configure-monitoring) command for a particular project (see Note 1), a dashboard and management zone will be generated reflecting the environment as specified in the shipyard file.
+- *Dashboard and Management zone:* When creating a new Keptn project or executing the [keptn configure monitoring](../../../reference/cli/commands/keptn_configure_monitoring/) command for a particular project (see Note 1), a dashboard and management zone will be generated reflecting the environment as specified in the shipyard file.
 
 ## Notes
 
