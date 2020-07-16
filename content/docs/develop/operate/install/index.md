@@ -291,7 +291,6 @@ keptn install --platform=kubernetes
 keptn install --platform=kubernetes --gateway=NodePort
 ```
 
-
 In the Kubernetes cluster, this command creates the **keptn** and the **keptn-datastore** namespace containing all Keptn core components.
 This installation will allow you to use Keptn for the [Keptn Quality Gates](../../quality_gates/) and [Automated Operations](../../automated_operations/) use cases.
     <details><summary>The *keptn* and *keptn-datastore* namespace contain:</summary>
@@ -370,6 +369,6 @@ kubectl delete pod -n keptn -lrun=openshift-route-service
 
 Please note that in case of any errors, the install process might leave some files in an inconsistent state. Therefore [keptn install](../../reference/cli/commands/keptn_install) cannot be executed a second time without [keptn uninstall](../../reference/cli/commands/keptn_uninstall). To address a unsuccessful installation: 
 
-1. [Verify the Keptn installation](../../../reference/troubleshooting#verifying-a-keptn-installation).
+1. [Verify the Keptn installation](../../troubleshooting#verifying-a-keptn-installation).
 
 1. Uninstall Keptn by executing the [keptn uninstall](../../reference/cli/commands/keptn_uninstall) command before conducting a re-installation.  

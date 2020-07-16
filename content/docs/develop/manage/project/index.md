@@ -44,7 +44,7 @@ To delete a Keptn project, the [keptn delete project](../../reference/cli/comman
   keptn delete project PROJECTNAME
   ```
 
-**Note:** If a Git upstream is configured for this project, the referenced repository or project will not be deleted. Besides, deployed services are also not deleted by this command. To clean-up all resources created by Keptn, please follow the information displayed here: [Helm - Clean-up after deleting a project](../../reference/helm/#clean-up-after-deleting-a-project)
+**Note:** If a Git upstream is configured for this project, the referenced repository or project will not be deleted. Besides, deployed services are also not deleted by this command. To clean-up all resources created by Keptn, please go to [Clean-up after deleting a project](../../continuous_delivery/deployment_helm/#clean-up-after-deleting-a-project).
 
 ## Update a project
 

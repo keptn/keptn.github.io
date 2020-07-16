@@ -25,7 +25,7 @@ If you [sign up for a Google Cloud account](https://console.cloud.google.com/get
 2. Create GKE cluster
   - [Master version](../operate/k8s_support/#supported-versions): `1.15.x` (tested version: `1.15.9-gke.22`)
   - One **n1-standard-8** node
-  - Image type `Ubuntu` or `COS` (**Note:** If you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../reference/monitoring/dynatrace/).)
+  - Image type `Ubuntu` or `COS` (**Note:** If you plan to use Dynatrace monitoring, select `Ubuntu` for a more [convenient setup](../monitoring/dynatrace/install/#notes).)
   - Sample script to create such cluster:
 
     ```console
@@ -50,7 +50,7 @@ If you [sign up for a Google Cloud account](https://console.cloud.google.com/get
 **Note**: Please refer to the [official homepage of K3s](https://k3s.io) for detailed installation instructions. Within 
  this page we only provide a very short guide on how we run Keptn on K3s.
  
-1. Download, install [K3s](https://k3s.io/) (tested with [versions 1.16 to 1.18](../operate/k8s_support)) and run K3s using the following command:
+1. Download, install [K3s](https://k3s.io/) (tested with [versions 1.16 to 1.18](../operate/k8s_support/#supported-versions)) and run K3s using the following command:
    ```console
    curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.18.3+k3s1 K3S_KUBECONFIG_MODE="644" sh -s - --no-deploy=traefik
    ```

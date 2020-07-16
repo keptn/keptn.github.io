@@ -11,7 +11,7 @@ keywords: upgrade
 
 1. To upgrade your Keptn installation from 0.6.2 to 0.7.0, a *Kubernetes Job* is provided that upgrades all components to the 0.7.0 release. 
 
-    * Please [verify that you are connected to the correct Kubernetes cluster](../../reference/troubleshooting/#verify-kubernetes-context-with-keptn-installation)
+    * Please [verify that you are connected to the correct Kubernetes cluster](../../troubleshooting/#verify-kubernetes-context-with-keptn-installation)
 before deploying the upgrading job.
 
     * Keptn 0.7 uses Helm 3 while previous Keptn releases rely on Helm 2. This means that you have to upgrade the Helm releases of your Keptn-managed services. Otherwise, a `keptn send new-artifact` does not work anymore. For upgrading Helm releases, two options are availble as outlined below. Please take into account that the end-of-life period of Helm 2 begins on [August 13th, 2020](https://helm.sh/blog/covid-19-extending-helm-v2-bug-fixes/).
