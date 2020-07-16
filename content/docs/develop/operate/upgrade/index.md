@@ -153,49 +153,30 @@ kubectl -n keptn get deployments -owide
 ```
 
 ```console
-NAME                                                      READY   UP-TO-DATE   AVAILABLE   AGE     CONTAINERS               IMAGES                                  SELECTOR
-api-gateway-nginx                                         1/1     1            1           73m     api-gateway-nginx        nginx:1.17.9                            run=api-gateway-nginx
-api-service                                               1/1     1            1           4h39m   api                      keptn/api:0.7.0                         run=api
-bridge                                                    1/1     1            1           4h39m   bridge                   keptn/bridge2:0.7.0                     run=bridge
-configuration-service                                     1/1     1            1           4h39m   configuration-service    keptn/configuration-service:0.7.0       run=configuration-service
-eventbroker-go                                            1/1     1            1           4h39m   eventbroker-go           keptn/eventbroker-go:0.7.0              run=eventbroker-go
-gatekeeper-service                                        1/1     1            1           4h39m   gatekeeper-service       keptn/gatekeeper-service:0.7.0          run=gatekeeper-service
-gatekeeper-service-approval-distributor                   1/1     1            1           4h39m   distributor              keptn/distributor:0.7.0                 run=distributor
-gatekeeper-service-evaluation-done-distributor            1/1     1            1           4h39m   distributor              keptn/distributor:0.7.0                 run=distributor
-helm-service                                              1/1     1            1           4h39m   helm-service             keptn/helm-service:0.7.0                run=helm-service
-helm-service-configuration-change-distributor             1/1     1            1           4h39m   distributor              keptn/distributor:0.7.0                 run=distributor
-helm-service-service-create-distributor                   1/1     1            1           4h39m   distributor              keptn/distributor:0.7.0                 run=distributor
-jmeter-service                                            1/1     1            1           4h39m   jmeter-service           keptn/jmeter-service:0.7.0              run=jmeter-service
-jmeter-service-deployment-distributor                     1/1     1            1           4h39m   distributor              keptn/distributor:0.7.0                 run=distributor
-lighthouse-service                                        1/1     1            1           4h39m   lighthouse-service       keptn/lighthouse-service:0.7.0          run=lighthouse-service
-lighthouse-service-distributor                            1/1     1            1           72s     distributor              keptn/distributor:0.7.0                 run=distributor
-nats-operator                                             1/1     1            1           4h40m   nats-operator            connecteverything/nats-operator:0.6.0   name=nats-operator
-prometheus-service                                        1/1     1            1           41m     prometheus-service       keptn/prometheus-service:0.3.1          run=prometheus-service
-prometheus-service-monitoring-configure-distributor       1/1     1            1           41m     distributor              keptn/distributor:0.5.0                 run=distributor
-prometheus-sli-service                                    1/1     1            1           38m     prometheus-sli-service   keptn/prometheus-sli-service:0.2.1      run=prometheus-sli-service
-prometheus-sli-service-monitoring-configure-distributor   1/1     1            1           38m     distributor              keptn/distributor:latest                run=distributor
-remediation-service                                       1/1     1            1           4h39m   remediation-service      keptn/remediation-service:0.7.0         run=remediation-service
-remediation-service-problem-distributor                   1/1     1            1           4h39m   distributor              keptn/distributor:0.7.0                 run=distributor
-shipyard-service                                          1/1     1            1           4h39m   shipyard-service         keptn/shipyard-service:0.7.0            run=shipyard-service
-shipyard-service-create-project-distributor               1/1     1            1           4h39m   distributor              keptn/distributor:0.7.0                 run=distributor
-shipyard-service-delete-project-distributor               1/1     1            1           4h39m   distributor              keptn/distributor:0.7.0                 run=distributor
-wait-service                                              1/1     1            1           4h39m   wait-service             keptn/wait-service:0.7.0                run=wait-service
-wait-service-deployment-distributor                       1/1     1            1           4h39m   distributor              keptn/distributor:0.7.0                 run=distributor
-
-```
-
-```console
-kubectl -n keptn-datastore get deployments -owide
-```
-
-```console
-NAME                            READY   UP-TO-DATE   AVAILABLE   AGE     CONTAINERS          IMAGES                          SELECTOR
-mongodb                         1/1     1            1           2m41s   mongodb             centos/mongodb-36-centos7:1     name=mongodb
-mongodb-datastore               1/1     1            1           4h40m   mongodb-datastore   keptn/mongodb-datastore:0.7.0   run=mongodb-datastore
-mongodb-datastore-distributor   1/1     1            1           4h40m   distributor         keptn/distributor:0.7.0         run=distributor
+NAME                                                      READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS                          IMAGES                                                                            SELECTOR
+api-gateway-nginx                                         1/1     1            1           65m   api-gateway-nginx                   docker.io/nginxinc/nginx-unprivileged:1.17.9                                      run=api-gateway-nginx
+api-service                                               1/1     1            1           65m   api-service                         docker.io/keptn/api:latest                                                        run=api-service
+bridge                                                    1/1     1            1           65m   bridge                              docker.io/keptn/bridge2:latest                                                    run=bridge
+configuration-service                                     1/1     1            1           65m   configuration-service,distributor   docker.io/keptn/configuration-service:latest,docker.io/keptn/distributor:latest   run=configuration-service
+eventbroker-go                                            1/1     1            1           65m   eventbroker-go                      docker.io/keptn/eventbroker-go:latest                                             run=eventbroker-go
+helm-service                                              1/1     1            1           65m   helm-service,distributor            docker.io/keptn/helm-service:latest,docker.io/keptn/distributor:latest            run=helm-service
+lighthouse-service                                        1/1     1            1           65m   lighthouse-service,distributor      docker.io/keptn/lighthouse-service:latest,docker.io/keptn/distributor:latest      run=lighthouse-service
+mongodb                                                   1/1     1            1           65m   mongodb                             docker.io/centos/mongodb-36-centos7:1                                             name=mongodb
+mongodb-datastore                                         1/1     1            1           65m   mongodb-datastore,distributor       docker.io/keptn/mongodb-datastore:latest,docker.io/keptn/distributor:latest       run=mongodb-datastore
+prometheus-service                                        1/1     1            1           85m   prometheus-service                  keptn/prometheus-service:0.3.3                                                    run=prometheus-service
+prometheus-service-monitoring-configure-distributor       1/1     1            1           85m   distributor                         keptn/distributor:0.6.0                                                           run=distributor
+prometheus-sli-service                                    1/1     1            1           85m   prometheus-sli-service              keptncontrib/prometheus-sli-service:0.2.2                                         run=prometheus-sli-service
+prometheus-sli-service-monitoring-configure-distributor   1/1     1            1           85m   distributor                         keptn/distributor:latest                                                          run=distributor
+remediation-service                                       1/1     1            1           65m   remediation-service,distributor     docker.io/keptn/remediation-service:latest,docker.io/keptn/distributor:latest     run=remediation-service
+shipyard-service                                          1/1     1            1           65m   shipyard-service,distributor        docker.io/keptn/shipyard-service:latest,docker.io/keptn/distributor:latest        run=shipyard-service
 ```
 
 </details>
+
+### Reconnect the CLI to the Keptn API
+
+Since Keptn 0.7.0 does not use Istio VirtualServices for exposing the Keptn API anymore, the CLI needs to update the 
+Keptn Endpoint. For this purpose, please follow the instructions in the [Installation documentation](../install/#access-the-keptn-api) 
 
 ### Configure delivery assistant for existing projects
 
