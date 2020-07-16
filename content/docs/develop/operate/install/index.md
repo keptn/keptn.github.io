@@ -223,7 +223,7 @@ When installing Keptn, you have three possibilities to expose Keptn onto an exte
 
 * **ClusterIP**: Exposes Keptn on a cluster-internal IP, this is the default setting.
 * **NodePort**: Exposes Keptn on each Node's IP at a static port.
-* **LoadBalancer**: Exposes Keptn externally using a cloud provider's load balancer.
+* **LoadBalancer**: Exposes Keptn externally using a cloud provider's load balancer (if available).
 
 To select the approach of exposing Keptn that best fits your needs, you can set the flag `keptn-api-service-type` when launching the Keptn installation:
 
@@ -252,7 +252,7 @@ Brief explanation of the flow chart for the installation process:
 
 |            | LoadBalancer | NodePort | ClusterIP |
 |------------|:------------:|:--------:|:---------:|
-| Kubernetes                                |              |          |     ?     |
+| Kubernetes                                |              |          |     x     |
 | Azure Kubernetes Service (AKS)            |     x (1)    |          |           |
 | Amazon Elastic Kubernetes Service (EKS)   |     x (1)    |          |           |
 | Google Kubernetes Engine (GKE)            |     x (1)    |          |           |
@@ -260,7 +260,7 @@ Brief explanation of the flow chart for the installation process:
 | K3s                                       |              |          |     x     |
 | Minikube                                  |              |     x    |           |
 | MicroK8s (experimental)                   |              |     x    |           |
-| Minishift (experimental)                  |       ?      |     ?    |     ?     |
+| Minishift (experimental)                  |              |     x    |           |
 
 **Remarks:**
 
@@ -372,6 +372,24 @@ kubectl apply -f ingress-manifest.yaml
 </p>
 </details>
 
+<details><summary>**OpenShift 3.11 Routes**</summary>
+<p>
+
+* OpenShift 3.11 ships built-in routing functionality, which allows exposing the Keptn API using:
+
+  ```console
+  oc create route edge api --service=api-gateway-nginx --port=http --insecure-policy='None' -n keptn
+  oc create route edge api.keptn --service=api-gateway-nginx --port=http --insecure-policy='None' -n keptn --hostname=api.keptn
+  ```
+  **Note**: The second route with `api.keptn` as a hostname is necessary for Keptn 0.6.x CLI to work.
+
+</p>
+</details>
+
+*  To verify that you can access the Keptn API in your browser, by going to
+  * (if SSL/TLS is not enabled): `http://<IP-ADDRESS>.xip.io/swagger-ui/`
+  * (if SSL/TLS is enabled): `https://<IP-ADDRESS>.xip.io/swagger-ui/`
+
 ### (4) Use port-forward to access Keptn
 
 If you have not exposed Keptn via *NodePort* or *LoadBalancer* and you don't want to install an ingress on your Kubernetes cluster, you can use `kubectl port-forward` to connect to Keptn.
@@ -388,7 +406,18 @@ kubectl -n keptn port-forward service/api-gateway-nginx 8080:80
 
 To authenticate the Keptn CLI against the Keptn cluster, the exposed Keptn API endpoint and API token are required. 
 
+**1) Keptn API endpoint:**
+
+<details><summary>Keptn API endpoint when exposing via **ClusterIP** in combination with *port-forward*</summary>
+<p>
+
 * If you are using **ClusterIP** in combination with *port-forward* to expose Keptn, the Keptn endpoint is on `localhost` and the `port` you forwarded Keptn to. For example, the Keptn API endpoint is: `http://localhost:8080/api`
+
+</p>
+</details>
+
+<details><summary>Keptn API endpoint when exposing via **ClusterIP** in combination with an *Ingress Controller*</summary>
+<p>
 
 * If you are using **ClusterIP** in combination with an *Ingress Controller* to expose Keptn, get the HOST of the `api-keptn-ingress`using the next command. Consequently, the Keptn API endpoint is: `http://<HOST>/api`
 
@@ -401,7 +430,14 @@ NAME                HOSTS                  ADDRESS         PORTS   AGE
 api-keptn-ingress   <HOST>                 34.71.138.187   80      48m
   ```
 
-* If you are using a **LoadBalancer** or **NodePort** to expose Keptn, get the EXTERNAL-IP of the `api-gateway-ngix` using the next command. Consequently, the Keptn API endpoint is: `http://<ENDPOINT_OF_API_GATEWAY>/api`
+</p>
+</details>
+
+
+<details><summary>Keptn API endpoint when exposing via **LoadBalancer**</summary>
+<p>
+
+* If you are using a **LoadBalancer** to expose Keptn, get the EXTERNAL-IP of the `api-gateway-ngix` using the next command. Consequently, the Keptn API endpoint is: `http://<ENDPOINT_OF_API_GATEWAY>/api`
 
   ```console
 kubectl -n keptn get service api-gateway-nginx
@@ -412,7 +448,53 @@ NAME                TYPE        CLUSTER-IP    EXTERNAL-IP                  PORT(
 api-gateway-nginx   ClusterIP   10.107.0.20   <ENDPOINT_OF_API_GATEWAY>    80/TCP    44m
   ```
 
-<details><summary>Retrive API Token and Authenticate Keptn CLI on **Linux / MacOS**</summary>
+</p>
+</details>
+
+<details><summary>Keptn API endpoint when exposing via **NodePort**</summary>
+<p>
+
+* If you are using a **NodePort** to expose Keptn, please note that you either need to be on the same network as your Kubernetes VM (e.g., when using K3s or Minikube), or you have to set up certain firewall rules, e.g. for GKE (this is beyond this documentation). 
+
+    * Get the port of `api-gateway-nginx`:
+
+    ```console
+    API_PORT=$(kubectl get svc api-gateway-nginx -n keptn -o jsonpath='{.spec.ports[?(@.name=="http")].nodePort}')
+    ```
+
+    * Get the internal and external IP of current Kubernetes node:
+
+    ```console
+    EXTERNAL_NODE_IP=$(kubectl get nodes -o jsonpath='{ $.items[0].status.addresses[?(@.type=="ExternalIP")].address }')
+    INTERNAL_NODE_IP=$(kubectl get nodes -o jsonpath='{ $.items[0].status.addresses[?(@.type=="InternalIP")].address }')
+    ```
+
+    * Define Keptn API Endpoint (either via the internal or external IP; try both if unsure): `http://${INTERNAL_NODE_IP}:${API_PORT}/` or `http://${EXTERNAL_NODE_IP}:${API_PORT}/`
+
+
+</p>
+</details>
+
+<details><summary>Keptn API endpoint when exposing via **OpenShift Routes**</summary>
+<p>
+
+* If you are on **OpenShift 3.11**, get the HOST of the `api` route using the next command. Consequently, the Keptn API endpoint is: `http://<HOST>/api`
+
+  ```console
+  oc get route api -n keptn
+  ```
+  
+  ```
+  NAME        HOST/PORT                       PATH      SERVICES            PORT      TERMINATION   WILDCARD
+  api         api-keptn.x.x.x.xip.io                    api-gateway-nginx   http      edge/None     None
+  ```
+
+</p>
+</details>
+
+**2) Keptn API token & Authentication:**
+
+<details><summary>API Token and Authenticate Keptn CLI on **Linux / MacOS**</summary>
 <p>
 
 * Set the environment variable `KEPTN_ENDPOINT`:
@@ -437,7 +519,7 @@ keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN
 </p>
 </details>
 
-<details><summary>Retrive API Token and Authenticate Keptn CLI on **Windows**</summary>
+<details><summary>API Token and Authenticate Keptn CLI on **Windows**</summary>
 <p>
 
 Please expand the corresponding section matching your CLI tool:
