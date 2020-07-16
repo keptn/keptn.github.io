@@ -60,6 +60,8 @@ kubectl apply -f gateway-manifest.yaml
     INGRESS_GATEWAY=<GATEWAY_NAME>.<NAMESPACE_OF_GATEWAY>  # e.g. public-gateway.istio-sysetm
     ```
 
+      **Note:** In the above example, `xip.io` is used as wildcard DNS for the IP address.
+
     ```console
     kubectl create configmap -n keptn ingress-config --from-literal=ingress_hostname_suffix=${INGRESS_IP} --from-literal=ingress_port=${INGRESS_PORT} --from-literal=ingress_protocol=${INGRESS_PROTOCOL} --from-literal=ingress_gateway=${INGRESS_GATEWAY} -oyaml --dry-run | kubectl replace -f -
     ```

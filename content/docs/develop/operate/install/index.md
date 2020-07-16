@@ -301,13 +301,13 @@ keptn install --use-case=continuous-delivery
 
 * To install an Istio Ingress Controller, please refer to the [official Istio documentation](https://istio.io/latest/docs/setup/install/).
 
-* [Determine the ingress IP and ports](https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/#determining-the-ingress-ip-and-ports):
+* [Determine the ingress IP](https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/#determining-the-ingress-ip-and-ports):
 
   ```console
 kubectl -n istio-system get svc istio-ingressgateway
   ```
 
-* Create a `ingress-manifest.yaml` manifest for an ingress object in which you set set IP-ADDRESS and PORT. Finally, apply the manifest:
+* Create an `ingress-manifest.yaml` manifest for an ingress object in which you set set IP-ADDRESS and then apply the manifest. (**Note:** In the example of an `ingress-manifest.yaml` manifest shown next, `xip.io` is used as wildcard DNS for the IP address.)
 
   ```yaml
 apiVersion: networking.k8s.io/v1beta1
@@ -316,14 +316,15 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: istio
   name: api-keptn-ingress
+  namespace: keptn
 spec:
   rules:
-  - host: <IP-ADDRESS>
+  - host: <IP-ADDRESS>.xip.io
     http:
       paths:
       - backend:
           serviceName: api-gateway-nginx
-          servicePort: <PORT>
+          servicePort: 80
   ```
 
   ```console
@@ -338,25 +339,30 @@ kubectl apply -f ingress-manifest.yaml
 
 * To install an NGINX Ingress Controller, please refer to the [official documentation](https://kubernetes.github.io/ingress-nginx/).
 
-* From where do we get the IP/PORT? <!-- TODO: How to get IP/PORT? -->
+* [Determine the ingress IP](https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/#determining-the-ingress-ip-and-ports):
 
-* Create the `ingress-manifest.yaml` manifest for an ingress object in which you set IP-ADDRESS and PORT. Finally, apply the manifest:
+  ```console
+kubectl -n ingress-nginx svc ingress-nginx
+  ```
+
+* Create an `ingress-manifest.yaml` manifest for an ingress object in which you set set IP-ADDRESS and then apply the manifest. (**Note:** In the example of an `ingress-manifest.yaml` manifest shown next, `xip.io` is used as wildcard DNS for the IP address.)
 
   ```yaml
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: keptn-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+  name: api-keptn-ingress
+  namespace: keptn
 spec:
   rules:
-  - host: <IP-ADDRESS>
+  - host: <IP-ADDRESS>.xip.io
     http:
       paths:
       - backend:
           serviceName: api-gateway-nginx
-          servicePort: <PORT>
+          servicePort: 80
   ```
 
   ```console
@@ -365,37 +371,6 @@ kubectl apply -f ingress-manifest.yaml
 
 </p>
 </details>
-
-<!-- 
-<details><summary>**Traefik**</summary>
-<p>
-
-* To install a Traefik Ingress Controller, please refer to the [official documentation](https://docs.traefik.io/getting-started/install-traefik).
-
-* Create the `ingress-manifest.yaml` manifest for an ingress object in which you set IP-ADDRESS and PORT. Finally, apply the manifest:
-
-  ```yaml
-apiVersion: networking.k8s.io/v1beta1
-kind: Ingress
-metadata:
-  name: keptn-ingress
-spec:
-  rules:
-  - host: <IP-ADDRESS>
-    http:
-      paths:
-      - backend:
-          serviceName: api-gateway-nginx
-          servicePort: <PORT>
-  ```
-
-  ```console
-kubectl apply -f ingress-manifest.yaml
-  ```
-
-</p>
-</details>
--->
 
 ### (4) Use port-forward to access Keptn
 
@@ -413,9 +388,20 @@ kubectl -n keptn port-forward service/api-gateway-nginx 8080:80
 
 To authenticate the Keptn CLI against the Keptn cluster, the exposed Keptn API endpoint and API token are required. 
 
-* If you are using port-forward to expose Keptn, the Keptn endpoint is on `localhost` and the `port` you forwarded Keptn to. For example, the Keptn API endpoint is: `http://localhost:8080/api`
+* If you are using **ClusterIP** in combination with *port-forward* to expose Keptn, the Keptn endpoint is on `localhost` and the `port` you forwarded Keptn to. For example, the Keptn API endpoint is: `http://localhost:8080/api`
 
-* In all other cases, get the EXTERNAL-IP of the `api-gateway-ngix` using the next command. Consequently, the Keptn API endpoint is: `http://<ENDPOINT_OF_API_GATEWAY>/api`
+* If you are using **ClusterIP** in combination with an *Ingress Controller* to expose Keptn, get the HOST of the `api-keptn-ingress`using the next command. Consequently, the Keptn API endpoint is: `http://<HOST>/api`
+
+  ```console
+kubectl -n keptn get ingress api-keptn-ingress
+  ```
+
+  ```console
+NAME                HOSTS                  ADDRESS         PORTS   AGE
+api-keptn-ingress   <HOST>                 34.71.138.187   80      48m
+  ```
+
+* If you are using a **LoadBalancer** or **NodePort** to expose Keptn, get the EXTERNAL-IP of the `api-gateway-ngix` using the next command. Consequently, the Keptn API endpoint is: `http://<ENDPOINT_OF_API_GATEWAY>/api`
 
   ```console
 kubectl -n keptn get service api-gateway-nginx
