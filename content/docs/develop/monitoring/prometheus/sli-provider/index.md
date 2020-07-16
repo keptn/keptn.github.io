@@ -41,7 +41,7 @@ To tell the *prometheus-sli-service* how to acquire the values of an SLI, the co
 keptn add-resource --project=sockshop --stage=hardening --service=carts --resource=sli-config-prometheus.yaml --resourceUri=prometheus/sli.yaml
 ```
 
-**Note:** The add-resource command can be used to store a configuration on project-, stage-, or service-level. If you store SLI configurations on different levels, click [here](../../../quality_gate/sli/#add-sli-configuration-to-service-stage-or-project) to learn which configuration overrides the others based on an example.
+**Note:** The add-resource command can be used to store a configuration on project-, stage-, or service-level. If you store SLI configurations on different levels, see [Add SLI configuration to a Service, Stage, or Project](../../../quality_gates/sli/#add-sli-configuration-to-a-service-stage-or-project) to learn which configuration overrides the others based on an example.
 
 **Example for custom SLI:** 
 

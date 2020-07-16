@@ -15,8 +15,7 @@ During the evaluation of a quality gate, the Dynatrace SLI-provider is required 
     kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-sli-service/0.4.0/deploy/service.yaml
     ```
 
-1. The *dynatrace-sli-service* needs access to a Dynatrace tenant. If you have completed the steps from [Setup Dynatrace](./#setup-dynatrace), the *dynatrace-sli-service* 
-uses the already provided credentials. Otherwise, create a *secret* containing the **Tenant ID** and **API token**.
+1. The *dynatrace-sli-service* needs access to a Dynatrace tenant. If you have completed the steps from [Setup Dynatrace](./#setup-dynatrace), the *dynatrace-sli-service* uses the already provided credentials. Otherwise, create a *secret* containing the **Tenant ID** and **API token**.
 
     The `DT_TENANT` has to be set according to the appropriate pattern:
   - Dynatrace SaaS tenant: `{your-environment-id}.live.dynatrace.com`
@@ -36,7 +35,7 @@ To tell the *dynatrace-sli-service* how to acquire the values of an SLI, the cor
 keptn add-resource --project=sockshop --stage=hardening --service=carts --resource=sli-config-dynatrace.yaml --resourceUri=dynatrace/sli.yaml
 ```
 
-**Note:** The add-resource command can be used to store a configuration on project-, stage-, or service-level. If you store SLI configurations on different levels, click [here](../../../quality_gate/sli/#add-sli-configuration-to-service-stage-or-project) to learn which configuration overrides the others based on an example.
+**Note:** The add-resource command can be used to store a configuration on project-, stage-, or service-level. If you store SLI configurations on different levels, see [Add SLI configuration to a Service, Stage, or Project](../../../quality_gates/sli/#add-sli-configuration-to-a-service-stage-or-project) to learn which configuration overrides the others based on an example.
 
 **Example for custom SLIs:**
 

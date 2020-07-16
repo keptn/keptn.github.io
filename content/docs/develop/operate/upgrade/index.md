@@ -7,7 +7,7 @@ keywords: upgrade
 
 ## Upgrade from 0.6.2 to 0.7
 
-1. To download and install the Keptn CLI for version 0.7.0, please refer to the [Install Keptn CLI section](../setup-keptn/#install-keptn-cli).
+1. To download and install the Keptn CLI for version 0.7.0, please refer to the [Install Keptn CLI](../install/#install-keptn-cli) section.
 
 1. To upgrade your Keptn installation from 0.6.2 to 0.7.0, a *Kubernetes Job* is provided that upgrades all components to the 0.7.0 release. 
 
