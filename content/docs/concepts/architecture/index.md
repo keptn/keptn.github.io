@@ -7,7 +7,6 @@ keywords: [keptn, architecture]
 
 Keptn is an event-based control plane for continuous delivery and automated operations that runs on Kubernetes. Keptn itself follows an event-driven approach with the benefits of loosely coupled components and a flexible design that allows easily integrating other components and services. The events that Keptn understands are specified [here](https://github.com/keptn/spec/blob/0.1.3/cloudevents.md) and follow the [CloudEvents](https://cloudevents.io/) specification [v2](https://github.com/cloudevents/spec/tree/v0.2).
 
-<!--https://drive.google.com/file/d/1VpZ1CQuSIc7VXo0QGURLyUxx6CrbVSLU/view?usp=sharing-->
 {{< popup_image link="./assets/architecture.png" caption="Keptn architecture" width="65%">}}
 
 ## Prerequisites
