@@ -63,7 +63,6 @@ Right now there is no early access version of Keptn Bridge available.
 ```console
 kubectl -n keptn set image deployment/bridge bridge=keptn/bridge2:0.6.2 --record
 kubectl -n keptn set image deployment/configuration-service bridge=keptn/configuration-service:0.6.2 --record
-kubectl -n keptn-datastore set image deployment/mongodb-datastore mongodb-datastore=keptn/mongodb-datastore:0.6.2 --record
 ```
 
 There is an early access version of Keptn Bridge available (compatible with Keptn 0.6.2):

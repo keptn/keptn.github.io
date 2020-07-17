@@ -135,17 +135,6 @@ wait-service                                              1/1     1            1
 wait-service-deployment-distributor                       1/1     1            1           4h24m   distributor              keptn/distributor:0.6.0                     run=distributor
 ```
 
-```console
-kubectl -n keptn-datastore get deployments -owide
-```
-
-```console
-NAME                            READY   UP-TO-DATE   AVAILABLE   AGE     CONTAINERS          IMAGES                                  SELECTOR
-mongodb                         1/1     1            1           4h25m   mongodb             centos/mongodb-36-centos7:1             name=mongodb
-mongodb-datastore               1/1     1            1           4h25m   mongodb-datastore   keptn/mongodb-datastore:20200308.0859   run=mongodb-datastore
-mongodb-datastore-distributor   1/1     1            1           4h25m   distributor         keptn/distributor:0.6.0                 run=distributor
-```
-
 **After the upgrade**
 
 ```console

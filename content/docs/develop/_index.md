@@ -1,7 +1,7 @@
 ---
-title: Release 0.7.0
-linktitle: Release 0.7.0
-weight: 988
+title: Develop
+linktitle: Develop
+weight: 991
 sidebar_multicard: true
 icon: docs
 ---
