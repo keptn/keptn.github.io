@@ -54,7 +54,7 @@ kubectl apply -f gateway-manifest.yaml
 * Create the `ingress-config` ConfigMap in the `keptn` namespace:
 
     ```
-    INGRESS_IP=<IP_OF_YOUR_INGRESS>.xip.io
+    INGRESS_HOSTNAME=<IP_OF_YOUR_INGRESS>.xip.io
     INGRESS_PORT=<PORT_OF_YOUR_INGRESS> 
     INGRESS_PROTOCOL=<PROTOCOL>                            # "http" or "https"
     INGRESS_GATEWAY=<GATEWAY_NAME>.<NAMESPACE_OF_GATEWAY>  # e.g. public-gateway.istio-sysetm
@@ -63,7 +63,7 @@ kubectl apply -f gateway-manifest.yaml
       **Note:** In the above example, `xip.io` is used as wildcard DNS for the IP address.
 
     ```console
-    kubectl apply configmap -n keptn ingress-config --from-literal=ingress_hostname_suffix=${INGRESS_IP} --from-literal=ingress_port=${INGRESS_PORT} --from-literal=ingress_protocol=${INGRESS_PROTOCOL} --from-literal=ingress_gateway=${INGRESS_GATEWAY}
+    kubectl apply configmap -n keptn ingress-config --from-literal=ingress_hostname_suffix=${INGRESS_HOSTNAME} --from-literal=ingress_port=${INGRESS_PORT} --from-literal=ingress_protocol=${INGRESS_PROTOCOL} --from-literal=ingress_gateway=${INGRESS_GATEWAY}
     ```
 
 * If you have already set up a domain that points to your Istio ingress, you can use it for the `INGRESS_HOSTNAME_SUFFIX`. In this case, use the following command to create the `ingress-config` ConfigMap in the `keptn` namespace:
@@ -72,20 +72,15 @@ kubectl apply -f gateway-manifest.yaml
     INGRESS_HOSTNAME=<YOUR_HOSTNAME>
     INGRESS_PORT=<PORT_OF_YOUR_INGRESS> 
     INGRESS_PROTOCOL=<PROTOCOL>                            # "http" or "https"
+    INGRESS_GATEWAY=<GATEWAY_NAME>.<NAMESPACE_OF_GATEWAY>  # e.g. public-gateway.istio-sysetm
     ```
     
     ```console
-    kubectl apply configmap -n keptn ingress-config --from-literal=ingress_hostname_suffix=${INGRESS_HOSTNAME} --from-literal=ingress_port=${INGRESS_PORT} --from-literal=ingress_protocol=${INGRESS_PROTOCOL}
+    kubectl apply configmap -n keptn ingress-config --from-literal=ingress_hostname_suffix=${INGRESS_HOSTNAME} --from-literal=ingress_port=${INGRESS_PORT} --from-literal=ingress_protocol=${INGRESS_PROTOCOL} --from-literal=ingress_gateway=${INGRESS_GATEWAY}
     ```
 
 * After creating the ConfigMap, restart the `helm-service`:
 
     ```
-    kubectl delete pod -n keptn -lrun=helm-service
-    ```
-
-* If you are on OpenShift, also restart the `openshift-route-service`:
-
-    ```
-    kubectl delete pod -n keptn -lrun=openshift-route-service
+    kubectl delete pod -n keptn -lapp.kubernetes.io/name=helm-service
     ```
