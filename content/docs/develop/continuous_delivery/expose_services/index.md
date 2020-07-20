@@ -57,7 +57,7 @@ kubectl apply -f gateway-manifest.yaml
     INGRESS_HOSTNAME=<IP_OF_YOUR_INGRESS>.xip.io
     INGRESS_PORT=<PORT_OF_YOUR_INGRESS> 
     INGRESS_PROTOCOL=<PROTOCOL>                            # "http" or "https"
-    ISTIO_GATEWAY=<GATEWAY_NAME>.<NAMESPACE_OF_GATEWAY>  # e.g. public-gateway.istio-sysetm
+    ISTIO_GATEWAY=<GATEWAY_NAME>.<NAMESPACE_OF_GATEWAY>  # e.g. public-gateway.istio-system
     ```
 
       **Note:** In the above example, `xip.io` is used as wildcard DNS for the IP address.
@@ -72,7 +72,7 @@ kubectl apply -f gateway-manifest.yaml
     INGRESS_HOSTNAME=<YOUR_HOSTNAME>
     INGRESS_PORT=<PORT_OF_YOUR_INGRESS> 
     INGRESS_PROTOCOL=<PROTOCOL>                            # "http" or "https"
-    ISTIO_GATEWAY=<GATEWAY_NAME>.<NAMESPACE_OF_GATEWAY>  # e.g. public-gateway.istio-sysetm
+    ISTIO_GATEWAY=<GATEWAY_NAME>.<NAMESPACE_OF_GATEWAY>  # e.g. public-gateway.istio-system
     ```
     
     ```console
