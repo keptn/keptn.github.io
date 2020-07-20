@@ -219,7 +219,7 @@ Every Keptn release provides binaries for the Keptn CLI. These binaries are avai
 
 ## Install Keptn
 
-When installing Keptn, you have three possibilities to expose Keptn onto an external IP address that is outside of your cluster. The three possibilities are reflected by the following three Kubernetes *ServiceTypes*:
+When installing Keptn, you can choose one of the three Kubernetes *ServiceTypes* for afterwards accessing Keptn:
 
 * **ClusterIP**: Exposes Keptn on a cluster-internal IP, this is the default setting.
 * **NodePort**: Exposes Keptn on each Node's IP at a static port.
