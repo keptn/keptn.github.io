@@ -63,7 +63,7 @@ kubectl apply -f gateway-manifest.yaml
       **Note:** In the above example, `xip.io` is used as wildcard DNS for the IP address.
 
     ```console
-    kubectl apply configmap -n keptn ingress-config --from-literal=ingress_hostname_suffix=${INGRESS_HOSTNAME} --from-literal=ingress_port=${INGRESS_PORT} --from-literal=ingress_protocol=${INGRESS_PROTOCOL} --from-literal=ingress_gateway=${INGRESS_GATEWAY}
+    kubectl create configmap -n keptn ingress-config --from-literal=ingress_hostname_suffix=${INGRESS_HOSTNAME} --from-literal=ingress_port=${INGRESS_PORT} --from-literal=ingress_protocol=${INGRESS_PROTOCOL} --from-literal=ingress_gateway=${INGRESS_GATEWAY} -oyaml --dry-run | kubectl replace -f -
     ```
 
 * If you have already set up a domain that points to your Istio ingress, you can use it for the `INGRESS_HOSTNAME_SUFFIX`. In this case, use the following command to create the `ingress-config` ConfigMap in the `keptn` namespace:
@@ -76,7 +76,7 @@ kubectl apply -f gateway-manifest.yaml
     ```
     
     ```console
-    kubectl apply configmap -n keptn ingress-config --from-literal=ingress_hostname_suffix=${INGRESS_HOSTNAME} --from-literal=ingress_port=${INGRESS_PORT} --from-literal=ingress_protocol=${INGRESS_PROTOCOL} --from-literal=ingress_gateway=${INGRESS_GATEWAY}
+    kubectl create configmap -n keptn ingress-config --from-literal=ingress_hostname_suffix=${INGRESS_HOSTNAME} --from-literal=ingress_port=${INGRESS_PORT} --from-literal=ingress_protocol=${INGRESS_PROTOCOL} --from-literal=ingress_gateway=${INGRESS_GATEWAY} -oyaml --dry-run | kubectl replace -f -
     ```
 
 * After creating the ConfigMap, restart the `helm-service`:
