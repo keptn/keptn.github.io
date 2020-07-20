@@ -278,7 +278,7 @@ This installation allows you to use Keptn for the [Quality Gates](../../quality_
 keptn install
   ```
 
-* By default, the service type *ClusterIP* is used for exposing Keptn. Hence, set the flag `xyz` and `keptn-bridge-service-type` if you want to use another option.
+* By default, the service type *ClusterIP* is used for exposing Keptn. If you want another service type, please use the flag `keptn-api-service-type`.
 
   ```console
 keptn install --keptn-api-service-type=[ClusterIP | NodePort | LoadBalancer]
