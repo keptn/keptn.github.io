@@ -379,16 +379,14 @@ kubectl apply -f ingress-manifest.yaml
 
   ```console
   oc create route edge api --service=api-gateway-nginx --port=http --insecure-policy='None' -n keptn
-  oc create route edge api.keptn --service=api-gateway-nginx --port=http --insecure-policy='None' -n keptn --hostname=api.keptn
   ```
-  **Note**: The second route with `api.keptn` as a hostname is necessary for Keptn 0.6.x CLI to work.
 
 </p>
 </details>
 
-*  To verify that you can access the Keptn API in your browser, by going to
-  * (if SSL/TLS is not enabled): `http://<IP-ADDRESS>.xip.io/swagger-ui/`
-  * (if SSL/TLS is enabled): `https://<IP-ADDRESS>.xip.io/swagger-ui/`
+*  Verify that you can access the Keptn API in your browser, by accessing
+  * (if SSL/TLS is not enabled): `http://<IP-ADDRESS>.xip.io/api`
+  * (if SSL/TLS is enabled): `https://<IP-ADDRESS>.xip.io/api`
 
 ### (4) Use port-forward to access Keptn
 
@@ -411,7 +409,7 @@ To authenticate the Keptn CLI against the Keptn cluster, the exposed Keptn API e
 <details><summary>Keptn API endpoint when exposing via **ClusterIP** in combination with *port-forward*</summary>
 <p>
 
-* If you are using **ClusterIP** in combination with *port-forward* to expose Keptn, the Keptn endpoint is on `localhost` and the `port` you forwarded Keptn to. For example, the Keptn API endpoint is: `http://localhost:8080/api`
+* If you are using **ClusterIP** in combination with *port-forward* to access Keptn, the Keptn endpoint is on `localhost` and the `port` you forwarded Keptn to. For example, the Keptn API endpoint is then `http://localhost:8080/api`
 
 </p>
 </details>
@@ -427,7 +425,7 @@ kubectl -n keptn get ingress api-keptn-ingress
 
   ```console
 NAME                HOSTS                  ADDRESS         PORTS   AGE
-api-keptn-ingress   <HOST>                 34.71.138.187   80      48m
+api-keptn-ingress   <HOST>                 x.x.x.x   80      48m
   ```
 
 </p>
