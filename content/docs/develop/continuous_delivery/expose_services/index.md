@@ -82,5 +82,5 @@ kubectl apply -f gateway-manifest.yaml
 * After creating the ConfigMap, restart the `helm-service`:
 
     ```
-    kubectl delete pod -n keptn -lapp.kubernetes.io/name=helm-service
+    kubectl delete pod -n keptn --selector=app.kubernetes.io/name=helm-service
     ```

@@ -36,7 +36,7 @@ To create a Kubernetes cluster, select one of the following options:
 1. Create EKS cluster on AWS
   - [Master version:](../k8s-support/#supported-version) `1.15` (tested version: `1.15`)
   - One `m5.2xlarge` node
-  - Sample script using [eksctl](https://eksctl.io/introduction/installation/) to create such a cluster
+  - Sample script using [eksctl](https://eksctl.io) to create such a cluster
 
     ```console
     eksctl create cluster --version=1.15 --name=keptn-cluster --node-type=m5.2xlarge --nodes=1 --region=eu-west-3
