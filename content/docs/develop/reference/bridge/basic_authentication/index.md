@@ -37,5 +37,5 @@ The Keptn Bridge has a basic authentication feature, which can be controlled by 
 * Restart the pod of the Keptn Bridge by executing:
 
     ```console
-    kubectl -n keptn delete pods --selector=run=bridge
+    kubectl -n keptn delete pods --selector=app.kubernetes.io/name=bridge
     ```
