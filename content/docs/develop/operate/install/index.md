@@ -286,9 +286,9 @@ keptn install --keptn-api-service-type=[ClusterIP | NodePort | LoadBalancer]
 
 **Keptn Control Plane + Execution Plane (for Continous Delivery)**
 
-If you want to install Keptn with [Continuous Delivery](../../continuous_delivery/) use cases, you have the option to roll-out Keptn **with** components for the execution plane. 
+If you want to implement [Continuous Delivery](../../continuous_delivery/) use cases with Keptn, you have the option to roll-out Keptn **with** the respective services of the execution plane. 
 
-* To install Keptn on a Kubernetes cluster with CD support, the `use-case` flag must be set to `continuous-delivery`:
+* To install Keptn with CD support on a Kubernetes cluster, set the `use-case` flag to `continuous-delivery`:
 
   ```console
 keptn install --use-case=continuous-delivery
