@@ -1,6 +1,6 @@
 ---
 title: Install CLI and Keptn
-description: Install Keptn on one of the supported Kubernetes platforms.
+description: Install Keptn on your Kubernetes cluster and expose it.
 weight: 1
 keywords: setup
 ---
@@ -8,9 +8,9 @@ keywords: setup
 ## Prerequisites
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
-## Setup Kubernetes cluster
+## Create Kubernetes cluster
 
-Select one of the following options:
+To create a Kubernetes cluster, select one of the following options:
 
 <details><summary>Azure Kubernetes Service (AKS)</summary>
 <p>
@@ -44,7 +44,7 @@ Select one of the following options:
 
     <details><summary>**Known bug in EKS 1.13**</summary>
 
-    Please note that for EKS version `1.13` in our testing we learned that the default CoreDNS that comes with certain EKS versions has a bug. In order to solve that issue we can use eksctl to update the CoreDNS service like this: 
+    Please note that for EKS version `1.13` in our testing we learned that the default CoreDNS that comes with certain EKS versions has a bug. To solve that issue we can use eksctl to update the CoreDNS service like this: 
     
     ```console
     eksctl utils update-coredns --name=keptn-cluster --region=eu-west-3 --approve
@@ -58,8 +58,7 @@ Select one of the following options:
 <details><summary>Google Kubernetes Engine (GKE)</summary>
 <p>
 
-Run your Keptn installation for free on GKE!
-If you [sign up for a Google Cloud account](https://console.cloud.google.com/getting-started), Google gives you an initial $300 credit. For deploying Keptn you can apply for an additional $200 credit which you can use towards that GKE cluster needed to run Keptn.<br><br>
+Run your Keptn installation for free on GKE! If you [sign up for a Google Cloud account](https://console.cloud.google.com/getting-started), Google gives you an initial $300 credit. For deploying Keptn you can apply for an additional $200 credit which you can use towards that GKE cluster needed to run Keptn.<br><br>
 <a class="button button-primary" href="https://bit.ly/keptngkecredit" target="_blank">Apply for your credit here</a>
 
 1. Install local tools
@@ -74,8 +73,8 @@ If you [sign up for a Google Cloud account](https://console.cloud.google.com/get
 
     ```console
     // set environment variables
-    PROJECT=nameofgcloudproject
-    CLUSTER_NAME=nameofcluster
+    PROJECT=<NAME_OF_CLOUD_PROJECT>
+    CLUSTER_NAME=<NAME_OF_CLUSTER>
     ZONE=us-central1-a
     REGION=us-central1
     GKE_VERSION="1.15"
@@ -147,35 +146,10 @@ If you [sign up for a Google Cloud account](https://console.cloud.google.com/get
 </p>
 </details>
 
-<details><summary>Pivotal Container Service (PKS)</summary>
-<p>
-
-1. Install local tools
-  - [pks CLI - v1.0.4](https://docs.pivotal.io/runtimes/pks/1-4/installing-pks-cli.html)
-
-1. Create PKS cluster on GCP
-  - Use the provided instructions for [Enterprise Pivotal Container Service (Enterprise PKS) installation on GCP](https://docs.pivotal.io/runtimes/pks/1-4/gcp-index.html)
-
-  - Create a PKS cluster by using the PKS CLI and executing the following command:
-
-    ```console
-    // set environment variables
-    CLUSTER_NAME=name_of_cluster
-    HOST_NAME=host_name
-    PLAN=small
-    ```
-
-    ```console
-    pks create-cluster $CLUSTER_NAME --external-hostname $HOST_NAME --plan $PLAN
-    ```
-</p>
-</details>
-
 <details><summary>K3s</summary>
 <p>
 
-**Note**: Please refer to the [official homepage of K3s](https://k3s.io) for detailed installation instructions. Within 
- this page we only provide a very short guide on how we run Keptn on K3s.
+Please refer to the [official homepage of K3s](https://k3s.io) for detailed installation instructions. Here a short guide on how to run Keptn on K3s is provided.
  
 1. Download, install [K3s](https://k3s.io/) (tested with [versions 1.16 to 1.18](../k8s_support)) and run K3s using the following command:
    ```console
@@ -217,10 +191,11 @@ If you [sign up for a Google Cloud account](https://console.cloud.google.com/get
 </details>
 
 ## Install Keptn CLI
-Every release of Keptn provides binaries for the Keptn CLI. These binaries are available for Linux, macOS, and Windows.
 
-- Download the version for your operating system from [github.com/keptn/](https://github.com/keptn/keptn/releases/tag/0.6.2)
-- Unpack the download
+Every Keptn release provides binaries for the Keptn CLI. These binaries are available for Linux, macOS, and Windows.
+
+- Download the version for your operating system from: [github.com/keptn/](https://github.com/keptn/keptn/releases/tag/0.6.2)
+- Unpack the archive
 - Find the `keptn` binary in the unpacked directory
 
   - *Linux / macOS*: Add executable permissions (``chmod +x keptn``), and move it to the desired destination (e.g. `mv keptn /usr/local/bin/keptn`)
@@ -229,145 +204,422 @@ Every release of Keptn provides binaries for the Keptn CLI. These binaries are a
 
 - Now, you should be able to run the Keptn CLI: 
     - Linux / macOS
-      ```console
-      keptn --help
-      ```
+
+    ```console
+    keptn --help
+    ```
     
     - Windows
-      ```console
-      .\keptn.exe --help
-      ```
+
+    ```console
+    .\keptn.exe --help
+    ```
 
 **Note:** For the rest of the documentation we will stick to the *Linux / macOS* version of the commands.
 
 ## Install Keptn
 
-To install the latest release of Keptn on a Kuberntes cluster, execute the [keptn install](../../reference/cli/commands/keptn_install) command with the ``platform`` flag specifying the target platform you would like to install Keptn on. Currently, supported platforms are:
+When installing Keptn, you can choose one of the three Kubernetes *ServiceTypes* for afterwards accessing Keptn:
 
-- Azure Kubernetes Services (AKS):
+* **ClusterIP**: Exposes Keptn on a cluster-internal IP, this is the default setting.
+* **NodePort**: Exposes Keptn on each Node's IP at a static port.
+* **LoadBalancer**: Exposes Keptn externally using a cloud provider's load balancer (if available).
 
-```console
-keptn install --platform=aks
-```
+To select the approach of exposing Keptn that best fits your needs, you can set the flag `keptn-api-service-type` when launching the Keptn installation:
+
+  ```console
+--keptn-api-service-type=[ClusterIP | NodePort | LoadBalancer]
+  ```
+
+Depending on the selected approach and especially when going with *ClusterIP*, additional steps are required for a successful Keptn installation. The next flow chart guides you through the installation process depending on your decisions.   
+
+
+<!-- https://drive.google.com/file/d/11yX6YLwfQbJo_ReCZneA2uQZlE2rNdxz/view?usp=sharing -->
+{{< popup_image
+link="./assets/installation_process.png"
+caption="Installation process"
+width="500px">}}
+
+<br>
+Brief explanation of the flow chart for the installation process: 
+
+* When using *NodePort* or *LoadBalancer*, just the authentication of the Keptn CLI is required: [(5) Authenticate Keptn CLI](./#5-authenticate-keptn-cli)
+* When using *ClusterIP*, a decision must me made whether to use
+    * Ingress: [(3) Install ingress controller and apply an ingress object](./#3-install-ingress-controller-and-apply-an-ingress-object) or,
+    * Port-forward: [(4) Use port-forward to access Keptn](./#4-use-port-forward-to-access-keptn) to accesss Keptn. 
+
+### (1) Consider install recommendations
+
+|            | LoadBalancer | NodePort | ClusterIP |
+|------------|:------------:|:--------:|:---------:|
+| Kubernetes                                |              |          |     x     |
+| Azure Kubernetes Service (AKS)            |     x (1)    |          |           |
+| Amazon Elastic Kubernetes Service (EKS)   |     x (1)    |          |           |
+| Google Kubernetes Engine (GKE)            |     x (1)    |          |           |
+| OpenShift 3.11                            |              |          |     x     |
+| K3s                                       |              |          |     x     |
+| Minikube                                  |              |     x    |           |
+| MicroK8s (experimental)                   |              |     x    |           |
+| Minishift (experimental)                  |              |     x    |           |
+
+**Remarks:**
+
+* (1) Please be aware that the Cloud Provider will charge you for a *LoadBalancer*. 
+
+### (2) Install Keptn on your cluster
+
+**Keptn Control Plane**
+
+This installation allows you to use Keptn for the [Quality Gates](../../quality_gates/) and [Automated Operations](../../automated_operations/) use cases.
+
+* To install Keptn on a Kubernetes cluster, execute the [keptn install](../../reference/cli/commands/keptn_install) command. If you want to roll-out Keptn on OpenShift, set the flag `--platform=openshift`; by default, this flag is set to `--platform=kubernetes`
+
+  ```console
+keptn install
+  ```
+
+* By default, the service type *ClusterIP* is used for exposing Keptn. If you want another service type, please use the flag `keptn-api-service-type`.
+
+  ```console
+keptn install --keptn-api-service-type=[ClusterIP | NodePort | LoadBalancer]
+  ```
+
+**Keptn Control Plane + Execution Plane (for Continous Delivery)**
+
+If you want to implement [Continuous Delivery](../../continuous_delivery/) use cases with Keptn, you have the option to roll-out Keptn **with** the respective services of the execution plane. 
+
+* To install Keptn with CD support on a Kubernetes cluster, set the `use-case` flag to `continuous-delivery`:
+
+  ```console
+keptn install --use-case=continuous-delivery
+  ```
+
+### (3) Install ingress controller and apply an ingress object
+
+<details><summary>**Istio**</summary>
+<p>
+
+* To install an Istio Ingress Controller, please refer to the [official Istio documentation](https://istio.io/latest/docs/setup/install/).
+
+* [Determine the ingress IP](https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/#determining-the-ingress-ip-and-ports):
+
+  ```console
+kubectl -n istio-system get svc istio-ingressgateway
+  ```
+
+* Create an `ingress-manifest.yaml` manifest for an ingress object in which you set set IP-ADDRESS and then apply the manifest. (**Note:** In the example of an `ingress-manifest.yaml` manifest shown next, `xip.io` is used as wildcard DNS for the IP address.)
+
+  ```yaml
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: istio
+  name: api-keptn-ingress
+  namespace: keptn
+spec:
+  rules:
+  - host: <IP-ADDRESS>.xip.io
+    http:
+      paths:
+      - backend:
+          serviceName: api-gateway-nginx
+          servicePort: 80
+  ```
+
+  ```console
+kubectl apply -f ingress-manifest.yaml
+  ```
+
+</p>
+</details>
+
+<details><summary>**NGNIX Ingress**</summary>
+<p>
+
+* To install an NGINX Ingress Controller, please refer to the [official documentation](https://kubernetes.github.io/ingress-nginx/).
+
+* [Determine the ingress IP](https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/#determining-the-ingress-ip-and-ports):
+
+  ```console
+kubectl -n ingress-nginx svc ingress-nginx
+  ```
+
+* Create an `ingress-manifest.yaml` manifest for an ingress object in which you set set IP-ADDRESS and then apply the manifest. (**Note:** In the example of an `ingress-manifest.yaml` manifest shown next, `xip.io` is used as wildcard DNS for the IP address.)
+
+  ```yaml
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  name: api-keptn-ingress
+  namespace: keptn
+spec:
+  rules:
+  - host: <IP-ADDRESS>.xip.io
+    http:
+      paths:
+      - backend:
+          serviceName: api-gateway-nginx
+          servicePort: 80
+  ```
+
+  ```console
+kubectl apply -f ingress-manifest.yaml
+  ```
+
+</p>
+</details>
+
+<details><summary>**OpenShift 3.11 Routes**</summary>
+<p>
+
+* OpenShift 3.11 ships built-in routing functionality, which allows exposing the Keptn API using:
+
+  ```console
+  oc create route edge api --service=api-gateway-nginx --port=http --insecure-policy='None' -n keptn
+  ```
+
+</p>
+</details>
+
+*  Verify that you can access the Keptn API in your browser, by accessing
+  * (if SSL/TLS is not enabled): `http://<IP-ADDRESS>.xip.io/api`
+  * (if SSL/TLS is enabled): `https://<IP-ADDRESS>.xip.io/api`
+
+### (4) Use port-forward to access Keptn
+
+If you have not exposed Keptn via *NodePort* or *LoadBalancer* and you don't want to install an ingress on your Kubernetes cluster, you can use `kubectl port-forward` to connect to Keptn.
+
+* Please make sure that your `kubectl` CLI is configured to communicate with your cluster.
+
+* Execute `kubectl port-forward` to access Keptn:
+
+  ```console
+kubectl -n keptn port-forward service/api-gateway-nginx 8080:80
+  ```
+
+### (5) Authenticate Keptn CLI
+
+To authenticate the Keptn CLI against the Keptn cluster, the exposed Keptn API endpoint and API token are required. 
+
+**1) Keptn API endpoint:**
+
+<details><summary>Keptn API endpoint when exposing via **ClusterIP** in combination with *port-forward*</summary>
+<p>
+
+* If you are using **ClusterIP** in combination with *port-forward* to access Keptn, the Keptn endpoint is on `localhost` and the `port` you forwarded Keptn to. For example, the Keptn API endpoint is then `http://localhost:8080/api`
+
+</p>
+</details>
+
+<details><summary>Keptn API endpoint when exposing via **ClusterIP** in combination with an *Ingress Controller*</summary>
+<p>
+
+* If you are using **ClusterIP** in combination with an *Ingress Controller* to expose Keptn, get the HOST of the `api-keptn-ingress`using the next command. Consequently, the Keptn API endpoint is: `http://<HOST>/api`
+
+  ```console
+kubectl -n keptn get ingress api-keptn-ingress
+  ```
+
+  ```console
+NAME                HOSTS                  ADDRESS         PORTS   AGE
+api-keptn-ingress   <HOST>                 x.x.x.x   80      48m
+  ```
+
+</p>
+</details>
+
+
+<details><summary>Keptn API endpoint when exposing via **LoadBalancer**</summary>
+<p>
+
+* If you are using a **LoadBalancer** to expose Keptn, get the EXTERNAL-IP of the `api-gateway-ngix` using the next command. Consequently, the Keptn API endpoint is: `http://<ENDPOINT_OF_API_GATEWAY>/api`
+
+  ```console
+kubectl -n keptn get service api-gateway-nginx
+  ```
+
+  ```console
+NAME                TYPE        CLUSTER-IP    EXTERNAL-IP                  PORT(S)   AGE
+api-gateway-nginx   ClusterIP   10.107.0.20   <ENDPOINT_OF_API_GATEWAY>    80/TCP    44m
+  ```
+
+</p>
+</details>
+
+<details><summary>Keptn API endpoint when exposing via **NodePort**</summary>
+<p>
+
+* If you are using a **NodePort** to expose Keptn, please note that you either need to be on the same network as your Kubernetes VM (e.g., when using K3s or Minikube), or you have to set up certain firewall rules, e.g. for GKE (this is beyond this documentation). 
+
+    * Get the port of `api-gateway-nginx`:
+
+    ```console
+    API_PORT=$(kubectl get svc api-gateway-nginx -n keptn -o jsonpath='{.spec.ports[?(@.name=="http")].nodePort}')
+    ```
+
+    * Get the internal and external IP of current Kubernetes node:
+
+    ```console
+    EXTERNAL_NODE_IP=$(kubectl get nodes -o jsonpath='{ $.items[0].status.addresses[?(@.type=="ExternalIP")].address }')
+    INTERNAL_NODE_IP=$(kubectl get nodes -o jsonpath='{ $.items[0].status.addresses[?(@.type=="InternalIP")].address }')
+    ```
+
+    * Define Keptn API Endpoint (either via the internal or external IP; try both if unsure): `http://${INTERNAL_NODE_IP}:${API_PORT}/` or `http://${EXTERNAL_NODE_IP}:${API_PORT}/`
+
+
+</p>
+</details>
+
+<details><summary>Keptn API endpoint when exposing via **OpenShift Routes**</summary>
+<p>
+
+* If you are on **OpenShift 3.11**, get the HOST of the `api` route using the next command. Consequently, the Keptn API endpoint is: `http://<HOST>/api`
+
+  ```console
+  oc get route api -n keptn
+  ```
   
-- Amazon Elastic Kubernetes Service (EKS):
+  ```
+  NAME        HOST/PORT                       PATH      SERVICES            PORT      TERMINATION   WILDCARD
+  api         api-keptn.x.x.x.xip.io                    api-gateway-nginx   http      edge/None     None
+  ```
+
+</p>
+</details>
+
+**2) Keptn API token & Authentication:**
+
+<details><summary>API Token and Authenticate Keptn CLI on **Linux / MacOS**</summary>
+<p>
+
+* Set the environment variable `KEPTN_ENDPOINT`:
 
 ```console
-keptn install --platform=eks
+KEPTN_ENDPOINT=http://<ENDPOINT_OF_API_GATEWAY>/api
 ```
 
-- Google Kubernetes Engine (GKE):
+* Set the environment variable `KEPTN_API_TOKEN`:
 
 ```console
-keptn install --platform=gke
+KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
 ```
 
-- OpenShift 3.11:
+* To authenticate the CLI against the Keptn cluster, use the [keptn auth](../../reference/cli/commands/keptn_auth) command:
 
 ```console
-keptn install --platform=openshift
+keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN
 ```
 
-- Pivotal Container Service (PKS):
+**Note**: If you receive a warning `Using a file-based storage for the key because the password-store seems to be not set up.` this is because a password store could not be found in your environment. In this case, the credentials are stored in `~/.keptn/.password-store` in your home directory.
+</p>
+</details>
+
+<details><summary>API Token and Authenticate Keptn CLI on **Windows**</summary>
+<p>
+
+Please expand the corresponding section matching your CLI tool:
+
+<details><summary>PowerShell</summary>
+<p>
+
+For the Windows PowerShell, a small script is provided that installs the `PSYaml` module and sets the environment variables.
+
+* Set the environment variable `KEPTN_ENDPOINT`:
 
 ```console
-keptn install --platform=pks
+$Env:KEPTN_ENDPOINT = 'http://<ENDPOINT_OF_API_GATEWAY>/api'
 ```
 
-- K3s:
+* Copy the following snippet and paste it in the PowerShell. The snippet retrieves the API token and sets the environment variable `KEPTN_API_TOKEN`:
 
-    **Note**: If the Keptn installer is having trouble getting an IP address, try to install with `--gateway=NodePort`.
+```
+$tokenEncoded = $(kubectl get secret keptn-api-token -n keptn -ojsonpath='{.data.keptn-api-token}')
+$Env:KEPTN_API_TOKEN = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($tokenEncoded))
+```
 
+* To authenticate the CLI against the Keptn cluster, use the [keptn auth](../../reference/cli/commands/keptn_auth) command:
+
+```
+keptn auth --endpoint=$Env:KEPTN_ENDPOINT --api-token=$Env:KEPTN_API_TOKEN
+```
+
+</p>
+</details>
+
+<details><summary>Command Line</summary>
+<p>
+
+In the Windows Command Line, a couple of steps are necessary.
+
+* Set the environment variable `KEPTN_ENDPOINT`:
 
 ```console
-keptn install --platform=kubernetes
+set KEPTN_ENDPOINT=http://<ENDPOINT_OF_API_GATEWAY>/api
 ```
 
-- Minikube:
-
-    **Note**: If you are using `minikube tunnel` you don't need to use `--gateway=NodePort`.
+* Get the Keptn API Token encoded in base64:
 
 ```console
-keptn install --platform=kubernetes --gateway=NodePort
+kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token}
 ```
-
-In the Kubernetes cluster, this command creates the **keptn** and the **keptn-datastore** namespace containing all Keptn core components.
-This installation will allow you to use Keptn for the [Keptn Quality Gates](../../quality_gates/) and [Automated Operations](../../automated_operations/) use cases.
-    <details><summary>The *keptn* and *keptn-datastore* namespace contain:</summary>
-        <ul>
-        <li>mongoDb database for the Keptn's log</li>
-        <li>NATS cluster</li>
-        <li>Keptn core services:</li>
-            <ul>
-                <li>api</li>
-                <li>bridge</li>
-                <li>configuration-service</li>
-                <li>distributors</li>
-                <li>eventbroker</li>
-                <li>gatekeeper-service</li>
-                <li>helm-service</li>
-                <li>lighthouse-service</li>
-                <li>mongodb-datastore</li>
-                <li>remediation-service</li>
-                <li>shipyard-service</li>
-                <li>wait-service</li>
-            </ul>
-        <li>Services to deploy artifacts and to demonstrate the self-healing use cases:</li>
-            <ul>
-                <li>prometheus-service</li>
-                <li>servicenow-service</li>
-                <li>openshift-route-service (OpenShift only)</li>
-            </ul>
-        </ul>
-    </details>
-
-
-**Note:** If you want to install the complete Keptn version supporting [Keptn Continuous Delivery use case](../../continuous_delivery/), you have the option to roll-out Keptn **with** additional components for automated delivery and operations. Therefore, the `use-case` flag must be set to `continuous-delivery`:
 
 ```console
-keptn install --platform=[aks|eks|gke|openshift|pks|kubernetes] --use-case=continuous-delivery
+abcdefghijkladfaea
 ```
 
-## Configure an Istio Ingress (required for continuous delivery)
+* Take the encoded API token - it is the value from the key `keptn-api-token` (in this example, it is `abcdefghijkladfaea`) and save it in a text file, e.g., `keptn-api-token-base64.txt`
 
-To be able to reach your onboarded services, Istio has to be installed, and the `istio-ingressgateway` service, as well as the `public-gateway` in the `istio-system` namespace
-have to be available. To install Istio, please refer to the [official Istio documentatio](https://istio.io/latest/docs/setup/install/).
-When that is done, the next step is to determine the IP and the port of your Istio ingress. To do so, please refer to the following section
-of the Istio documentation: [Determining the ingress IP and ports](https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/#determining-the-ingress-ip-and-ports).
-
-Once that is done, create the `ingress-config` ConfigMap in the `keptn` namespace:
+* Decode the file:
 
 ```
-INGRESS_IP=<IP_OF_YOUR_INGRESS>
-INGRESS_PORT=<PORT_OF_YOUR_INGRESS> 
-INGRESS_PROTOCOL=<PROTOCOL> # either "http" or "https"
-kubectl create configmap -n keptn ingress-config --from-literal=ingress_hostname_suffix=${INGRESS_IP}.xip.io --from-literal=ingress_port=${INGRESS_PORT} --from-literal=ingress_protocol=${INGRESS_PROTOCOL} -oyaml --dry-run | kubectl replace -f -
+certutil -decode keptn-api-token-base64.txt keptn-api-token.txt
 ```
 
-If you have already set up set up a domain that points to your Istio Ingress, you can use that one for the `INGRESS_HOSTNAME_SUFFIX`. In this case, use the following command to create the ConfigMap:
+* Open the newly created file `keptn-api-token.txt`, copy the value and paste it into the next command:
 
 ```
-INGRESS_HOSTNAME=<YOUR_HOSTNAME>
-INGRESS_PORT=<PORT_OF_YOUR_INGRESS> 
-INGRESS_PROTOCOL=<PROTOCOL> # either "http" or "https"
-kubectl create configmap -n keptn ingress-config --from-literal=ingress_hostname_suffix=${INGRESS_HOSTNAME} --from-literal=ingress_port=${INGRESS_PORT} --from-literal=ingress_protocol=${INGRESS_PROTOCOL} -oyaml --dry-run | kubectl replace -f -
+set KEPTN_API_TOKEN=keptn-api-token
 ```
 
-After the ConfigMap has been created, restart the `helm-service`, using the following command:
+* To authenticate the CLI against the Keptn cluster, use the [keptn auth](../../reference/cli/commands/keptn_auth) command:
 
 ```
-kubectl delete pod -n keptn -lrun=helm-service
+keptn.exe auth --endpoint=$Env:KEPTN_ENDPOINT --api-token=$Env:KEPTN_API_TOKEN
 ```
 
-If you are on OpenShift, also restart the `openshift-route-service`:
+</p>
+</details>
+</p>
+</details>
 
-```
-kubectl delete pod -n keptn -lrun=openshift-route-service
-```
+--- 
+
+**Note:** *Suppress WebSocket communication when exposing Keptn via port-forward*
+
+* The WebSocket communications cannot be used when the Keptn API is exposed via a port-forward. Hence, please add `--suppress-websocket` to all CLI commands, e.g.: `keptn create project PROJECTNAME --suppress-websocket` 
+
+## Change how to expose Keptn
+
+If you would like to change the way of exposing Keptn, you can do this by changing the Kubernetes service type.
+
+* Change api-gateway-nginx service type from ClusterIP to LoadBalancer:
+
+  ```console
+kubectl patch service api-gateway-nginx -n keptn -p '{"spec": {"type": "LoadBalancer"}}'
+  ```
+
+* Change api-gateway-nginx service type from ClusterIP to NodePort:
+
+  ```console
+kubectl patch service api-gateway-nginx -n keptn -p '{"spec": {"type": "NodePort"}}'
+  ```
 
 ## Troubleshooting
 
-Please note that in case of any errors, the install process might leave some files in an inconsistent state. Therefore [keptn install](../../reference/cli/commands/keptn_install) cannot be executed a second time without [keptn uninstall](../../reference/cli/commands/keptn_uninstall). To address a unsuccessful installation: 
+In case of any errors, the install process might leave some files in an inconsistent state. Therefore [keptn install](../../reference/cli/commands/keptn_install) cannot be executed a second time without [keptn uninstall](../../reference/cli/commands/keptn_uninstall). To address a unsuccessful installation: 
 
 1. [Verify the Keptn installation](../../troubleshooting#verifying-a-keptn-installation).
 
