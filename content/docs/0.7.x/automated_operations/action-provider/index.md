@@ -41,8 +41,7 @@ This action-provider increases the ReplicaSet of a Kubernetes deployment by the 
 - name: Scaling ReplicaSet by 1
   description: Scaling the ReplicaSet of a Kubernetes Deployment by 1
   action: scaling
-  value: 
-    increment: +1
+  value: "1"
 ```
 
 * The `helm-service` is installed by default. 

@@ -14,20 +14,18 @@ Below is an example of a declarative remediation config:
 **Example of a remediation configuration:**
 
 ```yaml
----
-version: 0.2.0
+apiVersion: spec.keptn.sh/0.1.4
 kind: Remediation
 metadata:
-  name: remediation-service-abc
+  name: serviceXYZ-remediation
 spec:
-  remediations:  
-  - problemType: Response time degradation
-    actionsOnOpen:
-    - name: Scaling ReplicaSet by 1
-      description: Scaling the ReplicaSet of a Kubernetes Deployment by 1
-      action: scaling
-      values: 
-        increment: +1
+  remediations:
+    - problemType: Response time degradation
+      actionsOnOpen:
+        - action: scaling
+          name: Scaling ReplicaSet by 1
+          description: Scaling the ReplicaSet of a Kubernetes Deployment by 1
+          value: "1"
 ```
 
 A remediation is configured based on two properties:
@@ -45,10 +43,10 @@ The problem type maps a problem to a remediation by a matching problem title.
 The below example shows a remediation configured for the problem type *Response time degradation* and *Failure rate increase* as well as any unknown problem.
 
 ```yaml
-version: 0.2.0
+apiVersion: spec.keptn.sh/0.1.4
 kind: Remediation
 metadata:
-  name: remedation-service-abc
+  name: serviceXYZ-remediation
 spec:
   remediations:  
   - problemType: Response time degradation
@@ -70,10 +68,10 @@ If multiple actions are declared, Keptn sends out events in sequential order. Gi
 
 ```yaml
 ---
-version: 0.2.0
+apiVersion: spec.keptn.sh/0.1.4
 kind: Remediation
 metadata:
-  name: remediation-service-abc
+  name: serviceXYZ-remediation
 spec:
   remediations:  
   - problemType: Response time degradation
@@ -81,8 +79,7 @@ spec:
     - name: Scaling ReplicaSet by 1
       description: Scaling the ReplicaSet of a Kubernetes Deployment by 1
       action: scaling
-      value: 
-        increment: +1
+      value: "1"
     - name: Toogle feature flag
       action: featuretoggle
       description: Toggle feature flag EnablePromotion from ON to OFF.
@@ -97,5 +94,5 @@ spec:
 * To add an remediation config to a service, use the [keptn add-resource](../../reference/cli/commands/keptn_add-resource) command:
 
     ```console
-    keptn add-resource --project=sockshop --stage=production --service=carts --resource=remediation.yaml --resourceUri=remediation.yaml
+    keptn add-resource --project=sockshop --stage=production --service=serviceXYZ --resource=remediation.yaml --resourceUri=remediation.yaml
     ```
