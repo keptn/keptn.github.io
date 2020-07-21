@@ -26,7 +26,7 @@ This action-provider toggles the feature flag specified by the *key-value* map i
 * To install the action-provider for Unleash, execute:
 
 ```console
-kubectl apply -f https://github.com/keptn-contrib/unleash-service/blob/master/deploy/service.yaml
+kubectl apply -f kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/unleash-service/0.1.0/deploy/service.yaml
 ```
 
 **Note:** The referenced `service.yaml` already contains the required distributor.

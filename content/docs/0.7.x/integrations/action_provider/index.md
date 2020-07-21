@@ -12,7 +12,7 @@ The [Keptn CloudEvents](#cloudevents) an action-provider has to subscribe to is:
 
 ## Implement custom Action-provider
 
-**Incoming Keptn CloudEvent:** An *action-provider* starts working, when receiving a Keptn CloudEvent of type: [sh.keptn.event.action.triggered](https://github.com/keptn/spec/blob/master/cloudevents.md#action-triggered) event. Next to meta-data such as project, stage or service name, the event contains information about the action to execute and a value property. For more details, please see the specification [here](https://github.com/keptn/spec/blob/master/cloudevents.md#action-triggered) and take a look at the example: 
+**Incoming Keptn CloudEvent:** An *action-provider* starts working, when receiving a Keptn CloudEvent of type: [sh.keptn.event.action.triggered](https://github.com/keptn/spec/blob/0.1.4/cloudevents.md#action-triggered) event. Next to meta-data such as project, stage or service name, the event contains information about the action to execute and a value property. For more details, please see the specification [here](https://github.com/keptn/spec/blob/0.1.4/cloudevents.md#action-triggered) and take a look at the example: 
 
 ```json
 {
@@ -48,11 +48,11 @@ The [Keptn CloudEvents](#cloudevents) an action-provider has to subscribe to is:
 
 2. Decide based on the `action` property whether the action is supported. If the action is not supported, no further task is required.
 
-3. **Send start event:** If the action is supported, send a start event of type: [sh.keptn.event.action.started](https://github.com/keptn/spec/blob/master/cloudevents.md#action-started). This CloudEvent informs Keptn that a service takes care of executing the action. 
+3. **Send start event:** If the action is supported, send a start event of type: [sh.keptn.event.action.started](https://github.com/keptn/spec/blob/0.1.4/cloudevents.md#action-started). This CloudEvent informs Keptn that a service takes care of executing the action. 
 
 4. Execute the implemented functionality. At this step, the action-provider can make use of another automation tool. 
 
-5. **Send finished event:** Send a finished event of type: [sh.keptn.event.action.finished](https://github.com/keptn/spec/blob/master/cloudevents.md#action-finished). This informs Keptn to proceed in the remediation or operational workflow. 
+5. **Send finished event:** Send a finished event of type: [sh.keptn.event.action.finished](https://github.com/keptn/spec/blob/0.1.4/cloudevents.md#action-finished). This informs Keptn to proceed in the remediation or operational workflow. 
 
 
 **Deployment and service template:** Like any custom *Keptn-service*, an action-provider is a regular Kubernetes service with a deployment and service template. See [here](../custom_integration/#example-jmeter-service) how to define those templates for your action-provider. 
