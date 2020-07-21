@@ -11,7 +11,7 @@ Sends a Keptn event
 
 Allows to send an arbitrary Keptn event that is defined in the provided JSON file.
 An event has to follow the Cloud Events specification (https://cloudevents.io/) in version 0.2 and has to be written in JSON.
-In addition, the payload of the Cloud Event needs to follow the Keptn spec (https://github.com/keptn/spec/blob/0.1.3/cloudevents.md).
+In addition, the payload of the Cloud Event needs to follow the Keptn spec (https://github.com/keptn/spec/blob/0.1.4/cloudevents.md).
 
 For convenience, this command offers the *--stream-websocket* flag to open a web socket communication to Keptn. Consequently, messages from the receiving Keptn service, which processes the event, are sent to the CLI via WebSocket.
 	

@@ -194,7 +194,7 @@ Please refer to the [official homepage of K3s](https://k3s.io) for detailed inst
 
 Every Keptn release provides binaries for the Keptn CLI. These binaries are available for Linux, macOS, and Windows.
 
-- Download the version for your operating system from: [github.com/keptn/](https://github.com/keptn/keptn/releases/tag/0.6.2)
+- Download the version for your operating system from: [github.com/keptn/](https://github.com/keptn/keptn/releases/tag/0.7.0)
 - Unpack the archive
 - Find the `keptn` binary in the unpacked directory
 

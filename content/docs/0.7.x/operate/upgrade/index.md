@@ -5,7 +5,7 @@ weight: 5
 keywords: upgrade
 ---
 
-## Upgrade from 0.6.2 to 0.7
+## Upgrade from Keptn 0.6.2 to 0.7
 
 1. To download and install the Keptn CLI for version 0.7.0, please refer to the [Install Keptn CLI](../install/#install-keptn-cli) section.
 

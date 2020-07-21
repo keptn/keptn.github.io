@@ -16,7 +16,7 @@ uninstalling Keptn. Furthermore, the CLI allows creating projects, onboarding se
 
 This works for Linux and Mac only.
 
-1. This will download the 0.6.2 CLI version from [GitHub](https://github.com/keptn/keptn/releases), unpack it and move it to `/usr/local/bin/keptn`.
+1. This will download the 0.7.0 CLI version from [GitHub](https://github.com/keptn/keptn/releases), unpack it and move it to `/usr/local/bin/keptn`.
 ```console
 curl -sL https://get.keptn.sh | sudo -E bash
 ```
