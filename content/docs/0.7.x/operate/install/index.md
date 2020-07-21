@@ -21,7 +21,7 @@ To create a Kubernetes cluster, select one of the following options:
 1. Make sure you are logged in to your Azure account with `az login`
 
 1. Create AKS cluster
-  - [Master version:](../k8s-support/#supported-version) `1.15.x` (tested version: `1.15.10`)
+  - [Master version:](../k8s-support/#supported-version) `1.16.x` (tested version: `1.16.10`)
   - One **D8s_v3** node
  
  </p>
