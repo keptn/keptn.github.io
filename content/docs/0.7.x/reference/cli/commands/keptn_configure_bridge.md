@@ -18,7 +18,7 @@ keptn configure bridge --user=<user> --password=<password> [flags]
 ### Examples
 
 ```
-keptn configure bridge --user=<user> --password=<passsord>
+keptn configure bridge --user=<user> --password=<password>
 ```
 
 ### Options
