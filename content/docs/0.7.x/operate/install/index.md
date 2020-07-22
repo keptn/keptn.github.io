@@ -225,10 +225,10 @@ When installing Keptn, you can choose one of the three Kubernetes *ServiceTypes*
 * **NodePort**: Exposes Keptn on each Node's IP at a static port.
 * **LoadBalancer**: Exposes Keptn externally using a cloud provider's load balancer (if available).
 
-To select the approach of exposing Keptn that best fits your needs, you can set the flag `keptn-api-service-type` when launching the Keptn installation:
+To select the approach of exposing Keptn that best fits your needs, you can set the flag `endpoint-service-type` when launching the Keptn installation:
 
   ```console
---keptn-api-service-type=[ClusterIP | NodePort | LoadBalancer]
+--endpoint-service-type=[ClusterIP | NodePort | LoadBalancer]
   ```
 
 Depending on the selected approach and especially when going with *ClusterIP*, additional steps are required for a successful Keptn installation. The next flow chart guides you through the installation process depending on your decisions.   
@@ -278,10 +278,10 @@ This installation allows you to use Keptn for the [Quality Gates](../../quality_
 keptn install
   ```
 
-* By default, the service type *ClusterIP* is used for exposing Keptn. If you want another service type, please use the flag `keptn-api-service-type`.
+* By default, the service type *ClusterIP* is used for exposing Keptn. If you want another service type, please use the flag `endpoint-service-type`.
 
   ```console
-keptn install --keptn-api-service-type=[ClusterIP | NodePort | LoadBalancer]
+keptn install --endpoint-service-type=[ClusterIP | NodePort | LoadBalancer]
   ```
 
 **Keptn Control Plane + Execution Plane (for Continous Delivery)**

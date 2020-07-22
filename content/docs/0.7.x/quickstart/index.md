@@ -134,7 +134,7 @@ Please make sure you have `kubectl` installed (see [kubernetes.io/docs/tasks/too
 * When Keptn is exposed, the CLI can get authenticated: 
 
     ```console
-    keptn auth --endpoint=http:/localhost:8080 --api-token=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
+    keptn auth --endpoint=http://localhost:8080 --api-token=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
     ```
 
 * Finally, verify that Keptn is working by executing:

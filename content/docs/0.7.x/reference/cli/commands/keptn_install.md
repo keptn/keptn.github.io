@@ -24,7 +24,7 @@ keptn install [flags]
 ```
 keptn install # install on Kubernetes
 keptn install --platform=openshift --use-case=continuous-delivery # install continuous-delivery on Openshift
-keptn install --platform=kubernetes --keptn-api-service-type=NodePort # install on a Kubernetes instance with gateway NodePort
+keptn install --platform=kubernetes --endpoint-service-type=NodePort # install on a Kubernetes instance with gateway NodePort
 ```
 
 ### Options
@@ -33,7 +33,7 @@ keptn install --platform=kubernetes --keptn-api-service-type=NodePort # install 
   -c, --creds string                    Specify a JSON file containing cluster information needed for the installation (this allows skipping user prompts to execute a *silent* Keptn installation)
   -h, --help                            help for install
   -s, --insecure-skip-tls-verify        Skip tls verification for kubectl commands
-      --keptn-api-service-type string   Installation options for the api-service type [ClusterIP,LoadBalancer,NodePort] (default "ClusterIP")
+      --endpoint-service-type string    Installation options for the api-service type [ClusterIP,LoadBalancer,NodePort] (default "ClusterIP")
   -p, --platform string                 The platform to run keptn on [kubernetes,openshift] (default "kubernetes")
   -u, --use-case string                 The use case to install Keptn for [continuous-delivery,quality-gates]
 ```
