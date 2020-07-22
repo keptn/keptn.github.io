@@ -45,7 +45,7 @@ Run your Keptn installation for free on GKE! If you [sign up for a Google Cloud 
 <details><summary>K3s</summary>
 <p>
 
-Please refer to the [official homepage of K3s](https://k3s.io) for detailed installation instructions. Here a short guide on how to run Keptn on K3s is provided.
+Please refer to the [official homepage of K3s](https://k3s.io) for detailed installation instructions. Here, a short guide on how to run Keptn on K3s is provided for a Linux environment. **Note:** If you are using macOS, you will need to run K3s using [multipass](https://multipass.run/) and as explained [here](https://medium.com/@zhimin.wen/running-k3s-with-multipass-on-mac-fbd559966f7c).
  
 1. Download, install [K3s](https://k3s.io/) (tested with [versions 1.16 to 1.18](../operate/k8s_support/#supported-versions)) and run K3s using the following command:
    ```console
