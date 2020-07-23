@@ -36,7 +36,7 @@ After you have installed multipass, you can install Keptn using the following co
   keptn install --platform=kubernetes --keptn-installer-image=keptn/installer:0.6.1 --use-case=quality-gates --gateway=NodePort
   ```
 
-Afterwards, you are ready to use Keptn for the use case of [Keptn Quality Gates](../../usecases/quality-gates/).
+Afterwards, you are ready to use Keptn for the use case of [Keptn Quality Gates](../../../concepts/quality_gates/).
 
 ### Guide for Ubuntu
 
