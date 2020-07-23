@@ -3,6 +3,8 @@ title: Upgrade Keptn
 description: Upgrade your Keptn to 0.7
 weight: 5
 keywords: upgrade
+aliases:
+  - /docs/0.7.0/operate/upgrade/
 ---
 
 ## Upgrade from Keptn 0.6.2 to 0.7
