@@ -273,7 +273,7 @@ Depending on whether you would like to install the execution plane for continuou
     KEPTN_API_ENDPOINT=http://<ENDPOINT_OF_API_GATEWAY>/api
     ```
 
-:warning: **Warning:** If you do not setup TLS encryption, all your traffic to and from the Keptn endpoint is not encrypted.
+:warning: **Warning:** If you do not set up TLS encryption, all your traffic to and from the Keptn endpoint is not encrypted.
 
 ### Option 2: Expose Keptn via a NodePort
 This option exposes Keptn on each Kubernetes Node's IP at a static port. Therefore, please make sure that you can access the Kubernetes Nodes in your network.
@@ -303,7 +303,7 @@ Depending on whether you would like to install the execution plane for continuou
     KEPTN_API_ENDPOINT=http://${EXTERNAL_NODE_IP}:${API_PORT}/api
     ```
 
-:warning: **Warning:** If you do not setup TLS encryption, all your traffic to and from the Keptn endpoint is not encrypted.
+:warning: **Warning:** If you do not set up TLS encryption, all your traffic to and from the Keptn endpoint is not encrypted.
 
 ### Option 3: Expose Keptn via an Ingress
 
@@ -411,7 +411,7 @@ Depending on whether you would like to install the execution plane for continuou
     KEPTN_API_ENDPOINT=http://<HOST>/api
     ```
 
-:warning: **Warning:** If you do not setup TLS encryption, all your traffic to and from the Keptn endpoint is not encrypted.
+:warning: **Warning:** If you do not set up TLS encryption, all your traffic to and from the Keptn endpoint is not encrypted.
 
 ### Option 4: Access Keptn via a Port-forward
 This option exposes Keptn on a *cluster-internal* IP .
@@ -422,7 +422,7 @@ Depending on whether you would like to install the execution plane for continuou
   keptn install (--use-case=continuous-delivery) (--platform=openshift)
   ```
 
-1. **Setup a Port-Forward:** Configure the port-forward to the using the command below.
+1. **Setup a Port-Forward:** Configure the port-forward by using the command below.
   ```console
   kubectl -n keptn port-forward service/api-gateway-nginx 8080:80
     ```
@@ -548,6 +548,22 @@ keptn.exe auth --endpoint=$Env:KEPTN_ENDPOINT --api-token=$Env:KEPTN_API_TOKEN
 ## Change how to expose Keptn
 
 If you would like to change the way of exposing Keptn, you can do this by re-installing Keptn.
+
+## Advanced: Install Keptn using the Helm chart
+Keptn is installed via a Helm chart, which can be also directly used.
+For this, the [Helm CLI](https://helm.sh) needs to be installed.
+
+
+```console
+helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.7.0 --repo=https://storage.googleapis.com/keptn-installer --set=control-plane.apiGatewayNginx.type=LoadBalancer,continuous-delivery.enabled=true
+```
+
+
+
+
+This can be especially handy, if you would like to further customize Keptn.
+
+
 
 ## Troubleshooting
 
