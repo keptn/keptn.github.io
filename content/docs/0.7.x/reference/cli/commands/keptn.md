@@ -17,9 +17,9 @@ to create projects, and to onboard services.
 
 ```
   -h, --help                 help for keptn
-      --mock                 mocking of server communication - ATTENTION: your commands will not be sent to the keptn server
+      --mock                 mocking of server communication to not send events to the Keptn API
   -q, --quiet                suppress debug and info output
-      --suppress-websocket   disables websocket communication - use the ID of Keptn context (if provided) for checking the result of your command
+      --suppress-websocket   disables websocket communication to suppress messages from Keptn services 
   -v, --verbose              verbose logging
 ```
 
