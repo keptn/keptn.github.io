@@ -189,10 +189,10 @@ Please refer to the [official homepage of K3s](https://k3s.io) for detailed inst
 </p>
 </details>
 
-<details><summary>Any other Kubernetes derivate</summary>
+<details><summary>Any other Kubernetes distribution</summary>
 <p>
 
-Keptn should run on any other Kubernetes derivate as it only consists of Kubernetes deployments, services, RBAC rules, and PVCs.
+Keptn should run on any other Kubernetes distribution as it only consists of Kubernetes deployments, services, RBAC rules, and PVCs.
 However, if you are facing problems, please let us know on https://slack.keptn.sh.
 
 </p>
@@ -229,10 +229,10 @@ Every Keptn release provides binaries for the Keptn CLI. These binaries are avai
 
 Keptn consists of a **Control Plane** and an **Execution Plane**:
 
-* The **Control Plane** allows to use Keptn for the [Quality Gates](../../quality_gates/) and [Automated Operations](../../automated_operations/) use cases.
+* The **Control Plane** allows using Keptn for the [Quality Gates](../../quality_gates/) and [Automated Operations](../../automated_operations/) use cases.
 * The **Control Plane with the Execution Plane (for Continuous Delivery)** allows to implement [Continuous Delivery](../../continuous_delivery/) use cases with Keptn.
 
-When afterwards installing Keptn on your cluster, the CLI will allow to select the components which are installed.
+When afterwards installing Keptn on your cluster, the CLI will allow to select which planes are installed.
 
 
 Before installing Keptn on your cluster, please also consider how you would like to access Keptn.
@@ -268,9 +268,16 @@ Depending on whether you would like to install the execution plane for continuou
   api-gateway-nginx   ClusterIP   10.107.0.20   <ENDPOINT_OF_API_GATEWAY>    80/TCP    44m
   ```
 
-    Optional: Store Keptn API endpoint in an environment variable:
+    Optional: Store Keptn API endpoint in an environment variable.
+
+    For Linux and Mac:
     ```console
     KEPTN_API_ENDPOINT=http://<ENDPOINT_OF_API_GATEWAY>/api
+    ```
+
+    For Windows:
+    ```console
+    $Env:KEPTN_ENDPOINT = 'http://<ENDPOINT_OF_API_GATEWAY>/api'
     ```
 
 :warning: **Warning:** If you do not set up TLS encryption, all your traffic to and from the Keptn endpoint is not encrypted.
@@ -298,9 +305,16 @@ Depending on whether you would like to install the execution plane for continuou
 
     The Keptn API endpoint (either via the internal or external IP; try both if unsure) is: `http://${INTERNAL_NODE_IP}:${API_PORT}/api` or `http://${EXTERNAL_NODE_IP}:${API_PORT}/api`
 
-    Optional: Store Keptn API endpoint in an environment variable:
+    Optional: Store Keptn API endpoint in an environment variable.
+
+    For Linux and Mac:
     ```console
     KEPTN_API_ENDPOINT=http://${EXTERNAL_NODE_IP}:${API_PORT}/api
+    ```
+
+    For Windows:
+    ```console
+    $Env:KEPTN_ENDPOINT = 'http://${EXTERNAL_NODE_IP}:${API_PORT}/api'
     ```
 
 :warning: **Warning:** If you do not set up TLS encryption, all your traffic to and from the Keptn endpoint is not encrypted.
@@ -406,15 +420,22 @@ Depending on whether you would like to install the execution plane for continuou
   api-keptn-ingress   <HOST>                 x.x.x.x   80      48m
     ```
 
-    Optional: Store Keptn API endpoint in an environment variable:
+    Optional: Store Keptn API endpoint in an environment variable.
+
+    For Linux and Mac:
     ```console
     KEPTN_API_ENDPOINT=http://<HOST>/api
+    ```
+
+    For Windows:
+    ```console
+    $Env:KEPTN_ENDPOINT = 'http://<HOST>/api'
     ```
 
 :warning: **Warning:** If you do not set up TLS encryption, all your traffic to and from the Keptn endpoint is not encrypted.
 
 ### Option 4: Access Keptn via a Port-forward
-This option exposes Keptn on a *cluster-internal* IP .
+This option does not expose Keptn to the public, but exposes Keptn on a *cluster-internal* IP.
 
 1. **Install Keptn:** For installing Keptn on your cluster, please use the Keptn CLI.
 Depending on whether you would like to install the execution plane for continuous delivery, add the flag `--use-case=continuous-delivery`. Furthermore, if you are on OpenShift, please add `--platform=openshift`.

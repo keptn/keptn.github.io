@@ -75,7 +75,7 @@ We also support installation on:
 * Minikube
 * OpenShift 3.11
 
-For details on the specific providers, please visit our [detailed installation guide](../operate/install/#create-kubernetes-cluster).
+For details on the specific providers, please visit our [detailed installation guide](../0.7.x/operate/install/#create-or-bring-kubernetes-cluster).
 
 </p>
 </details>
