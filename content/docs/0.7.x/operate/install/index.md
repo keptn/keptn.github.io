@@ -460,10 +460,9 @@ Depending on whether you would like to install the execution plane for continuou
 ## Authenticate Keptn CLI
 
 To authenticate the Keptn CLI against the Keptn cluster, the exposed Keptn endpoint and API token are required. 
+After [installing Keptn](#install-keptn), you already have your Keptn endpoint.
 
-**Keptn API token & Authentication:**
-
-<details><summary>API Token and Authenticate Keptn CLI on **Linux / MacOS**</summary>
+<details><summary>Get API Token and Authenticate Keptn CLI on **Linux / MacOS**</summary>
 <p>
 
 * Set the environment variable `KEPTN_API_TOKEN`:
@@ -482,7 +481,7 @@ keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN
 </p>
 </details>
 
-<details><summary>API Token and Authenticate Keptn CLI on **Windows**</summary>
+<details><summary>Get API Token and Authenticate Keptn CLI on **Windows**</summary>
 <p>
 
 Please expand the corresponding section matching your CLI tool:
@@ -568,7 +567,11 @@ keptn.exe auth --endpoint=$Env:KEPTN_ENDPOINT --api-token=$Env:KEPTN_API_TOKEN
 
 ## Change how to expose Keptn
 
-If you would like to change the way of exposing Keptn, you can do this by re-installing Keptn.
+If you would like to change the way of exposing Keptn, you can do this by [re-installing Keptn](#install-keptn)
+and selecting the desired configuration. 
+When the CLI asks you if you would like to overwrite the installation, confirm this with yes.
+This will keep all your data including the Git repos and events.
+
 
 ## Advanced: Install Keptn using the Helm chart
 Keptn is installed via a Helm chart, which can also be used directly.
