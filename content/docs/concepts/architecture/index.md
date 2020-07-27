@@ -16,7 +16,13 @@ During a Keptn installation, [NATS](https://nats.io/) is installed in the Kubern
 ## Keptn CLI
 The Keptn CLI needs to be installed on the local machine and is used to send commands to Keptn by interacting with the API of Keptn. To communicate with Keptn you need to know a shared secret that is generated during the installation and verified by the *api* component.
 
-**Note:** A dedicated Keptn CLI section is provided [here](../../develop/reference/cli/), which helps you to get started and lists all available commands.
+**Note:** A dedicated Keptn CLI section is provided [here](../../0.7.x/reference/cli/), which helps you to get started and lists all available commands.
+
+## Keptn Bridge
+
+The *Keptn Bridge* provides a user interface that shows all Keptn-managed projects and services. Besides, it gives an overview of the staging environment. 
+
+**Note:** A dedicated section for the Keptn Bridge is provided [here](../../0.7.x/reference/bridge/), which explains how to access it and shows the user interface.
 
 ## Keptn Control Plane
 
@@ -30,13 +36,7 @@ The *api-gateway-nginx* component is the single point used for exposing Keptn to
 
 The *api* component provides a REST API that allows communicating with Keptn. It receives the commands from the CLI and executes the requested tasks. However, the api component mostly uses other internal services or forwards events to the *eventbroker*. In addition to the REST API, the api component maintains a websocket server to forward Keptn messages to the *Keptn CLI*.
 
-**Note:** A dedicated Keptn API section is provided [here](../../develop/reference/api/), which helps you to access the API and to explore the available endpoints.
-
-### bridge
-
-The *Keptn Bridge* provides a user interface that shows all Keptn-managed projects and services. Besides, it gives an overview of the staging environment. 
-
-**Note:** A dedicated section for the Keptn Bridge is provided [here](../../develop/reference/bridge/), which explains how to access it and shows the user interface.
+**Note:** A dedicated Keptn API section is provided [here](../../0.7.x/reference/api/), which helps you to access the API and to explore the available endpoints.
 
 ### eventbroker-service
 
@@ -68,4 +68,4 @@ This category of services reacts on Keptn events and perform: (1) initial tasks 
 
 To enrich the continuous delivery use case or to build automated operations, Keptn relies on services from the community. Those services can be easily plugged into the workflows to extend the delivery pipeline or to further automate operations.
 
-**Note:** A dedicated tutorial is provided [here](../../develop/integrations/custom_integration/), which helps you to implement a custom service for Keptn.
+**Note:** A dedicated how-to guide is provided [here](../../0.7.x/integrations/custom_integration/), which helps you to implement a custom service for Keptn.

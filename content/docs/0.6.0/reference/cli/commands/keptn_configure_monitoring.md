@@ -13,7 +13,7 @@ Configure a monitoring solution for a Keptn cluster. This command sets up Dynatr
 
 **Note:** If you are executing *keptn configure monitoring dynatrace*, the service flag is optional since Keptn automatically detects the services of a project.
 
-See https://keptn.sh/docs/develop/reference/monitoring/ for more information.
+See https://keptn.sh/docs/0.6.0/reference/monitoring/ for more information.
 
 
 ```
