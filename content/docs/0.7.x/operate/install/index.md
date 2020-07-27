@@ -21,7 +21,7 @@ To create a Kubernetes cluster, select one of the following options:
 1. Make sure you are logged in to your Azure account with `az login`
 
 1. Create AKS cluster
-  - [Master version:](../k8s-support/#supported-version) `1.16.x` (tested version: `1.16.10`)
+  - [Master version:](../k8s_support/#supported-versions) `1.16.x` (tested version: `1.16.10`)
   - One **D8s_v3** node
  
  </p>
@@ -34,7 +34,7 @@ To create a Kubernetes cluster, select one of the following options:
   - [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html) (version >= 1.16.156)
 
 1. Create EKS cluster on AWS
-  - [Master version:](../k8s-support/#supported-version) `1.17` (tested version: `1.17`)
+  - [Master version:](../k8s_support/#supported-versions) `1.17` (tested version: `1.17`)
   - One `m5.2xlarge` node
   - Sample script using [eksctl](https://eksctl.io) to create such a cluster
 
@@ -66,7 +66,7 @@ Run your Keptn installation for free on GKE! If you [sign up for a Google Cloud 
   - [python 2.7](https://www.python.org/downloads/release/python-2716/) (required for Ubuntu 19.04)
 
 2. Create GKE cluster
-  - [Master version:](../k8s-support/#supported-version): `1.15.x` (tested version: `1.15.9-gke.22`)
+  - [Master version:](../k8s_support/#supported-versions) `1.15.x` (tested version: `1.15.9-gke.22`)
   - One **n1-standard-8** node
   - Image type `Ubuntu` or `COS` (**Note:** If you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../monitoring/dynatrace/).)
   - Sample script to create such cluster:

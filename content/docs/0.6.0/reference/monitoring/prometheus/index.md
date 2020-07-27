@@ -10,7 +10,7 @@ In order to evaluate the quality gates and allow self-healing in production, we 
 
 ## Prerequisites
 
-- To setup Prometheus monitoring for you Kubernetes cluster, a Keptn project and at least one onboarded service must be available. For example, finish the [Onboarding a Service](../onboard-carts-service/) tutorial or onboard your own service.
+- To setup Prometheus monitoring for you Kubernetes cluster, a Keptn project and at least one onboarded service must be available. For example, finish the [Onboarding a Service](../../../usecases/onboard-carts-service/) tutorial or onboard your own service.
 
 ## Setup Prometheus
 

@@ -41,7 +41,7 @@ To quickly get an Unleash server up and running with Keptn, follow these instruc
     keptn onboard service unleash --project=unleash --chart=./unleash
     ```
 
-1. Send new artifacts for unleash and unleash-db using the [keptn send new-artifact](../../../reference/cli/commands/keptn_send_new-artifact) command:
+1. Send new artifacts for unleash and unleash-db using the [keptn send new-artifact](../../../reference/cli/commands/keptn_send_event_new-artifact/) command:
 
     ```console
     keptn send event new-artifact --project=unleash --service=unleash-db --image=postgres:10.4
