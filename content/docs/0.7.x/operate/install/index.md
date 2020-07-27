@@ -569,32 +569,15 @@ keptn.exe auth --endpoint=$Env:KEPTN_ENDPOINT --api-token=$Env:KEPTN_API_TOKEN
 
 After installing and exposing Keptn, you can access the Keptn Bridge by using a browser and navigating to the Keptn endpoint without the `api` path at the end of the URL. 
 
-* The Keptn Bridge has basic authentication enabled by default. The default user is: `keptn`
+The Keptn Bridge has basic authentication enabled by default and the default user is `keptn` with an automatically generated password. 
 
-* To get the password for the `keptn` user, follow the corresponding instructions: 
-
-<details><summary>Get password for `keptn` user on **Linux / MacOS**</summary>
-<p>
+* To get the user and password for authentication, execute:
 
 ```console
-kubectl get secret bridge-credentials -n keptn -ojsonpath='{.data.BASIC_AUTH_PASSWORD}' | base64 --decode
+keptn configure bridge --output
 ```
 
-</p>
-</details>
-
-<details><summary>Get password for `keptn` user on **Windows**</summary>
-<p>
-
-```
-$password = $(kubectl get secret bridge-credentials -n keptn -ojsonpath='{.data.BASIC_AUTH_PASSWORD}')
-[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($password))
-```
-
-</p>
-</details>
-
-* If you want to change the username and password for the authentication, follow the instructions [here](../../reference/bridge/basic_authentication/#enable-authentication).
+* If you want to change the user and password for the authentication, follow the instructions [here](../../reference/bridge/basic_authentication/#enable-authentication).
 
 
 ## Change how to expose Keptn
@@ -660,8 +643,6 @@ done
 ```
 </p>
 </details>
-
-
 
 ## Troubleshooting
 

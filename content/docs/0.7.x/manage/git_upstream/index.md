@@ -6,11 +6,13 @@ keywords: [manage]
 aliases:
 ---
 
-Keptn will manage a project in an internal Git repository. To upstream this repository to a remote place that also works as backup, it is recommended to create, for example, a GitHub repository. This GitHub repository is then specified as upstream repo when creating a project explained below. 
+Keptn will manage a project in an internal Git repository. To upstream this repository to a remote place that also works as backup, it is recommended to create, for example, a GitHub repository. This GitHub repository is then specified as upstream repo when creating a project. 
+
+## Create a Git repository
 
 Select one of the four options and make sure to have the Git **user**, **token**, and **remote url** before continuing.
 
-## GitHub
+### GitHub
 <details><summary>Create user, token, and repository</summary>
 <p>
 
@@ -27,8 +29,6 @@ Select one of the four options and make sure to have the Git **user**, **token**
 
 1. Go to your account or your GitHub organization and create a [GitHub repository](https://help.github.com/en/articles/create-a-repo).
 
-    **Note:** Click the **Initialize this repository with a README** checkbox to initialize the repository, which is a prerequisite.
-
     {{< popup_image 
     link="./assets/github_create_repo.png" 
     caption="GitHub create repository" 
@@ -37,7 +37,7 @@ Select one of the four options and make sure to have the Git **user**, **token**
 </p>
 </details>
 
-## GitLab
+### GitLab
 <details><summary>Create user, token, and project</summary>
 <p>
 
@@ -52,8 +52,6 @@ Select one of the four options and make sure to have the Git **user**, **token**
 
 1. Go to your account and create a [GitLab project](https://docs.gitlab.com/ee/gitlab-basics/create-project.html).
 
-    **Note:** Click the **Initialize this repository with a README** checkbox to initialize the repository, which is a prerequisite.
-
     {{< popup_image 
     link="./assets/gitlab_create_project.png" 
     caption="GitLab create project" 
@@ -62,7 +60,7 @@ Select one of the four options and make sure to have the Git **user**, **token**
 </p>
 </details>
 
-## Bitbucket
+### Bitbucket
 <details><summary>Create user, token, and repository</summary>
 <p>
 
@@ -77,8 +75,6 @@ Select one of the four options and make sure to have the Git **user**, **token**
 
 1. Go to your account and create a [Bitbucket repository](https://docs.gitlab.com/ee/gitlab-basics/create-project.html).
 
-    **Note:** Select *Include a README?* - **Yes, with a template** to initialize the repository, which is a prerequisite.
-
     {{< popup_image 
     link="./assets/bitbucket_create_repo.png" 
     caption="Bitbucket create repository" 
@@ -87,7 +83,7 @@ Select one of the four options and make sure to have the Git **user**, **token**
 </p>
 </details>
 
-## Azure DevOps Repo
+### Azure DevOps Repo
 <details><summary>Create user, token, and repository</summary>
 <p>
 
@@ -120,3 +116,13 @@ Select one of the four options and make sure to have the Git **user**, **token**
 
 </p>
 </details>
+
+## Create Keptn project or set Git upstream
+
+* After creating a Git repository, you can create a Keptn project as explained in [Create a project](../project/#create-a-project).
+
+* If you have already a Keptn project and want to set the Git upstream, you can do this by executing the [keptn update project](../../reference/cli/commands/keptn_update_project/) command:
+
+```console
+keptn update project PROJECTNAME --git-user=GIT_USER --git-token=GIT_TOKEN --git-remote-url=GIT_REMOTE_URL
+```
