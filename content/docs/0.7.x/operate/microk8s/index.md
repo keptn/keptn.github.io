@@ -55,4 +55,4 @@ If you are using Ubuntu, you can install Keptn using the following commands:
   keptn install --platform=kubernetes --use-case=quality-gates --gateway=NodePort
   ```
 
-Afterwards, you are ready to use Keptn for the use case of [Keptn Quality Gates](../../usecases/quality-gates/).
+Afterwards, you are ready to use Keptn for the use case of [Keptn Quality Gates](../../../concepts/quality_gates/).

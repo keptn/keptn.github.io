@@ -68,7 +68,7 @@ Run your Keptn installation for free on GKE! If you [sign up for a Google Cloud 
 2. Create GKE cluster
   - [Master version:](../k8s-support/#supported-version): `1.15.x` (tested version: `1.15.9-gke.22`)
   - One **n1-standard-8** node
-  - Image type `Ubuntu` or `COS` (**Note:** If you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../reference/monitoring/dynatrace/).)
+  - Image type `Ubuntu` or `COS` (**Note:** If you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../monitoring/dynatrace/).)
   - Sample script to create such cluster:
 
     ```console

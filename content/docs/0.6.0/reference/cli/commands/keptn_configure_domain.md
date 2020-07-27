@@ -15,7 +15,7 @@ This is mandatory if *xip.io* cannot be used (e.g., when running Keptn on EKS, A
 
 **Note:** This command requires a *kubernetes current context* pointing to the cluster where you would like to configure your domain. After installing Keptn this is guaranteed.
 
-Please find more information on https://keptn.sh/docs/develop/reference/troubleshooting/#verify-kubernetes-context-with-keptn-installation
+Please find more information on https://keptn.sh/docs/0.6.0/reference/troubleshooting/#verify-kubernetes-context-with-keptn-installation
 
 
 ```
