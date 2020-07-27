@@ -64,7 +64,7 @@ Create a secret containing the credentials for the *Dynatrace tenant* and *Keptn
     caption="Dynatrace API Token"
     width="500px">}}
 
-* To get the values for `KEPTN_API_URL` and `KEPTN_API_TOKEN`, please see [Authenticate Keptn CLI](https://keptn.sh/docs/0.7.x/operate/install/authenticate-keptn-cli).
+* To get the values for `KEPTN_API_URL` (aka. `KEPTN_ENDPOINT`) and `KEPTN_API_TOKEN`, please see [Authenticate Keptn CLI](../../../operate/install/#authenticate-keptn-cli).
    
 * If you would like to use backlinks from your Dynatrace tenant to the Keptn Bridge, you can add the `KEPTN_BRIDGE_URL` to the secret. The value of this setting is: `<KEPTN_API_URL>/bridge`
 
