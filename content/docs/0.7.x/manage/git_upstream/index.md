@@ -4,6 +4,7 @@ description: Select a Get-based upstream for a project.
 weight: 20
 keywords: [manage]
 aliases:
+  - /docs/0.7.0/manage/git_upstream/
 ---
 
 Keptn will manage a project in an internal Git repository. To upstream this repository to a remote place that also works as backup, it is recommended to create, for example, a GitHub repository. This GitHub repository is then specified as upstream repo when creating a project. 
