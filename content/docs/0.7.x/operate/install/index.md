@@ -8,7 +8,7 @@ keywords: setup
 ## Prerequisites
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
-## Create or Bring a Kubernetes cluster
+## Create or bring a Kubernetes cluster
 
 To create a Kubernetes cluster, select one of the following options:
 
@@ -229,11 +229,10 @@ Every Keptn release provides binaries for the Keptn CLI. These binaries are avai
 
 Keptn consists of a **Control Plane** and an **Execution Plane**:
 
-* The **Control Plane** allows using Keptn for the [Quality Gates](../../quality_gates/) and [Automated Operations](../../automated_operations/) use cases.
-* The **Control Plane with the Execution Plane (for Continuous Delivery)** allows to implement [Continuous Delivery](../../continuous_delivery/) use cases with Keptn.
+* The **Control Plane** allows using Keptn for the [Quality Gates](../../../concepts/quality_gates/) and [Automated Operations](../../../concepts/automated_operations/) use cases.
+* The **Control Plane with the Execution Plane (for Continuous Delivery)** allows to implement [Continuous Delivery](../../../concepts/delivery/) use cases with Keptn.
 
-When afterwards installing Keptn on your cluster, the CLI will allow to select which planes are installed.
-
+When installing Keptn on your cluster, the CLI will allow to select which planes are installed.
 
 Before installing Keptn on your cluster, please also consider how you would like to access Keptn.
 Kubernetes provides the following four options:
@@ -245,6 +244,7 @@ Kubernetes provides the following four options:
 
 An overview of the four options is provided in the graphic below and the respective steps of all options
 are described below.
+
 {{< popup_image
 link="./assets/installation_options.png"
 caption="Installation options"
@@ -272,7 +272,7 @@ Depending on whether you would like to install the execution plane for continuou
 
     For Linux and Mac:
     ```console
-    KEPTN_API_ENDPOINT=http://<ENDPOINT_OF_API_GATEWAY>/api
+    KEPTN_ENDPOINT=http://<ENDPOINT_OF_API_GATEWAY>/api
     ```
 
     For Windows:
@@ -309,7 +309,7 @@ Depending on whether you would like to install the execution plane for continuou
 
     For Linux and Mac:
     ```console
-    KEPTN_API_ENDPOINT=http://${EXTERNAL_NODE_IP}:${API_PORT}/api
+    KEPTN_ENDPOINT=http://${EXTERNAL_NODE_IP}:${API_PORT}/api
     ```
 
     For Windows:
@@ -328,7 +328,7 @@ Depending on whether you would like to install the execution plane for continuou
   ```
 
 1. **Install an Ingress-Controller and create an Ingress:**
-  Please first install your favorite Ingress-Controller and afterwards apply an Ingress object in the `keptn` namespace, 
+  Please first install your favorite Ingress-Controller and then apply an Ingress object in the `keptn` namespace, 
   which points to the service `api-gateway-nginx` on port 80. Note that the [Kubernetes Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) allows to setup TLS encryption.
 
     Commonly used Ingress-Controller are e.g. Istio and NGINX:
@@ -344,7 +344,7 @@ Depending on whether you would like to install the execution plane for continuou
     kubectl -n istio-system get svc istio-ingressgateway
       ```
 
-    * Create an `ingress-manifest.yaml` manifest for an Ingress object in which you set set IP-ADDRESS or your hostname and then apply the manifest. (**Note:** In the example of an `ingress-manifest.yaml` manifest shown below, `nip.io` is used as wildcard DNS for the IP address.)
+    * Create an `ingress-manifest.yaml` manifest for an Ingress object in which you set IP-ADDRESS or your hostname and then apply the manifest. (**Note:** In the example of an `ingress-manifest.yaml` manifest shown below, `nip.io` is used as wildcard DNS for the IP address.)
 
       ```yaml
     apiVersion: networking.k8s.io/v1beta1
@@ -382,7 +382,7 @@ Depending on whether you would like to install the execution plane for continuou
     kubectl -n ingress-nginx svc ingress-nginx
       ```
 
-    * Create an `ingress-manifest.yaml` manifest for an ingress object in which you set set IP-ADDRESS or your hostname and then apply the manifest. (**Note:** In the example of an `ingress-manifest.yaml` manifest shown next, `nip.io` is used as wildcard DNS for the IP address.)
+    * Create an `ingress-manifest.yaml` manifest for an ingress object in which you set IP-ADDRESS or your hostname and then apply the manifest. (**Note:** In the example of an `ingress-manifest.yaml` manifest shown next, `nip.io` is used as wildcard DNS for the IP address.)
 
       ```yaml
     apiVersion: networking.k8s.io/v1beta1
@@ -424,7 +424,7 @@ Depending on whether you would like to install the execution plane for continuou
 
     For Linux and Mac:
     ```console
-    KEPTN_API_ENDPOINT=http://<HOST>/api
+    KEPTN_ENDPOINT=http://<HOST>/api
     ```
 
     For Windows:
@@ -435,7 +435,7 @@ Depending on whether you would like to install the execution plane for continuou
 :warning: **Warning:** If you do not set up TLS encryption, all your traffic to and from the Keptn endpoint is not encrypted.
 
 ### Option 4: Access Keptn via a Port-forward
-This option does not expose Keptn to the public, but exposes Keptn on a *cluster-internal* IP.
+This option does not expose Keptn to the public but exposes Keptn on a *cluster-internal* IP.
 
 1. **Install Keptn:** For installing Keptn on your cluster, please use the Keptn CLI.
 Depending on whether you would like to install the execution plane for continuous delivery, add the flag `--use-case=continuous-delivery`. Furthermore, if you are on OpenShift, please add `--platform=openshift`.
@@ -453,7 +453,7 @@ Depending on whether you would like to install the execution plane for continuou
 
     Optional: Store Keptn API endpoint in an environment variable:
     ```console
-    KEPTN_API_ENDPOINT=http://localhost:8080/api
+    KEPTN_ENDPOINT=http://localhost:8080/api
     ```
 
   
@@ -564,6 +564,38 @@ keptn.exe auth --endpoint=$Env:KEPTN_ENDPOINT --api-token=$Env:KEPTN_API_TOKEN
 **Note:** *Suppress WebSocket communication when exposing Keptn via port-forward*
 
 * The WebSocket communications cannot be used when the Keptn API is exposed via a port-forward. Hence, please add `--suppress-websocket` to all CLI commands, e.g.: `keptn create project PROJECTNAME --suppress-websocket` 
+
+## Authenticate Keptn Bridge
+
+After installing and exposing Keptn, you can access the Keptn Bridge by using a browser and navigating to the Keptn endpoint without the `api` path at the end of the URL. 
+
+* The Keptn Bridge has basic authentication enabled by default. The default user is: `keptn`
+
+* To get the password for the `keptn` user, follow the corresponding instructions: 
+
+<details><summary>Get password for `keptn` user on **Linux / MacOS**</summary>
+<p>
+
+```console
+kubectl get secret bridge-credentials -n keptn -ojsonpath='{.data.BASIC_AUTH_PASSWORD}' | base64 --decode
+```
+
+</p>
+</details>
+
+<details><summary>Get password for `keptn` user on **Windows**</summary>
+<p>
+
+```
+$password = $(kubectl get secret bridge-credentials -n keptn -ojsonpath='{.data.BASIC_AUTH_PASSWORD}')
+[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($password))
+```
+
+</p>
+</details>
+
+* If you want to change the username and password for the authentication, follow the instructions [here](../../reference/bridge/basic_authentication/#enable-authentication).
+
 
 ## Change how to expose Keptn
 
