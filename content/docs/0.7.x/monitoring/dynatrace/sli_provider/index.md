@@ -12,7 +12,7 @@ During the evaluation of a quality gate, the Dynatrace SLI-provider is required 
 
 1. To install the *dynatrace-sli-service*, execute:
     ```console
-    kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-sli-service/0.4.0/deploy/service.yaml
+    kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-sli-service/0.5.0/deploy/service.yaml
     ```
 
 1. The *dynatrace-sli-service* needs access to a Dynatrace tenant. If you have completed the steps from [Setup Dynatrace](./#setup-dynatrace), the *dynatrace-sli-service* uses the already provided credentials. Otherwise, create a *secret* containing the **Tenant ID** and **API token**.
