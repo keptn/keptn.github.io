@@ -23,7 +23,7 @@ before deploying the upgrading job.
 :mag: **Info:** By using this upgrader job, Helm releases are **not** converted to Helm 3.0 and still on version Helm 2. After executing the upgrader job, you need to manually convert the Helm releases on your Kubernetes cluster as explained below.
 
 ```console
-kubectl delete job upgrader -n default
+kubectl delete job upgrader -n keptn
 kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.7.0/upgrader/upgrade-062-070/upgrade-job.yaml
 ```
 
@@ -78,7 +78,7 @@ This option is recommended when you have a Kubernetes cluster with just Keptn in
 :warning: **Warning:** By using this upgrader job, **all** Helm releases are upgraded from Helm 2 to 3 and Tiller will be removed. This also includes Helm releases that are not managed by Keptn. If you have Helm releases on your cluster that are on version 2 and you do not want to upgrade, don't use this upgrader.
 
 ```console
-kubectl delete job upgrader -n default
+kubectl delete job upgrader -n keptn
 kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.7.0/upgrader/upgrade-062-070/upgrade-job-helm3.yaml
 ```
 
@@ -87,7 +87,7 @@ kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.7.0/upgrader/up
 * To check the status of the update job, execute:
 
 ```console
-kubectl get job -n default
+kubectl get job -n keptn
 ```
 ```
 NAME                COMPLETIONS   DURATION   AGE
