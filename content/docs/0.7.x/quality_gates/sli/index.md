@@ -2,6 +2,7 @@
 title: Service-Level Indicators (SLI)
 description: Configure Service-Level Indicators (SLIs) for your service.
 weight: 2
+keywords: [0.7.x-quality_gates]
 ---
 
 A Service-Level Indicator (SLI) is a defined quantitative measure of some aspects of the service level. The query for an SLI is provider/tool-dependent. This is the reason why each SLI-provider relies on an individual SLI configuration. This SLI configuration lists those SLIs that are supported by the SLI-provider by their name and query whereas the query is provider specific. 

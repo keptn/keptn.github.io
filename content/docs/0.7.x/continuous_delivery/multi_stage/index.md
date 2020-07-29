@@ -2,6 +2,7 @@
 title: Multi-stage delivery workflow
 description: Customize your delivery workflow and staging process.
 weight: 1
+keywords: [0.7.x-cd]
 ---
 
 The definition of a multi-stage delivery workflow manifests in a so-called **shipyard**. It can hold multiple stages with dedicated and opinionated delivery tasks to execute. Following this declarative approach, there is no need to write imperative pipeline code. Keptn takes the shipyard file and creates a multi-stage delivery workflow.

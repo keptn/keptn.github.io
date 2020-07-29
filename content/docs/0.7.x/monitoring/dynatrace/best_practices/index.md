@@ -3,7 +3,6 @@ title: Best Practices
 description: Best practices for Dynatrace monitoring
 weight: 3
 icon: setup
-keywords: setup
 ---
 
 ## Set DT_CUSTOM_PROP before onboarding a service
