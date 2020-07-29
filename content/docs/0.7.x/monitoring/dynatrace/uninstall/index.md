@@ -3,7 +3,6 @@ title: Uninstall
 description: Uninstall
 weight: 2
 icon: setup
-keywords: setup
 ---
 
 ## Uninstall Dynatrace

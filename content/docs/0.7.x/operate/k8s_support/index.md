@@ -1,8 +1,8 @@
 ---
 title: Kubernetes Support
-description: Keptn and Kubernetes compatibility overview
+description: Keptn and Kubernetes compatibility overview.
 weight: 30
-keywords: setup
+keywords: [0.7.x-operate]
 ---
 
 This document describes the maximum version skew supported between Keptn and Kubernetes.
