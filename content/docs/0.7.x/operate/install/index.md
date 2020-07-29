@@ -448,7 +448,16 @@ Depending on whether you would like to install the execution plane for continuou
 1. **Setup a Port-Forward:** Configure the port-forward by using the command below.
   ```console
   kubectl -n keptn port-forward service/api-gateway-nginx 8080:80
+  ```
+  <details><summary>To listen on any local address</summary>
+  <p>
+  By default, `kubectl port-forward` binds to `127.0.0.1`. If you want to listen on any local address, add `--address 0.0.0.0`:
+    
+    ```console
+    kubectl -n keptn port-forward service/api-gateway-nginx 8080:80 --address 0.0.0.0
     ```
+  </p>
+  </details>
 
 1. **Get Keptn endpoint:** 
   The Keptn API endpoint is: `http://localhost:8080/api`
