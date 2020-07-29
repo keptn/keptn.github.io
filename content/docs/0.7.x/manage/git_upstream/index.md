@@ -7,7 +7,10 @@ aliases:
   - /docs/0.7.0/manage/git_upstream/
 ---
 
-Keptn will manage a project in an internal Git repository. To upstream this repository to a remote place that also works as backup, it is recommended to create, for example, a GitHub repository. This GitHub repository is then specified as upstream repo when creating a project. 
+Keptn manages a project in an internal Git repository. To upstream this repository to a remote place that also works as backup, it is recommended to create, for example, a GitHub repository. This GitHub repository is then specified as upstream repo when creating a project. 
+
+* If you have already a Keptn project created and you want to set an upstream afterwards, you can do this with the [keptn update project](../../reference/cli/commands/keptn_update_project/) command explained [below](/#create-keptn-project-or-set-git-upstream). 
+* :warning: The Git repository you want to define as upstream for an already created project **must not be initialized**, i.e., an empty repo without any commits. Just do not select the check-box: *Initialize this repository with a README* when creating the repository.
 
 ## Create a Git repository
 
@@ -108,7 +111,7 @@ Select one of the four options and make sure to have the Git **user**, **token**
 
 1. Retrieve the URL for your repository.
 
-    **Important:** Remove the User from the URL before passing it to Keptn. For example, in the picture below the URL would be https://dev.azure.com/YOUR-ORG/keptn/_git/keptn.
+    **Important:** Remove the user from the URL before passing it to Keptn. For example, in the picture below the URL would be https://dev.azure.com/YOUR-ORG/keptn/_git/keptn.
 
     {{< popup_image 
     link="./assets/azure_devops_clone_repo.png" 
