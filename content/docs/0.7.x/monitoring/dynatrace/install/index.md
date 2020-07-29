@@ -3,7 +3,6 @@ title: Install
 description: Setup Dynatrace monitoring and Keptn integration
 weight: 1
 icon: setup
-keywords: setup
 ---
 
 ## Deploy OneAgent Operator on Kubernetes

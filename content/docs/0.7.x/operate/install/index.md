@@ -2,7 +2,7 @@
 title: Install CLI and Keptn
 description: Install Keptn on your Kubernetes cluster and expose it.
 weight: 1
-keywords: setup
+keywords: [0.7.x-operate]
 aliases:
   - /docs/0.7.0/operate/install/
 ---

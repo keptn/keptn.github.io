@@ -2,7 +2,6 @@
 title: Keptn API
 description: Explains how to connect the Keptn API and which commands are available.
 weight: 11
-keywords: [api, setup]
 ---
 
 In this section, the functionality and commands of the Keptn REST API are described.

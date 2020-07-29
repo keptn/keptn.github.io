@@ -2,7 +2,6 @@
 title: API Token
 description: Manage the API token of a Keptn installation.
 weight: 35
-keywords: [api, api-token]
 ---
 
 In this section, the management of the API token of a Keptn installation is explained.

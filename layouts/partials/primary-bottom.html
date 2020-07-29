@@ -1,7 +1,24 @@
 {{ $toc := partial "toc.html" (dict "page" .) }}
 {{ $needTOC := .Scratch.Get "needTOC" }}
 
+        {{ if .Scratch.Get "seeAlso" }}
+            {{ $related := .Site.RegularPages.Related . | first 6 }}
+            {{ with $related }}
+                <nav id="see-also">
+                    <h2>See also</h2>
 
+                    <div class="see-also">
+                        <ul>
+                        {{ range . }}
+                            <div class="entry">
+                                <li class="link"><a data-skipendnotes="true" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>: {{ .Description }}</li>
+                            </div>
+                        {{ end }}
+                        </ul>
+                    </div>
+            </nav>
+        {{ end }}
+        {{ end }}
         </main>
 
         {{ if or .NextInSection .PrevInSection }}

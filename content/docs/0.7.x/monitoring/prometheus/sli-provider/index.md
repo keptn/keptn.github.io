@@ -3,7 +3,6 @@ title: SLI-Provider
 description: Install SLI-Provider
 weight: 1
 icon: setup
-keywords: setup
 ---
 
 ## Setup Prometheus SLI-provider 

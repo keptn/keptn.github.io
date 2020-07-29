@@ -3,7 +3,6 @@ title: Keptn CLI
 description: Explains how to download and install the Keptn CLI as well as which commands are available.
 weight: 30
 icon: help
-keywords: [cli, setup]
 ---
 
 In this section, the functionality and commands of the Keptn CLI are described. The Keptn CLI allows installing, configuring, and

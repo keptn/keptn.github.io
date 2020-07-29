@@ -2,7 +2,7 @@
 title: Service
 description: Create or onboard your service in Keptn.
 weight: 30
-keywords: [manage]
+keywords: [0.7.x-manage]
 aliases:
 ---
 
