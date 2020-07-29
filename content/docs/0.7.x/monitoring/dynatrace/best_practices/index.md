@@ -15,6 +15,24 @@ env:
   value: "keptn_project={{ .Values.keptn.project }} keptn_service={{ .Values.keptn.service }} keptn_stage={{ .Values.keptn.stage }} keptn_deployment={{ .Values.keptn.deployment }}"
 ```
 
+## Automatic detection of Kubernetes labels
+
+You can specify [Kubernetes labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) in the deployment definition of your application. Dynatrace automatically detects all labels attached to pods at application deployment time. All you have to do is grant sufficient privileges to the pods that allow for reading the metadata from the Kubernetes REST API endpoint.
+
+* Please follow the official Dynatrace documentation to [grant viewer role to service accounts](https://www.dynatrace.com/support/help/shortlink/kubernetes-tagging#grant-viewer-role-to-service-accounts).
+
+* If you want to automatically detect the Kuberentes labels for Keptn, grant the viewer role to the `keptn-default` service account: 
+
+```console
+kubectl -n keptn create rolebinding default-view --clusterrole=view --serviceaccount=keptn:keptn-default
+```
+
+As a result, Dynatrace will add the recommended Kuberentes labels to the processes, e.g.: 
+
+{{< popup_image
+    link="./assets/k8s_labels.png"
+    caption="Disabling frequent issue detection"
+    width="700px">}}
 
 ## Disable frequent issue detection
 
