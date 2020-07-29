@@ -34,6 +34,19 @@ The Keptn Bridge provides an easy way to browse all events that are sent within 
     link="./assets/bridge_services.png"
     caption="Keptn Bridge services view with event stream">}}
 
+* The event stream on the right side shows information for certain steps. An key step in continous delivery and remediations workflow is the evaluation of the deployment based on SLO/SLIs. The result of this evaluation step is displayed in a *Chart* and *HeatMap*:
+
+    {{< popup_image
+    link="./assets/chart_heatmap.png"
+    caption="Evaluation result">}}
+
+* If the `sh.keptn.events.evaluation-done` event has the label `buildId` attached, the Keptn Bridge reads the value of this label and uses it as label for the x-axis in the *Chart*:
+
+    {{< popup_image
+        link="./assets/buildId.png"
+        caption="Use `buildId` as label"
+        width="50%">}}
+
 ### Environment view
 
 * Next to the services view, the Bridge also provides an environment view. 
