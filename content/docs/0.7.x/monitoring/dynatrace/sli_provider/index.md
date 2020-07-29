@@ -3,7 +3,6 @@ title: SLI-Provider
 description: Setup SLI-Provider
 weight: 4
 icon: setup
-keywords: setup
 ---
 
 ## Setup Dynatrace SLI-provider

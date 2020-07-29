@@ -2,7 +2,7 @@
 title: Delivery Assistent
 description: Approval of deployment for manual approval strategy
 weight: 50
-keywords: [bridge]
+keywords: [0.7.x-bridge]
 ---
 
 If you configured `manual` approval for your [multi-stage delivery workflow](../../../continuous_delivery/multi_stage/#approval-strategy), the Keptn Bridge allows you to send an `approval.finished` event to Keptn to confirm/decline an open approval.

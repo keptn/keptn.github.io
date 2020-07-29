@@ -3,7 +3,6 @@ title: Troubleshooting
 description: Find tips and tricks to deal with troubles that may occur when using Keptn. 
 weight: 100
 icon: help
-keywords: [troubleshooting]
 ---
 
 In this section, instructions have been summarized that help to troubleshoot known issues that may occur when using Keptn.
