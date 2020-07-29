@@ -2,7 +2,7 @@
 title: Git-based upstream  
 description: Select a Get-based upstream for a project.
 weight: 20
-keywords: [manage]
+keywords: [0.7.x-manage]
 aliases:
   - /docs/0.7.0/manage/git_upstream/
 ---

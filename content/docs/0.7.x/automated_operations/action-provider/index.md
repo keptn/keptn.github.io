@@ -3,6 +3,7 @@ title: Action-Provider
 description: Add an action-provider to execte custom remediation actions.
 weight: 5
 icon: setup
+keywords: [0.7.x-automated-operations]
 ---
 
 Depending on the action that should be executed in course of a remediation (or operational) workflow, a corresponding action-provider must be deployed. This action-provider receives a Keptn event, performs its action, and notifies Keptn about the execution. 

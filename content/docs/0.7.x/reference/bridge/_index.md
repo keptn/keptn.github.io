@@ -2,7 +2,6 @@
 title: Keptn Bridge
 description: The user interface of Keptn that presents all projects and services managed by Keptn. It is automatically installed with your Keptn deployment.
 weight: 21
-keywords: [bridge]
 ---
 
 ## Views in Keptn Bridge

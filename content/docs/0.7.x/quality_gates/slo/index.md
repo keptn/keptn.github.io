@@ -2,6 +2,7 @@
 title: Service-Level Objectives (SLO)
 description: Configure and add Service-Level Objectives (SLO) to your service.
 weight: 1
+keywords: [0.7.x-quality_gates]
 ---
 
 The Service-Level Objective (SLO) configuration specifies a target value or range of values for a service level that is measured by [Service-Level Indicators (SLI)](../sli). 
