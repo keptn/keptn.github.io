@@ -48,9 +48,6 @@ The Keptn Bridge provides an easy way to browse all events that are sent within 
         caption="Use `buildId` as label"
         width="50%">}}
 
-
-
-
 ### Environment view
 
 * Next to the services view, the Bridge also provides an environment view. 
