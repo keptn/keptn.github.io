@@ -1,12 +1,21 @@
 ```console
-remediations:
-- name: cpu_usage
-  actions:
-  - action: scaling
-    value: +1
-- name: high_load
-  actions:
-  - action: enableFeature (staticContent)
+apiVersion: spec.keptn.sh/0.1.4
+kind: Remediation
+metadata:
+  name: serviceXYZ-remediation
+spec:
+  remediations:  
+  - problemType: Response time degradation
+    actionsOnOpen:
+    - name: Scaling ReplicaSet by 1
+      description: Scaling the ReplicaSet of a Kubernetes Deployment by 1
+      action: scaling
+      value: "1"
+    - name: Toogle feature flag
+      action: featuretoggle
+      description: Toggle feature flag EnablePromotion from ON to OFF.
+      value: 
+        EnablePromotion: off
 ```
 
 ```console
