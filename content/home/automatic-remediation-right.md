@@ -8,12 +8,12 @@ spec:
   - problemType: Response time degradation
     actionsOnOpen:
     - name: Scaling ReplicaSet by 1
-      description: Scaling the ReplicaSet of a Kubernetes Deployment by 1
+      description: Scales the ReplicaSet of a Deployment
       action: scaling
       value: "1"
     - name: Toogle feature flag
       action: featuretoggle
-      description: Toggle feature flag EnablePromotion from ON to OFF.
+      description: Toggles feature flag EnablePromotion
       value: 
         EnablePromotion: off
 ```
