@@ -19,7 +19,7 @@ page-home
 
 {{ define "meta" }}
 <meta property="og:description" content="Building the fabric for cloud-native lifecycle automation at enterprise scale">
-<meta property="og:title" content="Keptn - A message-driven control plane for application delivery and automated operations">
+<meta property="og:title" content="Keptn - an event-based control plane for continuous delivery and automated operations for cloud-native applications.">
 <meta property="og:image" content="https://keptn.sh/favicon.png">
 <meta property="og:url" content="https://keptn.sh/index.html">
 <meta name="twitter:card" content="summary_large_image">
@@ -28,8 +28,11 @@ page-home
 {{ define "main" }}
 
 
+
 {{/* Intro */}}
 <div class="intro">
+  {{/* announcement */}}
+{{ partial "announcement.html" . }}
   <div class="container pt-5 pb-5">
     <div class="row pt-md-5 pb-md-5">
       <div class="col-12 col-md-8 col-lg-6">
