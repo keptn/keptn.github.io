@@ -1,7 +1,7 @@
 And deploy Keptn on your Kubernetes cluster
 
 ```console
-keptn install --use-case=[continuous-delivery,quality-gates]
+keptn install [--use-case=continuous-delivery]
 ```
 
 \
