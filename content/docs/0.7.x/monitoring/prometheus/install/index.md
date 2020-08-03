@@ -18,7 +18,7 @@ After creating a project and service, you can setup Prometheus monitoring and co
 1. To install the *prometheus-service*, execute: 
 
     ```console
-    kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/release-0.3.3/deploy/service.yaml
+    kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/release-0.3.5/deploy/service.yaml
     ```
 
 1. Execute the following command to set up the rules for the *Prometheus Alerting Manager*:
