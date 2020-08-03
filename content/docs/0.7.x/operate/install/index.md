@@ -607,10 +607,10 @@ For example, the **Control Plane with the Execution Plane (for Continuous Delive
 ```console
 helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.7.0 --repo=https://storage.googleapis.com/keptn-installer --set=control-plane.apiGatewayNginx.type=LoadBalancer,continuous-delivery.enabled=true
 ```
-<details><summary>*Install Keptn in air-gapped systems*</summary>
+<details><summary>*Execute Helm upgrade without Internet connectivity*</summary>
 <p>
 
-* Download the Helm chart from [keptn-installer/keptn-0.7.0.tgz](https://storage.googleapis.com/keptn-installer/keptn-0.7.0.tgz) and move it to the machine where the installation is executed.
+* Download the Helm chart from [keptn-installer/keptn-0.7.0.tgz](https://storage.googleapis.com/keptn-installer/keptn-0.7.0.tgz) and move it to the machine that has no Internet connectivity, but should perform the installation:
 
 * To install the **Control Plane with the Execution Plane (for Continuous Delivery)** and a `LoadBalancer` for exposing Keptn, execute the following command. 
 **Note:** Reference the Helm chart stored locally instead of a repository and version:
