@@ -11,6 +11,23 @@ In order to evaluate the quality gates and allow self-healing in production, we 
 
 - Keptn project and at least one onboarded service must be available.
 
+## Deploy Prometheus on Kubernetes
+
+## 1. Deploy Prometheus
+
+* https://coreos.com/operators/prometheus/docs/latest/user-guides/getting-started.html
+
+## 2. Verify Prometheus setup in your cluster
+
+* To verify that the Prometheus scrape jobs are correctly set up, you can access Prometheus by enabling port-forwarding for the prometheus-service:
+
+    ```console
+    kubectl port-forward svc/prometheus-service 8080 -n monitoring
+    ```
+
+Prometheus is then available on [localhost:8080/targets](http://localhost:8080/targets) where you can see the targets for the service:
+{{< popup_image link="./assets/prometheus-targets.png" caption="Prometheus Targets">}}
+
 ## Setup Prometheus
 
 After creating a project and service, you can setup Prometheus monitoring and configure scrape jobs using the Keptn CLI. 
@@ -27,13 +44,6 @@ After creating a project and service, you can setup Prometheus monitoring and co
     keptn configure monitoring prometheus --project=PROJECTNAME --service=SERVICENAME
     ```
 
-## Verify Prometheus setup in your cluster
 
-* To verify that the Prometheus scrape jobs are correctly set up, you can access Prometheus by enabling port-forwarding for the prometheus-service:
 
-    ```console
-    kubectl port-forward svc/prometheus-service 8080 -n monitoring
-    ```
 
-Prometheus is then available on [localhost:8080/targets](http://localhost:8080/targets) where you can see the targets for the service:
-{{< popup_image link="./assets/prometheus-targets.png" caption="Prometheus Targets">}}
