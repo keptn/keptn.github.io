@@ -6,6 +6,7 @@ keywords: [0.7.x-integration]
 ---
 
 Here you learn how to add additional functionality to your Keptn installation with a custom [*Keptn-service*](#keptn-service), [*SLI-provider*](../sli_provider), or [*Action-provider*](../action_provider). 
+
 * A *Keptn-service* enriches a continuous delivery or operational workflow with additional functionality or with an extra tool. 
 * An *SLI-provider* is used to query Service-Level Indicators (SLI) from an external source like a monitoring or testing solution. 
 * An *Action-provider* is used to extend a remediation workflow with an individual action step.  
