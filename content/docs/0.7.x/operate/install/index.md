@@ -381,7 +381,7 @@ Depending on whether you would like to install the execution plane for continuou
     * [Determine the ingress IP](https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/#determining-the-ingress-ip-and-ports):
 
       ```console
-    kubectl -n ingress-nginx svc ingress-nginx
+    kubectl -n ingress-nginx get svc ingress-nginx
       ```
 
     * Create an `ingress-manifest.yaml` manifest for an ingress object in which you set IP-ADDRESS or your hostname and then apply the manifest. (**Note:** In the example of an `ingress-manifest.yaml` manifest shown next, `nip.io` is used as wildcard DNS for the IP address.)
