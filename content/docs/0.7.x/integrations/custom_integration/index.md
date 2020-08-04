@@ -5,7 +5,10 @@ weight: 1
 keywords: [0.7.x-integration]
 ---
 
-Here you learn how to add additional functionality to your Keptn installation with a custom [*Keptn-service*](#keptn-service) or [*SLI-provider*](#sli-provider). While a *Keptn-service* enriches a continuous delivery or operational workflow with additional functionality or with an extra tool, a *SLI-provider* is used to query Service-Level Indicators (SLI) from an external source like a monitoring or testing solution.  
+Here you learn how to add additional functionality to your Keptn installation with a custom [*Keptn-service*](#keptn-service), [*SLI-provider*](../sli_provider), or [*Action-provider*](../action_provider). 
+* A *Keptn-service* enriches a continuous delivery or operational workflow with additional functionality or with an extra tool. 
+* An *SLI-provider* is used to query Service-Level Indicators (SLI) from an external source like a monitoring or testing solution. 
+* An *Action-provider* is used to extend a remediation workflow with an individual action step.  
 
 ## Template Repository
 
@@ -33,7 +36,7 @@ If you are interested in writing your own testing service, have a look at the [j
 
 **Functionality:** The functionality of your *Keptn-service* depends on the capability you want to add to the continuous delivery or operational Keptn workflow. In many cases, the event payload -- containing meta-data such as the project, stage, or service name as well as shipyard information -- is first processed and then used to call the REST API of another tool.  
 
-**Outgoing Keptn CloudEvent:** After your *Keptn-service* has completed its functionality, it has to send a  CloudEvent to Keptn's event broker. This informs Keptn to continue a particular workflow.  
+**Outgoing Keptn CloudEvent:** After your *Keptn-service* has completed its functionality, it has to send a CloudEvent to the event broker of Keptn. This informs Keptn to continue a particular workflow.  
 
 **Deployment and service template:** A *Keptn-service* is a regular Kubernetes service with a deployment and service template. As a starting point for your service the deployment and service manifest of the *jmeter-service* can be used, which can be found in the [deploy/service.yaml](https://github.com/keptn/keptn/blob/0.7.0/jmeter-service/deploy/service.yaml):
 
@@ -44,19 +47,36 @@ kind: Deployment
 metadata:
   name: jmeter-service
   namespace: keptn
+  labels:
+    app.kubernetes.io/name: jmeter-service
+    app.kubernetes.io/instance: keptn
+    app.kubernetes.io/part-of: keptn
+    app.kubernetes.io/component: execution-plane
+    app.kubernetes.io/version: 0.7.0
 spec:
   selector:
     matchLabels:
-      run: jmeter-service
+      app.kubernetes.io/name: jmeter-service
+      app.kubernetes.io/instance: keptn
   replicas: 1
   template:
     metadata:
       labels:
-        run: jmeter-service
+        app.kubernetes.io/name: jmeter-service
+        app.kubernetes.io/instance: keptn
+        app.kubernetes.io/part-of: keptn
+        app.kubernetes.io/component: execution-plane
+        app.kubernetes.io/version: 0.7.0
     spec:
       containers:
       - name: jmeter-service
         image: keptn/jmeter-service:0.7.0
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 10999
+          initialDelaySeconds: 5
+          periodSeconds: 5
         ports:
         - containerPort: 8080
         env:
@@ -69,13 +89,17 @@ metadata:
   name: jmeter-service
   namespace: keptn
   labels:
-    run: jmeter-service
+    app.kubernetes.io/name: jmeter-service
+    app.kubernetes.io/instance: keptn
+    app.kubernetes.io/part-of: keptn
+    app.kubernetes.io/component: execution-plane
 spec:
   ports:
   - port: 8080
     protocol: TCP
   selector:
-    run: jmeter-service
+    app.kubernetes.io/name: jmeter-service
+    app.kubernetes.io/instance: keptn
 ```
 
 ### Subscribe service to Keptn event
