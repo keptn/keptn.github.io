@@ -1,8 +1,8 @@
-And deploy Keptn on your cluster
+And deploy Keptn on your Kubernetes cluster
 
 ```console
-keptn install --platform=[aks|eks|gke|openshift|pks|kubernetes]
+keptn install [--use-case=continuous-delivery]
 ```
 
 \
-Keptn will be installed with the control plane and all batteries-included services.
+Keptn will be installed with its control-plane for quality gates and automated operations. If the `--use-case` flag is set, the services for continuous delivery will be installed too.
