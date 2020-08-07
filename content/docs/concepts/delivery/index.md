@@ -11,9 +11,9 @@ Keptn allows to declaratively define *multi-stage delivery* workflows by definin
 
 ## Shipyard for Delivery Declaration
 
-The definition is manifested in a so-called *shipyard* file that defines a delivery workflow. It can hold multiple stages, each with a dedicated *deployment strategy*, *test strategy*, as well as a *remediation strategy*. Following this declarative approach, there is no need to write imperative pipeline code. Keptn takes the shipyard file and creates a multi-stage workflow each stage having a deployment strategy (e.g., blue/green), testing strategy (e.g., functional tests or performance tests), and an optional automated remediation strategy for triggering self-healing actions. To learn more about a shipyard configuration, please continue [here](../../0.7.x/continuous_delivery/multi_stage/).
+The definition is manifested in a so-called *shipyard* file that defines a task sequence for delivery. It can hold multiple stages, each with a dedicated *deployment strategy*, *test strategy*, as well as a *remediation strategy*. Following this declarative approach, there is no need to write imperative pipeline code. Keptn takes the shipyard file and creates a multi-stage workflow each stage having a deployment strategy (e.g., blue/green), testing strategy (e.g., functional tests or performance tests), and an optional automated remediation strategy for triggering self-healing actions. To learn more about a shipyard configuration, please continue [here](../../0.7.x/continuous_delivery/multi_stage/).
 
-Please take a look at an example of a multi-stage delivery workflow with a *dev*, *hardening*, and *production* stage with blue/green deployment and automated problem remediation.  
+Please take a look at an example of a multi-stage delivery with a *dev*, *hardening*, and *production* stage with blue/green deployment and automated problem remediation.  
 
 ```yaml
 stages:
@@ -30,7 +30,7 @@ stages:
 
   {{< popup_image
   link="./assets/progressive-delivery.png"
-  caption="Progressive delivery workflow"
+  caption="Progressive delivery"
   width="700px">}}
 
 According to the example, Keptn performs a direct deployment (i.e., replacing the previous version of a microservice with a new one) and triggers functional tests in the *dev* stage. In the *hardening* stage, Keptn performs a blue/green deployment (i.e., having two deployments at the same time but routing the traffic to only one) and triggers performance tests. Finally, the *production* stage even defines an automated remediation strategy to trigger counter actions to any issues detected by a monitoring system.
