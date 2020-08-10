@@ -170,7 +170,7 @@ Keptn Endpoint. For this purpose, please follow the instructions in the [Install
 
 ### Configure delivery assistant for existing projects
 
-To add manual approvals steps to the delivery workflow as described in the [Continuos delivery section](../../continuous_delivery/multi_stage/#approval-strategy), you can update the `shipyard.yaml` file of the project as follows.
+To add manual approvals steps to the task sequence of delivery as described in the [Continuos delivery section](../../continuous_delivery/multi_stage/#approval-strategy), you can update the `shipyard.yaml` file of the project as follows.
 
 For each stage you would like to enable the approval feature, you can add the `approval_strategy` property to the stage definition. 
 

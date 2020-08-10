@@ -55,7 +55,6 @@ The [Keptn CloudEvents](#cloudevents) an action-provider has to subscribe to is:
 
 5. **Send finished event:** Send a finished event of type: [sh.keptn.event.action.finished](https://github.com/keptn/spec/blob/0.1.4/cloudevents.md#action-finished). This informs Keptn to proceed in the remediation or operational workflow. 
 
-
 **Deployment and service template:** Like any custom *Keptn-service*, an action-provider is a regular Kubernetes service with a deployment and service template. See [here](../custom_integration/#example-jmeter-service) how to define those templates for your action-provider. 
 
 ## Subscribe Action-provider to Keptn event

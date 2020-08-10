@@ -15,7 +15,7 @@ The following image shows the general process of how Keptn is providing continuo
 
 1. Keptn gets triggered by an external event. 
 
-1. Keptn deploys the new version of the application that should be tested. (This is an optional step and can also be skipped if you have already set up this workflow.)
+1. Keptn deploys the new version of the application that should be tested. (This is an optional step and can also be skipped if you have already set up this task.)
 
 1. Keptn triggers the execution of the tests by having integrations with multiple testing tools. 
 

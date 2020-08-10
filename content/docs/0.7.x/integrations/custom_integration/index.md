@@ -7,9 +7,9 @@ keywords: [0.7.x-integration]
 
 Here you learn how to add additional functionality to your Keptn installation with a custom [*Keptn-service*](#keptn-service), [*SLI-provider*](../sli_provider), or [*Action-provider*](../action_provider). 
 
-* A *Keptn-service* enriches a continuous delivery or operational workflow with additional functionality or with an extra tool. 
+* A *Keptn-service* is responsible for implementing a continuous delivery or operations task.
 * An *SLI-provider* is used to query Service-Level Indicators (SLI) from an external source like a monitoring or testing solution. 
-* An *Action-provider* is used to extend a remediation workflow with an individual action step.  
+* An *Action-provider* is used to extend a task sequence for remediation with an individual action step.  
 
 ## Template Repository
 
@@ -17,7 +17,7 @@ We provide a fully functioning template for writing new services: [keptn-service
 
 ## Keptn-service
 
-A *Keptn-service* is intended to react to certain events that occur during a continuous delivery or operational workflow. After getting triggered by an event, a *Keptn-service* processes some functionality and can therefore integrate additional tools by accessing their REST interfaces.
+A *Keptn-service* is intended to react to certain events that occur during the execution of a task sequence for continuous delivery or operations. After getting triggered by an event, a *Keptn-service* processes some functionality and can therefore integrate additional tools by accessing their REST interfaces.
 
 A Keptn-service can subscribe to various [Keptn CloudEvents](https://github.com/keptn/spec/blob/0.1.4/cloudevents.md), e.g.:
 
@@ -35,9 +35,9 @@ If you are interested in writing your own testing service, have a look at the [j
 
 **Incoming Keptn CloudEvent:** The *jmeter-service* is a *Go* application that accepts POST requests at its `/` endpoint. To be more specific, the request body needs to follow the [CloudEvent specification](https://github.com/keptn/spec/blob/0.1.4/cloudevents.md) and the HTTP header attribute `Content-Type` has to be set to `application/cloudevents+json`. Of course, you can write your service in any language, as long as it provides the endpoint to receive events.
 
-**Functionality:** The functionality of your *Keptn-service* depends on the capability you want to add to the continuous delivery or operational Keptn workflow. In many cases, the event payload -- containing meta-data such as the project, stage, or service name as well as shipyard information -- is first processed and then used to call the REST API of another tool.  
+**Functionality:** The functionality of your *Keptn-service* depends on the capability you want to add to the continuous delivery or operational workflow. In many cases, the event payload -- containing meta-data such as the project, stage, or service name as well as shipyard information -- is first processed and then used to call the REST API of another tool.  
 
-**Outgoing Keptn CloudEvent:** After your *Keptn-service* has completed its functionality, it has to send a CloudEvent to the event broker of Keptn. This informs Keptn to continue a particular workflow.  
+**Outgoing Keptn CloudEvent:** After your *Keptn-service* has completed its functionality, it has to send a CloudEvent to the event broker of Keptn. This informs Keptn to continue a particular task sequence.  
 
 **Deployment and service template:** A *Keptn-service* is a regular Kubernetes service with a deployment and service template. As a starting point for your service the deployment and service manifest of the *jmeter-service* can be used, which can be found in the [deploy/service.yaml](https://github.com/keptn/keptn/blob/0.7.0/jmeter-service/deploy/service.yaml):
 

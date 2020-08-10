@@ -6,9 +6,9 @@ icon: setup
 keywords: [0.7.x-automated-operations]
 ---
 
-Depending on the action that should be executed in course of a remediation (or operational) workflow, a corresponding action-provider must be deployed. This action-provider receives a Keptn event, performs its action, and notifies Keptn about the execution. 
+Depending on the action that should be executed in course of a remediation (or operational), a corresponding action-provider must be deployed. This action-provider receives a Keptn event, performs its action, and notifies Keptn about the execution. 
 
-To plug-in an action-provider into a remediation, the remediation config must be extended by an action supported by the provider. Consequently, Keptn - as control plane and responsible for orchestrating the remediation workflow - can send out the proper event for the action-provider.  
+To plug-in an action-provider into a remediation, the remediation config must be extended by an action supported by the provider. Consequently, Keptn - as control plane and responsible for orchestrating the remediation - can send out the proper event for the action-provider.  
 
 ## Unleash Action-Provider
 
