@@ -4,7 +4,10 @@ description: Upgrade your Keptn to 0.7
 weight: 5
 aliases:
   - /docs/0.7.0/operate/upgrade/
+  - /docs/0.7.1/operate/upgrade/
 ---
+
+## Upgrade from Keptn 0.7 to 0.7.1
 
 ## Upgrade from Keptn 0.6.2 to 0.7
 
