@@ -19,7 +19,7 @@ We provide a fully functioning template for writing new services: [keptn-service
 
 A *Keptn-service* is intended to react to certain events that occur during the execution of a task sequence for continuous delivery or operations. After getting triggered by an event, a *Keptn-service* processes some functionality and can therefore integrate additional tools by accessing their REST interfaces.
 
-A Keptn-service can subscribe to various [Keptn CloudEvents](https://github.com/keptn/spec/blob/0.1.4/cloudevents.md), e.g.:
+A Keptn-service can subscribe to various [Keptn CloudEvents](https://github.com/keptn/spec/blob/0.1.5/cloudevents.md), e.g.:
 
 - sh.keptn.events.configuration-changed
 - sh.keptn.events.deployment-finished
@@ -33,7 +33,7 @@ If you are interested in writing your own testing service, have a look at the [j
 
 ### Example: JMeter Service
 
-**Incoming Keptn CloudEvent:** The *jmeter-service* is a *Go* application that accepts POST requests at its `/` endpoint. To be more specific, the request body needs to follow the [CloudEvent specification](https://github.com/keptn/spec/blob/0.1.4/cloudevents.md) and the HTTP header attribute `Content-Type` has to be set to `application/cloudevents+json`. Of course, you can write your service in any language, as long as it provides the endpoint to receive events.
+**Incoming Keptn CloudEvent:** The *jmeter-service* is a *Go* application that accepts POST requests at its `/` endpoint. To be more specific, the request body needs to follow the [CloudEvent specification](https://github.com/keptn/spec/blob/0.1.5/cloudevents.md) and the HTTP header attribute `Content-Type` has to be set to `application/cloudevents+json`. Of course, you can write your service in any language, as long as it provides the endpoint to receive events.
 
 **Functionality:** The functionality of your *Keptn-service* depends on the capability you want to add to the continuous delivery or operational workflow. In many cases, the event payload -- containing meta-data such as the project, stage, or service name as well as shipyard information -- is first processed and then used to call the REST API of another tool.  
 
@@ -175,7 +175,7 @@ You will need to provide the following when you want to write a custom service:
 ## CloudEvents
 
 Please note that CloudEvents have to be sent with the HTTP header `Content-Type: application/cloudevents+json` to be set.
-For a detailed look into CloudEvents, please go the Keptn [CloudEvent specification](https://github.com/keptn/spec/blob/0.1.4/cloudevents.md). 
+For a detailed look into CloudEvents, please go the Keptn [CloudEvent specification](https://github.com/keptn/spec/blob/0.1.5/cloudevents.md). 
 
 ## Logging
 

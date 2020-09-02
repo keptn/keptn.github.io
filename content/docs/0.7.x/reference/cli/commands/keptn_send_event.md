@@ -11,7 +11,7 @@ Sends an event to Keptn
 
 Sends an arbitrary Keptn event that is defined in the provided JSON file.
 An event has to follow the CloudEvents specification (https://cloudevents.io/) in version 0.2 and has to be written in JSON.
-In addition, the payload of the CloudEvent needs to follow the Keptn spec (https://github.com/keptn/spec/blob/0.1.4/cloudevents.md).
+In addition, the payload of the CloudEvent needs to follow the Keptn spec (https://github.com/keptn/spec/blob/0.1.5/cloudevents.md).
 
 
 ```

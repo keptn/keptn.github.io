@@ -9,7 +9,7 @@ Returns the latest Keptn event specified by event type
 
 ### Synopsis
 
-Returns the latest Keptn event specified by event type. The event type is defined here: https://github.com/keptn/spec/blob/0.1.4/cloudevents.md
+Returns the latest Keptn event specified by event type. The event type is defined here: https://github.com/keptn/spec/blob/0.1.5/cloudevents.md
 
 ### Options
 
