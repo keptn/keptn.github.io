@@ -69,11 +69,10 @@ indicators:
 ### Comparison
 By default, Keptn compares with the previous values of the SLIs. To support more advanced comparion strategies, the following properties are available: 
 
-* The **compare_with** config parameter controls how many previous results are compared: `single_result` or `several_results`. 
-
-* The **number_of_comparison_results** config parameter configures the actual number of previous results if `compare_with` is set to `several_results`.
-
-* The **include_result_with_score** config parameter controls which of the previous results are included in the comparison: `pass`, `pass_or_warn`, or `all` (`all` is the default, also used if not specified). 
+* `compare_with`: Defines how many previous results are considered for the comparision: *single_result* or *several_results* (*single_result* is the default and is used if not specified).
+* `include_result_with_score`: Controls which of the previous evaluations are included in the comparison. Therefore, this property accepts the values: *pass*, *pass_or_warn*, or *all* (*all* is the default and is used if not specified), which target the overall evaluation result and not the single SLI evaluation. In other words, the overall evaluation result decides whether SLI values are considered for the comparison or not.
+* `number_of_comparison_results`: Defines the exact number of previous results to consider (1 is the default and is used if not specified).
+* `aggregate_function` *(optional)*: Allows overriding the default aggregation function which is `avg`. 
 
 **Note:** If you configure `compare_with: "single_result"` in combination with number_of_comparison_results, compare_with will negate the number_of_comparison_results. 
 
@@ -102,12 +101,11 @@ This comparison configuration means that the current result is compared to the a
 ### Objectives
 An objective consists of:
 
-* The **SLI**  refers to an SLI from an SLI configuration. 
-* The **pass** criteria represents the upper limit up to which an evaluation is successful.
-* The (optional) **warning** criteria describes the border where the result is not pass and not fail, and a manual approval might be needed to decide.
-* The (optional) **weight** criteria emphasizes the importance of one SLI over the others. By default, `weight` has a value of 1 for all SLIs and can be overwritten. The weight is important for calculating the total score.
-* The (optional) **key_sli** flag can be set to true meaning that the objective is not met if this SLI fails.
-
+* `sli`: Refers to the name of the SLI.
+* `pass`: Represents the upper limit up to which an evaluation is successful. 
+* `warning` *(optional)*: Describes the border where the result is not pass and not fail, and a manual approval might be needed to decide. 
+* `weight` *(optional)*: Can be used to emphasize the importance of one SLI over the others. By default, `weight` is 1 for all SLIs and can be overwritten. The weight is important for calculating the score later. 
+* `key_sli` *(optional)*: Can be set to true meaning that the objective is not met if this SLI fails.
 
 **Configuring the criteria:**
 
