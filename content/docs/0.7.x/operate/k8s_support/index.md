@@ -13,9 +13,9 @@ Keptn versions are expressed as `x.y.z`, where `x` is the major version, `y` is 
 
 **Keptn Installations:**
 
-* **Control Plane**: Keptn components to run a Keptn and to manage projects, stages, and services, to handle events, and to provide integration points. Install option: `keptn install --use-case=quality-gates`
+* **Control Plane**: Keptn components to run a Keptn and to manage projects, stages, and services, to handle events, and to provide integration points. Install option: `keptn install`
 
-* **Control & Execution Plane**: Keptn control plane including all Keptn-services for continuous delivery and automated operations. Install option: `keptn install`
+* **Control & Execution Plane**: Keptn control plane including all Keptn-services for continuous delivery and automated operations. Install option: `keptn install --use-case=continuous-delivery`
 
 <!-- use https://www.tablesgenerator.com/markdown_tables# for editing -->
 
