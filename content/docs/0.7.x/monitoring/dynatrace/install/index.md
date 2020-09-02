@@ -93,10 +93,10 @@ Create a secret containing the credentials for the *Dynatrace tenant* and *Keptn
 * The Dynatrace integration into Keptn is handled by the *dynatrace-service*. To install the *dynatrace-service*, execute:
 
     ```console
-    kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-service/$VERSION/deploy/service.yaml
+    kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-service/$VERSION/deploy/service.yaml -n keptn
     ```
    
-  **Note**: Replace `$VERSION` with the desired version number (e.g., 0.8.0) you want to install.
+  **Note**: Replace `$VERSION` with the desired version number (e.g., 0.8.1) you want to install.
    
 * This installs the `dynatrace-service` and a Keptn `distributor` in the `keptn` namespace, which you can verify using:
 
