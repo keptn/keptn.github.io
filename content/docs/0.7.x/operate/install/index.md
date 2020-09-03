@@ -608,8 +608,8 @@ For example, the **Control Plane with the Execution Plane (for Continuous Delive
 ```console
 helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.7.1 --repo=https://storage.googleapis.com/keptn-installer --set=control-plane.apiGatewayNginx.type=LoadBalancer,continuous-delivery.enabled=true
 ```
-<details><summary>*Execute Helm upgrade without Internet connectivity*</summary>
-<p>
+
+### Execute Helm upgrade without Internet connectivity
 
 * Download the Helm chart from [keptn-installer/keptn-0.7.1.tgz](https://storage.googleapis.com/keptn-installer/keptn-0.7.1.tgz) and move it to the machine that has no Internet connectivity, but should perform the installation:
 
@@ -618,9 +618,6 @@ helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=
 ```console
 helm upgrade keptn ./keptn-0.7.1.tgz --install -n keptn --create-namespace --wait --set=control-plane.apiGatewayNginx.type=LoadBalancer,continuous-delivery.enabled=true
 ```
-
-</p>
-</details>
 
 Furthermore, Keptn's Helm chart allows you to set all images, which can be especially
 handy in air-gapped systems where you cannot access DockerHub for pulling the images.
@@ -668,6 +665,18 @@ done
 ```
 </p>
 </details>
+
+### Install Keptn using a Root-Context
+
+The Helm chart allows customizing the root-context for the Keptn API and Bridge. 
+By default, the Keptn API is located under `http://HOSTNAME/api` and the Keptn Bridge is located under `http://HOSTNAME/bridge`.
+By specifying a value for `control-plane.prefixPath`, the used prefix for the root-context can be configured.
+For example, if a user sets `control-plane.prefixPath=mykeptn` in the Helm install/upgrade command,
+the Keptn API is located under `http://HOSTNAME/mykeptn/api` and the Keptn Bridge is located under `http://HOSTNAME/mykeptn/bridge`:
+```console
+helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.7.1 --repo=https://storage.googleapis.com/keptn-installer --set=control-plane.apiGatewayNginx.type=LoadBalancer,continuous-delivery.enabled=true,control-plane.prefixPath=mykeptn
+```
+
 
 ## Troubleshooting
 
