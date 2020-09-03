@@ -40,7 +40,7 @@ The Keptn Bridge provides an easy way to browse all events that are sent within 
     link="./assets/chart_heatmap.png"
     caption="Evaluation result">}}
 
-* If the `sh.keptn.events.evaluation-done` event has the label `buildId` attached, the Keptn Bridge reads the value of this label and uses it as label for the x-axis in the *Chart*:
+* If the `sh.keptn.events.evaluation-done` event has the label `buildId` attached, the Keptn Bridge reads the value of this label and uses it as label for the x-axis in the *Chart*. If the value of the label is an URL, the label will be displayed as a link, so you can easily link back to the Dynatrace Dashboard for example. 
 
     {{< popup_image
         link="./assets/buildId.png"
