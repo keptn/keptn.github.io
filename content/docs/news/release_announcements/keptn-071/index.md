@@ -3,18 +3,18 @@ title: Keptn 0.7.1
 weight: 99
 ---
 
-# Release Notes 0.7.1
-
 Keptn 0.7.1 improves the capabilities of the 0.7.0 release by adding more flexibility to the tasks of installing/operating Keptn, introducing three new CLI commands and improving the UX in the Keptn Bridge. Especially the new feature of installing Keptn in different namespaces is a door opener for various use-cases since multiple Keptn deployments, e.g., one for each team, can be operated on one cluster. 
 
 **The key announcements of Keptn 0.7.1**:
 
 :star2: *More flexibility in installing/operating Keptn*: 
+
 - `keptn install --namespace`: Allows you to specify the namespace to install Keptn in. 
 - `keptn upgrade`: Instead of manually executing a K8s job as done by the previous upgrade processes, this CLI command performs the upgrade. 
 - Set `root context`: As part of the installation Helm Chart of Keptn, a root context can be specified that allows you to customize the prefix of the API and Bridge endpoint of Keptn. 
 
 :rocket: *New CLI commands*:
+
 - `keptn delete service`: This command will delete a service from a project and *undeploy* the service from the cluster. 
 - `keptn get events`: This command is a generic implementation to retrieve Keptn events of any event type.  
 
