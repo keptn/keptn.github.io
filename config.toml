@@ -6,6 +6,7 @@ relativeUrls = true
 enableEmoji = true
 
 ignoreFiles = [
+"^(.*/docs/0.5.0/*)$",
 "^(.*/docs/0.4.0/*)$", 
 "^(.*/docs/0.3.0/*)$", 
 "^(.*/docs/0.2.2/*)$", 

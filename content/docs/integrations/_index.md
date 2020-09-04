@@ -16,8 +16,8 @@ Please find here a list of all *Keptn-services* and *SLI-providers* that are ava
 
 | Keptn-service | latest Release | supported Keptn | Repository  |
 | -------------------------- | --- | --- | --- |
-| **argo-service**      | [0.1.0](https://github.com/keptn-contrib/argo-service/releases/tag/0.1.0) | 0.6.2 | https://github.com/keptn-contrib/argo-service |
-| **dynatrace-service**      | [0.8.0](https://github.com/keptn-contrib/dynatrace-service/releases/tag/0.7.0) | 0.7.0 | https://github.com/keptn-contrib/dynatrace-service |
+| **argo-service**      | [0.1.1](https://github.com/keptn-contrib/argo-service/releases/tag/0.1.1) | 0.7.0 | https://github.com/keptn-contrib/argo-service |
+| **dynatrace-service**      | [0.9.0](https://github.com/keptn-contrib/dynatrace-service/releases/tag/0.9.0) | 0.7.1 | https://github.com/keptn-contrib/dynatrace-service |
 | **neoload-service**        | [0.6.0](https://github.com/keptn-contrib/neoload-service/tree/0.6.0) | 0.6.0 | https://github.com/keptn-contrib/neoload-service |
 | **notification-service**   | [0.3.0](https://github.com/keptn-contrib/notification-service/releases/tag/0.3.0) | 0.7.0 | https://github.com/keptn-contrib/notification-service |
 | **prometheus-service**     | [0.3.4](https://github.com/keptn-contrib/prometheus-service/releases/tag/0.3.3) | 0.7.0 | https://github.com/keptn-contrib/prometheus-service |
@@ -26,7 +26,7 @@ Please find here a list of all *Keptn-services* and *SLI-providers* that are ava
 
 | SLI-provider | latest Release | supported Keptn | Repository  |
 | -------------------------- | --- | --- | --- |
-| **dynatrace-sli-service**  | [0.5.0](https://github.com/keptn-contrib/dynatrace-sli-service/releases/tag/0.4.0) | 0.7.0 | https://github.com/keptn-contrib/dynatrace-sli-service |
+| **dynatrace-sli-service**  | [0.6.0](https://github.com/keptn-contrib/dynatrace-sli-service/releases/tag/0.4.0) | 0.7.1 | https://github.com/keptn-contrib/dynatrace-sli-service |
 | **neoload-sli-provider**  | [0.6.0](https://github.com/keptn-contrib/neoload-sli-provider/tree/0.6.0) | 0.6.0 | https://github.com/keptn-contrib/neoload-sli-provider |
 | **prometheus-sli-service** | [0.2.2](https://github.com/keptn-contrib/prometheus-sli-service/releases/tag/0.2.2) | 0.7.0 | https://github.com/keptn-contrib/prometheus-sli-service |
 

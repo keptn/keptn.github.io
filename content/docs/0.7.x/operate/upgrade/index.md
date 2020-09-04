@@ -4,7 +4,20 @@ description: Upgrade your Keptn to 0.7
 weight: 5
 aliases:
   - /docs/0.7.0/operate/upgrade/
+  - /docs/0.7.1/operate/upgrade/
 ---
+
+## Upgrade from Keptn 0.7 to 0.7.1
+
+1. To download and install the Keptn CLI for version 0.7.1, please refer to the [Install Keptn CLI](../install/#install-keptn-cli) section.
+
+1. To upgrade your Keptn installation from 0.7.0 to 0.7.1, the Keptn CLI now offers the command [`keptn upgrade`](../../reference/cli/commands/keptn_upgrade).
+    
+    * Please [verify that you are connected to the correct Kubernetes cluster](../../troubleshooting/#verify-kubernetes-context-with-keptn-installation)
+before executing this command.
+    
+    * This CLI command executes a Helm upgrade using the Helm chart from [keptn-installer/keptn-0.7.1.tgz](https://storage.googleapis.com/keptn-installer/keptn-0.7.1.tgz).
+
 
 ## Upgrade from Keptn 0.6.2 to 0.7
 
