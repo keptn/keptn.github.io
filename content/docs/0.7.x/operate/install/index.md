@@ -271,7 +271,7 @@ Depending on whether you would like to install the execution plane for continuou
   api-gateway-nginx   ClusterIP   10.107.0.20   <ENDPOINT_OF_API_GATEWAY>    80/TCP    44m
   ```
 
-    Optional: Store Keptn API endpoint in an environment variable.
+    *Optional:* Store Keptn API endpoint in an environment variable.
 
     For Linux and Mac:
     ```console
@@ -308,7 +308,7 @@ Depending on whether you would like to install the execution plane for continuou
 
     The Keptn API endpoint (either via the internal or external IP; try both if unsure) is: `http://${INTERNAL_NODE_IP}:${API_PORT}/api` or `http://${EXTERNAL_NODE_IP}:${API_PORT}/api`
 
-    Optional: Store Keptn API endpoint in an environment variable.
+    *Optional:* Store Keptn API endpoint in an environment variable.
 
     For Linux and Mac:
     ```console
@@ -423,7 +423,7 @@ Depending on whether you would like to install the execution plane for continuou
   api-keptn-ingress   <HOST>                 x.x.x.x   80      48m
     ```
 
-    Optional: Store Keptn API endpoint in an environment variable.
+    *Optional:* Store Keptn API endpoint in an environment variable.
 
     For Linux and Mac:
     ```console
@@ -463,7 +463,7 @@ Depending on whether you would like to install the execution plane for continuou
 1. **Get Keptn endpoint:** 
   The Keptn API endpoint is: `http://localhost:8080/api`
 
-    Optional: Store Keptn API endpoint in an environment variable:
+    *Optional:* Store Keptn API endpoint in an environment variable:
     ```console
     KEPTN_ENDPOINT=http://localhost:8080/api
     ```
