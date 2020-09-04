@@ -683,10 +683,10 @@ done
 The Helm chart allows customizing the root-context for the Keptn API and Bridge. 
 By default, the Keptn API is located under `http://HOSTNAME/api` and the Keptn Bridge is located under `http://HOSTNAME/bridge`.
 By specifying a value for `control-plane.prefixPath`, the used prefix for the root-context can be configured.
-For example, if a user sets `control-plane.prefixPath=mykeptn` in the Helm install/upgrade command,
+For example, if a user sets `control-plane.prefixPath=/mykeptn` in the Helm install/upgrade command,
 the Keptn API is located under `http://HOSTNAME/mykeptn/api` and the Keptn Bridge is located under `http://HOSTNAME/mykeptn/bridge`:
 ```console
-helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.7.1 --repo=https://storage.googleapis.com/keptn-installer --set=control-plane.apiGatewayNginx.type=LoadBalancer,continuous-delivery.enabled=true,control-plane.prefixPath=mykeptn
+helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.7.1 --repo=https://storage.googleapis.com/keptn-installer --set=control-plane.apiGatewayNginx.type=LoadBalancer,continuous-delivery.enabled=true,control-plane.prefixPath=/mykeptn
 ```
 
 
