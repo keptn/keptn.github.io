@@ -16,7 +16,7 @@ aliases:
     * Please [verify that you are connected to the correct Kubernetes cluster](../../troubleshooting/#verify-kubernetes-context-with-keptn-installation)
 before executing this command.
     
-    * This CLI command exectues a Helm upgrade using the Helm chart from [keptn-installer/keptn-0.7.1.tgz](https://storage.googleapis.com/keptn-installer/keptn-0.7.1.tgz).
+    * This CLI command executes a Helm upgrade using the Helm chart from [keptn-installer/keptn-0.7.1.tgz](https://storage.googleapis.com/keptn-installer/keptn-0.7.1.tgz).
 
 
 ## Upgrade from Keptn 0.6.2 to 0.7
