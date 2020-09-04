@@ -57,17 +57,17 @@ openshift-route-service-57b45c4dfc-4x5lm                          2/2     Runnin
 
 </p></details>
 
-## MongoDB on OpenShift 4.5 fails
+## MongoDB on OpenShift 4 fails
 <details><summary>Expand instructions</summary>
 <p>
 
 **Reason:** 
 
-The root cause of this issue is that the mongoDB (as deployed by the default Keptn installation) is running in a container as root user and OpenShift 4.5 does not support that. 
+The root cause of this issue is that the MongoDB (as deployed by the default Keptn installation) tries to set `mongodb` as the owner for the files in `/var/lib/mongodb/data`. However, this is not allowed for some Persistent Volumes (PVs) with the assigned rights.
 
 **Solution:** 
 
-Please execute the following command to change the image of the mongodb deployment: 
+Please execute the following command to change the image of the `mongodb` deployment to run `mongodb` as root: 
 
 ```console
 kubectl set image deployment/mongodb mongodb=keptn/mongodb-privileged:latest -n keptn

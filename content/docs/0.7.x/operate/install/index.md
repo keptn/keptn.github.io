@@ -89,18 +89,18 @@ Run your Keptn installation for free on GKE! If you [sign up for a Google Cloud 
  </p>
 </details>
 
-<details><summary>OpenShift 4.5 & 3.11</summary>
+<details><summary>OpenShift 4 & 3.11</summary>
 <p>
 
-**OpenShift 4.5**
+**OpenShift 4**
 
-1. Please bring your own OpenShift cluster in version 4.5
+1. Please bring your own OpenShift cluster in version 4 (tested version: `4.5`)
 
 1. Install local tools
 
   - [oc CLI - v4.1](https://github.com/openshift/origin/releases/tag/v4.1.0)
 
-1. Currently, there is the *known limitation* that the MongoDB of Keptn does not start. Please follow the troubleshooting guide provided here: [MongoDB on OpenShift 4.5 fails](../../troubleshooting/#mongodb-on-openshift-4-5-fails).
+1. Currently, there is the *known limitation* that the MongoDB of Keptn does not start. Please follow the troubleshooting guide provided here: [MongoDB on OpenShift 4 fails](../../troubleshooting/#mongodb-on-openshift-4-fails).
 
 **OpenShift 3.11**
 
