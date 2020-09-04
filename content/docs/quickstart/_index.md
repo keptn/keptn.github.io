@@ -41,7 +41,6 @@ Run your Keptn installation for free on GKE! If you [sign up for a Google Cloud 
  </p>
 </details>
 
-
 <details><summary>K3s</summary>
 <p>
 
@@ -73,7 +72,7 @@ We also support installation on:
 * AWS Elastic Kubernetes Service (EKS)
 * Azure Kubernetes Service (AKS)
 * Minikube
-* OpenShift 3.11
+* OpenShift 4.5 & 3.11
 
 For details on the specific providers, please visit our [detailed installation guide](../0.7.x/operate/install/#create-or-bring-kubernetes-cluster).
 

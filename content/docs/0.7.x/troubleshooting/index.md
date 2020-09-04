@@ -52,10 +52,26 @@ mongodb-59975d9f4c-nn5c2                                          1/1     Runnin
 mongodb-datastore-7fdb567996-lgjj8                                2/2     Running   2          33s
 remediation-service-56777cb979-957l4                              2/2     Running   2          33s
 shipyard-service-57c6996f47-pzs9r                                 2/2     Running   2          34s
-openshift-route-service-57b45c4dfc-4x5lm                          1/1     Running   0          32s (OpenShift only)
-openshift-route-service-create-project-distributor-7d4454cs44xp   1/1     Running   0          33s (OpenShift only)
+openshift-route-service-57b45c4dfc-4x5lm                          2/2     Running   0          32s (OpenShift only)
 ```
 
+</p></details>
+
+## MongoDB on OpenShift 4.5 fails
+<details><summary>Expand instructions</summary>
+<p>
+
+**Reason:** 
+
+The root cause of this issue is that the mongoDB (as deployed by the default Keptn installation) is running in a container as root user and OpenShift 4.5 does not support that. 
+
+**Solution:** 
+
+Please execute the following command to change the image of the mongodb deployment: 
+
+```console
+kubectl set image deployment/mongodb mongodb=keptn/mongodb-privileged:latest -n keptn
+```
 </p></details>
 
 ## Installation on Azure aborts
