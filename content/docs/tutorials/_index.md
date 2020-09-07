@@ -6,7 +6,7 @@ weight: 3
 hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
 ---
 
-## Explore [tutorials](https://tutorials.keptn.sh/) to learn more about the Keptn use cases
+Explore [tutorials](https://tutorials.keptn.sh/) to learn more about the Keptn use cases
 
 <table class="highlight-table">
   <tr>
@@ -33,16 +33,22 @@ hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
   </tr>
   <tr>
     <td colspan="2" width="33%">
+       <a href="https://tutorials.keptn.sh/?cat=full-tour">
         <strong>Performance as a Self-Service</strong><br><br>
         Keptn deploys, tests and provides automated performance feedback of your artifacts
+      </a>
     </td>
     <td colspan="2" width="33%">
+       <a href="https://tutorials.keptn.sh/?cat=full-tour">
         <strong>Performance Testing as a Self-Service</strong><br><br>
         Let Keptn execute performance tests against your deployed software and provide automatic SLI/SLO based feedback
+      </a>
     </td>
     <td colspan="2">
+      <a href="https://tutorials.keptn.sh/?cat=quality-gates">
         <strong>Deployment Validation (aka Quality Gates)</strong><br><br>
         Integrate Keptn into your existing CI/CD by automatically validating your monitored environment based on SLIs/SLOs
+      </a>
     </td>
   </tr>
 </table>
