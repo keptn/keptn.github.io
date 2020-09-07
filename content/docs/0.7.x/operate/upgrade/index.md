@@ -18,6 +18,7 @@ before executing this command.
     
     * This CLI command executes a Helm upgrade using the Helm chart from [keptn-installer/keptn-0.7.1.tgz](https://storage.googleapis.com/keptn-installer/keptn-0.7.1.tgz).
 
+**Note:** If you have manually modified your Keptn deployment, e.g., you deleted the Kubernetes Secret `bridge-credentials` for disabling basic auth, the `keptn upgrade` command will not detect the modification. Please re-apply your modification after performing the upgrade.
 
 ## Upgrade from Keptn 0.6.2 to 0.7
 
