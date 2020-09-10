@@ -45,7 +45,7 @@ chmod o+w mongodb-backup
 1. Copy the data from the MongoDB to your local directory:
 
 ```console
-kubectl exec svc/mongodb -n keptn -- mongodump --uri="mongodb://user:password@localhost:27017/keptn" --out=./dump
+kubectl exec svc/mongodb -n keptn-datastore -- mongodump --uri="mongodb://user:password@localhost:27017/keptn" --out=./dump
 
 MONGODB_POD=$(kubectl get pods -n keptn-datastore -lrun=mongodb -ojsonpath='{.items[0].metadata.name}')
 kubectl cp keptn/$MONGODB_POD:dump ./mongodb-backup/ -c mongodb
