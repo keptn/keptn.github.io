@@ -88,6 +88,8 @@ kubectl cp ./mongodb-backup/ keptn/$MONGODB_POD:dump -c mongodb
 1. Import the MongoDB dump into the database using the following command:
 
 ```console
+MONGODB_USER=$(kubectl get secret mongodb-credentials -n keptn -ojsonpath={.data.user} | base64 -d)
+MONGODB_ROOT_PASSWORD=$(kubectl get secret mongodb-credentials -n keptn -ojsonpath={.data.password} | base64 -d)
 kubectl exec svc/mongodb -n keptn -- mongorestore --host localhost:27017 --username user --password $MONGODB_ROOT_PASSWORD --authenticationDatabase keptn ./dump
 ```
 
