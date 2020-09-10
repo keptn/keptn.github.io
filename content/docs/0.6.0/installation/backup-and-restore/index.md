@@ -10,6 +10,7 @@ keywords: backup
 To secure all your data in your project's git repositories, as well as all events that have occurred for these project, you need to 
 back up the data within the Configuration Service, the MongoDB and - if you have configured those - credentials to your project's git upstream repos.
 The following sections describe how to back up that data and store it on your local machine.
+**NOTE:** These instructions do not cover backing up any Helm- or Istio-related configurations.
 
 ## Backup Configuration Service
 
