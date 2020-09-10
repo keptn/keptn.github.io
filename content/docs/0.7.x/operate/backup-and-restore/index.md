@@ -99,4 +99,6 @@ you have previously stored in the `keptn-backup` directory , using `kubectl appl
 kubectl apply -f $PROJECT-credentials.yaml
 ```
 
+After executing these steps, your projects and all events should be visible in the Keptn's Bridge again.
+
 
