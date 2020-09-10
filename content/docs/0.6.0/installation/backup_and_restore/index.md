@@ -47,7 +47,7 @@ chmod o+w mongodb-backup
 ```console
 kubectl exec svc/mongodb -n keptn-datastore -- mongodump --uri="mongodb://user:password@localhost:27017/keptn" --out=./dump
 
-MONGODB_POD=$(kubectl get pods -n keptn-datastore -lrun=mongodb -ojsonpath='{.items[0].metadata.name}')
+MONGODB_POD=$(kubectl get pods -n keptn-datastore -lname=mongodb -ojsonpath='{.items[0].metadata.name}')
 kubectl cp keptn/$MONGODB_POD:dump ./mongodb-backup/ -c mongodb
 ```
 
@@ -79,7 +79,7 @@ kubectl cp ./config-svc-backup/* keptn/$CONFIG_SERVICE_POD:/data -c configuratio
 1. Copy the content of the mongodb-backup directory you have created earlier into the pod running the MongoDB:
 
 ```console
-MONGODB_POD=$(kubectl get pods -n keptn-datastore -lrun=mongodb -ojsonpath='{.items[0].metadata.name}')
+MONGODB_POD=$(kubectl get pods -n keptn-datastore -lname=mongodb -ojsonpath='{.items[0].metadata.name}')
 kubectl cp ./mongodb-backup/ keptn/$MONGODB_POD:dump -c mongodb
 ```
 
