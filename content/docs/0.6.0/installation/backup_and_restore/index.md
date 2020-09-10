@@ -5,8 +5,6 @@ weight: 20
 keywords: backup
 ---
 
-# Backup Keptn 
-
 To secure all your data in your project's git repositories, as well as all events that have occurred for these project, you need to 
 back up the data within the Configuration Service, the MongoDB and - if you have configured those - credentials to your project's git upstream repos.
 The following sections describe how to back up that data and store it on your local machine.
@@ -78,7 +76,7 @@ kubectl cp ./config-svc-backup/* keptn/$CONFIG_SERVICE_POD:/data -c configuratio
 
 ## Restore MongoDB data
 
-1. Copy the content of the mongodb-backup director you have created earlier into the pod running the MongoDB:
+1. Copy the content of the mongodb-backup directory you have created earlier into the pod running the MongoDB:
 
 ```console
 MONGODB_POD=$(kubectl get pods -n keptn-datastore -lrun=mongodb -ojsonpath='{.items[0].metadata.name}')
