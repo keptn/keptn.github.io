@@ -64,8 +64,7 @@ kubectl get secret -n keptn git-credentials-$PROJECT_NAME -oyaml > $PROJECT-cred
 ```
 
 # Restore Keptn
-
-This section describes how to restore the projects of a previous Keptn installation using the data you have stored on your machine using the instructions above.
+This section describes how to restore data from your Keptn projects on a fresh Keptn installation using the data you have stored on your machine using the instructions above.
 
 ## Restore Configuration Service
 
@@ -89,6 +88,15 @@ kubectl cp ./mongodb-backup/ keptn/$MONGODB_POD:dump -c mongodb
 
 ```console
 kubectl exec svc/mongodb -n keptn -- mongorestore --host localhost:27017 --username user --password $MONGODB_ROOT_PASSWORD --authenticationDatabase keptn ./dump
+```
+
+## Restore Git credentials
+
+To re-establish the communication between the configuration-service and your project's upstream repositories, restore the K8s secrets
+you have previously stored in the `keptn-backup` directory , using `kubectl apply`:
+
+```console
+kubectl apply -f $PROJECT-credentials.yaml
 ```
 
 

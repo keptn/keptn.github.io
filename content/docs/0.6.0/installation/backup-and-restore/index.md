@@ -58,9 +58,10 @@ kubectl cp keptn/$MONGODB_POD:dump ./mongodb-backup/ -c mongodb
 ## Backup Git credentials
 
 For projects where you have configured a Git upstream repository, we advise to backup the Kubernetes secrets needed to access those.
-To do so, please execute the following command for each project for which you have configured an upstream repo:
+To do so, please execute the following command **for each project** for which you have configured an upstream repo:
 
 ```console
+PROJECT=<project-name>
 kubectl get secret -n keptn git-credentials-$PROJECT_NAME -oyaml > $PROJECT-credentials.yaml
 ```
 
@@ -91,5 +92,17 @@ kubectl cp ./mongodb-backup/ keptn/$MONGODB_POD:dump -c mongodb
 ```console
 kubectl exec svc/mongodb -n keptn-datastore -- mongorestore --host localhost:27017 --username user --password $MONGODB_ROOT_PASSWORD --authenticationDatabase keptn ./dump
 ```
+
+
+## Restore Git credentials
+
+To re-establish the communication between the configuration-service and your project's upstream repositories, restore the K8s secrets
+you have previously stored in the `keptn-backup` directory , using `kubectl apply`:
+
+```console
+PROJECT=<project-name>
+kubectl apply -f $PROJECT-credentials.yaml
+```
+
 
 
