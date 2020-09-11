@@ -59,6 +59,7 @@ For projects where you have configured a Git upstream repository, we advise to b
 To do so, please execute the following command for each project for which you have configured an upstream repo:
 
 ```console
+PROJECT_NAME=<project_name>
 kubectl get secret -n keptn git-credentials-$PROJECT_NAME -oyaml > $PROJECT-credentials.yaml
 ```
 
@@ -97,7 +98,8 @@ To re-establish the communication between the configuration-service and your pro
 you have previously stored in the `keptn-backup` directory , using `kubectl apply`:
 
 ```console
-kubectl apply -f $PROJECT-credentials.yaml
+PROJECT_NAME=<project_name>
+kubectl apply -f $PROJECT_NAME-credentials.yaml
 ```
 
 After executing these steps, your projects and all events should be visible in the Keptn's Bridge again.
