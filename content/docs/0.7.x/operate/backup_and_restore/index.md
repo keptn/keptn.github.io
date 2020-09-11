@@ -68,12 +68,36 @@ This section describes how to restore data from your Keptn projects on a fresh K
 
 ## Restore Configuration Service
 
-Copy the directory containing all git repositories to the configuration-service
+1. Copy the directory containing all git repositories to the configuration-service
 
 ```console
 CONFIG_SERVICE_POD=$(kubectl get pods -n keptn -lapp.kubernetes.io/name=configuration-service -ojsonpath='{.items[0].metadata.name}')
 kubectl cp ./config-svc-backup/* keptn/$CONFIG_SERVICE_POD:/data -c configuration-service
 ```
+
+2. To make sure the git repositories within the configuration service are in a consistent state, they need to be reset to the current HEAD. To do so, 
+please execute the following commands:
+
+```console
+cat <<EOT >> reset-git-repos.sh
+#!/bin/sh
+
+cd /data/config/
+for FILE in *; do
+    if [ -d "$FILE" ]; then
+        cd "$FILE"
+        git reset --hard
+        cd ..
+    fi
+done
+EOT
+
+CONFIG_SERVICE_POD=$(kubectl get pods -n keptn -lapp.kubernetes.io/name=configuration-service -ojsonpath='{.items[0].metadata.name}')
+kubectl cp ./reset-git-repos.sh keptn/$CONFIG_SERVICE_POD:/ -c configuration-service
+kubectl exec -n keptn $CONFIG_SERVICE_POD -c configuration-service -- chmod +x -R ./reset-git-repos.sh
+kubectl exec -n keptn $CONFIG_SERVICE_POD -c configuration-service -- ./reset-git-repos.sh
+``` 
+
 
 ## Restore MongoDB data
 
