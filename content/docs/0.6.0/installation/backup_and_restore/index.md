@@ -48,7 +48,7 @@ chmod o+w mongodb-backup
 kubectl exec svc/mongodb -n keptn-datastore -- mongodump --uri="mongodb://user:password@localhost:27017/keptn" --out=./dump
 
 MONGODB_POD=$(kubectl get pods -n keptn-datastore -lname=mongodb -ojsonpath='{.items[0].metadata.name}')
-kubectl cp keptn/$MONGODB_POD:dump ./mongodb-backup/ -c mongodb
+kubectl cp keptn-datastore/$MONGODB_POD:dump ./mongodb-backup/ -c mongodb
 ```
 
 ## Backup Git credentials
@@ -80,7 +80,7 @@ kubectl cp ./config-svc-backup/* keptn/$CONFIG_SERVICE_POD:/data -c configuratio
 
 ```console
 MONGODB_POD=$(kubectl get pods -n keptn-datastore -lname=mongodb -ojsonpath='{.items[0].metadata.name}')
-kubectl cp ./mongodb-backup/ keptn/$MONGODB_POD:dump -c mongodb
+kubectl cp ./mongodb-backup/ keptn-datastore/$MONGODB_POD:dump -c mongodb
 ```
 
 1. Import the MongoDB dump into the database using the following command:
