@@ -22,7 +22,7 @@ CONFIG_SERVICE_POD=$(kubectl get pods -n keptn -lrun=configuration-service -ojso
 kubectl cp keptn/$CONFIG_SERVICE_POD:/data ./config-svc-backup/ -c configuration-service
 ```
 
-1. Verify that the data has been copied correctly to your local machine by checking the content of the directory you just created. 
+2. Verify that the data has been copied correctly to your local machine by checking the content of the directory you just created. 
 This should include all projects you have onboarded with Keptn, as well as a `lost+found` directory, which can be ignored.
 
 ```console
@@ -42,7 +42,7 @@ mkdir mongodb-backup
 chmod o+w mongodb-backup
 ```
 
-1. Copy the data from the MongoDB to your local directory:
+2. Copy the data from the MongoDB to your local directory:
 
 ```console
 kubectl exec svc/mongodb -n keptn-datastore -- mongodump --uri="mongodb://user:password@localhost:27017/keptn" --out=./dump
@@ -58,7 +58,7 @@ To do so, please execute the following command **for each project** for which yo
 
 ```console
 PROJECT_NAME=<project-name>
-kubectl get secret -n keptn git-credentials-$PROJECT_NAME -oyaml > $PROJECT-credentials.yaml
+kubectl get secret -n keptn git-credentials-$PROJECT_NAME -oyaml > $PROJECT_NAME-credentials.yaml
 ```
 
 # Restore Keptn
@@ -83,7 +83,7 @@ MONGODB_POD=$(kubectl get pods -n keptn-datastore -lname=mongodb -ojsonpath='{.i
 kubectl cp ./mongodb-backup/ keptn-datastore/$MONGODB_POD:dump -c mongodb
 ```
 
-1. Import the MongoDB dump into the database using the following command:
+2. Import the MongoDB dump into the database using the following command:
 
 ```console
 kubectl exec svc/mongodb -n keptn-datastore -- mongorestore --host localhost:27017 --username user --password password --authenticationDatabase keptn ./dump
