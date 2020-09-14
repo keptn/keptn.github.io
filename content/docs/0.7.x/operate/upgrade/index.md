@@ -9,6 +9,9 @@ aliases:
 
 ## Upgrade from Keptn 0.7 to 0.7.1
 
+1. Before starting the update, we strongly advise to create a backup of your Keptn projects. 
+To do so, please follow the instructions in the [backup guide](../../operate/backup_and_restore)
+
 1. To download and install the Keptn CLI for version 0.7.1, please refer to the [Install Keptn CLI](../install/#install-keptn-cli) section.
 
 1. To upgrade your Keptn installation from 0.7.0 to 0.7.1, the Keptn CLI now offers the command [`keptn upgrade`](../../reference/cli/commands/keptn_upgrade).
@@ -21,6 +24,9 @@ before executing this command.
 **Note:** If you have manually modified your Keptn deployment, e.g., you deleted the Kubernetes Secret `bridge-credentials` for disabling basic auth, the `keptn upgrade` command will not detect the modification. Please re-apply your modification after performing the upgrade.
 
 ## Upgrade from Keptn 0.6.2 to 0.7
+
+1. Before starting the update, we strongly advise to create a backup of your Keptn projects. 
+To do so, please follow the instructions in the [backup guide](../../../0.6.0/installation/backup_and_restore)
 
 1. To download and install the Keptn CLI for version 0.7.0, please refer to the [Install Keptn CLI](../install/#install-keptn-cli) section.
 
