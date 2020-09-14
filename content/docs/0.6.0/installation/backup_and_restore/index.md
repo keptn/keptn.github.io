@@ -12,7 +12,7 @@ The following sections describe how to back up that data and store it on your lo
 
 ## Backup Configuration Service
 
-1. First, create a local backup directory containing all data within the git repos of the configuration-service. To do so, please execute the following command:
+First, create a local backup directory containing all data within the git repos of the configuration-service. To do so, please execute the following command:
 
 ```console
 mkdir keptn-backup
@@ -22,7 +22,7 @@ CONFIG_SERVICE_POD=$(kubectl get pods -n keptn -lrun=configuration-service -ojso
 kubectl cp keptn/$CONFIG_SERVICE_POD:/data ./config-svc-backup/ -c configuration-service
 ```
 
-2. Verify that the data has been copied correctly to your local machine by checking the content of the directory you just created. 
+Verify that the data has been copied correctly to your local machine by checking the content of the directory you just created. 
 This should include all projects you have onboarded with Keptn, as well as a `lost+found` directory, which can be ignored.
 
 ```console
@@ -35,14 +35,14 @@ lost+found	sockshop my-project
 The next step is to create a backup of the mongodb database in the `keptn-datastore` namespace using the `mongodump` tool.
 NOTE: this tool will be executed within the pod running the MongoDB, so you do not need to have it installed locally.
 
-1. Create a directory for the MongoDB backup:
+Create a directory for the MongoDB backup:
 
 ```console
 mkdir mongodb-backup
 chmod o+w mongodb-backup
 ```
 
-2. Copy the data from the MongoDB to your local directory:
+Copy the data from the MongoDB to your local directory:
 
 ```console
 kubectl exec svc/mongodb -n keptn-datastore -- mongodump --uri="mongodb://user:password@localhost:27017/keptn" --out=./dump
@@ -67,14 +67,14 @@ This section describes how to restore the projects of a previous Keptn installat
 
 ## Restore Configuration Service
 
-1. Copy the directory containing all git repositories to the configuration-service
+Copy the directory containing all git repositories to the configuration-service
 
 ```console
 CONFIG_SERVICE_POD=$(kubectl get pods -n keptn -lrun=configuration-service -ojsonpath='{.items[0].metadata.name}')
 kubectl cp ./config-svc-backup/* keptn/$CONFIG_SERVICE_POD:/data -c configuration-service
 ```
 
-2. To make sure the git repositories within the configuration service are in a consistent state, they need to be reset to the current HEAD. To do so, 
+To make sure the git repositories within the configuration service are in a consistent state, they need to be reset to the current HEAD. To do so, 
 please execute the following commands:
 
 ```console
@@ -99,14 +99,14 @@ kubectl exec -n keptn $CONFIG_SERVICE_POD -c configuration-service -- ./reset-gi
 
 ## Restore MongoDB data
 
-1. Copy the content of the mongodb-backup directory you have created earlier into the pod running the MongoDB:
+Copy the content of the mongodb-backup directory you have created earlier into the pod running the MongoDB:
 
 ```console
 MONGODB_POD=$(kubectl get pods -n keptn-datastore -lname=mongodb -ojsonpath='{.items[0].metadata.name}')
 kubectl cp ./mongodb-backup/ keptn-datastore/$MONGODB_POD:dump -c mongodb
 ```
 
-2. Import the MongoDB dump into the database using the following command:
+Import the MongoDB dump into the database using the following command:
 
 ```console
 kubectl exec svc/mongodb -n keptn-datastore -- mongorestore --host localhost:27017 --username user --password password --authenticationDatabase keptn ./dump
