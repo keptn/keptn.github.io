@@ -43,7 +43,7 @@ before deploying the upgrading job.
 
 ```console
 kubectl delete job upgrader -n keptn
-kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.7.0/upgrader/upgrade-062-070/upgrade-job.yaml
+kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/release-0.7.0/upgrader/upgrade-062-070/upgrade-job.yaml
 ```
 
 **Manual converting Helm release from Helm 2 to 3:**
@@ -98,7 +98,7 @@ This option is recommended when you have a Kubernetes cluster with just Keptn in
 
 ```console
 kubectl delete job upgrader -n keptn
-kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.7.0/upgrader/upgrade-062-070/upgrade-job-helm3.yaml
+kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/release-0.7.0/upgrader/upgrade-062-070/upgrade-job-helm3.yaml
 ```
 
 ### Verify Upgrader Job
