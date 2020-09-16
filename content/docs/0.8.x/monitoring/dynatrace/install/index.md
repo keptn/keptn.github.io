@@ -57,6 +57,8 @@ Create a secret containing the credentials for the *Dynatrace tenant* and *Keptn
     - Read configuration
     - Write configuration
     - Capture request data
+    - Read metrics using API V2
+    - Read entities using API V2
 
     {{< popup_image
     link="./assets/dt_api_token.png"
