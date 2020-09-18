@@ -82,29 +82,29 @@ Create a secret containing the credentials for the *Dynatrace tenant* and *Keptn
 * Create a secret with the credentials by executing the following command:
 
     ```console
-    kubectl -n keptn create secret generic dynatrace
-    --from-literal="DT_API_TOKEN=<DT_API_TOKEN>" 
-    --from-literal="DT_TENANT=<DT_TENANT>" 
-    --from-literal="KEPTN_API_URL=<KEPTN_API_URL>" 
-    --from-literal="KEPTN_API_TOKEN=<KEPTN_API_TOKEN>"
-    -oyaml --dry-run | kubectl replace -f -
+    kubectl -n keptn create secret generic dynatrace --from-literal="DT_API_TOKEN=$DT_API_TOKEN" --from-literal="DT_TENANT=$DT_TENANT" --from-literal="KEPTN_API_URL=$KEPTN_API_URL" --from-literal="KEPTN_API_TOKEN=$KEPTN_API_TOKEN" -oyaml --dry-run | kubectl replace -f -
     ```
 
 ### 2. Deploy the Dynatrace Keptn integration
 
-* The Dynatrace integration into Keptn is handled by the *dynatrace-service*. To install the *dynatrace-service*, execute:
+The Dynatrace integration into Keptn is handled by the *dynatrace-service*.
+
+* Specify the version of the dynatrace-service you want to deploy. Please see the [compatibility matrix](https://github.com/keptn-contrib/dynatrace-service#compatibility-matrix) of the dynatrace-service to pick the version that works with your Keptn.  
+
+    ```console
+    VERSION=<VERSION>   # e.g.: VERSION=0.8.0
+    ```
+
+*  To install the *dynatrace-service*, execute:
 
     ```console
     kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-service/$VERSION/deploy/service.yaml -n keptn
     ```
    
-  **Note**: Replace `$VERSION` with the desired version number (e.g., 0.8.1) you want to install.
-   
-* This installs the `dynatrace-service` and a Keptn `distributor` in the `keptn` namespace, which you can verify using:
+* This installs the `dynatrace-service` in the `keptn` namespace, which you can verify using:
 
     ```console
     kubectl -n keptn get deployment dynatrace-service -o wide
-    kubectl -n keptn get deployment dynatrace-service-distributor -o wide
     kubectl -n keptn get pods -l run=dynatrace-service
     ```
 

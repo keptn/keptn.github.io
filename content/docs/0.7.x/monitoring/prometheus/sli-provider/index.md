@@ -9,13 +9,19 @@ icon: setup
 
 During the evaluation of a quality gate, the Prometheus SLI-provider is required that is implemented by an internal Keptn service, the *prometheus-sli-service*. This service will fetch the values for the SLIs that are referenced in a SLO configuration.
 
-1. To install the *prometheus-sli-service*, execute:
+* Specify the version of the prometheus-sli-service you want to deploy. Please see the [compatibility matrix](https://github.com/keptn-contrib/prometheus-sli-service#compatibility-matrix) of the prometheus-service to pick the version that works with your Keptn.  
 
     ```console
-    kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-sli-service/0.2.2/deploy/service.yaml
+    VERSION=<VERSION>    # e.g.: VERSION=0.2.2
     ```
 
-1. The *prometheus-sli-service* needs access to a Prometheues instance. If you have completed the steps from [Setup Prometheus](./#setup-prometheus), the *prometheus-sli-service* uses the Prometheus instance running in the cluster. Otherwise,
+* To install the *prometheus-sli-service*, execute:
+
+    ```console
+    kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-sli-service/$VERSION/deploy/service.yaml
+    ```
+
+* The *prometheus-sli-service* needs access to a Prometheues instance. If you have completed the steps from [Setup Prometheus](./#setup-prometheus), the *prometheus-sli-service* uses the Prometheus instance running in the cluster. Otherwise,
 create a *secret* containing the **user**, **password**, and **url**. The secret must have the following format (please note the double-space indentation):
 
     ```yaml
@@ -54,4 +60,3 @@ indicators:
   response_time_p90: histogram_quantile(0.9, sum by(le) (rate(http_response_time_milliseconds_bucket{job="$SERVICE-$PROJECT-$STAGE"}[$DURATION_SECONDS])))
   response_time_p95: histogram_quantile(0.95, sum by(le) (rate(http_response_time_milliseconds_bucket{job="$SERVICE-$PROJECT-$STAGE"}[$DURATION_SECONDS])))
 ```
-
