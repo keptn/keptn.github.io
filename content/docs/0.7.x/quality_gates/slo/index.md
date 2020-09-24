@@ -1,7 +1,7 @@
 ---
 title: Service-Level Objectives (SLO)
 description: Configure and add Service-Level Objectives (SLO) to your service.
-weight: 1
+weight: 15
 keywords: [0.7.x-quality_gates]
 ---
 

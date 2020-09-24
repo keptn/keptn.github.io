@@ -5,18 +5,20 @@ weight: 2
 keywords: [keptn, use-cases]
 ---
 
-> **Challenge:** When developing an application, sooner or later you need to update an application or service in a production environment. To conduct this in a controlled manner and without impacting end-user experience, the quality of the new service has to be ensured in an automated way. 
+> **Challenge:** When developing a software product, sooner or later you need to update an application or service in a production environment. To conduct this in a controlled manner and without impacting end-user experience, the quality of the new service has to be ensured in an automated way. 
 
-Keptn quality gates provide you a *declarative way* to define quality criteria of your service and Keptn will collect, evaluate, and score those metrics to decide if a new version is allowed to be promoted to the next stage in your continuous delivery or if it has to be held back.
+:bulb: *A quality gate answer one question: Can I deliver my project to production today or not?*
+
+Keptn quality gates provide you a *declarative way* to define quality criteria of your service and Keptn will collect, evaluate, and score those quality criteria to decide if a new version is allowed to be promoted to the next stage in your continuous delivery or if it has to be held back.
 
 ## Keptn Quality Gate Process
 
 Keptn quality gates base on the concepts of *Service-Level Indicators (SLIs)* and *Service-Level Objectives (SLOs)*. Therefore, it is possible to declaratively describe the desired quality objective for your applications and services.
 
 1. The process of evaluating a quality gate can be triggered either via the Keptn CLI or the Keptn API. 
-1. Once triggered, Keptn fetches the SLIs from a data provider, such as [Prometheus or Dynatrace](../../0.7.x/quality_gates/sli-provider/). 
-1. Next, Keptn evaluates the SLI against the SLOs that are defined for the application or microservice. 
-1. After evaluation and scoring Keptn returns the result that can be either processed in an automated way by an existing CD pipeline or by the user to manually decide on the next steps (e.g., promotion to production or pushing it back to the developer for needed improvements).
+1. Once triggered, Keptn fetches the SLIs from a data provider like [Prometheus or Dynatrace](../../0.7.x/quality_gates/sli-provider/). 
+1. Keptn evaluates the SLI against the SLOs that are defined for the application or service. 
+1. After evaluation and scoring, Keptn returns the result that can be either processed in an automated way by an existing CD pipeline or by the user to manually decide on the next steps (e.g., promotion to production or pushing it back to the developer for needed improvements).
 
   {{< popup_image
   link="./assets/quality-gates.png"

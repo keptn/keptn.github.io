@@ -1,7 +1,7 @@
 ---
 title: Service-Level Indicators (SLI)
-description: Configure Service-Level Indicators (SLIs) for your service.
-weight: 2
+description: Configure and add Service-Level Indicators (SLIs) to your service.
+weight: 10
 keywords: [0.7.x-quality_gates]
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: SLI-Provider
 description: Add an SLI-Provider to Keptn for querying provider-specific SLIs.
-weight: 3
+weight: 20
 keywords: [0.7.x-quality_gates]
 ---
 
