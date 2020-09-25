@@ -57,3 +57,5 @@ At this point, you have:
 * :heavy_check_mark: activated the quality gate for `booking` by providing an SLO
 
 To trigger a quality gate evaluation, execute the [keptn send event start-evaluation](../../reference/cli/commands/keptn_send_event_start-evaluation/) command. This command sends an event to Keptn, which acknowledges receipt of the event by returning a unique ID (`keptn-context`). This unique ID can then be used to fetch the result of the quality gate evaluation.
+
+:information_source: See [here](../use/) for more inforation how to work with a quality gate.
