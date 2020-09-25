@@ -2,7 +2,7 @@
 title: Working with Quality Gates
 description: Working with Quality Gates using Keptn CLI/API
 weight: 7
-keywords: [0.7.x-quality_gates]
+keywords: [0.8.x-quality_gates]
 ---
 
 ## Quality Gates managed by Keptn CLI
