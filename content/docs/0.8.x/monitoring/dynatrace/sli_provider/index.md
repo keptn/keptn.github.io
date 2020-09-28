@@ -9,12 +9,18 @@ icon: setup
 
 During the evaluation of a quality gate, the Dynatrace SLI-provider is required that is implemented by an internal Keptn service, the *dynatrace-sli-service*. This service will fetch the values for the SLIs that are referenced in an SLO configuration.
 
-1. To install the *dynatrace-sli-service*, execute:
+* Specify the version of the dynatrace-sli-service you want to deploy. Please see the [compatibility matrix](https://github.com/keptn-contrib/dynatrace-sli-service#compatibility-matrix) of the dynatrace-service to pick the version that works with your Keptn.  
+
+    ```console
+    VERSION=<VERSION>    # e.g.: VERSION=0.6.0
+    ```
+
+* To install the *dynatrace-sli-service*, execute:
     ```console
     kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-sli-service/0.5.1/deploy/service.yaml -n keptn
     ```
 
-1. The *dynatrace-sli-service* needs access to a Dynatrace tenant. If you have completed the steps from [Setup Dynatrace](./#setup-dynatrace), the *dynatrace-sli-service* uses the already provided credentials. Otherwise, create a *secret* containing the **Tenant ID** and **API token**.
+* The *dynatrace-sli-service* needs access to a Dynatrace tenant. If you have completed the steps from [Setup Dynatrace](./#setup-dynatrace), the *dynatrace-sli-service* uses the already provided credentials. Otherwise, create a *secret* containing the **Tenant ID** and **API token**.
 
     The `DT_TENANT` has to be set according to the appropriate pattern:
   - Dynatrace SaaS tenant: `{your-environment-id}.live.dynatrace.com`
