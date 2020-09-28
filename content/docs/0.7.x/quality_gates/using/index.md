@@ -5,7 +5,14 @@ weight: 7
 keywords: [0.7.x-quality_gates]
 ---
 
+
+
+
 ## Quality Gates managed by Keptn CLI
+
+* To work with the Keptn CLI, make sure your Keptn CLI is authenticated against the right Keptn; find the instructions [here](../../operate/install/#authenticate-keptn-cli) or use [Keptn Bridge]() to get the credentials for the [keptn auth](../../reference/cli/commands/keptn_auth/) command.
+
+* To verify the CLI connection to your Keptn, execute [keptn status](../../reference/cli/commands/keptn_status/).
 
 ### Trigger a quality gate
 
@@ -39,7 +46,6 @@ keptn send event start-evaluation --project=sockshop --stage=hardening --service
 {
   "source": "keptn-cli",
   "specversion": "0.2",
-  "id": "c5f749e6-cce7-43b8-943b-fd45e0b87e5a",
   "type": "sh.keptn.event.start-evaluation",
   "contenttype": "application/json",
   "data": {
@@ -80,7 +86,9 @@ keptn get event evaluation-done --keptn-context=1234-5678-90ab-cdef
 
 ## Quality Gates managed by Keptn API
 
-To work with the Keptn API, get the API token from the [Keptn Bridge]() and follow the Keptn API link to the Swagger-UI. 
+* To work with the Keptn API, get the API token from the [Keptn Bridge]() and follow the Keptn API link to the Swagger-UI. 
+
+* If you want to interact with the Keptn APV via cURL, store the Keptn API and API token in an environment variable explained [here](../../operate/install/#authenticate-keptn-cli).
 
 ### Trigger a quality gate
 
@@ -89,9 +97,7 @@ To trigger a quality gate for a service in the stage of a specific project, the 
 * `/evaluation`
 * `/event`
 
-Both endpoints return an ID (`keptn-context`) that is required to retrieve the evaluation result. 
-
-For the sake of convenience, store the Keptn API and API token in an environment variable explained [here](../../operate/install/#authenticate-keptn-cli).
+Both endpoints return an ID (`keptn-context`) that is required to retrieve the evaluation result. (*Note:* The response also contains a `token` required for opening a WebSocket communication.)
 
 <details><summary>**Trigger via: `/evaluation`**</summary>
 <p>
@@ -102,9 +108,9 @@ For the sake of convenience, store the Keptn API and API token in an environment
 
 ```json
 {
-    "from": "2006-01-02T15:04:05",    // required
-    "to": "2006-01-02T15:04:05",      // cannot be used in combination with 'timeframe'
-    "timeframe": "5m",                // cannot be used in combination with 'to',
+    "from": "2020-09-28T07:00:00",     // required
+    "to": "2020-09-28T07:05:00",       // cannot be used in combination with 'timeframe'
+    "timeframe": "5m",                 // cannot be used in combination with 'to',
     "labels": {
       "buildId": "build-17",
       "owner": "JohnDoe",
@@ -116,11 +122,11 @@ For the sake of convenience, store the Keptn API and API token in an environment
 * Trigger a quality gate with a POST request on `/evaluation`:
 
 ```console
-curl -X POST  ${KEPTN_ENDPOINT}/v1/project/{projectName}/stage/{stageName}/service/{serviceName}/evaluation \
+curl -X POST "${KEPTN_ENDPOINT}/v1/project/{PROJECT}/stage/{STAGE}/service/{SERVICE}/evaluation" \
 -H "accept: application/json; charset=utf-8" \
--H "Authorization: Api-Token ${KEPTN_API_TOKEN}" \
+-H "x-token: ${KEPTN_API_TOKEN}" \
 -H "Content-Type: application/json; charset=utf-8" \
--d "{"from":"2006-01-02T15:04:05","to":"2006-01-02T15:04:05","labels":{"buildId":"build-17","owner":"JohnDoe","testNo":"47-11"}}"
+-d "{ \"from\": \"2020-09-28T07:00:00\", \"timeframe\": \"5m\", \"labels\":{\"buildId\":\"build-17\",\"owner\":\"JohnDoe\",\"testNo\":\"47-11\"}}"
 ```
 
 </p>
@@ -160,9 +166,9 @@ curl -X POST  ${KEPTN_ENDPOINT}/v1/project/{projectName}/stage/{stageName}/servi
 * Trigger a quality gate with a POST request on `/event`:
 
 ```console
-curl -X POST  ${KEPTN_ENDPOINT}/v1/event \
+curl -X POST "${KEPTN_ENDPOINT}/v1/event" \
 -H "accept: application/json; charset=utf-8" \
--H "Authorization: Api-Token ${KEPTN_API_TOKEN}" \
+-H "x-token: ${KEPTN_API_TOKEN}" \
 -H "Content-Type: application/json; charset=utf-8" \
 -d @./trigger_quality_gate.json
 ```
@@ -175,12 +181,10 @@ curl -X POST  ${KEPTN_ENDPOINT}/v1/event \
 * To fetch a quality gate evaluation, the Keptn CLI provides the `/event`. This command requires the ID (`keptn-context`) and the event type which is `sh.keptn.events.evaluation-done`. 
 
 ```console
-curl -X GET ${KEPTN_ENDPOINT}/v1/event?type=sh.keptn.events.evaluation-done&keptnContext={keptnContext} \
+curl -X GET "${KEPTN_ENDPOINT}/v1/event?type=sh.keptn.events.evaluation-done&keptnContext={keptnContext}" \
 -H "accept: application/json; charset=utf-8" \
--H "Authorization: Api-Token ${KEPTN_API_TOKEN}" \
+-H "x-token: ${KEPTN_API_TOKEN}"
 ```
-
+<!-- 
 ## Integrate into an existing pipeline
-
-
-
+-->
