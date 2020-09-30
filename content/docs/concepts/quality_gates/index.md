@@ -7,7 +7,7 @@ keywords: [keptn, use-cases]
 
 > When developing a software product, sooner or later you need to update a service in a production environment. To conduct this in a controlled manner and without impacting end-user experience, the quality of the new service has to be ensured in an automated way. 
 
-:bulb: *A quality gate answers one question: Does my service meet all my defined quality criteria?*
+:bulb: *A quality gate answers one question: Does my service meet all defined quality criteria?*
 
 Keptn quality gates provide you a *declarative way* to define quality criteria of your service. Therefore, Keptn will collect, evaluate, and score those quality criteria to decide if a new version is allowed to be promoted to the next stage or if it has to be held back.
 
