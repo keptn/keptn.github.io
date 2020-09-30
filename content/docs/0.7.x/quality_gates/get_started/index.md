@@ -5,13 +5,37 @@ weight: 5
 keywords: [0.7.x-quality_gates]
 ---
 
-:bulb: *A quality gate answers one question: Can I deliver my project to production today or not?* 
 
-Learn [here](../../../concepts/quality_gates) more about the concept. In this section, you will get an overview of the use-case and learn how to get started setting up a quality gate for your project assuming you are [authenticated](../../operate/install/#authenticate-keptn-cli) against a Keptn installation and have a deployed application.
+In this section, you will get an overview of the use-case and learn how to get started setting up a quality gate for your project assuming you are [authenticated](../../operate/install/#authenticate-keptn-cli) against a Keptn installation and have a deployed application.
 
-## Definition of Keptn entities
+:information_source: If you are not familiar with the concept of a quality gate, learn [here](../../../concepts/quality_gates) more. 
 
-You have an application that is running in an environment and composed of one or multiple services (aka. microservices). For example, you have an application called `easyBooking`, which can be broken down into the `booking` and `payment` service. The application is running in a `quality_assurance` environment (aka. stage). Below you will learn how to set up a quality gate for multiple stages. 
+**Quality gate result**
+
+:bulb: *A quality gate answers one question: Does my service meet all my defined quality criteria?*
+
+Keptn quality gates help you answering this question by representing a quality gate results like this: 
+
+{{< popup_image
+  link="./assets/quality_gate.png"
+  caption="Quality gate result"
+  width="50%">}}
+
+* First and most important, *did the service met all my defined quality criteria*? 
+  * :one: The overall result is a *warning* as shown by the orange bar and with the total score between 50 (fail) and 90 (pass).
+* Which criteria did not meet its objective?
+  * :two: The response time P95 was measured with 1,048 ms. This value is higher than the pass criteria of 600 ms.
+* What does the <=10% mean? 
+  * :three: This is a relative comparision for which the quality gate result of a previous evaluation is taken into account. In fact, the last passed comparison is taken as reference value.
+* How did this quality result perform compared to others? 
+  * :four: The answer to this question can be found in the Heatmap and Chart on the top.
+  * The Heatmap highlights the currently selected quality gate result with a gray and solid border. The quality gate result that are taken into comparison is highlighted by the dashed border. 
+  * :five: The total score of a quality gate result is depicted by the cell on the top.
+  * The individual criteria are then represented by a seperate cell in the column. 
+   
+## Definition of project, stage and service
+
+You have an application that is running in an environment and composed of one or multiple services (aka. microservices). For example, you have an application called `easyBooking`, which can be broken down into the `booking` and `payment` service. The application is running in a `quality_assurance` environment (aka. stage).
 
 Given the `easyBooking` application, the Keptn entities of a project, stage, and service map to the example as follows:
 
@@ -34,7 +58,7 @@ stages:
 
 **Note:** It is not needed to create the stage, since it is declared in the Shipyard that is applied during the project creation. 
 
-## Configure Keptn to use your SLI-provider
+## Configure Keptn to use your SLI-provider and add SLIs
 
 Depending on the monitoring solution you have in place, a corresponding SLI-provider needs to be running inside Keptn. This SLI-provider gets its queries for the individual metrics from the [Service-Level Indicator (SLI)](../sli/#service-level-indicator) config. 
 
@@ -42,9 +66,9 @@ Depending on the monitoring solution you have in place, a corresponding SLI-prov
 
 * Follow the steps of deploying an SLI-provider and uploading an SLI config as described [here](../sli-provider/).
 
-## Activate quality gate
+## Add SLO configuration to a service
 
-Activating a quality gate means that you add an [Service-Level Objective (SLO)](../slo/#service-level-objective) config to your service; to the `booking` service according to the above example. 
+By adding an [Service-Level Objective (SLO)](../slo/#service-level-objective) config to your service you *activate* a quality gate for the service.
 
 * To add an SLO to the `booking` service, use the [keptn add-resource](../../reference/cli/commands/keptn_add-resource/) command.
 

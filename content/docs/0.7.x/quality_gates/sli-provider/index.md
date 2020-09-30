@@ -14,7 +14,7 @@ Depending on the monitoring solution you have in place and the SLIs you have con
 * To configure Keptn to use the Dynatrace SLI-provider for your project (e.g. **musicshop**), execute the following command:
 
     ```console
-    keptn configure monitoring dynatrace --project=musicshop --suppress-websocket
+    keptn configure monitoring dynatrace --project=musicshop
     ```
 
 * Configure custom SLIs for the Dynatrace SLI-provider as explained [here](../../monitoring/dynatrace/sli_provider/#configure-custom-dynatrace-slis).
@@ -26,7 +26,7 @@ Depending on the monitoring solution you have in place and the SLIs you have con
 * To configure Keptn to use the Prometheus SLI-provider for your project (e.g. **musicshop**), execute the following command:
 
     ```console
-    keptn configure monitoring prometheus --project=musicshop --service=catalogue --suppress-websocket
+    keptn configure monitoring prometheus --project=musicshop --service=catalogue
     ```
 
 * Configure custom SLIs for the Prometheus SLI-provider as explained [here](../../monitoring/prometheus/sli-provider/#configure-custom-prometheus-slis).

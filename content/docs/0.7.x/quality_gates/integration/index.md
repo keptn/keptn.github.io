@@ -20,7 +20,7 @@ Working with quality gates means that you can use either the Keptn CLI or API to
 
 To trigger a quality gate for a service in the stage of a specific project, the Keptn CLI provides two commands: 
 
-1. [keptn send event start-evaluation](../../reference/cli/commands/keptn_send_event_start-evaluation/)
+1. [keptn send event start-evaluation](../../reference/cli/commands/keptn_send_event_start-evaluation/) (*recommended*)
 1. [keptn send event](../../reference/cli/commands/keptn_send_event/)
 
 Both commands return a unique ID (`keptn-context`) that is required to retrieve the evaluation result. 
@@ -112,8 +112,8 @@ Both endpoints return a unique ID (`keptn-context`) that is required to retrieve
 
 ```json
 {
-    "from": "2020-09-28T07:00:00",     // required
-    "to": "2020-09-28T07:05:00",       // cannot be used in combination with 'timeframe'
+    "start": "2020-09-28T07:00:00",     // required
+    "end": "2020-09-28T07:05:00",       // cannot be used in combination with 'timeframe'
     "timeframe": "5m",                 // cannot be used in combination with 'to',
     "labels": {
       "buildId": "build-17",
@@ -130,7 +130,7 @@ curl -X POST "${KEPTN_ENDPOINT}/v1/project/easyBooking/stage/quality_assurance/s
 -H "accept: application/json; charset=utf-8" \
 -H "x-token: ${KEPTN_API_TOKEN}" \
 -H "Content-Type: application/json; charset=utf-8" \
--d "{ \"from\": \"2020-09-28T07:00:00\", \"timeframe\": \"5m\", \"labels\":{\"buildId\":\"build-17\",\"owner\":\"JohnDoe\",\"testNo\":\"47-11\"}}"
+-d "{ \"start\": \"2020-09-28T07:00:00\", \"timeframe\": \"5m\", \"labels\":{\"buildId\":\"build-17\",\"owner\":\"JohnDoe\",\"testNo\":\"47-11\"}}"
 ```
 
 </p>
