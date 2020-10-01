@@ -4,5 +4,5 @@ linktitle: Release 0.6.2
 weight: 989
 sidebar_multicard: true
 icon: docs
-unsupported: Please upgrade your Keptn to a newer release.
+unsupported: This documentation is for an older Keptn release. Please consider the newest one when working with the latest Keptn.
 ---
