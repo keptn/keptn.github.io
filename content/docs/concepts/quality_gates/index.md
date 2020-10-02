@@ -35,10 +35,9 @@ An example of an SLI is the *response time* (also named request latency), which 
 
 A service-level objective is *"a target value or range of values for a service level that is measured by an SLI."* (as defined in the [Site-Reliability Engineering Book](https://landing.google.com/sre/sre-book/chapters/service-level-objectives/)). 
 
-An example of an SLO can define that a specific request must return results within 100 milliseconds. Keptn quality gates can comprise of several SLOs that are all evaluated and scored, based even on different weights for each SLO to consider different importance of each SLO. Keptn defines SLOs in a dedicated `slo.yaml`. To learn more about the SLO configuration, please continue [here](../../0.7.x/quality_gates/slo/). 
+An example of an SLO can define that a specific request must return results within 100 milliseconds. Keptn quality gates can comprise several SLOs that are all evaluated and scored, based even on different weights for each SLO to consider different importance of each SLO. Keptn defines SLOs in a dedicated `slo.yaml`. To learn more about the SLO configuration, please continue [here](../../0.7.x/quality_gates/slo/). 
 
 ## References
 
-- [SLO Validation as a self-service with Keptn Quality Gates](https://www.neotys.com/blog/neotyspac-slo-validation-self-service-keptn-quality-gates/)
 - [Implementing SLI/SLO based Continuous Delivery Quality Gates using Prometheus](https://medium.com/keptn/implementing-sli-slo-based-continuous-delivery-quality-gates-using-prometheus-9e17ec18ca36?source=friends_link&sk=22e163eb22df2d4a3c8e49d5e06d3802)
 - [Automating deployment validation with quality gates](https://medium.com/keptn/automating-deployment-validation-with-quality-gates-71889845e2ca)
