@@ -102,4 +102,4 @@ To trigger a quality gate evaluation, execute the [keptn send event start-evalua
 
 ## Step 5: See quality gate evaluation result in Keptn Bridge
 
-<!--TODO: Add screeshot here -->
+<!--TODO: Add screeshot from a single run -->
