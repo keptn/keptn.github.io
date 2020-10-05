@@ -1,7 +1,7 @@
 ---
 title: Service-Level Objectives (SLO)
 description: Configure and add Service-Level Objectives (SLO) to your service.
-weight: 1
+weight: 15
 keywords: [0.8.x-quality_gates]
 ---
 
@@ -10,9 +10,9 @@ The Service-Level Objective (SLO) configuration specifies a target value or rang
 ## Service-Level Objective
 
 * An SLO is defined per service.
-* An SLO consists of a filter that uniquely identifies a deployment of a service.
+* An SLO can contain a filter that can be used to uniquely identify a deployment of a service.
 * An SLO defines objectives for the service that depend on the selected comparison strategy. 
-* An SLO returns a score represented by a value between 0 and 100. 
+* An SLO allows to define the total score, which have to be met in order to get a `pass` or `warning` evaluation result.
 
 **Example of Service-Level Objective (SLO):**
 

@@ -1,28 +1,16 @@
 ---
 title: Service-Level Indicators (SLI)
-description: Configure Service-Level Indicators (SLIs) for your service.
-weight: 2
+description: Configure and add Service-Level Indicators (SLIs) to your service.
+weight: 10
 keywords: [0.8.x-quality_gates]
 ---
 
-A Service-Level Indicator (SLI) is a defined quantitative measure of some aspects of the service level. The query for an SLI is provider/tool-dependent. This is the reason why each SLI-provider relies on an individual SLI configuration. This SLI configuration lists those SLIs that are supported by the SLI-provider by their name and query whereas the query is provider specific. 
+A Service-Level Indicator (SLI) is a defined quantitative measure of some aspects of the service level. The query for an SLI is provider/tool-dependent and therefore each SLI-provider relies on a specific SLI configuration. The SLI configruation contains a list of indicators, which always consists of a name and the provider-specific query.
 
 ## Service-Level Indicator
 
 * An SLI is a key-value pair with the SLI name as key and the provider-specific query as value.
 * An SLI configuration can contain any number of SLIs.
-
-**Example of Service-Level Indicators (SLIs):**
-
-```yaml
-spec_version: "1.0"
-indicators:
-  throughput: "builtin:service.requestCount.total:merge(0):count?scope=tag(keptn_project:$PROJECT),tag(keptn_stage:$STAGE),tag(keptn_service:$SERVICE),tag(keptn_deployment:$DEPLOYMENT)"
-  error_rate: "builtin:service.errors.total.count:merge(0):avg?scope=tag(keptn_project:$PROJECT),tag(keptn_stage:$STAGE),tag(keptn_service:$SERVICE),tag(keptn_deployment:$DEPLOYMENT)"
-  response_time_p50: "builtin:service.response.time:merge(0):percentile(50)?scope=tag(keptn_project:$PROJECT),tag(keptn_stage:$STAGE),tag(keptn_service:$SERVICE),tag(keptn_deployment:$DEPLOYMENT)"
-  response_time_p90: "builtin:service.response.time:merge(0):percentile(90)?scope=tag(keptn_project:$PROJECT),tag(keptn_stage:$STAGE),tag(keptn_service:$SERVICE),tag(keptn_deployment:$DEPLOYMENT)"
-  response_time_p95: "builtin:service.response.time:merge(0):percentile(95)?scope=tag(keptn_project:$PROJECT),tag(keptn_stage:$STAGE),tag(keptn_service:$SERVICE),tag(keptn_deployment:$DEPLOYMENT)"
-```
 
 ## Provider-specific SLIs
 
