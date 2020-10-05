@@ -23,6 +23,7 @@ Keptn quality gates help you answer this question by representing a quality gate
   width="50%">}}
 
 This visualization in the Keptn Bridge allows you to answer the following questions:
+
 * First and most important, *does the service meet all defined quality criteria*? 
   * :one: Here, the overall result is a *warning* as shown by the orange bar and with the total score between 50 (fail) and 90 (pass) points.
 * Which criteria did not meet its objective?
@@ -37,7 +38,7 @@ This visualization in the Keptn Bridge allows you to answer the following questi
 
 The rest of this section assumes you have Keptn [installed](../../operate/install/) on your cluster, your Keptn CLI is [authenticated](../../operate/install/#authenticate-keptn-cli), and you have a deployed application that is monitored by your favorite monitoring solution.
 
-Given these requirements, this section defines the entities of a Keptn project, stage, and services using an example. Afterwards, five steps explain how to set up the quality gate, trigger it, and finally see the quality gate evaluation result.
+Given these requirements, this section defines the entities of a Keptn project, stage, and services using an example. Afterwards, four steps explain how to set up the quality gate, trigger it, and finally see the quality gate evaluation result.
 
 ## Definition of project, stage, and service
 
@@ -100,6 +101,8 @@ To trigger a quality gate evaluation, execute the [keptn send event start-evalua
 
 :information_source: Learn [here](../integration/) more about working with a quality gate and integrating it into an existing pipeline.
 
+<!--
 ## Step 5: See quality gate evaluation result in Keptn Bridge
+-->
 
-<!--TODO: Add screeshot here -->
+<!--TODO: Add screeshot from a single run -->
