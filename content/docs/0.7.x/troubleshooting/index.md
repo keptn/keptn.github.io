@@ -36,23 +36,23 @@ kubectl get pods -n keptn
 ```
 
 ```console
-NAME                                                              READY   STATUS    RESTARTS   AGE
-api-gateway-nginx-5669667d4f-2ppg9                                1/1     Running   0          20s
-api-service-5b846f4d5b-trmbp                                      1/1     Running   0          28s
-bridge-6dcc7cc967-hfvdv                                           1/1     Running   0          21s
-configuration-service-589fbfb7d9-2rrmv                            2/2     Running   2          30s
-eventbroker-go-7d9bbd5b88-84lgf                                   1/1     Running   0          31s
-gatekeeper-service-58d89b6c79-bxzsv                               2/2     Running   2          31s
-helm-service-67c6fff6d-qxhsj                                      2/2     Running   0          23s
-helm-service-continuous-deployment-distributor-7c4455d697-gwwgj   1/1     Running   3          30s
-jmeter-service-5444cc4968-v559v                                   2/2     Running   2          30s
-keptn-nats-cluster-0                                              3/3     Running   0          28s
-lighthouse-service-65ff48dc57-6hdvx                               2/2     Running   2          30s
-mongodb-59975d9f4c-nn5c2                                          1/1     Running   0          26s
-mongodb-datastore-7fdb567996-lgjj8                                2/2     Running   2          33s
-remediation-service-56777cb979-957l4                              2/2     Running   2          33s
-shipyard-service-57c6996f47-pzs9r                                 2/2     Running   2          34s
-openshift-route-service-57b45c4dfc-4x5lm                          2/2     Running   0          32s (OpenShift only)
+NAME                                         READY   STATUS    RESTARTS   AGE
+api-gateway-nginx-6ff657d9c5-hmgc6           1/1     Running   0          12d
+api-service-58c79d9985-zn6f2                 1/1     Running   0          21d
+bridge-5fc46b5cf7-6448v                      1/1     Running   0          4d23h
+configuration-service-7dd54b75f9-jsdbn       2/2     Running   0          21d
+eventbroker-go-7cb76d7659-2lz7l              1/1     Running   0          21d
+gatekeeper-service-5848fbb65c-7sl8v          2/2     Running   0          21d
+helm-service-6fd876f6d9-cjs8w                2/2     Running   0          21d
+jmeter-service-8c4d89678-248mq               2/2     Running   0          21d
+keptn-nats-cluster-0                         3/3     Running   0          21d
+lighthouse-service-789df5656d-7htp9          2/2     Running   0          21d
+mongodb-6d9897bdb4-8nmnj                     1/1     Running   0          21d
+mongodb-datastore-f55b75dcf-rpfvk            2/2     Running   0          21d
+remediation-service-66c6dddb95-46ljm         2/2     Running   1          21d
+shipyard-service-5dcf444f64-95gt8            2/2     Running   0          21d
+statistics-service-5598cb8d58-4qvqq          2/2     Running   0          13d
+openshift-route-service-57b45c4dfc-4x5lm     2/2     Running   0          32s (OpenShift only)
 ```
 
 </p></details>
