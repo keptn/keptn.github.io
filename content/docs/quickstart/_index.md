@@ -81,7 +81,7 @@ For details on the specific providers, please visit our [detailed installation g
 
 ### 2. Install Keptn
 
-The following instructions will install the **latest stable Keptn CLI (0.7.1)** in a quick way. 
+The following instructions will install the **latest stable Keptn CLI (0.7.2)** in a quick way. 
 
 If you need more information, please look at the [install Keptn CLI](../0.7.x/operate/install/#install-keptn-cli) guide.
 
