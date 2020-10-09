@@ -64,7 +64,7 @@ spec:
     spec:
       containers:
       - name: distributor
-        image: keptn/distributor:0.7.1
+        image: keptn/distributor:0.7.2
         ports:
         - containerPort: 8080
         resources:

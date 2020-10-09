@@ -5,7 +5,10 @@ weight: 5
 aliases:
   - /docs/0.7.0/operate/upgrade/
   - /docs/0.7.1/operate/upgrade/
+  - /docs/0.7.2/operate/upgrade/
 ---
+
+## Upgrade from Keptn 0.7.1 to 0.7.2
 
 ## Upgrade from Keptn 0.7.0 to 0.7.1
 

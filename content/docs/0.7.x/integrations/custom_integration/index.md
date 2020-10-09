@@ -29,7 +29,7 @@ A Keptn-service can subscribe to various [Keptn CloudEvents](https://github.com/
 
 ### Implement custom Keptn-service
 
-If you are interested in writing your own testing service, have a look at the [jmeter-service](https://github.com/keptn/keptn/blob/0.7.1/jmeter-service).
+If you are interested in writing your own testing service, have a look at the [jmeter-service](https://github.com/keptn/keptn/blob/0.7.2/jmeter-service).
 
 ### Example: JMeter Service
 
@@ -39,7 +39,7 @@ If you are interested in writing your own testing service, have a look at the [j
 
 **Outgoing Keptn CloudEvent:** After your *Keptn-service* has completed its functionality, it has to send a CloudEvent to the event broker of Keptn. This informs Keptn to continue a particular task sequence.  
 
-**Deployment and service template:** A *Keptn-service* is a regular Kubernetes service with a deployment and service template. As a starting point for your service the deployment and service manifest of the *jmeter-service* can be used, which can be found in the [deploy/service.yaml](https://github.com/keptn/keptn/blob/0.7.1/jmeter-service/deploy/service.yaml):
+**Deployment and service template:** A *Keptn-service* is a regular Kubernetes service with a deployment and service template. As a starting point for your service the deployment and service manifest of the *jmeter-service* can be used, which can be found in the [deploy/service.yaml](https://github.com/keptn/keptn/blob/0.7.2/jmeter-service/deploy/service.yaml):
 
 ```yaml
 ---
@@ -53,7 +53,7 @@ metadata:
     app.kubernetes.io/instance: keptn
     app.kubernetes.io/part-of: keptn
     app.kubernetes.io/component: execution-plane
-    app.kubernetes.io/version: 0.7.1
+    app.kubernetes.io/version: 0.7.2
 spec:
   selector:
     matchLabels:
@@ -67,11 +67,11 @@ spec:
         app.kubernetes.io/instance: keptn
         app.kubernetes.io/part-of: keptn
         app.kubernetes.io/component: execution-plane
-        app.kubernetes.io/version: 0.7.1
+        app.kubernetes.io/version: 0.7.2
     spec:
       containers:
       - name: jmeter-service
-        image: keptn/jmeter-service:0.7.1
+        image: keptn/jmeter-service:0.7.2
         livenessProbe:
           httpGet:
             path: /health
@@ -126,7 +126,7 @@ spec:
     spec:
       containers:
       - name: distributor
-        image: keptn/distributor:0.7.1
+        image: keptn/distributor:0.7.2
         ports:
         - containerPort: 8080
         resources:
