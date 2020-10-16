@@ -9,7 +9,7 @@ Here you learn how to add additional functionality to your Keptn installation wi
 
 * A *Keptn-service* is responsible for implementing a continuous delivery or operations task.
 * An *SLI-provider* is used to query Service-Level Indicators (SLI) from an external source like a monitoring or testing solution. 
-* An *Action-provider* is used to extend a task sequence for remediation with an individual action step.  
+* An *Action-provider* is used to extend a task sequence for remediation with an additional action step.  
 
 ## Template Repository
 
@@ -17,15 +17,11 @@ We provide a fully functioning template for writing new services: [keptn-service
 
 ## Keptn-service
 
-A *Keptn-service* is intended to react to certain events that occur during the execution of a task sequence for continuous delivery or operations. After getting triggered by an event, a *Keptn-service* processes some functionality and can therefore integrate additional tools by accessing their REST interfaces.
+A *Keptn-service* is intended to react to certain events that occur during the execution of a task sequence for continuous delivery or operations. After getting triggered by an event, a *Keptn-service* processes its functionality and can therefore integrate additional tools by accessing their REST interfaces.
 
 A Keptn-service can subscribe to various [Keptn CloudEvents](https://github.com/keptn/spec/blob/0.1.5/cloudevents.md), e.g.:
 
-- sh.keptn.events.configuration-changed
-- sh.keptn.events.deployment-finished
-- sh.keptn.events.tests-finished
-- sh.keptn.events.evaluation-done
-- sh.keptn.events.problem
+- `sh.keptn.events.[task].triggered`
 
 ### Implement custom Keptn-service
 
