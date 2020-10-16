@@ -1,5 +1,5 @@
 ---
-title: Keptn 0.7
+title: Keptn 0.7.0
 weight: 100
 ---
 

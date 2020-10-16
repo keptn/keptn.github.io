@@ -6,6 +6,7 @@ keywords: [0.7.x-operate]
 aliases:
   - /docs/0.7.0/operate/install/
   - /docs/0.7.1/operate/install/
+  - /docs/0.7.2/operate/install/
 ---
 
 ## Prerequisites
@@ -217,7 +218,7 @@ However, if you are facing problems, please let us know on https://slack.keptn.s
 
 Every Keptn release provides binaries for the Keptn CLI. These binaries are available for Linux, macOS, and Windows.
 
-- Download the version for your operating system from: [github.com/keptn/](https://github.com/keptn/keptn/releases/tag/0.7.1)
+- Download the version for your operating system from: [github.com/keptn/](https://github.com/keptn/keptn/releases/tag/0.7.2)
 - Unpack the archive
 - Find the `keptn` binary in the unpacked directory
 

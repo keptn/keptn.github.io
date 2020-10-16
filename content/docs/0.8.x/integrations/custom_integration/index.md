@@ -96,7 +96,7 @@ spec:
     spec:
       containers:
       - name: distributor
-        image: keptn/distributor:0.7.1
+        image: keptn/distributor:0.7.2
         ports:
         - containerPort: 8080
         resources:
@@ -145,7 +145,7 @@ You will need to provide the following when you want to write a custom service:
 ## CloudEvents
 
 Please note that CloudEvents have to be sent with the HTTP header `Content-Type: application/cloudevents+json` to be set.
-For a detailed look into CloudEvents, please go the Keptn [CloudEvent specification](https://github.com/keptn/spec/blob/0.1.5/cloudevents.md). 
+For a detailed look into CloudEvents, please go the Keptn [CloudEvent specification](https://github.com/keptn/spec/blob/0.1.6/cloudevents.md). 
 
 ## Logging
 
