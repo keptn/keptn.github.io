@@ -18,7 +18,6 @@ indicators:
 
 **Note:** This SLI configuration file will then be stored in Keptn's configuration store using the [keptn add-resource](../../reference/cli/commands/keptn_add-resource) command.
 
-
 The [Keptn CloudEvents](#cloudevents) a SLI-provider has to subscribe to is:
 
 - `sh.keptn.event.get-sli.triggered`

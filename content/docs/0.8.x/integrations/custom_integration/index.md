@@ -13,11 +13,13 @@ Here you learn how to add additional functionality to your Keptn installation wi
 
 ## Template Repository
 
-We provide a fully functioning template for writing new services: [keptn-service-template-go](https://github.com/keptn-sandbox/keptn-service-template-go).
+A template for writing a new *Keptn-service*  is provided here: [keptn-service-template-go](https://github.com/keptn-sandbox/keptn-service-template-go).
 
 ## Write your Keptn-service
 
-* must have a **subscription** to an event that occurs during the execution of a task sequence for continuous delivery or operations. 
+A Keptn-service has the following characteristics: 
+
+* has a **subscription** to an event that occurs during the execution of a task sequence for continuous delivery or operations. 
 * sends out a **started event** to inform Keptn about receiving the event.
 * processes its functionality and can therefore integrate additional tools by accessing their REST interfaces. 
 * sends out a **finished event** to inform Keptn about its execution and the result. 
@@ -56,6 +58,8 @@ After your *Keptn-service* has completed its functionality, it has to inform Kep
 - `sh.keptn.event.[task].finished`
 
 The request body needs to follow the [CloudEvent specification](https://github.com/keptn/spec/blob/0.1.5/cloudevents.md) and the HTTP header attribute `Content-Type` has to be set to `application/cloudevents+json`. 
+
+<!-- Add content to the payload -->
 
 To send the event to Keptn, two ways a possible: 
 
