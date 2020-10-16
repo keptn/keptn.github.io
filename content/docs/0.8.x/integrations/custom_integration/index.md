@@ -17,25 +17,36 @@ We provide a fully functioning template for writing new services: [keptn-service
 
 ## Keptn-service
 
-A *Keptn-service* is intended to react to certain events that occur during the execution of a task sequence for continuous delivery or operations. After getting triggered by an event, a *Keptn-service* processes its functionality and can therefore integrate additional tools by accessing their REST interfaces.
+* must have a **subscription** to an event that occurs during the execution of a task sequence for continuous delivery or operations. 
+* sends out a **started event** to inform Keptn about receiving the event.
+* processes its functionality and can therefore integrate additional tools by accessing their REST interfaces. 
+* sends out a **finished event** to inform Keptn about its execution and the result. 
 
-A Keptn-service can subscribe to various [Keptn CloudEvents](https://github.com/keptn/spec/blob/0.1.5/cloudevents.md), e.g.:
+### Subscription to Keptn event
 
-- `sh.keptn.events.[task].triggered`
+A Keptn-service must have a subscription to at least one [Keptn CloudEvent](https://github.com/keptn/spec/blob/0.1.5/cloudevents.md). The event type to subscribe to looks as follows:
 
-### Implement custom Keptn-service
+- `sh.keptn.event.[task].triggered`
 
-If you are interested in writing your own testing service, have a look at the [jmeter-service](https://github.com/keptn/keptn/blob/0.7.1/jmeter-service).
+The `[task]` in the above example works as placeholder for tasks such as: `deployment`, `test`, `evaluation`, `remediation`, etc. In other words, the task defines the topic the Keptn-service is interested in. Assuming you writing a Keptn-service for testing, the event type would be: `sh.keptn.event.test.triggered`.
 
-### Example: JMeter Service
+From a technical perspective, the Keptn-service has to listen on the `/` POST endpoint to receive this event. The integration with Keptn is managed by a Keptn component - *distributor* - explained below. 
 
-**Incoming Keptn CloudEvent:** The *jmeter-service* is a *Go* application that accepts POST requests at its `/` endpoint. To be more specific, the request body needs to follow the [CloudEvent specification](https://github.com/keptn/spec/blob/0.1.5/cloudevents.md) and the HTTP header attribute `Content-Type` has to be set to `application/cloudevents+json`. Of course, you can write your service in any language, as long as it provides the endpoint to receive events.
+### Send a started event
 
-**Functionality:** The functionality of your *Keptn-service* depends on the capability you want to add to the continuous delivery or operational workflow. In many cases, the event payload -- containing meta-data such as the project, stage, or service name as well as shipyard information -- is first processed and then used to call the REST API of another tool.  
+Besides, the request body needs to follow the [CloudEvent specification](https://github.com/keptn/spec/blob/0.1.5/cloudevents.md) and the HTTP header attribute `Content-Type` has to be set to `application/cloudevents+json`. 
 
-**Outgoing Keptn CloudEvent:** After your *Keptn-service* has completed its functionality, it has to send a CloudEvent to the event broker of Keptn. This informs Keptn to continue a particular task sequence.  
+### Execute the functionality
 
-**Deployment and service template:** A *Keptn-service* is a regular Kubernetes service with a deployment and service template. As a starting point for your service the deployment and service manifest of the *jmeter-service* can be used, which can be found in the [deploy/service.yaml](https://github.com/keptn/keptn/blob/0.7.1/jmeter-service/deploy/service.yaml):
+The functionality of your *Keptn-service* depends on the capability you want to add to the continuous delivery or operational workflow. In many cases, the event payload -- containing meta-data such as the project, stage, or service name as well as shipyard information -- is first processed and then used to call the REST API of another tool.  
+
+### Send a finished event
+
+After your *Keptn-service* has completed its functionality, it has to send a CloudEvent to the event broker of Keptn. This informs Keptn to continue a particular task sequence.  
+
+## Deployment and service template
+
+A *Keptn-service* is a regular Kubernetes service with a deployment and service template. As a starting point for your service the deployment and service manifest of the *jmeter-service* can be used, which can be found in the [deploy/service.yaml](https://github.com/keptn/keptn/blob/0.7.1/jmeter-service/deploy/service.yaml):
 
 ```yaml
 ---

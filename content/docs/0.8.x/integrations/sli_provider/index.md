@@ -21,7 +21,7 @@ indicators:
 
 The [Keptn CloudEvents](#cloudevents) a SLI-provider has to subscribe to is:
 
-- sh.keptn.internal.event.get-sli
+- `sh.keptn.event.get-sli.triggered`
 
 ## Implement custom SLI-provider
 

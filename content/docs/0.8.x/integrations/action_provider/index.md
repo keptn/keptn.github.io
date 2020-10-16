@@ -9,7 +9,7 @@ An *action-provider* is an implementation of a [*Keptn-service*](../custom_integ
 
 The [Keptn CloudEvents](#cloudevents) an action-provider has to subscribe to is:
 
-- sh.keptn.event.action.triggered
+- `sh.keptn.event.action.triggered`
 
 ## Implement custom Action-provider
 
