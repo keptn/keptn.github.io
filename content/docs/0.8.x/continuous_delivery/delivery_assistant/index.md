@@ -2,12 +2,12 @@
 title: Delivery Assistant
 description: Approval of deployment for manual approval strategy
 weight: 50
-keywords: [0.8.x-bridge, 0.8.x-cd]
+keywords: [0.7.x-bridge, 0.7.x-cd]
 aliases:
-  - /docs/0.8.x/reference/bridge/delivery_assistent/
+  - /docs/0.7.x/reference/bridge/delivery_assistent/
 ---
 
-If you configured approval-strategy `manual` within your [multi-stage delivery](../multi_stage/#approval-strategy), Keptn's `gateekeper-service` will ask for an approval before deploying the artefact in the current stage, e.g.:
+If you configured approval-strategy `manual` within your [multi-stage delivery](../multi_stage/#approval-strategy), Keptn will ask for an approval before deploying the artefact in the current stage, e.g.:
 
 
 {{< popup_image
@@ -18,7 +18,7 @@ If you configured approval-strategy `manual` within your [multi-stage delivery](
 
 You can approve or decline this deployment by sending an `approval.finished` CloudEvent via the Keptn CLI, Keptn Bridge or directly via the API.
 
-## CLI
+## Approve or decline an open approval with Keptn CLI
 
 * To fetch a list of open approvals, Keptn CLI provides the [`keptn get event approval.triggered`](../../reference/cli/commands/keptn_get_event_approval.triggered/) command:
 
@@ -62,9 +62,9 @@ You can approve or decline this deployment by sending an `approval.finished` Clo
     ```
 
 
-## Bridge
+## Approve or decline an open approval with Keptn Bridge
  
-* To confirm/decline an approval, open the *Environment* view, click on the stage that has a pending approval. When there are pending approvals for a service available, the service tile is expanded automatically. Additionally you can filter the services, to see only services with pending approvals, by clicking on the blue icon.
+* To approve/decline an approval, open the *Environment* view, click on the stage that has a pending approval. When there are pending approvals for a service available, the service tile is expanded automatically. Additionally you can filter the services to see only services with pending approvals by clicking on the blue icon.
 
 * By clicking on the green checkmark, the deployment will be approved. You can also decline by clicking on the red abort button. 
 
@@ -72,7 +72,7 @@ You can approve or decline this deployment by sending an `approval.finished` Clo
       link="./assets/bridge_environment_assisteddelivery.png"
       caption="Keptn Bridge Assisted Delivery">}}
 
-## API
+## Approve or decline an open approval with Keptn API
 
 * Note down the keptn-context (`shkeptncontext`) and `id` (maps to `triggeredid`) of the [sh.keptn.event.approval.triggered](https://github.com/keptn/spec/blob/0.1.5/cloudevents.md#approval-triggered) CloudEvent, e.g., 
 ```
@@ -108,7 +108,7 @@ You can approve or decline this deployment by sending an `approval.finished` Clo
 }
 ```
 
-* Trigger the approval finished event via request on `/event`:
+* Send the approval finished event to the `/event` endpoint:
 
 ```console
 curl -X POST "${KEPTN_ENDPOINT}/v1/event" \
@@ -117,7 +117,3 @@ curl -X POST "${KEPTN_ENDPOINT}/v1/event" \
 -H "Content-Type: application/json; charset=utf-8" \
 -d @./approval_finished.json
 ```
-
-* The endpoint returns a unique ID (`keptn-context`) that is required to retrieve the evaluation result. (*Note:* The response also contains a *token* that is required to open a WebSocket communication. This token is not needed now.)
-
-
