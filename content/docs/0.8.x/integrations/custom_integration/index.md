@@ -15,7 +15,7 @@ Here you learn how to add additional functionality to your Keptn installation wi
 
 We provide a fully functioning template for writing new services: [keptn-service-template-go](https://github.com/keptn-sandbox/keptn-service-template-go).
 
-## Keptn-service
+## Write your Keptn-service
 
 * must have a **subscription** to an event that occurs during the execution of a task sequence for continuous delivery or operations. 
 * sends out a **started event** to inform Keptn about receiving the event.
@@ -34,85 +34,48 @@ From a technical perspective, the Keptn-service has to listen on the `/` POST en
 
 ### Send a started event
 
-Besides, the request body needs to follow the [CloudEvent specification](https://github.com/keptn/spec/blob/0.1.5/cloudevents.md) and the HTTP header attribute `Content-Type` has to be set to `application/cloudevents+json`. 
+After receiving a `triggered` event for a particular task, a Keptn-service has to inform Keptn by sending an event of the type: 
+
+- `sh.keptn.event.[task].started`
+
+The request body needs to follow the [CloudEvent specification](https://github.com/keptn/spec/blob/0.1.5/cloudevents.md) and the HTTP header attribute `Content-Type` has to be set to `application/cloudevents+json`. 
+
+To send the event to Keptn, two ways a possible: 
+
+1. Post it on the `v1/event` endpoint of Keptn.
+1. If the distributor is running as sidecar, post the event on `127.0.0.1:8081`.
 
 ### Execute the functionality
 
-The functionality of your *Keptn-service* depends on the capability you want to add to the continuous delivery or operational workflow. In many cases, the event payload -- containing meta-data such as the project, stage, or service name as well as shipyard information -- is first processed and then used to call the REST API of another tool.  
+The functionality of your *Keptn-service* depends on the capability you want to add to the continuous delivery or operational workflow. In many cases, the event payload -- containing meta-data such as the project, stage, or service name -- is first processed and then used to call the REST API of another tool.  
 
 ### Send a finished event
 
-After your *Keptn-service* has completed its functionality, it has to send a CloudEvent to the event broker of Keptn. This informs Keptn to continue a particular task sequence.  
+After your *Keptn-service* has completed its functionality, it has to inform Keptn by sending an event of the type: 
+
+- `sh.keptn.event.[task].finished`
+
+The request body needs to follow the [CloudEvent specification](https://github.com/keptn/spec/blob/0.1.5/cloudevents.md) and the HTTP header attribute `Content-Type` has to be set to `application/cloudevents+json`. 
+
+To send the event to Keptn, two ways a possible: 
+
+1. Post it on the `v1/event` endpoint of Keptn.
+1. If the distributor is running as sidecar, post the event on `127.0.0.1:8081`.
 
 ## Deployment and service template
 
-A *Keptn-service* is a regular Kubernetes service with a deployment and service template. As a starting point for your service the deployment and service manifest of the *jmeter-service* can be used, which can be found in the [deploy/service.yaml](https://github.com/keptn/keptn/blob/0.7.1/jmeter-service/deploy/service.yaml):
+A *Keptn-service* is a regular Kubernetes service with a deployment and service template. As a starting point for your service, the deployment and service manifest from the *keptn-service-template-go* can be re-used that can be found in the [deploy/service.yaml](https://github.com/keptn-sandbox/keptn-service-template-go/blob/master/deploy/service.yaml).
 
-```yaml
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: jmeter-service
-  namespace: keptn
-  labels:
-    app.kubernetes.io/name: jmeter-service
-    app.kubernetes.io/instance: keptn
-    app.kubernetes.io/part-of: keptn
-    app.kubernetes.io/component: execution-plane
-    app.kubernetes.io/version: 0.7.1
-spec:
-  selector:
-    matchLabels:
-      app.kubernetes.io/name: jmeter-service
-      app.kubernetes.io/instance: keptn
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        app.kubernetes.io/name: jmeter-service
-        app.kubernetes.io/instance: keptn
-        app.kubernetes.io/part-of: keptn
-        app.kubernetes.io/component: execution-plane
-        app.kubernetes.io/version: 0.7.1
-    spec:
-      containers:
-      - name: jmeter-service
-        image: keptn/jmeter-service:0.7.1
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 10999
-          initialDelaySeconds: 5
-          periodSeconds: 5
-        ports:
-        - containerPort: 8080
-        env:
-        - name: EVENTBROKER
-          value: 'http://event-broker.keptn.svc.cluster.local/keptn'
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: jmeter-service
-  namespace: keptn
-  labels:
-    app.kubernetes.io/name: jmeter-service
-    app.kubernetes.io/instance: keptn
-    app.kubernetes.io/part-of: keptn
-    app.kubernetes.io/component: execution-plane
-spec:
-  ports:
-  - port: 8080
-    protocol: TCP
-  selector:
-    app.kubernetes.io/name: jmeter-service
-    app.kubernetes.io/instance: keptn
-```
+This template contains: 
+
+* **Deployment**, with two containers:
+  * *keptn-service-template-go*: Replace the image of this container with the image of your implementation. 
+  * *distributor*: This container integrates with your Keptn and does the event handling. Do not remove it.
+* **Service**
 
 ### Subscribe service to Keptn event
 
-**Distributor:** To subscribe your service to a Keptn event, a distributor is required. A distributor comes with a deployment manifest as shown by the example below:
+**Distributor:** To subscribe your service to a Keptn event, a distributor is required. A distributor is part of the above mentioned deployment manifest and as shown by the example below:
 
 ```yaml
 ## jmeter-service: sh.keptn.events.deployment-finished
