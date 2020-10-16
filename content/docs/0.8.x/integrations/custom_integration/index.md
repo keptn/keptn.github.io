@@ -75,15 +75,9 @@ This template contains:
 
 ### Subscribe service to Keptn event
 
-**Distributor:** To subscribe your service to a Keptn event, a distributor is required. A distributor is part of the above mentioned deployment manifest and as shown by the example below:
+**Distributor:** To subscribe your service to a Keptn event, a distributor is required. A distributor is part of the above mentioned deployment manifest and shown by the example below:
 
 ```yaml
-## jmeter-service: sh.keptn.events.deployment-finished
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: jmeter-service-deployment-distributor
-  namespace: keptn
 spec:
   selector:
     matchLabels:
@@ -120,27 +114,13 @@ To configure this distributor for your *Keptn-service*, two environment variable
 * `PUBSUB_RECIPIENT`: Defines the service name as specified in the Kubernetes service manifest.
 * `PUBSUB_TOPIC`: Defines the event type your *Keptn-service* is listening to. 
 
-
 ## Deploy Keptn-service and distributor
 
-With a service and deployment manifest for your custom *Keptn-service* (`service.yaml`) and a deployment manifest for the distributor (`distributor.yaml`), you are ready to deploy both components in the K8s cluster where Keptn is installed: 
+With a service and deployment manifest for your custom *Keptn-service* (`service.yaml`), you are ready to deploy both components in the K8s cluster where Keptn is installed: 
 
 ```console
-kubectl apply -f service.yaml
+kubectl apply -f service.yaml -n keptn
 ```
-
-```console
-kubectl apply -f distributor.yaml
-```
-
-## Summary
-You will need to provide the following when you want to write a custom service:
-
-- Your *Keptn-service* implementation including a Docker container. We recommend writing the service in *Go*
-- The application needs to provide a REST endpoint at `/` that accepts `POST` requests for JSON objects.
-- A `service.yaml` file containing the templates for the service and deployment manifest of your *Keptn-service*.
-- A `distributor.yaml` file containing the template for the distributor and properly configured for your *Keptn-service*.
-
 
 ## CloudEvents
 
@@ -161,7 +141,6 @@ To inspect your service's log messages for a specific deployment run, you can us
 ```
 
 **Note:** For implementing logging into your *Go* service, you can import the [go-utils](https://github.com/keptn/go-utils) package that already provides common logging functions. 
-
 
 To inspect your service's log messages for a specific deployment run, you can use the `shkeptncontext` property of the incoming CloudEvents. Your service has to output its log messages in the following format:
 
