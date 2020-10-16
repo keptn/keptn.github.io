@@ -6,6 +6,7 @@ keywords: [0.7.x-manage]
 aliases:
   - /docs/0.7.0/manage/git_upstream/
   - /docs/0.7.1/manage/git_upstream/
+  - /docs/0.7.2/manage/git_upstream/
 ---
 
 Keptn manages a project in an internal Git repository. To upstream this repository to a remote place that also works as backup, it is recommended to create, for example, a GitHub repository. This GitHub repository is then specified as upstream repo when creating a project. 
@@ -18,8 +19,6 @@ Keptn manages a project in an internal Git repository. To upstream this reposito
 Select one of the four options and make sure to have the Git **user**, **token**, and **remote url** before continuing.
 
 ### GitHub
-
-:warning: Since new GitHub repositories are created with the default branch `main` instead of `master`, please manually create a `master` branch in your GitHub repo.
 
 <details><summary>Create user, token, and repository</summary>
 <p>

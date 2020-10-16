@@ -42,7 +42,7 @@ keptn send event start-evaluation --project=easyBooking --stage=quality_assuranc
 <details><summary>`keptn send event`</summary>
 <p>
 
-* First, specify a valid Keptn CloudEvent of type [sh.keptn.event.start-evaluation](https://github.com/keptn/spec/blob/0.1.5/cloudevents.md#start-evaluation) and store it as JSON file, e.g., `trigger_quality_gate.json`
+* First, specify a valid Keptn CloudEvent of type [sh.keptn.event.start-evaluation](https://github.com/keptn/spec/blob/0.1.6/cloudevents.md#start-evaluation) and store it as JSON file, e.g., `trigger_quality_gate.json`
 
 ```json
 {
@@ -142,7 +142,7 @@ curl -X POST "${KEPTN_ENDPOINT}/v1/project/easyBooking/stage/quality_assurance/s
 <details><summary>**Trigger via: `/v1/event`**</summary>
 <p>
 
-* Specify a valid Keptn CloudEvent of type [sh.keptn.event.start-evaluation](https://github.com/keptn/spec/blob/0.1.5/cloudevents.md#start-evaluation) and store it as JSON file, e.g., `trigger_quality_gate.json`
+* Specify a valid Keptn CloudEvent of type [sh.keptn.event.start-evaluation](https://github.com/keptn/spec/blob/0.1.6/cloudevents.md#start-evaluation) and store it as JSON file, e.g., `trigger_quality_gate.json`
 
 ```json
 {
