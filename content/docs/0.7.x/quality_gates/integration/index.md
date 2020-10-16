@@ -147,7 +147,6 @@ curl -X POST "${KEPTN_ENDPOINT}/v1/project/easyBooking/stage/quality_assurance/s
 {
   "source": "keptn-cli",
   "specversion": "0.2",
-  "id": "c5f749e6-cce7-43b8-943b-fd45e0b87e5a",
   "type": "sh.keptn.event.start-evaluation",
   "contenttype": "application/json",
   "data": {
