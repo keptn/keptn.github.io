@@ -85,7 +85,7 @@ After receiving a `triggered` event for a particular task, your *Keptn-service* 
 
 The request body needs to follow the [CloudEvent specification](https://github.com/keptn/spec/blob/0.1.6/cloudevents.md) and the HTTP header attribute `Content-Type` has to be set to `application/cloudevents+json`. 
 
-**Sending the event:**
+**Send the event:**
 
 To send the event to Keptn, two ways are possible: 
 
@@ -138,7 +138,7 @@ You can send data back to Keptn by adding it to the data block in the event payl
 }
 ```
 
-**Sending the event:**
+**Send the event:**
 
 To send the event to Keptn, two ways are possible: 
 
