@@ -42,7 +42,7 @@ Next to event meta-data such as project, stage or service name, the event contai
 ```json
 {
   "type": "sh.keptn.event.get-sli.triggered",
-  "specversion": "0.2",
+  "specversion" : "1.0",
   "source": "https://github.com/keptn/keptn/lighthouse-service",
   "id": "f2b878d3-03c0-4e8f-bc3f-454bc1b3d79d",
   "time": "2019-06-07T07:02:15.64489Z",
