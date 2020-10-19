@@ -13,10 +13,10 @@ An *action-provider* is an implementation of a [*Keptn-service*](../custom_integ
 
 Like a Keptn-service, an action-provider has the following characteristics: 
 
-* has a **subscription** to an event
-* sends a **started event** to inform Keptn about receiving the event and acting on it. 
-* processes functionality and integrates additional tools by accessing their REST interfaces. 
-* sends a **finished event** to inform Keptn about its execution and the result. 
+* has a **subscription** to an event (i.e., `sh.keptn.event.action.triggered`)
+* sends a **started event** to inform Keptn about receiving the event and acting on it
+* processes functionality and can therefore leverage additional tools, e.g., through their REST interface
+* sends a **finished event** to inform Keptn about its execution status and the result 
 
 ### Subscription to Keptn event
 
@@ -24,7 +24,7 @@ An *action-provider* starts working, when receiving a Keptn CloudEvent of type:
 
 -  [sh.keptn.event.action.triggered](https://github.com/keptn/spec/blob/0.1.6/cloudevents.md#action-triggered)
 
-Next to meta-data such as project, stage, or service name, the event contains information about the action to execute and a value property. For more details, please see the specification [here](https://github.com/keptn/spec/blob/0.1.6/cloudevents.md#action-triggered) and take a look at the example: 
+Next to meta-data such as project, stage, or service name, the event contains information about the action to execute. For more details, please see the specification [here](https://github.com/keptn/spec/blob/0.1.6/cloudevents.md#action-triggered) and take a look at the example: 
 
 ```json
 {
@@ -56,7 +56,7 @@ Next to meta-data such as project, stage, or service name, the event contains in
 
 **Distributor:**
 
-* To subscribe your action-provider to the `sh.keptn.event.action.triggered` event, a distributor is required. A default distributor is provided in the deployment manifest in the [keptn-service-template-go](https://github.com/keptn-sandbox/keptn-service-template-go) project. For an action-provider, it would look as follows:
+* To subscribe your action-provider to the `sh.keptn.event.action.triggered` event, a distributor is required. A default distributor is provided in the deployment manifest in the [keptn-service-template-go](https://github.com/keptn-sandbox/keptn-service-template-go) template. For an action-provider, it would look as follows:
 
 ```yaml
 spec:
@@ -94,22 +94,52 @@ From a technical perspective, your action-provider needs to listen on the `/` PO
 
 After receiving the `sh.keptn.event.action.triggered` event, an action-provider must perform following tasks:
 
-1.  Process the incoming Keptn CloudEvent to receive meta-data such as project, stage, and service name. Besides, the action and value properties are required.
+1. Process the incoming Keptn CloudEvent to receive meta-data such as project, stage, and service name. Besides, the action and value properties are required.
 
 2. Decide based on the `action` property whether the action is supported. If the action is not supported, no further task is required.
 
-3. **Send a started event:** If the action is supported, send a start event of type: [sh.keptn.event.action.started](https://github.com/keptn/spec/blob/0.1.6/cloudevents.md#action-started). This CloudEvent informs Keptn that a service takes care of executing the action. 
+3. **Send a started event:** If the action is supported, send a start event of type: `sh.keptn.event.action.started`. This CloudEvent informs Keptn that a service takes care of executing the action. 
 
 4. Execute the implemented functionality. At this step, the action-provider can make use of another automation tool. 
 
-5. **Send a finished event:** Send a finished event of type: [sh.keptn.event.action.finished](https://github.com/keptn/spec/blob/0.1.6/cloudevents.md#action-finished). This informs Keptn to proceed in the remediation or operational workflow. 
+5. **Send a finished event:** Send a finished event of type: `sh.keptn.event.action.finished`. The data block of the event payload must provide at least a value for `status` and `result` in `data.action`:
+
+  * `status`: [succeeded, errored, unknown] - The status of the task execution
+  * `result`: [pass, failed] - The result of a successful task execution 
+
+```json
+{
+  "type": "sh.keptn.event.action.finished",
+  "specversion": "1.0",
+  "source": "https://github.com/keptn/keptn/unleash-service",
+  "id": "ggb878d3-03c0-4e8f-bc3f-454bc1b3d888",
+  "time": "2019-06-07T07:02:15.64489Z",
+  "contenttype": "application/json",
+  "shkeptncontext": "08735340-6f9e-4b32-97ff-3b6c292bc509",
+  "triggeredid": "2b878d3-03c0-4e8f-bc3f-454bc1b3d79d",
+  "data": {
+    "action": {
+      "status": "succeeded",
+      "result": "pass"
+    },
+    "project": "sockshop",
+    "service": "carts",
+    "stage": "staging",
+    "labels": {
+      "testId": "4711",
+      "buildId": "build-17",
+      "owner": "JohnDoe"
+    }
+  }
+}
+```
 
 ## Deploy Action-provider with distributor
 
-With a service and deployment manifest for your custom *action-provider* (`service.yaml`), you are ready to deploy the *action-provider* in the Kubernetes cluster where Keptn is installed:
+A default deployment manifest is provided in the keptn-service-template-go template, see: [deploy/service.yaml](https://github.com/keptn-sandbox/keptn-service-template-go/blob/master/deploy/service.yaml). 
+
+* Change the deployment manifest for your *action-provider* and the apply it to the Kubernetes cluster where Keptn is running:
 
 ```console
 kubectl apply -f service.yaml -n keptn
 ```
-
-**Note:** A default manifest is provided in the keptn-service-template-go project, see: [deploy/service.yaml](https://github.com/keptn-sandbox/keptn-service-template-go/blob/master/deploy/service.yaml). 
