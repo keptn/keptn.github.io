@@ -18,17 +18,104 @@ indicators:
 
 **Note:** This SLI configuration file will then be stored in Keptn's configuration store using the [keptn add-resource](../../reference/cli/commands/keptn_add-resource) command.
 
-The [Keptn CloudEvents](#cloudevents) a SLI-provider has to subscribe to is:
+The [Keptn CloudEvents](#cloudevents) an *SLI-provider* has to subscribe to is:
 
 - `sh.keptn.event.get-sli.triggered`
 
-## Implement custom SLI-provider
+## Write your custom SLI-provider
 
-**Incoming Keptn CloudEvent:** An *SLI-provider* listens to one specific Keptn CloudEvent type, which is the [sh.keptn.internal.event.get-sli](https://github.com/keptn/spec/blob/0.1.2/cloudevents.md#get-sli) event. Next to event meta-data such as project, stage or service name, the event contains information about the indicators, time frame, and labels to query. For more details, please see the specification [here](https://github.com/keptn/spec/blob/0.1.6/cloudevents.md#get-sli). 
+Like a Keptn-service, an SLI-provider has the following characteristics: 
 
-**Functionality:** The functionality of an *SLI-provider* focuses on querying indicator values from an external data source. Before a query can be fired towards the data source, the following steps are necessary:
+* has a **subscription** to an event
+* sends a **started event** to inform Keptn about receiving the event and acting on it. 
+* processes the functionality and integrates additional tools by accessing their REST interfaces. 
+* sends a **finished event** to inform Keptn about its execution and the result. 
+
+### Subscription to Keptn event
+
+An *SLI-provider* starts working, when receiving a Keptn CloudEvent of type:
+
+- [sh.keptn.event.get-sli.triggered](https://github.com/keptn/spec/blob/0.1.6/cloudevents.md#get-sli) 
+
+Next to event meta-data such as project, stage or service name, the event contains information about the indicators, time frame, and labels to query. For more details, please see the specification [here](https://github.com/keptn/spec/blob/0.1.6/cloudevents.md#get-sli) and take a look at the example: 
+
+```json
+{
+  "type": "sh.keptn.event.get-sli.triggered",
+  "specversion": "0.2",
+  "source": "https://github.com/keptn/keptn/lighthouse-service",
+  "id": "f2b878d3-03c0-4e8f-bc3f-454bc1b3d79d",
+  "time": "2019-06-07T07:02:15.64489Z",
+  "contenttype": "application/json",
+  "shkeptncontext": "08735340-6f9e-4b32-97ff-3b6c292bc509",
+  "data": {
+    "customFilters": [
+      { "key" : "tags", "value": "test-subject:true" }
+    ],
+    "deployment": "direct",
+    "deploymentstrategy": "direct",
+    "indicators": ["throughput", "error_rate", "request_latency_p95"],
+    "project": "sockshop",
+    "service": "carts",
+    "stage": "dev",
+    "start": "2019-10-28T15:44:27.152330783Z",
+    "end": "2019-10-28T15:54:27.152330783Z",
+    "sliProvider": "dynatrace",
+    "teststrategy":"manual",
+    "labels": {
+      "testId": "4711",
+      "buildId": "build-17",
+      "owner": "JohnDoe"
+    }
+  }
+}
+```
+
+**Distributor:**
+
+* To subscribe your SLI-provider to the `sh.keptn.event.action.triggered` event, a distributor is required. A default distributor is provided in the deployment manifest in the [keptn-service-template-go](https://github.com/keptn-sandbox/keptn-service-template-go) project. For an SLI-provider, it would look as follows:
+
+```yaml
+spec:
+  containers:
+  - name: distributor
+    image: keptn/distributor:0.7.2
+    ports:
+    - containerPort: 8080
+    resources:
+      requests:
+        memory: "32Mi"
+        cpu: "50m"
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    env:
+    - name: PUBSUB_URL
+      value: 'nats://keptn-nats-cluster'
+    - name: PUBSUB_TOPIC
+      value: 'sh.keptn.event.get-sli.triggered'
+    - name: PUBSUB_RECIPIENT
+      value: 'dynatrace-sli-provider'
+```
+
+To configure this distributor for your *SLI-provider*, two environment variables need to be set: 
+
+* `PUBSUB_RECIPIENT`: Defines the service name of the SLI-provider as specified in the Kubernetes service manifest (mentioned below).
+* `PUBSUB_TOPIC`: Has to be set to: `sh.keptn.event.get-sli.triggered`
+
+**Receive event:**
+
+From a technical perspective, your SLI-provider needs to listen on the `/` POST endpoint to receive the event from the distributor.
+
+### Functionality
+
+After receiving the `sh.keptn.event.get-sli.triggered` event, an SLI-provider must perform following tasks:
 
 1. Process the incoming event to get the project, stage, and service name. Besides, you will need the indicators and time frame to query.  
+
+1. Decide based on the `sliProvider` property whether the mentioned data source is supported by your SLI-provider. If the data source is not supported, no further task is required.
+
+1. **Send a started event:** If the data source is supported, send a start event of type: [sh.keptn.event.get-sli.started](). This CloudEvent informs Keptn that your service takes care of fetching the SLIs. 
 
 1. Get the SLI configuration from Keptn's configuration-service. This SLI configuration is identified by the `resourceURI`, which follows the pattern: `[tool-name]/sli.yaml` (e.g., `dynatrace/sli.yaml`). 
   * Service URL: http://configuration-service.keptn.svc.cluster.local:8080
@@ -36,50 +123,14 @@ The [Keptn CloudEvents](#cloudevents) a SLI-provider has to subscribe to is:
 
 1. Process the SLI configuration and use the defined queries to retrieve the values of each indicator. 
 
-**Outgoing Keptn CloudEvent:** An *SLI-provider* returns one specific Keptn CloudEvent type, which is the [sh.keptn.internal.event.get-sli.done](https://github.com/keptn/spec/blob/0.1.6/cloudevents.md#get-sli-done) event. This event contains the retrieved value of each queried indicator.  
+1. **Send a finished event:** Send a finished event of type: [sh.keptn.event.get-sli.finished](). This informs Keptn to proceed in evaluating the SLOs. 
 
-**Deployment and service template:** Like any custom *Keptn-service*, an SLI-provider is a regular Kubernetes service with a deployment and service template. See [here](../custom_integration/#example-jmeter-service) how to define those templates for your SLI-provider. 
+## Deploy SLI-provider with distributor
 
-## Subscribe SLI-provider to Keptn event
+With a service and deployment manifest for your custom *action-provider* (`service.yaml`), you are ready to deploy the *Keptn-service* in the Kubernetes cluster where Keptn is installed:
 
-**Distributor:** To subscribe your SLI-provider to the `sh.keptn.internal.event.get-sli` event, a distributor is required. A distributor comes with a deployment manifest as shown by the example below:
-
-```yaml
-## dynatrace-sli-provider: sh.keptn.internal.event.get-sli
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: dynatrace-sli-provider-distributor
-  namespace: keptn
-spec:
-  selector:
-    matchLabels:
-      run: distributor
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        run: distributor
-    spec:
-      containers:
-      - name: distributor
-        image: keptn/distributor:0.7.2
-        ports:
-        - containerPort: 8080
-        resources:
-          requests:
-            memory: "32Mi"
-            cpu: "50m"
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
-        env:
-        - name: PUBSUB_URL
-          value: 'nats://keptn-nats-cluster'
-        - name: PUBSUB_TOPIC
-          value: 'sh.keptn.internal.event.get-sli'
-        - name: PUBSUB_RECIPIENT
-          value: 'dynatrace-sli-provider'
+```console
+kubectl apply -f service.yaml -n keptn
 ```
 
-To configure this distributor for your *SLI-provider*, the environment variables `PUBSUB_RECIPIENT` has to refer to the service name of the SLI-provider in the Kubernetes service manifest. Besides, make sure the environment variable `PUBSUB_TOPIC` has the value `sh.keptn.internal.event.get-sli`.
+**Note:** A default manifest is provided in the keptn-service-template-go project, see: [deploy/service.yaml](https://github.com/keptn-sandbox/keptn-service-template-go/blob/master/deploy/service.yaml). 
