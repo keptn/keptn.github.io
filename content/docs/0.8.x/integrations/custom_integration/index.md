@@ -73,7 +73,7 @@ To configure this distributor for your *Keptn-service*, two environment variable
 * `PUBSUB_RECIPIENT`: Defines the service name as specified in the Kubernetes service manifest (mentioned below).
 * `PUBSUB_TOPIC`: Defines the event type your *Keptn-service* is subscripted to. 
 
-**Receive event:**
+**Receive the event:**
 
 From a technical perspective, your Keptn-service needs to listen on the `/` POST endpoint to receive the event from the distributor.  
 
