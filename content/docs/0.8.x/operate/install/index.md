@@ -212,11 +212,17 @@ However, if you are facing problems, please let us know on https://slack.keptn.s
 </p>
 </details>
 
+## Quick Start 
+
+:bulb: If you would like to install Keptn in a default way, please go to [Quick Start](../../../quickstart/#2-install-keptn). 
+
+Use this page if you have already Keptn experience and would like to install it according to your needs.
+
 ## Install Keptn CLI
 
 Every Keptn release provides binaries for the Keptn CLI. These binaries are available for Linux, macOS, and Windows.
 
-- Download the version for your operating system from: [github.com/keptn/](https://github.com/keptn/keptn/releases/tag/0.7.2)
+- Download the version for your operating system from: [GitHub](https://github.com/keptn/keptn/releases/tag/0.7.2)
 - Unpack the archive
 - Find the `keptn` binary in the unpacked directory
 
@@ -225,13 +231,13 @@ Every Keptn release provides binaries for the Keptn CLI. These binaries are avai
   - *Windows*: Copy the executable to the desired folder and add the executable to your PATH environment variable.
 
 - Now, you should be able to run the Keptn CLI: 
-    - Linux / macOS
+    - *Linux / macOS*
 
     ```console
     keptn --help
     ```
     
-    - Windows
+    - *Windows*
 
     ```console
     .\keptn.exe --help
