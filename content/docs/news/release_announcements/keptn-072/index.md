@@ -103,6 +103,6 @@ Implemented **Keptn spec** version: [0.1.6](https://github.com/keptn/spec/tree/0
 
 - Fixed Travis-CI integration tests [#2335](https://github.com/keptn/keptn/issues/2335)
 
-## Good to know / Known Limitations
+## Upgrade to 0.7.2
 
-- The upgrade from 0.7.x to 0.7.2 is supported by the `keptn upgrade` command.
+- The upgrade from 0.7.x to 0.7.2 is supported by the `keptn upgrade` command. Find the documentation here: [Upgrade from Keptn 0.7.1 to 0.7.2](https://keptn.sh/docs/0.7.x/operate/upgrade/#upgrade-from-keptn-0-7-1-to-0-7-2)
