@@ -1,15 +1,15 @@
 ---
-title: Multi-stage delivery workflow
-description: Customize your delivery workflow and staging process.
+title: Multi-stage delivery
+description: Customize your delivery and staging process.
 weight: 1
 keywords: [0.7.x-cd]
 ---
 
-The definition of a multi-stage delivery workflow manifests in a so-called **shipyard**. It can hold multiple stages with dedicated and opinionated delivery tasks to execute. Following this declarative approach, there is no need to write imperative pipeline code. Keptn takes the shipyard file and creates a multi-stage delivery workflow.
+The definition of a multi-stage delivery manifests in a so-called **shipyard**. It can hold multiple stages with dedicated and opinionated delivery tasks to execute. Following this declarative approach, there is no need to write imperative pipeline code. Keptn takes the shipyard file and creates a task sequence for multi-stage delivery.
 
 ## Declare Shipyard (before creating a project)
 
-The `shipyard.yml` file defines the stages each deployment has to go through until it is released in production. A shipyard file can consist of any number of stages with at least the name property. Besides, each stage can consist of workflow tasks (strategies) from the following list:
+The `shipyard.yml` file defines the stages each deployment has to go through until it is released in production. A shipyard file can consist of any number of stages with at least the name property. Besides, each stage can consist of sequence tasks (strategies) from the following list:
 
 * approval_strategy
 * deployment_strategy
@@ -130,6 +130,6 @@ stages:
     remediation_strategy: "automated"
 ``` 
 
-## Create project with multi-stage delivery workflow
+## Create project with multi-stage delivery
 
-After declaring the delivery workflow for a project in a shipyard, you are ready to create a Keptn project as explained in [create a project](../../manage/project/#create-a-project).
+After declaring the delivery for a project in a shipyard, you are ready to create a Keptn project as explained in [create a project](../../manage/project/#create-a-project).

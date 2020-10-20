@@ -5,7 +5,7 @@ weight: 5
 keywords: [0.7.x-integration]
 ---
 
-An *SLI-provider* is an implementation of a [*Keptn-service*](../custom_integration/#keptn-service) with a dedicated purpose. This type of service is responsible for querying an external data source for SLIs that are then used by Keptn to evaluate an SLO. To configure a query for an indicator, Keptn provides the concept of an [SLI configuration](https://github.com/keptn/spec/blob/0.1.4/sre.md#service-level-indicators-sli-configuration).
+An *SLI-provider* is an implementation of a [*Keptn-service*](../custom_integration/#keptn-service) with a dedicated purpose. This type of service is responsible for querying an external data source for SLIs that are then used by Keptn to evaluate an SLO. To configure a query for an indicator, Keptn provides the concept of an [SLI configuration](https://github.com/keptn/spec/blob/0.1.5/service_level_indicator.md#service-level-indicators-sli).
 
 * Create a SLI configuration defining tool-specific queries for indicators. An example of an SLI configuration looks as follows:
 
@@ -25,7 +25,7 @@ The [Keptn CloudEvents](#cloudevents) a SLI-provider has to subscribe to is:
 
 ## Implement custom SLI-provider
 
-**Incoming Keptn CloudEvent:** An *SLI-provider* listens to one specific Keptn CloudEvent type, which is the [sh.keptn.internal.event.get-sli](https://github.com/keptn/spec/blob/0.1.2/cloudevents.md#get-sli) event. Next to event meta-data such as project, stage or service name, the event contains information about the indicators, time frame, and labels to query. For more details, please see the specification [here](https://github.com/keptn/spec/blob/0.1.4/cloudevents.md#get-sli). 
+**Incoming Keptn CloudEvent:** An *SLI-provider* listens to one specific Keptn CloudEvent type, which is the [sh.keptn.internal.event.get-sli](https://github.com/keptn/spec/blob/0.1.2/cloudevents.md#get-sli) event. Next to event meta-data such as project, stage or service name, the event contains information about the indicators, time frame, and labels to query. For more details, please see the specification [here](https://github.com/keptn/spec/blob/0.1.6/cloudevents.md#get-sli). 
 
 **Functionality:** The functionality of an *SLI-provider* focuses on querying indicator values from an external data source. Before a query can be fired towards the data source, the following steps are necessary:
 
@@ -37,7 +37,7 @@ The [Keptn CloudEvents](#cloudevents) a SLI-provider has to subscribe to is:
 
 1. Process the SLI configuration and use the defined queries to retrieve the values of each indicator. 
 
-**Outgoing Keptn CloudEvent:** An *SLI-provider* returns one specific Keptn CloudEvent type, which is the [sh.keptn.internal.event.get-sli.done](https://github.com/keptn/spec/blob/0.1.4/cloudevents.md#get-sli-done) event. This event contains the retrieved value of each queried indicator.  
+**Outgoing Keptn CloudEvent:** An *SLI-provider* returns one specific Keptn CloudEvent type, which is the [sh.keptn.internal.event.get-sli.done](https://github.com/keptn/spec/blob/0.1.6/cloudevents.md#get-sli-done) event. This event contains the retrieved value of each queried indicator.  
 
 **Deployment and service template:** Like any custom *Keptn-service*, an SLI-provider is a regular Kubernetes service with a deployment and service template. See [here](../custom_integration/#example-jmeter-service) how to define those templates for your SLI-provider. 
 
@@ -64,7 +64,7 @@ spec:
     spec:
       containers:
       - name: distributor
-        image: keptn/distributor:0.7.0
+        image: keptn/distributor:0.7.2
         ports:
         - containerPort: 8080
         resources:

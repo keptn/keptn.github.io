@@ -5,7 +5,7 @@ weight: 3
 keywords: [keptn, use-cases]
 ---
 
-> **Challenge:** Today, performance verification is often a manual task overseen by performance engineers that start performance tests, monitor the execution, and evaluate the test results. However, this approach is cumbersome when it comes to microservice environments where the sheer amount of microservices and tests for them cannot be tackled in a manual approach. 
+> Today, performance verification is often a manual task overseen by performance engineers that start performance tests, monitor the execution, and evaluate the test results. However, this approach is cumbersome when it comes to microservice environments where the sheer amount of microservices and tests for them cannot be tackled in a manual approach. 
 
 Keptn helps automating your tests by having Keptn triggering the test execution and evaluating the result of these performance tests. The result can then be automatically processed or presented in the Keptn Bridge to take further decisions. You can even expand this use case by letting Keptn deploying new versions of your applications to a test environment, succeeded by triggering and evaluating the tests. 
 
@@ -15,7 +15,7 @@ The following image shows the general process of how Keptn is providing continuo
 
 1. Keptn gets triggered by an external event. 
 
-1. Keptn deploys the new version of the application that should be tested. (This is an optional step and can also be skipped if you have already set up this workflow.)
+1. Keptn deploys the new version of the application that should be tested. (This is an optional step and can also be skipped if you have already set up this task.)
 
 1. Keptn triggers the execution of the tests by having integrations with multiple testing tools. 
 

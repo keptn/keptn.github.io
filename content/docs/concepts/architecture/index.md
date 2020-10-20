@@ -66,6 +66,6 @@ This category of services reacts on Keptn events and perform: (1) initial tasks 
 
 ## Keptn services
 
-To enrich the continuous delivery use case or to build automated operations, Keptn relies on services from the community. Those services can be easily plugged into the workflows to extend the delivery pipeline or to further automate operations.
+To enrich the continuous delivery use case or to build automated operations, Keptn relies on services from the community. Those services can be easily plugged into a task sequence to extend the delivery pipeline or to further automate operations.
 
 **Note:** A dedicated how-to guide is provided [here](../../0.7.x/integrations/custom_integration/), which helps you to implement a custom service for Keptn.

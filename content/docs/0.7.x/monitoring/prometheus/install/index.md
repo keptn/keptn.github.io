@@ -30,15 +30,21 @@ Prometheus is then available on [localhost:8080/targets](http://localhost:8080/t
 
 ## Setup Prometheus
 
-After creating a project and service, you can setup Prometheus monitoring and configure scrape jobs using the Keptn CLI. 
+After creating a project and service, you can setup Prometheus monitoring and configure scrape jobs using the Keptn CLI. Therefore you need to deploy the *prometheus-service*. 
 
-1. To install the *prometheus-service*, execute: 
+* Specify the version of the prometheus-service you want to deploy. Please see the [compatibility matrix](https://github.com/keptn-contrib/prometheus-service#compatibility-matrix) of the prometheus-service to pick the version that works with your Keptn.  
 
     ```console
-    kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/release-0.3.5/deploy/service.yaml
+    VERSION=<VERSION>   # e.g.: VERSION=0.3.5
     ```
 
-1. Execute the following command to set up the rules for the *Prometheus Alerting Manager*:
+* To install the *prometheus-service*, execute: 
+
+    ```console
+    kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/$VERSION/deploy/service.yaml
+    ```
+
+ * Execute the following command to set up the rules for the *Prometheus Alerting Manager*:
 
     ```
     keptn configure monitoring prometheus --project=PROJECTNAME --service=SERVICENAME

@@ -4,9 +4,46 @@ description: Upgrade your Keptn to 0.7
 weight: 5
 aliases:
   - /docs/0.7.0/operate/upgrade/
+  - /docs/0.7.1/operate/upgrade/
+  - /docs/0.7.2/operate/upgrade/
 ---
 
-## Upgrade from Keptn 0.6.2 to 0.7
+## Upgrade from Keptn 0.7.1 to 0.7.2
+
+1. Before starting the update, we strongly advise to create a backup of your Keptn projects. 
+To do so, please follow the instructions in the [backup guide](../../operate/backup_and_restore)
+
+1. To download and install the Keptn CLI for version 0.7.2, please refer to the [Install Keptn CLI](../install/#install-keptn-cli) section.
+
+1. To upgrade your Keptn installation from 0.7.1 to 0.7.2, the Keptn CLI now offers the command [`keptn upgrade`](../../reference/cli/commands/keptn_upgrade).
+    
+    * Please [verify that you are connected to the correct Kubernetes cluster](../../troubleshooting/#verify-kubernetes-context-with-keptn-installation)
+before executing this command.
+    
+    * This CLI command executes a Helm upgrade using the Helm chart from [keptn-installer/keptn-0.7.2.tgz](https://storage.googleapis.com/keptn-installer/keptn-0.7.2.tgz).
+
+**Note:** If you have manually modified your Keptn deployment, e.g., you deleted the Kubernetes Secret `bridge-credentials` for disabling basic auth, the `keptn upgrade` command will not detect the modification. Please re-apply your modification after performing the upgrade.
+
+## Upgrade from Keptn 0.7.0 to 0.7.1
+
+1. Before starting the update, we strongly advise to create a backup of your Keptn projects. 
+To do so, please follow the instructions in the [backup guide](../../operate/backup_and_restore)
+
+1. To download and install the Keptn CLI for version 0.7.1, please refer to the [Install Keptn CLI](../install/#install-keptn-cli) section.
+
+1. To upgrade your Keptn installation from 0.7.0 to 0.7.1, the Keptn CLI now offers the command [`keptn upgrade`](../../reference/cli/commands/keptn_upgrade).
+    
+    * Please [verify that you are connected to the correct Kubernetes cluster](../../troubleshooting/#verify-kubernetes-context-with-keptn-installation)
+before executing this command.
+    
+    * This CLI command executes a Helm upgrade using the Helm chart from [keptn-installer/keptn-0.7.1.tgz](https://storage.googleapis.com/keptn-installer/keptn-0.7.1.tgz).
+
+**Note:** If you have manually modified your Keptn deployment, e.g., you deleted the Kubernetes Secret `bridge-credentials` for disabling basic auth, the `keptn upgrade` command will not detect the modification. Please re-apply your modification after performing the upgrade.
+
+## Upgrade from Keptn 0.6.2 to 0.7.0
+
+1. Before starting the update, we strongly advise to create a backup of your Keptn projects. 
+To do so, please follow the instructions in the [backup guide](../../../0.6.0/installation/backup_and_restore)
 
 1. To download and install the Keptn CLI for version 0.7.0, please refer to the [Install Keptn CLI](../install/#install-keptn-cli) section.
 
@@ -23,7 +60,7 @@ before deploying the upgrading job.
 
 ```console
 kubectl delete job upgrader -n keptn
-kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.7.0/upgrader/upgrade-062-070/upgrade-job.yaml
+kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/release-0.7.0/upgrader/upgrade-062-070/upgrade-job.yaml
 ```
 
 **Manual converting Helm release from Helm 2 to 3:**
@@ -78,7 +115,7 @@ This option is recommended when you have a Kubernetes cluster with just Keptn in
 
 ```console
 kubectl delete job upgrader -n keptn
-kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/0.7.0/upgrader/upgrade-062-070/upgrade-job-helm3.yaml
+kubectl apply -f https://raw.githubusercontent.com/keptn/keptn/release-0.7.0/upgrader/upgrade-062-070/upgrade-job-helm3.yaml
 ```
 
 ### Verify Upgrader Job
@@ -123,10 +160,6 @@ lighthouse-service-get-sli-done-distributor               1/1     1            1
 lighthouse-service-start-evaluation-distributor           1/1     1            1           4h24m   distributor              keptn/distributor:0.6.0                     run=distributor
 lighthouse-service-tests-finished-distributor             1/1     1            1           4h24m   distributor              keptn/distributor:0.6.0                     run=distributor
 nats-operator                                             1/1     1            1           4h25m   nats-operator            connecteverything/nats-operator:0.6.0       name=nats-operator
-prometheus-service                                        1/1     1            1           27m     prometheus-service       keptn/prometheus-service:0.3.1              run=prometheus-service
-prometheus-service-monitoring-configure-distributor       1/1     1            1           27m     distributor              keptn/distributor:0.5.0                     run=distributor
-prometheus-sli-service                                    1/1     1            1           24m     prometheus-sli-service   keptn/prometheus-sli-service:0.2.0          run=prometheus-sli-service
-prometheus-sli-service-monitoring-configure-distributor   1/1     1            1           24m     distributor              keptn/distributor:0.5.0                     run=distributor
 remediation-service                                       1/1     1            1           4h24m   remediation-service      keptn/remediation-service:0.6.0             run=remediation-service
 remediation-service-problem-distributor                   1/1     1            1           4h24m   distributor              keptn/distributor:0.6.0                     run=distributor
 shipyard-service                                          1/1     1            1           4h25m   shipyard-service         keptn/shipyard-service:0.6.0                run=shipyard-service
@@ -143,22 +176,20 @@ kubectl -n keptn get deployments -owide
 ```
 
 ```console
-NAME                                                      READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS                          IMAGES                                                                            SELECTOR
-api-gateway-nginx                                         1/1     1            1           65m   api-gateway-nginx                   docker.io/nginxinc/nginx-unprivileged:1.17.9                                      run=api-gateway-nginx
-api-service                                               1/1     1            1           65m   api-service                         docker.io/keptn/api:latest                                                        run=api-service
-bridge                                                    1/1     1            1           65m   bridge                              docker.io/keptn/bridge2:latest                                                    run=bridge
-configuration-service                                     1/1     1            1           65m   configuration-service,distributor   docker.io/keptn/configuration-service:latest,docker.io/keptn/distributor:latest   run=configuration-service
-eventbroker-go                                            1/1     1            1           65m   eventbroker-go                      docker.io/keptn/eventbroker-go:latest                                             run=eventbroker-go
-helm-service                                              1/1     1            1           65m   helm-service,distributor            docker.io/keptn/helm-service:latest,docker.io/keptn/distributor:latest            run=helm-service
-lighthouse-service                                        1/1     1            1           65m   lighthouse-service,distributor      docker.io/keptn/lighthouse-service:latest,docker.io/keptn/distributor:latest      run=lighthouse-service
-mongodb                                                   1/1     1            1           65m   mongodb                             docker.io/centos/mongodb-36-centos7:1                                             name=mongodb
-mongodb-datastore                                         1/1     1            1           65m   mongodb-datastore,distributor       docker.io/keptn/mongodb-datastore:latest,docker.io/keptn/distributor:latest       run=mongodb-datastore
-prometheus-service                                        1/1     1            1           85m   prometheus-service                  keptn/prometheus-service:0.3.3                                                    run=prometheus-service
-prometheus-service-monitoring-configure-distributor       1/1     1            1           85m   distributor                         keptn/distributor:0.6.0                                                           run=distributor
-prometheus-sli-service                                    1/1     1            1           85m   prometheus-sli-service              keptncontrib/prometheus-sli-service:0.2.2                                         run=prometheus-sli-service
-prometheus-sli-service-monitoring-configure-distributor   1/1     1            1           85m   distributor                         keptn/distributor:latest                                                          run=distributor
-remediation-service                                       1/1     1            1           65m   remediation-service,distributor     docker.io/keptn/remediation-service:latest,docker.io/keptn/distributor:latest     run=remediation-service
-shipyard-service                                          1/1     1            1           65m   shipyard-service,distributor        docker.io/keptn/shipyard-service:latest,docker.io/keptn/distributor:latest        run=shipyard-service
+NAME                    READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS                          IMAGES                                                                          SELECTOR
+api-gateway-nginx       1/1     1            1           21d   api-gateway-nginx                   docker.io/nginxinc/nginx-unprivileged:1.19.1-alpine                             app.kubernetes.io/instance=keptn,app.kubernetes.io/name=api-gateway-nginx
+api-service             1/1     1            1           21d   api-service                         docker.io/keptn/api:0.7.1                                                       app.kubernetes.io/instance=keptn,app.kubernetes.io/name=api-service
+bridge                  1/1     1            1           21d   bridge                              keptn/bridge2:b3be5c7                                                           app.kubernetes.io/instance=keptn,app.kubernetes.io/name=bridge
+configuration-service   1/1     1            1           21d   configuration-service,distributor   docker.io/keptn/configuration-service:0.7.1,docker.io/keptn/distributor:0.7.1   app.kubernetes.io/instance=keptn,app.kubernetes.io/name=configuration-service
+eventbroker-go          1/1     1            1           21d   eventbroker-go                      docker.io/keptn/eventbroker-go:0.7.1                                            app.kubernetes.io/instance=keptn,app.kubernetes.io/name=eventbroker-go
+gatekeeper-service      1/1     1            1           21d   gatekeeper-service,distributor      docker.io/keptn/gatekeeper-service:0.7.1,docker.io/keptn/distributor:0.7.1      app.kubernetes.io/instance=keptn,app.kubernetes.io/name=gatekeeper-service
+helm-service            1/1     1            1           21d   helm-service,distributor            docker.io/keptn/helm-service:0.7.1,docker.io/keptn/distributor:0.7.1            app.kubernetes.io/instance=keptn,app.kubernetes.io/name=helm-service
+jmeter-service          1/1     1            1           21d   jmeter-service,distributor          docker.io/keptn/jmeter-service:0.7.1,docker.io/keptn/distributor:0.7.1          app.kubernetes.io/instance=keptn,app.kubernetes.io/name=jmeter-service
+lighthouse-service      1/1     1            1           21d   lighthouse-service,distributor      docker.io/keptn/lighthouse-service:0.7.1,docker.io/keptn/distributor:0.7.1      app.kubernetes.io/instance=keptn,app.kubernetes.io/name=lighthouse-service
+mongodb                 1/1     1            1           21d   mongodb                             docker.io/centos/mongodb-36-centos7:1                                           app.kubernetes.io/instance=keptn,app.kubernetes.io/name=mongodb
+mongodb-datastore       1/1     1            1           21d   mongodb-datastore,distributor       docker.io/keptn/mongodb-datastore:0.7.1,docker.io/keptn/distributor:0.7.1       app.kubernetes.io/instance=keptn,app.kubernetes.io/name=mongodb-datastore
+remediation-service     1/1     1            1           21d   remediation-service,distributor     docker.io/keptn/remediation-service:0.7.1,docker.io/keptn/distributor:0.7.1     app.kubernetes.io/instance=keptn,app.kubernetes.io/name=remediation-service
+shipyard-service        1/1     1            1           21d   shipyard-service,distributor        docker.io/keptn/shipyard-service:0.7.1,docker.io/keptn/distributor:0.7.1        app.kubernetes.io/instance=keptn,app.kubernetes.io/name=shipyard-service
 ```
 
 </details>
@@ -170,7 +201,7 @@ Keptn Endpoint. For this purpose, please follow the instructions in the [Install
 
 ### Configure delivery assistant for existing projects
 
-To add manual approvals steps to the delivery workflow as described in the [Continuos delivery section](../../continuous_delivery/multi_stage/#approval-strategy), you can update the `shipyard.yaml` file of the project as follows.
+To add manual approvals steps to the task sequence of delivery as described in the [Continuos delivery section](../../continuous_delivery/multi_stage/#approval-strategy), you can update the `shipyard.yaml` file of the project as follows.
 
 For each stage you would like to enable the approval feature, you can add the `approval_strategy` property to the stage definition. 
 

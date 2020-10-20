@@ -5,7 +5,7 @@ weight: 4
 keywords: [keptn, use-cases]
 ---
 
-> **Challenge:** In modern microservices environments, you have to deal with systems that can expose unpredictable behavior due to the high number of interdependencies. For example, changing the configuration of one component might have an impact on a different part of the system. Besides, problems evolve and are often dynamic. The nature and impact of a problem can also change drastically over time.
+> In modern microservices environments, you have to deal with systems that can expose unpredictable behavior due to the high number of interdependencies. For example, changing the configuration of one component might have an impact on a different part of the system. Besides, problems evolve and are often dynamic. The nature and impact of a problem can also change drastically over time.
 
 Keptn addresses this challenge by introducing the concept of micro-operations that declare remediation actions for resolving certain problem types or triggering any operational tasks. Micro-operations follow a declarative approach, are atomic building blocks, and get triggered by events.
 
@@ -54,7 +54,7 @@ A micro-operation is implemented by an [action-provider](../../0.7.x/integration
 
 ## Event-driven Choreography
 
-Assuming a developer has deployed a new artifact with a remediation file, the automated remedation workflow looks as follows:
+Assuming a developer has deployed a new artifact with a remediation file, the task sequence of an automated remedation looks as follows:
 
 1. The process gets triggered by a problem event sent out by a monitoring solution.
 
@@ -70,7 +70,7 @@ Assuming a developer has deployed a new artifact with a remediation file, the au
 
   {{< popup_image
   link="./assets/automated_remediation.png"
-  caption="Automated remediation workflow"
+  caption="Task sequence of an automated remediation"
   width="700px">}}
 
 ## References
