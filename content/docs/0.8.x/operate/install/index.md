@@ -231,13 +231,13 @@ Every Keptn release provides binaries for the Keptn CLI. These binaries are avai
   - *Windows*: Copy the executable to the desired folder and add the executable to your PATH environment variable.
 
 - Now, you should be able to run the Keptn CLI: 
-    - Linux / macOS
+    - *Linux / macOS*
 
     ```console
     keptn --help
     ```
     
-    - Windows
+    - *Windows*
 
     ```console
     .\keptn.exe --help
