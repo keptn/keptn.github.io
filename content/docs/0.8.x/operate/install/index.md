@@ -249,10 +249,19 @@ Every Keptn release provides binaries for the Keptn CLI. These binaries are avai
 
 Keptn consists of a **Control Plane** and an **Execution Plane**:
 
-* The **Control Plane** allows using Keptn for the [Quality Gates](../../../concepts/quality_gates/) and [Automated Operations](../../../concepts/automated_operations/) use cases.
-* The **Control Plane with the Execution Plane (for Continuous Delivery)** allows to implement [Continuous Delivery](../../../concepts/delivery/) use cases with Keptn.
+* The **Control Plane** allows using Keptn for the [Quality Gates](../../../concepts/quality_gates/) and [Automated Operations](../../../concepts/automated_operations/) use cases. To install the control plane containing the components for *quality gates* and *automated operations*, execute: 
 
-When installing Keptn on your cluster, the CLI will allow to select which planes are installed.
+    ```console
+    keptn install
+    ```
+
+* The **Control Plane with the Execution Plane (for Continuous Delivery)** allows to implement [Continuous Delivery](../../../concepts/delivery/) on top of *quality gates* and *automated operations* use cases. To install the control plane with the execution plane for continuous delivery, execute:
+
+    ```
+    keptn install --use-case=continuous-delivery
+    ```
+
+**How to access Keptn?**
 
 Before installing Keptn on your cluster, please also consider how you would like to access Keptn.
 Kubernetes provides the following four options:
@@ -262,8 +271,7 @@ Kubernetes provides the following four options:
 * Option 3: Expose Keptn via a **Ingress**
 * Option 4: Access Keptn via a **Port-forward**
 
-An overview of the four options is provided in the graphic below and the respective steps of all options
-are described below.
+An overview of the four options is provided in the graphic below and the respective steps of all options are described below.
 
 {{< popup_image
 link="./assets/installation_options.png"
