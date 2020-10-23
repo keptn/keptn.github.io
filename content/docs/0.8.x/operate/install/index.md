@@ -271,8 +271,7 @@ Kubernetes provides the following four options:
 * Option 3: Expose Keptn via a **Ingress**
 * Option 4: Access Keptn via a **Port-forward**
 
-An overview of the four options is provided in the graphic below and the respective steps of all options
-are described below.
+An overview of the four options is provided in the graphic below and the respective steps of all options are described below.
 
 {{< popup_image
 link="./assets/installation_options.png"
