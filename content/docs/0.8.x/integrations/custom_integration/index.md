@@ -43,13 +43,13 @@ In this example, the `[task]` works as a placeholder for tasks such as: `deploym
 
 **Distributor:**
 
-* To subscribe your Keptn-service to the `sh.keptn.event.[task].triggered` event, a distributor is required. A default distributor is provided in the deployment manifest of the keptn-service-template-go template (see [deploy/service.yaml](https://github.com/keptn-sandbox/keptn-service-template-go/blob/master/deploy/service.yaml) and shown by the example below:
+* To subscribe your Keptn-service to the `sh.keptn.event.[task].triggered` event, a distributor is required. A default distributor is provided in the deployment manifest of the keptn-service-template-go template (see [deploy/service.yaml](https://github.com/keptn-sandbox/keptn-service-template-go/blob/master/deploy/service.yaml)) and as shown by the example below:
 
 ```yaml
 spec:
   containers:
   - name: distributor
-    image: keptn/distributor:0.7.2
+    image: keptn/distributor:0.8.0
     ports:
     - containerPort: 8080
     resources:
@@ -60,22 +60,53 @@ spec:
         memory: "128Mi"
         cpu: "500m"
     env:
+    - name: CONNECTION_TYPE
+      value: 'nats'
     - name: PUBSUB_URL
       value: 'nats://keptn-nats-cluster'
     - name: PUBSUB_TOPIC
-      value: 'sh.keptn.event.test.finished'
+      value: 'sh.keptn.event.test.triggered'
     - name: PUBSUB_RECIPIENT
       value: 'jmeter-service'
 ```
 
-To configure this distributor for your *Keptn-service*, two environment variables need to be adapted: 
+To configure this distributor for your *Keptn-service*, three environment variables need to be adapted: 
 
-* `PUBSUB_RECIPIENT`: Defines the service name as specified in the Kubernetes service manifest (mentioned below).
-* `PUBSUB_TOPIC`: Defines the event type your *Keptn-service* is subscripted to. 
 
-**Receive the event:**
+<details><summary>*Distributor for Keptn-service that is running* **inside the Keptn control plane**: </summary>
 
-From a technical perspective, your Keptn-service needs to listen on the `/` POST endpoint to receive the event from the distributor.  
+<p>
+
+| Environment variable  	| Setting 	|
+|-----------------------	|:--------	|
+| CONNECTION_TYPE       	| `nats`   	|
+| PUBSUB_URL            	| `nats://keptn-nats-cluster`   	|
+| PUBSUB_RECIPIENT      	| Service name as specified in the Kubernetes service manifest mentioned below.        	|
+| PUBSUB_RECIPIENT_PORT 	| Service port to receive the event (default: `8080`)        	|
+| PUBSUB_RECIPIENT_PATH 	| Service endpoint to receive the event (default: `/`)        	|
+| PUBSUB_TOPIC          	| Event(s) the Keptn-service is subsribed to. To subscribe to multiple events, declare a comma-separated list, e.g.: `sh.keptn.event.test.triggered, sh.keptn.event.evaluation.triggered` |
+
+</p>
+</details>
+
+
+<details><summary>*Distributor for Keptn-service that is running* **outside the Keptn control plane (in execution plane)**: </summary>
+
+<p>
+
+| Environment variable  	| Setting 	|
+|-----------------------	|:--------	|
+| CONNECTION_TYPE       	| `http`   	|
+| HTTP_EVENT_POLLING_ENDPOINT       | The endpoint to poll for triggered events. It must end with: `/v1/event/triggered` (default: `http://shipyard-controller:8080/v1/event/triggered`)  	|
+| HTTP_EVENT_ENDPOINT_AUTH_TOKEN    | Keptn API token |
+| HTTP_POLLING_INTERVAL            	| Polling interval in minutes   	|
+| HTTP_EVENT_FORWARDING_ENDPOINT | The endpoint to send the `started` and `finished` event   	|
+| PUBSUB_RECIPIENT      	| Service name as specified in the Kubernetes service manifest mentioned below.        	|
+| PUBSUB_RECIPIENT_PORT 	| Service port to receive the event (default: `8080`)        	|
+| PUBSUB_RECIPIENT_PATH 	| Service endpoint to receive the event (default: `/`)        	|
+| PUBSUB_TOPIC          	| Event(s) the Keptn-service is subsribed to. To subscribe to multiple events, declare a comma-separated list, e.g.: `sh.keptn.event.test.triggered, sh.keptn.event.evaluation.triggered` |
+</p>
+</details>
 
 ### Send a started event
 

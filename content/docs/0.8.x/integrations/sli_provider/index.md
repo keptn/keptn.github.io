@@ -73,39 +73,7 @@ Next to event meta-data such as project, stage, or service name, the event conta
 
 **Distributor:**
 
-* To subscribe your SLI-provider to the `sh.keptn.event.action.triggered` event, a distributor is required. A default distributor is provided in the deployment manifest in the [keptn-service-template-go](https://github.com/keptn-sandbox/keptn-service-template-go) template. For an SLI-provider, it would look as follows:
-
-```yaml
-spec:
-  containers:
-  - name: distributor
-    image: keptn/distributor:0.7.2
-    ports:
-    - containerPort: 8080
-    resources:
-      requests:
-        memory: "32Mi"
-        cpu: "50m"
-      limits:
-        memory: "128Mi"
-        cpu: "500m"
-    env:
-    - name: PUBSUB_URL
-      value: 'nats://keptn-nats-cluster'
-    - name: PUBSUB_TOPIC
-      value: 'sh.keptn.event.get-sli.triggered'
-    - name: PUBSUB_RECIPIENT
-      value: 'dynatrace-sli-provider'
-```
-
-To configure this distributor for your *SLI-provider*, two environment variables need to be set: 
-
-* `PUBSUB_RECIPIENT`: Defines the service name of the SLI-provider as specified in the Kubernetes service manifest (mentioned below).
-* `PUBSUB_TOPIC`: Has to be set to: `sh.keptn.event.get-sli.triggered`
-
-**Receive event:**
-
-From a technical perspective, your SLI-provider needs to listen on the `/` POST endpoint to receive the event from the distributor.
+* To subscribe your SLI-provider to the `sh.keptn.event.action.triggered` event, please follow [Subscription to Keptn event](../custom_integration/#subscription-to-keptn-event).
 
 ### Functionality
 
