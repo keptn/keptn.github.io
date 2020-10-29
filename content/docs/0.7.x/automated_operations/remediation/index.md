@@ -15,7 +15,7 @@ Below is an example of a declarative remediation config:
 **Example of a remediation configuration:**
 
 ```yaml
-apiVersion: spec.keptn.sh/0.1.5
+apiVersion: spec.keptn.sh/0.1.4
 kind: Remediation
 metadata:
   name: serviceXYZ-remediation
@@ -44,7 +44,7 @@ The problem type maps a problem to a remediation by a matching problem title.
 The below example shows a remediation configured for the problem type *Response time degradation* and *Failure rate increase* as well as any unknown problem.
 
 ```yaml
-apiVersion: spec.keptn.sh/0.1.5
+apiVersion: spec.keptn.sh/0.1.4
 kind: Remediation
 metadata:
   name: serviceXYZ-remediation
@@ -69,7 +69,7 @@ If multiple actions are declared, Keptn sends out events in sequential order. Gi
 
 ```yaml
 ---
-apiVersion: spec.keptn.sh/0.1.5
+apiVersion: spec.keptn.sh/0.1.4
 kind: Remediation
 metadata:
   name: serviceXYZ-remediation
