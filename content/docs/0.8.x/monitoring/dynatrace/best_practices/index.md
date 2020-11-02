@@ -36,7 +36,7 @@ As a result, Dynatrace will add the recommended Kuberentes labels to the process
 
 ## Disable frequent issue detection
 
-Keptn relies on Dynatrace sending *brand new* alerts everytime a problem is detected. Therefore we need to disable the *Frequent Issue Detection* within Dynatrace. To do so, go to **Settings > Anomaly Detection > Frequent Issue Detection**, and disable all switches found in this menu:
+When using Keptn for automating operations, e.g., to trigger remediation actions to resolve a problem identified by Dynatrace, it is recommended to disable the *Frequent Issue Detection* within Dynatrace. If this feature is disabled, Dynatrace sends *brand new* alerts every time a problem is detected. To disable it, go to **Settings > Anomaly Detection > Frequent Issue Detection**, and toggle all switches found in this menu:
 
 {{< popup_image
     link="./assets/disable-fid.png"
