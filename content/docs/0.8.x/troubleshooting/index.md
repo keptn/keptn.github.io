@@ -313,3 +313,70 @@ initContainers:
 ```
 
 </p></details>
+
+
+## Fully Qualified Domain Names cannot be reached from within the cluster
+
+Depending on your Kubernetes cluster configuration, certain hostnames cannot be reached from within the Kubernetes cluster. This is usually visible via an error message that looks as follows:
+```
+Failed to send cloudevent:, Post http://event-broker.keptn.svc.cluster.local/keptn: dial tcp: lookup event-broker.keptn.svc.cluster.local: Try again
+```
+
+The problem can appear in virtually any service and scenario:
+
+1. LoadGenerator for keptn/examples
+1. Prometheus-Service/Prometheus-SLI-Service trying to access Prometheus
+1. Dynatrace-Service/Dynatrace-SLI-Service trying to access a Dynatrace environment
+1. Unleash-Service trying to access Unleash
+1. Any keptn-service trying to send a CloudEvent via the event-broker
+
+<details><summary>Expand instructions</summary>
+<p>
+
+
+**Problem**: Trying to access certain hostnames does not work within the cluster.
+
+The reason behind this is that some Kubernetes cluster configurations have issues when it comes to resolving internal hostnames like `service.namespace.svc.cluster.local`, but potentially reaching ANY hostname might fail, e.g., trying to fetch a URL via `wget keptn.sh`.
+
+**Analysis**: To find out whether you are affected or not, please run an `alpine:3.11` container that tries to access the Kubernetes API or any external hostname, e.g.:
+
+```
+kubectl run -i --restart=Never --rm test-${RANDOM} --image=alpine:3.11 -- sh -c "wget --no-check-certificate https://kubernetes.default.svc.cluster.local/api/v1"
+```
+
+```
+kubectl run -i --restart=Never --rm test-${RANDOM} --image=alpine:3.11 -- sh -c "wget https://keptn.sh"
+```
+
+If in any of the above instances you get a "bad address", then you are most likely affected, e.g.:
+```
+wget: bad address 'kubernetes.default.svc.cluster.local'
+```
+
+If it prints a download bar, the content of the requested URL or an HTTP 400 error (or similar), the connection works, e.g.:
+```
+Connecting to kubernetes.default.svc.cluster.local (10.0.80.1:443)
+saving to 'v1'
+v1                   100% |********************************| 10337  0:00:00 ETA
+```
+
+The problem behind this is usually a misconfiguration for the nameserver or the local `/etc/resolv.conf` configuration (e.g., searchdomains). 
+
+More details can be found at [GitHub Kubernetes Issue #64924](https://github.com/kubernetes/kubernetes/issues/64924).
+
+**Solutions**: 
+
+* Verify your clusters nameserver configuration is working as expected, especially the searchdomains. Easiest way to verify is to look at the output of
+   ```console
+   nslookup keptn.sh
+   ```
+   on your physical machine as well as within your Kubernetes cluster:
+   ```console
+   kubectl run -i --restart=Never --rm test-${RANDOM} --image=alpine:3.11 -- sh -c "nslookup keptn.sh" 
+   ```
+   * If a nameserver returns `NXDOMAIN` or `Non-authoritative answer`, everything is fine. 
+   * If at any point a nameserver returns an `ERRFAIL`, `SERVFAIL` or similar, update the hosts `/etc/resolv.conf` file (together with your administrator) and try again.
+   
+* Overwrite the DNS config `ndots` to `ndots:1` [in all deployment manifests](https://pracucci.com/kubernetes-dns-resolution-ndots-options-and-why-it-may-affect-application-performances.html).
+
+</p></details>

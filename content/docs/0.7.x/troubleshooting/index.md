@@ -324,9 +324,9 @@ Failed to send cloudevent:, Post http://event-broker.keptn.svc.cluster.local/kep
 The problem can appear in virtually any service and scenario:
 
 1. LoadGenerator for keptn/examples
-1. Prometheus-Service/Prometheus-SLI-Service trying to access prometheus
+1. Prometheus-Service/Prometheus-SLI-Service trying to access Prometheus
 1. Dynatrace-Service/Dynatrace-SLI-Service trying to access a Dynatrace environment
-1. Unleash-Service trying to access unleash
+1. Unleash-Service trying to access Unleash
 1. Any keptn-service trying to send a CloudEvent via the event-broker
 
 <details><summary>Expand instructions</summary>
@@ -347,12 +347,12 @@ kubectl run -i --restart=Never --rm test-${RANDOM} --image=alpine:3.11 -- sh -c 
 kubectl run -i --restart=Never --rm test-${RANDOM} --image=alpine:3.11 -- sh -c "wget https://keptn.sh"
 ```
 
-If in any of the above instances you get a "bad address", then you might be affected, e.g.:
+If in any of the above instances you get a "bad address", then you are most likely affected, e.g.:
 ```
 wget: bad address 'kubernetes.default.svc.cluster.local'
 ```
 
-If it prints a download bar, the content of the requested URL or an HTTP 400 error (or similar), the connection seems to work, e.g.:
+If it prints a download bar, the content of the requested URL or an HTTP 400 error (or similar), the connection works, e.g.:
 ```
 Connecting to kubernetes.default.svc.cluster.local (10.0.80.1:443)
 saving to 'v1'
@@ -373,10 +373,9 @@ More details can be found at [GitHub Kubernetes Issue #64924](https://github.com
    ```console
    kubectl run -i --restart=Never --rm test-${RANDOM} --image=alpine:3.11 -- sh -c "nslookup keptn.sh" 
    ```
-   If at any point it returns an `ERRFAIL` or similar, that would be your problem. If it returns `NXDOMAIN`, it's fine.
+   * If a nameserver returns `NXDOMAIN` or `Non-authoritative answer`, everything is fine. 
+   * If at any point a nameserver returns an `ERRFAIL`, `SERVFAIL` or similar, update the hosts `/etc/resolv.conf` file (together with your administrator) and try again.
    
-   To fix this, update the hosts `/etc/resolv.conf` together with your administrators.
-
 * Overwrite the DNS config `ndots` to `ndots:1` [in all deployment manifests](https://pracucci.com/kubernetes-dns-resolution-ndots-options-and-why-it-may-affect-application-performances.html).
 
 </p></details>
