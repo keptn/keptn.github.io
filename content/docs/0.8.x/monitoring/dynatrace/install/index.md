@@ -83,7 +83,7 @@ Create a secret containing the credentials for the *Dynatrace tenant* and *Keptn
 * Create a secret with the credentials by executing the following command:
 
     ```console
-    kubectl -n keptn create secret generic dynatrace --from-literal="DT_API_TOKEN=$DT_API_TOKEN" --from-literal="DT_TENANT=$DT_TENANT" --from-literal="KEPTN_API_URL=$KEPTN_API_URL" --from-literal="KEPTN_API_TOKEN=$KEPTN_API_TOKEN" -oyaml --dry-run | kubectl replace -f -
+    kubectl -n keptn create secret generic dynatrace --from-literal="DT_API_TOKEN=$DT_API_TOKEN" --from-literal="DT_TENANT=$DT_TENANT" --from-literal="KEPTN_API_URL=$KEPTN_API_URL" --from-literal="KEPTN_API_TOKEN=$KEPTN_API_TOKEN" -oyaml --dry-run | kubectl create -f -
     ```
 
 ### 2. Deploy the Dynatrace Keptn integration
