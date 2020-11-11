@@ -6,7 +6,11 @@ aliases:
   - /docs/0.7.0/operate/upgrade/
   - /docs/0.7.1/operate/upgrade/
   - /docs/0.7.2/operate/upgrade/
+  - /docs/0.7.3/operate/upgrade/
 ---
+
+## Upgrade from Keptn 0.7.2 to 0.7.3
+
 
 ## Upgrade from Keptn 0.7.1 to 0.7.2
 
