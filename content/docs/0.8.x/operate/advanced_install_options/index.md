@@ -23,6 +23,7 @@ The following flags are available:
 | `control-plane.bridge.versionCheck.enabled`           | Specifies whether the automatic version-check in Keptn Bridge should be enabled or not                                                           | true, false                           | true                           |
 | `control-plane.bridge.showApiToken.enabled`           | Specifies whether the Keptn API Token and the `keptn auth` command should be shown in Keptn Bridge or not                                         | true, false                           | true                           |
 | `control-plane.bridge.secret.enabled`                 | Specifies whether the secret used for the basic auth is enabled or not. Please be aware that if this value is set to `false`, there is no basic authentication for the bridge.                                         | true, false                           | true                           |
+| `control-plane.bridge.installationType`               | Specifies which of the use cases are supported in the installation                                         | "QUALITY_GATES,CONTINUOUS_OPERATIONS", "QUALITY_GATES,CONTINUOUS_OPERATIONS,CONTINUOUS_DELIVERY"                           | "QUALITY_GATES,CONTINUOUS_OPERATIONS"                           |
 | `control-plane.configurationService.storage`          | Allows to specify the storage-size of the persistent volume used in configuration-service                                                         | K8s volume storage size (e.g., 500Mi) | 100Mi                          |
 | `control-plane.configurationService.storageClass`     | Allows to specify the storage-class of the persistent volume used in configuration-service                                                        | K8s storage class                     | null                           |
 | `control-plane.<SERVICE-NAME>.image.repository`       | Allows to specify an alternative repository for the docker image                                                                                  | Container registry URL                | docker.io/keptn/<SERVICE-NAME> |
@@ -68,7 +69,7 @@ control-plane.mongodb.image.repository=YOUR_REGISTRY/centos/mongodb-36-centos7,\
 control-plane.nats.nats.image=YOUR_REGISTRY/nats:2.1.7-alpine3.11,\
 control-plane.nats.reloader.image=YOUR_REGISTRY/connecteverything/nats-server-config-reloader:0.6.0,\
 control-plane.nats.exporter.image=YOUR_REGISTRY/synadia/prometheus-nats-exporter:0.5.0,\
-control-plane.apiGatewayNginx.image.repository=YOUR_REGISTRY/nginxinc/nginx-unprivileged,\
+control-plane.apiGatewayNginx.image.repository=YOUR_REGISTRY/nginxinc/nginx-unprivileged:1.19.4-alpine,\
 control-plane.remediationService.image.repository=YOUR_REGISTRY/keptn/remediation-service,\
 control-plane.apiService.image.repository=YOUR_REGISTRY/keptn/api,\
 control-plane.bridge.image.repository=YOUR_REGISTRY/keptn/bridge2,\
