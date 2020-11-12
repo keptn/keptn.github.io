@@ -67,7 +67,7 @@ Keptn versions are expressed as `x.y.z`, where `x` is the major version, `y` is 
 | configuration-volume                	|                    	|                 	|                	|             	| 100Mi   	|
 | lighthouse-service                  	| 128                	| 50              	| 1024           	| 500         	|         	|
 | lighthouse-service > distributor    	| 32                 	| 50              	| 128            	| 500         	|         	|
-| mongodb                             	| 200                	| 50              	| 300            	| 100         	|         	|
+| mongodb                             	| 64                	| 50              	| 300            	| 100         	|         	|
 | mongodata                           	|                    	|                 	|                	|             	| 5Gi     	|
 | mongodb-datastore                   	| 32                 	| 50              	| 128            	| 500         	|         	|
 | mongodb-datastore > distributor     	| 32                 	| 50              	| 128            	| 500         	|         	|
