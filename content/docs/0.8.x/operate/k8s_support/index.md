@@ -1,5 +1,5 @@
 ---
-title: Kubernetes Support
+title: Kubernetes support & Cluster size
 description: Keptn and Kubernetes compatibility overview.
 weight: 30
 keywords: [0.8.x-operate]
@@ -57,7 +57,7 @@ Keptn versions are expressed as `x.y.z`, where `x` is the major version, `y` is 
 ### Keptn control plane
 
 | Deployment                          	| Memory (requested) 	| CPU (requested) 	| Memory (limit) 	| CPU (limit) 	| Storage 	|
-|-------------------------------------	|:------------------:	|-----------------	|----------------	|-------------	|---------	|
+|-------------------------------------	|:------------------:	|:----------------:	|:--------------:	|:------------:	|:--------:	|
 | api-gateway-nginx                   	| 32                 	| 50              	| 128            	| 500         	|         	|
 | api-service                         	| 64                 	| 50              	| 256            	| 500         	|         	|
 | api-service > distributor            	| 32                 	| 50              	| 128            	| 500         	|         	|
@@ -80,7 +80,7 @@ Keptn versions are expressed as `x.y.z`, where `x` is the major version, `y` is 
 ### Keptn execution plane
 
 | Deployment                          	| Memory (requested) 	| CPU (requested) 	| Memory (limit) 	| CPU (limit) 	| Storage 	|
-|-------------------------------------	|:------------------:	|-----------------	|----------------	|-------------	|---------	|
+|-------------------------------------	|:------------------:	|:----------------:	|:--------------:	|:------------:	|:--------:	|
 | gatekeeper-service               	    | 32  	              | 50 	              | 128            	| 500          	|         	|
 | gatekeeper-service > distributor    	| 32  	              | 50 	              | 128 	          | 500         	|         	|
 | helm-service                        	| 128               	| 50              	| 512            	| 1000 	        |         	|
