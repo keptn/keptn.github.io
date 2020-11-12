@@ -49,3 +49,40 @@ Keptn versions are expressed as `x.y.z`, where `x` is the major version, `y` is 
 * With a new Keptn release, Keptn is tested based on the default K8s version of each Cloud Provider: AKS, EKS and GKE available at the release date.
 
 * Internally, a test pipeline with newer Kubernetes versions is verifying the master branch of Keptn. Known-limitations identified by these tests are referenced at the corresponding Keptn release. 
+
+## Cluster size for Keptn 0.7
+
+### Keptn control plane
+
+| Deployment                          	| Memory (requested) 	| CPU (requested) 	| Memory (limit) 	| CPU (limit) 	| Storage 	|
+|-------------------------------------	|:------------------:	|-----------------	|----------------	|-------------	|---------	|
+| api-gateway-nginx                   	| 32                 	| 50              	| 128            	| 500         	|         	|
+| api-service                         	| 64                 	| 50              	| 256            	| 500         	|         	|
+| bridge                              	| 64                 	| 50              	| 128            	| 500         	|         	|
+| configuration-service               	| 64                 	| 50              	| 128            	| 500         	|         	|
+| configuration-service > distributor 	| 32                 	| 50              	| 128            	| 500         	|         	|
+| configuration-volume                	|                    	|                 	|                	|             	| 100Mi   	|
+| eventbroker-go                      	| 32                 	| 50              	| 128            	| 500         	|         	|
+| lighthouse-service                  	| 128                	| 50              	| 1024           	| 500         	|         	|
+| lighthouse-service > distributor    	| 32                 	| 50              	| 128            	| 500         	|         	|
+| mongodb                             	| 200                	| 50              	| 300            	| 100         	|         	|
+| mongodata                           	|                    	|                 	|                	|             	| 5Gi     	|
+| mongodb-datastore                   	| 32                 	| 50              	| 128            	| 500         	|         	|
+| mongodb-datastore > distributor     	| 32                 	| 50              	| 128            	| 500         	|         	|
+| remediation-service                 	| 64                 	| 50              	| 1024           	| 500         	|         	|
+| remediation-service > distributor   	| 32                 	| 50              	| 128            	| 500         	|         	|
+| shipyard-service                    	| 32                 	| 50              	| 128            	| 500         	|         	|
+| shipyard-service > distributor      	| 32                 	| 50              	| 128            	| 500         	|         	|
+| **Sum:**                             	| **872**           	| **750**          	| **4012**       	| **7100**     	|         	|
+
+### Keptn execution plane
+
+| Deployment                          	| Memory (requested) 	| CPU (requested) 	| Memory (limit) 	| CPU (limit) 	| Storage 	|
+|-------------------------------------	|:------------------:	|-----------------	|----------------	|-------------	|---------	|
+| gatekeeper-service               	    | 32  	              | 50 	              | 128            	| 500          	|         	|
+| gatekeeper-service > distributor    	| 32  	              | 50 	              | 128 	          | 500         	|         	|
+| helm-service                        	| 128               	| 50              	| 512            	| 1000 	        |         	|
+| helm-service > distributor          	| 32                	| 50              	| 128           	| 500         	|         	|
+| jmeter-service                      	| -                   | -   	            | -               | -            	|         	|
+| jmeter-service > distributor        	| 32                	| 50 	              | 128           	| 500         	|         	|
+| **Sum:**                             	| **256**            	| **250**          	| **1024**       	| **3000**     	|         	|
