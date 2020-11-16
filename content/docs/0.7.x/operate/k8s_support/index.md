@@ -73,7 +73,7 @@ Keptn versions are expressed as `x.y.z`, where `x` is the major version, `y` is 
 | remediation-service > distributor   	| 32                 	| 50              	| 128            	| 500         	|         	|
 | shipyard-service                    	| 32                 	| 50              	| 128            	| 500         	|         	|
 | shipyard-service > distributor      	| 32                 	| 50              	| 128            	| 500         	|         	|
-| **Sum:**                             	| **872**           	| **750**          	| **4012**       	| **7100**     	|         	|
+| **Sum:**                             	| **736**           	| **750**          	| **4012**       	| **7100**     	|         	|
 
 ### Keptn execution plane
 
