@@ -70,7 +70,7 @@ Run your Keptn installation for free on GKE! If you [sign up for a Google Cloud 
   - [python 2.7](https://www.python.org/downloads/release/python-2716/) (required for Ubuntu 19.04)
 
 2. Create GKE cluster
-  - [Master version:](../k8s_support/#supported-versions) `1.15.x` (tested version: `1.15.9-gke.22`)
+  - [Master version:](../k8s_support/#supported-versions) `1.15.x` (tested version: `1.15.12-gke.20`)
   - One **n1-standard-8** node
   - Image type `Ubuntu` or `COS` (**Note:** If you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../monitoring/dynatrace/).)
   - Sample script to create such cluster:
@@ -224,7 +224,7 @@ Use this page if you have already Keptn experience and would like to install it 
 
 Every Keptn release provides binaries for the Keptn CLI. These binaries are available for Linux, macOS, and Windows.
 
-- Download the version for your operating system from: [GitHub](https://github.com/keptn/keptn/releases/tag/0.7.2)
+- Download the version for your operating system from: [GitHub](https://github.com/keptn/keptn/releases/tag/0.7.3)
 - Unpack the archive
 - Find the `keptn` binary in the unpacked directory
 

@@ -7,6 +7,7 @@ aliases:
   - /docs/0.7.0/manage/git_upstream/
   - /docs/0.7.1/manage/git_upstream/
   - /docs/0.7.2/manage/git_upstream/
+  - /docs/0.7.3/manage/git_upstream/
 ---
 
 Keptn manages a project in an internal Git repository. To upstream this repository to a remote place that also works as backup, it is recommended to create, for example, a GitHub repository. This GitHub repository is then specified as upstream repo when creating a project. 
