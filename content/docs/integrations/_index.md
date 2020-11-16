@@ -40,10 +40,10 @@ Below are projects that have been shown in any Keptn community or developer meet
 
 | Keptn-service | in development for Keptn | Repository |
 | --- | --- | --- | 
-| **ansibletower-service** | 0.7.2 | https://github.com/keptn-sandbox/ansibletower-service |
+| **ansibletower-service** | 0.7.3 | https://github.com/keptn-sandbox/ansibletower-service |
 | **jenkins-service** | 0.6.1 | https://github.com/keptn-sandbox/jenkins-service |
 | **keptn-report** | 0.6.1 | https://github.com/keptn-sandbox/keptn-report |
-| **litmus-service** | 0.7.2 | https://github.com/keptn-sandbox/litmus-service |
+| **litmus-service** | 0.7.3 | https://github.com/keptn-sandbox/litmus-service |
 | **slackbot-service** | 0.6.1 | https://github.com/keptn-sandbox/slackbot-service |
 | **statistics-service** | 0.7.3 | https://github.com/keptn-sandbox/statistics-service |
 
