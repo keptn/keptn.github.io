@@ -50,6 +50,7 @@ For example, the **Control Plane with the Execution Plane (for Continuous Delive
 helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.7.3 --repo=https://storage.googleapis.com/keptn-installer --set=continuous-delivery.enabled=true,control-plane.apiGatewayNginx.type=LoadBalancer
 ```
 
+
 ### Example: Execute Helm upgrade without Internet connectivity
 
 * Download the Helm chart from [keptn-installer/keptn-0.7.3.tgz](https://storage.googleapis.com/keptn-installer/keptn-0.7.3.tgz) and move it to the machine that has no Internet connectivity, but should perform the installation:
