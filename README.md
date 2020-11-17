@@ -24,7 +24,7 @@ The themes directory on your local machine (localdirectory/keptn.github.io/theme
     ```
 5. Execute the `hugo server -D` command from the root folder:
     ```
-    hugo server -D    
+    hugo server -D
     ```
 6. Enter the following in a browser to view the website:
     ```
