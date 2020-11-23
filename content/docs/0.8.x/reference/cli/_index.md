@@ -167,3 +167,28 @@ keptn.exe auth --endpoint=%KEPTN_ENDPOINT% --api-token=%KEPTN_API_TOKEN%
 </details>
 </p>
 </details>
+
+## Use Keptn CLI with Multiple Contexts
+
+After authenticating Keptn CLI with multiple Kubernetes clusters, we can directly run Keptn CLI commands in the current context. As soon as we switch the Kube context (e.g. `kubectl config use-context my-cluster-name`), the Keptn CLI will detect the change in the context and ask you to run the command in the changed context or not. If the Keptn CLI is already authenticated for that particular context, the command will run successfully; else it will end up throwing an error, i.e. `Error: credentials not found in native keychain`
+
+In case of multi-installation of Keptn in the same cluster, we need to pass a flag `--namespace` or `-n` to tell the Keptn CLI to use the credentials for that particular Keptn installation, else it will take the default namespace which is: `keptn`
+
+## Use Keptn CLI with KEPTNCONFIG
+
+The `KEPTNCONFIG` environment variable holds a keptnconfig file which contains the credentials (i.e. API_TOKEN and ENDPOINT) for the Keptn installation.
+
+* `KEPTNCONFIG` file format:
+
+  ```
+  contexts:     
+  - api_token: blahblahblah
+    endpoint: http://localhost:8080/api
+    name: keptn-test                  # context name                    
+    namespace: keptn-test             # namespace name, if not defined, sets to `keptn`
+  - api_token: abcdxxxxxxxxx
+    endpoint: http://91.xxx.xxx.xxx.nip.io/api
+    name: keptn-demo        
+  ```
+
+**Note:** If `KEPTNCONFIG` environment variable is defined, it reads from it and if the credentials are not found in the keptnconfig file, it will fallback to the credentialmanager.
