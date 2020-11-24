@@ -172,9 +172,9 @@ keptn.exe auth --endpoint=%KEPTN_ENDPOINT% --api-token=%KEPTN_API_TOKEN%
 
 After authenticating the Keptn CLI with multiple Kubernetes clusters, we can directly run Keptn CLI commands in the current context. 
 
-* As soon as we switch the Kube context (e.g., by executing: `kubectl config use-context my-cluster-name`), the Keptn CLI will detect the change of the Kube context and ask you to run the command in the changed context or not. 
+* As soon as you switch the Kube context (e.g., by executing: `kubectl config use-context my-cluster-name`), the Keptn CLI will detect the change of the Kube context and ask you to run the command in the changed context or not. 
 
-* If the Keptn CLI is authenticated for that particular context, the command will run successfully; else it will end up throwing the error: `Error: credentials not found in native keychain`
+* If the Keptn CLI is authenticated for that particular context, the command will run successfully; else it will end up throwing the error: `This command requires to be authenticated. See "keptn auth" for details"`
 
 * In case of multi-installation of Keptn in the same cluster, we need to pass the flag `--namespace` or `-n` to tell the Keptn CLI to use the credentials for that particular Keptn installation, else it will take the default namespace which is: `keptn`
 
