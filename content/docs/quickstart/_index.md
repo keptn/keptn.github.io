@@ -116,7 +116,7 @@ Please make sure you have `kubectl` installed (see [kubernetes.io/docs/tasks/too
     keptn version
     ```
 
-#### 3. Install Keptn and authenticate Keptn CLI
+#### 2.2 Install Keptn and authenticate Keptn CLI
 
 * By executing the [keptn install](../0.7.x/reference/cli/commands/keptn_install) command as shown next, Keptn will be installed on your Kuberentes cluster supporting all continuous delivery use cases (including quality gates and automated operations):
 
@@ -143,6 +143,20 @@ Please make sure you have `kubectl` installed (see [kubernetes.io/docs/tasks/too
     ```
 
 :rocket: Keptn is now ready to be used.
+
+### 3. Access Keptn Bridge
+
+By default, basic authentication is in place that protects the Keptn Bridge. 
+
+* To get the `user` and `password`, execute the command:
+
+    ```console
+    keptn configure bridge --output
+    ```
+
+* Depending on the chosen way of exposing Keptn (please see [here](../0.7.x/operate/install/#install-keptn)), you need to derive the endpoint Keptn is running on. If you follow this quickstart, the endpoint is: `http://localhost:8080`
+
+* Consequently, go to `http://localhost:8080` to access the Keptn Bridge that will prompt for `user` and `password`. 
 
 ### 4. Explore tutorials to learn more about the Keptn use cases
 
