@@ -75,7 +75,9 @@ Next to event meta-data such as project, stage, or service name, the event conta
 
 * To subscribe your SLI-provider to the `sh.keptn.event.action.triggered` event, please follow [Subscription to Keptn event](../custom_integration/#subscription-to-keptn-event).
 
+
 ### Functionality
+
 
 After receiving the `sh.keptn.event.get-sli.triggered` event, an SLI-provider must perform following tasks:
 
@@ -85,13 +87,14 @@ After receiving the `sh.keptn.event.get-sli.triggered` event, an SLI-provider mu
 
 3. **Send a started event:** If the data source is supported, send a start event of type: `sh.keptn.event.get-sli.started`. This CloudEvent informs Keptn that your service takes care of fetching the SLIs. 
 
+
 4. Get the SLI configuration from Keptn's configuration-service. This SLI configuration is identified by the `resourceURI`, which follows the pattern: `[tool-name]/sli.yaml` (e.g., `dynatrace/sli.yaml`). 
   * Service URL: http://configuration-service.keptn.svc.cluster.local:8080
   * Endpoint: `v1/project/{projectName}/stage/{stageName}/service/{serviceName}/resource/{resourceURI}`
 
 5. Process the SLI configuration and use the defined queries to retrieve the values of each indicator. 
 
-5. **Send a finished event:** Send a finished event of type: `sh.keptn.event.get-sli.finished`. The data block of the event payload must provide at least a value for `status` and `result` in `data.get-sli`:
+6. **Send a finished event:** Send a finished event of type: `sh.keptn.event.get-sli.finished`. The data block of the event payload must provide at least a value for `status` and `result` in `data.get-sli`:
 
   * `status`: [succeeded, errored, unknown] - The status of the task execution 
   * `result`: [pass, failed] - The result of a successful task execution

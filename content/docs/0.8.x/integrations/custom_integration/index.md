@@ -28,6 +28,7 @@ This deployment manifest contains:
 
 A Keptn-service has the following characteristics: 
 
+
 * has a **subscription** to an event that occurs during the execution of a task sequence for continuous delivery or operations
 * sends a **started event** to inform Keptn about receiving the event and acting on it
 * processes functionality and can therefore leverage additional tools, e.g., through their REST interface

@@ -26,6 +26,7 @@ An *action-provider* starts working, when receiving a Keptn CloudEvent of type:
 
 Next to meta-data such as project, stage, or service name, the event contains information about the action to execute. For more details, please see the specification [here](https://github.com/keptn/spec/blob/0.1.6/cloudevents.md#action-triggered) and take a look at the example: 
 
+
 ```json
 {
   "type": "sh.keptn.event.action.triggered",
