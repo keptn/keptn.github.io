@@ -72,7 +72,6 @@ spec:
 
 To configure this distributor for your *Keptn-service*, three environment variables need to be adapted: 
 
-
 <details><summary>*Distributor for Keptn-service that is running* **inside the Keptn control plane**: </summary>
 
 <p>
