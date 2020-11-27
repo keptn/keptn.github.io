@@ -135,6 +135,12 @@ After your *Keptn-service* has completed its functionality, it has to inform Kep
 
 The request body needs to follow the [CloudEvent specification](https://github.com/keptn/spec/blob/0.1.6/cloudevents.md) and the HTTP header attribute `Content-Type` has to be set to `application/cloudevents+json`. 
 
+**Add property to event header:**
+
+Add to the *header* of the event: 
+
+  * `triggeredid`: The value of this property is the `id` of the `sh.keptn.event.[task].triggered` event. 
+
 **Add data to event payload:**
 
 You can send data back to Keptn by adding it to the data block in the event payload. In more details, the data block has a reserved space depending on the event type. If, for example, your Keptn service has a subscription to a `sh.keptn.event.test.finished` event, the reserved space is `data.test`. Your Keptn-service is allowed to add data there, but must provide at least a value for `status` and `result`:

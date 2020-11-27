@@ -94,11 +94,15 @@ After receiving the `sh.keptn.event.get-sli.triggered` event, an SLI-provider mu
 
 5. Process the SLI configuration and use the defined queries to retrieve the values of each indicator. 
 
-6. **Send a finished event:** Send a finished event of type: `sh.keptn.event.get-sli.finished`. The data block of the event payload must provide at least a value for `status` and `result` in `data.get-sli`:
+6. **Send a finished event:** Send a finished event of type: `sh.keptn.event.get-sli.finished` with the added properties:  
 
-  * `status`: [succeeded, errored, unknown] - The status of the task execution 
-  * `result`: [pass, failed] - The result of a successful task execution
-  * `indicatorValues`: List of indicators and their measured values
+  * Add to the *header* of the event: 
+      * `triggeredid`: The value of this property is the `id` of the `sh.keptn.event.get-sli.triggered` event. 
+
+  * Add to the *data block* at least a value for `status`, `result` and `indicatorValues` in `data.get-sli`:
+      * `status`: [succeeded, errored, unknown] - The status of the task execution
+      * `result`: [pass, failed] - The result of a successful task execution
+      * `indicatorValues`: List of indicators and their measured values
 
 ```json
 {
@@ -109,9 +113,9 @@ After receiving the `sh.keptn.event.get-sli.triggered` event, an SLI-provider mu
   "time": "2019-06-07T07:02:15.64489Z",
   "contenttype": "application/json",
   "shkeptncontext": "08735340-6f9e-4b32-97ff-3b6c292bc509",
-  "triggeredid": "2b878d3-03c0-4e8f-bc3f-454bc1b3d79d",
+  "triggeredid": "2b878d3-03c0-4e8f-bc3f-454bc1b3d79d",      # <- add triggeredid
   "data": {
-    "get-sli": {
+    "get-sli": {                                             # <- add data.get-sli
       "status": "succeeded",
       "result": "pass",
       "indicatorValues": [

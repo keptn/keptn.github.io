@@ -13,7 +13,7 @@ The following sections describe how to back up that data and how to restore it.
 
 ## Backup Keptn
 
-This section describes how to backup your Keptn and store it on your local maschine. 
+This section describes how to backup your Keptn and store it on your local machine. 
 
 ### Backup Configuration Service
 
