@@ -23,7 +23,11 @@ aliases:
    * Using Keptn CLI [upgrade command](../../reference/cli/commands/keptn_upgrade)
 
     ```
-    keptn upgrade --patch-namespace # default namespace is `keptn`
-    OR
+    keptn upgrade --patch-namespace
+    ```
+
+    *Note:* If you installed Keptn in a dedicated namespace, use the `-n` flag to select the namespace:
+
+    ```
     keptn upgrade --patch-namespace -n <NAMESPACE>
     ```
