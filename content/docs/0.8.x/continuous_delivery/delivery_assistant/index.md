@@ -2,7 +2,8 @@
 title: Delivery Assistant
 description: Approval of deployment for manual approval strategy
 weight: 50
-keywords: [0.7.x-bridge, 0.7.x-cd]
+keywords: [0.7.x-cd]
+
 aliases:
   - /docs/0.7.x/reference/bridge/delivery_assistent/
 ---
@@ -41,7 +42,7 @@ You can approve or decline this deployment by sending an `approval.finished` Clo
         "id": "5bf26759-4afa-4045-8ccf-81bc398c2fcd",
         "shkeptncontext": "654c80b0-4a02-4d36-96f3-7447df1cdf41",
         "source": "gatekeeper-service",
-        "specversion": "0.2",
+        "specversion": "1.0",
         "time": "2020-09-17T14:41:14.039Z",
         "type": "sh.keptn.event.approval.triggered"
     }
@@ -86,7 +87,7 @@ You can approve or decline this deployment by sending an `approval.finished` Clo
 {
   "shkeptncontext": "654c80b0-4a02-4d36-96f3-7447df1cdf41",
   "source": "https://github.com/keptn/keptn/cli#approval.finished",
-  "specversion": "0.2",
+  "specversion": "1.0",
   "type": "sh.keptn.event.approval.finished",
   "contenttype": "application/json",
   "triggeredid": "5bf26759-4afa-4045-8ccf-81bc398c2fcd",
