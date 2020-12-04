@@ -2,7 +2,7 @@
 title: Architecture
 description: Learn about the architecture, how Keptn works internally and can be extended.
 weight: 90
-keywords: [keptn, architecture]
+keywords: [0.6.x-architecture]
 ---
 
 Keptn is a control plane for continuous delivery that runs on Kubernetes. When installing Keptn on a Kubernetes cluster, core components, Tiller, and Istio are installed. Keptn itself follows an event-driven approach with the benefits of loosely coupled components and a flexible design that allows easily integrating other components and services. The events that Keptn understands are specified [here](https://github.com/keptn/spec/blob/0.1.3/cloudevents.md) and follow the [Cloud Events](https://cloudevents.io/) specification [v2](https://github.com/cloudevents/spec/tree/v0.2).

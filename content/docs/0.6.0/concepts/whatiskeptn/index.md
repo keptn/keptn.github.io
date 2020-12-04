@@ -2,7 +2,6 @@
 title: What is Keptn?
 description: The overall goal of Keptn is to make continuous delivery and operations automation a commodity for modern cloud-native applications.
 weight: 10
-keywords: [keptn, cloud-native, cd]
 ---
 
 The overall goal of Keptn is to make continuous delivery and operations automation a commodity for modern cloud-native applications. 
