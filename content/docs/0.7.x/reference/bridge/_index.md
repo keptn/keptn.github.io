@@ -69,6 +69,16 @@ By clicking on a stage you can see more information about the deployed services 
 ## Early Access Version of Keptn Bridge
 
 Right now there is no early access version of Keptn Bridge available. 
+Please check back later for a new early access version.
+
+
+
+
+
+
+
+
+
 
 <!-- You can upgrade to the latest version (0.7.3) by executing the following commands:
 
