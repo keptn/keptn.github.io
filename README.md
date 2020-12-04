@@ -42,3 +42,5 @@ Before you push to production, make sure to run the following command in order t
 ```
 hugo
 ```
+
+That's it 
