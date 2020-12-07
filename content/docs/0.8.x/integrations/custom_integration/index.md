@@ -5,115 +5,190 @@ weight: 1
 keywords: [0.8.x-integration]
 ---
 
-Here you learn how to add additional functionality to your Keptn installation with a custom [*Keptn-service*](#keptn-service), [*SLI-provider*](../sli_provider), or [*Action-provider*](../action_provider). 
+Here you learn how to add additional functionality to your Keptn installation with a custom [*Keptn-service*](#write-your-keptn-service), [*SLI-provider*](../sli_provider), or [*Action-provider*](../action_provider). 
 
 * A *Keptn-service* is responsible for implementing a continuous delivery or operations task.
 * An *SLI-provider* is used to query Service-Level Indicators (SLI) from an external source like a monitoring or testing solution. 
-* An *Action-provider* is used to extend a task sequence for remediation with an individual action step.  
+* An *Action-provider* is used to extend a task sequence for remediation with an additional action step.  
 
-## Template Repository
+## Template repository
 
-We provide a fully functioning template for writing new services: [keptn-service-template-go](https://github.com/keptn-sandbox/keptn-service-template-go).
+A template for writing a new *Keptn-service*  is provided here: [keptn-service-template-go](https://github.com/keptn-sandbox/keptn-service-template-go).
 
-## Keptn-service
+Since a *Keptn-service* is a Kubernetes service with a deployment and service template, the deployment manifest in the template repository can be re-used; see [deploy/service.yaml](https://github.com/keptn-sandbox/keptn-service-template-go/blob/master/deploy/service.yaml).
 
-A *Keptn-service* is intended to react to certain events that occur during the execution of a task sequence for continuous delivery or operations. After getting triggered by an event, a *Keptn-service* processes some functionality and can therefore integrate additional tools by accessing their REST interfaces.
+This deployment manifest contains: 
 
-A Keptn-service can subscribe to various [Keptn CloudEvents](https://github.com/keptn/spec/blob/0.1.6/cloudevents.md), e.g.:
+* Kubernetes **Deployment**, with two containers:
+  * *keptn-service-template-go*: Replace the image of this container with the image of your implementation. 
+  * *distributor*: This container integrates with your Keptn and does the event handling. *Do not remove it.*
+* Kubernetes **Service**
 
-- sh.keptn.events.configuration-changed
-- sh.keptn.events.deployment-finished
-- sh.keptn.events.tests-finished
-- sh.keptn.events.evaluation-done
-- sh.keptn.events.problem
+## Write your Keptn-service
 
-### Implement custom Keptn-service
+A Keptn-service has the following characteristics: 
 
-If you are interested in writing your own testing service, have a look at the [jmeter-service](https://github.com/keptn/keptn/blob/0.7.3/jmeter-service).
 
-### Example: JMeter Service
+* has a **subscription** to an event that occurs during the execution of a task sequence for continuous delivery or operations
+* sends a **started event** to inform Keptn about receiving the event and acting on it
+* processes functionality and can therefore leverage additional tools, e.g., through their REST interface
+* sends a **finished event** to inform Keptn about its execution status and the result
 
-**Incoming Keptn CloudEvent:** The *jmeter-service* is a *Go* application that accepts POST requests at its `/` endpoint. To be more specific, the request body needs to follow the [CloudEvent specification](https://github.com/keptn/spec/blob/0.1.6/cloudevents.md) and the HTTP header attribute `Content-Type` has to be set to `application/cloudevents+json`. Of course, you can write your service in any language, as long as it provides the endpoint to receive events.
+### Subscription to Keptn event
 
-**Functionality:** The functionality of your *Keptn-service* depends on the capability you want to add to the continuous delivery or operational workflow. In many cases, the event payload -- containing meta-data such as the project, stage, or service name as well as shipyard information -- is first processed and then used to call the REST API of another tool.  
+Your Keptn-service must have a subscription to at least one [Keptn CloudEvent](https://github.com/keptn/spec/blob/0.1.6/cloudevents.md). The event type to subscribe to looks as follows:
 
-**Outgoing Keptn CloudEvent:** After your *Keptn-service* has completed its functionality, it has to send a CloudEvent to the event broker of Keptn. This informs Keptn to continue a particular task sequence.  
+- `sh.keptn.event.[task].triggered`
 
-**Deployment and service template:** A *Keptn-service* is a regular Kubernetes service with a deployment and service template. As a starting point for your service the deployment and service manifest of the *jmeter-service* can be used, which can be found in the [deploy/service.yaml](https://github.com/keptn/keptn/blob/0.7.3/jmeter-service/deploy/service.yaml):
+In this example, the `[task]` works as a placeholder for tasks such as: `deployment`, `test`, `evaluation`, `remediation`, etc. The task defines the topic the Keptn-service is interested in. Assuming you are writing a Keptn-service for testing, the event type would be: `sh.keptn.event.test.triggered`.
+
+**Distributor:**
+
+* To subscribe your Keptn-service to the `sh.keptn.event.[task].triggered` event, a distributor is required. A default distributor is provided in the deployment manifest of the keptn-service-template-go template (see [deploy/service.yaml](https://github.com/keptn-sandbox/keptn-service-template-go/blob/master/deploy/service.yaml)) and as shown by the example below:
 
 ```yaml
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: jmeter-service
-  namespace: keptn
-  labels:
-    app.kubernetes.io/name: jmeter-service
-    app.kubernetes.io/instance: keptn
-    app.kubernetes.io/part-of: keptn
-    app.kubernetes.io/component: execution-plane
-    app.kubernetes.io/version: 0.7.3
 spec:
-  selector:
-    matchLabels:
-      app.kubernetes.io/name: jmeter-service
-      app.kubernetes.io/instance: keptn
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        app.kubernetes.io/name: jmeter-service
-        app.kubernetes.io/instance: keptn
-        app.kubernetes.io/part-of: keptn
-        app.kubernetes.io/component: execution-plane
-        app.kubernetes.io/version: 0.7.3
-    spec:
-      containers:
-      - name: jmeter-service
-        image: keptn/jmeter-service:0.7.3
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 10999
-          initialDelaySeconds: 5
-          periodSeconds: 5
-        ports:
-        - containerPort: 8080
-        env:
-        - name: EVENTBROKER
-          value: 'http://event-broker.keptn.svc.cluster.local/keptn'
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: jmeter-service
-  namespace: keptn
-  labels:
-    app.kubernetes.io/name: jmeter-service
-    app.kubernetes.io/instance: keptn
-    app.kubernetes.io/part-of: keptn
-    app.kubernetes.io/component: execution-plane
-spec:
-  ports:
-  - port: 8080
-    protocol: TCP
-  selector:
-    app.kubernetes.io/name: jmeter-service
-    app.kubernetes.io/instance: keptn
+  containers:
+  - name: distributor
+    image: keptn/distributor:0.8.0
+    ports:
+    - containerPort: 8080
+    resources:
+      requests:
+        memory: "32Mi"
+        cpu: "50m"
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    env:
+    - name: CONNECTION_TYPE
+      value: 'nats'
+    - name: PUBSUB_URL
+      value: 'nats://keptn-nats-cluster'
+    - name: PUBSUB_TOPIC
+      value: 'sh.keptn.event.test.triggered'
+    - name: PUBSUB_RECIPIENT
+      value: 'jmeter-service'
 ```
+
+To configure this distributor for your *Keptn-service*, three environment variables need to be adapted: 
+
+<details><summary>*Distributor for Keptn-service that is running* **inside the Keptn control plane**: </summary>
+
+<p>
+
+| Environment variable  	| Setting 	|
+|-----------------------	|:--------	|
+| CONNECTION_TYPE       	| `nats`   	|
+| PUBSUB_URL            	| `nats://keptn-nats-cluster`   	|
+| PUBSUB_RECIPIENT      	| Service name as specified in the Kubernetes service manifest mentioned below.        	|
+| PUBSUB_RECIPIENT_PORT 	| Service port to receive the event (default: `8080`)        	|
+| PUBSUB_RECIPIENT_PATH 	| Service endpoint to receive the event (default: `/`)        	|
+| PUBSUB_TOPIC          	| Event(s) the Keptn-service is subsribed to. To subscribe to multiple events, declare a comma-separated list, e.g.: `sh.keptn.event.test.triggered, sh.keptn.event.evaluation.triggered` |
+
+</p>
+</details>
+
+
+<details><summary>*Distributor for Keptn-service that is running* **outside the Keptn control plane (in execution plane)**: </summary>
+
+<p>
+
+| Environment variable  	| Setting 	|
+|-----------------------	|:--------	|
+| CONNECTION_TYPE       	| `http`   	|
+| HTTP_EVENT_POLLING_ENDPOINT       | The endpoint to poll for triggered events. It must end with: `/v1/event/triggered` (default: `http://shipyard-controller:8080/v1/event/triggered`)  	|
+| HTTP_EVENT_ENDPOINT_AUTH_TOKEN    | Keptn API token |
+| HTTP_POLLING_INTERVAL            	| Polling interval in minutes   	|
+| HTTP_EVENT_FORWARDING_ENDPOINT | The endpoint to send the `started` and `finished` event   	|
+| PUBSUB_RECIPIENT      	| Service name as specified in the Kubernetes service manifest mentioned below.        	|
+| PUBSUB_RECIPIENT_PORT 	| Service port to receive the event (default: `8080`)        	|
+| PUBSUB_RECIPIENT_PATH 	| Service endpoint to receive the event (default: `/`)        	|
+| PUBSUB_TOPIC          	| Event(s) the Keptn-service is subsribed to. To subscribe to multiple events, declare a comma-separated list, e.g.: `sh.keptn.event.test.triggered, sh.keptn.event.evaluation.triggered` |
+</p>
+</details>
+
+### Send a started event
+
+After receiving a `triggered` event for a particular task, your *Keptn-service* has to inform Keptn by sending an event of the type: 
+
+- `sh.keptn.event.[task].started`
+
+The request body needs to follow the [CloudEvent specification](https://github.com/keptn/spec/blob/0.1.6/cloudevents.md) and the HTTP header attribute `Content-Type` has to be set to `application/cloudevents+json`. 
+
+**Send the event:**
+
+To send the event to Keptn, two ways are possible: 
+
+1. Post it on the `v1/event` endpoint of Keptn
+1. If the distributor is running as sidecar, post the event on `127.0.0.1:8081`
+
+### Execute the functionality
+
+The functionality of your *Keptn-service* depends on the capability you want to add to the continuous delivery or operational workflow. In many cases, the event payload -- containing meta-data such as the project, stage, or service name -- is first processed and then used to call the REST API of another tool.  
+
+### Send a finished event
+
+After your *Keptn-service* has completed its functionality, it has to inform Keptn by sending an event of the type: 
+
+- `sh.keptn.event.[task].finished`
+
+The request body needs to follow the [CloudEvent specification](https://github.com/keptn/spec/blob/0.1.6/cloudevents.md) and the HTTP header attribute `Content-Type` has to be set to `application/cloudevents+json`. 
+
+**Add property to event header:**
+
+Add to the *header* of the event: 
+
+  * `triggeredid`: The value of this property is the `id` of the `sh.keptn.event.[task].triggered` event. 
+
+**Add data to event payload:**
+
+You can send data back to Keptn by adding it to the data block in the event payload. In more details, the data block has a reserved space depending on the event type. If, for example, your Keptn service has a subscription to a `sh.keptn.event.test.finished` event, the reserved space is `data.test`. Your Keptn-service is allowed to add data there, but must provide at least a value for `status` and `result`:
+
+* `status`: [succeeded, errored, unknown] - The status of the task execution. 
+* `result`: [pass, failed] - The result of a successful task execution. 
+
+```json
+{
+  "type": "sh.keptn.event.test.finished",
+  "specversion": "1.0",
+  "source": "https://github.com/keptn/keptn/jmeter-service",
+  "id": "ggb878d3-03c0-4e8f-bc3f-454bc1b3d888",
+  "time": "2019-06-07T07:02:15.64489Z",
+  "contenttype": "application/json",
+  "shkeptncontext": "08735340-6f9e-4b32-97ff-3b6c292bc509",
+  "triggeredid" : "f2b878d3-03c0-4e8f-bc3f-454bc1b3d79d",
+  "data": {
+    "test": {
+      "status": "succeeded",
+      "result": "pass"
+    },
+    "project": "sockshop",
+    "stage": "staging",
+    "service": "carts",
+    "labels": {
+      "testId": "4711",
+      "buildId": "build-17",
+      "owner": "JohnDoe"
+    }
+  }
+}
+```
+
+**Send the event:**
+
+To send the event to Keptn, two ways are possible: 
+
+1. Post it on the `v1/event` endpoint of Keptn
+1. If the distributor is running as sidecar, post the event on `127.0.0.1:8081`
+
+## Deploy Keptn-service with distributor
 
 ### Subscribe service to Keptn event
 
-**Distributor:** To subscribe your service to a Keptn event, a distributor is required. A distributor comes with a deployment manifest as shown by the example below:
+**Distributor:** To subscribe your service to a Keptn event, a distributor is required. A distributor is part of the above mentioned deployment manifest and shown by the example below:
 
 ```yaml
-## jmeter-service: sh.keptn.events.deployment-finished
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: jmeter-service-deployment-distributor
-  namespace: keptn
 spec:
   selector:
     matchLabels:
@@ -150,36 +225,21 @@ To configure this distributor for your *Keptn-service*, two environment variable
 * `PUBSUB_RECIPIENT`: Defines the service name as specified in the Kubernetes service manifest.
 * `PUBSUB_TOPIC`: Defines the event type your *Keptn-service* is listening to. 
 
-
 ## Deploy Keptn-service and distributor
 
-With a service and deployment manifest for your custom *Keptn-service* (`service.yaml`) and a deployment manifest for the distributor (`distributor.yaml`), you are ready to deploy both components in the K8s cluster where Keptn is installed: 
+With a service and deployment manifest for your custom *Keptn-service* (`service.yaml`), you are ready to deploy both components in the K8s cluster where Keptn is installed: 
 
 ```console
-kubectl apply -f service.yaml
+kubectl apply -f service.yaml -n keptn
 ```
-
-```console
-kubectl apply -f distributor.yaml
-```
-
-## Summary
-You will need to provide the following when you want to write a custom service:
-
-- Your *Keptn-service* implementation including a Docker container. We recommend writing the service in *Go*
-- The application needs to provide a REST endpoint at `/` that accepts `POST` requests for JSON objects.
-- A `service.yaml` file containing the templates for the service and deployment manifest of your *Keptn-service*.
-- A `distributor.yaml` file containing the template for the distributor and properly configured for your *Keptn-service*.
-
 
 ## CloudEvents
 
-Please note that CloudEvents have to be sent with the HTTP header `Content-Type: application/cloudevents+json` to be set.
-For a detailed look into CloudEvents, please go the Keptn [CloudEvent specification](https://github.com/keptn/spec/blob/0.1.6/cloudevents.md). 
+CloudEvents have to be sent with the HTTP header `Content-Type` set to `application/cloudevents+json`. For a detailed look into CloudEvents, please go the Keptn [CloudEvent specification](https://github.com/keptn/spec/blob/0.1.6/cloudevents.md). 
 
 ## Logging
 
-To inspect your service's log messages for a specific deployment run, you can use the `shkeptncontext` property of the incoming CloudEvents. Your service has to output its log messages in the following format:
+To inspect the log messages of your Keptn-service for a specific deployment run, you can use the `shkeptncontext` property of the incoming CloudEvents. Your service has to output its log messages in the following format:
 
 ```json
 {
@@ -192,16 +252,4 @@ To inspect your service's log messages for a specific deployment run, you can us
 
 **Note:** For implementing logging into your *Go* service, you can import the [go-utils](https://github.com/keptn/go-utils) package that already provides common logging functions. 
 
-
 To inspect your service's log messages for a specific deployment run, you can use the `shkeptncontext` property of the incoming CloudEvents. Your service has to output its log messages in the following format:
-
-```json
-{
-  "keptnContext": "<KEPTN_CONTEXT>",
-  "logLevel": "INFO | DEBUG | WARNING | ERROR",
-  "keptnService": "<YOUR_SERVICE_NAME>",
-  "message": "logging message"
-}
-```
-
-**Note:** For implementing logging into your *Go* service, you can import the [go-utils](https://github.com/keptn/go-utils) package that already provides common logging functions. 

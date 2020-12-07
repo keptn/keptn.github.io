@@ -2,7 +2,7 @@
 title: Glossary
 description: Terms which are introduced and used in Keptn
 weight: 100
-keywords: [keptn, glossary]
+keywords: [0.6.x-glossary]
 ---
 
 Keptn allows building scalable automation for delivery and operations. Therefore, Keptn introduces and uses the following terms.

@@ -47,7 +47,7 @@ keptn send event start-evaluation --project=easyBooking --stage=quality_assuranc
 ```json
 {
   "source": "keptn-cli",
-  "specversion": "0.2",
+  "specversion": "1.0",
   "type": "sh.keptn.event.start-evaluation",
   "contenttype": "application/json",
   "data": {
@@ -147,7 +147,7 @@ curl -X POST "${KEPTN_ENDPOINT}/v1/project/easyBooking/stage/quality_assurance/s
 ```json
 {
   "source": "keptn-cli",
-  "specversion": "0.2",
+  "specversion": "1.0",
   "type": "sh.keptn.event.start-evaluation",
   "contenttype": "application/json",
   "data": {
