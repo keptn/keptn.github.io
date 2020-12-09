@@ -34,7 +34,7 @@ The *api-gateway-nginx* component is the single point used for exposing Keptn to
 
 ### api-service
 
-The *api* component provides a REST API that allows communicating with Keptn. It receives the commands from the CLI and executes the requested tasks. However, the api component mostly uses other internal services or forwards events to the *eventbroker*. In addition to the REST API, the api component maintains a websocket server to forward Keptn messages to the *Keptn CLI*.
+The *api* component provides a REST API that allows communicating with Keptn. It provides endpoints to authenticate, get metadata about the Keptn installation within the cluster, forwarding CloudEvents to the NATS cluster, and triggering evaluations for a service.
 
 **Note:** A dedicated Keptn API section is provided [here](../../0.7.x/reference/api/), which helps you to access the API and to explore the available endpoints.
 
@@ -52,7 +52,7 @@ The *shipyard-controller* is responsible for managing all Keptn-related entities
 Another responsibility of this service is the control of task sequences defined in the shipyard file of a project by sending out `.triggered` events whenever a task within a task sequence should be executed. 
 It will then listen for incoming `.started` and `.finished` events and use them to proceed within the task sequence.
 
-### Execution Plane Services
+## Execution Plane Services
 
 To enrich the continuous delivery use case or to build automated operations, Keptn relies on services from the community. Those services can be easily plugged into a task sequence to extend the delivery pipeline or to further automate operations.
 
@@ -64,7 +64,7 @@ Here are some examples of execution plane services:
 
 - **lighthouse-service:** It is responsible for conducting a quality evaluation based on configured SLOs/SLIs. 
 
-- **gatekeeper-service:** It implements the quality gate in each stage, i.e., depending on the evaluation result it either promotes an artifact to the next stage or not.
+- **gatekeeper-service:** It implements the automatic quality gate in each stage where the approval strategy has been set to `automatic`, i.e., it will send an `approval.finished` event which contains the information about whether a task sequence (e.g. the artifact delivery) should continue or not. If the approval strategy within a stage has been set to `manual`, the gatekeeper service will not respond with any event since in that case the user is responsible for sending an `approval.finished` event (either via the Bridge or via the API).  
 
 - **remediation-service:** It is used to orchestrate remediation workflows. 
 
@@ -72,10 +72,10 @@ Execution plane services subscribe to events via a distributor sidecar, that for
 
 As illustrated in the architecture diagram above, execution plane services can both be operated within the same cluster as Keptn, or outside of the cluster. 
 
-When they are operated within the same cluster, the services can directly access the HTTP APIs provided by the control plane services,
+ - When they are operated within the same cluster, the services can directly access the HTTP APIs provided by the control plane services,
 without having to authenticate. In this case, the distributor sidecars directly connect themselves to the NATS cluster to subscribe to topics and send back events.
 
-When an execution plane is operated outside of the Cluster, it has the possibility to communicate with the HTTP API exposed by the `api-gateway-nginx`. In this case, every request to the API has to be authenticated using the `keptn-api` token. 
+- When an execution plane is operated outside of the Cluster, it has the possibility to communicate with the HTTP API exposed by the `api-gateway-nginx`. In this case, every request to the API has to be authenticated using the `keptn-api` token. 
 Also, the distributor sidecars do not have the possibility to directly connect to the NATS cluster, but they can be configured to fetch open `.triggered` events from the HTTP API.
 
 To read more about developing execution plane services, please refer to the following section in the docs: [Write a Keptn-service](../../0.8.x/integrations/custom_integration/), which helps you to implement a custom service for Keptn. 
