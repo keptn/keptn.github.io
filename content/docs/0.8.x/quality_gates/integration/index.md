@@ -42,13 +42,13 @@ keptn send event start-evaluation --project=easyBooking --stage=quality_assuranc
 <details><summary>`keptn send event`</summary>
 <p>
 
-* First, specify a valid Keptn CloudEvent of type [sh.keptn.event.start-evaluation](https://github.com/keptn/spec/blob/0.1.6/cloudevents.md#start-evaluation) and store it as JSON file, e.g., `trigger_quality_gate.json`
+* First, specify a valid Keptn CloudEvent of type [sh.keptn.event.<stage>.evaluation.triggered](https://github.com/keptn/spec/blob/0.2.0/cloudevents.md#evaluation-triggered) and store it as JSON file, e.g., `trigger_quality_gate.json`
 
 ```json
 {
   "source": "keptn-cli",
   "specversion": "1.0",
-  "type": "sh.keptn.event.start-evaluation",
+  "type": "sh.keptn.event.quality_assurance.evaluation.triggered",
   "contenttype": "application/json",
   "data": {
     "deploymentstrategy": "direct",
@@ -82,10 +82,10 @@ keptn send event --file=trigger_quality_gate.json
 
 ### Fetch the evaluation result of a quality gate
 
-* To fetch a quality gate evaluation result, the Keptn CLI provides the [keptn get event evaluation-done](../../reference/cli/commands/keptn_get_event_evaluation-done/) command. This command requires the ID (`--keptn-context`) returned by the `send event start-evaluation` or `send event` command.
+* To fetch a quality gate evaluation result, the Keptn CLI provides the [keptn get event sh.keptn.event.evaluation.finished](../../reference/cli/commands/keptn_get_event/) command. This command requires the ID (`--keptn-context`) returned by the `send event start-evaluation` or `send event` command, as well as the name of the project (`--project`).
 
 ```console
-keptn get event evaluation-done --keptn-context=1234-5678-90ab-cdef
+keptn get event sh.keptn.event.evaluation.finished --keptn-context=1234-5678-90ab-cdef --project=easyBooking
 ```
 
 **Note:** The evaluation of the quality gate may take some time, especially because the metrics first have to be available in your monitoring solution and need to be queried by the SLI-provider. Consequently, the result is not immediately available.
@@ -142,13 +142,13 @@ curl -X POST "${KEPTN_ENDPOINT}/v1/project/easyBooking/stage/quality_assurance/s
 <details><summary>**Trigger via: `/v1/event`**</summary>
 <p>
 
-* Specify a valid Keptn CloudEvent of type [sh.keptn.event.start-evaluation](https://github.com/keptn/spec/blob/0.1.6/cloudevents.md#start-evaluation) and store it as JSON file, e.g., `trigger_quality_gate.json`
+* Specify a valid Keptn CloudEvent of type [sh.keptn.event.<stage>.evaluation.triggered](https://github.com/keptn/spec/blob/0.2.0/cloudevents.md#evaluation.triggered) and store it as JSON file, e.g., `trigger_quality_gate.json`
 
 ```json
 {
   "source": "keptn-cli",
   "specversion": "1.0",
-  "type": "sh.keptn.event.start-evaluation",
+  "type": "sh.keptn.event.quality_assurance.evaluation.triggered",
   "contenttype": "application/json",
   "data": {
     "deploymentstrategy": "direct",
@@ -186,11 +186,11 @@ curl -X POST "${KEPTN_ENDPOINT}/v1/event" \
 
 ### Fetch the evaluation result of a quality gate 
 
-* To fetch a quality gate evaluation result, the Keptn CLI provides the `/event` endpoint. This endpoint requires the query parameters `keptn-context` and `type`; latter is always `sh.keptn.events.evaluation-done`. 
+* To fetch a quality gate evaluation result, the Keptn CLI provides the `/event` endpoint. This endpoint requires the query parameters `keptn-context` and `type`; latter is always `sh.keptn.event.evaluation.finished`. 
 
 ```console
 
-curl -X GET "${KEPTN_ENDPOINT}/api/mongodb-datastore/event?keptnContext={keptnContext}&type=sh.keptn.events.evaluation-done" \
+curl -X GET "${KEPTN_ENDPOINT}/api/mongodb-datastore/event?keptnContext={keptnContext}&type=sh.keptn.event.evaluation.finished" \
 -H "accept: application/json; charset=utf-8" \
 -H "x-token: ${KEPTN_API_TOKEN}"
 ```

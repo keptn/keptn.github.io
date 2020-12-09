@@ -36,7 +36,7 @@ A Keptn-service has the following characteristics:
 
 ### Subscription to Keptn event
 
-Your Keptn-service must have a subscription to at least one [Keptn CloudEvent](https://github.com/keptn/spec/blob/0.1.6/cloudevents.md). The event type to subscribe to looks as follows:
+Your Keptn-service must have a subscription to at least one [Keptn CloudEvent](https://github.com/keptn/spec/blob/0.2.0/cloudevents.md). The event type to subscribe to looks as follows:
 
 - `sh.keptn.event.[task].triggered`
 
@@ -114,7 +114,7 @@ After receiving a `triggered` event for a particular task, your *Keptn-service* 
 
 - `sh.keptn.event.[task].started`
 
-The request body needs to follow the [CloudEvent specification](https://github.com/keptn/spec/blob/0.1.6/cloudevents.md) and the HTTP header attribute `Content-Type` has to be set to `application/cloudevents+json`. 
+The request body needs to follow the [CloudEvent specification](https://github.com/keptn/spec/blob/0.2.0/cloudevents.md) and the HTTP header attribute `Content-Type` has to be set to `application/cloudevents+json`. 
 
 **Send the event:**
 
@@ -133,7 +133,7 @@ After your *Keptn-service* has completed its functionality, it has to inform Kep
 
 - `sh.keptn.event.[task].finished`
 
-The request body needs to follow the [CloudEvent specification](https://github.com/keptn/spec/blob/0.1.6/cloudevents.md) and the HTTP header attribute `Content-Type` has to be set to `application/cloudevents+json`. 
+The request body needs to follow the [CloudEvent specification](https://github.com/keptn/spec/blob/0.2.0/cloudevents.md) and the HTTP header attribute `Content-Type` has to be set to `application/cloudevents+json`. 
 
 **Add property to event header:**
 
@@ -201,7 +201,7 @@ spec:
     spec:
       containers:
       - name: distributor
-        image: keptn/distributor:0.7.3
+        image: keptn/distributor:0.8.0
         ports:
         - containerPort: 8080
         resources:
@@ -215,7 +215,7 @@ spec:
         - name: PUBSUB_URL
           value: 'nats://keptn-nats-cluster'
         - name: PUBSUB_TOPIC
-          value: 'sh.keptn.events.deployment-finished'
+          value: 'sh.keptn.event.deployment.finished'
         - name: PUBSUB_RECIPIENT
           value: 'jmeter-service'
 ```

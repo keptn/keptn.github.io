@@ -14,7 +14,6 @@ The `shipyard.yml` file defines the stages each deployment has to go through unt
 * approval_strategy
 * deployment_strategy
 * test_strategy
-* remediation_strategy
 
 A shipyard is defined at the level of a project. This means that all services in a project share the same shipyard configuration. 
 
@@ -25,10 +24,15 @@ The name of the stage. This name will be used for the branch in the Git reposito
 **Example of a shipyard with three stages:**
 
 ```yaml
-stages:
-  - name: "dev"
-  - name: "hardening"
-  - name: "production"
+apiVersion: "spec.keptn.sh/0.2.0"
+kind: "Shipyard"
+metadata:
+  name: "shipyard-sockshop"
+spec:
+  stages:
+    - name: "dev"
+    - name: "hardening"
+    - name: "production"
 ```
 
 ### Approval Strategy
@@ -53,13 +57,22 @@ Per default, an `automatic` approval strategy is used for evaluation result `pas
 **Extended shipyard with a mandatory approval task in production:**
 
 ```yaml
-stages:
-  - name: "dev"
-  - name: "hardening"
-  - name: "production"
-    approval_strategy: 
-      pass: "manual"
-      warning: "manual"
+apiVersion: "spec.keptn.sh/0.2.0"
+kind: "Shipyard"
+metadata:
+  name: "shipyard-sockshop"
+spec:
+  stages:
+    - name: "production"
+      sequences:
+        - name: "artifact-delivery"
+          tasks:
+            - name: "deployment"
+            - name: "approval"
+              properties:
+                pass: "manual"
+                warning: "manual"
+            - name: "release"
 ```
 
 ### Deployment Strategy
@@ -72,16 +85,44 @@ Defines the deployment strategy used to deploy a new version of a service. Keptn
 **Extended shipyard with direct deployment in dev and blue/green deployment in hardening and production:**
 
 ```yaml
-stages:
-  - name: "dev"
-    deployment_strategy: "direct"
-  - name: "hardening"
-    deployment_strategy: "blue_green_service"
-  - name: "production"
-    approval_strategy: 
-      pass: "manual"
-      warning: "manual"
-    deployment_strategy: "blue_green_service"
+apiVersion: "spec.keptn.sh/0.2.0"
+kind: "Shipyard"
+metadata:
+  name: "shipyard-sockshop"
+spec:
+  stages:
+    - name: "dev"
+      sequences:
+        - name: "artifact-delivery"
+          tasks:
+            - name: "deployment"
+              properties:
+                deploymentstrategy: "direct"
+            - name: "evaluation"
+            - name: "release"
+
+    - name: "hardening"
+      sequences:
+        - name: "artifact-delivery"
+          triggers:
+            - "dev.artifact-delivery.finished"
+          tasks:
+            - name: "deployment"
+              properties:
+                deploymentstrategy: "blue_green_service"
+            - name: "evaluation"
+            - name: "release"
+
+    - name: "production"
+      sequences:
+        - name: "artifact-delivery"
+          triggers:
+            - "staging.artifact-delivery.finished"
+          tasks:
+            - name: "deployment"
+              properties:
+                deploymentstrategy: "blue_green_service"
+            - name: "release"
 ```
 
 ### Test Strategy
@@ -94,40 +135,40 @@ Defines the test strategy used to validate a deployment. Failed tests result in 
 **Extended shipyard with functional tests in dev and performance tests in hardening**
 
 ```yaml
-stages:
-  - name: "dev"
-    deployment_strategy: "direct"
-    test_strategy: "functional"
-  - name: "hardening"
-    deployment_strategy: "blue_green_service"
-    test_strategy: "performance"
-  - name: "production"
-    approval_strategy: 
-      pass: "manual"
-      warning: "manual"
-    deployment_strategy: "blue_green_service"
-``` 
+apiVersion: "spec.keptn.sh/0.2.0"
+kind: "Shipyard"
+metadata:
+  name: "shipyard-sockshop"
+spec:
+  stages:
+    - name: "dev"
+      sequences:
+        - name: "artifact-delivery"
+          tasks:
+            - name: "deployment"
+              properties:
+                deploymentstrategy: "direct"
+            - name: "test"
+              properties:
+                teststrategy: "functional"
+            - name: "evaluation"
+            - name: "release"
 
-### Remediation Strategy
+    - name: "staging"
+      sequences:
+        - name: "artifact-delivery"
+          triggers:
+            - "dev.artifact-delivery.finished"
+          tasks:
+            - name: "deployment"
+              properties:
+                deploymentstrategy: "blue_green_service"
+            - name: "test"
+              properties:
+                teststrategy: "performance"
+            - name: "evaluation"
+            - name: "release"
 
-The remediation strategy specifies whether remediation actions are enabled or not. To enable remediation actions, the `remediation_strategy` property has to be set to `automated`.
-
-**Extended shipyard with remediation actions enabled in production**
-
-```yaml
-stages:
-  - name: "dev"
-    deployment_strategy: "direct"
-    test_strategy: "functional"
-  - name: "hardening"
-    deployment_strategy: "blue_green_service"
-    test_strategy: "performance"
-  - name: "production"
-    approval_strategy: 
-      pass: "manual"
-      warning: "manual"
-    deployment_strategy: "blue_green_service"
-    remediation_strategy: "automated"
 ``` 
 
 ## Create project with multi-stage delivery

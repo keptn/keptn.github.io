@@ -15,16 +15,50 @@ To describe the stages of a project, a **shipyard** file is needed that specifie
 **Note:** To learn more about a shipyard file, see [declare shipyard before creating a project](../../continuous_delivery/multi_stage/#declare-shipyard-before-creating-a-project).
 
 ```yaml
-stages:
-  - name: "dev"
-    deployment_strategy: "direct"
-    test_strategy: "functional"
-  - name: "staging"
-    deployment_strategy: "blue_green_service"
-    test_strategy: "performance"
-  - name: "production"
-    deployment_strategy: "blue_green_service"
-    remediation_strategy: "automated"
+apiVersion: "spec.keptn.sh/0.2.0"
+kind: "Shipyard"
+metadata:
+  name: "shipyard-sockshop"
+spec:
+  stages:
+    - name: "dev"
+      sequences:
+        - name: "artifact-delivery"
+          tasks:
+            - name: "deployment"
+              properties:
+                deploymentstrategy: "direct"
+            - name: "test"
+              properties:
+                teststrategy: "functional"
+            - name: "evaluation"
+            - name: "release"
+
+    - name: "staging"
+      sequences:
+        - name: "artifact-delivery"
+          triggers:
+            - "dev.artifact-delivery.finished"
+          tasks:
+            - name: "deployment"
+              properties:
+                deploymentstrategy: "blue_green_service"
+            - name: "test"
+              properties:
+                teststrategy: "performance"
+            - name: "evaluation"
+            - name: "release"
+
+    - name: "production"
+      sequences:
+        - name: "artifact-delivery"
+          triggers:
+            - "staging.artifact-delivery.finished"
+          tasks:
+            - name: "deployment"
+              properties:
+                deploymentstrategy: "blue_green_service"
+            - name: "release"
 ```
 
 * **Recommended approach for Keptn in production:** Create a project with the Keptn CLI using a Git upstream: 
