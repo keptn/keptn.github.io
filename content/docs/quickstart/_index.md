@@ -118,7 +118,7 @@ Please make sure you have `kubectl` installed (see [kubernetes.io/docs/tasks/too
 
 ### 3. Install Keptn and authenticate Keptn CLI
 
-* By executing the [keptn install](../0.7.x/reference/cli/commands/keptn_install) command as shown next, Keptn will be installed on your Kuberentes cluster supporting all continuous delivery use cases (including quality gates and automated operations):
+* By executing the [keptn install](../0.7.x/reference/cli/commands/keptn_install) command as shown next, Keptn will be installed on your Kubernetes cluster supporting all continuous delivery use cases (including quality gates and automated operations):
 
     ```console
     keptn install --use-case=continuous-delivery
