@@ -21,13 +21,13 @@ You can specify [Kubernetes labels](https://kubernetes.io/docs/concepts/overview
 
 * Please follow the official Dynatrace documentation to [grant viewer role to service accounts](https://www.dynatrace.com/support/help/shortlink/kubernetes-tagging#grant-viewer-role-to-service-accounts).
 
-* If you want to automatically detect the Kuberentes labels for Keptn, grant the viewer role to the `keptn-default` service account: 
+* If you want to automatically detect the Kubernetes labels for Keptn, grant the viewer role to the `keptn-default` service account: 
 
 ```console
 kubectl -n keptn create rolebinding default-view --clusterrole=view --serviceaccount=keptn:keptn-default
 ```
 
-As a result, Dynatrace will add the recommended Kuberentes labels to the processes, e.g.: 
+As a result, Dynatrace will add the recommended Kubernetes labels to the processes, e.g.: 
 
 {{< popup_image
     link="./assets/k8s_labels.png"
