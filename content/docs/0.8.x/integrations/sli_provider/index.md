@@ -5,7 +5,7 @@ weight: 5
 keywords: [0.8.x-integration]
 ---
 
-An *SLI-provider* is an implementation of a [*Keptn-service*](../custom_integration/#keptn-service) with a dedicated purpose. This type of service is responsible for querying an external data source for SLIs that are then used by Keptn to evaluate an SLO. To configure a query for an indicator, Keptn provides the concept of an [SLI configuration](https://github.com/keptn/spec/blob/0.1.6/service_level_indicator.md#service-level-indicators-sli).
+An *SLI-provider* is an implementation of a [*Keptn-service*](../custom_integration/#keptn-service) with a dedicated purpose. This type of service is responsible for querying an external data source for SLIs that are then used by Keptn to evaluate an SLO. To configure a query for an indicator, Keptn provides the concept of an [SLI configuration](https://github.com/keptn/spec/blob/0.2.0/service_level_indicator.md#service-level-indicators-sli).
 
 * Create a SLI configuration defining tool-specific queries for indicators. An example of an SLI configuration looks as follows:
 
@@ -35,9 +35,9 @@ Like a Keptn-service, an SLI-provider has the following characteristics:
 
 An *SLI-provider* starts working, when receiving a Keptn CloudEvent of type:
 
-- [sh.keptn.event.get-sli.triggered](https://github.com/keptn/spec/blob/0.1.6/cloudevents.md#get-sli) 
+- [sh.keptn.event.get-sli.triggered](https://github.com/keptn/spec/blob/0.2.0/cloudevents.md#get-sli) 
 
-Next to event meta-data such as project, stage, or service name, the event contains information about the indicators, time frame, and labels to query. For more details, please see the specification [here](https://github.com/keptn/spec/blob/0.1.6/cloudevents.md#get-sli) and take a look at the example: 
+Next to event meta-data such as project, stage, or service name, the event contains information about the indicators, time frame, and labels to query. For more details, please see the specification [here](https://github.com/keptn/spec/blob/0.2.0/cloudevents.md#get-sli) and take a look at the example: 
 
 ```json
 {
@@ -49,19 +49,18 @@ Next to event meta-data such as project, stage, or service name, the event conta
   "contenttype": "application/json",
   "shkeptncontext": "08735340-6f9e-4b32-97ff-3b6c292bc509",
   "data": {
-    "customFilters": [
-      { "key" : "tags", "value": "test-subject:true" }
-    ],
-    "deployment": "direct",
-    "deploymentstrategy": "direct",
-    "indicators": ["throughput", "error_rate", "request_latency_p95"],
+    "get-sli": {
+        "customFilters": [
+          { "key" : "tags", "value": "test-subject:true" }
+        ],
+        "indicators": ["throughput", "error_rate", "request_latency_p95"],
+        "start": "2019-10-28T15:44:27.152330783Z",
+        "end": "2019-10-28T15:54:27.152330783Z",
+        "sliProvider": "dynatrace"
+    },
     "project": "sockshop",
     "service": "carts",
     "stage": "dev",
-    "start": "2019-10-28T15:44:27.152330783Z",
-    "end": "2019-10-28T15:54:27.152330783Z",
-    "sliProvider": "dynatrace",
-    "teststrategy":"manual",
     "labels": {
       "testId": "4711",
       "buildId": "build-17",
