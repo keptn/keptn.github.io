@@ -46,11 +46,11 @@ Run your Keptn installation for free on GKE! If you [sign up for a Google Cloud 
 
 Please refer to the [official homepage of K3s](https://k3s.io) for detailed installation instructions. Here, a short guide on how to run Keptn on K3s is provided for a Linux environment. **Note:** If you are using macOS, you will need to run K3s using [multipass](https://multipass.run/) and as explained [here](https://medium.com/@zhimin.wen/running-k3s-with-multipass-on-mac-fbd559966f7c).
  
-1. Download, install [K3s](https://k3s.io/) (tested with [versions 1.16 to 1.18](../0.7.x/operate/k8s_support/#supported-versions)) and run K3s using the following command:
+1. Download, install [K3s](https://k3s.io/) (tested with [versions 1.16 to 1.19](../0.7.x/operate/k8s_support/#supported-versions)) and run K3s using the following command:
    ```console
-   curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.18.3+k3s1 K3S_KUBECONFIG_MODE="644" sh -s - --no-deploy=traefik
+   curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.19.5+k3s1 K3S_KUBECONFIG_MODE="644" sh -s - --no-deploy=traefik
    ```
-   This installs version `v1.18.3+k3s1` (please refer to the [K3s GitHub releases page](https://github.com/rancher/k3s/releases) for newer releases), sets file permissions `644` on `/etc/rancher/k3s/k3s.yaml` and disables `traefik` as an ingress controller.
+   This installs version `v1.19.5+k3s1` (please refer to the [K3s GitHub releases page](https://github.com/rancher/k3s/releases) for newer releases), sets file permissions `644` on `/etc/rancher/k3s/k3s.yaml` and disables `traefik` as an ingress controller.
 
 1. Export the Kubernetes profile using
    ```console
@@ -90,12 +90,14 @@ The Keptn CLI is the one-stop-shop for all operations related to Keptn.
 
 Please make sure you have `kubectl` installed (see [kubernetes.io/docs/tasks/tools/install-kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)).
 
-##### 2.1.1 Automatic install of the Keptn CLI (Linux and Mac)
+##### 2.1.1 Automatic install of the Keptn CLI using Bash
+
+**Note**: This will work on Linux (and WSL2), as well as MacOS. Windows users need `bash`, `curl` and `awk` installed (e.g., using Git Bash). 
 
 1. This will download the *latest stable Keptn version* from [GitHub](https://github.com/keptn/keptn/releases), unpack it and move it to `/usr/local/bin/keptn`.
 
     ```console
-    curl -sL https://get.keptn.sh | sudo -E bash
+    curl -sL https://get.keptn.sh | bash
     ```
 
 2. Verify that the installation has worked and that the version is correct by running:
@@ -103,12 +105,17 @@ Please make sure you have `kubectl` installed (see [kubernetes.io/docs/tasks/too
     ```console
     keptn version
     ```
+    
+    or if you are on Windows
+    ```console
+    ./keptn version
+    ```
 
 ##### 2.1.2 Manual install of the Keptn CLI
 
 1. Download a release for your platform from the [GitHub](https://github.com/keptn/keptn/releases)
 
-1. Unpack the binary and move it to a directory of your choice (e.g., `/usr/local/bin/`)
+1. Unpack the binary, rename and move it to a directory of your choice (e.g., `/usr/local/bin/`)
 
 1. Verify that the installation has worked and that the version is correct by running:
 
