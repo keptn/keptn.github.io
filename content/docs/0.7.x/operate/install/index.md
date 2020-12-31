@@ -222,6 +222,32 @@ Use this page if you have already Keptn experience and would like to install it 
 
 ## Install Keptn CLI
 
+### MacOS
+
+Keptn CLI is also available as Homebrew package for macOS.
+
+#### Install
+
+This will automatically fetch the latest Binary from Homebrew
+
+```sh
+brew install keptn
+```
+
+#### Updating
+
+```sh
+brew upgrade keptn
+```
+
+#### Uninstall
+
+```sh
+brew uninstall keptn
+```
+
+### Others
+
 Every Keptn release provides binaries for the Keptn CLI. These binaries are available for Linux, macOS, and Windows.
 
 - Download the version for your operating system from: [GitHub](https://github.com/keptn/keptn/releases/tag/0.7.3)
@@ -245,7 +271,7 @@ Every Keptn release provides binaries for the Keptn CLI. These binaries are avai
     .\keptn.exe --help
     ```
 
-**Note:** For the rest of the documentation we will stick to the *Linux / macOS* version of the commands.
+**Note:** For the rest of the documentation we will stick to the *macOS* version of the commands.
 
 ## Install Keptn
 
