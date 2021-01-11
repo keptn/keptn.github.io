@@ -1,9 +1,28 @@
 .teaser {
+  background-color: $primary;
+
   h1 {
-    font-weight: $font-weight-semibold !important;
+    font-weight: $font-weight-semibold;
+    color: $white;
   }
 
   h2 {
-    font-weight: $font-weight-base !important;
+    font-weight: $font-weight-base;
+    color: $white;
+  }
+
+}
+
+.page-home {
+  .teaser {
+    background-color: $bannerColor-home;
+
+    h3 {
+      margin-top: 20px;
+    }
+
+    a {
+      text-decoration: underline;
+    }
   }
 }

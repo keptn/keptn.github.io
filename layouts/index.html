@@ -1,5 +1,5 @@
 {{ define "title" }}
-keptn | An event-based control plane for continuous delivery and automated operations for cloud-native applications
+keptn | Cloud-native application life-cycle orchestration
 {{ end }}
 
 {{ define "header_css" }}
@@ -18,8 +18,8 @@ page-home
 {{ end }}
 
 {{ define "meta" }}
-<meta property="og:description" content="Building the fabric for cloud-native lifecycle automation at enterprise scale">
-<meta property="og:title" content="Keptn - an event-based control plane for continuous delivery and automated operations for cloud-native applications.">
+<meta property="og:description" content="Keptn automates observability, SLO-driven multi-stage delivery, and operations">
+<meta property="og:title" content="Keptn - Cloud-native application life-cycle orchestration.">
 <meta property="og:image" content="https://keptn.sh/favicon.png">
 <meta property="og:url" content="https://keptn.sh/index.html">
 <meta name="twitter:card" content="summary_large_image">
@@ -27,256 +27,29 @@ page-home
 
 {{ define "main" }}
 
-
-
 {{/* Intro */}}
-<div class="intro">
-  {{/* announcement */}}
-{{ partial "announcement.html" . }}
-  <div class="container pt-5 pb-5">
-    <div class="row pt-md-5 pb-md-5">
-      <div class="col-12 col-md-8 col-lg-6">
-        {{ with .Site.GetPage "section" "home/intro" }}
-          {{ .Content }}
-        {{ end }}
-
-        <div class="d-flex pt-2">
-          <a class="button button-tertiary" href="https://github.com/keptn/keptn">
-            keptn on Github
-            <img class="icon" src="/images/general/icon-github.svg" alt="Github">
-            <img class="icon icon--hover" src="/images/general/icon-github-hover.svg" alt="Github">
-          </a>
-          &nbsp;&nbsp;&nbsp;
-          <a class="button button-primary" href="https://tutorials.keptn.sh/tutorials/keptn-installation-gke/index.html#0">
-            Quickstart with credits on GKE
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+{{ partial "intro.html" . }}
 
 {{/* Usage */}}
-<div class="usage">
-  <div class="container pt-4 pb-3 pb-md-4">
-    <div class="row pt-md-2 pb-md-4">
-      <div class="col-12 pb-2">
-        {{ with .Site.GetPage "section" "home/usage-top" }}
-          {{ .Content }}
-        {{ end }}
-      </div>
+{{ partial "usage.html" . }}
 
-      <div class="usage-item col-12 col-md-4 d-flex flex-row">
-        {{ with .Site.GetPage "section" "home/usage-left" }}
-          {{ .Content }}
-        {{ end }}
-      </div>
+{{/* Delivery */}}
+{{ partial "delivery.html" . }}
 
-      <div class="usage-item col-12 col-md-4 d-flex flex-row">
-        {{ with .Site.GetPage "section" "home/usage-middle" }}
-          {{ .Content }}
-        {{ end }}
-      </div>
+{{/* Remediation */}}
+{{ partial "remediation.html" . }}
 
-      <div class="usage-item col-12 col-md-4 d-flex flex-row">
-        {{ with .Site.GetPage "section" "home/usage-right" }}
-          {{ .Content }}
-        {{ end }}
-      </div>
-    </div>
-  </div>
-</div>
+{{/* Key Capabilities */}}
+{{ partial "capabilities.html" . }}
 
-{{/* Kubernetes Cluster */}}
-<div class="kubernetes-cluster">
-  <div class="container pt-5 pb-4">
-    <div class="row">
-      <div class="col-12 pb-4">
-        <div class="col-12 col-md-7 p-0">
-          {{ with .Site.GetPage "section" "home/kubernetes-cluster-top" }}
-            {{ .Content }}
-          {{ end }}
-        </div>
-      </div>
+{{/* Happy Users */}}
+{{ partial "happy-users.html" . }}
 
-      <div class="step col-12 col-md-10 col-lg-8 offset-md-2 offset-lg-4">
-        {{ with .Site.GetPage "section" "home/kubernetes-cluster-step1" }}
-          {{ .Content }}
-        {{ end }}
-      </div>
-
-      <div class="col-12 pt-4 pb-4">
-        {{/* Placeholder */}}
-      </div>
-
-      <div class="step col-12 col-md-10 col-lg-8 offset-md-2 offset-lg-4">
-        {{ with .Site.GetPage "section" "home/kubernetes-cluster-step2" }}
-          {{ .Content }}
-        {{ end }}
-      </div>
-    </div>
-  </div>
-</div>
-
-{{/* Delivery Flow */}}
-<div class="delivery-flow">
-  <img class="background-image" src="/images/home/background-flow.png" alt="Background Image">
-
-  <div class="container pt-5 pb-5">
-    <div class="row pb-md-5">
-      <div class="col-12">
-        <div class="col-12 col-md-8 col-lg-6 p-0">
-          {{ with .Site.GetPage "section" "home/delivery-flow-top" }}
-            {{ .Content }}
-          {{ end }}
-        </div>
-      </div>
-
-      <div class="text col-12 col-md-5 pb-3 pb-md-5">
-        {{ with .Site.GetPage "section" "home/delivery-flow-left" }}
-          {{ .Content }}
-        {{ end }}
-      </div>
-
-      <div class="col-12 col-md-6 offset-md-1 pb-md-5">
-        {{ with .Site.GetPage "section" "home/delivery-flow-right" }}
-          {{ .Content }}
-        {{ end }}
-      </div>
-    </div>
-  </div>
-</div>
-
-{{/* Onboard Services */}}
-<div class="onboard-services">
-  <div class="container pt-5 pb-5 pb-md-0 pb-lg-5">
-    <div class="row b-2 justify-content-center">
-      <div class="col-12 col-md-7 pb-1 pb-md-5 text-md-center">
-        {{ with .Site.GetPage "section" "home/onboard-services-top" }}
-          {{ .Content }}
-        {{ end }}
-      </div>
-
-      <div class="image col-12 col-md-6 pl-0 pr-0 pr-md-4 pb-md-5 pb-lg-0">
-        {{ with .Site.GetPage "section" "home/onboard-services-left" }}
-          {{ .Content }}
-        {{ end }}
-      </div>
-
-      <div class="text col-12 col-md-6 pb-3 pb-md-5 pb-lg-0">
-        {{ with .Site.GetPage "section" "home/onboard-services-right" }}
-          {{ .Content }}
-        {{ end }}
-      </div>
-    </div>
-  </div>
-</div>
-
-{{/* Divider */}}
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <hr>
-    </div>
-  </div>
-</div>
-
-{{/* Integration Workflow */}}
-<div class="integration-workflow">
-  <div class="container pt-5 pb-4">
-    <div class="row pt-lg-2 pb-2">
-      <div class="col-12">
-        <div class="col-12 col-md-8 col-lg-5 p-0">
-          {{ with .Site.GetPage "section" "home/integration-workflow-top" }}
-            {{ .Content }}
-          {{ end }}
-        </div>
-      </div>
-
-      <div class="text col-12 col-md-5 pb-3">
-        {{ with .Site.GetPage "section" "home/integration-workflow-top-left" }}
-          {{ .Content }}
-        {{ end }}
-      </div>
-
-      <div class="code col-12 col-md-6 offset-md-1 pb-5 pb-md-3">
-        {{ with .Site.GetPage "section" "home/integration-workflow-top-right" }}
-          {{ .Content }}
-        {{ end }}
-      </div>
-
-      <div class="image col-12 col-md-6 pl-0 pr-0 pr-md-4">
-        {{ with .Site.GetPage "section" "home/integration-workflow-bottom-left" }}
-          {{ .Content }}
-        {{ end }}
-      </div>
-
-      <div class="text col-12 col-md-6">
-        {{ with .Site.GetPage "section" "home/integration-workflow-bottom-right" }}
-          {{ .Content }}
-        {{ end }}
-      </div>
-    </div>
-  </div>
-</div>
-
-{{/* Keptn Workflows */}}
-<div class="keptn-workflows section-primary-opacity">
-  <div class="container pt-5 pb-5">
-    <div class="row pt-2 pt-md-4 pb-md-2">
-      <div class="image col-12 col-md-6 pl-0 pr-0 pr-md-4 pb-3 pb-md-0">
-        {{ with .Site.GetPage "section" "home/keptn-workflows-left" }}
-          {{ .Content }}
-        {{ end }}
-      </div>
-
-      <div class="text col-12 col-md-6 d-flex flex-column justify-content-center">
-        {{ with .Site.GetPage "section" "home/keptn-workflows-right" }}
-          {{ .Content }}
-        {{ end }}
-      </div>
-    </div>
-  </div>
-</div>
-
-{{/* Automatic Remediation */}}
-<div class="automatic-remediation">
-  <div class="container pt-5 pb-5">
-    <div class="row pt-md-5 pb-4 pb-md-5">
-      <div class="col-12 col-md-6 pl-0 pr-md-4">
-        <div class="text col-12">
-          {{ with .Site.GetPage "section" "home/automatic-remediation-left-top" }}
-            {{ .Content }}
-          {{ end }}
-        </div>
-
-        <div class="image col-12 pl-0 pr-0">
-          {{ with .Site.GetPage "section" "home/automatic-remediation-left-middle" }}
-            {{ .Content }}
-          {{ end }}
-        </div>
-
-        <div class="text col-12">
-          {{ with .Site.GetPage "section" "home/automatic-remediation-left-bottom" }}
-            {{ .Content }}
-          {{ end }}
-        </div>
-      </div>
-
-      <div class="code col-12 col-md-6">
-        {{ with .Site.GetPage "section" "home/automatic-remediation-right" }}
-          {{ .Content }}
-        {{ end }}
-      </div>
-    </div>
-  </div>
-</div>
-
-{{/* Teaser */}}
-{{ partial "teaser.html" . }}
+{{/* Tools */}}
+{{ partial "tools.html" . }}
 
 {{/* Contact */}}
-{{ partial "contact.html" . }}
+{{ partial "get-started.html" . }}
 
 {{/* Copy Indicator */}}
 {{ partial "copy-indicator.html" . }}

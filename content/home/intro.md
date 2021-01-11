@@ -1,5 +1,7 @@
-# / keptn /
-kep • tn
+### Keptn automates
 
-Definition of **keptn**
-## an event-based control plane for continuous delivery and automated operations for cloud-native applications.
+- Observability, dashboards & alerting
+- SLO-driven multi-stage delivery 
+- Operations & remediation
+
+declarative, extensible and based on GitOps

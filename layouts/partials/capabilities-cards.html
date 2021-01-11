@@ -1,0 +1,80 @@
+<div class="pt-md-2 pb-4 teaser-card-container">
+  <div class="teaser-card teaser-card--blue mr-sm-4 mb-3 mb-sm-4">
+    <div class="teaser-card-picture">
+      <picture>
+        <img src="/images/home/capabilities/capabilities-01.svg">
+      </picture>
+    </div>
+    <div class="teaser-card-content">
+      {{ with .Site.GetPage "section" "home/capabilities-01" }}
+      {{ .Content }}
+      {{ end }}
+    </div>
+  </div>
+
+  <div class="teaser-card teaser-card--blue mr-lg-4 mb-3 mb-sm-4">
+    <div class="teaser-card-picture">
+      <picture>
+        <img src="/images/home/capabilities/capabilities-02.svg">
+      </picture>
+    </div>
+    <div class="teaser-card-content">
+      {{ with .Site.GetPage "section" "home/capabilities-02" }}
+      {{ .Content }}
+      {{ end }}
+    </div>
+  </div>
+
+  <div class="teaser-card teaser-card--blue mr-sm-4 mr-lg-0 mb-3 mb-sm-4 mb-md-4">
+    <div class="teaser-card-picture">
+      <picture>
+        <img src="/images/home/capabilities/capabilities-03.svg">
+      </picture>
+    </div>
+    <div class="teaser-card-content">
+      {{ with .Site.GetPage "section" "home/capabilities-03" }}
+      {{ .Content }}
+      {{ end }}
+    </div>
+  </div>
+
+
+
+  <div class="teaser-card teaser-card--blue mr-lg-4 mb-3 mb-sm-4 mb-lg-0">
+    <div class="teaser-card-picture">
+      <picture>
+        <img src="/images/home/capabilities/capabilities-04.svg">
+      </picture>
+    </div>
+    <div class="teaser-card-content">
+      {{ with .Site.GetPage "section" "home/capabilities-04" }}
+      {{ .Content }}
+      {{ end }}
+    </div>
+  </div>
+
+  <div class="teaser-card teaser-card--blue mr-sm-4 mb-3 mb-sm-0">
+    <div class="teaser-card-picture">
+      <picture>
+        <img src="/images/home/capabilities/capabilities-05.svg">
+      </picture>
+    </div>
+    <div class="teaser-card-content">
+      {{ with .Site.GetPage "section" "home/capabilities-05" }}
+      {{ .Content }}
+      {{ end }}
+    </div>
+  </div>
+  <div class="teaser-card teaser-card--verticalCentered">
+    <div class="teaser-card-content teaser-card-content--blue teaser-card-content--courier">
+      {{ with .Site.GetPage "section" "home/capabilities-06" }}
+      {{ .Content }}
+      {{ end }}
+      <div class="col-12 col-md-10 pr-0 pl-0 pt-4">
+        <a class="button button--filledGreen d-inline-block" href="https://keptn.sh/why-keptn/">
+          Explore more
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

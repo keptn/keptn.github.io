@@ -14,7 +14,6 @@ body.page {
   min-height: 100vh;
   flex-direction: column;
   margin-top: 80px;
-  margin-bottom: 50px;
   font-family: $font-family-base;
   font-size: 1rem;
 
@@ -54,5 +53,21 @@ body.page-why-keptn {
 
   .header-link {
     display: none;
+  }
+}
+
+body.page-home {
+  margin-top: 0;
+  overflow: hidden;
+
+  .hamburger.is-active {
+    .hamburger-inner,
+    .hamburger-inner:after {
+      background: $white;
+
+      &.is-sticky {
+        background: $primary-home-900;
+      }
+    }
   }
 }

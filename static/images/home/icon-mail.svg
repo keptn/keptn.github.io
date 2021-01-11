@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon-mail</title>
+    <g id="icon-mail" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(4.000000, 6.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <g id="a/icons/32/mail">
+                <path d="M16,-1.6 L0,-1.6 C-1.105,-1.6 -1.99,-0.705 -1.99,0.4 L-2,12.4 C-2,13.505 -1.105,14.4 0,14.4 L16,14.4 C17.105,14.4 18,13.505 18,12.4 L18,0.4 C18,-0.705 17.105,-1.6 16,-1.6 Z M16,2.4 L8,7.4 L0,2.4 L0,0.4 L8,5.4 L16,0.4 L16,2.4 Z"></path>
+            </g>
+        </g>
+    </g>
+</svg>
