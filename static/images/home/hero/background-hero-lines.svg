@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1440px" height="626px" viewBox="0 0 1440 626" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>background-hero-lines</title>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="1440" height="626"></rect>
+    </defs>
+    <g id="↳-keptn-2.0" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="KEPTN-Home" transform="translate(0.000000, -64.000000)">
+            <g id="background-hero-lines" transform="translate(0.000000, 64.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="Mask" opacity="0.049999997" fill-rule="nonzero"></g>
+                <line x1="718.840055" y1="473.017262" x2="1491.06024" y2="157.139113" id="Line" stroke="#FFFFFF" opacity="0.124727471" stroke-linecap="square" mask="url(#mask-2)" transform="translate(1105.015576, 314.646533) rotate(-28.752890) translate(-1105.015576, -314.646533) "></line>
+                <line x1="1279.21931" y1="361.784392" x2="1449.07642" y2="263.478143" id="Line" stroke="#FFFFFF" opacity="0.124727471" stroke-linecap="square" mask="url(#mask-2)" transform="translate(1364.147864, 312.631267) rotate(-20.939521) translate(-1364.147864, -312.631267) "></line>
+                <line x1="-39.7281097" y1="165.72628" x2="170.699441" y2="29.1969939" id="Line" stroke="#FFFFFF" opacity="0.124727471" stroke-linecap="square" mask="url(#mask-2)" transform="translate(65.606550, 97.438328) rotate(-18.023747) translate(-65.606550, -97.438328) "></line>
+                <line x1="474.14204" y1="172.819375" x2="704.679201" y2="32.134807" id="Line" stroke="#FFFFFF" opacity="0.124727471" stroke-linecap="square" mask="url(#mask-2)" transform="translate(589.456516, 102.505287) rotate(-19.606504) translate(-589.456516, -102.505287) "></line>
+                <line x1="758.1047" y1="203.864911" x2="1031.46244" y2="36.5683245" id="Line" stroke="#FFFFFF" opacity="0.124727471" stroke-linecap="square" mask="url(#mask-2)" transform="translate(895.085747, 120.280343) rotate(-19.332845) translate(-895.085747, -120.280343) "></line>
+            </g>
+        </g>
+    </g>
+</svg>
