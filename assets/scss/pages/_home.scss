@@ -16,7 +16,7 @@
   // Intro
   .intro {
     @media screen and (min-width: $bp-md) {
-      background-image: url('/images/home/background-lines.png');
+      background: url('/images/home/hero/background-hero-lines.svg'), $textBrandColor;
       background-repeat: no-repeat;
       background-size: cover;
       background-position: 0 30%;

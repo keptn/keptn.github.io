@@ -3,12 +3,19 @@
 }
 
 .section-primary {
-  background-color: $primary;
+  background-color: $dark_blue;
+  height: 64px;
 
   h1,
   h2,
   p {
     color: $white;
+  }
+
+  @media screen and (min-width: $bp-md){
+    height: 64px;
+    width: 100%;
+    top: 0;
   }
 }
 

@@ -21,3 +21,57 @@
     }
   }
 }
+
+.page-home {
+  .header {
+    transition: all ease 0.3s;
+    display: flex;
+    align-items: center;
+    height: 80px;
+    font-size: 2.8rem;
+    top: 0;
+
+    @media screen and (min-width: $bp-md) {
+      background-color: transparent;
+      color: transparent;
+      box-shadow: none;
+      top: 64px;
+    }
+
+    a {
+      font-family: $font-family-base;
+      color: $white;
+    }
+
+    .container {
+      display: inherit;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+
+      .button {
+        margin-left: 24px;
+      }
+
+      .main-menu ul li a {
+        &:not(.button) {
+          color: $white;
+        }
+      }
+    }
+
+    &.is-sticky {
+      transition: top 0.3s;
+      top: 0;
+      background-color: $white;
+      color: $primary;
+      box-shadow: 0 2px 10px 0 rgba($black, 0.1);
+
+      .container .main-menu ul li a {
+        &:not(.button) {
+          color: $textColor;
+        }
+      }
+    }
+  }
+}
