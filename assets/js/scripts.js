@@ -2,6 +2,13 @@ var body = document.querySelector('body');
 var menuTrigger = document.querySelector('#toggle-main-menu-mobile');
 var menuContainer = document.querySelector('#main-menu-mobile');
 var copyToClipboardButton = document.querySelector('button.copy');
+var header = document.querySelector('.header');
+
+window.addEventListener('scroll', (event) => {
+  event.target.scrollingElement.scrollTop > 5 ?
+      header.classList.add('is-sticky') :
+      header.classList.remove('is-sticky');
+});
 
 if (menuTrigger) {
   menuTrigger.onclick = function () {
