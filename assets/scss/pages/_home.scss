@@ -46,16 +46,13 @@
       margin-top: -3px;
       margin-left: 8px;
     }
-  }
 
-  .intro::after {
-    background-image: url('/images/home/hero/waves-intro.jpg');
-    position: absolute;
-    width: 100%;
-    height: 200px;
-    bottom: 0;
-    left: 0;
-    z-index: 1000;
+    &::after {
+      background-image: url('/images/home/hero/waves-intro.jpg');
+      position: relative;
+      width: 100%;
+      z-index: 5000;
+    }
   }
 
   // Usage
