@@ -3,11 +3,19 @@ var menuTrigger = document.querySelector('#toggle-main-menu-mobile');
 var menuContainer = document.querySelector('#main-menu-mobile');
 var copyToClipboardButton = document.querySelector('button.copy');
 var header = document.querySelector('.header');
+var logo = document.querySelector('.logo');
+var logoIntro = document.querySelector('.logo-intro');
 
 window.addEventListener('scroll', (event) => {
-  event.target.scrollingElement.scrollTop > 5 ?
-      header.classList.add('is-sticky') :
-      header.classList.remove('is-sticky');
+  if(event.target.scrollingElement.scrollTop > 5){
+    header.classList.add('is-sticky');
+    logoIntro.classList.add('is-sticky');
+    logo.classList.add('is-sticky');
+  } else {
+    header.classList.remove('is-sticky');
+    logoIntro.classList.remove('is-sticky');
+    logo.classList.remove('is-sticky');
+  }
 });
 
 if (menuTrigger) {
