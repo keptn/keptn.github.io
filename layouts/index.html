@@ -35,25 +35,31 @@ page-home
 {{ partial "announcement.html" . }}
   <div class="container pt-5 pb-5">
     <div class="row pt-md-5 pb-md-5">
-      <div class="col-12 col-md-8 col-lg-6 teaser-box">
+      <div class="col-12 teaser-box">
         <div class="logo-intro">
           <a href="/">
             <img alt="Keptn Homepage" src="{{ .Site.BaseURL }}/images/home/hero/keptn-logo-white.svg">
           </a>
         </div>
+      </div>
+      <div class="col-12 col-md-4 teaser-box white">
+        {{ with .Site.GetPage "section" "home/intro1" }}
+        {{ .Content }}
+        {{ end }}
+      </div>
+      <div class="col-6 col-md-6 col-lg-6 teaser-box white">
         {{ with .Site.GetPage "section" "home/intro" }}
           {{ .Content }}
         {{ end }}
 
         <div class="d-flex pt-2">
-          <a class="button button-tertiary" href="https://github.com/keptn/keptn">
-            keptn on Github
-            <img class="icon" src="/images/general/icon-github.svg" alt="Github">
-            <img class="icon icon--hover" src="/images/general/icon-github-hover.svg" alt="Github">
+          <a class="button filledGreen mr-4" href="https://github.com/keptn/keptn">
+            Start now
           </a>
-          &nbsp;&nbsp;&nbsp;
-          <a class="button button-primary" href="https://tutorials.keptn.sh/tutorials/keptn-installation-gke/index.html#0">
-            Quickstart with credits on GKE
+          <a class="button filledWhite mr-4" href="https://github.com/keptn/keptn">
+            Keptn on Github
+            <img class="icon" src="/images/general/icon-github-home.svg" alt="Github">
+            <img class="icon icon--hover" src="/images/general/icon-github-hover.svg" alt="Github">
           </a>
         </div>
       </div>
