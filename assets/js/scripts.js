@@ -8,9 +8,11 @@ var logoIntro = document.querySelector('.logo-intro');
 
 window.addEventListener('scroll', (event) => {
   if(event.target.scrollingElement.scrollTop > 5){
-    header.classList.add('is-sticky');
-    logoIntro.classList.add('is-sticky');
-    logo.classList.add('is-sticky');
+    if(!(header.classList.contains('is-sticky'))){
+      header.classList.add('is-sticky');
+      logoIntro.classList.add('is-sticky');
+      logo.classList.add('is-sticky');
+    }
   } else {
     header.classList.remove('is-sticky');
     logoIntro.classList.remove('is-sticky');
