@@ -24,7 +24,7 @@
 
 .page-home {
   .header {
-    transition: all ease 0.3s;
+    transition: all 0.3s;
     display: flex;
     align-items: center;
     height: 80px;
@@ -51,6 +51,8 @@
 
       .button {
         margin-left: 24px;
+        background-color: $white;
+        color: $primary-home-900 !important;
       }
 
       .main-menu ul li a {
@@ -61,7 +63,7 @@
     }
 
     &.is-sticky {
-      transition: top 0.3s;
+      transition: all 0.3s;
       top: 0;
       background-color: $white;
       color: $primary;
@@ -71,6 +73,12 @@
         &:not(.button) {
           color: $textColor;
         }
+      }
+
+      .button {
+        margin-left: 24px;
+        background-color: $primary-home-900;
+        color: $white !important;
       }
     }
   }
