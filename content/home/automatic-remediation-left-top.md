@@ -1,1 +1,2 @@
-## Provide remediation information to enable automatic remediation
+##### Seemless integrations
+## Keptn connects all your tools

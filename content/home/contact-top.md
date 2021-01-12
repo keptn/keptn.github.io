@@ -1,1 +1,1 @@
-## Get in touch!
+## Get started with Keptn in 5 minutes!
