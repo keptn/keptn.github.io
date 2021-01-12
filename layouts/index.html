@@ -43,15 +43,14 @@ page-home
         </div>
       </div>
       <div class="col-12 col-md-4 teaser-box white">
-        {{ with .Site.GetPage "section" "home/intro1" }}
+        {{ with .Site.GetPage "section" "home/headline" }}
         {{ .Content }}
         {{ end }}
       </div>
-      <div class="col-6 col-md-6 col-lg-6 teaser-box white">
+      <div class="col-12 col-md-6 teaser-box white">
         {{ with .Site.GetPage "section" "home/intro" }}
           {{ .Content }}
         {{ end }}
-
         <div class="d-flex pt-2">
           <a class="button filledGreen mr-4" href="https://github.com/keptn/keptn">
             Start now
