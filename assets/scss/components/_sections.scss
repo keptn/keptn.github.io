@@ -12,6 +12,10 @@
     color: $white;
   }
 
+  h3 {
+    margin-top: 20px;
+  }
+
   @media screen and (min-width: $bp-md){
     height: 64px;
     width: 100%;
