@@ -35,7 +35,12 @@ page-home
 {{ partial "announcement.html" . }}
   <div class="container pt-5 pb-5">
     <div class="row pt-md-5 pb-md-5">
-      <div class="col-12 col-md-8 col-lg-6">
+      <div class="col-12 col-md-8 col-lg-6 teaser-box">
+        <div class="logo-intro">
+          <a href="/">
+            <img alt="Keptn Homepage" src="{{ .Site.BaseURL }}/images/home/hero/keptn-logo-white.svg">
+          </a>
+        </div>
         {{ with .Site.GetPage "section" "home/intro" }}
           {{ .Content }}
         {{ end }}
