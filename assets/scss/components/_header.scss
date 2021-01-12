@@ -73,12 +73,20 @@
         &:not(.button) {
           color: $textColor;
         }
+
+        &:hover {
+          color: $primary-home-900;
+        }
       }
 
       .button {
         margin-left: 24px;
         background-color: $primary-home-900;
         color: $white !important;
+      }
+
+      .button:hover {
+        background-color: $dark-blue-home-900;
       }
     }
   }
