@@ -1,4 +1,5 @@
 .teaser-box {
+  z-index: 1000;
   h1 {
     font-weight: $font-weight-bold !important;
     font-size: $font-size--xl !important;
@@ -9,12 +10,12 @@
   h2 {
     color: $textColor-home-900;
     font-weight: $font-weight-bold;
-    font-size: 2.313rem;
+    font-size: $font-size-xxl-home;
   }
 
   h3 {
     font-weight: $font-weight-semibold;
-    font-size: 1.35rem !important;
+    font-size: $font-size-m-home !important;
     margin-top: 12px;
   }
 
@@ -29,7 +30,7 @@
   p {
     color: $textColor-home-900;
     font-weight: $font-weight-normal;
-    font-size: 1.35rem;
+    font-size: $font-size-m-home;
 
     &:last-of-type {
       margin-bottom: 16px !important;
@@ -38,9 +39,9 @@
 
   ul {
     li {
-      font-size: 1.35rem;
+      font-size: $font-size-m-home;
       @media screen and (min-width: $bp-md) {
-        font-size: 1.35rem;
+        font-size: $font-size-m-home;
       }
       font-weight: $font-weight-normal;
       color: $textColor-home-900;
