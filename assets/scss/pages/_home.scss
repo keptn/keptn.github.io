@@ -48,14 +48,17 @@
     }
 
     &:after {
-
+      display: none;
+      @media screen and (min-width: $bp-md) {
+        display: block;
+      }
       content: "";
       height: 1166px;
       top: 6%;
       position: absolute;
       background: url('/images/home/hero/waves-intro.jpg');
       width: 100%;
-      z-index: 500;
+      z-index: 25;
     }
   }
 
@@ -69,8 +72,20 @@
     }
   }
 
+  // Delivery
   .delivery {
     background: $white;
+  }
+
+  // Remediaton
+  .remediation {
+    background: $primary-home-100;
+
+    .remediation-content {
+      @media screen and (min-width: $bp-md) {
+        padding-top: 140px;
+      }
+    }
   }
 
   // Kubernetes Cluster

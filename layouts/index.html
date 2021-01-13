@@ -33,7 +33,7 @@ page-home
 <div class="intro">
   {{/* announcement */}}
 {{ partial "announcement.html" . }}
-  <div class="container pt-5">
+  <div class="container pt-5 pb-5 pb-md-0">
     <div class="row pt-md-5">
       <div class="col-12 teaser-box">
         <div class="logo-intro">
@@ -74,7 +74,7 @@ page-home
 
 {{/* Usage */}}
 <div class="usage">
-  <div class="container pb-5">
+  <div class="container pb-5 pt-3 pt-md-0">
     <div class="row">
       <div class="col-12 col-md-8 teaser-box">
         {{ with .Site.GetPage "section" "home/usage" }}
@@ -105,7 +105,7 @@ page-home
 
 {{/* Delivery */}}
 <div class="delivery">
-  <div class="container pb-5 pt-5">
+  <div class="container pb-5 pt-3 pt-md-5">
     <div class="row">
       <div class="col-12 col-md-8 teaser-box">
         {{ with .Site.GetPage "section" "home/delivery" }}
@@ -128,30 +128,33 @@ page-home
   </div>
 </div>
 
-{{/* Delivery Flow */}}
-<div class="delivery-flow">
-  <img class="background-image" src="/images/home/background-flow.png" alt="Background Image">
-
-  <div class="container pt-5 pb-5">
-    <div class="row pb-md-5">
-      <div class="col-12">
-        <div class="col-12 col-md-8 col-lg-6 p-0">
-          {{ with .Site.GetPage "section" "home/delivery-flow-top" }}
-            {{ .Content }}
-          {{ end }}
+{{/* Remediation */}}
+<div class="remediation">
+  <div class="container pb-4 pt-4 pt-md-5">
+    <div class="row">
+      <div class="col-12 col-md-8 pr-md-5 pt-md-4 teaser-box">
+        <picture>
+          <source media="(min-width: 768px)" srcset="/images/home/use-cases/graphic-use-case-03a.svg">
+          <img class="" src="/images/home/use-cases/graphic-use-case-03-XS.svg">
+        </picture>
+      </div>
+      <div class="col-12 col-md-4 teaser-box pl-md-5 remediation-content">
+        {{ with .Site.GetPage "section" "home/remediation" }}
+        {{ .Content }}
+        {{ end }}
+        <div class="d-flex">
+          <a class="button filledGreen mr-3" href="https://github.com/keptn/keptn">
+            Start now
+          </a>
         </div>
       </div>
-
-      <div class="text col-12 col-md-5 pb-3 pb-md-5">
-        {{ with .Site.GetPage "section" "home/delivery-flow-left" }}
-          {{ .Content }}
-        {{ end }}
-      </div>
-
-      <div class="col-12 col-md-6 offset-md-1 pb-md-5">
-        {{ with .Site.GetPage "section" "home/delivery-flow-right" }}
-          {{ .Content }}
-        {{ end }}
+    </div>
+    <div class="row">
+      <div class="col-12 teaser-box">
+        <picture>
+          <source media="(min-width: 768px)" srcset="/images/home/use-cases/graphic-use-case-03b.svg">
+          <img src="">
+        </picture>
       </div>
     </div>
   </div>
