@@ -69,6 +69,10 @@
     }
   }
 
+  .delivery {
+    background: $white;
+  }
+
   // Kubernetes Cluster
   .kubernetes-cluster {
     counter-reset: step;

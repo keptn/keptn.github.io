@@ -103,32 +103,26 @@ page-home
   </div>
 </div>
 
-{{/* Kubernetes Cluster */}}
-<div class="kubernetes-cluster">
-  <div class="container pt-5 pb-4">
+{{/* Delivery */}}
+<div class="delivery">
+  <div class="container pb-5 pt-5">
     <div class="row">
-      <div class="col-12 pb-4">
-        <div class="col-12 col-md-7 p-0">
-          {{ with .Site.GetPage "section" "home/kubernetes-cluster-top" }}
-            {{ .Content }}
-          {{ end }}
+      <div class="col-12 col-md-8 teaser-box">
+        {{ with .Site.GetPage "section" "home/delivery" }}
+        {{ .Content }}
+        {{ end }}
+
+        <div class="d-flex">
+          <a class="button filledGreen mr-3" href="https://github.com/keptn/keptn">
+            Start now
+          </a>
         </div>
       </div>
-
-      <div class="step col-12 col-md-10 col-lg-8 offset-md-2 offset-lg-4">
-        {{ with .Site.GetPage "section" "home/kubernetes-cluster-step1" }}
-          {{ .Content }}
-        {{ end }}
-      </div>
-
-      <div class="col-12 pt-4 pb-4">
-        {{/* Placeholder */}}
-      </div>
-
-      <div class="step col-12 col-md-10 col-lg-8 offset-md-2 offset-lg-4">
-        {{ with .Site.GetPage "section" "home/kubernetes-cluster-step2" }}
-          {{ .Content }}
-        {{ end }}
+      <div class="col-12 pt-4 pb-3 teaser-box">
+        <picture>
+          <source media="(min-width: 768px)" srcset="/images/home/use-cases/graphic-use-case-02.svg">
+          <img src="/images/home/use-cases/graphic-use-case-02-XS.svg">
+        </picture>
       </div>
     </div>
   </div>
