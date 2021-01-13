@@ -72,12 +72,12 @@
     font-weight: $font-weight-bold;
     text-decoration: none !important;
 
-    &.filledGreen {
+    &--filledGreen {
       background-color: $secondary-home-900;
       color: $white;
     }
 
-    &.filledWhite {
+    &--filledWhite {
       background-color: $white;
       color: $primary-home-900;
 
@@ -93,7 +93,7 @@
       color: $primary-home-900;
     }
 
-    &.outlinedWhite {
+    &--outlinedWhite {
       border: 2px solid $white;
       color: $white;
     }

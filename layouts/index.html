@@ -52,7 +52,7 @@ page-home
           {{ .Content }}
         {{ end }}
         <div class="d-flex">
-          <a class="button filledGreen mr-4" href="https://github.com/keptn/keptn">
+          <a class="button button--filledGreen mr-4" href="https://github.com/keptn/keptn">
             Start now
           </a>
           <a class="button filledWhite mr-4" href="https://github.com/keptn/keptn">
@@ -143,7 +143,7 @@ page-home
         {{ .Content }}
         {{ end }}
         <div class="d-flex">
-          <a class="button filledGreen mr-3" href="https://github.com/keptn/keptn">
+          <a class="button button--filledGreen mr-3" href="https://github.com/keptn/keptn">
             Start now
           </a>
         </div>
@@ -160,30 +160,18 @@ page-home
   </div>
 </div>
 
-{{/* Onboard Services */}}
-<div class="onboard-services">
-  <div class="container pt-5 pb-5 pb-md-0 pb-lg-5">
-    <div class="row b-2 justify-content-center">
-      <div class="col-12 col-md-7 pb-1 pb-md-5 text-md-center">
-        {{ with .Site.GetPage "section" "home/onboard-services-top" }}
+{{/* Key Capabilities */}}
+  <div class="capabilities">
+    <div class="container pb-5 pt-3 pt-md-5">
+      <div class="row pt-md-3">
+        <div class="col-12 col-md-8 teaser-box white">
+          {{ with .Site.GetPage "section" "home/capabilities" }}
           {{ .Content }}
-        {{ end }}
-      </div>
-
-      <div class="image col-12 col-md-6 pl-0 pr-0 pr-md-4 pb-md-5 pb-lg-0">
-        {{ with .Site.GetPage "section" "home/onboard-services-left" }}
-          {{ .Content }}
-        {{ end }}
-      </div>
-
-      <div class="text col-12 col-md-6 pb-3 pb-md-5 pb-lg-0">
-        {{ with .Site.GetPage "section" "home/onboard-services-right" }}
-          {{ .Content }}
-        {{ end }}
+          {{ end }}
+        </div>
       </div>
     </div>
   </div>
-</div>
 
 {{/* Divider */}}
 <div class="container">

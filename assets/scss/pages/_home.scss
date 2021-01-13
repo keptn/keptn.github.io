@@ -88,6 +88,11 @@
     }
   }
 
+  // Capabilities
+  .capabilities{
+    background: $dark-blue-home-900;
+  }
+
   // Kubernetes Cluster
   .kubernetes-cluster {
     counter-reset: step;
