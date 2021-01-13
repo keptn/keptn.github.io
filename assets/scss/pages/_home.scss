@@ -82,8 +82,17 @@
     background: $primary-home-100;
 
     .remediation-content {
+      order: 0;
       @media screen and (min-width: $bp-md) {
         padding-top: 140px;
+        order: 1;
+      }
+    }
+
+    .remediation-graphic {
+      order: 1;
+      @media screen and (min-width: $bp-md) {
+        order: 0;
       }
     }
   }
