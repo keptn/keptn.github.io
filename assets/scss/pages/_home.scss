@@ -20,7 +20,7 @@
     }
 
     background: url('/images/home/hero/background-hero-lines.svg'), $primary-home-900;
-    background-size: 100% auto;
+    background-size: contain;
 
     h1 {
       color: $primary;
