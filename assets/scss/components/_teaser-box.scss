@@ -88,7 +88,7 @@
       }
     }
 
-    &.outlinedBlue {
+    &--outlinedBlue {
       border: 2px solid $primary-home-900;
       color: $primary-home-900;
     }
@@ -103,11 +103,13 @@
     padding-top: 32px;
   }
 
-  &.white {
-    h1, h2, h3, li,  p {
+  &--white {
+    h1, h2, h3, li,p {
       color: $white !important;
     }
+  }
 
+  &--intro {
     li, p {
       font-size: $font-size--s !important;
     }
