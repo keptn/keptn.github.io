@@ -20,7 +20,7 @@
     font-weight: $font-weight-semibold;
     font-size: $font-size-m-home !important;
     margin-top: 12px;
-    margin-bottom: 12px;
+    margin-bottom: 24px;
   }
 
   h4 {
@@ -43,23 +43,19 @@
   }
 
   ul {
+    list-style-type: none;
     li {
+      padding-left: 32px;
+      position: relative;
       font-size: $font-size-m-home;
-      @media screen and (min-width: $bp-md) {
-        font-size: $font-size-m-home;
-      }
       font-weight: $font-weight-normal;
       color: $textColor-home-900;
 
       &::before {
         content: url('/images/home/icon-arrow-list.svg');
-        position: relative;
-        top: 5px;
-        padding-right: 12px;
-      }
-
-      &::marker {
-        content: '';
+        position: absolute;
+        top: 2px;
+        left: 0;
       }
     }
     margin-bottom: 16px !important;
