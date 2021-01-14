@@ -121,6 +121,10 @@
     max-width: 352px;
     padding: 40px 31px;
 
+    @media screen and (min-width: $bp-lg) and (max-width: $bp-xl) {
+      padding: 20px 31px;
+    }
+
     &--blue {
       background-color: $primary-home-500;
       box-shadow: 20px 20px 80px 0 rgba(0, 26, 45, 0.3);
