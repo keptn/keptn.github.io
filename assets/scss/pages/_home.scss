@@ -83,16 +83,34 @@
 
     .remediation-content {
       order: 0;
-      @media screen and (min-width: $bp-md) {
+
+      @media screen and (min-width: $bp-lg) {
         padding-top: 140px;
         order: 1;
+      }
+
+      @media screen and (min-width: $bp-lg) and (max-width: $bp-xl) {
+        padding-top: 110px;
       }
     }
 
     .remediation-graphic {
       order: 1;
-      @media screen and (min-width: $bp-md) {
+      @media screen and (min-width: $bp-lg) {
         order: 0;
+      }
+    }
+
+    .remediation-graphic-bottom {
+      display: none;
+      text-align: center;
+
+      @media screen and (min-width: $bp-md) {
+        display: block;
+      }
+
+      img {
+        width: 608px;
       }
     }
   }
