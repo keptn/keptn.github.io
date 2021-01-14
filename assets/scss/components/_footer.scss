@@ -1,26 +1,71 @@
 .footer {
-  display: flex;
-  align-items: center;
-  height: 50px;
-  background-color: $white;
-  box-shadow: 0 2px 10px 0 rgba($black, 0.1);
+  background-color: $secondary;
+  color: $white;
+  padding-top: 180px;
+  padding-bottom: 30px;
+  position: relative;
 
-  .container {
-    display: inherit;
-    justify-content: center;
+  &:before {
+    position: absolute;
+    top: -150px;
+    left: 0;
+    display: inline-block;
+    width: 100%;
+    height: 150px;
+    content: "";
+    background-image: url('/images/home/waves03.png');
+    background-repeat-x: repeat;
+    z-index: 999999;
+    background-size: 100%;
   }
 
-  .title {
-    font-size: 0.9rem;
+  .footer-logo {
+    height: 50px;
+    width: auto;
+  }
+
+  .footer-title {
+    font-size: 18px;
+    line-height: 30px;
+    margin-bottom: 8px;
+    font-weight: $font-weight-bold;
+  }
+
+  .footer-links {
+    @include list-unstyled;
 
     a {
-      color: $textColor;
+      color: $white;
     }
+  }
 
-    img {
-      width: 16px;
-      height: 16px;
-      margin-top: -2px;
+  .footer-icon-link {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $primary;
+    margin-bottom: 8px;
+
+    &:nth-of-type(odd) {
+      margin-right: 8px;
     }
+  }
+
+  .footer-icons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .footer-icon {
+    width: 22px;
+  }
+
+  .footer-text {
+    font-size: 15px;
+    font-family: Courier;
   }
 }

@@ -313,16 +313,15 @@ page-home
 <div class="keptn-workflows section-primary-opacity">
   <div class="container pt-5 pb-5">
     <div class="row pt-2 pt-md-4 pb-md-2">
-      <div class="image col-12 col-md-6 pl-0 pr-0 pr-md-4 pb-3 pb-md-0">
-        {{ with .Site.GetPage "section" "home/keptn-workflows-left" }}
-          {{ .Content }}
-        {{ end }}
-      </div>
-
-      <div class="text col-12 col-md-6 d-flex flex-column justify-content-center">
+      <div class="text col-12 d-flex flex-column justify-content-center">
         {{ with .Site.GetPage "section" "home/keptn-workflows-right" }}
           {{ .Content }}
         {{ end }}
+      </div>
+      <div class="row pt-2 pt-md-4 pb-md-2">
+        <div class="text col-6 col-md-2 d-flex flex-column justify-content-center">
+          <img src="/images/home/logo-avodaq.png">
+        </div>
       </div>
     </div>
   </div>
@@ -333,36 +332,26 @@ page-home
   <div class="container pt-5 pb-5">
     <div class="row pt-md-5 pb-4 pb-md-5">
       <div class="col-12 col-md-6 pl-0 pr-md-4">
-        <div class="text col-12">
+        <div class="text col-12 teaser-ox">
           {{ with .Site.GetPage "section" "home/automatic-remediation-left-top" }}
             {{ .Content }}
           {{ end }}
         </div>
-
-        <div class="image col-12 pl-0 pr-0">
-          {{ with .Site.GetPage "section" "home/automatic-remediation-left-middle" }}
-            {{ .Content }}
-          {{ end }}
-        </div>
-
-        <div class="text col-12">
-          {{ with .Site.GetPage "section" "home/automatic-remediation-left-bottom" }}
-            {{ .Content }}
-          {{ end }}
-        </div>
       </div>
-
-      <div class="code col-12 col-md-6">
-        {{ with .Site.GetPage "section" "home/automatic-remediation-right" }}
-          {{ .Content }}
-        {{ end }}
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-6 col-lg-4">
+        Box
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        Box
+      </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        Box
       </div>
     </div>
   </div>
 </div>
-
-{{/* Teaser */}}
-{{ partial "teaser.html" . }}
 
 {{/* Contact */}}
 {{ partial "contact.html" . }}
