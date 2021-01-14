@@ -117,13 +117,8 @@
   .teaser-card {
     border-radius: 13px;
     background-color: $white;
-    height: 334px;
-    max-width: 352px;
+    min-height: 334px;
     padding: 40px 31px;
-
-    @media screen and (min-width: $bp-lg) and (max-width: $bp-xl) {
-      padding: 20px 31px;
-    }
 
     &--blue {
       background-color: $primary-home-500;
