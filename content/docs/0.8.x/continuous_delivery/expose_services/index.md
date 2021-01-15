@@ -59,9 +59,12 @@ kubectl apply -f gateway-manifest.yaml
     INGRESS_PORT=<PORT_OF_YOUR_INGRESS> 
     INGRESS_PROTOCOL=<PROTOCOL>                            # "http" or "https"
     ISTIO_GATEWAY=<GATEWAY_NAME>.<NAMESPACE_OF_GATEWAY>  # e.g. public-gateway.istio-system
+    HOSTNAME_TEMPLATE=<HOSTNAME_TEMPLATE> # optional, default = ${INGRESS_PROTOCOL}://${service}.${project}-${stage}.${INGRESS_HOSTNAME}:${INGRESS_PORT}
     ```
 
       **Note:** In the above example, `xip.io` is used as wildcard DNS for the IP address.
+      **Note:** The `HOSTNAME_TEMPLATE` describes how the hostname for the automatically generated `VirtualService` should look like. This value will also be used for the `deploymentURIPublic` property contained in the `deployment.finished` events sent by the helm-service will look like. This URL can then be used by execution plane services that need to access the deployed service (e.g. a testing service like the jmeter-service).
+      Within the `HOSTNAME_TEMPLATE, you can use the variables `INGRESS_HOSTNAME`, `INGRESS_PORT`, `INGRESS_PROTOCOL`, as well as `project`, `stage` and `service`.
 
     ```console
     kubectl create configmap -n keptn ingress-config --from-literal=ingress_hostname_suffix=${INGRESS_HOSTNAME} --from-literal=ingress_port=${INGRESS_PORT} --from-literal=ingress_protocol=${INGRESS_PROTOCOL} --from-literal=istio_gateway=${ISTIO_GATEWAY} -oyaml --dry-run | kubectl replace -f -
@@ -74,6 +77,7 @@ kubectl apply -f gateway-manifest.yaml
     INGRESS_PORT=<PORT_OF_YOUR_INGRESS> 
     INGRESS_PROTOCOL=<PROTOCOL>                            # "http" or "https"
     ISTIO_GATEWAY=<GATEWAY_NAME>.<NAMESPACE_OF_GATEWAY>  # e.g. public-gateway.istio-system
+    HOSTNAME_TEMPLATE=<HOSTNAME_TEMPLATE> # optional, default = ${INGRESS_PROTOCOL}://${service}.${project}-${stage}.${INGRESS_HOSTNAME}:${INGRESS_PORT}
     ```
     
     ```console
