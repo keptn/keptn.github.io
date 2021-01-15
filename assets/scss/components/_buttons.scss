@@ -1,3 +1,58 @@
+.page-home {
+  .button {
+    padding: 10px 24px;
+    border-radius: 24px;
+    box-shadow: 0 5px 10px 0 rgba(3, 12, 18, 0.15);
+    font-weight: $font-weight-bold;
+    font-size: $font-size--xxs;
+    text-align: center;
+    text-decoration: none !important;
+    display: block;
+
+    @media screen and (min-width: $bp-md) {
+      padding: 14px 32px;
+    }
+
+    &--filledGreen {
+      background-color: $secondary-home-900;
+      color: $white;
+    }
+
+    &--filledWhite {
+      background-color: $white;
+      color: $primary-home-900;
+
+      .icon {
+        &--hover {
+          display: none;
+        }
+      }
+    }
+
+    &--outlinedBlue {
+      border: 2px solid $primary-home-900;
+      color: $primary-home-900;
+    }
+
+    &--outlinedWhite {
+      border: 2px solid $white;
+      color: $white;
+    }
+
+    &--header {
+      color: $white !important;
+      background-color: $primary;
+      padding: 10px 32px;
+      transition: all 0.25s ease-in-out;
+
+      &:hover {
+        background-color: #1b4c86;
+        font-weight: $font-weight-bold;
+      }
+    }
+  }
+}
+
 .button {
   padding: 10px 24px;
   border-radius: 24px;

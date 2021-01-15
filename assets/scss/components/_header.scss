@@ -18,6 +18,8 @@
 
     .button {
       margin-left: 24px;
+      background-color: $primary;
+      color: $white;
     }
   }
 }
@@ -50,11 +52,12 @@
       height: 100%;
 
       .button {
-        margin-left: 24px;
         background-color: $white;
         color: $primary-home-900 !important;
-        font-weight: $font-weight-semibold;
-        text-align: center;
+
+        @media screen and (min-width: $bp-md) and (max-width: $bp-lg) {
+          margin-left: 0;
+        }
       }
 
       .main-menu ul li a {
@@ -82,7 +85,6 @@
       }
 
       .button {
-        margin-left: 24px;
         background-color: $primary-home-900;
         color: $white !important;
       }
