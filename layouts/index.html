@@ -169,105 +169,9 @@ page-home
           {{ end }}
         </div>
       </div>
-      <div class="row pt-md-2 pb-md-2">
-          <div class="col-12 col-sm-6 col-lg-4 pb-4 pb-lg-0">
-            <div class="teaser-card teaser-card--blue">
-              <div class="teaser-card-picture">
-                <picture>
-                  <img src="/images/home/capabilities/capabilities-01.svg">
-                </picture>
-              </div>
-              <div class="teaser-card-content">
-                {{ with .Site.GetPage "section" "home/capabilities-01" }}
-                {{ .Content }}
-                {{ end }}
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-sm-6 col-lg-4 pb-4 pb-lg-0">
-            <div class="teaser-card teaser-card--blue">
-              <div class="teaser-card-picture">
-                <picture>
-                  <img src="/images/home/capabilities/capabilities-02.svg">
-                </picture>
-              </div>
-              <div class="teaser-card-content">
-                {{ with .Site.GetPage "section" "home/capabilities-02" }}
-                {{ .Content }}
-                {{ end }}
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-sm-6 col-lg-4 pb-4 pb-lg-0">
-            <div class="teaser-card teaser-card--blue">
-              <div class="teaser-card-picture">
-                <picture>
-                  <img src="/images/home/capabilities/capabilities-03.svg">
-                </picture>
-              </div>
-              <div class="teaser-card-content">
-                {{ with .Site.GetPage "section" "home/capabilities-03" }}
-                {{ .Content }}
-                {{ end }}
-              </div>
-            </div>
-          </div>
-      </div>
-      <div class="row pt-md-4">
-        <div class="col-12 col-sm-6 col-lg-4 pb-4 pb-lg-0">
-          <div class="teaser-card teaser-card--blue">
-            <div class="teaser-card-picture">
-              <picture>
-                <img src="/images/home/capabilities/capabilities-04.svg">
-              </picture>
-            </div>
-            <div class="teaser-card-content">
-              {{ with .Site.GetPage "section" "home/capabilities-04" }}
-              {{ .Content }}
-              {{ end }}
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-lg-4 pb-4 pb-lg-0">
-          <div class="teaser-card teaser-card--blue">
-            <div class="teaser-card-picture">
-              <picture>
-                <img src="/images/home/capabilities/capabilities-05.svg">
-              </picture>
-            </div>
-            <div class="teaser-card-content">
-              {{ with .Site.GetPage "section" "home/capabilities-05" }}
-              {{ .Content }}
-              {{ end }}
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-lg-4">
-          <div class="teaser-card">
-            <div class="teaser-card-content teaser-card-content--blue teaser-card-content--courier">
-                {{ with .Site.GetPage "section" "home/capabilities-06" }}
-                {{ .Content }}
-                {{ end }}
-              <div class="col-12 col-md-8 pr-0 pl-0 pt-4">
-                <a class="button button--filledGreen" href="https://github.com/keptn/keptn">
-                  Explore more
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    {{partial "teaser-cards.html" . }}
     </div>
   </div>
-
-{{/* Divider */}}
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <hr>
-    </div>
-  </div>
-</div>
 
 {{/* Integration Workflow */}}
 <div class="integration-workflow">
@@ -338,17 +242,7 @@ page-home
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-12 col-md-6 col-lg-4">
-        Box
-      </div>
-      <div class="col-12 col-md-6 col-lg-4">
-        Box
-      </div>
-      <div class="col-12 col-md-6 col-lg-4">
-        Box
-      </div>
-    </div>
+    {{ partial "tools.html" . }}
   </div>
 </div>
 
