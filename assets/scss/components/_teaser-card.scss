@@ -10,8 +10,9 @@
     border-radius: 13px;
     background-color: $white;
     padding: 40px 31px;
-    width: 100%;
     margin-bottom: 24px;
+    box-shadow: 20px 20px 80px 0 rgba(2, 63, 107, 0.17);
+    width: 100%;
 
     @media screen and (min-width: $bp-sm) {
       min-height: 1px;
@@ -53,12 +54,37 @@
     }
 
     &--outline {
-      border: 1px dotted green;
+      border: 2px dotted $secondary-home-900;
     }
 
-    &--smallPadding {
-      padding: 10px;
+  &--smallPadding {
+    padding: 10px;
+    box-shadow: 5px 5px 30px 0 rgba(2, 63, 107, 0.2);
+
+    @media screen and (min-width: $bp-xs) {
+      min-height: 1px;
+      flex: 0 1 27%;
+      max-width: 27%;
     }
+
+    @media screen and (min-width: $bp-sm) {
+      min-height: 1px;
+      flex: 0 1 23.33333%;
+      max-width: 23.33333%;;
+    }
+
+    @media screen and (min-width: $bp-md) {
+      min-height: 1px;
+      flex: 0 1 26.33333%;
+      max-width: 26.33333%;
+    }
+
+    @media screen and (min-width: $bp-lg) {
+      min-height: 1px;
+      flex: 0 1 26.33333%;
+      max-width: 26.33333%;
+    }
+  }
 
     .teaser-card-picture {
       height: auto;
@@ -115,6 +141,9 @@
     .teaser-card-title {
       text-align: center;
       color: $primary;
+      font-family: Courier;
+      font-weight: $font-weight-bold;
+      margin-bottom: 24px;
     }
   }
 }
