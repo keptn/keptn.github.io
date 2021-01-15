@@ -11,18 +11,24 @@
     background-color: $white;
     padding: 40px 31px;
     width: 100%;
-    margin-bottom: 25px;
+    margin-bottom: 24px;
 
     @media screen and (min-width: $bp-sm) {
       min-height: 1px;
-      flex: 0 1 50%;
-      max-width: 50%;
+      flex: 0 1 47%;
+      max-width: 47%;
+  }
+
+  @media screen and (min-width: $bp-md) {
+    min-height: 1px;
+    flex: 0 1 48%;
+    max-width: 48%;
     }
 
     @media screen and (min-width: $bp-lg) {
       min-height: 1px;
-      flex: 0 1 33.33333%;
-      max-width: 33.33333%;
+      flex: 0 1 31.33333%;
+      max-width: 31.33333%;
     }
 
     &--blue {
