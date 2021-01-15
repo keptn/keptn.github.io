@@ -133,51 +133,13 @@ page-home
     </div>
   </div>
 
-{{/* Integration Workflow */}}
-<div class="integration-workflow">
-  <div class="container pt-5 pb-4">
-    <div class="row pt-lg-2 pb-2">
-      <div class="col-12">
-        <div class="col-12 col-md-8 col-lg-5 p-0">
-          {{ with .Site.GetPage "section" "home/integration-workflow-top" }}
-            {{ .Content }}
-          {{ end }}
-        </div>
-      </div>
 
-      <div class="text col-12 col-md-5 pb-3">
-        {{ with .Site.GetPage "section" "home/integration-workflow-top-left" }}
-          {{ .Content }}
-        {{ end }}
-      </div>
-
-      <div class="code col-12 col-md-6 offset-md-1 pb-5 pb-md-3">
-        {{ with .Site.GetPage "section" "home/integration-workflow-top-right" }}
-          {{ .Content }}
-        {{ end }}
-      </div>
-
-      <div class="image col-12 col-md-6 pl-0 pr-0 pr-md-4">
-        {{ with .Site.GetPage "section" "home/integration-workflow-bottom-left" }}
-          {{ .Content }}
-        {{ end }}
-      </div>
-
-      <div class="text col-12 col-md-6">
-        {{ with .Site.GetPage "section" "home/integration-workflow-bottom-right" }}
-          {{ .Content }}
-        {{ end }}
-      </div>
-    </div>
-  </div>
-</div>
-
-{{/* Keptn Workflows */}}
-<div class="keptn-workflows">
-  <div class="container pt-5 pb-5">
-    <div class="row pt-2 pt-md-4 pb-md-2">
-      <div class="text col-12 d-flex flex-column justify-content-center">
-        {{ with .Site.GetPage "section" "home/keptn-workflows-right" }}
+{{/* Resommendation */}}
+<div class="recommendation">
+  <div class="container pt-3 pt-md-5 pb-5">
+    <div class="row">
+      <div class="text col-12 d-flex flex-column justify-content-center teaser-box">
+        {{ with .Site.GetPage "section" "home/recommendation" }}
           {{ .Content }}
         {{ end }}
       </div>
