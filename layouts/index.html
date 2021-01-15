@@ -30,47 +30,7 @@ page-home
 
 
 {{/* Intro */}}
-<div class="intro">
-  {{/* announcement */}}
-{{ partial "announcement.html" . }}
-  <div class="container pt-5 pb-5 pb-md-0">
-    <div class="row pt-md-5">
-      <div class="col-12 teaser-box">
-        <div class="logo-intro">
-          <a href="/">
-            <img alt="Keptn Homepage" src="{{ .Site.BaseURL }}/images/home/hero/keptn-logo-white.svg">
-          </a>
-        </div>
-      </div>
-      <div class="col-12 col-md-4 teaser-box teaser-box--white teaser-box--intro">
-        {{ with .Site.GetPage "section" "home/headline" }}
-        {{ .Content }}
-        {{ end }}
-      </div>
-      <div class="col-12 col-md-6 teaser-box teaser-box--white teaser-box--intro">
-        {{ with .Site.GetPage "section" "home/intro" }}
-          {{ .Content }}
-        {{ end }}
-        <div class="d-block d-md-flex">
-          <a class="d-block button button--filledGreen mb-3 mb-md-0 mr-0 mr-md-3" href="https://github.com/keptn/keptn">
-            Start now
-          </a>
-          <a class="d-block button button--filledWhite" href="https://github.com/keptn/keptn">
-            Keptn on Github
-            <img class="icon" src="/images/general/icon-github-home.svg" alt="Github">
-            <img class="icon icon--hover" src="/images/general/icon-github-hover.svg" alt="Github">
-          </a>
-        </div>
-      </div>
-      <div class="col-12 pt-5 teaser-box">
-        <picture>
-          <source media="(min-width: 768px)" srcset="/images/home/hero/graphic-hero.svg">
-          <img src="/images/home/hero/keptn-logo-white.svg">
-        </picture>
-      </div>
-    </div>
-  </div>
-</div>
+{{ partial "intro.html" . }}
 
 {{/* Usage */}}
 <div class="usage">
