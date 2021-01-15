@@ -6,6 +6,22 @@ var header = document.querySelector('.header');
 var logo = document.querySelector('.logo');
 var logoIntro = document.querySelector('.logo-intro');
 
+window.addEventListener( 'DOMContentLoaded', function () {
+  new Splide( '.splide', {
+    perPage    : 3,
+    perMove    : 1,
+    height     : '9rem',
+    focus      : 'center',
+    trimSpace  : false,
+    breakpoints: {
+      600: {
+        perPage: 2,
+        height : '6rem',
+      }
+    }
+  } ).mount();
+} );
+
 window.addEventListener('scroll', (event) => {
   if(event.target.scrollingElement.scrollTop > 5){
     if(!(header.classList.contains('is-sticky'))){
