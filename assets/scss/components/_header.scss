@@ -35,6 +35,7 @@
     color: transparent;
     box-shadow: none;
     top: 72px;
+    z-index: 1500;
 
     @media screen and (min-width: $bp-md) {
       top: 64px;
