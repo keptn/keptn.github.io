@@ -1,32 +1,35 @@
-.section {
-  background-color: $white;
-}
+.page-why-keptn {
 
-.section-primary {
-  background-color: $dark-blue-home-700;
-  height: 64px;
-
-  h1,
-  h2,
-  p {
-    color: $white;
+  .section {
+    background-color: $white;
   }
 
-  h3 {
-    margin-top: 20px;
-  }
-
-  @media screen and (min-width: $bp-md){
+  .section-primary {
+    background-color: $dark-blue-home-700;
     height: 64px;
-    width: 100%;
-    top: 0;
+
+    h1,
+    h2,
+    p {
+      color: $white;
+    }
+
+    h3 {
+      margin-top: 20px;
+    }
+
+    @media screen and (min-width: $bp-md) {
+      height: 64px;
+      width: 100%;
+      top: 0;
+    }
   }
-}
 
-.section-primary-opacity {
-  background-color: $primary-opacity;
-}
+  .section-primary-opacity {
+    background-color: $primary-opacity;
+  }
 
-.section-secondary {
-  background-color: $secondary;
+  .section-secondary {
+    background-color: $secondary;
+  }
 }

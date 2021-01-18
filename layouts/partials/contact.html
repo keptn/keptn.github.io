@@ -1,4 +1,4 @@
-<div class="contact section-primary">
+<div class="contact section-primary-opacity">
   <a class="back-to-top-wrapper" onclick="window.scrollTo({ top: 0 });" href="javascript: void(0)">
     <img class="icon" src="/images/general/icon-back-to-top.svg" alt="Back to top">
     <img class="icon icon--hover" src="/images/general/icon-back-to-top-hover.svg" alt="Back to top">
@@ -18,18 +18,44 @@
           {{ .Content }}
           {{ end }}
 
-          <div class="d-flex pt-2">
-            <a href="#" class="button button-primary">Start now</a>
-            &nbsp;&nbsp;&nbsp;
-            <a href="#" class="button button-secondary">See it in action</a>
-            &nbsp;&nbsp;&nbsp;
-            <a href="#" class="button button-secondary">Read docs</a>
+          <div>
+            <a class="contact-wrapper no-underline" href="https://join.slack.com/t/keptn/shared_invite/enQtNTUxMTQ1MzgzMzUxLWMzNmM1NDc4MmE0MmQ0MDgwYzMzMDc4NjM5ODk0ZmFjNTE2YzlkMGE4NGU5MWUxODY1NTBjNjNmNmI1NWQ1NGY" target="_blank">
+              <img class="icon" src="/images/general/icon-slack.svg" alt="Slack">
+              <img class="icon icon--hover" src="/images/general/icon-slack-hover.svg" alt="Slack">
+            </a>
+
+            <a class="contact-wrapper no-underline" href="https://twitter.com/keptnproject" target="_blank">
+              <img class="icon" src="/images/general/icon-twitter.svg" alt="Twitter">
+              <img class="icon icon--hover" src="/images/general/icon-twitter-hover.svg" alt="Twitter">
+            </a>
+
+            <a class="contact-wrapper no-underline" href="mailto:keptn@dynatrace.com">
+              <img class="icon" src="/images/general/icon-mail.svg" alt="Mail">
+              <img class="icon icon--hover" src="/images/general/icon-mail-hover.svg" alt="Mail">
+            </a>
           </div>
         </div>
 
-        <div class="col-12 col-md-6 d-flex flex-column justify-content-md-between pl-0 pr-0 pb-4 pb-md-0">
-          <img src="/images/home/cloud-native-computing-foundation.svg">
+        <div class="col-12 col-md-5 offset-md-1 d-flex flex-column justify-content-md-between pl-0 pr-0 pt-2 pt-md-0">
+          {{ with .Site.GetPage "section" "home/contact-right" }}
+          {{ .Content }}
+          {{ end }}
+
+          <div class="calendar-wrapper">
+            <img class="icon" src="/images/general/icon-calendar.svg" alt="Calendar">
+            <img class="icon icon--hover" src="/images/general/icon-calendar-hover.svg" alt="Calendar">
+            <a href="https://calendar.google.com/calendar/embed?src=dynatrace.com_abjrh1ukf18ih477tb1ekag2ag%40group.calendar.google.com" target="_blank">Public Google Calendar</a>,
+            <a href="https://calendar.google.com/calendar/ical/dynatrace.com_abjrh1ukf18ih477tb1ekag2ag%40group.calendar.google.com/public/basic.ics" target="_blank">iCal</a>
+          </div>
         </div>
+      </div>
+
+      <div class="col-12 text-center">
+        <p>&nbsp;</p>
+
+        <img src="/images/home/cloud-native-computing.svg" alt="CNCF" style="max-width:50%"><br>
+        <p>We are a <a href="https://cncf.io">Cloud Native Computing Foundation</a> Sandbox project.</p>
+
       </div>
     </div>
   </div>
