@@ -34,5 +34,28 @@
 .page-home {
   .hamburger {
     padding-bottom: 20px;
+
+    .hamburger-inner::after {
+      background: $white;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .hamburger-inner,
+  .hamburger-inner::before,
+  .hamburger-inner::after {
+    opacity: 1;
+    background: $white;
+
+    &.is-sticky {
+      background: $primary-home-900;
+    }
+  }
+
+  .hamburger-inner::after {
+    width: 100%;
   }
 }

@@ -31,12 +31,12 @@
     align-items: center;
     height: 80px;
     font-size: 2.8rem;
-    top: 0;
+    background-color: transparent;
+    color: transparent;
+    box-shadow: none;
+    top: 72px;
 
     @media screen and (min-width: $bp-md) {
-      background-color: transparent;
-      color: transparent;
-      box-shadow: none;
       top: 64px;
     }
 

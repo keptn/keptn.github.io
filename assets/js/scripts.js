@@ -4,7 +4,9 @@ var menuContainer = document.querySelector('#main-menu-mobile');
 var copyToClipboardButton = document.querySelector('button.copy');
 var header = document.querySelector('.header');
 var logo = document.querySelector('.logo');
+var logoJS = document.querySelector('.logo-js');
 var logoIntro = document.querySelector('.logo-intro');
+var hamburgerInner = document.querySelector('.hamburger-inner');
 
 window.addEventListener('DOMContentLoaded', function () {
   new Splide('.splide', {
@@ -34,11 +36,15 @@ window.addEventListener('scroll', (event) => {
       header.classList.add('is-sticky');
       logoIntro.classList.add('is-sticky');
       logo.classList.add('is-sticky');
+      hamburgerInner.classList.add('is-sticky');
+      logoJS.src = '/images/logo.svg';
     }
   } else {
     header.classList.remove('is-sticky');
     logoIntro.classList.remove('is-sticky');
     logo.classList.remove('is-sticky');
+    hamburgerInner.classList.remove('is-sticky');
+    logoJS.src = '/images/home/hero/keptn-logo-white.svg';
   }
 });
 
