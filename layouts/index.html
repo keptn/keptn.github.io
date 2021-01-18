@@ -153,11 +153,26 @@ page-home
             </ul>
           </div>
         </div>
+    </div>
+  </div>
+</div>
+
+{{/* Happy Users */}}
+<div class="happy-users">
+  <div class="container pt-5 pb-5">
+    <div class="row pt-2 pt-md-4 pb-md-2">
+      <div class="text col-12 teaser-box">
+        {{ with .Site.GetPage "section" "home/happy-users" }}
+        {{ .Content }}
+        {{ end }}
       </div>
-      <div class="row pt-2 pt-md-4 pb-md-2">
-        <div class="text col-6 col-md-2 d-flex flex-column justify-content-center">
-          <img src="/images/home/logo-avodaq.png">
-        </div>
+      <div class="text col-12 d-flex flex-column justify-content-center">
+        {{ with .Site.GetPage "section" "home/happy-users-logos" }}
+        {{ .Content }}
+        {{ end }}
+        <a href="#" class="add-organisation-link d-inline-block">
+          <img src="/images/home/happy-users/add.svg">
+        </a>
       </div>
     </div>
   </div>

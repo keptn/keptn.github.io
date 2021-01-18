@@ -199,8 +199,7 @@
   }
 
   // Onboard Services & Keptn Workflows
-  .onboard-services,
-  .keptn-workflows {
+  .onboard-services {
     .image {
       @media screen and (min-width: $bp-md) {
         margin-top: -8px;
@@ -209,6 +208,21 @@
 
       p {
         margin-bottom: 0;
+      }
+    }
+  }
+
+  .happy-users {
+
+    img {
+      max-height: 50px;
+      width: auto;
+      max-width: 170px;
+      margin-right: 65px;
+      margin-bottom: 25px;
+
+      &:last-of-type {
+        margin-right: 0;
       }
     }
   }
@@ -239,22 +253,6 @@
 
       @media screen and (min-width: $bp-md) {
         font-size: 1.125rem;
-      }
-    }
-  }
-
-  // Automatic Remediation
-  .automatic-remediation {
-    .image {
-      @media screen and (min-width: $bp-md) {
-        margin-top: 24px;
-        margin-left: -8px;
-      }
-    }
-
-    .code {
-      .toolbar {
-        margin-bottom: 16px;
       }
     }
   }
