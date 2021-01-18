@@ -59,11 +59,19 @@
         @media screen and (min-width: $bp-md) and (max-width: $bp-lg) {
           margin-left: 0;
         }
+
+        &:hover {
+          background: linear-gradient(-225deg, #ecf7ff 0%, #c8e2f5 100%);
+        }
       }
 
       .main-menu ul li a {
         &:not(.button) {
           color: $white;
+        }
+
+        &:hover {
+          color: #4d97cd;
         }
       }
     }
@@ -88,10 +96,10 @@
       .button {
         background-color: $primary-home-900;
         color: $white !important;
-      }
 
-      .button:hover {
-        background-color: $dark-blue-home-900;
+        &:hover {
+          background: linear-gradient(-225deg, $primary-home-900 0%, #10478f 100%);
+        }
       }
     }
   }
