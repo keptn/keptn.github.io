@@ -15,17 +15,8 @@
 
   // Intro
   .intro {
-    @media screen and (min-width: $bp-md) {
-
-    }
-
     background: url('/images/home/hero/background-hero-lines.svg'), $primary-home-900;
     background-size: contain;
-
-    h1 {
-      color: $primary;
-      font-family: $font-family-intro;
-    }
 
     h3, h3 a {
       color: #fff;

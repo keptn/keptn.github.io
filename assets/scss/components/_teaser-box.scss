@@ -3,28 +3,36 @@
     z-index: 50;
 
     h1 {
-      font-weight: $font-weight-bold !important;
-      font-size: $font-size--xl;
-      font-family: $font-family-base !important;
+      font-weight: $font-weight-bold;
+      font-size: $font-size--m;
       padding-bottom: 24px;
 
       @media screen and (min-width: $bp-md) {
         padding-right: 32px;
+        font-size: $font-size--xl;
       }
     }
 
     h2 {
       color: $textColor-home-900;
       font-weight: $font-weight-bold !important;
-      font-size: $font-size-xxl-home;
+      font-size: $font-size--m;
       margin-bottom: 24px !important;
+
+      @media screen and (min-width: $bp-md) {
+        font-size: $font-size-xxl-home !important;
+      }
     }
 
     h3 {
       font-weight: $font-weight-semibold;
-      font-size: $font-size-m-home !important;
+      font-size: $font-size--s !important;
       margin-top: 12px;
       margin-bottom: 24px;
+
+      @media screen and (min-width: $bp-md) {
+        font-size: $font-size-m-home !important
+      }
     }
 
     h4 {
@@ -38,8 +46,12 @@
     p {
       color: $textColor-home-900;
       font-weight: $font-weight-normal;
-      font-size: $font-size-m-home !important;
+      font-size: $font-size--s !important;
 
+      @media screen and (min-width: $bp-md) {
+        font-size: $font-size-m-home !important;
+        padding-right: 32px;
+      }
 
       &:last-of-type {
         margin-bottom: 24px !important;
@@ -79,7 +91,11 @@
 
     &--intro {
       li, p {
-        font-size: $font-size--s !important;
+        font-size: $font-size--primary !important;
+
+        @media screen and (min-width: $bp-md) {
+          font-size: $font-size--s !important;
+        }
       }
     }
   }
