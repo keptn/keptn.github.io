@@ -1,5 +1,5 @@
 .footer {
-  background-color: $secondary;
+  background-color: $teaserCard-home;
   color: $white;
   padding-top: 180px;
   padding-bottom: 30px;
@@ -11,17 +11,20 @@
     left: 0;
     display: inline-block;
     width: 100%;
-    height: 150px;
+    height: 800px;
     content: "";
     background-image: url('/images/home/waves03.png');
     background-repeat-x: repeat;
-    z-index: 25;
-    background-size: 100%;
   }
 
   .footer-logo {
+    display: none;
     height: 50px;
     width: auto;
+
+    @media screen and (min-width: $bp-md) {
+      display: block;
+    }
   }
 
   .footer-title {
@@ -36,6 +39,11 @@
 
     a {
       color: $white;
+
+      &:hover {
+        color: #4d97cd;
+        text-decoration: none;
+      }
     }
   }
 
@@ -48,9 +56,19 @@
     justify-content: center;
     background-color: $primary;
     margin-bottom: 8px;
+    margin-right: 8px;
 
-    &:nth-of-type(odd) {
-      margin-right: 8px;
+    &:hover {
+      cursor: pointer;
+      background: linear-gradient(-225deg, $primary-home-900 0%, #10478f 100%);
+    }
+
+    &--top {
+      background-color: $secondary-home-900;
+
+      &:hover {
+        background: linear-gradient(-225deg, $secondary-home-900 0%, #009941 100%);
+      }
     }
   }
 
@@ -67,5 +85,9 @@
   .footer-text {
     font-size: 15px;
     font-family: Courier;
+  }
+
+  .float-right {
+    float: right;
   }
 }
