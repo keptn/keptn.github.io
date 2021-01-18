@@ -16,12 +16,13 @@
 
     h2 {
       color: $textColor-home-900;
-      font-weight: $font-weight-bold !important;
+      font-weight: $font-weight-bold;
       font-size: $font-size--m;
-      margin-bottom: 24px !important;
+      margin-bottom: 12px;
 
       @media screen and (min-width: $bp-md) {
-        font-size: $font-size-xxl-home !important;
+        font-size: $font-size-xxl-home;
+        margin-bottom: 24px;
       }
     }
 

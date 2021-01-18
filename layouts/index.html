@@ -59,7 +59,7 @@ page-home
           </div>
         </div>
       </div>
-      <div class="col-12 pt-4 pb-3 teaser-box">
+      <div class="col-12 pt-4 teaser-box">
         <picture>
           <source media="(min-width: 768px)" srcset="/images/home/use-cases/graphic-use-case-01.svg">
           <img src="/images/home/hero/keptn-logo-white.svg">
@@ -84,7 +84,7 @@ page-home
           </a>
         </div>
       </div>
-      <div class="col-12 pt-4 pb-3 teaser-box">
+      <div class="col-12 pt-4 teaser-box">
         <picture>
           <source media="(min-width: 768px)" srcset="/images/home/use-cases/graphic-use-case-02.svg">
           <img src="/images/home/use-cases/graphic-use-case-02-XS.svg">
@@ -129,7 +129,7 @@ page-home
   <div class="capabilities">
     <div class="container pb-5 pt-3 pt-md-5">
       <div class="row pt-md-3 teaser-box teaser-box--white">
-        <div class="col-12">
+        <div class="col-12 pb-md-0 pb-4">
           {{ with .Site.GetPage "section" "home/capabilities" }}
           {{ .Content }}
           {{ end }}
@@ -141,24 +141,24 @@ page-home
 
 {{/* Happy Users */}}
 <div class="happy-users">
-  <div class="container pt-5 pb-5">
-    <div class="row pt-2 pt-md-4 pb-md-2">
-      <div class="text col-12 teaser-box">
+  <div class="container pt-3 pt-md-5 pb-4">
+    <div class="row pt-md-3">
+      <div class="text col-12 pb-md-0 pb-4 teaser-box">
         {{ with .Site.GetPage "section" "home/happy-users" }}
         {{ .Content }}
         {{ end }}
       </div>
-      <div class="text col-12 d-flex flex-column justify-content-center">
+      <div class="text col-12 pt-md-3 d-flex flex-column justify-content-center">
         {{ with .Site.GetPage "section" "home/happy-users-logos" }}
         {{ .Content }}
         {{ end }}
         <a href="#" class="add-organisation-link d-inline-block">
-          <img src="/images/home/happy-users/add.svg">
+          <img src="/images/home/icon-plus.svg">
         </a>
       </div>
     </div>
   </div>
-  <div class="container pt-5 pb-5 clients pl-0 pr-0 pl-sm-3 pr-sm-3">
+  <div class="container pb-5 clients pl-0 pr-0 pl-sm-3 pr-sm-3">
     <div class="row pt-2 pt-md-4 pb-md-2">
       <div class="col-12">
         <div class="splide">
@@ -234,7 +234,7 @@ page-home
 <div class="tools">
   <div class="container pt-3 pt-md-5 pb-5">
     <div class="row">
-      <div class="col-12">
+      <div class="col-12 pb-1 pb-md-0">
         <div class="text col-12 teaser-box">
           {{ with .Site.GetPage "section" "home/tools" }}
             {{ .Content }}
