@@ -1,5 +1,4 @@
 .logo {
-  transition: all 0.3s;
   display: none;
 
   @include media-breakpoint-up(sm) {
@@ -42,7 +41,6 @@
 
 .page-home {
   .logo {
-    transition: all 0.3s;
     display: none;
     padding-bottom: 16px;
 
@@ -64,8 +62,9 @@
     }
 
     img {
-      width: 100%;
+      width: 100px;
       height: auto;
+
     }
 
     a {

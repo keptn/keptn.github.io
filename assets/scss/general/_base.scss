@@ -58,4 +58,15 @@ body.page-why-keptn {
 
 body.page-home {
   margin-top: 0;
+
+  .hamburger.is-active {
+    .hamburger-inner,
+    .hamburger-inner:after {
+      background: $white;
+
+      &.is-sticky {
+        background: $primary-home-900;
+      }
+    }
+  }
 }

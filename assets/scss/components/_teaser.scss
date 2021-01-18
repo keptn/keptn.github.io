@@ -1,5 +1,5 @@
 .teaser {
-  background-color: $dark-blue-home-700;
+  background-color: $bannerColor-home;
 
   h1 {
     font-weight: $font-weight-semibold !important;
@@ -7,5 +7,9 @@
 
   h2 {
     font-weight: $font-weight-base !important;
+  }
+
+  h3 {
+    margin-top: 20px;
   }
 }
