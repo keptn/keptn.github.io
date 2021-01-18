@@ -20,8 +20,8 @@ window.addEventListener('DOMContentLoaded', function () {
         drag: true,
         type: 'loop',
         padding: {
-          right: '3rem',
-          left: '3rem',
+          right: '1.5rem',
+          left: '1.5rem',
         },
       },
     },
