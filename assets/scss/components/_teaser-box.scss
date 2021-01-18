@@ -1,119 +1,122 @@
-.teaser-box {
-  z-index: 50;
+.page-home {
+  .teaser-box {
+    z-index: 50;
 
-  h1 {
-    font-weight: $font-weight-bold !important;
-    font-size: $font-size--xl !important;
-    font-family: $font-family-base !important;
-    padding-bottom: 24px;
+    h1 {
+      font-weight: $font-weight-bold !important;
+      font-size: $font-size--xl;
+      font-family: $font-family-base !important;
+      padding-bottom: 24px;
 
-    @media screen and (min-width: $bp-md) {
-      padding-right: 32px;
-    }
-  }
-
-  h2 {
-    color: $textColor-home-900;
-    font-weight: $font-weight-bold !important;
-    font-size: $font-size-xxl-home;
-    margin-bottom: 24px !important;
-  }
-
-  h3 {
-    font-weight: $font-weight-semibold;
-    font-size: $font-size-m-home !important;
-    margin-top: 12px;
-    margin-bottom: 24px;
-  }
-
-  h4 {
-    color: $secondary-home-900;
-    font-family: 'Courier-Bold';
-    font-size: $font-size--primary;
-    font-weight: $font-weight-bold;
-    margin-bottom: 8px;
-  }
-
-  p {
-    color: $textColor-home-900;
-    font-weight: $font-weight-normal;
-    font-size: $font-size-m-home !important;
-
-
-    &:last-of-type {
-      margin-bottom: 24px !important;
-    }
-  }
-
-  ul {
-    list-style-type: none;
-    margin-bottom: 16px !important;
-
-    li {
-      padding-left: 32px;
-      position: relative;
-      font-size: $font-size-m-home;
-      font-weight: $font-weight-normal;
-      color: $textColor-home-900;
-
-      &::before {
-        content: url('/images/home/icon-arrow-list.svg');
-        position: absolute;
-        top: 2px;
-        left: 0;
+      @media screen and (min-width: $bp-md) {
+        padding-right: 32px;
       }
     }
-  }
 
-  .button {
-    padding: 14px 24px;
-    border-radius: 24px;
-    box-shadow: 0 5px 10px 0 rgba(3, 12, 18, 0.15);
-    font-weight: $font-weight-bold;
-    text-align: center;
-    text-decoration: none !important;
-    display: block;
-
-    &--filledGreen {
-      background-color: $secondary-home-900;
-      color: $white;
+    h2 {
+      color: $textColor-home-900;
+      font-weight: $font-weight-bold !important;
+      font-size: $font-size-xxl-home;
+      margin-bottom: 24px !important;
     }
 
-    &--filledWhite {
-      background-color: $white;
-      color: $primary-home-900;
+    h3 {
+      font-weight: $font-weight-semibold;
+      font-size: $font-size-m-home !important;
+      margin-top: 12px;
+      margin-bottom: 24px;
+    }
 
-      .icon {
-        &--hover {
-          display: none;
+    h4 {
+      color: $secondary-home-900;
+      font-family: 'Courier-Bold';
+      font-size: $font-size--primary;
+      font-weight: $font-weight-bold;
+      margin-bottom: 8px;
+    }
+
+    p {
+      color: $textColor-home-900;
+      font-weight: $font-weight-normal;
+      font-size: $font-size-m-home !important;
+
+
+      &:last-of-type {
+        margin-bottom: 24px !important;
+      }
+    }
+
+    ul {
+      list-style-type: none;
+      margin-bottom: 16px !important;
+
+      li {
+        padding-left: 32px;
+        position: relative;
+        font-size: $font-size-m-home;
+        font-weight: $font-weight-normal;
+        color: $textColor-home-900;
+        margin-left: 0;
+
+        &::before {
+          content: url('/images/home/icon-arrow-list.svg');
+          position: absolute;
+          top: 2px;
+          left: 0;
         }
       }
     }
 
-    &--outlinedBlue {
-      border: 2px solid $primary-home-900;
-      color: $primary-home-900;
+    .button {
+      padding: 14px 24px;
+      border-radius: 24px;
+      box-shadow: 0 5px 10px 0 rgba(3, 12, 18, 0.15);
+      font-weight: $font-weight-bold;
+      text-align: center;
+      text-decoration: none !important;
+      display: block;
+
+      &--filledGreen {
+        background-color: $secondary-home-900;
+        color: $white;
+      }
+
+      &--filledWhite {
+        background-color: $white;
+        color: $primary-home-900;
+
+        .icon {
+          &--hover {
+            display: none;
+          }
+        }
+      }
+
+      &--outlinedBlue {
+        border: 2px solid $primary-home-900;
+        color: $primary-home-900;
+      }
+
+      &--outlinedWhite {
+        border: 2px solid $white;
+        color: $white;
+      }
     }
 
-    &--outlinedWhite {
-      border: 2px solid $white;
-      color: $white;
+    .img {
+      padding-top: 32px;
     }
-  }
 
-  .img {
-    padding-top: 32px;
-  }
-
-  &--white {
-    h1, h2, h3, li, p {
-      color: $white !important;
+    &--white {
+      h1, h2, h3, li, p {
+        color: $white !important;
+      }
     }
-  }
 
-  &--intro {
-    li, p {
-      font-size: $font-size--s !important;
+    &--intro {
+      li, p {
+        font-size: $font-size--s !important;
+      }
     }
   }
 }

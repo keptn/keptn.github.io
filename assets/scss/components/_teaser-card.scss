@@ -1,104 +1,115 @@
-.teaser-card-container {
-  flex: 1 1;
-  display: flex;
-  flex-flow: row wrap;
-}
+.page-home {
 
-.teaser-card {
-  border-radius: 13px;
-  background-color: $white;
-  padding: 40px 31px;
-  width: 100%;
-  margin-bottom: 25px;
-
-  @media screen and (min-width: $bp-sm) {
-    min-height: 1px;
-    flex: 0 1 50%;
-    max-width: 50%;
+  .teaser-card-container {
+    flex: 1 1;
+    display: flex;
+    flex-flow: row wrap;
   }
 
-  @media screen and (min-width: $bp-lg) {
-    min-height: 1px;
-    flex: 0 1 33.33333%;
-    max-width: 33.33333%;
-  }
+  .teaser-card {
+    border-radius: 13px;
+    background-color: $white;
+    padding: 40px 31px;
+    width: 100%;
+    margin-bottom: 25px;
 
-  &--blue {
-    background-color: $primary-home-500;
-    box-shadow: 20px 20px 80px 0 rgba(0, 26, 45, 0.3);
-  }
-
-  &--darkBlue {
-    background-color: $primary-home-900;
-  }
-
-  &--opacity {
-    box-shadow: 20px 20px 80px 0 rgba(2, 63, 107, 0.17);
-  }
-
-  &--outline {
-    border: 1px dotted green;
-  }
-
-  &--smallPadding {
-    padding: 10px;
-  }
-
-  .teaser-card-picture {
-    height: auto;
-    width: 160px;
-  }
-
-  .teaser-card-content {
-    h3 {
-      font-weight: $font-weight-semibold;
-      font-size: $font-size-m-home !important;
-      margin-top: 25px;
-      margin-bottom: 12px;
+    @media screen and (min-width: $bp-sm) {
+      min-height: 1px;
+      flex: 0 1 50%;
+      max-width: 50%;
     }
 
-    li, p {
-      font-size: $font-size--s !important;
-
-      &:last-of-type {
-        margin-bottom: 0 !important;
-      }
+    @media screen and (min-width: $bp-lg) {
+      min-height: 1px;
+      flex: 0 1 33.33333%;
+      max-width: 33.33333%;
     }
 
     &--blue {
-      p, h3, h5, li {
-        color: $primary-home-900 !important;
+      background-color: $primary-home-500;
+      box-shadow: 20px 20px 80px 0 rgba(0, 26, 45, 0.3);
+
+      * {
+        color: $white;
       }
     }
 
-    &--white {
-      p, h3, h5, li {
-        color: $white !important;
+    &--darkBlue {
+      background-color: $primary-home-900;
+
+      * {
+        color: $white;
       }
     }
 
-    &--courier {
-      font-family: Courier;
+    &--opacity {
+      box-shadow: 20px 20px 80px 0 rgba(2, 63, 107, 0.17);
+    }
 
-      p, h5 {
-        font-size: $font-size-s-home !important;
-        line-height: 24px;
-      }
+    &--outline {
+      border: 1px dotted green;
+    }
 
-      p {
-        font-weight: $font-weight-normal;
-      }
+    &--smallPadding {
+      padding: 10px;
+    }
 
-      h5 {
+    .teaser-card-picture {
+      height: auto;
+      width: 160px;
+    }
+
+    .teaser-card-content {
+      h3 {
+        font-weight: $font-weight-semibold;
+        font-size: $font-size-m-home;
+        margin-top: 25px;
         margin-bottom: 12px;
-        font-weight: $font-weight-bold !important;
+      }
+
+      li, p {
+        font-size: $font-size--s;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+
+      &--blue {
+        p, h3, h5, li {
+          color: $primary-home-900;
+        }
+      }
+
+      &--white {
+        p, h3, h5, li {
+          color: $white !important;
+        }
+      }
+
+      &--courier {
+        font-family: Courier;
+
+        p, h5 {
+          font-size: $font-size-s-home !important;
+          line-height: 24px;
+        }
+
+        p {
+          font-weight: $font-weight-normal;
+        }
+
+        h5 {
+          margin-bottom: 12px;
+          font-weight: $font-weight-bold !important;
+        }
       }
     }
-  }
 
-  .teaser-card-title {
-    text-align: center;
-    color: $primary;
+    .teaser-card-title {
+      text-align: center;
+      color: $primary;
+    }
   }
 }
 
