@@ -31,17 +31,19 @@
     }
 
     &:after {
-      display: none;
-      @media screen and (min-width: $bp-md) {
-        display: block;
-      }
-      content: "";
-      height: 1166px;
-      top: 6%;
       position: absolute;
-      background: url('/images/home/hero/waves-intro.jpg');
+      top: 370px;
+      left: 0;
+      display: inline-block;
       width: 100%;
-      z-index: 25;
+      height: 1000px;
+      content: "";
+      background-image: url('/images/home/hero/waves-intro.jpg');
+      background-repeat-x: repeat;
+
+      @media screen and (min-width: $bp-md) {
+        top: 450px;
+      }
     }
 
     .intro-graphic {
