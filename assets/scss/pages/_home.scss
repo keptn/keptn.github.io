@@ -1,4 +1,7 @@
 .page-home {
+  .z-index {
+    z-index: 100;
+  }
   position: relative;
 
   // Intro & Usage
@@ -142,6 +145,30 @@
   }
 
   .happy-users {
+    &:after {
+      position: absolute;
+      top: 6400px;
+      left: 0;
+      display: inline-block;
+      width: 100%;
+      height: 804px;
+      content: "";
+      background-image: url('/images/home/happy-users/waves02.jpg');
+      background-repeat-x: repeat;
+
+      @media screen and (min-width: $bp-sm) {
+        top: 5670px;
+      }
+
+      @media screen and (min-width: $bp-md) {
+        top: 5850px;
+      }
+
+      @media screen and (min-width: $bp-lg) {
+        top: 5650px;
+      }
+    }
+
     background-color: $primary-home-100;
 
     img {
