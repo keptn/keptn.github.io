@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>icon-arrow</title>
-    <g id="icon-arrow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
-        <g id="Group" transform="translate(-4.000000, -4.000000)" fill-rule="nonzero" stroke="#FFFFFF" stroke-width="2">
-            <g id="a/icons/32/chevron/up">
-                <polyline id="Stroke-50" stroke="#14ba5a" transform="translate(16.500000, 15.750000) scale(1, -1) translate(-16.500000, -15.750000) " points="9 12 16.5 19.5 24 12"></polyline>
+    <title>list-arrow</title>
+    <g id="list-arrow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="a/icons/32/arrow-up-copy-3" transform="translate(12.500000, 12.500000) rotate(90.000000) translate(-12.500000, -12.500000) translate(4.000000, 4.000000)" fill="#14BA5A" fill-rule="nonzero">
+            <g id="Group" transform="translate(0.875000, 0.000000)">
+                <path d="M8.17539944,0.209704612 L8.26960678,0.292893219 L14.8321068,6.85539322 C15.2226311,7.24591751 15.2226311,7.87908249 14.8321068,8.26960678 C14.4716228,8.63009074 13.9043918,8.65782028 13.5121006,8.35279539 L13.4178932,8.26960678 L8.562,3.413 L8.5625,15.4375 C8.5625,15.9897847 8.11478475,16.4375 7.5625,16.4375 C7.04966416,16.4375 6.62699284,16.0514598 6.56922773,15.5541211 L6.5625,15.4375 L6.562,3.415 L1.70710678,8.26960678 C1.34662282,8.63009074 0.779391764,8.65782028 0.387100557,8.35279539 L0.292893219,8.26960678 C-0.0675907428,7.90912282 -0.0953202783,7.34189176 0.209704612,6.94960056 L0.292893219,6.85539322 L6.85539322,0.292893219 C7.21587718,-0.0675907428 7.78310824,-0.0953202783 8.17539944,0.209704612 Z" id="Combined-Shape"></path>
             </g>
         </g>
     </g>
