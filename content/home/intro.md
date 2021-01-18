@@ -1,4 +1,4 @@
-### Keptn Automates
+### Keptn automates
 
 - Observability, dashboards & alerting
 - SLO-driven multi-stage delivery 
