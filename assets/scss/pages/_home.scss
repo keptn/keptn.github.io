@@ -121,81 +121,9 @@
     background: $dark-blue-home-900;
   }
 
+  // Get started
   .get-started {
     background: $primary-home-500;
-  }
-
-  // Kubernetes Cluster
-  .kubernetes-cluster {
-    counter-reset: step;
-
-    .step {
-      position: relative;
-
-      &:last-of-type {
-        p:last-of-type {
-          font-size: 1rem;
-
-          @media screen and (min-width: $bp-md) {
-            font-size: 1.125rem;
-          }
-        }
-      }
-
-      &:before {
-        display: none;
-        content: counter(step);
-        counter-increment: step;
-        position: absolute;
-        top: 50%;
-        left: -80px;
-        transform: translateY(-50%);
-        color: $primary;
-        font-size: 3.36rem;
-        font-weight: $font-weight-bold;
-
-        @media screen and (min-width: $bp-md) {
-          display: block;
-        }
-      }
-    }
-  }
-
-  // Delivery Flow
-  .delivery-flow {
-    position: relative;
-
-    a {
-      color: $primary !important;
-      text-decoration: none;
-    }
-
-    .background-image {
-      display: none;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-
-      @media screen and (min-width: $bp-md) {
-        display: block;
-      }
-
-      @media screen and (min-width: $bp-xl) {
-        bottom: -10%;
-      }
-
-      @media screen and (min-width: 1440px) {
-        bottom: -20%;
-      }
-
-      @media screen and (min-width: 1920px) {
-        bottom: -30%;
-      }
-    }
-
-    .text p:first-of-type {
-      margin-bottom: 24px;
-    }
   }
 
   // Onboard Services & Keptn Workflows
@@ -213,6 +141,7 @@
   }
 
   .happy-users {
+    background-color: $primary-home-100;
 
     img {
       max-height: 50px;
@@ -223,36 +152,6 @@
 
       &:last-of-type {
         margin-right: 0;
-      }
-    }
-  }
-
-  // Onboard Services
-  .onboard-services {
-    .text p:first-of-type {
-      margin-bottom: 32px;
-      font-size: 1rem;
-
-      @media screen and (min-width: $bp-md) {
-        font-size: 1.125rem;
-      }
-    }
-  }
-
-  // Integration Workflow
-  .integration-workflow {
-    .image {
-      @media screen and (min-width: $bp-md) {
-        margin-top: -8px;
-        margin-left: -8px;
-      }
-    }
-
-    .text:last-of-type p {
-      font-size: 1rem;
-
-      @media screen and (min-width: $bp-md) {
-        font-size: 1.125rem;
       }
     }
   }

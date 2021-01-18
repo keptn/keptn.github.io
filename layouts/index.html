@@ -133,30 +133,6 @@ page-home
     </div>
   </div>
 
-
-{{/* Resommendation */}}
-<div class="recommendation">
-  <div class="container pt-3 pt-md-5 pb-5">
-    <div class="row">
-      <div class="text col-12 d-flex flex-column justify-content-center teaser-box">
-        {{ with .Site.GetPage "section" "home/recommendation" }}
-          {{ .Content }}
-        {{ end }}
-      </div>
-      <div class="col-12">
-        <div class="splide">
-          <div class="splide__track">
-            <ul class="splide__list">
-              <li class="splide__slide">Slide 01</li>
-              <li class="splide__slide">Slide 02</li>
-              <li class="splide__slide">Slide 03</li>
-            </ul>
-          </div>
-        </div>
-    </div>
-  </div>
-</div>
-
 {{/* Happy Users */}}
 <div class="happy-users">
   <div class="container pt-5 pb-5">
@@ -176,7 +152,76 @@ page-home
       </div>
     </div>
   </div>
+  <div class="container pt-5 pb-5 clients">
+    <div class="row pt-2 pt-md-4 pb-md-2">
+      <div class="col-12">
+        <div class="splide">
+          <div class="splide__track">
+            <ul class="splide__list">
+              <li class="splide__slide d-flex" style="height: 380px !important;">
+                <div class="splide__image" style="background-image: url('/images/home/img-client-01.png'); height: 100%; width: 40%;"></div>
+                <div class="splide__content" style="width: 60%;">
+                  <p>„Keptn allowed us to accelerate our
+                    adoption of Kubernetes by at least a
+                    year. It’s a unique value proposition
+                    that has enabled us to create an
+                    intelligent and fully automated
+                    continuous delivery pipeline.“
+                  </p>
+                  <p class="splide__name">
+                    Sebastian Bonk
+                  </p>
+                  <p class="splide__info">
+                    Manager of Software adflkgj
+                  </p>
+                </div>
+              </li>
+              <li class="splide__slide d-flex" style="height: 380px !important;">
+                <div class="splide__image" style="background-image: url('/images/home/img-client-02.png'); height: 100%; width: 40%;"></div>
+                <div class="splide__content" style="width: 60%;">
+                  <p>„Keptn allowed us to accelerate our
+                    adoption of Kubernetes by at least a
+                    year. It’s a unique value proposition
+                    that has enabled us to create an
+                    intelligent and fully automated
+                    continuous delivery pipeline.“
+                  </p>
+                  <p class="splide__name">
+                    Sebastian Bonk
+                  </p>
+                  <p class="splide__info">
+                    Manager of Software adflkgj
+                  </p>
+                </div>
+              </li>
+              <li class="splide__slide d-flex" style="height: 380px !important;">
+                <div class="splide__image" style="background-image: url('/images/home/img-client-01.png'); height: 100%; width: 40%;"></div>
+                <div class="splide__content" style="width: 60%;">
+                  <p>„Keptn allowed us to accelerate our
+                    adoption of Kubernetes by at least a
+                    year. It’s a unique value proposition
+                    that has enabled us to create an
+                    intelligent and fully automated
+                    continuous delivery pipeline.“
+                  </p>
+                  <p class="splide__name">
+                    Sebastian Bonk
+                  </p>
+                  <p class="splide__info">
+                    Manager of Software adflkgj
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+  </div>
+</div>
+
 
 {{/* Tools */}}
 <div class="tools">

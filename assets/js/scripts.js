@@ -6,25 +6,30 @@ var header = document.querySelector('.header');
 var logo = document.querySelector('.logo');
 var logoIntro = document.querySelector('.logo-intro');
 
-window.addEventListener( 'DOMContentLoaded', function () {
-  new Splide( '.splide', {
-    perPage    : 3,
-    perMove    : 1,
-    height     : '9rem',
-    focus      : 'center',
-    trimSpace  : false,
+window.addEventListener('DOMContentLoaded', function () {
+  new Splide('.splide', {
+    perPage: 2,
+    perMove: 1,
+    height: '380px',
+    focus: 'center',
+    drag: true,
     breakpoints: {
-      600: {
-        perPage: 2,
-        height : '6rem',
-      }
-    }
-  } ).mount();
-} );
+      992: {
+        perPage: 1,
+        drag: true,
+        type: 'loop',
+        padding: {
+          right: '3rem',
+          left: '2rem',
+        },
+      },
+    },
+  }).mount();
+});
 
 window.addEventListener('scroll', (event) => {
-  if(event.target.scrollingElement.scrollTop > 5){
-    if(!(header.classList.contains('is-sticky'))){
+  if (event.target.scrollingElement.scrollTop > 5) {
+    if (!(header.classList.contains('is-sticky'))) {
       header.classList.add('is-sticky');
       logoIntro.classList.add('is-sticky');
       logo.classList.add('is-sticky');
@@ -48,7 +53,7 @@ if (menuTrigger) {
 if (TypeIt) {
   var instance = new TypeIt('#typeit-editor', {
     speed: 100,
-    startDelay: 900
+    startDelay: 900,
   })
     .type('<span class="command">keptn install</span>')
     .break()
