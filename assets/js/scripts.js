@@ -13,6 +13,7 @@ window.addEventListener('DOMContentLoaded', function () {
     height: '380px',
     focus: 'center',
     drag: true,
+    type: 'loop',
     breakpoints: {
       992: {
         perPage: 1,
@@ -20,7 +21,7 @@ window.addEventListener('DOMContentLoaded', function () {
         type: 'loop',
         padding: {
           right: '3rem',
-          left: '2rem',
+          left: '3rem',
         },
       },
     },
