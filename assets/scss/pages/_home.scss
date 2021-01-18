@@ -23,14 +23,6 @@
       font-size: 1rem;
     }
 
-    p:first-of-type {
-      margin-bottom: 32px;
-    }
-
-    p:last-of-type {
-      margin-bottom: 0;
-    }
-
     .icon {
       width: 22px;
       height: 22px;
@@ -50,6 +42,22 @@
       background: url('/images/home/hero/waves-intro.jpg');
       width: 100%;
       z-index: 25;
+    }
+
+    .intro-graphic {
+      display: none;
+
+      @media screen and (min-width: $bp-md) {
+        display: block;
+      }
+
+      &--small {
+        display: none;
+
+        @media screen and (max-width: $bp-md) {
+          display: block;
+        }
+      }
     }
   }
 

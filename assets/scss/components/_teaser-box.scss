@@ -5,11 +5,12 @@
     h1 {
       font-weight: $font-weight-bold;
       font-size: $font-size--m;
-      padding-bottom: 24px;
+      padding-bottom: 12px;
 
       @media screen and (min-width: $bp-md) {
         padding-right: 32px;
         font-size: $font-size--xl;
+        padding-bottom: 24px;
       }
     }
 
@@ -54,13 +55,17 @@
       }
 
       &:last-of-type {
-        margin-bottom: 24px !important;
+        margin-bottom: 16px;
+
+        @media screen and (min-width: $bp-md) {
+          padding-right: 24px;
+        }
       }
     }
 
     ul {
       list-style-type: none;
-      margin-bottom: 16px !important;
+      margin-bottom: 16px;
 
       li {
         padding-left: 32px;
@@ -96,22 +101,6 @@
         @media screen and (min-width: $bp-md) {
           font-size: $font-size--s !important;
         }
-      }
-    }
-  }
-
-  .intro-graphic {
-    display: none;
-
-    @media screen and (min-width: $bp-md) {
-      display: block;
-    }
-
-    &--small {
-      display: none;
-
-      @media screen and (max-width: $bp-md) {
-        display: block;
       }
     }
   }
