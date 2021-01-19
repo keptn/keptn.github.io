@@ -2,29 +2,27 @@
   <div class="container pt-3 pt-md-5 pb-5">
     <div class="row pt-2 pb-2 pb-md-3">
 
-      <div class="col-12 col-md-6 pb-4 pb-md-0">
+      <div class="col-12 col-md-7 pb-4 pb-md-0">
         <div class="pt-2">
           {{ with .Site.GetPage "section" "home/get-started" }}
           {{ .Content }}
           {{ end }}
 
-          <div class="d-block d-sm-flex">
+          <div class="d-block d-lg-flex">
             <div class="d-block">
-              <a href="#" class="d-inline-block button button--filledGreen mb-3 mr-md-2">Start now</a>
+              <a href="#" class="d-inline-block button button--filledGreen mb-3 mb-lg-0 mr-lg-2">Start now</a>
               &nbsp;&nbsp;&nbsp;
             </div>
             <div class="d-block">
-              <a href="#" class="button button--outlinedWhite d-inline-block mb-3 mr-md-2">See it in action</a>
+              <a href="#" class="button button--outlinedWhite d-inline-block mb-3 mb-lg-0 mr-lg-2">See it in action</a>
               &nbsp;&nbsp;&nbsp;
             </div>
             <div class="d-block">
-              <a href="#" class="button button--outlinedWhite d-inline-block mr-md-2">Read docs</a>
+              <a href="#" class="button button--outlinedWhite d-inline-block">Read docs</a>
             </div>
           </div>
         </div>
       </div>
-
-      <div class="col-md-1"></div>
 
       <div class="col-12 col-md-5 d-flex flex-column justify-content-md-between pl-0 pr-0 pb-md-0">
         <img src="/images/home/cloud-native-computing-foundation.svg">
