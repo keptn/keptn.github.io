@@ -64,6 +64,12 @@
 
     @media screen and (min-width: $bp-xs) {
       min-height: 1px;
+      flex: 0 1 21%;
+      max-width: 21%;
+    }
+
+    @media screen and (min-width: 310px) {
+      min-height: 1px;
       flex: 0 1 26%;
       max-width: 26%;
     }
