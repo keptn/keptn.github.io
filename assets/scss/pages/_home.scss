@@ -48,22 +48,6 @@
         top: 450px;
       }
     }
-
-    .intro-graphic {
-      display: none;
-
-      @media screen and (min-width: $bp-md) {
-        display: block;
-      }
-
-      &--small {
-        display: none;
-
-        @media screen and (max-width: $bp-md) {
-          display: block;
-        }
-      }
-    }
   }
 
   // Usage
