@@ -9,12 +9,12 @@
           </a>
         </div>
       </div>
-      <div class="col-10 col-md-4 teaser-box teaser-box--white teaser-box--intro">
+      <div class="col-10 col-md-3 teaser-box teaser-box--white teaser-box--intro mr-md-5 mr-xl-0">
         {{ with .Site.GetPage "section" "home/headline" }}
         {{ .Content }}
         {{ end }}
       </div>
-      <div class="col-12 col-md-6 teaser-box teaser-box--white teaser-box--intro">
+      <div class="col-12 col-md-6 teaser-box teaser-box--white teaser-box--intro ml-l-5 ml-xl-0">
         {{ with .Site.GetPage "section" "home/intro" }}
         {{ .Content }}
         {{ end }}
@@ -35,7 +35,7 @@
         </div>
       </div>
       <div class="col-md-2"></div>
-      <div class="col-12 teaser-box pt-3">
+      <div class="col-12 teaser-box pt-0 pl-0 pr-0">
         <div class="d-none d-md-block">
           {{ partial "intro-svg.html" . }}
         </div>

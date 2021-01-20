@@ -36,7 +36,7 @@
 
     &:after {
       position: absolute;
-      top: 370px;
+      top: 190px;
       left: 0;
       display: inline-block;
       width: 100%;
@@ -44,9 +44,12 @@
       content: "";
       background-image: url('/images/home/hero/waves-intro.jpg');
       background-repeat-x: repeat;
+      background-position-y: bottom;
+      background-position-x: -600%;
 
       @media screen and (min-width: $bp-md) {
-        top: 460px;
+        top: 475px;
+        background-position-x: initial;
       }
     }
   }
