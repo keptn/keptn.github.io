@@ -55,7 +55,10 @@
     }
 
     &--outline {
-      border: 2px dotted $secondary-home-900;
+      background-size: cover;
+      box-shadow: none !important;
+      background-repeat: no-repeat;
+      background: url('/images/home/add-tool.svg');
     }
 
   &--smallPadding {

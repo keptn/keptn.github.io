@@ -3,3 +3,4 @@
 ![Developers](/images/home/happy-users/logo-neotys@2x.png)
 ![Developers](/images/home/happy-users/logo-citrix@2x.png)
 ![Developers](/images/home/happy-users/logo-amasol@2x.png)
+![Developers](/images/home/add-organisation.svg)
