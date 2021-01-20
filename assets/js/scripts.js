@@ -30,23 +30,27 @@ window.addEventListener('DOMContentLoaded', function () {
   }).mount();
 });
 
-window.addEventListener('scroll', (event) => {
-  if (event.target.scrollingElement.scrollTop > 5) {
-    if (!(header.classList.contains('is-sticky'))) {
-      header.classList.add('is-sticky');
-      logoIntro.classList.add('is-sticky');
-      logo.classList.add('is-sticky');
-      hamburgerInner.classList.add('is-sticky');
-      logoJS.src = '/images/logo.svg';
+if(body.classList.contains('page-home')) {
+  window.addEventListener('scroll', (event) => {
+    if (event.target.scrollingElement.scrollTop > 5) {
+      if (!(header.classList.contains('is-sticky'))) {
+        header.classList.add('is-sticky');
+        logoIntro.classList.add('is-sticky');
+        logo.classList.add('is-sticky');
+        hamburgerInner.classList.add('is-sticky');
+        logoJS.src = '/images/logo.svg';
+      }
+    } else {
+      header.classList.remove('is-sticky');
+      logoIntro.classList.remove('is-sticky');
+      logo.classList.remove('is-sticky');
+      hamburgerInner.classList.remove('is-sticky');
+      logoJS.src = '/images/home/hero/keptn-logo-white.svg';
     }
-  } else {
-    header.classList.remove('is-sticky');
-    logoIntro.classList.remove('is-sticky');
-    logo.classList.remove('is-sticky');
-    hamburgerInner.classList.remove('is-sticky');
-    logoJS.src = '/images/home/hero/keptn-logo-white.svg';
-  }
-});
+  });
+} else {
+  logoJS.src = '/images/logo.svg';
+}
 
 if (menuTrigger) {
   menuTrigger.onclick = function () {
