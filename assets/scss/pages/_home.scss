@@ -131,26 +131,17 @@
   .happy-users {
     &:after {
       position: absolute;
-      top: 6450px;
       left: 0;
+      bottom: -10px;
       display: inline-block;
       width: 100%;
-      height: 804px;
+      height: 500px;
       content: "";
       background-image: url('/images/home/happy-users/waves02.jpg');
       background-repeat-x: repeat;
-
-      @media screen and (min-width: $bp-sm) {
-        top: 5670px;
-      }
-
-      @media screen and (min-width: $bp-md) {
-        top: 6140px;
-      }
-
-      @media screen and (min-width: $bp-lg) {
-        top: 5770px;
-      }
+      background-repeat-y: no-repeat;
+      background-position-y: bottom;
+      background-size: 100%;
     }
 
     background-color: $primary-home-100;

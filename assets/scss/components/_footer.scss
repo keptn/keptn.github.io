@@ -88,14 +88,17 @@
   .footer {
     &:before {
       position: absolute;
-      top: -150px;
       left: 0;
+      bottom: -10px;
       display: inline-block;
       width: 100%;
-      height: 800px;
+      height: 500px;
       content: "";
       background-image: url('/images/home/waves03.png');
       background-repeat-x: repeat;
+      background-repeat-y: no-repeat;
+      background-position-y: bottom;
+      background-size: 100%;
     }
   }
 }
