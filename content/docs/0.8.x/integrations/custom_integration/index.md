@@ -87,8 +87,6 @@ Using this feature, the following Keptn API services will be reachable for the K
 
 To configure this distributor for your *Keptn-service*, the following environment variables can be adapted. However, in most scenarios only a subset of them needs to be configured. The full list of environment variables is as follows:
 
-<p>
-
 | Environment variable  | Description                                                                                                                              | Default Value               |
 |-----------------------|:-----------------------------------------------------------------------------------------------------------------------------------------|:----------------------------|
 | KEPTN_API_ENDPOINT    | Keptn API Endpoint - needed when the distributor runs outside of the Keptn cluster                                                       | `""`                        |
@@ -103,8 +101,6 @@ To configure this distributor for your *Keptn-service*, the following environmen
 | PUBSUB_RECIPIENT      | Hostname of the execution plane service the distributor should forward incoming CloudEvents to                                           | `http://127.0.0.1`          |
 | PUBSUB_RECIPIENT_PORT | Port of the execution plane service the distributor should forward incoming CloudEvents to                                               | `8080`                      |
 | PUBSUB_RECIPIENT_PATH | Path of the execution plane service the distributor should forward incoming CloudEvents to                                               | `/`                         |
-
-</p>
 
 The above list of environment variables is pretty long, but in most scenarios only a few of them have to be set. The following examples show how to set the environment variables properly, depending on where the distributor and it's accompanying execution plane service should run:
 
