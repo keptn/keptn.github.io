@@ -36,7 +36,7 @@
 
     &:after {
       position: absolute;
-      top: 190px;
+      top: 195px;
       left: 0;
       display: inline-block;
       width: 100%;
@@ -44,12 +44,12 @@
       content: "";
       background-image: url('/images/home/hero/waves-intro.jpg');
       background-repeat-x: repeat;
-      background-position-y: bottom;
-      background-position-x: -600%;
+      background-position-x: -300%;
 
       @media screen and (min-width: $bp-md) {
         top: 475px;
-        background-position-x: initial;
+        background-position-x: 68%;
+        background-position-y: 90%;
       }
     }
   }
@@ -149,11 +149,11 @@
       }
 
       @media screen and (min-width: $bp-md) {
-        top: 5850px;
+        top: 6140px;
       }
 
       @media screen and (min-width: $bp-lg) {
-        top: 5650px;
+        top: 5750px;
       }
     }
 
