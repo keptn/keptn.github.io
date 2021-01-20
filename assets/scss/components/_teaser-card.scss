@@ -18,12 +18,12 @@
       min-height: 1px;
       flex: 0 1 47%;
       max-width: 47%;
-  }
+    }
 
-  @media screen and (min-width: $bp-md) {
-    min-height: 1px;
-    flex: 0 1 48%;
-    max-width: 48%;
+    @media screen and (min-width: $bp-md) {
+      min-height: 1px;
+      flex: 0 1 48%;
+      max-width: 48%;
     }
 
     @media screen and (min-width: $bp-lg) {
@@ -39,6 +39,12 @@
       * {
         color: $white;
       }
+    }
+
+    &--verticalCentered {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
     }
 
     &--darkBlue {
@@ -60,40 +66,40 @@
       background-image: url('/images/home/add-tool.svg');
     }
 
-  &--smallPadding {
-    padding: 10px;
-    box-shadow: 5px 5px 30px 0 rgba(2, 63, 107, 0.2);
+    &--smallPadding {
+      padding: 10px;
+      box-shadow: 5px 5px 30px 0 rgba(2, 63, 107, 0.2);
 
-    @media screen and (min-width: $bp-xs) {
-      min-height: 1px;
-      flex: 0 1 21%;
-      max-width: 21%;
-    }
+      @media screen and (min-width: $bp-xs) {
+        min-height: 1px;
+        flex: 0 1 21%;
+        max-width: 21%;
+      }
 
-    @media screen and (min-width: 310px) {
-      min-height: 1px;
-      flex: 0 1 26%;
-      max-width: 26%;
-    }
+      @media screen and (min-width: 310px) {
+        min-height: 1px;
+        flex: 0 1 26%;
+        max-width: 26%;
+      }
 
-    @media screen and (min-width: $bp-sm) {
-      min-height: 1px;
-      flex: 0 1 23.33333%;
-      max-width: 23.33333%;;
-    }
+      @media screen and (min-width: $bp-sm) {
+        min-height: 1px;
+        flex: 0 1 23.33333%;
+        max-width: 23.33333%;;
+      }
 
-    @media screen and (min-width: $bp-md) {
-      min-height: 1px;
-      flex: 0 1 26.33333%;
-      max-width: 26.33333%;
-    }
+      @media screen and (min-width: $bp-md) {
+        min-height: 1px;
+        flex: 0 1 26.33333%;
+        max-width: 26.33333%;
+      }
 
-    @media screen and (min-width: $bp-lg) {
-      min-height: 1px;
-      flex: 0 1 26.33333%;
-      max-width: 26.33333%;
+      @media screen and (min-width: $bp-lg) {
+        min-height: 1px;
+        flex: 0 1 26.33333%;
+        max-width: 26.33333%;
+      }
     }
-  }
 
     .teaser-card-picture {
       height: auto;
