@@ -61,10 +61,6 @@ spec:
         memory: "128Mi"
         cpu: "500m"
     env:
-    - name: CONNECTION_TYPE
-      value: 'nats'
-    - name: PUBSUB_URL
-      value: 'nats://keptn-nats-cluster'
     - name: PUBSUB_TOPIC
       value: 'sh.keptn.event.test.triggered'
     - name: PUBSUB_RECIPIENT
