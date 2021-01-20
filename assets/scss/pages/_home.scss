@@ -2,6 +2,7 @@
   .z-index {
     z-index: 100;
   }
+
   position: relative;
 
   // Intro & Usage
@@ -165,6 +166,12 @@
       &:last-of-type {
         margin-right: 0;
       }
+    }
+  }
+
+  .clients {
+    @media screen and (max-width: $bp-lg) {
+      max-width: 100% !important;
     }
   }
 }
