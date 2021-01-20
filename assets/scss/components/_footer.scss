@@ -4,18 +4,6 @@
   padding-bottom: 30px;
   position: relative;
 
-  &:before {
-    position: absolute;
-    top: -150px;
-    left: 0;
-    display: inline-block;
-    width: 100%;
-    height: 800px;
-    content: "";
-    background-image: url('/images/home/waves03.png');
-    background-repeat-x: repeat;
-  }
-
   .footer-logo {
     display: none;
     height: 50px;
@@ -37,7 +25,8 @@
     @include list-unstyled;
 
     a {
-      color: $white;
+      color: $white !important;
+      text-decoration: none;
 
       &:hover {
         color: #4d97cd;
@@ -88,5 +77,21 @@
 
   .float-right {
     float: right;
+  }
+}
+
+.page-home {
+  .footer {
+    &:before {
+      position: absolute;
+      top: -150px;
+      left: 0;
+      display: inline-block;
+      width: 100%;
+      height: 800px;
+      content: "";
+      background-image: url('/images/home/waves03.png');
+      background-repeat-x: repeat;
+    }
   }
 }
