@@ -34,8 +34,8 @@ page-home
 
 {{/* Usage */}}
 <div class="usage">
-  <div class="container pb-5 pt-4 pt-md-0">
-    <div class="row pb-md-5">
+  <div class="container pt-4 pt-md-0">
+    <div class="row">
       <div class="col-12 col-md-8 teaser-box">
         {{ with .Site.GetPage "section" "home/usage" }}
           {{ .Content }}
@@ -59,9 +59,14 @@ page-home
           </div>
         </div>
       </div>
-      <div class="col-12 pt-4 teaser-box">
+    </div>
+  </div>
+  <div class="container pl-0 pr-0 pt-5 pb-5">
+    <div class="row pb-4">
+      <div class="col-12 pl-0 pr-0 teaser-box">
         <picture>
           <source media="(min-width: 768px)" srcset="/images/home/use-cases/graphic-use-case-01.svg">
+          <source media="(min-width: 576)" srcset="/images/home/use-cases/graphic-use-case-01-S.svg">
           <img src="/images/home/use-cases/graphic-use-case-01-XS.svg">
         </picture>
       </div>
@@ -71,8 +76,8 @@ page-home
 
 {{/* Delivery */}}
 <div class="delivery">
-  <div class="container pb-5 pt-4 pt-md-5">
-    <div class="row pb-md-5">
+  <div class="container pt-4 pt-md-5">
+    <div class="row">
       <div class="col-12 col-md-8 teaser-box">
         {{ with .Site.GetPage "section" "home/delivery" }}
         {{ .Content }}
@@ -84,9 +89,14 @@ page-home
           </a>
         </div>
       </div>
-      <div class="col-12 pt-4 teaser-box">
+    </div>
+  </div>
+  <div class="container pl-0 pr-0 pt-5 pb-5">
+    <div class="row pb-4">
+      <div class="col-12 pl-0 pr-0 teaser-box">
         <picture>
           <source media="(min-width: 768px)" srcset="/images/home/use-cases/graphic-use-case-02.svg">
+          <source media="(min-width: 576px)" srcset="/images/home/use-cases/graphic-use-case-02-S.svg">
           <img src="/images/home/use-cases/graphic-use-case-02-XS.svg">
         </picture>
       </div>
@@ -96,15 +106,15 @@ page-home
 
 {{/* Remediation */}}
 <div class="remediation">
-  <div class="container pb-5 pt-4 pt-md-5">
+  <div class="container pt-4 pt-md-5">
     <div class="row d-flex">
-      <div class="col-12 col-lg-8 pr-lg-5 pt-lg-4 teaser-box remediation-graphic">
+      <div class="col-12 col-lg-8 pr-lg-5 pt-lg-4 teaser-box remediation-graphic d-none d-md-block">
         <picture>
           <source media="(min-width: 768px)" srcset="/images/home/use-cases/graphic-use-case-03a.svg">
           <img class="" src="/images/home/use-cases/graphic-use-case-03-XS.svg">
         </picture>
       </div>
-      <div class="col-12 col-lg-4 teaser-box pl-lg-5 pb-4 pb-lg-0 remediation-content">
+      <div class="col-12 col-lg-4 teaser-box pl-lg-5  remediation-content">
         {{ with .Site.GetPage "section" "home/remediation" }}
         {{ .Content }}
         {{ end }}
@@ -119,6 +129,16 @@ page-home
       <div class="col-12 pt-md-2 pt-lg-5 teaser-box remediation-graphic-bottom">
         <picture>
           <img src="/images/home/use-cases/graphic-use-case-03b.svg">
+        </picture>
+      </div>
+    </div>
+  </div>
+  <div class="container pl-0 pr-0 pt-5 pb-5 d-md-none">
+    <div class="row pb-4">
+      <div class="col-12 pl-0 pr-0 teaser-box">
+        <picture>
+          <source media="(min-width: 576px)" srcset="/images/home/use-cases/graphic-use-case-03-S.svg">
+          <img class="" src="/images/home/use-cases/graphic-use-case-03-XS.svg">
         </picture>
       </div>
     </div>
