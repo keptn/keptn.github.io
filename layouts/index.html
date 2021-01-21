@@ -36,7 +36,7 @@ page-home
 <div class="usage">
   <div class="container pt-4 pt-md-0">
     <div class="row">
-      <div class="col-12 col-md-8 teaser-box">
+      <div class="col-12 teaser-box">
         {{ with .Site.GetPage "section" "home/usage" }}
           {{ .Content }}
         {{ end }}
@@ -63,10 +63,10 @@ page-home
   </div>
   <div class="container pl-0 pr-0 pt-5 pb-5">
     <div class="row pb-4">
-      <div class="col-12 pl-0 pr-0 teaser-box">
+      <div class="col-12 pl-0 pr-0 teaser-box pl-sm-3 pr-sm-3">
         <picture>
           <source media="(min-width: 768px)" srcset="/images/home/use-cases/graphic-use-case-01.svg">
-          <source media="(min-width: 576)" srcset="/images/home/use-cases/graphic-use-case-01-S.svg">
+          <source media="(min-width: 576px)" srcset="/images/home/use-cases/graphic-use-case-01-S.svg">
           <img src="/images/home/use-cases/graphic-use-case-01-XS.svg">
         </picture>
       </div>
@@ -78,7 +78,7 @@ page-home
 <div class="delivery">
   <div class="container pt-4 pt-md-5">
     <div class="row">
-      <div class="col-12 col-md-8 teaser-box">
+      <div class="col-12 teaser-box">
         {{ with .Site.GetPage "section" "home/delivery" }}
         {{ .Content }}
         {{ end }}
@@ -93,7 +93,7 @@ page-home
   </div>
   <div class="container pl-0 pr-0 pt-5 pb-5">
     <div class="row pb-4">
-      <div class="col-12 pl-0 pr-0 teaser-box">
+      <div class="col-12 pl-0 pr-0 teaser-box pl-sm-3 pr-sm-3">
         <picture>
           <source media="(min-width: 768px)" srcset="/images/home/use-cases/graphic-use-case-02.svg">
           <source media="(min-width: 576px)" srcset="/images/home/use-cases/graphic-use-case-02-S.svg">
@@ -135,7 +135,7 @@ page-home
   </div>
   <div class="container pl-0 pr-0 pt-5 pb-5 d-md-none">
     <div class="row pb-4">
-      <div class="col-12 pl-0 pr-0 teaser-box">
+      <div class="col-12 pl-0 pr-0 teaser-box pl-sm-3 pr-sm-3">
         <picture>
           <source media="(min-width: 576px)" srcset="/images/home/use-cases/graphic-use-case-03-S.svg">
           <img class="" src="/images/home/use-cases/graphic-use-case-03-XS.svg">
@@ -148,8 +148,8 @@ page-home
 {{/* Key Capabilities */}}
   <div class="capabilities">
     <div class="container pb-5 pt-4 pt-md-5">
-      <div class="row pt-md-3 pb-md-5 teaser-box teaser-box--white">
-        <div class="col-12 pb-md-0 pb-4">
+      <div class="row pt-md-3 teaser-box teaser-box--white">
+        <div class="col-12 pb-4">
           {{ with .Site.GetPage "section" "home/capabilities" }}
           {{ .Content }}
           {{ end }}
@@ -168,10 +168,13 @@ page-home
         {{ .Content }}
         {{ end }}
       </div>
-      <div class="text col-12 pt-md-3 d-flex flex-column justify-content-center z-index">
+      <div class="text col-12 pt-md-3 d-flex flex-column justify-content-center z-index happy-users-logos">
         {{ with .Site.GetPage "section" "home/happy-users-logos" }}
         {{ .Content }}
         {{ end }}
+        <a href="#">
+          <img src="/images/home/add-organisation.svg">
+        </a>
       </div>
     </div>
   </div>

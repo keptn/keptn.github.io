@@ -46,7 +46,12 @@
       background-repeat-x: repeat;
       background-repeat-y: no-repeat;
       background-position-y: bottom;
-      background-size: 100%;
+      background-size: cover;
+
+      @media screen and (min-width: $bp-lg) {
+        height: 50%;
+        background-size: 100%;
+      }
     }
   }
 
@@ -106,12 +111,12 @@
 
   // Capabilities
   .capabilities {
-    background: $dark-blue-home-900;
+    background-color: $dark-blue-home-900;
   }
 
   // Get started
   .get-started {
-    background: $teaserCard-home;
+    background-color: $teaserCard-home;
   }
 
   // Happy-Users
@@ -146,12 +151,25 @@
     }
   }
 
+  .happy-users-logos {
+    p {
+      width: 50%;
+    }
+
+    @media screen and (min-width: $bp-lg) {
+      p {
+        width: auto;
+        display: inline-block;
+      }
+    }
+  }
+
   .clients {
     @media screen and (max-width: $bp-lg) {
       max-width: 100% !important;
     }
   }
-  
+
   .p-relative {
     position: relative;
   }

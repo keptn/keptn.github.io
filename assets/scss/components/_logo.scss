@@ -78,34 +78,28 @@
     display: none;
   }
 
-  .logo-intro  {
-    display: none;
+  .logo-intro {
+    transition: visibility 0s, opacity 0.3s linear;
+    visibility: visible;
+    opacity: 1;
+    width: 200px;
+    margin-bottom: 80px;
 
-    @media screen and (min-width: $bp-md) {
-      display: block;
+    &.is-sticky {
       transition: visibility 0s, opacity 0.3s linear;
-      visibility: visible;
-      opacity: 1;
-      width: 200px;
-      margin-bottom: 80px;
+      visibility: hidden;
+      opacity: 0;
+    }
 
-      &.is-sticky {
-        transition: visibility 0s, opacity 0.3s linear;
-        visibility: hidden;
-        opacity: 0;
-      }
+    img {
+      width: 100%;
+      height: auto;
+    }
 
-      img {
-        width: 100%;
-        height: auto;
-      }
-
-      a {
-        display: block;
-        width: 100%;
-        height: 100%;
-      }
-
+    a {
+      display: block;
+      width: 100%;
+      height: 100%;
     }
   }
 }

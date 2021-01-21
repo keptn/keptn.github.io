@@ -121,6 +121,10 @@
   .splide__pagination {
     bottom: 30px;
 
+    @media (min-width: $bp-md) {
+      bottom: -40px;
+    }
+
     @media (min-width: $bp-lg) {
       display: none !important;
     }

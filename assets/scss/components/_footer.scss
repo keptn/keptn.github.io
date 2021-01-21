@@ -17,25 +17,24 @@
   .footer-title {
     font-size: 18px;
     line-height: 30px;
-    margin-bottom: 8px;
     font-weight: $font-weight-bold;
   }
 
   .footer-links {
     @include list-unstyled;
 
-    a {
-      color: $white !important;
-      text-decoration: none;
-
-      &:hover {
-        color: #4d97cd !important;
-        text-decoration: none;
-      }
-    }
-
     li {
       margin-left: 0;
+    }
+  }
+
+  .footer-link {
+    color: $white;
+    text-decoration: none;
+
+    &:hover {
+      color: $linkHoverColor-home;
+      text-decoration: none;
     }
   }
 
@@ -48,7 +47,7 @@
     justify-content: center;
     background-color: $primary;
     margin-bottom: 8px;
-    margin-right: 8px;
+    margin-right: 5px;
 
     &:hover {
       cursor: pointer;
@@ -78,10 +77,6 @@
     font-size: 15px;
     font-family: Courier;
   }
-
-  .float-right {
-    float: right;
-  }
 }
 
 .page-home {
@@ -92,7 +87,7 @@
       bottom: -10px;
       display: inline-block;
       width: 100%;
-      height: 500px;
+      height: 550px;
       content: "";
       background-image: url('/images/home/waves03.png');
       background-repeat-x: repeat;
