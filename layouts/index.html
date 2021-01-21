@@ -38,7 +38,7 @@ page-home
     <div class="row">
       <div class="col-12 teaser-box">
         {{ with .Site.GetPage "section" "home/usage" }}
-          {{ .Content }}
+        {{ .Content }}
         {{ end }}
 
         <div class="d-block d-md-flex">
@@ -146,18 +146,18 @@ page-home
 </div>
 
 {{/* Key Capabilities */}}
-  <div class="capabilities">
-    <div class="container pb-5 pt-4 pt-md-5">
-      <div class="row pt-md-3 teaser-box teaser-box--white">
-        <div class="col-12 pb-4">
-          {{ with .Site.GetPage "section" "home/capabilities" }}
-          {{ .Content }}
-          {{ end }}
-        </div>
+<div class="capabilities">
+  <div class="container pb-5 pt-4 pt-md-5">
+    <div class="row pt-md-3 teaser-box teaser-box--white">
+      <div class="col-12 pb-4">
+        {{ with .Site.GetPage "section" "home/capabilities" }}
+        {{ .Content }}
+        {{ end }}
       </div>
-    {{partial "teaser-cards.html" . }}
     </div>
+    {{partial "teaser-cards.html" . }}
   </div>
+</div>
 
 {{/* Happy Users */}}
 <div class="happy-users p-relative">
@@ -254,7 +254,7 @@ page-home
       <div class="col-12 pb-1 pb-md-0">
         <div class="text teaser-box">
           {{ with .Site.GetPage "section" "home/tools" }}
-            {{ .Content }}
+          {{ .Content }}
           {{ end }}
         </div>
       </div>
