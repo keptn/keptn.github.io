@@ -41,14 +41,14 @@ page-home
           {{ .Content }}
         {{ end }}
 
-        <div class="d-block d-lg-flex">
+        <div class="d-block d-md-flex">
           <div class="d-block">
-            <a class="button button--filledGreen d-inline-block mb-3 mb-lg-0 mr-0 mr-lg-3" href="https://keptn.sh/docs/quickstart/">
+            <a class="button button--filledGreen d-inline-block mb-3 mb-lg-0 mr-0 mr-md-3" href="https://keptn.sh/docs/quickstart/">
               Start now!
             </a>
           </div>
           <div class="d-block">
-            <a class="button button--outlinedBlue d-inline-block mb-3 mb-lg-0 mr-0 mr-lg-3" href="#">
+            <a class="button button--outlinedBlue d-inline-block mb-3 mb-lg-0 mr-0 mr-md-3" href="#">
               See it in action
             </a>
           </div>
@@ -63,7 +63,7 @@ page-home
   </div>
   <div class="container pl-0 pr-0 pt-5 pb-5">
     <div class="row pb-4">
-      <div class="col-12 pl-0 pr-0 teaser-box pl-sm-3 pr-sm-3">
+      <div class="col-12 teaser-box">
         <picture>
           <source media="(min-width: 768px)" srcset="/images/home/use-cases/graphic-use-case-01.svg">
           <source media="(min-width: 576px)" srcset="/images/home/use-cases/graphic-use-case-01-S.svg">
@@ -93,7 +93,7 @@ page-home
   </div>
   <div class="container pl-0 pr-0 pt-5 pb-5">
     <div class="row pb-4">
-      <div class="col-12 pl-0 pr-0 teaser-box pl-sm-3 pr-sm-3">
+      <div class="col-12 teaser-box">
         <picture>
           <source media="(min-width: 768px)" srcset="/images/home/use-cases/graphic-use-case-02.svg">
           <source media="(min-width: 576px)" srcset="/images/home/use-cases/graphic-use-case-02-S.svg">
@@ -135,7 +135,7 @@ page-home
   </div>
   <div class="container pl-0 pr-0 pt-5 pb-5 d-md-none">
     <div class="row pb-4">
-      <div class="col-12 pl-0 pr-0 teaser-box pl-sm-3 pr-sm-3">
+      <div class="col-12 teaser-box">
         <picture>
           <source media="(min-width: 576px)" srcset="/images/home/use-cases/graphic-use-case-03-S.svg">
           <img class="" src="/images/home/use-cases/graphic-use-case-03-XS.svg">
@@ -252,7 +252,7 @@ page-home
   <div class="container pt-4 pt-md-5 pb-5">
     <div class="row">
       <div class="col-12 pb-1 pb-md-0">
-        <div class="text col-12 teaser-box">
+        <div class="text teaser-box">
           {{ with .Site.GetPage "section" "home/tools" }}
             {{ .Content }}
           {{ end }}

@@ -14,8 +14,8 @@
     }
 
     &--filledGreen {
-      border: 2px solid $secondary-home-900;
       background-color: $secondary-home-900;
+      padding: 16px 32px;
       color: $white;
 
       &:hover {
