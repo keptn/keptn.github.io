@@ -5,7 +5,7 @@
     padding-top: 50px;
     padding-bottom: 80px;
 
-    @media (min-width: $bp-md) {
+    @media (min-width: $bp-lg) {
       padding-top: 0;
       padding-bottom: 0;
     }
@@ -120,10 +120,6 @@
 
   .splide__pagination {
     bottom: 30px;
-
-    @media (min-width: $bp-md) {
-      bottom: -40px;
-    }
 
     @media (min-width: $bp-lg) {
       display: none !important;

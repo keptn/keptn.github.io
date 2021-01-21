@@ -40,7 +40,7 @@
       bottom: -10px;
       display: inline-block;
       width: 100%;
-      height: 500px;
+      height: 300px;
       content: "";
       background-image: url('/images/home/hero/waves-intro.jpg');
       background-repeat-x: repeat;
@@ -51,6 +51,7 @@
       @media screen and (min-width: $bp-lg) {
         height: 50%;
         background-size: 100%;
+        height: 500px;
       }
     }
   }
@@ -104,7 +105,7 @@
       }
 
       img {
-        width: 608px;
+        max-width: 600px;
       }
     }
   }
@@ -121,45 +122,46 @@
 
   // Happy-Users
   .happy-users {
-    &:after {
-      position: absolute;
-      left: 0;
-      bottom: -10px;
-      display: inline-block;
-      width: 100%;
-      height: 500px;
-      content: "";
-      background-image: url('/images/home/happy-users/waves02.jpg');
-      background-repeat-x: repeat;
-      background-repeat-y: no-repeat;
-      background-position-y: bottom;
-      background-size: 100%;
-    }
-
-    background-color: $primary-home-100;
-
-    img {
-      max-height: 42px;
-      width: auto;
-      max-width: 170px;
-      margin-right: 65px;
-      margin-bottom: 25px;
-
-      &:last-of-type {
-        margin-right: 0;
-      }
+    @media screen and (min-width: $bp-lg) {
+      background-color: $primary-home-100;
     }
   }
 
   .happy-users-logos {
-    p {
-      width: 50%;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 50% 50%;
+
+    a, p {
+      text-align: center;
+      margin-bottom: 25px;
     }
 
+    img {
+      max-height: 38px;
+      width: auto;
+      max-width: 100px;
+    }
+
+    @media screen and (min-width: $bp-md) {
+      display: grid;
+      grid-template-columns: 33.3% 33.3% 33.3%;
+    }
+
+
     @media screen and (min-width: $bp-lg) {
-      p {
-        width: auto;
-        display: inline-block;
+      justify-content: space-between;
+      display: flex;
+      flex-direction: row;
+
+      img {
+        max-height: 42px;
+        max-width: 170px;
+        margin-bottom: 0;
+      }
+
+      a, p {
+        margin-bottom: 0;
       }
     }
   }

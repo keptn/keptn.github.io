@@ -161,14 +161,14 @@ page-home
 
 {{/* Happy Users */}}
 <div class="happy-users p-relative">
-  <div class="container pt-4 pt-md-5 pb-md-5">
+  <div class="container pt-4 pt-md-5 pb-md-3">
     <div class="row pt-md-3">
       <div class="text col-12 pb-md-0 pb-4 teaser-box">
         {{ with .Site.GetPage "section" "home/happy-users" }}
         {{ .Content }}
         {{ end }}
       </div>
-      <div class="text col-12 pt-md-3 d-flex flex-column justify-content-center z-index happy-users-logos">
+      <div class="text col-12 pt-md-3 happy-users-logos pb-lg-4">
         {{ with .Site.GetPage "section" "home/happy-users-logos" }}
         {{ .Content }}
         {{ end }}
@@ -178,8 +178,8 @@ page-home
       </div>
     </div>
   </div>
-  <div class="container pb-5 clients pl-0 pr-0 pl-lg-3 pr-lg-3">
-    <div class="row pt-2 pt-md-4 pb-4">
+  <div class="container clients pl-0 pr-0 pl-lg-3 pr-lg-3 pb-lg-4">
+    <div class="row pt-lg-5 pb-lg-5 pb-4">
       <div class="col-12">
         <div class="splide">
           <div class="splide__track">
@@ -249,7 +249,7 @@ page-home
 
 {{/* Tools */}}
 <div class="tools">
-  <div class="container pt-4 pt-md-5 pb-5">
+  <div class="container pt-2 pt-lg-5 pb-5">
     <div class="row">
       <div class="col-12 pb-1 pb-md-0">
         <div class="text teaser-box">
