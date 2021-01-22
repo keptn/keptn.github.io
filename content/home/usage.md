@@ -1,3 +1,3 @@
 #### Enabling SREs to declaratively automate
 ## Observability, Dashboards & Alerting
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.
+Save time through automated configuration of observability tools, creation of dashboards, and alerting based on Service-Level Objectives (SLOs).
