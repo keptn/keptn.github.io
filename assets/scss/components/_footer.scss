@@ -35,7 +35,7 @@
 
     &:hover {
       //override for why-keptn page
-      color: $linkHoverColor-home;
+      color: $linkHoverColor-home !important;
       text-decoration: none;
     }
   }
