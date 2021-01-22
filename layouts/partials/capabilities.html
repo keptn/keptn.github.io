@@ -1,0 +1,12 @@
+<div class="capabilities">
+    <div class="container pb-5 pt-4 pt-md-5">
+        <div class="row pt-md-3 teaser-box teaser-box--white">
+            <div class="col-12 pb-4">
+                {{ with .Site.GetPage "section" "home/capabilities" }}
+                {{ .Content }}
+                {{ end }}
+            </div>
+        </div>
+        {{partial "capabilities-cards.html" . }}
+    </div>
+</div>

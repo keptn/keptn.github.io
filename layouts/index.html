@@ -27,241 +27,26 @@ page-home
 
 {{ define "main" }}
 
-
-
 {{/* Intro */}}
 {{ partial "intro.html" . }}
 
 {{/* Usage */}}
-<div class="usage">
-  <div class="container pt-4 pt-md-0">
-    <div class="row">
-      <div class="col-12 teaser-box">
-        {{ with .Site.GetPage "section" "home/usage" }}
-        {{ .Content }}
-        {{ end }}
-
-        <div class="d-block d-md-flex">
-          <div class="d-block">
-            <a class="button button--filledGreen d-inline-block mb-3 mb-lg-0 mr-0 mr-md-3" href="https://keptn.sh/docs/quickstart/">
-              Start now!
-            </a>
-          </div>
-          <div class="d-block">
-            <a class="button button--outlinedBlue d-inline-block mb-3 mb-lg-0 mr-0 mr-md-3" href="#">
-              See it in action
-            </a>
-          </div>
-          <div class="d-block">
-            <a class="button button--outlinedBlue d-inline-block" href="https://keptn.sh/docs/0.8.x/monitoring/">
-              Read docs
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container pl-0 pr-0 pt-5 pb-5">
-    <div class="row pb-4">
-      <div class="col-12 teaser-box">
-        <picture>
-          <source media="(min-width: 768px)" srcset="/images/home/use-cases/graphic-use-case-01.svg">
-          <source media="(min-width: 576px)" srcset="/images/home/use-cases/graphic-use-case-01-S.svg">
-          <img src="/images/home/use-cases/graphic-use-case-01-XS.svg">
-        </picture>
-      </div>
-    </div>
-  </div>
-</div>
+{{ partial "usage.html" . }}
 
 {{/* Delivery */}}
-<div class="delivery">
-  <div class="container pt-4 pt-md-5">
-    <div class="row">
-      <div class="col-12 teaser-box">
-        {{ with .Site.GetPage "section" "home/delivery" }}
-        {{ .Content }}
-        {{ end }}
-
-        <div class="d-block d-md-flex">
-          <a class="button d-inline-block button--filledGreen" href="https://keptn.sh/docs/quickstart/">
-            Start now!
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container pl-0 pr-0 pt-5 pb-5">
-    <div class="row pb-4">
-      <div class="col-12 teaser-box">
-        <picture>
-          <source media="(min-width: 768px)" srcset="/images/home/use-cases/graphic-use-case-02.svg">
-          <source media="(min-width: 576px)" srcset="/images/home/use-cases/graphic-use-case-02-S.svg">
-          <img src="/images/home/use-cases/graphic-use-case-02-XS.svg">
-        </picture>
-      </div>
-    </div>
-  </div>
-</div>
+{{ partial "delivery.html" . }}
 
 {{/* Remediation */}}
-<div class="remediation">
-  <div class="container pt-4 pt-md-5">
-    <div class="row d-flex">
-      <div class="col-12 col-lg-8 pr-lg-5 pt-lg-4 teaser-box remediation-graphic d-none d-md-block">
-        <picture>
-          <source media="(min-width: 768px)" srcset="/images/home/use-cases/graphic-use-case-03a.svg">
-          <img class="" src="/images/home/use-cases/graphic-use-case-03-XS.svg">
-        </picture>
-      </div>
-      <div class="col-12 col-lg-4 teaser-box pl-lg-5  remediation-content">
-        {{ with .Site.GetPage "section" "home/remediation" }}
-        {{ .Content }}
-        {{ end }}
-        <div class="d-inline-block d-md-flex">
-          <a class="button button--filledGreen" href="https://keptn.sh/docs/quickstart/">
-            Start now!
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="row pb-md-5">
-      <div class="col-12 pt-md-2 pt-lg-5 teaser-box remediation-graphic-bottom">
-        <picture>
-          <img src="/images/home/use-cases/graphic-use-case-03b.svg">
-        </picture>
-      </div>
-    </div>
-  </div>
-  <div class="container pl-0 pr-0 pt-5 pb-5 d-md-none">
-    <div class="row pb-4">
-      <div class="col-12 teaser-box">
-        <picture>
-          <source media="(min-width: 576px)" srcset="/images/home/use-cases/graphic-use-case-03-S.svg">
-          <img class="" src="/images/home/use-cases/graphic-use-case-03-XS.svg">
-        </picture>
-      </div>
-    </div>
-  </div>
-</div>
+{{ partial "remediation.html" . }}
 
 {{/* Key Capabilities */}}
-<div class="capabilities">
-  <div class="container pb-5 pt-4 pt-md-5">
-    <div class="row pt-md-3 teaser-box teaser-box--white">
-      <div class="col-12 pb-4">
-        {{ with .Site.GetPage "section" "home/capabilities" }}
-        {{ .Content }}
-        {{ end }}
-      </div>
-    </div>
-    {{partial "teaser-cards.html" . }}
-  </div>
-</div>
+{{ partial "capabilities.html" . }}
 
 {{/* Happy Users */}}
-<div class="happy-users p-relative">
-  <div class="container pt-4 pt-md-5 pb-md-3">
-    <div class="row pt-md-3">
-      <div class="text col-12 pb-md-0 pb-4 teaser-box">
-        {{ with .Site.GetPage "section" "home/happy-users" }}
-        {{ .Content }}
-        {{ end }}
-      </div>
-      <div class="text col-12 pt-md-3 happy-users-logos pb-lg-4">
-        {{ with .Site.GetPage "section" "home/happy-users-logos" }}
-        {{ .Content }}
-        {{ end }}
-        <a href="https://github.com/keptn/keptn/blob/master/ADOPTERS.md">
-          <img src="/images/home/add-organisation.svg">
-        </a>
-      </div>
-    </div>
-  </div>
-  <div class="container clients pl-0 pr-0 pl-lg-3 pr-lg-3 pb-lg-4">
-    <div class="row pt-lg-5 pb-lg-5 pb-4">
-      <div class="col-12">
-        <div class="splide">
-          <div class="splide__track">
-            <ul class="splide__list">
-              <li class="splide__slide">
-                <div class="splide__image" style="background-image: url('/images/home/img-client-01.png');"></div>
-                <div class="splide__content">
-                  <p>„Keptn allowed us to accelerate our
-                    adoption of Kubernetes by at least a
-                    year. It’s a unique value proposition
-                    that has enabled us to create an
-                    intelligent and fully automated
-                    continuous delivery pipeline.“
-                  </p>
-                  <p class="splide__name">
-                    Sebastian Bonk
-                  </p>
-                  <p class="splide__info">
-                    Manager of Software Development Avodaq
-                  </p>
-                </div>
-              </li>
-              <li class="splide__slide d-flex">
-                <div class="splide__image" style="background-image: url('/images/home/img-client-02.png');"></div>
-                <div class="splide__content">
-                  <p>„Keptn allowed us to accelerate our
-                    adoption of Kubernetes by at least a
-                    year. It’s a unique value proposition
-                    that has enabled us to create an
-                    intelligent and fully automated
-                    continuous delivery pipeline.“
-                    telligent and fully automated
-                    continuous delivery pipeline.“
-                  </p>
-                  <p class="splide__name">
-                    Sebastian Bonk
-                  </p>
-                  <p class="splide__info">
-                    Manager of Software
-                  </p>
-                </div>
-              </li>
-              <li class="splide__slide d-flex">
-                <div class="splide__image" style="background-image: url('/images/home/img-client-02.png');"></div>
-                <div class="splide__content">
-                  <p>„Keptn allowed us to accelerate our
-                    adoption of Kubernetes by at least a
-                    year. It’s a unique value proposition
-                    that has enabled us to create an
-                    in
-                  </p>
-                  <p class="splide__name">
-                    Sebastian Bonk
-                  </p>
-                  <p class="splide__info">
-                    Manager of Software adflkgj
-                  </p>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+{{ partial "happy-users.html" . }}
 
 {{/* Tools */}}
-<div class="tools">
-  <div class="container pt-2 pt-lg-5 pb-5">
-    <div class="row">
-      <div class="col-12 pb-1 pb-md-0">
-        <div class="text teaser-box">
-          {{ with .Site.GetPage "section" "home/tools" }}
-          {{ .Content }}
-          {{ end }}
-        </div>
-      </div>
-    </div>
-    {{ partial "tools.html" . }}
-  </div>
-</div>
+{{ partial "tools.html" . }}
 
 {{/* Contact */}}
 {{ partial "get-started.html" . }}
