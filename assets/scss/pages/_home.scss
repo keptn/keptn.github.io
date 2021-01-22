@@ -37,7 +37,7 @@
     &:after {
       position: absolute;
       left: 0;
-      bottom: 0;
+      bottom: -5px;
       display: inline-block;
       width: 100%;
       height: 300px;
@@ -47,7 +47,7 @@
       background-size: cover;
 
       @media screen and (min-width: $bp-lg) {
-        height: 53%;
+        height: 52%;
       }
     }
   }
