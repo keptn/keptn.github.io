@@ -1,27 +1,15 @@
 .page-why-keptn {
-
   .section {
     background-color: $white;
   }
 
   .section-primary {
-    background-color: $dark-blue-home-700;
-    height: 64px;
+    background-color: $primary;
 
     h1,
     h2,
     p {
       color: $white;
-    }
-
-    h3 {
-      margin-top: 20px;
-    }
-
-    @media screen and (min-width: $bp-md) {
-      height: 64px;
-      width: 100%;
-      top: 0;
     }
   }
 
