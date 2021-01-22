@@ -106,6 +106,7 @@
     }
 
     &--negativeMargin {
+      pointer-events: none;
       @media screen and (min-width: $bp-xl) {
         margin-top: -130px;
       }

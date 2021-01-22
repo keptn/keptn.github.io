@@ -36,15 +36,13 @@
       </div>
     </div>
   </div>
-  <div class="container pl-0 pr-0 pt-5 pt-xl-0 pb-lg-5">
+  <div class="container pl-0 pr-0 pt-5 pt-sm-0 pt-md-5 pt-xl-0 pb-lg-5">
     <div class="row pb-sm-4">
       <div class="col-12 teaser-box teaser-box--negativeMargin">
-        <div class="d-none d-sm-block">
-          {{ partial "intro-svg.html" . }}
-        </div>
-        <div class="d-sm-none text-center">
-          {{ partial "intro-svg-mobile.html" . }}
-        </div>
+        <picture>
+          <source media="(min-width: 768px)" srcset="/images/home/hero/graphic-hero.svg">
+          <img src="/images/home/hero/graphic-hero-XS.svg">
+        </picture>
       </div>
     </div>
   </div>
