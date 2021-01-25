@@ -189,10 +189,10 @@ Please refer to the [official homepage of K3s](https://k3s.io) for detailed inst
 
 1. Download and install [Minikube](https://github.com/kubernetes/minikube/releases) (tested with [versions 1.3 to 1.10](../k8s_support)).
 
-1. Create a new Minikube profile (named keptn) with at least 6 CPU cores and 12 GB memory using:
+1. Create a new Minikube profile (named keptn) with at least 6 CPU cores and 14 GB memory using:
 
     ```console
-    minikube start -p keptn --cpus 6 --memory 12200
+    minikube start -p keptn --cpus 6 --memory 14000
     ``` 
 
 1. (Optional) Start the Minikube LoadBalancer service in a second terminal by executing:
