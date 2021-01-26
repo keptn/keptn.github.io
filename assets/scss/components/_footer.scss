@@ -1,5 +1,5 @@
 .footer {
-  background-color: $teaserCard-home;
+  background-color: #002B66;
   color: $white;
   padding-bottom: 30px;
   position: relative;
@@ -58,6 +58,9 @@
 
     &--top {
       background-color: $secondary-home-900;
+      position: absolute;
+      top: -20px;
+      right: 0;
 
       &:hover {
         background: linear-gradient(-225deg, $secondary-home-900 0%, #009941 100%);
@@ -85,6 +88,8 @@
   .footer {
 
     @media screen and (min-width: $bp-xl) {
+      background-color: $teaserCard-home;
+
       &:before {
         position: absolute;
         left: 0;
