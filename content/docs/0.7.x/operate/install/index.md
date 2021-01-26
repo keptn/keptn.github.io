@@ -67,13 +67,12 @@ Run your Keptn installation for free on GKE! If you [sign up for a Google Cloud 
 
 1. Install local tools
   - [gcloud](https://cloud.google.com/sdk/gcloud/)
-  - [python 2.7](https://www.python.org/downloads/release/python-2716/) (required for Ubuntu 19.04)
 
 2. Create GKE cluster
-  - [Master version:](../k8s_support/#supported-versions) `1.15.x` (tested version: `1.15.12-gke.20`)
-  - One **n1-standard-8** node
+  - [Master version:](../k8s_support/#supported-versions) `1.16.x` and `1.17.x` (tested version: `1.17.14-gke.400`)
+  - One node with 8 vCPUs and 32 GB memory (e.g., one **n1-standard-8** node)
   - Image type `Ubuntu` or `COS` (**Note:** If you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../monitoring/dynatrace/).)
-  - Sample script to create such cluster:
+  - Sample script to create such a cluster:
 
     ```console
     // set environment variables
@@ -81,11 +80,12 @@ Run your Keptn installation for free on GKE! If you [sign up for a Google Cloud 
     CLUSTER_NAME=<NAME_OF_CLUSTER>
     ZONE=us-central1-a
     REGION=us-central1
-    GKE_VERSION="1.15"
+    GKE_VERSION="1.17"
+    IMAGE_TYPE="Ubuntu"
     ```
 
     ```console
-    gcloud container clusters create $CLUSTER_NAME --project $PROJECT --zone $ZONE --no-enable-basic-auth --cluster-version $GKE_VERSION --machine-type "n1-standard-8" --image-type "UBUNTU" --disk-type "pd-standard" --disk-size "100" --metadata disable-legacy-endpoints=true --scopes "https://www.googleapis.com/auth/devstorage.read_only","https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/monitoring","https://www.googleapis.com/auth/servicecontrol","https://www.googleapis.com/auth/service.management.readonly","https://www.googleapis.com/auth/trace.append" --num-nodes "1" --enable-stackdriver-kubernetes --no-enable-ip-alias --network "projects/$PROJECT/global/networks/default" --subnetwork "projects/$PROJECT/regions/$REGION/subnetworks/default" --addons HorizontalPodAutoscaling,HttpLoadBalancing --no-enable-autoupgrade
+    gcloud container clusters create $CLUSTER_NAME --project $PROJECT --zone $ZONE --no-enable-basic-auth --cluster-version $GKE_VERSION --machine-type "n1-standard-8" --image-type "$IMAGE_TYPE" --disk-type "pd-standard" --disk-size "100" --metadata disable-legacy-endpoints=true --scopes "https://www.googleapis.com/auth/devstorage.read_only","https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/monitoring","https://www.googleapis.com/auth/servicecontrol","https://www.googleapis.com/auth/service.management.readonly","https://www.googleapis.com/auth/trace.append" --num-nodes "1" --enable-stackdriver-kubernetes --no-enable-ip-alias --network "projects/$PROJECT/global/networks/default" --subnetwork "projects/$PROJECT/regions/$REGION/subnetworks/default" --addons HorizontalPodAutoscaling,HttpLoadBalancing --enable-shielded-nodes --no-enable-autoupgrade
     ```
  </p>
 </details>
@@ -166,12 +166,12 @@ Run your Keptn installation for free on GKE! If you [sign up for a Google Cloud 
 <p>
 
 Please refer to the [official homepage of K3s](https://k3s.io) for detailed installation instructions. Here, a short guide on how to run Keptn on K3s is provided for a Linux environment. **Note:** If you are using macOS, you will need to run K3s using [multipass](https://multipass.run/) and as explained [here](https://medium.com/@zhimin.wen/running-k3s-with-multipass-on-mac-fbd559966f7c).
- 
-1. Download, install [K3s](https://k3s.io/) (tested with [versions 1.16 to 1.18](../k8s_support)) and run K3s using the following command:
+
+1. Download, install [K3s](https://k3s.io/) (tested with [versions 1.16 to 1.19](../k8s_support)) and run K3s using the following command:
    ```console
-   curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.18.3+k3s1 K3S_KUBECONFIG_MODE="644" sh -s - --no-deploy=traefik
+   curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.19.5+k3s1 K3S_KUBECONFIG_MODE="644" sh -s - --no-deploy=traefik
    ```
-   This installs version `v1.18.3+k3s1` (please refer to the [K3s GitHub releases page](https://github.com/rancher/k3s/releases) for newer releases), sets file permissions `644` on `/etc/rancher/k3s/k3s.yaml` and disables `traefik` as an ingress controller.
+   This installs version `v1.19.5+k3s1` (please refer to the [K3s GitHub releases page](https://github.com/rancher/k3s/releases) for newer releases), sets file permissions `644` on `/etc/rancher/k3s/k3s.yaml` and disables `traefik` as an ingress controller.
 
 1. Export the Kubernetes profile using
    ```console
