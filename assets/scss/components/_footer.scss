@@ -22,6 +22,7 @@
 
   .footer-links {
     @include list-unstyled;
+    margin-left: 0;
 
     li {
       margin-left: 0;
