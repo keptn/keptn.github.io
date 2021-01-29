@@ -1,4 +1,8 @@
 .page-home {
+  .z-index {
+    z-index: 100;
+  }
+
   position: relative;
 
   // Intro & Usage
@@ -15,29 +19,12 @@
 
   // Intro
   .intro {
-    @media screen and (min-width: $bp-md) {
-      background-image: url('/images/home/background-lines.png');
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: 0 30%;
-    }
-
-    h1 {
-      color: $primary;
-      font-family: $font-family-intro;
-    }
+    background: url('/images/home/hero/background-hero-lines.svg'), $primary-home-900;
+    background-size: contain;
 
     h3, h3 a {
       color: #fff;
       font-size: 1rem;
-    }
-
-    p:first-of-type {
-      margin-bottom: 32px;
-    }
-
-    p:last-of-type {
-      margin-bottom: 0;
     }
 
     .icon {
@@ -46,10 +33,29 @@
       margin-top: -3px;
       margin-left: 8px;
     }
+
+    &:after {
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      display: inline-block;
+      width: 100%;
+      height: 300px;
+      content: "";
+      background-image: url('/images/home/hero/waves-intro.jpg');
+      background-position-y: bottom;
+      background-size: cover;
+
+      @media screen and (min-width: $bp-lg) {
+        height: 52%;
+      }
+    }
   }
 
   // Usage
   .usage {
+    background: $primary-home-050;
+
     .usage-item img {
       width: 48px;
       height: 48px;
@@ -57,137 +63,122 @@
     }
   }
 
-  // Kubernetes Cluster
-  .kubernetes-cluster {
-    counter-reset: step;
-
-    .step {
-      position: relative;
-
-      &:last-of-type {
-        p:last-of-type {
-          font-size: 1rem;
-
-          @media screen and (min-width: $bp-md) {
-            font-size: 1.125rem;
-          }
-        }
-      }
-
-      &:before {
-        display: none;
-        content: counter(step);
-        counter-increment: step;
-        position: absolute;
-        top: 50%;
-        left: -80px;
-        transform: translateY(-50%);
-        color: $primary;
-        font-size: 3.36rem;
-        font-weight: $font-weight-bold;
-
-        @media screen and (min-width: $bp-md) {
-          display: block;
-        }
-      }
-    }
+  // Delivery
+  .delivery {
+    background: $white;
   }
 
-  // Delivery Flow
-  .delivery-flow {
-    position: relative;
+  // Remediaton
+  .remediation {
+    background: $primary-home-100;
 
-    a {
-      color: $primary !important;
-      text-decoration: none;
+    .remediation-content {
+      order: 0;
+
+      @media screen and (min-width: $bp-lg) {
+        padding-top: 140px;
+        order: 1;
+      }
+
+      @media screen and (min-width: $bp-lg) and (max-width: $bp-xl) {
+        padding-top: 110px;
+      }
     }
 
-    .background-image {
+    .remediation-graphic {
+      order: 1;
+      @media screen and (min-width: $bp-lg) {
+        order: 0;
+      }
+    }
+
+    .remediation-graphic-bottom {
       display: none;
-      position: absolute;
-      bottom: 0;
-      left: 0;
+      text-align: center;
 
       @media screen and (min-width: $bp-md) {
         display: block;
       }
 
-      @media screen and (min-width: $bp-xl) {
-        bottom: -10%;
+      img {
+        max-width: 600px;
       }
-
-      @media screen and (min-width: 1440px) {
-        bottom: -20%;
-      }
-
-      @media screen and (min-width: 1920px) {
-        bottom: -30%;
-      }
-    }
-
-    .text p:first-of-type {
-      margin-bottom: 24px;
     }
   }
 
-  // Onboard Services & Keptn Workflows
-  .onboard-services,
-  .keptn-workflows {
-    .image {
-      @media screen and (min-width: $bp-md) {
-        margin-top: -8px;
-        margin-left: -8px;
+  // Capabilities
+  .capabilities {
+    background-color: $dark-blue-home-900;
+  }
+
+  // Get started
+  .get-started {
+    background-color: $teaserCard-home;
+  }
+
+  // Happy-Users
+  .happy-users {
+    background-color: $primary-home-100;
+
+    &:after {
+      position: absolute;
+      left: 0;
+      bottom: -10px;
+      display: inline-block;
+      width: 100%;
+      height: 500px;
+      content: "";
+      background-image: url('/images/home/happy-users/waves02.jpg');
+      background-repeat: no-repeat;
+      background-repeat-x: repeat;
+      background-repeat-y: no-repeat;
+      background-position-y: bottom;
+      background-size: 100%;
+    }
+  }
+
+  .happy-users-logos {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 50% 50%;
+
+    a, p {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    img {
+      max-height: 50px;
+      width: auto;
+      max-width: 120px;
+    }
+
+    @media screen and (min-width: $bp-md) {
+      display: grid;
+      grid-template-columns: 33.3% 33.3% 33.3%;
+    }
+
+
+    @media screen and (min-width: $bp-lg) {
+      justify-content: space-between;
+      display: flex;
+      flex-direction: row;
+
+      img {
+        max-height: 60px;
+        max-width: 150px;
+        margin-bottom: 0;
       }
 
-      p {
+      a, p {
         margin-bottom: 0;
       }
     }
   }
 
-  // Onboard Services
-  .onboard-services {
-    .text p:first-of-type {
-      margin-bottom: 32px;
-      font-size: 1rem;
-
-      @media screen and (min-width: $bp-md) {
-        font-size: 1.125rem;
-      }
-    }
-  }
-
-  // Integration Workflow
-  .integration-workflow {
-    .image {
-      @media screen and (min-width: $bp-md) {
-        margin-top: -8px;
-        margin-left: -8px;
-      }
-    }
-
-    .text:last-of-type p {
-      font-size: 1rem;
-
-      @media screen and (min-width: $bp-md) {
-        font-size: 1.125rem;
-      }
-    }
-  }
-
-  // Automatic Remediation
-  .automatic-remediation {
-    .image {
-      @media screen and (min-width: $bp-md) {
-        margin-top: 24px;
-        margin-left: -8px;
-      }
-    }
-
-    .code {
-      .toolbar {
-        margin-bottom: 16px;
-      }
+  .clients {
+    @media screen and (max-width: $bp-lg) {
+      max-width: 100% !important;
     }
   }
 }

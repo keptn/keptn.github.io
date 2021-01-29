@@ -1,0 +1,111 @@
+<div class="happy-users position-relative">
+    <div class="container pt-4 pt-md-5 pb-md-3">
+        <div class="row pt-md-3">
+            <div class="text col-12 pb-md-0 pb-4 teaser-box">
+                {{ with .Site.GetPage "section" "home/happy-users" }}
+                {{ .Content }}
+                {{ end }}
+            </div>
+            <div class="text col-12 pt-md-3 happy-users-logos pb-lg-4">
+                {{ with .Site.GetPage "section" "home/happy-users-logos" }}
+                {{ .Content }}
+                {{ end }}
+                <a href="https://github.com/keptn/keptn/blob/master/ADOPTERS.md">
+                    <img src="/images/home/add-organisation.svg">
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container clients pl-0 pr-0 pl-lg-3 pr-lg-3 pb-lg-4">
+        <div class="row pt-lg-5 pb-lg-5 pb-4">
+            <div class="col-12">
+                <div class="splide">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+                            <li class="splide__slide">
+                                <div class="splide__image" style="background-image: url('/images/home/img-client-01.png');"></div>
+                                <div class="splide__content">
+                                    <p>„Keptn allowed us to accelerate our
+                                        adoption of Kubernetes by at least a
+                                        year. It’s a unique value proposition
+                                        that has enabled us to create an
+                                        intelligent and fully automated
+                                        continuous delivery pipeline.“
+                                    </p>
+                                    <p class="splide__name">
+                                        Sebastian Bonk
+                                    </p>
+                                    <p class="splide__info">
+                                        Manager of Software Development Avodaq
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="splide__slide d-flex">
+                                <div class="splide__image" style="background-image: url('/images/home/img-client-03.jpg');"></div>
+                                <div class="splide__content">
+                                    <p>“With Keptn we are continuously evaluating resiliency of our microservices and
+                                        infrastructure by running everyday performance and chaos tests. Keptn allowed us
+                                        to easily evaluate test results using native metrics and gives a lot of flexibility
+                                        for the future implementations.”
+                                    </p>
+                                    <p class="splide__name">
+                                        Sebastian Świerczyna
+                                    </p>
+                                    <p class="splide__info">
+                                        Chief Architect at Kitopi
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="splide__slide d-flex">
+                                <div class="splide__image" style="background-image: url('/images/home/img-client-02.jpg');"></div>
+                                <div class="splide__content">
+                                    <p>“Keptn enables us to shift-left within our development life-cylce and have faster
+                                        turnaround times by adding another layer of quality evaluations to our pipelines.
+                                        These quality gates help us to prevent shipping bad code to production -
+                                        all done automatically without human intervention.”
+                                    </p>
+                                    <p class="splide__name">
+                                        Christian Heckelmann
+                                    </p>
+                                    <p class="splide__info">
+                                        Senior DevOps Engineer at ERT
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="splide__slide d-flex">
+                                <div class="splide__image" style="background-image: url('/images/home/img-client-04.jpg');"></div>
+                                <div class="splide__content">
+                                    <p>“The combination of LitmusChaos testing and SLO-based evaluations with Keptn
+                                        allows our users to identify and fix weaknesses in the resiliency of their
+                                        applications. Keptn’s data-driven approach based on open-source standards
+                                        allowed us to build an integration flawlessy.”
+                                    </p>
+                                    <p class="splide__name">
+                                        Uma Mukkara
+                                    </p>
+                                    <p class="splide__info">
+                                        Co-founder&COO of MayaData and Maintainer at LitmusChaos
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="splide__slide d-flex">
+                                <div class="splide__image" style="background-image: url('/images/home/img-client-05.jpg');"></div>
+                                <div class="splide__content">
+                                    <p>“Keptn Quality Gates integrated into our CD helped us improve speed of delivery
+                                        by 75% and reduce manual work to evaluate results by 80%.”
+                                    </p>
+                                    <p class="splide__name">
+                                        Wim Verhaeghe
+                                    </p>
+                                    <p class="splide__info">
+                                        KBI-Connect DevOps team lead at Inetum – RealDolmen
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

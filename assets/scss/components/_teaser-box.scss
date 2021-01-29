@@ -1,0 +1,115 @@
+.page-home {
+  .teaser-box {
+    z-index: 50;
+
+    h1 {
+      font-weight: $font-weight-bold;
+      font-size: $font-size--m;
+      padding-bottom: 12px;
+
+      @media screen and (min-width: $bp-md) {
+        padding-right: 32px;
+        font-size: $font-size--xl;
+        padding-bottom: 24px;
+      }
+    }
+
+    h2 {
+      color: $textColor-home-900;
+      font-weight: $font-weight-bold;
+      font-size: $font-size--m;
+      margin-bottom: 12px;
+
+      @media screen and (min-width: $bp-md) {
+        font-size: $font-size-xxl-home;
+        margin-bottom: 24px;
+      }
+    }
+
+    h3 {
+      font-weight: $font-weight-semibold;
+      font-size: $font-size--s !important;
+      margin-top: 12px;
+      margin-bottom: 24px;
+
+      @media screen and (min-width: $bp-md) {
+        font-size: $font-size-m-home !important
+      }
+    }
+
+    h4 {
+      color: $secondary-home-900;
+      font-family: 'Courier-Bold';
+      font-size: $font-size--primary;
+      font-weight: $font-weight-bold;
+      margin-bottom: 8px;
+    }
+
+    p {
+      color: $textColor-home-900;
+      font-weight: $font-weight-normal;
+      font-size: $font-size--s !important;
+
+      @media screen and (min-width: $bp-md) {
+        font-size: $font-size-m-home !important;
+        padding-right: 32px;
+      }
+
+      &:last-of-type {
+        margin-bottom: 24px;
+
+        @media screen and (min-width: $bp-md) {
+          padding-right: 24px;
+        }
+      }
+    }
+
+    ul {
+      list-style-type: none;
+      margin-bottom: 16px;
+
+      li {
+        padding-left: 32px;
+        position: relative;
+        font-size: $font-size-m-home;
+        font-weight: $font-weight-normal;
+        color: $textColor-home-900;
+        margin-left: 0;
+
+        &::before {
+          content: url('/images/home/icon-arrow-list.svg');
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+      }
+    }
+
+  .img {
+    padding-top: 32px;
+  }
+
+    &--white {
+      h1, h2, h3, li, p {
+        color: $white !important;
+      }
+    }
+
+    &--intro {
+      li, p {
+        font-size: $font-size--primary !important;
+
+        @media screen and (min-width: $bp-md) {
+          font-size: $font-size--s !important;
+        }
+      }
+    }
+
+    &--negativeMargin {
+      pointer-events: none;
+      @media screen and (min-width: $bp-xl) {
+        margin-top: -130px;
+      }
+    }
+  }
+}

@@ -1,21 +1,23 @@
-.section {
-  background-color: $white;
-}
-
-.section-primary {
-  background-color: $primary;
-
-  h1,
-  h2,
-  p {
-    color: $white;
+.page-why-keptn {
+  .section {
+    background-color: $white;
   }
-}
 
-.section-primary-opacity {
-  background-color: $primary-opacity;
-}
+  .section-primary {
+    background-color: $primary;
 
-.section-secondary {
-  background-color: $secondary;
+    h1,
+    h2,
+    p {
+      color: $white;
+    }
+  }
+
+  .section-primary-opacity {
+    background-color: $primary-opacity;
+  }
+
+  .section-secondary {
+    background-color: $secondary;
+  }
 }
