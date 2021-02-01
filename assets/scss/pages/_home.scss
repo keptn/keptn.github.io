@@ -143,11 +143,14 @@
     grid-template-columns: 50% 50%;
 
     img {
-      text-align: center;
       margin-bottom: 25px;
       max-height: 50px;
       width: auto;
       max-width: 120px;
+    }
+
+    a, div {
+      text-align: center;
     }
 
     @media screen and (min-width: $bp-md) {
