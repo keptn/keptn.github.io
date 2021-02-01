@@ -1,0 +1,14 @@
+<div class="text col-12 pt-md-3 happy-users-logos pb-lg-4">
+    {{ $nrOfLogos := 6 }}
+    {{ $nrOflogosToDisplay := 5 }}
+
+    {{ $logoNumbers := (seq 1 $nrOfLogos) | shuffle }}
+    {{ range first $nrOflogosToDisplay $logoNumbers | shuffle }}
+    <div>
+        <img src="./images/home/happy-users/logos/logo-{{ . }}.png">
+    </div>
+    {{ end }}
+    <a href="https://github.com/keptn/keptn/blob/master/ADOPTERS.md">
+        <img src="/images/home/add-organisation.svg">
+    </a>
+</div>

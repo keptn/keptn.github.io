@@ -142,15 +142,15 @@
     align-items: center;
     grid-template-columns: 50% 50%;
 
-    a, p {
-      text-align: center;
-      margin-bottom: 25px;
-    }
-
     img {
+      margin-bottom: 25px;
       max-height: 50px;
       width: auto;
       max-width: 120px;
+    }
+
+    a, div {
+      text-align: center;
     }
 
     @media screen and (min-width: $bp-md) {
@@ -167,10 +167,6 @@
       img {
         max-height: 60px;
         max-width: 150px;
-        margin-bottom: 0;
-      }
-
-      a, p {
         margin-bottom: 0;
       }
     }
