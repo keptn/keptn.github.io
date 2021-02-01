@@ -4,7 +4,7 @@
 
 ![Developers](/images/home/happy-users/logo-citrix@2x.png)
 
-![Developers](/images/home/happy-users/logo-dynatrace_square.png)
+![Developers](/images/home/happy-users/logo-dynatrace.png)
 
 ![Developers](/images/home/happy-users/logo-ert@2x.png)
 
