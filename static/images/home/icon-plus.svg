@@ -1,11 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>icon-plus</title>
-    <g id="icon-plus" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="a/icons/32/chevron/up" transform="translate(-4.000000, -4.000000)">
-            <g id="Group" transform="translate(8.000000, 15.000000)"></g>
-            <line x1="16.5" y1="8.5" x2="16.5" y2="23.5" id="Line-3" stroke="#14BA5A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero"></line>
-            <line x1="16.5" y1="8.5" x2="16.5" y2="23.5" id="Line-3" stroke="#14BA5A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill-rule="nonzero" transform="translate(16.500000, 16.000000) rotate(-90.000000) translate(-16.500000, -16.000000) "></line>
-        </g>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"  fill="none" stroke="#14ba5a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns:v="https://vecta.io/nano"><path d="M12.5 4.5v15"/><path d="M5 12h15"/></svg>

@@ -1,14 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="69px" height="522px" viewBox="0 0 69 522" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>shadow-slider</title>
-    <defs>
-        <filter x="-127.3%" y="-9.3%" width="354.5%" height="118.7%" filterUnits="objectBoundingBox" id="filter-1">
-            <feGaussianBlur stdDeviation="14" in="SourceGraphic"></feGaussianBlur>
-        </filter>
-    </defs>
-    <g id="shadow-slider" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.4">
-        <g transform="translate(53.000000, 33.000000)" fill="#093350" id="Oval-2">
-            <ellipse id="Oval" filter="url(#filter-1)" cx="16.5" cy="225" rx="16.5" ry="225"></ellipse>
-        </g>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="69" height="522"  xmlns:v="https://vecta.io/nano"><defs><filter x="-127.3%" y="-9.3%" width="354.5%" height="118.7%" id="A"><feGaussianBlur stdDeviation="14" in="SourceGraphic"/></filter></defs><ellipse filter="url(#A)" cx="16.5" cy="225" rx="16.5" ry="225" transform="translate(53 33)" fill="#093350" fill-rule="evenodd" opacity=".4"/></svg>
