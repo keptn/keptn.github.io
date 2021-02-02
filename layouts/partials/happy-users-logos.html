@@ -1,9 +1,9 @@
 <div class="text col-12 pt-md-3 happy-users-logos pb-lg-4">
-    {{ $nrOfLogos := 6 }}
+    {{ $nrOfLogos := readDir "./public/images/home/happy-users/logos" | len }}
     {{ $nrOflogosToDisplay := 5 }}
 
-    {{ $logoNumbers := (seq 1 $nrOfLogos) | shuffle }}
-    {{ range first $nrOflogosToDisplay $logoNumbers | shuffle }}
+    {{ $logoNumbers := seq 1 $nrOfLogos | shuffle | first $nrOflogosToDisplay }}
+    {{ range $logoNumbers }}
     <div>
         <img src="./images/home/happy-users/logos/logo-{{ . }}.png">
     </div>
