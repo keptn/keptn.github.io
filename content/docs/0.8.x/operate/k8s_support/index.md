@@ -50,37 +50,38 @@ Keptn versions are expressed as `x.y.z`, where `x` is the major version, `y` is 
 
 ## Cluster size for Keptn 0.8
 
+The size of the Keptn control- and execution plane has been derived automatically and is also reported at the latest release; see *Kubernetes Resource Data* at: https://github.com/keptn/keptn/releases
+
 ### Keptn control plane
 
-| Deployment                          	| Memory (requested) 	| CPU (requested) 	| Memory (limit) 	| CPU (limit) 	| Storage 	|
-|-------------------------------------	|:------------------:	|:----------------:	|:--------------:	|:------------:	|:--------:	|
-| api-gateway-nginx                   	| 32                 	| 50              	| 128            	| 500         	|         	|
-| api-service                         	| 64                 	| 50              	| 256            	| 500         	|         	|
-| api-service > distributor            	| 32                 	| 50              	| 128            	| 500         	|         	|
-| bridge                              	| 64                 	| 50              	| 128            	| 500         	|         	|
-| configuration-service               	| 64                 	| 50              	| 128            	| 500         	|         	|
-| configuration-service > distributor 	| 32                 	| 50              	| 128            	| 500         	|         	|
-| configuration-volume                	|                    	|                 	|                	|             	| 100Mi   	|
-| lighthouse-service                  	| 128                	| 50              	| 1024           	| 500         	|         	|
-| lighthouse-service > distributor    	| 32                 	| 50              	| 128            	| 500         	|         	|
-| mongodb                             	| 64                	| 50              	| 300            	| 100         	|         	|
-| mongodata                           	|                    	|                 	|                	|             	| 5Gi     	|
-| mongodb-datastore                   	| 32                 	| 50              	| 128            	| 500         	|         	|
-| mongodb-datastore > distributor     	| 32                 	| 50              	| 128            	| 500         	|         	|
-| remediation-service                 	| 64                 	| 50              	| 1024           	| 500         	|         	|
-| remediation-service > distributor   	| 32                 	| 50              	| 128            	| 500         	|         	|
-| shipyard-controller                  	| 32                 	| 50              	| 128            	| 500         	|         	|
-| shipyard-controller > distributor    	| 32                 	| 50              	| 128            	| 500         	|         	|
-| **Sum:**                             	| **736**           	| **750**          	| **4012**       	| **7100**     	|         	|
+| Pod | Container | lim.cpu | lim.mem | req.cpu | req.mem |
+|-----|-----------|---------|---------|---------|---------|
+| api-gateway-nginx | api-gateway-nginx | 500m | 128Mi | 50m | 32Mi |
+| api-service | api-service | 500m | 256Mi | 50m | 64Mi |
+| api-service | distributor | 250m | 32Mi | 25m | 16Mi |
+| bridge | bridge | 500m | 128Mi | 50m | 64Mi |
+| configuration-service | configuration-service | 500m | 128Mi | 50m | 64Mi | 
+| configuration-service | distributor | 250m | 32Mi | 25m | 16Mi |
+| lighthouse-service | lighthouse-service | 500m | 1Gi | 50m | 128Mi |
+| lighthouse-service | distributor | 250m | 32Mi | 25m | 16Mi |
+| mongodb | mongodb | 100m | 300Mi | 50m | 64Mi |
+| mongodb-datastore | mongodb-datastore | 500m | 128Mi | 50m | 32Mi |
+| mongodb-datastore | distributor | 250m | 32Mi | 25m | 16Mi |
+| remediation-service | remediation-service | 500m | 1Gi | 50m | 64Mi |
+| remediation-service | distributor | 250m | 32Mi | 25m | 16Mi |
+| shipyard-controller | shipyard-controller | 500m | 128Mi | 50m | 32Mi | 
+| shipyard-controller | distributor | 250m | 32Mi | 25m | 16Mi | 
+| statistics-service | statistics-service | 500m | 128Mi | 50m | 32Mi |
+| statistics-service | distributor | 250m | 32Mi | 25m | 16Mi |
 
 ### Keptn execution plane
 
-| Deployment                          	| Memory (requested) 	| CPU (requested) 	| Memory (limit) 	| CPU (limit) 	| Storage 	|
-|-------------------------------------	|:------------------:	|:----------------:	|:--------------:	|:------------:	|:--------:	|
-| gatekeeper-service               	    | 32  	              | 50 	              | 128            	| 500          	|         	|
-| gatekeeper-service > distributor    	| 32  	              | 50 	              | 128 	          | 500         	|         	|
-| helm-service                        	| 128               	| 50              	| 512            	| 1000 	        |         	|
-| helm-service > distributor          	| 32                	| 50              	| 128           	| 500         	|         	|
-| jmeter-service                      	| -                   | -   	            | -               | -            	|         	|
-| jmeter-service > distributor        	| 32                	| 50 	              | 128           	| 500         	|         	|
-| **Sum:**                             	| **256**            	| **250**          	| **1024**       	| **3000**     	|         	|
+| Pod | Container | lim.cpu | lim.mem | req.cpu | req.mem |
+|-----|-----------|---------|---------|---------|---------|
+| gatekeeper-service | gatekeeper-service | 500m | 128Mi | 50m | 32Mi |
+| gatekeeper-service | distributor | 250m | 32Mi | 25m | 16Mi |
+| helm-service | helm-service | 1 | 512Mi | 50m | 128Mi |
+| helm-service | distributor | 250m | 32Mi | 25m | 16Mi |
+| jmeter-service | jmeter-service | - | - | 50m | 64Mi |
+| jmeter-service | distributor | 250m | 32Mi | 25m | 16Mi |
+

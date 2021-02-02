@@ -52,6 +52,8 @@ Keptn versions are expressed as `x.y.z`, where `x` is the major version, `y` is 
 
 ## Cluster size for Keptn 0.7
 
+Please note that the size of the Keptn control- and execution plane have been derived manually based on the last release.
+
 ### Keptn control plane
 
 | Deployment                          	| Memory (requested) 	| CPU (requested) 	| Memory (limit) 	| CPU (limit) 	| Storage 	|
