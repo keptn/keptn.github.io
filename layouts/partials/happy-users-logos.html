@@ -1,11 +1,8 @@
 <div class="text col-12 pt-md-3 happy-users-logos pb-lg-4">
-    {{ $nrOfLogos := readDir "./public/images/home/happy-users/logos" | len }}
-    {{ $nrOflogosToDisplay := 5 }}
-
-    {{ $logoNumbers := seq 1 $nrOfLogos | shuffle | first $nrOflogosToDisplay }}
-    {{ range $logoNumbers }}
+    {{ $nrOfLogosToDisplay := 5 }}
+    {{ range seq 1 $nrOfLogosToDisplay  }}
     <div>
-        <img src="./images/home/happy-users/logos/logo-{{ . }}.png">
+        <img class="js-happy-users-logo">
     </div>
     {{ end }}
     <a href="https://github.com/keptn/keptn/blob/master/ADOPTERS.md">
