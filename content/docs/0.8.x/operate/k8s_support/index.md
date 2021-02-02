@@ -13,16 +13,16 @@ Keptn versions are expressed as `x.y.z`, where `x` is the major version, `y` is 
 
 **Keptn Installations:**
 
-* **Control Plane**: Keptn components to run a Keptn and to manage projects, stages, and services, to handle events, and to provide integration points. Install option: `keptn install`
+* **Control plane**: Keptn components to run a Keptn and to manage projects, stages, and services, to handle events, and to provide integration points. Install option: `keptn install`
 
-* **Control & Execution Plane**: Keptn control plane including all Keptn-services for continuous delivery and automated operations. Install option: `keptn install --use-case=continuous-delivery`
+* **Control & Execution plane**: Keptn control plane including all Keptn-services for continuous delivery and automated operations. Install option: `keptn install --use-case=continuous-delivery`
 
 <!-- use https://www.tablesgenerator.com/markdown_tables# for editing -->
 
 | Keptn Version /<br>Installation                           | Kubernetes  | AKS                       | EKS         | GKE           | OpenShift   | K3s         | Minishift               |
 |-----------------------------------------------------------|:-----------:|:-------------------------:|:-----------:|:-------------:|:-----------:|:-----------:|:------------------------|
-| **0.8.x** / <br>Control & Execution Plane<br>*see: (3)*   | 1.19 - 1.16 | 1.16 - 1.15<br>*see: (1)* | 1.18 - 1.16 | 1.16 - 1.14   | 4, 3.11     | 1.19 - 1.16 | 1.34.2<br>(K8s: 1.11)   |
-| **0.8.x** / <br>Control Plane                             | 1.19 - 1.16 | 1.16 - 1.15<br>*see: (1)* | 1.18 - 1.16 | 1.16 - 1.14   | 4, 3.11     | 1.19 - 1.16 | 1.34.2<br>(K8s: 1.11)   |
+| **0.8.x** / <br>Control & Execution plane<br>*see: (3)*   | 1.19 - 1.16 | 1.16 - 1.15<br>*see: (1)* | 1.18 - 1.16 | 1.16 - 1.14   | 4, 3.11     | 1.19 - 1.16 | 1.34.2<br>(K8s: 1.11)   |
+| **0.8.x** / <br>Control plane                             | 1.19 - 1.16 | 1.16 - 1.15<br>*see: (1)* | 1.18 - 1.16 | 1.16 - 1.14   | 4, 3.11     | 1.19 - 1.16 | 1.34.2<br>(K8s: 1.11)   |
 
 **Remarks:**
 
@@ -52,7 +52,7 @@ Keptn versions are expressed as `x.y.z`, where `x` is the major version, `y` is 
 
 The size of the Keptn control- and execution plane has been derived automatically and is also reported at the latest release; see *Kubernetes Resource Data* at: https://github.com/keptn/keptn/releases
 
-### Keptn control plane
+### Control plane
 
 | Pod | Container | lim.cpu | lim.mem | req.cpu | req.mem |
 |-----|-----------|---------|---------|---------|---------|
@@ -73,8 +73,9 @@ The size of the Keptn control- and execution plane has been derived automaticall
 | shipyard-controller | distributor | 250m | 32Mi | 25m | 16Mi | 
 | statistics-service | statistics-service | 500m | 128Mi | 50m | 32Mi |
 | statistics-service | distributor | 250m | 32Mi | 25m | 16Mi |
+| **Sum:** | | **6350** | **3596** | **675** | **688** |
 
-### Keptn execution plane
+### Execution plane
 
 | Pod | Container | lim.cpu | lim.mem | req.cpu | req.mem |
 |-----|-----------|---------|---------|---------|---------|
@@ -84,4 +85,5 @@ The size of the Keptn control- and execution plane has been derived automaticall
 | helm-service | distributor | 250m | 32Mi | 25m | 16Mi |
 | jmeter-service | jmeter-service | - | - | 50m | 64Mi |
 | jmeter-service | distributor | 250m | 32Mi | 25m | 16Mi |
+| **Sum:** | | **1250** | **736** | **225** | **272** |
 

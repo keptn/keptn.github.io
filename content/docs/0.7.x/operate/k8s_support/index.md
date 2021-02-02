@@ -13,18 +13,18 @@ Keptn versions are expressed as `x.y.z`, where `x` is the major version, `y` is 
 
 **Keptn Installations:**
 
-* **Control Plane**: Keptn components to run a Keptn and to manage projects, stages, and services, to handle events, and to provide integration points. Install option: `keptn install`
+* **Control plane**: Keptn components to run a Keptn and to manage projects, stages, and services, to handle events, and to provide integration points. Install option: `keptn install`
 
-* **Control & Execution Plane**: Keptn control plane including all Keptn-services for continuous delivery and automated operations. Install option: `keptn install --use-case=continuous-delivery`
+* **Control & Execution plane**: Keptn control plane including all Keptn-services for continuous delivery and automated operations. Install option: `keptn install --use-case=continuous-delivery`
 
 <!-- use https://www.tablesgenerator.com/markdown_tables# for editing -->
 
 | Keptn Version /<br>Installation                         | Kubernetes        | AKS               | EKS                   | GKE               | OpenShift   | K3s         | Minikube                                         | MicroK8s       | Minishift                 |
 |---------------------------------------------------------|:-----------------:|:-----------------:|:---------------------:|:-----------------:|:-----------:|:-----------:|:------------------------------------------------:|:--------------:|:--------------------------|
-| **0.7.x** / <br>Control & Execution Plane<br>*see: (3)* | 1.19 - 1.14 | 1.16 - 1.15<br>*see: (1)* | 1.16 - 1.14         | 1.17 - 1.14       | 4, 3.11     | 1.19 - 1.16 | 1.10.1<br>(K8s:1.18.2) -<br> 1.3.1<br>(K8s:1.15) | -              | 1.34.2<br>(K8s: 1.11)     |
-| **0.7.x** / <br>Control Plane                           | 1.19 - 1.14 | 1.16 - 1.15<br>*see: (1)* | 1.16 - 1.14         | 1.17 - 1.14       | 4, 3.11     | 1.19 - 1.16 | 1.10.1<br>(K8s:1.18.2) -<br> 1.3.1<br>(K8s:1.15) | 1.19 - 1.16    | 1.34.2<br>(K8s: 1.11)     |
-| 0.6.x / <br>Control & Execution Plane              | 1.15 - 1.13 | 1.15<br>*see: (1)*        | 1.15 - 1.14<br>*see: (2)* | 1.15 - 1.14<br>*see: (2)* | 3.11 | -         | -                                                | -              | 1.34.2<br>(K8s: 1.11)     |
-| 0.6.x / <br>Control Plane                          | 1.16 - 1.13 | 1.16 - 1.15<br>*see: (1)* | 1.15 - 1.14<br>*see: (2)* | 1.15 - 1.14<br>*see: (2)* | 3.11 | -         | 1.2<br>(K8s:1.15)                                | 1.18           | 1.34.2<br>(K8s: 1.11)     |
+| **0.7.x** / <br>Control & Execution plane<br>*see: (3)* | 1.19 - 1.14 | 1.16 - 1.15<br>*see: (1)* | 1.16 - 1.14         | 1.17 - 1.14       | 4, 3.11     | 1.19 - 1.16 | 1.10.1<br>(K8s:1.18.2) -<br> 1.3.1<br>(K8s:1.15) | -              | 1.34.2<br>(K8s: 1.11)     |
+| **0.7.x** / <br>Control plane                           | 1.19 - 1.14 | 1.16 - 1.15<br>*see: (1)* | 1.16 - 1.14         | 1.17 - 1.14       | 4, 3.11     | 1.19 - 1.16 | 1.10.1<br>(K8s:1.18.2) -<br> 1.3.1<br>(K8s:1.15) | 1.19 - 1.16    | 1.34.2<br>(K8s: 1.11)     |
+| 0.6.x / <br>Control & Execution plane              | 1.15 - 1.13 | 1.15<br>*see: (1)*        | 1.15 - 1.14<br>*see: (2)* | 1.15 - 1.14<br>*see: (2)* | 3.11 | -         | -                                                | -              | 1.34.2<br>(K8s: 1.11)     |
+| 0.6.x / <br>Control plane                          | 1.16 - 1.13 | 1.16 - 1.15<br>*see: (1)* | 1.15 - 1.14<br>*see: (2)* | 1.15 - 1.14<br>*see: (2)* | 3.11 | -         | 1.2<br>(K8s:1.15)                                | 1.18           | 1.34.2<br>(K8s: 1.11)     |
 
 **Remarks:**
 
@@ -54,7 +54,7 @@ Keptn versions are expressed as `x.y.z`, where `x` is the major version, `y` is 
 
 Please note that the size of the Keptn control- and execution plane have been derived manually based on the last release.
 
-### Keptn control plane
+### Control plane
 
 | Deployment                          	| Memory (requested) 	| CPU (requested) 	| Memory (limit) 	| CPU (limit) 	| Storage 	|
 |-------------------------------------	|:------------------:	|:----------------:	|:--------------:	|:------------:	|:--------:	|
@@ -77,7 +77,7 @@ Please note that the size of the Keptn control- and execution plane have been de
 | shipyard-service > distributor      	| 32                 	| 50              	| 128            	| 500         	|         	|
 | **Sum:**                             	| **736**           	| **750**          	| **4012**       	| **7100**     	|         	|
 
-### Keptn execution plane
+### Execution plane
 
 | Deployment                          	| Memory (requested) 	| CPU (requested) 	| Memory (limit) 	| CPU (limit) 	| Storage 	|
 |-------------------------------------	|:------------------:	|:----------------:	|:--------------:	|:------------:	|:--------:	|
