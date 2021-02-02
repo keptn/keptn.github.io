@@ -18,6 +18,94 @@
 
     .button {
       margin-left: 24px;
+      background-color: $primary;
+      color: $white;
+    }
+  }
+}
+
+.page-home {
+  .header {
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    height: 80px;
+    font-size: 2.8rem;
+    background-color: transparent;
+    color: transparent;
+    box-shadow: none;
+    top: 72px;
+    z-index: 1500;
+
+    @media screen and (min-width: $bp-md) {
+      top: 64px;
+    }
+
+    a {
+      font-family: $font-family-base;
+      color: $white;
+    }
+
+    .container {
+      display: inherit;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+
+      .button {
+        background-color: $white;
+        color: $primary-home-900 !important;
+
+        @media screen and (min-width: $bp-md) and (max-width: $bp-lg) {
+          margin-left: 0;
+        }
+
+        &:hover {
+          background: linear-gradient(-225deg, #ecf7ff 0%, #c8e2f5 100%);
+        }
+      }
+
+      .main-menu ul li a {
+        &:not(.button) {
+          color: $white;
+        }
+
+        &:hover {
+          color: $linkHoverColor-home;
+        }
+      }
+    }
+
+    &.is-sticky {
+      transition: all 0.3s;
+      top: 0;
+      background-color: $white;
+      color: $primary;
+      box-shadow: 0 2px 10px 0 rgba($black, 0.1);
+      height: 64px;
+
+      @media screen and (min-width: $bp-md) {
+        height: 80px;
+      }
+
+      .container .main-menu ul li a {
+        &:not(.button) {
+          color: $textColor;
+        }
+
+        &:hover {
+          color: $primary-home-900;
+        }
+      }
+
+      .button {
+        background-color: $primary-home-900;
+        color: $white !important;
+
+        &:hover {
+          background: linear-gradient(-225deg, $primary-home-900 0%, #10478f 100%);
+        }
+      }
     }
   }
 }

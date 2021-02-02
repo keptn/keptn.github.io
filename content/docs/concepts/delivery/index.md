@@ -2,7 +2,7 @@
 title: Declarative Multi-Stage Delivery
 description: Learn about the core use-case of declerative multi-stage delivery.
 weight: 1
-keywords: [use-cases]
+keywords: [keptn, use-cases]
 ---
 
 > Today, many organizations build their continuous delivery workflows by hand and in an imperative way. This can lead to a lot of manual work when a scripted delivery pipeline - with slight modifications - is spread across the organization and re-used by different teams. Just imagine the difficulty to keep all variations of this pipeline up-to-date and to consider future changes in the delivery workflow of a new artifact. 

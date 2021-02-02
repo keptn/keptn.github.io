@@ -1,0 +1,14 @@
+<div class="tools">
+  <div class="container pt-2 pt-lg-5 pb-5">
+    <div class="row">
+      <div class="col-12 pb-1 pb-md-0">
+        <div class="text teaser-box">
+          {{ with .Site.GetPage "section" "home/tools" }}
+          {{ .Content }}
+          {{ end }}
+        </div>
+      </div>
+    </div>
+    {{ partial "tools-cards.html" . }}
+  </div>
+</div>

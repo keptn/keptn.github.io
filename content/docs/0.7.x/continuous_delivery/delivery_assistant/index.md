@@ -2,7 +2,8 @@
 title: Delivery Assistant
 description: Approval of deployment for manual approval strategy
 weight: 50
-keywords: [0.7.x-bridge, 0.7.x-cd]
+keywords: [0.7.x-cd]
+
 aliases:
   - /docs/0.7.x/reference/bridge/delivery_assistent/
 ---

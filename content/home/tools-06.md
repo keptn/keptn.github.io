@@ -1,0 +1,1 @@
+Keptn integrations translate well-defined CloudEvents into proprietary vendor APIs and hide complex automation for advanced tasks.
