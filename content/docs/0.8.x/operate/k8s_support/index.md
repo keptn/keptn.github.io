@@ -24,7 +24,7 @@ Keptn versions are expressed as `x.y.z`, where `x` is the major version, `y` is 
 | **0.8.x** / <br>Control & Execution Plane<br>*see: (3)*   | 1.19 - 1.16 | 1.16 - 1.15<br>*see: (1)* | 1.18 - 1.16 | 1.16 - 1.14   | 4, 3.11     | 1.19 - 1.16 | 1.34.2<br>(K8s: 1.11)   |
 | **0.8.x** / <br>Control Plane                             | 1.19 - 1.16 | 1.16 - 1.15<br>*see: (1)* | 1.18 - 1.16 | 1.16 - 1.14   | 4, 3.11     | 1.19 - 1.16 | 1.34.2<br>(K8s: 1.11)   |
 
-**Remarks**
+**Remarks:**
 
 * (1): AKS with K8s version before 1.15 might fail (see: [#1429](https://github.com/keptn/keptn/issues/1429)), due to a known AKS issue: [#69262](https://github.com/kubernetes/kubernetes/issues/69262)
 * (2): Requires sufficient resources (e.g., >= 8 vCPUs and 14 GB memory for deploying sockshop in multiple stages) depending on your use-case and workloads.
@@ -42,13 +42,13 @@ Keptn versions are expressed as `x.y.z`, where `x` is the major version, `y` is 
 * **GKE** ... Google Kubernetes Engine
 * **K3s** ... A certified Kubernetes distribution built for IoT & Edge computing: [k3s.io](https://k3s.io/)
 
-## Test Strategy for Kubernetes support
+**Test Strategy for Kubernetes support:**
 
 * With a new Keptn release, Keptn is tested based on the default K8s version of each Cloud Provider: AKS, EKS and GKE available at the release date.
 
 * Internally, a test pipeline with newer Kubernetes versions is verifying the master branch of Keptn. Known-limitations identified by these tests are referenced at the corresponding Keptn release. 
 
-## Cluster size for Keptn 0.8
+## Cluster size
 
 The size of the Keptn control- and execution plane has been derived automatically and is also reported at the latest release; see *Kubernetes Resource Data* at: https://github.com/keptn/keptn/releases
 
