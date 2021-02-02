@@ -86,7 +86,6 @@ After receiving the `sh.keptn.event.get-sli.triggered` event, an SLI-provider mu
 
 3. **Send a started event:** If the data source is supported, send a start event of type: `sh.keptn.event.get-sli.started`. This CloudEvent informs Keptn that your service takes care of fetching the SLIs. 
 
-
 4. Get the SLI configuration from Keptn's configuration-service. This SLI configuration is identified by the `resourceURI`, which follows the pattern: `[tool-name]/sli.yaml` (e.g., `dynatrace/sli.yaml`). 
   * Service URL: http://configuration-service.keptn.svc.cluster.local:8080
   * Endpoint: `v1/project/{projectName}/stage/{stageName}/service/{serviceName}/resource/{resourceURI}`
