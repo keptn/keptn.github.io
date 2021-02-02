@@ -85,5 +85,5 @@ The size of the Keptn control- and execution plane has been derived automaticall
 | helm-service | distributor | 250m | 32Mi | 25m | 16Mi |
 | jmeter-service | jmeter-service | - | - | 50m | 64Mi |
 | jmeter-service | distributor | 250m | 32Mi | 25m | 16Mi |
-| **Sum:** | | **1250** | **736** | **225** | **272** |
+| **Sum:** | | **2250** | **736** | **225** | **272** |
 
