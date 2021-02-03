@@ -134,30 +134,6 @@ Creating project sockshop failed. Could not commit changes.
 
 </p></details>
 
-## Troubleshooting the Installer Job
-
-In some cases, the installer is not running correctly or crashes.
-
-<details><summary>Expand instructions</summary>
-<p>
-
-**Investigation:**
-
-The Keptn installation is aborting with an error. The investigation needs to be conducted using the following commands:
-
-* Show all deployed pods in the default namespace (should show the status of the installer pod): ``kubectl get pods``
-* Show status of the installer job: ``kubectl get jobs``
-* Get logs of the installer job: ``kubectl logs jobs/installer``
-* If the installer has partially finished, [verify your Keptn installation](#verifying-a-keptn-installation)
-
-**Possible solutions:**
-
-* If the installer pod shows an ImagePullBackOff error, verify that your cluster can connect to the Internet to pull images (e.g., from docker.io).
-* If the installer pod has started, but crashes, please create a [new bug report](https://github.com/keptn/keptn/issues/new?assignees=&labels=bug&template=bug_report.md&title=) with the output of above commands.
-
-
-</p></details>
-
 
 ## Error: UPGRADE FAILED: timed out waiting for the condition
 
