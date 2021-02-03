@@ -42,3 +42,9 @@ Before you push to production, make sure to run the following command in order t
 ```
 hugo
 ```
+
+# License
+
+keptn.sh is licensed under an [Apache 2.0 license](./LICENSE).
+
+The Keptn documentation (e.g., `.md` files in the `/content/docs` folder) is licensed under a [CC-BY-4.0 license](./LICENSE-docs). 
