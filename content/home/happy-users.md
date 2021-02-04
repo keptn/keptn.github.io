@@ -1,3 +1,3 @@
-#### Happy users
+#### Some of our happy users
 
 ## Adopted by
