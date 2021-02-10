@@ -9,23 +9,23 @@ The definition of a multi-stage delivery manifests in a so-called **shipyard**. 
 
 ## Declare Shipyard (before creating a project)
 
-The `shipyard.yml` file defines the stages each deployment has to go through until it is released in production. A shipyard file can consist of any number of stages with at least the name property. Besides, each stage can consist of sequence tasks (strategies) from the following list:
+* A shipyard is defined at the level of a project. This means that all services in a project share the same shipyard configuration. 
 
-* approval_strategy
-* deployment_strategy
-* test_strategy
+* A shipyard defines the stages each deployment has to go through until it is released in the final stage, e.g., the production stage. 
 
-A shipyard is defined at the level of a project. This means that all services in a project share the same shipyard configuration. 
+* A shipyard can consist of any number of stages with at least the name property. 
 
-### Name 
+* A stage can consist of task sequences.
 
-The name of the stage. This name will be used for the branch in the Git repository and Kubernetes namespace to which services at this stage will be deployed to. 
+### Definition of Stage 
+
+A stage is declared by its name. This name will be used for the branch in the Git repository and Kubernetes namespace to which services at this stage will be deployed to. 
 
 **Example of a shipyard with three stages:**
 
 ```yaml
-apiVersion: "spec.keptn.sh/0.2.0"
-kind: "Shipyard"
+apiVersion: spec.keptn.sh/0.2.0
+kind: Shipyard
 metadata:
   name: "shipyard-sockshop"
 spec:
@@ -35,15 +35,63 @@ spec:
     - name: "production"
 ```
 
-### Approval Strategy
+### Definition of Task Sequence in a Stage
 
-The approval strategy specifies the kind of approval, which is required before deploying an artifact into the next stage. The approval strategy can be defined based on the evaluation result `pass` and `warning`. Keptn supports the following approval strategies for the evaluation results `pass` and `warning`:
+After defining the stages, task sequences can be added to a stage. A sequence is an ordered list of tasks that are triggered sequentially. A `sequence` has the properties:
+
+* `name`: A unique name of the sequence
+* `on` (optional): An array of events that trigger the sequence.
+* `tasks`: An array of tasks executed by the sequence in the declared order.
+
+**Example:** Extended shipyard with a delivery sequence in all three stage:
+
+```yaml
+apiVersion: spec.keptn.sh/0.2.0
+kind: Shipyard
+metadata:
+  name: "shipyard-sockshop"
+spec:
+  stages:
+    - name: "dev"
+      sequences:
+      - name: delivery
+        tasks: 
+        - name: deployment
+        - name: release
+    - name: "hardening"
+      sequences:
+      - name: delivery
+        tasks: 
+        - name: deployment
+        - name: release
+    - name: "production"
+      sequences:
+      - name: delivery
+        tasks: 
+        - name: deployment
+        - name: release
+```
+
+### Reserved Keptn Tasks
+
+Keptn supports a set of opiniated tasks for declaring a delivery or remediation sequence: 
+
+* approval
+* deployment
+* evaluation
+* release
+* remediation
+* rollback (missing)
+* test
+
+#### Approval
+
+The approval task stops the task sequence for an approval, which is required before deploying an artifact into the next stage. The approval strategy can be defined based on the evaluation result `pass` and `warning`. Keptn supports the following approval strategies for the evaluation results `pass` and `warning`:
 
   * `automatic`: The artifact is deployed automatically.
   * `manual`: The user is asked for approval before triggering the deployment.
 
 This allows combinations as follows: 
-
 
 |                          | Evaluation result: pass           | Evaluation result: warning                 | Behavior  |
 |--------------------------|-----------------------------------|--------------------------------------------|-----------|
@@ -54,10 +102,21 @@ This allows combinations as follows:
 
 Per default, an `automatic` approval strategy is used for evaluation result `pass` and `warning`.
 
-**Extended shipyard with a mandatory approval task in production:**
+**Usage:**
+
+```
+- name: approval
+  properties: 
+    pass: automatic
+    warning: manual
+```
+
+<details><summary>**Example:** Extended shipyard with a mandatory approval task in production</summary>
+
+<p>
 
 ```yaml
-apiVersion: "spec.keptn.sh/0.2.0"
+apiVersion: spec.keptn.sh/0.2.0
 kind: "Shipyard"
 metadata:
   name: "shipyard-sockshop"
@@ -65,7 +124,7 @@ spec:
   stages:
     - name: "production"
       sequences:
-        - name: "artifact-delivery"
+        - name: "delivery"
           tasks:
             - name: "deployment"
             - name: "approval"
@@ -75,17 +134,31 @@ spec:
             - name: "release"
 ```
 
-### Deployment Strategy
+</p>
+</details>
+
+#### Deployment
 
 Defines the deployment strategy used to deploy a new version of a service. Keptn supports deployment strategies of type: 
 
   * `direct`: Deploys a new version of a service by replacing the old version of the service.
   * `blue_green_service`: Deploys a new version of a service next to the old one. After a successful validation of this new version, it replaces the old one and is marked as stable (i.e., it becomes the `primary`-version).
 
-**Extended shipyard with direct deployment in dev and blue/green deployment in hardening and production:**
+**Usage:**
+
+```
+- name: deployment
+  properties: 
+    deploymentstrategy: blue_green_service
+```
+
+<details><summary>**Example:** Extended shipyard with direct deployment in dev and blue/green deployment in hardening and production
+</summary>
+
+<p>
 
 ```yaml
-apiVersion: "spec.keptn.sh/0.2.0"
+apiVersion: spec.keptn.sh/0.2.0
 kind: "Shipyard"
 metadata:
   name: "shipyard-sockshop"
@@ -93,7 +166,7 @@ spec:
   stages:
     - name: "dev"
       sequences:
-        - name: "artifact-delivery"
+        - name: "delivery"
           tasks:
             - name: "deployment"
               properties:
@@ -103,9 +176,9 @@ spec:
 
     - name: "hardening"
       sequences:
-        - name: "artifact-delivery"
+        - name: "delivery"
           triggers:
-            - "dev.artifact-delivery.finished"
+            - "dev.delivery.finished"
           tasks:
             - name: "deployment"
               properties:
@@ -115,9 +188,9 @@ spec:
 
     - name: "production"
       sequences:
-        - name: "artifact-delivery"
+        - name: "delivery"
           triggers:
-            - "staging.artifact-delivery.finished"
+            - "staging.delivery.finished"
           tasks:
             - name: "deployment"
               properties:
@@ -125,17 +198,59 @@ spec:
             - name: "release"
 ```
 
-### Test Strategy
+</p>
+</details>
 
-Defines the test strategy used to validate a deployment. Failed tests result in an automatic roll-back of the latest deployment in case of a blue/green deployment strategy. Keptn supports tests of type:
+#### Evaluation
 
-  * `functional` 
-  * `performance` 
+Defines the quality evaluation that is executed to verify the quality of a deplyoment based on its SLOs/SLIs.
 
-**Extended shipyard with functional tests in dev and performance tests in hardening**
+**Usage:**
+```
+- name: evaluation
+```
+
+#### Release
+
+Defines the releasing task that is executed after a successful deployment happened.
+
+**Usage:**
+```
+- name: release
+```
+
+#### Remediation
+
+Defines whether remediation actions are enabled or not.
+
+**Usage:**
+```
+- name: remediation
+```
+
+#### Rollback (currently missing)
+
+#### Test
+
+Defines the test strategy used to validate a deployment. Keptn supports tests of type:
+
+  * `functional`: Test a deployment based on functional tests.
+  * `performance`: Test a deployment based on performance/load tests.
+
+**Usage:**
+```
+- name: test
+  properties: 
+    teststrategy: functional
+```
+
+<details><summary>**Example:** Extended shipyard with functional tests in dev and performance tests in hardening
+</summary>
+
+<p>
 
 ```yaml
-apiVersion: "spec.keptn.sh/0.2.0"
+apiVersion: spec.keptn.sh/0.2.0
 kind: "Shipyard"
 metadata:
   name: "shipyard-sockshop"
@@ -143,7 +258,7 @@ spec:
   stages:
     - name: "dev"
       sequences:
-        - name: "artifact-delivery"
+        - name: "delivery"
           tasks:
             - name: "deployment"
               properties:
@@ -156,9 +271,9 @@ spec:
 
     - name: "staging"
       sequences:
-        - name: "artifact-delivery"
+        - name: "delivery"
           triggers:
-            - "dev.artifact-delivery.finished"
+            - "dev.delivery.finished"
           tasks:
             - name: "deployment"
               properties:
@@ -171,6 +286,10 @@ spec:
 
 ``` 
 
+</p>
+</details>
+
 ## Create project with multi-stage delivery
 
 After declaring the delivery for a project in a shipyard, you are ready to create a Keptn project as explained in [create a project](../../manage/project/#create-a-project).
+
