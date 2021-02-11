@@ -28,7 +28,6 @@ This deployment manifest contains:
 
 A Keptn-service has the following characteristics: 
 
-
 * has a **subscription** to an event that occurs during the execution of a task sequence for continuous delivery or operations
 * sends a **started event** to inform Keptn about receiving the event and acting on it
 * processes functionality and can therefore leverage additional tools, e.g., through their REST interface
@@ -36,7 +35,7 @@ A Keptn-service has the following characteristics:
 
 ### Subscription to Keptn event
 
-Your Keptn-service must have a subscription to at least one [Keptn CloudEvent](https://github.com/keptn/spec/blob/0.1.6/cloudevents.md). The event type to subscribe to looks as follows:
+Your Keptn-service must have a subscription to at least one [Keptn CloudEvent](https://github.com/keptn/spec/blob/0.2.0/cloudevents.md). The event type to subscribe to looks as follows:
 
 - `sh.keptn.event.[task].triggered`
 
@@ -61,17 +60,48 @@ spec:
         memory: "128Mi"
         cpu: "500m"
     env:
-    - name: CONNECTION_TYPE
-      value: 'nats'
-    - name: PUBSUB_URL
-      value: 'nats://keptn-nats-cluster'
     - name: PUBSUB_TOPIC
       value: 'sh.keptn.event.test.triggered'
     - name: PUBSUB_RECIPIENT
       value: 'jmeter-service'
 ```
 
-To configure this distributor for your *Keptn-service*, three environment variables need to be adapted: 
+In addition to forwarding received events for the subscribed topic to the Keptn-service, the distributor also provides the feature to act as a proxy to the Keptn API. 
+Using this feature, the following Keptn API services will be reachable for the Keptn-service via the following URLs, if the **distributor runs within the same K8s pod as the Keptn-service**:
+
+- Mongodb-datastore:	
+    - `http://localhost:8081/mongodb-datastore`
+    - `http://localhost:8081/datastore`
+    - `http://localhost:8081/event-store`
+
+- Configuration-service:
+    - `http://localhost:8081/configuration-service`
+    - `http://localhost:8081/configuration`
+    - `http://localhost:8081/config`
+
+- Shipyard-controller:
+    - `http://localhost:8081/shipyard-controller`
+    - `http://localhost:8081/shipyard`
+ 
+
+To configure this distributor for your *Keptn-service*, the following environment variables can be adapted. However, in most scenarios only a subset of them needs to be configured. The full list of environment variables is as follows:
+
+| Environment variable  | Description                                                                                                                              | Default Value               |
+|-----------------------|:-----------------------------------------------------------------------------------------------------------------------------------------|:----------------------------|
+| KEPTN_API_ENDPOINT    | Keptn API Endpoint - needed when the distributor runs outside of the Keptn cluster                                                       | `""`                        |
+| KEPTN_API_TOKEN       | Keptn API Token - needed when the distributor runs outside of the Keptn cluster                                                          | `""`                        |
+| API_PROXY_PORT        | Port on which the distributor will listen for incoming Keptn API requests by its execution plane service                                 | `8081`.                     |
+| API_PROXY_PATH        | Path on which the distributor will listen for incoming Keptn API requests by its execution plane service                                 | `/`.                        |
+| HTTP_POLLING_INTERVAL | Interval (in seconds) in which the distributor will check for new triggered events on the Keptn API                                      | `10`                        |
+| EVENT_FORWARDING_PATH | Path on which the distributor will listen for incoming events from its execution plane service                                           | `/event`                    |
+| HTTP_SSL_VERIFY       | Determines whether the distributor should check the validity of SSL certificates when sending requests to a Keptn API endpoint via HTTPS | `true`                      |
+| PUBSUB_URL            | The URL of the nats cluster the distributor should connect to when the distributor is running within the Keptn cluster                   | `nats://keptn-nats-cluster` |
+| PUBSUB_TOPIC          | Comma separated list of topics (i.e. event types) the distributor should listen to                                                       | `""`                        |
+| PUBSUB_RECIPIENT      | Hostname of the execution plane service the distributor should forward incoming CloudEvents to                                           | `http://127.0.0.1`          |
+| PUBSUB_RECIPIENT_PORT | Port of the execution plane service the distributor should forward incoming CloudEvents to                                               | `8080`                      |
+| PUBSUB_RECIPIENT_PATH | Path of the execution plane service the distributor should forward incoming CloudEvents to                                               | `/`                         |
+
+The above list of environment variables is pretty long, but in most scenarios only a few of them have to be set. The following examples show how to set the environment variables properly, depending on where the distributor and it's accompanying execution plane service should run:
 
 <details><summary>*Distributor for Keptn-service that is running* **inside the Keptn control plane**: </summary>
 
@@ -79,12 +109,12 @@ To configure this distributor for your *Keptn-service*, three environment variab
 
 | Environment variable  	| Setting 	|
 |-----------------------	|:--------	|
-| CONNECTION_TYPE       	| `nats`   	|
-| PUBSUB_URL            	| `nats://keptn-nats-cluster`   	|
-| PUBSUB_RECIPIENT      	| Service name as specified in the Kubernetes service manifest mentioned below.        	|
+| PUBSUB_RECIPIENT      	| Host name of the Keptn-service.        	|
 | PUBSUB_RECIPIENT_PORT 	| Service port to receive the event (default: `8080`)        	|
 | PUBSUB_RECIPIENT_PATH 	| Service endpoint to receive the event (default: `/`)        	|
-| PUBSUB_TOPIC          	| Event(s) the Keptn-service is subsribed to. To subscribe to multiple events, declare a comma-separated list, e.g.: `sh.keptn.event.test.triggered, sh.keptn.event.evaluation.triggered` |
+| PUBSUB_TOPIC          	| Event(s) the Keptn-service is subscribed to. To subscribe to multiple events, declare a comma-separated list, e.g.: `sh.keptn.event.test.triggered, sh.keptn.event.evaluation.triggered` |
+
+If your Keptn-service is running in the same pod as the distributor (which we recommend), and receives events at the port `8080` and the path `/`, you will only need to set the `PUBSUB_TOPIC` environment variable.  
 
 </p>
 </details>
@@ -96,15 +126,16 @@ To configure this distributor for your *Keptn-service*, three environment variab
 
 | Environment variable  	| Setting 	|
 |-----------------------	|:--------	|
-| CONNECTION_TYPE       	| `http`   	|
-| HTTP_EVENT_POLLING_ENDPOINT       | The endpoint to poll for triggered events. It must end with: `/v1/event/triggered` (default: `http://shipyard-controller:8080/v1/event/triggered`)  	|
-| HTTP_EVENT_ENDPOINT_AUTH_TOKEN    | Keptn API token |
-| HTTP_POLLING_INTERVAL            	| Polling interval in minutes   	|
-| HTTP_EVENT_FORWARDING_ENDPOINT | The endpoint to send the `started` and `finished` event   	|
-| PUBSUB_RECIPIENT      	| Service name as specified in the Kubernetes service manifest mentioned below.        	|
+| KEPTN_API_ENDPOINT       | The endpoint of the Keptn API, e.g. `https://my-keptn.dev/api`  	|
+| KEPTN_API_TOKEN    | Keptn API token |
+| HTTP_POLLING_INTERVAL            	| Polling interval in seconds   	|
+| PUBSUB_RECIPIENT      	| Host name of the Keptn-service        	|
 | PUBSUB_RECIPIENT_PORT 	| Service port to receive the event (default: `8080`)        	|
 | PUBSUB_RECIPIENT_PATH 	| Service endpoint to receive the event (default: `/`)        	|
 | PUBSUB_TOPIC          	| Event(s) the Keptn-service is subsribed to. To subscribe to multiple events, declare a comma-separated list, e.g.: `sh.keptn.event.test.triggered, sh.keptn.event.evaluation.triggered` |
+
+If your Keptn-service is running in the same pod as the distributor (which we recommend), and receives events at the port `8080` and the path `/`, you will only need to set the `PUBSUB_TOPIC` environment variable.
+
 </p>
 </details>
 
@@ -114,7 +145,7 @@ After receiving a `triggered` event for a particular task, your *Keptn-service* 
 
 - `sh.keptn.event.[task].started`
 
-The request body needs to follow the [CloudEvent specification](https://github.com/keptn/spec/blob/0.1.6/cloudevents.md) and the HTTP header attribute `Content-Type` has to be set to `application/cloudevents+json`. 
+The request body needs to follow the [CloudEvent specification](https://github.com/keptn/spec/blob/0.2.0/cloudevents.md) and the HTTP header attribute `Content-Type` has to be set to `application/cloudevents+json`. 
 
 **Send the event:**
 
@@ -133,7 +164,7 @@ After your *Keptn-service* has completed its functionality, it has to inform Kep
 
 - `sh.keptn.event.[task].finished`
 
-The request body needs to follow the [CloudEvent specification](https://github.com/keptn/spec/blob/0.1.6/cloudevents.md) and the HTTP header attribute `Content-Type` has to be set to `application/cloudevents+json`. 
+The request body needs to follow the [CloudEvent specification](https://github.com/keptn/spec/blob/0.2.0/cloudevents.md) and the HTTP header attribute `Content-Type` has to be set to `application/cloudevents+json`. 
 
 **Add property to event header:**
 
@@ -201,7 +232,7 @@ spec:
     spec:
       containers:
       - name: distributor
-        image: keptn/distributor:0.7.3
+        image: keptn/distributor:0.8.0
         ports:
         - containerPort: 8080
         resources:
@@ -215,7 +246,7 @@ spec:
         - name: PUBSUB_URL
           value: 'nats://keptn-nats-cluster'
         - name: PUBSUB_TOPIC
-          value: 'sh.keptn.events.deployment-finished'
+          value: 'sh.keptn.event.deployment.finished'
         - name: PUBSUB_RECIPIENT
           value: 'jmeter-service'
 ```

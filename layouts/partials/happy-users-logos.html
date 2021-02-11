@@ -1,0 +1,11 @@
+<div class="text col-12 pt-md-3 happy-users-logos pb-lg-4">
+    {{ $nrOfLogosToDisplay := 5 }}
+    {{ range seq 1 $nrOfLogosToDisplay  }}
+    <div>
+        <img class="js-happy-users-logo">
+    </div>
+    {{ end }}
+    <a href="https://github.com/keptn/keptn/blob/master/ADOPTERS.md">
+        <img src="/images/home/add-organisation.svg">
+    </a>
+</div>

@@ -1,21 +1,17 @@
 <div class="contact section-primary-opacity">
-  <a class="back-to-top-wrapper" onclick="window.scrollTo({ top: 0 });" href="javascript: void(0)">
-    <img class="icon" src="/images/general/icon-back-to-top.svg" alt="Back to top">
-    <img class="icon icon--hover" src="/images/general/icon-back-to-top-hover.svg" alt="Back to top">
-  </a>
 
   <div class="container pt-5 pb-5">
     <div class="row pt-2 pb-2 pb-md-3">
       <div class="col-12">
         {{ with .Site.GetPage "section" "home/contact-top" }}
-          {{ .Content }}
+        {{ .Content }}
         {{ end }}
       </div>
 
       <div class="col-12 d-md-flex flex-md-row">
         <div class="col-12 col-md-6 d-flex flex-column justify-content-md-between pl-0 pr-0 pb-4 pb-md-0">
           {{ with .Site.GetPage "section" "home/contact-left" }}
-            {{ .Content }}
+          {{ .Content }}
           {{ end }}
 
           <div>
@@ -38,7 +34,7 @@
 
         <div class="col-12 col-md-5 offset-md-1 d-flex flex-column justify-content-md-between pl-0 pr-0 pt-2 pt-md-0">
           {{ with .Site.GetPage "section" "home/contact-right" }}
-            {{ .Content }}
+          {{ .Content }}
           {{ end }}
 
           <div class="calendar-wrapper">
@@ -52,10 +48,10 @@
 
       <div class="col-12 text-center">
         <p>&nbsp;</p>
-        
+
         <img src="/images/home/cloud-native-computing.svg" alt="CNCF" style="max-width:50%"><br>
         <p>We are a <a href="https://cncf.io">Cloud Native Computing Foundation</a> Sandbox project.</p>
-        
+
       </div>
     </div>
   </div>

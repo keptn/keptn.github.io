@@ -22,6 +22,8 @@ Please find here a list of all *Keptn-services* and *SLI-providers* that are ava
 | **notification-service**   | [0.3.1](https://github.com/keptn-contrib/notification-service/releases/tag/0.3.1) | 0.7.3 | https://github.com/keptn-contrib/notification-service |
 | **prometheus-service**     | [0.3.6](https://github.com/keptn-contrib/prometheus-service/releases/tag/0.3.6) | 0.7.3 | https://github.com/keptn-contrib/prometheus-service |
 | **servicenow-service**     | [0.2.1](https://github.com/keptn-contrib/servicenow-service/releases/tag/0.2.1) | 0.6.2 | https://github.com/keptn-contrib/servicenow-service |
+| **unleash-service**        | [0.2.0](https://github.com/keptn-contrib/unleash-service/releases) | 0.7.3 | https://github.com/keptn-contrib/unleash-service | 
+
 
 
 | SLI-provider | latest Release | supported Keptn | Repository  |

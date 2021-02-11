@@ -1,5 +1,64 @@
-<div class="footer fixed-bottom">
-  <div class="container">
-    <span class="title">Built with &nbsp;<img src="/images/general/icon-heart.svg" alt="Heart">&nbsp; <a class="no-underline" href="https://dynatrace.com" target="_blank">by Dynatrace</a></span>
+<div class="footer pb-5">
+  <div class="container pt-5 position-relative">
+        <a class="footer-icon-link footer-icon-link--top" onclick="window.scrollTo({ top: 0 });"
+           href="javascript: void(0)">
+          <img class="footer-icon" alt="Back to top" src="{{ .Site.BaseURL }}/images/home/icon-arrow.svg">
+        </a>
+    <div class="row">
+      <div class="col-md-6 text-left">
+        <img class="footer-logo" alt="Keptn Homepage" src="{{ .Site.BaseURL }}/images/home/logo-white.svg">
+      </div>
+      <div class="col-6 col-md-2">
+        <p class="footer-title mb-2">Sitemap</p>
+        <ul class="footer-links">
+          <li><a href="/why-keptn/" class="footer-link">Why Keptn?</a></li>
+          <li><a href="https://keptn.sh/docs" class="footer-link">Docs</a></li>
+          <li><a href="https://tutorials.keptn.sh" class="footer-link">Tutorials</a></li>
+          <li><a href="https://github.com/keptn-contrib" class="footer-link">Integration</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md-2">
+        <p class="footer-title mb-2">Resources</p>
+        <ul class="footer-links">
+          <li><a href="https://keptn.sh/docs/" class="footer-link">Docs</a></li>
+          <li><a href="https://tutorials.keptn.sh" class="footer-link">Tutorials</a></li>
+          <li><a href="https://github.com/keptn/keptn" class="footer-link">Github</a></li>
+          <li><a href="https://github.com/keptn/keptn/releases/" class="footer-link">Releases</a></li>
+          <li><a href="https://github.com/keptn/keptn/issues" class="footer-link">Issues</a></li>
+          <li><a href="https://slack.keptn.sh" class="footer-link">Slack</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2 pt-3 pt-md-0">
+        <p class="footer-title mb-2">Community</p>
+        <div class="footer-icons">
+          <a href="https://slack.keptn.sh" class="footer-icon-link">
+            <img class="footer-icon" alt="Keptn Homepage" src="{{ .Site.BaseURL }}/images/home/icon-slack.svg">
+          </a>
+          <a href="https://twitter.com/keptnProject" class="footer-icon-link">
+            <img class="footer-icon" alt="Keptn Homepage" src="{{ .Site.BaseURL }}/images/home/icon-twitter.svg">
+          </a>
+          <a href="https://groups.google.com/g/keptn" class="footer-icon-link">
+            <img class="footer-icon" alt="Keptn Homepage" src="{{ .Site.BaseURL }}/images/home/icon-mail.svg">
+          </a>
+          <a href="https://github.com/keptn/keptn" class="footer-icon-link">
+            <img class="footer-icon" alt="Keptn Homepage" src="{{ .Site.BaseURL }}/images/home/icon-github.svg">
+          </a>
+          <a href="https://www.youtube.com/c/keptn" class="footer-icon-link">
+            <img class="footer-icon" alt="Keptn Homepage" src="{{ .Site.BaseURL }}/images/home/icon-youtube.svg">
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="row pt-3 pt-md-0">
+      <div class="col-12 pt-4">
+        <p class="footer-text">Initially created by <a href="https://www.dynatrace.com"  class="footer-text" target="_blank" rel="noopener">Dynatrace</a></p>
+        {{ $year := now.Year }}
+        <p class="footer-text">
+        &copy; {{ $year }} The Keptn Authors | Documentation Distributed under CC-BY-4.0
+        </br>
+        &copy; {{ $year }} The Linux Foundation. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our <a href="https://www.linuxfoundation.org/trademark-usage/" class="footer-text">Trademark Usage</a> page.
+        </p>
+      </div>
+    </div>
   </div>
 </div>

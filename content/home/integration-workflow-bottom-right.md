@@ -1,1 +1,0 @@
-Keptn will then start the deployment automatically, following the strategy defined in the shipyard file. After the deployment, Keptn starts the tests, evaluates the quality gates, and in case of a problem, Keptn rolls back the last changes.
