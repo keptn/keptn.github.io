@@ -1,10 +1,9 @@
 ---
-title: Develop for 0.8
-linktitle: Develop for 0.8
-weight: 990
+title: Release 0.8.0
+linktitle: Release 0.8.0
+weight: 987
 sidebar_multicard: true
 icon: docs
-develop: This documentation is under develop and not officially released.
 aliases:
   - /docs/0.8.0/
 ---
