@@ -5,7 +5,7 @@ weight: 1
 keywords: [0.8.x-cd]
 ---
 
-The definition of a multi-stage delivery manifests in a so-called **shipyard**. It can hold multiple stages with dedicated and opinionated delivery tasks to execute. Following this declarative approach, there is no need to write imperative pipeline code. Keptn takes the shipyard file and creates a task sequence for multi-stage delivery.
+The definition of a multi-stage delivery manifests in a so-called **shipyard**. It can hold multiple stages with dedicated and opinionated delivery tasks to execute. Following this declarative approach, there is no need to write imperative pipeline code. Keptn takes the shipyard  and creates a task sequence for multi-stage delivery.
 
 ## Declare Shipyard (before creating a project)
 
@@ -25,7 +25,7 @@ A stage is declared by its name. This name will be used for the branch in the Gi
 
 ```yaml
 apiVersion: spec.keptn.sh/0.2.0
-kind: Shipyard
+kind: "Shipyard"
 metadata:
   name: "shipyard-sockshop"
 spec:
@@ -47,7 +47,7 @@ After defining the stages, task sequences can be added to a stage. A sequence is
 
 ```yaml
 apiVersion: spec.keptn.sh/0.2.0
-kind: Shipyard
+kind: "Shipyard"
 metadata:
   name: "shipyard-sockshop"
 spec:

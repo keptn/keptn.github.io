@@ -79,7 +79,7 @@ carts           0/0     0            0            1d   carts        docker.io/ke
 
 When executing [keptn delete project](../../reference/cli/commands/keptn_delete_project/), Keptn does **not** clean up existing deployments nor Helm releases. To do so, delete all relevant namespaces:
 
-* For each stage defined the shipyard file, execute `kubectl delete namespace PROJECTNAME-STAGENAME`, e.g.:
+* For each stage defined the shipyard, execute `kubectl delete namespace PROJECTNAME-STAGENAME`, e.g.:
 
   ```console
   kubectl delete namespace sockshop-dev
