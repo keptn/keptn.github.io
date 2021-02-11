@@ -375,7 +375,7 @@ Depending on whether you would like to install the execution plane for continuou
     * Create an `ingress-manifest.yaml` manifest for an Ingress object in which you set IP-ADDRESS or your hostname and then apply the manifest. (**Note:** In the example of an `ingress-manifest.yaml` manifest shown below, `nip.io` is used as wildcard DNS for the IP address.)
 
       ```yaml
-    apiVersion: networking.k8s.io/v1beta1
+    apiVersion: networking.k8s.io/v1
     kind: Ingress
     metadata:
       annotations:
@@ -413,7 +413,7 @@ Depending on whether you would like to install the execution plane for continuou
     * Create an `ingress-manifest.yaml` manifest for an ingress object in which you set IP-ADDRESS or your hostname and then apply the manifest. (**Note:** In the example of an `ingress-manifest.yaml` manifest shown next, `nip.io` is used as wildcard DNS for the IP address.)
 
       ```yaml
-    apiVersion: networking.k8s.io/v1beta1
+    apiVersion: networking.k8s.io/v1
     kind: Ingress
     metadata:
       annotations:
