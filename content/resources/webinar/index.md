@@ -3,7 +3,7 @@ title: On-demand webinars
 #linktitle: Videos
 weight: 10
 sidebar_multicard: false
-icon: docs
+icon: callout-idea
 ---
  
 

@@ -3,7 +3,7 @@ title: Contributor spotlight
 #linktitle: Videos
 weight: 5
 sidebar_multicard: false
-icon: docs
+icon: callout-idea
 ---
  
 

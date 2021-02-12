@@ -3,7 +3,7 @@ title: User Adoption Highlights
 #linktitle: Videos
 weight: 1
 sidebar_multicard: false
-icon: docs
+icon: callout-idea
 ---
  
 

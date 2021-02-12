@@ -3,7 +3,7 @@ title: Conference & meetup recordings
 #linktitle: Videos
 weight: 15
 sidebar_multicard: false
-icon: docs
+icon: callout-idea
 ---
  
 
