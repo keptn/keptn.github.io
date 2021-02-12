@@ -1,0 +1,21 @@
+---
+title: Contributor spotlight
+#linktitle: Videos
+weight: 5
+sidebar_multicard: false
+icon: callout-idea
+---
+ 
+
+Please subscribe to our [Keptn YouTube channel](https://www.youtube.com/c/keptn/) that holds **all** of our videos. Below, we are highlighting the most watched and demanded videos by the community.
+
+## Keptn contributor spotlight
+
+| | |
+| --- | --- |
+| **Automating Quality Gates in Azure DevOps with Keptn** with Bert van der Heyden, RealDolmen<br><br> Azure DevOps is a popular choice for many organizations to automate continuous delivery of enterprise and cloud native applications. In this Keptn webinar we have Bert Van der Heyden, Performance Engineer at RealDolmen and creator of the Azure DevOps Keptn Extensions, walking us through the use case of integrating Keptn's SLI/SLO-based Quality Gates into Azure DevOps pipelines in order to automate the build validation and approval process. | <iframe width="560" height="315" src="https://www.youtube.com/embed/vgCizWLVsPc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> |
+| **Evaluating the resiliency of your microservices with LitmusChaos tests and Keptn** with Karthik S, LitmusChaos<br><br> Chaos Engineering is the new entrant into the delivery pipeline of cloud-native applications, and a proven means of ascertaining SLO compliance and evaluating the resilience of applications. This assumes even more importance given the en-masse migration that organizations are making to Kubernetes as the development & deployment platform of choice. LitmusChaos is a cloud-native chaos engineering framework that provides a rich suite of chaos experiments and the ability to orchestrate chaos as defined by the principles of chaos. In this webinar, we will view how Keptn's litmus service triggers chaos on applications under load as part of its powerful automated CD pipeline, thereby evaluating application resilience and strengthening the quality gate evaluation process. | <iframe width="560" height="315" src="https://www.youtube.com/embed/aa5SzQmv4EQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> |
+| **Building advanced SLIs and SLOs with PromLens for Keptn** with Julius Volz, PromLabs<br><br> Learn more about how to build advanced service-level indicators and service-level objectives with PromeLens for Keptn. | <iframe width="560" height="315" src="https://www.youtube.com/embed/f9tRg2DWh48" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> |
+| **Manage Keptn with a Slackbot** with Nestor Zapata and Zohaib Ul-Hassan, Citrix<br><br> Learn how to use our Slackbot to get answers from Keptn and also to trigger tests and quality gate evaluation with all results directly delivered to Slack! No need to ever leave one of your favorite tools again. | <iframe width="560" height="315" src="https://www.youtube.com/embed/_uJkwapoDuo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> |
+| **Keptn-in-a-box - delivering the Autonomous Cloud out of the box** with Sergio Hinojosa, Dynatrace<br><br> Keptn-In-A-Box is part of the automation for delivering Autonomous Cloud Workshops with Dynatrace. This is not a tutorial but more an explanation of what the shell file set up for you on a plain Ubuntu image. A simple Bash script will set-up a fully functional Single Node Kubernetes Cluster with Dynatrace installed and Kubernetes Cluster, Cloud Applications, and Events monitoring enabled. This script is used as userdata when spinning up elastic compute images (ec2) in amazon web services, but it can run also manually in a Linux machine or VM with snap installed. The tested distro is Ubuntu Server 18.04 LTS For spinning up instances automatically with AWS completely configured and set up, and also automating the creation and management of Dynatrace environments. | <iframe width="560" height="315" src="https://www.youtube.com/embed/A9ZYdih0anE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> |
+
