@@ -1,5 +1,5 @@
 {{ $toc := partial "toc.html" (dict "page" .) }}
-{{ $needTOC := .Scratch.Get "needTOC" }}
+{{ $needTOC :=  true }}
 
 {{ if and $needTOC (ne .Params.force_inline_toc true) }}
     <div class="primary">
