@@ -22,9 +22,9 @@ Join our monthly Keptn user groups where **Keptn users are presenting their stor
 
 ## Keptn Developer Meeting
 
-We are hosting Keptn developer meetings to discuss roadmap updates, recent issues and plan ahead by distributing issues to Keptn developers. You are welcome to join and contribute to Keptn or just discuss with the Keptn team and exchange your knowledge!
+We are hosting Keptn developer meetings to **discuss roadmap updates**, **recent issues** and **plan ahead** by distributing issues to Keptn developers. You are welcome to join and contribute to Keptn or just discuss with the Keptn team and exchange your knowledge!
 
-🗓️ **Cadence**: every Thursday at at 5pm CET / 8am PT / 11am ET.
+🗓️ **Cadence**: each **Thursday** at at 5pm CET / 8am PT / 11am ET.
 
 📺 [**Zoom meeting**](https://dynatrace.zoom.us/j/92249948381?pwd=dGFORVJXMk0vdEsrUjVlMEU3ZUdZUT09)
 

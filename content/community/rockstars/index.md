@@ -15,7 +15,7 @@ First and foremost, be active in the Keptn community! We encourage you being par
 
 ### Show excellence!
 
-  💻 **Development**: Creation of an extension either in the [Keptn Contrib](https://github.com/keptn-contrib) or [Keptn Sandbox](https://github.com/keptn-sandbox) organization or contribution to the [Keptn core](https://github.com/keptn/keptn)
+  💻 **Development**: Creation of an extension either in the [Keptn Contrib](https://github.com/keptn-contrib) or [Keptn Sandbox](https://github.com/keptn-sandbox) organization or contribution to the [Keptn core](https://github.com/keptn/keptn).
 
   🔈 **Presentation**: Publicly talk about and present Keptn at a meetup/podcast/conference or similar formats - we are happy to [add your contribution here](https://github.com/keptn/community/blob/master/resources.md).
 
