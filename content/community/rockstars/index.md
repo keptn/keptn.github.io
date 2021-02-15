@@ -8,11 +8,7 @@ icon: callout-idea
  
 The Keptn community is growing and we are awarding individuals that help us in this mission!
 
-
-## Community Rockstar 🚀
-
-
-## How to become a community rockstar?
+## How to become a community rockstar 🚀
 
 First and foremost, be active in the Keptn community! We encourage you being part of the Keptn community by joining discussions on [Twitter](https://twitter.com/keptnProject), [Slack](https://slack.keptn.sh), and our [mailing list](https://groups.google.com/forum/#!forum/keptn). Besides, there are four pillars for Keptn community rockstar to excel at.
 
