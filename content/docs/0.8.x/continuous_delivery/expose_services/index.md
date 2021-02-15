@@ -81,7 +81,7 @@ kubectl apply -f gateway-manifest.yaml
     ```
     
     ```console
-    kubectl create configmap -n keptn ingress-config --from-literal=ingress_hostname_suffix=${INGRESS_HOSTNAME_SUFFIX} --from-literal=ingress_port=${INGRESS_PORT} --from-literal=ingress_protocol=${INGRESS_PROTOCOL} --from-literal=istio_gateway=${ISTIO_GATEWAY} -oyaml --dry-run | kubectl replace -f -
+    kubectl create configmap -n keptn ingress-config --from-literal=ingress_hostname_suffix=${INGRESS_HOSTNAME_SUFFIX} --from-literal=ingress_port=${INGRESS_PORT} --from-literal=ingress_protocol=${INGRESS_PROTOCOL} --from-literal=istio_gateway=${ISTIO_GATEWAY} --from-literal=hostname_template=${HOSTNAME_TEMPLATE} -oyaml --dry-run | kubectl replace -f -
     ```
 
 * After creating the ConfigMap, restart the `helm-service`:
