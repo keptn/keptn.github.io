@@ -1,20 +1,27 @@
 ---
 title: Multi-cluster setup
 description: Install Keptn control-plane and execution-plane separately.
-weight: 40
+weight: 60
 keywords: [0.8.x-operate]
 ---
 
 
 ## Overview of an example setup
 
-    {{< popup_image
-    link="./assets/multi_cluster.png"
-    caption="Multi-cluster setup"
-    width="300px">}}
+{{< popup_image
+link="./assets/multi_cluster.png"
+caption="Multi-cluster setup"
+width="800px">}}
 
+* **Keptn Control plane**
+  * The control plane is the minimum set of components, which are required to run a Keptn and to manage projects, stages, and services, to handle events, and to provide integration points.
+  * The control plane orchestrates the task sequences defined in Shipyard, but does not actively execute the tasks.
+  * Minimum [Cluster size](./k8s_support/#control-plane)
 
-> Explanation is missing
+* **Keptn Execution plane**
+  * The execution plane consists of all Keptn-services that are required to process all tasks (like deployment, test, etc.).
+  * The execution plane is the cluster where you deploy your application too and execute certain tasks of a task sequence. 
+  * Minimum [Cluster size](./k8s_support/#execution-plane)
 
 ## Create or bring two (or more) Kubernetes clusters
 
@@ -24,11 +31,12 @@ To operate Keptn in a multi-cluster setup, you need obviously at least two Kuber
 
 * To create a Kubernetes cluster, please follow the instructions [here](../install/#create-or-bring-a-kubernetes-cluster).
 
-## Prerequisits
+## Prerequisites
 
-* If you don't have the Keptn CLI installed locally, please install it as explained [here](../install/#install-keptn-cli).
+* [keptn CLI](../install/#install-keptn-cli)
+* [helm CLI](https://helm.sh/docs/intro/install/)
 
-## Install Keptn Control-plane
+## Install Keptn Control plane
 
 The **Control Plane** of Keptn is responsible for orchestrating your processes for Continous Delivery or Automated Operations.
 
@@ -55,7 +63,24 @@ Kubernetes provides the following four options:
     keptn install --endpoint-service-type=[LoadBalancer, NodePort, ClusterIP]
     ```
 
-## Install Keptn Execution-plane
+## Install Keptn Execution plane
+
+In this release of Keptn, the execution plane services for deployment (`helm-service`) and testing (`jmeter-service`) can be installed via Helm Charts. Please find the Helm Charts here: 
+- `helm-service`: 
+- `jmeter-service`: 
+
+* Download the Helm Charts 
 
 
-> Explanation is missing
+* Adapt the Helm Charts to connect the services to the Keptn control-plane, identified by its endpoint and API token: 
+
+
+* Deploy the execution plane services using `helm`
+
+  ```console
+  helm upgrade 
+  ```
+
+### Troubleshooting Execution plane
+
+#### Are services connected to the Control plane? 
