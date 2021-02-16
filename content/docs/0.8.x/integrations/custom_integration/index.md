@@ -71,17 +71,12 @@ Using this feature, the following Keptn API services will be reachable for the K
 
 - Mongodb-datastore:	
     - `http://localhost:8081/mongodb-datastore`
-    - `http://localhost:8081/datastore`
-    - `http://localhost:8081/event-store`
 
 - Configuration-service:
     - `http://localhost:8081/configuration-service`
-    - `http://localhost:8081/configuration`
-    - `http://localhost:8081/config`
 
 - Shipyard-controller:
-    - `http://localhost:8081/shipyard-controller`
-    - `http://localhost:8081/shipyard`
+    - `http://localhost:8081/controlPlane`
  
 
 To configure this distributor for your *Keptn-service*, the following environment variables can be adapted. However, in most scenarios only a subset of them needs to be configured. The full list of environment variables is as follows:
