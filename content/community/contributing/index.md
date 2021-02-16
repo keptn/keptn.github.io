@@ -3,7 +3,7 @@ title: Contributing guide
 #linktitle: Videos
 weight: 10
 sidebar_multicard: false
-icon: callout-idea
+icon: tasks
 ---
  
 

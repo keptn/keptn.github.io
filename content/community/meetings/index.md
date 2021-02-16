@@ -3,7 +3,7 @@ title: Meetings
 #linktitle: Videos
 weight: 20
 sidebar_multicard: false
-icon: callout-idea
+icon: calendar
 ---
 
 The Keptn community is meeting regularly and all meetings are public and open for you to join.

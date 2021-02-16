@@ -4,7 +4,7 @@ menu: main
 weight: 20
 ---
 
-👋 Welcome to the Keptn community!
+👋 **Welcome to the Keptn community!**
 
 This is the starting point for joining and contributing to the Keptn community - improving docs, improving code, discussing new features and use cases etc. For all collaboration and communication going on in all keptn projects, please read and follow our [Code of Conduct](https://github.com/keptn/community/blob/master/CODE_OF_CONDUCT.md).
 
@@ -23,7 +23,7 @@ We have a dedicated [Keptn slack workspace](https://slack.keptn.sh) (for in-dept
 
 ## Mailing List 
 
-The mailing list serves as our ~weekly newsletter to inform the Keptn community on the latest updates of the project.
+The [Keptn mailing list](https://groups.google.com/g/keptn) serves as our ~weekly newsletter to inform the Keptn community on the latest updates of the project.
 
 ✅ Watch for new releases of Keptn
 
@@ -40,7 +40,7 @@ The mailing list serves as our ~weekly newsletter to inform the Keptn community 
 
 ## Ask an expert
 
-We are hosting 30 minute 1on1 sessions via video conference to help you get started with Keptn and answer all your questions. [Book your slot today via calendly](https://calendly.com/jetzlstorfer/keptn).
+We are hosting [30 minute 1on1 sessions](https://calendly.com/jetzlstorfer/keptn) via video conference to help you get started with Keptn and answer all your questions. [Book your slot today via calendly](https://calendly.com/jetzlstorfer/keptn).
 
 ✅ Talk to a Keptn expert
 

@@ -3,7 +3,7 @@ title: Rockstars
 #linktitle: Videos
 weight: 30
 sidebar_multicard: false
-icon: callout-idea
+icon: community
 ---
  
 The Keptn community is growing and we are awarding individuals that help us in this mission!
