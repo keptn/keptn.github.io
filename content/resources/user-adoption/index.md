@@ -9,6 +9,11 @@ icon: callout-idea
 
 Please subscribe to our [Keptn YouTube channel](https://www.youtube.com/c/keptn/) that holds **all** of our videos. Below, we are highlighting the most watched and demanded videos by the community.
 
+## Scaling performance test execution & analysis
+
+| | |
+| --- | --- | 
+| **Scaling performance test execution & analysis** with Roman Ferstl, Triscon<br><br>Roman Ferstl (Triscon-IT) joins this Keptn user group to share their lessons learned and best practices on how to scale performance testing with Neoload and Keptn. | <iframe width="560" height="315" src="https://www.youtube.com/embed/Rx--sm1-D9A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> |
 ## Continuously evaluating application resiliency with LitmusChaos, Locust and Keptn
 
 | | |
