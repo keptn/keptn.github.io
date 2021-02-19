@@ -84,6 +84,6 @@ if (menuTrigger) {
   }
 }
 
-if (teaser == null) {
+if (!teaser && teaser == null) {
   header.classList.remove('push-down');
 }
