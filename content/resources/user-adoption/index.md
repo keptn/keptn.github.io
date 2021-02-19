@@ -18,7 +18,7 @@ Please subscribe to our [Keptn YouTube channel](https://www.youtube.com/c/keptn/
 
 | | |
 | --- | --- | 
-| **Continuously evaluating application resiliency with LitmusChaos, Locust and Keptn** with Adrian Gonciarz, Kitopi <br><br> Adrian Gonciarz is sharing the journey of Kitopi on how they implemented application resiliency evaluation with LitmusChaos, Locust, GitLab, and Keptn. | <iframe width="560" height="315" src="https://www.youtube.com/embed/m_RVxVQQrHo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> |
+| **Continuously evaluating application resiliency with LitmusChaos, Locust and Keptn** with Adrian Gonciarz, Kitopi <br><br> Adrian Gonciarz is sharing the journey of Kitopi on how they implemented application resiliency evaluation with LitmusChaos, Locust, GitLab, and Keptn. | <iframe width="560" height="315" src="https://www.youtube.com/embed/m_RVxVQQrHo?start=222" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> |
 
 ## Keptn Quality Gates with Argo and Jenkins for Distributed Load Testing
 
