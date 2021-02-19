@@ -9,7 +9,7 @@ aliases:
 After creating a project, you can change the shipyard as explained here. 
 
 
-The most convenient way to change your shipyard is by directly adpating it in the Git *upstream* repository. 
+The most convenient way to change your shipyard is by directly adapting it in the Git *upstream* repository. 
 
 * If you do not have a Git upstream set for your project, then please set one since it is the recommended way of using Keptn: [configure Git upstream](../../manage/git_upstream/#create-keptn-project-or-set-git-upstream).
 
@@ -150,7 +150,9 @@ An advanced and powerful feature of the shipyard is that you can define *trigger
 
 * `[stage_name].[sequence_name].finished` 
 
-Besides, a *match selector* can be added to an event that works as a filter on the `result` property of the event. Consequently, you can filter based on sequence executions that failed or passed, shown by the next example that filters on `failed`: 
+*Note:* It is not required to specify the full qualified event name which would be `sh.keptn.event.[stage_name].[sequence_name].finished` in this case
+
+Besides, a *match selector* can be added to an event that works as a filter on the `result` property of the event. Consequently, you can filter based on sequence executions that *failed* or *passed*, shown by the next example that filters on `failed`: 
 
 ```
 sequences:
@@ -161,7 +163,6 @@ sequences:
           match:
             result: failed
 ```
-
 
 *Initial shipyard:*
 
@@ -186,7 +187,7 @@ spec:
             - name: "release"
 ```
 
-**Example:** I would like to add a process (additional sequence) that covers a failed delivery in the production stage by a notification and rollback task. 
+**Use-case:** I would like to add a process (additional sequence) that covers a failed delivery in the production stage by a notification and rollback task. 
 
 *Updated shipyard:*
 
@@ -212,7 +213,7 @@ spec:
 
         - name: "rollback"
           triggeredOn:
-            - event: "sh.keptn.event.production.delivery.finished"
+            - event: "production.delivery.finished"
                 selector:
                   match:
                     result: failed
@@ -220,3 +221,5 @@ spec:
             - name: "notification"
             - name: "rollback"
 ```
+
+**Result:** When, for example, the *delivery* sequence failed due to a failed test task, the event `sh.keptn.event.production.delivery.finished` with `result=failed` is sent out. Consequently, the *rollback* sequence is triggered based on the configuration of the `triggeredOn` and selector.
