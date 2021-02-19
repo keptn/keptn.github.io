@@ -6,12 +6,12 @@ keywords: [0.8.x-manage]
 aliases:
 ---
 
-After creating a project, you can change the shipyard as explained here. Please do not modify your shipyard in ways that are *not* mentioned in this section. 
+After creating a project, you can change the shipyard as explained here. 
 
 
-The most convenient way to change your shipyard is by directly changing it in the Git *upstream* repository. 
+The most convenient way to change your shipyard is by directly adpating it in the Git *upstream* repository. 
 
-* *You have no Git upstream configured?* Then please do so, as it is the recommended way of using Keptn: [set Git upstream](../../manage/git_upstream/#create-keptn-project-or-set-git-upstream).
+* If you do not have a Git upstream set for your project, then please set one since it is the recommended way of using Keptn: [configure Git upstream](../../manage/git_upstream/#create-keptn-project-or-set-git-upstream).
 
 * If you have no Git repository to set an *upstream*, you can finally update the shipyard using: 
 
@@ -19,7 +19,10 @@ The most convenient way to change your shipyard is by directly changing it in th
   keptn add-resource --project=PROJECT --resource=./shipyard.yaml --resourceUri=./shipyard.yaml
   ```
 
-:warning: Please make sure to have no running sequence while you are updating a shipyard. Otherwise, running sequences will be updated.
+:warning: Do not modify your shipyard in ways that are *not* mentioned in this section. 
+
+:warning: Make sure to have no running sequence while you are updating the shipyard. Otherwise, running sequences will be updated.
+
 
 ## Add/Remove a task to/from a task sequence
 
@@ -48,7 +51,7 @@ spec:
             - name: "release"
 ```
 
-**Example:** I would like to add an approval step before the `release` task to control the roll-out. 
+**Use-case:** To intervene in the delivery process, I would like to add an `approval` task before the `release` task.
 
 *Updated shipyard:*
 
@@ -74,7 +77,7 @@ spec:
             - name: "release"
 ```
 
-**Consequence:** The next time this sequence gets triggered by Keptn, the task will be executed meaning that a `sh.keptn.event.[task].triggered` event is sent out. Make sure to have a Keptn-service that listens to this event type and can execute it. 
+**Result:** The next time this sequence gets triggered by Keptn, the task will be executed meaning that a `sh.keptn.event.[task].triggered` event is sent out. Make sure to have a Keptn-service that listens to this event type and can execute it. 
 
 ## Add/Remove a task sequence to/from a stage
 
@@ -103,7 +106,7 @@ spec:
             - name: "release"
 ```
 
-**Example:** I would like to add an additional delivery process to a stage that allows rolling-out a hotfix without testing and evaluation. 
+**Use-case:** I would like to add an additional delivery process to the production stage that allows rolling-out a hotfix without testing and evaluation. 
 
 *Updated shipyard:*
 
@@ -133,6 +136,12 @@ spec:
               properties:
                 deploymentstrategy: "blue_green_service"
             - name: "release"
+```
+
+**Result:** After extending the shipyard as shown above, you can trigger this sequence using: 
+
+```
+keptn trigger delivery --project=<project> --service=<service> --image=<image> --tag=<tag> --sequence=hotfix-delivery
 ```
 
 ## Define a trigger for a sequence 
