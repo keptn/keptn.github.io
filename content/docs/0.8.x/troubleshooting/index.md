@@ -137,7 +137,7 @@ Creating project sockshop failed. Could not commit changes.
 
 ## Error: UPGRADE FAILED: timed out waiting for the condition
 
-This error often appears when executing `keptn send event new-artifact` in case of insufficient CPU and/or memory on the Kubernetes cluster.
+This error often appears when executing `keptn send trigger delivery` in case of insufficient CPU and/or memory on the Kubernetes cluster.
 
 <details><summary>Expand instructions</summary>
 <p>
@@ -147,7 +147,7 @@ This error often appears when executing `keptn send event new-artifact` in case 
 The Helm upgrade runs into a time-out when deploying a new artifact of your service using
 
 ```console
-keptn send event new-artifact
+keptn trigger delivery
 ```
 
 **Reason:** 

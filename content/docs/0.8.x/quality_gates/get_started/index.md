@@ -102,7 +102,7 @@ At this point, you have:
 
 :heavy_check_mark: activated the quality gate for e.g. `booking` by providing an SLO
 
-To trigger a quality gate evaluation, execute the [keptn send event start-evaluation](../../reference/cli/commands/keptn_send_event_start-evaluation/) CLI command. This CLI command sends an event to Keptn, which acknowledges receipt of the event by returning a unique ID (`keptn-context`). This unique ID is required to fetch the result of the quality gate evaluation.
+To trigger a quality gate evaluation, execute the [keptn trigger evaluation](../../reference/cli/commands/keptn_trigger_evaluation/) CLI command. This CLI command sends an event to Keptn, which acknowledges receipt of the event by returning a unique ID (`keptn-context`). This unique ID is required to fetch the result of the quality gate evaluation.
 
 :information_source: Learn [here](../integration/) more about working with a quality gate and integrating it into an existing pipeline.
 
