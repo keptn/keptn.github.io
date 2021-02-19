@@ -2,6 +2,7 @@ var body = document.querySelector('body');
 var menuTrigger = document.querySelector('#toggle-main-menu-mobile');
 var menuContainer = document.querySelector('#main-menu-mobile');
 var copyToClipboardButton = document.querySelector('button.copy');
+var teaser = document.querySelector('.teaser');
 var header = document.querySelector('.header');
 var logo = document.querySelector('.logo');
 var logoJS = document.querySelector('.logo-js');
@@ -10,7 +11,7 @@ var hamburgerInner = document.querySelector('.hamburger-inner');
 var happyUserLogos = document.querySelectorAll('.js-happy-users-logo');
 var numberOfLogos = 6;
 
-if(body.classList.contains('page-home')) {
+if (body.classList.contains('page-home')) {
   window.addEventListener('scroll', (event) => {
     if (event.target.scrollingElement.scrollTop > 5) {
       if (!(header.classList.contains('is-sticky'))) {
@@ -83,3 +84,6 @@ if (menuTrigger) {
   }
 }
 
+if (!teaser && teaser == null) {
+  header.classList.remove('push-down');
+}
