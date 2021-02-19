@@ -146,17 +146,17 @@ keptn trigger delivery --project=<project> --service=<service> --image=<image> -
 
 ## Define a trigger for a sequence 
 
-An advanced and powerful feature of the shipyard is that you can define the triggers *on* when to kick-off a sequence. Therefore, a sequence offers the `on` property where a list of events can be specified. The event type you can list there are events that refer to the status of a sequence execution. Their name follows the pattern:
+An advanced and powerful feature of the shipyard is that you can define *triggers* to kick-off a sequence. Therefore, a sequence offers the `triggeredOn` property where a list of events can be specified. The event type you can list there are events that refer to the status of a sequence execution. Their name follows the pattern:
 
-* `sh.keptn.event.[stage_name].[sequence_name].finished` 
+* `[stage_name].[sequence_name].finished` 
 
 Besides, a *match selector* can be added to an event that works as a filter on the `result` property of the event. Consequently, you can filter based on sequence executions that failed or passed, shown by the next example that filters on `failed`: 
 
 ```
 sequences:
   - name: "rollback"
-    on:
-    - sh.keptn.event.production.delivery.finished:
+    triggeredOn:
+      - event: "production.delivery.finished"
         selector:
           match:
             result: failed
@@ -211,11 +211,11 @@ spec:
             - name: "release"
 
         - name: "rollback"
-          on:
-          - sh.keptn.event.production.delivery.finished:
-              selector:
-                match:
-                  result: failed
+          triggeredOn:
+            - event: "sh.keptn.event.production.delivery.finished"
+                selector:
+                  match:
+                    result: failed
           tasks:
             - name: "notification"
             - name: "rollback"
