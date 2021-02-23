@@ -52,7 +52,9 @@ The evaluation board displays the evaluation comparison of one or multiple stage
       width="80%">}}
 
 ## Deprecated links
+
 Links which were introduced in `0.7.x` are still compatible with `0.8.x` but they are deprecated.
+
 - `project/:projectName/:serviceName`
   - Redirects to `project/:projectName/service/:serviceName`.
 - `project/:projectName/:serviceName/:contextId`
