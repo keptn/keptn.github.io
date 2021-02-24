@@ -84,3 +84,10 @@ keptn onboard service SERVICENAME --project=PROJECTNAME --chart=FILEPATH
 ```console
 keptn onboard service SERVICENAME --project=PROJECTNAME --chart=HELM_CHART.tgz
 ```
+
+* Optional: In the case of using an archived Helm chart, you can achieve the same using [keptn create service](../../reference/cli/commands/keptn_create_service) and [keptn add-resource ... --all-stages](../../reference/cli/commands/keptn_add-resource), e.g.:
+
+```console
+keptn create service SERVICENAME --project=PROJECTNAME
+keptn add-resource --project=PROJECTNAME --service=SERVICENAME --all-stages --resource=HELM_CHART.tgz --resourceUri=helm/SERVICENAME.tgz
+```
