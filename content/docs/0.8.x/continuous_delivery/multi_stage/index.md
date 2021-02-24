@@ -5,7 +5,7 @@ weight: 1
 keywords: [0.8.x-cd]
 ---
 
-The definition of a multi-stage delivery manifests in a so-called **shipyard**. It can hold multiple stages with dedicated and opinionated delivery tasks to execute. Following this declarative approach, there is no need to write imperative pipeline code. Keptn takes the shipyard  and creates a task sequence for multi-stage delivery.
+The definition of a multi-stage delivery manifests in a so-called **shipyard**. It can hold multiple stages with dedicated and opinionated delivery tasks to execute. Following this declarative approach, there is no need to write imperative pipeline code. Keptn takes the shipyard and creates a sequence for multi-stage delivery.
 
 ## Declare Shipyard (before creating a project)
 
@@ -13,9 +13,9 @@ The definition of a multi-stage delivery manifests in a so-called **shipyard**. 
 
 * A shipyard defines the stages each deployment has to go through until it is released in the final stage, e.g., the production stage. 
 
-* A shipyard can consist of any number of stages with at least the name property. 
+* A shipyard can consist of any number of stages; but at least one. A stage must have at least the name property.
 
-* A stage can consist of task sequences.
+* A stage can consist of any number of seqeunces; but at least one. 
 
 ### Definition of Stage 
 
@@ -35,9 +35,9 @@ spec:
     - name: "production"
 ```
 
-### Definition of Task Sequence in a Stage
+### Definition of Sequence in a Stage
 
-After defining the stages, task sequences can be added to a stage. A sequence is an ordered list of tasks that are triggered sequentially. A `sequence` has the properties:
+After defining the stages, sequences can be added to a stage. A sequence is an ordered list of tasks that are triggered sequentially. A `sequence` has the properties:
 
 * `name`: A unique name of the sequence
 * `on` (optional): An array of events that trigger the sequence.
@@ -86,7 +86,7 @@ Keptn supports a set of opiniated tasks for declaring a delivery or remediation 
 
 #### Approval
 
-The approval task stops the task sequence for an approval, which is required before deploying an artifact into the next stage. The approval strategy can be defined based on the evaluation result `pass` and `warning`. Keptn supports the following approval strategies for the evaluation results `pass` and `warning`:
+The approval task stops the sequence for an approval, which is required before deploying an artifact into the next stage. The approval strategy can be defined based on the evaluation result `pass` and `warning`. Keptn supports the following approval strategies for the evaluation results `pass` and `warning`:
 
   * `automatic`: The artifact is deployed automatically.
   * `manual`: The user is asked for approval before triggering the deployment.
