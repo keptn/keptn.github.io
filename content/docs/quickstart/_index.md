@@ -93,7 +93,7 @@ Please make sure you have `kubectl` installed (see [kubernetes.io/docs/tasks/too
 
 ##### 2.1.1 Automatic install of the Keptn CLI using Bash
 
-**Note**: This will work on Linux (and WSL2), as well as MacOS. Windows users need `bash`, `curl` and `awk` installed (e.g., using Git Bash). 
+**Note**: This will work on Linux (and WSL2), as well as MacOS. Windows users need `bash`, `curl`, and `awk` installed (e.g., using Git Bash). 
 
 1. This will download the *latest stable Keptn version* from [GitHub](https://github.com/keptn/keptn/releases), unpack it and move it to `/usr/local/bin/keptn`.
 
@@ -109,7 +109,7 @@ Please make sure you have `kubectl` installed (see [kubernetes.io/docs/tasks/too
     
     or if you are on Windows
     ```console
-    ./keptn version
+    keptn version
     ```
 
 ##### 2.1.2 Manual install of the Keptn CLI
