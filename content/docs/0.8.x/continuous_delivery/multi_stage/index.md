@@ -54,22 +54,26 @@ spec:
   stages:
     - name: "dev"
       sequences:
-      - name: delivery
+      - name: "delivery"
         tasks: 
-        - name: deployment
-        - name: release
+        - name: "deployment"
+        - name: "release"
     - name: "hardening"
       sequences:
-      - name: delivery
+      - name: "delivery"
+        triggeredOn:
+          - event: "dev.delivery.finished"
         tasks: 
-        - name: deployment
-        - name: release
+        - name: "deployment"
+        - name: "release"
     - name: "production"
       sequences:
-      - name: delivery
+      - name: "delivery"
+        triggeredOn:
+          - event: "hardening.delivery.finished"
         tasks: 
-        - name: deployment
-        - name: release
+        - name: "deployment"
+        - name: "release"
 ```
 
 ### Reserved Keptn Tasks
@@ -177,8 +181,8 @@ spec:
     - name: "hardening"
       sequences:
         - name: "delivery"
-          triggers:
-            - "dev.delivery.finished"
+          triggeredOn:
+            - event: "dev.delivery.finished"
           tasks:
             - name: "deployment"
               properties:
@@ -189,8 +193,8 @@ spec:
     - name: "production"
       sequences:
         - name: "delivery"
-          triggers:
-            - "staging.delivery.finished"
+          triggeredOn:
+            - event: "staging.delivery.finished"
           tasks:
             - name: "deployment"
               properties:
@@ -228,7 +232,14 @@ Defines whether remediation actions are enabled or not.
 - name: remediation
 ```
 
-#### Rollback (currently missing)
+#### Rollback
+
+Defines the rollback task that is executed when a rollback shall be triggered.
+
+**Usage:**
+```
+- name: rollback
+```
 
 #### Test
 
@@ -272,8 +283,8 @@ spec:
     - name: "staging"
       sequences:
         - name: "delivery"
-          triggers:
-            - "dev.delivery.finished"
+          triggeredOn:
+            - event: "dev.delivery.finished"
           tasks:
             - name: "deployment"
               properties:
