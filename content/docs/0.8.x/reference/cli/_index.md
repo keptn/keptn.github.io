@@ -209,7 +209,7 @@ Below are the procedures to set up autocompletion for Bash and Zsh. Please expan
 
 The Keptn CLI completion script for Bash can be generated with the command `keptn completion bash`. Sourcing the completion script in your shell enables Keptn CLI autocompletion.
 
-However, the completion script depends on bash-completion, which means that you have to install this software first (you can test if you have bash-completion already installed by running type _init_completion).
+However, the completion script depends on bash-completion, which means that you have to install this software first (you can test if you have bash-completion already installed by running `type _init_completion`).
 
 ### Install bash-completion for linux
 
@@ -217,13 +217,13 @@ bash-completion is provided by many package managers (see [here](https://github.
 
 The above commands create /usr/share/bash-completion/bash_completion, which is the main script of bash-completion. Depending on your package manager, you have to manually source this file in your ~/.bashrc file.
 
-To find out, reload your shell and run type _init_completion. If the command succeeds, you're already set, otherwise add the following to your ~/.bashrc file:
+To find out, reload your shell and run `type _init_completion`. If the command succeeds, you're already set, otherwise add the following to your ~/.bashrc file:
 
 ```bash
 source /usr/share/bash-completion/bash_completion
 ```
 
-Reload your shell and verify that bash-completion is correctly installed by typing type _init_completion.
+Reload your shell and verify that bash-completion is correctly installed by typing `type _init_completion`.
 
 ### Enable Keptn CLI autocompletion for linux (bash)
 
@@ -255,7 +255,7 @@ After reloading your shell, Keptn CLI autocompletion will be enabled succesfully
 
 The Keptn CLI completion script for Bash can be generated with `keptn completion bash`. Sourcing this script in your shell enables Keptn CLI autocompletion.
 
-However, the Keptb CLI autocompletion script depends on bash-completion which you thus have to previously install.
+However, the Keptn CLI autocompletion script depends on bash-completion which you thus have to previously install.
 
 > Warning: There are two versions of bash-completion, v1 and v2. V1 is for Bash 3.2 (which is the default on macOS), and v2 is for Bash 4.1+. The Keptn CLI autocompletion script doesn't work correctly with bash-completion v1 and Bash 3.2. It requires bash-completion v2 and Bash 4.1+. Thus, to be able to correctly use the Keptn CLI autocompletion on macOS, you have to install and use Bash 4.1+ (instructions). The following instructions assume that you use Bash 4.1+ (that is, any Bash version of 4.1 or newer).
 
@@ -263,7 +263,7 @@ However, the Keptb CLI autocompletion script depends on bash-completion which yo
 
 Note: As mentioned, these instructions assume you use Bash 4.1+, which means you will install bash-completion v2 (in contrast to Bash 3.2 and bash-completion v1, in which case Keptn CLI completion won't work).
 
-You can test if you have bash-completion v2 already installed with type _init_completion. If not, you can install it with Homebrew:
+You can test if you have bash-completion v2 already installed with `type _init_completion`. If not, you can install it with Homebrew:
 
 ```bash
 brew install bash-completion@2
@@ -276,7 +276,7 @@ export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 ```
 
-Reload your shell and verify that bash-completion v2 is correctly installed with type _init_completion.
+Reload your shell and verify that bash-completion v2 is correctly installed with `type _init_completion`.
 
 ### Enable autocompletion for MacOS (bash)
 
