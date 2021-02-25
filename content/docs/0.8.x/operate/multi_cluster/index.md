@@ -66,21 +66,46 @@ Kubernetes provides the following four options:
 ## Install Keptn Execution plane
 
 In this release of Keptn, the execution plane services for deployment (`helm-service`) and testing (`jmeter-service`) can be installed via Helm Charts. Please find the Helm Charts here: 
-- `helm-service`: 
-- `jmeter-service`: 
 
-* Download the Helm Charts 
+    - `helm-service`: GitHub Release for [0.8.0](https://github.com/keptn/keptn/releases/tag/0.8.0) at **Assets** > `helm-service-0.8.0-dev.tgz`
 
+    - `jmeter-service`: GitHub Release for [0.8.0](https://github.com/keptn/keptn/releases/tag/0.8.0) at **Assets** > `jmeter-service-0.8.0-dev.tgz`
 
-* Adapt the Helm Charts to connect the services to the Keptn control-plane, identified by its endpoint and API token: 
+* Download the corresponding Helm Chart and unzip it locally. 
 
+* Adapt the Helm Charts to connect the services to the Keptn control-plane, identified by its endpoint and API token. Therefore, open the `values.yaml` in the Helm Chart and set: 
 
-* Deploy the execution plane services using `helm`
-
-  ```console
-  helm upgrade 
+  ```
+  remoteControlPlane:
+    enabled: true                         # < 1. set to true
+    api:
+      protocol: "http"                    # < 2. set protocol: http or https
+      hostname: ""                        # < 3. set Keptn hostname (without /api)
+      apiValidateTls: true                # < 4. (optional) skip tls verifiation
+      token: ""                           # < 5. set Keptn API token
   ```
 
-### Troubleshooting Execution plane
+* Deploy the execution plane service (e.g., jmeter-service) using `helm`
 
-#### Are services connected to the Control plane? 
+  ```console
+  helm install jmeter-service ./jmeter-service -n keptn-exec --create-namespace
+  ```
+
+* Test connection to Keptn control-plane using: `helm test jmeter-service -n keptn-exec`: 
+
+  ```
+  Pod jmeter-service-test-api-connection pending
+  Pod jmeter-service-test-api-connection succeeded
+  NAME: jmeter-service
+  LAST DEPLOYED: Thu Feb 25 15:55:24 2021
+  NAMESPACE: keptn-exec
+  STATUS: deployed
+  REVISION: 1
+  TEST SUITE:     jmeter-service-test-api-connection
+  Last Started:   Thu Feb 25 15:55:40 2021
+  Last Completed: Thu Feb 25 15:55:42 2021
+  Phase:          Succeeded
+  ```
+
+### Troubleshooting
+
