@@ -216,7 +216,7 @@ Defines the quality evaluation that is executed to verify the quality of a deply
 
 #### Release
 
-Defines the releasing task that is executed after a successful deployment happened.
+Defines the releasing task that is executed after a successful deployment happened. This means that production traffic is shifted towards the new deployment in this task. 
 
 **Usage:**
 ```
