@@ -361,7 +361,7 @@ Depending on whether you would like to install the execution plane for continuou
 
     Commonly used Ingress-Controller are e.g. Istio and NGINX:
 
-    <details><summary>**Istio**</summary>
+    <details><summary>**Istio 1.8+**</summary>
     <p>
 
     * Istio provides an Ingres Controller. To install Istio, please refer to the [official documentation](https://istio.io/latest/docs/setup/install/).
@@ -387,9 +387,13 @@ Depending on whether you would like to install the execution plane for continuou
       - host: <IP-ADDRESS>.nip.io
         http:
           paths:
-          - backend:
-              serviceName: api-gateway-nginx
-              servicePort: 80
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: api-gateway-nginx
+                port:
+                  number: 80
       ```
 
       ```console

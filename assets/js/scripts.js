@@ -2,6 +2,7 @@ var body = document.querySelector('body');
 var menuTrigger = document.querySelector('#toggle-main-menu-mobile');
 var menuContainer = document.querySelector('#main-menu-mobile');
 var copyToClipboardButton = document.querySelector('button.copy');
+var teaser = document.querySelector('.teaser');
 var header = document.querySelector('.header');
 var logo = document.querySelector('.logo');
 var logoJS = document.querySelector('.logo-js');
@@ -10,7 +11,7 @@ var hamburgerInner = document.querySelector('.hamburger-inner');
 var happyUserLogos = document.querySelectorAll('.js-happy-users-logo');
 var numberOfLogos = 6;
 
-if(body.classList.contains('page-home')) {
+if (body.classList.contains('page-home')) {
   window.addEventListener('scroll', (event) => {
     if (event.target.scrollingElement.scrollTop > 5) {
       if (!(header.classList.contains('is-sticky'))) {
@@ -83,70 +84,6 @@ if (menuTrigger) {
   }
 }
 
-if (TypeIt) {
-  var instance = new TypeIt('#typeit-editor', {
-    speed: 100,
-    startDelay: 900,
-  })
-    .type('<span class="command">keptn install</span>')
-    .break()
-    .break()
-    .pause(500)
-    .options({ speed: 0 })
-    .type('Deploying keptn installer pod...')
-    .break()
-    .pause(100)
-    .type('Installer pod deployed successfully.')
-    .break()
-    .pause(100)
-    .type('Starting installation of keptn ...')
-    .pause(500)
-    .break()
-    .type('keptn installed successfully!')
-    .pause(2000)
-    .empty()
-    .options({ speed: 100 })
-    .type('<span class="command">keptn create project myservice myshipyard.yaml</span>')
-    .break()
-    .break()
-    .pause(500)
-    .options({ speed: 0 })
-    .type('Creating Git repositories for dev, staging and production')
-    .break()
-    .pause(500)
-    .type('Creating k8s namespaces for dev, staging and production')
-    .break()
-    .pause(500)
-    .type('Creating and storing configuration for your DevOps tooling')
-    .break()
-    .pause(2000)
-    .empty()
-    .options({ speed: 100 })
-    .type('<span class="command">keptn onboard service myservice</span>')
-    .break()
-    .break()
-    .pause(500)
-    .options({ speed: 0 })
-    .type('Updating configuration for your DevOps tooling')
-    .pause(500)
-    .break()
-    .type('Keptn now ready to receive your artifacts for this service')
-    .pause(2000)
-    .options({ speed: 100 })
-    .break()
-    .break()
-    .type('<span class="command">keptn new artifact myservice:1.0</span>')
-    .break()
-    .break()
-    .pause(500)
-    .options({ speed: 0 })
-    .type('Updating configuration for myservice:1.0')
-    .pause(500)
-    .break()
-    .type('Keptn now starting to ship your artifact')
-    .pause(800)
-    .break()
-    .type('Artifact shipped and ready to use')
-    .pause(2000)
-    .go();
+if (!teaser && teaser == null) {
+  header.classList.remove('push-down');
 }
