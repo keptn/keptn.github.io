@@ -1,16 +1,16 @@
 ---
 title: Migrate existing Keptn integration
-description: Technical guidance regarding migrating an existing Keptn 0.7.x service to a Keptn 0.8.x service
-weight: 5
+description: Technical guidance to migrate an existing Keptn 0.7.x service to a Keptn 0.8.x service
+weight: 10
 keywords: [0.8.x-integration]
 ---
 
-This guide will provide information for migrating an existing Keptn 0.7.x service to a Keptn 0.8.x service based on our Go package [keptn/go-utils](https://github.com/keptn/go-utils/) aswell as our [keptn-service-template-go](https://github.com/keptn-sandbox/keptn-service-template-go). 
+This guide will provide information for migrating an existing Keptn 0.7.x service to a Keptn 0.8.x service based on our Go package [keptn/go-utils](https://github.com/keptn/go-utils/) as well as our [keptn-service-template-go](https://github.com/keptn-sandbox/keptn-service-template-go). 
 If you are using a different framework/programming language, please try to apply the changes described as best as you can.
 
 ## CloudEvents
 
-*Note*: If you are using the latest version `go-utils`, this is handled automatically for you in our new helper functions (see below).
+*Note*: If you are using the latest version of `go-utils` (v0.8.0 at the time of writing), this is handled automatically for you in our new helper functions (see below).
 
 With Keptn 0.8.x, we have upgraded to CloudEvents spec 1.0. Please upgrade your relevant CloudEvents and set `"specversion": "1.0"` where adequate, e.g.:
 ```json
@@ -21,7 +21,7 @@ With Keptn 0.8.x, we have upgraded to CloudEvents spec 1.0. Please upgrade your 
 }
 ```
 
-In addition, make sure to also upgrade the respective CloudEvents sdk.
+Also, don't forget to update the respective CloudEvents SDK/package.
 
 ## Keptn CloudEvents
 
@@ -40,9 +40,9 @@ The most important changes are:
 * CloudEvents `.started`, `.status.changed` and `.finished` require a `triggeredid` in the CloudEvents extension
 * **Most important change:** Keptn-services should now only react when they retrieve a `.triggered` event (they should no longer listen to events like `deployment-finished` or `tests-finished` to do what they need to do)
 
-In addition, if you have listened to certain CloudEvents before, you will need to change your logic as described below:
+To make the migration easier, here is a table that maps 0.7.x CloudEvents with 0.8.x CloudEvents depending on the use case:
 
-| Description                                                             | [Keptn 0.7.x](https://github.com/keptn/spec/blob/0.1.7/cloudevents.md) | [Keptn 0.8.x](https://github.com/keptn/spec/blob/0.2.0/cloudevents.md)                                     |
+| Description / Use case                                                  | [Keptn 0.7.x](https://github.com/keptn/spec/blob/0.1.7/cloudevents.md) | [Keptn 0.8.x](https://github.com/keptn/spec/blob/0.2.0/cloudevents.md)                                     |
 |-------------------------------------------------------------------------|------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
 | A configuration-change was triggered (e.g., via CLI)                    | `sh.keptn.event.configuration.change`                                  |   `sh.keptn.event.${STAGE}.${SEQUENCE}.triggered`,  e.g., `sh.keptn.event.dev.artifact-delivery.triggered` |
 | A deployment has started                                                | -                                                                      | `sh.keptn.event.deployment.started`                                                                        |
@@ -123,7 +123,7 @@ sh.keptn.event.test.triggered (sent by shipyard-controller)
 ```
 
 
-### Workflow Change Example: SLI Provider (e.g., prometheus-sli-service)
+### Workflow Change Example: SLI Provider
 
 In Keptn 0.7.x we relied on internal `get-sli` event to fetch SLIs:
 ```
@@ -174,7 +174,7 @@ import (
 )
 ```
 
-Change this to
+Change this to:
 ```golang
 import (
     keptnv2 "github.com/keptn/go-utils/pkg/lib/v0_2_0"
@@ -184,6 +184,7 @@ import (
 If you want to have both, we recommend using it like this:
 ```golang
 import (
+    keptn "github.com/keptn/go-utils/pkg/lib"
     keptn "github.com/keptn/go-utils/pkg/lib"
     keptnv2 "github.com/keptn/go-utils/pkg/lib/v0_2_0"
 )
@@ -305,11 +306,11 @@ func HandleDeploymentTriggeredEvent(myKeptn *keptnv2.Keptn, incomingEvent cloude
 }
 ```
 
-*Note*: The full source code of those example is available in our [keptn-service-template-go](https://github.com/keptn-sandbox/keptn-service-template-go).
+*Note*: The full source code of those examples is available in our [keptn-service-template-go](https://github.com/keptn-sandbox/keptn-service-template-go).
 
 ### Sending CloudEvents
 
-While in keptn/go-utils 0.7.x you had to take care of sending CloudEvents in the correct format, we have tried to hide this complexity by introducing helper functions in keptn/go-utils 0.8.x.
+While in keptn/go-utils 0.7.x you had to take care of sending CloudEvents in the correct format, helper functions in keptn/go-utils v0.8.0 hide this complexity now.
 
 For instance, sending a deployment-finished event in 0.7.x looked like this:
 ```golang
@@ -374,9 +375,11 @@ With 0.8.x it looks like this:
 	}
 ```
 
-### Processing Keptn CloudEvents requires sending a `.started` and `.finished` CloudEvent with `triggeredid` set to the original event id
+### Processing Keptn CloudEvents
 
-Continuing on the previous example, if you were to implement the `HandleGetSliTriggeredEvent`, you are required to send a `.started` event when you start, and a `.finished` event when you have finished handling (and optionally, there is also a `.status.changed` event, if you need/want it).
+Processing Keptn CloudEvents requires sending a `.started` and `.finished` CloudEvent with `triggeredid` set to the original event id.
+
+Continuing on the previous example, if you were to implement the `HandleGetSliTriggeredEvent`, you are required to send a `get-sli.started` event when you start, and a `get-sli.finished` event when you have finished handling (and optionally, there is also a `get-sli.status.changed` event, if you need/want it).
 
 The following is a shortened example for handling an `sh.keptn.event.action.triggered` event:
 
@@ -517,7 +520,7 @@ func HandleGetSliTriggeredEvent(myKeptn *keptnv2.Keptn, incomingEvent cloudevent
 }
 ```
 
-*Note*: The full source code of those example is available in our [keptn-service-template-go](https://github.com/keptn-sandbox/keptn-service-template-go).
+*Note*: The full source code of those examples is available in our [keptn-service-template-go](https://github.com/keptn-sandbox/keptn-service-template-go).
 
 ### Fetching (required) resources
 
@@ -625,7 +628,7 @@ You can also just copy the following code snippet into your Kubernetes manifest 
 
 ## Keptn-Service-Template-Go
 
-**Note**: Depending on the complexity of your service it might be easier to start over from https://github.com/keptn-sandbox/keptn-service-template-go and just modify the relevant eventhandlers.
+**Note**: Depending on the complexity of your service it might be easier to start over from https://github.com/keptn-sandbox/keptn-service-template-go and just modify the relevant event handlers.
 
 ### main.go
 
@@ -717,7 +720,7 @@ func GenericLogKeptnCloudEventHandler(myKeptn *keptnv2.Keptn, incomingEvent clou
 	return nil
 }
 ```
-Other than that, please follow the changes detailed above for Keptn CloudEvents, `go-utils` and `distributor`, as shown above.
+Other than that, please follow the changes detailed above for Keptn CloudEvents, `go-utils` and `distributor`.
 
 
 ## Changes required for SLI-Provider
