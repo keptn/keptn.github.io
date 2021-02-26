@@ -199,7 +199,7 @@ The `KEPTNCONFIG` environment variable holds a config file that contains the cre
 
 * If the credentials are not found in the config file, it will fall back to the credential manager.
 
-## Enabling shell autocompetion of Keptn CLI
+## Enabling shell autocompletion of Keptn CLI
 
 Keptn CLI provides autocompletion support for Bash and Zsh, which can save you a lot of typing.
 
@@ -211,7 +211,7 @@ The Keptn CLI completion script for Bash can be generated with the command `kept
 
 However, the completion script depends on bash-completion, which means that you have to install this software first (you can test if you have bash-completion already installed by running `type _init_completion`).
 
-### Install bash-completion for linux
+### Install bash-completion for Linux
 
 bash-completion is provided by many package managers (see [here](https://github.com/scop/bash-completion#installation)). You can install it with `apt-get install bash-completion` or `yum install bash-completion`, etc.
 
@@ -248,7 +248,7 @@ echo 'alias kc=keptn' >>~/.bashrc
 echo 'complete -F __start_keptn kc' >>~/.bashrc
 ```
 
-After reloading your shell, Keptn CLI autocompletion will be enabled succesfully.
+After reloading your shell, Keptn CLI autocompletion will be enabled successfully.
 </details>
 
 <details><summary>Autocompletion for Bash (MacOS)</summary>
@@ -261,7 +261,7 @@ However, the Keptn CLI autocompletion script depends on bash-completion which yo
 
 ### Install bash-completion for MacOS
 
-Note: As mentioned, these instructions assume you use Bash 4.1+, which means you will install bash-completion v2 (in contrast to Bash 3.2 and bash-completion v1, in which case Keptn CLI completion won't work).
+**Note**: As mentioned, these instructions assume you use Bash 4.1+, which means you will install bash-completion v2 (in contrast to Bash 3.2 and bash-completion v1, in which case Keptn CLI completion won't work).
 
 You can test if you have bash-completion v2 already installed with `type _init_completion`. If not, you can install it with Homebrew:
 
@@ -301,7 +301,7 @@ echo 'alias kc=keptn' >>~/.bash_profile
 echo 'complete -F keptn kc' >>~/.bash_profile
 ```
 
-After reloading your shell, Keptn CLI autocompletion will be enabled succesfully.
+After reloading your shell, Keptn CLI autocompletion will be enabled successfully.
 
 </details>
 
@@ -329,7 +329,7 @@ echo 'alias kc=keptn' >>~/.zshrc
 echo 'complete -F __start_keptn kc' >>~/.zshrc
 ```
 
-After reloading your shell, Keptn CLI autocompletion will be enabled succesfully.
+After reloading your shell, Keptn CLI autocompletion will be enabled successfully.
 
 If you encounter an error similar to `complete:13: command not found: compdef`, then add the following to the beginning of your `~/.zshrc` file:
 
