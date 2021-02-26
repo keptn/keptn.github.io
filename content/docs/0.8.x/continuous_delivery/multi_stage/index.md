@@ -37,7 +37,7 @@ spec:
 
 ### Definition of Sequence in a Stage
 
-After defining the stages, sequences can be added to a stage. A sequence is an ordered list of tasks that are triggered sequentially. A `sequence` has the properties:
+After defining stages, sequences can be added to a stage. A sequence is an ordered list of tasks that are triggered sequentially. A `sequence` consists of the following properties:
 
 * `name`: A unique name of the sequence
 * `on` (optional): An array of events that trigger the sequence.
@@ -78,19 +78,19 @@ spec:
 
 ### Reserved Keptn Tasks
 
-Keptn supports a set of opiniated tasks for declaring a delivery or remediation sequence: 
+Keptn supports a set of opinionated tasks for declaring a delivery or remediation sequence: 
 
 * approval
 * deployment
 * evaluation
 * release
 * remediation
-* rollback (missing)
+* rollback
 * test
 
 #### Approval
 
-The approval task stops the sequence for an approval, which is required before deploying an artifact into the next stage. The approval strategy can be defined based on the evaluation result `pass` and `warning`. Keptn supports the following approval strategies for the evaluation results `pass` and `warning`:
+The approval task intercepts the sequence and waits for a required approval (e.g., before deploying an artifact into the next stage). The approval strategy can be defined based on the evaluation result `pass` and `warning`. Keptn supports the following approval strategies for the evaluation results `pass` and `warning`:
 
   * `automatic`: The artifact is deployed automatically.
   * `manual`: The user is asked for approval before triggering the deployment.
@@ -207,7 +207,7 @@ spec:
 
 #### Evaluation
 
-Defines the quality evaluation that is executed to verify the quality of a deplyoment based on its SLOs/SLIs.
+Defines the quality evaluation that is executed to verify the quality of a deployment based on its SLOs/SLIs.
 
 **Usage:**
 ```

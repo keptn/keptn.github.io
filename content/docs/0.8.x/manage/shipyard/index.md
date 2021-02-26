@@ -8,7 +8,6 @@ aliases:
 
 After creating a project, you can change the shipyard as explained here. 
 
-
 The most convenient way to change your shipyard is by directly adapting it in the Git *upstream* repository. 
 
 * If you do not have a Git upstream set for your project, please set one since it is the recommended way of using Keptn: [configure Git upstream](../../manage/git_upstream/#create-keptn-project-or-set-git-upstream).
@@ -19,7 +18,7 @@ The most convenient way to change your shipyard is by directly adapting it in th
   keptn add-resource --project=PROJECT --resource=./shipyard.yaml --resourceUri=./shipyard.yaml
   ```
 
-:warning: Do *not* modify your shipyard in ways that are *not* mentioned in this section. 
+:warning: Only modify your shipyard in ways mentioned in this section. 
 
 :warning: Make sure to have no running sequence while you are updating the shipyard. Otherwise, running sequences will be updated.
 
