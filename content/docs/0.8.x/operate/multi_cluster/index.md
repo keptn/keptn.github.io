@@ -99,9 +99,9 @@ remoteControlPlane:
 
   ```
 distributor:
-  projectFilter: ""                     # set the project, e.g., `sockshop` (to get events for the entire project)
-  stageFilter: ""                       # set the stage, e.g., `hardening` (to get events for the stage)
-  serviceFilter: ""                     # set the service, e.g., `carts` (to get events for the service )
+  projectFilter: ""                     # set the project, e.g., "sockshop" (to get events for the entire project)
+  stageFilter: ""                       # set the stage, e.g., "hardening" (to get events for the stage)
+  serviceFilter: ""                     # set the service, e.g., "carts" (to get events for the service )
   ``` 
 
 * Deploy the execution plane service (e.g., jmeter-service) with `helm`:
