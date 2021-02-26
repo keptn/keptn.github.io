@@ -14,7 +14,7 @@ The explanation is based on the provided Helm Chart for the carts microservice, 
 
 ## Direct deployments
 
-If the deployment strategy of a stage in the [shipyard](https://github.com/keptn/examples/blob/0.8.0/onboarding-carts/shipyard.yaml) is configured as `deployment_strategy: direct`, Helm deploys a 
+If the deployment strategy of a stage in the [shipyard](https://github.com/keptn/examples/blob/0.8.0/onboarding-carts/shipyard.yaml) is configured as `deploymentstrategy: direct`, Helm deploys a 
  release called `sockshop-dev-carts` as `carts` in namespace `sockshop-dev`.
  
 ```console
@@ -33,7 +33,7 @@ When sending a new-artifact, we are updating the values.yaml file in the Helm Ch
 
 ## Blue-green deployments
 
-If the deployment strategy of a stage in the [shipyard](https://github.com/keptn/examples/blob/0.8.0/onboarding-carts/shipyard.yaml) is configured as `deployment_strategy: blue_green_service`, Helm creates two
+If the deployment strategy of a stage in the [shipyard](https://github.com/keptn/examples/blob/0.8.0/onboarding-carts/shipyard.yaml) is configured as `deploymentstrategy: blue_green_service`, Helm creates two
  deployments within the Kubernetes cluster: (1) the primary and (2) the canary deployment. This can be inspected using the
  following command:
 
@@ -74,6 +74,55 @@ NAME            READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS   IMAGES      
 carts-primary   1/1     1            1            4m   carts        docker.io/keptnexamples/carts:0.11.2   app=carts-primary
 carts           0/0     0            0            1d   carts        docker.io/keptnexamples/carts:0.11.2   app=carts
 ```
+
+
+## User Managed deployments (experimental)
+
+*Note: This feature is currently marked as experimental. Hence, expect various enhancements and/or changes in
+future releases of Keptn.*
+
+
+If the deployment strategy of a stage in the [shipyard](https://github.com/keptn/examples/blob/0.8.0/onboarding-carts/shipyard.yaml)
+is configured as `deploymentstrategy: user_managed`, the provided helm chart will be deployed without any modification and
+applied as it is.
+
+Assuming that you've created a project from a shipyard file containing a stage with `deploymentstrategy: user_managed`,you need to: 
+
+(1) create a service in your stage:
+```
+keptn create service <service-name> --project <proejct-name>
+```
+(2) add your desired Helm chart to each stage:
+```
+keptn add-resource --project=<project-name> --service=<service-name> --all-stages --resource=<your-helm-chart.tgz> --resourceUri=helm/<service-name>.tgz
+```
+(3) send an event to trigger the delivery of your service:
+
+```
+keptn send event --file=./delivery.json 
+```
+where the content of `delvier.json` looks something like:
+
+```
+{
+  "contenttype": "application/json",
+  "data": {
+    "project": "<project-name",
+    "service": "<service-name>",
+    "stage": "<stage-name>" 
+  },
+  "source": "https://github.com/keptn/keptn/cli#configuration-change",
+  "specversion": "1.0",
+  "type": "sh.keptn.event.<stage-name>.delivery.triggered"
+}
+```
+
+**Limitations:**
+- Currently, when using this deployment strategy, you cannot use the `keptn trigger delivery` command as you would
+normally do. Hence, you need to send an event using `keptn send event` like described above.
+- Modifications to the helm chart via keptn configuration changes are currently not possible.
+
+
 
 ## Clean-up after deleting a project
 
