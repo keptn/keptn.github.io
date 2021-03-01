@@ -55,13 +55,13 @@ kubectl apply -f gateway-manifest.yaml
 * Create the `ingress-config` ConfigMap in the `keptn` namespace:
 
     ```
-    INGRESS_HOSTNAME=<IP_OF_YOUR_INGRESS>.xip.io
+    INGRESS_HOSTNAME=<IP_OF_YOUR_INGRESS>.nip.io
     INGRESS_PORT=<PORT_OF_YOUR_INGRESS> 
     INGRESS_PROTOCOL=<PROTOCOL>                            # "http" or "https"
     ISTIO_GATEWAY=<GATEWAY_NAME>.<NAMESPACE_OF_GATEWAY>  # e.g. public-gateway.istio-system
     ```
 
-      **Note:** In the above example, `xip.io` is used as wildcard DNS for the IP address.
+      **Note:** In the above example, `nip.io` is used as wildcard DNS for the IP address.
 
     ```console
     kubectl create configmap -n keptn ingress-config --from-literal=ingress_hostname_suffix=${INGRESS_HOSTNAME} --from-literal=ingress_port=${INGRESS_PORT} --from-literal=ingress_protocol=${INGRESS_PROTOCOL} --from-literal=istio_gateway=${ISTIO_GATEWAY} -oyaml --dry-run | kubectl replace -f -
