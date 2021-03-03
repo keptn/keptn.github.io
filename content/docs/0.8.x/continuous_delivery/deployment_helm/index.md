@@ -78,30 +78,29 @@ carts           0/0     0            0            1d   carts        docker.io/ke
 
 ## User Managed deployments (experimental)
 
-*Note: This feature is currently marked as experimental. Hence, expect various enhancements and/or changes in
+:warning: *Note, that this feature is currently marked as experimental. Hence, expect various enhancements and/or changes in
 future releases of Keptn.*
 
 
 If the deployment strategy of a stage in the [shipyard](https://github.com/keptn/examples/blob/0.8.0/onboarding-carts/shipyard.yaml)
-is configured as `deploymentstrategy: user_managed`, the provided helm chart will be deployed without any modification and
+is configured as `deploymentstrategy: user_managed`, the provided Helm chart will be deployed without any modification and
 applied as it is.
 
-Assuming that you've created a project from a shipyard file containing a stage with `deploymentstrategy: user_managed`,you need to: 
+Assuming that you've created a project from a shipyard file containing a stage with `deploymentstrategy: user_managed`, you need to: 
 
 (1) create a service in your stage:
 ```
-keptn create service <service-name> --project <proejct-name>
+keptn create service <service-name> --project <project-name>
 ```
 (2) add your desired Helm chart to each stage:
 ```
 keptn add-resource --project=<project-name> --service=<service-name> --all-stages --resource=<your-helm-chart.tgz> --resourceUri=helm/<service-name>.tgz
 ```
 (3) send an event to trigger the delivery of your service:
-
 ```
 keptn send event --file=./delivery.json 
 ```
-where the content of `delvier.json` looks something like:
+where the content of `delivery.json` looks something like:
 
 ```
 {
@@ -111,7 +110,7 @@ where the content of `delvier.json` looks something like:
     "service": "<service-name>",
     "stage": "<stage-name>" 
   },
-  "source": "https://github.com/keptn/keptn/cli#configuration-change",
+  "source": "keptn-cli",
   "specversion": "1.0",
   "type": "sh.keptn.event.<stage-name>.delivery.triggered"
 }
@@ -120,7 +119,7 @@ where the content of `delvier.json` looks something like:
 **Limitations:**
 - Currently, when using this deployment strategy, you cannot use the `keptn trigger delivery` command as you would
 normally do. Hence, you need to send an event using `keptn send event` like described above.
-- Modifications to the helm chart via keptn configuration changes are currently not possible.
+- Modifications to the Helm chart via keptn configuration changes are currently not possible.
 
 
 
