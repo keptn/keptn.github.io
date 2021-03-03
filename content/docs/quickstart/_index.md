@@ -109,7 +109,7 @@ Please make sure you have `kubectl` installed (see [kubernetes.io/docs/tasks/too
     
     or if you are on Windows
     ```console
-    keptn version
+    .\keptn.exe version
     ```
 
 ##### 2.1.2 Manual install of the Keptn CLI

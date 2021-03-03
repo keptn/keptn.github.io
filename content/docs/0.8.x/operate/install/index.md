@@ -240,7 +240,7 @@ Every Keptn release provides binaries for the Keptn CLI. These binaries are avai
     - *Windows*
 
     ```console
-    keptn version
+    .\keptn.exe version
     ```
 
 **Note:** For the rest of the documentation we will stick to the *Linux / macOS* version of the commands.

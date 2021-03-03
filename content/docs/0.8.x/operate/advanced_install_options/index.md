@@ -73,15 +73,15 @@ control-plane.apiGatewayNginx.image.repository=YOUR_REGISTRY/nginxinc/nginx-unpr
 control-plane.remediationService.image.repository=YOUR_REGISTRY/keptn/remediation-service,\
 control-plane.apiService.image.repository=YOUR_REGISTRY/keptn/api,\
 control-plane.bridge.image.repository=YOUR_REGISTRY/keptn/bridge2,\
-control-plane.eventbroker.image.repository=YOUR_REGISTRY/keptn/eventbroker-go,\
-control-plane.helmService.image.repository=YOUR_REGISTRY/keptn/helm-service,\
 control-plane.distributor.image.repository=YOUR_REGISTRY/keptn/distributor,\
-control-plane.shipyardService.image.repository=YOUR_REGISTRY/keptn/shipyard-service,\
+control-plane.shipyardController.image.repository=YOUR_REGISTRY/keptn/shipyard-controller,\
 control-plane.configurationService.image.repository=YOUR_REGISTRY/keptn/configuration-service,\
 control-plane.mongodbDatastore.image.repository=YOUR_REGISTRY/keptn/mongodb-datastore,\
+control-plane.statisticsService.image.repository=YOUR_REGISTRY/keptn/statistics-service,\
 control-plane.lighthouseService.image.repository=YOUR_REGISTRY/keptn/lighthouse-service,\
-continuous-delivery.gatekeeperService.image.repository=YOUR_REGISTRY/keptn/gatekeeper-service,\
+control-plane.approvalService.image.repository=YOUR_REGISTRY/keptn/approval-service,\
 continuous-delivery.distributor.image.repository=YOUR_REGISTRY/keptn/distributor,\
+continuous-delivery.helmService.image.repository=YOUR_REGISTRY/keptn/helm-service,\
 continuous-delivery.jmeterService.image.repository=YOUR_REGISTRY/keptn/jmeter-service\
 /
 ```
@@ -91,8 +91,8 @@ continuous-delivery.jmeterService.image.repository=YOUR_REGISTRY/keptn/jmeter-se
 ```console
 #!/bin/bash
 KEPTN_TAG=0.8.0
-IMAGES_CONTROL_PLANE="centos/mongodb-36-centos7:1 nats:2.1.7-alpine3.11 connecteverything/nats-server-config-reloader:0.6.0 synadia/prometheus-nats-exporter:0.5.0 nginxinc/nginx-unprivileged:1.19.1-alpine keptn/remediation-service:${KEPTN_TAG} keptn/api:${KEPTN_TAG} keptn/bridge2:${KEPTN_TAG} keptn/eventbroker-go:${KEPTN_TAG} keptn/helm-service:${KEPTN_TAG} keptn/distributor:${KEPTN_TAG} keptn/shipyard-service:${KEPTN_TAG} keptn/configuration-service:${KEPTN_TAG} keptn/mongodb-datastore:${KEPTN_TAG} keptn/lighthouse-service:${KEPTN_TAG}"
-# IMAGES_CONTINUOUS_DELIVERY="keptn/gatekeeper-service:${KEPTN_TAG} keptn/jmeter-service:${KEPTN_TAG}"
+IMAGES_CONTROL_PLANE="centos/mongodb-36-centos7:1 nats:2.1.7-alpine3.11 connecteverything/nats-server-config-reloader:0.6.0 synadia/prometheus-nats-exporter:0.5.0 nginxinc/nginx-unprivileged:1.19.1-alpine keptn/remediation-service:${KEPTN_TAG} keptn/api:${KEPTN_TAG} keptn/bridge2:${KEPTN_TAG} keptn/distributor:${KEPTN_TAG} keptn/shipyard-controller:${KEPTN_TAG} keptn/configuration-service:${KEPTN_TAG} keptn/mongodb-datastore:${KEPTN_TAG} keptn/statistics-service:${KEPTN_TAG} keptn/lighthouse-service:${KEPTN_TAG} keptn/approval-service:${KEPTN_TAG}"
+# IMAGES_CONTINUOUS_DELIVERY="keptn/helm-service:${KEPTN_TAG} keptn/jmeter-service:${KEPTN_TAG}"
 INTERNAL_DOCKER_REGISTRY="YOUR_REGISTRY/"
 
 for img in $IMAGES_CONTROL_PLANE
