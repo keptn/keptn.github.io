@@ -9,7 +9,7 @@ The definition of a multi-stage delivery manifests in a so-called **shipyard**. 
 
 ## Declare Shipyard (before creating a project)
 
-* A shipyard is defined at the level of a project. This means that all services in a project share the same shipyard configuration. 
+* A shipyard is defined at the level of a project. This means that all services in a project share the same shipyard definition. 
 
 * A shipyard defines the stages each deployment has to go through until it is released in the final stage, e.g., the production stage. 
 
