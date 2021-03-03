@@ -67,25 +67,31 @@ Kubernetes provides the following four options:
 
 In this release of Keptn, the execution plane services for deployment (`helm-service`) and testing (`jmeter-service`) can be installed via Helm Charts. 
 
-* Please find the Helm Charts here: 
+Please find the Helm Charts here: 
 
   - `helm-service`: GitHub Release for [0.8.0](https://github.com/keptn/keptn/releases/tag/0.8.0) at **Assets** > `helm-service-0.8.0-dev.tgz`
 
   - `jmeter-service`: GitHub Release for [0.8.0](https://github.com/keptn/keptn/releases/tag/0.8.0) at **Assets** > `jmeter-service-0.8.0-dev.tgz`
 
-* Download the corresponding Helm Chart and unzip it locally. 
+### How to deploy an execution plane services?
 
-* Adapt the Helm Charts to connect the services to the Keptn control plane, identified by its endpoint and API token. Therefore, open the `values.yaml` in the Helm Chart and set: 
+* Download the `values.yaml` from the release branch, e.g., for the jmeter-service:
 
-  ```
-remoteControlPlane:
-  enabled: true                         # < (1) set to true
-  api:
-    protocol: "http"                    # < (2) set protocol: http or https
-    hostname: ""                        # < (3) set Keptn hostname (without /api)
-    apiValidateTls: true                # < (4 - optional) option to skip TLS verification
-    token: ""                           # < (5) set Keptn API token
-  ```
+    ```
+    wget https://raw.githubusercontent.com/keptn/keptn/release-0.8.0/jmeter-service/chart/values.yaml
+    ```
+
+* Edit the `values.yaml` to connect the services to the Keptn control plane, identified by its endpoint and API token. Therefore, set the values (1) - (5):
+
+    ```
+    remoteControlPlane:
+      enabled: true                         # < (1) set to true
+      api:
+        protocol: "http"                    # < (2) set protocol: http or https
+        hostname: ""                        # < (3) set Keptn hostname (without /api)
+        apiValidateTls: true                # < (4 - optional) option to skip TLS verification
+        token: ""                           # < (5) set Keptn API token
+    ```
 
 * Depending on your setup of the multi-cluster environment and the approach you modeled your staging process, one stage can be for example on a seperate cluster. Let's assume the following setup: 
   
@@ -97,38 +103,60 @@ remoteControlPlane:
 
     To properly configure the execution plane services that run, for example, on **Cluster-A**, the distributor in the `values.yaml` needs to be configured:
 
-  ```
-distributor:
-  projectFilter: ""                     # set the project, e.g., "sockshop" (to get events for the entire project)
-  stageFilter: ""                       # set the stage, e.g., "hardening" (to get events for the stage)
-  serviceFilter: ""                     # set the service, e.g., "carts" (to get events for the service )
-  ``` 
+    ```
+    distributor:
+      projectFilter: ""                     # set the project, e.g., "sockshop" (to get events for the entire project)
+      stageFilter: ""                       # set the stage, e.g., "hardening" (to get events for the stage)
+      serviceFilter: ""                     # set the service, e.g., "carts" (to get events for the service )
+    ``` 
 
-* Deploy the execution plane service (e.g., jmeter-service) with `helm`:
+* Deploy the execution plane service (e.g., jmeter-service) from release assets with your `values.yaml` and by using `helm`: 
 
-  ```console
-helm install jmeter-service ./jmeter-service -n keptn-exec --create-namespace
-  ```
+    ```console
+    helm install jmeter-service https://github.com/keptn/keptn/releases/download/0.8.0/jmeter-service-0.8.0.tgz -n keptn-exec --create-namespace --values=values.yaml
+    ```
 
 * Test connection to Keptn control plane using: 
 
-  ```console
-helm test jmeter-service -n keptn-exec
-  ```
+    ```console
+    helm test jmeter-service -n keptn-exec
+    ```
 
-  ```console
-Pod jmeter-service-test-api-connection pending
-Pod jmeter-service-test-api-connection succeeded
-NAME: jmeter-service
-LAST DEPLOYED: Thu Feb 25 15:55:24 2021
-NAMESPACE: keptn-exec
-STATUS: deployed
-REVISION: 1
-TEST SUITE:     jmeter-service-test-api-connection
-Last Started:   Thu Feb 25 15:55:40 2021
-Last Completed: Thu Feb 25 15:55:42 2021
-Phase:          Succeeded
-  ```
+    ```console
+    Pod jmeter-service-test-api-connection pending
+    Pod jmeter-service-test-api-connection succeeded
+    NAME: jmeter-service
+    LAST DEPLOYED: Thu Feb 25 15:55:24 2021
+    NAMESPACE: keptn-exec
+    STATUS: deployed
+    REVISION: 1
+    TEST SUITE:     jmeter-service-test-api-connection
+    Last Started:   Thu Feb 25 15:55:40 2021
+    Last Completed: Thu Feb 25 15:55:42 2021
+    Phase:          Succeeded
+    ```
+
+### Summary of values to configure execution plane service
+
+See the configuration parameters of the supported execution plane services: 
+
+  - `helm-service`: [Helm Chart values](https://github.com/keptn/keptn/blob/release-0.8.0/helm-service/chart/README.md#configuration) 
+
+  - `jmeter-service`: [Helm Chart values](https://github.com/keptn/keptn/blob/release-0.8.0/jmeter-service/chart/README.md#configuration) 
+
+The important once that are used in the above example are:
+
+| Parameter                | Description             | Default        |
+| ------------------------ | ----------------------- | -------------- |
+| `distributor.stageFilter` | Sets the stage this service belongs to | `""` |
+| `distributor.serviceFilter` | Sets the service this service belongs to | `""` |
+| `distributor.projectFilter` | Sets the project this service belongs to | `""` |
+| `remoteControlPlane.enabled` | Enables remote execution plane mode | `false` |
+| `remoteControlPlane.api.protocol` | Used protocol (http, https) | `"https"` |
+| `remoteControlPlane.api.hostname` | Hostname of the control plane cluster (and port) | `""` |
+| `remoteControlPlane.api.apiValidateTls` | Defines if the control plane certificate should be validated | `true` |
+| `remoteControlPlane.api.token` | Keptn API token | `""` |
+
 
 ## Troubleshooting
 
