@@ -55,14 +55,14 @@ kubectl apply -f gateway-manifest.yaml
 * Create the `ingress-config` ConfigMap in the `keptn` namespace:
 
     ```
-    INGRESS_HOSTNAME_SUFFIX=<IP_OF_YOUR_INGRESS>.xip.io
+    INGRESS_HOSTNAME_SUFFIX=<IP_OF_YOUR_INGRESS>.nip.io
     INGRESS_PORT=<PORT_OF_YOUR_INGRESS> 
     INGRESS_PROTOCOL=<PROTOCOL>                            # "http" or "https"
     ISTIO_GATEWAY=<GATEWAY_NAME>.<NAMESPACE_OF_GATEWAY>  # e.g. public-gateway.istio-system
     HOSTNAME_TEMPLATE=<HOSTNAME_TEMPLATE> # optional, default = \${INGRESS_PROTOCOL}://\${service}.\${project}-\${stage}.\${INGRESS_HOSTNAME_SUFFIX}:\${INGRESS_PORT}
     ```
 
-      **Note:** In the above example, `xip.io` is used as wildcard DNS for the IP address.
+      **Note:** In the above example, `nip.io` is used as wildcard DNS for the IP address.
       **Note:** The `HOSTNAME_TEMPLATE` describes how the hostname for the automatically generated `VirtualService` should look like. This value will also be used for the `deploymentURIPublic` property contained in the `deployment.finished` events sent by the helm-service will look like. This URL can then be used by execution plane services that need to access the deployed service (e.g. a testing service like the jmeter-service).
       Within the `HOSTNAME_TEMPLATE`, you can use the variables `INGRESS_HOSTNAME_SUFFIX`, `INGRESS_PORT`, `INGRESS_PROTOCOL`, as well as `project`, `stage` and `service`. Please escape those variables using `\${}` when defining the value for `HOSTNAME_TEMPLATE`, since the resulting string should contain the placeholders of those variables instead of their actual values.
 

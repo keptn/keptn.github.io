@@ -10,12 +10,12 @@ In Keptn, a project is a structure that allows organizing your services. A proje
 
 ## Create a project
 
-To describe the stages of a project, a **shipyard** file is needed that specifies multi-stage delivery worklow as shown by an example below. 
+To describe the stages of a project, a **shipyard** is needed that specifies multi-stage delivery worklow as shown by an example below. 
 
-**Note:** To learn more about a shipyard file, see [declare shipyard before creating a project](../../continuous_delivery/multi_stage/#declare-shipyard-before-creating-a-project).
+**Note:** To learn more about a shipyard, see [declare shipyard before creating a project](../../continuous_delivery/multi_stage/#declare-shipyard-before-creating-a-project).
 
 ```yaml
-apiVersion: "spec.keptn.sh/0.2.0"
+apiVersion: spec.keptn.sh/0.2.0
 kind: "Shipyard"
 metadata:
   name: "shipyard-sockshop"
@@ -23,7 +23,7 @@ spec:
   stages:
     - name: "dev"
       sequences:
-        - name: "artifact-delivery"
+        - name: "delivery"
           tasks:
             - name: "deployment"
               properties:
@@ -36,9 +36,9 @@ spec:
 
     - name: "staging"
       sequences:
-        - name: "artifact-delivery"
+        - name: "delivery"
           triggers:
-            - "dev.artifact-delivery.finished"
+            - "dev.delivery.finished"
           tasks:
             - name: "deployment"
               properties:
@@ -51,9 +51,9 @@ spec:
 
     - name: "production"
       sequences:
-        - name: "artifact-delivery"
+        - name: "delivery"
           triggers:
-            - "staging.artifact-delivery.finished"
+            - "staging.delivery.finished"
           tasks:
             - name: "deployment"
               properties:

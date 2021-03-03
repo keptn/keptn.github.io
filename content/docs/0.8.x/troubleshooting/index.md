@@ -194,7 +194,7 @@ keptn status
 ```console
 Starting to authenticate
 Successfully authenticated
-CLI is authenticated against the Keptn cluster http://xx.xx.xx.xx.xip.io/api
+CLI is authenticated against the Keptn cluster http://xx.xx.xx.xx.nip.io/api
 ```
 
 ## NGNIX troubleshooting
