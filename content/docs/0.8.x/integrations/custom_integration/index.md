@@ -14,6 +14,7 @@ Here you learn how to add additional functionality to your Keptn installation wi
 ## Template repository
 
 A template for writing a new *Keptn-service*  is provided here: [keptn-service-template-go](https://github.com/keptn-sandbox/keptn-service-template-go).
+Please note that the master branch of this repository might represent a development state. Check out the [releases page](https://github.com/keptn-sandbox/keptn-service-template-go/releases) and download the code for a release that's compatible with the Keptn version you are going to develop for.
 
 Since a *Keptn-service* is a Kubernetes service with a deployment and service template, the deployment manifest in the template repository can be re-used; see [deploy/service.yaml](https://github.com/keptn-sandbox/keptn-service-template-go/blob/master/deploy/service.yaml).
 
@@ -28,22 +29,22 @@ This deployment manifest contains:
 
 A Keptn-service has the following characteristics: 
 
-* has a **subscription** to an event that occurs during the execution of a task sequence for continuous delivery or operations
+* has a subscription to a **triggered event** that occurs during the execution of a task sequence (e.g., for continuous delivery or operations)
 * sends a **started event** to inform Keptn about receiving the event and acting on it
 * processes functionality and can therefore leverage additional tools, e.g., through their REST interface
 * sends a **finished event** to inform Keptn about its execution status and the result
 
-### Subscription to Keptn event
+### Subscription to a triggered event
 
 Your Keptn-service must have a subscription to at least one [Keptn CloudEvent](https://github.com/keptn/spec/blob/0.2.0/cloudevents.md). The event type to subscribe to looks as follows:
 
 - `sh.keptn.event.[task].triggered`
 
-In this example, the `[task]` works as a placeholder for tasks such as: `deployment`, `test`, `evaluation`, `remediation`, etc. The task defines the topic the Keptn-service is interested in. Assuming you are writing a Keptn-service for testing, the event type would be: `sh.keptn.event.test.triggered`.
+In this example, `[task]` works as a placeholder for tasks such as: `deployment`, `test`, `evaluation`, `remediation`, etc. The task defines the topic the Keptn-service is interested in. Assuming you are writing a Keptn-service for testing, the event type would be: `sh.keptn.event.test.triggered`.
 
 **Distributor:**
 
-* To subscribe your Keptn-service to the `sh.keptn.event.[task].triggered` event, a distributor is required. A default distributor is provided in the deployment manifest of the keptn-service-template-go template (see [deploy/service.yaml](https://github.com/keptn-sandbox/keptn-service-template-go/blob/master/deploy/service.yaml)) and as shown by the example below:
+* To subscribe your Keptn-service to the `sh.keptn.event.[task].triggered` event, a distributor with `PUBSUB_TOPIC` set to the specific event type is required, see example below. Alternatively, a default distributor listening to all events (e.g., `PUBSUB_TOPIC: sh.keptn.>`) is provided in the deployment manifest of the keptn-service-template-go template (see [deploy/service.yaml](https://github.com/keptn-sandbox/keptn-service-template-go/blob/master/deploy/service.yaml)).
 
 ```yaml
 spec:
@@ -54,16 +55,18 @@ spec:
     - containerPort: 8080
     resources:
       requests:
-        memory: "32Mi"
-        cpu: "50m"
+        memory: "16Mi"
+        cpu: "25m"
       limits:
         memory: "128Mi"
-        cpu: "500m"
+        cpu: "250m"
     env:
-    - name: PUBSUB_TOPIC
-      value: 'sh.keptn.event.test.triggered'
-    - name: PUBSUB_RECIPIENT
-      value: 'jmeter-service'
+      - name: PUBSUB_URL
+        value: 'nats://keptn-nats-cluster'
+      - name: PUBSUB_TOPIC
+        value: 'sh.keptn.event.test.triggered'
+      - name: PUBSUB_RECIPIENT
+        value: '127.0.0.1'
 ```
 
 In addition to forwarding received events for the subscribed topic to the Keptn-service, the distributor also provides the feature to act as a proxy to the Keptn API. 
@@ -232,24 +235,24 @@ spec:
         - containerPort: 8080
         resources:
           requests:
-            memory: "32Mi"
-            cpu: "50m"
+            memory: "16Mi"
+            cpu: "25m"
           limits:
             memory: "128Mi"
-            cpu: "500m"
+            cpu: "250m"
         env:
         - name: PUBSUB_URL
           value: 'nats://keptn-nats-cluster'
         - name: PUBSUB_TOPIC
           value: 'sh.keptn.event.deployment.finished'
         - name: PUBSUB_RECIPIENT
-          value: 'jmeter-service'
+          value: '127.0.0.1'
 ```
 
 To configure this distributor for your *Keptn-service*, two environment variables need to be adapted: 
 
-* `PUBSUB_RECIPIENT`: Defines the service name as specified in the Kubernetes service manifest.
-* `PUBSUB_TOPIC`: Defines the event type your *Keptn-service* is listening to. 
+* `PUBSUB_RECIPIENT`: Defines the service address as specified in the Kubernetes service manifest (e.g., 127.0.0.1 or jmeter-service)
+* `PUBSUB_TOPIC`: Defines the event type your *Keptn-service* is listening to (e.g. `sh.keptn.event.test.triggered`  or `sh.keptn.event.>`).
 
 ## Deploy Keptn-service and distributor
 
