@@ -21,7 +21,7 @@ Run your Keptn installation for free on GKE! If you [sign up for a Google Cloud 
   - [gcloud](https://cloud.google.com/sdk/gcloud/)
 
 2. Create GKE cluster
-  - [Master version](../0.7.x/operate/k8s_support/#supported-versions): `1.16.x` and `1.17.x` (tested version: `1.17.14-gke.400`)
+  - [Master version](../0.7.x/operate/k8s_support/#supported-versions): `1.17.x` and `1.18.x` (tested version: `1.18.12`)
   - One node with 8 vCPUs and 32 GB memory (e.g., one **n1-standard-8** node)
   - Change Image type from `COS` to `Ubuntu` (**Note:** In case you plan to use Dynatrace monitoring, we recommend `Ubuntu` for a more [convenient setup](../0.7.x/monitoring/dynatrace/install/#notes).)
   - Sample script to create such a cluster:
@@ -32,7 +32,7 @@ Run your Keptn installation for free on GKE! If you [sign up for a Google Cloud 
     CLUSTER_NAME=<NAME_OF_CLUSTER>
     ZONE=us-central1-a
     REGION=us-central1
-    GKE_VERSION="1.17"
+    GKE_VERSION="1.18"
     IMAGE_TYPE="Ubuntu"
     ```
 
