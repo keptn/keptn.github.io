@@ -1,7 +1,7 @@
 ---
 title: Kubernetes support & Cluster size
-description: Keptn and Kubernetes compatibility overview.
-weight: 30
+description: Keptn and Kubernetes compatibility overview and required cluster size.
+weight: 70
 keywords: [0.8.x-operate]
 ---
 

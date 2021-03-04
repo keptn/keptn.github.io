@@ -1,7 +1,7 @@
 ---
 title: Backup and restore Keptn
 description: How to backup and restore Keptn.
-weight: 20
+weight: 50
 keywords: backup
 ---
 
