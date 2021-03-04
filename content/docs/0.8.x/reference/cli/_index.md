@@ -17,7 +17,7 @@ This works for Linux and Mac only.
 
 1. This will download the 0.8.0 CLI version from [GitHub](https://github.com/keptn/keptn/releases), unpack it and move it to `/usr/local/bin/keptn`.
 ```console
-curl -sL https://get.keptn.sh | sudo -E bash
+curl -sL https://get.keptn.sh | bash
 ```
 
 2. Verify that the installation has worked and that the version is correct by running:
