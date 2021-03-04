@@ -21,9 +21,9 @@ Run your Keptn installation for free on GKE! If you [sign up for a Google Cloud 
   - [gcloud](https://cloud.google.com/sdk/gcloud/)
 
 2. Create GKE cluster
-  - [Master version](../0.7.x/operate/k8s_support/#supported-versions): `1.17.x` and `1.18.x` (tested version: `1.18.12`)
+  - [Master version](../0.8.x/operate/k8s_support/#supported-versions): `1.17.x` and `1.18.x` (tested version: `1.18.12`)
   - One node with 8 vCPUs and 32 GB memory (e.g., one **n1-standard-8** node)
-  - Change Image type from `COS` to `Ubuntu` (**Note:** In case you plan to use Dynatrace monitoring, we recommend `Ubuntu` for a more [convenient setup](../0.7.x/monitoring/dynatrace/install/#notes).)
+  - Change Image type from `COS` to `Ubuntu` (**Note:** In case you plan to use Dynatrace monitoring, we recommend `Ubuntu` for a more [convenient setup](../0.8.x/monitoring/dynatrace/install/#notes).)
   - Sample script to create such a cluster:
 
     ```console
@@ -47,7 +47,7 @@ Run your Keptn installation for free on GKE! If you [sign up for a Google Cloud 
 
 Please refer to the [official homepage of K3s](https://k3s.io) for detailed installation instructions. Here, a short guide on how to run Keptn on K3s is provided for a Linux environment. **Note:** If you are using macOS, you will need to run K3s using [multipass](https://multipass.run/) and as explained [here](https://medium.com/@zhimin.wen/running-k3s-with-multipass-on-mac-fbd559966f7c).
  
-1. Download, install [K3s](https://k3s.io/) (tested with [versions 1.16 to 1.19](../0.7.x/operate/k8s_support/#supported-versions)) and run K3s using the following command:
+1. Download, install [K3s](https://k3s.io/) (tested with [versions 1.16 to 1.19](../0.8.x/operate/k8s_support/#supported-versions)) and run K3s using the following command:
    ```console
    curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.19.5+k3s1 K3S_KUBECONFIG_MODE="644" sh -s - --no-deploy=traefik
    ```
@@ -75,16 +75,16 @@ We also support installation on:
 * Minikube
 * OpenShift 4 & 3.11
 
-For details on the specific providers, please visit our [detailed installation guide](../0.7.x/operate/install/#create-or-bring-kubernetes-cluster).
+For details on the specific providers, please visit our [detailed installation guide](../0.8.x/operate/install/#create-or-bring-kubernetes-cluster).
 
 </p>
 </details>
 
 ### 2. Install Keptn
 
-The following instructions will install the **latest stable Keptn CLI (0.7.3)** in a quick way. 
+The following instructions will install the **latest stable Keptn CLI** in a quick way. 
 
-If you need more information, please look at the [install Keptn CLI](../0.7.x/operate/install/#install-keptn-cli) guide.
+If you need more information, please look at the [install Keptn CLI](../0.8.x/operate/install/#install-keptn-cli) guide.
 
 #### 2.1 Install Keptn CLI
 The Keptn CLI is the one-stop-shop for all operations related to Keptn.
@@ -126,13 +126,13 @@ Please make sure you have `kubectl` installed (see [kubernetes.io/docs/tasks/too
 
 ### 3. Install Keptn and authenticate Keptn CLI
 
-* By executing the [keptn install](../0.7.x/reference/cli/commands/keptn_install) command as shown next, Keptn will be installed on your Kubernetes cluster supporting all continuous delivery use cases (including quality gates and automated operations):
+* By executing the [keptn install](../0.8.x/reference/cli/commands/keptn_install) command as shown next, Keptn will be installed on your Kubernetes cluster supporting all continuous delivery use cases (including quality gates and automated operations):
 
     ```console
     keptn install --use-case=continuous-delivery
     ``` 
 
-* After a successful installation, you need to expose Keptn. The official [install Keptn CLI](../0.7.x/operate/install/#install-keptn) guide provides different ways of exposing your Keptn. In this quick start, the port-forwarding mechanism from Kubernetes is applied: 
+* After a successful installation, you need to expose Keptn. The official [install Keptn CLI](../0.8.x/operate/install/#install-keptn) guide provides different ways of exposing your Keptn. In this quick start, the port-forwarding mechanism from Kubernetes is applied: 
 
     ```console
     kubectl -n keptn port-forward service/api-gateway-nginx 8080:80
@@ -217,12 +217,12 @@ With Keptn installed, have a look at the different [tutorials](https://tutorials
 
 Review the documentaiton for a full reference on all Keptn cabilities and components and how they can be combined/extended to your needs:
 
-- [Operate Keptn](../0.7.x//operate)
-- [Manage Keptn](../0.7.x//manage)
-- [Continuous Delivery](../0.7.x//continuous_delivery)
-- [Quality Gates](../0.7.x//quality_gates)
-- [Automated Operations](../0.7.x/automated_operations)
-- [Custom Integrations](../0.7.x//integrations)
+- [Operate Keptn](../0.8.x/operate)
+- [Manage Keptn](../0.8.x/manage)
+- [Continuous Delivery](../0.8.x/continuous_delivery)
+- [Quality Gates](../0.8.x/quality_gates)
+- [Automated Operations](../0.8.x/automated_operations)
+- [Custom Integrations](../0.8.x/integrations)
 
 ### 6. Do you need help?
 
