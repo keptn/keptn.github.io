@@ -222,7 +222,7 @@ Use this page if you have already Keptn experience and would like to install it 
 
 Every Keptn release provides binaries for the Keptn CLI. These binaries are available for Linux, macOS, and Windows.
 
-- Download the version for your operating system from: [GitHub](https://github.com/keptn/keptn/releases/tag/0.7.3)
+- Download the version for your operating system from: [GitHub](https://github.com/keptn/keptn/releases/tag/0.8.0)
 - Unpack the archive
 - Find the `keptn` binary in the unpacked directory
 
@@ -230,17 +230,17 @@ Every Keptn release provides binaries for the Keptn CLI. These binaries are avai
 
   - *Windows*: Copy the executable to the desired folder and add the executable to your PATH environment variable.
 
-- Now, you should be able to run the Keptn CLI: 
+- Now, verify that the installation has worked and that the version is correct by running:
     - *Linux / macOS*
 
     ```console
-    keptn --help
+    keptn version
     ```
     
     - *Windows*
 
     ```console
-    .\keptn.exe --help
+    .\keptn.exe version
     ```
 
 **Note:** For the rest of the documentation we will stick to the *Linux / macOS* version of the commands.

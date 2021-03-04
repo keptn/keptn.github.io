@@ -23,15 +23,15 @@ This section explains how to use the Keptn CLI and the Keptn API for those two a
 
 To trigger a quality gate evaluation for a service in the stage of a specific project, the Keptn CLI provides two commands: 
 
-<details><summary>`keptn send event start-evaluation` (*recommended*)</summary>
+<details><summary>`keptn trigger evaluation` (*recommended*)</summary>
 <p>
 
-* The [keptn send event start-evaluation](../../reference/cli/commands/keptn_send_event_start-evaluation/) command allows specifying the timeframe of the evaluation using the `--start`, `--end`, or `timeframe` flags. 
+* The [keptn trigger evaluation](../../reference/cli/commands/keptn_trigger_evaluation/) command allows specifying the timeframe of the evaluation using the `--start`, `--end`, or `timeframe` flags. 
 
 * To trigger a quality gate evaluation with a timeframe of `5` minutes starting at `2020-12-31T10:00:00`, use the following example:
 
 ```console
-keptn send event start-evaluation --project=easyBooking --stage=quality_assurance --service=booking --start=2020-12-31T11:59:59 --timeframe=5m
+keptn trigger evaluation --project=easyBooking --stage=quality_assurance --service=booking --start=2020-12-31T11:59:59 --timeframe=5m
 ```
 
 * This command returns a unique ID (`keptn-context`) that is required to retrieve the evaluation result. 
@@ -82,7 +82,7 @@ keptn send event --file=trigger_quality_gate.json
 
 ### Fetch the evaluation result of a quality gate
 
-* To fetch a quality gate evaluation result, the Keptn CLI provides the [keptn get event sh.keptn.event.evaluation.finished](../../reference/cli/commands/keptn_get_event/) command. This command requires the ID (`--keptn-context`) returned by the `send event start-evaluation` or `send event` command, as well as the name of the project (`--project`).
+* To fetch a quality gate evaluation result, the Keptn CLI provides the [keptn get event sh.keptn.event.evaluation.finished](../../reference/cli/commands/keptn_get_event/) command. This command requires the ID (`--keptn-context`) returned by the `trigger evaluation` or `send event` command, as well as the name of the project (`--project`).
 
 ```console
 keptn get event sh.keptn.event.evaluation.finished --keptn-context=1234-5678-90ab-cdef --project=easyBooking

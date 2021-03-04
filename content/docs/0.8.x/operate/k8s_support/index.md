@@ -27,7 +27,8 @@ Keptn versions are expressed as `x.y.z`, where `x` is the major version, `y` is 
 **Remarks:**
 
 * (1): AKS with K8s version before 1.15 might fail (see: [#1429](https://github.com/keptn/keptn/issues/1429)), due to a known AKS issue: [#69262](https://github.com/kubernetes/kubernetes/issues/69262)
-* (2): Requires sufficient resources (e.g., >= 8 vCPUs and 14 GB memory for deploying sockshop in multiple stages) depending on your use-case and workloads.
+* (2): GKE and EKS did not provide K8s 1.19 clusters for testing (checked on: 3rd March, 2021)
+* (3): Requires sufficient resources (e.g., >= 8 vCPUs and 14 GB memory for deploying sockshop in multiple stages) depending on your use-case and workloads.
 
 **Notes:**
 

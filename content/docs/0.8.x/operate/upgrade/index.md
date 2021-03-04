@@ -8,7 +8,7 @@ aliases:
 
 ## Upgrade from Keptn 0.7 to 0.8
 
-Please follow the three steps to succesfully upgrade your Keptn 0.7.3 to 0.8.0 
+Please follow the three steps to upgrade your Keptn 0.7.3 to 0.8.0.
 
 ### Step 1: Keptn CLI and Keptn installation
 
