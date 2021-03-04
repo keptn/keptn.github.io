@@ -20,7 +20,7 @@ Please follow the three steps to succesfully upgrade your Keptn 0.7.3 to 0.8.0
       * The next command will download the 0.8.0 release from [GitHub](https://github.com/keptn/keptn/releases), unpack it, and move it to `/usr/local/bin/keptn`.
 
         ```console
-        curl -sL https://get.keptn.sh | sudo -E bash
+        curl -sL https://get.keptn.sh | bash
         ```
     
       * Verify that the installation has worked and that the version is correct by running:
