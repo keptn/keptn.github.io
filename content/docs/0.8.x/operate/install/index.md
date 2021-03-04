@@ -23,7 +23,7 @@ To create a Kubernetes cluster, select one of the following options:
 1. Make sure you are logged in to your Azure account with `az login`
 
 1. Create AKS cluster
-  - [Master version:](../k8s_support/#supported-versions) `1.16.x` (tested version: `1.16.10`)
+  - [Master version:](../k8s_support/#supported-versions) `1.18.x` (tested version: `1.18.14`)
   - One **D8s_v3** node
  
  </p>
@@ -67,7 +67,7 @@ Run your Keptn installation for free on GKE! If you [sign up for a Google Cloud 
   - [gcloud](https://cloud.google.com/sdk/gcloud/)
 
 2. Create GKE cluster
-  - [Master version:](../k8s_support/#supported-versions) `1.16.x` and `1.17.x` (tested version: `1.17.14-gke.400`)
+  - [Master version:](../k8s_support/#supported-versions) `1.17.x` and `1.18.x` (tested version: `1.18.12`)
   - One node with 8 vCPUs and 32 GB memory (e.g., one **n1-standard-8** node)
   - Image type `Ubuntu` or `COS` (**Note:** If you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../monitoring/dynatrace/).)
   - Sample script to create such a cluster:
@@ -78,7 +78,7 @@ Run your Keptn installation for free on GKE! If you [sign up for a Google Cloud 
     CLUSTER_NAME=<NAME_OF_CLUSTER>
     ZONE=us-central1-a
     REGION=us-central1
-    GKE_VERSION="1.17"
+    GKE_VERSION="1.18"
     IMAGE_TYPE="Ubuntu"
     ```
 
