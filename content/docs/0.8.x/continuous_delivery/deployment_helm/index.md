@@ -117,10 +117,12 @@ where the content of `delivery.json` looks something like:
 ```
 
 **Limitations:**
-- Currently, when using this deployment strategy, you cannot use the `keptn trigger delivery` command as you would
-normally do. Hence, you need to send an event using `keptn send event` like described above.
-- Modifications to the Helm chart via keptn configuration changes are currently not possible.
 
+* Currently, when using this deployment strategy, you cannot use the `keptn trigger delivery` command as you would
+normally do. Hence, you need to send an event using `keptn send event` like described above.
+* Modifications to the Helm chart via keptn configuration changes are currently not possible.
+* Helm-Service is not able to determine the internal nor public deployment URIs. Any subsequent steps that
+require the URIs (e.g. jmeter tests) will not work.
 
 
 ## Clean-up after deleting a project
