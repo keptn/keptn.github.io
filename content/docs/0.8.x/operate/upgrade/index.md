@@ -1,7 +1,7 @@
 ---
 title: Upgrade Keptn
 description: Upgrade your Keptn to 0.8
-weight: 5
+weight: 30
 aliases:
   - /docs/0.8.0/operate/upgrade/
 ---

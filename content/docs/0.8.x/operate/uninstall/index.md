@@ -1,7 +1,7 @@
 ---
 title: Uninstall Keptn
 description: Uninstall Keptn from a Kubernetes cluster.
-weight: 10
+weight: 40
 keywords: [0.8.x-operate]
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Advanced Install Options
 description: Advanced Install Options using Helm
-weight: 3
+weight: 20
 ---
 
 ## Advanced Install Options: Install Keptn using the Helm chart
