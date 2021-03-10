@@ -59,7 +59,7 @@ metadata:
   name: "shipyard-sockshop"
 spec:
   stages:
-    - name: "quality_assurance"
+    - name: "quality-assurance"
 ```
 
 **Note**: You do not have to define any tasks in the Shipyard file because quality gates are a Keptn built-in task.
