@@ -165,11 +165,11 @@ Run your Keptn installation for free on GKE! If you [sign up for a Google Cloud 
 
 Please refer to the [official homepage of K3s](https://k3s.io) for detailed installation instructions. Here, a short guide on how to run Keptn on K3s is provided for a Linux environment. **Note:** If you are using macOS, you will need to run K3s using [multipass](https://multipass.run/) and as explained [here](https://medium.com/@zhimin.wen/running-k3s-with-multipass-on-mac-fbd559966f7c).
  
-1. Download, install [K3s](https://k3s.io/) (tested with [versions 1.16 to 1.19](../k8s_support)) and run K3s using the following command:
+1. Download, install [K3s](https://k3s.io/) (tested with [versions 1.16 to 1.20](../k8s_support)) and run K3s using the following command:
    ```console
-   curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.19.5+k3s1 K3S_KUBECONFIG_MODE="644" sh -s - --no-deploy=traefik
+   curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.20.4+k3s1 K3S_KUBECONFIG_MODE="644" sh -s - --no-deploy=traefik
    ```
-   This installs version `v1.19.5+k3s1` (please refer to the [K3s GitHub releases page](https://github.com/rancher/k3s/releases) for newer releases), sets file permissions `644` on `/etc/rancher/k3s/k3s.yaml` and disables `traefik` as an ingress controller.
+   This installs version `v1.20.4+k3s1` (please refer to the [K3s GitHub releases page](https://github.com/rancher/k3s/releases) for newer releases), sets file permissions `644` on `/etc/rancher/k3s/k3s.yaml` and disables `traefik` as an ingress controller.
 
 1. Export the Kubernetes profile using
    ```console
