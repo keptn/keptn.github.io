@@ -21,6 +21,12 @@ icon: callout-idea
 | [**Kubernetes Podcast from Google: Keptn, with Alois Reitbauer**](https://kubernetespodcast.com/episode/119-keptn/)<br>Keptn, a control plane for continuous delivery, came out of the need to install Dynatrace’s software at their customer’s environments. Alois Reitbauer is Chief Technical Strategist at Dynatrace, reponsible for open source, and a co-chair of the CNCF App Delivery SIG. He talks to your hosts about Keptn, observability after deployment, and how owning a 40 year old sports car is more “curation” than “operation”.<br><br>https://kubernetespodcast.com/episode/119-keptn/ | <iframe src="https://open.spotify.com/embed-podcast/episode/2aujvK9AchmaZi1G4AOtoi" width="400" height="232" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> |
 | [**Quality Sense: Introduction to Keptn**](https://abstracta.us/blog/podcast/introduction-to-keptn/)<br>In this Quality Sense episode, host, Federico Toledo chats with Dynatrace’s Andreas aka “Andi” Grabner. From Austria, he has more than 20 years of experience in the field and continuously shares his knowledge about performance engineering especially through his podcast called Pure Performance. During the interview, the two discussed performance engineering concepts, today’s biggest challenges in the field, the open source project, Keptn, and more!<br><br>https://abstracta.us/blog/podcast/introduction-to-keptn/ | <iframe src="https://open.spotify.com/embed-podcast/episode/0Y4mYNgwizSP0MjppguGMT" width="400" height="232" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> |
 
+## Keptn 0.8 feature highlights
+
+| | |
+| --- | --- |
+| **Keptn 0.8 feature highlights and important changes** with Andi Grabner & Jürgen Etzlstorfer<br><br> Learn more about feature highlights and important changes in Keptn 0.8 from Keptn maintainers Andi Grabner and Jürgen Etzlstorfer.<br><br>✅ Shipyard 0.2.0 update<br>✅ Eventing & Tool integrations<br>✅ Multi-cluster support | <iframe width="560" height="315" src="https://www.youtube.com/embed/aD1wsku8I2M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> |
+
 
 ## Scaling Event Driven Delivery & Operations with Keptn
 
