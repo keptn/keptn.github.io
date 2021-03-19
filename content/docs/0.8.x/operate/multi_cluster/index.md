@@ -96,10 +96,12 @@ Please find the Helm Charts here:
 
     ```
     distributor:
-      projectFilter: ""                     # set the project, e.g., "sockshop" (to get events for the entire project)
-      stageFilter: "hardening"              # set the stage, e.g., "hardening" (to get events for the stage)
-      serviceFilter: ""                     # set the service, e.g., "carts" (to get events for the service )
+      projectFilter: ""                     # set the project, e.g., "sockshop" to get events for this project. 
+      stageFilter: "hardening"              # set the stage, e.g., "hardening" to get events for the stage.
+      serviceFilter: ""                     # set the service, e.g., "carts" to get events for the service.
     ``` 
+
+    *Note:* `projectFilter`, `stageFilter`, and `serviceFilter` allow a comma-separated list of values. 
 
 * Deploy the execution plane service (e.g., jmeter-service) from release assets with your `values.yaml` and by using `helm`: 
 
