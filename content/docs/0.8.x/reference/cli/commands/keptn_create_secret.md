@@ -1,33 +1,27 @@
 ---
 date: "2021-03-25T15:47:41+01:00"
-title: "keptn create service"
-slug: keptn_create_service
+title: "keptn create secret"
+slug: keptn_create_secret
 ---
-## keptn create service
+## keptn create secret
 
-Creates a new service
-
-### Synopsis
-
-Creates a new service with the provided name in the specified project.
-
-**Note:** This command is different from keptn onboard service which requires a Helm chart.
-
+Creates a new secret
 
 ```
-keptn create service SERVICENAME --project=PROJECTNAME [flags]
+keptn create secret SECRET_NAME --from-literal="key1=value1"" --from-literal="key2=value2" --scope=my-scope [flags]
 ```
 
 ### Examples
 
 ```
-keptn create service carts --project=sockshop
+keptn create secret SECRET_NAME --from-literal="key1=value1"" --from-literal="key2=value2" --scope=my-scope
 ```
 
 ### Options
 
 ```
-  -p, --project string   The project in which to create the service
+      --from-literal stringArray   Specify a key and literal value to insert in secret (i.e. my-key=some-value)
+  -s, --scope string               The scope of the secret (default "keptn-default")
 ```
 
 ### Options inherited from parent commands
