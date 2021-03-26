@@ -10,7 +10,7 @@ If you are using a different framework/programming language, please try to apply
 
 ## CloudEvents
 
-*Note*: If you are using the latest version of `go-utils` (v0.8.1 at the time of writing), this is handled automatically for you in our new helper functions (see below).
+*Note*: If you are using the latest version of `go-utils` (v0.8.0 at the time of writing), this is handled automatically for you in our new helper functions (see below).
 
 With Keptn 0.8.x, we have upgraded to CloudEvents spec 1.0. Please upgrade your relevant CloudEvents and set `"specversion": "1.0"` where adequate, e.g.:
 ```json
