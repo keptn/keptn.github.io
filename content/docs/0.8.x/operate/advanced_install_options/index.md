@@ -33,38 +33,38 @@ The following flags are available:
 ### Example: Use a LoadBalancer for api-gateway-nginx
 
 ```console
-helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.8.0 --repo=https://storage.googleapis.com/keptn-installer --set=control-plane.apiGatewayNginx.type=LoadBalancer
+helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.8.1 --repo=https://storage.googleapis.com/keptn-installer --set=control-plane.apiGatewayNginx.type=LoadBalancer
 ```
 
 ### Example: Install execution plane for Continuous Delivery use-case
 
 For example, the **Control Plane with the Execution Plane (for Continuous Delivery)** can be installed by the following command:
 ```console
-helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.8.0 --repo=https://storage.googleapis.com/keptn-installer --set=continuous-delivery.enabled=true
+helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.8.1 --repo=https://storage.googleapis.com/keptn-installer --set=continuous-delivery.enabled=true
 ```
 
 ### Example: Install execution plane for Continuous Delivery use-case and use a LoadBalancer for api-gateway-nginx
 
 For example, the **Control Plane with the Execution Plane (for Continuous Delivery)** and a `LoadBalancer` for exposing Keptn can be installed by the following command:
 ```console
-helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.8.0 --repo=https://storage.googleapis.com/keptn-installer --set=continuous-delivery.enabled=true,control-plane.apiGatewayNginx.type=LoadBalancer
+helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.8.1 --repo=https://storage.googleapis.com/keptn-installer --set=continuous-delivery.enabled=true,control-plane.apiGatewayNginx.type=LoadBalancer
 ```
 
 ### Example: Execute Helm upgrade without Internet connectivity
 
-* Download the Helm chart from [keptn-installer/keptn-0.8.0.tgz](https://storage.googleapis.com/keptn-installer/keptn-0.8.0.tgz) and move it to the machine that has no Internet connectivity, but should perform the installation:
+* Download the Helm chart from [keptn-installer/keptn-0.8.1.tgz](https://storage.googleapis.com/keptn-installer/keptn-0.8.1.tgz) and move it to the machine that has no Internet connectivity, but should perform the installation:
 
 * To install the **Control Plane with the Execution Plane (for Continuous Delivery)** and a `LoadBalancer` for exposing Keptn, execute the following command. 
 **Note:** Reference the Helm chart stored locally instead of a repository and version:
 ```console
-helm upgrade keptn ./keptn-0.8.0.tgz --install -n keptn --create-namespace --wait --set=control-plane.apiGatewayNginx.type=LoadBalancer,continuous-delivery.enabled=true
+helm upgrade keptn ./keptn-0.8.1.tgz --install -n keptn --create-namespace --wait --set=control-plane.apiGatewayNginx.type=LoadBalancer,continuous-delivery.enabled=true
 ```
 
 Furthermore, Keptn's Helm chart allows you to set all images, which can be especially
 handy in air-gapped systems where you cannot access DockerHub for pulling the images.
 For example, here all images are pulled from a registry with the URL `YOUR_REGISTRY/`
 ```console
-helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.8.0 --repo=https://storage.googleapis.com/keptn-installer --set=control-plane.apiGatewayNginx.type=LoadBalancer,continuous-delivery.enabled=true,\
+helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.8.1 --repo=https://storage.googleapis.com/keptn-installer --set=control-plane.apiGatewayNginx.type=LoadBalancer,continuous-delivery.enabled=true,\
 control-plane.mongodb.image.repository=YOUR_REGISTRY/centos/mongodb-36-centos7,\
 control-plane.nats.nats.image=YOUR_REGISTRY/nats:2.1.7-alpine3.11,\
 control-plane.nats.reloader.image=YOUR_REGISTRY/connecteverything/nats-server-config-reloader:0.6.0,\
@@ -90,7 +90,7 @@ continuous-delivery.jmeterService.image.repository=YOUR_REGISTRY/keptn/jmeter-se
 <p>    
 ```console
 #!/bin/bash
-KEPTN_TAG=0.8.0
+KEPTN_TAG=0.8.1
 IMAGES_CONTROL_PLANE="centos/mongodb-36-centos7:1 nats:2.1.7-alpine3.11 connecteverything/nats-server-config-reloader:0.6.0 synadia/prometheus-nats-exporter:0.5.0 nginxinc/nginx-unprivileged:1.19.1-alpine keptn/remediation-service:${KEPTN_TAG} keptn/api:${KEPTN_TAG} keptn/bridge2:${KEPTN_TAG} keptn/distributor:${KEPTN_TAG} keptn/shipyard-controller:${KEPTN_TAG} keptn/configuration-service:${KEPTN_TAG} keptn/mongodb-datastore:${KEPTN_TAG} keptn/statistics-service:${KEPTN_TAG} keptn/lighthouse-service:${KEPTN_TAG} keptn/approval-service:${KEPTN_TAG}"
 # IMAGES_CONTINUOUS_DELIVERY="keptn/helm-service:${KEPTN_TAG} keptn/jmeter-service:${KEPTN_TAG}"
 INTERNAL_DOCKER_REGISTRY="YOUR_REGISTRY/"
@@ -115,5 +115,5 @@ By specifying a value for `control-plane.prefixPath`, the used prefix for the ro
 For example, if a user sets `control-plane.prefixPath=/mykeptn` in the Helm install/upgrade command,
 the Keptn API is located under `http://HOSTNAME/mykeptn/api` and the Keptn Bridge is located under `http://HOSTNAME/mykeptn/bridge`:
 ```console
-helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.8.0 --repo=https://storage.googleapis.com/keptn-installer --set=control-plane.apiGatewayNginx.type=LoadBalancer,continuous-delivery.enabled=true,control-plane.prefixPath=/mykeptn
+helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.8.1 --repo=https://storage.googleapis.com/keptn-installer --set=control-plane.apiGatewayNginx.type=LoadBalancer,continuous-delivery.enabled=true,control-plane.prefixPath=/mykeptn
 ```
