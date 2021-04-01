@@ -11,6 +11,10 @@ on:
     tags-ignore:
       - "**"
     types: ['opened', 'reopened', 'synchronize']
+<<<<<<< HEAD
+=======
+
+>>>>>>> 86d48714f70d853a38810d3822da637023b6f9c0
 jobs:
   build:
     name: Spell checking
