@@ -11,7 +11,7 @@ on:
     tags-ignore:
       - "**"
     types: ['opened', 'reopened', 'synchronize']
-    
+
 jobs:
   build:
     name: Spell checking
