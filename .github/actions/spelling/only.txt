@@ -1,1 +1,1 @@
-^content/docs/.*\.md$
+(?:^|/)content/docs
