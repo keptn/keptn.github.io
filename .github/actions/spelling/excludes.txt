@@ -3,3 +3,4 @@
 ^\.github/actions/
 \.editorconfig$
 \.png$
+\.svg$
