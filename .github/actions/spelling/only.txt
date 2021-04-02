@@ -1,1 +1,1 @@
-(?:^|/)content/docs
+(?:^|/)content/docs/
