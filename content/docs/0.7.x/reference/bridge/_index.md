@@ -34,7 +34,7 @@ The Keptn Bridge provides an easy way to browse all events that are sent within 
     link="./assets/bridge_services.png"
     caption="Keptn Bridge services view with event stream">}}
 
-* The event stream on the right side shows information for certain steps. A key step in continous delivery and remediations is the evaluation of the deployment based on SLO/SLIs. The result of this evaluation step is displayed in a *Chart* and *HeatMap*:
+* The event stream on the right side shows information for certain steps. A key step in continuous delivery and remediations is the evaluation of the deployment based on SLO/SLIs. The result of this evaluation step is displayed in a *Chart* and *HeatMap*:
 
     {{< popup_image
     link="./assets/chart_heatmap.png"

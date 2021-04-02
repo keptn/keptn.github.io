@@ -64,7 +64,7 @@ Implemented **Keptn spec** version: [0.2.0](https://github.com/keptn/spec/tree/0
 - **Project** endpoints have been moved to: `/api/controlPlane/v1/project`
 - **Stage** endpoints have been moved to: `/api/controlPlane/v1/stage`
 - **Service** endpoints have been moved to: `/api/controlPlane/v1/service`
-- **Evaluation** endpoint for triggering an evaluaiton has been moved to: `/api/v1/project​/{project}​/stage​/{stage}​/service​/{service}​/evaluation`
+- **Evaluation** endpoint for triggering an evaluation has been moved to: `/api/v1/project​/{project}​/stage​/{stage}​/service​/{service}​/evaluation`
 - **Events** /GET endpoint has been moved to: `/api/mongodb-datastore/event`
 
 ### CLI
@@ -285,7 +285,7 @@ Implemented **Keptn spec** version: [0.2.0](https://github.com/keptn/spec/tree/0
 - Format the Go imports [3150](https://github.com/keptn/keptn/issues/3150)
 - Test the linking of stages based on task sequence events: `sh.keptn.event.[stage].[sequence].finished` [2534](https://github.com/keptn/keptn/issues/2534)
 
-<details><summary>Update of third-party depenendencies to their latest version, most notable are:</summary>
+<details><summary>Update of third-party dependencies to their latest version, most notable are:</summary>
 <p>
  
 * *Go* (Microservices)
@@ -295,7 +295,7 @@ Implemented **Keptn spec** version: [0.2.0](https://github.com/keptn/spec/tree/0
   - nats-io/nats-server/v2 to 2.1.9
 * *NodeJS* (Bridge)
   - marked to 2.0.0
-  - higlights.js to 10.4.1
+  - highlights.js to 10.4.1
 
 </p>
 </details>

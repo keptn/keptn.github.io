@@ -17,7 +17,7 @@ Keptn allows building scalable automation for delivery and operations. Therefore
 
 **Shipyard:** A shipyard is the declarative means to divide an environment (e.g., Kubernetes cluster) into project stages and to specify task sequences for each project stage.
 
-**Sequence:** A sequence declares a set of tasks for realizing a delivery or operations process. A task sequence is triggered by an external event, i.e., by a *domain event*. Examples for domain events are the availablity of a new artifact which should be deployed (i.e., a `new-artifact` event) or the occurence of a problem (i.e., a `problem` event).
+**Sequence:** A sequence declares a set of tasks for realizing a delivery or operations process. A task sequence is triggered by an external event, i.e., by a *domain event*. Examples for domain events are the availability of a new artifact which should be deployed (i.e., a `new-artifact` event) or the occurence of a problem (i.e., a `problem` event).
 
 **Task:** A task is the smallest executable unit of a sequence. A task is triggered by an event. 
 

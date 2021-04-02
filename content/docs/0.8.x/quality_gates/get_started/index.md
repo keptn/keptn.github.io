@@ -74,7 +74,7 @@ spec:
 
 ## Step 1: Create project and service
 
-* To create the Keptn project (e.g., `easyBooking`), use the [keptn create project](../../reference/cli/commands/keptn_create_project/) CLI command. Here the Shipyard file is needed, which desclares the stages.
+* To create the Keptn project (e.g., `easyBooking`), use the [keptn create project](../../reference/cli/commands/keptn_create_project/) CLI command. Here the Shipyard file is needed, which declares the stages.
 
 * To create the Keptn service (e.g., `booking`), use the [keptn create service](../../reference/cli/commands/keptn_create_service/) CLI command.
 

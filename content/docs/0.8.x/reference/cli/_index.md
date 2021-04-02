@@ -316,7 +316,7 @@ To do so in all your shell sessions, add the following to your ~/.zshrc file:
 source <(keptn CLI completion zsh)
 ```
 
-Set the keptn completion code for zsh to autoload on startup by executing the follwing: 
+Set the keptn completion code for zsh to autoload on startup by executing the following: 
 
 ```bash
 keptn completion zsh > "${fpath[1]}/_keptn

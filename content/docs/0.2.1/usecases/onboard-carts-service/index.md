@@ -119,7 +119,7 @@ Since the carts service needs a mongo database, a second app needs to be onboard
 
 1. Select **Multibranch Pipeline** and click on **OK**.
     1. At *Branch Source* select *Git* and specify at *Project Repository* the github repository of your forked carts service.
-    1. At *Build Configurtion* add the extension `.ci` to the Jenkinsfile.
+    1. At *Build Configuration* add the extension `.ci` to the Jenkinsfile.
 
         {{< popup_image
         link="./assets/carts_ci.png"

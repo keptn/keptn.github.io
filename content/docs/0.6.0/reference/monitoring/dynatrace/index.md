@@ -211,7 +211,7 @@ The *dynatrace-service* in Keptn will take care of pushing events of the Keptn w
 
 ## Disable frequent issue detection
 
-Keptn relies on Dynatrace sending *brand new* alerts everytime a problem is detected. Therefore we need to disable the *Frequent Issue Detection* within Dynatrace. To do so, go to **Settings > Anomaly Detection > Frequent Issue Detection**, and disable all switches found in this menu:
+Keptn relies on Dynatrace sending *brand new* alerts every time a problem is detected. Therefore we need to disable the *Frequent Issue Detection* within Dynatrace. To do so, go to **Settings > Anomaly Detection > Frequent Issue Detection**, and disable all switches found in this menu:
 
 {{< popup_image
     link="./assets/disable-fid.png"
@@ -264,7 +264,7 @@ git clone --branch 0.7.0 https://github.com/keptn-contrib/dynatrace-service --si
 
 ### I have created the wrong secret
 
-If you have accidentially created a secret with wrong credentials or have not replaced the placeholders correctly, you can delete the secret and create it again.
+If you have accidentally created a secret with wrong credentials or have not replaced the placeholders correctly, you can delete the secret and create it again.
 ```console
 kubectl delete secret dynatrace -n keptn
 ```

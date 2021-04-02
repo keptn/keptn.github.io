@@ -1,6 +1,6 @@
 ---
 title: Declarative Multi-Stage Delivery
-description: Learn about the core use-case of declerative multi-stage delivery.
+description: Learn about the core use-case of declarative multi-stage delivery.
 weight: 1
 keywords: [keptn, use-cases]
 ---

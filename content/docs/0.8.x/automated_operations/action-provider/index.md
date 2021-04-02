@@ -1,6 +1,6 @@
 ---
 title: Action-Provider
-description: Add an action-provider to execte custom remediation actions.
+description: Add an action-provider to execute custom remediation actions.
 weight: 5
 icon: setup
 keywords: [0.8.x-automated-operations]

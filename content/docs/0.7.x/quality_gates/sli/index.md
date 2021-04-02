@@ -5,7 +5,7 @@ weight: 10
 keywords: [0.7.x-quality_gates]
 ---
 
-A Service-Level Indicator (SLI) is a defined quantitative measure of some aspects of the service level. The query for an SLI is provider/tool-dependent and therefore each SLI-provider relies on a specific SLI configuration. The SLI configruation contains a list of indicators, which always consists of a name and the provider-specific query.
+A Service-Level Indicator (SLI) is a defined quantitative measure of some aspects of the service level. The query for an SLI is provider/tool-dependent and therefore each SLI-provider relies on a specific SLI configuration. The SLI configuration contains a list of indicators, which always consists of a name and the provider-specific query.
 
 ## Service-Level Indicator
 
@@ -61,7 +61,7 @@ Please follow the links to the provider-specific SLIs:
       response_time_p95: "query C-1"
     ```
 
-    * SLI configuraiton on stage-level:
+    * SLI configuration on stage-level:
 
     ```yaml
     spec_version: "1.0"
@@ -70,7 +70,7 @@ Please follow the links to the provider-specific SLIs:
       response_time_p99: "query D-2"
     ```
 
-    * SLI configuraiton on service-level: 
+    * SLI configuration on service-level: 
 
     ```yaml
     spec_version: "1.0"
