@@ -32,7 +32,7 @@ Keptn summarizes logs for a specific deployment of a new artifact by adding a pr
     
   1. Ensure that you have selected the correct time frame on the top right corner of the Discover view.
 
-  1. Entrypoints for deployments are marked with `keptnEntry: true`. To retrieve all events of this type within the selected timeframe, enter "keptnEntry: true" in the search bar at the top. Afterwards, you should see something like this:
+  1. Entry points for deployments are marked with `keptnEntry: true`. To retrieve all events of this type within the selected timeframe, enter "keptnEntry: true" in the search bar at the top. Afterwards, you should see something like this:
 
     {{< popup_image link="./assets/entry.png" caption="Keptn Entry Points">}}
 

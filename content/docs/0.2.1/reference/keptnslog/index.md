@@ -29,7 +29,7 @@ Keptn summarizes logs for a specific pipeline run by adding a property called `k
     
   1. Ensure that you have selected the correct time frame on the top right corner of the Discover view.
 
-  1. Entrypoints for new pipeline runs are marked with `keptnEntry: true`. To retrieve all events of this type within the selected timeframe, enter "keptnEntry: true" in the search bar at the top. Afterwards, you should see something like this:
+  1. Entry points for new pipeline runs are marked with `keptnEntry: true`. To retrieve all events of this type within the selected timeframe, enter "keptnEntry: true" in the search bar at the top. Afterwards, you should see something like this:
 
     {{< popup_image link="./assets/entry.png" caption="Keptn Entry Points">}}
 

@@ -181,7 +181,7 @@ the namespace has to follow the format `ProjectName-StageName`:
 
 ### Add Argo Hook for triggering Keptn
 
-In order to infrom Keptn when Argo CD does the deployment,
+In order to inform Keptn when Argo CD does the deployment,
 an [Argo Resource Hook](https://argoproj.github.io/argo-cd/user-guide/resource_hooks/) is configured.
 This hook is triggered when Argo CD applies the manifests. This hook
 executes a script which sends a [`sh.keptn.events.deployment-finished`](https://github.com/keptn/spec/blob/0.1.3/cloudevents.md#deployment-finished) event to the Keptn API.

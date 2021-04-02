@@ -61,7 +61,7 @@ An example of a perfspec file is listed below:
     {
       "id":"request_latency_seconds",
       "source":"Prometheus",
-      "query":"rate(requests_latency_seconds_sum{job='carts-$ENVIRONMENT'}[$DURATION_MINUTESm])/rate(requests_latency_seconds_count{job='carts-$ENVIRONMENT'}[$DURATION_MINUTESm])",
+      "query":"rate(requests_latency_seconds_sum{job='carts-$ENVIRONMENT'}[$DURATION_MINUTES])/rate(requests_latency_seconds_count{job='carts-$ENVIRONMENT'}[$DURATION_MINUTES])",
       "grading":{
           "type":"Threshold",
           "thresholds":{

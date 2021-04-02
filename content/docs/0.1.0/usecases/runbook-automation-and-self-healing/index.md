@@ -192,7 +192,7 @@ The promotional itself is controlled via Ansible Tower. That means that starting
 
     Please also note that a remediation action has been attached to this configuration change. This means, if Dynatrace detects a problem with this service that is related to this configuration change, this remediation action could be called to remediate the problem. 
 
-1. Looking at the loadgeneration output in your console, you will notice that about 1/3 of the requests will produce an error.
+1. Looking at the load generation output in your console, you will notice that about 1/3 of the requests will produce an error.
 
     ```console
     ...

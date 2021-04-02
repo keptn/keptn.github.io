@@ -109,7 +109,7 @@ An objective consists of:
 
 **Configuring the criteria:**
 
-The pass and warning criteria allow a list of boolean expressions with a logical operator [<, <=, >, >=] and a *absolute* or *relative* value. While the absolute value is a numberical number, the realtive value requires a (+/-) at the beginning and a % sign at the end, e.g.: `-10%`. 
+The pass and warning criteria allow a list of boolean expressions with a logical operator [<, <=, >, >=] and a *absolute* or *relative* value. While the absolute value is a numerical number, the realtive value requires a (+/-) at the beginning and a % sign at the end, e.g.: `-10%`. 
 
 * All boolean expressions in the list are combined with a logical AND. According to the next example, the pass criteria is met when its measured absolute value is below 1000 **and** the increase of the relative value is lower/equals 10 percent. 
 

@@ -15,7 +15,7 @@ Furthermore, a new version of the CLI needs to be downloaded.
   
     - Additionally, [yq](https://github.com/mikefarah/yq) is required.
 
-- Furthermore, please note that we increaded the GKE cluster size to one `n1-standard-16` node.
+- Furthermore, please note that we increased the GKE cluster size to one `n1-standard-16` node.
 
 - Make sure you are connected with the cluster running the keptn installation, which should be upgraded. Verify the connection by 
   using the following command:
