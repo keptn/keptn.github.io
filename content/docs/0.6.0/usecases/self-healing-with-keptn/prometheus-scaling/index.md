@@ -5,7 +5,7 @@ weight: 10
 keywords: [self-healing-prometheus]
 aliases:
 ---
-Demonstrates how to use the self-healing mechanisms of Keptn to solve a problem in a production stage by providing automated upscaling.
+Demonstrates how to use the self-healing mechanisms of Keptn to solve a problem in a production stage by providing automated upscalling.
 
 ## About this tutorial
 

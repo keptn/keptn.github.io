@@ -10,7 +10,7 @@ After creating a project, Keptn allows creating a service or onboarding a servic
 
 - **Create a service:** This creates a new and empty service in the specified project. This option is used when **not** deploying a service with Keptn. 
 
-- **Onboard a service:** This creates a new service and uploades the configuration to deploy the service. The configuration has to be a Helm Chart.
+- **Onboard a service:** This creates a new service and uploads the configuration to deploy the service. The configuration has to be a Helm Chart.
 
 ## Create a service
 

@@ -278,7 +278,7 @@ You will see these events in the Keptn's Bridge:
 Next, we will deploy a slow version of the carts service, which contains an artificial slowdown of 2 second in each request.
 This version must should not pass the quality gate and, hence, should not be promoted to serve real-user traffic.
 
-1. In your Git reposititory containing the Argo resources, go to the folder `carts/argo/carts` and open the `values.yaml` file.
+1. In your Git repository containing the Argo resources, go to the folder `carts/argo/carts` and open the `values.yaml` file.
 
 1. Edit the `tag` from `0.11.1` to `0.11.2`. 
 
@@ -320,7 +320,7 @@ This version must should not pass the quality gate and, hence, should not be pro
 Finally, we will deploy a version which does _not_ contain the slowdown anymore.
 This version should now again pass the quality gate and, hence, should be promoted to serve real-user traffic.
 
-1. In your Git reposititory containing the Argo resources, go to the folder `carts/argo/carts` and open the `values.yaml` file.
+1. In your Git repository containing the Argo resources, go to the folder `carts/argo/carts` and open the `values.yaml` file.
 
 1. Edit the `tag` from `0.11.2` to `0.11.3`. 
 

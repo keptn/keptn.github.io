@@ -9,7 +9,7 @@ Demonstrates how to use the self-healing mechanisms of Keptn to automatically se
 
 ## About this tutorial
 
-In this tutorial, you will learn how to use the capabilities of Keptn to provide self-healing for an application with feature flags based on the [Unleash feature toggle framework](https://unleash.github.io/). Please note that within this tutorial we use the carts microservice (see prerequesits below) which is already prepared to work with feature toggles.
+In this tutorial, you will learn how to use the capabilities of Keptn to provide self-healing for an application with feature flags based on the [Unleash feature toggle framework](https://unleash.github.io/). Please note that within this tutorial we use the carts microservice (see prerequisites below) which is already prepared to work with feature toggles.
 
 ## Prerequisites
 
@@ -48,7 +48,7 @@ To quickly get an Unleash server up and running with Keptn, follow these instruc
     keptn send event new-artifact --project=unleash --service=unleash --image=docker.io/keptnexamples/unleash:1.0.0
     ```
 
-1. Get the URL (`unleash.unelash-dev.KEPTN_DOMAIN`):
+1. Get the URL (`unleash.unleash-dev.KEPTN_DOMAIN`):
 
     ```console
     echo http://unleash.unleash-dev.$(kubectl get cm keptn-domain -n keptn -o=jsonpath='{.data.app_domain}')

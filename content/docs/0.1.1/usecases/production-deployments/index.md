@@ -278,7 +278,7 @@ In this step, you will configure traffic routing in Istio to redirect traffic ba
     virtualservice.networking.istio.io/sockshop configured
     ```
 
-1. If you login using either a new registered user, or a user that you've created before, you see version 2. After logging out, you see verison 1 again.
+1. If you login using either a new registered user, or a user that you've created before, you see version 2. After logging out, you see version 1 again.
 
 ### (optional) Redirect only Chrome users
 

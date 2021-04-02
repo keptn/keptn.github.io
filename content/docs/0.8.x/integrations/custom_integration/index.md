@@ -130,7 +130,7 @@ If your Keptn-service is running in the same pod as the distributor (which we re
 | PUBSUB_RECIPIENT      	| Host name of the Keptn-service        	|
 | PUBSUB_RECIPIENT_PORT 	| Service port to receive the event (default: `8080`)        	|
 | PUBSUB_RECIPIENT_PATH 	| Service endpoint to receive the event (default: `/`)        	|
-| PUBSUB_TOPIC          	| Event(s) the Keptn-service is subsribed to. To subscribe to multiple events, declare a comma-separated list, e.g.: `sh.keptn.event.test.triggered, sh.keptn.event.evaluation.triggered` |
+| PUBSUB_TOPIC          	| Event(s) the Keptn-service is subscribed to. To subscribe to multiple events, declare a comma-separated list, e.g.: `sh.keptn.event.test.triggered, sh.keptn.event.evaluation.triggered` |
 
 If your Keptn-service is running in the same pod as the distributor (which we recommend), and receives events at the port `8080` and the path `/`, you will only need to set the `PUBSUB_TOPIC` environment variable.
 

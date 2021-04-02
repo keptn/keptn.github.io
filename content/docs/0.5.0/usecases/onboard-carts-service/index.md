@@ -22,7 +22,7 @@ To illustrate the scenario this tutorial addresses, Keptn relies on following in
 
  **helm-service**:
   
-  * Creates a new service entity, manipulates the Helm chart, and uploades the Helm chart to the configuration store.
+  * Creates a new service entity, manipulates the Helm chart, and uploads the Helm chart to the configuration store.
 
   * Updates the service configuration when a new artifact is available.
 

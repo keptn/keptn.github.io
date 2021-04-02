@@ -84,7 +84,7 @@ Please find the Helm Charts here:
         token: ""                           # < (5) set Keptn API token
     ```
 
-* Depending on your setup of the multi-cluster environment and the approach you modeled your staging process, one stage can be for example on a seperate cluster. Let's assume the following setup: 
+* Depending on your setup of the multi-cluster environment and the approach you modeled your staging process, one stage can be for example on a separate cluster. Let's assume the following setup: 
   
   * Project: `sockshop`
   * Service: `carts`

@@ -54,7 +54,7 @@ A micro-operation is implemented by an [action-provider](../../0.7.x/integration
 
 ## Event-driven Choreography
 
-Assuming a developer has deployed a new artifact with a remediation file, the task sequence of an automated remedation looks as follows:
+Assuming a developer has deployed a new artifact with a remediation file, the task sequence of an automated remediation looks as follows:
 
 1. The process gets triggered by a problem event sent out by a monitoring solution.
 

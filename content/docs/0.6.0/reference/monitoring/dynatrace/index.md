@@ -292,7 +292,7 @@ If the logs contain similar lines as in the following paragraph, please execute 
 
 ```
 chmod: /mnt/host_root/opt: Read-only file system
-21:25:41 Warning: Cannot change permisions of /mnt/host_root/opt directory to u+rwx,g+rx,o+rx.
+21:25:41 Warning: Cannot change permissions of /mnt/host_root/opt directory to u+rwx,g+rx,o+rx.
 mkdir: can't create directory '/mnt/host_root/opt/dynatrace': Read-only file system
 21:25:41 Warning: Cannot create /mnt/host_root/opt/dynatrace directory.
 mkdir: can't create directory '/mnt/host_root/opt/dynatrace/': Read-only file system

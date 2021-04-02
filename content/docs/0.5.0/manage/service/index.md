@@ -76,7 +76,7 @@ env:
       fieldPath: "metadata.namespace"
 ```
 
-**Note:** If you need to store resources (e.g., test files, configuration files, etc.) that are required by a service, use the Keptn CLI with the [add-resource](../../reference/cli#keptn-add-resource) command and specifiy the `--project`, `--stage`, and `--service` as shown below:
+**Note:** If you need to store resources (e.g., test files, configuration files, etc.) that are required by a service, use the Keptn CLI with the [add-resource](../../reference/cli#keptn-add-resource) command and specify the `--project`, `--stage`, and `--service` as shown below:
 
 ```console
 keptn add-resource --project=your-project --service=my-service --stage=staging --resource=jmeter/load.jmx

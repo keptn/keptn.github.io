@@ -22,7 +22,7 @@ Please follow the links to the provider-specific SLIs:
 
 ## Add SLI configuration to a Service, Stage, or Project
 
-**Important:** In the following commands, the value of the `resourceUri` must specifiy the SLI-provider that can fetch the declared SLIs. In case of Dynatrace, for example, the value of the `resourceUri` must be: `dynatrace/sli.yaml`.
+**Important:** In the following commands, the value of the `resourceUri` must specify the SLI-provider that can fetch the declared SLIs. In case of Dynatrace, for example, the value of the `resourceUri` must be: `dynatrace/sli.yaml`.
 
 * To add an SLI configuration to a service, use the [keptn add-resource](../../reference/cli/commands/keptn_add-resource) command:
 

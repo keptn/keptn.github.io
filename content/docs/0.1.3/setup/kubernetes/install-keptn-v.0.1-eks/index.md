@@ -11,7 +11,7 @@ To install and configure keptn in a Kubernetes cluster, follow these instruction
 
 The next steps expect that you have a working Kubernetes cluster on AWS EKS. In case you do not have an EKS cluster available there are a couple of ways to setup your own cluster
 1. Follow the [Getting Started Guides](https://docs.aws.amazon.com/eks/latest/userguide/getting-started.html). 
-2. Leverage Terraform Templates such as [Tereraform AWS EKS Cluster by Cloudposse](https://github.com/cloudposse/terraform-aws-eks-cluster)
+2. Leverage Terraform Templates such as [Terraform AWS EKS Cluster by Cloudposse](https://github.com/cloudposse/terraform-aws-eks-cluster)
 
 When creating your own cluster we recommend the following minimum sizing definitions:
 

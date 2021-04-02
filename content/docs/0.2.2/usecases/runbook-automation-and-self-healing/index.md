@@ -189,7 +189,7 @@ Before you adjust this setting, make sure to have some traffic on the service in
         caption="Edit Service"
         width="700px">}}
 
-1. In the section **Anomaly detection** override the global anomaly detection and set the value for the **failure rate** to use **fixed thresholds** and to alert if **10%** custom failure rate are exceeded. Finally, set the **Sensitiviy** to **High**.
+1. In the section **Anomaly detection** override the global anomaly detection and set the value for the **failure rate** to use **fixed thresholds** and to alert if **10%** custom failure rate are exceeded. Finally, set the **Sensitivity** to **High**.
     {{< popup_image
         link="./assets/dynatrace-service-anomaly-detection.png"
         caption="Edit Anomaly Detection"

@@ -1,6 +1,6 @@
 ---
 title: Service
-description: Learn how to onbaord your own service in keptn.
+description: Learn how to onboard your own service in keptn.
 weight: 30
 keywords: [manage]
 aliases:

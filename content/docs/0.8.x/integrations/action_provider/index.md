@@ -1,6 +1,6 @@
 ---
 title: Custom Action-Provider
-description: Implement an action-provider that executes a remedation action as response to a problem.
+description: Implement an action-provider that executes a remediation action as response to a problem.
 weight: 10
 keywords: [0.8.x-integration]
 ---
