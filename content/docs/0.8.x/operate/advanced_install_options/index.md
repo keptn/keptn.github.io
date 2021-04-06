@@ -5,6 +5,7 @@ weight: 20
 ---
 
 ## Advanced Install Options: Install Keptn using the Helm chart
+
 When executing `keptn install`, Keptn is installed via a Helm chart, which can also be used directly.
 For this, the [Helm CLI](https://helm.sh) is required.
 
@@ -27,8 +28,11 @@ The following flags are available:
 | `control-plane.configurationService.storage`          | Allows to specify the storage-size of the persistent volume used in configuration-service                                                         | K8s volume storage size (e.g., 500Mi) | 100Mi                          |
 | `control-plane.configurationService.storageClass`     | Allows to specify the storage-class of the persistent volume used in configuration-service                                                        | K8s storage class                     | null                           |
 | `control-plane.<SERVICE-NAME>.image.repository`       | Allows to specify an alternative repository for the docker image                                                                                  | Container registry URL                | docker.io/keptn/<SERVICE-NAME> |
-
-
+| `control-plane.mongodb.enabled`       | Allows to not install the default MongoDB instance in Keptn.                                                                                   | true,false               | true |
+| `control-plane.mongodb.host`       | If an external MongoDB instance is used, specifiy the host name of this instance.                                                                                   | a URI               | empty |
+| `control-plane.mongodb.user`       | If an external MongoDB instance is used, specifiy the user to access the MongoDB.Keptn                                                                                   | any string               | empty |
+| `control-plane.mongodb.password`       | If an external MongoDB instance is used, specifiy the password to access the MongoDB.                                                                                   | any string                | empty |
+| `control-plane.mongodb.adminPassword`       | If an external MongoDB instance is used, specifiy the admin password to access the MongoDB                                                                                   | any string                | empty |
 
 ### Example: Use a LoadBalancer for api-gateway-nginx
 
@@ -114,6 +118,20 @@ By default, the Keptn API is located under `http://HOSTNAME/api` and the Keptn B
 By specifying a value for `control-plane.prefixPath`, the used prefix for the root-context can be configured.
 For example, if a user sets `control-plane.prefixPath=/mykeptn` in the Helm install/upgrade command,
 the Keptn API is located under `http://HOSTNAME/mykeptn/api` and the Keptn Bridge is located under `http://HOSTNAME/mykeptn/bridge`:
+
 ```console
 helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.8.1 --repo=https://storage.googleapis.com/keptn-installer --set=control-plane.apiGatewayNginx.type=LoadBalancer,continuous-delivery.enabled=true,control-plane.prefixPath=/mykeptn
+```
+
+### Example: Install Keptn with externally hosted MongoDB
+
+If you want to use an externally hosted MongoDB instead of the MongoDB installed by Keptn, please use the `helm upgrade` command as shown below. Basically, provide the MongoDB host, user, and password as required for the connection string. 
+
+```console
+helm upgrade keptn keptn --install -n keptn --create-namespace 
+--set=control-plane.mongodb.enabled=false,
+      control-plane.mongodb.host=<YOUR_MONGODB_HOST>,
+      control-plane.mongodb.user=<YOUR_MONGODB_USER>,
+      control-plane.mongodb.password=<YOUR_MONGODB_PASSWORD>,
+      control-plane.mongodb.adminPassword=<YOUR_MONGODB_ADMIN_PASSWORD>
 ```
