@@ -253,7 +253,7 @@ keptn add-resource --project=PROJECTNAME --stage=STAGE --service=SERVICENAME --r
 
 ### keptn configure monitoring
 
-To configure a monitoring solution for a Keptn cluster, the `configure monitoring` command is provided. This command sets up monotoring in case it is not installed yet. Afterwards, the command configures the monitoring solution for a service based on the provided service indicators (`--service-indicators`), and service objectives (`--service-objectives`). The currently supported monitoring solution is *Prometheus*, as shown below:
+To configure a monitoring solution for a Keptn cluster, the `configure monitoring` command is provided. This command sets up monitoring in case it is not installed yet. Afterwards, the command configures the monitoring solution for a service based on the provided service indicators (`--service-indicators`), and service objectives (`--service-objectives`). The currently supported monitoring solution is *Prometheus*, as shown below:
 
 ```console
 keptn configure monitoring prometheus --project=PROJECTNAME --service=SERVICENAME --service-indicators=service-indicators.yaml --service-objectives=service-objectives.yaml --remediation=remediation.yaml

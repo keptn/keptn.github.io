@@ -11,7 +11,7 @@ To install and configure keptn in a Kubernetes cluster, follow these instruction
 
 ## Step 1: Prerequisites
 
-The next steps expect that you have a working Kubernetes cluster in Google Container Engine (GKE). See the [Getting Started Guides](https://kubernetes.io/docs/setup/) for details about creating a cluster with the folllowing configuration: 
+The next steps expect that you have a working Kubernetes cluster in Google Container Engine (GKE). See the [Getting Started Guides](https://kubernetes.io/docs/setup/) for details about creating a cluster with the following configuration: 
     
 - Master version 1.11.6 (minimum tested master version 1.10.11)
 - Node pool with 2 nodes:

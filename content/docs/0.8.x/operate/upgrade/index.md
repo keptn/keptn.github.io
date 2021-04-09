@@ -95,7 +95,7 @@ before executing this command.
 
 ### Step 2: Upgrade Shipyard of your projects
 
-In Keptn 0.8.0, a [new format for the shipyard](https://github.com/keptn/spec/blob/0.2.0/shipyard.md) has been introduced, and Keptn will not support shipyards based on the [previous specifiation](https://github.com/keptn/spec/blob/0.1.7/shipyard.md). Therefore, if you already have created projects on your previous Keptn installation, you will need to use the `keptn upgrade project --shipyard` command to upgrade each of your existing projects to the new format.
+In Keptn 0.8.0, a [new format for the shipyard](https://github.com/keptn/spec/blob/0.2.0/shipyard.md) has been introduced, and Keptn will not support shipyards based on the [previous specification](https://github.com/keptn/spec/blob/0.1.7/shipyard.md). Therefore, if you already have created projects on your previous Keptn installation, you will need to use the `keptn upgrade project --shipyard` command to upgrade each of your existing projects to the new format.
 
 #### Upgrade a single project
 

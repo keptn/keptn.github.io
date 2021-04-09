@@ -67,9 +67,9 @@ indicators:
 ```
 
 ### Comparison
-By default, Keptn compares with the previous values of the SLIs. To support more advanced comparion strategies, the following properties are available: 
+By default, Keptn compares with the previous values of the SLIs. To support more advanced comparison strategies, the following properties are available: 
 
-* `compare_with`: Defines how many previous results are considered for the comparision: *single_result* or *several_results* (*single_result* is the default and is used if not specified).
+* `compare_with`: Defines how many previous results are considered for the comparison: *single_result* or *several_results* (*single_result* is the default and is used if not specified).
 * `include_result_with_score`: Controls which of the previous evaluations are included in the comparison. Therefore, this property accepts the values: *pass*, *pass_or_warn*, or *all* (*all* is the default and is used if not specified), which target the overall evaluation result and not the single SLI evaluation. In other words, the overall evaluation result decides whether SLI values are considered for the comparison or not.
 * `number_of_comparison_results`: Defines the exact number of previous results to consider (1 is the default and is used if not specified).
 * `aggregate_function` *(optional)*: Allows overriding the default aggregation function which is `avg`. 
@@ -109,7 +109,7 @@ An objective consists of:
 
 **Configuring the criteria:**
 
-The pass and warning criteria allow a list of boolean expressions with a logical operator [<, <=, >, >=] and a *absolute* or *relative* value. While the absolute value is a numberical number, the realtive value requires a (+/-) at the beginning and a % sign at the end, e.g.: `-10%`. 
+The pass and warning criteria allow a list of boolean expressions with a logical operator [<, <=, >, >=] and a *absolute* or *relative* value. While the absolute value is a numerical number, the realtive value requires a (+/-) at the beginning and a % sign at the end, e.g.: `-10%`. 
 
 * All boolean expressions in the list are combined with a logical AND. According to the next example, the pass criteria is met when its measured absolute value is below 1000 **and** the increase of the relative value is lower/equals 10 percent. 
 

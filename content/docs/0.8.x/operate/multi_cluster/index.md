@@ -39,7 +39,7 @@ To create a Kubernetes cluster, please follow the instructions [here](../install
 
 ## Install Keptn Control plane
 
-The **Control Plane** of Keptn is responsible for orchestrating your processes for continous delivery or automated operations.
+The **Control Plane** of Keptn is responsible for orchestrating your processes for continuous delivery or automated operations.
 
 * Before starting the installation, make yourself familiar with the ways of exposing Keptn as explained [here](../install/#install-keptn). Then come back and continue installing Keptn control plane.
 
@@ -84,7 +84,7 @@ Please find the Helm Charts here:
         token: ""                           # < (5) set Keptn API token
     ```
 
-* Depending on your setup of the multi-cluster environment and the approach you modeled your staging process, one stage can be for example on a seperate cluster. Let's assume the following setup: 
+* Depending on your setup of the multi-cluster environment and the approach you modeled your staging process, one stage can be for example on a separate cluster. Let's assume the following setup: 
   
   * Project: `sockshop`
   * Service: `carts`

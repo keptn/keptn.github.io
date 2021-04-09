@@ -56,20 +56,6 @@ When this script is finished, the Dynatrace OneAgent will be deployed in your cl
 
   **Note 2:** If the nodes in your cluster run on *Container-Optimized OS (cos)*, make sure to [follow the instructions](https://www.dynatrace.com/support/help/cloud-platforms/google-cloud-platform/google-kubernetes-engine/deploy-oneagent-on-google-kubernetes-engine-clusters/#expand-134parameter-for-container-optimized-os-early-access) for setting up the Dynatrace OneAgent Operator. This means that after the initial setup with `deployDynatrace.sh`, which is a step below, the `cr.yml` has to be edited and applied again. In addition, all pods have to be restarted.
 
-<!--
-## Add Dynatrace information to Jenkins
-
-
-  ```
-  ...
-  env:
-    - name: DT_TENANT_URL
-      value: yourID.live.dynatrace.com
-    - name: DT_API_TOKEN
-      value: 123apitoken
-  ...
-  ```
--->
 
 ## Configure Jenkins
 

@@ -21,7 +21,7 @@ During the evaluation of a quality gate, the Prometheus SLI-provider is required
     kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-sli-service/$VERSION/deploy/service.yaml
     ```
 
-* The *prometheus-sli-service* needs access to a Prometheues instance. If you have completed the steps from [Setup Prometheus](./#setup-prometheus), the *prometheus-sli-service* uses the Prometheus instance running in the cluster. Otherwise,
+* The *prometheus-sli-service* needs access to a Prometheus instance. If you have completed the steps from [Setup Prometheus](./#setup-prometheus), the *prometheus-sli-service* uses the Prometheus instance running in the cluster. Otherwise,
 create a *secret* containing the **user**, **password**, and **url**. The secret must have the following format (please note the double-space indentation):
 
     ```yaml

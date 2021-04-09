@@ -93,7 +93,7 @@ To do so, please follow the instructions in the [backup guide](../../../0.6.0/in
     * Please [verify that you are connected to the correct Kubernetes cluster](../../troubleshooting/#verify-kubernetes-context-with-keptn-installation)
 before deploying the upgrading job.
 
-    * Keptn 0.7 uses Helm 3 while previous Keptn releases rely on Helm 2. This means that you have to upgrade the Helm releases of your Keptn-managed services. Otherwise, a `keptn send new-artifact` does not work anymore. For upgrading Helm releases, two options are availble as outlined below. Please take into account that the end-of-life period of Helm 2 begins on [August 13th, 2020](https://helm.sh/blog/covid-19-extending-helm-v2-bug-fixes/).
+    * Keptn 0.7 uses Helm 3 while previous Keptn releases rely on Helm 2. This means that you have to upgrade the Helm releases of your Keptn-managed services. Otherwise, a `keptn send new-artifact` does not work anymore. For upgrading Helm releases, two options are available as outlined below. Please take into account that the end-of-life period of Helm 2 begins on [August 13th, 2020](https://helm.sh/blog/covid-19-extending-helm-v2-bug-fixes/).
 
 ### Job without Helm 3 Upgrade
 

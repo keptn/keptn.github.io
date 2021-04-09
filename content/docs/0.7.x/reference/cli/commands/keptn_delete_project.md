@@ -15,7 +15,7 @@ Deletes a project identified by project name.
 * If a Git upstream is configured for this project, the referenced upstream repository (e.g., on GitHub) will not be deleted. 
 * Services that have been deployed to the Kubernetes cluster are not deleted.
 * Namespaces that have been created on the Kubernetes cluster are not deleted.
-* Helm-releases created for deployments are not deleted. To clean-up deployed Helm releases, pelease see [Clean-up after deleting a project](https://keptn.sh/docs/0.7.x/continuous_delivery/deployment_helm/#clean-up-after-deleting-a-project)
+* Helm-releases created for deployments are not deleted. To clean-up deployed Helm releases, please see [Clean-up after deleting a project](https://keptn.sh/docs/0.7.x/continuous_delivery/deployment_helm/#clean-up-after-deleting-a-project)
 
 
 ```

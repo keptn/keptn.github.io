@@ -99,7 +99,7 @@ oneagent-ps6t4                                 1/1     Running   0          53s
 
 - *Alerting profile:* An alerting profile with all problems set to *0 minutes* (immediate) is created. You can review this profile by navigating to **Settings > Alerting > Alerting profiles**.
 
-- *Dashboard and Mangement zone:* When creating a new Keptn project or executing the [keptn configure monitoring](../../cli/#keptn-configure-monitoring) command for a particular project (see Note 1), a dashboard and management zone will be generated reflecting the environment as specified in the shipyard file.
+- *Dashboard and Management zone:* When creating a new Keptn project or executing the [keptn configure monitoring](../../cli/#keptn-configure-monitoring) command for a particular project (see Note 1), a dashboard and management zone will be generated reflecting the environment as specified in the shipyard file.
 
 ### Notes
 
@@ -211,7 +211,7 @@ The *dynatrace-service* in Keptn will take care of pushing events of the Keptn w
 
 ## Disable frequent issue detection
 
-Keptn relies on Dynatrace sending *brand new* alerts everytime a problem is detected. Therefore we need to disable the *Frequent Issue Detection* within Dynatrace. To do so, go to **Settings > Anomaly Detection > Frequent Issue Detection**, and disable all switches found in this menu:
+Keptn relies on Dynatrace sending *brand new* alerts every time a problem is detected. Therefore we need to disable the *Frequent Issue Detection* within Dynatrace. To do so, go to **Settings > Anomaly Detection > Frequent Issue Detection**, and disable all switches found in this menu:
 
 {{< popup_image
     link="./assets/disable-fid.png"
@@ -264,7 +264,7 @@ git clone --branch 0.7.0 https://github.com/keptn-contrib/dynatrace-service --si
 
 ### I have created the wrong secret
 
-If you have accidentially created a secret with wrong credentials or have not replaced the placeholders correctly, you can delete the secret and create it again.
+If you have accidentally created a secret with wrong credentials or have not replaced the placeholders correctly, you can delete the secret and create it again.
 ```console
 kubectl delete secret dynatrace -n keptn
 ```
@@ -292,7 +292,7 @@ If the logs contain similar lines as in the following paragraph, please execute 
 
 ```
 chmod: /mnt/host_root/opt: Read-only file system
-21:25:41 Warning: Cannot change permisions of /mnt/host_root/opt directory to u+rwx,g+rx,o+rx.
+21:25:41 Warning: Cannot change permissions of /mnt/host_root/opt directory to u+rwx,g+rx,o+rx.
 mkdir: can't create directory '/mnt/host_root/opt/dynatrace': Read-only file system
 21:25:41 Warning: Cannot create /mnt/host_root/opt/dynatrace directory.
 mkdir: can't create directory '/mnt/host_root/opt/dynatrace/': Read-only file system

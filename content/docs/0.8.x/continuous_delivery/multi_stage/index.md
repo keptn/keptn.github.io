@@ -15,7 +15,7 @@ The definition of a multi-stage delivery manifests in a so-called **shipyard**. 
 
 * A shipyard can consist of any number of stages; but at least one. A stage must have at least the name property.
 
-* A stage can consist of any number of seqeunces; but at least one. 
+* A stage can consist of any number of sequences; but at least one. 
 
 ### Definition of Stage 
 

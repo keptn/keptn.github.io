@@ -217,7 +217,7 @@ Every release of Keptn provides binaries for the Keptn CLI. These binaries are a
 
 ## Install Keptn
 
-To install the latest release of Keptn on a Kuberntes cluster, execute the [keptn install](../../reference/cli/commands/keptn_install) command with the ``platform`` flag specifying the target platform you would like to install Keptn on. Currently, supported platforms are:
+To install the latest release of Keptn on a Kubernetes cluster, execute the [keptn install](../../reference/cli/commands/keptn_install) command with the ``platform`` flag specifying the target platform you would like to install Keptn on. Currently, supported platforms are:
 
 - Azure Kubernetes Services (AKS):
 

@@ -162,7 +162,7 @@ By default, basic authentication is in place that protects the Keptn Bridge.
     keptn configure bridge --output
     ```
 
-* To get the enpoint your Keptn is running on, execute the command: 
+* To get the endpoint your Keptn is running on, execute the command: 
 
     ```console
     keptn status
@@ -215,7 +215,7 @@ With Keptn installed, have a look at the different [tutorials](https://tutorials
 
 ### 5. Learn how Keptn works and how it can be adapted to your use cases
 
-Review the documentaiton for a full reference on all Keptn cabilities and components and how they can be combined/extended to your needs:
+Review the documentation for a full reference on all Keptn capabilities and components and how they can be combined/extended to your needs:
 
 - [Operate Keptn](../0.8.x/operate)
 - [Manage Keptn](../0.8.x/manage)

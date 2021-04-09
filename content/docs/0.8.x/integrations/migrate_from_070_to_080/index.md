@@ -159,7 +159,7 @@ There are many breaking changes introduced, most notably:
 * All Keptn CloudEvents have appropriate constants and structs in `github.com/keptn/go-utils/pkg/lib/v0_2_0`
 * Processing Keptn CloudEvents requires sending a `.started` and `.finished` CloudEvent with `triggeredid` set to the original event id
 * Keptn CloudEvents Payload has been adapted to spec 0.2.0
-* Fetching (required) resources (and senidng the required `.finished` CloudEvent)
+* Fetching (required) resources (and sending the required `.finished` CloudEvent)
 * EventBroker was removed from configuration
 
 What does this mean for your code?
@@ -190,7 +190,7 @@ import (
 )
 ```
 
-Make sure to adapt all occurances where you used `keptn.` (e.g., `keptn.Keptn` and `keptn.NewKeptn`) accordingly, e.g.:
+Make sure to adapt all occurrences where you used `keptn.` (e.g., `keptn.Keptn` and `keptn.NewKeptn`) accordingly, e.g.:
 
 ```golang
 myKeptn, err := keptn.NewKeptn(&event, keptnOptions)
@@ -408,7 +408,7 @@ func HandleActionTriggeredEvent(myKeptn *keptnv2.Keptn, incomingEvent cloudevent
 		myKeptn.SendTaskFinishedEvent(&keptnv2.EventData{
 			Status: keptnv2.StatusSucceeded, // alternative: keptnv2.StatusErrored
 			Result: keptnv2.ResultPass, // alternative: keptnv2.ResultFailed
-			Message: "Successfully sleeped!",
+			Message: "Successfully slept!",
 		}, ServiceName)
 
 	} else {
@@ -551,7 +551,7 @@ Fetching resources using go-utils works as it used to before. What's new is that
 
 ### Eventbroker was removed from configuration
 
-You can safely remove any occurance of EventBroker (`envConfig` and `keptnOptions`).
+You can safely remove any occurrence of EventBroker (`envConfig` and `keptnOptions`).
 
 ```golang
 type envConfig struct {

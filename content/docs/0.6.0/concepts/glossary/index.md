@@ -11,13 +11,13 @@ Keptn allows building scalable automation for delivery and operations. Therefore
 
 **Project:** A project is a structural element to maintain multiple services forming an application in stages.
 
-**Project stage:** A project stage (or just *stage*) defines a logical space (e.g., a namespace in Kubernetes), which has a dedicated purpose for an application in a continuous delivery process. Typically a project has multipe project stages that are ordered.
+**Project stage:** A project stage (or just *stage*) defines a logical space (e.g., a namespace in Kubernetes), which has a dedicated purpose for an application in a continuous delivery process. Typically a project has multiple project stages that are ordered.
 
 **Service:** A service is the smallest deployable unit and is deployed in all project stages according to the order. Each service in a project follows the same workflow.
 
 **Shipyard:** A shipyard is the declarative means to divide an environment (e.g., Kubernetes cluster) into project stages and to specify workflows for each project stage.
 
-**Workflow:** A workflow declares a set of tasks for realizing a delivery or operations process. A workflow is triggered by an external event, i.e., by a *domain event*. Examples for domain events are the availablity of a new artifact which should be deployed (i.e., a `new-artifact` event) or the occurence of a problem (i.e., a `problem` event).
+**Workflow:** A workflow declares a set of tasks for realizing a delivery or operations process. A workflow is triggered by an external event, i.e., by a *domain event*. Examples for domain events are the availability of a new artifact which should be deployed (i.e., a `new-artifact` event) or the occurrencece of a problem (i.e., a `problem` event).
 
 **Task:** A task is the smallest executable unit in a workflow. A task is triggered by an event. 
 

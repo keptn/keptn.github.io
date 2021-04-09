@@ -6,7 +6,7 @@ icon: setup
 keywords: setup
 ---
 
-In order to evaluate the quality gates, we have to set up monitoring to provide the needed data. The setup provided in this documenation is specific to the carts service that is used throughout all use cases. This requires that the created project is called *sockshop* and the service is called *carts* as described in the use case [onboarding a service](../onboard-carts-service).
+In order to evaluate the quality gates, we have to set up monitoring to provide the needed data. The setup provided in this documentation is specific to the carts service that is used throughout all use cases. This requires that the created project is called *sockshop* and the service is called *carts* as described in the use case [onboarding a service](../onboard-carts-service).
 
 ## Setup Prometheus
 

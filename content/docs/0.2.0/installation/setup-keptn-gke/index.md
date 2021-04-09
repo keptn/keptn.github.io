@@ -151,7 +151,7 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
   {{< popup_image link="./assets/jenkins-env-vars.png" caption="Jenkins environment variables">}}
   **Important:** Due to a [known issue](https://issues.jenkins-ci.org/browse/JENKINS-14880) in Jenkins, it is necessary to click **Save** although nothing is changed in this verification step.
 
-- To verify your installation, retrieve the pods runnning in the `keptn` namespace.
+- To verify your installation, retrieve the pods running in the `keptn` namespace.
   ```console
   kubectl get pods -n keptn
   ```
@@ -264,7 +264,7 @@ Every release of keptn provides binaries for the keptn CLI. These binaries are a
   kubectl get namespaces
   ```
 
-- *Note*: In some cases, it might occure that the `keptn` namespace remains stuck in the `Terminating` state. If that happens, you can enforce the deletion of the namespace as follows:
+- *Note*: In some cases, it might occur that the `keptn` namespace remains stuck in the `Terminating` state. If that happens, you can enforce the deletion of the namespace as follows:
 
   ```console
   NAMESPACE=keptn

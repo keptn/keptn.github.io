@@ -15,7 +15,7 @@ kubectl port-forward svc/$(kubectl get ksvc bridge -n keptn -ojsonpath={.status.
 ```
 
 The keptn's bridge provides an easy way to browse all events that are sent within keptn and to filter on a specific keptn context. 
-When you access the keptn's bridge, all keptn entry points will be listed in the left column for you to browse. Pleaes note that this list only represents the start of a keptn pipeline run, thus, more information on pipeline run can be revealed when you click on one event.
+When you access the keptn's bridge, all keptn entry points will be listed in the left column for you to browse. Please note that this list only represents the start of a keptn pipeline run, thus, more information on pipeline run can be revealed when you click on one event.
 
   {{< popup_image
   link="./assets/bridge-empty.png"

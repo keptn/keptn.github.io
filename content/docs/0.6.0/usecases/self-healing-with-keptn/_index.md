@@ -1,7 +1,7 @@
 ---
 title: Self-healing
 weight: 30
-description: Provides details about self-healing using upscaling and feature toggle.
+description: Provides details about self-healing using upscalling and feature toggle.
 ---
 
 ## About this tutorial
@@ -81,7 +81,7 @@ keptn send event new-artifact --project=sockshop --service=carts --image=docker.
 
 Please follow the steps detailed in the following tutorials.
 
-* Self-healing using upscaling with:
+* Self-healing using upscalling with:
   * [Dynatrace](dynatrace-scaling/)
   * [Prometheus](prometheus-scaling/)
 * Self-healing using feature toggle based on [Unleash](https://unleash.github.io/) with:

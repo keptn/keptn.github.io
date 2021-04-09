@@ -278,7 +278,7 @@ in the version of the latest release.
   kubectl get namespaces
   ```
 
-- **Note**: In some cases, it might occure that the `keptn` namespace remains stuck in the `Terminating` state. If that happens, you can enforce the deletion of the namespace as follows:
+- **Note**: In some cases, it might occur that the `keptn` namespace remains stuck in the `Terminating` state. If that happens, you can enforce the deletion of the namespace as follows:
 
   ```console
   NAMESPACE=keptn

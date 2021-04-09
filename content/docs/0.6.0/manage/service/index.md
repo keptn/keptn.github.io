@@ -74,7 +74,7 @@ env:
   value: "{{ .Values.SERVICE_PLACEHOLDER_C.service.name }}"
 ```
 
-**Note:** If you need to store resources (e.g., test files, configuration files, etc.) that are required by a service, use the [add-resource](../../reference/cli/commands/keptn_add-resource) command and specifiy the `--project`, `--stage`, and `--service` as shown below:
+**Note:** If you need to store resources (e.g., test files, configuration files, etc.) that are required by a service, use the [add-resource](../../reference/cli/commands/keptn_add-resource) command and specify the `--project`, `--stage`, and `--service` as shown below:
 
 ```console
 keptn add-resource --project=your-project --service=my-service --stage=staging --resource=jmeter/load.jmx

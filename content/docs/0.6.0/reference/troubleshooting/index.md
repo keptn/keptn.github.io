@@ -135,7 +135,7 @@ When creating a project failed, this can cause a problematic state that manifest
 <details><summary>Expand instructions</summary>
 <p>
 
-**Situation**: Executing [keptn create project](../cli/commands/keptn_create_project) failed with following error messsage: 
+**Situation**: Executing [keptn create project](../cli/commands/keptn_create_project) failed with following error message: 
 
 ```console
 Starting to create project   

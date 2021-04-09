@@ -111,7 +111,7 @@ This step integrates the defined *remediation runbook* in Dynatrace in a way tha
          link="./assets/ansible-integration-successful.png"
          caption="Successful Ansible integration">}}
 
-1. *Optional:* Navigate back to your Ansible Tower instance and check what happenend when setting up the integration.
+1. *Optional:* Navigate back to your Ansible Tower instance and check what happened when setting up the integration.
     - Navigate to **Jobs** and click on your *X - remediation* job
     - You can see all tasks from the playbook that have been triggered by the integration.
 
@@ -174,7 +174,7 @@ The promotional itself is controlled via Ansible Tower. That means that starting
       ...
       ```
 
-1. Run the promotional campain
+1. Run the promotional campaign
     - Navigate to **Templates** in your Ansible Tower
     - Click on the "rocket" icon (🚀) next to your *start-campaign* job template
     {{< popup_image
@@ -190,9 +190,9 @@ The promotional itself is controlled via Ansible Tower. That means that starting
     link="./assets/service-custom-configuration-event.png"
     caption="Dynatrace custom configuration event">}}
 
-    Please also note that a remediation action has been attached to this configuration change. This means, if Dynatrace detects a problem with this service that is related to this configuratio change, this remediation action could be called to remediate the problem. 
+    Please also note that a remediation action has been attached to this configuration change. This means, if Dynatrace detects a problem with this service that is related to this configuration change, this remediation action could be called to remediate the problem. 
 
-1. Looking at the loadgeneration output in your console, you will notice that about 1/3 of the requests will produce an error.
+1. Looking at the load generation output in your console, you will notice that about 1/3 of the requests will produce an error.
 
     ```console
     ...

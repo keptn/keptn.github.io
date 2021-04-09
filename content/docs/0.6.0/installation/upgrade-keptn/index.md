@@ -160,7 +160,6 @@ HTTP/1.1 200 OK
 Cache-Control: max-age=300
 Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'; sandbox
 Content-Type: text/plain; charset=utf-8
-ETag: W/"a817203eb7991e9b61d143a173f0f380edcd1fe3fecce9aaae7389728d42d503"
 Strict-Transport-Security: max-age=31536000
 X-Content-Type-Options: nosniff
 X-Frame-Options: deny
@@ -186,7 +185,6 @@ HTTP/1.1 200 OK
 Cache-Control: max-age=300
 Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'; sandbox
 Content-Type: text/plain; charset=utf-8
-ETag: W/"77f0748fec6e1b541317b92402d52fb4db2cfed2369f348b52320a6bb13719e3"
 Strict-Transport-Security: max-age=31536000
 X-Content-Type-Options: nosniff
 X-Frame-Options: deny
@@ -212,7 +210,6 @@ HTTP/1.1 200 OK
 Cache-Control: max-age=300
 Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'; sandbox
 Content-Type: text/plain; charset=utf-8
-ETag: W/"7d9edebef9621c1fa618ecc77df265aabf2a1fc1957fa5244b4bb1b4f71c0a96"
 Strict-Transport-Security: max-age=31536000
 X-Content-Type-Options: nosniff
 X-Frame-Options: deny
@@ -238,7 +235,6 @@ HTTP/1.1 200 OK
 Cache-Control: max-age=300
 Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'; sandbox
 Content-Type: text/plain; charset=utf-8
-ETag: W/"64e8ef598d0f1272774d55539c1c9e39e8bbf0c665ccb5125dba54fe55226206"
 Strict-Transport-Security: max-age=31536000
 X-Content-Type-Options: nosniff
 X-Frame-Options: deny
@@ -264,7 +260,6 @@ HTTP/1.1 200 OK
 Cache-Control: max-age=300
 Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'; sandbox
 Content-Type: text/plain; charset=utf-8
-ETag: W/"739bb6ce977407266fe6859f8315945634fb8637b014906f8d7eab707944563b"
 Strict-Transport-Security: max-age=31536000
 X-Content-Type-Options: nosniff
 X-Frame-Options: deny
@@ -290,7 +285,6 @@ HTTP/1.1 200 OK
 Cache-Control: max-age=300
 Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'; sandbox
 Content-Type: text/plain; charset=utf-8
-ETag: W/"565ee73e3f155e499a9e68d89acd0981a051a9a07afcf423bd8c2c7fc2ab8b2a"
 Strict-Transport-Security: max-age=31536000
 X-Content-Type-Options: nosniff
 X-Frame-Options: deny
@@ -316,7 +310,6 @@ HTTP/1.1 200 OK
 Cache-Control: max-age=300
 Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'; sandbox
 Content-Type: text/plain; charset=utf-8
-ETag: W/"6c4d9db74de5ac2df990abe19a895836e128b0488dfa9c221e14b2fd3c804589"
 Strict-Transport-Security: max-age=31536000
 X-Content-Type-Options: nosniff
 X-Frame-Options: deny
@@ -342,7 +335,6 @@ HTTP/1.1 200 OK
 Cache-Control: max-age=300
 Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'; sandbox
 Content-Type: text/plain; charset=utf-8
-ETag: W/"466ac509d5792ebc60035c573b98627b30ff730f9616bca60d96e050e49ffb42"
 Strict-Transport-Security: max-age=31536000
 X-Content-Type-Options: nosniff
 X-Frame-Options: deny
@@ -368,7 +360,6 @@ HTTP/1.1 200 OK
 Cache-Control: max-age=300
 Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'; sandbox
 Content-Type: text/plain; charset=utf-8
-ETag: W/"aa38d7820269287dde8a4b543aca9d44685d5b5885d1d368dad12d23fa428baf"
 Strict-Transport-Security: max-age=31536000
 X-Content-Type-Options: nosniff
 X-Frame-Options: deny
@@ -394,7 +385,6 @@ HTTP/1.1 200 OK
 Cache-Control: max-age=300
 Content-Security-Policy: default-src 'none'; style-src 'unsafe-inline'; sandbox
 Content-Type: text/plain; charset=utf-8
-ETag: W/"90ccf47f72e9bb8a747cd91094f751e10c113eecd9e83890fe713399d6cdd475"
 Strict-Transport-Security: max-age=31536000
 X-Content-Type-Options: nosniff
 X-Frame-Options: deny
@@ -628,7 +618,6 @@ The expected log output should look as follows:
 X-Content-Type-Options: nosniff
 X-Frame-Options: deny
 X-XSS-Protection: 1; mode=block
-ETag: W/"62410fda329f5beff601663f21cf70e7ef22ba0d72201a71e4583742d5a894ce"
 Cache-Control: max-age=300
 X-Geo-Block-List:
 Via: 1.1 varnish (Varnish/6.0)
@@ -655,7 +644,6 @@ Strict-Transport-Security: max-age=31536000
 X-Content-Type-Options: nosniff
 X-Frame-Options: deny
 X-XSS-Protection: 1; mode=block
-ETag: W/"bd599b4f1a452ac2f017b03fefbc1f290c0ee9d8c698fd47462521a0f4d514bc"
 Cache-Control: max-age=300
 X-Geo-Block-List:
 Via: 1.1 varnish (Varnish/6.0)
@@ -682,7 +670,6 @@ Strict-Transport-Security: max-age=31536000
 X-Content-Type-Options: nosniff
 X-Frame-Options: deny
 X-XSS-Protection: 1; mode=block
-ETag: W/"73130e0bcf52bb8b5de6a31d5b71398b6872b796bd967581e330d5dfa963eb4c"
 Cache-Control: max-age=300
 X-Geo-Block-List:
 Via: 1.1 varnish (Varnish/6.0)
@@ -709,7 +696,6 @@ Strict-Transport-Security: max-age=31536000
 X-Content-Type-Options: nosniff
 X-Frame-Options: deny
 X-XSS-Protection: 1; mode=block
-ETag: W/"cf93aec85784b32ea6db38007e73173e45cc358e1c6fea212655965d3c55a926"
 Cache-Control: max-age=300
 X-Geo-Block-List:
 Via: 1.1 varnish (Varnish/6.0)
@@ -736,7 +722,6 @@ Strict-Transport-Security: max-age=31536000
 X-Content-Type-Options: nosniff
 X-Frame-Options: deny
 X-XSS-Protection: 1; mode=block
-ETag: W/"92d5830bbf6cdb6063dbd6b21e338603a2eb9b17c7b08a9a8888bc54875abf8f"
 Cache-Control: max-age=300
 X-Geo-Block-List:
 Via: 1.1 varnish (Varnish/6.0)
@@ -763,7 +748,6 @@ Strict-Transport-Security: max-age=31536000
 X-Content-Type-Options: nosniff
 X-Frame-Options: deny
 X-XSS-Protection: 1; mode=block
-ETag: W/"c03cd2606cf51c583f102cd41e5fcf78886ab8df91a4f159833d8b7c0cc02b60"
 Cache-Control: max-age=300
 X-Geo-Block-List:
 Via: 1.1 varnish (Varnish/6.0)
@@ -790,7 +774,6 @@ Strict-Transport-Security: max-age=31536000
 X-Content-Type-Options: nosniff
 X-Frame-Options: deny
 X-XSS-Protection: 1; mode=block
-ETag: W/"87e9df799f257992b7526b47c65481c0601847caa5c31fba9308f84a8a8e59e6"
 Cache-Control: max-age=300
 X-Geo-Block-List:
 Via: 1.1 varnish (Varnish/6.0)
@@ -1015,7 +998,7 @@ Also, only update the services if you have them installed:
 
 For full details on what has changed from Keptn 0.5.x to Keptn 0.6.0 please refer to the release notes within the [Keptn repository](https://github.com/keptn/keptn/releases/0.6.0). 
 
-Unfortunatley, there are multiple breaking changes from Keptn 0.5.x to Keptn 0.6.x that make it impossible to provide an upgrade script from Keptn 0.5.x to Keptn 0.6.x. These breaking changes include:
+Unfortunately, there are multiple breaking changes from Keptn 0.5.x to Keptn 0.6.x that make it impossible to provide an upgrade script from Keptn 0.5.x to Keptn 0.6.x. These breaking changes include:
 
 * Istio sidecar injection has been introduced for blue-green deployments
 * Pitometer was removed, instead the lighthouse was installed
