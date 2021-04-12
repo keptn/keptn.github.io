@@ -255,7 +255,7 @@ Keptn consists of a **Control Plane** and an **Execution Plane**:
     keptn install
     ```
 
-* The **Control Plane with the Execution Plane (for Continuous Delivery)** allows to implement [Continuous Delivery](../../../concepts/delivery/) on top of *quality gates* and *automated operations* use cases. To install the control plane with the execution plane for continuous delivery, execute:
+* The **Control Plane with the Execution Plane (for Continuous Delivery)** allows to implement [Continuous Delivery](../../../concepts/delivery/) on top of *quality gates* and *automated operations* use cases. Please not that for this use-case [Istio](https://istio.io) is required as well, as this is used for traffic routing between blue/green versions during deployment. To install the control plane with the execution plane for continuous delivery, execute:
 
     ```
     keptn install --use-case=continuous-delivery
@@ -361,7 +361,7 @@ Depending on whether you would like to install the execution plane for continuou
 
     Commonly used Ingress-Controller are e.g. Istio and NGINX:
 
-    <details><summary>**Istio 1.8+**</summary>
+    <details><summary>**Istio 1.8+** (recommended for use-case continuous delivery)</summary>
     <p>
 
     * Istio provides an Ingres Controller. To install Istio, please refer to the [official documentation](https://istio.io/latest/docs/setup/install/).
