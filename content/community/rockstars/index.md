@@ -33,7 +33,8 @@ We are extremely happy to have these great individuals and teams awarded as our 
 
 | Date | Name |
 | ---  | ---  |
-| 🏆 **Q4&nbsp;2020** | The whole team of [Triscon IT](https://www.triscon-it.com/) for their  feedback on quality gates which drove some of the recent advancements in the bridge and their immense evangelism of Keptn on various conferences, meetups, podcasts! |
+| 🏆 **Q1&nbsp;2021** | [@adriangonciarz](https://github.com/adriangonciarz) for his contributions to Keptn core (enabling custom MongoDB deployments) and his work on [resilience evaluation with Keptn, LitmusChaos, and Locust](https://youtu.be/m_RVxVQQrHo?t=222)! |
+| 🏆 **Q4&nbsp;2020** | The whole team of [Triscon IT](https://www.triscon-it.com/) for their feedback on quality gates which drove some of the recent advancements in the bridge and their immense evangelism of Keptn on various conferences, meetups, podcasts! |
 | 🏆 **Q3&nbsp;2020** | [@heydenb](https://github.com/heydenb) for his contributions to the [Keptn ecosystem](https://github.com/keptn-sandbox/keptn-azure-devops-extension) (especially on integrating [Azure DevOps + Keptn](https://marketplace.visualstudio.com/items?itemName=RealdolmenDevOps.keptn-integration)), and speaking in public webinars |
 | 🏆 **Q2&nbsp;2020** | [@checkelmann](https://github.com/checkelmann) for his contributions to the Keptn core as well as contributing external services, and speaking in public webinars |
 
