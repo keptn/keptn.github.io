@@ -5,6 +5,7 @@ weight: 30
 aliases:
   - /docs/0.8.0/operate/upgrade/
   - /docs/0.8.1/operate/upgrade/
+  - /docs/0.8.2/operate/upgrade/
 ---
 
 ## Upgrade from Keptn 0.8.0 to 0.8.1
