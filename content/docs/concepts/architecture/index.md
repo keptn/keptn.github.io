@@ -16,13 +16,13 @@ During a Keptn installation, [NATS](https://nats.io/) is installed in the Kubern
 ## Keptn CLI
 The Keptn CLI needs to be installed on the local machine and is used to send commands to Keptn by interacting with the API of Keptn. To communicate with Keptn you need to know a shared secret that is generated during the installation and verified by the *api* component.
 
-**Note:** A dedicated Keptn CLI section is provided [here](../../0.7.x/reference/cli/), which helps you to get started and lists all available commands.
+**Note:** A dedicated Keptn CLI section is provided [here](../../0.8.x/reference/cli/), which helps you to get started and lists all available commands.
 
 ## Keptn Bridge
 
 The *Keptn Bridge* provides a user interface that shows all Keptn-managed projects and services. Besides, it gives an overview of the staging environment. 
 
-**Note:** A dedicated section for the Keptn Bridge is provided [here](../../0.7.x/reference/bridge/), which explains how to access it and shows the user interface.
+**Note:** A dedicated section for the Keptn Bridge is provided [here](../../0.8.x/reference/bridge/), which explains how to access it and shows the user interface.
 
 ## Keptn Control Plane
 
@@ -36,7 +36,7 @@ The *api-gateway-nginx* component is the single point used for exposing Keptn to
 
 The *api* component provides a REST API that allows communicating with Keptn. It provides endpoints to authenticate, get metadata about the Keptn installation within the cluster, forwarding CloudEvents to the NATS cluster, and triggering evaluations for a service.
 
-**Note:** A dedicated Keptn API section is provided [here](../../0.7.x/reference/api/), which helps you to access the API and to explore the available endpoints.
+**Note:** A dedicated Keptn API section is provided [here](../../0.8.x/reference/api/), which helps you to access the API and to explore the available endpoints.
 
 ### mongodb-service
 
