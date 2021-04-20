@@ -10,12 +10,11 @@ In order to evaluate the quality gates and allow self-healing in production, we 
 ## Prerequisites
 
 - Keptn project and at least one onboarded service must be available.
+- Keptn doesn't install or manage Prometheus and its components. Users need to install Prometheus and Prometheus Alert manager as a prerequisite.
 
-## Setup Prometheus
+## ## Setup Prometheus Keptn integration
 
 After creating a project and service, you can set up Prometheus monitoring and configure scrape jobs using the Keptn CLI.
-
-Keptn doesn't install or manage Prometheus and its components. Users need to install Prometheus and Prometheus Alert manager as a prerequisite.
 
 Some environment variables have to set up in the prometheus-service deployment
 ```yaml
@@ -50,7 +49,7 @@ Some environment variables have to set up in the prometheus-service deployment
 
 #### Execute the following steps to install prometheus-service
 
-* Download the Keptn's Prometheus service manifest
+* Download the manifest of the prometheus-service:
 
 ```bash
 wget https://raw.githubusercontent.com/keptn-contrib/prometheus-service/release-0.5.0/deploy/service.yaml
@@ -62,7 +61,7 @@ wget https://raw.githubusercontent.com/keptn-contrib/prometheus-service/release-
 kubectl apply -f service.yaml
 ```
 
-* Install Role and Rolebinding to permit Keptn's prometheus-service for performing operations in the Prometheus installed namespace.
+* Install Role and RoleBinding to permit the prometheus-service for performing operations in the Prometheus installed namespace:
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/release-0.5.0/deploy/role.yaml -n <PROMETHEUS_NS>
