@@ -49,7 +49,7 @@ The Keptn Bridge provides an easy way to browse all events that are sent within 
         caption="Evaluation Chart"
         width="50%">}}
 
-* To customize the chart, labels can be used. If the `sh.keptn.events.evaluation-done` event has the label `buildId` attached, the Keptn Bridge reads the value
+* To customize the chart, labels can be used. If the `sh.keptn.event.evaluation.triggered` event has the label `buildId` attached, the Keptn Bridge reads the value
   of this label and uses it as label for the x-axis in the *Chart*. If the value of the label is an URL, the label will be displayed as a link, 
   so you can easily link back to the Dynatrace Dashboard for example. 
 
@@ -90,7 +90,7 @@ The Keptn Bridge provides an easy way to browse all events that are sent within 
   
 ### Sequences view
 
-* The sequences for the whole Keptn context are shown in this screen. It has a lot of filter possibilities, that can either be selected
+* The sequences for the selected project are shown on this screen. It has a lot of filter possibilities, that can either be selected
   in the left pane or be applied by using the search bar.
 * When you select a sequence, the related tasks are shown for each stage. The stages can be selected by clicking onto the stage name in
   the timeline, or the badge of the sequence list item.
