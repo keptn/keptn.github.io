@@ -6,3 +6,4 @@ resources/_gen/**/*.content
 # IDE files
 .idea/
 .vscode/
+*.iml
