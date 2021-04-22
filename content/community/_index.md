@@ -21,9 +21,9 @@ We have a dedicated [Keptn slack workspace](https://slack.keptn.sh) (for in-dept
 ❌ This is not a good place to submit bug reports 🐞 . Please [open an issue](https://github.com/keptn/keptn/issues) instead so the Keptn maintainers & developers can take care of it. 
 
 
-## Mailing List 
+## Newsletter 
 
-The [Keptn mailing list](https://groups.google.com/g/keptn) serves as our ~weekly newsletter to inform the Keptn community on the latest updates of the project.
+The [Keptn newsletter](/community/newsletter) is our way to inform the Keptn community on the latest updates of the project.
 
 ✅ Watch for new releases of Keptn
 
@@ -34,9 +34,6 @@ The [Keptn mailing list](https://groups.google.com/g/keptn) serves as our ~weekl
 ✅ Get updates on new blog posts about Keptn
 
 ✅ Hear about new Keptn integrations or announce your integration.
-
-❌ This is not a good place to ask questions or start discussion. Please use the [Keptn Slack channel](https://slack.keptn.sh) instead. 
-
 
 ## Ask an expert
 
