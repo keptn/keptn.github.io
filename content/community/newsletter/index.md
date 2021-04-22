@@ -21,8 +21,8 @@ The newsletter is sent bi-weekly. No spam - a captain's promise!
 <div id="mc_embed_signup" style="max-width:600px">
 <form action="https://keptn.us1.list-manage.com/subscribe/post?u=a88817a401b6341b32ac28206&amp;id=8eb0279ed6" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
     <div id="mc_embed_signup_scroll">
-	<div style="width:100%;text-align:center;"><img src="./assets/newsletter.png" style="width:400px;align:center;"></div>
-<div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+	<div style="width:100%;text-align:center;"><img src="./assets/newsletter.png" style="width:400px;align:center;"></div><br>
+
 <div class="mc-field-group">
 	<label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
 </label>
