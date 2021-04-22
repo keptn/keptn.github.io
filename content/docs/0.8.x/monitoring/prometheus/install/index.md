@@ -10,36 +10,79 @@ In order to evaluate the quality gates and allow self-healing in production, we 
 ## Prerequisites
 
 - Keptn project and at least one onboarded service must be available.
+- Keptn doesn't install or manage Prometheus and its components. Users need to install Prometheus and Prometheus Alert manager as a prerequisite.
 
-## Setup Prometheus
+```bash
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm install prometheus prometheus-community/prometheus --namespace <PROMETHEUS_NS>
+```
 
-After creating a project and service, you can setup Prometheus monitoring and configure scrape jobs using the Keptn CLI. Therefore you need to deploy the *prometheus-service*. 
+## Setup Prometheus Keptn integration
 
-* Specify the version of the prometheus-service you want to deploy. Please see the [compatibility matrix](https://github.com/keptn-contrib/prometheus-service#compatibility-matrix) of the prometheus-service to pick the version that works with your Keptn.  
+After creating a project and service, you can set up Prometheus monitoring and configure scrape jobs using the Keptn CLI.
 
-    ```console
-    VERSION=<VERSION>   # e.g.: VERSION=0.3.5
-    ```
+Some environment variables have to set up in the prometheus-service deployment
+```yaml
+    # Prometheus installed namespace
+    - name: PROMETHEUS_NS
+    value: 'default'
+    # Prometheus server configmap name
+    - name: PROMETHEUS_CM
+    value: 'prometheus-server'
+    # Prometheus server app labels
+    - name: PROMETHEUS_LABELS
+    value: 'component=server'
+    # Prometheus configmap data's config filename
+    - name: PROMETHEUS_CONFIG_FILENAME
+    value: 'prometheus.yml'
+    # AlertManager configmap data's config filename
+    - name: ALERT_MANAGER_CONFIG_FILENAME
+    value: 'alertmanager.yml'
+    # Alert Manager config map name
+    - name: ALERT_MANAGER_CM
+    value: 'prometheus-alertmanager'
+    # Alert Manager app labels
+    - name: ALERT_MANAGER_LABELS
+    value: 'component=alertmanager'
+    # Alert Manager installed namespace
+    - name: ALERT_MANAGER_NS
+    value: 'default'
+    # Alert Manager template configmap name
+    - name: ALERT_MANAGER_TEMPLATE_CM
+    value: 'alertmanager-templates'
+```
 
-* To install the *prometheus-service*, execute: 
+**Execute the following steps to install prometheus-service**
 
-    ```console
-    kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/$VERSION/deploy/service.yaml
-    ```
+* Download the manifest of the prometheus-service:
 
- * Execute the following command to set up the rules for the *Prometheus Alerting Manager*:
+```bash
+wget https://raw.githubusercontent.com/keptn-contrib/prometheus-service/release-0.5.0/deploy/service.yaml
+```
 
-    ```
-    keptn configure monitoring prometheus --project=PROJECTNAME --service=SERVICENAME
-    ```
+* Replace the environment variable value according to the use case and apply the manifest
 
-## Verify Prometheus setup in your cluster
+```bash
+kubectl apply -f service.yaml
+```
 
+* Install Role and RoleBinding to permit the prometheus-service for performing operations in the Prometheus installed namespace:
+
+```bash
+kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/release-0.5.0/deploy/role.yaml -n <PROMETHEUS_NS>
+```
+
+* Execute the following command to install Prometheus and set up the rules for the *Prometheus Alerting Manager*:
+
+```bash
+keptn configure monitoring prometheus --project=sockshop --service=carts
+```
+
+## Optional: Verify Prometheus setup in your cluster
 * To verify that the Prometheus scrape jobs are correctly set up, you can access Prometheus by enabling port-forwarding for the prometheus-service:
 
-    ```console
-    kubectl port-forward svc/prometheus-service 8080 -n monitoring
-    ```
+```BASH
+kubectl port-forward svc/prometheus-service 8080 -n <PROMETHEUS_NS>
+```
 
-Prometheus is then available on [localhost:8080/targets](http://localhost:8080/targets) where you can see the targets for the service:
-{{< popup_image link="./assets/prometheus-targets.png" caption="Prometheus Targets">}}
+Prometheus is then available on [localhost:8080/targets](http://localhost:8080/targets) where you can see the targets for the service.{{< popup_image link="./assets/prometheus-targets.png" caption="Prometheus Targets">}}
