@@ -11,6 +11,8 @@ The following sections describe how to back up that data and how to restore it.
 
 **Note:** These instructions do not cover backing up any Helm- or Istio-related configurations.
 
+:warning: Please make sure your `kubectl` is connected to the cluster where Keptn is running. 
+
 ## Backup Keptn
 
 This section describes how to backup your Keptn and store it on your local machine. 
