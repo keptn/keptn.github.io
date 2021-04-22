@@ -21,7 +21,7 @@ First and foremost, be active in the Keptn community! We encourage you being par
 
   🧑‍🏫 **Education**: Educate others on Keptn by either [writing a tutorial](https://github.com/keptn/tutorials), giving a workshop on how to use Keptn or similar formats.
 
-  📈 **Growth**: Bring other people to the Keptn community by inviting them to [Twitter](https://twitter.com/keptnProject), [Slack](https://slack.keptn.sh), and our [mailing list](https://groups.google.com/g/keptn).
+  📈 **Growth**: Bring other people to the Keptn community by inviting them to [Twitter](https://twitter.com/keptnProject), [Slack](https://slack.keptn.sh), and our [Keptn Newsletter](/community/newsletter).
 
 ### Get nominated!
 
