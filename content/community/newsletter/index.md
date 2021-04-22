@@ -10,6 +10,7 @@ Sign up to our Keptn Community Newsletter to get **news, feature highlights, and
 
 The newsletter is sent bi-weekly. No spam - a captain's promise!
 
+
 <!-- Begin Mailchimp Signup Form -->
 <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
 <style type="text/css">
@@ -17,10 +18,10 @@ The newsletter is sent bi-weekly. No spam - a captain's promise!
 	/* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
 	   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
 </style>
-<div id="mc_embed_signup">
+<div id="mc_embed_signup" style="max-width:600px">
 <form action="https://keptn.us1.list-manage.com/subscribe/post?u=a88817a401b6341b32ac28206&amp;id=8eb0279ed6" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
     <div id="mc_embed_signup_scroll">
-	<h2>Subscribe</h2>
+	<div style="width:100%;text-align:center;"><img src="./assets/newsletter.png" style="width:400px;align:center;"></div>
 <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
 <div class="mc-field-group">
 	<label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
