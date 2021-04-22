@@ -12,7 +12,12 @@ In order to evaluate the quality gates and allow self-healing in production, we 
 - Keptn project and at least one onboarded service must be available.
 - Keptn doesn't install or manage Prometheus and its components. Users need to install Prometheus and Prometheus Alert manager as a prerequisite.
 
-## ## Setup Prometheus Keptn integration
+```bash
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm install prometheus prometheus-community/prometheus --namespace <PROMETHEUS_NS>
+```
+
+## Setup Prometheus Keptn integration
 
 After creating a project and service, you can set up Prometheus monitoring and configure scrape jobs using the Keptn CLI.
 
@@ -47,7 +52,7 @@ Some environment variables have to set up in the prometheus-service deployment
     value: 'alertmanager-templates'
 ```
 
-#### Execute the following steps to install prometheus-service
+**Execute the following steps to install prometheus-service**
 
 * Download the manifest of the prometheus-service:
 
@@ -73,7 +78,7 @@ kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-serv
 keptn configure monitoring prometheus --project=sockshop --service=carts
 ```
 
-#### Optional: Verify Prometheus setup in your cluster
+## Optional: Verify Prometheus setup in your cluster
 * To verify that the Prometheus scrape jobs are correctly set up, you can access Prometheus by enabling port-forwarding for the prometheus-service:
 
 ```BASH
