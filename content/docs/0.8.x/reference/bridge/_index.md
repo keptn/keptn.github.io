@@ -111,13 +111,13 @@ and additional data is gathered from the client. For more information about this
 
 Right now there is no early access version of Keptn Bridge available. 
 
-<!-- You can upgrade to the latest version (0.8.1) by executing the following commands:
+<!-- You can upgrade to the latest version (0.8.2) by executing the following commands:
 
 ```console
-kubectl -n keptn set image deployment/bridge bridge=keptn/bridge2:0.8.1 --record
+kubectl -n keptn set image deployment/bridge bridge=keptn/bridge2:0.8.2 --record
 ``
 
-There is an early access version of Keptn Bridge available (compatible with Keptn 0.8.1):
+There is an early access version of Keptn Bridge available (compatible with Keptn 0.8.2):
 
   {{< popup_image
   link="./assets/bridge_eap.png"
@@ -129,10 +129,10 @@ There is an early access version of Keptn Bridge available (compatible with Kept
 kubectl -n keptn set image deployment/bridge bridge=keptn/bridge2:20200402.1046 --record
 ```
 
-* To restore the old version of bridge, configuration-service and mongodb-datastore (as delivered with Keptn 0.8.1), you can use the following commands:
+* To restore the old version of bridge, configuration-service and mongodb-datastore (as delivered with Keptn 0.8.2), you can use the following commands:
 
 ```console
-kubectl -n keptn set image deployment/bridge bridge=keptn/bridge2:0.8.1 --record
+kubectl -n keptn set image deployment/bridge bridge=keptn/bridge2:0.8.2 --record
 ```
 -->
 
