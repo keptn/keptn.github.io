@@ -29,6 +29,8 @@ Please join Keptn maintainer Jürgen Etzlstorfer when he speaking about how to e
 
 The Keptn team is hosting two office hours, which are an excellent opportunity for you to get to know the project and ask your questions to the Keptn maintainers.
 
-- **Wednesday, May 5, 2021** from **12:00 - 13:00** (Central European Time)
-- **Friday, May 7, 2021** from **9.00 - 10.00** (Central European Time) 
+**Please sign up via the provided links before the office hours start, as the platform closes registration upon the start of the office hours and you might not be able to join afterwards!** We are sorry any inconvenience, but this process is handled by the event platform.
+
+- **Wednesday, May 5, 2021** from [**12:00 - 13:00** (Central European Time)](https://community.cncf.io/e/mpsa39/)
+- **Friday, May 7, 2021** from [**9.00 - 10.00** (Central European Time)](https://community.cncf.io/e/mrjfyp/)
 
