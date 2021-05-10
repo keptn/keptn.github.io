@@ -5,12 +5,14 @@ weight: 10
 keywords: [0.8.x-cd]
 ---
 
-Keptn uses [Helm v3](https://helm.sh/) for deploying onboarded services to a Kubernetes cluster. This is currently implemented in the [helm-service](https://github.com/keptn/keptn/tree/0.8.2/helm-service). The helm-service supports two deployment strategies explained below:
+Keptn uses [Helm v3](https://helm.sh/) for deploying [onboarded services](../../manage/service/) to a Kubernetes cluster. This is currently implemented in the [helm-service](https://github.com/keptn/keptn/tree/0.8.2/helm-service). 
+Keptn's helm-service supports the following deployment strategies:
 
 * **Direct deployments**
 * **Blue-green deployments**
+* **user-managed deployments** (experimental)
 
-The explanation is based on the provided Helm Chart for the carts microservice, see [Charts](https://github.com/keptn/examples/tree/0.8.2/onboarding-carts/carts) for details.
+The explanation below is based on the provided Helm Chart for the carts microservice, see [Charts](https://github.com/keptn/examples/tree/0.8.2/onboarding-carts/carts) for details.
 
 ## Direct deployments
 
@@ -26,7 +28,7 @@ NAME    READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS   IMAGES              
 carts   1/1     1            1           56m   carts        docker.io/keptnexamples/carts:0.11.1   app=carts
 ```
 
-When sending a new-artifact, we are updating the values.yaml file in the Helm Charts with the respective image name.
+When triggering a delivery (with a new artifact), we are updating the values.yaml file in the Helm Charts with the respective image name.
 
 * [chart/values.yaml](https://github.com/keptn/examples/blob/0.8.2/onboarding-carts/carts/values.yaml#L1)
 * [chart/templates/deployment.yaml](https://github.com/keptn/examples/blob/0.8.2/onboarding-carts/carts/templates/deployment.yaml#L22)
@@ -48,7 +50,7 @@ carts           0/0     0            0            3m   carts        docker.io/ke
 ```
 
 
-When a new artifact is deployed (e.g., 0.11.2), a canary deployment will be modified and scaled up.
+When triggering a delivery (with a new artifact, e.g., 0.11.2), a canary deployment will be modified and scaled up.
 
 ```
 NAME            READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS   IMAGES                                 SELECTOR
