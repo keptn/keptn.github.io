@@ -2,7 +2,7 @@
 languageCode = "en-us"
 title = "keptn | Cloud-native application life-cycle orchestration"
 theme = "hugo-serif-theme"
-relativeUrls = true
+relativeUrls = false
 enableEmoji = true
 
 ignoreFiles = [
