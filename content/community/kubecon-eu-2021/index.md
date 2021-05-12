@@ -3,6 +3,7 @@ title: KubeCon Europe 2021
 #linktitle: Videos
 weight: 80
 sidebar_multicard: false
+draft: true
 icon: kubernetes
 ---
 
