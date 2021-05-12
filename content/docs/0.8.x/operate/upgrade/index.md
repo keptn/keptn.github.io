@@ -11,7 +11,7 @@ aliases:
 
 ## Upgrade from Keptn 0.8.2 to 0.8.3
 
-:warning: **Important:** Please update the Shipyard for each project that should have remediations enabled in a particular stage. The intructions are provided in *Step 2*. 
+:warning: **Important:** Please update the Shipyard for each project that should have remediations enabled in a particular stage. The instructions are provided by *Step 2*. 
 
 ### Step 1: Upgrade Keptn
 
@@ -55,29 +55,36 @@ before executing this command.
 
 ### Step 2: Update your Shipyard for the Remediation Use-Case
 
-1. (optional) Set the Git-upstream repository to get access to your Shipyard. Find instructions [here](../../manage/git_upstream/#create-keptn-project-or-set-git-upstream)
+1. (optional) Set the Git-upstream repository to get access to your Shipyard as explained [here](../../manage/git_upstream/#create-keptn-project-or-set-git-upstream).
 
 1. Go to the Git repository and open the `shipyard.yaml` file for each project where you want to enable the remediation use-case.
 
 1. Copy-paste the following sequence to the stage, which should automatically remediate your problems:
-    *Sequence:*
+    *Remediation sequence for a `production` stage*
   ```
-  - name: remediation
-      triggeredOn: 
-      - event: production.remediation.finished
-          selector:
-            match:
-              evaluation.result: fail
-      tasks:
-      - name: get-action 
-      - name: action
-      - name: evaluation
-        triggerAfter: "10m"
+            - name: remediation
+              triggeredOn: 
+              - event: production.remediation.finished
+                selector:
+                  match:
+                    evaluation.result: fail
+              tasks:
+              - name: get-action 
+              - name: action
+              - name: evaluation
+                triggeredAfter: "10m"
   ```
 
-1. Please double check the intentation before committing the file. An example is shown below:
+1. Please double-check the indentation of the remediation sequence. 
 
-TODO: Add Screenshot
+1. Finally, set the name of your `triggeredOn` event to map the `stage` the sequence was added to:
+
+**TODO** Update of image to use a working one
+
+  {{< popup_image
+  link="./assets/remediation_sequence.png"
+  caption="Remediation sequence"
+  width="500px">}}
 
 
 
