@@ -1,6 +1,6 @@
 ---
 title: Newsletter
-#linktitle: Videos
+linktitle: Newsletter
 weight: 999
 sidebar_multicard: false
 icon: contribute
