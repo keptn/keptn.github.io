@@ -12,6 +12,14 @@ After creating a project, Keptn allows creating a service or onboarding a servic
 
 - **Onboard a service:** This creates a new service and uploads the configuration to deploy the service. The configuration has to be a Helm Chart.
 
+## Service name restrictions
+
+* Service name must be a valid unix directory name (*Note*: for each service a directory with the corresponding name is created in the upstream git repository)
+* Keptn Version <= 0.8.2:
+  Service name in the form `${PROJECT}-${STAGE}-${SERVICE}-generated` must be less than 53 characters (*Note*: this limitation comes from [Kubernetes/Helm](https://github.com/helm/helm/issues/6006))
+* Keptn Version >= 0.8.3:
+  Service name must be less than 43 characters (*Note*: template was reduced to `${SERVICE}-generated` to allow longer service names)
+
 ## Create a service
 
 * To create a service, use the [keptn create service](../../reference/cli/commands/keptn_create_service) command and provide the service and project name (`--project` flag): 
