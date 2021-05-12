@@ -96,7 +96,22 @@ keptn create service <service-name> --project <project-name>
 ```
 keptn add-resource --project=<project-name> --service=<service-name> --all-stages --resource=<your-helm-chart.tgz> --resourceUri=helm/<service-name>.tgz
 ```
-(3) send an event to trigger the delivery of your service:
+(3) upload a file called `endpoints.yaml` where you can defined the host name under which your deployed service will be available:
+```
+keptn add-resource --project=<project-name> --service=<service-name> --all-stages --resource=<path_to_endpoints.yaml> --resourceUri=helm/endpoints.yaml
+```
+**Note**: This step is required, if you will need the `data.deployment.deploymentURIsPublic` and/or `data.deployment.deploymentURIsLocal` property of the `deployment.finished` event sent by the helm service. 
+This is the case, e.g., when the `jmeter-service`, which performs the `test` task needs to determine the URL for the service to be tested.
+The `endpoints.yaml` file has the following structure:
+
+```yaml
+deploymentURIsLocal:
+  - "<my-local-url>" # e.g. http://my-service.sockshop-dev:8080
+deploymentURIsPublic:
+  - "<my-public-url>" # e.g. http://123.123.123.nip.io:80
+```  
+
+(4) send an event to trigger the delivery of your service:
 ```
 keptn send event --file=./delivery.json 
 ```
