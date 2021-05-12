@@ -18,7 +18,7 @@ After creating a project, Keptn allows creating a service or onboarding a servic
 * Keptn Version <= 0.8.2:
   Service name in the form `${PROJECT}-${STAGE}-${SERVICE}-generated` must be less than 53 characters (*Note*: this limitation comes from [Kubernetes/Helm](https://github.com/helm/helm/issues/6006))
 * Keptn Version >= 0.8.3:
-  Service name in must be less than 43 characters (*Note*: template was reduced to `${SERVICE}-generated` to allow longer service names)
+  Service name must be less than 43 characters (*Note*: template was reduced to `${SERVICE}-generated` to allow longer service names)
 
 ## Create a service
 
