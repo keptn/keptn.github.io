@@ -13,16 +13,45 @@ uninstalling Keptn. Furthermore, the CLI allows creating projects, onboarding se
 
 ## Automatic install of Keptn CLI
 
-This works for Linux and Mac only.
+**Note**: This will work on Linux (and WSL2), as well as MacOS. Windows users need `bash`, `curl`, and `awk` installed (e.g., using Git Bash).
 
-1. This will download the 0.8.2 CLI version from [GitHub](https://github.com/keptn/keptn/releases), unpack it and move it to `/usr/local/bin/keptn`.
+1. Download the *latest stable Keptn version* from [GitHub](https://github.com/keptn/keptn/releases), unpack it and move it to `/usr/local/bin/keptn`.
 ```console
 curl -sL https://get.keptn.sh | bash
 ```
 
 2. Verify that the installation has worked and that the version is correct by running:
+    ```console
+    keptn version
+    ```
+    or if you are on Windows
+    ```console
+    .\keptn.exe version
+    ```
+
+## Installation on MacOS using brew
+
+The following command will automatically fetch the latest Keptn CLI via Homebrew
+
+```sh
+brew install keptn
+```
+
+Verify that the installation has worked and that the version is correct by running:
 ```console
 keptn version
+```
+
+### Updating
+
+```sh
+brew upgrade keptn
+```
+
+### Uninstall
+
+```sh
+brew uninstall keptn
 ```
 
 ## Download and manual install of Keptn CLI
