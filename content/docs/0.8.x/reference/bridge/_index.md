@@ -107,6 +107,46 @@ integrations for different CI providers.
 Please note that the page contains dynamic content that is loaded from https://get.keptn.sh/integrations.html. By clicking the button the data is requested,
 and additional data is gathered from the client. For more information about this see https://keptn.sh/docs/0.8.x/reference/load_information/.
 
+### Settings
+
+In the settings view the project settings can be edited.
+
+{{< popup_image
+link="./assets/settings.png"
+caption="Keptn Bridge Settings View">}}
+
+### Git upstream url
+
+The git upstream url can be set by entering the Git repository url, Git username and the Git token. This also can be achieved by
+using the [keptn update project](https://keptn.sh/docs/0.8.x/reference/cli/commands/keptn_update_project/) command.
+More information about how to set up your git provider can be found in the [Git-based upstream documentation](https://keptn.sh/docs/0.8.x/manage/git_upstream/).
+
+## Keptn Bridge features
+
+### Approvals
+
+If you have a [manual approval strategy](https://keptn.sh/docs/0.8.x/continuous_delivery/multi_stage/#approval) defined in your shipyard.yaml file, approvals can be handled with the Keptn Bridge.
+At sequence execution, if the approval task is reached, a panel is shown in all relevant screens:
+
+In the environment view a pending approval can be recognized by the blue service out-of-sync icon at the according stage.
+Examining the stage allows to directly approve or decline the sequence in the stage overview.
+
+{{< popup_image
+link="./assets/approval-environment.png"
+caption="Approval in Environments">}}
+
+In the services view, a pending approval can be recognized by the blue border of the stage. By examining the stage, approval can also be directly triggered there. 
+
+{{< popup_image
+link="./assets/approval-service.png"
+caption="Approval in Services">}}
+
+In sequences the approval is listed within the tasks in the sequence. Approve or decline the approval by opening the expand pane.
+
+{{< popup_image
+link="./assets/approval-sequence.png"
+caption="Approval in Sequences">}}
+
 ## Early access version of Keptn Bridge
 
 Right now there is no early access version of Keptn Bridge available. 
