@@ -6,9 +6,86 @@ aliases:
   - /docs/0.8.0/operate/upgrade/
   - /docs/0.8.1/operate/upgrade/
   - /docs/0.8.2/operate/upgrade/
+  - /docs/0.8.3/operate/upgrade/
 ---
 
+## Upgrade from Keptn 0.8.2 to 0.8.3
+
+:warning: **Important:** Please update the Shipyard for each project that should have remediations enabled in a particular stage. The intructions are provided in *Step 2*. 
+
+### Step 1: Upgrade Keptn
+
+1. Before starting the update, we strongly advise to create a backup of your Keptn projects. To do so, please follow the instructions in the [backup guide](../../operate/backup_and_restore).
+
+1. To download and install the Keptn CLI for version 0.8.3, you can choose between:
+    * **Automatic installation of the Keptn CLI (Linux and Mac)**:
+
+      * The next command will download the 0.8.2 release from [GitHub](https://github.com/keptn/keptn/releases), unpack it, and move it to `/usr/local/bin/keptn`.
+```console
+curl -sL https://get.keptn.sh | KEPTN_VERSION=0.8.2 bash
+```
+    
+      * Verify that the installation has worked and that the version is correct by running:
+```console
+keptn version
+```
+
+    * **Manual installation of the Keptn CLI:**
+
+      * Download the release for your platform from the [GitHub](https://github.com/keptn/keptn/releases/tag/0.8.2)
+
+      * Unpack the binary and move it to a directory of your choice (e.g., `/usr/local/bin/`)
+
+      * Verify that the installation has worked and that the version is correct by running:
+```console
+keptn version
+```
+
+1. To upgrade your Keptn installation from 0.8.2 to 0.8.3, the Keptn CLI offers the command: 
+```console
+keptn upgrade
+```
+    
+    * Please [verify that you are connected to the correct Kubernetes cluster](../../troubleshooting/#verify-kubernetes-context-with-keptn-installation)
+before executing this command.
+    
+    * This CLI command executes a Helm upgrade using the Helm chart from: [keptn-installer/keptn-0.8.2.tgz](https://storage.googleapis.com/keptn-installer/keptn-0.8.2.tgz)
+
+**Note:** If you have manually modified your Keptn deployment, e.g., you deleted the Kubernetes Secret `bridge-credentials` for disabling basic auth, the `keptn upgrade` command will not detect the modification. Please re-apply your modification after performing the upgrade.
+
+### Step 2: Update your Shipyard for the Remediation Use-Case
+
+1. (optional) Set the Git-upstream repository to get access to your Shipyard. Find instructions [here](../../manage/git_upstream/#create-keptn-project-or-set-git-upstream)
+
+1. Go to the Git repository and open the `shipyard.yaml` file for each project where you want to enable the remediation use-case.
+
+1. Copy-paste the following sequence to the stage, which should automatically remediate your problems:
+    *Sequence:*
+  ```
+  - name: remediation
+      triggeredOn: 
+      - event: production.remediation.finished
+          selector:
+            match:
+              evaluation.result: fail
+      tasks:
+      - name: get-action 
+      - name: action
+      - name: evaluation
+        triggerAfter: "10m"
+  ```
+
+1. Please double check the intentation before committing the file. An example is shown below:
+
+TODO: Add Screenshot
+
+
+
 ## Upgrade from Keptn 0.8.1 to 0.8.2
+
+<details><summary>Expand to see upgrade instructions:</summary>
+<p>  
+
 1. Before starting the update, we strongly advise to create a backup of your Keptn projects. To do so, please follow the instructions in the [backup guide](../../operate/backup_and_restore).
 
 1. To download and install the Keptn CLI for version 0.8.2, you can choose between:
@@ -47,7 +124,14 @@ before executing this command.
 
 **Note:** If you have manually modified your Keptn deployment, e.g., you deleted the Kubernetes Secret `bridge-credentials` for disabling basic auth, the `keptn upgrade` command will not detect the modification. Please re-apply your modification after performing the upgrade.
 
+</p>
+</details>
+
 ## Upgrade from Keptn 0.8.0 to 0.8.1
+
+<details><summary>Expand to see upgrade instructions:</summary>
+<p>   
+
 1. Before starting the update, we strongly advise to create a backup of your Keptn projects. To do so, please follow the instructions in the [backup guide](../../operate/backup_and_restore).
 
 1. To download and install the Keptn CLI for version 0.8.1, you can choose between:
@@ -86,6 +170,8 @@ before executing this command.
 
 **Note:** If you have manually modified your Keptn deployment, e.g., you deleted the Kubernetes Secret `bridge-credentials` for disabling basic auth, the `keptn upgrade` command will not detect the modification. Please re-apply your modification after performing the upgrade.
 
+</p>
+</details>
 
 ## Upgrade from Keptn 0.7 to 0.8
 
