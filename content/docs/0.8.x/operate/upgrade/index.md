@@ -79,9 +79,7 @@ before executing this command.
 
 1. Double-check the indentation of the remediation sequence. 
 
-1. Finally, set the name of your `triggeredOn` event to map the `stage` the sequence was added to. If you added it, for example, to a stage called `production`, the event looks as follows: `production.remediation.finished`
-
-**TODO** Update of image to use a working one
+1. Finally, set the name of your `triggeredOn` event to map the `stage` the sequence was added to. If you added it, for example, to a stage called `production`, the event looks as follows: `production.remediation.finished`. Please see the example below:
 
   {{< popup_image
   link="./assets/remediation_sequence.png"
