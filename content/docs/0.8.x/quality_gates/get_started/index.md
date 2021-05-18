@@ -50,7 +50,7 @@ For the `easyBooking` application, the Keptn entities of a project, stage, and s
 * `stage`: *quality_assurance*
 * `service`: *booking* & *payment* (For the sake of simplicity, a quality gate will be configured for `booking` only.)
 
-For defining the stage(s) but also the tasks a service has to go through, a [Shipyard](../../continuous_delivery/multi_stage/#declare-shipyard-before-creating-a-project) file is needed. Since a quality gate should be configured for the *quality_assurance* environment only, the corresponding Shipyard for the *easyBooking* project looks as follows:
+For defining the stage(s) but also the tasks a service has to go through, a [Shipyard](../../manage/shipyard) file is needed. Since a quality gate should be configured for the *quality_assurance* environment only, the corresponding Shipyard for the *easyBooking* project looks as follows:
 
 ```yaml
 apiVersion: "spec.keptn.sh/0.2.0"

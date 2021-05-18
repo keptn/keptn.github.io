@@ -8,6 +8,38 @@ keywords: [0.8.x-automated-operations]
 
 The remediation config describes a remediation workflow in a declarative manner. Hence, it only defines what needs to be done and leaves all the details to other components. 
 
+## Declare a remediation sequence in shipyard
+
+The definition of a remediation sequence is done in a so-called [Shipyard](../../manage/shipyard) file.
+
+**Example**: Simple shipyard file with a remediation sequence in a single stage
+```yaml
+apiVersion: "spec.keptn.sh/0.2.0"
+kind: "Shipyard"
+metadata:
+  name: "shipyard-sockshop"
+spec:
+  stages:
+    - name: "production"
+      sequences:
+        - name: "remediation"
+          triggeredOn:
+            - event: "production.remediation.finished"
+              selector:
+                match:
+                  evaluation.result: "fail"
+          tasks:
+            - name: "get-action"
+            - name: "action"
+            - name: "evaluation"
+              triggeredAfter: "10m"
+              properties:
+                timeframe: "10m"
+```
+
+*Note*: Remediations can also be used in combination with [multi stage delivery](../../continuous_delivery/multi_stage) workflows.
+
+
 ## Configure Remediation
 
 Below is an example of a declarative remediation config: 
