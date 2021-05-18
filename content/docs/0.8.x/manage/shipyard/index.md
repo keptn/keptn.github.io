@@ -1,6 +1,6 @@
 ---
 title: Shipyard
-description: Information about Shipyard.yaml, sequences and tasks to define processes and workflows.
+description: Information about shipyard, sequences and tasks to define processes and workflows.
 weight: 25
 keywords: [0.8.x-manage]
 aliases:
@@ -40,7 +40,7 @@ spec:
 After defining stages, sequences can be added to a stage. A sequence is an ordered list of tasks that are triggered sequentially. A `sequence` consists of the following properties:
 
 * `name`: A unique name of the sequence
-* `on` (optional): An array of events that trigger the sequence.
+* `triggeredOn` (optional): An array of events that trigger the sequence.
 * `tasks`: An array of tasks executed by the sequence in the declared order.
 
 **Example:** Extended shipyard with a delivery sequence in all three stage:
@@ -58,6 +58,7 @@ spec:
         tasks: 
         - name: "deployment"
         - name: "release"
+
     - name: "hardening"
       sequences:
       - name: "delivery"
@@ -66,6 +67,7 @@ spec:
         tasks: 
         - name: "deployment"
         - name: "release"
+
     - name: "production"
       sequences:
       - name: "delivery"

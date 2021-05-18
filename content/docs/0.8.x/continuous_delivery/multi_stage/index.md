@@ -7,11 +7,11 @@ keywords: [0.8.x-cd]
 
 
 
-## Declare a shipyard file
+## Declare a multi-stage delivery sequence in shipyard
 
 The definition of a multi-stage delivery manifests in a so-called [Shipyard](../../manage/shipyard) file. It can hold multiple stages with dedicated and opinionated delivery tasks to execute.
 
-**Example**: Simple shipyard file with a delivery sequence in the two stages `dev` and `prod`, whereas `dev` uses a direct deployment and `prod` uses blue-green deployment:
+**Example**: Simple shipyard file with a delivery sequence in the two stages `dev` and `production`, whereas `dev` uses a direct deployment and `prod` uses blue-green deployment:
 
 ```yaml
 apiVersion: spec.keptn.sh/0.2.0
@@ -41,7 +41,7 @@ spec:
         - name: "release"
 ```
 
-**Example:** Extended shipyard with a delivery sequence in three stages `dev`, `hardening` and `prod` in combination with tests:
+**Example:** Extended shipyard with a delivery sequence in three stages `dev`, `hardening` and `production` in combination with tests:
 
 ```yaml
 apiVersion: spec.keptn.sh/0.2.0
@@ -62,6 +62,7 @@ spec:
             teststrategy: "functional"
         - name: "evaluation"
         - name: "release"
+
     - name: "hardening"
       sequences:
       - name: "delivery"
@@ -76,6 +77,7 @@ spec:
             teststrategy: "functional"
         - name: "evaluation"
         - name: "release"
+
     - name: "production"
       sequences:
       - name: "delivery"
