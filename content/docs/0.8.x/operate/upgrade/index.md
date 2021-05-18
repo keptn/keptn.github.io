@@ -20,9 +20,9 @@ aliases:
 1. To download and install the Keptn CLI for version 0.8.3, you can choose between:
     * **Automatic installation of the Keptn CLI (Linux and Mac)**:
 
-      * The next command will download the 0.8.2 release from [GitHub](https://github.com/keptn/keptn/releases), unpack it, and move it to `/usr/local/bin/keptn`.
+      * The next command will download the 0.8.3 release from [GitHub](https://github.com/keptn/keptn/releases), unpack it, and move it to `/usr/local/bin/keptn`.
 ```console
-curl -sL https://get.keptn.sh | KEPTN_VERSION=0.8.2 bash
+curl -sL https://get.keptn.sh | KEPTN_VERSION=0.8.3 bash
 ```
     
       * Verify that the installation has worked and that the version is correct by running:
