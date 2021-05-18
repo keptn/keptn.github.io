@@ -32,7 +32,7 @@ keptn version
 
     * **Manual installation of the Keptn CLI:**
 
-      * Download the release for your platform from the [GitHub](https://github.com/keptn/keptn/releases/tag/0.8.2)
+      * Download the release for your platform from the [GitHub](https://github.com/keptn/keptn/releases/tag/0.8.3)
 
       * Unpack the binary and move it to a directory of your choice (e.g., `/usr/local/bin/`)
 
@@ -49,7 +49,7 @@ keptn upgrade
     * Please [verify that you are connected to the correct Kubernetes cluster](../../troubleshooting/#verify-kubernetes-context-with-keptn-installation)
 before executing this command.
     
-    * This CLI command executes a Helm upgrade using the Helm chart from: [keptn-installer/keptn-0.8.2.tgz](https://storage.googleapis.com/keptn-installer/keptn-0.8.2.tgz)
+    * This CLI command executes a Helm upgrade using the Helm chart from: [keptn-installer/keptn-0.8.3.tgz](https://storage.googleapis.com/keptn-installer/keptn-0.8.3.tgz)
 
 **Note:** If you have manually modified your Keptn deployment, e.g., you deleted the Kubernetes Secret `bridge-credentials` for disabling basic auth, the `keptn upgrade` command will not detect the modification. Please re-apply your modification after performing the upgrade.
 
