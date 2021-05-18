@@ -11,7 +11,7 @@ aliases:
 
 ## Upgrade from Keptn 0.8.2 to 0.8.3
 
-:warning: **Important:** Please update the Shipyard for each project that should have remediations enabled in a particular stage. The instructions are provided by *Step 2*. 
+:warning: **Important:** Please update the Shipyard for each project that should have remediations enabled in a particular stage. The instructions are provided in *Step 2*. 
 
 ### Step 1: Upgrade Keptn
 
@@ -60,11 +60,11 @@ before executing this command.
 1. Go to the Git repository and open the `shipyard.yaml` file for each project where you want to enable the remediation use-case.
 
 1. Copy-paste the following sequence to the stage, which should automatically remediate your problems:
-    *Remediation sequence for a `production` stage*
+    *Remediation sequence*
   ```
             - name: remediation
               triggeredOn: 
-              - event: production.remediation.finished
+              - event: [STAGE-NAME].remediation.finished
                 selector:
                   match:
                     evaluation.result: fail
@@ -73,11 +73,13 @@ before executing this command.
               - name: action
               - name: evaluation
                 triggeredAfter: "10m"
+                properties:
+                  timeframe: "10m"
   ```
 
-1. Please double-check the indentation of the remediation sequence. 
+1. Double-check the indentation of the remediation sequence. 
 
-1. Finally, set the name of your `triggeredOn` event to map the `stage` the sequence was added to:
+1. Finally, set the name of your `triggeredOn` event to map the `stage` the sequence was added to. If you added it, for example, to a stage called `production`, the event looks as follows: `production.remediation.finished`
 
 **TODO** Update of image to use a working one
 
@@ -85,7 +87,6 @@ before executing this command.
   link="./assets/remediation_sequence.png"
   caption="Remediation sequence"
   width="500px">}}
-
 
 
 ## Upgrade from Keptn 0.8.1 to 0.8.2
