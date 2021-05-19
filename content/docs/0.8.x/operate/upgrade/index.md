@@ -60,7 +60,6 @@ before executing this command.
 1. Go to the Git repository and open the `shipyard.yaml` file for each project where you want to enable the remediation use-case.
 
 1. Copy-paste the following sequence to the stage, which should automatically remediate your problems:
-    *Remediation sequence*
   ```
             - name: remediation
               triggeredOn: 
