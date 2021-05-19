@@ -8,6 +8,13 @@ icon: callout-idea
 
 Please subscribe to our [Keptn YouTube channel](https://www.youtube.com/c/keptn/) that holds **all** of our videos. Below, we are highlighting the most watched and demanded videos by the community.
 
+## Automating & evaluating load testing with Locust and Keptn
+
+| | |
+| --- | --- |
+| **Automating & evaluating load testing with Locust and Keptn** with Lars Holmberg, RedShirt<br><br> Learn how to use Locust load testing and how to write powerful load tests in a simple way. We will then use Keptn to have the tests automatically executed as part of our CD and Keptn Quality Gates to evaluate the impact of the tests on our applications. We even build a self-service platform for developers to be able to trigger deployment, tests, and evaluations for new version of their applications. <br><br>[Find the integration in the Keptn Sandbox](https://github.com/keptn-sandbox/locust-service). | <iframe width="560" height="315" src="https://www.youtube.com/embed/Ok4x2LIbEEY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> |
+
+
 ## Automating Quality Gates in Azure DevOps with Keptn
 
 | | |
