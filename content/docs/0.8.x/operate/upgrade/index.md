@@ -59,6 +59,8 @@ before executing this command.
 
 1. Go to the Git repository and open the `shipyard.yaml` file for each project where you want to enable the remediation use-case.
 
+1. Change the `apiVersion` of your Shipyard from: `spec.keptn.sh/0.2.0` to: `spec.keptn.sh/0.2.2`
+
 1. Copy-paste the following sequence to the stage, which should automatically remediate your problems:
   ```
             - name: remediation
