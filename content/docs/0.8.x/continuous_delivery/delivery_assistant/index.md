@@ -75,13 +75,13 @@ You can approve or decline this deployment by sending an `approval.finished` Clo
 
 ## Approve or decline an open approval with Keptn API
 
-* Note down the keptn-context (`shkeptncontext`) and `id` (maps to `triggeredid`) of the [sh.keptn.event.approval.triggered](https://github.com/keptn/spec/blob/0.2.0/cloudevents.md#approval-triggered) CloudEvent, e.g., 
+* Note down the keptn-context (`shkeptncontext`) and `id` (maps to `triggeredid`) of the [sh.keptn.event.approval.triggered](https://github.com/keptn/spec/blob/0.2.2/cloudevents.md#approval-triggered) CloudEvent, e.g., 
 ```
   "shkeptncontext": "654c80b0-4a02-4d36-96f3-7447df1cdf41",
   "id": "5bf26759-4afa-4045-8ccf-81bc398c2fcd",
 ```
 
-* Specify a valid Keptn CloudEvent of type [sh.keptn.event.approval.finished](https://github.com/keptn/spec/blob/0.2.0/cloudevents.md#approval-finished) and store it as JSON file, e.g., `approval_finished.json`
+* Specify a valid Keptn CloudEvent of type [sh.keptn.event.approval.finished](https://github.com/keptn/spec/blob/0.2.2/cloudevents.md#approval-finished) and store it as JSON file, e.g., `approval_finished.json`
 
 ```json
 {

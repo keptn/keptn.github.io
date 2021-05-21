@@ -5,7 +5,7 @@ weight: 5
 keywords: [0.8.x-integration]
 ---
 
-An *SLI-provider* is an implementation of a [*Keptn-service*](../custom_integration/#keptn-service) with a dedicated purpose. This type of service is responsible for querying an external data source for SLIs that are then used by Keptn to evaluate an SLO. To configure a query for an indicator, Keptn provides the concept of an [SLI configuration](https://github.com/keptn/spec/blob/0.2.0/service_level_indicator.md#service-level-indicators-sli).
+An *SLI-provider* is an implementation of a [*Keptn-service*](../custom_integration/#keptn-service) with a dedicated purpose. This type of service is responsible for querying an external data source for SLIs that are then used by Keptn to evaluate an SLO. To configure a query for an indicator, Keptn provides the concept of an [SLI configuration](https://github.com/keptn/spec/blob/0.2.2/service_level_indicator.md#service-level-indicators-sli).
 
 * Create a SLI configuration defining tool-specific queries for indicators. An example of an SLI configuration looks as follows:
 
@@ -35,9 +35,9 @@ Like a Keptn-service, an SLI-provider has the following characteristics:
 
 An *SLI-provider* starts working, when receiving a Keptn CloudEvent of type:
 
-- [sh.keptn.event.get-sli.triggered](https://github.com/keptn/spec/blob/0.2.0/cloudevents.md#get-sli) 
+- [sh.keptn.event.get-sli.triggered](https://github.com/keptn/spec/blob/0.2.2/cloudevents.md#get-sli) 
 
-Next to event meta-data such as project, stage, or service name, the event contains information about the indicators, time frame, and labels to query. For more details, please see the specification [here](https://github.com/keptn/spec/blob/0.2.0/cloudevents.md#get-sli) and take a look at the example: 
+Next to event meta-data such as project, stage, or service name, the event contains information about the indicators, time frame, and labels to query. For more details, please see the specification [here](https://github.com/keptn/spec/blob/0.2.2/cloudevents.md#get-sli) and take a look at the example: 
 
 ```json
 {
