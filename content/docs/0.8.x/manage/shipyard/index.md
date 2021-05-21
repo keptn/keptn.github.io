@@ -24,7 +24,7 @@ A stage is declared by its name. This name will be used for the branch in the Gi
 **Example of a shipyard with three stages:**
 
 ```yaml
-apiVersion: spec.keptn.sh/0.2.0
+apiVersion: spec.keptn.sh/0.2.2
 kind: "Shipyard"
 metadata:
   name: "shipyard-sockshop"
@@ -46,7 +46,7 @@ After defining stages, sequences can be added to a stage. A sequence is an order
 **Example:** Extended shipyard with a delivery sequence in all three stage:
 
 ```yaml
-apiVersion: spec.keptn.sh/0.2.0
+apiVersion: spec.keptn.sh/0.2.2
 kind: "Shipyard"
 metadata:
   name: "shipyard-sockshop"
@@ -134,7 +134,7 @@ Per default, an `automatic` approval strategy is used for evaluation result `pas
 <p>
 
 ```yaml
-apiVersion: spec.keptn.sh/0.2.0
+apiVersion: spec.keptn.sh/0.2.2
 kind: "Shipyard"
 metadata:
   name: "shipyard-sockshop"
@@ -258,7 +258,7 @@ Defines the test strategy used to validate a deployment. Keptn supports tests of
 <p>
 
 ```yaml
-apiVersion: spec.keptn.sh/0.2.0
+apiVersion: spec.keptn.sh/0.2.2
 kind: "Shipyard"
 metadata:
   name: "shipyard-sockshop"
@@ -309,7 +309,7 @@ If you want to add or remove an additional task to a sequence, you can do this b
 *Initial shipyard:*
 
 ```
-apiVersion: "spec.keptn.sh/0.2.0"
+apiVersion: "spec.keptn.sh/0.2.2"
 kind: "Shipyard"
 metadata:
   name: "shipyard-sockshop"
@@ -334,7 +334,7 @@ spec:
 *Updated shipyard:*
 
 ```
-apiVersion: "spec.keptn.sh/0.2.0"
+apiVersion: "spec.keptn.sh/0.2.2"
 kind: "Shipyard"
 metadata:
   name: "shipyard-sockshop"
@@ -364,7 +364,7 @@ If you want to add or remove an additional task sequence to a stage, you can do 
 *Initial shipyard:*
 
 ```
-apiVersion: "spec.keptn.sh/0.2.0"
+apiVersion: "spec.keptn.sh/0.2.2"
 kind: "Shipyard"
 metadata:
   name: "shipyard-sockshop"
@@ -389,7 +389,7 @@ spec:
 *Updated shipyard:*
 
 ```
-apiVersion: "spec.keptn.sh/0.2.0"
+apiVersion: "spec.keptn.sh/0.2.2"
 kind: "Shipyard"
 metadata:
   name: "shipyard-sockshop"
@@ -427,7 +427,7 @@ keptn trigger delivery --project=<project> --service=<service> --image=<image> -
 *Updated shipyard:*
 
 ```
-apiVersion: "spec.keptn.sh/0.2.0"
+apiVersion: "spec.keptn.sh/0.2.2"
 kind: "Shipyard"
 metadata:
   name: "shipyard-sockshop"
@@ -487,7 +487,7 @@ sequences:
 *Initial shipyard:*
 
 ```
-apiVersion: "spec.keptn.sh/0.2.0"
+apiVersion: "spec.keptn.sh/0.2.2"
 kind: "Shipyard"
 metadata:
   name: "shipyard-sockshop"
@@ -512,7 +512,7 @@ spec:
 *Updated shipyard:*
 
 ```
-apiVersion: "spec.keptn.sh/0.2.0"
+apiVersion: "spec.keptn.sh/0.2.2"
 kind: "Shipyard"
 metadata:
   name: "shipyard-sockshop"

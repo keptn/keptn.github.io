@@ -14,7 +14,7 @@ The definition of a remediation sequence is done in a so-called [Shipyard](../..
 
 **Example**: Simple shipyard file with a remediation sequence in a single stage
 ```yaml
-apiVersion: "spec.keptn.sh/0.2.0"
+apiVersion: "spec.keptn.sh/0.2.2"
 kind: "Shipyard"
 metadata:
   name: "shipyard-sockshop"

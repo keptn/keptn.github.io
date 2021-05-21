@@ -53,7 +53,7 @@ For the `easyBooking` application, the Keptn entities of a project, stage, and s
 For defining the stage(s) but also the tasks a service has to go through, a [Shipyard](../../manage/shipyard) file is needed. Since a quality gate should be configured for the *quality_assurance* environment only, the corresponding Shipyard for the *easyBooking* project looks as follows:
 
 ```yaml
-apiVersion: "spec.keptn.sh/0.2.0"
+apiVersion: "spec.keptn.sh/0.2.2"
 kind: "Shipyard"
 metadata:
   name: "shipyard-sockshop"
