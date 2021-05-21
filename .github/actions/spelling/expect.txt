@@ -1899,3 +1899,7 @@ zwrb
 zx
 zy
 Zyu
+golangci
+OAuth
+OOM
+spamming

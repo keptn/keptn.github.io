@@ -16,21 +16,21 @@ Please find here a list of all *Keptn-services* and *SLI-providers* that are ava
 
 | Keptn-service | latest Release | supported Keptn | Repository  |
 | -------------------------- | --- | --- | --- |
-| **argo-service**      | [0.8.0](https://github.com/keptn-contrib/argo-service/releases/tag/0.8.0) | 0.8.1 | https://github.com/keptn-contrib/argo-service |
-| **dynatrace-service**      | [0.13.0](https://github.com/keptn-contrib/dynatrace-service/releases/tag/0.13.0) | 0.8.2 | https://github.com/keptn-contrib/dynatrace-service |
+| **argo-service**      | [0.8.0](https://github.com/keptn-contrib/argo-service/releases/tag/0.8.0) | 0.8.3 | https://github.com/keptn-contrib/argo-service |
+| **dynatrace-service**      | [0.14.0](https://github.com/keptn-contrib/dynatrace-service/releases/tag/0.14.0) | 0.8.3 | https://github.com/keptn-contrib/dynatrace-service |
 | **neoload-service**        | [0.6.0](https://github.com/keptn-contrib/neoload-service/tree/0.6.0) | 0.6.0 | https://github.com/keptn-contrib/neoload-service |
 | **notification-service**   | [0.3.1](https://github.com/keptn-contrib/notification-service/releases/tag/0.3.1) | 0.7.3 | https://github.com/keptn-contrib/notification-service |
-| **prometheus-service**     | [0.5.0](https://github.com/keptn-contrib/prometheus-service/releases/tag/0.5.0) | 0.8.2 | https://github.com/keptn-contrib/prometheus-service |
+| **prometheus-service**     | [0.5.0](https://github.com/keptn-contrib/prometheus-service/releases/tag/0.5.0) | 0.8.3 | https://github.com/keptn-contrib/prometheus-service |
 | **servicenow-service**     | [0.2.1](https://github.com/keptn-contrib/servicenow-service/releases/tag/0.2.1) | 0.6.2 | https://github.com/keptn-contrib/servicenow-service |
-| **unleash-service**        | [0.3.0](https://github.com/keptn-contrib/unleash-service/releases/tag/0.3.0) | 0.8.2 | https://github.com/keptn-contrib/unleash-service | 
+| **unleash-service**        | [0.3.1](https://github.com/keptn-contrib/unleash-service/releases/tag/0.3.1) | 0.8.3 | https://github.com/keptn-contrib/unleash-service | 
 
 
 
 | SLI-provider | latest Release | supported Keptn | Repository  |
 | -------------------------- | --- | --- | --- |
-| **dynatrace-sli-service**  | [0.10.0](https://github.com/keptn-contrib/dynatrace-sli-service/releases/tag/0.10.0) | 0.8.2 | https://github.com/keptn-contrib/dynatrace-sli-service |
+| **dynatrace-sli-service**  | [0.11.0](https://github.com/keptn-contrib/dynatrace-sli-service/releases/tag/0.11.0) | 0.8.3 | https://github.com/keptn-contrib/dynatrace-sli-service |
 | **neoload-sli-provider**  | [0.6.0](https://github.com/keptn-contrib/neoload-sli-provider/tree/0.6.0) | 0.6.0 | https://github.com/keptn-contrib/neoload-sli-provider |
-| **prometheus-sli-service** | [0.3.0](https://github.com/keptn-contrib/prometheus-sli-service/releases/tag/0.3.0) | 0.8.2 | https://github.com/keptn-contrib/prometheus-sli-service |
+| **prometheus-sli-service** | [0.3.0](https://github.com/keptn-contrib/prometheus-sli-service/releases/tag/0.3.0) | 0.8.3 | https://github.com/keptn-contrib/prometheus-sli-service |
 
 ## Sandbox
 
