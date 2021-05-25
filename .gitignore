@@ -1,6 +1,6 @@
 # Ignore build folder
 public
-resources/_gen/**/*.content
+resources/_gen/
 .DS_Store
 
 # IDE files
