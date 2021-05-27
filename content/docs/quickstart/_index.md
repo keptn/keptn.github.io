@@ -7,6 +7,41 @@ weight: 1
 hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
 ---
 
+We'll run Keptn on a local [k3d](https://k3d.io) cluster.
+
+## Prerequisites
+- [Docker](https://docker.com/)
+- [k3d](https://k3d.io) (find [installation instructions](https://k3d.io/#install-script) or run<br> `wget -q -O - https://raw.githubusercontent.com/rancher/k3d/main/install.sh | bash` )
+- [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl)
+- [helm](https://helm.sh/) when running the demos in step 4
+
+## Install Keptn
+
+1. Create local k3d cluster
+
+    ```
+    k3d cluster create mykeptn -p "8082:80@agent[0]" -p "8443:443@agent[0]" --k3s-server-arg '--no-deploy=traefik' --agents 1
+    ```
+
+1. Get Keptn CLI
+
+    ```
+    curl -sL https://get.keptn.sh | bash
+    ```
+
+1. Install Keptn control plane + execution plane for continuous delivery
+    ```
+    curl -sL QUICKSTART.SH | bash 
+    ```
+    If you want to install Keptn yourself without following the quickstart guide, have a look at the [install options](../).
+
+1. (Optional but recommended) Create a demo project with multi-stage pipeline + SLO-based quality gates
+    ```
+    curl GET_DEMO.sh | bash
+    ```
+
+
+
 ### 1. Create Kubernetes cluster
 
 Select one of the following options:
