@@ -80,7 +80,7 @@ echo "Disabling authentication for Keptn's Bridge (since we are running locally)
 kubectl -n keptn delete secret bridge-credentials --ignore-not-found=true
 
 echo "Restart Keptn's Bridge to load new settings"
-#kubectl -n keptn delete pods --selector=app.kubernetes.io/name=bridge
+kubectl -n keptn delete pods --selector=app.kubernetes.io/name=bridge
 
 # Creating Keptn ingress config map
 echo "Creating Ingress config for Keptn"
@@ -107,7 +107,7 @@ do
     open http://$INGRESS_IP.nip.io:$INGRESS_PORT/bridge
     break
   fi
-  echo "Keptn's bridge not yet availabe, waiting $SLEEP_TIME seconds and then trying again"
+  echo "Keptn's bridge not yet available, waiting $SLEEP_TIME seconds and then trying again"
   retries=$(( retries++ ))
   sleep $SLEEP_TIME
   http_code=$(curl -LI http://$INGRESS_IP.nip.io:$INGRESS_PORT/bridge -o /dev/null -w '%{http_code}\n' -s)
