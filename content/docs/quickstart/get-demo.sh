@@ -39,7 +39,7 @@ open http://$INGRESS_IP.nip.io:$INGRESS_PORT/bridge/project/podtatohead/sequence
 echo "Installing Prometheus"
 kubectl create ns monitoring
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-helm install prometheus prometheus-community/prometheus --namespace monitoring
+helm install prometheus prometheus-community/prometheus --namespace monitoring --wait
 
 kubectl apply -f - <<EOF
 apiVersion: networking.k8s.io/v1
@@ -95,6 +95,15 @@ echo "Adding some load tests"
 keptn add-resource --project=$PROJECT --stage=hardening --service=$SERVICE --resource=jmeter/load.jmx --resourceUri=jmeter/load.jmx
 keptn add-resource --project=$PROJECT --stage=hardening --service=$SERVICE --resource=jmeter/jmeter.conf.yaml --resourceUri=jmeter/jmeter.conf.yaml
 
+## TODO
+## check for prometheus to be available at this point
 
 
+## triggering new delivery
 keptn trigger delivery --project=$PROJECT --service=$SERVICE --image=$IMAGE --tag=$VERSION
+
+
+echo "Have a look at the Keptn's Bridge and explore the demo project"
+echo "You can run a new delivery sequence with the following command"
+echo "keptn trigger delivery --project=$PROJECT --service=$SERVICE --image=$IMAGE --tag=$VERSION"
+

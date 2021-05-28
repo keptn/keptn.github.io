@@ -13,8 +13,8 @@ SLEEP_TIME=5
 
 echo "Installing Keptn in local k3d cluster"
 
-echo "keptn install --use-case=continuous-delivery"
-keptn install --use-case=continuous-delivery
+echo "keptn install --use-case=continuous-delivery -y"
+keptn install --use-case=continuous-delivery -y
 
 echo "Setup up Istio for Ingress and traffic shifting for blue/green deployments"
 echo "curl -L https://istio.io/downloadIstio | ISTIO_VERSION=$ISTIO_VERSION sh -"
