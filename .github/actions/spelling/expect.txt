@@ -1903,3 +1903,10 @@ golangci
 OAuth
 OOM
 spamming
+cncf
+ghcr
+helloserver
+helloservice
+podtato
+podtatohead
+podtatoserver
