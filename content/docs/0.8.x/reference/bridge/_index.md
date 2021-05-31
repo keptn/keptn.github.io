@@ -78,7 +78,20 @@ The Keptn Bridge provides an easy way to browse all events that are sent within 
         link="./assets/services-view-payload.png"
         caption="Event Payload"
         width="50%">}}
-  
+        
+* If you configured some remediations and one of them is currently running, the affected service, deployment and stage is indicated. You can also see, which type of remediation is
+  being executed and view its configuration and sequence execution.
+
+    {{< popup_image
+        link="./assets/services-view-remediations.png"
+        caption="Open remediations"
+        width="50%">}}
+
+    {{< popup_image
+        link="./assets/services-view-remediation-config.png"
+        caption="Remediation configuration"
+        width="50%">}}
+
 ### Evaluation board
 
 * Next to the evaluation comparison as a heatmap or chart in the *Services* view, we provide a link to the *Evaluation Board*, which displays only 
