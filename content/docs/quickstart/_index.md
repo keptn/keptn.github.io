@@ -43,7 +43,7 @@ hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
 
 1. Install and configure Istio for Ingress + continuous delivery use-case
     ```
-    curl -SL https://raw.githubusercontent.com/keptn/keptn.github.io/...TBD.../content/docs/quickstart/quickstart.sh | bash 
+    curl -SL https://raw.githubusercontent.com/keptn/keptn.github.io/...TBD.../content/docs/quickstart/exposeKeptnConfigureIstio.sh | bash 
     ```
     
 
