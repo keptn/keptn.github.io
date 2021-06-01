@@ -8,7 +8,7 @@ INGRESS_PORT=8082
 
 # retries for opening the bridge
 MAX_RETRIES=5
-SLEEP_TIME=1
+SLEEP_TIME=5
 
 
 echo "Setup up Istio for Ingress and traffic shifting for blue/green deployments"
