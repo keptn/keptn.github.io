@@ -1,16 +1,26 @@
 #!/bin/bash
 set -e
 
+source <(curl -s https://raw.githubusercontent.com/keptn/keptn/master/test/utils.sh)
+
 # istio settings
-ISTIO_VERSION=1.10.0
+ISTIO_VERSION=$1
+INGRESS_PORT=$2
 INGRESS_IP=127.0.0.1
-INGRESS_PORT=8082
+
+if [ -z "$ISTIO_VERSION" ]; then
+ 	ISTIO_VERSION=1.10.0
+fi
+
+if [ -z "$INGRESS_PORT" ]; then
+ 	INGRESS_PORT=8082
+fi
 
 # retries for opening the bridge
 MAX_RETRIES=5
 SLEEP_TIME=5
 
-
+# Download and install Istio
 echo "Setup up Istio for Ingress and traffic shifting for blue/green deployments"
 echo "curl -L https://istio.io/downloadIstio | ISTIO_VERSION=$ISTIO_VERSION sh -"
 curl -L https://istio.io/downloadIstio | ISTIO_VERSION=$ISTIO_VERSION sh -
@@ -23,10 +33,6 @@ echo "Removing downloaded Istio resources"
 rm -rf ./istio-$ISTIO_VERSION
 
 echo "Configuring Ingress for your local installation"
-if [ -z "$INGRESS_IP" ] || [ "$INGRESS_IP" = "Pending" ] ; then
- 	echo "INGRESS_IP is empty. Make sure that the Ingress gateway is ready"
-	exit 1
-fi
 
 # Applying ingress-manifest
 kubectl apply -f - <<EOF
@@ -51,6 +57,8 @@ spec:
               number: 80
 EOF
 
+verify_test_step $? "Applying istio public gateway failed"
+
 # Applying public gateway
 kubectl apply -f - <<EOF
 ---
@@ -71,6 +79,9 @@ spec:
     - '*'
 EOF
 
+verify_test_step $? "Applying istio public gateway failed"
+
+# Disable Bridge authentication (running on localhost)
 echo "Disabling authentication for Keptn's Bridge (since we are running locally)"
 kubectl -n keptn delete secret bridge-credentials --ignore-not-found=true
 
@@ -85,10 +96,10 @@ kubectl create configmap -n keptn ingress-config --from-literal=ingress_hostname
 echo "Restarting helm-service to load new settings"
 kubectl delete pod -n keptn -lapp.kubernetes.io/name=helm-service
 
+# Authenticating Keptn CLI against the current Keptn installation
 echo "Authenticating Keptn CLI against Keptn installation"
 echo "keptn auth --endpoint=http://$INGRESS_IP.nip.io:$INGRESS_PORT --api-token=*****"
 keptn auth --endpoint=http://$INGRESS_IP.nip.io:$INGRESS_PORT --api-token=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
-
 
 # Opening bridge
 echo "Opening Keptn's Bridge..."
@@ -123,6 +134,3 @@ else
   echo "Find the Keptn's Bridge at http://$INGRESS_IP.nip.io:$INGRESS_PORT/bridge "
   echo "Find the Keptn API at http://$INGRESS_IP.nip.io:$INGRESS_PORT/api "
 fi
-
-
-
