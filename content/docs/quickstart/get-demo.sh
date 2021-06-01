@@ -31,9 +31,16 @@ echo "keptn onboard service $SERVICE --project=$PROJECT --chart=./helm-charts/he
 keptn onboard service $SERVICE --project="${PROJECT}" --chart=./helm-charts/helloserver
 verify_test_step $? "keptn onboard carts failed."
 
+# check which namespaces exist
+echo "Verifying that the following namespaces are available:"
+
+verify_namespace_exists "$PROJECT-hardening"
+verify_namespace_exists "$PROJECT-production"
+
 echo "Trigger the delivery sequence with Keptn"
 echo "keptn trigger delivery --project=$PROJECT --service=$SERVICE --image=$IMAGE --tag=v$VERSION"
 keptn trigger delivery --project=$PROJECT --service=$SERVICE --image=$IMAGE --tag=$VERSION
+verify_test_step $? "Trigger delivery for helloservice failed"
 
 echo "Following the multi stage delivery in Keptn's bridge while we are setting up Prometheus and configure quality gates"
 echo "Find the details here: http://$INGRESS_IP.nip.io:$INGRESS_PORT/bridge/project/podtatohead/sequence"
@@ -48,7 +55,11 @@ else
   open http://$INGRESS_IP.nip.io:$INGRESS_PORT/bridge/project/podtatohead/sequence
 fi
 
-## adding quality gates
+# lets wait a little bit until we are sure that helloservice has been deployed
+wait_for_deployment_in_namespace $SERVICE "$PROJECT-hardening"
+verify_test_step $? "Deployment $SERVICE  not available, exiting..."
+
+# adding quality gates
 echo "Installing Prometheus"
 kubectl create ns monitoring
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
@@ -103,18 +114,18 @@ echo "Configuring Prometheus with Keptn"
 keptn configure monitoring prometheus --project=$PROJECT --service=$SERVICE
 
 
-## adding tests to the service
+# adding tests to the service
 echo "Adding some load tests"
 keptn add-resource --project=$PROJECT --stage=hardening --service=$SERVICE --resource=jmeter/load.jmx --resourceUri=jmeter/load.jmx
 keptn add-resource --project=$PROJECT --stage=hardening --service=$SERVICE --resource=jmeter/jmeter.conf.yaml --resourceUri=jmeter/jmeter.conf.yaml
 
-## TODO
-## check for prometheus to be available at this point
+# check for prometheus to be available at this point
+wait_for_deployment_in_namespace "prometheus-service" "keptn"
+wait_for_deployment_in_namespace "prometheus-sli-service" "keptn"
 
-
-## triggering new delivery
+# triggering new delivery
 keptn trigger delivery --project=$PROJECT --service=$SERVICE --image=$IMAGE --tag=$VERSION
-
+verify_test_step $? "Trigger delivery for helloservice failed"
 
 echo "Have a look at the Keptn's Bridge and explore the demo project"
 echo "You can run a new delivery sequence with the following command"
