@@ -97,7 +97,7 @@ retries=1
 
 while [ $retries -le $MAX_RETRIES ];
 do
-  echo "retries:  $retries / $MAX_RETRIES" 
+  # echo "retries:  $retries / $MAX_RETRIES" 
   if [ ${http_code} -eq 200 ]; then
     echo "Trying to opening Keptn's bridge on http://$INGRESS_IP.nip.io:$INGRESS_PORT/bridge"
     open http://$INGRESS_IP.nip.io:$INGRESS_PORT/bridge
@@ -110,10 +110,13 @@ do
 done
 
 if [ $retries -ge $MAX_RETRIES ]; then
-  echo "Bridge not available"
+  echo "Bridge not yet available at http://$INGRESS_IP.nip.io:$INGRESS_PORT/bridge"
+  echo "Please check the log for any errors that might have happened."
 else
-  open http://$INGRESS_IP.nip.io:$INGRESS_PORT/bridge
+  echo "Welcome aboard!"
+  echo "Find the Keptn's Bridge at http://$INGRESS_IP.nip.io:$INGRESS_PORT/bridge "
+  echo "Find the Keptn API at http://$INGRESS_IP.nip.io:$INGRESS_PORT/api "
 fi
 
-echo "Welcome aboard!"
+
 
