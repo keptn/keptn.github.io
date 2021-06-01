@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-source <(curl -s https://raw.githubusercontent.com/keptn/keptn/master/test/utils.sh)
+source <(curl -s https://raw.githubusercontent.com/keptn/keptn/0.8.3/test/utils.sh)
 
 # istio settings
 ISTIO_VERSION=$1

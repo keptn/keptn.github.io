@@ -1,9 +1,9 @@
 #!/bin/bash
 set -e
 
-source <(curl -s https://raw.githubusercontent.com/keptn/keptn/master/test/utils.sh)
+source <(curl -s https://raw.githubusercontent.com/keptn/keptn/0.8.3/test/utils.sh)
 
-INGRESS_PORT=$2
+INGRESS_PORT=$1
 INGRESS_IP=127.0.0.1
 
 if [ -z "$INGRESS_PORT" ]; then
@@ -122,6 +122,7 @@ keptn add-resource --project=$PROJECT --stage=hardening --service=$SERVICE --res
 # check for prometheus to be available at this point
 wait_for_deployment_in_namespace "prometheus-service" "keptn"
 wait_for_deployment_in_namespace "prometheus-sli-service" "keptn"
+wait_for_deployment_in_namespace "prometheus-server" "monitoring"
 
 # triggering new delivery
 keptn trigger delivery --project=$PROJECT --service=$SERVICE --image=$IMAGE --tag=$VERSION
