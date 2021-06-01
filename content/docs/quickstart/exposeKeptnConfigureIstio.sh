@@ -100,8 +100,14 @@ do
   # echo "retries:  $retries / $MAX_RETRIES" 
   if [ ${http_code} -eq 200 ]; then
     echo "Trying to opening Keptn's bridge on http://$INGRESS_IP.nip.io:$INGRESS_PORT/bridge"
-    open http://$INGRESS_IP.nip.io:$INGRESS_PORT/bridge
-    break
+    if ! command -v open &> /dev/null
+    then
+      echo "Open command not found. Printing connection details instead"
+      break
+    else
+      open http://$INGRESS_IP.nip.io:$INGRESS_PORT/bridge
+      break
+    fi
   fi
   echo "Keptn's bridge not yet available, waiting $SLEEP_TIME seconds and then trying again"
   retries=$[$retries +1]
