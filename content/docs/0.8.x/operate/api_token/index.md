@@ -167,7 +167,7 @@ In this section, the management of the API token of a Keptn installation is expl
 * Re-start API service since it requires the new token:
 
     ```console
-    kubectl delete pods -n keptn --selector=run=api-service
+    kubectl delete pods -n keptn --selector=app.kubernetes.io/name=api-service
     ```
 
 * Re-authenticate Keptn CLI as explained [here](../../reference/cli/commands/keptn_auth).
