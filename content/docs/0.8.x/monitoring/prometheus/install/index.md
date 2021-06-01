@@ -101,7 +101,7 @@ keptn configure monitoring prometheus --project=sockshop --service=carts
 * To verify that the Prometheus scrape jobs are correctly set up, you can access Prometheus by enabling port-forwarding for the prometheus-service:
 
 ```BASH
-kubectl port-forward svc/prometheus-service 8080 -n <PROMETHEUS_NS>
+kubectl port-forward svc/prometheus-service 8080 -n default
 ```
 
 Prometheus is then available on [localhost:8080/targets](http://localhost:8080/targets) where you can see the targets for the service.{{< popup_image link="./assets/prometheus-targets.png" caption="Prometheus Targets">}}
@@ -130,3 +130,4 @@ indicators:
   response_time_p50: histogram_quantile(0.5, sum by(le) (rate(http_response_time_milliseconds_bucket{job="$SERVICE-$PROJECT-$STAGE"}[$DURATION_SECONDS])))
   response_time_p90: histogram_quantile(0.9, sum by(le) (rate(http_response_time_milliseconds_bucket{job="$SERVICE-$PROJECT-$STAGE"}[$DURATION_SECONDS])))
   response_time_p95: histogram_quantile(0.95, sum by(le) (rate(http_response_time_milliseconds_bucket{job="$SERVICE-$PROJECT-$STAGE"}[$DURATION_SECONDS])))
+```
