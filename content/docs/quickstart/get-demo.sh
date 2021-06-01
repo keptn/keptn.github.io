@@ -1,8 +1,14 @@
 #!/bin/bash
 set -e
 
+source <(curl -s https://raw.githubusercontent.com/keptn/keptn/master/test/utils.sh)
+
+INGRESS_PORT=$2
 INGRESS_IP=127.0.0.1
-INGRESS_PORT=8082
+
+if [ -z "$INGRESS_PORT" ]; then
+ 	INGRESS_PORT=8082
+fi
 
 PROJECT="podtatohead"
 SERVICE="helloservice"
@@ -18,11 +24,12 @@ cd podtato-head/delivery/keptn
 echo "Create a Keptn project"
 echo "keptn create project $PROJECT --shipyard=./shipyard.yaml"
 keptn create project $PROJECT --shipyard=./shipyard.yaml
-
+verify_test_step $? "keptn create project command failed."
 
 echo "Onboard a Keptn service"
 echo "keptn onboard service $SERVICE --project=$PROJECT --chart=./helm-charts/helloserver"
 keptn onboard service $SERVICE --project="${PROJECT}" --chart=./helm-charts/helloserver
+verify_test_step $? "keptn onboard carts failed."
 
 echo "Trigger the delivery sequence with Keptn"
 echo "keptn trigger delivery --project=$PROJECT --service=$SERVICE --image=$IMAGE --tag=v$VERSION"
@@ -33,7 +40,13 @@ echo "Find the details here: http://$INGRESS_IP.nip.io:$INGRESS_PORT/bridge/proj
 echo "Opening bridge in 5 seconds..."
 echo "Demo setup will continue in the background while you can explore the Keptn's bridge..."
 sleep 5
-open http://$INGRESS_IP.nip.io:$INGRESS_PORT/bridge/project/podtatohead/sequence
+
+if ! command -v open &> /dev/null
+then
+  echo http://$INGRESS_IP.nip.io:$INGRESS_PORT/bridge/project/podtatohead/sequence
+else
+  open http://$INGRESS_IP.nip.io:$INGRESS_PORT/bridge/project/podtatohead/sequence
+fi
 
 ## adding quality gates
 echo "Installing Prometheus"
