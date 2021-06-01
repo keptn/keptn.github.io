@@ -3,6 +3,15 @@ set -e
 
 source <(curl -s https://raw.githubusercontent.com/keptn/keptn/0.8.3/test/utils.sh)
 
+function print_headline() {
+  HEADLINE=$1
+  
+  echo "---------------------------------------------------------------------"
+  echo $HEADLINE
+  echo "---------------------------------------------------------------------"
+  echo ""
+}
+
 INGRESS_PORT=$1
 INGRESS_IP=127.0.0.1
 
@@ -15,18 +24,18 @@ SERVICE="helloservice"
 IMAGE="ghcr.io/podtato-head/podtatoserver"
 VERSION=v0.1.0
 
-echo "Downloading demo resources"
+print_headline "Downloading demo resources"
 echo "git clone https://github.com/cncf/podtato-head.git --single-branch"
 git clone https://github.com/cncf/podtato-head.git --single-branch
 
 cd podtato-head/delivery/keptn
 
-echo "Create a Keptn project"
+print_headline "Create a Keptn project"
 echo "keptn create project $PROJECT --shipyard=./shipyard.yaml"
 keptn create project $PROJECT --shipyard=./shipyard.yaml
 verify_test_step $? "keptn create project command failed."
 
-echo "Onboard a Keptn service"
+print_headline "Onboard a Keptn service"
 echo "keptn onboard service $SERVICE --project=$PROJECT --chart=./helm-charts/helloserver"
 keptn onboard service $SERVICE --project="${PROJECT}" --chart=./helm-charts/helloserver
 verify_test_step $? "keptn onboard carts failed."
@@ -37,7 +46,7 @@ echo "Verifying that the following namespaces are available:"
 verify_namespace_exists "$PROJECT-hardening"
 verify_namespace_exists "$PROJECT-production"
 
-echo "Trigger the delivery sequence with Keptn"
+print_headline "Trigger the delivery sequence with Keptn"
 echo "keptn trigger delivery --project=$PROJECT --service=$SERVICE --image=$IMAGE --tag=v$VERSION"
 keptn trigger delivery --project=$PROJECT --service=$SERVICE --image=$IMAGE --tag=$VERSION
 verify_test_step $? "Trigger delivery for helloservice failed"
@@ -60,7 +69,7 @@ wait_for_deployment_in_namespace $SERVICE "$PROJECT-hardening"
 verify_test_step $? "Deployment $SERVICE  not available, exiting..."
 
 # adding quality gates
-echo "Installing Prometheus"
+print_headline "Installing Prometheus"
 kubectl create ns monitoring
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm install prometheus prometheus-community/prometheus --namespace monitoring --wait
@@ -87,7 +96,7 @@ spec:
               number: 80
 EOF
 
-echo "Setting up Prometheus integration"
+print_headline "Setting up Prometheus integration"
 kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/release-0.5.0/deploy/role.yaml -n monitoring
 kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/release-0.5.0/deploy/service.yaml 
 
@@ -115,7 +124,7 @@ keptn configure monitoring prometheus --project=$PROJECT --service=$SERVICE
 
 
 # adding tests to the service
-echo "Adding some load tests"
+print_headline "Adding some load tests"
 keptn add-resource --project=$PROJECT --stage=hardening --service=$SERVICE --resource=jmeter/load.jmx --resourceUri=jmeter/load.jmx
 keptn add-resource --project=$PROJECT --stage=hardening --service=$SERVICE --resource=jmeter/jmeter.conf.yaml --resourceUri=jmeter/jmeter.conf.yaml
 
@@ -125,6 +134,7 @@ wait_for_deployment_in_namespace "prometheus-sli-service" "keptn"
 wait_for_deployment_in_namespace "prometheus-server" "monitoring"
 
 # triggering new delivery
+print_headline "Trigger the new delivery sequence with Keptn"
 keptn trigger delivery --project=$PROJECT --service=$SERVICE --image=$IMAGE --tag=$VERSION
 verify_test_step $? "Trigger delivery for helloservice failed"
 

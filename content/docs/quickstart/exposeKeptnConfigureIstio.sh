@@ -3,6 +3,15 @@ set -e
 
 source <(curl -s https://raw.githubusercontent.com/keptn/keptn/0.8.3/test/utils.sh)
 
+function print_headline() {
+  HEADLINE=$1
+  
+  echo "---------------------------------------------------------------------"
+  echo $HEADLINE
+  echo "---------------------------------------------------------------------"
+  echo ""
+}
+
 # istio settings
 ISTIO_VERSION=$1
 INGRESS_PORT=$2
@@ -21,11 +30,11 @@ MAX_RETRIES=5
 SLEEP_TIME=5
 
 # Download and install Istio
-echo "Setup up Istio for Ingress and traffic shifting for blue/green deployments"
+print_headline "Setup up Istio for Ingress and traffic shifting for blue/green deployments"
 echo "curl -L https://istio.io/downloadIstio | ISTIO_VERSION=$ISTIO_VERSION sh -"
 curl -L https://istio.io/downloadIstio | ISTIO_VERSION=$ISTIO_VERSION sh -
 
-echo "Install Istio"
+print_headline "Install Istio"
 echo "./istio-$ISTIO_VERSION/bin/istioctl install -y"
 ./istio-$ISTIO_VERSION/bin/istioctl install -y
 
@@ -97,12 +106,12 @@ echo "Restarting helm-service to load new settings"
 kubectl delete pod -n keptn -lapp.kubernetes.io/name=helm-service
 
 # Authenticating Keptn CLI against the current Keptn installation
-echo "Authenticating Keptn CLI against Keptn installation"
+print_headline "Authenticating Keptn CLI against Keptn installation"
 echo "keptn auth --endpoint=http://$INGRESS_IP.nip.io:$INGRESS_PORT --api-token=*****"
 keptn auth --endpoint=http://$INGRESS_IP.nip.io:$INGRESS_PORT --api-token=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
 
 # Opening bridge
-echo "Opening Keptn's Bridge..."
+print_headline "Opening Keptn's Bridge..."
 http_code=$(curl -LI http://$INGRESS_IP.nip.io:$INGRESS_PORT/bridge -o /dev/null -w '%{http_code}\n' -s)
 retries=1
 
