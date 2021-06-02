@@ -84,6 +84,7 @@ IMAGE="ghcr.io/podtato-head/podtatoserver"
 VERSION=v0.1.0
 
 print_headline "Downloading demo resources"
+echo "This will create a local folder ./podtato-head"
 echo "git clone https://github.com/cncf/podtato-head.git --single-branch"
 git clone https://github.com/cncf/podtato-head.git --single-branch
 
@@ -171,6 +172,12 @@ echo "Adding SLIs for Prometheus"
 keptn add-resource --project=$PROJECT --stage=hardening --service=$SERVICE --resource=prometheus/sli.yaml --resourceUri=prometheus/sli.yaml
 echo "Adding SLO definition file for the quality gate"
 keptn add-resource --project=$PROJECT --stage=hardening --service=$SERVICE --resource=slo.yaml --resourceUri=slo.yaml
+
+# check for prometheus to be available at this point
+echo "Waiting for Prometheus to be ready"
+wait_for_deployment_in_namespace "prometheus-service" "keptn"
+wait_for_deployment_in_namespace "prometheus-sli-service" "keptn"
+wait_for_deployment_in_namespace "prometheus-server" "monitoring"
 
 echo "Configuring Prometheus with Keptn"
 keptn configure monitoring prometheus --project=$PROJECT --service=$SERVICE
