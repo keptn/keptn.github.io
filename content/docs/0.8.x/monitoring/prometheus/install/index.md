@@ -18,8 +18,7 @@ helm repo add prometheus-community https://prometheus-community.github.io/helm-c
 helm install prometheus prometheus-community/prometheus --namespace default
 ```
 
-- The *prometheus-service* needs access to a Prometheus instance. If you have completed the steps from [Setup Prometheus](./#setup-prometheus), the *prometheus-service* uses the Prometheus instance running in the cluster. Otherwise,
-create a *secret* containing the **user**, **password**, and **url**. The secret must have the following format (please note the double-space indentation):
+- The prometheus-service needs access to a Prometheus instance and by default uses the Prometheus instance running in the cluster. If another Prometheus instance shall be used, create a secret containing the user, password, and url. The secret must have the following format (please note the double-space indentation):
 
 ```yaml
     user: username
@@ -37,7 +36,8 @@ kubectl create secret -n keptn generic prometheus-credentials-<project> --from-f
 
 After creating a project and service, you can set up Prometheus monitoring and configure scrape jobs using the Keptn CLI.
 
-Some environment variables have to set up in the prometheus-service deployment
+* Replace the environment variable value according to the use case and apply the manifest
+
 ```yaml
     # Prometheus installed namespace
     - name: PROMETHEUS_NS
@@ -101,7 +101,7 @@ keptn configure monitoring prometheus --project=sockshop --service=carts
 * To verify that the Prometheus scrape jobs are correctly set up, you can access Prometheus by enabling port-forwarding for the prometheus-service:
 
 ```BASH
-kubectl port-forward svc/prometheus-service 8080 -n default
+kubectl port-forward svc/prometheus-server 8080 -n default
 ```
 
 Prometheus is then available on [localhost:8080/targets](http://localhost:8080/targets) where you can see the targets for the service.{{< popup_image link="./assets/prometheus-targets.png" caption="Prometheus Targets">}}
