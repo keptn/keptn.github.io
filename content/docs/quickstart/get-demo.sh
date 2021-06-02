@@ -117,10 +117,6 @@ else
   open http://$INGRESS_IP.nip.io:$INGRESS_PORT/bridge/project/podtatohead/sequence
 fi
 
-# lets wait a little bit until we are sure that helloservice has been deployed
-wait_for_deployment_in_namespace $SERVICE "$PROJECT-hardening"
-verify_test_step $? "Deployment $SERVICE  not available, exiting..."
-
 # adding quality gates
 print_headline "Installing Prometheus"
 kubectl create ns monitoring
@@ -151,7 +147,7 @@ EOF
 
 verify_test_step $? "Applying Ingress for Prometheus failed"
 
-echo "Prometheus is available at http://prometheus.$INGRESS_IP.nip.io "
+echo "Prometheus is available at http://prometheus.$INGRESS_IP.nip.io:$INGRESS_PORT "
 
 print_headline "Setting up Prometheus integration"
 kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/release-0.5.0/deploy/role.yaml -n monitoring
@@ -201,3 +197,7 @@ echo "You can run a new delivery sequence with the following command"
 echo "keptn trigger delivery --project=$PROJECT --service=$SERVICE --image=$IMAGE --tag=$VERSION"
 
 print_headline "Demo has been successfully set up"
+echo "If you want to connect the demo to a Git upstream to learn how Keptn manages the resources please execute"
+echo " keptn update project podtatohead --git-user=GIT_USER --git-token=GIT_TOKEN --git-remote-url=GIT_REMOTE_URL "
+echo "with your git user, token, and remote url."
+echo "Learn more at https://keptn.sh/docs/0.8.x/manage/git_upstream/ "
