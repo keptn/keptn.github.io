@@ -1,16 +1,75 @@
 #!/bin/bash
 set -e
 
-source <(curl -s https://raw.githubusercontent.com/keptn/keptn/0.8.3/test/utils.sh)
+#source <(curl -s https://raw.githubusercontent.com/keptn/keptn/0.8.3/test/utils.sh)
 
 function print_headline() {
   HEADLINE=$1
   
+  echo ""
   echo "---------------------------------------------------------------------"
   echo $HEADLINE
   echo "---------------------------------------------------------------------"
   echo ""
 }
+
+function print_error() {
+  echo "::error file=${BASH_SOURCE[1]##*/},line=${BASH_LINENO[0]}::$(timestamp) ${*}"
+}
+
+function verify_test_step() {
+  if [[ $1 != '0' ]]; then
+    print_error "$2"
+    print_error "Keptn test step failed"
+    exit 1
+  fi
+}
+
+function verify_namespace_exists() {
+  NAMESPACE=$1;
+
+  NAMESPACE_LIST=$(eval "kubectl get namespaces -L istio-injection | grep ${NAMESPACE} | awk '/$NAMESPACE/'" | awk '{print $1}')
+
+  if [[ -z "$NAMESPACE_LIST" ]]; then
+    print_error "Could not find namespace ${NAMESPACE}"
+    exit 2
+  else
+    echo "Found namespace ${NAMESPACE}"
+  fi
+}
+
+# wait for a deployment to be up and running
+function wait_for_deployment_in_namespace() {
+  DEPLOYMENT=$1; NAMESPACE=$2;
+  RETRY=0; RETRY_MAX=10;
+
+  while [[ $RETRY -lt $RETRY_MAX ]]; do
+    DEPLOYMENT_LIST=$(eval "kubectl get deployments -n ${NAMESPACE} | awk '/$DEPLOYMENT /'" | awk '{print $1}') # list of multiple deployments when starting with the same name
+    if [[ -z "$DEPLOYMENT_LIST" ]]; then
+      RETRY=$((RETRY+1))
+      echo "Retry: ${RETRY}/${RETRY_MAX} - Deployment not found - waiting 15s for deployment ${DEPLOYMENT} in namespace ${NAMESPACE}"
+      sleep 15
+    else
+      READY_REPLICAS=$(eval kubectl get deployments "$DEPLOYMENT" -n "$NAMESPACE" -o=jsonpath='{$.status.availableReplicas}')
+      WANTED_REPLICAS=$(eval kubectl get deployments "$DEPLOYMENT"  -n "$NAMESPACE" -o=jsonpath='{$.spec.replicas}')
+      UNAVAILABLE_REPLICAS=$(eval kubectl get deployments "$DEPLOYMENT"  -n "$NAMESPACE" -o=jsonpath='{$.status.unavailableReplicas}')
+      if [[ "$READY_REPLICAS" = "$WANTED_REPLICAS" && "$UNAVAILABLE_REPLICAS" = "" ]]; then
+        echo "Found deployment ${DEPLOYMENT} in namespace ${NAMESPACE}: ${DEPLOYMENT_LIST}"
+        break
+      else
+          RETRY=$((RETRY+1))
+          echo "Retry: ${RETRY}/${RETRY_MAX} - Unsufficient replicas for deployment - waiting 15s for deployment ${DEPLOYMENT} in namespace ${NAMESPACE}"
+          sleep 15
+      fi
+    fi
+  done
+
+  if [[ $RETRY == "$RETRY_MAX" ]]; then
+    print_error "Could not find deployment ${DEPLOYMENT} in namespace ${NAMESPACE}"
+    exit 1
+  fi
+}
+
 
 INGRESS_PORT=$1
 INGRESS_IP=127.0.0.1
@@ -40,12 +99,6 @@ echo "keptn onboard service $SERVICE --project=$PROJECT --chart=./helm-charts/he
 keptn onboard service $SERVICE --project="${PROJECT}" --chart=./helm-charts/helloserver
 verify_test_step $? "keptn onboard carts failed."
 
-# check which namespaces exist
-echo "Verifying that the following namespaces are available:"
-
-verify_namespace_exists "$PROJECT-hardening"
-verify_namespace_exists "$PROJECT-production"
-
 print_headline "Trigger the delivery sequence with Keptn"
 echo "keptn trigger delivery --project=$PROJECT --service=$SERVICE --image=$IMAGE --tag=v$VERSION"
 keptn trigger delivery --project=$PROJECT --service=$SERVICE --image=$IMAGE --tag=$VERSION
@@ -53,7 +106,7 @@ verify_test_step $? "Trigger delivery for helloservice failed"
 
 echo "Following the multi stage delivery in Keptn's bridge while we are setting up Prometheus and configure quality gates"
 echo "Find the details here: http://$INGRESS_IP.nip.io:$INGRESS_PORT/bridge/project/podtatohead/sequence"
-echo "Opening bridge in 5 seconds..."
+echo "Attempt to open Keptn's bridge in 5 seconds..."
 echo "Demo setup will continue in the background while you can explore the Keptn's bridge..."
 sleep 5
 
@@ -96,6 +149,10 @@ spec:
               number: 80
 EOF
 
+verify_test_step $? "Applying Ingress for Prometheus failed"
+
+echo "Prometheus is available at http://prometheus.$INGRESS_IP.nip.io "
+
 print_headline "Setting up Prometheus integration"
 kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/release-0.5.0/deploy/role.yaml -n monitoring
 kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/release-0.5.0/deploy/service.yaml 
@@ -129,6 +186,7 @@ keptn add-resource --project=$PROJECT --stage=hardening --service=$SERVICE --res
 keptn add-resource --project=$PROJECT --stage=hardening --service=$SERVICE --resource=jmeter/jmeter.conf.yaml --resourceUri=jmeter/jmeter.conf.yaml
 
 # check for prometheus to be available at this point
+echo "Waiting for Prometheus to be ready"
 wait_for_deployment_in_namespace "prometheus-service" "keptn"
 wait_for_deployment_in_namespace "prometheus-sli-service" "keptn"
 wait_for_deployment_in_namespace "prometheus-server" "monitoring"
@@ -138,7 +196,8 @@ print_headline "Trigger the new delivery sequence with Keptn"
 keptn trigger delivery --project=$PROJECT --service=$SERVICE --image=$IMAGE --tag=$VERSION
 verify_test_step $? "Trigger delivery for helloservice failed"
 
-echo "Have a look at the Keptn's Bridge and explore the demo project"
+print_headline "Have a look at the Keptn's Bridge and explore the demo project"
 echo "You can run a new delivery sequence with the following command"
 echo "keptn trigger delivery --project=$PROJECT --service=$SERVICE --image=$IMAGE --tag=$VERSION"
 
+print_headline "Demo has been successfully set up"

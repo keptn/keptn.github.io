@@ -1,15 +1,28 @@
 #!/bin/bash
 set -e
 
-source <(curl -s https://raw.githubusercontent.com/keptn/keptn/0.8.3/test/utils.sh)
+#source <(curl -s https://raw.githubusercontent.com/keptn/keptn/0.8.3/test/utils.sh)
 
 function print_headline() {
   HEADLINE=$1
   
+  echo ""
   echo "---------------------------------------------------------------------"
   echo $HEADLINE
   echo "---------------------------------------------------------------------"
   echo ""
+}
+
+function print_error() {
+  echo "::error file=${BASH_SOURCE[1]##*/},line=${BASH_LINENO[0]}::$(timestamp) ${*}"
+}
+
+function verify_test_step() {
+  if [[ $1 != '0' ]]; then
+    print_error "$2"
+    print_error "Keptn test step failed"
+    exit 1
+  fi
 }
 
 # istio settings
@@ -34,14 +47,14 @@ print_headline "Setup up Istio for Ingress and traffic shifting for blue/green d
 echo "curl -L https://istio.io/downloadIstio | ISTIO_VERSION=$ISTIO_VERSION sh -"
 curl -L https://istio.io/downloadIstio | ISTIO_VERSION=$ISTIO_VERSION sh -
 
-print_headline "Install Istio"
+print_headline "Installing Istio"
 echo "./istio-$ISTIO_VERSION/bin/istioctl install -y"
 ./istio-$ISTIO_VERSION/bin/istioctl install -y
 
 echo "Removing downloaded Istio resources"
 rm -rf ./istio-$ISTIO_VERSION
 
-echo "Configuring Ingress for your local installation"
+print_headline "Configuring Ingress for your local installation"
 
 # Applying ingress-manifest
 kubectl apply -f - <<EOF
@@ -91,14 +104,14 @@ EOF
 verify_test_step $? "Applying istio public gateway failed"
 
 # Disable Bridge authentication (running on localhost)
-echo "Disabling authentication for Keptn's Bridge (since we are running locally)"
+print_headline "Disabling authentication for Keptn's Bridge (since we are running locally)"
 kubectl -n keptn delete secret bridge-credentials --ignore-not-found=true
 
 echo "Restart Keptn's Bridge to load new settings"
 kubectl -n keptn delete pods --selector=app.kubernetes.io/name=bridge --wait
 
 # Creating Keptn ingress config map
-echo "Creating Ingress config for Keptn"
+print_headline "Creating Ingress config for Keptn"
 kubectl create configmap -n keptn ingress-config --from-literal=ingress_hostname_suffix=$(kubectl -n keptn get ingress api-keptn-ingress -ojsonpath='{.spec.rules[0].host}') --from-literal=ingress_port=$INGRESS_PORT --from-literal=ingress_protocol=http --from-literal=istio_gateway=public-gateway.istio-system -oyaml --dry-run=client | kubectl apply -f -
 
 # Restart helm service
@@ -119,7 +132,7 @@ while [ $retries -le $MAX_RETRIES ];
 do
   # echo "retries:  $retries / $MAX_RETRIES" 
   if [ ${http_code} -eq 200 ]; then
-    echo "Trying to opening Keptn's bridge on http://$INGRESS_IP.nip.io:$INGRESS_PORT/bridge"
+    echo "Attempting to open Keptn's bridge on http://$INGRESS_IP.nip.io:$INGRESS_PORT/bridge"
     if ! command -v open &> /dev/null
     then
       echo "Open command not found. Printing connection details instead"
@@ -139,7 +152,9 @@ if [ $retries -ge $MAX_RETRIES ]; then
   echo "Bridge not yet available at http://$INGRESS_IP.nip.io:$INGRESS_PORT/bridge"
   echo "Please check the log for any errors that might have happened."
 else
-  echo "Welcome aboard!"
+  print_headline "Welcome aboard!"
   echo "Find the Keptn's Bridge at http://$INGRESS_IP.nip.io:$INGRESS_PORT/bridge "
   echo "Find the Keptn API at http://$INGRESS_IP.nip.io:$INGRESS_PORT/api "
+  echo "For more information please visit https://keptn.sh "
+  echo ""
 fi

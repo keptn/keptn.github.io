@@ -15,44 +15,67 @@ hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
 
 ## Install Keptn
 
-1. Create local k3d cluster
-
-    First, install [k3d](https://k3d.io) if not already present on your machine:
+1. Create local k3d cluster. Therefore, you need to install [k3d](https://k3d.io) if not already present on your machine. You can skip this if k3d is already available on your machine.
     ```
     curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=v4.4.4 bash
     ```
 
-    Now, let's start a cluster for Keptn!
+    Now, let's **start a cluster for Keptn**!
     ```
     k3d cluster create mykeptn -p "8082:80@agent[0]" --k3s-server-arg '--no-deploy=traefik' --agents 1
     ```
 
-1. Get Keptn CLI
+1. **Download and install the [Keptn CLI](../0.8.x/reference/cli)**
 
     ```
     curl -sL https://get.keptn.sh | bash
     ```
 
-1. Install Keptn
+1. **Install Keptn** control-plane and execution-plane for continuous delivery use case
   
     ```
     keptn install --use-case=continuous-delivery 
     ```
 
-    If you want to install Keptn yourself without following the quickstart guide, have a look at the [install options](../).
+    Keptn comes with different installation options, please have a look at the [installation documentation](../0.8.x/operate) for more details on cluster requirements, resource consumption, supported Kubernetes versions, and more.
 
-1. Install and configure Istio for Ingress + continuous delivery use-case
+    <details><summary>Installation logs</summary>
+    <p>The installation logs will print the following output:
+    <pre>
+    Installing Keptn ...
+    Helm Chart used for Keptn installation: https://storage.googleapis.com/keptn-installer/keptn-0.8.3.tgz
+    Start upgrading Helm Chart keptn in namespace keptn
+    Finished upgrading Helm Chart keptn in namespace keptn
+    Keptn control plane has been successfully set up on your cluster.
+    Installing execution plane services for continuous-delivery use case.
+    Start upgrading Helm Chart helm-service in namespace keptn
+    Finished upgrading Helm Chart helm-service in namespace keptn
+    Start upgrading Helm Chart jmeter-service in namespace keptn
+    Finished upgrading Helm Chart jmeter-service in namespace keptn
+    &nbsp;---------------------------------------------------
+    &nbsp;* To quickly access Keptn, you can use a port-forward and then authenticate your Keptn CLI:
+    &nbsp;- kubectl -n keptn port-forward service/api-gateway-nginx 8080:80
+    &nbsp;- keptn auth --endpoint=http://localhost:8080/api --api-token=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
+    &nbsp;* Alternatively, follow the instructions provided at: https://keptn.sh/docs/0.8.x/operate/install/#authenticate-keptn-cli
+    &nbsp;* To expose Keptn on a public endpoint, please continue with the installation guidelines provided at:
+    &nbsp;- https://keptn.sh/docs/0.8.x/operate/install#install-keptn
+    </pre>
+    **There is no need to follow the instructions from the installation log - the quickstart guide will cover this!**
+    </p>
+    </details>
+
+1. **Install and configure Istio** for Ingress + continuous delivery use-case
     ```
     curl -SL https://raw.githubusercontent.com/keptn/keptn.github.io/...TBD.../content/docs/quickstart/exposeKeptnConfigureIstio.sh | bash 
     ```
     
 
-1. (Optional but recommended) Create a demo project with multi-stage pipeline + SLO-based quality gates
+1. (Optional but recommended) **Create a demo project** with multi-stage pipeline + SLO-based quality gates
     ```
     curl -SL https://raw.githubusercontent.com/keptn/keptn.github.io/...TBD.../content/docs/quickstart/get-demo.sh | bash
     ```
 
-1. Explore Keptn! Please have a look at our [tutorials](https://tutorials.keptn.sh) and [documentation](../) to learn how you can use Keptn.
+1. **Explore Keptn!** Please have a look at our [tutorials](https://tutorials.keptn.sh) and [documentation](../) to learn how you can use Keptn.
 
 
 ## Explore tutorials to learn more about the Keptn use cases
