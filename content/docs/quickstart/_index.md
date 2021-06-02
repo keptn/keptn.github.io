@@ -77,6 +77,17 @@ hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
 
 1. **Explore Keptn!** Please have a look at our [tutorials](https://tutorials.keptn.sh) and [documentation](../) to learn how you can use Keptn.
 
+1. If you are finished exploring Keptn, you can always stop and start the cluster and delete it eventually.
+    ```
+    k3d cluster stop mykeptn
+    k3d cluster start mykeptn
+    ```
+
+    Or delete it if you don't need it anymore
+    ```
+    k3d cluster delete mykeptn
+    ```
+
 
 ## Explore tutorials to learn more about the Keptn use cases
 
