@@ -55,36 +55,33 @@ The size of the Keptn control- and execution plane has been derived automaticall
 
 ### Control plane
 
-| Pod | Container | lim.cpu | lim.mem | req.cpu | req.mem |
-|-----|-----------|---------|---------|---------|---------|
-| api-gateway-nginx | api-gateway-nginx | 500m | 128Mi | 50m | 32Mi |
-| api-service | api-service | 500m | 256Mi | 50m | 64Mi |
-| api-service | distributor | 250m | 32Mi | 25m | 16Mi |
-| bridge | bridge | 500m | 128Mi | 50m | 64Mi |
-| configuration-service | configuration-service | 500m | 128Mi | 50m | 64Mi | 
-| configuration-service | distributor | 250m | 32Mi | 25m | 16Mi |
-| lighthouse-service | lighthouse-service | 500m | 1Gi | 50m | 128Mi |
-| lighthouse-service | distributor | 250m | 32Mi | 25m | 16Mi |
-| mongodb | mongodb | 100m | 300Mi | 50m | 64Mi |
-| mongodb-datastore | mongodb-datastore | 500m | 128Mi | 50m | 32Mi |
-| mongodb-datastore | distributor | 250m | 32Mi | 25m | 16Mi |
-| remediation-service | remediation-service | 500m | 1Gi | 50m | 64Mi |
-| remediation-service | distributor | 250m | 32Mi | 25m | 16Mi |
-| shipyard-controller | shipyard-controller | 500m | 128Mi | 50m | 32Mi | 
-| shipyard-controller | distributor | 250m | 32Mi | 25m | 16Mi | 
-| statistics-service | statistics-service | 500m | 128Mi | 50m | 32Mi |
-| statistics-service | distributor | 250m | 32Mi | 25m | 16Mi |
-| **Sum:** | | **6350** | **3596** | **675** | **688** |
+| Pod | Container | Memory (requested) | CPU (requested) | Memory (limit) | CPU (limit) | Images |
+|-----|-----------|--------------------|-----------------|----------------|-------------|--------|
+| api-gateway-nginx | api-gateway-nginx | 64Mi | 50m | 128Mi | 250m | docker.io/nginxinc/nginx-unprivileged:1.19.4-alpine | 
+| api-service | api-service | 64Mi | 50m | 256Mi | 500m | docker.io/keptn/api:0.8.3 | 
+| api-service | distributor | 16Mi | 25m | 32Mi | 250m | docker.io/keptn/distributor:0.8.3 | 
+| bridge | bridge | 64Mi | 50m | 128Mi | 500m | docker.io/keptn/bridge2:0.8.3 | 
+| configuration-service | configuration-service | 64Mi | 50m | 128Mi | 500m | docker.io/keptn/configuration-service:0.8.3 | 
+| lighthouse-service | lighthouse-service | 128Mi | 50m | 1Gi | 500m | docker.io/keptn/lighthouse-service:0.8.3 | 
+| lighthouse-service | distributor | 16Mi | 25m | 32Mi | 250m | docker.io/keptn/distributor:0.8.3 | 
+| mongodb | mongodb | 64Mi | 50m | 300Mi | 100m | docker.io/centos/mongodb-36-centos7:1 | 
+| mongodb-datastore | mongodb-datastore | 32Mi | 50m | 128Mi | 500m | docker.io/keptn/mongodb-datastore:0.8.3 | 
+| mongodb-datastore | distributor | 16Mi | 25m | 32Mi | 250m | docker.io/keptn/distributor:0.8.3 | 
+| remediation-service | remediation-service | 64Mi | 50m | 1Gi | 500m | docker.io/keptn/remediation-service:0.8.3 | 
+| remediation-service | distributor | 16Mi | 25m | 32Mi | 250m | docker.io/keptn/distributor:0.8.3 | 
+| secret-service | secret-service | 32Mi | 50m | 128Mi | 500m | docker.io/keptn/secret-service:0.8.3 | 
+| shipyard-controller | shipyard-controller | 32Mi | 50m | 128Mi | 500m | docker.io/keptn/shipyard-controller:0.8.3 | 
+| shipyard-controller | distributor | 16Mi | 25m | 32Mi | 250m | docker.io/keptn/distributor:0.8.3 | 
+| statistics-service | statistics-service | 32Mi | 50m | 128Mi | 500m | docker.io/keptn/statistics-service:0.8.3 | 
+| statistics-service | distributor | 16Mi | 25m | 32Mi | 250m | docker.io/keptn/distributor:0.8.3 | 
 
 ### Execution plane
 
-| Pod | Container | lim.cpu | lim.mem | req.cpu | req.mem |
-|-----|-----------|---------|---------|---------|---------|
-| gatekeeper-service | gatekeeper-service | 500m | 128Mi | 50m | 32Mi |
-| gatekeeper-service | distributor | 250m | 32Mi | 25m | 16Mi |
-| helm-service | helm-service | 1 | 512Mi | 50m | 128Mi |
-| helm-service | distributor | 250m | 32Mi | 25m | 16Mi |
-| jmeter-service | jmeter-service | - | - | 50m | 64Mi |
-| jmeter-service | distributor | 250m | 32Mi | 25m | 16Mi |
-| **Sum:** | | **2250** | **736** | **225** | **272** |
-
+| Pod | Container | Memory (requested) | CPU (requested) | Memory (limit) | CPU (limit) | Images |
+|-----|-----------|--------------------|-----------------|----------------|-------------|--------|
+| approval-service | approval-service | 32Mi | 50m | 128Mi | 500m | docker.io/keptn/approval-service:0.8.3 | 
+| approval-service | distributor | 16Mi | 25m | 32Mi | 250m | docker.io/keptn/distributor:0.8.3 | 
+| helm-service | helm-service | - | - | - | - | docker.io/keptn/helm-service:0.8.3 | 
+| helm-service | distributor | 32Mi | 50m | 128Mi | 500m | docker.io/keptn/distributor:0.8.3 | 
+| jmeter-service | jmeter-service | 768Mi | 1 | - | - | docker.io/keptn/jmeter-service:0.8.3 | 
+| jmeter-service | distributor | 32Mi | 50m | 128Mi | 500m | docker.io/keptn/distributor:0.8.3 | 
