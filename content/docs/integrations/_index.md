@@ -33,7 +33,8 @@ Please find here a list of all *Keptn-services* and *SLI-providers* that are ava
 | **prometheus-sli-service** 1)  | [0.3.0](https://github.com/keptn-contrib/prometheus-sli-service/releases/tag/0.3.0) | 0.8.3 | https://github.com/keptn-contrib/prometheus-sli-service |
 
 **Notes:**
-* 1) The `prometheus-sli-service` has been merged with `prometheus-service`. The `prometheus-sli-service` is deprecated and will be archived on the 9th of July, 2020.
+
+* 1) The `prometheus-sli-service` has been merged with `prometheus-service`. The `prometheus-sli-service` is deprecated and will be set to read-only on the **9th of July, 2020**.
 
 ## Sandbox
 
