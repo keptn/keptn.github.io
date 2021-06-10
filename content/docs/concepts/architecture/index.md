@@ -64,9 +64,9 @@ Here are some examples of execution plane services:
 
 - **lighthouse-service:** It is responsible for conducting a quality evaluation based on configured SLOs/SLIs. 
 
-- **gatekeeper-service:** It implements the automatic quality gate in each stage where the approval strategy has been set to `automatic`, i.e., it will send an `approval.finished` event which contains the information about whether a task sequence (e.g. the artifact delivery) should continue or not. If the approval strategy within a stage has been set to `manual`, the gatekeeper service will not respond with any event since in that case the user is responsible for sending an `approval.finished` event (either via the Bridge or via the API).  
+- **approval-service:** It implements the automatic quality gate in each stage where the approval strategy has been set to `automatic`, i.e., it will send an `approval.finished` event which contains the information about whether a task sequence (e.g. the artifact delivery) should continue or not. If the approval strategy within a stage has been set to `manual`, the gatekeeper service will not respond with any event since in that case the user is responsible for sending an `approval.finished` event (either via the Bridge or via the API).  
 
-- **remediation-service:** It is used to orchestrate remediation workflows. 
+- **remediation-service:** It is to determine the action to be performed in remediation workflows. 
 
 Execution plane services subscribe to events via a distributor sidecar, that forwards incoming `.triggered` events to them. These distributor sidecars can also be used to send `.started` and `.finished` events back to the Keptn control plane.
 
