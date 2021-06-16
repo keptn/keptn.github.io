@@ -6,7 +6,7 @@ aliases:
   - /docs/0.8.0/operate/upgrade/
   - /docs/0.8.1/operate/upgrade/
   - /docs/0.8.2/operate/upgrade/
-  - /docs/0.8.3/operate/upgrade/
+  - /docs/0.8.4/operate/upgrade/
 ---
 
 ## Upgrade from Keptn 0.8.2 to 0.8.3
