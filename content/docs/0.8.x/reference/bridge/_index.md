@@ -113,6 +113,28 @@ The Keptn Bridge provides an easy way to browse all events that are sent within 
   link="./assets/sequences-screen-filter.png"
   caption="Keptn Bridge Sequences View">}}
   
+### Uniform view
+
+The uniform view gives you an overview over all integrations installed within your Keptn installation. 
+The data is fetched from your Kubernetes cluster and shows useful information like
+* Deployment version of the service
+* The cluster or host where it is running
+* The Kubernetes namespace
+* The location within Keptn
+* The Cloud Events the services are subscribed to
+
+
+{{< popup_image
+link="./assets/uniform-view.png"
+caption="Keptn Bridge Uniform View">}}
+
+By selecting one integration, logs on error level as well as sequence failures can be viewed. When a sequence in this particular scope failed, then there is
+a link provided that takes you directly to the failed task in the sequence. 'n/a' in this regard means that the error is not related to any sequence execution. 
+
+{{< popup_image
+link="./assets/uniform-view-logs.png"
+caption="Integrated Service Error Logs">}}
+  
 ### Integrations
 You can find links to for different integration possibilities here. This makes it easier to start using Keptn. Integrate either with Keptn CLI / API or use our custom 
 integrations for different CI providers.
