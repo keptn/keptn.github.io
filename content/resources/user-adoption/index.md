@@ -9,6 +9,12 @@ icon: callout-idea
 
 Please subscribe to our [Keptn YouTube channel](https://www.youtube.com/c/keptn/) that holds **all** of our videos. Below, we are highlighting the most watched and demanded videos by the community.
 
+## A Practitioner’s Guide to Automated Performance Evaluation
+
+| | |
+| --- | --- | 
+| **A Practitioner’s Guide to Automated Performance Evaluation** with Sachin Kulkarni<br><br>Sachin Kulkarni joins this Keptn user group to show us how Schlumberger integrates Keptn Quality Gates into their Azure DevOps pipelines to validate up to 100+ performance SLOs. | <iframe width="560" height="315" src="https://www.youtube.com/embed/9YYjk1e9ZGE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> |
+
 ## Scaling performance test execution & analysis
 
 | | |
