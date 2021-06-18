@@ -50,7 +50,7 @@ In this example, `[task]` works as a placeholder for tasks such as: `deployment`
 spec:
   containers:
   - name: distributor
-    image: keptn/distributor:0.8.3
+    image: keptn/distributor:0.8.4
     ports:
     - containerPort: 8080
     resources:
@@ -98,6 +98,15 @@ To configure this distributor for your *Keptn-service*, the following environmen
 | PUBSUB_RECIPIENT      | Hostname of the execution plane service the distributor should forward incoming CloudEvents to                                           | `http://127.0.0.1`          |
 | PUBSUB_RECIPIENT_PORT | Port of the execution plane service the distributor should forward incoming CloudEvents to                                               | `8080`                      |
 | PUBSUB_RECIPIENT_PATH | Path of the execution plane service the distributor should forward incoming CloudEvents to                                               | `/`                         |
+| DISABLE_REGISTRATION  | Disables automatic registration of the Keptn integration to the control plane.                                                           | `false`                     |        
+| REGISTRATION_INTERVAL | Time duration between trying to re-register to the Keptn control plane.                                                                  |`10s`                        |  
+| LOCATION              | Location the distributor is running on, e.g. "executionPlane-A".                                                                         | `""`                        |  
+| DISTRIBUTOR_VERSION   | The software version of the distributor.                                                                                                 | `""`                        |  
+| VERSION               | The version of the Keptn integration.                                                                                                    | `""`                        |  
+| K8S_DEPLOYMENT_NAME   | Kubernetes deployment name of the Keptn integration.                                                                                     | `""`                        |  
+| K8S_POD_NAME          |  Kubernetes deployment name of the Keptn integration.                                                                                    | `""`                        |  
+| K8S_NAMESPACE         | Kubernetes namespace of the Keptn integration.                                                                                           | `""`                        |  
+| K8S_NODE_NAME         | Kubernetes node name the Keptn integration is running on.                                                                                | `""`                        |  
 
 The above list of environment variables is pretty long, but in most scenarios only a few of them have to be set. The following examples show how to set the environment variables properly, depending on where the distributor and it's accompanying execution plane service should run:
 
@@ -230,7 +239,7 @@ spec:
     spec:
       containers:
       - name: distributor
-        image: keptn/distributor:0.8.3
+        image: keptn/distributor:0.8.4
         ports:
         - containerPort: 8080
         resources:
@@ -247,6 +256,31 @@ spec:
           value: 'sh.keptn.event.deployment.finished'
         - name: PUBSUB_RECIPIENT
           value: '127.0.0.1'
+        - name: VERSION
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: 'metadata.labels[''app.kubernetes.io/version'']'
+        - name: K8S_DEPLOYMENT_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: 'metadata.labels[''app.kubernetes.io/name'']'
+        - name: K8S_POD_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        - name: K8S_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+        - name: K8S_NODE_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: spec.nodeName
 ```
 
 To configure this distributor for your *Keptn-service*, two environment variables need to be adapted: 
@@ -264,21 +298,58 @@ kubectl apply -f service.yaml -n keptn
 
 ## CloudEvents
 
-CloudEvents have to be sent with the HTTP header `Content-Type` set to `application/cloudevents+json`. For a detailed look into CloudEvents, please go the Keptn [CloudEvent specification](https://github.com/keptn/spec/blob/0.1.6/cloudevents.md). 
+CloudEvents have to be sent with the HTTP header `Content-Type` set to `application/cloudevents+json`. For a detailed look into CloudEvents, please go the Keptn [CloudEvent specification](https://github.com/keptn/spec/blob/0.2.3/cloudevents.md). 
 
-## Logging
+## Error Logging
 
-To inspect the log messages of your Keptn-service for a specific deployment run, you can use the `shkeptncontext` property of the incoming CloudEvents. Your service has to output its log messages in the following format:
+By default, the distributor will automatically extract error logs from received `sh.keptn.<task>.finished` events with `data.status=errored` and/or `data.result=fail`, that have been sent by your service. These error messages will then be forwarded to Keptn's Log Ingestion API.
+
+Additionally, for easier debugging of errors that occur either during the execution of a task of a sequence, or while performing any other operation, Keptn integration services can send error log events to the Keptn API via the distributor.
+Examples for those events are listed below.
+
+### Logging an error related task sequence execution:
+
+If the error log event should be associated to an execution of a specific task that has been triggered by a `sh.keptn.event.<task>.triggered` event, the following properties need to be set in order to correlate them to the correct task sequence execution:
+
+- `shkeptncontext`: The context of the task sequence execution. Can be adapted from the received `sh.keptn.event.<task>.triggered` event
+- `triggeredid`: The `id` of the received `sh.keptn.event.<task>.triggered` event
+- `data.task`: The name of the executed task.
+- `data.message`: The message you would like to log
+
+**Example event payload**
 
 ```json
 {
-  "keptnContext": "<KEPTN_CONTEXT>",
-  "logLevel": "INFO | DEBUG | WARNING | ERROR",
-  "keptnService": "<YOUR_SERVICE_NAME>",
-  "message": "logging message"
+  "specversion": "1.0",
+  "id": "c4d3a334-6cb9-4e8c-a372-7e0b45942f53",
+  "source": "source-service",
+  "type": "sh.keptn.log.error",
+  "datacontenttype": "application/json",
+  "data": {
+    "message": "an unexpected error occurred during the execution of my task",
+    "task": "deployment"
+  },
+  "triggeredid": "3f9640b6-1d2a-4f11-95f5-23259f1d82d6",
+  "shkeptncontext": "a3e5f16d-8888-4720-82c7-6995062905c1",
+  "shkeptnspecversion": "0.2.3"
 }
 ```
 
-**Note:** For implementing logging into your *Go* service, you can import the [go-utils](https://github.com/keptn/go-utils) package that already provides common logging functions. 
+### Logging an error that is not related to the execution of a task
 
-To inspect your service's log messages for a specific deployment run, you can use the `shkeptncontext` property of the incoming CloudEvents. Your service has to output its log messages in the following format:
+If the error log event should not be associated to an execution of a specific task, the properties `shkeptncontext`, `triggeredid`, and `data.task` are not required. In this case, an example payload would look as follows:
+
+```json
+{
+  "specversion": "1.0",
+  "id": "c4d3a334-6cb9-4e8c-a372-7e0b45942f53",
+  "source": "source-service",
+  "type": "sh.keptn.log.error",
+  "datacontenttype": "application/json",
+  "shkeptnspecversion": "0.2.3",
+  "data": {
+    "message": "an unexpected error occurred during the execution of my task",
+    "task": "deployment"
+  }
+}
+```
