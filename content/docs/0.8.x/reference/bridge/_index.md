@@ -135,7 +135,7 @@ a link provided that takes you directly to the failed task in the sequence. 'n/a
 link="./assets/uniform-view-logs.png"
 caption="Integrated Service Error Logs">}}
 
-### Secrets view
+#### Secrets view
 
 Secrets are used to store sensitive data like credentials or URIs for integrations. This view
 gives you an overview of all secrets that have been created by the *secret-service*.
