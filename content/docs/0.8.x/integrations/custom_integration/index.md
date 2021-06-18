@@ -312,7 +312,7 @@ Examples for those events are listed below.
 If the error log event should be associated to an execution of a specific task that has been triggered by a `sh.keptn.event.<task>.triggered` event, the following properties need to be set in order to correlate them to the correct task sequence execution:
 
 - `shkeptncontext`: The context of the task sequence execution. Can be adapted from the received `sh.keptn.event.<task>.triggered` event
-- `trigggeredid`: The `id` of the received `sh.keptn.event.<task>.triggered` event
+- `triggeredid`: The `id` of the received `sh.keptn.event.<task>.triggered` event
 - `data.task`: The name of the executed task.
 - `data.message`: The message you would like to log
 
