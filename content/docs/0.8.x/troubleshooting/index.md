@@ -248,7 +248,7 @@ When rebooting the machine Minikube is installed on, the MongoDB pod in the `kep
 <details><summary>Expand instructions</summary>
 <p>
 
-**Note:** Minikube is a K8s distribution for development environments. Please go with K3s for a more stable setup.
+**Note:** Minikube is a K8s distribution for development environments. Please go with K3s/K3d for a more stable setup.
 
 **Investigation:**
 

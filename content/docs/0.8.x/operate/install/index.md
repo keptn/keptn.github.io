@@ -23,7 +23,7 @@ To create a Kubernetes cluster, select one of the following options:
 1. Make sure you are logged in to your Azure account with `az login`
 
 1. Create AKS cluster
-  - [Master version:](../k8s_support/#supported-versions) `1.18.x` (tested version: `1.18.14`)
+  - [Master version:](../k8s_support/#supported-versions) `1.20.x` (tested version: `v1.20.7`)
   - One **D8s_v3** node
  
  </p>
@@ -165,7 +165,7 @@ Run your Keptn installation for free on GKE! If you [sign up for a Google Cloud 
 
 Please refer to the [official homepage of K3s](https://k3s.io) for detailed installation instructions. Here, a short guide on how to run Keptn on K3s is provided for a Linux environment. **Note:** If you are using macOS, you will need to run K3s using [multipass](https://multipass.run/) and as explained [here](https://medium.com/@zhimin.wen/running-k3s-with-multipass-on-mac-fbd559966f7c).
  
-1. Download, install [K3s](https://k3s.io/) (tested with [versions 1.16 to 1.20](../k8s_support)) and run K3s using the following command:
+1. Download, install [K3s](https://k3s.io/) (tested with [versions 1.17 to 1.21](../k8s_support)) and run K3s using the following command:
    ```console
    curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.20.4+k3s1 K3S_KUBECONFIG_MODE="644" sh -s - --no-deploy=traefik
    ```
