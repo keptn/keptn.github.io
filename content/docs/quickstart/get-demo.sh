@@ -13,6 +13,14 @@ function print_headline() {
   echo ""
 }
 
+function verify_helm_installation(){
+ if ! command -v helm &> /dev/null
+ then
+    echo "Could not find helm. Please install helm to proceed further."
+    exit
+ fi  
+}
+
 function print_error() {
   echo "::error file=${BASH_SOURCE[1]##*/},line=${BASH_LINENO[0]}::$(timestamp) ${*}"
 }
@@ -82,7 +90,7 @@ PROJECT="podtatohead"
 SERVICE="helloservice"
 IMAGE="ghcr.io/podtato-head/podtatoserver"
 VERSION=v0.1.0
-
+verify_helm_installation
 print_headline "Downloading demo resources"
 echo "This will create a local folder ./podtato-head"
 echo "git clone https://github.com/cncf/podtato-head.git --single-branch"
