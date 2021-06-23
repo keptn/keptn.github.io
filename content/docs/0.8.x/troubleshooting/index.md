@@ -179,6 +179,32 @@ Same as the error above, but this issue occurs sometimes using a _single_ worker
 Increase the number of worker nodes. For example, you can therefore use the `eksctl` CLI:
 https://eksctl.io/usage/managing-nodegroups/
 
+## Deployment failed: no matches for kind "DestinationRule" in version "networking.istio.io/v1alpha3"
+
+This error can appear after triggering a delivery (e.g., `keptn trigger delivery --project=sockshop --service=carts-db ...`):
+```
+Error when installing/upgrading chart sockshop-dev-carts-db-generated in namespace sockshop-dev: 
+unable to build kubernetes objects from release manifest: [unable to recognize "": no matches for kind "DestinationRule" in version "networking.istio.io/v1alpha3", unable to recognize "": no matches for kind "VirtualService" in version "networking.istio.io/v1alpha3"]
+```
+
+<details><summary>Expand instructions</summary>
+<p>
+
+**Investigation:**
+
+`helm-service` triggers a helm upgrade when deploying a new artifact of the respective service. However, the upgrade fails with the aforementioned error message displayed in Keptn Bridge.
+
+**Reason:**
+
+In this case, Helm applies the Kubernetes manifests shipped with the new artifact on the Kubernetes cluster, but Kubernetes fails to find the resources `"DestinationRule"` and `"VirtualService"` which are part of Istio.
+Most likely Istio is not installed on your Kubernetes cluster.
+
+**Solution:**
+
+Install Istio as described in the [Continuous Delivery section](../continuous_delivery/expose_services).
+
+</p></details>
+
 
 ## Verify Kubernetes Context with Keptn Installation
 
