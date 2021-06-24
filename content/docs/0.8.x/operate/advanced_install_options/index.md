@@ -56,60 +56,7 @@ helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=
 
 ### Example: Execute Helm upgrade without Internet connectivity
 
-* Download the Helm chart from [keptn-installer/keptn-0.8.4.tgz](https://storage.googleapis.com/keptn-installer/keptn-0.8.4.tgz) and move it to the machine that has no Internet connectivity, but should perform the installation:
-
-* To install the **Control Plane with the Execution Plane (for Continuous Delivery)** and a `LoadBalancer` for exposing Keptn, execute the following command. 
-**Note:** Reference the Helm chart stored locally instead of a repository and version:
-```console
-helm upgrade keptn ./keptn-0.8.4.tgz --install -n keptn --create-namespace --wait --set=control-plane.apiGatewayNginx.type=LoadBalancer,continuous-delivery.enabled=true
-```
-
-Furthermore, Keptn's Helm chart allows you to set all images, which can be especially
-handy in air-gapped systems where you cannot access DockerHub for pulling the images.
-For example, here all images are pulled from a registry with the URL `YOUR_REGISTRY/`
-```console
-helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.8.4 --repo=https://storage.googleapis.com/keptn-installer --set=control-plane.apiGatewayNginx.type=LoadBalancer,continuous-delivery.enabled=true,\
-control-plane.mongodb.image.repository=YOUR_REGISTRY/centos/mongodb-36-centos7,\
-control-plane.nats.nats.image=YOUR_REGISTRY/nats:2.1.7-alpine3.11,\
-control-plane.nats.reloader.image=YOUR_REGISTRY/connecteverything/nats-server-config-reloader:0.6.0,\
-control-plane.nats.exporter.image=YOUR_REGISTRY/synadia/prometheus-nats-exporter:0.5.0,\
-control-plane.apiGatewayNginx.image.repository=YOUR_REGISTRY/nginxinc/nginx-unprivileged:1.19.4-alpine,\
-control-plane.remediationService.image.repository=YOUR_REGISTRY/keptn/remediation-service,\
-control-plane.apiService.image.repository=YOUR_REGISTRY/keptn/api,\
-control-plane.bridge.image.repository=YOUR_REGISTRY/keptn/bridge2,\
-control-plane.distributor.image.repository=YOUR_REGISTRY/keptn/distributor,\
-control-plane.shipyardController.image.repository=YOUR_REGISTRY/keptn/shipyard-controller,\
-control-plane.configurationService.image.repository=YOUR_REGISTRY/keptn/configuration-service,\
-control-plane.mongodbDatastore.image.repository=YOUR_REGISTRY/keptn/mongodb-datastore,\
-control-plane.statisticsService.image.repository=YOUR_REGISTRY/keptn/statistics-service,\
-control-plane.lighthouseService.image.repository=YOUR_REGISTRY/keptn/lighthouse-service,\
-control-plane.approvalService.image.repository=YOUR_REGISTRY/keptn/approval-service,\
-continuous-delivery.distributor.image.repository=YOUR_REGISTRY/keptn/distributor,\
-continuous-delivery.helmService.image.repository=YOUR_REGISTRY/keptn/helm-service,\
-continuous-delivery.jmeterService.image.repository=YOUR_REGISTRY/keptn/jmeter-service\
-/
-```
-
-<details><summary>For pulling, re-tagging, and pushing all Keptn Docker images, we prepared a small helper script:</summary>
-<p>    
-```console
-#!/bin/bash
-KEPTN_TAG=0.8.4
-IMAGES_CONTROL_PLANE="centos/mongodb-36-centos7:1 nats:2.1.7-alpine3.11 connecteverything/nats-server-config-reloader:0.6.0 synadia/prometheus-nats-exporter:0.5.0 nginxinc/nginx-unprivileged:1.19.1-alpine keptn/remediation-service:${KEPTN_TAG} keptn/api:${KEPTN_TAG} keptn/bridge2:${KEPTN_TAG} keptn/distributor:${KEPTN_TAG} keptn/shipyard-controller:${KEPTN_TAG} keptn/configuration-service:${KEPTN_TAG} keptn/mongodb-datastore:${KEPTN_TAG} keptn/statistics-service:${KEPTN_TAG} keptn/lighthouse-service:${KEPTN_TAG} keptn/approval-service:${KEPTN_TAG}"
-# IMAGES_CONTINUOUS_DELIVERY="keptn/helm-service:${KEPTN_TAG} keptn/jmeter-service:${KEPTN_TAG}"
-INTERNAL_DOCKER_REGISTRY="YOUR_REGISTRY/"
-
-for img in $IMAGES_CONTROL_PLANE
-do
-    echo $img
-    docker pull $img
-    docker tag $img ${INTERNAL_DOCKER_REGISTRY}${img}
-    docker push ${INTERNAL_DOCKER_REGISTRY}${img}
-    echo ${INTERNAL_DOCKER_REGISTRY}${img}
-done  
-```
-</p>
-</details>
+Offline/air-gapped installation is currently not supported. Please see https://github.com/keptn/keptn/issues/4183 and PR https://github.com/keptn/keptn.github.io/pull/848 for updates and intermediate instructions.
 
 ### Install Keptn using a Root-Context
 
