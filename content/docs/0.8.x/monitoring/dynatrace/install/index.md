@@ -17,7 +17,7 @@ To setup Dynatrace monitoring on your Kubernetes cluster, please follow the offi
 
 To function correctly, the *dynatrace-service* requires access to a Dynatrace tenant and to the Keptn API.
 
-*  The credentials for the Dynatrace tenant include `DT_API_TOKEN` and `DT_TENANT`: 
+*  The credentials for the Dynatrace tenant include `DT_API_TOKEN` and `DT_TENANT`:
 
     * The `DT_TENANT` has to be set according to the appropriate pattern:
         - Dynatrace SaaS tenant: `{your-environment-id}.live.dynatrace.com`
@@ -41,8 +41,8 @@ To function correctly, the *dynatrace-service* requires access to a Dynatrace te
 * The credentials for access to Keptn include `KEPTN_API_URL`, `KEPTN_API_TOKEN` and optionally `KEPTN_BRIDGE_URL`:
 
     * To get the values for `KEPTN_API_URL` (aka. `KEPTN_ENDPOINT`) and `KEPTN_API_TOKEN`, please see [Authenticate Keptn CLI](../../../operate/install/#authenticate-keptn-cli).
-    
-    * If you would like to use backlinks from your Dynatrace tenant to the Keptn Bridge, provide the service with `KEPTN_BRIDGE_URL`. For further details about this value, please see [Authenticate Keptn Bridge](../../../operate/install/#authenticate-keptn-bridge). 
+
+    * If you would like to use backlinks from your Dynatrace tenant to the Keptn Bridge, provide the service with `KEPTN_BRIDGE_URL`. For further details about this value, please see [Authenticate Keptn Bridge](../../../operate/install/#authenticate-keptn-bridge).
 
 * If running on a Unix/Linux based system, you can use environment variables to set the values of the credentials. It is also fine to just replace the variables with values in the `kubectl` and `helm` commands in the following sections.
 
@@ -75,7 +75,7 @@ when applying the Helm chart (see below).
 
 The Dynatrace integration into Keptn is handled by the *dynatrace-service*.
 
-* Specify the version of the dynatrace-service you want to deploy. Please see the [compatibility matrix](https://github.com/keptn-contrib/dynatrace-service#compatibility-matrix) of the dynatrace-service to pick the version that works with your Keptn.  
+* Specify the version of the dynatrace-service you want to deploy. Please see the [compatibility matrix](https://github.com/keptn-contrib/dynatrace-service#compatibility-matrix) of the dynatrace-service to pick the version that works with your Keptn.
 
     ```console
     VERSION=<VERSION>   # e.g.: VERSION=0.12.0
@@ -86,7 +86,7 @@ The Dynatrace integration into Keptn is handled by the *dynatrace-service*.
     ```console
     helm upgrade --install dynatrace-service -n keptn https://github.com/keptn-contrib/dynatrace-service/releases/download/$VERSION/dynatrace-service-$VERSION.tgz
     ```
-   
+
 * This installs the `dynatrace-service` in the `keptn` namespace, which you can verify using:
 
     ```console
@@ -105,7 +105,7 @@ When you execute the [keptn configure monitoring](../../../reference/cli/command
     - keptn_project
     - keptn_service
     - keptn_stage
-  
+
     This means that Dynatrace will automatically apply tags to your onboarded services.
 
 - *Problem notification:* A problem notification has been set up to inform Keptn of any problems with your services to allow auto-remediation. You can check the problem notification by navigating to **Settings > Integration > Problem notifications** and you will find a **keptn remediation** problem notification.
@@ -122,7 +122,7 @@ When you execute the [keptn configure monitoring](../../../reference/cli/command
 keptn configure monitoring dynatrace --project=PROJECTNAME
 ```
 
-**Note 2:** To monitor the services that are already onboarded in the **dev**, **staging**, and **production** namespace, make sure to restart the pods. If you defined different environments in your shipyard, please adjust the parameters accordingly. 
+**Note 2:** To monitor the services that are already onboarded in the **dev**, **staging**, and **production** namespace, make sure to restart the pods. If you defined different environments in your shipyard, please adjust the parameters accordingly.
 
 ```console
 kubectl delete pods --all --namespace=sockshop-dev
@@ -149,7 +149,7 @@ oneagent-k7jn6                                 0/1     CrashLoopBackOff   6     
         - name: ONEAGENT_ENABLE_VOLUME_STORAGE
           value: "true"
 
-1. To edit the OneAgent custom resource: 
+1. To edit the OneAgent custom resource:
 
     ```console
     kubectl edit oneagent -n dynatrace
