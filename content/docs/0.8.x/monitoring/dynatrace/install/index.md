@@ -30,47 +30,38 @@ oneagent-ps6t4                                 1/1     Running   0          53s
 
 ## Install Dynatrace Keptn integration
 
-To install the Dynatrace Keptn integration that is implemented by the *dynatrace-service*, two steps are required:
+### 1. Gather Dynatrace and Keptn Credentials
 
-1. Create a secret with credentials for the Keptn API and Dynatrace tenant
-1. Deploy the Dynatrace Keptn integration, known as *dynatrace-service*
+To function correctly, the *dynatrace-service* requires access to a Dynatrace tenant and to the Keptn API.
 
-### 1. Create a secret with required credentials
+*  The credentials for the Dynatrace tenant include `DT_API_TOKEN` and `DT_TENANT`: 
 
-Create a secret containing the credentials for the *Dynatrace tenant* and *Keptn API*; this includes: 
+    * The `DT_TENANT` has to be set according to the appropriate pattern:
+        - Dynatrace SaaS tenant: `{your-environment-id}.live.dynatrace.com`
+        - Dynatrace-managed tenant: `{your-domain}/e/{your-environment-id}`
 
-* `DT_TENANT`
-* `DT_API_TOKEN`
-* `KEPTN_API_URL` 
-* `KEPTN_API_TOKEN`
-* `KEPTN_BRIDGE_URL` (is optional)
+    * To create a Dynatrace API token `DT_API_TOKEN`, log in to your Dynatrace tenant and go to **Settings > Integration > Dynatrace API**. In this settings page, create a new API token with the following permissions:
+        - Access problem and event feed, metrics, and topology
+        - Read log content
+        - Read configuration
+        - Write configuration
+        - Capture request data
+        - Read metrics
+        - Ingest metrics
+        - Read entities
 
----
+        {{< popup_image
+        link="./assets/dt_api_token.png"
+        caption="Dynatrace API Token"
+        width="500px">}}
 
-* The `DT_TENANT` has to be set according to the appropriate pattern:
-      - Dynatrace SaaS tenant: `{your-environment-id}.live.dynatrace.com`
-      - Dynatrace-managed tenant: `{your-domain}/e/{your-environment-id}`
+* The credentials for access to Keptn include `KEPTN_API_URL`, `KEPTN_API_TOKEN` and optionally `KEPTN_BRIDGE_URL`:
 
-* To create a Dynatrace API Token `DT_API_TOKEN`, log in to your Dynatrace tenant and go to **Settings > Integration > Dynatrace API**. In this settings page, create a new API token with the following permissions:
-    - Access problem and event feed, metrics, and topology
-    - Read log content
-    - Read configuration
-    - Write configuration
-    - Capture request data
-    - Read metrics
-    - Ingest metrics
-    - Read entities
+    * To get the values for `KEPTN_API_URL` (aka. `KEPTN_ENDPOINT`) and `KEPTN_API_TOKEN`, please see [Authenticate Keptn CLI](../../../operate/install/#authenticate-keptn-cli).
+    
+    * If you would like to use backlinks from your Dynatrace tenant to the Keptn Bridge, you can add the `KEPTN_BRIDGE_URL` to the secret. The value of this setting is: `<KEPTN_API_URL>/bridge`
 
-    {{< popup_image
-    link="./assets/dt_api_token.png"
-    caption="Dynatrace API Token"
-    width="500px">}}
-
-* To get the values for `KEPTN_API_URL` (aka. `KEPTN_ENDPOINT`) and `KEPTN_API_TOKEN`, please see [Authenticate Keptn CLI](../../../operate/install/#authenticate-keptn-cli).
-   
-* If you would like to use backlinks from your Dynatrace tenant to the Keptn Bridge, you can add the `KEPTN_BRIDGE_URL` to the secret. The value of this setting is: `<KEPTN_API_URL>/bridge`
-
-* If running on a Unix/Linux based system, you can use environment variables to set the values of the credentials. (It is also fine to just replace the values in the `kubectl` command below.)
+* If running on a Unix/Linux based system, you can use environment variables to set the values of the credentials. It is also fine to just replace the variables with values in the `kubectl` and `helm` commands in the following sections.
 
     ```console
     DT_API_TOKEN=<DT_API_TOKEN>
@@ -80,13 +71,23 @@ Create a secret containing the credentials for the *Dynatrace tenant* and *Keptn
     KEPTN_BRIDGE_URL=<KEPTN_BRIDGE_URL> # optional
     ```
 
-* Create a secret with the credentials by executing the following command:
+### 2. Create a secret with credentials
+
+* Create a secret (named `dynatrace` by default) containing the credentials for the Dynatrace Tenant (`DT_API_TOKEN` and `DT_TENANT`) and optionally for the Keptn API (`KEPTN_API_URL`, `KEPTN_API_TOKEN` and `KEPTN_BRIDGE_URL`).
 
     ```console
-    kubectl -n keptn create secret generic dynatrace --from-literal="DT_API_TOKEN=$DT_API_TOKEN" --from-literal="DT_TENANT=$DT_TENANT" --from-literal="KEPTN_API_URL=$KEPTN_API_URL" --from-literal="KEPTN_API_TOKEN=$KEPTN_API_TOKEN" -oyaml --dry-run | kubectl replace -f -
+    kubectl -n keptn create secret generic dynatrace \
+    --from-literal="DT_API_TOKEN=$DT_API_TOKEN" \
+    --from-literal="DT_TENANT=$DT_TENANT" \
+    --from-literal="KEPTN_API_URL=$KEPTN_API_URL" \
+    --from-literal="KEPTN_API_TOKEN=$KEPTN_API_TOKEN" \
+    --from-literal="KEPTN_BRIDGE_URL=$KEPTN_BRIDGE_URL" \
+    -oyaml --dry-run=client | kubectl replace -f -
     ```
 
-### 2. Deploy the Dynatrace Keptn integration
+* If the Keptn credentials are omitted from this main secret, `KEPTN_API_TOKEN` must be provided by the `keptn-api-token` secret. Furthermore, `dynatraceService.config.keptnApiUrl` and optionally `dynatraceService.config.keptnBridgeUrl` must be set when applying the helm chart (see below).
+
+### 3. Deploy the Dynatrace Keptn integration
 
 The Dynatrace integration into Keptn is handled by the *dynatrace-service*.
 
@@ -99,7 +100,7 @@ The Dynatrace integration into Keptn is handled by the *dynatrace-service*.
 *  To install the *dynatrace-service*, execute:
 
     ```console
-    kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/dynatrace-service/$VERSION/deploy/service.yaml -n keptn
+    helm upgrade --install dynatrace-service -n keptn https://github.com/keptn-contrib/dynatrace-service/releases/download/$VERSION/dynatrace-service-$VERSION.tgz
     ```
    
 * This installs the `dynatrace-service` in the `keptn` namespace, which you can verify using:
@@ -108,6 +109,9 @@ The Dynatrace integration into Keptn is handled by the *dynatrace-service*.
     kubectl -n keptn get deployment dynatrace-service -o wide
     kubectl -n keptn get pods -l run=dynatrace-service
     ```
+
+**Note**
+* If the `KEPTN_API_URL` and optionally `KEPTN_BRIDGE_URL` are not provided via a secret (see above), they should be provided using the variables `dynatraceService.config.keptnApiUrl` and `dynatraceService.config.keptnBridgeUrl`, i.e. by appending `--set dynatraceService.config.keptnApiUrl=$KEPTN_API_URL --set dynatraceService.config.keptnBridgeUrl=$KEPTN_BRIDGE_URL` to the `helm upgrade` command used to install the service.
 
 ## Verify Dynatrace configuration
 
