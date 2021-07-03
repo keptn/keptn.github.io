@@ -40,9 +40,9 @@ To function correctly, the *dynatrace-service* requires access to a Dynatrace te
 
 * The credentials for access to Keptn include `KEPTN_API_URL`, `KEPTN_API_TOKEN` and optionally `KEPTN_BRIDGE_URL`:
 
-    * To get the values for `KEPTN_API_URL` (aka. `KEPTN_ENDPOINT`) and `KEPTN_API_TOKEN`, please see [Authenticate Keptn CLI](../../../operate/install/#authenticate-keptn-cli).
+    * To get the values for `KEPTN_API_URL` (aka. `KEPTN_ENDPOINT/api`) and `KEPTN_API_TOKEN`, please see [Authenticate Keptn CLI](../../../operate/install/#authenticate-keptn-cli).
     
-    * If you would like to use backlinks from your Dynatrace tenant to the Keptn Bridge, you can add the `KEPTN_BRIDGE_URL` to the secret. The value of this setting is: `<KEPTN_API_URL>/bridge`
+    * If you would like to use backlinks from your Dynatrace tenant to the Keptn Bridge, you can add the `KEPTN_BRIDGE_URL` to the secret. The value of this setting is: `<KEPTN_ENDPOINT>/bridge`
 
 * If running on a Unix/Linux based system, you can use environment variables to set the values of the credentials. It is also fine to just replace the variables with values in the `kubectl` and `helm` commands in the following sections.
 
@@ -68,7 +68,8 @@ To function correctly, the *dynatrace-service* requires access to a Dynatrace te
     -oyaml --dry-run=client | kubectl replace -f -
     ```
 
-* If the Keptn credentials are omitted from this main secret, `KEPTN_API_TOKEN` must be provided by the `keptn-api-token` secret. Furthermore, `dynatraceService.config.keptnApiUrl` and optionally `dynatraceService.config.keptnBridgeUrl` must be set when applying the helm chart (see below).
+* If the Keptn credentials are omitted from this secret, they must be set
+when applying the Helm chart (see below).
 
 ### 3. Deploy the Dynatrace Keptn integration
 
@@ -93,8 +94,7 @@ The Dynatrace integration into Keptn is handled by the *dynatrace-service*.
     kubectl -n keptn get pods -l run=dynatrace-service
     ```
 
-**Note**
-* If the `KEPTN_API_URL` and optionally `KEPTN_BRIDGE_URL` are not provided via a secret (see above), they should be provided using the variables `dynatraceService.config.keptnApiUrl` and `dynatraceService.config.keptnBridgeUrl`, i.e. by appending `--set dynatraceService.config.keptnApiUrl=$KEPTN_API_URL --set dynatraceService.config.keptnBridgeUrl=$KEPTN_BRIDGE_URL` to the `helm upgrade` command used to install the service.
+**Note**: If the `KEPTN_API_URL`, `KEPTN_API_TOKEN` and optionally `KEPTN_BRIDGE_URL` are not provided via a secret (see above), they must be provided using the variables `dynatraceService.config.keptnApiUrl` and `dynatraceService.config.keptnBridgeUrl`, i.e. by appending `--set dynatraceService.config.keptnApiUrl=$KEPTN_API_URL --set dynatraceService.config.keptnBridgeUrl=$KEPTN_BRIDGE_URL` to the `helm upgrade` command used to install the service. Moreover, the `KEPTN_API_TOKEN` is read from the `keptn-api-token` secret (i.e. the secret from the control-plane).
 
 ## Verify Dynatrace configuration
 
