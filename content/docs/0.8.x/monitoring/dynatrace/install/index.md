@@ -5,28 +5,11 @@ weight: 1
 icon: setup
 ---
 
-## Deploy OneAgent Operator on Kubernetes
+## Deploy Dynatrace Operator on Kubernetes
 
 Bring your Dynatrace SaaS or Dynatrace-managed tenant. If you do not have a Dynatrace tenant, sign up for a [free trial](https://www.dynatrace.com/trial/) or a [developer account](https://www.dynatrace.com/developer/).
 
-### 1. Deploy OneAgent Operator
-
-To setup Dynatrace monitoring on your Kubernetes cluster, please follow the official Dynatrace documentation on [Deploy OneAgent Operator on Kubernetes](https://www.dynatrace.com/support/help/technology-support/cloud-platforms/kubernetes/deploy-oneagent-k8/).
-
-### 2. Verify Dynatrace setup in your cluster
-
-When you deployed the Dynatrace OneAgent on your cluster, execute the following commands to verify the successful deployment:
-
-```console
-kubectl get pods -n dynatrace
-```
-
-```console
-NAME                                           READY   STATUS    RESTARTS   AGE
-dynatrace-oneagent-operator-7f477bf78d-dgwb6   1/1     Running   0          12m
-oneagent-5lcqh                                 1/1     Running   0          53s
-oneagent-ps6t4                                 1/1     Running   0          53s
-```
+To setup Dynatrace monitoring on your Kubernetes cluster, please follow the official Dynatrace documentation on [Deploy Dynatrace Operator](https://www.dynatrace.com/support/help/technology-support/container-platforms/kubernetes/monitor-kubernetes-environments/).
 
 ## Install Dynatrace Keptn integration
 
