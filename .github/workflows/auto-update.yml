@@ -1,0 +1,63 @@
+name: Auto Update - Docs
+on:
+  repository_dispatch:
+    types: [release-push]
+defaults:
+  run:
+    shell: bash
+jobs:
+  update-spec:
+    env:
+      KEPTN_VERSION: '0.8.5'
+      SOURCE_REF: ${{ github.event.client_payload.ref }}
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          path: 'keptn-docs'
+
+      - name: Checkout keptn core repo
+        uses: actions/checkout@v2
+        with:
+          repository: 'keptn/keptn'
+          path: 'keptn'
+
+      - name: Install Keptn CLI
+        id: install_keptn_cli
+        run: |
+          curl -sL https://get.keptn.sh | KEPTN_VERSION=${{ env.KEPTN_VERSION }} bash
+
+      - name: Extract source branch
+        run: |
+          # extract release branch version and replace minor version with x
+          shopt -s extglob
+          echo "SOURCE_BRANCH=${SOURCE_REF#refs/heads/release-}" >> $GITHUB_ENV
+          echo "SOURCE_VERSION_SLUG=${SOURCE_BRANCH/%.+([0-9])/.x}" >> $GITHUB_ENV
+          shopt -u extglob
+
+      - name: Generate docs
+        env:
+          SOURCE_VERSION_SLUG: ${{ env.SOURCE_VERSION_SLUG }}
+        run: |
+          cd keptn
+          keptn generate docs --dir=../keptn-docs/content/docs/$SOURCE_VERSION_SLUG
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.KEPTN_BOT_TOKEN }}
+          commit-message: "Update keptn docs to release ${{ env.SOURCE_VERSION_SLUG }}"
+          committer: "keptn-bot <86361500+keptn-bot@users.noreply.github.com>"
+          author: "keptn-bot <86361500+keptn-bot@users.noreply.github.com>"
+          signoff: true
+          branch: patch/update-keptn-docs-${{ env.SOURCE_VERSION_SLUG }}
+          delete-branch: true
+          base: master
+          labels: "area:spec,automated pr,dependencies"
+          title: "Update keptn/spec to release ${{ env.SOURCE_VERSION_SLUG }}"
+          body: |
+            **This is an automated PR!**
+
+            Update keptn docs to latest keptn/keptn release
+            New version: ${{ env.SOURCE_BRANCH }}
