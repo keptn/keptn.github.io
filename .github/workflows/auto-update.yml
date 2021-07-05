@@ -42,6 +42,7 @@ jobs:
         run: |
           cd keptn
           keptn generate docs --dir=../keptn-docs/content/docs/$SOURCE_VERSION_SLUG
+          cd ..
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
@@ -54,8 +55,9 @@ jobs:
           branch: patch/update-keptn-docs-${{ env.SOURCE_VERSION_SLUG }}
           delete-branch: true
           base: master
-          labels: "area:spec,automated pr,dependencies"
-          title: "Update keptn/spec to release ${{ env.SOURCE_VERSION_SLUG }}"
+          path: 'keptn-docs'
+          labels: "automated pr"
+          title: "Update keptn docs for release ${{ env.SOURCE_BRANCH }}"
           body: |
             **This is an automated PR!**
 
