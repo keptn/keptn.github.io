@@ -41,7 +41,11 @@ jobs:
           SOURCE_VERSION_SLUG: ${{ env.SOURCE_VERSION_SLUG }}
         run: |
           cd keptn
-          keptn generate docs --dir=../keptn-docs/content/docs/$SOURCE_VERSION_SLUG
+          full_path="../keptn-docs/content/docs/$SOURCE_VERSION_SLUG/reference/cli/commands"
+          if [[ ! -d $full_path ]]; then
+            mkdir -p $full_path
+          fi
+          keptn generate docs --dir=$full_path
           cd ..
 
       - name: Create Pull Request
@@ -56,7 +60,7 @@ jobs:
           delete-branch: true
           base: master
           path: 'keptn-docs'
-          labels: "automated pr"
+          labels: 'automated pr'
           title: "Update keptn docs for release ${{ env.SOURCE_BRANCH }}"
           body: |
             **This is an automated PR!**
