@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-#source <(curl -s https://raw.githubusercontent.com/keptn/keptn/0.8.3/test/utils.sh)
+#source <(curl -s https://raw.githubusercontent.com/keptn/keptn/0.8.5/test/utils.sh)
 
 function print_headline() {
   HEADLINE=$1
@@ -90,7 +90,9 @@ PROJECT="podtatohead"
 SERVICE="helloservice"
 IMAGE="ghcr.io/podtato-head/podtatoserver"
 VERSION=v0.1.0
+
 verify_helm_installation
+
 print_headline "Downloading demo resources"
 echo "This will create a local folder ./podtato-head"
 echo "git clone https://github.com/cncf/podtato-head.git --single-branch"
@@ -159,22 +161,13 @@ verify_test_step $? "Applying Ingress for Prometheus failed"
 echo "Prometheus is available at http://prometheus.$INGRESS_IP.nip.io:$INGRESS_PORT "
 
 print_headline "Setting up Prometheus integration"
-kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/release-0.5.0/deploy/role.yaml -n monitoring
-kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/release-0.5.0/deploy/service.yaml 
-
-kubectl set env deployment/prometheus-service -n keptn --containers="prometheus-service" PROMETHEUS_NS="monitoring"
-kubectl set env deployment/prometheus-service -n keptn --containers="prometheus-service" ALERT_MANAGER_NS="monitoring"
+kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/release-0.6.1/deploy/role.yaml -n monitoring
+kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/release-0.6.1/deploy/service.yaml 
 
 promsecretdata="url: http://prometheus-server.monitoring.svc.cluster.local:80"
 echo "kubectl create secret generic -n keptn prometheus-credentials-$PROJECT --from-literal=prometheus-credentials=$promsecretdata"
 
 kubectl create secret generic -n keptn prometheus-credentials-$PROJECT --from-literal=prometheus-credentials="$promsecretdata"
-
-
-
-echo "Installing Prometheus SLI service"
-kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-sli-service/release-0.3.0/deploy/service.yaml
-
 
 echo "Adding SLIs for Prometheus"
 keptn add-resource --project=$PROJECT --stage=hardening --service=$SERVICE --resource=prometheus/sli.yaml --resourceUri=prometheus/sli.yaml
@@ -184,7 +177,6 @@ keptn add-resource --project=$PROJECT --stage=hardening --service=$SERVICE --res
 # check for prometheus to be available at this point
 echo "Waiting for Prometheus to be ready"
 wait_for_deployment_in_namespace "prometheus-service" "keptn"
-wait_for_deployment_in_namespace "prometheus-sli-service" "keptn"
 wait_for_deployment_in_namespace "prometheus-server" "monitoring"
 
 echo "Configuring Prometheus with Keptn"
@@ -199,7 +191,6 @@ keptn add-resource --project=$PROJECT --stage=hardening --service=$SERVICE --res
 # check for prometheus to be available at this point
 echo "Waiting for Prometheus to be ready"
 wait_for_deployment_in_namespace "prometheus-service" "keptn"
-wait_for_deployment_in_namespace "prometheus-sli-service" "keptn"
 wait_for_deployment_in_namespace "prometheus-server" "monitoring"
 
 # triggering new delivery
