@@ -5,11 +5,11 @@ weight: 1
 keywords: [0.8.x-integration]
 ---
 
-Here you learn how to add additional functionality to your Keptn installation with a custom [*Keptn-service*](#write-your-keptn-service), [*SLI-provider*](../sli_provider), or [*Action-provider*](../action_provider). 
+Here you learn how to add additional functionality to your Keptn installation with a custom [*Keptn-service*](#write-your-keptn-service), [*SLI-provider*](../sli_provider), or [*Action-provider*](../action_provider).
 
 * A *Keptn-service* is responsible for implementing a continuous delivery or operations task.
-* An *SLI-provider* is used to query Service-Level Indicators (SLI) from an external source like a monitoring or testing solution. 
-* An *Action-provider* is used to extend a task sequence for remediation with an additional action step.  
+* An *SLI-provider* is used to query Service-Level Indicators (SLI) from an external source like a monitoring or testing solution.
+* An *Action-provider* is used to extend a task sequence for remediation with an additional action step.
 
 ## Template repository
 
@@ -18,16 +18,16 @@ Please note that the master branch of this repository might represent a developm
 
 Since a *Keptn-service* is a Kubernetes service with a deployment and service template, the deployment manifest in the template repository can be re-used; see [deploy/service.yaml](https://github.com/keptn-sandbox/keptn-service-template-go/blob/master/deploy/service.yaml).
 
-This deployment manifest contains: 
+This deployment manifest contains:
 
 * Kubernetes **Deployment**, with two containers:
-  * *keptn-service-template-go*: Replace the image of this container with the image of your implementation. 
+  * *keptn-service-template-go*: Replace the image of this container with the image of your implementation.
   * *distributor*: This container integrates with your Keptn and does the event handling. *Do not remove it.*
 * Kubernetes **Service**
 
 ## Write your Keptn-service
 
-A Keptn-service has the following characteristics: 
+A Keptn-service has the following characteristics:
 
 * has a subscription to a **triggered event** that occurs during the execution of a task sequence (e.g., for continuous delivery or operations)
 * sends a **started event** to inform Keptn about receiving the event and acting on it
@@ -50,7 +50,7 @@ In this example, `[task]` works as a placeholder for tasks such as: `deployment`
 spec:
   containers:
   - name: distributor
-    image: keptn/distributor:0.8.4
+    image: keptn/distributor:0.8.5
     ports:
     - containerPort: 8080
     resources:
@@ -69,10 +69,10 @@ spec:
         value: '127.0.0.1'
 ```
 
-In addition to forwarding received events for the subscribed topic to the Keptn-service, the distributor also provides the feature to act as a proxy to the Keptn API. 
+In addition to forwarding received events for the subscribed topic to the Keptn-service, the distributor also provides the feature to act as a proxy to the Keptn API.
 Using this feature, the following Keptn API services will be reachable for the Keptn-service via the following URLs, if the **distributor runs within the same K8s pod as the Keptn-service**:
 
-- Mongodb-datastore:	
+- Mongodb-datastore:
     - `http://localhost:8081/mongodb-datastore`
 
 - Configuration-service:
@@ -80,7 +80,7 @@ Using this feature, the following Keptn API services will be reachable for the K
 
 - Shipyard-controller:
     - `http://localhost:8081/controlPlane`
- 
+
 
 To configure this distributor for your *Keptn-service*, the following environment variables can be adapted. However, in most scenarios only a subset of them needs to be configured. The full list of environment variables is as follows:
 
@@ -98,15 +98,15 @@ To configure this distributor for your *Keptn-service*, the following environmen
 | PUBSUB_RECIPIENT      | Hostname of the execution plane service the distributor should forward incoming CloudEvents to                                           | `http://127.0.0.1`          |
 | PUBSUB_RECIPIENT_PORT | Port of the execution plane service the distributor should forward incoming CloudEvents to                                               | `8080`                      |
 | PUBSUB_RECIPIENT_PATH | Path of the execution plane service the distributor should forward incoming CloudEvents to                                               | `/`                         |
-| DISABLE_REGISTRATION  | Disables automatic registration of the Keptn integration to the control plane.                                                           | `false`                     |        
-| REGISTRATION_INTERVAL | Time duration between trying to re-register to the Keptn control plane.                                                                  |`10s`                        |  
-| LOCATION              | Location the distributor is running on, e.g. "executionPlane-A".                                                                         | `""`                        |  
-| DISTRIBUTOR_VERSION   | The software version of the distributor.                                                                                                 | `""`                        |  
-| VERSION               | The version of the Keptn integration.                                                                                                    | `""`                        |  
-| K8S_DEPLOYMENT_NAME   | Kubernetes deployment name of the Keptn integration.                                                                                     | `""`                        |  
-| K8S_POD_NAME          |  Kubernetes deployment name of the Keptn integration.                                                                                    | `""`                        |  
-| K8S_NAMESPACE         | Kubernetes namespace of the Keptn integration.                                                                                           | `""`                        |  
-| K8S_NODE_NAME         | Kubernetes node name the Keptn integration is running on.                                                                                | `""`                        |  
+| DISABLE_REGISTRATION  | Disables automatic registration of the Keptn integration to the control plane.                                                           | `false`                     |
+| REGISTRATION_INTERVAL | Time duration between trying to re-register to the Keptn control plane.                                                                  |`10s`                        |
+| LOCATION              | Location the distributor is running on, e.g. "executionPlane-A".                                                                         | `""`                        |
+| DISTRIBUTOR_VERSION   | The software version of the distributor.                                                                                                 | `""`                        |
+| VERSION               | The version of the Keptn integration.                                                                                                    | `""`                        |
+| K8S_DEPLOYMENT_NAME   | Kubernetes deployment name of the Keptn integration.                                                                                     | `""`                        |
+| K8S_POD_NAME          |  Kubernetes deployment name of the Keptn integration.                                                                                    | `""`                        |
+| K8S_NAMESPACE         | Kubernetes namespace of the Keptn integration.                                                                                           | `""`                        |
+| K8S_NODE_NAME         | Kubernetes node name the Keptn integration is running on.                                                                                | `""`                        |
 
 The above list of environment variables is pretty long, but in most scenarios only a few of them have to be set. The following examples show how to set the environment variables properly, depending on where the distributor and it's accompanying execution plane service should run:
 
@@ -121,7 +121,7 @@ The above list of environment variables is pretty long, but in most scenarios on
 | PUBSUB_RECIPIENT_PATH 	| Service endpoint to receive the event (default: `/`)        	|
 | PUBSUB_TOPIC          	| Event(s) the Keptn-service is subscribed to. To subscribe to multiple events, declare a comma-separated list, e.g.: `sh.keptn.event.test.triggered, sh.keptn.event.evaluation.triggered` |
 
-If your Keptn-service is running in the same pod as the distributor (which we recommend), and receives events at the port `8080` and the path `/`, you will only need to set the `PUBSUB_TOPIC` environment variable.  
+If your Keptn-service is running in the same pod as the distributor (which we recommend), and receives events at the port `8080` and the path `/`, you will only need to set the `PUBSUB_TOPIC` environment variable.
 
 </p>
 </details>
@@ -152,39 +152,39 @@ After receiving a `triggered` event for a particular task, your *Keptn-service* 
 
 - `sh.keptn.event.[task].started`
 
-The request body needs to follow the [CloudEvent specification](https://github.com/keptn/spec/blob/0.2.2/cloudevents.md) and the HTTP header attribute `Content-Type` has to be set to `application/cloudevents+json`. 
+The request body needs to follow the [CloudEvent specification](https://github.com/keptn/spec/blob/0.2.2/cloudevents.md) and the HTTP header attribute `Content-Type` has to be set to `application/cloudevents+json`.
 
 **Send the event:**
 
-To send the event to Keptn, two ways are possible: 
+To send the event to Keptn, two ways are possible:
 
 1. Post it on the `v1/event` endpoint of Keptn
 1. If the distributor is running as sidecar, post the event on `127.0.0.1:8081`
 
 ### Execute the functionality
 
-The functionality of your *Keptn-service* depends on the capability you want to add to the continuous delivery or operational workflow. In many cases, the event payload -- containing meta-data such as the project, stage, or service name -- is first processed and then used to call the REST API of another tool.  
+The functionality of your *Keptn-service* depends on the capability you want to add to the continuous delivery or operational workflow. In many cases, the event payload -- containing meta-data such as the project, stage, or service name -- is first processed and then used to call the REST API of another tool.
 
 ### Send a finished event
 
-After your *Keptn-service* has completed its functionality, it has to inform Keptn by sending an event of the type: 
+After your *Keptn-service* has completed its functionality, it has to inform Keptn by sending an event of the type:
 
 - `sh.keptn.event.[task].finished`
 
-The request body needs to follow the [CloudEvent specification](https://github.com/keptn/spec/blob/0.2.2/cloudevents.md) and the HTTP header attribute `Content-Type` has to be set to `application/cloudevents+json`. 
+The request body needs to follow the [CloudEvent specification](https://github.com/keptn/spec/blob/0.2.2/cloudevents.md) and the HTTP header attribute `Content-Type` has to be set to `application/cloudevents+json`.
 
 **Add property to event header:**
 
-Add to the *header* of the event: 
+Add to the *header* of the event:
 
-  * `triggeredid`: The value of this property is the `id` of the `sh.keptn.event.[task].triggered` event. 
+  * `triggeredid`: The value of this property is the `id` of the `sh.keptn.event.[task].triggered` event.
 
 **Add data to event payload:**
 
 You can send data back to Keptn by adding it to the data block in the event payload. In more details, the data block has a reserved space depending on the event type. If, for example, your Keptn service has a subscription to a `sh.keptn.event.test.finished` event, the reserved space is `data.test`. Your Keptn-service is allowed to add data there, but must provide at least a value for `status` and `result`:
 
-* `status`: [succeeded, errored, unknown] - The status of the task execution. 
-* `result`: [pass, failed] - The result of a successful task execution. 
+* `status`: [succeeded, errored, unknown] - The status of the task execution.
+* `result`: [pass, failed] - The result of a successful task execution.
 
 ```json
 {
@@ -215,7 +215,7 @@ You can send data back to Keptn by adding it to the data block in the event payl
 
 **Send the event:**
 
-To send the event to Keptn, two ways are possible: 
+To send the event to Keptn, two ways are possible:
 
 1. Post it on the `v1/event` endpoint of Keptn
 1. If the distributor is running as sidecar, post the event on `127.0.0.1:8081`
@@ -239,7 +239,7 @@ spec:
     spec:
       containers:
       - name: distributor
-        image: keptn/distributor:0.8.4
+        image: keptn/distributor:0.8.5
         ports:
         - containerPort: 8080
         resources:
@@ -283,14 +283,14 @@ spec:
               fieldPath: spec.nodeName
 ```
 
-To configure this distributor for your *Keptn-service*, two environment variables need to be adapted: 
+To configure this distributor for your *Keptn-service*, two environment variables need to be adapted:
 
 * `PUBSUB_RECIPIENT`: Defines the service address as specified in the Kubernetes service manifest (e.g., 127.0.0.1 or jmeter-service)
 * `PUBSUB_TOPIC`: Defines the event type your *Keptn-service* is listening to (e.g. `sh.keptn.event.test.triggered`  or `sh.keptn.event.>`).
 
 ## Deploy Keptn-service and distributor
 
-With a service and deployment manifest for your custom *Keptn-service* (`service.yaml`), you are ready to deploy both components in the K8s cluster where Keptn is installed: 
+With a service and deployment manifest for your custom *Keptn-service* (`service.yaml`), you are ready to deploy both components in the K8s cluster where Keptn is installed:
 
 ```console
 kubectl apply -f service.yaml -n keptn
@@ -298,7 +298,7 @@ kubectl apply -f service.yaml -n keptn
 
 ## CloudEvents
 
-CloudEvents have to be sent with the HTTP header `Content-Type` set to `application/cloudevents+json`. For a detailed look into CloudEvents, please go the Keptn [CloudEvent specification](https://github.com/keptn/spec/blob/0.2.3/cloudevents.md). 
+CloudEvents have to be sent with the HTTP header `Content-Type` set to `application/cloudevents+json`. For a detailed look into CloudEvents, please go the Keptn [CloudEvent specification](https://github.com/keptn/spec/blob/0.2.3/cloudevents.md).
 
 ## Error Logging
 

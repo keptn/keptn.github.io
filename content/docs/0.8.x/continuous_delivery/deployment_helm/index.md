@@ -5,7 +5,7 @@ weight: 10
 keywords: [0.8.x-cd]
 ---
 
-Keptn uses [Helm v3](https://helm.sh/) for deploying [onboarded services](../../manage/service/) to a Kubernetes cluster. This is currently implemented in the [helm-service](https://github.com/keptn/keptn/tree/0.8.4/helm-service). 
+Keptn uses [Helm v3](https://helm.sh/) for deploying [onboarded services](../../manage/service/) to a Kubernetes cluster. This is currently implemented in the [helm-service](https://github.com/keptn/keptn/tree/0.8.5/helm-service).
 Keptn's helm-service supports the following deployment strategies:
 
 * **Direct deployments**
@@ -16,9 +16,9 @@ The explanation below is based on the provided Helm Chart for the carts microser
 
 ## Direct deployments
 
-If the deployment strategy of a stage in the [shipyard](https://github.com/keptn/examples/blob/0.8.4/onboarding-carts/shipyard.yaml) is configured as `deploymentstrategy: direct`, Helm deploys a 
+If the deployment strategy of a stage in the [shipyard](https://github.com/keptn/examples/blob/0.8.4/onboarding-carts/shipyard.yaml) is configured as `deploymentstrategy: direct`, Helm deploys a
  release called `sockshop-dev-carts` as `carts` in namespace `sockshop-dev`.
- 
+
 ```console
 $ kubectl get deployments -n sockshop-dev carts -owide
 ```
@@ -58,10 +58,10 @@ carts-primary   1/1     1            1           57m   carts        docker.io/ke
 carts           0/1     1            1            1m   carts        docker.io/keptnexamples/carts:0.11.2   app=carts
 ```
 
-The primary deployment is always available (and called `carts-primary`). The canary deployment (called `carts`) gets scaled up in the case of a new-artifact event (e.g., in this case someone has sent a new-artifact for 0.11.2). Traffic is shifted to the canary release. 
- 
-Once testing has finished, the primary deployment is upgraded to the new version (0.11.2). 
- 
+The primary deployment is always available (and called `carts-primary`). The canary deployment (called `carts`) gets scaled up in the case of a new-artifact event (e.g., in this case someone has sent a new-artifact for 0.11.2). Traffic is shifted to the canary release.
+
+Once testing has finished, the primary deployment is upgraded to the new version (0.11.2).
+
 ```
 NAME            READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS   IMAGES                                 SELECTOR
 carts-primary   1/1     1            1            3m   carts        docker.io/keptnexamples/carts:0.11.2   app=carts-primary
@@ -88,7 +88,7 @@ If the deployment strategy of a stage in the [shipyard](https://github.com/keptn
 is configured as `deploymentstrategy: user_managed`, the provided Helm chart will be deployed without any modification and
 applied as it is.
 
-Assuming that you've created a project from a shipyard file containing a stage with `deploymentstrategy: user_managed`, you need to: 
+Assuming that you've created a project from a shipyard file containing a stage with `deploymentstrategy: user_managed`, you need to:
 
 (1) create a service in your stage:
 ```
@@ -102,7 +102,7 @@ keptn add-resource --project=<project-name> --service=<service-name> --all-stage
 ```
 keptn add-resource --project=<project-name> --service=<service-name> --all-stages --resource=<path_to_endpoints.yaml> --resourceUri=helm/endpoints.yaml
 ```
-**Note**: This step is required, if you will need the `data.deployment.deploymentURIsPublic` and/or `data.deployment.deploymentURIsLocal` property of the `deployment.finished` event sent by the helm service. 
+**Note**: This step is required, if you will need the `data.deployment.deploymentURIsPublic` and/or `data.deployment.deploymentURIsLocal` property of the `deployment.finished` event sent by the helm service.
 This is the case, e.g., when the `jmeter-service`, which performs the `test` task needs to determine the URL for the service to be tested.
 The `endpoints.yaml` file has the following structure:
 
@@ -111,11 +111,11 @@ deploymentURIsLocal:
   - "<my-local-url>" # e.g. http://my-service.sockshop-dev:8080
 deploymentURIsPublic:
   - "<my-public-url>" # e.g. http://123.123.123.nip.io:80
-```  
+```
 
 (4) send an event to trigger the delivery of your service:
 ```
-keptn send event --file=./delivery.json 
+keptn send event --file=./delivery.json
 ```
 where the content of `delivery.json` looks something like:
 
@@ -125,7 +125,7 @@ where the content of `delivery.json` looks something like:
   "data": {
     "project": "<project-name",
     "service": "<service-name>",
-    "stage": "<stage-name>" 
+    "stage": "<stage-name>"
   },
   "source": "keptn-cli",
   "specversion": "1.0",

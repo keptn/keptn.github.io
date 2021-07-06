@@ -1,5 +1,5 @@
 ---
-date: "2021-06-16T14:50:20+02:00"
+date: "2021-07-06T07:14:20+02:00"
 title: "keptn"
 slug: keptn
 ---
@@ -10,7 +10,6 @@ The CLI for using Keptn
 ### Synopsis
 
 The CLI allows interaction with a Keptn installation to manage Keptn, to trigger workflows, and to get details.
-	
 
 ### Options
 

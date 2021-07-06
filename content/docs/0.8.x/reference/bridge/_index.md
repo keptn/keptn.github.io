@@ -6,11 +6,11 @@ weight: 21
 
 ## Views in Keptn Bridge
 
-The Keptn Bridge provides an easy way to browse all events that are sent within Keptn. When you access the Keptn Bridge, all projects will be shown on the start screen. When clicking on a project, the stages of this project, and all onboarded services are shown on the next view. An overview of those views is given below. 
+The Keptn Bridge provides an easy way to browse all events that are sent within Keptn. When you access the Keptn Bridge, all projects will be shown on the start screen. When clicking on a project, the stages of this project, and all onboarded services are shown on the next view. An overview of those views is given below.
 
 ### Project view
 
-* When you enter the Keptn Bridge and have not created a project yet, you will be guided to the instructions on how to setup a project and onboard a sample app. 
+* When you enter the Keptn Bridge and have not created a project yet, you will be guided to the instructions on how to setup a project and onboard a sample app.
 
     {{< popup_image
       link="./assets/bridge-empty.png"
@@ -203,15 +203,15 @@ caption="Approval in Sequences">}}
 
 ## Early access version of Keptn Bridge
 
-Right now there is no early access version of Keptn Bridge available. 
+Right now there is no early access version of Keptn Bridge available.
 
-<!-- You can upgrade to the latest version (0.8.4) by executing the following commands:
+<!-- You can upgrade to the latest version (0.8.5) by executing the following commands:
 
 ```console
-kubectl -n keptn set image deployment/bridge bridge=keptn/bridge2:0.8.4 --record
+kubectl -n keptn set image deployment/bridge bridge=keptn/bridge2:0.8.5 --record
 ``
 
-There is an early access version of Keptn Bridge available (compatible with Keptn 0.8.4):
+There is an early access version of Keptn Bridge available (compatible with Keptn 0.8.5):
 
   {{< popup_image
   link="./assets/bridge_eap.png"
@@ -223,10 +223,10 @@ There is an early access version of Keptn Bridge available (compatible with Kept
 kubectl -n keptn set image deployment/bridge bridge=keptn/bridge2:20200402.1046 --record
 ```
 
-* To restore the old version of bridge, configuration-service and mongodb-datastore (as delivered with Keptn 0.8.4), you can use the following commands:
+* To restore the old version of bridge, configuration-service and mongodb-datastore (as delivered with Keptn 0.8.5), you can use the following commands:
 
 ```console
-kubectl -n keptn set image deployment/bridge bridge=keptn/bridge2:0.8.4 --record
+kubectl -n keptn set image deployment/bridge bridge=keptn/bridge2:0.8.5 --record
 ```
 -->
 
