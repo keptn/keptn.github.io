@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-#source <(curl -s https://raw.githubusercontent.com/keptn/keptn/0.8.3/test/utils.sh)
+#source <(curl -s https://raw.githubusercontent.com/keptn/keptn/0.8.5/test/utils.sh)
 
 function print_headline() {
   HEADLINE=$1
@@ -177,7 +177,6 @@ keptn add-resource --project=$PROJECT --stage=hardening --service=$SERVICE --res
 # check for prometheus to be available at this point
 echo "Waiting for Prometheus to be ready"
 wait_for_deployment_in_namespace "prometheus-service" "keptn"
-wait_for_deployment_in_namespace "prometheus-sli-service" "keptn"
 wait_for_deployment_in_namespace "prometheus-server" "monitoring"
 
 echo "Configuring Prometheus with Keptn"
