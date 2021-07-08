@@ -25,7 +25,7 @@ To create a Kubernetes cluster, select one of the following options:
 1. Create AKS cluster
   - [Master version:](../k8s_support/#supported-versions) `1.20.x` (tested version: `v1.20.7`)
   - One **D8s_v3** node
- 
+
  </p>
 </details>
 
@@ -212,9 +212,9 @@ However, if you are facing problems, please let us know on https://slack.keptn.s
 </p>
 </details>
 
-## Quick Start 
+## Quick Start
 
-:bulb: If you would like to install Keptn in a default way, please go to [Quick Start](../../../quickstart/#2-install-keptn). 
+:bulb: If you would like to install Keptn in a default way, please go to [Quick Start](../../../quickstart/#2-install-keptn).
 
 Use this page if you have already Keptn experience and would like to install it according to your needs.
 
@@ -222,7 +222,7 @@ Use this page if you have already Keptn experience and would like to install it 
 
 Every Keptn release provides binaries for the Keptn CLI. These binaries are available for Linux, macOS, and Windows.
 
-- Download the version for your operating system from: [GitHub](https://github.com/keptn/keptn/releases/tag/0.8.4)
+- Download the version for your operating system from: [GitHub](https://github.com/keptn/keptn/releases/tag/0.8.5)
 - Unpack the archive
 - Find the `keptn` binary in the unpacked directory
 
@@ -236,7 +236,7 @@ Every Keptn release provides binaries for the Keptn CLI. These binaries are avai
     ```console
     keptn version
     ```
-    
+
     - *Windows*
 
     ```console

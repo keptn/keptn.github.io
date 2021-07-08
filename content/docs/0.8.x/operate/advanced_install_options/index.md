@@ -37,21 +37,21 @@ The following flags are available:
 ### Example: Use a LoadBalancer for api-gateway-nginx
 
 ```console
-helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.8.4 --repo=https://storage.googleapis.com/keptn-installer --set=control-plane.apiGatewayNginx.type=LoadBalancer
+helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.8.5 --repo=https://storage.googleapis.com/keptn-installer --set=control-plane.apiGatewayNginx.type=LoadBalancer
 ```
 
 ### Example: Install execution plane for Continuous Delivery use-case
 
 For example, the **Control Plane with the Execution Plane (for Continuous Delivery)** can be installed by the following command:
 ```console
-helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.8.4 --repo=https://storage.googleapis.com/keptn-installer --set=continuous-delivery.enabled=true
+helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.8.5 --repo=https://storage.googleapis.com/keptn-installer --set=continuous-delivery.enabled=true
 ```
 
 ### Example: Install execution plane for Continuous Delivery use-case and use a LoadBalancer for api-gateway-nginx
 
 For example, the **Control Plane with the Execution Plane (for Continuous Delivery)** and a `LoadBalancer` for exposing Keptn can be installed by the following command:
 ```console
-helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.8.4 --repo=https://storage.googleapis.com/keptn-installer --set=continuous-delivery.enabled=true,control-plane.apiGatewayNginx.type=LoadBalancer
+helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.8.5 --repo=https://storage.googleapis.com/keptn-installer --set=continuous-delivery.enabled=true,control-plane.apiGatewayNginx.type=LoadBalancer
 ```
 
 ### Example: Execute Helm upgrade without Internet connectivity
@@ -60,22 +60,22 @@ Offline/air-gapped installation is currently not supported. Please see https://g
 
 ### Install Keptn using a Root-Context
 
-The Helm chart allows customizing the root-context for the Keptn API and Bridge. 
+The Helm chart allows customizing the root-context for the Keptn API and Bridge.
 By default, the Keptn API is located under `http://HOSTNAME/api` and the Keptn Bridge is located under `http://HOSTNAME/bridge`.
 By specifying a value for `control-plane.prefixPath`, the used prefix for the root-context can be configured.
 For example, if a user sets `control-plane.prefixPath=/mykeptn` in the Helm install/upgrade command,
 the Keptn API is located under `http://HOSTNAME/mykeptn/api` and the Keptn Bridge is located under `http://HOSTNAME/mykeptn/bridge`:
 
 ```console
-helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.8.4 --repo=https://storage.googleapis.com/keptn-installer --set=control-plane.apiGatewayNginx.type=LoadBalancer,continuous-delivery.enabled=true,control-plane.prefixPath=/mykeptn
+helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.8.5 --repo=https://storage.googleapis.com/keptn-installer --set=control-plane.apiGatewayNginx.type=LoadBalancer,continuous-delivery.enabled=true,control-plane.prefixPath=/mykeptn
 ```
 
 ### Example: Install Keptn with externally hosted MongoDB
 
-If you want to use an externally hosted MongoDB instead of the MongoDB installed by Keptn, please use the `helm upgrade` command as shown below. Basically, provide the MongoDB host, user, and password as required for the connection string. 
+If you want to use an externally hosted MongoDB instead of the MongoDB installed by Keptn, please use the `helm upgrade` command as shown below. Basically, provide the MongoDB host, user, and password as required for the connection string.
 
 ```console
-helm upgrade keptn keptn --install -n keptn --create-namespace 
+helm upgrade keptn keptn --install -n keptn --create-namespace
 --set=control-plane.mongodb.enabled=false,
       control-plane.mongodb.host=<YOUR_MONGODB_HOST>,
       control-plane.mongodb.user=<YOUR_MONGODB_USER>,

@@ -50,26 +50,26 @@ The **Control Plane** of Keptn is responsible for orchestrating your processes f
     ```
 
 * Before continuing, please retrieve:
-    
+
     * `KEPTN_ENDPOINT`: Follow the instructions [here](../install/#install-keptn), depending on the option you chose for exposing Keptn.
     * `KEPTN_API_TOKEN`: Follow the instructions [here](../install/#authenticate-keptn-cli).
 
 ## Install Keptn Execution plane
 
-In this release of Keptn, the execution plane services for deployment (`helm-service`) and testing (`jmeter-service`) can be installed via Helm Charts. 
+In this release of Keptn, the execution plane services for deployment (`helm-service`) and testing (`jmeter-service`) can be installed via Helm Charts.
 
-Please find the Helm Charts here: 
+Please find the Helm Charts here:
 
-  - `helm-service`: GitHub Release for [0.8.4](https://github.com/keptn/keptn/releases/tag/0.8.4) at **Assets** > `helm-service-0.8.4.tgz`
+  - `helm-service`: GitHub Release for [0.8.5](https://github.com/keptn/keptn/releases/tag/0.8.5) at **Assets** > `helm-service-0.8.5.tgz`
 
-  - `jmeter-service`: GitHub Release for [0.8.4](https://github.com/keptn/keptn/releases/tag/0.8.4) at **Assets** > `jmeter-service-0.8.4.tgz`
+  - `jmeter-service`: GitHub Release for [0.8.5](https://github.com/keptn/keptn/releases/tag/0.8.5) at **Assets** > `jmeter-service-0.8.5.tgz`
 
 ### How to deploy an execution plane services?
 
 * Download the `values.yaml` from the release branch, e.g., for the jmeter-service:
 
     ```
-    wget https://raw.githubusercontent.com/keptn/keptn/release-0.8.4/jmeter-service/chart/values.yaml
+    wget https://raw.githubusercontent.com/keptn/keptn/release-0.8.5/jmeter-service/chart/values.yaml
     ```
 
 * Edit the `values.yaml` to connect the services to the Keptn control plane, identified by its endpoint and API token. Therefore, set the values (1) - (5):
@@ -85,31 +85,31 @@ Please find the Helm Charts here:
     ```
 
 * Depending on your setup of the multi-cluster environment and the approach you modeled your staging process, one stage can be for example on a separate cluster. Let's assume the following setup: 
-  
+
   * Project: `sockshop`
   * Service: `carts`
-  * Stages: 
+  * Stages:
       * `hardening` - on Cluster-A
-      * `production` - on Cluster-B  
+      * `production` - on Cluster-B
 
     To properly configure the execution plane services that run, for example, on **Cluster-A**, the distributor in the `values.yaml` needs to be configured:
 
     ```
     distributor:
-      projectFilter: ""                     # set the project, e.g., "sockshop" to get events for this project. 
+      projectFilter: ""                     # set the project, e.g., "sockshop" to get events for this project.
       stageFilter: "hardening"              # set the stage, e.g., "hardening" to get events for the stage.
       serviceFilter: ""                     # set the service, e.g., "carts" to get events for the service.
-    ``` 
-
-    *Note:* `projectFilter`, `stageFilter`, and `serviceFilter` allow a comma-separated list of values. 
-
-* Deploy the execution plane service (e.g., jmeter-service) from release assets with your `values.yaml` and by using `helm`: 
-
-    ```console
-    helm install jmeter-service https://github.com/keptn/keptn/releases/download/0.8.4/jmeter-service-0.8.4.tgz -n keptn-exec --create-namespace --values=values.yaml
     ```
 
-* Test connection to Keptn control plane using: 
+    *Note:* `projectFilter`, `stageFilter`, and `serviceFilter` allow a comma-separated list of values.
+
+* Deploy the execution plane service (e.g., jmeter-service) from release assets with your `values.yaml` and by using `helm`:
+
+    ```console
+    helm install jmeter-service https://github.com/keptn/keptn/releases/download/0.8.5/jmeter-service-0.8.5.tgz -n keptn-exec --create-namespace --values=values.yaml
+    ```
+
+* Test connection to Keptn control plane using:
 
     ```console
     helm test jmeter-service -n keptn-exec
@@ -131,7 +131,7 @@ Please find the Helm Charts here:
 
 ### How to uninstall an execution plane services?
 
-* To uninstall an execution plane service, e.g., jmeter-service, just execute: 
+* To uninstall an execution plane service, e.g., jmeter-service, just execute:
 
     ```console
     helm uninstall jmeter-service -n keptn-exec
@@ -139,11 +139,11 @@ Please find the Helm Charts here:
 
 ### Summary of values to configure execution plane service
 
-See the configuration parameters of the supported execution plane services: 
+See the configuration parameters of the supported execution plane services:
 
-  - `helm-service`: [Helm Chart values](https://github.com/keptn/keptn/blob/release-0.8.4/helm-service/chart/README.md#configuration) 
+  - `helm-service`: [Helm Chart values](https://github.com/keptn/keptn/blob/release-0.8.5/helm-service/chart/README.md#configuration)
 
-  - `jmeter-service`: [Helm Chart values](https://github.com/keptn/keptn/blob/release-0.8.4/jmeter-service/chart/README.md#configuration) 
+  - `jmeter-service`: [Helm Chart values](https://github.com/keptn/keptn/blob/release-0.8.5/jmeter-service/chart/README.md#configuration)
 
 The important once that are used in the above example are:
 
@@ -182,7 +182,7 @@ If you see in the Keptn Bridge that an event was triggered but no service was re
 helm test jmeter-service -n keptn-exec
   ```
 
-* The expected outcome should be: 
+* The expected outcome should be:
 
   ```console
 Pod jmeter-service-test-api-connection pending
@@ -198,9 +198,9 @@ Last Completed: Thu Feb 25 15:55:42 2021
 Phase:          Succeeded
   ```
 
-**Help:** 
+**Help:**
 
-1. Validate the properties set in the `values.yaml`: 
+1. Validate the properties set in the `values.yaml`:
 
   ```
 remoteControlPlane:
@@ -213,7 +213,7 @@ remoteControlPlane:
   ```
 
   - Is `enabled` set to `true`?
-  - Is the Keptn API endpoint on `http` or `https`? 
+  - Is the Keptn API endpoint on `http` or `https`?
   - Is the hostname of the Keptn API endpoint correct, e.g. `my.keptn-dev.company.com` (without `/api`)
   - Do you want to skip TLS verification?
   - Is the Keptn API token correct? (You can find it in the Keptn Bridge, or by following the guide for [authenticating](../install/#authenticate-keptn-cli))
