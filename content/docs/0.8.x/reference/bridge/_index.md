@@ -13,13 +13,13 @@ The Keptn Bridge provides an easy way to browse all events that are sent within 
 * When you enter the Keptn Bridge and have not created a project yet, you will be guided to the instructions on how to setup a project and onboard a sample app.
 
     {{< popup_image
-      link="./assets/bridge-empty.png"
+      link="./assets/project-dashboard-empty.png"
       caption="Keptn Bridge empty project view">}}
 
 * If you have created projects, you will see the project listed including their stages.
 
     {{< popup_image
-      link="./assets/project-view.png"
+      link="./assets/project-dashboard.png"
       caption="Keptn Bridge project view">}}
 
 ### Environment view
@@ -163,17 +163,12 @@ and additional data is gathered from the client. For more information about this
 
 ### Settings
 
-In the settings view the project settings can be edited.
+In the settings view the project settings can be edited. 
+To get more information about how to manage your projects with the settings, visit [Manage Projects](https://keptn.sh/docs/0.8.x/reference/bridge/manage_projects).
 
 {{< popup_image
 link="./assets/settings.png"
 caption="Keptn Bridge Settings View">}}
-
-### Git upstream url
-
-The git upstream url can be set by entering the Git repository url, Git username and the Git token. This also can be achieved by
-using the [keptn update project](https://keptn.sh/docs/0.8.x/reference/cli/commands/keptn_update_project/) command.
-More information about how to set up your git provider can be found in the [Git-based upstream documentation](https://keptn.sh/docs/0.8.x/manage/git_upstream/).
 
 ## Keptn Bridge features
 
@@ -200,6 +195,10 @@ In sequences the approval is listed within the tasks in the sequence. Approve or
 {{< popup_image
 link="./assets/approval-sequence.png"
 caption="Approval in Sequences">}}
+
+### Manage projects
+
+See the documentation for [managing projects](https://keptn.sh/docs/0.8.x/reference/bridge/manage_projects) to see which features for creating and updating projects the Bridge provides.
 
 ## Early access version of Keptn Bridge
 
