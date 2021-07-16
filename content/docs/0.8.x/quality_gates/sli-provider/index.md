@@ -21,7 +21,7 @@ Depending on the monitoring solution you have in place and the SLIs you have con
 
 ## Prometheus SLI-Provider
 
-* Complete steps from section [Setup Prometheus SLI-provider](../../monitoring/prometheus/sli-provider/#setup-prometheus-sli-provider).
+* Complete steps from section [Setup Prometheus SLI-provider](../../monitoring/prometheus/install/#setup-prometheus-sli-provider).
 
 * To configure Keptn to use the Prometheus SLI-provider for your project (e.g. **musicshop**), execute the following command:
 
@@ -29,7 +29,7 @@ Depending on the monitoring solution you have in place and the SLIs you have con
     keptn configure monitoring prometheus --project=musicshop --service=catalogue
     ```
 
-* Configure custom SLIs for the Prometheus SLI-provider as explained [here](../../monitoring/prometheus/sli-provider/#configure-custom-prometheus-slis).
+* Configure custom SLIs for the Prometheus SLI-provider as explained [here](../../monitoring/prometheus/install/#configure-custom-prometheus-slis).
 
 ## Add custom SLI-Provider
 
