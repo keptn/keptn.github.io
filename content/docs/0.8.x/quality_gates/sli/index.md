@@ -18,7 +18,7 @@ Please follow the links to the provider-specific SLIs:
 
 * [Dynatrace](../../monitoring/dynatrace/sli_provider/#configure-custom-dynatrace-slis) 
 
-* [Prometheus](../../monitoring/prometheus/sli-provider/#configure-custom-prometheus-slis) 
+* [Prometheus](../../monitoring/prometheus/install/#configure-custom-prometheus-slis) 
 
 ## Add SLI configuration to a Service, Stage, or Project
 
