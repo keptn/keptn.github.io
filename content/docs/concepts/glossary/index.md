@@ -9,6 +9,8 @@ Keptn allows building scalable automation for delivery and operations. Therefore
 
 ## General Terms
 
+**Keptn:** Keptn, pronounced *captain*, is the name of this CNCF project. It is a control-plane for cloud-native application life-cycle orchestration. It is written with capital *K* followed by lower-case letters.
+
 **Project:** A project is a structural element to maintain multiple services forming an application in stages.
 
 **Project stage:** A project stage (or just *stage*) defines a logical space (e.g., a namespace in Kubernetes), which has a dedicated purpose for an application in a continuous delivery process. Typically a project has multiple project stages that are ordered.
