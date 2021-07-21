@@ -8,6 +8,14 @@ icon: callout-idea
 
 Please subscribe to our [Keptn YouTube channel](https://www.youtube.com/c/keptn/) that holds **all** of our videos. Below, we are highlighting the most watched and demanded videos by the community.
 
+
+## Automating performance and load tests with Artillery + Keptn
+
+| | |
+| --- | --- |
+| **Automating & evaluating load testing with Locust and Keptn** with Francesco Lentini, Artillery<br><br> Francesco Lentini from Artillery shows how you can use Artillery to run load tests and smoke tests to help your services maintain their SLOs. <br><br>[Find the integration in the Keptn Sandbox](https://github.com/keptn-sandbox/artillery-service). | <iframe width="560" height="315" src="https://www.youtube.com/embed/j1Spkw0faq0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> |
+
+
 ## Automating & evaluating load testing with Locust and Keptn
 
 | | |
