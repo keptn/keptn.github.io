@@ -107,9 +107,9 @@ To configure this distributor for your *Keptn-service*, the following environmen
 | K8S_POD_NAME          |  Kubernetes deployment name of the Keptn integration.                                                                                    | `""`                        |
 | K8S_NAMESPACE         | Kubernetes namespace of the Keptn integration.                                                                                           | `""`                        |
 | K8S_NODE_NAME         | Kubernetes node name the Keptn integration is running on.                                                                                | `""`                        |
-| PROJECT_FILTER         | Filter events for a specific project, supports a comma-separated list of projects.                                                                                | `""`                        |
-| STAGE_FILTER         | Filter events for a specific stage, supports a comma-separated list of stages..                                                                                | `""`                        |
-| SERVICE_FILTER         | Filter events for a specific service, supports a comma-separated list of services..                                                                                | `""`                        |
+| PROJECT_FILTER         | Filter events for a specific project, supports a comma-separated list of projects.                                                      | `""`                        |
+| STAGE_FILTER         | Filter events for a specific stage, supports a comma-separated list of stages.                                                            | `""`                        |
+| SERVICE_FILTER         | Filter events for a specific service, supports a comma-separated list of services.                                                      | `""`                        |
 
 The above list of environment variables is pretty long, but in most scenarios only a few of them have to be set. The following examples show how to set the environment variables properly, depending on where the distributor and it's accompanying execution plane service should run:
 
