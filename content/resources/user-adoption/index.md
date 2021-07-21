@@ -9,6 +9,12 @@ icon: callout-idea
 
 Please subscribe to our [Keptn YouTube channel](https://www.youtube.com/c/keptn/) that holds **all** of our videos. Below, we are highlighting the most watched and demanded videos by the community.
 
+## Auto-remediation with Keptn: Lessons Learned during our PoC
+
+| | |
+| --- | --- | 
+| **Auto-remediation with Keptn: Lessons Learned during our PoC** with Saveetha Ravi, Mindtree<br><br>Saveetha Ravi joins this Keptn user group to go through an end-to-end scenario of how Keptn is used with Dynatrace to auto-remediate problems detected in production environments. | <iframe width="560" height="315" src="https://www.youtube.com/embed/UiFTFinaIsg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> |
+
 ## A Practitioner’s Guide to Automated Performance Evaluation
 
 | | |
