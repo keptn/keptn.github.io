@@ -5,18 +5,16 @@ weight: 2
 icon: setup
 ---
 
-## Uninstall Dynatrace
+## Uninstall the Dynatrace Keptn integration
 
-If you want to uninstall Dynatrace, there are scripts provided to do so. Uninstalling Keptn will not automatically uninstall Dynatrace.
-
-1. (optional) If you do not have the *dynatrace-service* repository, clone the latest release using:
+To uninstall the *dynatrace-service*, use the Helm CLI to delete the release of the service:
 
 ```console
-git clone --branch 0.12.0 https://github.com/keptn-contrib/dynatrace-service --single-branch
+helm delete -n keptn dynatrace-service
 ```
 
-1. Go to correct folder and execute the `uninstallDynatrace.sh` script:
+Note, this command only removes the Dynatrace integration into Keptn. Other components, such as the Dynatrace OneAgent on Kubernetes will be unaffected.
 
-```console
-./dynatrace-service/deploy/scripts/uninstallDynatrace.sh
-```
+## Uninstall OneAgent Operator
+
+To remove Dynatrace monitoring on your Kubernetes cluster, please follow the official Dynatrace documentation on [uninstalling OneAgent Operator](https://www.dynatrace.com/support/help/shortlink/kubernetes-manage-helm#uninstall-oneagent-operator).
