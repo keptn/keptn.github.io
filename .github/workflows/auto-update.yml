@@ -25,11 +25,6 @@ jobs:
           path: 'keptn'
           fetch-depth: 0
 
-      - name: Install Keptn CLI
-        id: install_keptn_cli
-        run: |
-          curl -sL https://get.keptn.sh | KEPTN_VERSION=${{ env.KEPTN_VERSION }} bash
-
       - name: Extract source branch
         run: |
           # extract release branch version and replace minor version with x
@@ -37,6 +32,11 @@ jobs:
           echo "SOURCE_BRANCH=${SOURCE_REF#refs/tags/}" >> $GITHUB_ENV
           echo "SOURCE_VERSION_SLUG=${SOURCE_BRANCH/%.+([0-9])/.x}" >> $GITHUB_ENV
           shopt -u extglob
+
+      - name: Install Keptn CLI
+        id: install_keptn_cli
+        run: |
+          curl -sL https://get.keptn.sh | KEPTN_VERSION=${{ env.KEPTN_VERSION }} bash
 
       - name: Generate docs
         env:
