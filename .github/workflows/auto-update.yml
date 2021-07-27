@@ -16,14 +16,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          path: 'keptn-docs'
-          fetch-depth: 0
-
-      - name: Checkout keptn core repo
-        uses: actions/checkout@v2
-        with:
-          repository: 'keptn/keptn'
-          path: 'keptn'
           fetch-depth: 0
 
       - name: Extract source branch
@@ -44,13 +36,11 @@ jobs:
         env:
           SOURCE_VERSION_SLUG: ${{ env.SOURCE_VERSION_SLUG }}
         run: |
-          cd keptn
-          full_path="../keptn-docs/content/docs/$SOURCE_VERSION_SLUG/reference/cli/commands"
+          full_path="./content/docs/$SOURCE_VERSION_SLUG/reference/cli/commands"
           if [[ ! -d $full_path ]]; then
             mkdir -p $full_path
           fi
           keptn generate docs --dir=$full_path
-          cd ..
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
@@ -63,7 +53,6 @@ jobs:
           branch: patch/update-keptn-docs-${{ env.SOURCE_TAG }}
           delete-branch: true
           base: master
-          path: 'keptn-docs'
           labels: 'automated pr'
           title: "Update keptn docs for release ${{ env.SOURCE_TAG }}"
           body: |
