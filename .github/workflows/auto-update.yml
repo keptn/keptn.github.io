@@ -23,7 +23,7 @@ jobs:
           # extract release branch version and replace minor version with x
           shopt -s extglob
           export "SOURCE_TAG=${SOURCE_REF#refs/tags/}"
-          echo $SOURCE_TAG >> $GITHUB_ENV
+          echo "SOURCE_TAG=$SOURCE_TAG" >> $GITHUB_ENV
           echo "SOURCE_VERSION_SLUG=${SOURCE_TAG/%.+([0-9])/.x}" >> $GITHUB_ENV
           shopt -u extglob
 
