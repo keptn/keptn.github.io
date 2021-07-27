@@ -1,0 +1,62 @@
+name: Auto Update - Docs
+on:
+  repository_dispatch:
+    types: [release-push]
+defaults:
+  run:
+    shell: bash
+env:
+  KEPTN_BOT: "keptn-bot <86361500+keptn-bot@users.noreply.github.com>"
+jobs:
+  update-spec:
+    env:
+      SOURCE_REF: ${{ github.event.client_payload.ref }}
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Extract source branch
+        run: |
+          # extract release branch version and replace minor version with x
+          shopt -s extglob
+          export "SOURCE_TAG=${SOURCE_REF#refs/tags/}"
+          echo $SOURCE_TAG >> $GITHUB_ENV
+          echo "SOURCE_VERSION_SLUG=${SOURCE_TAG/%.+([0-9])/.x}" >> $GITHUB_ENV
+          shopt -u extglob
+
+      - name: Install Keptn CLI
+        id: install_keptn_cli
+        run: |
+          curl -sL https://get.keptn.sh | KEPTN_VERSION=${{ env.SOURCE_TAG }} bash
+
+      - name: Generate docs
+        env:
+          SOURCE_VERSION_SLUG: ${{ env.SOURCE_VERSION_SLUG }}
+        run: |
+          full_path="./content/docs/$SOURCE_VERSION_SLUG/reference/cli/commands"
+          if [[ ! -d $full_path ]]; then
+            mkdir -p $full_path
+          fi
+          keptn generate docs --dir=$full_path
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.KEPTN_BOT_TOKEN }}
+          commit-message: "Update keptn docs to release ${{ env.SOURCE_TAG }}"
+          committer: ${{ env.KEPTN_BOT }}
+          author: ${{ env.KEPTN_BOT }}
+          signoff: true
+          branch: patch/update-keptn-docs-${{ env.SOURCE_TAG }}
+          delete-branch: true
+          base: master
+          labels: 'automated pr'
+          title: "Update keptn docs for release ${{ env.SOURCE_TAG }}"
+          body: |
+            **This is an automated PR!**
+
+            Update keptn docs to latest keptn/keptn release
+            New version: ${{ env.SOURCE_TAG }}
