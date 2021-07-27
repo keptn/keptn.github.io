@@ -5,6 +5,8 @@ on:
 defaults:
   run:
     shell: bash
+env:
+  KEPTN_BOT: "keptn-bot <86361500+keptn-bot@users.noreply.github.com>"
 jobs:
   update-spec:
     env:
@@ -53,11 +55,11 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.KEPTN_BOT_TOKEN }}
-          commit-message: "Update keptn docs to release ${{ env.SOURCE_VERSION_SLUG }}"
-          committer: "keptn-bot <86361500+keptn-bot@users.noreply.github.com>"
-          author: "keptn-bot <86361500+keptn-bot@users.noreply.github.com>"
+          commit-message: "Update keptn docs to release ${{ env.SOURCE_TAG }}"
+          committer: ${{ env.KEPTN_BOT }}
+          author: ${{ env.KEPTN_BOT }}
           signoff: true
-          branch: patch/update-keptn-docs-${{ env.SOURCE_VERSION_SLUG }}
+          branch: patch/update-keptn-docs-${{ env.SOURCE_TAG }}
           delete-branch: true
           base: master
           path: 'keptn-docs'
