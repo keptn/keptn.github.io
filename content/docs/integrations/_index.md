@@ -60,7 +60,7 @@ Please find the exhaustive list of integrations in the [Keptn Sandbox Github org
 
 ## How to write your own Keptn integration
 
-1. There are multiple ways to **integrate your service with Keptn**. Learn [how to write a Keptn integration](../0.8.x/integrations/custom_integration/) by identifying the right integration method for your use-case.
+1. There are multiple ways to **integrate your service with Keptn**. Learn [how to write a Keptn integration](../0.8.x/integrations/how_integrate/) by identifying the right integration method for your use-case.
 
 2. Once you have developed your service, please consider **contributing** it to the Keptn sandbox by following the [contributions guide](https://github.com/keptn-sandbox/contributing) for contributing it to Keptn Sandbox.
 
