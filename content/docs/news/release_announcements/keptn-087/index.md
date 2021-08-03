@@ -1,6 +1,6 @@
 ---
 title: Keptn 0.8.7
-weight: 90
+weight: 89
 ---
 
 This is a bug fix release for Keptn 0.8.4 - 0.8.6, containing fixes for the Bridge and management of Keptn-service registrations.
