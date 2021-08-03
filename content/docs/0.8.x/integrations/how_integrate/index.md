@@ -5,7 +5,14 @@ weight: 1
 keywords: [0.8.x-integration]
 ---
 
-There are multiple ways on how to interact with the Keptn control-plane. Besides the [Keptn API](../../reference/api/) and [Keptn CLI](../../reference/api/) there are more ways how external tools can make use of the orchestration capabilities of Keptn. Those external tools can then be triggered by Keptn and therefore integrated in a Keptn sequence execution.
+There are multiple ways on how to interact with the Keptn control-plane. Besides the [Keptn API](../../reference/api/) and [Keptn CLI](../../reference/api/) there are more options how external tools can make use of the orchestration capabilities of Keptn. Those external tools can then be triggered by Keptn and therefore integrated in a Keptn sequence execution.
+
+In the following, we'll have a look at different use cases to help you get started. If your use case is not listed, have a look at the generic option of Keptn service templates or feel free to [start a conversation in the #keptn-integrations channel in the Keptn Slack](https://slack.keptn.sh). 
+
+## General overview
+
+TODO INSERT IMAGE
+
 
 ## Use Cases
 
