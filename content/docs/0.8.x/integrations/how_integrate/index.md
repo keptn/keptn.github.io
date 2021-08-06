@@ -56,7 +56,7 @@ spec:
 Please note that in general the task can be renamed, the important part is that both the event-type and the task name correlate for your integration.
 
 Typically, test tools rely on some way of test definition files, such as a `*.jmx` file for JMeter or `locustfile.py` for Locust. These files have to be added to Keptn and will be managed by Keptn. 
-To add such a file, for example a `locustfile.py` it has to be added to Keptn, e.g., via the [keptn add-resource](../../reference/cli/commands/keptn_add-resource/) Keptn CLI command. Let's assume we have a project "sockshop" with a "carts" microservice and the two sequences mentioned in our shipyard, the following command will add the local resource `locustfile.py` to Keptn.
+Files can be added to Keptn via the [keptn add-resource](../../reference/cli/commands/keptn_add-resource/) Keptn CLI command. Let's assume we have a project "sockshop" with a "carts" microservice, the following command will add the local resource `locustfile.py` to Keptn in both the two sequences mentioned in our shipyard.
 
 ```
 keptn add-resource --project=sockshop --stage=test-automation --service=carts --resource=./locustfile.py --resourceUri=locust/locustfile.py
