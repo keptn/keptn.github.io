@@ -97,7 +97,8 @@ As an inspiration, please have a look at the [Keptn sandbox repository](https://
 
 ### Service Templates
 
-The Keptn community currently provides two [Keptn service templates](https://github.com/keptn-sandbox?q=service-template&type=&language=&sort=).
+The Keptn community currently provides two [Keptn service templates](https://github.com/keptn-sandbox?q=service-template&type=&language=&sort=):
+
 1. [Keptn service template written in Go](https://github.com/keptn-sandbox/keptn-service-template-go)
 1. [Keptn service template written in Python](https://github.com/keptn-sandbox/keptn-service-template-python)
 
