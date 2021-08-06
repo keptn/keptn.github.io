@@ -100,7 +100,7 @@ As an inspiration, please have a look at the [Keptn sandbox repository](https://
 The Keptn community currently provides two [Keptn service templates](https://github.com/keptn-sandbox?q=service-template&type=&language=&sort=):
 
 1. [Keptn service template written in Go](https://github.com/keptn-sandbox/keptn-service-template-go)
-1. [Keptn service template written in Python](https://github.com/keptn-sandbox/keptn-service-template-python)
+2. [Keptn service template written in Python](https://github.com/keptn-sandbox/keptn-service-template-python)
 
 The service templates provide the best starting point for integrations that need to stay in full control how to integrate with the Keptn control-plane while still making use of some utility functions. 
 It is also best for integrations which business logic goes beyond a single execution of an action. For example, if a authentication, execution, status check, error handling, etc is needed, the Keptn service templates allow to handle this.
