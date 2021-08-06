@@ -77,7 +77,7 @@ One way to build an integration is to use a [Keptn-service template](https://git
 
 ### Monitoring/observability tools (SLI-providers)
 
-Keptn quality gates are defined by [SLOs and SLIs](../../../concepts/quality_gates/) and the data will be provided via SLI-providers. The job of an SLI provider is to 
+Keptn quality gates are defined by [SLOs and SLIs](../../../concepts/quality_gates/) and the data will be provided via SLI-providers. The job of an SLI provider is to:
 
 1. listen for a `sh.keptn.event.get-sli.triggered` event and 
 2. respond with a `sh.keptn.event.get-sli.started` event once the retrieval of the data is started and 
