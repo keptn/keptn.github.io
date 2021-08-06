@@ -6,7 +6,7 @@ weight: 1001
 hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
 ---
 
-## Integrations
+## Available integrations
 
 Please find here a list of all *Keptn-services* and *SLI-providers* that are available for the last Keptn release. Feel free to install these integrations on a Keptn and to use them according to their documentation in the corresponding repository. The maintainers of those services are referenced in the CODEOWNERS file of each repo. Most of the repositories you can find in the [github.com/keptn-contrib](https://github.com/keptn-contrib) organization and are referenced below.  
 
@@ -34,9 +34,9 @@ Please find here a list of all *Keptn-services* and *SLI-providers* that are ava
 
 **Notes:**
 
-* 1) The `prometheus-sli-service` has been merged with `prometheus-service`. The `prometheus-sli-service` is deprecated and will be set to read-only on the **9th of July, 2020**.
+* 1) The `prometheus-sli-service` has been merged with `prometheus-service`. The `prometheus-sli-service` is deprecated and has been set to read-only on the **9th of July, 2021**.
 
-## Sandbox
+### Keptn Sandbox
 
 A *Keptn-service* is classified as sandbox if it is under development and has not shown significant adoption yet. 
 Each project in the Keptn Sandbox organization is maintained by one or more individuals that can be found in the respective CODEOWNERS file of the repository. Please reach out to them or open issues on the repository in case of any questions.
@@ -47,14 +47,21 @@ Below are projects that have been shown in any Keptn community or developer meet
 | Keptn-service | in development for Keptn | Repository |
 | --- | --- | --- | 
 | **ansibletower-service** | 0.7.3 | https://github.com/keptn-sandbox/ansibletower-service |
+| **artillery-service** | 0.8.4 | https://github.com/keptn-sandbox/artillery-service |
 | **jenkins-service** | 0.6.1 | https://github.com/keptn-sandbox/jenkins-service |
+| **job-executor-service** | 0.8.6 | https://github.com/keptn-sandbox/job-executor-service |
 | **keptn-report** | 0.6.1 | https://github.com/keptn-sandbox/keptn-report |
-| **litmus-service** | 0.8.2 | https://github.com/keptn-sandbox/litmus-service |
+| **litmus-service** | 0.8.4 | https://github.com/keptn-sandbox/litmus-service |
+| **locust-service** | 0.8.4 | https://github.com/keptn-sandbox/locust-service |
 | **slackbot-service** | 0.6.1 | https://github.com/keptn-sandbox/slackbot-service |
 | **statistics-service** | 0.7.3 | https://github.com/keptn-sandbox/statistics-service |
 
-### Contribute your service
+Please find the exhaustive list of integrations in the [Keptn Sandbox Github organization](https://github.com/keptn-sandbox).
 
-* A template for getting started with writing your Keptn service is provided here: https://github.com/keptn-sandbox/keptn-service-template-go
+## How to write your own Keptn integration
 
-* Please follow the [contributions guide](https://github.com/keptn-sandbox/contributing) for contributing it to Keptn Sandbox.
+1. There are multiple ways to **integrate your service with Keptn**. Learn [how to write a Keptn integration](../0.8.x/integrations/how_integrate/) by identifying the right integration method for your use-case.
+
+2. Once you have developed your service, please consider **contributing** it to the Keptn sandbox by following the [contributions guide](https://github.com/keptn-sandbox/contributing) for contributing it to Keptn Sandbox.
+
+3. **Share your integration** with the growing Keptn community in [Slack](https://slack.keptn.sh) or in one of our next [community meetings](/community/meetings)!
