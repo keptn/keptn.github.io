@@ -105,13 +105,6 @@ The service templates provide the best starting point for integrations that need
 It is also best for integrations which business logic goes beyond a single execution of an action. For example, if a authentication, execution, status check, error handling, etc is needed, the Keptn service templates allow to handle this.
 
 
-
-{{< rawhtml >}}
-<div class="artifacthub-widget-group" data-url="https://artifacthub.io/packages/search?ts_query_web=keptn&sort=relevance&page=1" data-theme="light" data-header="false" data-color="#417598" data-responsive="true"  data-loading="true"></div><script async src="https://artifacthub.io/artifacthub-widget.js"></script>
-{{< /rawhtml >}}
-
-
-
 ### Job Executor
 
 The [Keptn job executor](https://github.com/keptn-sandbox/job-executor-service) is used best for integrations that can be executed via the command-line interface. The job executor will handle the interaction with the Keptn control-plane for sending `*.started` and `*.finished` events and is able to provide a list of files (e.g., test instructions) that are needed for integrations. Find all information regarding the capabilities and usage of the [job executor in its Github repository](https://github.com/keptn-sandbox/job-executor-service).
