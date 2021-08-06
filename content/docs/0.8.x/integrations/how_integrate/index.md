@@ -73,7 +73,7 @@ Let's have a look at notification tool integrations such as Slack, or MS Team wh
 
 Usually, a notification tool reacts on a specific type of event or a set of events. The tool integration will subscribe these event types and then send a defined payload to the channels. Typically, there is no need to indicate that a notification integration starts and finishes the distribution of messages (i.e., no `*.started` or `*.finished` event has to be sent).
 
-One way to build an integration is to use a [Keptn-service template](https://github.com/keptn-sandbox?q=template&type=&language=&sort=). The events the integration should listen for [can be added as a subscription in the distributor](../custom_integration/#subscription-to-a-triggered-event)
+One way to build an integration is to use a [Keptn-service template](https://github.com/keptn-sandbox?q=template&type=&language=&sort=). The events the integration should listen for [can be added as a subscription in the distributor](../custom_integration/#subscription-to-a-triggered-event).
 
 ### Monitoring/observability tools (SLI-providers)
 
