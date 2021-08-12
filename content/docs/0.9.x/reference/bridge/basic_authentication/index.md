@@ -1,7 +1,7 @@
 ---
 title: Basic Authentication
 description: Enable/Disable basic authentication
-weight: 21
+weight: 10
 keywords: [0.9.x-bridge]
 ---
 
