@@ -1,7 +1,7 @@
 ---
 title: Manage Projects
 description: Create, update and deletes projects from the Bridge
-weight: 21
+weight: 40
 keywords: [0.9.x-bridge]
 ---
 
