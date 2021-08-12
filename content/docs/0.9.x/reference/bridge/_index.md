@@ -117,6 +117,7 @@ The Keptn Bridge provides an easy way to browse all events that are sent within 
 
 The uniform view gives you an overview over all integrations installed within your Keptn installation. 
 The data is fetched from your Kubernetes cluster and shows useful information like
+* Unread/New error events
 * Deployment version of the service
 * The cluster or host where it is running
 * The Kubernetes namespace
@@ -128,7 +129,7 @@ The data is fetched from your Kubernetes cluster and shows useful information li
 link="./assets/uniform-view.png"
 caption="Keptn Bridge Uniform View">}}
 
-By selecting one integration, logs on error level as well as sequence failures can be viewed. When a sequence in this particular scope failed, then there is
+By selecting one integration, events on error level as well as sequence failures can be viewed. If there are new error events since the last time the integration was viewed, an indicator shows up next to them. When a sequence in this particular scope failed, then there is
 a link provided that takes you directly to the failed task in the sequence. 'n/a' in this regard means that the error is not related to any sequence execution. 
 
 {{< popup_image
