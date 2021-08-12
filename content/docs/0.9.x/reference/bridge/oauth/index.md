@@ -50,7 +50,7 @@ Response :
 ```
 Request :
 
-   POST <OAuth_Service>/token
+   POST <OAuth_Service>/token_decision
 
    {
      "state" : <state>,
@@ -60,7 +60,6 @@ Request :
 Response :
 
   {
-   "status": "SUCCESS",
    "user" : <USER_IDENTIFIER>
   }
 ```
@@ -149,7 +148,7 @@ paths:
           description: "Successful login"
           examples:
             application/json : {
-              "user": "USER_NAME"
+              "user": "USER_IDENTIFIER"
             }
           schema:
             $ref: "#/definitions/Success"
@@ -249,7 +248,7 @@ Content-Type: application/json
 HTTP 200 OK
 Content-Type: application/json
 {
-  "user": "USER_NAME"
+  "user": <USER_IDENTIFIER>
 }
 ```
 
