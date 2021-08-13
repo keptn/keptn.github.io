@@ -62,7 +62,27 @@ spec:
     - name: "quality-assurance"
 ```
 
-**Note**: You do not have to define any tasks in the Shipyard file because quality gates are a Keptn built-in task.
+<details><summary>*Why I do not need to specify a task sequence for quality gates in this stage?*</summary>
+<p>
+
+You do not have to define any task sequence in a stage because quality gates (aka. `evaluation`) are a built-in Keptn capability. Hence, there is no need to explicitly add an `evaluation` sequence. However, the explicit form of the above Shipyard file would look as the following one, which behaves the same way: 
+
+```yaml
+apiVersion: "spec.keptn.sh/0.2.2"
+kind: "Shipyard"
+metadata:
+  name: "shipyard-sockshop"
+spec:
+  stages:
+    - name: "quality-assurance"
+      sequences:
+       - name: "evaluation"
+         tasks:
+         - name: "evaluation"
+```
+
+</p>
+</details>
 
 ## Create project and service
 
