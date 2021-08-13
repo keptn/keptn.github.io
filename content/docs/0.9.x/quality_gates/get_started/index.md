@@ -2,7 +2,7 @@
 title: Get started with Quality Gates
 description: Get started with Keptn Quality Gates for your project.
 weight: 5
-keywords: [0.8.x-quality_gates]
+keywords: [0.9.x-quality_gates]
 ---
 
 In this section, you will get an overview of the use-case and learn how to get started setting up a quality gate for your project.
