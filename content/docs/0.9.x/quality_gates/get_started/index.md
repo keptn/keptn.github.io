@@ -2,7 +2,7 @@
 title: Get started with Quality Gates
 description: Get started with Keptn Quality Gates for your project.
 weight: 5
-keywords: [0.9.x-quality_gates]
+keywords: [0.8.x-quality_gates]
 ---
 
 In this section, you will get an overview of the use-case and learn how to get started setting up a quality gate for your project.
@@ -50,7 +50,7 @@ For the `easyBooking` application, the Keptn entities of a project, stage, and s
 * `stage`: *quality_assurance*
 * `service`: *booking* & *payment* (For the sake of simplicity, a quality gate will be configured for `booking` only.)
 
-For defining the stage(s) but also the tasks a service has to go through, a [Shipyard](../../manage/shipyard) file is needed. Since a quality gate should be configured for the *quality_assurance* environment only, the corresponding Shipyard for the *easyBooking* project looks as follows:
+For defining the stage(s) a service has to go through, a [Shipyard](../../manage/shipyard) file is needed. Since a quality gate should be configured for the *quality_assurance* environment only, the corresponding Shipyard for the *easyBooking* project looks as follows:
 
 ```yaml
 apiVersion: "spec.keptn.sh/0.2.2"
@@ -126,8 +126,3 @@ To trigger a quality gate evaluation, execute the [keptn trigger evaluation](../
 
 :information_source: Learn [here](../integration/) more about working with a quality gate and integrating it into an existing pipeline.
 
-<!--
-## Step 5: See quality gate evaluation result in Keptn Bridge
--->
-
-<!--TODO: Add screenshot from a single run -->
