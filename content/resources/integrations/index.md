@@ -12,7 +12,7 @@ Please subscribe to our [Keptn YouTube channel](https://www.youtube.com/c/keptn/
 ## Enabling interoperability in CI/CD on the example of Tekton + Keptn
 | | |
 | --- | --- |
-| **Enabling interoperability in CI/CD** with Mauricio Salatino, VMware<br><br> Mauricio Salatino joins us at this Keptn User Group meeting to present how interoperability between CI/CD systems can be achieved by defining a common language based on cloud events. He will demo a PoC that allows to bridge the gap between different CI/CD systems on the example of Tekton and Keptn and make them interact with each other on a common set of events that both systems are able to interpret and act upon. | <iframe width="560" height="315" src="https://www.youtube.com/embed/YojRJJvN4N8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> |
+| **Enabling interoperability in CI/CD** with Mauricio Salatino, VMware<br><br> Mauricio Salatino joins us at this Keptn User Group meeting to present how interoperability between CI/CD systems can be achieved by defining a common language based on cloud events. He will demo a PoC that allows to bridge the gap between different CI/CD systems on the example of Tekton and Keptn and make them interact with each other on a common set of events that both systems are able to interpret and act upon. <br><br>[Find the PoC here](https://github.com/cdfoundation/sig-events/tree/main/poc). | <iframe width="560" height="315" src="https://www.youtube.com/embed/YojRJJvN4N8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> |
 
 
 ## Automating performance and load tests with Artillery + Keptn
