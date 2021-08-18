@@ -9,6 +9,13 @@ icon: callout-idea
 Please subscribe to our [Keptn YouTube channel](https://www.youtube.com/c/keptn/) that holds **all** of our videos. Below, we are highlighting the most watched and demanded videos by the community.
 
 
+## Enabling interoperability in CI/CD on the example of Tekton + Keptn
+| | |
+| --- | --- |
+| **Enabling interoperability in CI/CD** with Mauricio Salatino, VMware<br><br> Mauricio Salatino joins us at this Keptn User Group meeting to present how interoperability between CI/CD systems can be achieved by defining a common language based on cloud events. He will demo a PoC that allows to bridge the gap between different CI/CD systems on the example of Tekton and Keptn and make them interact with each other on a common set of events that both systems are able to interpret and act upon.
+ <br><br>[Find the integration in the Keptn Sandbox](https://github.com/keptn-sandbox/artillery-service). | <iframe width="560" height="315" src="https://www.youtube.com/embed/YojRJJvN4N8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> |
+
+
 ## Automating performance and load tests with Artillery + Keptn
 
 | | |
