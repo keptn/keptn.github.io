@@ -50,7 +50,7 @@ For the `easyBooking` application, the Keptn entities of a project, stage, and s
 * `stage`: *quality_assurance*
 * `service`: *booking* & *payment* (For the sake of simplicity, a quality gate will be configured for `booking` only.)
 
-For defining the stage(s) but also the tasks a service has to go through, a [Shipyard](../../manage/shipyard) file is needed. Since a quality gate should be configured for the *quality_assurance* environment only, the corresponding Shipyard for the *easyBooking* project looks as follows:
+For defining the stage(s) a service has to go through, a [Shipyard](../../manage/shipyard) file is needed. Since a quality gate should be configured for the *quality_assurance* environment only, the corresponding Shipyard for the *easyBooking* project looks as follows:
 
 ```yaml
 apiVersion: "spec.keptn.sh/0.2.2"
@@ -62,7 +62,27 @@ spec:
     - name: "quality-assurance"
 ```
 
-**Note**: You do not have to define any tasks in the Shipyard file because quality gates are a Keptn built-in task.
+<details><summary>*Why I do not need to specify a task sequence for quality gates in this stage?*</summary>
+<p>
+
+You do not have to define any task sequence in a stage because quality gates (aka. `evaluation`) are a built-in Keptn capability. Hence, there is no need to explicitly add an `evaluation` sequence. However, the explicit form of the above Shipyard file would look as the following one, which behaves the same way: 
+
+```yaml
+apiVersion: "spec.keptn.sh/0.2.2"
+kind: "Shipyard"
+metadata:
+  name: "shipyard-sockshop"
+spec:
+  stages:
+    - name: "quality-assurance"
+      sequences:
+       - name: "evaluation"
+         tasks:
+         - name: "evaluation"
+```
+
+</p>
+</details>
 
 ## Create project and service
 
@@ -106,8 +126,3 @@ To trigger a quality gate evaluation, execute the [keptn trigger evaluation](../
 
 :information_source: Learn [here](../integration/) more about working with a quality gate and integrating it into an existing pipeline.
 
-<!--
-## Step 5: See quality gate evaluation result in Keptn Bridge
--->
-
-<!--TODO: Add screenshot from a single run -->
