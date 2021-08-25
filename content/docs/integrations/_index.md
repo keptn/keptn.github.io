@@ -11,7 +11,7 @@ hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
 WORK IN PROGRESS
 
 {{< rawhtml >}}
-<div class="artifacthub-widget-group" data-url="https://artifacthub.io/packages/search?ts_query_web=keptn&sort=relevance&page=1" data-theme="light" data-header="false" data-color="#417598" data-responsive="true"  data-loading="true"></div><script async src="https://artifacthub.io/artifacthub-widget.js"></script>
+<div class="artifacthub-widget-group" data-url="https://staging.artifacthub.io/packages/search?kind=10&sort=relevance&page=1" data-theme="light" data-header="false" data-color="#417598" data-responsive="true"  data-loading="true"></div><script async src="https://artifacthub.io/artifacthub-widget.js"></script>
 {{< /rawhtml >}}
 
 
