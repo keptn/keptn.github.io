@@ -129,12 +129,20 @@ The data is fetched from your Kubernetes cluster and shows useful information li
 link="./assets/uniform-view.png"
 caption="Keptn Bridge Uniform View">}}
 
-By selecting one integration, events on error level as well as sequence failures can be viewed. If there are new error events since the last time the integration was viewed, an indicator shows up next to them. When a sequence in this particular scope failed, then there is
+You can view the related subscriptions, events on error level, and sequence failures by selecting an integration. It is also possible to directly configure the subscriptions to listen to specific events.
+If there are new error events since the last time the integration was viewed, a red indicator shows up for this integration. When a sequence in this particular scope failed, then there is
 a link provided that takes you directly to the failed task in the sequence. 'n/a' in this regard means that the error is not related to any sequence execution. 
 
 {{< popup_image
 link="./assets/uniform-view-logs.png"
-caption="Integrated Service Error Logs">}}
+caption="Integrated Service Error Events">}}
+
+#### Create/Edit subscriptions view
+By clicking on the edit icon next to the subscription detail or the "*Add sequence*"-button, you are redirected to the subscription view. In this view, you can configure the task, stage and service for the subscription. The values used for the configuration are defined in the shipyard file. It is also possible to define whether the subscription is active for all projects or just the currently selected one.
+
+{{< popup_image
+link="./assets/uniform-view-create-subscription.png"
+caption="Create/Edit Subscriptions">}}
 
 #### Secrets view
 
