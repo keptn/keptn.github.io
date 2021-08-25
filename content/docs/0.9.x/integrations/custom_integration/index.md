@@ -1,7 +1,7 @@
 ---
 title: Write a Keptn-service
 description: Implement your Keptn-service that listens to Keptn events and extends your Keptn with certain functionality.
-weight: 1
+weight: 2
 keywords: [0.9.x-integration]
 ---
 
@@ -291,7 +291,7 @@ To configure this distributor for your *Keptn-service*, two environment variable
 * `PUBSUB_RECIPIENT`: Defines the service address as specified in the Kubernetes service manifest (e.g., 127.0.0.1 or jmeter-service)
 * `PUBSUB_TOPIC`: Defines the event type your *Keptn-service* is listening to (e.g. `sh.keptn.event.test.triggered`  or `sh.keptn.event.>`).
 
-## Deploy Keptn-service and distributor
+### Deploy Keptn-service and distributor
 
 With a service and deployment manifest for your custom *Keptn-service* (`service.yaml`), you are ready to deploy both components in the K8s cluster where Keptn is installed:
 
