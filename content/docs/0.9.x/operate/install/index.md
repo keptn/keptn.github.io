@@ -600,11 +600,7 @@ keptn.exe auth --endpoint=$Env:KEPTN_ENDPOINT --api-token=$Env:KEPTN_API_TOKEN
 </p>
 </details>
 
---- 
-
-**Note:** *Suppress WebSocket communication when exposing Keptn via port-forward*
-
-* The WebSocket communications cannot be used when the Keptn API is exposed via a port-forward. Hence, please add `--suppress-websocket` to all CLI commands, e.g.: `keptn create project PROJECTNAME --suppress-websocket`
+---
 
 ## Authenticate Keptn Bridge
 
