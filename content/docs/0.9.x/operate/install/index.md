@@ -600,22 +600,29 @@ keptn.exe auth --endpoint=$Env:KEPTN_ENDPOINT --api-token=$Env:KEPTN_API_TOKEN
 </p>
 </details>
 
---- 
-
-**Note:** *Suppress WebSocket communication when exposing Keptn via port-forward*
-
-* The WebSocket communications cannot be used when the Keptn API is exposed via a port-forward. Hence, please add `--suppress-websocket` to all CLI commands, e.g.: `keptn create project PROJECTNAME --suppress-websocket` 
+---
 
 ## Authenticate Keptn Bridge
 
-After installing and exposing Keptn, you can access the Keptn Bridge by using a browser and navigating to the Keptn endpoint without the `api` path at the end of the URL. 
-
-The Keptn Bridge has basic authentication enabled by default and the default user is `keptn` with an automatically generated password. 
-
-* To get the user and password for authentication, execute:
+After installing and exposing Keptn, you can access the Keptn Bridge by using a browser and navigating to the Keptn endpoint without the `api` path at the end of the URL.
+You can also use the Keptn CLI to retrieve the Bridge URL using:
 
 ```console
-keptn configure bridge --output
+keptn status
+```
+
+The Keptn Bridge has basic authentication enabled by default and the default user is `keptn` with an automatically generated password.
+
+* To get the username for authentication, execute:
+
+```console
+kubectl get secret -n keptn bridge-credentials -o jsonpath="{.data.BASIC_AUTH_USERNAME}" | base64 --decode
+```
+
+* To get the password for authentication, execute:
+
+```console
+kubectl get secret -n keptn bridge-credentials -o jsonpath="{.data.BASIC_AUTH_PASSWORD}" | base64 --decode
 ```
 
 * If you want to change the user and password for the authentication, follow the instructions [here](../../reference/bridge/basic_authentication/#enable-authentication).
