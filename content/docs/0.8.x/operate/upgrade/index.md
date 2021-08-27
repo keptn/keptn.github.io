@@ -414,7 +414,9 @@ before executing this command.
     
     * This CLI command executes a Helm upgrade using the Helm chart from: [keptn-installer/keptn-0.8.0.tgz](https://storage.googleapis.com/keptn-installer/keptn-0.8.0.tgz)
 
-**Note:** If you have manually modified your Keptn deployment, e.g., you deleted the Kubernetes Secret `bridge-credentials` for disabling basic auth, the `keptn upgrade` command will not detect the modification. Please re-apply your modification after performing the upgrade.
+**Note 1:** In Keptn 0.7.3 and before, evaluation results were of type `sh.keptn.events.evaluation-done` which has changed to `sh.keptn.event.evaluation.finished`. While the old type of event is still in the database and considered for calculating the quality gate score, the Bridge in version 0.8.0 does not display `sh.keptn.events.evaluation-done` events.
+
+**Note 2:** If you have manually modified your Keptn deployment, e.g., you deleted the Kubernetes Secret `bridge-credentials` for disabling basic auth, the `keptn upgrade` command will not detect the modification. Please re-apply your modification after performing the upgrade.
 
 ### Step 2: Upgrade Shipyard of your projects
 
