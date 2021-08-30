@@ -172,12 +172,27 @@ and additional data is gathered from the client. For more information about this
 
 ### Settings
 
+#### Project settings
 In the settings view the project settings can be edited. 
 To get more information about how to manage your projects with the settings, visit [Manage Projects](https://keptn.sh/docs/0.9.x/reference/bridge/manage_projects).
 
 {{< popup_image
-link="./assets/settings.png"
-caption="Keptn Bridge Settings View">}}
+link="./assets/project-settings.png"
+caption="Keptn Bridge Project Settings View">}}
+
+
+#### Services settings
+In this view new services can be created.
+{{< popup_image
+link="./assets/service-settings.png"
+caption="Keptn Bridge Service Settings View">}}
+
+
+If you want to create a service, just click on the "*Create service*"-button and enter a valid name for your service.
+{{< popup_image
+link="./assets/create-service.png"
+caption="Keptn Bridge Create Service View">}}
+
 
 ## Keptn Bridge features
 
