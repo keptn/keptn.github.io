@@ -3,7 +3,7 @@ title: Keptn 0.9.0
 weight: 88
 ---
 
-T# Release Notes 0.9.0
+# Release Notes 0.9.0
 
 Keptn 0.9.0 gives you more control over sequence executions and allows creating/deleting a Keptn project in the Bridge.
 
