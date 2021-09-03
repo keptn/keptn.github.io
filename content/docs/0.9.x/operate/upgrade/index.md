@@ -7,7 +7,7 @@ aliases:
 ---
 
 ## Upgrade from Keptn 0.8.x to 0.9.0
-0.9.0
+
 <details><summary>Expand to see upgrade instructions:</summary>
 <p>
 
