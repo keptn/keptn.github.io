@@ -182,16 +182,12 @@ caption="Keptn Bridge Project Settings View">}}
 
 
 #### Services settings
-In this view new services can be created.
+In this view services can be created, updated and deleted.
+To get more information about how to manage your projects with the settings, visit [Manage Services](https://keptn.sh/docs/0.9.x/reference/bridge/manage_services).
+
 {{< popup_image
 link="./assets/service-settings.png"
 caption="Keptn Bridge Service Settings View">}}
-
-
-If you want to create a service, just click on the "*Create service*"-button and enter a valid name for your service.
-{{< popup_image
-link="./assets/create-service.png"
-caption="Keptn Bridge Create Service View">}}
 
 
 ## Keptn Bridge features
