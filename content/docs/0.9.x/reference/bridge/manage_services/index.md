@@ -6,15 +6,15 @@ keywords: [0.9.x-bridge]
 ---
 
 The Bridge provides features to make managing services more convenient. It is possible to create and delete services directly from the UI.
-The following sections explain in detail which functionalities you can use to set up your services and where to find them.
+The following sections explain in detail, which functionalities you can use to set up your services and where to find them.
 
 This may also be interesting for you:
 
 * [Create a service with the CLI](https://keptn.sh/docs/0.9.x/reference/cli/commands/keptn_create_service/)
 
 ## Create a service in Bridge
-Going to the services settings, there is a "Create service" button.
-Clicking on this button opens a view to enter a valid name for the service.
+On the service settings page, you can find a "Create service" button.
+Clicking on this button opens a form where you can enter a name for the service. A valid service name contains lowercase letters, numbers, and hyphens.
 
 {{< popup_image
 link="./assets/service-settings.png"

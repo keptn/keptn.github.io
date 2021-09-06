@@ -181,9 +181,9 @@ link="./assets/project-settings.png"
 caption="Keptn Bridge Project Settings View">}}
 
 
-#### Services settings
-In this view services can be created, updated and deleted.
-To get more information about how to manage your projects with the settings, visit [Manage Services](https://keptn.sh/docs/0.9.x/reference/bridge/manage_services).
+#### Service settings
+In this view, services can be created, updated and deleted.
+To get more information about how services can be managed in your settings, visit [Manage Services](https://keptn.sh/docs/0.9.x/reference/bridge/manage_services).
 
 {{< popup_image
 link="./assets/service-settings.png"
