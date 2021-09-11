@@ -25,25 +25,25 @@ hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
     k3d cluster create mykeptn -p "8082:80@agent[0]" --k3s-server-arg '--no-deploy=traefik' --agents 1
     ```
 
-1. **Download and install the [Keptn CLI](../0.8.x/reference/cli)**
+1. **Download and install the [Keptn CLI](../0.9.x/reference/cli)**
 
     ```
     curl -sL https://get.keptn.sh | bash
     ```
 
 1. **Install Keptn** control-plane and execution-plane for continuous delivery use case
-  
+
     ```
-    keptn install --use-case=continuous-delivery 
+    keptn install --use-case=continuous-delivery
     ```
 
-    Keptn comes with different installation options, please have a look at the [installation documentation](../0.8.x/operate) for more details on cluster requirements, resource consumption, supported Kubernetes versions, and more.
+    Keptn comes with different installation options, please have a look at the [installation documentation](../0.9.x/operate) for more details on cluster requirements, resource consumption, supported Kubernetes versions, and more.
 
     <details><summary>Installation logs</summary>
     <p>The installation logs will print the following output:
     <pre>
     Installing Keptn ...
-    Helm Chart used for Keptn installation: https://storage.googleapis.com/keptn-installer/keptn-0.8.3.tgz
+    Helm Chart used for Keptn installation: https://storage.googleapis.com/keptn-installer/keptn-0.9.0.tgz
     Start upgrading Helm Chart keptn in namespace keptn
     Finished upgrading Helm Chart keptn in namespace keptn
     Keptn control plane has been successfully set up on your cluster.
@@ -66,9 +66,9 @@ hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
 
 1. **Install and configure Istio** for Ingress + continuous delivery use-case
     ```
-    curl -SL https://raw.githubusercontent.com/keptn/keptn.github.io/master/content/docs/quickstart/exposeKeptnConfigureIstio.sh | bash 
+    curl -SL https://raw.githubusercontent.com/keptn/keptn.github.io/master/content/docs/quickstart/exposeKeptnConfigureIstio.sh | bash
     ```
-    
+
 
 1. (Optional but recommended) **Create a demo project** with multi-stage pipeline + SLO-based quality gates
     ```
@@ -91,7 +91,7 @@ hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
 
 ## Explore tutorials to learn more about the Keptn use cases
 
-With Keptn installed, have a look at the different [tutorials](https://tutorials.keptn.sh/) to learn hands-on about the Keptn use cases: 
+With Keptn installed, have a look at the different [tutorials](https://tutorials.keptn.sh/) to learn hands-on about the Keptn use cases:
 
 <table class="highlight-table">
   <tr>
@@ -136,12 +136,12 @@ With Keptn installed, have a look at the different [tutorials](https://tutorials
 
 Review the documentation for a full reference on all Keptn capabilities and components and how they can be combined/extended to your needs:
 
-- [Operate Keptn](../0.8.x/operate)
-- [Manage Keptn](../0.8.x/manage)
-- [Continuous Delivery](../0.8.x/continuous_delivery)
-- [Quality Gates](../0.8.x/quality_gates)
-- [Automated Operations](../0.8.x/automated_operations)
-- [Custom Integrations](../0.8.x/integrations)
+- [Operate Keptn](../0.9.x/operate)
+- [Manage Keptn](../0.9.x/manage)
+- [Continuous Delivery](../0.9.x/continuous_delivery)
+- [Quality Gates](../0.9.x/quality_gates)
+- [Automated Operations](../0.9.x/automated_operations)
+- [Custom Integrations](../0.9.x/integrations)
 
 ## Do you need help?
 
