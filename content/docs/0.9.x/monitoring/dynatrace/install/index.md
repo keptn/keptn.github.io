@@ -1,6 +1,6 @@
 ---
 title: Install
-description: Setup Dynatrace monitoring and Keptn integration
+description: Set up Dynatrace monitoring and Keptn integration
 weight: 1
 icon: setup
 ---
