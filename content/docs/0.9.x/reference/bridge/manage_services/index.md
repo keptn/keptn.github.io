@@ -26,8 +26,8 @@ caption="Keptn Bridge Create Service View">}}
 
 ## Manage files for a service
 If you configured a Git upstream repository, the Bridge provides you with an overview of the uploaded files for each stage.
-It is not possible to directly manage files for a service in Bridge. But you can directly jump to the repository with the provided link next to each stage.
-The link will take you to the branch and service folder of the selected service and stage. There you can add, edit and delete files directly. It will get then synched back to your Keptn installation.
+Currently, it is not possible to directly manage files for a service in the Bridge. But you can directly jump to the repository with the provided link next to each stage.
+The link will take you to the branch and service folder of the selected service and stage. There, you can add, edit and delete files directly. It will then be synched back to your Keptn installation.
 (Direct links are supported for Github, Bitbucket, Azure DevOps and CodeCommit)
 
 
