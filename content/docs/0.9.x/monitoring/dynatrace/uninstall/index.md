@@ -1,7 +1,7 @@
 ---
 title: Uninstall
 description: Uninstall
-weight: 2
+weight: 5
 icon: setup
 ---
 

@@ -106,7 +106,7 @@ After receiving the `sh.keptn.event.get-sli.triggered` event, an SLI-provider mu
 {
   "type": "sh.keptn.event.get-sli.finished",
   "specversion": "1.0",
-  "source": "https://github.com/keptn/keptn/dynatrace-sli-service",
+  "source": "dynatrace-service",
   "id": "ggb878d3-03c0-4e8f-bc3f-454bc1b3d888",
   "time": "2019-06-07T07:02:15.64489Z",
   "contenttype": "application/json",
