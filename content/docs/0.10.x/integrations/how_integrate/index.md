@@ -66,7 +66,6 @@ Once a `test` task is defined in the shipyard, and the test definitions are adde
 Depending on how your integration is built, this can be done either via [adding the subscription in the distributor](../custom_integration/#subscription-to-a-triggered-event) or by adding the subscription to the [job-executor definition](https://github.com/keptn-sandbox/job-executor-service#how).
 Since the tests might run for some time, it is important that once the integration receives the `sh.keptn.event.test.triggered` event, it will response with a `sh.keptn.event.test.started` event, and once finished it sends a `sh.keptn.event.test.finished` event.
 
-
 ### Notification tools
 
 Let's have a look at notification tool integrations such as Slack, or MS Team where you want to push (specific) events to a channel to notify members of it.
@@ -84,8 +83,6 @@ Keptn quality gates are defined by [SLOs and SLIs](../../../concepts/quality_gat
 3. with a `sh.keptn.event.get-sli.finished` event including the SLIs as the payload once the retrieval of the data is finished.
 
 Please have a look at the [Keptn service template](https://github.com/keptn-sandbox/keptn-service-template-go) that provides a stub about how to build your own SLI provider in the `eventhanders.go` file.
-
-
 
 
 ### Any other tool
@@ -117,4 +114,62 @@ The purpose of the [generic-executor-service](https://github.com/keptn-sandbox/g
 
 ### Webhook Integration
 
-Coming soon!
+Keptn has a built-in capability to integrate your webhooks into the sequence orchestration. This lets you call custom HTTP endpoints when running a sequence that triggers a task the webhook should be called on. By using this integration, you can easily send the state of a sequence task to a third-party tool or service. This allows you to integrate tools such as testing services and incident management services. For example, using a webhook in combination with a testing tool lets you ...
+
+
+*Overview:*
+Webhooks are created at a *Task* level and can be triggered by 3 task events: 
+
+* Task triggered - The task has been triggered but is not yet running or is ramping up.
+* Task started - The task has begun running. 
+* Task finished - The task has finished. 
+
+#### Create a Webhook 
+
+To create a webhook, go to the *Uniform* page, select the *webhook-service* and click the `Add subscription` button. In this form, provide the information for the subscription and webhook configuration: 
+
+> Screenshot needed
+
+*Subscription:*
+* *Task* - The task the webhook should be fired on.
+* *Task suffix* - The state of the task when the webhook should be fired. Select of: [`triggered`, `started`, `finished`]
+* *Filter* - To restrict the webhook to certain stages or services you can specify those here. 
+
+*Webhook configuration:*
+* *Request Method*: Choose the request method (POST, PUT, or GET)
+* *URL:* The endpoint URL is where the webhook will send the request. 
+* *Custom headers:* You can use the custom headers field to add HTTP headers to the request, such as unique identifiers or authentication credentials.
+* *Custom payload:* Modify the payload to match the format requested by the receiving endpoint. (more details provided below)
+* *Proxy*: If required, you can specify a proxy the request has to go through.
+
+Click `Create subscription` to save and enable the webhook for your integration.
+
+#### Custom payload
+
+The output format of the webhook (custom payload) can be customized using event data to match the required input format of the tool you are integrating with. For doing so, put your course in the text field at the spot where you would like to customize the payload. Then click the *computer* icon that opens a list of data fields you can add to the payload. This list of data fields is derived from the event your webhook is subscribed to. 
+
+> Screenshot needed
+
+#### Include sensitive data
+
+When integrating tools by calling their endpoints, many times authentication is needed. This is done by storing an authentication token that is part of the webhook request. In Keptn you do this as follows: 
+
+1. Create a secret with a unique `name`, scope set to `webhook-service`, and a `key:value` pair whereas the key is a unique identifier of your secret and the value holds the sensitive data.
+
+> Screenshot needed
+
+1. When configuring your webhook, you can reference the sensitive data as part of the *URL*, *Custom header*, and in the *Custom payload*. Therefore, click the `key` icon which opens the list of available secrets. Select your secret and specify the key that refers to the sensitive data you would like to include at this point.  
+
+> Screenshot needed
+
+#### Advanced Webhook configuration
+
+
+
+#### Delete a Webhook
+
+To delete a webhook, click on the trash can next to the subscription. Note that deleting a webhook is permanent and cannot be reversed. Once deleted, Keptn will no longer send requests to the endpoint.
+
+> Screenshot needed
+
+
