@@ -5,8 +5,6 @@ weight: 2
 keywords: [0.10.x-integration]
 ---
 
-## Webhook Integration
-
 Keptn has a built-in capability to integrate your webhooks into the sequence orchestration. This lets you call custom HTTP endpoints when running a sequence that triggers a task the webhook should be called on. By using this integration, you can easily send the state of a sequence task to a third-party tool or service. This allows you to integrate tools such as testing services and incident management services. For example, using a webhook in combination with a testing tool lets you ...
 
 *Overview:*
@@ -19,7 +17,7 @@ Webhooks are created at a *Task* level and can be triggered by 3 task events:
 | Task started   	| The task has begun running.                         	|
 | Task finished  	| The task has finished.                              	|
 
-### Create a Webhook 
+## Create a Webhook 
 
 To create a webhook, go to the *Uniform* page, select the *webhook-service* and click the `Add subscription` button. In this form, provide the information for the subscription and webhook configuration: 
 
@@ -41,13 +39,13 @@ To create a webhook, go to the *Uniform* page, select the *webhook-service* and 
 
 Click **Create subscription** to save and enable the webhook for your integration.
 
-### Custom payload
+## Custom payload
 
 The output format of the webhook (i.e., payload of the request body) can be customized using event data to match the required input format of the tool you are integrating with. For doing so, put your course in the text field at the spot where you would like to customize the payload. Then click the *computer* icon that opens a list of data fields you can add to the payload. This list of data fields is derived from the event your webhook is subscribed to. 
 
 > Screenshot needed
 
-### Include sensitive data
+## Include sensitive data
 
 When integrating tools by calling their endpoints, many times authentication is needed. This is done by storing an authentication token that is part of the webhook request. In Keptn you do this as follows: 
 
@@ -59,7 +57,7 @@ When integrating tools by calling their endpoints, many times authentication is 
 
 > Screenshot needed
 
-### Advanced Webhook configuration
+## Advanced Webhook configuration
 
 **Prerequisite:** It is required to have an upstream Git repo configured to get access to the configuration files.  
 
@@ -84,7 +82,7 @@ spec:
 
 * Adding a webhook by just extending this file is not supported, since the subscription to the event type is still missing. 
 
-### Delete a Webhook
+## Delete a Webhook
 
 To delete a webhook, click on the trash can next to the subscription. Note that deleting a webhook is permanent and cannot be reversed. Once deleted, Keptn will no longer send requests to the endpoint.
 
