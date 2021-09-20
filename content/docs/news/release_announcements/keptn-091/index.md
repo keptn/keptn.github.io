@@ -3,8 +3,6 @@ title: Keptn 0.9.1
 weight: 87
 ---
 
-# Release Notes 0.9.1
-
 
 This is a bug fix release for Keptn 0.9.0, containing fixes for the Bridge and Keptn core services; especially, lighthouse-service and shipyard-controller.
 
