@@ -11,7 +11,7 @@ In the following, we'll have a look at different use cases to help you get start
 
 ## General overview
 
-In general, Keptn integration (also called Keptn-services) integrate by receiving and sending events from and to the [Keptn control-plane](../../../concepts/architecture/). Once an integration is triggered, the integration (service) usually indicates its start and once completed, responds to the Keptn control-plane with a finished status. Some integrations, such as notifications (e.g., via Slack), might not want to indicate their progress, which is also possible. In the following, we will have a look at different use cases for integrations and how they can be implemented.
+In general, Keptn integrations (also called Keptn-services) integrate by receiving and sending events from and to the [Keptn control-plane](../../../concepts/architecture/). Once an integration is triggered, the integration (service) usually indicates its start and once completed, responds to the Keptn control-plane with a finished status. Some integrations, such as notifications (e.g., via Slack), might not want to indicate their progress, which is also possible. In the following, we will have a look at different use cases for integrations and how they can be implemented.
 
 {{< popup_image
 link="./assets/integration-sequence.png"
@@ -22,11 +22,11 @@ width="700px">}}
 
 ### Testing tools
 
-Integrating (load and performance) test tools such as [JMeter](https://github.com/keptn/keptn/tree/master/jmeter-service), [Neoload](https://github.com/keptn-contrib/neoload-service), [Artillery](https://github.com/keptn-sandbox/artillery-service), or [Locust](https://github.com/keptn-sandbox/locust-service) is a common use case in Keptn. In this section, we will learn what is needed to integrate such tools.
+Integrating (load and performance) test tools such as [JMeter](https://github.com/keptn/keptn/tree/master/jmeter-service), [Neoload](https://github.com/keptn-contrib/neoload-service), [Artillery](https://github.com/keptn-sandbox/artillery-service), [Locust](https://github.com/keptn-sandbox/locust-service), etc. is a common use case in Keptn. In this section, we will learn what is needed to integrate such tools.
 
 Usually, a testing tool integration is getting triggered upon a `sh.keptn.event.test.triggered` event. This event is sent by the Keptn control-plane and the tool integration only has to listen for this type of event. In order to make sure that this event is sent by the Keptn control-plane, a `test` task needs to be present in the [shipyard](../../manage/shipyard/).
 
-**Example shipyard** with a test task:
+**Example shipyard** with a test task in each sequence:
 ```
 apiVersion: spec.keptn.sh/0.2.2
 kind: "Shipyard"
@@ -52,7 +52,7 @@ spec:
 ...
 ```
 
-* **Please note**: In general the task can be renamed, however, the important part is that both the event type and the task name correlate for your integration.
+**Please note**: In general the task can be renamed. However, the important part is that both the event type and the task name correlate with your integration.
 
 * Typically, test tools rely on some way of test definition files, such as a `*.jmx` file for JMeter or `locustfile.py` for Locust. These files have to be added to Keptn and will be managed by Keptn. Files can be added to Keptn via the [keptn add-resource](../../reference/cli/commands/keptn_add-resource/) Keptn CLI command. Let us assume we have a project *sockshop* with a *carts* microservice, the following command will add the local resource `locustfile.py` to Keptn in both the two sequences mentioned in our shipyard.
 
@@ -68,9 +68,9 @@ keptn add-resource --project=sockshop --stage=test-automation --service=carts --
 
 Let us have a look at notification tool integrations such as Slack, or MS Team where you want to push (specific) events to a channel to notify members of it.
 
-* Usually, a notification tool reacts to a specific type of event or a set of events. The tool integration will subscribe to these event types and then send a defined payload to the channels. Typically, there is no need to indicate that a notification integration starts and finishes the distribution of messages (i.e., no `*.started` or `*.finished` event has to be sent).
+* Usually, a notification tool reacts to a specific type of event or a set of events. The tool integration will subscribe to these event types and then send a defined payload to the channels. Consequently, there is no need to indicate that a notification integration starts and finishes the distribution of messages (i.e., no `*.started` or `*.finished` event has to be sent).
 
-* One way to build an integration is to use a [Keptn-service template](https://github.com/keptn-sandbox?q=template&type=&language=&sort=). The events the integration should listen for [can be added as a subscription in the distributor](../custom_integration/#subscription-to-a-triggered-event).
+* The easiest way to set up such an integration is by configuring a [Webhook Integration](./#webhook-integration). 
 
 <!-- disabled, since we don't allow to run SLI-providers on the execution plane. 
 ### Monitoring/observability tools (SLI-providers)
@@ -114,4 +114,4 @@ The purpose of the [generic-executor-service](https://github.com/keptn-sandbox/g
 
 ### Webhook Integration
 
-[Please see the detailed information provided here.](../webhooks/)
+[Please see the detailed description provided here.](../webhooks/)
