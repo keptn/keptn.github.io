@@ -5,9 +5,7 @@ weight: 2
 keywords: [0.10.x-integration]
 ---
 
-Keptn has a built-in capability to integrate your webhooks into the sequence orchestration. This lets you call custom HTTP endpoints when running a sequence that triggers a task the webhook should be called on. By using this integration, you can easily send the state of a sequence task to a third-party tool or service. This allows you to integrate tools such as testing services and incident management services. For example, using a webhook in combination with a testing tool lets you ...
-
-*Overview:*
+Keptn has a built-in capability to integrate your webhooks into the sequence orchestration of Keptn. This lets you call custom HTTP endpoints when running a delivery or remediation sequence that triggers a certain task. By using this integration, you can easily send the state of a task to a third-party tool or service. This allows you to integrate tools such as testing services and incident management services. For example, using a webhook in combination with a testing tool lets you run a test based on a `test.triggered` event.  
 
 Webhooks are created at a *Task* level and can be triggered by 3 task events: 
 
@@ -19,9 +17,19 @@ Webhooks are created at a *Task* level and can be triggered by 3 task events:
 
 ## Create a Webhook 
 
-To create a webhook, go to the *Uniform* page, select the *webhook-service* and click the `Add subscription` button. In this form, provide the information for the subscription and webhook configuration: 
+To create a webhook, go to the *Uniform* page, select the *webhook-service*, and click the `Add subscription` button. 
 
-> Screenshot needed
+{{< popup_image
+link="./assets/add-webhook.png"
+caption="Add task subscription for webhook-service"
+width="700px">}}
+
+In this form, provide the information for the subscription and webhook configuration: 
+
+{{< popup_image
+link="./assets/create-webhook.png"
+caption="Form to create subscription and webhook configuration"
+width="700px">}}
 
 *Subscription:*
 
@@ -51,11 +59,17 @@ When integrating tools by calling their endpoints, many times authentication is 
 
 * Create a secret with a unique `name`, scope set to `webhook-service`, and a `key:value` pair whereas the key is a unique identifier of your secret and the value holds the sensitive data.
 
-> Screenshot needed
+{{< popup_image
+link="./assets/create-secret.png"
+caption="Create a secret for webhook-service"
+width="700px">}}
 
 * When configuring your webhook, you can reference the sensitive data as part of the *URL*, *Custom header*, and in the *Custom payload*. Therefore, click the `key` icon that opens the list of available secrets. Select your secret and specify the key that refers to the sensitive data you would like to include at this point.  
 
-> Screenshot needed
+{{< popup_image
+link="./assets/add-secret-value.png"
+caption="Usage of secrets to customize request"
+width="700px">}}
 
 ## Advanced Webhook configuration
 
@@ -86,4 +100,8 @@ spec:
 
 To delete a webhook, click on the trash can next to the subscription. Note that deleting a webhook is permanent and cannot be reversed. Once deleted, Keptn will no longer send requests to the endpoint.
 
-> Screenshot needed
+{{< popup_image
+link="./assets/delete-webhook.png"
+caption="Delete a webhook"
+width="700px">}}
+

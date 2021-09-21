@@ -18,8 +18,6 @@ link="./assets/integration-sequence.png"
 caption="General execution sequence of Keptn integrations"
 width="700px">}}
 
-
-
 ## Use Cases
 
 ### Testing tools
