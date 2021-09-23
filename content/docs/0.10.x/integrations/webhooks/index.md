@@ -49,7 +49,7 @@ Click **Create subscription** to save and enable the webhook for your integratio
 
 ## Customize request payload
 
-The output format of the webhook (i.e., payload of the request body) can be customized using event data to match the required input format of the tool you are integrating with. For doing so, put your course in the text field at the spot where you would like to customize the payload. Then click the *computer* icon that opens a list of data fields you can add to the payload. This list of data fields is derived from the event your webhook is subscribed to. 
+The output format of the webhook (i.e., payload of the request body) can be customized using event data to match the required input format of the tool you are integrating with. For doing so, put your cursor in the text field at the spot where you would like to customize the payload. Then click the *computer* icon that opens a list of data fields you can add to the payload. This list of data fields is derived from the event your webhook is subscribed to. 
 
 {{< popup_image
 link="./assets/customize-payload.png"
