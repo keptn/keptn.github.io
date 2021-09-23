@@ -145,7 +145,7 @@ If you want to use an externally hosted MongoDB instead of the MongoDB installed
 
 ```console
 helm upgrade keptn keptn --install -n keptn --create-namespace
---set=control-plane.mongodb.enabled=true,
+--set=control-plane.mongodb.enabled=false,
       control-plane.mongodb.host=<YOUR_MONGODB_HOST>,
       control-plane.mongodb.user=<YOUR_MONGODB_USER>,
       control-plane.mongodb.password=<YOUR_MONGODB_PASSWORD>,
