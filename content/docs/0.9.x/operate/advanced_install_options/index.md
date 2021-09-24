@@ -34,12 +34,6 @@ The following flags are available:
 | `control-plane.mongodb.user`                          | If an external MongoDB instance is used, specify the user to access the MongoDB.Keptn                                                             | any string                            | empty                          |
 | `control-plane.mongodb.password`                      | If an external MongoDB instance is used, specify the password to access the MongoDB.                                                              | any string                            | empty                     |
 | `control-plane.mongodb.adminPassword`                 | If an external MongoDB instance is used, specify the admin password to access the MongoDB                                                         | any string                            | empty                          |
-| `control-plane.ingress.enabled`                       | Allows you to Install your own ingress object for Keptn                                                          | true,false                            | false                          |
-| `control-plane.ingress.annotations`                   | If ingress is set to true you can optionally specify any annotations you require                                                        | any string                            | empty                          |
-| `control-plane.ingress.host`                          | If ingress is set to true you can optionally specify a host                                                           | any string                            | empty                          |
-| `control-plane.ingress.path`                          | If ingress is set to true you can specify a path                                                           | any string                            | /                          |
-| `control-plane.ingress.pathType`                      | If ingress is set to true you can specify a pathType                                                       | any string                            | Prefix                          |
-| `control-plane.ingress.tls`                           | If ingress is set to true you can optionally specify tls config                                                         | any string                            | empty                          |
 ### Example: Use a LoadBalancer for api-gateway-nginx
 
 ```console
@@ -150,20 +144,4 @@ helm upgrade keptn keptn --install -n keptn --create-namespace
       control-plane.mongodb.user=<YOUR_MONGODB_USER>,
       control-plane.mongodb.password=<YOUR_MONGODB_PASSWORD>,
       control-plane.mongodb.adminPassword=<YOUR_MONGODB_ADMIN_PASSWORD>
-```
-
-### Example: Install Keptn with an ingress object
-
-If you are already using an Ingress-Controller and want to create an ingress object for Keptn, you can leverage the ingress section of the helm chart. By default enabled is set to false.
-
-The Helm chart allows customizing the ingress object to your needs.  When enabled is set the true, the chart allows you to specify optional parameters of host, path, pathType, tls, and annotations. This will cater for alot of different Ingress-Controllers and configurations.
-
-```console
-helm upgrade keptn keptn --install -n keptn --create-namespace
---set=control-plane.ingress.enabled=true,
-      control-plane.ingress.annotations=<YOUR_ANNOTATIONS>,
-      control-plane.ingress.host=<YOUR_HOST>,
-      control-plane.ingress.path=<YOUR_PATH>,
-      control-plane.ingress.pathType=<YOUR_PATH_TYPE>,  
-      control-plane.ingress.tls=<YOUR_TLS>
 ```
