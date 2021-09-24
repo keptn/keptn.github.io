@@ -2,7 +2,7 @@
 title: Custom SLI-Provider
 description: Implement an SLI-provider that queries an external data source for SLIs.
 weight: 5
-keywords: [0.9.x-integration]
+keywords: [0.10.x-integration]
 ---
 
 An *SLI-provider* is an implementation of a [*Keptn-service*](../custom_integration/#keptn-service) with a dedicated purpose. This type of service is responsible for querying an external data source for SLIs that are then used by Keptn to evaluate an SLO. To configure a query for an indicator, Keptn provides the concept of an [SLI configuration](https://github.com/keptn/spec/blob/0.2.2/service_level_indicator.md#service-level-indicators-sli).

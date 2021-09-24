@@ -2,7 +2,7 @@
 title: Project with Stages
 description: Create and delete a project in Keptn.
 weight: 20
-keywords: [0.9.x-manage]
+keywords: [0.10.x-manage]
 aliases:
 ---
 

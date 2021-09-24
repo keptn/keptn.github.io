@@ -2,7 +2,7 @@
 title: Write a Keptn-service
 description: Implement your Keptn-service that listens to Keptn events and extends your Keptn with certain functionality.
 weight: 2
-keywords: [0.9.x-integration]
+keywords: [0.10.x-integration]
 ---
 
 Here you learn how to add additional functionality to your Keptn installation with a custom [*Keptn-service*](#write-your-keptn-service), [*SLI-provider*](../sli_provider), or [*Action-provider*](../action_provider).
@@ -50,7 +50,7 @@ In this example, `[task]` works as a placeholder for tasks such as: `deployment`
 spec:
   containers:
   - name: distributor
-    image: keptn/distributor:0.9.0
+    image: keptn/distributor:0.10.0
     ports:
     - containerPort: 8080
     resources:
@@ -242,7 +242,7 @@ spec:
     spec:
       containers:
       - name: distributor
-        image: keptn/distributor:0.9.0
+        image: keptn/distributor:0.10.0
         ports:
         - containerPort: 8080
         resources:

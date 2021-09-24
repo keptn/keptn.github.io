@@ -2,7 +2,7 @@
 title: Multi-stage delivery
 description: Customize your delivery and staging process.
 weight: 1
-keywords: [0.9.x-cd]
+keywords: [0.10.x-cd]
 ---
 
 

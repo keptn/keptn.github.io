@@ -2,10 +2,10 @@
 title: Delivery Assistant
 description: Approval of deployment for manual approval strategy
 weight: 50
-keywords: [0.9.x-cd]
+keywords: [0.10.x-cd]
 
 aliases:
-  - /docs/0.9.x/reference/bridge/delivery_assistent/
+  - /docs/0.10.x/reference/bridge/delivery_assistent/
 ---
 
 If you configured approval-strategy `manual` within your [multi-stage delivery](../multi_stage/#approval-strategy), Keptn will ask for an approval before deploying the artefact in the current stage, e.g.:

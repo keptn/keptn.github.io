@@ -2,7 +2,7 @@
 title: SLI-Provider
 description: Add an SLI-Provider to Keptn for querying provider-specific SLIs.
 weight: 20
-keywords: [0.9.x-quality_gates]
+keywords: [0.10.x-quality_gates]
 ---
 
 Depending on the monitoring solution you have in place and the SLIs you have configured for your services, you need to deploy the corresponding SLI-provider. In Keptn 0.7, this can be either *Dynatrace* or *Prometheus*. 
