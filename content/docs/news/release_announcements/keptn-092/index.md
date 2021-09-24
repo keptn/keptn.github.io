@@ -4,8 +4,6 @@ weight: 86
 ---
 
 
-# Release Notes 0.9.2
-
 This is a hotfix release for Keptn 0.9.1, containing a fix for the OAuth integration in the Bridge.
 
 ---
