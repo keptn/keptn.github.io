@@ -50,7 +50,7 @@ helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=
 
 For example, the **Control Plane with the Execution Plane (for Continuous Delivery)** can be installed by the following command:
 ```console
-helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.9.0 --repo=https://storage.googleapis.com/keptn-installer --set=continuous-delivery.enabled=true
+helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.10.0 --repo=https://storage.googleapis.com/keptn-installer --set=continuous-delivery.enabled=true
 ```
 
 ### Example: Install execution plane for Continuous Delivery use-case and use a LoadBalancer for api-gateway-nginx
