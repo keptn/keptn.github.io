@@ -32,8 +32,9 @@ The following flags are available:
 | `control-plane.mongodb.enabled`                       | Allows to not install the default MongoDB instance in Keptn.                                                                                      | true,false                            | true                           |
 | `control-plane.mongodb.host`                          | If an external MongoDB instance is used, specify the host name of this instance.                                                                  | URL                                   | empty                          |
 | `control-plane.mongodb.user`                          | If an external MongoDB instance is used, specify the user to access the MongoDB.Keptn                                                             | any string                            | empty                          |
-| `control-plane.mongodb.password`                      | If an external MongoDB instance is used, specify the password to access the MongoDB.                                                              | any string                            | empty                     |
+| `control-plane.mongodb.password`                      | If an external MongoDB instance is used, specify the password to access the MongoDB.                                                              | any string                            | empty                          |
 | `control-plane.mongodb.adminPassword`                 | If an external MongoDB instance is used, specify the admin password to access the MongoDB                                                         | any string                            | empty                          |
+
 ### Example: Use a LoadBalancer for api-gateway-nginx
 
 ```console
