@@ -5,15 +5,15 @@ weight: 2
 keywords: [0.10.x-integration]
 ---
 
-Keptn has a built-in capability to integrate your webhooks into the sequence orchestration of Keptn. This lets you call custom HTTP endpoints when running a delivery or remediation sequence that triggers a certain task. By using this integration, you can easily send the state of a task to a third-party tool or service. This allows you to integrate tools such as testing services and incident management services. Two use case examples of tool integrations are provided here: Integration of a (1) [testing tool](../how_integrate/#testing-tools), (2) [notification tool](../how_integrate/#notification-tools), which can be easily implemented by just using webhooks.    
+Keptn has a built-in capability to integrate your webhooks into the sequence orchestration of Keptn. This lets you call custom HTTP endpoints when running a delivery or remediation sequence that triggers a certain task. By using this integration, you can easily send the state of a task to a third-party tool or service. This allows you to integrate tools such as testing services and incident management services. Two use case examples of tool integrations are provided here: Integration of a (1) [notification tool](../how_integrate/#notification-tools), (2) [testing tool](../how_integrate/#testing-tools), which can be easily implemented by just using webhooks.    
 
 Webhooks are created at a *Task* level and can be triggered by 3 event types: 
 
-| Event types    	| Description                                         	|
-|----------------	|-----------------------------------------------------	|
-| Task triggered 	| The task has been triggered but is not yet running. 	|
-| Task started   	| The task has begun running.                         	|
-| Task finished  	| The task has finished.                              	|
+| Event types     | Description                                           |
+|---------------- |-----------------------------------------------------  |
+| Task triggered  | The task has been triggered but is not yet running.   |
+| Task started    | The task has begun running.                           |
+| Task finished   | The task has finished.                                |
 
 ## Create a Webhook 
 
@@ -58,7 +58,7 @@ width="700px">}}
 
 ## Include sensitive data
 
-When integrating tools by calling their endpoints, many times authentication is needed. This is done by storing an authentication token that is part of the webhook request. In Keptn you do this as follows: 
+When integrating tools by calling their endpoints, many times authentication is needed. This is done by storing an authentication token that is part of the webhook request. In Keptn, you do this as follows: 
 
 * Create a secret with a unique `name`, scope set to `webhook-service`, and a `key:value` pair whereas the key is a unique identifier of your secret and the value holds the sensitive data.
   {{< popup_image
@@ -96,6 +96,28 @@ spec:
 * You can customize the curl depending on your needs. 
 
 * **Note**: Adding a webhook by just extending this file is not supported, since the subscription to the event type is still missing. 
+
+### Configure Webhook to not auto-respond with a finished event
+
+If you subscribe your webhook to an event of type `triggered`, Keptn automatically sends a `started` event, calls the request, and sends a `finished` event. However, there is the obvious use case that the receiving tool requires time to execute the webhook, e.g., to run a performance test. In this case, give the receiving tool the responsibility to send the `finished` event after the task is executed. 
+
+* Configure the webhook to not send the `finished` event by setting the flag `sendFinished` to `false`:
+
+```
+apiVersion: webhookconfig.keptn.sh/v1alpha1
+kind: WebhookConfig
+metadata:
+  name: webhook-configuration
+spec:
+  webhooks:
+    - type: sh.keptn.event.evaluation.finished
+      sendFinished: false 
+      requests:
+        - "curl --request POST --data '{\"text\":\"Evaluation {{.data.evaluation.result}} with a score of {{.data.evaluation.score}} \"}'
+          https://hooks.slack.com/services/{{.env.secretKey}}"
+```
+
+* Since no `finished` event is then sent, it is required to configure the receiving tool to send a `finished` event to the `/v1/event` endpoint of Keptn. 
 
 ## Delete a Webhook
 
