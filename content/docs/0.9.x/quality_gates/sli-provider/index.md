@@ -5,19 +5,19 @@ weight: 20
 keywords: [0.9.x-quality_gates]
 ---
 
-Depending on the monitoring solution you have in place and the SLIs you have configured for your services, you need to deploy the corresponding SLI-provider. In Keptn 0.7, this can be either *Dynatrace* or *Prometheus*. 
+Depending on the monitoring solution you have in place and the SLIs you have configured for your services, you need to deploy the corresponding SLI-provider. In Keptn 0.9.x, this can be either *Dynatrace* or *Prometheus*. 
 
 ## Dynatrace SLI-Provider
 
-* Complete steps from section [Setup Dynatrace SLI-provider](../../monitoring/dynatrace/sli_provider/#setup-dynatrace-sli-provider).
+* Complete steps from section [Install Dynatrace Keptn integration](../../monitoring/dynatrace/install/#install-dynatrace-keptn-integration).
 
-* To configure Keptn to use the Dynatrace SLI-provider for your project (e.g. **musicshop**), execute the following command:
+* To configure Keptn to use Dynatrace SLIs for your project (e.g. **musicshop**), execute the following command:
 
     ```console
     keptn configure monitoring dynatrace --project=musicshop
     ```
 
-* Configure custom SLIs for the Dynatrace SLI-provider as explained [here](../../monitoring/dynatrace/sli_provider/#configure-custom-dynatrace-slis).
+* Configure custom Dynatrace SLIs as explained [here](../../monitoring/dynatrace/configure_slis).
 
 ## Prometheus SLI-Provider
 
