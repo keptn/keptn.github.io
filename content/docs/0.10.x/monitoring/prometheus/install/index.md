@@ -10,7 +10,7 @@ In order to evaluate the quality gates and allow self-healing in production, we 
 
 ## Prerequisites
 
-- Keptn project and at least one onboarded service must be available.
+- Keptn project and at least one service must be available.
 - Keptn doesn't install or manage Prometheus and its components. Users need to install Prometheus and Prometheus Alert manager as a prerequisite.
 
 ```bash

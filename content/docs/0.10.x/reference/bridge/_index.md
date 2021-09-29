@@ -6,11 +6,11 @@ weight: 21
 
 ## Views in Keptn Bridge
 
-The Keptn Bridge provides an easy way to browse all events that are sent within Keptn. When you access the Keptn Bridge, all projects will be shown on the start screen. When clicking on a project, the stages of this project, and all onboarded services are shown on the next view. An overview of those views is given below.
+The Keptn Bridge provides an easy way to browse all events that are sent within Keptn. When you access the Keptn Bridge, all projects will be shown on the start screen. When clicking on a project, the stages of this project, and all services are shown on the next view. An overview of those views is given below.
 
 ### Project view
 
-* When you enter the Keptn Bridge and have not created a project yet, you will be guided to the instructions on how to setup a project and onboard a sample app.
+* When you enter the Keptn Bridge and have not created a project yet, you will be guided to the instructions on how to setup a project and create a sample app.
 
     {{< popup_image
       link="./assets/project-dashboard-empty.png"

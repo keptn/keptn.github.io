@@ -1,16 +1,12 @@
 ---
 title: Service
-description: Create or onboard your service in Keptn.
+description: Create a service in Keptn.
 weight: 30
 keywords: [0.10.x-manage]
 aliases:
 ---
 
-After creating a project, Keptn allows creating a service or onboarding a service into Keptn. The difference between creating and onboarding is as follows:
-
-- **Create a service:** This creates a new and empty service in the specified project. This option is used when **not** deploying a service with Keptn. 
-
-- **Onboard a service:** This creates a new service and uploads the configuration to deploy the service. The configuration has to be a Helm Chart.
+After creating a project, Keptn allows creating a service into Keptn. 
 
 ## Service name restrictions
 
@@ -26,9 +22,9 @@ After creating a project, Keptn allows creating a service or onboarding a servic
 keptn create service SERVICENAME --project=PROJECTNAME
 ```
 
-## Onboard a service
+**Requirements for the Helm Chart to deploy**
 
-For describing the deployable Kubernetes resources of a service that gets onboarded, [Helm charts](https://Helm.sh/) are used with the following requirements:
+After creating a service, you need to provide a Helm Chart for the service to deploy it. For Keptn, the [Helm Chart](https://Helm.sh/) has the following requirements:
 
 1. The Helm chart _has_ to contain exactly one [deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/). In this deployment, the properties `spec.selector.matchLabels.app` and `spec.template.metadata.labels.app` have to be set.
 
@@ -77,23 +73,8 @@ env:
   value: "{{ .Values.SERVICE_PLACEHOLDER_C.service.name }}"
 ```
 
-**Onboard a service:**
-
-* To onboard a service, use the [keptn onboard service](../../reference/cli/commands/keptn_onboard_service) command and provide the service name, project name (`--project` flag), and the root directory of a Helm chart (`--chart` flag): 
+* Finally, upload the Helm Chart to your service: 
 
 ```console
-keptn onboard service SERVICENAME --project=PROJECTNAME --chart=FILEPATH
-```
-
-* If you have already an archived Helm chart, the archive with ending `.tgz` can be referenced. In this case, the Helm chart will be stored unpacked. 
-
-```console
-keptn onboard service SERVICENAME --project=PROJECTNAME --chart=HELM_CHART.tgz
-```
-
-* Optional: In the case of using an archived Helm chart, you can achieve the same using [keptn create service](../../reference/cli/commands/keptn_create_service) and [keptn add-resource ... --all-stages](../../reference/cli/commands/keptn_add-resource), e.g.:
-
-```console
-keptn create service SERVICENAME --project=PROJECTNAME
 keptn add-resource --project=PROJECTNAME --service=SERVICENAME --all-stages --resource=HELM_CHART.tgz --resourceUri=helm/SERVICENAME.tgz
 ```
