@@ -5,8 +5,7 @@ weight: 30
 icon: help
 ---
 
-In this section, the functionality and commands of the Keptn CLI are described. The Keptn CLI allows installing, configuring, and
-uninstalling Keptn. Furthermore, the CLI allows creating projects, onboarding services, and sending new artifact events.
+In this section, the functionality and commands of the Keptn CLI are described. The Keptn CLI allows installing, configuring, and uninstalling Keptn. Furthermore, the CLI allows creating projects, services, and sending new artifact events.
 
 ## Prerequisites
 - All prerequisites from the [setup](../../operate/install/#prerequisites) are needed.

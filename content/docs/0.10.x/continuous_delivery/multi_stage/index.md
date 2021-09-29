@@ -123,8 +123,7 @@ After declaring the delivery for a project in a shipyard, you are ready to creat
 
 ## Trigger a multi-stage delivery
 
-After creating a project and [onboarding your service(s)](../../manage/service), you can trigger a delivery using the Keptn CLI or API.
-
+After creating a project and [creating your service(s)](../../manage/service), you can trigger a delivery using the Keptn CLI or API.
 
 <details><summary>**Trigger via Keptn CLI**</summary>
 <p>
