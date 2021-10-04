@@ -11,14 +11,14 @@ In order to evaluate the quality gates and allow self-healing in production, we 
 ## Prerequisites
 
 - Keptn project and at least one onboarded service must be available.
-- Keptn doesn't install or manage Prometheus and its components. Users need to install Prometheus and Prometheus Alert manager as a prerequisite.
+- Keptn doesn't install or manage Prometheus and its components. Users need to install *Prometheus* and *Prometheus Alert Manager* as a prerequisite.
 
 ```bash
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm install prometheus prometheus-community/prometheus --namespace default
 ```
 
-- The prometheus-service needs access to a Prometheus instance and by default uses the Prometheus instance running in the cluster. If another Prometheus instance shall be used, create a secret containing the user, password, and url. The secret must have the following format (please note the double-space indentation):
+- The prometheus-service (which will be deployed later) needs access to the Prometheus instance. By default it uses the Prometheus instance running in the cluster. If another Prometheus instance shall be used, create a secret containing the user, password, and url. The secret must have the following format (please note the double-space indentation):
 
 ```yaml
     user: username
@@ -76,7 +76,7 @@ After creating a project and service, you can set up Prometheus monitoring and c
 * Download the manifest of the prometheus-service:
 
 ```bash
-wget https://raw.githubusercontent.com/keptn-contrib/prometheus-service/release-0.6.0/deploy/service.yaml
+wget https://raw.githubusercontent.com/keptn-contrib/prometheus-service/release-0.6.2/deploy/service.yaml
 ```
 
 * Replace the environment variable value according to the use case and apply the manifest
@@ -88,23 +88,28 @@ kubectl apply -f service.yaml -n keptn
 * Install Role and RoleBinding to permit the prometheus-service for performing operations in the Prometheus installed namespace:
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/release-0.6.0/deploy/role.yaml -n keptn
+kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/release-0.6.2/deploy/role.yaml -n keptn
 ```
 
-* Execute the following command to install Prometheus and set up the rules for the *Prometheus Alerting Manager*:
+* Execute the following command which performs: 
+  * an update of the Prometheus configuration to add scrape jobs for the service in the specified Keptn project
+  * the defintion of alert rules based on the SLO configuration of that service in the various stages. *Please note:* If no SLO is available in a stage, no alert rule will be created. Besides, the alert will be firing after monitoring a violation of the SLO for more than 10 minutes. 
 
 ```bash
 keptn configure monitoring prometheus --project=sockshop --service=carts
 ```
 
-## Optional: Verify Prometheus setup in your cluster
-* To verify that the Prometheus scrape jobs are correctly set up, you can access Prometheus by enabling port-forwarding for the prometheus-service:
+## Verify Prometheus setup in your cluster
+
+* To verify that the Prometheus scrape jobs are correctly set up, you can access Prometheus by enabling port-forwarding for the prometheus-server:
 
 ```BASH
 kubectl port-forward svc/prometheus-server 8080:80 -n default
 ```
 
-Prometheus is then available on [localhost:8080/targets](http://localhost:8080/targets) where you can see the targets for the service.{{< popup_image link="./assets/prometheus-targets.png" caption="Prometheus Targets">}}
+Prometheus is then available on [localhost:8080/targets](http://localhost:8080/targets) where you can see the targets for the service.
+
+{{< popup_image link="./assets/prometheus-targets.png" caption="Prometheus Targets">}}
 
 
 ## Configure custom Prometheus SLIs
