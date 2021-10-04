@@ -328,7 +328,7 @@ The problem can appear in virtually any service and scenario:
 
 1. LoadGenerator for keptn/examples
 1. Prometheus-Service/Prometheus-SLI-Service trying to access Prometheus
-1. Dynatrace-Service/Dynatrace-SLI-Service trying to access a Dynatrace environment
+1. Dynatrace-Service trying to access a Dynatrace environment
 1. Unleash-Service trying to access Unleash
 1. Any keptn-service trying to send a CloudEvent via the event-broker
 
