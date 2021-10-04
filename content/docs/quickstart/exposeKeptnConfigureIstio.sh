@@ -47,9 +47,13 @@ print_headline "Setup up Istio for Ingress and traffic shifting for blue/green d
 echo "curl -L https://istio.io/downloadIstio | ISTIO_VERSION=$ISTIO_VERSION sh -"
 curl -L https://istio.io/downloadIstio | ISTIO_VERSION=$ISTIO_VERSION sh -
 
-print_headline "Installing Istio"
-echo "./istio-$ISTIO_VERSION/bin/istioctl install -y"
-./istio-$ISTIO_VERSION/bin/istioctl install -y
+print_headline "Installing Istio via Helm"
+#echo "kubectl create namespace istio-sytstem"
+kubectl create namespace istio-sytstem
+
+helm install istio-base /istio-$ISTIO_VERSION/manifests/charts/base -n istio-system
+helm install istiod /istio-$ISTIO_VERSION/manifests/charts/istio-control/istio-discovery -n istio-system
+helm install istio-ingress /istio-$ISTIO_VERSION/manifests/charts/gateways/istio-ingress -n istio-system
 
 echo "Removing downloaded Istio resources"
 rm -rf ./istio-$ISTIO_VERSION
