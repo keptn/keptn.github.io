@@ -22,7 +22,7 @@ hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
 
     Now, let's **start a cluster for Keptn**!
     ```
-    k3d cluster create mykeptn -p "8082:80@agent[0]" --k3s-server-arg '--no-deploy=traefik' --agents 1
+    k3d cluster create mykeptn -p "8082:80@agent[0]" --k3s-server-arg '--no-deploy=traefik' --k3s-server-arg "--kube-proxy-arg=conntrack-max-per-core=0"  --k3s-agent-arg "--kube-proxy-arg=conntrack-max-per-core=0" --agents 1
     ```
 
 1. **Download and install the [Keptn CLI](../0.9.x/reference/cli)**
