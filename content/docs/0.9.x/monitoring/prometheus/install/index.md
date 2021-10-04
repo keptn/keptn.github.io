@@ -93,9 +93,7 @@ kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-serv
 
 * Execute the following command which performs: 
   * an update of the Prometheus configuration to add scrape jobs for the service in the specified Keptn project
-  * the defintion of alert rules based on the SLO configuration of that service in the various stages:
-    * If no SLO is available in this stage, no alert rule will be created.
-    * By default, the alert will be firing after 10 minutes. 
+  * the defintion of alert rules based on the SLO configuration of that service in the various stages. *Please note:* If no SLO is available in a stage, no alert rule will be created. Besides, the alert will be firing after monitoring a violation of the SLO for more than 10 minutes. 
 
 ```bash
 keptn configure monitoring prometheus --project=sockshop --service=carts
