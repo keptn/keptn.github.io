@@ -25,6 +25,38 @@ function verify_test_step() {
   fi
 }
 
+# wait for a deployment to be up and running
+function wait_for_deployment_in_namespace() {
+  DEPLOYMENT=$1; NAMESPACE=$2;
+  RETRY=0; RETRY_MAX=20;
+
+  while [[ $RETRY -lt $RETRY_MAX ]]; do
+    DEPLOYMENT_LIST=$(eval "kubectl get deployments -n ${NAMESPACE} | awk '/$DEPLOYMENT /'" | awk '{print $1}') # list of multiple deployments when starting with the same name
+    if [[ -z "$DEPLOYMENT_LIST" ]]; then
+      RETRY=$((RETRY+1))
+      echo "Retry: ${RETRY}/${RETRY_MAX} - Deployment not found - waiting 15s for deployment ${DEPLOYMENT} in namespace ${NAMESPACE}"
+      sleep 15
+    else
+      READY_REPLICAS=$(eval kubectl get deployments "$DEPLOYMENT" -n "$NAMESPACE" -o=jsonpath='{$.status.availableReplicas}')
+      WANTED_REPLICAS=$(eval kubectl get deployments "$DEPLOYMENT"  -n "$NAMESPACE" -o=jsonpath='{$.spec.replicas}')
+      UNAVAILABLE_REPLICAS=$(eval kubectl get deployments "$DEPLOYMENT"  -n "$NAMESPACE" -o=jsonpath='{$.status.unavailableReplicas}')
+      if [[ "$READY_REPLICAS" = "$WANTED_REPLICAS" && "$UNAVAILABLE_REPLICAS" = "" ]]; then
+        echo "Found deployment ${DEPLOYMENT} in namespace ${NAMESPACE}: ${DEPLOYMENT_LIST}"
+        break
+      else
+          RETRY=$((RETRY+1))
+          echo "Retry: ${RETRY}/${RETRY_MAX} - Unsufficient replicas for deployment - waiting 15s for deployment ${DEPLOYMENT} in namespace ${NAMESPACE}"
+          sleep 15
+      fi
+    fi
+  done
+
+  if [[ $RETRY == "$RETRY_MAX" ]]; then
+    print_error "Could not find deployment ${DEPLOYMENT} in namespace ${NAMESPACE}"
+    exit 1
+  fi
+}
+
 # istio settings
 ISTIO_VERSION=$1
 INGRESS_PORT=$2
@@ -47,9 +79,13 @@ print_headline "Setup up Istio for Ingress and traffic shifting for blue/green d
 echo "curl -L https://istio.io/downloadIstio | ISTIO_VERSION=$ISTIO_VERSION sh -"
 curl -L https://istio.io/downloadIstio | ISTIO_VERSION=$ISTIO_VERSION sh -
 
-print_headline "Installing Istio"
-echo "./istio-$ISTIO_VERSION/bin/istioctl install -y"
-./istio-$ISTIO_VERSION/bin/istioctl install -y
+print_headline "Installing Istio via Helm"
+#echo "kubectl create namespace istio-sytstem"
+kubectl create namespace istio-system
+
+helm install istio-base ./istio-$ISTIO_VERSION/manifests/charts/base -n istio-system
+helm install istiod ./istio-$ISTIO_VERSION/manifests/charts/istio-control/istio-discovery -n istio-system
+helm install istio-ingress ./istio-$ISTIO_VERSION/manifests/charts/gateways/istio-ingress -n istio-system
 
 echo "Removing downloaded Istio resources"
 rm -rf ./istio-$ISTIO_VERSION
@@ -117,6 +153,9 @@ kubectl create configmap -n keptn ingress-config --from-literal=ingress_hostname
 # Restart helm service
 echo "Restarting helm-service to load new settings"
 kubectl delete pod -n keptn -lapp.kubernetes.io/name=helm-service
+
+echo "Waiting for Istio Ingress to be ready... it usually takes 1-3 minutes..."
+wait_for_deployment_in_namespace "istio-ingressgateway" "istio-system"
 
 # Authenticating Keptn CLI against the current Keptn installation
 print_headline "Authenticating Keptn CLI against Keptn installation"
