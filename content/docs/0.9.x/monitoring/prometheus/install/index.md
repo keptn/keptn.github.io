@@ -91,9 +91,9 @@ kubectl apply -f service.yaml -n keptn
 kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/release-0.6.2/deploy/role.yaml -n keptn
 ```
 
-* Execute the following command which performs the actions to: 
-  * update the Prometheus configuration to add scrape jobs for the service in the specified Keptn project
-  * defines an alert rule based on the SLO configuration in a stage:
+* Execute the following command which performs: 
+  * an update of the Prometheus configuration to add scrape jobs for the service in the specified Keptn project
+  * the defintion of alert rules based on the SLO configuration of that service in the various stages:
     * If no SLO is available in this stage, no alert rule will be created.
     * By default, the alert will be firing after 10 minutes. 
 
