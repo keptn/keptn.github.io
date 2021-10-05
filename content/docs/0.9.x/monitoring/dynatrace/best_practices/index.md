@@ -1,7 +1,7 @@
 ---
 title: Best Practices
 description: Best practices for Dynatrace monitoring
-weight: 3
+weight: 4
 icon: setup
 ---
 
