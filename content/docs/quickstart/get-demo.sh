@@ -93,40 +93,27 @@ VERSION=v0.1.0
 
 verify_helm_installation
 
-print_headline "Downloading demo resources"
-echo "This will create a local folder ./podtato-head"
-echo "git clone https://github.com/cncf/podtato-head.git --single-branch"
-git clone https://github.com/cncf/podtato-head.git --single-branch
+#print_headline "Downloading demo resources"
+#echo "This will create a local folder ./podtato-head"
+#echo "git clone https://github.com/cncf/podtato-head.git --single-branch"
+#git clone https://github.com/cncf/podtato-head.git --single-branch
 
-cd podtato-head/delivery/keptn
+#cd podtato-head/delivery/keptn
 
 print_headline "Create a Keptn project"
-echo "keptn create project $PROJECT --shipyard=./shipyard.yaml"
-keptn create project $PROJECT --shipyard=./shipyard.yaml
+echo "keptn create project $PROJECT --shipyard=./demo/shipyard.yaml"
+keptn create project $PROJECT --shipyard=./demo/shipyard.yaml
 verify_test_step $? "keptn create project command failed."
 
-print_headline "Onboard a Keptn service"
-echo "keptn onboard service $SERVICE --project=$PROJECT --chart=./helm-charts/helloserver"
-keptn onboard service $SERVICE --project="${PROJECT}" --chart=./helm-charts/helloserver
-verify_test_step $? "keptn onboard carts failed."
+print_headline "Create a Keptn service"
+echo "keptn create service $SERVICE --project=${PROJECT} "
+keptn create service $SERVICE --project="${PROJECT}" 
 
-print_headline "Trigger the delivery sequence with Keptn"
-echo "keptn trigger delivery --project=$PROJECT --service=$SERVICE --image=$IMAGE --tag=v$VERSION"
-keptn trigger delivery --project=$PROJECT --service=$SERVICE --image=$IMAGE --tag=$VERSION
-verify_test_step $? "Trigger delivery for helloservice failed"
+print_headline "Add Helm chart for $SERVICE"
+keptn add-resource --project=$PROJECT --service=$SERVICE --all-stages --resource=./demo/helm/helloservice.tgz --resourceUri=helm/helloservice.tgz
 
-echo "Following the multi stage delivery in Keptn's bridge while we are setting up Prometheus and configure quality gates"
-echo "Find the details here: http://$INGRESS_IP.nip.io:$INGRESS_PORT/bridge/project/podtatohead/sequence"
-echo "Attempt to open Keptn's bridge in 5 seconds..."
-echo "Demo setup will continue in the background while you can explore the Keptn's bridge..."
-sleep 5
-
-if ! command -v open &> /dev/null
-then
-  echo http://$INGRESS_IP.nip.io:$INGRESS_PORT/bridge/project/podtatohead/sequence
-else
-  open http://$INGRESS_IP.nip.io:$INGRESS_PORT/bridge/project/podtatohead/sequence
-fi
+print_headline "Add endpoints file"
+keptn add-resource --project=$PROJECT --service=$SERVICE --stage=hardening --resource=./demo/helm/endpoints.yaml --resourceUri=helm/endpoints.yaml
 
 # adding quality gates
 print_headline "Installing Prometheus"
@@ -138,8 +125,6 @@ kubectl apply -f - <<EOF
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  annotations:
-    kubernetes.io/ingress.class: istio
   name: prometheus-ingress
   namespace: monitoring
 spec:
@@ -161,8 +146,8 @@ verify_test_step $? "Applying Ingress for Prometheus failed"
 echo "Prometheus is available at http://prometheus.$INGRESS_IP.nip.io:$INGRESS_PORT "
 
 print_headline "Setting up Prometheus integration"
-kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/release-0.6.1/deploy/role.yaml -n monitoring
-kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/release-0.6.1/deploy/service.yaml 
+kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/release-0.6.2/deploy/role.yaml -n monitoring
+kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/release-0.6.2/deploy/service.yaml 
 
 promsecretdata="url: http://prometheus-server.monitoring.svc.cluster.local:80"
 echo "kubectl create secret generic -n keptn prometheus-credentials-$PROJECT --from-literal=prometheus-credentials=$promsecretdata"
@@ -170,12 +155,12 @@ echo "kubectl create secret generic -n keptn prometheus-credentials-$PROJECT --f
 kubectl create secret generic -n keptn prometheus-credentials-$PROJECT --from-literal=prometheus-credentials="$promsecretdata"
 
 echo "Adding SLIs for Prometheus"
-keptn add-resource --project=$PROJECT --stage=hardening --service=$SERVICE --resource=prometheus/sli.yaml --resourceUri=prometheus/sli.yaml
+keptn add-resource --project=$PROJECT --stage=hardening --service=$SERVICE --resource=./demo/prometheus/sli.yaml --resourceUri=prometheus/sli.yaml
 echo "Adding SLO definition file for the quality gate"
-keptn add-resource --project=$PROJECT --stage=hardening --service=$SERVICE --resource=slo.yaml --resourceUri=slo.yaml
+keptn add-resource --project=$PROJECT --stage=hardening --service=$SERVICE --resource=./demo/slo.yaml --resourceUri=slo.yaml
 
 # check for prometheus to be available at this point
-echo "Waiting for Prometheus to be ready"
+print_headline "Waiting for Prometheus to be ready"
 wait_for_deployment_in_namespace "prometheus-service" "keptn"
 wait_for_deployment_in_namespace "prometheus-server" "monitoring"
 
@@ -185,18 +170,39 @@ keptn configure monitoring prometheus --project=$PROJECT --service=$SERVICE
 
 # adding tests to the service
 print_headline "Adding some load tests"
-keptn add-resource --project=$PROJECT --stage=hardening --service=$SERVICE --resource=jmeter/load.jmx --resourceUri=jmeter/load.jmx
-keptn add-resource --project=$PROJECT --stage=hardening --service=$SERVICE --resource=jmeter/jmeter.conf.yaml --resourceUri=jmeter/jmeter.conf.yaml
+keptn add-resource --project=$PROJECT --service=$SERVICE --stage=hardening --resource=./demo/jmeter/jmeter.conf.yaml --resourceUri=jmeter/jmeter.conf.yaml
+keptn add-resource --project=$PROJECT --service=$SERVICE --stage=hardening --resource=./demo/jmeter/load.jmx --resourceUri=jmeter/load.jmx
 
 # check for prometheus to be available at this point
 echo "Waiting for Prometheus to be ready"
 wait_for_deployment_in_namespace "prometheus-service" "keptn"
 wait_for_deployment_in_namespace "prometheus-server" "monitoring"
 
-# triggering new delivery
-print_headline "Trigger the new delivery sequence with Keptn"
+print_headline "Trigger the delivery sequence with Keptn"
+echo "keptn trigger delivery --project=$PROJECT --service=$SERVICE --image=$IMAGE --tag=$VERSION"
 keptn trigger delivery --project=$PROJECT --service=$SERVICE --image=$IMAGE --tag=$VERSION
 verify_test_step $? "Trigger delivery for helloservice failed"
+
+# TODO 
+# add failing quality gate here
+
+# TODO
+# add remediation demo here
+
+
+echo "Following the multi stage delivery in Keptn's bridge while we are setting up Prometheus and configure quality gates"
+echo "Find the details here: http://$INGRESS_IP.nip.io:$INGRESS_PORT/bridge/project/$PROJECT/sequence"
+echo "Attempt to open Keptn's bridge in 5 seconds..."
+echo "Demo setup will continue in the background while you can explore the Keptn's bridge..."
+sleep 5
+
+if ! command -v open &> /dev/null
+then
+  echo http://$INGRESS_IP.nip.io:$INGRESS_PORT/bridge/project/podtatohead/sequence
+else
+  open http://$INGRESS_IP.nip.io:$INGRESS_PORT/bridge/project/podtatohead/sequence
+fi
+
 
 print_headline "Have a look at the Keptn's Bridge and explore the demo project"
 echo "You can run a new delivery sequence with the following command"
@@ -206,4 +212,4 @@ print_headline "Demo has been successfully set up"
 echo "If you want to connect the demo to a Git upstream to learn how Keptn manages the resources please execute"
 echo " keptn update project podtatohead --git-user=GIT_USER --git-token=GIT_TOKEN --git-remote-url=GIT_REMOTE_URL "
 echo "with your git user, token, and remote url."
-echo "Learn more at https://keptn.sh/docs/0.8.x/manage/git_upstream/ "
+echo "Learn more at https://keptn.sh/docs/0.9.x/manage/git_upstream/ "
