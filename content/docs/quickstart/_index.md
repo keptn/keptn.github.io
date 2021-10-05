@@ -64,13 +64,13 @@ hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
     </p>
     </details>
 
-1. **Install and configure Istio** for Ingress + continuous delivery use-case
+1. **Configure Ingress** to access Keptn
     ```
     curl -SL https://raw.githubusercontent.com/keptn/keptn.github.io/master/content/docs/quickstart/exposeKeptn.sh | bash
     ```
 
 
-1. (Optional but recommended) **Create a demo project** with multi-stage pipeline + SLO-based quality gates
+1. **Create a demo project** with multi-stage pipeline + SLO-based quality gates
     ```
     curl -SL https://raw.githubusercontent.com/keptn/keptn.github.io/master/content/docs/quickstart/get-demo.sh | bash
     ```
