@@ -8,14 +8,6 @@ hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
 
 ## Available integrations
 
-WORK IN PROGRESS
-
-{{< rawhtml >}}
-<div class="artifacthub-widget-group" data-url="https://staging.artifacthub.io/packages/search?kind=10&sort=relevance&page=1" data-theme="light" data-header="false" data-color="#417598" data-responsive="true"  data-loading="true"></div><script async src="https://artifacthub.io/artifacthub-widget.js"></script>
-{{< /rawhtml >}}
-
-
-
 Please find here a list of all *Keptn-services* and *SLI-providers* that are available for the last Keptn release. Feel free to install these integrations on a Keptn and to use them according to their documentation in the corresponding repository. The maintainers of those services are referenced in the CODEOWNERS file of each repo. Most of the repositories you can find in the [github.com/keptn-contrib](https://github.com/keptn-contrib) organization and are referenced below.  
 
 - If you identify a bug you would like to report, please create an issue in the repository of the Keptn-service. 
