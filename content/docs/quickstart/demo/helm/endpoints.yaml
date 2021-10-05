@@ -1,0 +1,4 @@
+deploymentURIsLocal:
+  - "http://helloservice.podtatohead-hardening:80" 
+
+
