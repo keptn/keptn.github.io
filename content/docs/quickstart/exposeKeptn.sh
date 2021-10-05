@@ -57,14 +57,9 @@ function wait_for_deployment_in_namespace() {
   fi
 }
 
-# istio settings
-ISTIO_VERSION=$1
+# ingress settings
 INGRESS_PORT=$2
 INGRESS_IP=127.0.0.1
-
-if [ -z "$ISTIO_VERSION" ]; then
- 	ISTIO_VERSION=1.10.0
-fi
 
 if [ -z "$INGRESS_PORT" ]; then
  	INGRESS_PORT=8082
@@ -74,21 +69,6 @@ fi
 MAX_RETRIES=5
 SLEEP_TIME=5
 
-# Download and install Istio
-print_headline "Setup up Istio for Ingress and traffic shifting for blue/green deployments"
-echo "curl -L https://istio.io/downloadIstio | ISTIO_VERSION=$ISTIO_VERSION sh -"
-curl -L https://istio.io/downloadIstio | ISTIO_VERSION=$ISTIO_VERSION sh -
-
-print_headline "Installing Istio via Helm"
-#echo "kubectl create namespace istio-sytstem"
-kubectl create namespace istio-system
-
-helm install istio-base ./istio-$ISTIO_VERSION/manifests/charts/base -n istio-system
-helm install istiod ./istio-$ISTIO_VERSION/manifests/charts/istio-control/istio-discovery -n istio-system
-helm install istio-ingress ./istio-$ISTIO_VERSION/manifests/charts/gateways/istio-ingress -n istio-system
-
-echo "Removing downloaded Istio resources"
-rm -rf ./istio-$ISTIO_VERSION
 
 print_headline "Configuring Ingress for your local installation"
 
@@ -97,17 +77,16 @@ kubectl apply -f - <<EOF
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  annotations:
-    kubernetes.io/ingress.class: istio
   name: api-keptn-ingress
   namespace: keptn
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   rules:
-  - host: $INGRESS_IP.nip.io
-    http:
+  - http:
       paths:
-      - pathType: Prefix
-        path: /
+      - path: /
+        pathType: Prefix
         backend:
           service:
             name: api-gateway-nginx
@@ -115,29 +94,8 @@ spec:
               number: 80
 EOF
 
-verify_test_step $? "Applying istio public gateway failed"
+verify_test_step $? "Applying public gateway failed"
 
-# Applying public gateway
-kubectl apply -f - <<EOF
----
-apiVersion: networking.istio.io/v1alpha3
-kind: Gateway
-metadata:
-  name: public-gateway
-  namespace: istio-system
-spec:
-  selector:
-    istio: ingressgateway
-  servers:
-  - port:
-      name: http
-      number: 80
-      protocol: HTTP
-    hosts:
-    - '*'
-EOF
-
-verify_test_step $? "Applying istio public gateway failed"
 
 # Disable Bridge authentication (running on localhost)
 print_headline "Disabling authentication for Keptn's Bridge (since we are running locally)"
@@ -148,19 +106,19 @@ kubectl -n keptn delete pods --selector=app.kubernetes.io/name=bridge --wait
 
 # Creating Keptn ingress config map
 print_headline "Creating Ingress config for Keptn"
-kubectl create configmap -n keptn ingress-config --from-literal=ingress_hostname_suffix=$(kubectl -n keptn get ingress api-keptn-ingress -ojsonpath='{.spec.rules[0].host}') --from-literal=ingress_port=$INGRESS_PORT --from-literal=ingress_protocol=http --from-literal=istio_gateway=public-gateway.istio-system -oyaml --dry-run=client | kubectl apply -f -
+# TODO
+#kubectl create configmap -n keptn ingress-config --from-literal=ingress_hostname_suffix=$(kubectl -n keptn get ingress api-keptn-ingress -ojsonpath='{.spec.rules[0].host}') --from-literal=ingress_port=$INGRESS_PORT --from-literal=ingress_protocol=http --from-literal=istio_gateway=public-gateway.istio-system -oyaml --dry-run=client | kubectl apply -f -
 
 # Restart helm service
 echo "Restarting helm-service to load new settings"
 kubectl delete pod -n keptn -lapp.kubernetes.io/name=helm-service
 
-echo "Waiting for Istio Ingress to be ready... it usually takes 1-3 minutes..."
-wait_for_deployment_in_namespace "istio-ingressgateway" "istio-system"
-
 # Authenticating Keptn CLI against the current Keptn installation
 print_headline "Authenticating Keptn CLI against Keptn installation"
 echo "keptn auth --endpoint=http://$INGRESS_IP.nip.io:$INGRESS_PORT --api-token=*****"
 keptn auth --endpoint=http://$INGRESS_IP.nip.io:$INGRESS_PORT --api-token=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
+
+wait_for_deployment_in_namespace "bridge" "keptn"
 
 # Opening bridge
 print_headline "Opening Keptn's Bridge..."

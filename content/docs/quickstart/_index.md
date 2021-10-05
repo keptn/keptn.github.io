@@ -22,7 +22,7 @@ hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
 
     Now, let's **start a cluster for Keptn**!
     ```
-    k3d cluster create mykeptn -p "8082:80@agent[0]" --k3s-server-arg '--no-deploy=traefik' --k3s-server-arg "--kube-proxy-arg=conntrack-max-per-core=0"  --k3s-agent-arg "--kube-proxy-arg=conntrack-max-per-core=0" --agents 1
+    k3d cluster create mykeptn -p "8082:80@loadbalancer" --k3s-server-arg "--kube-proxy-arg=conntrack-max-per-core=0"  --k3s-agent-arg "--kube-proxy-arg=conntrack-max-per-core=0" --agents 1
     ```
 
 1. **Download and install the [Keptn CLI](../0.9.x/reference/cli)**
@@ -43,7 +43,7 @@ hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
     <p>The installation logs will print the following output:
     <pre>
     Installing Keptn ...
-    Helm Chart used for Keptn installation: https://storage.googleapis.com/keptn-installer/keptn-0.9.0.tgz
+    Helm Chart used for Keptn installation: https://storage.googleapis.com/keptn-installer/keptn-0.9.2.tgz
     Start upgrading Helm Chart keptn in namespace keptn
     Finished upgrading Helm Chart keptn in namespace keptn
     Keptn control plane has been successfully set up on your cluster.
@@ -56,9 +56,9 @@ hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
     &nbsp;* To quickly access Keptn, you can use a port-forward and then authenticate your Keptn CLI:
     &nbsp;- kubectl -n keptn port-forward service/api-gateway-nginx 8080:80
     &nbsp;- keptn auth --endpoint=http://localhost:8080/api --api-token=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
-    &nbsp;* Alternatively, follow the instructions provided at: https://keptn.sh/docs/0.8.x/operate/install/#authenticate-keptn-cli
+    &nbsp;* Alternatively, follow the instructions provided at: https://keptn.sh/docs/0.9.x/operate/install/#authenticate-keptn-cli
     &nbsp;* To expose Keptn on a public endpoint, please continue with the installation guidelines provided at:
-    &nbsp;- https://keptn.sh/docs/0.8.x/operate/install#install-keptn
+    &nbsp;- https://keptn.sh/docs/0.9.x/operate/install#install-keptn
     </pre>
     **There is no need to follow the instructions from the installation log - the quickstart guide will cover this!**
     </p>
@@ -66,7 +66,7 @@ hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
 
 1. **Install and configure Istio** for Ingress + continuous delivery use-case
     ```
-    curl -SL https://raw.githubusercontent.com/keptn/keptn.github.io/master/content/docs/quickstart/exposeKeptnConfigureIstio.sh | bash
+    curl -SL https://raw.githubusercontent.com/keptn/keptn.github.io/master/content/docs/quickstart/exposeKeptn.sh | bash
     ```
 
 
