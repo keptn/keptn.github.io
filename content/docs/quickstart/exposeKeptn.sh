@@ -104,15 +104,6 @@ kubectl -n keptn delete secret bridge-credentials --ignore-not-found=true
 echo "Restart Keptn's Bridge to load new settings"
 kubectl -n keptn delete pods --selector=app.kubernetes.io/name=bridge --wait
 
-# Creating Keptn ingress config map
-print_headline "Creating Ingress config for Keptn"
-# TODO
-#kubectl create configmap -n keptn ingress-config --from-literal=ingress_hostname_suffix=$(kubectl -n keptn get ingress api-keptn-ingress -ojsonpath='{.spec.rules[0].host}') --from-literal=ingress_port=$INGRESS_PORT --from-literal=ingress_protocol=http --from-literal=istio_gateway=public-gateway.istio-system -oyaml --dry-run=client | kubectl apply -f -
-
-# Restart helm service
-echo "Restarting helm-service to load new settings"
-kubectl delete pod -n keptn -lapp.kubernetes.io/name=helm-service
-
 # Authenticating Keptn CLI against the current Keptn installation
 print_headline "Authenticating Keptn CLI against Keptn installation"
 echo "keptn auth --endpoint=http://$INGRESS_IP.nip.io:$INGRESS_PORT --api-token=*****"
