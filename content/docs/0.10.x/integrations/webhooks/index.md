@@ -49,12 +49,28 @@ Click **Create subscription** to save and enable the webhook for your integratio
 
 ## Customize request payload
 
-The output format of the webhook (i.e., payload of the request body) can be customized using event data to match the required input format of the tool you are integrating with. For doing so, put your cursor in the text field at the spot where you would like to customize the payload. Then click the *computer* icon that opens a list of data fields you can add to the payload. This list of data fields is derived from the event your webhook is subscribed to. 
+The output format of the webhook (i.e., the payload of the request body) can be customized using event data to match the required input format of the tool you are integrating with. Therefore, you can reference the data field (event property) using a templating mechanism. For example, if you would like to get the value of the `project` property from the subscribed event, type in: `{{.data.project}}`. A look at the example event can help you finding the proper data field. 
+
+* An example of a customized request payload:   
+
+```
+{
+  "text": "Evaluation in {{.data.stage}} finished with result {{.data.evaluation.result}} and score {{.data.evaluation.score}}."
+}
+```
+
+<details><summary>*Preview* of customization support released with 0.11.0</summary>
+<p>
+
+For a more convenient way, a feature is planned where you can put your cursor in the text field at the spot where you would like to customize the payload. Then click the *computer* icon that opens a list of data fields you can add to the payload. This list of data fields is derived from the event your webhook is subscribed to. 
 
 {{< popup_image
 link="./assets/customize-payload.png"
 caption="Select event data to customize the request payload"
 width="700px">}}
+
+</p>
+</details>
 
 ## Include sensitive data
 
@@ -127,4 +143,3 @@ To delete a webhook, click on the *trash can* icon next to the subscription. Not
 link="./assets/delete-webhook.png"
 caption="Delete a webhook"
 width="700px">}}
-
