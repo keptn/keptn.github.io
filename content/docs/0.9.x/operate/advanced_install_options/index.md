@@ -68,11 +68,11 @@ The following artifacts need to be available locally:
 
 **Download Keptn Helm Charts**
 
-Download the Helm charts from the [Keptn 0.9.0 release](https://github.com/keptn/keptn/releases/tag/0.9.0):
+Download the Helm charts from the [Keptn 0.9.2 release](https://github.com/keptn/keptn/releases/tag/0.9.2):
 
-* Keptn Control Plane: https://github.com/keptn/keptn/releases/download/0.9.0/keptn-0.9.0.tgz
-* helm-service (if needed): https://github.com/keptn/keptn/releases/download/0.9.0/helm-service-0.9.0.tgz
-* jmeter-service (if needed): https://github.com/keptn/keptn/releases/download/0.9.0/jmeter-service-0.9.0.tgz
+* Keptn Control Plane: https://github.com/keptn/keptn/releases/download/0.9.2/keptn-0.9.2.tgz
+* helm-service (if needed): https://github.com/keptn/keptn/releases/download/0.9.2/helm-service-0.9.2.tgz
+* jmeter-service (if needed): https://github.com/keptn/keptn/releases/download/0.9.2/jmeter-service-0.9.2.tgz
 
 Move the helm charts to a directory on your local machine, e.g., `offline-keptn`.
 
@@ -81,9 +81,9 @@ For convenience, the following script creates this directory and downloads the r
 ```console
 mkdir offline-keptn
 cd offline-keptn
-curl -L https://github.com/keptn/keptn/releases/download/0.9.0/keptn-0.9.0.tgz -o keptn-0.9.0.tgz
-curl -L https://github.com/keptn/keptn/releases/download/0.9.0/helm-service-0.9.0.tgz -o helm-service-0.9.0.tgz
-curl -L https://github.com/keptn/keptn/releases/download/0.9.0/jmeter-service-0.9.0.tgz -o jmeter-service-0.9.0.tgz
+curl -L https://github.com/keptn/keptn/releases/download/0.9.2/keptn-0.9.2.tgz -o keptn-0.9.2.tgz
+curl -L https://github.com/keptn/keptn/releases/download/0.9.2/helm-service-0.9.2.tgz -o helm-service-0.9.2.tgz
+curl -L https://github.com/keptn/keptn/releases/download/0.9.2/jmeter-service-0.9.2.tgz -o jmeter-service-0.9.2.tgz
 cd ..
 ```
 
@@ -92,15 +92,15 @@ cd ..
 Within the Helm Charts several Docker Images are referenced (Keptn specific and some third party dependencies).
 We recommend to pulling, re-tagging and pushing those images to a local registry that the Kubernetes cluster can reach.
 
-We are providing a helper script for this in our Git repository: https://github.com/keptn/keptn/blob/master/installer/airgapped/pull_and_retag_images.sh
+We are providing a helper script for this in our Git repository: https://github.com/keptn/keptn/blob/0.9.2/installer/airgapped/pull_and_retag_images.sh
 
 For convenience, you can use the following commands to download and execute the script:
 
 ```console
 cd offline-keptn
-curl -L https://raw.githubusercontent.com/keptn/keptn/master/installer/airgapped/pull_and_retag_images.sh -o pull_and_retag_images.sh
+curl -L https://raw.githubusercontent.com/keptn/keptn/0.9.2/installer/airgapped/pull_and_retag_images.sh -o pull_and_retag_images.sh
 chmod +x pull_and_retag_images.sh
-KEPTN_TAG=0.9.0 ./pull_and_retag_images.sh "your-registry.localhost:5000/"
+KEPTN_TAG=0.9.2 ./pull_and_retag_images.sh "your-registry.localhost:5000/"
 cd ..
 ```
 
@@ -110,15 +110,15 @@ Please mind the trailing slash for the registry url (e.g., `your-registry.localh
 
 Keptn's Helm chart allows you to specify the name of all images, which can be especially handy in air-gapped systems where you cannot access DockerHub for pulling the images.
 
-We are providing a helper script for this in our Git repository: https://github.com/keptn/keptn/blob/master/installer/airgapped/install_keptn.sh
+We are providing a helper script for this in our Git repository: https://github.com/keptn/keptn/blob/0.9.2/installer/airgapped/install_keptn.sh
 
 For convenience, you can use the following commands to download and execute the script:
 
 ```console
 cd offline-keptn
-curl -L https://raw.githubusercontent.com/keptn/keptn/master/installer/airgapped/install_keptn.sh -o install_keptn.sh
+curl -L https://raw.githubusercontent.com/keptn/keptn/0.9.2/installer/airgapped/install_keptn.sh -o install_keptn.sh
 chmod +x install_keptn.sh
-./install_keptn.sh "your-registry.localhost:5000/" keptn-0.9.0.tgz helm-service-0.9.0.tgz jmeter-service-0.9.0.tgz
+./install_keptn.sh "your-registry.localhost:5000/" keptn-0.9.2.tgz helm-service-0.9.2.tgz jmeter-service-0.9.2.tgz
 cd ..
 ```
 
