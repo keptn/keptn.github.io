@@ -104,7 +104,7 @@ For convenience, you can use the following commands to download and execute the 
 
 ```console
 cd offline-keptn
-curl -L https://raw.githubusercontent.com/keptn/keptn/master/installer/airgapped/pull_and_retag_images.sh -o pull_and_retag_images.sh
+curl -L https://raw.githubusercontent.com/keptn/keptn/0.10.0/installer/airgapped/pull_and_retag_images.sh -o pull_and_retag_images.sh
 chmod +x pull_and_retag_images.sh
 KEPTN_TAG=0.10.0 ./pull_and_retag_images.sh "your-registry.localhost:5000/"
 cd ..
@@ -122,7 +122,7 @@ For convenience, you can use the following commands to download and execute the 
 
 ```console
 cd offline-keptn
-curl -L https://raw.githubusercontent.com/keptn/keptn/master/installer/airgapped/install_keptn.sh -o install_keptn.sh
+curl -L https://raw.githubusercontent.com/keptn/keptn/0.10.0/installer/airgapped/install_keptn.sh -o install_keptn.sh
 chmod +x install_keptn.sh
 ./install_keptn.sh "your-registry.localhost:5000/" keptn-0.10.0.tgz helm-service-0.10.0.tgz jmeter-service-0.10.0.tgz
 cd ..
