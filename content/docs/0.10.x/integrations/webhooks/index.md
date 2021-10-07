@@ -76,7 +76,7 @@ width="700px">}}
 
 When integrating tools by calling their endpoints, many times authentication is needed. This is done by storing an authentication token that is part of the webhook request. In Keptn, you do this as follows: 
 
-* Create a secret with a unique `name`, scope set to `webhook-service`, and a `key:value` pair whereas the key is a unique identifier of your secret and the value holds the sensitive data.
+* Create a secret with a unique `name`, scope set to `keptn-webhook-service`, and a `key:value` pair whereas the key is a unique identifier of your secret and the value holds the sensitive data.
   {{< popup_image
   link="./assets/create-secret.png"
   caption="Create a secret for webhook-service"
@@ -87,6 +87,18 @@ When integrating tools by calling their endpoints, many times authentication is 
   link="./assets/add-secret-value.png"
   caption="Usage of secrets to customize request"
   width="700px">}}
+
+  The key-value pair will be automatically inserted into the selected field in the format `{{.secret.name.key}}`. When the webhook configuration is saved, the secret will be parsed into a different format, which looks like this: `{{.env.secret_name_key}}`. This format represents a unique name that is a referrer to an entry in the `envFrom` property in the `webhook.yaml` file. This `envFrom` property contains added secrets with a referrer name, the given secret name and secret key.
+
+{{< popup_image
+link="./assets/webhook-secret.png"
+caption="envFrom property in webhook.yaml"
+width="700px">}}
+
+{{< popup_image
+link="./assets/webhook-secret-usage.png"
+caption="Usage of envFrom property in webhook.yaml"
+width="700px">}}
 
 ## Advanced Webhook configuration
 
