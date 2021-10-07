@@ -15,7 +15,19 @@ Please find here a list of all *Keptn-services* and *SLI-providers* that are ava
 - If you need more information on version compatibility, please go to the repository where a compatibility-matrix should be provided.
 
 {{< rawhtml >}}
-<div class="artifacthub-widget-group" data-url="https://staging.artifacthub.io/packages/search?kind=10&ts_query_web=contrib&sort=relevance&page=1" data-theme="light" data-header="false" data-color="#417598" data-responsive="true" data-loading="true" data-stars="false"></div><script async src="https://artifacthub.io/artifacthub-widget.js"></script>
+<input id="contib-services-search" type="text" placeholder="Search">
+<script type="text/javascript">
+    const input = document.getElementById("contib-services-search");
+    const groups = document.getElementsByClassName('artifacthub-widget-group');
+    
+    const inputHandler = function(e) {
+      const search = input.value.toLowerCase();
+      groups[0].dataset.url = `https://staging.artifacthub.io/packages/search?kind=10&sort=relevance${e.target.value !== '' ? `&ts_query_web=contrib,${e.target.value}` : '&ts_query_web=contrib'}`;
+    }
+      
+    input.addEventListener('input', inputHandler)
+</script>
+<div class="artifacthub-widget-group" data-url="https://staging.artifacthub.io/packages/search?kind=10&sort=relevance&page=1&ts_query_web=contrib" data-theme="light" data-header="false" data-color="#417598" data-responsive="true"  data-loading="true"></div><script async src="https://artifacthub.io/artifacthub-widget.js"></script>
 {{< /rawhtml >}}
 
 **Notes:**
@@ -31,7 +43,18 @@ Sandbox projects can be found in [github.com/keptn-sandbox](https://github.com/k
 Below are projects that have been shown in any Keptn community or developer meeting and thus have successfully fulfilled the requirements listed in the [contributing guide](https://github.com/keptn-sandbox/contributing) of Keptn Sandbox. 
 
 {{< rawhtml >}}
-<div class="artifacthub-widget-group" data-url="https://staging.artifacthub.io/packages/search?kind=10&ts_query_web=sandbox&sort=relevance&page=1" data-theme="light" data-header="false" data-color="#417598" data-responsive="true" data-loading="true" data-stars="false"></div><script async src="https://artifacthub.io/artifacthub-widget.js"></script>
+<input id="sandbox-services-search" type="text" placeholder="Search">
+<script type="text/javascript">
+    const sandboxInput = document.getElementById("sandbox-services-search");
+    
+    const inputHandler2 = function(e) {
+      const search = sandboxInput.value.toLowerCase();
+      groups[1].dataset.url = `https://staging.artifacthub.io/packages/search?kind=10&sort=relevance${e.target.value !== '' ? `&ts_query_web=sandbox,${e.target.value}` : '&ts_query_web=sandbox'}`;
+    }
+      
+    sandboxInput.addEventListener('input', inputHandler2)
+</script>
+<div class="artifacthub-widget-group" data-url="https://staging.artifacthub.io/packages/search?kind=10&sort=relevance&page=1&ts_query_web=sandbox" data-theme="light" data-header="false" data-color="#417598" data-responsive="true"  data-loading="true"></div><script async src="https://artifacthub.io/artifacthub-widget.js"></script>
 {{< /rawhtml >}}
 
 ### Contribute your service
