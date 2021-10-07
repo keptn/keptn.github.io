@@ -88,8 +88,9 @@ fi
 
 PROJECT="podtatohead"
 SERVICE="helloservice"
-IMAGE="ghcr.io/podtato-head/podtatoserver"
-VERSION=v0.1.0
+IMAGE="docker.io/gabrieltanner/hello-server"
+VERSION=v0.1.1
+SLOW_VERSION=v0.1.2
 
 verify_helm_installation
 
@@ -183,8 +184,12 @@ echo "keptn trigger delivery --project=$PROJECT --service=$SERVICE --image=$IMAG
 keptn trigger delivery --project=$PROJECT --service=$SERVICE --image=$IMAGE --tag=$VERSION
 verify_test_step $? "Trigger delivery for helloservice failed"
 
-# TODO 
-# add failing quality gate here
+print_headline "Trigger a new delivery sequence with Keptn"
+echo "keptn trigger delivery --project=$PROJECT --service=$SERVICE --image=$IMAGE --tag=$SLOW_VERSION"
+keptn trigger delivery --project=$PROJECT --service=$SERVICE --image=$IMAGE --tag=$SLOW_VERSION
+verify_test_step $? "Trigger delivery for helloservice failed"
+
+
 
 # TODO
 # add remediation demo here
