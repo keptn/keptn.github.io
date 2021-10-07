@@ -8,6 +8,8 @@ hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
 ---
 
 
+This Quickstart is designed for Linux-based systems. Consequently, use Linux, MacOS, or Windows subsystem for Linux (WSL).
+
 ## Prerequisites
 - [Docker](https://docker.com/)
 - [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl)
@@ -69,10 +71,14 @@ hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
     curl -SL https://raw.githubusercontent.com/keptn/keptn.github.io/master/content/docs/quickstart/exposeKeptn.sh | bash
     ```
 
-
-1. **Create a demo project** with multi-stage pipeline + SLO-based quality gates
+1. **Perform a multi-stage delivery** with SLO-based quality gates in place
     ```
     curl -SL https://raw.githubusercontent.com/keptn/keptn.github.io/master/content/docs/quickstart/get-demo.sh | bash
+    ```
+
+1. **Simulation of the auto-remediation use case** by triggering a problem event
+    ```
+    tbc
     ```
 
 1. **Explore Keptn!** Please have a look at our [tutorials](https://tutorials.keptn.sh) and [documentation](../) to learn how you can use Keptn.
