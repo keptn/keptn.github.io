@@ -8,7 +8,7 @@ hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
 ---
 
 
-This Quickstart is designed for Linux-based systems. Consequently, use Linux, MacOS, or Windows subsystem for Linux (WSL).
+This quick start is designed for Linux-based systems. Consequently, use Linux, MacOS, or Windows subsystem for Linux (WSL).
 
 ## Prerequisites
 - [Docker](https://docker.com/)
@@ -18,6 +18,7 @@ This Quickstart is designed for Linux-based systems. Consequently, use Linux, Ma
 ## Install Keptn
 
 1. Create local k3d cluster. Therefore, you need to install [k3d](https://k3d.io) if not already present on your machine. You can skip this if k3d is already available on your machine.
+
     ```
     curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=v4.4.4 bash
     ```
@@ -29,6 +30,8 @@ This Quickstart is designed for Linux-based systems. Consequently, use Linux, Ma
 
 1. **Download and install the [Keptn CLI](../0.9.x/reference/cli)**
 
+
+    <!-- TODO: Set to fixed version -->
     ```
     curl -sL https://get.keptn.sh | bash
     ```

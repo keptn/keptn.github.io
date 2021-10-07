@@ -190,10 +190,10 @@ verify_test_step $? "Trigger delivery for helloservice failed"
 # add remediation demo here
 
 
-echo "Following the multi stage delivery in Keptn's bridge while we are setting up Prometheus and configure quality gates"
+echo "Following the multi stage delivery in Keptn Bridge while we are setting up Prometheus and configure quality gates"
 echo "Find the details here: http://$INGRESS_IP.nip.io:$INGRESS_PORT/bridge/project/$PROJECT/sequence"
-echo "Attempt to open Keptn's bridge in 5 seconds..."
-echo "Demo setup will continue in the background while you can explore the Keptn's bridge..."
+echo "Attempt to open Keptn Bridge in 5 seconds..."
+echo "Demo setup will continue in the background while you can explore the Keptn Bridge..."
 sleep 5
 
 if ! command -v open &> /dev/null
@@ -204,7 +204,7 @@ else
 fi
 
 
-print_headline "Have a look at the Keptn's Bridge and explore the demo project"
+print_headline "Have a look at the Keptn Bridge and explore the demo project"
 echo "You can run a new delivery sequence with the following command"
 echo "keptn trigger delivery --project=$PROJECT --service=$SERVICE --image=$IMAGE --tag=$VERSION"
 

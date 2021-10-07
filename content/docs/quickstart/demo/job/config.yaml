@@ -1,0 +1,26 @@
+apiVersion: v2
+actions:
+  - name: "Execute scaling action"
+    events:
+      - name: "sh.keptn.event.action.triggered"
+        jsonpath:
+          property: "$.data.action.action"
+          match: "scaling"
+    tasks:
+      - name: "Execute scaling action"
+        image: bitnami/kubectl:1.21
+        workingDir: "/bin"
+        cmd:
+          - echo
+        args: 
+          - 'implement remediation action here for project $PROJECT, in stage $STAGE'
+        env:
+          - name: PROJECT
+            value: "$.data.project"
+            valueFrom: event
+          - name: STAGE
+            value: "$.data.stage"
+            valueFrom: event
+          - name: SERVICE
+            value: "$.data.service"
+            valueFrom: event
