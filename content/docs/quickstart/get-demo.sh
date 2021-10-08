@@ -1,6 +1,12 @@
 #!/bin/bash
 set -e
 
+PROJECT="podtatohead"
+SERVICE="helloservice"
+IMAGE="docker.io/jetzlstorfer/helloserver"
+VERSION=0.1.1
+SLOW_VERSION=0.1.2
+
 #source <(curl -s https://raw.githubusercontent.com/keptn/keptn/0.8.5/test/utils.sh)
 
 function print_headline() {
@@ -86,11 +92,6 @@ if [ -z "$INGRESS_PORT" ]; then
  	INGRESS_PORT=8082
 fi
 
-PROJECT="podtatohead"
-SERVICE="helloservice"
-IMAGE="docker.io/gabrieltanner/hello-server"
-VERSION=v0.1.1
-SLOW_VERSION=v0.1.2
 
 verify_helm_installation
 
