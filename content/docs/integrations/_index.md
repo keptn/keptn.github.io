@@ -8,7 +8,7 @@ hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
 
 ## Integrations
 
-Please find here a list of all *Keptn-services* and *SLI-providers* that are available for the last Keptn release. Feel free to install these integrations on a Keptn and to use them according to their documentation in the corresponding repository. The maintainers of those services are referenced in the CODEOWNERS file of each repo. Most of the repositories you can find in the [github.com/keptn-contrib](https://github.com/keptn-contrib) organization and are referenced below.  
+Please find here a list of all *Keptn-services* and *SLI-providers* that are available for the last Keptn release. Feel free to install these integrations on a Keptn and to use them according to their documentation in the corresponding repository. The maintainers of those services are referenced in the CODEOWNERS file of each repo. Most of the repositories you can find in the [github.com/keptn-contrib](https://github.com/keptn-contrib) organization and are referenced below.
 
 - If you identify a bug you would like to report, please create an issue in the repository of the Keptn-service. 
 
@@ -27,7 +27,7 @@ Please find here a list of all *Keptn-services* and *SLI-providers* that are ava
       
     input.addEventListener('input', inputHandler)
 </script>
-<div class="artifacthub-widget-group" data-url="https://staging.artifacthub.io/packages/search?kind=10&sort=relevance&page=1&ts_query_web=contrib" data-theme="light" data-header="false" data-color="#417598" data-responsive="true"  data-loading="true"></div><script async src="https://artifacthub.io/artifacthub-widget.js"></script>
+<div class="artifacthub-widget-group" data-url="https://staging.artifacthub.io/packages/search?kind=10&sort=relevance&page=1&ts_query_web=contrib" data-theme="light" data-header="false" data-color="#417598" data-stars="false" data-responsive="true" data-loading="true"></div><script async src="https://artifacthub.io/artifacthub-widget.js"></script>
 {{< /rawhtml >}}
 
 **Notes:**
@@ -54,7 +54,7 @@ Below are projects that have been shown in any Keptn community or developer meet
       
     sandboxInput.addEventListener('input', inputHandler2)
 </script>
-<div class="artifacthub-widget-group" data-url="https://staging.artifacthub.io/packages/search?kind=10&sort=relevance&page=1&ts_query_web=sandbox" data-theme="light" data-header="false" data-color="#417598" data-responsive="true"  data-loading="true"></div><script async src="https://artifacthub.io/artifacthub-widget.js"></script>
+<div class="artifacthub-widget-group" data-url="https://staging.artifacthub.io/packages/search?kind=10&sort=relevance&page=1&ts_query_web=sandbox" data-theme="light" data-header="false" data-color="#417598" data-stars="false" data-responsive="true" data-loading="true"></div><script async src="https://artifacthub.io/artifacthub-widget.js"></script>
 {{< /rawhtml >}}
 
 ### Contribute your service
@@ -62,3 +62,5 @@ Below are projects that have been shown in any Keptn community or developer meet
 * A template for getting started with writing your Keptn service is provided here: https://github.com/keptn-sandbox/keptn-service-template-go
 
 * Please follow the [contributions guide](https://github.com/keptn-sandbox/contributing) for contributing it to Keptn Sandbox.
+
+* The integration overview is managed from the [keptn-sandbox/artifacthub repository](https://github.com/keptn-sandbox/artifacthub). If you have any new integration feel free to add an entry there.
