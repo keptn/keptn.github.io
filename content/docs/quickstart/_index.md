@@ -81,7 +81,7 @@ This quick start is designed for Linux-based systems. Consequently, use Linux, M
 
 1. **Simulation of the auto-remediation use case** by triggering a problem event
     ```
-    tbc
+    curl -SL https://raw.githubusercontent.com/keptn/keptn.github.io/master/content/docs/quickstart/simulate-problem.sh | bash
     ```
 
 1. **Explore Keptn!** Please have a look at our [tutorials](https://tutorials.keptn.sh) and [documentation](../) to learn how you can use Keptn.

@@ -98,10 +98,10 @@ verify_test_step $? "Applying public gateway failed"
 
 
 # Disable Bridge authentication (running on localhost)
-print_headline "Disabling authentication for Keptn's Bridge (since we are running locally)"
+print_headline "Disabling authentication for Keptn Bridge (since we are running locally)"
 kubectl -n keptn delete secret bridge-credentials --ignore-not-found=true
 
-echo "Restart Keptn's Bridge to load new settings"
+echo "Restart Keptn Bridge to load new settings"
 kubectl -n keptn delete pods --selector=app.kubernetes.io/name=bridge --wait
 
 # Authenticating Keptn CLI against the current Keptn installation
@@ -112,7 +112,7 @@ keptn auth --endpoint=http://$INGRESS_IP.nip.io:$INGRESS_PORT --api-token=$(kube
 wait_for_deployment_in_namespace "bridge" "keptn"
 
 # Opening bridge
-print_headline "Opening Keptn's Bridge..."
+print_headline "Opening Keptn Bridge..."
 http_code=$(curl -LI http://$INGRESS_IP.nip.io:$INGRESS_PORT/bridge -o /dev/null -w '%{http_code}\n' -s)
 retries=1
 
@@ -120,7 +120,7 @@ while [ $retries -le $MAX_RETRIES ];
 do
   # echo "retries:  $retries / $MAX_RETRIES" 
   if [ ${http_code} -eq 200 ]; then
-    echo "Attempting to open Keptn's bridge on http://$INGRESS_IP.nip.io:$INGRESS_PORT/bridge"
+    echo "Attempting to open Keptn bridge on http://$INGRESS_IP.nip.io:$INGRESS_PORT/bridge"
     if ! command -v open &> /dev/null
     then
       echo "Open command not found. Printing connection details instead"
@@ -130,7 +130,7 @@ do
       break
     fi
   fi
-  echo "Keptn's bridge not yet available, waiting $SLEEP_TIME seconds and then trying again"
+  echo "Keptn bridge not yet available, waiting $SLEEP_TIME seconds and then trying again"
   retries=$[$retries +1]
   sleep $SLEEP_TIME
   http_code=$(curl -LI http://$INGRESS_IP.nip.io:$INGRESS_PORT/bridge -o /dev/null -w '%{http_code}\n' -s)
@@ -141,7 +141,7 @@ if [ $retries -ge $MAX_RETRIES ]; then
   echo "Please check the log for any errors that might have happened."
 else
   print_headline "Welcome aboard!"
-  echo "Find the Keptn's Bridge at http://$INGRESS_IP.nip.io:$INGRESS_PORT/bridge "
+  echo "Find the Keptn Bridge at http://$INGRESS_IP.nip.io:$INGRESS_PORT/bridge "
   echo "Find the Keptn API at http://$INGRESS_IP.nip.io:$INGRESS_PORT/api "
   echo "For more information please visit https://keptn.sh "
   echo ""
