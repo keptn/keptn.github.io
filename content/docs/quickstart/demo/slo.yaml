@@ -6,6 +6,7 @@ comparison:
   aggregate_function: avg
 objectives:
   - sli: http_response_time_seconds_main_page_sum
+    displayName: "HTTP Respone Time"
     pass:
       - criteria:
           - "<=1"
@@ -13,15 +14,19 @@ objectives:
       - criteria:
           - "<=0.5"
   - sli: request_throughput
+    displayName: "Request Throughput"
     pass:
       - criteria:
           #- "<=+100%"
           - ">=-80%"
   - sli: go_routines
+    displayName: "Go Routines"
+    key_sli: false
     pass:
       - criteria:
           - "<=60"
   - sli: failing_request
+    displayName: "Failing Requests"
     pass:
       - criteria:
           - "< 10"

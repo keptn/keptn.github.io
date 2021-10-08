@@ -1,19 +1,20 @@
 apiVersion: v2
 actions:
-  - name: "Execute scaling action"
+  - name: "Execute pod restart"
     events:
       - name: "sh.keptn.event.action.triggered"
         jsonpath:
           property: "$.data.action.action"
-          match: "scaling"
+          match: "restart"
     tasks:
-      - name: "Execute scaling action"
+      - name: "Restart pod"
         image: bitnami/kubectl:1.21
         workingDir: "/bin"
         cmd:
-          - echo
-        args: 
-          - 'implement remediation action here for project $PROJECT, in stage $STAGE'
+          - bash
+          - '-c'
+          - kubectl delete pods -l app=$(SERVICE) -n $(PROJECT)-$(STAGE)
+          - 
         env:
           - name: PROJECT
             value: "$.data.project"

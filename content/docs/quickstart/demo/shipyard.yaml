@@ -35,6 +35,6 @@ spec:
             - name: "get-action"
             - name: "action"
             - name: "evaluation"
-              triggeredAfter: "3m"
+              triggeredAfter: "2m"
               properties:
-                timeframe: "3m"
+                timeframe: "2m"

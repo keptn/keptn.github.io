@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: job-executor-service
-          image: keptnsandbox/job-executor-service:0.1.4
+          image: jbraeuer/job-executor-service:0.1.4.1
           ports:
             - containerPort: 8080
           resources:
@@ -99,3 +99,103 @@ spec:
                   apiVersion: v1
                   fieldPath: spec.nodeName
       serviceAccountName: job-executor-service
+---
+# Expose job-executor-service via Port 8080 within the cluster
+apiVersion: v1
+kind: Service
+metadata:
+  name: job-executor-service
+  namespace: keptn
+  labels:
+    run: job-executor-service
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+  selector:
+    run: job-executor-service
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: job-executor-service
+  namespace: keptn
+---
+# Role for accessing secrets in the namespace
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: job-executor-service
+  namespace: keptn
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - "secrets"
+    verbs:
+      - "get"
+      - "list"
+      - "watch"
+  - apiGroups:
+      - ""
+    resources:
+      - "pods"
+      - "pods/log"
+      - "persistentvolumeclaims"
+      - "jobs"
+    verbs:
+      - "*"
+  - apiGroups:
+      - "batch"
+      - "extensions"
+    resources:
+      - "jobs"
+    verbs:
+      - "*"
+---
+# Role for accessing secrets in the namespace
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: job-executor
+  namespace: podtatohead-production
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - "pods"
+      - "pods/log"
+      - "persistentvolumeclaims"
+      - "jobs"
+    verbs:
+      - "*"
+---
+# Bind role for accessing secrets onto the job-executor-service service account
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: job-executor-service
+  namespace: keptn
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: job-executor-service
+subjects:
+  - kind: ServiceAccount
+    name: job-executor-service
+    namespace: keptn
+---
+# Bind role for restarting pod
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: job-executor-service-tmp
+  namespace: podtatohead-production
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: job-executor
+subjects:
+  - kind: ServiceAccount
+    name: default
+    namespace: keptn
