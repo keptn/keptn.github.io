@@ -21,7 +21,7 @@ objectives:
           - ">=-80%"
   - sli: go_routines
     displayName: "Go Routines"
-    key_sli: false
+    key_sli: true
     pass:
       - criteria:
           - "<=60"
