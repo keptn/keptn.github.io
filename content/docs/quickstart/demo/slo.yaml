@@ -15,12 +15,16 @@ objectives:
   - sli: request_throughput
     pass:
       - criteria:
-          - "<=+100%"
+          #- "<=+100%"
           - ">=-80%"
   - sli: go_routines
     pass:
       - criteria:
-          - "<=100"
+          - "<=60"
+  - sli: failing_request
+    pass:
+      - criteria:
+          - "< 10"
 total_score:
   pass: "90%"
   warning: "75%"
