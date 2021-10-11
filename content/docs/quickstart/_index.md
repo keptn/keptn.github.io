@@ -12,13 +12,13 @@ This quick start is designed for Linux-based systems. Consequently, use Linux, M
 
 ## Prerequisites
 - [Docker](https://docker.com/) 
-  
-  <details><summary>Resources</summary>
-  ![docker resources](./assets/docker-resources.png)
-  </details>
 - [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) version >= 1.19
 - [helm](https://helm.sh/) version >= 3.3.0
 - [git](https://git-scm.com/downloads)
+<details><summary>Resources</summary>
+![docker resources](./assets/docker-resources.png)
+</details>
+
 
 ## Install Keptn
 
@@ -82,7 +82,6 @@ This quick start is designed for Linux-based systems. Consequently, use Linux, M
     ```
     curl -SL https://raw.githubusercontent.com/keptn/examples/master/quickstart/multistage-delivery.sh | bash
     ```
-
   <details><summary>What you'll see</summary>
   <p>In Keptn you'll see one successful quality gate evaluation and one failed evaluation, that means a slow build will never reach production!
   ![](./assets/multi-stage-sequence.png)
