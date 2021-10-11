@@ -11,9 +11,14 @@ hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
 This quick start is designed for Linux-based systems. Consequently, use Linux, MacOS, or Windows subsystem for Linux (WSL).
 
 ## Prerequisites
-- [Docker](https://docker.com/)
-- [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl)
-- [helm](https://helm.sh/) when running the demos in step 5
+- [Docker](https://docker.com/) 
+  
+  <details><summary>Resources</summary>
+  ![docker resources](./assets/docker-resources.png)
+  </details>
+- [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) version >= 1.19
+- [helm](https://helm.sh/) version >= 3.3.0
+- [git](https://git-scm.com/downloads)
 
 ## Install Keptn
 
@@ -31,9 +36,8 @@ This quick start is designed for Linux-based systems. Consequently, use Linux, M
 1. **Download and install the [Keptn CLI](../0.9.x/reference/cli)**
 
 
-    <!-- TODO: Set to fixed version -->
     ```
-    curl -sL https://get.keptn.sh | bash
+    curl -sL https://get.keptn.sh | KEPTN_VERSION=0.9.2 bash
     ```
 
 1. **Install Keptn** control-plane and execution-plane for continuous delivery use case
@@ -71,18 +75,29 @@ This quick start is designed for Linux-based systems. Consequently, use Linux, M
 
 1. **Configure Ingress** to access Keptn
     ```
-    curl -SL https://raw.githubusercontent.com/keptn/keptn.github.io/master/content/docs/quickstart/exposeKeptn.sh | bash
+    curl -SL https://raw.githubusercontent.com/keptn/examples/master/quickstart/quickstart/expose-keptn.sh | bash
     ```
 
-1. **Perform a multi-stage delivery** with SLO-based quality gates in place
+1. **Perform a** [**multi-stage delivery**](../concepts/delivery/) with [SLO-based quality gates](../concepts/quality_gates/) in place
     ```
-    curl -SL https://raw.githubusercontent.com/keptn/keptn.github.io/master/content/docs/quickstart/get-demo.sh | bash
+    curl -SL https://raw.githubusercontent.com/keptn/examples/master/quickstart/multistage-delivery.sh | bash
     ```
 
-1. **Simulation of the auto-remediation use case** by triggering a problem event
+  <details><summary>What you'll see</summary>
+  <p>In Keptn you'll see one successful quality gate evaluation and one failed evaluation, that means a slow build will never reach production!
+  ![](./assets/multi-stage-sequence.png)
+  </p>
+  </details>
+
+1. **See** [**automated operations**](../concepts/automated_operations/) with auto-remediation in action
     ```
-    curl -SL https://raw.githubusercontent.com/keptn/keptn.github.io/master/content/docs/quickstart/simulate-problem.sh | bash
+    curl -SL https://raw.githubusercontent.com/keptn/examples/master/quickstart/automated-operations.sh | bash
     ```
+  <details><summary>What you'll see</summary>
+  <p>In Keptn you'll see an executed remediation sequence in response to a problem event that has been sent to Keptn!
+  ![](./assets/remediation-sequence.png)
+  </p>
+  </details>
 
 1. **Explore Keptn!** Please have a look at our [tutorials](https://tutorials.keptn.sh) and [documentation](../) to learn how you can use Keptn.
 
