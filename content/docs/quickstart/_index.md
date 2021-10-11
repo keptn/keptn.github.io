@@ -43,6 +43,7 @@ This quick start is designed for Linux-based systems. Consequently, use Linux, M
     ```
 
     Keptn comes with different installation options, please have a look at the [installation documentation](../0.9.x/operate) for more details on cluster requirements, resource consumption, supported Kubernetes versions, and more.
+    Please note that although during the installation procedure it might be mentioned that Istio is required, it is *not required* for this quickstart guide.
 
     <details><summary>Installation logs</summary>
     <p>The installation logs will print the following output:
@@ -71,7 +72,7 @@ This quick start is designed for Linux-based systems. Consequently, use Linux, M
 
 1. **Configure Ingress** to access Keptn
     ```
-    curl -SL https://raw.githubusercontent.com/keptn/examples/master/quickstart/quickstart/expose-keptn.sh | bash
+    curl -SL https://raw.githubusercontent.com/keptn/examples/master/quickstart/expose-keptn.sh | bash
     ```
 
 1. **Perform a** [**multi-stage delivery**](../concepts/delivery/) with [SLO-based quality gates](../concepts/quality_gates/) in place
@@ -84,7 +85,7 @@ This quick start is designed for Linux-based systems. Consequently, use Linux, M
   </p>
   </details>
 
-1. **See** [**automated operations**](../concepts/automated_operations/) with auto-remediation in action
+1. **Run** [**automated operations**](../concepts/automated_operations/) with auto-remediation in action
     ```
     curl -SL https://raw.githubusercontent.com/keptn/examples/master/quickstart/automated-operations.sh | bash
     ```
