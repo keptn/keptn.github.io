@@ -1,2 +1,0 @@
-image: ghcr.io/podtato-head/podtatoserver:v0.1.1
-replicaCount: 1
