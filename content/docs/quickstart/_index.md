@@ -15,10 +15,6 @@ This quick start is designed for Linux-based systems. Consequently, use Linux, M
 - [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) version >= 1.19
 - [helm](https://helm.sh/) version >= 3.3.0
 - [git](https://git-scm.com/downloads)
-<details><summary>Resources</summary>
-![docker resources](./assets/docker-resources.png)
-</details>
-
 
 ## Install Keptn
 
@@ -169,3 +165,9 @@ Review the documentation for a full reference on all Keptn capabilities and comp
 ## Do you need help?
 
 Join [our slack channel](https://slack.keptn.sh) for any questions that may arise.
+
+### Pod are not in a running state
+Please ensure that your local k3d environment has enough resources. You can verify this in your Docker resource settings. This quickstart guide has been tested with the following configuration:
+<details><summary>Resources</summary>
+![docker resources](./assets/docker-resources.png)
+</details>
