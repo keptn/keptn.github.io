@@ -101,7 +101,7 @@ Please find the Helm Charts here:
       serviceFilter: ""                     # set the service, e.g., "carts" to get events for the service.
     ```
 
-    *Note:* `projectFilter`, `stageFilter`, and `serviceFilter` allow a comma-separated list of values.
+    **Note:** `projectFilter`, `stageFilter`, and `serviceFilter` allow a comma-separated list of values.
 
 * Deploy the execution plane service (e.g., jmeter-service) from release assets with your `values.yaml` and by using `helm`:
 

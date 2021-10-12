@@ -1,6 +1,6 @@
 ---
 title: Slack Integration
-description: Learn how to integrate Slack using Webhooks
+description: Example to integrate Slack using Webhooks
 weight: 1
 keywords: [0.10.x-integration]
 ---
