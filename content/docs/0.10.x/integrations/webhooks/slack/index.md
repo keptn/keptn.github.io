@@ -52,7 +52,7 @@ To create a webhook integration, a subscription needs to be created:
   }
   ```
 
-* (optional) You can enrich and customize the message with event data described [here](../webhooks/#customize-request-payload). 
+* (optional) You can enrich and customize the message with event data described [here](../../webhooks/#customize-request-payload). 
 
 * Finally, click **Create subscription** to save and enable the webhook for your integration.
 
