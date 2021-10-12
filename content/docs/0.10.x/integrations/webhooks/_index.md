@@ -8,6 +8,7 @@ keywords: [0.10.x-integration]
 Keptn has a built-in capability to integrate your webhooks into the sequence orchestration of Keptn. This lets you call custom HTTP endpoints when running a delivery or remediation sequence that triggers a certain task. By using this integration, you can easily send the state of a task to a third-party tool or service. This allows you to integrate tools such as testing services and incident management services. Two use case examples of tool integrations are provided here: Integration of a (1) [notification tool](../how_integrate/#notification-tools), (2) [testing tool](../how_integrate/#testing-tools), which can be easily implemented by just using webhooks.    
 
 Examples of Webhook integrations are provided here: 
+
 - [Slack](./slack/)
 
 Webhooks are created at a *Task* level and can be triggered by 3 event types: 
