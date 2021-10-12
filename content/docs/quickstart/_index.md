@@ -8,7 +8,7 @@ hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
 ---
 
 
-This quick start is designed for Linux-based systems. Consequently, use Linux, MacOS, or Windows subsystem for Linux (WSL).
+This quickstart is designed for Linux-based systems. Consequently, use Linux, MacOS, or Windows subsystem for Linux (WSL).
 
 ## Prerequisites
 - [Docker](https://docker.com/) 
