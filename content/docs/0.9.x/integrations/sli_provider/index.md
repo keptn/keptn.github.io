@@ -12,8 +12,8 @@ An *SLI-provider* is an implementation of a [*Keptn-service*](../custom_integrat
 ```yaml
 spec_version: '1.0'
 indicators:
- throughput: "builtin:service.requestCount.total:merge(0):count?scope=tag(keptn_project:$PROJECT),tag(keptn_stage:$STAGE),tag(keptn_service:$SERVICE),tag(keptn_deployment:$DEPLOYMENT)"
- error_rate: "builtin:service.errors.total.count:merge(0):avg?scope=tag(keptn_project:$PROJECT),tag(keptn_stage:$STAGE),tag(keptn_service:$SERVICE),tag(keptn_deployment:$DEPLOYMENT)"
+  throughput: "metricSelector=builtin:service.requestCount.total:merge(\"dt.entity.service\"):sum&entitySelector=type(SERVICE),tag(keptn_project:$PROJECT),tag(keptn_stage:$STAGE),tag(keptn_service:$SERVICE),tag(keptn_deployment:$DEPLOYMENT)"
+  error_rate: "metricSelector=builtin:service.errors.total.count:merge(\"dt.entity.service\"):avg&entitySelector=type(SERVICE),tag(keptn_project:$PROJECT),tag(keptn_stage:$STAGE),tag(keptn_service:$SERVICE),tag(keptn_deployment:$DEPLOYMENT)"
 ```
 
 **Note:** This SLI configuration file will then be stored in Keptn's configuration store using the [keptn add-resource](../../reference/cli/commands/keptn_add-resource) command.
@@ -106,7 +106,7 @@ After receiving the `sh.keptn.event.get-sli.triggered` event, an SLI-provider mu
 {
   "type": "sh.keptn.event.get-sli.finished",
   "specversion": "1.0",
-  "source": "https://github.com/keptn/keptn/dynatrace-sli-service",
+  "source": "dynatrace-service",
   "id": "ggb878d3-03c0-4e8f-bc3f-454bc1b3d888",
   "time": "2019-06-07T07:02:15.64489Z",
   "contenttype": "application/json",

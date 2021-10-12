@@ -6,7 +6,8 @@ weight: 1001
 hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
 ---
 
-## Integrations
+## Available integrations
+
 
 Keptn as a control-plane integrates with various different tools and can be extended with your own tools. 
 In the following you'll find integrations that are already provided by the Keptn team and its community. 
@@ -29,8 +30,8 @@ In the following you'll find integrations that are already provided by the Keptn
 
 
 
-### Contributing
 
+### Contributing
 
 - If you identify a bug you would like to report, please create an issue in the repository of the Keptn-service. 
 
@@ -41,3 +42,4 @@ In the following you'll find integrations that are already provided by the Keptn
 - Please follow the [contributions guide](https://github.com/keptn-sandbox/contributing) for contributing it to Keptn Sandbox.
 
 - The integration overview is managed from the [keptn-sandbox/artifacthub repository](https://github.com/keptn-sandbox/artifacthub). If you have any new integration feel free to add an entry there.
+

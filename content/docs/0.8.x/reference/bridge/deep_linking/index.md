@@ -1,7 +1,7 @@
 ---
 title: Deep Linking
 description: Deep links into Bridge for better integration into DevOps tools
-weight: 21
+weight: 30
 keywords: [0.8.x-bridge]
 ---
 

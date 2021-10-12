@@ -117,6 +117,7 @@ The Keptn Bridge provides an easy way to browse all events that are sent within 
 
 The uniform view gives you an overview over all integrations installed within your Keptn installation. 
 The data is fetched from your Kubernetes cluster and shows useful information like
+* Unread/New error events
 * Deployment version of the service
 * The cluster or host where it is running
 * The Kubernetes namespace
@@ -128,12 +129,20 @@ The data is fetched from your Kubernetes cluster and shows useful information li
 link="./assets/uniform-view.png"
 caption="Keptn Bridge Uniform View">}}
 
-By selecting one integration, logs on error level as well as sequence failures can be viewed. When a sequence in this particular scope failed, then there is
+You can view the related subscriptions, events on error level, and sequence failures by selecting an integration. It is also possible to directly configure the subscriptions to listen to specific events.
+If there are new error events since the last time the integration was viewed, a red indicator shows up for this integration. When a sequence in this particular scope failed, then there is
 a link provided that takes you directly to the failed task in the sequence. 'n/a' in this regard means that the error is not related to any sequence execution. 
 
 {{< popup_image
 link="./assets/uniform-view-logs.png"
-caption="Integrated Service Error Logs">}}
+caption="Integrated Service Error Events">}}
+
+#### Create/Edit subscriptions view
+By clicking on the edit icon next to the subscription detail or the "*Add sequence*"-button, you are redirected to the subscription view. In this view, you can configure the task, stage and service for the subscription. The values used for the configuration are defined in the shipyard file. It is also possible to define whether the subscription is active for all projects or just the currently selected one.
+
+{{< popup_image
+link="./assets/uniform-view-create-subscription.png"
+caption="Create/Edit Subscriptions">}}
 
 #### Secrets view
 
@@ -163,12 +172,23 @@ and additional data is gathered from the client. For more information about this
 
 ### Settings
 
+#### Project settings
 In the settings view the project settings can be edited. 
 To get more information about how to manage your projects with the settings, visit [Manage Projects](https://keptn.sh/docs/0.9.x/reference/bridge/manage_projects).
 
 {{< popup_image
-link="./assets/settings.png"
-caption="Keptn Bridge Settings View">}}
+link="./assets/project-settings.png"
+caption="Keptn Bridge Project Settings View">}}
+
+
+#### Service settings
+In this view, services can be created, updated and deleted.
+To get more information about how services can be managed in your settings, visit [Manage Services](https://keptn.sh/docs/0.9.x/reference/bridge/manage_services).
+
+{{< popup_image
+link="./assets/service-settings.png"
+caption="Keptn Bridge Service Settings View">}}
+
 
 ## Keptn Bridge features
 

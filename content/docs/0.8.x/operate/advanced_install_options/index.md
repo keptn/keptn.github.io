@@ -21,7 +21,7 @@ The following flags are available:
 | `control-plane.apiGatewayNginx.type`                  | Specifies the Kubernetes service-type for api-gateway-nginx, which can be used to expose the Keptn API                                            | NodePort, ClusterIP, LoadBalancer     | ClusterIP                      |
 | `control-plane.prefixPath`                            | Allows to set a prefixPath for the api-gateway. This value has to start with a "/" but must not contain a trailing "/"                            | URI, e.g., /mykeptn                   | empty                          |
 | `control-plane.bridge.cliDownloadLink`                | Specifies a download link for the Keptn CLI which is displayed in Keptn Bridge                                                                    | any string/URL                        | null                           |
-| `control-plane.bridge.lookAndFeelUrl`                 | Specifies a [custom look and feel](https://github.com/keptn/keptn/tree/release-0.8.4/bridge#custom-look-and-feel) for Keptn Bridge                | any URL containing a zip archive      | null                           |
+| `control-plane.bridge.lookAndFeelUrl`                 | Specifies a [custom look and feel](https://github.com/keptn/keptn/tree/release-0.8.7/bridge#custom-look-and-feel) for Keptn Bridge                | any URL containing a zip archive      | null                           |
 | `control-plane.bridge.versionCheck.enabled`           | Specifies whether the automatic version-check in Keptn Bridge should be enabled or not                                                            | true, false                           | true                           |
 | `control-plane.bridge.showApiToken.enabled`           | Specifies whether the Keptn API Token and the `keptn auth` command should be shown in Keptn Bridge or not                                         | true, false                           | true                           |
 | `control-plane.bridge.secret.enabled`                 | Specifies whether the secret used for the basic auth is enabled or not. Please be aware that if this value is set to `false`, there is no basic authentication for the bridge.  | true, false | true                       |
@@ -57,7 +57,70 @@ helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=
 
 ### Example: Execute Helm upgrade without Internet connectivity
 
-Offline/air-gapped installation is currently not supported. Please see https://github.com/keptn/keptn/issues/4183 and PR https://github.com/keptn/keptn.github.io/pull/848 for updates and intermediate instructions.
+The following section contains instructions for installing Keptn in an air-gapped / offline installation scenario.
+
+The following artifacts need to be available locally:
+
+* Keptn Helm Chart (control-plane + helm + jmeter)
+* Several Docker Images (e.g., pushed into a private registry)
+* Helper scripts
+* Keptn CLI (optional, but recommended for future use)
+
+**Download Keptn Helm Charts**
+
+Download the Helm charts from the [Keptn 0.8.7 release](https://github.com/keptn/keptn/releases/tag/0.8.7):
+
+* Keptn Control Plane: https://github.com/keptn/keptn/releases/download/0.8.7/keptn-0.8.7.tgz
+* helm-service (if needed): https://github.com/keptn/keptn/releases/download/0.8.7/helm-service-0.8.7.tgz
+* jmeter-service (if needed): https://github.com/keptn/keptn/releases/download/0.8.7/jmeter-service-0.8.7.tgz
+
+Move the helm charts to a directory on your local machine, e.g., `offline-keptn`.
+
+For convenience, the following script creates this directory and downloads the required helm charts into it:
+
+```console
+mkdir offline-keptn
+cd offline-keptn
+curl -L https://github.com/keptn/keptn/releases/download/0.8.7/keptn-0.8.7.tgz -o keptn-0.8.7.tgz
+curl -L https://github.com/keptn/keptn/releases/download/0.8.7/helm-service-0.8.7.tgz -o helm-service-0.8.7.tgz
+curl -L https://github.com/keptn/keptn/releases/download/0.8.7/jmeter-service-0.8.7.tgz -o jmeter-service-0.8.7.tgz
+cd ..
+```
+
+**Download Containers/Images**
+
+Within the Helm Charts several Docker Images are referenced (Keptn specific and some third party dependencies).
+We recommend to pulling, re-tagging and pushing those images to a local registry that the Kubernetes cluster can reach.
+
+We are providing a helper script for this in our Git repository: https://github.com/keptn/keptn/blob/master/installer/airgapped/pull_and_retag_images.sh
+
+For convenience, you can use the following commands to download and execute the script:
+
+```console
+cd offline-keptn
+curl -L https://raw.githubusercontent.com/keptn/keptn/master/installer/airgapped/pull_and_retag_images.sh -o pull_and_retag_images.sh
+chmod +x pull_and_retag_images.sh
+KEPTN_TAG=0.8.7 ./pull_and_retag_images.sh "your-registry.localhost:5000/"
+cd ..
+```
+
+Please mind the trailing slash for the registry url (e.g., `your-registry.localhost:5000/`).
+
+**Installation**
+
+Keptn's Helm chart allows you to specify the name of all images, which can be especially handy in air-gapped systems where you cannot access DockerHub for pulling the images.
+
+We are providing a helper script for this in our Git repository: https://github.com/keptn/keptn/blob/master/installer/airgapped/install_keptn.sh
+
+For convenience, you can use the following commands to download and execute the script:
+
+```console
+cd offline-keptn
+curl -L https://raw.githubusercontent.com/keptn/keptn/master/installer/airgapped/install_keptn.sh -o install_keptn.sh
+chmod +x install_keptn.sh
+./install_keptn.sh "your-registry.localhost:5000/" keptn-0.8.7.tgz helm-service-0.8.7.tgz jmeter-service-0.8.7.tgz
+cd ..
+```
 
 ### Install Keptn using a Root-Context
 
