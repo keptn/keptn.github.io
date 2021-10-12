@@ -18,7 +18,7 @@ This quick start is designed for Linux-based systems. Consequently, use Linux, M
 
 ## Install Keptn
 
-1. Create local k3d cluster. Therefore, you need to install [k3d](https://k3d.io) if not already present on your machine. You can skip this if k3d is already available on your machine.
+1. Create local [k3d](https://k3d.io) cluster. Please make sure you are using the version stated below (`v.4.4.4`). If you already have `k3d` installed, you can check by running `k3d --version`.
 
     ```
     curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=v4.4.4 bash
