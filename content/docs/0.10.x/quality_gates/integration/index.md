@@ -133,7 +133,7 @@ curl -X POST "${KEPTN_ENDPOINT}/v1/project/easyBooking/stage/quality_assurance/s
 -d "{ \"start\": \"2020-09-28T07:00:00\", \"timeframe\": \"5m\", \"labels\":{\"buildId\":\"build-17\",\"owner\":\"JohnDoe\",\"testNo\":\"47-11\"}}"
 ```
 
-* The endpoint returns a unique ID (`keptn-context`) that is required to retrieve the evaluation result. (*Note:* The response also contains a *token* that is required to open a WebSocket communication. This token is not needed now.)
+* The endpoint returns a unique ID (`keptn-context`) that is required to retrieve the evaluation result. (**Note:** The response also contains a *token* that is required to open a WebSocket communication. This token is not needed now.)
 
 
 </p>
@@ -179,7 +179,7 @@ curl -X POST "${KEPTN_ENDPOINT}/v1/event" \
 -d @./trigger_quality_gate.json
 ```
 
-* The endpoint returns a unique ID (`keptn-context`) that is required to retrieve the evaluation result. (*Note:* The response also contains a *token* that is required to open a WebSocket communication. This token is not needed now.)
+* The endpoint returns a unique ID (`keptn-context`) that is required to retrieve the evaluation result. (**Note:** The response also contains a *token* that is required to open a WebSocket communication. This token is not needed now.)
 
 </p>
 </details>

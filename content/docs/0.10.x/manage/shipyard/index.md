@@ -470,7 +470,7 @@ An advanced and powerful feature of the shipyard is that you can define *trigger
 
 * `[stage_name].[sequence_name].finished` 
 
-*Note:* It is not required to specify the full qualified event name which would be `sh.keptn.event.[stage_name].[sequence_name].finished` in this case
+**Note:** It is not required to specify the full qualified event name which would be `sh.keptn.event.[stage_name].[sequence_name].finished` in this case
 
 Besides, a *match selector* can be added to an event that works as a filter on the `result` property of the event. Consequently, you can filter based on sequence executions that *failed* or *passed*, shown by the next example that filters on `failed`: 
 
