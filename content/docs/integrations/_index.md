@@ -8,11 +8,8 @@ hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
 
 ## Available integrations
 
-Please find here a list of all *Keptn-services* and *SLI-providers* that are available for the last Keptn release. Feel free to install these integrations on a Keptn and to use them according to their documentation in the corresponding repository. The maintainers of those services are referenced in the CODEOWNERS file of each repo. Most of the repositories you can find in the [github.com/keptn-contrib](https://github.com/keptn-contrib) organization and are referenced below.
-
-- If you identify a bug you would like to report, please create an issue in the repository of the Keptn-service. 
-
-- If you need more information on version compatibility, please go to the repository where a compatibility-matrix should be provided.
+Keptn as a control-plane integrates with various different tools and can be extended with your own tools. 
+In the following you'll find integrations that are already provided by the Keptn team and its community. 
 
 | Keptn-service | latest Release | supported Keptn | Repository  |
 | -------------------------- | --- | --- | --- |
@@ -32,7 +29,6 @@ Please find here a list of all *Keptn-services* and *SLI-providers* that are ava
 | **neoload-sli-provider**  | [0.6.0](https://github.com/keptn-contrib/neoload-sli-provider/tree/0.6.0) | 0.6.0 | https://github.com/keptn-contrib/neoload-sli-provider |
 | **prometheus-sli-service** 2)  | [0.3.0](https://github.com/keptn-contrib/prometheus-sli-service/releases/tag/0.3.0) | 0.8.3 | https://github.com/keptn-contrib/prometheus-sli-service |
 
-**Notes:**
 
 * 1) The `dynatrace-sli-service` has been merged into the `dynatrace-service`. The `dynatrace-sli-service` is deprecated and has been set to read-only on the **13th of July, 2021**.
 * 2) The `prometheus-sli-service` has been merged with `prometheus-service`. The `prometheus-sli-service` is deprecated and has been set to read-only on the **9th of July, 2021**.
