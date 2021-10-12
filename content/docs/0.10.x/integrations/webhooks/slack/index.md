@@ -13,11 +13,9 @@ With a Slack integration, you and your teams can get notifications for certain e
 
 * After completing the instructions, you get a webhook URL similar to: `https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX`
 
-* Notes:
-  * *warning* Please be aware that the last part of the webhook URL - the `X...` in the given example - is sensitive data. If this data is known by others parties, they can exploit your webhook to send messages to your Slack channel. 
-  * The Slack Incoming Webhook URL created by the Slack admin is tied to a specific user and channel. If a user account or a channel is removed, you'll need to ask the Slack admin to regenerate the Webhook URL using an existing account and channel. For more information, see [Sending messages using Incoming Webhooks](https://api.slack.com/incoming-webhooks) in the Slack documentation.
+*warning* Please be aware that the last part of the webhook URL - the `X...` in the given example - is sensitive data. If this data is known by other parties, they can exploit your webhook to send messages to your Slack channel. 
 
-## Store sensitiv data in a secret
+## Store sensitive data in a secret
 
 To secure the sensitive data of your webhook URL, a secret needs to be created: 
 
@@ -35,17 +33,17 @@ To secure the sensitive data of your webhook URL, a secret needs to be created:
 
 To create a webhook integration, a subscription needs to be created: 
 
-* Go to **Uniform page** > **Uniform**, select the *webhook-service*, and click the **Add secret** button. 
+* Go to **Uniform page** > **Uniform**, select the *webhook-service*, and click the **Add subscription** button. 
 
-* For this integration, we would like to get a Slack message when an *evaluation* task in the *dev* and *staging* stage finished. Therefore, you need to select:
+* For this integration, we would like to get a Slack message when an *evaluation* task in the *dev* and *staging* stage is finished. Therefore, you need to select:
   * *Task*: `evaluation`
   * *Task suffix*: `finished`
   * *Filter*: `Stage:dev`, `Stage:staging` 
 
-* Once the above configured event gets fired, the Slack webhook has to be called. Therefore, you need to select/enter: 
+* Once the above-configured event gets fired, the Slack webhook has to be called. Therefore, you need to select/enter: 
   * *Request method*: `POST`
   * *URL*: The webhook URL without the webhook identifier: `https://hooks.slack.com/services/T00000000/B00000000/`
-    * Add the webhook identifier at the end of the URL by clicking on the *key* icon. Then select the secret `slack-secret` as well as the key `webhook-identifier`. This will reference the secret value containing the sensitive data of your webhook URL: `https://hooks.slack.com/services/T00000000/B00000000/{{.env.secretKey}}`
+  * Reference the secret to add the webhook identifier at the end of the URL. Therefore, clicking on the *key* icon, select the secret `slack-secret` and the key `webhook-identifier`. This will reference the secret value containing the sensitive data of your webhook URL: `https://hooks.slack.com/services/T00000000/B00000000/{{.env.secretKey}}`
   * *Custom payload*: For the custom payload, please copy-paste the following snippet:
 
   ```
@@ -54,10 +52,14 @@ To create a webhook integration, a subscription needs to be created:
   }
   ```
 
-  *Note:* You can enrich and customize the message with event data you like. 
+* (optional) You can enrich and customize the message with event data described [here](../webhooks/#customize-request-payload). 
 
 * Finally, click **Create subscription** to save and enable the webhook for your integration.
 
 ## Delete a Webhook
 
 To delete a webhook, click on the *trash can* icon next to the subscription. Note that deleting a webhook is permanent and cannot be reversed. Once deleted, Keptn will no longer send requests to the endpoint.
+
+## Troubleshooting
+
+The Slack Incoming Webhook URL created by the Slack admin is specific to a single user and a single channel. If an existing webhook is tied to an account that is no longer active, the webhook URL will be invalid, the integration will be broken, and you will no longer receive messages on that Slack channel. This could be the case when you have a working webhook URL and an account is removed from Slack. If this occurs, the Slack admin will need to generate a new webhook URL using a valid account and channel. Once a new URL is generated, update the webhook URL in the event subscription. 
