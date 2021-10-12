@@ -70,7 +70,7 @@ This quickstart is designed for Linux-based systems. Consequently, use Linux, Ma
     </p>
     </details>
 
-1. **Configure Ingress** to access Keptn
+1. **Configure Ingress** and authenticate Keptn CLI
     ```
     curl -SL https://raw.githubusercontent.com/keptn/examples/master/quickstart/expose-keptn.sh | bash
     ```
