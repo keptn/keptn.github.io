@@ -44,7 +44,7 @@ To create a webhook integration, a subscription needs to be created:
   * *Request method*: `POST`
   * *URL*: The webhook URL without the webhook identifier: `https://hooks.slack.com/services/T00000000/B00000000/`
   * Reference the secret to add the webhook identifier at the end of the URL. Therefore, clicking on the *key* icon, select the secret `slack-secret` and the key `webhook-identifier`. This will reference the secret value containing the sensitive data of your webhook URL: `https://hooks.slack.com/services/T00000000/B00000000/{{.env.secretKey}}`
-  * *Custom payload*: For the custom payload, please copy-paste the following snippet:
+  * *Custom payload*: For the custom payload that represents the Slack message, please copy-paste the following snippet:
 
   ```
   {
@@ -54,7 +54,7 @@ To create a webhook integration, a subscription needs to be created:
 
 * (optional) You can enrich and customize the message with event data described [here](../../webhooks/#customize-request-payload). 
 
-* Finally, click **Create subscription** to save and enable the webhook for your integration.
+* Finally, click **Create subscription** to save and enable the webhook for your Slack integration.
 
 ## Delete a Webhook
 

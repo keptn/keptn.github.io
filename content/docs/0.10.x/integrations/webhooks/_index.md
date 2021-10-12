@@ -92,8 +92,32 @@ When integrating tools by calling their endpoints, many times authentication is 
   caption="Usage of secrets to customize request"
   width="700px">}}
 
-  The key-value pair will be automatically inserted into the selected field in the format `{{.secret.name.key}}`. When the webhook configuration is saved, the secret will be parsed into a different format, which looks like this: `{{.env.secret_name_key}}`. This format represents a unique name that is a referrer to an entry in the `envFrom` property in the `webhook.yaml` file. This `envFrom` property contains added secrets with a referrer name, the given secret name and secret key.
+  The key-value pair will be automatically inserted into the selected field in the format `{{.secret.name.key}}`. 
+  
+  
+<details><summary>*Implementation details*</summary>
+<p>
 
+When the webhook configuration is saved, the secret will be parsed into a different format, which looks like this: `{{.env.secret_name_key}}`. This format represents a unique name that is a referrer to an entry in the `envFrom` property in the `webhook.yaml` file. This `envFrom` property contains added secrets with a referrer name, the given secret name, and secret key.
+
+```
+apiVersion: webhookconfig.keptn.sh/v1alpha1
+kind: WebhookConfig
+metadata:
+  name: webhook-configuration
+spec:
+  webhooks:
+    - type: sh.keptn.event.deployment.started
+      envFrom:
+        - name: secret_api_token
+          secretRef:
+            name: api
+            key: api-token
+        
+      requests:
+        - "curl --request POST https://example.com?token={{.env.secret_api_token}}"
+```
+<!--
 {{< popup_image
 link="./assets/webhook-secret.png"
 caption="envFrom property in webhook.yaml"
@@ -103,6 +127,11 @@ width="700px">}}
 link="./assets/webhook-secret-usage.png"
 caption="Usage of envFrom property in webhook.yaml"
 width="700px">}}
+-->
+
+</p>
+</details>
+
 
 ## Advanced Webhook configuration
 
@@ -151,9 +180,9 @@ spec:
 
 * Since no `finished` event is then sent, it is required to configure the receiving tool to send a `finished` event to the `/v1/event` endpoint of Keptn. 
 
-## Delete a Webhook
+## Delete a Webhook integration
 
-To delete a webhook, click on the *trash can* icon next to the subscription. Note that deleting a webhook is permanent and cannot be reversed. Once deleted, Keptn will no longer send requests to the endpoint.
+To delete a webhook integration, click on the *trash can* icon next to the subscription. Note that deleting a webhook is permanent and cannot be reversed. Once deleted, Keptn will no longer send requests to the endpoint.
 
 {{< popup_image
 link="./assets/delete-webhook.png"
