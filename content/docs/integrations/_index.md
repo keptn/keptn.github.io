@@ -8,7 +8,6 @@ hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
 
 ## Available integrations
 
-
 Keptn as a control-plane integrates with various different tools and can be extended with your own tools. 
 In the following you'll find integrations that are already provided by the Keptn team and its community. 
 
@@ -17,19 +16,23 @@ In the following you'll find integrations that are already provided by the Keptn
 <script type="text/javascript">
     const input = document.getElementById("services-search");
     const groups = document.getElementsByClassName('artifacthub-widget-group');
+    let timeout = null;
     
     const inputHandler = function(e) {
-      const search = input.value.toLowerCase();
-      groups[0].dataset.url = `https://artifacthub.io/packages/search?kind=10&sort=relevance&ts_query_web=${e.target.value}`;
+        if (timeout) {
+            clearTimeout(timeout);
+        }
+
+        timeout = setTimeout(() => {
+            const search = input.value.toLowerCase();
+            groups[0].dataset.url = `https://staging.artifacthub.io/packages/search?kind=10&sort=relevance${e.target.value !== '' ? `&ts_query_web=${e.target.value}` : ''}`;
+        }, 400);
     }
-      
+
     input.addEventListener('input', inputHandler)
 </script>
 <div class="artifacthub-widget-group" data-url="https://artifacthub.io/packages/search?kind=10&sort=relevance&page=1&ts_query_web=" data-theme="light" data-header="false" data-color="#417598" data-stars="false" data-responsive="true" data-loading="true"></div><script async src="https://artifacthub.io/artifacthub-widget.js"></script>
 {{< /rawhtml >}}
-
-
-
 
 ### Contributing
 
@@ -42,4 +45,3 @@ In the following you'll find integrations that are already provided by the Keptn
 - Please follow the [contributions guide](https://github.com/keptn-sandbox/contributing) for contributing it to Keptn Sandbox.
 
 - The integration overview is managed from the [keptn-sandbox/artifacthub repository](https://github.com/keptn-sandbox/artifacthub). If you have any new integration feel free to add an entry there.
-
