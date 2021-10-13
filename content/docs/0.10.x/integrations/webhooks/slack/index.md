@@ -47,9 +47,9 @@ To create a webhook integration, a subscription needs to be created:
   * *Custom payload*: For the custom payload that represents the Slack message, please copy-paste the following snippet:
 
   ```
-  {
-    "text": "Evaluation in {{.data.stage}} finished with result {{.data.evaluation.result}} and score {{.data.evaluation.score}}."
-  }
+{
+  "text": "Evaluation in {{.data.stage}} finished with result {{.data.evaluation.result}} and score {{.data.evaluation.score}}."
+}
   ```
 
 * (optional) You can enrich and customize the message with event data described [here](../../webhooks/#customize-request-payload). 
