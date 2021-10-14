@@ -13,7 +13,7 @@ This detailed view shows every executed task for the selected sequence in a spec
 For evaluation sequences, the Bridge will also provide a link to the evaluation board.<br/>
 For delivery sequences, the Bridge will provide a link to the deployed artifact.
 
-The default selection when opening the detail is the last executed stage. Select a different one by clicking on the stage name in the timeline.
+When opening the detail, the default selection is the last executed stage. Select a different one by clicking on the stage name in the timeline.
 
 {{< popup_image
 link="./assets/running-sequence.png"
@@ -22,15 +22,17 @@ caption="Sequences">}}
 ## Filtering
 
 Filtering provides a way of getting a better overview of the sequences. Filter by using the search bar or by selecting the items from the filter list.
+
 Filters can apply to:
+
 * Service - all services created for the project
-* Stage - all stages for sequences as defined in the projects shipyard file
-* Sequence - all sequences as defined projects shipyard file
+* Stage - all stages defined in the shipyard file of the project
+* Sequence - all sequences defined in the shipyard file of the project
 * Status - sequences can have the status active, succeeded, or failed
 
 ## Pausing and resuming sequences
 Running sequences have the option to be paused. The buttons' location to trigger pausing is on the top right of a list entry or the detail view. Clicking the button will halt the running sequence until it is resumed.
-Please note: Any running task is going to finish before the service pauses the sequence. That means that the Bridge may show a paused state, but the task list is still updated.
+Please note: Any running task is going to finish before the service pauses the sequence. That means that the Bridge may show a paused state, but the task list is still running.
 
 {{< popup_image
 link="./assets/paused-sequence.png"
