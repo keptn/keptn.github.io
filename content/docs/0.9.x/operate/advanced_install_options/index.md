@@ -10,11 +10,13 @@ When executing `keptn install`, Keptn is installed via a Helm chart, which can a
 Therefore the [Helm CLI](https://helm.sh) is required to trigger the exeuction of the following command:
 
 * *Install Keptn control-plane (with Continuous Delivery support and exposed on an LoadBalancer)*: 
+
 ```
 helm install keptn https://github.com/keptn/keptn/releases/download/0.9.2/keptn-0.9.2.tgz -n keptn --create-namespace --wait --set=continuous-delivery.enabled=true,control-plane.apiGatewayNginx.type=LoadBalancer
 ```
 
 * *Install Keptn execution-plane:*
+
 ```
 helm install jmeter-service https://github.com/keptn/keptn/releases/download/0.9.2/jmeter-service-0.9.2.tgz -n keptn --create-namespace --wait
 
