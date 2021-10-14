@@ -169,7 +169,7 @@ Review the documentation for a full reference on all Keptn capabilities and comp
 In case `keptn install` prevents you from installing Keptn due to a (currently) unsupported Kubernetes version, you can bypass this check at your own risk by using the Helm installation option of Keptn.
 
 ```
-helm install keptn https://github.com/keptn/keptn/releases/download/0.9.2/keptn-0.9.2.tgz -n keptn --create-namespace --wait --set=continuous-delivery.enabled=true,control-plane.apiGatewayNginx.type=LoadBalancer
+helm install keptn https://github.com/keptn/keptn/releases/download/0.9.2/keptn-0.9.2.tgz -n keptn --create-namespace --wait --set=continuous-delivery.enabled=true
 helm install helm-service https://github.com/keptn/keptn/releases/download/0.9.2/helm-service-0.9.2.tgz -n keptn --create-namespace --wait
 helm install jmeter-service https://github.com/keptn/keptn/releases/download/0.9.2/jmeter-service-0.9.2.tgz -n keptn --create-namespace --wait
 ```
@@ -179,7 +179,7 @@ Now continue with step 4 from the quickstart guide.
 
 ### Disk pressure on pods in Kubernetes 
 
-If the installation of Keptn is timing out, you can check if the root cause are low resources, such as disk space, by exeucting `kubectl describe pod PODID -n keptn`.
+If the installation of Keptn is timing out, you can check if the root cause are low resources, such as disk space, by executing `kubectl describe pod PODID -n keptn`.executing
  
 Please ensure that your local k3d environment has enough resources. You can verify this in your Docker resource settings. This quickstart guide has been tested with the following configuration:
 <details><summary>Resources</summary>
