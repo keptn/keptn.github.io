@@ -6,7 +6,7 @@ weight: 20
 
 ## Advanced Install Options: Install Keptn using the Helm chart
 
-When executing `keptn install`, Keptn is installed via a Helm chart, which can also be done bypassing the `keptn CLI`.
+When executing `keptn install`, Keptn is installed via a Helm chart, which can also be done without the keptn CLI.
 Therefore, the [helm CLI](https://helm.sh) is required to exeuction of the following command:
 
 * *Install Keptn control-plane (with Continuous Delivery support and exposed on an LoadBalancer)*: 
