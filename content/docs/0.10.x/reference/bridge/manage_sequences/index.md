@@ -2,7 +2,7 @@
 title: Manage Sequences
 description: Manage sequences from the Bridge
 weight: 40
-keywords: [0.9.x-bridge]
+keywords: [0.10.x-bridge]
 ---
 
 The sequence view shows all executed sequences for the selected project.
