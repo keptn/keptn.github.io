@@ -9,7 +9,7 @@ weight: 20
 When executing `keptn install`, Keptn is installed via a Helm chart, which can also be done using the Helm CLI directly.
 Therefore, the [helm CLI](https://helm.sh) is required to execute of the following command:
 
-* *Install Keptn control-plane (with Continuous Delivery support and exposed on an LoadBalancer)*: 
+* *Install Keptn control-plane (with Continuous Delivery support and exposed on a LoadBalancer)*: 
 
 ```
 helm install keptn https://github.com/keptn/keptn/releases/download/0.9.2/keptn-0.9.2.tgz -n keptn --create-namespace --wait --set=continuous-delivery.enabled=true,control-plane.apiGatewayNginx.type=LoadBalancer
@@ -23,7 +23,7 @@ helm install jmeter-service https://github.com/keptn/keptn/releases/download/0.9
 helm install helm-service https://github.com/keptn/keptn/releases/download/0.9.2/helm-service-0.9.2.tgz -n keptn --create-namespace --wait
 ```
 
-**Note:** To continue with Keptn after the installation with Helm, we recommend authenticating the Ketpn CLI as eplained [here](../nstall/#authenticate-keptn-cli). 
+**Note:** To continue with Keptn after the installation with Helm, we recommend authenticating the Ketpn CLI as explained  [here](../install/#authenticate-keptn-cli). 
 
 As shown above, the `helm install` or `helm upgrade` commands offer a flag called `--set`, which can be used to specify several configuration options using the format `key1=value1,key2=value2,...`.
 
