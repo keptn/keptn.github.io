@@ -186,7 +186,12 @@ Please ensure that your local k3d environment has enough resources. You can veri
 ![docker resources](./assets/docker-resources.png)
 </details>
 
-
+### Docker resources
+Please make sure your Docker environment has been granted enough resources to run k3d and Keptn on top of it.
+This quickstart guide has been tested with the following configuration:
+<details><summary>Resources</summary>
+![docker resources](./assets/docker-resources.png)
+</details>
 
 ### How to get more help?
 
