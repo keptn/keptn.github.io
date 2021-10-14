@@ -15,7 +15,6 @@ helm install keptn https://github.com/keptn/keptn/releases/download/0.9.2/keptn-
 ```
 
 * *Install Keptn execution-plane:*
-
 ```
 helm install jmeter-service https://github.com/keptn/keptn/releases/download/0.9.2/jmeter-service-0.9.2.tgz -n keptn --create-namespace --wait
 
