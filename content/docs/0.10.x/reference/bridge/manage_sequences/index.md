@@ -28,7 +28,7 @@ Filters can apply to:
 * Service - all services created for the project
 * Stage - all stages defined in the shipyard file of the project
 * Sequence - all sequences defined in the shipyard file of the project
-* Status - sequences can have the status active, succeeded, or failed. Active are all sequences that have not completed with a finished event yet.
+* Status - sequences can have the status active, succeeded, or failed. Active state includes all sequences that have not been completed with a finished event yet.
 
 ## Pausing and resuming sequences
 Running sequences have the option to be paused. The buttons' location to trigger pausing is on the top right of a list entry or the detail view. Clicking the button will halt the running sequence until it is resumed.
