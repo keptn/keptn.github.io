@@ -7,9 +7,21 @@ weight: 20
 ## Advanced Install Options: Install Keptn using the Helm chart
 
 When executing `keptn install`, Keptn is installed via a Helm chart, which can also be used directly.
-For this, the [Helm CLI](https://helm.sh) is required.
+Therefore the [Helm CLI](https://helm.sh) is required to trigger the exeuction of the following command:
 
-The command `helm upgrade ...` offers a flag called `--set`, which can be used to specify several configuration options using the format `key1=value1,key2=value2,...`.
+* *Install Keptn control-plane:*
+```
+helm install keptn https://github.com/keptn/keptn/releases/download/0.9.2/keptn-0.9.2.tgz -n keptn --create-namespace --wait --set=continuous-delivery.enabled=true,control-plane.apiGatewayNginx.type=LoadBalancer
+```
+
+* *Install Keptn execution-plane:*
+```
+helm install jmeter-service https://github.com/keptn/keptn/releases/download/0.9.2/jmeter-service-0.9.2.tgz -n keptn --create-namespace --wait
+
+helm install helm-service https://github.com/keptn/keptn/releases/download/0.9.2/helm-service-0.9.2.tgz -n keptn --create-namespace --wait
+```
+
+As shown above, the command `helm [upgrade/install]` offers a flag called `--set`, which can be used to specify several configuration options using the format `key1=value1,key2=value2,...`.
 
 The following flags are available:
 
