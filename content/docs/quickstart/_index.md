@@ -11,7 +11,7 @@ hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
 This quickstart is designed for Linux-based systems. Consequently, use Linux, MacOS, or Windows subsystem for Linux (WSL).
 
 ## Prerequisites
-- [Docker](https://docker.com/) 
+- [Docker](https://docker.com/) with minimum  4vCPUS, 12GB RAM, 20GB disk space left (see [FAQ](#faq))
 - [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) version >= 1.19
 - [helm](https://helm.sh/) version >= 3.3.0
 - [git](https://git-scm.com/downloads)
@@ -30,13 +30,12 @@ This quickstart is designed for Linux-based systems. Consequently, use Linux, Ma
     ```
 
 1. **Download and install the [Keptn CLI](../0.9.x/reference/cli)**
-
-
     ```
     curl -sL https://get.keptn.sh | KEPTN_VERSION=0.9.2 bash
     ```
 
-1. **Install Keptn** control-plane and execution-plane for continuous delivery use case
+1. **Install Keptn** control-plane and execution-plane for continuous delivery use case or use the `helm install` version [mentioned below](#kubernetes-version-not-supported).
+
 
     ```
     keptn install --use-case=continuous-delivery
@@ -76,6 +75,7 @@ This quickstart is designed for Linux-based systems. Consequently, use Linux, Ma
     ```
 
 1. **Perform a** [**multi-stage delivery**](../concepts/delivery/) with [SLO-based quality gates](../concepts/quality_gates/) in place
+    Please note this will create a local repository `examples/` in your current directory. Make sure to run it from a directory you are fine having the examples stored in.
     ```
     curl -SL https://raw.githubusercontent.com/keptn/examples/master/quickstart/multistage-delivery.sh | bash
     ```
@@ -163,12 +163,36 @@ Review the documentation for a full reference on all Keptn capabilities and comp
 - [Automated Operations](../0.9.x/automated_operations)
 - [Custom Integrations](../0.9.x/integrations)
 
-## Do you need help?
+## FAQ
 
-Join [our slack channel](https://slack.keptn.sh) for any questions that may arise.
+### Kubernetes version not supported
+In case `keptn install` prevents you from installing Keptn due to a (currently) unsupported Kubernetes version, you can bypass this check at your own risk by using the Helm installation option of Keptn.
 
-### Pod are not in a running state
+```
+helm install keptn https://github.com/keptn/keptn/releases/download/0.9.2/keptn-0.9.2.tgz -n keptn --create-namespace --wait --set=continuous-delivery.enabled=true
+helm install helm-service https://github.com/keptn/keptn/releases/download/0.9.2/helm-service-0.9.2.tgz -n keptn --create-namespace --wait
+helm install jmeter-service https://github.com/keptn/keptn/releases/download/0.9.2/jmeter-service-0.9.2.tgz -n keptn --create-namespace --wait
+```
+Now continue with step 4 from the quickstart guide. 
+
+
+
+### Disk pressure on pods in Kubernetes 
+
+If the installation of Keptn is timing out, you can check if the root cause are low resources, such as disk space, by executing `kubectl describe pod PODID -n keptn`.executing
+ 
 Please ensure that your local k3d environment has enough resources. You can verify this in your Docker resource settings. This quickstart guide has been tested with the following configuration:
 <details><summary>Resources</summary>
 ![docker resources](./assets/docker-resources.png)
 </details>
+
+### Docker resources
+Please make sure your Docker environment has been granted enough resources to run k3d and Keptn on top of it.
+This quickstart guide has been tested with the following configuration:
+<details><summary>Resources</summary>
+![docker resources](./assets/docker-resources.png)
+</details>
+
+### How to get more help?
+
+Join [our slack channel](https://slack.keptn.sh) for any questions that may arise.
