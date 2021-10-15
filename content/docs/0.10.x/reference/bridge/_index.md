@@ -257,3 +257,16 @@ kubectl -n keptn set image deployment/bridge bridge=keptn/bridge2:0.10.0 --recor
 -->
 
 If you have any questions or feedback regarding Keptn Bridge, please contact us through our [Keptn Community Channels](https://github.com/keptn/community).
+
+## Supported Browsers
+
+You can access Keptn Bridge using the following browsers.
+
+| Browser         | Versions                 |
+|-----------------|--------------------------|
+| Microsoft Edge  | Latest version (desktop) |
+| Mozilla Firefox | Latest version (desktop) |
+| Google Chrome   | Latest version (desktop) |
+| Safari          | 11+ (OS X)               |
+
+Keptn Bridge is not designed to work on mobile devices. 
