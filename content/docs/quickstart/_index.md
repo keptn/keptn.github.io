@@ -169,7 +169,7 @@ Review the documentation for a full reference on all Keptn capabilities and comp
 In case `keptn install` prevents you from installing Keptn due to a (currently) unsupported Kubernetes version, you can bypass this check at your own risk by using the Helm installation option of Keptn.
 
 ```
-helm install keptn https://github.com/keptn/keptn/releases/download/0.9.2/keptn-0.9.2.tgz -n keptn --create-namespace --wait --set=continuous-delivery.enabled=true
+helm install keptn https://github.com/keptn/keptn/releases/download/0.9.2/keptn-0.9.2.tgz -n keptn --create-namespace --set=continuous-delivery.enabled=true --wait
 helm install helm-service https://github.com/keptn/keptn/releases/download/0.9.2/helm-service-0.9.2.tgz -n keptn --create-namespace --wait
 helm install jmeter-service https://github.com/keptn/keptn/releases/download/0.9.2/jmeter-service-0.9.2.tgz -n keptn --create-namespace --wait
 ```
