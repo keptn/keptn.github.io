@@ -1,23 +1,67 @@
 ---
 title: Delivery Assistant
-description: Approval of deployment for manual approval strategy
+description: Approval to control the delivery process
 weight: 50
 keywords: [0.9.x-cd]
-
 aliases:
   - /docs/0.9.x/reference/bridge/delivery_assistent/
 ---
 
-If you configured approval-strategy `manual` within your [multi-stage delivery](../multi_stage/#approval-strategy), Keptn will ask for an approval before deploying the artefact in the current stage, e.g.:
+If you would like to extend the [multi-stage delivery](../multi_stage/#approval-strategy) with the capabilities of the delivery assistant, just add the `approval` task to a sequence in your shipyard, as shown by the example of the *delivery* sequence in the *staging* stage: 
 
+```
+- name: "staging"
+  sequences:
+    - name: "delivery"
+      triggeredOn:
+        - event: "dev.delivery.finished"
+      tasks:
+        - name: "approval"
+          properties:
+            pass: "manual"
+            warning: "manual"
+        - name: "deployment"
+          properties:
+            deploymentstrategy: "blue_green_service"
+        - name: "test"
+          properties:
+            teststrategy: "performance"
+        - name: "evaluation"
+        - name: "release"
+```
 
-{{< popup_image
-  link="./assets/bridge_approval_triggered.png"
-  caption="Keptn Bridge Approval Triggered"
-  width="764px">}}
+If this task is in place, you can control how to proceed with the delivery depending on the evaluation result from the previous stage. You have the options to configure this as follows: 
 
+| Evaluation result                 | Option: `manual`                                  | Option: `automatic`                 |
+|---------------------------------  |-----------------------------------------------  |---------------------------------- |
+| If evaluation returned is `pass`      | `manual` - the user has to manually approve/decline it.   | `automatic`- Keptn automatically approves it.   |
+| If evaluation returned is `warning`   | `manual` - the user has to manually approve/decline it.   | `automatic` - Keptn automatically approves it.  |
 
-You can approve or decline this deployment by sending an `approval.finished` CloudEvent via the Keptn CLI, Keptn Bridge or directly via the API.
+*Example - Regardless of the evaluation result, the user needs to approve or decline it:*
+```
+- name: "approval"
+  properties:
+    pass: "manual"
+    warning: "manual"
+```
+
+*Example - Automatically continue when result pass, but ask for approval when a warning is returned:*
+```
+- name: "approval"
+  properties:
+    pass: "automatic"
+    warning: "manual"
+```
+
+## Approve or decline an open approval with Keptn Bridge
+ 
+* To approve/decline an approval, open the *Environment* view and click on the stage that has a pending approval. When there are pending approvals for a service available, the service tile is expanded automatically. Additionally, you can filter the services to see only services with pending approvals by clicking on the blue icon.
+
+* By clicking on the green checkmark, the deployment will be approved. You can also decline by clicking on the red abort button. 
+
+    {{< popup_image
+      link="./assets/bridge_environment_assisteddelivery.png"
+      caption="Keptn Bridge Assisted Delivery">}}
 
 ## Approve or decline an open approval with Keptn CLI
 
@@ -53,8 +97,8 @@ You can approve or decline this deployment by sending an `approval.finished` Clo
     $ keptn send event approval.finished --project=ck-sockshop --stage=production --service=carts
     Starting to send approval.finished event
     
-     OPTION	VERSION	EVALUATION	
-     (1)	0.11.2	n/a		
+     OPTION VERSION EVALUATION  
+     (1)  0.11.2  n/a   
     Select the option to approve or decline: 
     1
     Do you want to (a)pprove or (d)ecline: 
@@ -62,16 +106,6 @@ You can approve or decline this deployment by sending an `approval.finished` Clo
     ID of Keptn context: 654c80b0-4a02-4d36-96f3-7447df1cdf41
     ```
 
-
-## Approve or decline an open approval with Keptn Bridge
- 
-* To approve/decline an approval, open the *Environment* view, click on the stage that has a pending approval. When there are pending approvals for a service available, the service tile is expanded automatically. Additionally you can filter the services to see only services with pending approvals by clicking on the blue icon.
-
-* By clicking on the green checkmark, the deployment will be approved. You can also decline by clicking on the red abort button. 
-
-    {{< popup_image
-      link="./assets/bridge_environment_assisteddelivery.png"
-      caption="Keptn Bridge Assisted Delivery">}}
 
 ## Approve or decline an open approval with Keptn API
 
