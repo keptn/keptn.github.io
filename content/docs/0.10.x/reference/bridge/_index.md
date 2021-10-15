@@ -144,6 +144,13 @@ By clicking on the edit icon next to the subscription detail or the "*Add sequen
 link="./assets/uniform-view-create-subscription.png"
 caption="Create/Edit Subscriptions">}}
 
+Once you have selected an event and configured your filters, you may inspect an example event payload by clicking on the "Show example payload"-Button. This will show you the payload of latest event in your environment, depending on your configuration.
+
+{{< popup_image
+link="./assets/uniform-view-show-payload.png"
+caption="Show example payload">}}
+
+
 #### Secrets view
 
 Secrets are used to store sensitive data like credentials or URIs for integrations. This view
