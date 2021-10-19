@@ -25,7 +25,7 @@ In the following you'll find integrations that are already provided by the Keptn
 
         timeout = setTimeout(() => {
             const search = input.value.toLowerCase();
-            groups[0].dataset.url = `https://staging.artifacthub.io/packages/search?kind=10&sort=relevance${e.target.value !== '' ? `&ts_query_web=${e.target.value}` : ''}`;
+            groups[0].dataset.url = `https://artifacthub.io/packages/search?kind=10&sort=relevance${e.target.value !== '' ? `&ts_query_web=${e.target.value}` : ''}`;
         }, 400);
     }
 
