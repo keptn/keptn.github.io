@@ -8,11 +8,17 @@ hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
 
 ## Available integrations
 
-Keptn as a control-plane integrates with various different tools and can be extended with your own tools. 
-In the following you'll find integrations that are already provided by the Keptn team and its community. 
+Keptn as a control-plane integrates with various different tools and can be extended with your own tools.
+In the following you'll find integrations that are already provided by the Keptn team and its community.
 
 {{< rawhtml >}}
 <input id="services-search" type="text" placeholder="Search">
+<button class="btn filterBtn">Show all</button>
+<button class="btn filterBtn">Contrib</button>
+<button class="btn filterBtn">Sandbox</button>
+<button class="btn filterBtn">Testing</button>
+<button class="btn filterBtn">Deployment</button>
+
 <script type="text/javascript">
     const input = document.getElementById("services-search");
     const groups = document.getElementsByClassName('artifacthub-widget-group');
@@ -28,15 +34,23 @@ In the following you'll find integrations that are already provided by the Keptn
             groups[0].dataset.url = `https://artifacthub.io/packages/search?kind=10&sort=relevance${e.target.value !== '' ? `&ts_query_web=${e.target.value}` : ''}`;
         }, 400);
     }
-
     input.addEventListener('input', inputHandler)
+
+    let btns = document.getElementsByClassName("filterBtn");
+    for (let i = 0; i < btns.length; i++) {
+      btns[i].addEventListener("click", function() {
+          let filterValue = btns[i].textContent.toLowerCase();
+          groups[0].dataset.url = `https://artifacthub.io/packages/search?kind=10&sort=relevance${filterValue !== '' && filterValue !== 'show all' ? `&ts_query_web=${filterValue}` : ''}`;
+      });
+    }
+
 </script>
 <div class="artifacthub-widget-group" data-url="https://artifacthub.io/packages/search?kind=10&sort=relevance&page=1&ts_query_web=" data-theme="light" data-header="false" data-color="#417598" data-stars="false" data-responsive="true" data-loading="true"></div><script async src="https://artifacthub.io/artifacthub-widget.js"></script>
 {{< /rawhtml >}}
 
 ### Contributing
 
-- If you identify a bug you would like to report, please create an issue in the repository of the Keptn-service. 
+- If you identify a bug you would like to report, please create an issue in the repository of the Keptn-service.
 
 - If you need more information on version compatibility, please go to the repository where a compatibility-matrix should be provided.
 
