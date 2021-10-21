@@ -8,8 +8,8 @@ hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
 
 ## Available integrations
 
-Keptn as a control-plane integrates with various different tools and can be extended with your own tools. 
-In the following you'll find integrations that are already provided by the Keptn team and its community. 
+Keptn as a control-plane integrates with various different tools and can be extended with your own tools.
+In the following you'll find integrations that are already provided by the Keptn team and its community.
 
 | Keptn-service | latest Release | supported Keptn | Repository  |
 | -------------------------- | --- | --- | --- |
