@@ -14,10 +14,9 @@ In the following you'll find integrations that are already provided by the Keptn
 {{< rawhtml >}}
 <input id="services-search" type="text" placeholder="Search">
 <button class="btn filterBtn" value="show-all">Show all</button>
-<button class="btn filterBtn" value="contrib">Contrib</button>
-<button class="btn filterBtn" value="sandbox">Sandbox</button>
 <button class="btn filterBtn" value="testing">Testing</button>
 <button class="btn filterBtn" value="deployment">Deployment</button>
+<button class="btn filterBtn" value="observability">Observability</button>
 
 <script type="text/javascript">
     const input = document.getElementById("services-search");
