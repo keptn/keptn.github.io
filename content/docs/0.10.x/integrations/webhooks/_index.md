@@ -5,9 +5,15 @@ weight: 2
 keywords: [0.10.x-integration]
 ---
 
-Keptn has a built-in capability to integrate your webhooks into the sequence orchestration of Keptn. This lets you call custom HTTP endpoints when running a delivery or remediation sequence that triggers a certain task. By using this integration, you can easily send the state of a task to a third-party tool or service. This allows you to integrate tools such as testing services and incident management services. Two use case examples of tool integrations are provided here: Integration of a (1) [notification tool](../how_integrate/#notification-tools), (2) [testing tool](../how_integrate/#testing-tools), which can be easily implemented by just using webhooks.    
+Keptn has a built-in capability to integrate your webhooks into the sequence orchestration of Keptn. This lets you call
+custom HTTP endpoints when running a delivery or remediation sequence that triggers a certain task. By using this 
+integration, you can easily send the state of a task to a third-party tool or service. This allows you to integrate
+various tools such as testing services, existing CI/CD pipelines, and incident management services. 
 
-Webhooks are created at a *Task* level and can be triggered by 3 event types: 
+
+## Create a Webhook integration
+
+Webhooks are created at a *Task* level and can be triggered by the following [event types](https://github.com/keptn/spec/blob/0.2.2/cloudevents.md#task-events):
 
 | Event types     | Description                                           |
 |---------------- |-----------------------------------------------------  |
@@ -15,9 +21,8 @@ Webhooks are created at a *Task* level and can be triggered by 3 event types:
 | Task started    | The task has begun running.                           |
 | Task finished   | The task has finished.                                |
 
-## Create a Webhook integration
-
-To create a webhook integration, go to the *Uniform* page, select the *webhook-service*, and click the `Add subscription` button. 
+To create a webhook integration, open Keptn Bridge, select a project, and go to the *Uniform* page. Then select
+*webhook-service*, and click the `Add subscription` button. 
 
 {{< popup_image
 link="./assets/add-webhook.png"
@@ -33,14 +38,14 @@ width="700px">}}
 
 *Subscription:*
 
-* *Task*: The task the webhook should be fired on.
+* *Task*: The task the webhook should be fired on (e.g., `test` or `deployment`)
 * *Task suffix*: The state of the task when the webhook should be fired; select one of: `triggered`, `started`, of `finished`
 * *Filter*: To restrict the webhook to certain stages and services you can specify those using filters. 
 
 *Webhook configuration:*
 
-* *Request method*: Choose the request method; select one of: `POST`, `PUT`, or `GET`
-* *URL*: The endpoint URL is where the webhook will send the request. 
+* *Request method*: Choose the request method; select one of: `GET`, `POST` or `PUT`.
+* *URL*: The endpoint URL is where the webhook will send the request.
 * *Custom headers*: You can use the custom headers field to add HTTP headers to the request, such as unique identifiers or authentication credentials.
 * *Custom payload*: Modify the payload to match the format requested by the receiving endpoint. (more details provided below)
 * *Proxy*: If required, you can specify a proxy the request has to go through.
@@ -49,7 +54,10 @@ Click **Create subscription** to save and enable the webhook for your integratio
 
 ## Customize request payload
 
-The output format of the webhook (i.e., the payload of the request body) can be customized using event data to match the required input format of the tool you are integrating with. Therefore, you can reference the data field (event property) using a templating mechanism. For example, if you would like to get the value of the `project` property from the subscribed event, type in: `{{.data.project}}`. A look at the example event can help you finding the proper data field. 
+The output format of the webhook (i.e., the payload of the request body) can be customized using event data to match the 
+required input format of the tool you are integrating with. Therefore, you can reference the data field (event property) 
+using a templating mechanism. For example, if you would like to get the value of the `project` property from the 
+subscribed event, type in: `{{.data.project}}`. A look at the example event can help to identify the proper data field. 
 
 * An example of a customized request payload:   
 
@@ -131,7 +139,7 @@ width="700px">}}
 
 ## Advanced Webhook configuration
 
-**Prerequisite:** It is required to have an upstream Git repo configured to get access to the configuration files.  
+**Prerequisite:** This requires access to the [upstream Git repo](../../manage/git_upstream/) in order to modify the webhook configuration files.  
 
 For more advanced configuration options, you can modify the raw request declared as [curl](https://curl.se/) command. Therefore, you need to access the `webhook.yaml` config file in the Git repo you set for an upstream. In this Git repo, you find the `webhook.yaml` file based on the filters you selected on the task subscription, e.g., if a filter is set for stage *production*, go to the *production* branch. 
 
@@ -156,7 +164,13 @@ spec:
 
 ### Configure Webhook to not auto-respond with a finished event
 
-If you subscribe your webhook to an event of type `triggered`, Keptn automatically sends a `started` event, calls the request, and sends a `finished` event. However, there is the obvious use case that the receiving tool requires time to execute the webhook, e.g., to run a performance test. In this case, give the receiving tool the responsibility to send the `finished` event after the task is executed. 
+If you subscribe your webhook to an event of type `triggered`, Keptn automatically sends a `started` event, executes
+the webhook request via `curl`, and automatically generates a `finished` event.
+
+In certain cases, you do want to have more control about this behaviour, e.g., to run a long-running test on Jenkins, 
+and let the receiving tool (in this case Jenkins) decide when to send the `finished` event.
+
+To achieve this, you need to edit your webhook configuration as follows:
 
 * Configure the webhook to not send the `finished` event by setting the flag `sendFinished` to `false`:
 
@@ -167,14 +181,21 @@ metadata:
   name: webhook-configuration
 spec:
   webhooks:
-    - type: sh.keptn.event.evaluation.finished
+    - type: sh.keptn.event.test.triggered
       sendFinished: false 
       requests:
-        - "curl --request POST --data '{\"text\":\"Evaluation {{.data.evaluation.result}} with a score of {{.data.evaluation.score}} \"}'
-          https://hooks.slack.com/services/{{.env.secretKey}}"
+        - "curl --request POST'
+          https://my.jenkins.127.0.0.1.nip.io/job/My-Job/buildWithParameters?token={{.env.jenkinsToken}}&triggeredid={{.id}}&shkeptncontext={{.shkeptncontext}}"
 ```
 
-* Since no `finished` event is then sent, it is required to configure the receiving tool to send a `finished` event to the `/v1/event` endpoint of Keptn. 
+* In addition, you will need to pass the following data in order for the receiving tool to properly respond with a `finished` event:
+  * `{{.id}}` - required in the `triggeredid` attribute of the `finished` event
+  * `{{.shkeptncontext}}` - required in the `shkeptncontext` attribute of the `finished` event
+  * Optional, but depends on your implementation: `{{.data.project}}`, `{{.data.service}}`, `{{.data.stage}}`
+  
+*Note*: Those fields can be either passed within the Data block, or as query params in the URL, depending on the receiving tools configuration.
+
+* Finally, since no `finished` event is sent by Keptn, it is required to configure the receiving tool to send a `finished` event to the `/v1/event` endpoint of the Keptn API.
 
 ## Delete a Webhook integration
 
@@ -184,3 +205,5 @@ To delete a webhook integration, click on the *trash can* icon next to the subsc
 link="./assets/delete-webhook.png"
 caption="Delete a webhook"
 width="700px">}}
+
+*Note*: Deleting a webhook means that the subscription in Uniform is deleted, as well as the webhook configuration file within the Git repo.
