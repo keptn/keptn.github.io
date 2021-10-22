@@ -13,11 +13,11 @@ In the following you'll find integrations that are already provided by the Keptn
 
 {{< rawhtml >}}
 <input id="services-search" type="text" placeholder="Search">
-<button class="btn filterBtn">Show all</button>
-<button class="btn filterBtn">Contrib</button>
-<button class="btn filterBtn">Sandbox</button>
-<button class="btn filterBtn">Testing</button>
-<button class="btn filterBtn">Deployment</button>
+<button class="btn filterBtn" value="show-all">Show all</button>
+<button class="btn filterBtn" value="contrib">Contrib</button>
+<button class="btn filterBtn" value="sandbox">Sandbox</button>
+<button class="btn filterBtn" value="testing">Testing</button>
+<button class="btn filterBtn" value="deployment">Deployment</button>
 
 <script type="text/javascript">
     const input = document.getElementById("services-search");
@@ -31,7 +31,7 @@ In the following you'll find integrations that are already provided by the Keptn
 
         timeout = setTimeout(() => {
             const search = input.value.toLowerCase();
-            groups[0].dataset.url = `https://artifacthub.io/packages/search?kind=10&sort=relevance${e.target.value !== '' ? `&ts_query_web=${e.target.value}` : ''}`;
+            groups[0].dataset.url = `https://artifacthub.io/packages/search?kind=10&sort=relevance${search !== '' ? `&ts_query_web=${search}` : ''}`;
         }, 400);
     }
     input.addEventListener('input', inputHandler)
@@ -39,8 +39,8 @@ In the following you'll find integrations that are already provided by the Keptn
     let btns = document.getElementsByClassName("filterBtn");
     for (let i = 0; i < btns.length; i++) {
       btns[i].addEventListener("click", function() {
-          let filterValue = btns[i].textContent.toLowerCase();
-          groups[0].dataset.url = `https://artifacthub.io/packages/search?kind=10&sort=relevance${filterValue !== '' && filterValue !== 'show all' ? `&ts_query_web=${filterValue}` : ''}`;
+          let filterValue = btns[i].value.toLowerCase();
+          groups[0].dataset.url = `https://artifacthub.io/packages/search?kind=10&sort=relevance${filterValue !== '' && filterValue !== 'show-all' ? `&ts_query_web=${filterValue}` : ''}`;
       });
     }
 
