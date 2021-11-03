@@ -22,7 +22,7 @@ In the following you'll find integrations that are already provided by the Keptn
     const input = document.getElementById("services-search");
     const groups = document.getElementsByClassName('artifacthub-widget-group');
     let timeout = null;
-    
+
     const inputHandler = function(e) {
         if (timeout) {
             clearTimeout(timeout);
