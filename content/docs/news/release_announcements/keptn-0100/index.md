@@ -6,7 +6,7 @@ weight: 85
 Keptn 0.10.0 provides a native way for integrating your tooling by just calling their Webhooks. This is a great enabler for various delivery and operational use cases that can be implemented without writing custom code. Just two steps and your tool is integrated: (1) define the sequence task that works as a trigger (2) define the HTTP request endpoint and payload of the Webhook:
 
 {{< popup_image
-link="../../../0.10.x/integrations/webhooks/assets/add-webhook.png"
+link="../../../../0.10.x/integrations/webhooks/assets/create-webhook.png"
 caption="Form to create subscription and webhook configuration"
 width="700px">}}
 
