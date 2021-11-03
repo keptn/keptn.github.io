@@ -11,7 +11,7 @@ Upgrades Keptn on a Kubernetes cluster and supports upgrading the shipyard of a 
 
 The Keptn CLI allows upgrading Keptn on any Kubernetes derivative to which your kube config is pointing to, and on OpenShift. Also, it supports upgrading the shipyard of an existing project to a new specification.
 
-For more information, please follow the installation guide [Upgrade Keptn](https://keptn.sh/docs//operate/upgrade/)
+For more information, please follow the installation guide [Upgrade Keptn](https://keptn.sh/docs/0.9.x/operate/upgrade/)
 
 
 ```
