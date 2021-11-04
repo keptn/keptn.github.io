@@ -12,7 +12,7 @@ you can even provide information back to Keptn (e.g., `test.finished` with `resu
 
 ## Configure Jenkins
 
-*Note*: Keptn needs to be able to reach your Jenkins installation (either directly or via a proxy). This goes way beyond our documentation, therefore we suggest to reach out to your Jenkins administrator.
+*Note*: Keptn needs to reach your Jenkins installation (either directly or via a proxy). This goes way beyond our documentation, therefore we suggest reaching out to your Jenkins administrator.
 
 * Open your Jenkins UI, log in as an administrator, and configure the pipeline you want to call
 * Select the pipeline you want to call, and click on "Configure".
@@ -30,7 +30,7 @@ you can even provide information back to Keptn (e.g., `test.finished` with `resu
 To secure the sensitive data of your Jenkins webhook URL, a secret needs to be created:
 
 * Go to **Uniform page** > **Secret** and click the **Add Secret**
-* Enter a *name* (e.g., `jenkins-secret`) and select `keptn-webhook-service` for the secret *scope*
+* Enter a *name* (e.g., `jenkins-secret`) and select `keptn-webhook-service` as a secret *scope*
 * Enter a unique name for the *key* (e.g., `my-pipeline-secret`)
 * Copy-paste the authentication token from the previous step into the *value* field:
 
@@ -41,7 +41,7 @@ To secure the sensitive data of your Jenkins webhook URL, a secret needs to be c
 
 
 
-## Set up Jenkins integration
+## Set up Jenkins integration via Webhook
 
 To create a webhook integration, a subscription needs to be created:
 
@@ -66,7 +66,7 @@ To create a webhook integration, a subscription needs to be created:
 
 * Finally, click **Create subscription** to save and enable the webhook for your Slack integration.
 
-With those steps done you are triggering a Jenkins Pipeline whenever a `test.triggered` event is sent from Keptn.
+With those steps done, Keptn is triggering a Jenkins Pipeline whenever a `test.triggered` event occurs.
 
 ## Advanced: Integrate Jenkins response
 
