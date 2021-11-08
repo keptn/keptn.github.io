@@ -37,7 +37,7 @@ keptn version
 keptn version
 ```
 
-1. To upgrade your Keptn installation from 0.8.x to 0.10.0, the Keptn CLI offers the command:
+1. To upgrade your Keptn installation from 0.9.x to 0.10.0, the Keptn CLI offers the command:
 ```console
 keptn upgrade
 ```
