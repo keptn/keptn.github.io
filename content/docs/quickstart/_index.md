@@ -29,9 +29,9 @@ This quickstart is designed for Linux-based systems. Consequently, use Linux, Ma
     k3d cluster create mykeptn -p "8082:80@loadbalancer" --k3s-server-arg "--kube-proxy-arg=conntrack-max-per-core=0"  --k3s-agent-arg "--kube-proxy-arg=conntrack-max-per-core=0" --agents 1
     ```
 
-1. **Download and install the [Keptn CLI](../0.9.x/reference/cli)**
+1. **Download and install the [Keptn CLI](../0.10.x/reference/cli)**
     ```
-    curl -sL https://get.keptn.sh | KEPTN_VERSION=0.9.2 bash
+    curl -sL https://get.keptn.sh | KEPTN_VERSION=0.10.0 bash
     ```
 
 1. **Install Keptn** control-plane and execution-plane for continuous delivery use case or use the `helm install` version [mentioned below](#kubernetes-version-not-supported).
@@ -41,14 +41,14 @@ This quickstart is designed for Linux-based systems. Consequently, use Linux, Ma
     keptn install --use-case=continuous-delivery
     ```
 
-    Keptn comes with different installation options, please have a look at the [installation documentation](../0.9.x/operate) for more details on cluster requirements, resource consumption, supported Kubernetes versions, and more.
+    Keptn comes with different installation options, please have a look at the [installation documentation](../0.10.x/operate) for more details on cluster requirements, resource consumption, supported Kubernetes versions, and more.
     Please note that although during the installation procedure it might be mentioned that Istio is required, it is *not required* for this quickstart guide.
 
     <details><summary>Installation logs</summary>
     <p>The installation logs will print the following output:
     <pre>
     Installing Keptn ...
-    Helm Chart used for Keptn installation: https://storage.googleapis.com/keptn-installer/keptn-0.9.2.tgz
+    Helm Chart used for Keptn installation: https://storage.googleapis.com/keptn-installer/keptn-0.10.0.tgz
     Start upgrading Helm Chart keptn in namespace keptn
     Finished upgrading Helm Chart keptn in namespace keptn
     Keptn control plane has been successfully set up on your cluster.
@@ -61,9 +61,9 @@ This quickstart is designed for Linux-based systems. Consequently, use Linux, Ma
     &nbsp;* To quickly access Keptn, you can use a port-forward and then authenticate your Keptn CLI:
     &nbsp;- kubectl -n keptn port-forward service/api-gateway-nginx 8080:80
     &nbsp;- keptn auth --endpoint=http://localhost:8080/api --api-token=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
-    &nbsp;* Alternatively, follow the instructions provided at: https://keptn.sh/docs/0.9.x/operate/install/#authenticate-keptn-cli
+    &nbsp;* Alternatively, follow the instructions provided at: https://keptn.sh/docs/0.10.x/operate/install/#authenticate-keptn-cli
     &nbsp;* To expose Keptn on a public endpoint, please continue with the installation guidelines provided at:
-    &nbsp;- https://keptn.sh/docs/0.9.x/operate/install#install-keptn
+    &nbsp;- https://keptn.sh/docs/0.10.x/operate/install#install-keptn
     </pre>
     **There is no need to follow the instructions from the installation log - the quickstart guide will cover this!**
     </p>
@@ -156,12 +156,12 @@ With Keptn installed, have a look at the different [tutorials](https://tutorials
 
 Review the documentation for a full reference on all Keptn capabilities and components and how they can be combined/extended to your needs:
 
-- [Operate Keptn](../0.9.x/operate)
-- [Manage Keptn](../0.9.x/manage)
-- [Continuous Delivery](../0.9.x/continuous_delivery)
-- [Quality Gates](../0.9.x/quality_gates)
-- [Automated Operations](../0.9.x/automated_operations)
-- [Custom Integrations](../0.9.x/integrations)
+- [Operate Keptn](../0.10.x/operate)
+- [Manage Keptn](../0.10.x/manage)
+- [Continuous Delivery](../0.10.x/continuous_delivery)
+- [Quality Gates](../0.10.x/quality_gates)
+- [Automated Operations](../0.10.x/automated_operations)
+- [Custom Integrations](../0.10.x/integrations)
 
 ## FAQ
 
@@ -169,18 +169,18 @@ Review the documentation for a full reference on all Keptn capabilities and comp
 In case `keptn install` prevents you from installing Keptn due to a (currently) unsupported Kubernetes version, you can bypass this check at your own risk by using the Helm installation option of Keptn.
 
 ```
-helm install keptn https://github.com/keptn/keptn/releases/download/0.9.2/keptn-0.9.2.tgz -n keptn --create-namespace --set=continuous-delivery.enabled=true --wait
-helm install helm-service https://github.com/keptn/keptn/releases/download/0.9.2/helm-service-0.9.2.tgz -n keptn --create-namespace --wait
-helm install jmeter-service https://github.com/keptn/keptn/releases/download/0.9.2/jmeter-service-0.9.2.tgz -n keptn --create-namespace --wait
+helm install keptn https://github.com/keptn/keptn/releases/download/0.10.0/keptn-0.10.0.tgz -n keptn --create-namespace --set=continuous-delivery.enabled=true --wait
+helm install helm-service https://github.com/keptn/keptn/releases/download/0.10.0/helm-service-0.10.0.tgz -n keptn --create-namespace --wait
+helm install jmeter-service https://github.com/keptn/keptn/releases/download/0.10.0/jmeter-service-0.10.0.tgz -n keptn --create-namespace --wait
 ```
-Now continue with step 4 from the quickstart guide. 
+Now continue with step 4 from the quickstart guide.
 
 
 
-### Disk pressure on pods in Kubernetes 
+### Disk pressure on pods in Kubernetes
 
 If the installation of Keptn is timing out, you can check if the root cause are low resources, such as disk space, by executing `kubectl describe pod PODID -n keptn`.executing
- 
+
 Please ensure that your local k3d environment has enough resources. You can verify this in your Docker resource settings. This quickstart guide has been tested with the following configuration:
 <details><summary>Resources</summary>
 ![docker resources](./assets/docker-resources.png)
