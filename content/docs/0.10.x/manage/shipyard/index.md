@@ -91,7 +91,6 @@ Keptn supports a set of opinionated tasks for declaring a delivery or remediatio
 * rollback
 * test
 
-
 #### Action
 
 The action task indicates that a remediation action should be executed by an action provider. It is used within a [remediation workflow](../../automated_operations/remediation).
@@ -209,15 +208,6 @@ Defines the releasing task that is executed after a successful deployment happen
 **Usage:**
 ```
 - name: release
-```
-
-#### Get-Action
-
-Defines the task to retrieve the next remediation action.
-
-**Usage:**
-```
-- name: get-action
 ```
 
 #### Action
