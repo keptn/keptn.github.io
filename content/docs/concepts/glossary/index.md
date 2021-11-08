@@ -19,15 +19,19 @@ Keptn allows building scalable automation for delivery and operations. Therefore
 
 **Shipyard:** A shipyard is the declarative means to divide an environment (e.g., Kubernetes cluster) into project stages and to specify task sequences for each project stage.
 
-**Sequence:** A sequence declares a set of tasks for realizing a delivery or operations process. A task sequence is triggered by an external event, i.e., by a *domain event*. Examples for domain events are the availability of a new artifact which should be deployed (i.e., a `new-artifact` event) or the occurrencece of a problem (i.e., a `problem` event).
+**Sequence:** A sequence declares a set of tasks for realizing a delivery or operations process. A task sequence is triggered by an external event, i.e., by a *domain event*. Examples for domain events are the availability of a new artifact that should be deployed (i.e., a `new-artifact` event) or the occurrence of a problem (i.e., a `problem` event).
 
 **Task:** A task is the smallest executable unit of a sequence. A task is triggered by an event. 
 
-**Keptn-service:** A Keptn-service is the unit executing a task. It can be responsible for executing one or many tasks and is is triggered by an event of a task.
+**Keptn-service:** A Keptn-service is the unit executing a task. It can be responsible for executing one or many tasks and it is triggered by an event of a task.
 
 **Uniform:** The uniform declares a list of Keptn-services that represents the execution plane of a Keptn installation and are required to execute the respective tasks. (*Note:* Currently, Keptn provides two hard-coded execution planes: (1) full - containing Keptn-services for delivery and automated operations use cases and (2) quality gates only.) 
 
 **Event:** An event triggers a task and contains relevant data for the respective task.
+
+**Resource:** A resource is a *configuration* (e.g., deployment, or service config) or a *service-related artifact* (e.g., test case, or remedation action), which is consumed by a Keptn-service to execute the task.  
+
+### Architectural Terms
 
 **Keptn installation:** A Keptn installation encloses the control plan and execution plane. 
 
