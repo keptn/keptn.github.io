@@ -23,13 +23,13 @@ Keptn allows building scalable automation for delivery and operations. Therefore
 
 **Task:** A task is the smallest executable unit of a sequence. A task is triggered by an event. 
 
-**Keptn-service:** A Keptn-service is the unit executing a task. It can be responsible for executing one or many tasks and it is triggered by an event of a task.
+**Keptn-service:** A Keptn-service is the unit that is executing a task. It can be responsible for executing one or many tasks and it is triggered by an event of a task.
 
 **Uniform:** The uniform declares a list of Keptn-services that represents the execution plane of a Keptn installation and are required to execute the respective tasks. (*Note:* Currently, Keptn provides two hard-coded execution planes: (1) full - containing Keptn-services for delivery and automated operations use cases and (2) quality gates only.) 
 
 **Event:** An event triggers a task and contains relevant data for the respective task.
 
-**Resource:** A resource is a *configuration* (e.g., deployment, or service config) or a *service-related artifact* (e.g., test case, or remedation action), which is consumed by a Keptn-service to execute the task.  
+**Resource:** A resource is a *configuration* (e.g., deployment, or service config) or a *service-related artifact* (e.g., test case, or remediation action), which is consumed by a Keptn-service to execute the task.  
 
 ### Architectural Terms
 
