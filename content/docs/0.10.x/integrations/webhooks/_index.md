@@ -56,10 +56,10 @@ Click **Create subscription** to save and enable the webhook for your integratio
 
 The output format of the webhook (i.e., the payload of the request body) can be customized using event data to match the 
 required input format of the tool you are integrating with. Therefore, you can reference the data field (event property) 
-using a templating mechanism. For example, if you would like to get the value of the `project` property from the 
+using [Go templating](https://blog.gopheracademy.com/advent-2017/using-go-templates/). For example, if you would like to get the value of the `project` property from the 
 subscribed event, type in: `{{.data.project}}`. A look at the example event can help to identify the proper data field. 
 
-* An example of a customized request payload:   
+*An example of a customized request payload:*   
 
 ```
 {
@@ -67,7 +67,20 @@ subscribed event, type in: `{{.data.project}}`. A look at the example event can 
 }
 ```
 
-<details><summary>*Preview* of customization support released with 0.11.0</summary>
+Based on the Go templating capabilities, you can: 
+
+* Define conditions: `"{{if .fieldName}}{{.fieldName}}{{ else }}No field name set{{ end }}"` 
+* Access an array element: `"{{ index .articles.Content 0 }}"`
+
+*An example of a customized request payload using a condition on an array element:*
+
+```
+{
+  "deploymentURL": "{{if index .data.deployment.deploymentURIsPublic 0}}{{index .data.deployment.deploymentURIsPublic 0}}{{else}}No deployment URL provided{{end}}"
+}
+```
+
+<details><summary>*Preview* of customization support released with 0.12.0</summary>
 <p>
 
 For a more convenient way, a feature is planned where you can put your cursor in the text field at the spot where you would like to customize the payload. Then click the *computer* icon that opens a list of data fields you can add to the payload. This list of data fields is derived from the event your webhook is subscribed to. 
