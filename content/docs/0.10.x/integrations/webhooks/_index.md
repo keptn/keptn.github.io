@@ -59,7 +59,7 @@ required input format of the tool you are integrating with. Therefore, you can r
 using [Go templating](https://blog.gopheracademy.com/advent-2017/using-go-templates/). For example, if you would like to get the value of the `project` property from the 
 subscribed event, type in: `{{.data.project}}`. A look at the example event can help to identify the proper data field. 
 
-* An example of a customized request payload:   
+*An example of a customized request payload:*   
 
 ```
 {
@@ -72,7 +72,7 @@ Based on the Go templating capabilities, you can:
 * Define conditions: `"{{if .fieldName}}{{.fieldName}}{{ else }}No field name set{{ end }}"` 
 * Access an array element: `"{{ index .articles.Content 0 }}"`
 
-* An example of a customized request payload using a condition on an array element: 
+*An example of a customized request payload using a condition on an array element:*
 
 ```
 {
