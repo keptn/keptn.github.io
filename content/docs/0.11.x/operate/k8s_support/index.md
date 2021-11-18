@@ -2,7 +2,7 @@
 title: Kubernetes support & Cluster size
 description: Keptn and Kubernetes compatibility overview and required cluster size.
 weight: 70
-keywords: [0.10.x-operate]
+keywords: [0.11.x-operate]
 ---
 
 This document describes the maximum version skew supported between Keptn and Kubernetes.
@@ -21,8 +21,8 @@ Keptn versions are expressed as `x.y.z`, where `x` is the major version, `y` is 
 
 | Keptn Version /<br>Installation                           | Kubernetes  | AKS                       | EKS                       | GKE           | OpenShift   | K3s         | Minishift               |
 |-----------------------------------------------------------|:-----------:|:-------------------------:|:-------------------------:|:-------------:|:-----------:|:-----------:|:------------------------|
-| **0.10.x** / <br>Control & Execution plane<br>*see: (3)*   | 1.21 - 1.16 | 1.20 - 1.15<br>*see: (1)* | 1.18 - 1.16<br>*see: (2)* | 1.19 - 1.15   | 4, 3.11     | 1.21 - 1.16 | 1.34.2<br>(K8s: 1.11)   |
-| **0.10.x** / <br>Control plane                             | 1.21 - 1.16 | 1.20 - 1.15<br>*see: (1)* | 1.18 - 1.16<br>*see: (2)* | 1.19 - 1.15   | 4, 3.11     | 1.21 - 1.16 | 1.34.2<br>(K8s: 1.11)   |
+| **0.11.x** / <br>Control & Execution plane<br>*see: (3)*   | 1.21 - 1.16 | 1.20 - 1.15<br>*see: (1)* | 1.18 - 1.16<br>*see: (2)* | 1.19 - 1.15   | 4, 3.11     | 1.21 - 1.16 | 1.34.2<br>(K8s: 1.11)   |
+| **0.11.x** / <br>Control plane                             | 1.21 - 1.16 | 1.20 - 1.15<br>*see: (1)* | 1.18 - 1.16<br>*see: (2)* | 1.19 - 1.15   | 4, 3.11     | 1.21 - 1.16 | 1.34.2<br>(K8s: 1.11)   |
 
 **Remarks:**
 

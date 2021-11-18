@@ -2,7 +2,7 @@
 title: Slack Integration
 description: Example to integrate Slack using Webhooks
 weight: 1
-keywords: [0.10.x-integration]
+keywords: [0.11.x-integration]
 ---
 
 With a Slack integration, you and your teams can get notifications for certain events that are part of a delivery or remediation process. Your teams can also use a Dynatrace-integrated Slack channel to discuss incidents, evaluate solutions, and link to similar problems.
