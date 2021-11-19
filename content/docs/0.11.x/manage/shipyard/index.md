@@ -128,6 +128,8 @@ Per default, an `automatic` approval strategy is used for evaluation result `pas
     warning: manual
 ```
 
+**Note:** If the approval is the first task of a sequence, the approval service will not be provided with the result from a previous task. In this case, it will always fall back to the `manual` approval strategy.
+
 <details><summary>**Example:** Extended shipyard with a mandatory approval task in production</summary>
 
 <p>
