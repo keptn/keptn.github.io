@@ -7,6 +7,7 @@ aliases:
 ---
 
 ## Upgrade from Keptn 0.10.x to 0.11.0
+
 ❗️**CAUTION: This release requires a manual migration of all data in the Keptn Mongo DB**❗️
 
 <details><summary>Expand to see upgrade instructions:</summary>
