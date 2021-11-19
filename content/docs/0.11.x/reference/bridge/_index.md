@@ -175,13 +175,13 @@ You can find links to for different integration possibilities here. This makes i
 integrations for different CI providers.
 
 Please note that the page contains dynamic content that is loaded from https://get.keptn.sh/integrations.html. By clicking the button the data is requested,
-and additional data is gathered from the client. For more information about this see https://keptn.sh/docs/0.10.x/reference/load_information/.
+and additional data is gathered from the client. For more information about this see https://keptn.sh/docs/0.11.x/reference/load_information/.
 
 ### Settings
 
 #### Project settings
 In the settings view the project settings can be edited. 
-To get more information about how to manage your projects with the settings, visit [Manage Projects](https://keptn.sh/docs/0.10.x/reference/bridge/manage_projects).
+To get more information about how to manage your projects with the settings, visit [Manage Projects](https://keptn.sh/docs/0.11.x/reference/bridge/manage_projects).
 
 {{< popup_image
 link="./assets/project-settings.png"
@@ -190,7 +190,7 @@ caption="Keptn Bridge Project Settings View">}}
 
 #### Service settings
 In this view, services can be created, updated and deleted.
-To get more information about how services can be managed in your settings, visit [Manage Services](https://keptn.sh/docs/0.10.x/reference/bridge/manage_services).
+To get more information about how services can be managed in your settings, visit [Manage Services](https://keptn.sh/docs/0.11.x/reference/bridge/manage_services).
 
 {{< popup_image
 link="./assets/service-settings.png"
@@ -201,7 +201,7 @@ caption="Keptn Bridge Service Settings View">}}
 
 ### Approvals
 
-If you have a [manual approval strategy](https://keptn.sh/docs/0.10.x/continuous_delivery/multi_stage/#approval) defined in your shipyard.yaml file, approvals can be handled with the Keptn Bridge.
+If you have a [manual approval strategy](https://keptn.sh/docs/0.11.x/continuous_delivery/multi_stage/#approval) defined in your shipyard.yaml file, approvals can be handled with the Keptn Bridge.
 At sequence execution, if the approval task is reached, a panel is shown in all relevant screens:
 
 In the environment view a pending approval can be recognized by the blue service out-of-sync icon at the according stage.
@@ -225,19 +225,19 @@ caption="Approval in Sequences">}}
 
 ### Manage projects
 
-See the documentation for [managing projects](https://keptn.sh/docs/0.10.x/reference/bridge/manage_projects) to see which features for creating and updating projects the Bridge provides.
+See the documentation for [managing projects](https://keptn.sh/docs/0.11.x/reference/bridge/manage_projects) to see which features for creating and updating projects the Bridge provides.
 
 ## Early access version of Keptn Bridge
 
 Right now there is no early access version of Keptn Bridge available.
 
-<!-- You can upgrade to the latest version (0.10.0) by executing the following commands:
+<!-- You can upgrade to the latest version (0.11.0) by executing the following commands:
 
 ```console
-kubectl -n keptn set image deployment/bridge bridge=keptn/bridge2:0.10.0 --record
+kubectl -n keptn set image deployment/bridge bridge=keptn/bridge2:0.11.0 --record
 ``
 
-There is an early access version of Keptn Bridge available (compatible with Keptn 0.10.0):
+There is an early access version of Keptn Bridge available (compatible with Keptn 0.11.0):
 
   {{< popup_image
   link="./assets/bridge_eap.png"
@@ -249,10 +249,10 @@ There is an early access version of Keptn Bridge available (compatible with Kept
 kubectl -n keptn set image deployment/bridge bridge=keptn/bridge2:20200402.1046 --record
 ```
 
-* To restore the old version of bridge, configuration-service and mongodb-datastore (as delivered with Keptn 0.10.0), you can use the following commands:
+* To restore the old version of bridge, configuration-service and mongodb-datastore (as delivered with Keptn 0.11.0), you can use the following commands:
 
 ```console
-kubectl -n keptn set image deployment/bridge bridge=keptn/bridge2:0.10.0 --record
+kubectl -n keptn set image deployment/bridge bridge=keptn/bridge2:0.11.0 --record
 ```
 -->
 

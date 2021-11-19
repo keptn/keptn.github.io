@@ -111,16 +111,16 @@ kubectl exec -n keptn $CONFIG_SERVICE_POD -c configuration-service -- ./reset-gi
 Copy the content of the mongodb-backup directory you have created earlier into the pod running the MongoDB:
 
 ```console
-MONGODB_POD=$(kubectl get pods -n keptn -lapp.kubernetes.io/name=mongodb -ojsonpath='{.items[0].metadata.name}')
-kubectl cp ./mongodb-backup/ keptn/$MONGODB_POD:dump -c mongodb
+MONGODB_POD=$(kubectl get pods -n keptn -lapp.kubernetes.io/name=mongo -ojsonpath='{.items[0].metadata.name}')
+kubectl cp ./mongodb-backup/ keptn/$MONGODB_POD:/opt/dump -c mongodb
 ```
 
 Import the MongoDB dump into the database using the following command:
 
 ```console
-MONGODB_USER=$(kubectl get secret mongodb-credentials -n keptn -ojsonpath={.data.user} | base64 -d)
-MONGODB_ROOT_PASSWORD=$(kubectl get secret mongodb-credentials -n keptn -ojsonpath={.data.password} | base64 -d)
-kubectl exec svc/mongodb -n keptn -- mongorestore --host localhost:27017 --username user --password $MONGODB_ROOT_PASSWORD --authenticationDatabase keptn ./dump
+MONGODB_ROOT_USER=$(kubectl get secret mongodb-credentials -n keptn -ojsonpath={.data.mongodb-root-user} | base64 -d)
+MONGODB_ROOT_PASSWORD=$(kubectl get secret mongodb-credentials -n keptn -ojsonpath={.data.mongodb-root-password} | base64 -d)
+kubectl exec svc/keptn-mongo -n keptn -- mongorestore --drop --preserveUUID --host localhost:27017 --username $MONGODB_ROOT_USER --password $MONGODB_ROOT_PASSWORD --authenticationDatabase admin ./opt/dump
 ```
 
 ### Restore Git credentials

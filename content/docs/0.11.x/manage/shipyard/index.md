@@ -2,7 +2,7 @@
 title: Shipyard
 description: Information about shipyard, sequences and tasks to define processes and workflows.
 weight: 25
-keywords: [0.10.x-manage]
+keywords: [0.11.x-manage]
 aliases:
 ---
 

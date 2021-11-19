@@ -90,7 +90,7 @@ kubectl -n keptn get service api-gateway-nginx
 
   ```console
 NAME                TYPE        CLUSTER-IP    EXTERNAL-IP                  PORT(S)   AGE
-api-gateway-nginx   ClusterIP   10.107.0.20   <ENDPOINT_OF_API_GATEWAY>    80/TCP    44m
+api-gateway-nginx   ClusterIP   10.117.0.20   <ENDPOINT_OF_API_GATEWAY>    80/TCP    44m
   ```
 
 <details><summary>Retrieve API Token and Authenticate Keptn CLI on **Linux / MacOS**</summary>

@@ -2,9 +2,9 @@
 title: Install CLI and Keptn
 description: Install Keptn on your Kubernetes cluster and expose it.
 weight: 10
-keywords: [0.10.x-operate]
+keywords: [0.11.x-operate]
 aliases:
-  - /docs/0.10.0/operate/install/
+  - /docs/0.11.0/operate/install/
 ---
 
 ## Prerequisites
@@ -222,7 +222,7 @@ Use this page if you have already Keptn experience and would like to install it 
 
 Every Keptn release provides binaries for the Keptn CLI. These binaries are available for Linux, macOS, and Windows.
 
-- Download the version for your operating system from: [GitHub](https://github.com/keptn/keptn/releases/tag/0.10.0)
+- Download the version for your operating system from: [GitHub](https://github.com/keptn/keptn/releases/tag/0.11.0)
 - Unpack the archive
 - Find the `keptn` binary in the unpacked directory
 
@@ -293,7 +293,7 @@ Depending on whether you would like to install the execution plane for continuou
   ```
   ```console
   NAME                TYPE        CLUSTER-IP    EXTERNAL-IP                  PORT(S)   AGE
-  api-gateway-nginx   ClusterIP   10.107.0.20   <ENDPOINT_OF_API_GATEWAY>    80/TCP    44m
+  api-gateway-nginx   ClusterIP   10.117.0.20   <ENDPOINT_OF_API_GATEWAY>    80/TCP    44m
   ```
 
     *Optional:* Store Keptn API endpoint in an environment variable.

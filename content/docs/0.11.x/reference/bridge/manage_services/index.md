@@ -2,7 +2,7 @@
 title: Manage Services
 description: Create, update and delete services from the Bridge
 weight: 40
-keywords: [0.10.x-bridge]
+keywords: [0.11.x-bridge]
 ---
 
 The Bridge provides features to make managing services more convenient. It is possible to create and delete services directly from the UI.
@@ -10,7 +10,7 @@ The following sections explain in detail, which functionalities you can use to s
 
 This may also be interesting for you:
 
-* [Create a service with the CLI](https://keptn.sh/docs/0.10.x/reference/cli/commands/keptn_create_service/)
+* [Create a service with the CLI](https://keptn.sh/docs/0.11.x/reference/cli/commands/keptn_create_service/)
 
 ## Create a service in Bridge
 On the service settings page, you can find a "Create service" button.

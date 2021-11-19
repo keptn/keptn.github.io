@@ -2,7 +2,7 @@
 title: Webhook Integration
 description: Learn how to integrate external tooling using Webhooks
 weight: 2
-keywords: [0.10.x-integration]
+keywords: [0.11.x-integration]
 ---
 
 Keptn has a built-in capability to integrate your webhooks into the sequence orchestration of Keptn. This lets you call
