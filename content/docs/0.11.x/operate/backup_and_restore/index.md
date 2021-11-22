@@ -51,13 +51,13 @@ chmod o+w mongodb-backup
 Copy the data from the MongoDB to your local directory:
 
 ```console
-MONGODB_USER=$(kubectl get secret mongodb-credentials -n keptn -ojsonpath={.data.user} | base64 --decode)
-MONGODB_ROOT_PASSWORD=$(kubectl get secret mongodb-credentials -n keptn -ojsonpath={.data.password} | base64 --decode)
+MONGODB_ROOT_USER=$(kubectl get secret mongodb-credentials -n keptn -ojsonpath={.data.mongodb-root-user} | base64 -d)
+MONGODB_ROOT_PASSWORD=$(kubectl get secret mongodb-credentials -n keptn -ojsonpath={.data.mongodb-root-password} | base64 --decode)
 
-kubectl exec svc/mongodb -n keptn -- mongodump --uri="mongodb://user:$MONGODB_ROOT_PASSWORD@localhost:27017/keptn" --out=./dump
+kubectl exec svc/keptn-mongo -n keptn -- mongodump --authenticationDatabase admin --username $MONGODB_ROOT_USER --password $MONGODB_ROOT_PASSWORD -d keptn -h localhost --out=/tmp/dump
 
-MONGODB_POD=$(kubectl get pods -n keptn -lapp.kubernetes.io/name=mongodb -ojsonpath='{.items[0].metadata.name}')
-kubectl cp keptn/$MONGODB_POD:dump ./mongodb-backup/ -c mongodb
+MONGODB_POD=$(kubectl get pods -n keptn -lapp.kubernetes.io/name=mongo -ojsonpath='{.items[0].metadata.name}')
+kubectl cp keptn/$MONGODB_POD:/tmp/dump ./mongodb-backup/ -c mongodb
 ```
 
 ### Backup Git credentials
@@ -120,7 +120,7 @@ Import the MongoDB dump into the database using the following command:
 ```console
 MONGODB_ROOT_USER=$(kubectl get secret mongodb-credentials -n keptn -ojsonpath={.data.mongodb-root-user} | base64 -d)
 MONGODB_ROOT_PASSWORD=$(kubectl get secret mongodb-credentials -n keptn -ojsonpath={.data.mongodb-root-password} | base64 -d)
-kubectl exec svc/keptn-mongo -n keptn -- mongorestore --drop --preserveUUID --host localhost:27017 --username $MONGODB_ROOT_USER --password $MONGODB_ROOT_PASSWORD --authenticationDatabase admin ./opt/dump
+kubectl exec svc/keptn-mongo -n keptn -- mongorestore --drop --preserveUUID --authenticationDatabase admin --username $MONGODB_ROOT_USER --password $MONGODB_ROOT_PASSWORD /opt/dump
 ```
 
 ### Restore Git credentials
