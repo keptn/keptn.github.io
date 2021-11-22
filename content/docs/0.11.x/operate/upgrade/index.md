@@ -12,7 +12,7 @@ aliases:
 <details><summary>Expand to see upgrade instructions:</summary>
 <p>
 
-1. Before starting the update, it is mandatory to create a backup of your Keptn projects. To do so, please follow the instructions in the [backup guide](../../operate/backup_and_restore).
+1. Before starting the update, it is mandatory to create a backup of your Keptn projects. To do so, please follow the instructions in the [0.10.x backup guide](../../../0.10.x/operate/backup_and_restore).
 
 2. To download and install the Keptn CLI for version 0.11.0, you can choose between:
    * **Automatic installation of the Keptn CLI (Linux and Mac)**:
