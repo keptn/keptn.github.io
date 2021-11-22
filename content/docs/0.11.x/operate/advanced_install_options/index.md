@@ -168,8 +168,9 @@ If you want to use an externally hosted MongoDB instead of the MongoDB installed
 
 ```console
 helm upgrade keptn keptn --install -n keptn --create-namespace
---set=control-plane.mongodb.enabled=false,
-      control-plane.mongodb.external.connectionStringhost=<YOUR_MONGODB_CONNECTION_STRING>
+--set=control-plane.mongo.enabled=false,
+      control-plane.mongo.external.connectionString=<YOUR_MONGODB_CONNECTION_STRING>,
+      control-plane.mongo.auth.database=<YOUR_DATABASE_NAME>
 ```
 
 ### Example: Install Keptn with an ingress object
