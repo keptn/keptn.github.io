@@ -80,7 +80,7 @@ Copy the directory containing all Git repositories to the configuration-service:
 
 ```console
 CONFIG_SERVICE_POD=$(kubectl get pods -n keptn -lapp.kubernetes.io/name=configuration-service -ojsonpath='{.items[0].metadata.name}')
-kubectl cp ./config-svc-backup/* keptn/$CONFIG_SERVICE_POD:/data -c configuration-service
+kubectl cp ./config-svc-backup/config/ keptn/$CONFIG_SERVICE_POD:/data -c configuration-service
 ```
 
 To make sure the Git repositories within the configuration service are in a consistent state, they need to be reset to the current HEAD. To do so, 
@@ -112,7 +112,7 @@ Copy the content of the mongodb-backup directory you have created earlier into t
 
 ```console
 MONGODB_POD=$(kubectl get pods -n keptn -lapp.kubernetes.io/name=mongo -ojsonpath='{.items[0].metadata.name}')
-kubectl cp ./mongodb-backup/ keptn/$MONGODB_POD:/opt/dump -c mongodb
+kubectl cp ./mongodb-backup/keptn keptn/$MONGODB_POD:/tmp/dump -c mongodb
 ```
 
 Import the MongoDB dump into the database using the following command:
@@ -120,7 +120,7 @@ Import the MongoDB dump into the database using the following command:
 ```console
 MONGODB_ROOT_USER=$(kubectl get secret mongodb-credentials -n keptn -ojsonpath={.data.mongodb-root-user} | base64 -d)
 MONGODB_ROOT_PASSWORD=$(kubectl get secret mongodb-credentials -n keptn -ojsonpath={.data.mongodb-root-password} | base64 -d)
-kubectl exec svc/keptn-mongo -n keptn -- mongorestore --drop --preserveUUID --authenticationDatabase admin --username $MONGODB_ROOT_USER --password $MONGODB_ROOT_PASSWORD /opt/dump
+kubectl exec svc/keptn-mongo -n keptn -- mongorestore --drop --preserveUUID --authenticationDatabase admin --username $MONGODB_ROOT_USER --password $MONGODB_ROOT_PASSWORD /tmp/dump
 ```
 
 ### Restore Git credentials
