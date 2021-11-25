@@ -29,9 +29,9 @@ This quickstart is designed for Linux-based systems. Consequently, use Linux, Ma
     k3d cluster create mykeptn -p "8082:80@loadbalancer" --k3s-server-arg "--kube-proxy-arg=conntrack-max-per-core=0"  --k3s-agent-arg "--kube-proxy-arg=conntrack-max-per-core=0" --agents 1
     ```
 
-1. **Download and install the [Keptn CLI](../0.10.x/reference/cli)**
+1. **Download and install the [Keptn CLI](../0.11.x/reference/cli)**
     ```
-    curl -sL https://get.keptn.sh | KEPTN_VERSION=0.10.0 bash
+    curl -sL https://get.keptn.sh | KEPTN_VERSION=0.11.1 bash
     ```
 
 1. **Install Keptn** control-plane and execution-plane for continuous delivery use case or use the `helm install` version [mentioned below](#kubernetes-version-not-supported).
@@ -41,14 +41,14 @@ This quickstart is designed for Linux-based systems. Consequently, use Linux, Ma
     keptn install --use-case=continuous-delivery
     ```
 
-    Keptn comes with different installation options, please have a look at the [installation documentation](../0.10.x/operate) for more details on cluster requirements, resource consumption, supported Kubernetes versions, and more.
+    Keptn comes with different installation options, please have a look at the [installation documentation](../0.11.x/operate) for more details on cluster requirements, resource consumption, supported Kubernetes versions, and more.
     Please note that although during the installation procedure it might be mentioned that Istio is required, it is *not required* for this quickstart guide.
 
     <details><summary>Installation logs</summary>
     <p>The installation logs will print the following output:
     <pre>
     Installing Keptn ...
-    Helm Chart used for Keptn installation: https://storage.googleapis.com/keptn-installer/keptn-0.10.0.tgz
+    Helm Chart used for Keptn installation: https://storage.googleapis.com/keptn-installer/keptn-0.11.1.tgz
     Start upgrading Helm Chart keptn in namespace keptn
     Finished upgrading Helm Chart keptn in namespace keptn
     Keptn control plane has been successfully set up on your cluster.
@@ -156,12 +156,12 @@ With Keptn installed, have a look at the different [tutorials](https://tutorials
 
 Review the documentation for a full reference on all Keptn capabilities and components and how they can be combined/extended to your needs:
 
-- [Operate Keptn](../0.10.x/operate)
-- [Manage Keptn](../0.10.x/manage)
-- [Continuous Delivery](../0.10.x/continuous_delivery)
-- [Quality Gates](../0.10.x/quality_gates)
-- [Automated Operations](../0.10.x/automated_operations)
-- [Custom Integrations](../0.10.x/integrations)
+- [Operate Keptn](../0.11.x/operate)
+- [Manage Keptn](../0.11.x/manage)
+- [Continuous Delivery](../0.11.x/continuous_delivery)
+- [Quality Gates](../0.11.x/quality_gates)
+- [Automated Operations](../0.11.x/automated_operations)
+- [Custom Integrations](../0.11.x/integrations)
 
 ## FAQ
 
@@ -169,9 +169,9 @@ Review the documentation for a full reference on all Keptn capabilities and comp
 In case `keptn install` prevents you from installing Keptn due to a (currently) unsupported Kubernetes version, you can bypass this check at your own risk by using the Helm installation option of Keptn.
 
 ```
-helm install keptn https://github.com/keptn/keptn/releases/download/0.10.0/keptn-0.10.0.tgz -n keptn --create-namespace --set=continuous-delivery.enabled=true --wait
-helm install helm-service https://github.com/keptn/keptn/releases/download/0.10.0/helm-service-0.10.0.tgz -n keptn --create-namespace --wait
-helm install jmeter-service https://github.com/keptn/keptn/releases/download/0.10.0/jmeter-service-0.10.0.tgz -n keptn --create-namespace --wait
+helm install keptn https://github.com/keptn/keptn/releases/download/0.11.1/keptn-0.11.1.tgz -n keptn --create-namespace --set=continuous-delivery.enabled=true --wait
+helm install helm-service https://github.com/keptn/keptn/releases/download/0.11.1/helm-service-0.11.1.tgz -n keptn --create-namespace --wait
+helm install jmeter-service https://github.com/keptn/keptn/releases/download/0.11.1/jmeter-service-0.11.1.tgz -n keptn --create-namespace --wait
 ```
 Now continue with step 4 from the quickstart guide.
 
