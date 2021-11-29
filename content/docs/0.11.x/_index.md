@@ -6,6 +6,6 @@ sidebar_multicard: true
 icon: docs
 aliases:
   - /docs/0.11.0/
-  - /docs/0.11.2/
+  - /docs/0.11.1/
   - /docs/0.11.2/
 ---
