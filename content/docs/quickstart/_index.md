@@ -31,7 +31,7 @@ This quickstart is designed for Linux-based systems. Consequently, use Linux, Ma
 
 1. **Download and install the [Keptn CLI](../0.11.x/reference/cli)**
     ```
-    curl -sL https://get.keptn.sh | KEPTN_VERSION=0.11.1 bash
+    curl -sL https://get.keptn.sh | KEPTN_VERSION=0.11.2 bash
     ```
 
 1. **Install Keptn** control-plane and execution-plane for continuous delivery use case or use the `helm install` version [mentioned below](#kubernetes-version-not-supported).
@@ -48,7 +48,7 @@ This quickstart is designed for Linux-based systems. Consequently, use Linux, Ma
     <p>The installation logs will print the following output:
     <pre>
     Installing Keptn ...
-    Helm Chart used for Keptn installation: https://storage.googleapis.com/keptn-installer/keptn-0.11.1.tgz
+    Helm Chart used for Keptn installation: https://storage.googleapis.com/keptn-installer/keptn-0.11.2.tgz
     Start upgrading Helm Chart keptn in namespace keptn
     Finished upgrading Helm Chart keptn in namespace keptn
     Keptn control plane has been successfully set up on your cluster.
@@ -169,9 +169,9 @@ Review the documentation for a full reference on all Keptn capabilities and comp
 In case `keptn install` prevents you from installing Keptn due to a (currently) unsupported Kubernetes version, you can bypass this check at your own risk by using the Helm installation option of Keptn.
 
 ```
-helm install keptn https://github.com/keptn/keptn/releases/download/0.11.1/keptn-0.11.1.tgz -n keptn --create-namespace --set=continuous-delivery.enabled=true --wait
-helm install helm-service https://github.com/keptn/keptn/releases/download/0.11.1/helm-service-0.11.1.tgz -n keptn --create-namespace --wait
-helm install jmeter-service https://github.com/keptn/keptn/releases/download/0.11.1/jmeter-service-0.11.1.tgz -n keptn --create-namespace --wait
+helm install keptn https://github.com/keptn/keptn/releases/download/0.11.2/keptn-0.11.2.tgz -n keptn --create-namespace --set=continuous-delivery.enabled=true --wait
+helm install helm-service https://github.com/keptn/keptn/releases/download/0.11.2/helm-service-0.11.2.tgz -n keptn --create-namespace --wait
+helm install jmeter-service https://github.com/keptn/keptn/releases/download/0.11.2/jmeter-service-0.11.2.tgz -n keptn --create-namespace --wait
 ```
 Now continue with step 4 from the quickstart guide.
 

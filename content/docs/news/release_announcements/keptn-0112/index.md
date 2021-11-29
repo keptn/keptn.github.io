@@ -1,12 +1,12 @@
 ---
-title: Keptn 0.11.1
+title: Keptn 0.11.2
 weight: 85
 ---
 
 
-# Release Notes 0.11.1
+# Release Notes 0.11.2
 
-Keptn 0.11.1 provides a new MongoDB, which was updated from 3.6 to 4.4. This means that a manual database migration is needed to preserve data during the keptn upgrade process! Steps to upgrade Keptn with the manual migration can be found on the [Keptn Upgrade page](https://keptn.sh/docs/0.11.x/operate/upgrade/).
+Keptn 0.11.2 provides a new MongoDB, which was updated from 3.6 to 4.4. This means that a manual database migration is needed to preserve data during the keptn upgrade process! Steps to upgrade Keptn with the manual migration can be found on the [Keptn Upgrade page](https://keptn.sh/docs/0.11.x/operate/upgrade/).
 
 ---
 

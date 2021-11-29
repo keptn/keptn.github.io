@@ -5,5 +5,7 @@ weight: 985
 sidebar_multicard: true
 icon: docs
 aliases:
-  - /docs/0.11.x/
+  - /docs/0.11.0/
+  - /docs/0.11.2/
+  - /docs/0.11.2/
 ---

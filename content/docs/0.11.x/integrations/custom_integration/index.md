@@ -50,7 +50,7 @@ In this example, `[task]` works as a placeholder for tasks such as: `deployment`
 spec:
   containers:
   - name: distributor
-    image: keptn/distributor:0.11.1
+    image: keptn/distributor:0.11.2
     ports:
     - containerPort: 8080
     resources:
@@ -242,7 +242,7 @@ spec:
     spec:
       containers:
       - name: distributor
-        image: keptn/distributor:0.11.1
+        image: keptn/distributor:0.11.2
         ports:
         - containerPort: 8080
         resources:

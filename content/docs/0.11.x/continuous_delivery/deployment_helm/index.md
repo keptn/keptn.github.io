@@ -5,18 +5,18 @@ weight: 10
 keywords: [0.11.x-cd]
 ---
 
-Keptn uses [Helm v3](https://helm.sh/) for deploying a services to a Kubernetes cluster. This is currently implemented in the [helm-service](https://github.com/keptn/keptn/tree/0.11.1/helm-service).
+Keptn uses [Helm v3](https://helm.sh/) for deploying a services to a Kubernetes cluster. This is currently implemented in the [helm-service](https://github.com/keptn/keptn/tree/0.11.2/helm-service).
 Keptn's helm-service supports the following deployment strategies:
 
 * **Direct deployments**
 * **Blue-green deployments**
 * **user-managed deployments** (experimental)
 
-The explanation below is based on the provided Helm Chart for the carts microservice, see [Charts](https://github.com/keptn/examples/tree/0.11.1/onboarding-carts/carts) for details.
+The explanation below is based on the provided Helm Chart for the carts microservice, see [Charts](https://github.com/keptn/examples/tree/0.11.2/onboarding-carts/carts) for details.
 
 ## Direct deployments
 
-If the deployment strategy of a stage in the [shipyard](https://github.com/keptn/examples/blob/0.11.1/onboarding-carts/shipyard.yaml) is configured as `deploymentstrategy: direct`, Helm deploys a
+If the deployment strategy of a stage in the [shipyard](https://github.com/keptn/examples/blob/0.11.2/onboarding-carts/shipyard.yaml) is configured as `deploymentstrategy: direct`, Helm deploys a
  release called `sockshop-dev-carts` as `carts` in namespace `sockshop-dev`.
 
 ```console
@@ -30,12 +30,12 @@ carts   1/1     1            1           56m   carts        docker.io/keptnexamp
 
 When triggering a delivery (with a new artifact), we are updating the values.yaml file in the Helm Charts with the respective image name.
 
-* [chart/values.yaml](https://github.com/keptn/examples/blob/0.11.1/onboarding-carts/carts/values.yaml#L1)
-* [chart/templates/deployment.yaml](https://github.com/keptn/examples/blob/0.11.1/onboarding-carts/carts/templates/deployment.yaml#L22)
+* [chart/values.yaml](https://github.com/keptn/examples/blob/0.11.2/onboarding-carts/carts/values.yaml#L1)
+* [chart/templates/deployment.yaml](https://github.com/keptn/examples/blob/0.11.2/onboarding-carts/carts/templates/deployment.yaml#L22)
 
 ## Blue-green deployments
 
-If the deployment strategy of a stage in the [shipyard](https://github.com/keptn/examples/blob/0.11.1/onboarding-carts/shipyard.yaml) is configured as `deploymentstrategy: blue_green_service`, Helm creates two
+If the deployment strategy of a stage in the [shipyard](https://github.com/keptn/examples/blob/0.11.2/onboarding-carts/shipyard.yaml) is configured as `deploymentstrategy: blue_green_service`, Helm creates two
  deployments within the Kubernetes cluster: (1) the primary and (2) the canary deployment. This can be inspected using the
  following command:
 
@@ -46,7 +46,7 @@ $ kubectl get deployments -n sockshop-staging carts carts-primary -owide
 ```
 NAME            READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS   IMAGES                                 SELECTOR
 carts-primary   1/1     1            1           56m   carts        docker.io/keptnexamples/carts:0.11.1   app=carts-primary
-carts           0/0     0            0            3m   carts        docker.io/keptnexamples/carts:0.11.2   app=carts
+carts           0/0     0            0            3m   carts        docker.io/keptnexamples/carts:0.11.1   app=carts
 ```
 
 
@@ -55,7 +55,7 @@ When triggering a delivery (with a new artifact, e.g., 0.11.2), a canary deploym
 ```
 NAME            READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS   IMAGES                                 SELECTOR
 carts-primary   1/1     1            1           57m   carts        docker.io/keptnexamples/carts:0.11.1   app=carts-primary
-carts           0/1     1            1            1m   carts        docker.io/keptnexamples/carts:0.11.2   app=carts
+carts           0/1     1            1            1m   carts        docker.io/keptnexamples/carts:0.11.1   app=carts
 ```
 
 The primary deployment is always available (and called `carts-primary`). The canary deployment (called `carts`) gets scaled up in the case of a new-artifact event (e.g., in this case someone has sent a new-artifact for 0.11.2). Traffic is shifted to the canary release.
@@ -64,8 +64,8 @@ Once testing has finished, the primary deployment is upgraded to the new version
 
 ```
 NAME            READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS   IMAGES                                 SELECTOR
-carts-primary   1/1     1            1            3m   carts        docker.io/keptnexamples/carts:0.11.2   app=carts-primary
-carts           1/1     1            1            1d   carts        docker.io/keptnexamples/carts:0.11.2   app=carts
+carts-primary   1/1     1            1            3m   carts        docker.io/keptnexamples/carts:0.11.1   app=carts-primary
+carts           1/1     1            1            1d   carts        docker.io/keptnexamples/carts:0.11.1   app=carts
 ```
 
 After a new pod for the primary deployment has been successfully deployed, traffic is shifted to the primary deployment
@@ -73,8 +73,8 @@ After a new pod for the primary deployment has been successfully deployed, traff
 
 ```
 NAME            READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS   IMAGES                                 SELECTOR
-carts-primary   1/1     1            1            4m   carts        docker.io/keptnexamples/carts:0.11.2   app=carts-primary
-carts           0/0     0            0            1d   carts        docker.io/keptnexamples/carts:0.11.2   app=carts
+carts-primary   1/1     1            1            4m   carts        docker.io/keptnexamples/carts:0.11.1   app=carts-primary
+carts           0/0     0            0            1d   carts        docker.io/keptnexamples/carts:0.11.1   app=carts
 ```
 
 
@@ -84,7 +84,7 @@ carts           0/0     0            0            1d   carts        docker.io/ke
 future releases of Keptn.*
 
 
-If the deployment strategy of a stage in the [shipyard](https://github.com/keptn/examples/blob/0.11.1/onboarding-carts/shipyard.yaml)
+If the deployment strategy of a stage in the [shipyard](https://github.com/keptn/examples/blob/0.11.2/onboarding-carts/shipyard.yaml)
 is configured as `deploymentstrategy: user_managed`, the provided Helm chart will be deployed without any modification and
 applied as it is.
 

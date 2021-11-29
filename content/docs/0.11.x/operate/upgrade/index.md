@@ -3,7 +3,7 @@ title: Upgrade Keptn
 description: Upgrade your Keptn to 0.11
 weight: 30
 aliases:
-  - /docs/0.11.1/operate/upgrade/
+  - /docs/0.11.2/operate/upgrade/
 ---
 
 ## Upgrade from Keptn 0.10.x to 0.11.x
@@ -17,9 +17,9 @@ aliases:
 2. To download and install the Keptn CLI for version 0.11.x, you can choose between:
    * **Automatic installation of the Keptn CLI (Linux and Mac)**:
 
-   * The next command will download the 0.11.1 release from [GitHub](https://github.com/keptn/keptn/releases), unpack it, and move it to `/usr/local/bin/keptn`.
+   * The next command will download the 0.11.2 release from [GitHub](https://github.com/keptn/keptn/releases), unpack it, and move it to `/usr/local/bin/keptn`.
 ```console
-curl -sL https://get.keptn.sh | KEPTN_VERSION=0.11.1 bash
+curl -sL https://get.keptn.sh | KEPTN_VERSION=0.11.2 bash
 ```
 
    * Verify that the installation has worked and that the version is correct by running:
@@ -30,7 +30,7 @@ keptn version
 
    * **Manual installation of the Keptn CLI:**
 
-     * Download the release for your platform from the [GitHub](https://github.com/keptn/keptn/releases/tag/0.11.1)
+     * Download the release for your platform from the [GitHub](https://github.com/keptn/keptn/releases/tag/0.11.2)
      * Unpack the binary and move it to a directory of your choice (e.g., `/usr/local/bin/`)
      * Verify that the installation has worked and that the version is correct by running:
 
@@ -45,7 +45,7 @@ keptn upgrade
 
 * Please [verify that you are connected to the correct Kubernetes cluster](../../troubleshooting/#verify-kubernetes-context-with-keptn-installation)
 before executing this command.
-* This CLI command executes a Helm upgrade using the Helm chart from: [keptn-installer/keptn-0.11.1.tgz](https://storage.googleapis.com/keptn-installer/keptn-0.11.1.tgz)
+* This CLI command executes a Helm upgrade using the Helm chart from: [keptn-installer/keptn-0.11.2.tgz](https://storage.googleapis.com/keptn-installer/keptn-0.11.2.tgz)
 
 **Note:** If you have manually modified your Keptn deployment, e.g., you deleted the Kubernetes Secret `bridge-credentials` for disabling basic auth, the `keptn upgrade` command will not detect the modification. Please re-apply your modification after performing the upgrade.
 

@@ -12,15 +12,15 @@ Therefore, the [helm CLI](https://helm.sh) is required to execute of the followi
 * *Install Keptn control-plane (with Continuous Delivery support and exposed on a LoadBalancer)*: 
 
 ```
-helm install keptn https://github.com/keptn/keptn/releases/download/0.11.1/keptn-0.11.1.tgz -n keptn --create-namespace --wait --set=continuous-delivery.enabled=true,control-plane.apiGatewayNginx.type=LoadBalancer
+helm install keptn https://github.com/keptn/keptn/releases/download/0.11.2/keptn-0.11.2.tgz -n keptn --create-namespace --wait --set=continuous-delivery.enabled=true,control-plane.apiGatewayNginx.type=LoadBalancer
 ```
 
 * *Install Keptn execution-plane:*
 
 ```
-helm install jmeter-service https://github.com/keptn/keptn/releases/download/0.11.1/jmeter-service-0.11.1.tgz -n keptn --create-namespace --wait
+helm install jmeter-service https://github.com/keptn/keptn/releases/download/0.11.2/jmeter-service-0.11.2.tgz -n keptn --create-namespace --wait
 
-helm install helm-service https://github.com/keptn/keptn/releases/download/0.11.1/helm-service-0.11.1.tgz -n keptn --create-namespace --wait
+helm install helm-service https://github.com/keptn/keptn/releases/download/0.11.2/helm-service-0.11.2.tgz -n keptn --create-namespace --wait
 ```
 
 **Note:** To continue with Keptn after the installation with Helm, we recommend authenticating the Ketpn CLI as explained [here](../install/#authenticate-keptn-cli). 
@@ -37,7 +37,7 @@ The following flags are available:
 | `control-plane.apiGatewayNginx.type`                  | Specifies the Kubernetes service-type for api-gateway-nginx, which can be used to expose the Keptn API                                                                          | NodePort, ClusterIP, LoadBalancer                                                                | ClusterIP                             |
 | `control-plane.prefixPath`                            | Allows to set a prefixPath for the api-gateway. This value has to start with a "/" but must not contain a trailing "/"                                                          | URI, e.g., /mykeptn                                                                              | empty                                 |
 | `control-plane.bridge.cliDownloadLink`                | Specifies a download link for the Keptn CLI which is displayed in Keptn Bridge                                                                                                  | any string/URL                                                                                   | null                                  |
-| `control-plane.bridge.lookAndFeelUrl`                 | Specifies a [custom look and feel](https://github.com/keptn/keptn/tree/release-0.11.1/bridge#custom-look-and-feel) for Keptn Bridge                                             | any URL containing a zip archive                                                                 | null                                  |
+| `control-plane.bridge.lookAndFeelUrl`                 | Specifies a [custom look and feel](https://github.com/keptn/keptn/tree/release-0.11.2/bridge#custom-look-and-feel) for Keptn Bridge                                             | any URL containing a zip archive                                                                 | null                                  |
 | `control-plane.bridge.versionCheck.enabled`           | Specifies whether the automatic version-check in Keptn Bridge should be enabled or not                                                                                          | true, false                                                                                      | true                                  |
 | `control-plane.bridge.showApiToken.enabled`           | Specifies whether the Keptn API Token and the `keptn auth` command should be shown in Keptn Bridge or not                                                                       | true, false                                                                                      | true                                  |
 | `control-plane.bridge.secret.enabled`                 | Specifies whether the secret used for the basic auth is enabled or not. Please be aware that if this value is set to `false`, there is no basic authentication for the bridge.  | true, false                                                                                      | true                                  |
@@ -66,21 +66,21 @@ The following flags are available:
 ### Example: Use a LoadBalancer for api-gateway-nginx
 
 ```console
-helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.11.1 --repo=https://storage.googleapis.com/keptn-installer --set=control-plane.apiGatewayNginx.type=LoadBalancer
+helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.11.2 --repo=https://storage.googleapis.com/keptn-installer --set=control-plane.apiGatewayNginx.type=LoadBalancer
 ```
 
 ### Example: Install execution plane for Continuous Delivery use-case
 
 For example, the **Control Plane with the Execution Plane (for Continuous Delivery)** can be installed by the following command:
 ```console
-helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.11.1 --repo=https://storage.googleapis.com/keptn-installer --set=continuous-delivery.enabled=true
+helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.11.2 --repo=https://storage.googleapis.com/keptn-installer --set=continuous-delivery.enabled=true
 ```
 
 ### Example: Install execution plane for Continuous Delivery use-case and use a LoadBalancer for api-gateway-nginx
 
 For example, the **Control Plane with the Execution Plane (for Continuous Delivery)** and a `LoadBalancer` for exposing Keptn can be installed by the following command:
 ```console
-helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.11.1 --repo=https://storage.googleapis.com/keptn-installer --set=continuous-delivery.enabled=true,control-plane.apiGatewayNginx.type=LoadBalancer
+helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.11.2 --repo=https://storage.googleapis.com/keptn-installer --set=continuous-delivery.enabled=true,control-plane.apiGatewayNginx.type=LoadBalancer
 ```
 
 ### Example: Execute Helm upgrade without Internet connectivity
@@ -96,11 +96,11 @@ The following artifacts need to be available locally:
 
 **Download Keptn Helm Charts**
 
-Download the Helm charts from the [Keptn 0.11.1 release](https://github.com/keptn/keptn/releases/tag/0.11.1):
+Download the Helm charts from the [Keptn 0.11.2 release](https://github.com/keptn/keptn/releases/tag/0.11.2):
 
-* Keptn Control Plane: https://github.com/keptn/keptn/releases/download/0.11.1/keptn-0.11.1.tgz
-* helm-service (if needed): https://github.com/keptn/keptn/releases/download/0.11.1/helm-service-0.11.1.tgz
-* jmeter-service (if needed): https://github.com/keptn/keptn/releases/download/0.11.1/jmeter-service-0.11.1.tgz
+* Keptn Control Plane: https://github.com/keptn/keptn/releases/download/0.11.2/keptn-0.11.2.tgz
+* helm-service (if needed): https://github.com/keptn/keptn/releases/download/0.11.2/helm-service-0.11.2.tgz
+* jmeter-service (if needed): https://github.com/keptn/keptn/releases/download/0.11.2/jmeter-service-0.11.2.tgz
 
 Move the helm charts to a directory on your local machine, e.g., `offline-keptn`.
 
@@ -109,9 +109,9 @@ For convenience, the following script creates this directory and downloads the r
 ```console
 mkdir offline-keptn
 cd offline-keptn
-curl -L https://github.com/keptn/keptn/releases/download/0.11.1/keptn-0.11.1.tgz -o keptn-0.11.1.tgz
-curl -L https://github.com/keptn/keptn/releases/download/0.11.1/helm-service-0.11.1.tgz -o helm-service-0.11.1.tgz
-curl -L https://github.com/keptn/keptn/releases/download/0.11.1/jmeter-service-0.11.1.tgz -o jmeter-service-0.11.1.tgz
+curl -L https://github.com/keptn/keptn/releases/download/0.11.2/keptn-0.11.2.tgz -o keptn-0.11.2.tgz
+curl -L https://github.com/keptn/keptn/releases/download/0.11.2/helm-service-0.11.2.tgz -o helm-service-0.11.2.tgz
+curl -L https://github.com/keptn/keptn/releases/download/0.11.2/jmeter-service-0.11.2.tgz -o jmeter-service-0.11.2.tgz
 cd ..
 ```
 
@@ -126,9 +126,9 @@ For convenience, you can use the following commands to download and execute the 
 
 ```console
 cd offline-keptn
-curl -L https://raw.githubusercontent.com/keptn/keptn/0.11.1/installer/airgapped/pull_and_retag_images.sh -o pull_and_retag_images.sh
+curl -L https://raw.githubusercontent.com/keptn/keptn/0.11.2/installer/airgapped/pull_and_retag_images.sh -o pull_and_retag_images.sh
 chmod +x pull_and_retag_images.sh
-KEPTN_TAG=0.11.1 ./pull_and_retag_images.sh "your-registry.localhost:5000/"
+KEPTN_TAG=0.11.2 ./pull_and_retag_images.sh "your-registry.localhost:5000/"
 cd ..
 ```
 
@@ -144,9 +144,9 @@ For convenience, you can use the following commands to download and execute the 
 
 ```console
 cd offline-keptn
-curl -L https://raw.githubusercontent.com/keptn/keptn/0.11.1/installer/airgapped/install_keptn.sh -o install_keptn.sh
+curl -L https://raw.githubusercontent.com/keptn/keptn/0.11.2/installer/airgapped/install_keptn.sh -o install_keptn.sh
 chmod +x install_keptn.sh
-./install_keptn.sh "your-registry.localhost:5000/" keptn-0.11.1.tgz helm-service-0.11.1.tgz jmeter-service-0.11.1.tgz
+./install_keptn.sh "your-registry.localhost:5000/" keptn-0.11.2.tgz helm-service-0.11.2.tgz jmeter-service-0.11.2.tgz
 cd ..
 ```
 
@@ -159,7 +159,7 @@ For example, if a user sets `control-plane.prefixPath=/mykeptn` in the Helm inst
 the Keptn API is located under `http://HOSTNAME/mykeptn/api` and the Keptn Bridge is located under `http://HOSTNAME/mykeptn/bridge`:
 
 ```console
-helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.11.1 --repo=https://storage.googleapis.com/keptn-installer --set=control-plane.apiGatewayNginx.type=LoadBalancer,continuous-delivery.enabled=true,control-plane.prefixPath=/mykeptn
+helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.11.2 --repo=https://storage.googleapis.com/keptn-installer --set=control-plane.apiGatewayNginx.type=LoadBalancer,continuous-delivery.enabled=true,control-plane.prefixPath=/mykeptn
 ```
 
 ### Example: Install Keptn with externally hosted MongoDB
