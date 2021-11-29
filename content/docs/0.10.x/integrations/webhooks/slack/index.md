@@ -5,5 +5,5 @@ weight: 1
 keywords: [0.10.x-integration]
 ---
 
-* This page has been replaced by an entry on the ArtifactHub: https://artifacthub.io/packages/keptn/keptn-integrations/slack-webhook 
+* This page has been replaced by an entry on the ArtifactHub: https://artifacthub.io/packages/keptn/keptn-integrations/slack
 * This page will be deleted in the future.
