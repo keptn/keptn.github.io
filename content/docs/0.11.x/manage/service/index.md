@@ -33,7 +33,7 @@ After creating a service, you need to provide a Helm Chart for the service to de
 1. The Helm chart _has_ to contain a `values.yaml` file with at least the `image` and `replicaCount` parameter for the deployment. These `image` and `replicaCount` parameters have to be used in the deployment. An example is shown below:
   
   ```yaml
-  image: docker.io/keptnexamples/carts:0.10.0
+  image: docker.io/keptnexamples/carts:0.11.1
   replicaCount: 1
   ```
 
