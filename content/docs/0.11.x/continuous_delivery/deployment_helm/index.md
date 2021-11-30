@@ -54,7 +54,7 @@ When triggering a delivery (with a new artifact, e.g., 0.11.2), a canary deploym
 
 ```
 NAME            READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS   IMAGES                                 SELECTOR
-carts-primary   1/1     1            1           57m   carts        docker.io/keptnexamples/carts:0.11.2   app=carts-primary
+carts-primary   1/1     1            1           57m   carts        docker.io/keptnexamples/carts:0.11.1   app=carts-primary
 carts           0/1     1            1            1m   carts        docker.io/keptnexamples/carts:0.11.2   app=carts
 ```
 
