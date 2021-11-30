@@ -4,6 +4,8 @@ description: Install Keptn on your Kubernetes cluster and expose it.
 weight: 10
 keywords: [0.11.x-operate]
 aliases:
+  - /docs/0.11.0/operate/install/
+  - /docs/0.11.1/operate/install/
   - /docs/0.11.2/operate/install/
 ---
 
