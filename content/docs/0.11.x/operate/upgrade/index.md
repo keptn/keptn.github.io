@@ -16,7 +16,7 @@ aliases:
 * **Step 1.** Before starting the update, it is mandatory to create a backup of your Keptn projects. To do so, please follow the instructions in the [0.10.x backup guide](../../../0.10.x/operate/backup_and_restore).
 
 * **Step 2.** To download and install the Keptn CLI for version 0.11.x, you can choose between:
-   * **Automatic installation of the Keptn CLI (Linux and Mac)**:
+   * *Automatic installation of the Keptn CLI (Linux and Mac):*
 
       * The next command will download the 0.11.2 release from [GitHub](https://github.com/keptn/keptn/releases), unpack it, and move it to `/usr/local/bin/keptn`.
       ```console
@@ -28,7 +28,7 @@ aliases:
       keptn version
       ```
 
-   * **Manual installation of the Keptn CLI:**
+   * *Manual installation of the Keptn CLI:*
 
       * Download the release for your platform from the [GitHub](https://github.com/keptn/keptn/releases/tag/0.11.2)
       * Unpack the binary and move it to a directory of your choice (e.g., `/usr/local/bin/`)
