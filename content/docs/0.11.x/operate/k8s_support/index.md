@@ -47,46 +47,16 @@ Keptn versions are expressed as `x.y.z`, where `x` is the major version, `y` is 
 
 * With a new Keptn release, Keptn is tested based on the default K8s version of each Cloud Provider: AKS, EKS and GKE available at the release date.
 
-* Internally, a test pipeline with newer Kubernetes versions is verifying the master branch of Keptn. Known-limitations identified by these tests are referenced at the corresponding Keptn release. 
+* Internally, a test pipeline with newer Kubernetes versions is verifying the master branch of Keptn. Known-limitations identified by these tests are referenced at the corresponding Keptn release.
 
 ## Cluster size
 
-The size of the Keptn control- and execution plane has been derived automatically and is also reported at the latest release; see *Kubernetes Resource Data* at: https://github.com/keptn/keptn/releases
+The size of the Keptn control- and execution plane has been derived automatically and is also reported at the latest release; see *Kubernetes Resource Data* at: [https://github.com/keptn/keptn/releases](https://github.com/keptn/keptn/releases).
+
+The predefined resource values for the Keptn services are available in the [helm-charts](https://github.com/keptn/keptn/blob/0.11.2/installer/manifests/keptn/charts/control-plane/templates/core.yaml).
 
 As a rule of thumb, Keptn control-plane will run with 2 vCPUs, 4 GB of memory and roughly 10 GB of additional disk space (Docker Images + Persistent Volumes).
 For execution plane services with continuous-delivery support, your Kubernetes cluster requires additional resources.
 This depends on the number of projects and workloads you deploy, as well as the number of stages in your Shipyard, and whether you are using direct or blue-green deployments.
 
-### Control plane
 
-| Pod | Container | Memory (requested) | CPU (requested) | Memory (limit) | CPU (limit) | Images |
-|-----|-----------|--------------------|-----------------|----------------|-------------|--------|
-| api-gateway-nginx | api-gateway-nginx | 64Mi | 50m | 128Mi | 250m | docker.io/nginxinc/nginx-unprivileged:1.19.4-alpine | 
-| api-service | api-service | 64Mi | 50m | 256Mi | 500m | docker.io/keptn/api:0.9.0 | 
-| api-service | distributor | 16Mi | 25m | 32Mi | 250m | docker.io/keptn/distributor:0.9.0 |
-| bridge | bridge | 64Mi | 50m | 128Mi | 500m | docker.io/keptn/bridge2:0.9.0 | 
-| configuration-service | configuration-service | 64Mi | 50m | 128Mi | 500m | docker.io/keptn/configuration-service:0.9.0 |
-| lighthouse-service | lighthouse-service | 128Mi | 50m | 1Gi | 500m | docker.io/keptn/lighthouse-service:0.9.0 | 
-| lighthouse-service | distributor | 16Mi | 25m | 32Mi | 250m | docker.io/keptn/distributor:0.9.0 | 
-| mongodb | mongodb | 64Mi | 50m | 300Mi | 100m | docker.io/centos/mongodb-36-centos7:1 | 
-| mongodb-datastore | mongodb-datastore | 32Mi | 50m | 128Mi | 500m | docker.io/keptn/mongodb-datastore:0.9.0 | 
-| mongodb-datastore | distributor | 16Mi | 25m | 32Mi | 250m | docker.io/keptn/distributor:0.9.0 | 
-| remediation-service | remediation-service | 64Mi | 50m | 1Gi | 500m | docker.io/keptn/remediation-service:0.9.0 | 
-| remediation-service | distributor | 16Mi | 25m | 32Mi | 250m | docker.io/keptn/distributor:0.9.0 | 
-| secret-service | secret-service | 32Mi | 50m | 128Mi | 500m | docker.io/keptn/secret-service:0.9.0 | 
-| shipyard-controller | shipyard-controller | 32Mi | 50m | 128Mi | 500m | docker.io/keptn/shipyard-controller:0.9.0 | 
-| shipyard-controller | distributor | 16Mi | 25m | 32Mi | 250m | docker.io/keptn/distributor:0.9.0 | 
-| statistics-service | statistics-service | 32Mi | 50m | 128Mi | 500m | docker.io/keptn/statistics-service:0.9.0 | 
-| statistics-service | distributor | 16Mi | 25m | 32Mi | 250m | docker.io/keptn/distributor:0.9.0 | 
-
-
-### Execution plane
-
-| Pod | Container | Memory (requested) | CPU (requested) | Memory (limit) | CPU (limit) | Images |
-|-----|-----------|--------------------|-----------------|----------------|-------------|--------|
-| approval-service | approval-service | 32Mi | 50m | 128Mi | 500m | docker.io/keptn/approval-service:0.9.0 | 
-| approval-service | distributor | 16Mi | 25m | 32Mi | 250m | docker.io/keptn/distributor:0.9.0 | 
-| helm-service | helm-service | 128Mi | 50m | 512Mi | 1 | docker.io/keptn/helm-service:0.9.0 | 
-| helm-service | distributor | 32Mi | 50m | 128Mi | 500m | docker.io/keptn/distributor:0.9.0 | 
-| jmeter-service | jmeter-service | 768Mi | 1 | - | - | docker.io/keptn/jmeter-service:0.9.0 | 
-| jmeter-service | distributor | 32Mi | 50m | 128Mi | 500m | docker.io/keptn/distributor:0.9.0 | 
