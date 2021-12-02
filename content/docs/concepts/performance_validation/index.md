@@ -11,7 +11,7 @@ Keptn helps automating your tests by having Keptn triggering the test execution 
 
 ## Test Automation Process
 
-The following image shows the general process of how Keptn is providing continuous performance verification. An underlying core concept for this process it the SLO/SLI validation as explained in [Quality Gates](../quality_gates/).
+The following image shows the general process of how Keptn is providing continuous performance verification. An underlying core concept for this process it the SLO/SLI-based deployment and release validation as explained in [Quality Gates](../quality_gates/).
 
 1. Keptn gets triggered by an external event. 
 
