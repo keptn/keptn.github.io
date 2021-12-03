@@ -112,7 +112,7 @@ Copy the content of the mongodb-backup directory you have created earlier into t
 
 ```console
 MONGODB_POD=$(kubectl get pods -n keptn -lapp.kubernetes.io/name=mongo -ojsonpath='{.items[0].metadata.name}')
-kubectl cp ./mongodb-backup/keptn keptn/$MONGODB_POD:/tmp/dump -c mongodb
+kubectl cp ./mongodb-backup/ keptn/$MONGODB_POD:/tmp/dump -c mongodb
 ```
 
 Import the MongoDB dump into the database using the following command:
