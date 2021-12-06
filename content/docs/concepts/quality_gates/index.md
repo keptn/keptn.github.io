@@ -5,11 +5,11 @@ weight: 2
 keywords: [keptn, use-cases]
 ---
 
-> When developing a software product, sooner than later you need to deliver a new deployment of your service in a production environment. To conduct this in a controlled manner and without impacting end-user experience, the quality of the new service has to be ensured in an automated way. 
+> When developing a software product, sooner than later you need tod deliver a new version of your service in a production environment. To conduct this in a controlled manner and without impacting end-user experience, the quality of the new service has to be ensured in an automated way. 
 
 :bulb: *A quality gate allows conducting a deployment/release validation by ensuring that defined quality criteria are met.*
 
-Keptn quality gates provide you a *declarative way* to define the quality criteria of your service. Therefore, Keptn will collect, evaluate, and score those quality criteria to decide if a new deployment or release is allowed to be promoted to the next stage or if it has to be held back.
+Keptn quality gates provide you a *declarative way* to define quality criteria of your service. Therefore, Keptn will collect, evaluate, and score those quality criteria to decide if a new release is allowed to be promoted to the next stage or if it has to be held back.
 
 ## Keptn Quality Gate Process
 
