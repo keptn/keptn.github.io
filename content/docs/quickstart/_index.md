@@ -8,34 +8,46 @@ hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
 ---
 
 
-This quickstart is designed for Linux-based systems. Consequently, use Linux, MacOS, or Windows subsystem for Linux (WSL).
-
 ## Prerequisites
+
+This quickstart is designed for Linux-based systems.
+Consequently, use Linux, MacOS, or Windows subsystem for Linux v2 with a full virtual machine (WSL2).
+Note that this tutorial has not been fully verified on  non-amd64 architectures (including Arm-based Apple M1).
+
+The following tools need to be installed for this tutorial:
+
 - [Docker](https://docker.com/) with minimum  4vCPUS, 12GB RAM, 20GB disk space left (see [FAQ](#faq))
-- [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) version >= 1.19
-- [helm](https://helm.sh/) version >= 3.3.0
+- [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) version `>= 1.19`
+- [helm](https://helm.sh/) version `>= 3.3.0` - [Installation Guide](https://helm.sh/docs/intro/install/)
 - [git](https://git-scm.com/downloads)
+- [k3d](https://k3d.io) version `4.4.4`
 
-## Install Keptn
+All executables should be configured to be executable in the user space without `sudo` or equivalents.
 
-1. Create local [k3d](https://k3d.io) cluster. Please make sure you are using the version stated below (`v.4.4.4`). If you already have `k3d` installed, you can check by running `k3d --version`.
+### Installing K3d
+
+ If you already have `k3d` installed, you can check its version by running `k3d --version`.
+ This tutrial targets version `4.4.4` and may not work properly with older or newer versions.
 
     ```
     curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=v4.4.4 bash
     ```
 
-    Now, let's **start a cluster for Keptn**!
+## Install Keptn
+
+1. Start a [k3d](https://k3d.io) cluster for Keptn
+
     ```
     k3d cluster create mykeptn -p "8082:80@loadbalancer" --k3s-server-arg "--kube-proxy-arg=conntrack-max-per-core=0"  --k3s-agent-arg "--kube-proxy-arg=conntrack-max-per-core=0" --agents 1
     ```
 
-1. **Download and install the [Keptn CLI](../0.11.x/reference/cli)**
+2. **Download and install the [Keptn CLI](../0.11.x/reference/cli)**
+
     ```
     curl -sL https://get.keptn.sh | KEPTN_VERSION=0.11.2 bash
     ```
 
-1. **Install Keptn** control-plane and execution-plane for continuous delivery use case or use the `helm install` version [mentioned below](#kubernetes-version-not-supported).
-
+3. **Install Keptn** control-plane and execution-plane for continuous delivery use case or use the `helm install` version [mentioned below](#kubernetes-version-not-supported).
 
     ```
     keptn install --use-case=continuous-delivery
@@ -196,3 +208,4 @@ This quickstart guide has been tested with the following configuration:
 ### How to get more help?
 
 Join [our slack channel](https://slack.keptn.sh) for any questions that may arise.
+There is a special `#help` channel for Keptn users when you can get help from the Keptn team.
