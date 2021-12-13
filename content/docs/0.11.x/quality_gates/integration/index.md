@@ -190,24 +190,24 @@ curl -X POST "${KEPTN_ENDPOINT}/v1/project/easyBooking/stage/quality_assurance/s
     * *Option 1 - Define start and end time to evaluate:*
       ```json
       {
-        "source": "keptn-cli",
-        "specversion": "1.0",
-        "type": "sh.keptn.event.quality_assurance.evaluation.triggered",
-        "contenttype": "application/json",
-        "data": {
-          "evaluation": {
-            "start": "2020-09-01T08:31:06Z",
-            "end": "2020-09-01T08:36:06Z"
-          },
-          "labels": {
-            "buildId": "build-17",
-            "owner": "JohnDoe",
-            "testNo": "47-11"
-          },
-          "project": "easyBooking",
-          "service": "booking",
-          "stage": "quality_assurance"
-        }
+          "source": "keptn-cli",
+          "specversion": "1.0",
+          "type": "sh.keptn.event.quality_assurance.evaluation.triggered",
+          "contenttype": "application/json",
+          "data": {
+            "evaluation": {
+              "start": "2020-09-01T08:31:06Z",
+              "end": "2020-09-01T08:36:06Z"
+            },
+            "labels": {
+              "buildId": "build-17",
+              "owner": "JohnDoe",
+              "testNo": "47-11"
+            },
+            "project": "easyBooking",
+            "service": "booking",
+            "stage": "quality_assurance"
+          }
       }
       ```
 
