@@ -29,9 +29,9 @@ All executables should be configured to be executable in the user space without 
  If you already have `k3d` installed, you can check its version by running `k3d --version`.
  This tutrial targets version `4.4.4` and may not work properly with older or newer versions.
 
-    ```
-    curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=v4.4.4 bash
-    ```
+```bash
+curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=v4.4.4 bash
+```
 
 ## Install Keptn
 
@@ -81,47 +81,48 @@ All executables should be configured to be executable in the user space without 
     </p>
     </details>
 
-1. **Configure Ingress** and authenticate Keptn CLI
-    ```
-    curl -SL https://raw.githubusercontent.com/keptn/examples/master/quickstart/expose-keptn.sh | bash
-    ```
+4. **Configure Ingress** and authenticate Keptn CLI
 
-1. **Perform a** [**multi-stage delivery**](../concepts/delivery/) with [SLO-based quality gates](../concepts/quality_gates/) in place
-    Please note this will create a local repository `examples/` in your current directory. Make sure to run it from a directory you are fine having the examples stored in.
-    ```
-    curl -SL https://raw.githubusercontent.com/keptn/examples/master/quickstart/multistage-delivery.sh | bash
-    ```
-  <details><summary>What you'll see</summary>
-  <p>In Keptn you'll see one successful quality gate evaluation and one failed evaluation, that means a slow build will never reach production!
-  ![](./assets/multi-stage-sequence.png)
-  </p>
-  </details>
+```bash
+curl -SL https://raw.githubusercontent.com/keptn/examples/master/quickstart/expose-keptn.sh | bash
+```
 
-1. **Run** [**automated operations**](../concepts/automated_operations/) with auto-remediation in action
-    ```
-    curl -SL https://raw.githubusercontent.com/keptn/examples/master/quickstart/automated-operations.sh | bash
-    ```
-  <details><summary>What you'll see</summary>
-  <p>In Keptn you'll see an executed remediation sequence in response to a problem event that has been sent to Keptn!
-  ![](./assets/remediation-sequence.png)
-  </p>
-  </details>
+## Try Multi-Stage Delivery
 
-1. **Explore Keptn!** Please have a look at our [tutorials](https://tutorials.keptn.sh) and [documentation](../) to learn how you can use Keptn.
+Perform a [**multi-stage delivery**](../concepts/delivery/) with [SLO-based quality gates](../concepts/quality_gates/) in place.
+Please note this will create a local repository `examples/` in your current directory.
+Make sure to run it from a directory you are fine having the examples stored in.
 
-1. If you are finished exploring Keptn, you can always stop and start the cluster and delete it eventually.
-    ```
-    k3d cluster stop mykeptn
-    k3d cluster start mykeptn
-    ```
+```bash
+curl -SL https://raw.githubusercontent.com/keptn/examples/master/quickstart/multistage-delivery.sh | bash
+```
 
-    Or delete it if you don't need it anymore
-    ```
-    k3d cluster delete mykeptn
-    ```
+<details><summary>What you'll see</summary>
+<p>In Keptn you'll see one successful quality gate evaluation and one failed evaluation, that means a slow build will never reach production!
+![](./assets/multi-stage-sequence.png)
+</p>
+</details>
 
+## Try Auto-Remediation
 
-## Explore tutorials to learn more about the Keptn use cases
+Run [**automated operations**](../concepts/automated_operations/) with auto-remediation in action:
+
+```bash
+curl -SL https://raw.githubusercontent.com/keptn/examples/master/quickstart/automated-operations.sh | bash
+```
+
+<details><summary>What you'll see</summary>
+<p>In Keptn you'll see an executed remediation sequence in response to a problem event that has been sent to Keptn!
+![](./assets/remediation-sequence.png)
+</p>
+</details>
+
+## Explore Keptn
+
+Now you have a running Keptn instance, keep exploring it!
+Please have a look at our [tutorials](https://tutorials.keptn.sh) and [documentation](../) to learn how you can use Keptn.
+
+### Explore tutorials to learn more about the Keptn use cases
 
 With Keptn installed, have a look at the different [tutorials](https://tutorials.keptn.sh/) to learn hands-on about the Keptn use cases:
 
@@ -164,7 +165,7 @@ With Keptn installed, have a look at the different [tutorials](https://tutorials
   </tr>
 </table>
 
-## Learn how Keptn works and how it can be adapted to your use cases
+### Learn how Keptn works and how it can be adapted to your use cases
 
 Review the documentation for a full reference on all Keptn capabilities and components and how they can be combined/extended to your needs:
 
@@ -175,19 +176,33 @@ Review the documentation for a full reference on all Keptn capabilities and comp
 - [Automated Operations](../0.11.x/automated_operations)
 - [Custom Integrations](../0.11.x/integrations)
 
+## Wrapping up
+
+If you are finished exploring Keptn, you can always stop and start the cluster and delete it eventually.
+
+```bash
+k3d cluster stop mykeptn
+k3d cluster start mykeptn
+```
+
+Or delete it if you don't need it anymore
+
+```bash
+k3d cluster delete mykeptn
+```
+
 ## FAQ
 
 ### Kubernetes version not supported
 In case `keptn install` prevents you from installing Keptn due to a (currently) unsupported Kubernetes version, you can bypass this check at your own risk by using the Helm installation option of Keptn.
 
-```
+```bash
 helm install keptn https://github.com/keptn/keptn/releases/download/0.11.2/keptn-0.11.2.tgz -n keptn --create-namespace --set=continuous-delivery.enabled=true --wait
 helm install helm-service https://github.com/keptn/keptn/releases/download/0.11.2/helm-service-0.11.2.tgz -n keptn --create-namespace --wait
 helm install jmeter-service https://github.com/keptn/keptn/releases/download/0.11.2/jmeter-service-0.11.2.tgz -n keptn --create-namespace --wait
 ```
+
 Now continue with step 4 from the quickstart guide.
-
-
 
 ### Disk pressure on pods in Kubernetes
 
