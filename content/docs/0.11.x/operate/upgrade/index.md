@@ -4,6 +4,7 @@ description: Upgrade your Keptn to 0.11
 weight: 30
 aliases:
   - /docs/0.11.2/operate/upgrade/
+  - /docs/0.11.3/operate/upgrade/
 ---
 
 ## Upgrade from Keptn 0.10.x to 0.11.x
@@ -18,9 +19,9 @@ aliases:
 * **Step 2.** To download and install the Keptn CLI for version 0.11.x, you can choose between:
    * *Automatic installation of the Keptn CLI (Linux and Mac):*
 
-      * The next command will download the 0.11.2 release from [GitHub](https://github.com/keptn/keptn/releases), unpack it, and move it to `/usr/local/bin/keptn`.
+      * The next command will download the 0.11.3 release from [GitHub](https://github.com/keptn/keptn/releases), unpack it, and move it to `/usr/local/bin/keptn`.
       ```console
-      curl -sL https://get.keptn.sh | KEPTN_VERSION=0.11.2 bash
+      curl -sL https://get.keptn.sh | KEPTN_VERSION=0.11.3 bash
       ```
 
       * Verify that the installation has worked and that the version is correct by running:
@@ -30,7 +31,7 @@ aliases:
 
    * *Manual installation of the Keptn CLI:*
 
-      * Download the release for your platform from the [GitHub](https://github.com/keptn/keptn/releases/tag/0.11.2)
+      * Download the release for your platform from the [GitHub](https://github.com/keptn/keptn/releases/tag/0.11.3)
       * Unpack the binary and move it to a directory of your choice (e.g., `/usr/local/bin/`)
       * Verify that the installation has worked and that the version is correct by running:
       ```console
@@ -43,7 +44,7 @@ aliases:
    ```
 
       * Please [verify that you are connected to the correct Kubernetes cluster](../../troubleshooting/#verify-kubernetes-context-with-keptn-installation) before executing this command.
-      * This CLI command executes a Helm upgrade using the Helm chart from: [keptn-installer/keptn-0.11.2.tgz](https://storage.googleapis.com/keptn-installer/keptn-0.11.2.tgz)
+      * This CLI command executes a Helm upgrade using the Helm chart from: [keptn-installer/keptn-0.11.3.tgz](https://storage.googleapis.com/keptn-installer/keptn-0.11.3.tgz)
 
 
 * **Step 4.** Restore your Mongo DB and configuration service data according to the steps in the [restore guide](../../operate/backup_and_restore).
