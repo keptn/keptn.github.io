@@ -81,47 +81,47 @@ All executables should be configured to be executable in the user space without 
     </p>
     </details>
 
-1. **Configure Ingress** and authenticate Keptn CLI
+4. **Configure Ingress** and authenticate Keptn CLI
     ```
     curl -SL https://raw.githubusercontent.com/keptn/examples/master/quickstart/expose-keptn.sh | bash
     ```
 
-1. **Perform a** [**multi-stage delivery**](../concepts/delivery/) with [SLO-based quality gates](../concepts/quality_gates/) in place
-    Please note this will create a local repository `examples/` in your current directory. Make sure to run it from a directory you are fine having the examples stored in.
+## Try Multi-Stage Delivery
+
+Perform a [**multi-stage delivery**](../concepts/delivery/) with [SLO-based quality gates](../concepts/quality_gates/) in place.
+Please note this will create a local repository `examples/` in your current directory.
+Make sure to run it from a directory you are fine having the examples stored in.
+
     ```
     curl -SL https://raw.githubusercontent.com/keptn/examples/master/quickstart/multistage-delivery.sh | bash
     ```
-  <details><summary>What you'll see</summary>
-  <p>In Keptn you'll see one successful quality gate evaluation and one failed evaluation, that means a slow build will never reach production!
-  ![](./assets/multi-stage-sequence.png)
-  </p>
-  </details>
 
-1. **Run** [**automated operations**](../concepts/automated_operations/) with auto-remediation in action
+<details><summary>What you'll see</summary>
+<p>In Keptn you'll see one successful quality gate evaluation and one failed evaluation, that means a slow build will never reach production!
+![](./assets/multi-stage-sequence.png)
+</p>
+</details>
+
+## Try Auto-Remediation
+
+Run [**automated operations**](../concepts/automated_operations/) with auto-remediation in action:
+
     ```
     curl -SL https://raw.githubusercontent.com/keptn/examples/master/quickstart/automated-operations.sh | bash
     ```
-  <details><summary>What you'll see</summary>
-  <p>In Keptn you'll see an executed remediation sequence in response to a problem event that has been sent to Keptn!
-  ![](./assets/remediation-sequence.png)
-  </p>
-  </details>
 
-1. **Explore Keptn!** Please have a look at our [tutorials](https://tutorials.keptn.sh) and [documentation](../) to learn how you can use Keptn.
+<details><summary>What you'll see</summary>
+<p>In Keptn you'll see an executed remediation sequence in response to a problem event that has been sent to Keptn!
+![](./assets/remediation-sequence.png)
+</p>
+</details>
 
-1. If you are finished exploring Keptn, you can always stop and start the cluster and delete it eventually.
-    ```
-    k3d cluster stop mykeptn
-    k3d cluster start mykeptn
-    ```
+## Explore Keptn
 
-    Or delete it if you don't need it anymore
-    ```
-    k3d cluster delete mykeptn
-    ```
+Now you have a running Keptn instance, keep exploring it!
+Please have a look at our [tutorials](https://tutorials.keptn.sh) and [documentation](../) to learn how you can use Keptn.
 
-
-## Explore tutorials to learn more about the Keptn use cases
+### Explore tutorials to learn more about the Keptn use cases
 
 With Keptn installed, have a look at the different [tutorials](https://tutorials.keptn.sh/) to learn hands-on about the Keptn use cases:
 
@@ -164,7 +164,7 @@ With Keptn installed, have a look at the different [tutorials](https://tutorials
   </tr>
 </table>
 
-## Learn how Keptn works and how it can be adapted to your use cases
+### Learn how Keptn works and how it can be adapted to your use cases
 
 Review the documentation for a full reference on all Keptn capabilities and components and how they can be combined/extended to your needs:
 
@@ -174,6 +174,20 @@ Review the documentation for a full reference on all Keptn capabilities and comp
 - [Quality Gates](../0.11.x/quality_gates)
 - [Automated Operations](../0.11.x/automated_operations)
 - [Custom Integrations](../0.11.x/integrations)
+
+## Wrapping up
+
+If you are finished exploring Keptn, you can always stop and start the cluster and delete it eventually.
+
+    ```
+    k3d cluster stop mykeptn
+    k3d cluster start mykeptn
+    ```
+
+    Or delete it if you don't need it anymore
+    ```
+    k3d cluster delete mykeptn
+    ```
 
 ## FAQ
 
