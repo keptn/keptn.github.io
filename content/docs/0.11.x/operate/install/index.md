@@ -7,6 +7,7 @@ aliases:
   - /docs/0.11.0/operate/install/
   - /docs/0.11.1/operate/install/
   - /docs/0.11.2/operate/install/
+  - /docs/0.11.3/operate/install/
 ---
 
 ## Prerequisites
@@ -224,7 +225,7 @@ Use this page if you have already Keptn experience and would like to install it 
 
 Every Keptn release provides binaries for the Keptn CLI. These binaries are available for Linux, macOS, and Windows.
 
-- Download the version for your operating system from: [GitHub](https://github.com/keptn/keptn/releases/tag/0.11.2)
+- Download the version for your operating system from: [GitHub](https://github.com/keptn/keptn/releases/tag/0.11.3)
 - Unpack the archive
 - Find the `keptn` binary in the unpacked directory
 

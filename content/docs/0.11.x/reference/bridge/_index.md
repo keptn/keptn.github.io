@@ -269,4 +269,4 @@ You can access Keptn Bridge using the following browsers.
 | Google Chrome   | Latest version (desktop) |
 | Safari          | 11+ (OS X)               |
 
-Keptn Bridge is not designed to work on mobile devices. 
+Keptn Bridge is not designed to work on mobile devices.

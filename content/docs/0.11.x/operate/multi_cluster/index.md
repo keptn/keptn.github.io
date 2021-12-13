@@ -60,16 +60,16 @@ In this release of Keptn, the execution plane services for deployment (`helm-ser
 
 Please find the Helm Charts here:
 
-  - `helm-service`: GitHub Release for [0.11.2](https://github.com/keptn/keptn/releases/tag/0.11.2) at **Assets** > `helm-service-0.11.2.tgz`
+  - `helm-service`: GitHub Release for [0.11.3](https://github.com/keptn/keptn/releases/tag/0.11.3) at **Assets** > `helm-service-0.11.3.tgz`
 
-  - `jmeter-service`: GitHub Release for [0.11.2](https://github.com/keptn/keptn/releases/tag/0.11.2) at **Assets** > `jmeter-service-0.11.2.tgz`
+  - `jmeter-service`: GitHub Release for [0.11.3](https://github.com/keptn/keptn/releases/tag/0.11.3) at **Assets** > `jmeter-service-0.11.3.tgz`
 
 ### How to deploy an execution plane services?
 
 * Download the `values.yaml` from the release branch, e.g., for the jmeter-service:
 
     ```
-    wget https://raw.githubusercontent.com/keptn/keptn/release-0.11.2/jmeter-service/chart/values.yaml
+    wget https://raw.githubusercontent.com/keptn/keptn/release-0.11.3/jmeter-service/chart/values.yaml
     ```
 
 * Edit the `values.yaml` to connect the services to the Keptn control plane, identified by its endpoint and API token. Therefore, set the values (1) - (5):
@@ -106,7 +106,7 @@ Please find the Helm Charts here:
 * Deploy the execution plane service (e.g., jmeter-service) from release assets with your `values.yaml` and by using `helm`:
 
     ```console
-    helm install jmeter-service https://github.com/keptn/keptn/releases/download/0.11.2/jmeter-service-0.11.2.tgz -n keptn-exec --create-namespace --values=values.yaml
+    helm install jmeter-service https://github.com/keptn/keptn/releases/download/0.11.3/jmeter-service-0.11.3.tgz -n keptn-exec --create-namespace --values=values.yaml
     ```
 
 * Test connection to Keptn control plane using:
@@ -141,9 +141,9 @@ Please find the Helm Charts here:
 
 See the configuration parameters of the supported execution plane services:
 
-  - `helm-service`: [Helm Chart values](https://github.com/keptn/keptn/blob/release-0.11.2/helm-service/chart/README.md#configuration)
+  - `helm-service`: [Helm Chart values](https://github.com/keptn/keptn/blob/release-0.11.3/helm-service/chart/README.md#configuration)
 
-  - `jmeter-service`: [Helm Chart values](https://github.com/keptn/keptn/blob/release-0.11.2/jmeter-service/chart/README.md#configuration)
+  - `jmeter-service`: [Helm Chart values](https://github.com/keptn/keptn/blob/release-0.11.3/jmeter-service/chart/README.md#configuration)
 
 The important once that are used in the above example are:
 
