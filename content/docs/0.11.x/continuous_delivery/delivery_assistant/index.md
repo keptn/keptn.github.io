@@ -80,7 +80,7 @@ If this task is in place, you can control how to proceed with the delivery depen
             "result": "warning",
             "service": "carts",
             "stage": "production",
-            "tag": "0.11.2",
+            "tag": "0.13.2",
             "teststrategy": "performance"
         },
         "id": "5bf26759-4afa-4045-8ccf-81bc398c2fcd",
@@ -98,7 +98,7 @@ If this task is in place, you can control how to proceed with the delivery depen
     Starting to send approval.finished event
     
      OPTION VERSION EVALUATION  
-     (1)  0.11.2  n/a   
+     (1)  0.13.2  n/a   
     Select the option to approve or decline: 
     1
     Do you want to (a)pprove or (d)ecline: 
@@ -137,7 +137,7 @@ If this task is in place, you can control how to proceed with the delivery depen
     "project": "ck-sockshop",
     "service": "carts",
     "stage": "production",
-    "tag": "0.11.2",
+    "tag": "0.13.2",
     "teststrategy": "performance"
   }
 }
