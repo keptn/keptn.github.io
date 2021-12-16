@@ -7,6 +7,7 @@ icon: calendar
 ---
 
 The Keptn community is meeting regularly and all meetings are public and open for you to join.
+Effective Dec 2021, we have moved the meetings to the [CNCF Community portal](https://community.cncf.io/keptn-community/) powered by Bevy instead of Zoom.
 
 ## Keptn User Group
 
@@ -14,7 +15,7 @@ Join our monthly Keptn user groups where **Keptn users are presenting their stor
 
 🗓️ **Cadence**: Every **3rd Tuesday of the month** at 5pm CET / 8am PT / 11am ET.
 
-📺 [**Zoom meeting**](https://dynatrace.zoom.us/j/91460930007?pwd=bStnRzZUNW5iS1drV2RqVlVwbE5QQT09)
+📺 [**RSVP and meeting links**](https://community.cncf.io/keptn-community/)
 
 🗒️ [**Meeting document**](https://docs.google.com/document/d/1Om9pj16hGKP_w2vUaH-7Cp0ffEIj-Oe3IezeVCpFYAM/edit)
 
@@ -26,7 +27,7 @@ We are hosting Keptn developer meetings to **discuss roadmap updates**, **recent
 
 🗓️ **Cadence**: each **Thursday** at 5pm CET / 8am PT / 11am ET.
 
-📺 [**Zoom meeting**](https://dynatrace.zoom.us/j/92249948381?pwd=dGFORVJXMk0vdEsrUjVlMEU3ZUdZUT09)
+📺 [**RSVP and meeting links**](https://community.cncf.io/keptn-community/)
 
 🗒️ [**Meeting document**](https://tinyurl.com/keptn-meeting-notes)
 

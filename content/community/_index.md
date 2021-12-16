@@ -20,6 +20,15 @@ We have a dedicated [Keptn slack workspace](https://slack.keptn.sh) (for in-dept
 
 ❌ This is not a good place to submit bug reports 🐞 . Please [open an issue](https://github.com/keptn/keptn/issues) instead so the Keptn maintainers & developers can take care of it. 
 
+## Meetings
+
+We are hosting monthly [Keptn user groups](./meetings/) and weekly [Keptn community/developer meetings](./meetings/). Find the details in the corresponding sections.
+
+## Community Portal
+
+The Keptn community has a chapter on the [CNCF Community Portal](https://community.cncf.io/keptn-community/).
+This chapter is used for Keptn meetings and other events hosted by the community.
+Please join the chapter and register for the events!
 
 ## Newsletter 
 
@@ -46,7 +55,3 @@ We are hosting [30 minute 1on1 sessions](https://calendly.com/jetzlstorfer/keptn
 ✅ Talk about Keptn in your environment
 
 ❌ This is not a good place to submit bug reports 🐞 . Please [open an issue](https://github.com/keptn/keptn/issues) instead so the Keptn maintainers & developers can take care of it.  
-
-## Meetings
-
-We are hosting monthly [Keptn user groups](./meetings/) and weekly [Keptn developer meetings](./meetings/). Find the details in the corresponding sections.
