@@ -83,4 +83,4 @@ reach out to the community in the `#advocacy-and-outreach` channel on the Keptn 
 ## Other contributions
 
 Any contributions will be appreciated even if they aren't listed here yet!
-We welcome contributors with any backgrounds and levels of experiences: code reviews, design and artwork, organizing events, content management, testing, issue triage, localization, etc.
+We welcome contributors with any backgrounds and levels of experience: code reviews, design and artwork, organizing events, content management, testing, issue triage, localization, etc.

@@ -1,7 +1,7 @@
 # Contribute to the Keptn Website
 
 This is the repository of the [Keptn](https://keptn.sh) website, which uses the [Hugo static website generator framework](http://gohugo.io).
-Keptn is a message-driven control-plane for application delivery and automated operations.
+Keptn is a event-driven control-plane for application delivery and automated operations.
 
 ## Run locally
 
