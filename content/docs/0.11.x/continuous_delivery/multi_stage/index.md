@@ -149,7 +149,7 @@ keptn trigger delivery --project=$PROJECTNAME --service=$SERVICENAME --image=$IM
     "stage": "[STAGENAME]",
     "configurationChange": {
       "values": {
-        "image": "keptn-examples/carts:0.11.3"
+        "image": "keptn-examples/carts:0.13.3"
       }
     }
   },
