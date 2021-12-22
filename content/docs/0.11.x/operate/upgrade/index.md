@@ -47,9 +47,7 @@ aliases:
 * :warning: **Step 3.** If you are using the **jmeter-service** or **helm-service**, upgrade them to 0.11.4 using the following commands: 
    ```console
    helm repo update
-
    helm upgrade jmeter-service https://github.com/keptn/keptn/releases/download/0.11.4/jmeter-service-0.11.4.tgz -n keptn --create-namespace --wait --reuse-values
-
    helm upgrade helm-service https://github.com/keptn/keptn/releases/download/0.11.4/helm-service-0.11.4.tgz -n keptn --create-namespace --wait --reuse-values
    ```
 
@@ -101,9 +99,7 @@ aliases:
 * :warning: **Step 5.** If you are using the **jmeter-service** or **helm-service**, upgrade them to 0.11.4 using the following commands: 
    ```console
    helm repo update
-
    helm upgrade jmeter-service https://github.com/keptn/keptn/releases/download/0.11.4/jmeter-service-0.11.4.tgz -n keptn --create-namespace --wait --reuse-values
-
    helm upgrade helm-service https://github.com/keptn/keptn/releases/download/0.11.4/helm-service-0.11.4.tgz -n keptn --create-namespace --wait --reuse-values
    ```
 
