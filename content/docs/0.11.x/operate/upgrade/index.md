@@ -41,8 +41,8 @@ aliases:
    keptn upgrade
    ```
 
-      * Please [verify that you are connected to the correct Kubernetes cluster](../../troubleshooting/#verify-kubernetes-context-with-keptn-installation) before executing this command.
-      * If you encounter an issue of the CLI saying: `Error: your current Keptn CLI context 'cluster' does not match current Kubeconfig '` when executing the above command, please follow the Helm upgrade approach: 
+   * Please [verify that you are connected to the correct Kubernetes cluster](../../troubleshooting/#verify-kubernetes-context-with-keptn-installation) before executing this command.
+   * If you encounter an issue of the CLI saying: `Error: your current Keptn CLI context 'cluster' does not match current Kubeconfig '` when executing the above command, please follow the Helm upgrade approach: 
 
    ```console
    helm upgrade keptn keptn --install -n keptn --create-namespace --repo=https://storage.googleapis.com/keptn-installer --version=0.11.4 --reuse-values --wait
