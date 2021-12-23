@@ -36,6 +36,7 @@ aliases:
       ```
 
 * **Step 2.** To upgrade your Keptn installation from 0.11.x to 0.11.4, the Keptn CLI offers the command:
+  
    ```console
    keptn upgrade
    ```
@@ -47,10 +48,8 @@ aliases:
    helm upgrade keptn keptn --install -n keptn --create-namespace --repo=https://storage.googleapis.com/keptn-installer --version=0.11.4 --reuse-values --wait
    ```
 
-
-
-
 * :warning: **Step 3.** If you are using the **jmeter-service** or **helm-service**, upgrade them to 0.11.4 using the following commands: 
+
    ```console
    helm repo update
    helm upgrade jmeter-service https://github.com/keptn/keptn/releases/download/0.11.4/jmeter-service-0.11.4.tgz -n keptn --create-namespace --wait --reuse-values
