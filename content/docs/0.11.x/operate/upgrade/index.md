@@ -36,15 +36,20 @@ aliases:
       ```
 
 * **Step 2.** To upgrade your Keptn installation from 0.11.x to 0.11.4, the Keptn CLI offers the command:
+  
    ```console
    keptn upgrade
    ```
 
-      * Please [verify that you are connected to the correct Kubernetes cluster](../../troubleshooting/#verify-kubernetes-context-with-keptn-installation) before executing this command.
-      * This CLI command executes a Helm upgrade using the Helm chart from: [keptn-installer/keptn-0.11.4.tgz](https://storage.googleapis.com/keptn-installer/keptn-0.11.4.tgz)
+   * Please [verify that you are connected to the correct Kubernetes cluster](../../troubleshooting/#verify-kubernetes-context-with-keptn-installation) before executing this command.
+   * If you encounter an issue of the CLI saying: `Error: your current Keptn CLI context 'cluster' does not match current Kubeconfig '` when executing the above command, please follow the Helm upgrade approach: 
 
+   ```console
+   helm upgrade keptn keptn --install -n keptn --create-namespace --repo=https://storage.googleapis.com/keptn-installer --version=0.11.4 --reuse-values --wait
+   ```
 
 * :warning: **Step 3.** If you are using the **jmeter-service** or **helm-service**, upgrade them to 0.11.4 using the following commands: 
+
    ```console
    helm repo update
    helm upgrade jmeter-service https://github.com/keptn/keptn/releases/download/0.11.4/jmeter-service-0.11.4.tgz -n keptn --create-namespace --wait --reuse-values
