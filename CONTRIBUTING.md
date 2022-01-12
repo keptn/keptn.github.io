@@ -16,8 +16,12 @@ A copy of this repository is available in your GitHub account.
     ```
 	Where UserName is your github username. The keptn.github.io directory is available in the local directory.
 
-3. Install the **extended** version of [Hugo](http://gohugo.io) in [Version 0.53](https://github.com/gohugoio/hugo/releases/tag/v0.53) (see [netlify.toml](netlify.toml) - `HUGO_VERSION = "0.53"`).
+3. Install the extended version of [Hugo](http://gohugo.io) in [Version 0.53](https://github.com/gohugoio/hugo/releases/tag/v0.53) (see [netlify.toml](netlify.toml) - `HUGO_VERSION = "0.53"`). 
+
+:warning: It's important that you install the **extended** version of Hugo. Learn how to install Hugo, depending on your OS, here: [install Hugo](https://gohugo.io/getting-started/installing/).
+ 
 The themes directory on your local machine (localdirectory/keptn.github.io/themes) is empty because the Hugo serif theme is available at https://github.com/zerostaticthemes/hugo-serif-theme. You need to load the git submodule (see next step) to install this theme.
+
 
 4. Install the git submodule in the themes directory.
     ```
