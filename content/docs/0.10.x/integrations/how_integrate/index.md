@@ -28,7 +28,7 @@ Usually, a testing tool integration is getting triggered upon a `sh.keptn.event.
 
 **Example shipyard** with a test task in each sequence:
 ```
-apiVersion: spec.keptn.sh/0.2.2
+apiVersion: spec.keptn.sh/0.2.3
 kind: "Shipyard"
 metadata:
   name: "test-shipyard"
