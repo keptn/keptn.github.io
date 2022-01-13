@@ -103,7 +103,7 @@ The action task indicates that a remediation action should be executed by an act
 
 #### Approval
 
-The approval task intercepts the sequence and waits for a required approval (e.g., before deploying an artifact into the next stage). The approval strategy can be defined based on the evaluation result `pass` and `warning`. Keptn supports the following approval strategies for the evaluation results `pass` and `warning`:
+The approval task intercepts the task sequence and waits for a user to approve or decline the open approval. This task can be added, for example, before deploying an artifact into the next stage. The approval strategy can be defined based on the evaluation result `pass` and `warning`. Keptn supports the following approval strategies for the evaluation results `pass` and `warning`:
 
 * `automatic`: The artifact is deployed automatically.
 * `manual`: The user is asked for approval before triggering the deployment.
