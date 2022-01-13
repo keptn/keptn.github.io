@@ -10,6 +10,7 @@ Keptn is an event-based control plane for continuous delivery and automated oper
 {{< popup_image link="./assets/architecture.png" caption="Keptn architecture" width="65%">}}
 
 ## Prerequisites
+
 During the installation of Keptn, [NATS](https://nats.io/) is installed into the Kubernetes namespace where Keptn is installed.
 
 ## Keptn CLI
