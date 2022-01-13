@@ -1,7 +1,7 @@
 ---
 title: Release 0.12.x
 linktitle: Release 0.12.x
-weight: 985
+weight: 984
 sidebar_multicard: true
 icon: docs
 aliases:
