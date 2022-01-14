@@ -12,7 +12,7 @@ The definition of a multi-stage delivery manifests in a so-called [Shipyard](../
 **Example**: Simple shipyard file with a delivery sequence in the two stages `dev` and `production`, whereas `dev` uses a direct deployment and `prod` uses blue-green deployment:
 
 ```yaml
-apiVersion: spec.keptn.sh/0.2.2
+apiVersion: spec.keptn.sh/0.2.3
 kind: "Shipyard"
 metadata:
   name: "shipyard-sockshop"
@@ -42,7 +42,7 @@ spec:
 **Example:** Extended shipyard with a delivery sequence in three stages `dev`, `hardening` and `production` in combination with tests:
 
 ```yaml
-apiVersion: spec.keptn.sh/0.2.2
+apiVersion: spec.keptn.sh/0.2.3
 kind: "Shipyard"
 metadata:
   name: "shipyard-sockshop"
@@ -91,7 +91,7 @@ spec:
 **Example:** Extended shipyard with two delivery sequence with varying deployment strategies (e.g., `delivery` is used for a Java-service, whereas `delivery-direct` is used for a database):
 
 ```yaml
-apiVersion: spec.keptn.sh/0.2.2
+apiVersion: spec.keptn.sh/0.2.3
 kind: "Shipyard"
 metadata:
   name: "shipyard-sockshop"

@@ -17,7 +17,7 @@ To create a project, you can use the CLI command [keptn create project](../../re
 
 The simplest shipyard.yaml file with a single stage and no sequences defined would look like this:
 ```yaml
-apiVersion: spec.keptn.sh/0.2.2
+apiVersion: spec.keptn.sh/0.2.3
 kind: "Shipyard"
 metadata:
   name: "shipyard-sockshop"

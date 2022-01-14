@@ -53,7 +53,7 @@ For the `easyBooking` application, the Keptn entities of a project, stage, and s
 For defining the stage(s) a service has to go through, a [Shipyard](../../manage/shipyard) file is needed. Since a quality gate should be configured for the *quality_assurance* environment only, the corresponding Shipyard for the *easyBooking* project looks as follows:
 
 ```yaml
-apiVersion: "spec.keptn.sh/0.2.2"
+apiVersion: "spec.keptn.sh/0.2.3"
 kind: "Shipyard"
 metadata:
   name: "shipyard-sockshop"
@@ -68,7 +68,7 @@ spec:
 You do not have to define any task sequence in a stage because quality gates (aka. `evaluation`) are a built-in Keptn capability. Hence, there is no need to explicitly add an `evaluation` sequence. However, the explicit form of the above Shipyard file would look as the following one, which behaves the same way: 
 
 ```yaml
-apiVersion: "spec.keptn.sh/0.2.2"
+apiVersion: "spec.keptn.sh/0.2.3"
 kind: "Shipyard"
 metadata:
   name: "shipyard-sockshop"
