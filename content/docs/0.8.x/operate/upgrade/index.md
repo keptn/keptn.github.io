@@ -52,7 +52,7 @@ keptn upgrade
     * Please [verify that you are connected to the correct Kubernetes cluster](../../troubleshooting/#verify-kubernetes-context-with-keptn-installation)
 before executing this command.
 
-    * This CLI command executes a Helm upgrade using the Helm chart from: [keptn-installer/keptn-0.8.7.tgz](https://storage.googleapis.com/keptn-installer/keptn-0.8.7.tgz)
+    * This CLI command executes a Helm upgrade using the Helm chart from: [keptn-installer/keptn-0.8.7.tgz](https://charts.keptn.sh/packages/keptn-0.8.7.tgz)
 
 **Note:** If you have manually modified your Keptn deployment, e.g., you deleted the Kubernetes Secret `bridge-credentials` for disabling basic auth, the `keptn upgrade` command will not detect the modification. Please re-apply your modification after performing the upgrade.
 
@@ -98,7 +98,7 @@ keptn upgrade
     * Please [verify that you are connected to the correct Kubernetes cluster](../../troubleshooting/#verify-kubernetes-context-with-keptn-installation)
 before executing this command.
 
-    * This CLI command executes a Helm upgrade using the Helm chart from: [keptn-installer/keptn-0.8.6.tgz](https://storage.googleapis.com/keptn-installer/keptn-0.8.6.tgz)
+    * This CLI command executes a Helm upgrade using the Helm chart from: [keptn-installer/keptn-0.8.6.tgz](https://charts.keptn.sh/packages/keptn-0.8.6.tgz)
 
 **Note:** If you have manually modified your Keptn deployment, e.g., you deleted the Kubernetes Secret `bridge-credentials` for disabling basic auth, the `keptn upgrade` command will not detect the modification. Please re-apply your modification after performing the upgrade.
 
@@ -144,7 +144,7 @@ keptn upgrade
     * Please [verify that you are connected to the correct Kubernetes cluster](../../troubleshooting/#verify-kubernetes-context-with-keptn-installation)
 before executing this command.
 
-    * This CLI command executes a Helm upgrade using the Helm chart from: [keptn-installer/keptn-0.8.5.tgz](https://storage.googleapis.com/keptn-installer/keptn-0.8.5.tgz)
+    * This CLI command executes a Helm upgrade using the Helm chart from: [keptn-installer/keptn-0.8.5.tgz](https://charts.keptn.sh/packages/keptn-0.8.5.tgz)
 
 **Note:** If you have manually modified your Keptn deployment, e.g., you deleted the Kubernetes Secret `bridge-credentials` for disabling basic auth, the `keptn upgrade` command will not detect the modification. Please re-apply your modification after performing the upgrade.
 
@@ -191,7 +191,7 @@ keptn upgrade
     * Please [verify that you are connected to the correct Kubernetes cluster](../../troubleshooting/#verify-kubernetes-context-with-keptn-installation)
 before executing this command.
 
-    * This CLI command executes a Helm upgrade using the Helm chart from: [keptn-installer/keptn-0.8.4.tgz](https://storage.googleapis.com/keptn-installer/keptn-0.8.4.tgz)
+    * This CLI command executes a Helm upgrade using the Helm chart from: [keptn-installer/keptn-0.8.4.tgz](https://charts.keptn.sh/packages/keptn-0.8.4.tgz)
 
 **Note:** If you have manually modified your Keptn deployment, e.g., you deleted the Kubernetes Secret `bridge-credentials` for disabling basic auth, the `keptn upgrade` command will not detect the modification. Please re-apply your modification after performing the upgrade.
 
@@ -239,7 +239,7 @@ keptn upgrade
     * Please [verify that you are connected to the correct Kubernetes cluster](../../troubleshooting/#verify-kubernetes-context-with-keptn-installation)
 before executing this command.
     
-    * This CLI command executes a Helm upgrade using the Helm chart from: [keptn-installer/keptn-0.8.3.tgz](https://storage.googleapis.com/keptn-installer/keptn-0.8.3.tgz)
+    * This CLI command executes a Helm upgrade using the Helm chart from: [keptn-installer/keptn-0.8.3.tgz](https://charts.keptn.sh/packages/keptn-0.8.3.tgz)
 
 **Note:** If you have manually modified your Keptn deployment, e.g., you deleted the Kubernetes Secret `bridge-credentials` for disabling basic auth, the `keptn upgrade` command will not detect the modification. Please re-apply your modification after performing the upgrade.
 
@@ -317,7 +317,7 @@ keptn upgrade
     * Please [verify that you are connected to the correct Kubernetes cluster](../../troubleshooting/#verify-kubernetes-context-with-keptn-installation)
 before executing this command.
     
-    * This CLI command executes a Helm upgrade using the Helm chart from: [keptn-installer/keptn-0.8.2.tgz](https://storage.googleapis.com/keptn-installer/keptn-0.8.2.tgz)
+    * This CLI command executes a Helm upgrade using the Helm chart from: [keptn-installer/keptn-0.8.2.tgz](https://charts.keptn.sh/packages/keptn-0.8.2.tgz)
 
 **Note:** If you have manually modified your Keptn deployment, e.g., you deleted the Kubernetes Secret `bridge-credentials` for disabling basic auth, the `keptn upgrade` command will not detect the modification. Please re-apply your modification after performing the upgrade.
 
@@ -363,7 +363,7 @@ keptn upgrade
     * Please [verify that you are connected to the correct Kubernetes cluster](../../troubleshooting/#verify-kubernetes-context-with-keptn-installation)
 before executing this command.
     
-    * This CLI command executes a Helm upgrade using the Helm chart from: [keptn-installer/keptn-0.8.1.tgz](https://storage.googleapis.com/keptn-installer/keptn-0.8.1.tgz)
+    * This CLI command executes a Helm upgrade using the Helm chart from: [keptn-installer/keptn-0.8.1.tgz](https://charts.keptn.sh/packages/keptn-0.8.1.tgz)
 
 **Note:** If you have manually modified your Keptn deployment, e.g., you deleted the Kubernetes Secret `bridge-credentials` for disabling basic auth, the `keptn upgrade` command will not detect the modification. Please re-apply your modification after performing the upgrade.
 
@@ -412,7 +412,7 @@ Please follow the three steps to upgrade your Keptn 0.7.3 to 0.8.0.
     * Please [verify that you are connected to the correct Kubernetes cluster](../../troubleshooting/#verify-kubernetes-context-with-keptn-installation)
 before executing this command.
     
-    * This CLI command executes a Helm upgrade using the Helm chart from: [keptn-installer/keptn-0.8.0.tgz](https://storage.googleapis.com/keptn-installer/keptn-0.8.0.tgz)
+    * This CLI command executes a Helm upgrade using the Helm chart from: [keptn-installer/keptn-0.8.0.tgz](https://charts.keptn.sh/packages/keptn-0.8.0.tgz)
 
 **Note 1:** In Keptn 0.7.3 and before, evaluation results were of type `sh.keptn.events.evaluation-done` which has changed to `sh.keptn.event.evaluation.finished`. While the old type of event is still in the database and considered for calculating the quality gate score, the Bridge in version 0.8.0 does not display `sh.keptn.events.evaluation-done` events.
 

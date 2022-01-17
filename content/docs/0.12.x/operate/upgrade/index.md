@@ -49,7 +49,7 @@ aliases:
    * If the CLI still complains about the context, please use the Helm approach to upgrade your cluster:
 
    ```console
-   helm upgrade keptn keptn --install -n keptn --create-namespace --repo=https://storage.googleapis.com/keptn-installer --version=0.12.0 --reuse-values --wait
+   helm upgrade keptn keptn --install -n keptn --create-namespace --repo=https://charts.keptn.sh --version=0.12.0 --reuse-values --wait
    ```
 
 * :warning: **Step 3.** If you are using the **jmeter-service** or **helm-service**, upgrade them to 0.12.0 using the following commands: 

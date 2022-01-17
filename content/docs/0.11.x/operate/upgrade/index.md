@@ -51,7 +51,7 @@ aliases:
    * If the CLI still complains about the context, please use the Helm approach to upgrade your cluster:
 
    ```console
-   helm upgrade keptn keptn --install -n keptn --create-namespace --repo=https://storage.googleapis.com/keptn-installer --version=0.11.4 --reuse-values --wait
+   helm upgrade keptn keptn --install -n keptn --create-namespace --repo=https://charts.keptn.sh --version=0.11.4 --reuse-values --wait
    ```
 
 * :warning: **Step 3.** If you are using the **jmeter-service** or **helm-service**, upgrade them to 0.11.4 using the following commands: 
@@ -102,7 +102,7 @@ aliases:
    ```
 
       * Please [verify that you are connected to the correct Kubernetes cluster](../../troubleshooting/#verify-kubernetes-context-with-keptn-installation) before executing this command.
-      * This CLI command executes a Helm upgrade using the Helm chart from: [keptn-installer/keptn-0.11.4.tgz](https://storage.googleapis.com/keptn-installer/keptn-0.11.4.tgz)
+      * This CLI command executes a Helm upgrade using the Helm chart from: [keptn-installer/keptn-0.11.4.tgz](https://charts.keptn.sh/packages/keptn-0.11.4.tgz)
 
 
 * **Step 4.** Restore your Mongo DB and configuration service data according to the steps in the [restore guide](../../operate/backup_and_restore).
