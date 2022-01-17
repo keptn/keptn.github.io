@@ -357,7 +357,7 @@ Depending on whether you would like to install the execution plane for continuou
 
 1. **Install an Ingress-Controller and create an Ingress:**
   Please first install your favorite Ingress-Controller and then apply an Ingress object in the `keptn` namespace, 
-  which points to the service `api-gateway-nginx` on port 80. Note that the [Kubernetes Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) allows to setup TLS encryption.
+  which points to the service `api-gateway-nginx` on port 80. Note that the [Kubernetes Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) allows to setup TLS encryption. **Note**: Using Openshift 3.11 requires to use a configuration for this platform.
 
     Commonly used Ingress-Controller are e.g. Istio and NGINX:
 
@@ -403,6 +403,44 @@ Depending on whether you would like to install the execution plane for continuou
     </p>
     </details>
 
+    <details><summary>**Istio 1.8+ on OpenShift 3.11**</summary>
+    <p>
+
+    * Istio provides an Ingres Controller. To install Istio, please refer to the [official documentation](https://istio.io/latest/docs/setup/install/).
+
+    * [Determine the ingress IP](https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/#determining-the-ingress-ip-and-ports):
+
+      ```console
+    kubectl -n istio-system get svc istio-ingressgateway
+      ```
+
+    * Create an `ingress-manifest.yaml` manifest for an Ingress object in which you set IP-ADDRESS or your hostname and then apply the manifest. (**Note:** In the example of an `ingress-manifest.yaml` manifest shown below, `nip.io` is used as wildcard DNS for the IP address.)
+
+      ```yaml
+    apiVersion: networking.k8s.io/v1beta1
+    kind: Ingress
+    metadata:
+      annotations:
+        kubernetes.io/ingress.class: istio
+      name: api-keptn-ingress
+      namespace: keptn
+    spec:
+      rules:
+      - host: <IP-ADDRESS>.nip.io
+        http:
+          paths:
+          - backend:
+              serviceName: api-gateway-nginx
+              servicePort: 80
+      ```
+
+      ```console
+    kubectl apply -f ingress-manifest.yaml
+      ```
+
+    </p>
+    </details>
+
     <details><summary>**NGNIX Ingress**</summary>
     <p>
 
@@ -418,6 +456,48 @@ Depending on whether you would like to install the execution plane for continuou
 
       ```yaml
     apiVersion: networking.k8s.io/v1
+    kind: Ingress
+    metadata:
+      annotations:
+        kubernetes.io/ingress.class: nginx
+      name: api-keptn-ingress
+      namespace: keptn
+    spec:
+      rules:
+      - host: <IP-ADDRESS>.nip.io
+        http:
+          paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: api-gateway-nginx
+                port:
+                  number: 80
+      ```
+
+      ```console
+    kubectl apply -f ingress-manifest.yaml
+      ```
+
+    </p>
+    </details>
+
+    <details><summary>**NGNIX Ingress on Openshift 3.11**</summary>
+    <p>
+
+    * To install an NGINX Ingress Controller, please refer to the [official documentation](https://kubernetes.github.io/ingress-nginx/).
+
+    * [Determine the ingress IP](https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/#determining-the-ingress-ip-and-ports):
+
+      ```console
+    kubectl -n ingress-nginx get svc ingress-nginx
+      ```
+
+    * Create an `ingress-manifest.yaml` manifest for an ingress object in which you set IP-ADDRESS or your hostname and then apply the manifest. (**Note:** In the example of an `ingress-manifest.yaml` manifest shown next, `nip.io` is used as wildcard DNS for the IP address.)
+
+      ```yaml
+    apiVersion: networking.k8s.io/v1beta1
     kind: Ingress
     metadata:
       annotations:
