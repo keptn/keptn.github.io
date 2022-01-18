@@ -2,7 +2,9 @@
 title: OpenID Authentication
 description: Enable/Disable OpenID authentication and implementation details for the identity provider
 weight: 20
-keywords: [0.8.x-bridge]
+keywords: [0.11.x-bridge]
+aliases:
+  - /docs/0.11.x/operate/user_management/openid_authentication/
 ---
 
 ## Enable/Disable Authentication
@@ -40,7 +42,7 @@ The following diagram shows the expected authentication flow with a custom ident
 
 {{< popup_image
 link="./assets/oauth-flow.png"
-caption="Authentication flow with OpenID provider" width="800px">}}
+caption="Authentication flow with identity provider" width="800px">}}
 
 Keptn Bridge should check the existence of the identity provider and also validate responses obtained from it. For example, next are requests and responses the Keptn Bridge can expect from the identity provider.
 
@@ -357,3 +359,43 @@ Content-Type: application/json
   "message": "User Alex does not have permission to login to Keptn."
 }
 ```
+
+
+## OpenID Connect via Microsoft
+To set up SSO via Microsoft you have to [register an application](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app) in order to get a client id, client secret and discovery endpoint.\
+Then the following environment variables can be set when installing keptn
+```
+bridge:
+  ...
+  oauth:
+    enabled: true
+    discovery: "https://login.microsoftonline.com/${directory_tenant_id}/v2.0/.well-known/openid-configuration"
+    secureCookie: true
+    baseUrl: <base_url>
+    clientID: <client_id>
+    clientSecret: <client_secret>
+```
+
+or later directly for the bridge server. After entering new environment variables, the server has to be restarted.
+```
+OAUTH_ENABLED: "true"
+OAUTH_DISCOVERY: "https://login.microsoftonline.com/${directory_tenant_id}/v2.0/.well-known/openid-configuration"
+SECURE_COOKIE: "true"
+OAUTH_BASE_URL: <base_url>
+OAUTH_CLIENT_ID: <client_id>
+OAUTH_CLIENT_SECRET: <client_secret>
+```
+
+When accessing the bridge, the user is redirected to the identity provider.
+{{< popup_image
+link="./assets/oauth-login-message.png"
+caption="Accessing bridge without being logged in" width="800px">}}
+{{< popup_image
+link="./assets/oauth-login.png"
+caption="Entering user credentials" width="400px">}}
+
+After the user successfully logs in with his Microsoft credentials, he is redirected back to the bridge.
+Once redirected, the bridge server fetches the user tokens and creates a session. The user is now successfully logged in.
+{{< popup_image
+link="./assets/oauth-logged-in.png"
+caption="User is logged in" width="800px">}}
