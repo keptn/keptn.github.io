@@ -1,5 +1,5 @@
 ---
-title: Keptn 0.11.4
+title: Keptn 0.12.0
 weight: 81
 ---
 
