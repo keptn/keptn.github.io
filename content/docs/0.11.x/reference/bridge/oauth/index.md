@@ -25,6 +25,7 @@ bridge:
     clientID: ""
     clientSecret: ""
     IDTokenAlg: ""
+    scope: ""
     userIdentifier: ""
 ```
 
@@ -34,6 +35,7 @@ bridge:
 - `clientID` - Client ID, provided by the identity provider.
 - `clientSecret` (optional) - Client secret, provided by the identity provider.
 - `IDTokenAlg` (optional) - Algorithm that is used to verify the ID token (e.g. `ES256`). Default is `RS256`.
+- `scope` (optional) - Additional scopes that should be added to the authentication flow (e.g. `profile email`), separated by space.
 - `userIdentifier` (optional) - The property of the ID token that identifies the user. Default is `name` and fallback to `nickname`, `preferred_username` and `email`.
 
 ## Authentication flow with the identity provider
@@ -374,6 +376,7 @@ bridge:
     baseUrl: <base_url>
     clientID: <client_id>
     clientSecret: <client_secret>
+    scope: "email"
 ```
 
 or later directly for the bridge server. After entering new environment variables, the server has to be restarted.
@@ -384,6 +387,7 @@ SECURE_COOKIE: "true"
 OAUTH_BASE_URL: <base_url>
 OAUTH_CLIENT_ID: <client_id>
 OAUTH_CLIENT_SECRET: <client_secret>
+OAUTH_SCOPE: "email"
 ```
 
 When accessing the bridge, the user is redirected to the identity provider.
