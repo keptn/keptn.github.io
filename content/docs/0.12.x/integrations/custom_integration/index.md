@@ -42,9 +42,13 @@ Your Keptn-service must have a subscription to at least one [Keptn CloudEvent](h
 
 In this example, `[task]` works as a placeholder for tasks such as: `deployment`, `test`, `evaluation`, `remediation`, etc. The task defines the topic the Keptn-service is interested in. Assuming you are writing a Keptn-service for testing, the event type would be: `sh.keptn.event.test.triggered`.
 
+
 **Distributor:**
 
 * To subscribe your Keptn-service to the `sh.keptn.event.[task].triggered` event, a distributor with `PUBSUB_TOPIC` set to the specific event type is required, see example below. Alternatively, a default distributor listening to all events (e.g., `PUBSUB_TOPIC: sh.keptn.>`) is provided in the deployment manifest of the keptn-service-template-go template (see [deploy/service.yaml](https://github.com/keptn-sandbox/keptn-service-template-go/blob/master/deploy/service.yaml)).
+
+The `PUBSUB_TOPIC` variable sets the initial subscription for your service. If a subscription has been modified through the Bridge, Keptn will prioritize this information and it discards the value of `PUBSUB_TOPIC`. Please, look at the Bridge paragraph later on this page for more information on the subject.
+
 
 ```yaml
 spec:
@@ -148,6 +152,31 @@ If your Keptn-service is running in the same pod as the distributor (which we re
 
 </p>
 </details>
+
+
+**Bridge:**
+
+After the application is deployed, its subscription can be changed directly in the Bridge.
+For this, open Keptn Bridge, select a project, and go to the *Uniform* page.
+Then select your service, and click the `Add subscription` button.
+
+{{< popup_image
+link="./assets/uniform_api.png"
+caption="Add task subscription for your integration"
+width="700px">}}
+
+In this form, you can provide the information for the task subscription:
+
+* *Task*: The task the integration should be fired on (e.g., `test` or `deployment`)
+* *Task suffix*: The state of the task when the integration should be fired; select one of: `triggered`, `started`, of `finished`
+* *Filter*: To restrict your integration to certain stages and services you can specify those using filters.
+
+*Note:* multiple subscriptions can be added for the same service.
+
+Keptn stores this subscriptions information also if the integration is not running.
+By default, Keptn will still keep this information for 48h after the last contact with the integration.
+This value can be configured using the [Advanced Install](../../operate/advanced_install_options/) option `shipyardController.config.uniformIntegrationTTL`.
+
 
 ### Send a started event
 
