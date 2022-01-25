@@ -367,3 +367,30 @@ compinit
 ```
 
 </details>
+
+## Using an HTTP Proxy
+
+To make the CLI access Keptn via an HTTP proxy, you can make use of the environment variables `HTTP_PROXY` and `HTTPS_PROXY`. If these are set, all requests sent by the CLI will go through the specified URL.
+The following examples illustrate how these variables can be set on the platforms supported by the CLI:
+
+### Linux or macOS
+
+```bash
+$ export HTTP_PROXY=http://10.0.0.1:8888
+$ export HTTP_PROXY=http://my-proxy.example.com:8888
+$ export HTTPS_PROXY=http://10.0.0.1:8888
+$ export HTTPS_PROXY=http://my-proxy.example.com:8888
+$ export HTTP_PROXY=http://username:password@my-proxy.example.com:8888 # with basic HTTP authentication
+$ export HTTPS_PROXY=http://username:password@my-proxy.example.com:8888 # with basic HTTP authentication
+```
+
+### Windows
+
+```console
+C:\> setx HTTP_PROXY=http://10.0.0.1:8888
+C:\> setx HTTP_PROXY=http://my-proxy.example.com:8888
+C:\> setx HTTPS_PROXY=http://10.0.0.1:8888
+C:\> setx HTTPS_PROXY=http://my-proxy.example.com:8888
+C:\> setx HTTP_PROXY=http://username:password@my-proxy.example.com:8888 # with basic HTTP authentication
+C:\> setx HTTPS_PROXY=http://username:password@my-proxy.example.com:8888 # with basic HTTP authentication
+```
