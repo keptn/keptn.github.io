@@ -37,13 +37,11 @@ OAUTH_SCOPE: "email"
 {{< popup_image
 link="./assets/oauth-login-message.png"
 caption="Accessing bridge without being logged in" width="800px">}}
-
 {{< popup_image
 link="./assets/oauth-login.png"
 caption="Entering user credentials" width="400px">}}
 
-* After the user successfully logs in with his Microsoft credentials, he is redirected back to the bridge.
-Once redirected, the Bridge server fetches the user tokens and creates a session. The user is now successfully logged in.
+* After the user successfully logs in with his Microsoft credentials, the user is redirected back to the Bridge. Once redirected, the Bridge server fetches the user tokens and creates a session. The user is now successfully logged in.
 {{< popup_image
 link="./assets/oauth-logged-in.png"
 caption="User is logged in" width="800px">}}
