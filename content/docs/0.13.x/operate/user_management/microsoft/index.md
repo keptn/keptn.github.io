@@ -8,13 +8,13 @@ These instructions will take you through the process of getting your Keptn authe
 
 * To set up SSO via OpenID with Microsoft, you have to [register an application](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app) in order to get a client id, client secret, and a discovery endpoint.
 
-* Then the following environment variables can be set when installing Keptn:
+* Then, the following environment variables can be set when installing Keptn:
 ```
 bridge:
   ...
   oauth:
     enabled: true
-    discovery: "https://login.microsoftonline.com/${directory_tenant_id}/v2.0/.well-known/openid-configuration"
+    discovery: "https://login.microsoftonline.com/<directory_tenant_id>/v2.0/.well-known/openid-configuration"
     secureCookie: true
     baseUrl: <base_url>
     clientID: <client_id>
@@ -25,7 +25,7 @@ bridge:
 * It is also possible to directly change the `Deployment` manifest of an existing Keptn installation. After entering the new environment values, the Bridge pod has to be restarted.
 ```
 OAUTH_ENABLED: "true"
-OAUTH_DISCOVERY: "https://login.microsoftonline.com/${directory_tenant_id}/v2.0/.well-known/openid-configuration"
+OAUTH_DISCOVERY: "https://login.microsoftonline.com/<directory_tenant_id>/v2.0/.well-known/openid-configuration"
 SECURE_COOKIE: "true"
 OAUTH_BASE_URL: <base_url>
 OAUTH_CLIENT_ID: <client_id>
