@@ -366,7 +366,7 @@ Depending on whether you would like to install the execution plane for continuou
     <details><summary>**Istio**</summary>
     <p>
 
-    * Istio provides an Ingres Controller. To install Istio, please refer to the [official documentation](https://istio.io/latest/docs/setup/install/).
+    * Istio provides an Ingress Controller. To install Istio, please refer to the [official documentation](https://istio.io/latest/docs/setup/install/).
 
     * [Determine the ingress IP](https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/#determining-the-ingress-ip-and-ports):
 
@@ -374,7 +374,7 @@ Depending on whether you would like to install the execution plane for continuou
     kubectl -n istio-system get svc istio-ingressgateway
       ```
 
-    * Create an `ingress-manifest.yaml` manifest for an Ingress object in which you set IP-ADDRESS or your hostname and then apply the manifest. (**Note:** In the example of an `ingress-manifest.yaml` manifest shown below, `nip.io` is used as wildcard DNS for the IP address.)
+    * Create an `ingress-manifest.yaml` manifest for an Ingress object in which you set IP-ADDRESS or your hostname and then apply the manifest. (**Note:** In the example below, `nip.io` is used as wildcard DNS for the IP address.)
 
       ```yaml
     apiVersion: networking.k8s.io/v1beta1
@@ -412,7 +412,7 @@ Depending on whether you would like to install the execution plane for continuou
     kubectl -n ingress-nginx get svc ingress-nginx
       ```
 
-    * Create an `ingress-manifest.yaml` manifest for an ingress object in which you set IP-ADDRESS or your hostname and then apply the manifest. (**Note:** In the example of an `ingress-manifest.yaml` manifest shown next, `nip.io` is used as wildcard DNS for the IP address.)
+    * Create an `ingress-manifest.yaml` manifest for an ingress object in which you set IP-ADDRESS or your hostname and then apply the manifest. (**Note:** In the example below, `nip.io` is used as wildcard DNS for the IP address.)
 
       ```yaml
     apiVersion: networking.k8s.io/v1beta1
@@ -439,7 +439,7 @@ Depending on whether you would like to install the execution plane for continuou
     </p>
     </details>
 
-1. **Get Keptn endpoint:** Get the HOST of the `api-keptn-ingress` using the command below. The Keptn API endpoint is: `http://<HOST>/api`
+2. **Get Keptn endpoint:** Get the HOST of the `api-keptn-ingress` using the command below. The Keptn API endpoint is: `http://<HOST>/api`
 
     ```console
   kubectl -n keptn get ingress api-keptn-ingress
