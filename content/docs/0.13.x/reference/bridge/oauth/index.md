@@ -1,15 +1,17 @@
 ---
-title: OAuth/OpenID Authentication
-description: Enable/Disable OAuth authentication and implementation details for OAuth service
+title: OpenID Authentication
+description: Enable/Disable OpenID authentication and implementation details for the identity provider
 weight: 20
-keywords: [0.8.x-bridge]
+keywords: [0.11.x-bridge]
+aliases:
+  - /docs/0.11.x/operate/user_management/openid_authentication/
 ---
 
 ## Enable/Disable Authentication
 
-The Keptn Bridge contains a switch to enable/disable OAuth/OpenID Connect-based authentication. This switch also enables session cookies. 
+The Keptn Bridge contains a switch to enable/disable OpenID Connect-based authentication. This switch also enables session cookies. 
 
-You can enable/disable OAuth via the Helm Chart values when installing Keptn: 
+You can enable/disable OpenID via the Helm Chart values when installing Keptn setting `enabled` to `true`:
 
 ```
 bridge:
@@ -19,78 +21,108 @@ bridge:
     discovery: ""
     secureCookie: false
     trustProxy: ""
+    baseUrl: ""
+    clientID: ""
+    clientSecret: ""
+    IDTokenAlg: ""
+    scope: ""
+    userIdentifier: ""
 ```
 
-## Authentication flow with OAuth service
+Furthermore, additional values are required for OpenID to work:
 
-The following diagram shows the expected authentication flow with a custom OAuth service that follows the implementation details explained below. 
+- `baseUrl` - URL of the bridge (e.g. `http://localhost:3000` or `https://myBridgeInstallation.com`).
+- `discovery` - Discovery URL of the identity provider (e.g. https://api.login.yahoo.com/.well-known/openid-configuration).
+- `clientID` - Client ID, provided by the identity provider.
+- `clientSecret` (optional) - Client secret, provided by the identity provider.
+- `IDTokenAlg` (optional) - Algorithm that is used to verify the ID token (e.g. `ES256`). Default is `RS256`.
+- `scope` (optional) - Additional scopes that should be added to the authentication flow (e.g. `profile email`), separated by space.
+- `userIdentifier` (optional) - The property of the ID token that identifies the user. Default is `name` and fallback to `nickname`, `preferred_username` and `email`.
+
+## Authentication flow with the identity provider
+
+The following diagram shows the expected authentication flow with a custom identity provider that follows the implementation details explained below. 
 
 {{< popup_image
 link="./assets/oauth-flow.png"
-caption="Authentication flow with OAuth service" width="800px">}}
+caption="Authentication flow with identity provider" width="800px">}}
 
-Keptn Bridge should check the existence of OAuth service and also validate responses obtained from it. For example, next are requests and responses the Keptn Bridge can expect from OAuth service.
+Keptn Bridge will check the existence of the identity provider and also validate responses obtained from it. For example, next are requests and responses the Keptn Bridge can expect from the identity provider.
 
-*To obtain authorization request:*
+*To obtain discovery request:*
 
 ```
-Request :
+Bridge Request :
 
-   Get <OAuth_Service>/authorization
+   GET <identity_provider>/.well-known/openid-configuration
 
-Response :
+OIDC Provider Response :
 
   {
-   "location": <authorization_request>
+   "issuer": <issuer>,
+   "authorization_endpoint": <authorization_endpoint>,
+   "token_endpoint": <token_endpoint>,
+   "jwks_uri": <jwks_endpoint>,
+   "end_session_endpoint": <end_session_endpoint>
   }
 ```
 
 *To validate authorization code & permissions:*
 
 ```
-Request :
+Bridge Request :
 
-   POST <OAuth_Service>/token_decision
+   POST <token_endpoint>
 
    {
      "state" : <state>,
-     "code" : <authorization_code>
+     "code" : <authorization_code>,
+     "scope": "openid",
+     "client_id": <client_id>,
+     "client_secret": <client_secret>, 
+     "nonce": <nonce>,
+     "code_verifier": <code_verifier>
    }
 
-Response :
+OIDC Provider Response :
 
   {
-   "user" : <USER_IDENTIFIER>
+   "id_token": <id_token>,
+   "access_token": <access_token>,
+   "refresh_token": <refresh_token>,
+   "expires_in": <expires_in>
   }
 ```
 
-OAuth service must implement logic to generate authorization requests, obtain tokens for valid authorization codes and validate permission checks based on token contents or user information. Furthermore, authorization request and token request should be linked ideally through state. OAuth-service is expected to follow recommended best practices such as use of [PKCE](https://tools.ietf.org/html/rfc7636) and JWK validations where applicable.
+The identity provider must implement logic to:
+- generate authorization requests,
+- obtain tokens for valid authorization codes, and
+- validate permission checks based on token contents or user information.
+  Furthermore, authorization requests and token requests should be linked ideally through state, nonce, code challenge, and code verifier. The identity provider is expected to follow recommended best practices such as [PKCE](https://tools.ietf.org/html/rfc7636) and JWK validations where applicable.
 
-## OAuth service implementation details
+## OpenID implementation details
 
-<details><summary>OAuth service Swagger documentation:</summary>
+<details><summary>OpenID Swagger documentation:</summary>
 <p>
 
 ```
 swagger: "2.0"
 info:
-  title: "Keptn OAuth service"
-  description: "Service contract for OAuth service for Keptn instance."
+  title: "Keptn Identity Provider"
+  description: "Service contract for the identity provider for Keptn instance."
   version: "1"
 tags:
-- name: "Service discovery"
-  description: "Service discovery"
-- name: "OAuth Service"
-  description: "OAuth service endpoints"
+- name: "Identity Provider"
+  description: "Identity provider endpoints"
 schemes:
 - "https"
 paths:
   /discovery:
     get:
       tags:
-      - "Service discovery"
-      summary: "Discovery endpoint of this service"
-      description: "Contains service discovery details to be used by Keptn bridge."
+      - "Identity Provider"
+      summary: "Discovery endpoint of this identity provider"
+      description: "Contains discovery details to be used by Keptn bridge."
       produces:
       - "application/json"
       responses:
@@ -98,32 +130,18 @@ paths:
           description: "Endpoints that are required for Keptn bridge"
           examples:
             application/json : {
-              "authorization": "http://oauth-service:8080/authorization",
-              "token_decision": "http://oauth-service:8080/token_decision"
+              "issuer": "http://identity-provider:8080",
+              "authorization_endpoint": "http://identity-provider:8080/authorization",
+              "token_endpoint": "http://identity-provider:8080/token_decision",
+              "jwks_uri": "http://identity-provider:8080/jwks",
+              "end_session_endpoint": "http://identity-provider:8080/end_session",
             }
           schema:
             $ref: "#/definitions/Discovery"
-  /authorization:
-    get:
-      tags:
-      - "OAuth Service"
-      summary: "Expose authorization URL"
-      description: "Response contains the authorization request URL to be used by Keptn bridge. Redirect URL must refer to <KEPTN_BASE_PATH>/oauth/redirect"
-      produces:
-      - "application/json"
-      responses:
-        "200":
-          description: "Successful authorization URL with correct OAuth 2.0/OpenID Connect values."
-          examples:
-            application/json : {
-              "authorization_url": "http://idp.com/authorization?client_id=xyz&redirect_uri=http://keptn.com/oauth/redirect&scope=openid&state=123"
-            }
-          schema:
-            $ref: "#/definitions/Authorization"
-  /token_decision:
+  /token_endpoint:
     post:
       tags:
-      - "OAuth Service"
+      - "Identity Provider"
       summary: "Consume state & code from redirect and provide login decision"
       description: "Token decision endpoint will be called from bridge with code and state values that sent through authorization response."
       parameters:
@@ -136,10 +154,23 @@ paths:
           required:
             - code
             - state
+            - client_id
+            - code_verifier
+            - nonce
           properties:
             code:
               type: string
             state:
+              type: string
+            scope:
+              type: string
+            client_id:
+              type: string
+            client_secret:
+              type: string
+            nonce:
+              type: string
+            code_verifier:
               type: string
       produces:
       - "application/json"
@@ -148,7 +179,10 @@ paths:
           description: "Successful login"
           examples:
             application/json : {
-              "user": "USER_IDENTIFIER"
+              "id_token": "ID_TOKEN",
+              "access_token": "ACCESS_TOKEN",
+              "refresh_token": "REFRESH_TOKEN",
+              "expires_in": "EXPIRES_IN"
             }
           schema:
             $ref: "#/definitions/Success"
@@ -160,32 +194,90 @@ paths:
             }
           schema:
             $ref: "#/definitions/Forbidden"
+  /jwks_uri:
+    get:
+      tags:
+      - "Identity Provider"
+      summary: "Returns JSON Web key set"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "JSON Web key set fetched"
+          examples:
+            application/json : {
+              "keys": [
+                {
+                  "alg": "ALG",
+                  "e": "E",
+                  "kid": "KID",
+                  "kty": "KTY",
+                  "n": "N",
+                  "use": "USE",
+                }
+              ]
+            }
+          schema:
+            $ref: "#/definitions/Jwks"
 definitions:
   Discovery:
     type: "object"
     required: 
-    - "authorization"
-    - "token_decision"
+    - "issuer"
+    - "authorization_endpoint"
+    - "token_endpoint"
+    - "jwks_uri"
     properties:
-      authorization:
+      issuer:
         type: string
-      token_decision:
+      authorization_endpoint:
         type: string
-  Authorization:
+      token_endpoint:
+        type: string
+      jwks_uri:
+        type: string
+      end_session_endpoint:
+        type: string
+  Jwks:
     type: "object"
     required:
-    - "authorization_url"
+    - "keys"
     properties:
-      authorization_url:
+      keys:
+        type: array
+        items:
+          $ref: "#/definitions/Jwks_key"
+  Jwks_key:
+    type: "object"
+    properties:
+      alg:
+        type: string
+      e:
+        type: string
+      kid:
+        type: string
+      kty:
+        type: string
+      n:
+        type: string
+      use:
         type: string
   Success:
     type: "object"
     required: 
-    - "result"
+    - "id_token"
+    - "access_token"
+    - "refresh_token"
+    - "expires_in"
     properties:
-      user:
+      id_token:
         type: string
-        description: "User identifier. This can be name, email or any preferred user identifier"
+      access_token:
+        type: string
+      refresh_token:
+        type: string
+      expires_in:
+        type: number
   Forbidden:
     type: "object"
     properties:
@@ -197,39 +289,42 @@ definitions:
 </p>
 </details> 
 
-The Keptn Bridge expects the environment variable `OAUTH_DISCOVERY`. This must direct to a discovery endpoint with the following details:
+When enabled, the Keptn Bridge expects the environment variable `OAUTH_DISCOVERY` to be correctly set. This must direct to a discovery endpoint with the following details:
 
-1. Endpoint for authorization request generation - `authorization`
-1. Endpoint to handle tokens and provide the login decision - `token_decision`
+1. Endpoint for authorization request generation - `authorization_endpopint`.
+2. Endpoint to handle tokens and provide the login decision - `token_endpoint`.
+3. Endpoint to fetch JSON Web key set to validate the ID token - `jwks_uri`.
+4. (optional) Endpoint to handle the logout - `end_session_endpoint`.
 
 With above-mentioned keys, the following is a sample response of the discovery
 
 ```
-Get http://oauth-service:8080/discovery
+GET http://identity-provider:8080/.well-known/openid-configuration
 
 {
- "authorization": "http://oauth-service:8080/authorization",
- "token_decision": "http://oauth-service:8080/token_decision"
+ "authorization_endpoint": "http://identity-provider:8080/authorization",
+ "token_endpoint": "http://identity-provider:8080/token_decision"
+ "jwks_uri": "http://identity-provider:8080/jwks"
 }
 ```
 
-From the response, Keptn bridge identifies the specific endpoints it needs to consume. Following sections provide specific details of these endpoints.
+From the response, Keptn bridge identifies the specific endpoints it needs to consume. The following sections provide specific details of these endpoints.
 
 ### authorization endpoint
+It generates an authentication code and redirects to the given redirect URI.
 
-Generates an authorization request with correct values and return that with the key *authorization_url* 
+The following query parameters must be supported:
+- client_id
+- redirect_uri
+- scope
+- state
+- nonce
+- code_challenge
+- code_challenge_method
 
-```
-Get http://oauth-service:8080/authorization
+### token endpoint
 
-{
- "authorization_url": "http://idp.com/authorization?client_id=xyz&redirect_uri=http://keptn.com/oauth/redirect&scope=openid&state=123"
-}
-```
-
-### token_decision endpoint
-
-Consumes code and token of the authorization response and provides the login decision. For simplicity, following are the currently supported decisions:
+It consumes the `code` and `state` of the authorization response and the `scope`, `redirect_uri`, `client_id` and optionally the `client_secret` and provides the login decision. For simplicity, the following are the currently supported decisions:
 
 1. HTTP 200 - Login is accepted
 1. HTTP 403 - Login is unaccepted OR permission denied
@@ -238,28 +333,37 @@ Consumes code and token of the authorization response and provides the login dec
 Successful login example:
 
 ```
-Post http://oauth-service:8080/token_decision
+POST http://identity-provider:8080/token_decision
 Content-Type: application/json
 {
   "code": "qwert",
-  "state": "123"
+  "state": "123",
+  "scope": "openid",
+  "redirect_uri": "https://example.com/oauth/redirect,
+  "client_id": "asdfxyz"
 }
 
 HTTP 200 OK
 Content-Type: application/json
 {
-  "user": <USER_IDENTIFIER>
+  "id_token": <id_token>,
+  "access_token": <access_token>,
+  "refresh_token": <refresh_token>,
+  "expires_in": <expires_in>
 }
 ```
 
 Unsuccessful login example:
 
 ```
-Post http://oauth-service:8080/token_decision
+POST http://identity-provider:8080/token_decision
 Content-Type: application/json
 {
   "code": "qwery",
-  "state": "123"
+  "state": "123",
+  "scope": "openid",
+  "redirect_uri": "https://example.com/oauth/redirect,
+  "client_id": "asdfxyz"
 }
 
 HTTP 403 Forbidden
@@ -268,3 +372,68 @@ Content-Type: application/json
   "message": "User Alex does not have permission to login to Keptn."
 }
 ```
+
+### jwks_uri endpoint
+It contains a set of JSON Web Keys that is used for validating the received id token.
+
+```
+GET http://identity-provider:8080/jwks_endpoint
+
+HTTP 200 OK
+Content-Type: application/json
+{
+  "keys": [
+    {
+      "kty": "RSA",
+      "use": "sig",
+      "kid": "abcde",
+      "n": "xyz",
+      "e": "AQAB",
+      "x5c": [
+        "asdf"
+      ]
+    }
+  ]
+}
+```
+
+## OpenID Connect via Microsoft
+To set up SSO via Microsoft you have to [register an application](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app) in order to get a client id, client secret, and a discovery endpoint.
+Then the following environment variables can be set when installing Keptn
+```
+bridge:
+  ...
+  oauth:
+    enabled: true
+    discovery: "https://login.microsoftonline.com/${directory_tenant_id}/v2.0/.well-known/openid-configuration"
+    secureCookie: true
+    baseUrl: <base_url>
+    clientID: <client_id>
+    clientSecret: <client_secret>
+    scope: "email"
+```
+
+It is also possible to directly change the `Deployment` manifest of an existing Keptn installation. After entering the new environment values, the Bridge pod has to be restarted.
+```
+OAUTH_ENABLED: "true"
+OAUTH_DISCOVERY: "https://login.microsoftonline.com/${directory_tenant_id}/v2.0/.well-known/openid-configuration"
+SECURE_COOKIE: "true"
+OAUTH_BASE_URL: <base_url>
+OAUTH_CLIENT_ID: <client_id>
+OAUTH_CLIENT_SECRET: <client_secret>
+OAUTH_SCOPE: "email"
+```
+
+When accessing the Bridge, the user is redirected to the identity provider.
+{{< popup_image
+link="./assets/oauth-login-message.png"
+caption="Accessing bridge without being logged in" width="800px">}}
+{{< popup_image
+link="./assets/oauth-login.png"
+caption="Entering user credentials" width="400px">}}
+
+After the user successfully logs in with his Microsoft credentials, he is redirected back to the bridge.
+Once redirected, the Bridge server fetches the user tokens and creates a session. The user is now successfully logged in.
+{{< popup_image
+link="./assets/oauth-logged-in.png"
+caption="User is logged in" width="800px">}}
