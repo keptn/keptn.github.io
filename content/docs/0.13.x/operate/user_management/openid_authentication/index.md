@@ -9,4 +9,5 @@ To set up user authenticating using OIDC, customization of your **Keptn Bridge**
 * Please follow the instructions provided [here](../../../reference/bridge/oauth/#enable-disable-authentication).
 
 Concrete examples of how to integrate with external OIDC provdiers for authentication are listed here: 
+
 * [Microsoft](../microsoft).
