@@ -1,12 +1,10 @@
 ---
 title: Microsoft
-description: Setting up Microsoft for SSO
+description: Setting up OpenID Connect with Microsoft
 weight: 20
 ---
 
-## OpenID Connect via Microsoft
-
-To set up SSO via Microsoft you have to [register an application](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app) in order to get a client id, client secret, and a discovery endpoint.
+To set up SSO via OpenID with Microsoft, you have to [register an application](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app) in order to get a client id, client secret, and a discovery endpoint.
 
 Then the following environment variables can be set when installing Keptn:
 ```
