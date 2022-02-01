@@ -63,8 +63,11 @@ To function correctly, the *dynatrace-service* requires access to a Dynatrace te
 * Create a secret (named `dynatrace` by default) containing the credentials for the Dynatrace Tenant (`DT_API_TOKEN` and `DT_TENANT`).
 
     ```console
-   keptn create secret dynatrace --from-literal="DT_TENANT=$DT_TENANT" --from-literal="DT_API_TOKEN=$DT_API_TOKEN"
+    keptn create secret dynatrace --scope="dynatrace-service" --from-literal="DT_TENANT=$DT_TENANT" --from-literal="DT_API_TOKEN=$DT_API_TOKEN"
     ```
+
+*Note*: For dynatrace-service version 0.17 and older, please omit the flag `--scope="dynatrace-service"`.
+
 
 ### 3. Gather Keptn credentials
 
