@@ -563,6 +563,7 @@ Values in between square brackets (`[]`) should be replaced with your own:
 * `sequence-name`: the sequence to trigger
 * `my-source`: your source. More info are available in the [CloudEvents spec](https://github.com/cloudevents/spec/blob/v1.0/spec.md#source).
 
+### Examples
 
 
 
