@@ -535,3 +535,34 @@ spec:
 ```
 
 **Result:** When, for example, the *delivery* sequence failed due to a failed test task, the event `sh.keptn.event.production.delivery.finished` with `result=failed` is sent out. Consequently, the *rollback* sequence is triggered based on the configuration of the `triggeredOn` and selector.
+
+## Trigger a sequence
+
+A shipyard file can contain multiple sequences in multiple stages.
+A specific `sequence` can be run by using the `POST /event` [Keptn API](../../reference/api/) with the following template:
+
+```json
+{
+    "data": {
+      "project": "[project]",
+      "service": "[service]",
+      "stage": "[stage]"
+    },
+    "source": "[my-source]",
+    "specversion": "1.0",
+    "type": "sh.keptn.event.[stage].[sequence-name].triggered",
+    "shkeptnspecversion": "0.2.3"
+}
+```
+
+Values in between square brackets (`[]`) should be replaced with your own:
+
+* `project`: your project name
+* `service`: your service name
+* `stage`: the stage in which your sequence is defined
+* `sequence-name`: the sequence to trigger
+* `my-source`: your source. More info are available in the [CloudEvents spec](https://github.com/cloudevents/spec/blob/v1.0/spec.md#source).
+
+
+
+
