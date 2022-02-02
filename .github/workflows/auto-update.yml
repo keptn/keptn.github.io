@@ -1,12 +1,12 @@
 name: Auto Update - Docs
 on:
   repository_dispatch:
-    types: [release-push]
+    types: [ release-push ]
   workflow_dispatch:
     inputs:
       ref:
         required: true
-        description: 'the ref...'
+        description: "the ref..."
 defaults:
   run:
     shell: bash
@@ -15,27 +15,53 @@ env:
 jobs:
   update-spec:
     env:
-      SOURCE_REF: ${{ github.event.client_payload.ref }}
+      SOURCE_REF: ${{ github.event.inputs.ref }}
+#      SOURCE_REF: ${{ github.event.client_payload.ref }}
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
+          token: ${{ secrets.KEPTN_BOT_TOKEN }}
           fetch-depth: 0
 
-      - name: Extract source branch
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          repository: keptn/keptn
+          path: keptn
+          token: ${{ secrets.KEPTN_BOT_TOKEN }}
+          fetch-depth: 0
+
+      - name: Extract source branch and commit ID
+        working-directory: keptn
         run: |
           # extract release branch version and replace minor version with x
           shopt -s extglob
           export "SOURCE_TAG=${SOURCE_REF#refs/tags/}"
           echo "SOURCE_TAG=$SOURCE_TAG" >> $GITHUB_ENV
+          
           echo "SOURCE_VERSION_SLUG=${SOURCE_TAG/%.+([0-9])/.x}" >> $GITHUB_ENV
+          
+          # extract corresponding git commit ID
+          SOURCE_GIT_COMMIT=$(git rev-list -n 1 ${{ env.SOURCE_TAG }})
+          echo "SOURCE_GIT_COMMIT=$SOURCE_GIT_COMMIT" >> $GITHUB_ENV
           shopt -u extglob
 
-      - name: Install Keptn CLI
+      - name: Download CLI from release build
+        uses: dawidd6/action-download-artifact@v2.16.0
+        with:
+          name: keptn-cli
+          github_token: ${{ secrets.KEPTN_BOT_TOKEN }}
+          workflow: CI.yml
+          commit: ${{ env.SOURCE_GIT_COMMIT }}
+          # directory where to extract artifacts to
+          path: ./dist
+
+      - name: Debugging
         id: install_keptn_cli
         run: |
-          curl -sL https://get.keptn.sh | KEPTN_VERSION=${{ env.SOURCE_TAG }} bash
+          ls -lahR ./dist
 
       - name: Generate docs
         env:
