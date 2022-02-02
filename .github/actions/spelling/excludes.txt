@@ -1,6 +1,0 @@
-(?:^|/)(?i)LICENSE
-^CODE_OF_CONDUCT\.md$
-^\.github/actions/
-\.editorconfig$
-\.png$
-\.svg$
