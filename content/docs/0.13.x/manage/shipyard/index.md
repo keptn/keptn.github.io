@@ -565,5 +565,102 @@ Values in between square brackets (`[]`) should be replaced with your own:
 
 ### Examples
 
+In the following example for the `podtato-example` project with the `helloservice` service, the shipyard defines three sequences:
 
+* `delivery` in the *hardening* stage;
+* `evaluation-only` in the *hardening* stage;
+* `delivery` in the *production* stage.
 
+```yaml
+apiVersion: "spec.keptn.sh/0.2.3"
+kind: "Shipyard"
+metadata:
+  name: "podtato-example"
+spec:
+  stages:
+    - name: "hardening"
+      sequences:
+        - name: "delivery"
+          tasks:
+            - name: "deployment"
+              properties:
+                deploymentstrategy: "blue_green_service"
+            - name: "test"
+              properties:
+                teststrategy: "performance"
+            - name: "evaluation"
+            - name: "release"
+        - name: "evaluation-only"
+          tasks:
+            - name: "evaluation"
+              properties:
+                teststrategy: "performance"
+    - name: "production"
+      sequences:
+        - name: "delivery"
+          triggeredOn:
+            - event: "hardening.delivery.finished"
+          tasks:
+            - name: "deployment"
+              properties:
+                deploymentstrategy: "blue_green_service"
+            - name: "release"
+```
+
+If we want to trigger the `delivery` sequence in the *hardening* stage, the following payload should be posted to the `POST /event` endpoint.
+
+```json
+{
+  "data": {
+    "project": "podtato-example",
+    "service": "helloservice",
+    "stage": "hardening"
+  },
+  "source": "https://github.com/keptn/keptn/cli#configuration-change",
+  "specversion": "1.0",
+  "time": "2022-02-01T12:50:04.720Z",
+  "type": "sh.keptn.event.hardening.delivery.triggered",
+  "shkeptnspecversion": "0.2.3"
+}
+```
+
+If we want to trigger the `delivery` sequence in the *production* stage, the following payload should be posted to the `POST /event` endpoint.
+
+```json
+{
+  "data": {
+    "project": "podtato-example",
+    "service": "helloservice",
+    "stage": "production"
+  },
+  "source": "https://github.com/keptn/keptn/cli#configuration-change",
+  "specversion": "1.0",
+  "time": "2022-02-01T12:50:04.720Z",
+  "type": "sh.keptn.event.production.delivery.triggered",
+  "shkeptnspecversion": "0.2.3"
+}
+```
+
+If we want to trigger the `evaluation-only` sequence in the *hardening* stage, the following payload should be posted to the `POST /event` endpoint.
+Since we want to trigger an evaluation, we need to provide addition properties about the evaluation timeframe. More info are available in the
+[Quality Gates](../../quality_gates/get_started/) section of our documentation.
+
+```json
+{
+  "data": {
+    "evaluation": {
+      "end": "2022-02-01T09:36:11.311Z",
+      "start": "2022-02-01T09:31:11.311Z",
+      "timeframe": ""
+    },
+    "project": "podtato-example",
+    "service": "helloservice",
+    "stage": "hardening"
+  },
+  "source": "https://github.com/keptn/keptn/cli#configuration-change",
+  "specversion": "1.0",
+  "time": "2022-02-01T12:11:50.120Z",
+  "type": "sh.keptn.event.hardening.evaluation-only.triggered",
+  "shkeptnspecversion": "0.2.3"
+}
+```
