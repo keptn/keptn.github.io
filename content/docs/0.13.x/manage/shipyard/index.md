@@ -555,17 +555,17 @@ A specific `sequence` can be run by using the `POST /event` [Keptn API](../../re
 }
 ```
 
-Values in between square brackets (`[]`) should be replaced with your own:
+The values between square brackets (`[]`) should be replaced based on your configuration:
 
-* `project`: your project name
-* `service`: your service name
-* `stage`: the stage in which your sequence is defined
-* `sequence-name`: the sequence to trigger
+* `project`: your project name;
+* `service`: your service name;
+* `stage`: the stage in which your sequence is defined;
+* `sequence-name`: the sequence to trigger;
 * `my-source`: your source. More info are available in the [CloudEvents spec](https://github.com/cloudevents/spec/blob/v1.0/spec.md#source).
 
 ### Examples
 
-In the following example for the `podtato-example` project with the `helloservice` service, the shipyard defines three sequences:
+In the following example, we define the `podtato-example` project that has the `helloservice` service. The shipyard file for the project defines three sequences:
 
 * `delivery` in the *hardening* stage;
 * `evaluation-only` in the *hardening* stage;
