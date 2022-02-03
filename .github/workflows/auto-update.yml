@@ -2,11 +2,6 @@ name: Auto Update - Docs
 on:
   repository_dispatch:
     types: [ release-push ]
-  workflow_dispatch:
-    inputs:
-      ref:
-        required: true
-        description: "the ref..."
 defaults:
   run:
     shell: bash
@@ -15,8 +10,7 @@ env:
 jobs:
   update-spec:
     env:
-      SOURCE_REF: ${{ github.event.inputs.ref }}
-#      SOURCE_REF: ${{ github.event.client_payload.ref }}
+      SOURCE_REF: ${{ github.event.client_payload.ref }}
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
