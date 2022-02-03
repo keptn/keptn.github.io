@@ -62,6 +62,7 @@ jobs:
         run: |
           ls -lahR ./dist
           tar -xzf ./dist/keptn-*-linux-amd64.tar.gz
+          ls -lahR ./dist
           rm -f ./dist/keptn-*.tar.gz
           CLI=$(ls ./dist/keptn-*)
           mv "$CLI" ./dist/keptn
