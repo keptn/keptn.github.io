@@ -44,7 +44,7 @@ jobs:
           echo "SOURCE_VERSION_SLUG=${SOURCE_TAG/%.+([0-9])/.x}" >> $GITHUB_ENV
           
           # extract corresponding git commit ID
-          SOURCE_GIT_COMMIT=$(git rev-list -n 1 ${{ env.SOURCE_TAG }})
+          SOURCE_GIT_COMMIT=$(git rev-list -n 1 "$SOURCE_TAG"
           echo "SOURCE_GIT_COMMIT=$SOURCE_GIT_COMMIT" >> $GITHUB_ENV
           shopt -u extglob
 
