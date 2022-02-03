@@ -23,7 +23,6 @@ jobs:
         uses: actions/checkout@v2
         with:
           token: ${{ secrets.KEPTN_BOT_TOKEN }}
-          fetch-depth: 0
 
       - name: Checkout
         uses: actions/checkout@v2
@@ -63,7 +62,9 @@ jobs:
         run: |
           ls -lahR ./dist
           tar -xzf ./dist/keptn-*-linux-amd64.tar.gz
-          mv ./dist/keptn-*-linux-amd64 ./dist/keptn
+          rm -f ./dist/keptn-*.tar.gz
+          CLI=$(ls ./dist/keptn-*)
+          mv "$CLI" ./dist/keptn
           chmod +x ./dist/keptn
           ls -lahR ./dist
 
