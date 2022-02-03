@@ -86,7 +86,7 @@ jobs:
           committer: ${{ env.KEPTN_BOT }}
           author: ${{ env.KEPTN_BOT }}
           signoff: true
-          branch: patch/update-keptn-docs-${{ env.SOURCE_TAG }}
+          branch: patch/update-keptn-docs-${{ env.SOURCE_TAG }}-${{ github.run_number }}
           delete-branch: true
           base: master
           labels: 'automated pr'
