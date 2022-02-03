@@ -4,7 +4,7 @@ description: Manage session and database encryption secret of your Keptn Bridge.
 weight: 30
 ---
 
-In this section, the management of the session and database encryption secret of the Keptn Bridge is explained.
+In this section, the management of the session and database encryption secrets of the Keptn Bridge is explained.
 
 - `session secret`: This secret is used to hash the session of the user.
 - `database encryption secret`: This secret is used to encrypt the session in the database.
@@ -80,7 +80,7 @@ In this section, the management of the session and database encryption secret of
 
 * [Create the secrets](./#create-session-and-database-encryption-secret) as explained above.
 
-* Re-start the Keptn Bridge since it requires new secrets:
+* Re-start the Keptn Bridge to fetch the new secrets:
 
     ```console
     kubectl delete pods -n keptn --selector=app.kubernetes.io/name=bridge
