@@ -54,37 +54,33 @@ jobs:
           github_token: ${{ secrets.KEPTN_BOT_TOKEN }}
           workflow: CI.yml
           commit: ${{ env.SOURCE_GIT_COMMIT }}
-          # directory where to extract artifacts to
           path: ./dist
           repo: keptn/keptn
 
-      - name: Extract Keptn CLI
+      - name: Extract and prepare Keptn CLI
         working-directory: dist
         run: |
-          ls -lahR ./
           tar -xzvf ./keptn-*-linux-amd64.tar.gz
-          ls -lahR ./
           rm -f ./keptn-*.tar.gz
           CLI=$(ls ./keptn-*)
           mv "$CLI" ./keptn
           chmod +x ./keptn
-          ls -lahR ./
 
       - name: Generate docs
         env:
           SOURCE_VERSION_SLUG: ${{ env.SOURCE_VERSION_SLUG }}
+          DOCS_PATH: "./content/docs/${{ env.SOURCE_VERSION_SLUG }}/reference/cli/commands"
         run: |
-          full_path="./content/docs/$SOURCE_VERSION_SLUG/reference/cli/commands"
           if [[ ! -d $full_path ]]; then
             mkdir -p $full_path
           fi
-          ls -lah ./dist/keptn
           file ./dist/keptn
-          ./dist/keptn generate docs --dir=$full_path
+          ./dist/keptn generate docs --dir="$DOCS_PATH"
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
+          add-paths: "./content/docs/${{ env.SOURCE_VERSION_SLUG }}/reference/cli/commands"
           token: ${{ secrets.KEPTN_BOT_TOKEN }}
           commit-message: "Update keptn docs to release ${{ env.SOURCE_TAG }}"
           committer: ${{ env.KEPTN_BOT }}
