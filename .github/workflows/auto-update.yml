@@ -31,7 +31,7 @@ jobs:
           repository: keptn/keptn
           path: keptn
           token: ${{ secrets.KEPTN_BOT_TOKEN }}
-          fetch-depth: 0
+          ref: ${{ env.SOURCE_REF }}
 
       - name: Extract source branch and commit ID
         working-directory: keptn
@@ -63,7 +63,7 @@ jobs:
         run: |
           ls -lahR ./dist
           tar -xzf ./dist/keptn-*-linux-amd64.tar.gz
-          mv ./dist/keptn-*-linux-amd64.tar.gz ./dist/keptn
+          mv ./dist/keptn-*-linux-amd64 ./dist/keptn
           chmod +x ./dist/keptn
           ls -lahR ./dist
 
