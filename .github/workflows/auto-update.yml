@@ -2,6 +2,11 @@ name: Auto Update - Docs
 on:
   repository_dispatch:
     types: [release-push]
+  workflow_dispatch:
+    inputs:
+      ref:
+        required: true
+        description: 'the ref...'
 defaults:
   run:
     shell: bash
