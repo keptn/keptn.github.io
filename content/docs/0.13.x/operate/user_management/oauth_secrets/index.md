@@ -4,10 +4,10 @@ description: Manage session and database encryption secret of your Keptn Bridge.
 weight: 30
 ---
 
-In this section, the management of the session and database encryption secrets of the Keptn Bridge is explained.
+This section explains the management of the session and database encryption secrets of the Keptn Bridge.
 
-- `session secret`: This secret is used to hash the session of the user.
-- `database encryption secret`: This secret is used to encrypt the session in the database.
+- `session secret`: Used to hash the session of the user.
+- `database encryption secret`: Used to encrypt the session in the database.
 
 ## Create session and database encryption secret
 
@@ -16,7 +16,7 @@ In this section, the management of the session and database encryption secrets o
     <details><summary>on Linux </summary>
     <p>
 
-    * To generate the secrets, use the following commands and store them into the environment variables `OAUTH_SESSION_SECRET` and `OAUTH_DATABASE_ENCRYPT_SECRET`:
+    * Use the following commands to generate the secrets and store the results into the environment variables `OAUTH_SESSION_SECRET` and `OAUTH_DATABASE_ENCRYPT_SECRET`
 
         ```console
         OAUTH_SESSION_SECRET=$(tr -dc "a-zA-Z0-9" < /dev/urandom | head -c 45)
@@ -35,7 +35,7 @@ In this section, the management of the session and database encryption secrets o
     <details><summary>on macOS</summary>
     <p>
 
-    * To generate the secrets, use the following commands and store them into the environment variables `OAUTH_SESSION_SECRET` and `OAUTH_DATABASE_ENCRYPT_SECRET`:
+    * Use the following commands to generate the secrets and store the results into the environment variables `OAUTH_SESSION_SECRET` and `OAUTH_DATABASE_ENCRYPT_SECRET`
 
         ```console
         OAUTH_SESSION_SECRET=$(LC_CTYPE=C tr -dc "a-zA-Z0-9" < /dev/urandom | head -c 45)
@@ -54,7 +54,7 @@ In this section, the management of the session and database encryption secrets o
     <details><summary>on Windows PowerShell</summary>
     <p>
 
-    * To generate the secrets, use the following commands and store them into the environment variables `$Env:OAUTH_SESSION_SECRET` and `$Env:OAUTH_DATABASE_ENCRYPT_SECRET`:
+    * Use the following commands to generate the secrets and store the results into the environment variables `OAUTH_SESSION_SECRET` and `OAUTH_DATABASE_ENCRYPT_SECRET`
 
         ```console
         $Env:OAUTH_SESSION_SECRET =  Write-Output ( -join ((0x30..0x39) + ( 0x41..0x5A) + ( 0x61..0x7A) | Get-Random -Count 45  | % {[char]$_}) )
