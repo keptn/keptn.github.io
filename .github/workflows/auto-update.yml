@@ -72,7 +72,7 @@ jobs:
           DOCS_PATH: "./content/docs/${{ env.SOURCE_VERSION_SLUG }}/reference/cli/commands"
         run: |
           if [[ ! -d $full_path ]]; then
-            mkdir -p $full_path
+            mkdir -p "$DOCS_PATH"
           fi
           file ./dist/keptn
           ./dist/keptn generate docs --dir="$DOCS_PATH"
