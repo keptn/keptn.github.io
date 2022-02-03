@@ -59,12 +59,12 @@ jobs:
           path: ./dist
           repo: keptn/keptn
 
-      - name: Debugging
-        id: install_keptn_cli
+      - name: Extract Keptn CLI
         run: |
           ls -lahR ./dist
           tar -xzf ./dist/keptn-*-linux-amd64.tar.gz
           mv ./dist/keptn-*-linux-amd64.tar.gz ./dist/keptn
+          chmod +x ./dist/keptn
           ls -lahR ./dist
 
       - name: Generate docs
