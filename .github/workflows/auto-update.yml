@@ -1,12 +1,7 @@
 name: Auto Update - Docs
 on:
   repository_dispatch:
-    types: [release-push]
-  workflow_dispatch:
-    inputs:
-      ref:
-        required: true
-        description: 'the ref...'
+    types: [ release-push ]
 defaults:
   run:
     shell: bash
@@ -21,41 +16,71 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0
+          token: ${{ secrets.KEPTN_BOT_TOKEN }}
 
-      - name: Extract source branch
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          repository: keptn/keptn
+          path: keptn
+          token: ${{ secrets.KEPTN_BOT_TOKEN }}
+          ref: ${{ env.SOURCE_REF }}
+
+      - name: Extract source branch and commit ID
+        working-directory: keptn
         run: |
           # extract release branch version and replace minor version with x
           shopt -s extglob
           export "SOURCE_TAG=${SOURCE_REF#refs/tags/}"
           echo "SOURCE_TAG=$SOURCE_TAG" >> $GITHUB_ENV
+          
           echo "SOURCE_VERSION_SLUG=${SOURCE_TAG/%.+([0-9])/.x}" >> $GITHUB_ENV
+          
+          # extract corresponding git commit ID
+          SOURCE_GIT_COMMIT=$(git rev-list -n 1 "$SOURCE_TAG")
+          echo "SOURCE_GIT_COMMIT=$SOURCE_GIT_COMMIT" >> $GITHUB_ENV
           shopt -u extglob
 
-      - name: Install Keptn CLI
-        id: install_keptn_cli
+      - name: Download CLI from release build
+        uses: dawidd6/action-download-artifact@v2.16.0
+        with:
+          name: keptn-cli
+          github_token: ${{ secrets.KEPTN_BOT_TOKEN }}
+          workflow: CI.yml
+          commit: ${{ env.SOURCE_GIT_COMMIT }}
+          path: ./dist
+          repo: keptn/keptn
+
+      - name: Extract and prepare Keptn CLI
+        working-directory: dist
         run: |
-          curl -sL https://get.keptn.sh | KEPTN_VERSION=${{ env.SOURCE_TAG }} bash
+          tar -xzvf ./keptn-*-linux-amd64.tar.gz
+          rm -f ./keptn-*.tar.gz
+          CLI=$(ls ./keptn-*)
+          mv "$CLI" ./keptn
+          chmod +x ./keptn
 
       - name: Generate docs
         env:
           SOURCE_VERSION_SLUG: ${{ env.SOURCE_VERSION_SLUG }}
+          DOCS_PATH: "./content/docs/${{ env.SOURCE_VERSION_SLUG }}/reference/cli/commands"
         run: |
-          full_path="./content/docs/$SOURCE_VERSION_SLUG/reference/cli/commands"
-          if [[ ! -d $full_path ]]; then
-            mkdir -p $full_path
+          if [[ ! -d "$DOCS_PATH" ]]; then
+            mkdir -p "$DOCS_PATH"
           fi
-          keptn generate docs --dir=$full_path
+          
+          ./dist/keptn generate docs --dir="$DOCS_PATH"
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
+          add-paths: "./content/docs/${{ env.SOURCE_VERSION_SLUG }}/reference/cli/commands"
           token: ${{ secrets.KEPTN_BOT_TOKEN }}
           commit-message: "Update keptn docs to release ${{ env.SOURCE_TAG }}"
           committer: ${{ env.KEPTN_BOT }}
           author: ${{ env.KEPTN_BOT }}
           signoff: true
-          branch: patch/update-keptn-docs-${{ env.SOURCE_TAG }}
+          branch: patch/update-keptn-docs-${{ env.SOURCE_TAG }}-${{ github.run_number }}
           delete-branch: true
           base: master
           labels: 'automated pr'
