@@ -75,6 +75,8 @@ jobs:
           if [[ ! -d $full_path ]]; then
             mkdir -p $full_path
           fi
+          ls -lah ./dist/keptn
+          file ./dist/keptn
           ./dist/keptn generate docs --dir=$full_path
 
       - name: Create Pull Request
