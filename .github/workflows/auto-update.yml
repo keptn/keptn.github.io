@@ -63,6 +63,9 @@ jobs:
         id: install_keptn_cli
         run: |
           ls -lahR ./dist
+          tar -xzf ./dist/keptn-*-linux-amd64.tar.gz
+          mv ./dist/keptn-*-linux-amd64.tar.gz ./dist/keptn
+          ls -lahR ./dist
 
       - name: Generate docs
         env:
@@ -72,7 +75,7 @@ jobs:
           if [[ ! -d $full_path ]]; then
             mkdir -p $full_path
           fi
-          keptn generate docs --dir=$full_path
+          ./dist/keptn generate docs --dir=$full_path
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
