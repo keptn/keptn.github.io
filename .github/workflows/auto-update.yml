@@ -57,6 +57,7 @@ jobs:
           commit: ${{ env.SOURCE_GIT_COMMIT }}
           # directory where to extract artifacts to
           path: ./dist
+          repo: keptn/keptn
 
       - name: Debugging
         id: install_keptn_cli
