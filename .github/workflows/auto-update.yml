@@ -59,15 +59,16 @@ jobs:
           repo: keptn/keptn
 
       - name: Extract Keptn CLI
+        working-directory: dist
         run: |
-          ls -lahR ./dist
-          tar -xzvf ./dist/keptn-*-linux-amd64.tar.gz
           ls -lahR ./
-          rm -f ./dist/keptn-*.tar.gz
-          CLI=$(ls ./dist/keptn-*)
-          mv "$CLI" ./dist/keptn
-          chmod +x ./dist/keptn
-          ls -lahR ./dist
+          tar -xzvf ./keptn-*-linux-amd64.tar.gz
+          ls -lahR ./
+          rm -f ./keptn-*.tar.gz
+          CLI=$(ls ./keptn-*)
+          mv "$CLI" ./keptn
+          chmod +x ./keptn
+          ls -lahR ./
 
       - name: Generate docs
         env:
