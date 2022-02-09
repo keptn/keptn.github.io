@@ -16,17 +16,17 @@ This section explains the management of the session and database encryption secr
     <details><summary>on Linux </summary>
     <p>
 
-    * Use the following commands to generate the secrets and store the results into the environment variables `OAUTH_SESSION_SECRET` and `OAUTH_DATABASE_ENCRYPT_SECRET`
+    * Use the following commands to generate the secrets and store the results into the environment variables `session_secret` and `database_encrypt_secret`
 
         ```console
-        OAUTH_SESSION_SECRET=$(tr -dc "a-zA-Z0-9" < /dev/urandom | head -c 45)
-        OAUTH_DATABASE_ENCRYPT_SECRET=$(tr -dc "a-zA-Z0-9" < /dev/urandom | head -c 32)
+        session_secret=$(tr -dc "a-zA-Z0-9" < /dev/urandom | head -c 45)
+        database_encrypt_secret=$(tr -dc "a-zA-Z0-9" < /dev/urandom | head -c 32)
         ```
 
     * To create the secrets, execute:
 
         ```console
-        kubectl create secret generic -n keptn bridge-oauth --from-literal=OAUTH_SESSION_SECRET="$OAUTH_SESSION_SECRET" --from-literal=OAUTH_DATABASE_ENCRYPT_SECRET="$OAUTH_DATABASE_ENCRYPT_SECRET"
+        kubectl create secret generic -n keptn bridge-oauth --from-literal=session_secret="$session_secret" --from-literal=database_encrypt_secret="$database_encrypt_secret"
         ```
 
     </p>
@@ -35,17 +35,17 @@ This section explains the management of the session and database encryption secr
     <details><summary>on macOS</summary>
     <p>
 
-    * Use the following commands to generate the secrets and store the results into the environment variables `OAUTH_SESSION_SECRET` and `OAUTH_DATABASE_ENCRYPT_SECRET`
+    * Use the following commands to generate the secrets and store the results into the environment variables `session_secret` and `database_encrypt_secret`
 
         ```console
-        OAUTH_SESSION_SECRET=$(LC_CTYPE=C tr -dc "a-zA-Z0-9" < /dev/urandom | head -c 45)
-        OAUTH_DATABASE_ENCRYPT_SECRET=$(LC_CTYPE=C tr -dc "a-zA-Z0-9" < /dev/urandom | head -c 32)
+        session_secret=$(LC_CTYPE=C tr -dc "a-zA-Z0-9" < /dev/urandom | head -c 45)
+        database_encrypt_secret=$(LC_CTYPE=C tr -dc "a-zA-Z0-9" < /dev/urandom | head -c 32)
         ```
 
     * To create the secrets, execute:
 
         ```console
-        kubectl create secret generic -n keptn bridge-oauth --from-literal=OAUTH_SESSION_SECRET="$OAUTH_SESSION_SECRET" --from-literal=OAUTH_DATABASE_ENCRYPT_SECRET="$OAUTH_DATABASE_ENCRYPT_SECRET"
+        kubectl create secret generic -n keptn bridge-oauth --from-literal=session_secret="$session_secret" --from-literal=database_encrypt_secret="$database_encrypt_secret"
         ```
 
     </p>
@@ -54,17 +54,17 @@ This section explains the management of the session and database encryption secr
     <details><summary>on Windows PowerShell</summary>
     <p>
 
-    * Use the following commands to generate the secrets and store the results into the environment variables `OAUTH_SESSION_SECRET` and `OAUTH_DATABASE_ENCRYPT_SECRET`
+    * Use the following commands to generate the secrets and store the results into the environment variables `session_secret` and `database_encrypt_secret`
 
         ```console
-        $Env:OAUTH_SESSION_SECRET =  Write-Output ( -join ((0x30..0x39) + ( 0x41..0x5A) + ( 0x61..0x7A) | Get-Random -Count 45  | % {[char]$_}) )
-        $Env:OAUTH_DATABASE_ENCRYPT_SECRET =  Write-Output ( -join ((0x30..0x39) + ( 0x41..0x5A) + ( 0x61..0x7A) | Get-Random -Count 32  | % {[char]$_}) )
+        $Env:session_secret =  Write-Output ( -join ((0x30..0x39) + ( 0x41..0x5A) + ( 0x61..0x7A) | Get-Random -Count 45  | % {[char]$_}) )
+        $Env:database_encrypt_secret =  Write-Output ( -join ((0x30..0x39) + ( 0x41..0x5A) + ( 0x61..0x7A) | Get-Random -Count 32  | % {[char]$_}) )
         ```
 
     * To create the secrets, execute:
 
         ```console
-        kubectl create secret generic -n keptn bridge-oauth --from-literal=OAUTH_SESSION_SECRET="$Env:OAUTH_SESSION_SECRET" --from-literal=OAUTH_DATABASE_ENCRYPT_SECRET="$Env:OAUTH_DATABASE_ENCRYPT_SECRET"
+        kubectl create secret generic -n keptn bridge-oauth --from-literal=session_secret="$Env:session_secret" --from-literal=database_encrypt_secret="$Env:database_encrypt_secret"
         ```
 
     </p>
