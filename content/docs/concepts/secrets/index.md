@@ -48,12 +48,3 @@ Thus, every Kubernetes Pod bound to the service account *keptn-webhook-service* 
 **NOTE:** The `scopes.yaml` must be modified manually in order to add, modify or delete any scopes.
 Currently,is no API endpoint is provided for that.
 
-## Generate  Swagger doc from source
-
-1. Download and install Swag for Go by calling the following in a fresh terminal:
-
-```
-go get -u github.com/swaggo/swag/cmd/swag
-```
-2. `cd` to the SecretService's root folder
-3. Run `swag init`
