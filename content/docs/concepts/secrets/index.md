@@ -8,7 +8,7 @@ keywords: [keptn, use-cases]
 The **Secret Service** is used to manage secrets in a Keptn Cluster.
 It provides a simple API for creating, updating or deleting secrets in a specific secret backend such as Kubernetes or vault.
 
-**NOTE:** The current implementation only supports Kubernetes as a secret backend.
+**NOTE:** The current implementation only supports [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret/) as a secret backend.
 
 ## Secret and Scopes
 
