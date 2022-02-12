@@ -1,8 +1,17 @@
-# Statistics Service
+---
+title: Statistics Service
+description: Provide usage statistics about a Keptn installation and optionally display them on a Swagger dashboard.
 
-This service provides usage statistics about a Keptn installation.
+weight: 10
+icon: setup
+---
 
-### Generate  Swagger doc from source
+
+The Statistics Service provides usage statistics about a Keptn installation.
+You can access the service using the Keptn API
+and view the results using the Swagger UI.
+
+## Generate Swagger doc from source
 
 First, install the `go` modules with the following commands:
 
@@ -12,15 +21,16 @@ go get -u github.com/swaggo/gin-swagger
 go get -u github.com/swaggo/files
 ```
 
-If you need to generate new source to update the `swagger.yaml` file with new endpoints or models, execute the following:
+To generate new source that updates the `swagger.yaml` file with new endpoints or models, execute the following:
 
-```console
+```
 swag init
 ```
 
 ## How to use the service
 
-You can access the service via the Keptn API under the `statistics` path, for example:
+Access the Statistics Service through the Keptn API under the `statistics` path.
+For example:
 
 ```
 http://keptn-api-url.com/api/statistics
@@ -34,25 +44,27 @@ http://keptn-api-url.com/api/swagger-ui/?urls.primaryName=statistics
 
 To browse the API docs, open the Swagger docs in your [browser](http://localhost:8080/swagger-ui/index.html).
 
+## Specifying time frames
+
 To retrieve usage statistics for a certain time frame, you need to provide the [Unix timestamps](https://www.epochconverter.com/) for the start and end of the time frame.
-For example:
+Use the [EpochConverter](https://www.epochconverter.com/) to generate timestamps.
+
+A Keptn API example using a timestamp is:
 
 ```
 http://keptn-api-url.com/api/statistics/v1/statistics?from=1600656105&to=1600696105
 ```
 
-cURL Example:
+A cURL example using a timestamp is:
 
 ```
 curl -X GET "http://keptn-api-url.com/api/statistics/v1/statistics?from=1600656105&to=1600696105" -H "accept: application/json" -H "x-token: <keptn-api-token>"
 ```
 
-*Note*: Use the [epochconverter.com](https://www.epochconverter.com/) to generate timestamps.
 
-### Configuring the service
+## Configuring the aggregating interval
 
-By default, the service aggregates data with a granularity of 30 minutes.
+By default, the service aggregates data every 30 minutes.
 When this period has passed, the service creates a new entry in the Keptn-MongoDB within the Keptn cluster.
-To change how often statistics are stored, can set the variable `AGGREGATION_INTERVAL_SECONDS` to your desired value.
+To change how often statistics are stored, set the `AGGREGATION_INTERVAL_SECONDS` variable to your desired value.
 
-[Could we add an example?  And is the value in seconds (as the name of the variable implies) or in minutes as the text might imply unless the default value is 30x60 seconds]
