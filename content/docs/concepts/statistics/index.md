@@ -42,7 +42,7 @@ Use the following URL to view the swagger UI for the service:
 http://keptn-api-url.com/api/swagger-ui/?urls.primaryName=statistics
 ```
 
-To browse the API docs, open the Swagger docs in your [browser](http://localhost:8080/swagger-ui/index.html).
+To browse the API docs, open the Swagger docs in your browser, e.g. `${KEPTN_URL}/swagger-ui/index.html`.
 
 ## Specifying time frames
 
