@@ -50,9 +50,9 @@ hugo
 1. While contributing, make sure you use a separate branch than the Main branch 
 2. If you think you can make some patch to fix the issue, fork the repo, and then make a pull
  request.
-3. Its always a good practice to squash your commits before creating a final pull reuest, avoid conflicting commits. 
-4. If you dont think you can contribute back to the patch/bug, open a new issue
-5. While rasing the issue try to be as detailed(but also specific) as possible to allow others to understand the bug.
+3. It's always a good practice to squash your commits before creating a final pull request, avoid conflicting commits. 
+4. If you don't think you can contribute back to the patch/bug, open a new issue.
+5. While submitting the issue try to be as detailed(but also specific) as possible to allow others to understand the bug.
 6. Ensure the commits you do include in your PR are clearly described. This makes understanding what each commit is doing easier during review and once they are merged into the project.
 7. Once you have found the bug, provide the steps to reach the bug, if possible attach the screenshots of the same
 8. Keep your language clean and crisp. 
