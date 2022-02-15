@@ -30,6 +30,7 @@ The themes directory on your local machine (localdirectory/keptn.github.io/theme
     ```
     hugo server -D
     ```
+    
 6. Enter the following in a browser to view the website:
     ```
     http://localhost:1313/
@@ -46,3 +47,15 @@ Before you push to production, make sure to run the following command in order t
 ```
 hugo
 ```
+
+## While contributing, make sure you use a separate branch than the Main branch
+1.If you think you can make some patch to fix the issue, fork the repo, and then make a pull request.
+2.It's always a good practice to squash your commits before creating a final pull request, avoid conflicting commits.
+3.If you don't think you can contribute back to the patch/bug, open a new issue.
+4.While submitting the issue try to be as detailed(but also specific) as possible to allow others to understand the bug.
+5.Ensure the commits you do include in your PR are clearly described. This makes understanding what each commit is doing easier during review and once they are merged into the  	project.
+6.Once you have found the bug, provide the steps to reach the bug, if possible attach the screenshots of the same
+7.Keep your language clean and crisp.
+8.If your issue goes unread please feel free to add a gentle reminder.
+
+Familiarize with the community [Guidelines](https://github.com/keptn/community)
