@@ -33,7 +33,7 @@ aliases:
       keptn version
       ```
 
-* **Step 2.** To upgrade your Keptn installation from 0.12.x to 0.12.0, the Keptn CLI offers the command:
+* **Step 2.** To upgrade your Keptn installation from 0.11.x to 0.12.0, the Keptn CLI offers the command:
   
    ```console
    keptn upgrade
