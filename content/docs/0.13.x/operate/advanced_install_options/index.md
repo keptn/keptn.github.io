@@ -158,7 +158,7 @@ helm upgrade keptn keptn --install -n keptn --create-namespace
 
 ### Install Keptn using a user-provided API token
 
-If you want to provide your own API token for Keptn to use, you can do that by providing the secret name
+You can provide your own API token for Keptn to use by setting the secret name
 in the `apiService.tokenSecretName` Helm value during installation. For Helm-Service and JMeter-Service you
 can also provide the API token by using the `remoteControlPlane.tokenSecretName` Helm value.
 
