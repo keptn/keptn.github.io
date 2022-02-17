@@ -4,7 +4,7 @@ weight: 78
 ---
 
 Keptn 0.13.0 provides UX improvements in the Bridge to the settings page. The Uniform and Secret screens have been moved into this page.
-Besides, the resource-service got mature enough and it is marked as beta. This service will replace the configuration-service to speed up the interactions with the Git repo.
+Besides, the resource-service got mature enough and it is marked as beta. This service will soon replace the configuration-service to speed up the interactions with the Git upstream repo.
 Finally, this version of Keptn provides a beta support for [OIDC](https://openid.net/connect/) for Bridge, CLI, and Distributor.
 
 ---
