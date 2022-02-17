@@ -135,6 +135,9 @@ In this section, the management of the API token of a Keptn installation is expl
     </p>
     </details>
 
+If you want to make use of a self provided API token during the installation of Keptn, you can use the  `tokenSecretName` helm value.
+This will prevent Helm from generating a new secret on installation and instead will have helm use the secret you provided.
+
 ## Reset API Token
 
 * To reset an API token of a Keptn installation, first delete the secret:
@@ -143,9 +146,9 @@ In this section, the management of the API token of a Keptn installation is expl
     kubectl delete secret -n keptn keptn-api-token
     ```
 
-* [Create API token](./#create-api-token) as explained above.
+* [Create a new API token](./#create-api-token) as explained above.
 
-* Re-start API service since it requires the new token:
+* Restart API service since it requires the new token:
 
     ```console
     kubectl delete pods -n keptn --selector=app.kubernetes.io/name=api-service
