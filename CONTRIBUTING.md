@@ -34,7 +34,6 @@ If you see a problem and are unable to fix it yourself or have an idea for an en
 If possible, also attach screenshots that illustrate the bug.
 * If you want to do the work on an issue, include that information in your description of the issue.
 
-=======
 ## Fork and clone the repository
 
 Perform the following steps to create a copy of this repository on your local machine:
