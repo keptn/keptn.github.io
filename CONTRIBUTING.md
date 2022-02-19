@@ -81,7 +81,7 @@ You need to load the git submodule (see next step) to install this theme.
     hugo server -D
 4. Start contributing!
 Leave the Hugo server running in a shell.
-Note that all edits to the files are updated immediately.
+Note that Hugo updates the rendered documentation each time you write the file.
     ```
 5. Enter the following in a browser to view the website:
     ```
