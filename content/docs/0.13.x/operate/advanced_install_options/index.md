@@ -30,27 +30,27 @@ As shown above, the `helm install` or `helm upgrade` commands offer a flag calle
 The full list of available flags can be found in the [helm-charts](https://github.com/keptn/keptn/tree/0.13.0/installer/manifests/keptn).
 
 
-### Example: Use a LoadBalancer for api-gateway-nginx
+### Use a LoadBalancer for api-gateway-nginx
 
 ```console
 helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.13.0 --repo=https://charts.keptn.sh --set=control-plane.apiGatewayNginx.type=LoadBalancer
 ```
 
-### Example: Install execution plane for Continuous Delivery use-case
+### Install execution plane for Continuous Delivery use-case
 
 For example, the **Control Plane with the Execution Plane (for Continuous Delivery)** can be installed by the following command:
 ```console
 helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.13.0 --repo=https://charts.keptn.sh --set=continuous-delivery.enabled=true
 ```
 
-### Example: Install execution plane for Continuous Delivery use-case and use a LoadBalancer for api-gateway-nginx
+### Install execution plane for Continuous Delivery use-case and use a LoadBalancer for api-gateway-nginx
 
 For example, the **Control Plane with the Execution Plane (for Continuous Delivery)** and a `LoadBalancer` for exposing Keptn can be installed by the following command:
 ```console
 helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.13.0 --repo=https://charts.keptn.sh --set=continuous-delivery.enabled=true,control-plane.apiGatewayNginx.type=LoadBalancer
 ```
 
-### Example: Execute Helm upgrade without Internet connectivity
+### Execute Helm upgrade without Internet connectivity
 
 The following section contains instructions for installing Keptn in an air-gapped / offline installation scenario.
 
@@ -129,7 +129,7 @@ the Keptn API is located under `http://HOSTNAME/mykeptn/api` and the Keptn Bridg
 helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.13.0 --repo=https://charts.keptn.sh --set=control-plane.apiGatewayNginx.type=LoadBalancer,continuous-delivery.enabled=true,control-plane.prefixPath=/mykeptn
 ```
 
-### Example: Install Keptn with externally hosted MongoDB
+### Install Keptn with externally hosted MongoDB
 
 If you want to use an externally hosted MongoDB instead of the MongoDB installed by Keptn, please use the `helm upgrade` command as shown below. Basically, provide the MongoDB host, port, user, and password in form of a connection string.
 
@@ -140,7 +140,7 @@ helm upgrade keptn keptn --install -n keptn --create-namespace
       control-plane.mongo.auth.database=<YOUR_DATABASE_NAME>
 ```
 
-### Example: Install Keptn with an ingress object
+### Install Keptn with an ingress object
 
 If you are already using an Ingress-Controller and want to create an ingress object for Keptn, you can leverage the ingress section of the helm chart. By default enabled is set to false.
 
@@ -155,3 +155,12 @@ helm upgrade keptn keptn --install -n keptn --create-namespace
       control-plane.ingress.pathType=<YOUR_PATH_TYPE>,  
       control-plane.ingress.tls=<YOUR_TLS>
 ```
+
+### Install Keptn using a user-provided API token
+
+You can provide your own API token for Keptn to use by setting the secret name
+in the `apiService.tokenSecretName` Helm value during installation. For Helm-Service and JMeter-Service you
+can also provide the API token by using the `remoteControlPlane.tokenSecretName` Helm value.
+
+The user-provided secret needs to live in the same namespace where Keptn will be installed into.
+The user-provided secret should contain a single key `keptn-api-token` with a token consisting of numbers and letters as its value.

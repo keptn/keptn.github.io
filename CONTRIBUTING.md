@@ -54,12 +54,12 @@ You need to load the git submodule (see next step) to install this theme.
     ```
     git submodule update --init --recursive --force
     ```
-3. Execute the `hugo server -D` command from the root folder of your clone:
+3. Execute the following command from the root folder of your clone:
     ```
     hugo server -D
 4. Start contributing!
 Leave the Hugo server running in a shell.
-Note that all edits to the files are updated immediately.
+Note that Hugo updates the rendered documentation each time you write the file.
     ```
 5. Enter the following in a browser to view the website:
     ```
@@ -225,4 +225,5 @@ People can still review the content but can not merge the PR until you remove th
    ```
    git branch -d <branch-name>
    ```
+
 
