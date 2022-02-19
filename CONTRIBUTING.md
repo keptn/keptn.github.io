@@ -34,6 +34,7 @@ If you see a problem and are unable to fix it yourself or have an idea for an en
 If possible, also attach screenshots that illustrate the bug.
 * If you want to do the work on an issue, include that information in your description of the issue.
 
+=======
 ## Fork and clone the repository
 
 Perform the following steps to create a copy of this repository on your local machine:
@@ -76,7 +77,7 @@ You need to load the git submodule (see next step) to install this theme.
     ```
     git submodule update --init --recursive --force
     ```
-3. Execute the `hugo server -D` command from the root folder of your clone:
+3. Execute the following command from the root folder of your clone:
     ```
     hugo server -D
 4. Start contributing!
@@ -247,4 +248,5 @@ People can still review the content but can not merge the PR until you remove th
    ```
    git branch -d <branch-name>
    ```
+
 
