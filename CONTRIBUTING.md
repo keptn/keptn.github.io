@@ -15,23 +15,24 @@ We were all new to this once and are happy to help you!
 
 ## Guidelines for contributing
 
-* Always fork the repository then clone that fork to your local system.
-Keptn, like most open source projects, does not support anyone pushing changes directly to the *master* branch to protect the integrity of the repository.
+* Always fork the repository then clone that fork to your local system rather than clone master directly.
+Keptn, like most open source projects, severely restricts who can push changes directly to the *master* branch to protect the integrity of the repository.
 * Keep your language clean and crisp.
 * Smaller PR's are easier to review and so generally get processed more quickly;
 when possible, chunk your work into smallish PR's.
-However, documentation work sometimes requires larger PRs, such as when writing a whole new section or reorganizing existing files.
+However, we recognize that documentation work sometimes requires larger PRs, such as when writing a whole new section or reorganizing existing files.
 * You may want to squash your commits before creating the final PR, to avoid conflicting commits.
 * Be sure that the description of each commit and the PR itself are meaningful and described clearly.
 This helps reviewers understand each commit and provides a good history after the PR is merged.
 * If your PR is not reviewed in a timely fashion, feel free to post a gentle reminder to the #keptn-docs Slack channel.
 * Resolve review comments and suggestions promptly.
 
-If you see a problem and are unable to fix it yourself, please create an issue on the github repository:
+If you see a problem and are unable to fix it yourself or have an idea for an enhancement, please create an issue on the github repository:
 
 * Provide specific and detailed information about the problem and possible solutions to help others understand the issue.
 * When reporting a bug, provide a detailed list of steps to reach the bug.
 If possible, also attach screenshots that illustrate the bug.
+* If you want to do the work on an issue, include that information in your description of the issue.
 
 ## Fork and clone the repository
 
@@ -196,22 +197,35 @@ You can add multiple lines explaining the PR here but, in general, it is better 
 5. Push your branch to github:
    - If you cloned your fork to use SSH, the command is:
      ```
-     git push
+     git push --set-upstream origin <branch-name>
      ```
 
      Note that you can just issue the `git push` command.
-Git responds with an error message that gives you the full command line to use; you can copy this command and paste it into your shell.
+Git responds with an error message that gives you the full command line to use; you can copy this command and paste it into your shell to push the content.
    - If you cloned your fork to use HTTP, the command is:
      ```
-     git push
+     git push <need options/arguments>
      ```
 
 6. Create the PR by going to the [keptn.github.io](https://github.com/keptn/keptn.github.io) web site.
-   - You should see a yellow box with a button that says "Compare and ...".  Click on that button.
-   - Check that the title of the PR is correct; click the "Edit" button to modify it
+   - You should see a yellow shaded area that says something like:
+     ```
+     <GitID>:<branch> had recent pushes less than a minute ago
+     ```
+
+   - Click on the button in that shaded area marked:
+     ```
+     Compare & pull request
+     ```
+   - Check that the title of the PR is correct; click the "Edit" button to modify it.
+Add "WIP" (Work in Progress) or "Draft" to the title if the PR is not yet ready for general review.
    - Add a full description of the work in the PR, including any notes for reviewers, a reference to the relevant github issue (if any), and tags for specific people (if any) who may be interested in this PR.
    - Carefully review the changes github displays for this PR to ensure that they are what you want.
-   - Click the "Create PR" button to create the PR.  You may want to record the PR number somewhere for future reference although you can always find the PR in the github lists of open and closed PRs.
+   - Click the green "Create pull request" button to create the PR.
+You may want to record the PR number somewhere for future reference although you can always find the PR in the github lists of open and closed PRs.
+   - Github automatically populates the "Reviewers" block.
+   - If this PR is not ready for review, click the "Still in progress? Convert to draft" string under the list of reviewers.
+People can still review the content but can not merge the PR until you remove the "Draft" status.
 
 7. Your PR should be reviewed within a few days.  Watch for any comments that may be added by reviewers and implement or respond to the recommended changes as soon as possible.  
 
