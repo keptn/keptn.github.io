@@ -28,7 +28,7 @@ This helps reviewers understand each commit and provides a good history after th
 * If your PR is not reviewed in a timely fashion, feel free to post a gentle reminder to the `#keptn-docs` Slack channel.
 * Resolve review comments and suggestions promptly.
 
-If you see a problem and are unable to fix it yourself or have an idea for an enhancement, please create an issue on the github repository:
+If you see a problem and are unable to fix it yourself or have an idea for an enhancement, please create an issue on the GitHub repository:
 
 * Provide specific and detailed information about the problem and possible solutions to help others understand the issue.
 * When reporting a bug, provide a detailed list of steps to reach the bug.
