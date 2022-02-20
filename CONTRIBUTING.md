@@ -73,7 +73,7 @@ The themes directory on your local machine (localdirectory/keptn.github.io/theme
 The Hugo serif theme is available at https://github.com/zerostaticthemes/hugo-serif-theme.
 You need to load the git submodule (see next step) to install this theme.
 
-2. Load the git submodule for the Hugo serif theme in the *themes* directory:
+2. Load the git submodule for the Hugo theme in the *themes* directory:
     ```
     git submodule update --init --recursive --force
     ```
