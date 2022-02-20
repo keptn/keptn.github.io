@@ -7,7 +7,7 @@ and rendered using the [Hugo static website generator framework](http://gohugo.i
 We welcome and encourage contributions of all levels.
 You can make modifications using the github editor;
 this works well for small modifications but, if you are making significant changes, you may find it better to fork and clone the repository and make changes using the text editor or IDE of your choice
-You can run the Hugo formatter locally to check the rendered documentation
+You can also run the Hugo based website locally to check the rendered documentation
 and then push your changes to the repository as a PR.
 
 If you need help getting started, feel free to ask for help on the #keptn-help Slack channel.
