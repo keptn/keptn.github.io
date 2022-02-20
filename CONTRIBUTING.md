@@ -10,7 +10,7 @@ this works well for small modifications but, if you are making significant chang
 You can also run the Hugo based website locally to check the rendered documentation
 and then push your changes to the repository as a PR.
 
-If you need help getting started, feel free to ask for help on the #keptn-help Slack channel.
+If you need help getting started, feel free to ask for help on the `#help-contributing` or `#keptn-docs` channels on [Keptn Slack?](https://keptn.sh/community/#slack).
 We were all new to this once and are happy to help you!
 
 ## Guidelines for contributing
