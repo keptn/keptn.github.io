@@ -25,7 +25,7 @@ However, we recognize that documentation work sometimes requires larger PRs, suc
    It is **not mandatory**, the maintainers can always squash commits during the merge.
 * Be sure that the description of each commit and the PR itself are meaningful and described clearly.
 This helps reviewers understand each commit and provides a good history after the PR is merged.
-* If your PR is not reviewed in a timely fashion, feel free to post a gentle reminder to the #keptn-docs Slack channel.
+* If your PR is not reviewed in a timely fashion, feel free to post a gentle reminder to the `#keptn-docs` Slack channel.
 * Resolve review comments and suggestions promptly.
 
 If you see a problem and are unable to fix it yourself or have an idea for an enhancement, please create an issue on the github repository:
