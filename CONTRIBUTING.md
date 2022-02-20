@@ -159,7 +159,7 @@ No *assets* subdirectory is present if the topic has no graphics.
 If you have forked and cloned the repository,
 you can modify the documentation or add new material
 by editing the markdown file(s) in the local clone of your fork
-and then submitting a PR.
+and then submitting a _pull request (PR)_.
 
 Note that you can also modify the source using the github editor.
 This is very useful when you want to fix a typo or make a small editorial change but, if you are doing significant writing, it is generally better to work on files in your local clone.
