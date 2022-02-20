@@ -154,7 +154,7 @@ Each topical subdirectory contains:
   - An *assets* subdirectory where graphical files for that topic are stored.
 No *assets* subdirectory is present if the topic has no graphics.
 
-## Submitting new content through a PR
+## Submitting new content through a pull request
 
 If you have forked and cloned the repository,
 you can modify the documentation or add new material
