@@ -22,7 +22,7 @@ Keptn, like most open source projects, severely restricts who can push changes d
 when possible, chunk your work into smallish PR's.
 However, we recognize that documentation work sometimes requires larger PRs, such as when writing a whole new section or reorganizing existing files.
 * You may want to squash your commits before creating the final PR, to avoid conflicting commits.
-   It is **not mandatory**, the maintainers can always squash commits during the merge.
+   It is **not mandatory**, the maintainers will squash your commits during the merge anyways.
 * Be sure that the description of the pull request itself are meaningful and described clearly.
 This helps reviewers understand each commit and provides a good history after the PR is merged.
 * If your PR is not reviewed in a timely fashion, feel free to post a gentle reminder to the `#keptn-docs` Slack channel.
