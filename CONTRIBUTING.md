@@ -181,7 +181,7 @@ The following sequence of steps is a reasonable workflow for creating new conten
    git status
    ```
 
-3. Do the writing you want to do in your local branch, checking the formatted version at localhost:1313.
+3. Do the writing you want to do in your local branch, checking the formatted version at `localhost:1313`.
 
 4. When you have completed the writing you want to do, close all files in your branch and run `git status` to confirm that it correctly reflects the files you have modified, added, and deleted.
 
