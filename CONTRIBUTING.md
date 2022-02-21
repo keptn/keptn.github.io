@@ -31,7 +31,7 @@ This helps reviewers understand each commit and provides a good history after th
 If you see a problem and are unable to fix it yourself or have an idea for an enhancement, please create an issue on the GitHub repository:
 
 * Provide specific and detailed information about the problem and possible solutions to help others understand the issue.
-* When reporting a bug, provide a detailed list of steps to reach the bug.
+* When reporting a bug, provide a detailed list of steps to reproduce the bug.
 If possible, also attach screenshots that illustrate the bug.
 * If you want to do the work on an issue, include that information in your description of the issue.
 
