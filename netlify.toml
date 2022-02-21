@@ -12,6 +12,6 @@ HUGO_ENABLEGITINFO = "true"
 [[redirects]]
   from = "/gsoc"
   to = "https://github.com/keptn/community/blob/main/mentorship/gsoc"
-  status = 301
+  status = 302
   force = false
   query = {path = ":path"}
