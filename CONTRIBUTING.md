@@ -232,7 +232,7 @@ People can still review the content but can not merge the PR until you remove th
      This pull request is still a work in progress
      Draft pull requests cannot be merged.
      ```
-   - When the PR is ready to be reviewed, approved, and merged, click the "Ready to review" box next to remove the "Draft" status.
+   - When the PR is ready to be reviewed, approved, and merged, click the "Ready to review" button to remove the "Draft" status. Then, if you added "WIP" or "Draft" to the PR title, remove it now.
 
 7. Your PR should be reviewed within a few days.  Watch for any comments that may be added by reviewers and implement or respond to the recommended changes as soon as possible.  
 
