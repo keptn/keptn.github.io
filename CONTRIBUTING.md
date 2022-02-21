@@ -8,7 +8,7 @@ We welcome and encourage contributions of all levels.
 You can make modifications using the github editor;
 this works well for small modifications but, if you are making significant changes, you may find it better to fork and clone the repository and make changes using the text editor or IDE of your choice
 You can also run the [Hugo](https://gohugo.io/) based website locally to check the rendered documentation
-and then push your changes to the repository as a PR.
+and then push your changes to the repository as a pull request.
 
 If you need help getting started, feel free to ask for help on the `#help-contributing` or `#keptn-docs` channels on [Keptn Slack?](https://keptn.sh/community/#slack).
 We were all new to this once and are happy to help you!
