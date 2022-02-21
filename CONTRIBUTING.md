@@ -172,7 +172,7 @@ The following sequence of steps is a reasonable workflow for creating new conten
     ```
 2. Create a local branch for your changes.  Be sure to base your new branch on the contents of the `master` branch unless you intend to create a derivative PR:
    ```
-   git branch master
+   git checkout master
    git pull
    git checkout -b <your-new-branch>
    ```
