@@ -208,7 +208,7 @@ Git responds with an error message that gives you the full command line to use; 
      git push <need options/arguments>
      ```
 
-6. Create the PR by going to the [keptn.github.io](https://github.com/keptn/keptn.github.io) web site.
+6. Create the PR by going to the [keptn.github.io](https://github.com/keptn/keptn.github.io) GitHub repository.
    - You should see a yellow shaded area that says something like:
      ```
      <GitID>:<branch> had recent pushes less than a minute ago
