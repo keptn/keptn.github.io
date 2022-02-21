@@ -227,7 +227,7 @@ You may want to record the PR number somewhere for future reference although you
    - Github automatically populates the "Reviewers" block.
    - If this PR is not ready for review, click the "Still in progress? Convert to draft" string under the list of reviewers.
 People can still review the content but can not merge the PR until you remove the "Draft" status.
-   - The block of the PR that reports on checks and such will include the following item:
+   - The block of the PR that reports on checks will include the following item:
      ```
      This pull request is still a work in progress
      Draft pull requests cannot be merged.
