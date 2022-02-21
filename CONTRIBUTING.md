@@ -192,7 +192,7 @@ The `git commit -s` command commits the files and signs that you are contributin
    git commit -s
    ```
 
-   Use vi commands to add a description of the PR (should be 80 characters or less) to the commit.  This will be displayed as the title of the PR in listings.
+   Use vi commands to add a description of the PR (should be 80 characters or less) to the commit. This will be displayed as the title of the PR in listings.
 You can add multiple lines explaining the PR here but, in general, it is better to only supply the PR title here; you can add more information and edit the PR title when you create the PR on the github UI page.
 
 5. Push your branch to github:
