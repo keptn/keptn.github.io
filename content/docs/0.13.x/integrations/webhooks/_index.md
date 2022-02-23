@@ -22,12 +22,12 @@ Webhook configurations, referred to as subscriptions, are created at a *Task* le
 | Task finished   | The task has finished.                                |
 
 Broadly, there are two types of webhooks:
-1. *Non-interactive* - These webhooks just call a third-party webhook receiver and there are two variants. 
+1. *Passive* - These webhooks just call a third-party webhook receiver and there are two variants. 
     * Subscribe to a task `started` or `finished` events. 
     * Subscribe to a task `triggered` event and the Keptn webhook service sends both the task `started` event and the task `finished` event to complete the sequence task.  
-1. *Interactive* - These webhooks subscribe to a task `triggered` event and the Keptn webhook service sends the task `started` event.  The sequence then waits for the third-party webhook receiver to send back a task `finished` event to complete the sequence task.
+1. *Active* - These webhooks subscribe to a task `triggered` event and the Keptn webhook service sends the task `started` event.  The sequence then waits for the third-party webhook receiver to send back a task `finished` event to complete the sequence task.
 
-## Configure non-interactive on task "started" or "finished" events
+## Configure Passive on task "started" or "finished" events
 
 For this use case, a webhook subscription is configured to listen to a task `started` or `finished` event. For this to work, some other Keptn service is responsible to send the task `started` and `finished` events to complete the sequence task.
 
@@ -126,11 +126,11 @@ width="400px">}}
 
 Click the **Create subscription** button to save and enable the webhook for your integration.
 
-## Configure non-interactive on task "triggered" events
+## Configure Passive on task "triggered" events
 
 For this use case, the Keptn webhook service sends both the task `started` and task `finished` events to complete the task sequence. 
 
-An example *Non-interactive* webhook is setting a feature flag where the third-party webhook receiver can't send confirmation that it set the flag.
+An example *Passive* webhook is setting a feature flag where the third-party webhook receiver can't send confirmation that it set the flag.
 
 **Add subscription**
 
@@ -144,11 +144,11 @@ An example *Non-interactive* webhook is setting a feature flag where the third-p
 
 1. Click the **Create subscription** button to save and enable the webhook for your integration.
 
-## Configure interactive webhook on task "triggered" events
+## Configure Active webhook on task "triggered" events
 
-This type is called *Interactive* because the Keptn webhook service will first send the task `started` event and the third-party webhook receiver sends back the `finished` task event to complete the task sequence.
+This type is called *Active* because the Keptn webhook service will first send the task `started` event and the third-party webhook receiver sends back the `finished` task event to complete the task sequence.
 
-An example *Interactive* webhook is to trigger a system to open an incident management ticket and send back the newly created incident ticket number within the task `finished` event so that the sequence can continue.
+An example *Active* webhook is to trigger a system to open an incident management ticket and send back the newly created incident ticket number within the task `finished` event so that the sequence can continue.
 
 *Important Note:* 
 
