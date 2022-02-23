@@ -80,15 +80,16 @@ You need to load the git submodule (see next step) to install this theme.
 3. Execute the following command from the root folder of your clone:
     ```
     hugo server -D
+    ```
 4. Start contributing!
 Leave the Hugo server running in a shell.
 Note that Hugo updates the rendered documentation each time you write the file.
-    ```
+
 5. Enter the following in a browser to view the website:
     ```
     http://localhost:1313/
     ```
-6. Press Ctrl+C to stop the Hugo server when you are done.
+6. Use Ctrl+C to stop the local Hugo server when you are done.
 
 ## Building markdown files without Hugo
 
