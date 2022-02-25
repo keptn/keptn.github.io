@@ -9,11 +9,11 @@ Keptn has a built-in capability, via the [Keptn webhook service](https://github.
 
 Webhooks allow you to easily integrate various third-party tools such as testing services, CI/CD pipelines, and incident management services. In addition to just invoking the third-party webhook receiver, webhook subscriptions can be configured to wait for the third-party webhook receiver to send back details about what it did. 
 
-Depending on the receiving tools configuration requirements, data can be either passed within the payload body or as query params in the URL along with any required headers and API tokens.
+Depending on the receiving tools configuration, data can be either passed within the payload body or as query params in the URL along with any required headers and API tokens.
 
 ## Webhook subscriptions
 
-Webhook configurations, referred to as subscriptions, are created at a *Task* level and are configured to listen to one of the the following task [event types](https://github.com/keptn/spec/blob/0.2.2/cloudevents.md#task-events):
+Webhook configurations, referred to as subscriptions, are created at a *Task* level and are configured to listen to one of the following task [event types](https://github.com/keptn/spec/blob/0.2.2/cloudevents.md#task-events):
 
 | Event types     | Description                                           |
 |---------------- |-----------------------------------------------------  |
@@ -21,11 +21,14 @@ Webhook configurations, referred to as subscriptions, are created at a *Task* le
 | Task started    | The task has begun running.                           |
 | Task finished   | The task has finished.                                |
 
+## Webhook service subscription Types
+
 Broadly, there are two types of webhooks:
-1. *Passive* - These webhooks just call a third-party webhook receiver and there are two variants. 
+
+1. *Passive* - These subscriptions just call a third-party webhook receiver and there are two variants. 
     * Subscribe to a task `started` or `finished` events. 
     * Subscribe to a task `triggered` event and the Keptn webhook service sends both the task `started` event and the task `finished` event to complete the sequence task.  
-1. *Active* - These webhooks subscribe to a task `triggered` event and the Keptn webhook service sends the task `started` event.  The sequence then waits for the third-party webhook receiver to send back a task `finished` event to complete the sequence task.
+1. *Active* - These subscriptions subscribe to a task `triggered` event and the Keptn webhook service sends the task `started` event.  The sequence then waits for the third-party webhook receiver to send back a task `finished` event to complete the sequence task.
 
 ## Configure Passive on task "started" or "finished" events
 
@@ -54,7 +57,7 @@ width="500px">}}
 *Subscription:*
 
 * *Task*: The task the webhook should be fired on (e.g., `test` or `deployment`)
-* *Task suffix*: The state of the task when the webhook should be fired; select one of: `started`, of `finished`
+* *Task suffix*: The state of the task when the webhook should be fired; select one of: `started`, or `finished`
 * *Filter*: To restrict the webhook to certain stages and services you can specify those using filters. 
 
 *Webhook configuration:*
@@ -115,7 +118,7 @@ width="700px">}}
 
 **Step 4: Set "Send Finished Event" flag**
 
-The `Send finished` event flag is not applicable to a *non-interative* webhook. So you can leave it unselected as shown below.
+The `Send finished` event flag is not applicable to a *passive* webhook. So you can leave it unselected as shown below.
 
 {{< popup_image
 link="./assets/finished-event-empty.png"
@@ -130,12 +133,12 @@ Click the **Create subscription** button to save and enable the webhook for your
 
 For this use case, the Keptn webhook service sends both the task `started` and task `finished` events to complete the task sequence. 
 
-An example *Passive* webhook is setting a feature flag where the third-party webhook receiver can't send confirmation that it set the flag.
+An example *Passive* webhook is setting a feature flag where the Third-party webhook receiver can't send confirmation that it set the flag.
 
 **Add subscription**
 
 1. Follow the same steps above to add a new webhook subscription, but configure it to listen to a Task suffix of `triggered`. 
-1. Ensure that that the `Automatically` option is selected as shown below. When this is set, the webhook service will automatically send the task `finished` event for your subscription.
+1. Ensure that the `Automatically` option is selected as shown below. When this is set, the webhook service will automatically send the task `finished` event for your subscription.
 
     {{< popup_image
     link="./assets/finished-event-auto.png"
@@ -152,7 +155,7 @@ An example *Active* webhook is to trigger a system to open an incident managemen
 
 *Important Note:* 
 
-* If the third-party webhook receiver does NOT send back the task `finished` event, the sequence will remain in a waiting states and will not continue until it times out or the it receives the task `finished` event.
+* If the third-party webhook receiver does NOT send back the task `finished` event, the sequence will remain in a waiting state and will not continue until it times out or it receives the task `finished` event.
 
 **Step 1: Add subscription**
 
@@ -162,7 +165,7 @@ An example *Active* webhook is to trigger a system to open an incident managemen
   * `{{.shkeptncontext}}` - required in the `shkeptncontext` attribute of the `finished` event
   * Optional, but depends on your implementation: `{{.data.project}}`, `{{.data.service}}`, `{{.data.stage}}`
 1. Follow the same steps above to add a new webhook subscription, but configure it to listen to a Task suffix of `triggered`. 
-1. Ensure that that the `By webhook receiver` option is selected as shown below. When this is set, the webhook service will expect the webhook receiver to send back the task `finished` event.
+1. Ensure that the `By webhook receiver` option is selected as shown below. When this is set, the webhook service will expect the webhook receiver to send back the task `finished` event.
 
     {{< popup_image
     link="./assets/finished-event-receiver.png"
@@ -202,7 +205,7 @@ For example:
 
 The third-party webhook receiver can also send back custom information within the `finished` event. 
 
-This custom data will be automatically appended to every remaining `triggered` task event in the sequence.  The data much be passed in a attribute with the name of the task.  
+This custom data will be automatically appended to every remaining `triggered` task event in the sequence.  The data much be passed in an attribute with the name of the task.  
 
 For example for a task named `createTicket`, the following is sent back within the `data.createTicket` attribute as shown below:
 
@@ -312,13 +315,4 @@ spec:
 
 * Adding a webhook by just extending this file is not supported, since the subscription to the event type is still missing. 
 
-## Examples
-
-See the [Keptn Integrations](../../../integrations) for a growing list of integrations, but here are a few examples to review.
-
-| Integration  | Description                                           |
-|---------------- |-----------------------------------------------------  |
-| [Slack](https://artifacthub.io/packages/keptn/keptn-integrations/slack)  | Sending notifications to Slack for all sorts of Keptn events such as deployment, test, or evaluation finished. |
-| [GitHub Actions](https://artifacthub.io/packages/keptn/keptn-integrations/githubaction)  | This integration shows how to invoke GitHub Action workflows leveraging Keptn's webhook service.  |
-| [NeoLoad](https://artifacthub.io/packages/keptn/keptn-integrations/neoload)  | This integration shows you how to run a load test on NeoLoad Web. |
 
