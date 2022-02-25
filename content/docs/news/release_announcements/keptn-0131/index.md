@@ -1,6 +1,6 @@
 ---
 title: Keptn 0.13.1
-weight: 78
+weight: 77
 ---
 
 This is a bug fix release for Keptn 0.13.0, containing fixes for the the Quality Gate use case and hardening of the Keptn components.
