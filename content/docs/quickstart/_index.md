@@ -44,7 +44,7 @@ curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=v4.4
 2. **Download and install the [Keptn CLI](../0.13.x/reference/cli)**
 
     ```
-    curl -sL https://get.keptn.sh | KEPTN_VERSION=0.13.0 bash
+    curl -sL https://get.keptn.sh | KEPTN_VERSION=0.13.1 bash
     ```
 
 3. **Install Keptn** control-plane and execution-plane for continuous delivery use case or use the `helm install` version [mentioned below](#kubernetes-version-not-supported).
