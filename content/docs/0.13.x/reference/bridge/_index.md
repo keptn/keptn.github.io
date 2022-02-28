@@ -27,6 +27,7 @@ The Keptn Bridge provides an easy way to browse all events that are sent within 
 * When you select a project, you see the environment overview of the entire Keptn context.
 * This view allows to easily see the current deployed services on each stage and if there are any errors or pending approvals for one stage.
   By clicking on a stage you can see more information about the deployed services on the specific stage on the right side.
+* The service details on the right are showing the current and the past 5 evaluations, open approvals and running remediations for each service.
 
   {{< popup_image
   link="./assets/environment-view.png"
