@@ -53,7 +53,7 @@ caption="User is logged in" width="800px">}}
 The `keptn auth` command provides several [command line flags](../../../reference/cli/commands/keptn_auth) which can be used to setup the CLI to use SSO via OpenID:
 
 ```
-keptn auth --oauth --oauth-discovery <discovery-endpoint> --oauth-client-id <client_id> --oauth-client-secret <client_secret> --endpoint <keptn_endpoint> --api-token <keptn_api_token>
+keptn auth --oauth --oauth-discovery https://login.microsoftonline.com/<directory_tenant_id>/v2.0/.well-known/openid-configuration --oauth-client-id <client_id> --oauth-client-secret <client_secret> --endpoint <keptn_endpoint> --api-token <keptn_api_token>
 ```
 
 After executing the `keptn auth` command, a Browser window should open asking you to confirm the login using your credentials.
