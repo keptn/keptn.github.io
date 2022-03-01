@@ -34,7 +34,7 @@ This will:
 
 You can also run additional `hello` sequences with: `keptn send event -f /helloevent.cloudevent.json`
 
-![image](https://user-images.githubusercontent.com/26523841/156100438-7dda1f2b-7666-4467-9d82-cd209eedb382.png)
+![keptn hello world](./assets/keptn-hello-world.png)
 
 ## Prerequisites
 
