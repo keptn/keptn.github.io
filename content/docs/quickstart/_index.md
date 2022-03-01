@@ -22,7 +22,7 @@ The Keptn Bridge (UI) will be available on `http://localhost`
 
 This will:
 
-- Create a Kubernetes cluster
+- Create a Kubernetes cluster in Docker using [kind](https://kind.sigs.k8s.io/)
 - Install Keptn and remove all authentication (for demo purposes)
 - Install and authenticate the `keptn` CLI
 - Create a `helloworld` project
