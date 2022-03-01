@@ -7,6 +7,30 @@ weight: 1
 hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
 ---
 
+## Keptn Hello World
+
+Run the Keptn Hello, World! example:
+
+```
+docker run --rm -it \
+--name thekindkeptn \
+-v /var/run/docker.sock:/var/run/docker.sock:ro \
+gardnera/thekindkeptn:0.0.5
+```
+
+The Keptn Bridge (UI) will be available on `http://localhost`
+
+This will:
+
+- Create a Kubernetes cluster
+- Install Keptn and remove all authentication (for demo purposes)
+- Install and authenticate the `keptn` CLI
+- Create a `helloworld` project
+- Run your first `hello` Keptn sequence
+
+Run additional `hello` sequences with: `keptn send event -f /helloevent.cloudevent.json`
+
+![image](https://user-images.githubusercontent.com/26523841/156100438-7dda1f2b-7666-4467-9d82-cd209eedb382.png)
 
 ## Prerequisites
 
