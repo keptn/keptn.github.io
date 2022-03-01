@@ -9,6 +9,10 @@ hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
 
 ## Keptn Hello World
 
+### Prerequisites for Hello World
+
+- Machine with Docker installed and at least 12GB RAM
+
 Run the Keptn Hello, World! example:
 
 ```
