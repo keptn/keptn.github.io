@@ -4,7 +4,7 @@ description: How to setup user authentication using OIDC
 weight: 10
 ---
 
-Please follow the following links for instructions how to setup user authentication using OIDC:
+Please, follow these links for instructions on how to setup user authentication using OIDC:
 
 * [Keptn Bridge](../../../reference/bridge/oauth/#enable-disable-authentication)
 * [Keptn CLI](../../../reference/cli/commands/keptn_auth)
