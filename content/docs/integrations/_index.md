@@ -17,6 +17,7 @@ In the following you'll find integrations that are already provided by the Keptn
 <button class="btn filterBtn" value="testing">Testing</button>
 <button class="btn filterBtn" value="deployment">Deployment</button>
 <button class="btn filterBtn" value="observability">Observability</button>
+<button class="btn filterBtn" value="webhook">Webhook</button>
 
 <script type="text/javascript">
     const input = document.getElementById("services-search");
