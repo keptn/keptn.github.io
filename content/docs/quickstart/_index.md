@@ -7,7 +7,9 @@ weight: 1
 hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
 ---
 
-## Keptn Hello World
+Brand new to Keptn? The Hello World example is the easiest way to get up and running.
+
+## Keptn Hello World (Docker Based)
 
 ### Prerequisites for Hello World
 
@@ -19,24 +21,32 @@ Run the Keptn Hello, World! example:
 docker run --rm -it \
 --name thekindkeptn \
 -v /var/run/docker.sock:/var/run/docker.sock:ro \
-gardnera/thekindkeptn:0.0.5
+gardnera/thekindkeptn:0.0.6
 ```
 
 The Keptn Bridge (UI) will be available on `http://localhost`
 
-This will:
+### Outcome
 
-- Create a Kubernetes cluster in Docker using [kind](https://kind.sigs.k8s.io/)
-- Install Keptn and remove all authentication (for demo purposes)
-- Install and authenticate the `keptn` CLI
-- Create a `helloworld` project
-- Run your first `hello` Keptn sequence
+The command above has:
+- Created a Kubernetes cluster in Docker using [kind](https://kind.sigs.k8s.io/)
+- Installed Keptn and removed all authentication (for demo purposes)
+- Installed and authenticated the `keptn` CLI
+- Created a `helloworld` project
+- Ran your first `hello` Keptn sequence
 
 You can also run additional `hello` sequences with: `keptn send event -f /helloevent.cloudevent.json`
 
 ![keptn hello world](./assets/keptn-hello-world.png)
 
-## Prerequisites
+### Next Steps
+Now try the Multi-Stage Delivery and / or Auto-Remediation examples (see below).
+
+## k3d Keptn
+
+Use this method if you don't have Docker and either have or don't mind installing [k3d](https://k3d.io).
+
+### Prerequisites for k3d based Keptn
 
 This quickstart is designed for Linux-based systems.
 Consequently, use Linux, MacOS, or Windows subsystem for Linux v2 with a full virtual machine (WSL2).
@@ -61,7 +71,7 @@ All executables should be configured to be executable in the user space without 
 curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=v4.4.4 bash
 ```
 
-## Install Keptn
+### Install Keptn
 
 1. Start a [k3d](https://k3d.io) cluster for Keptn
 
@@ -115,7 +125,7 @@ curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=v4.4
 curl -SL https://raw.githubusercontent.com/keptn/examples/master/quickstart/expose-keptn.sh | bash
 ```
 
-## Try Multi-Stage Delivery
+### Try Multi-Stage Delivery
 
 Perform a [**multi-stage delivery**](../concepts/delivery/) with [SLO-based quality gates](../concepts/quality_gates/) in place.
 Please note this will create a local repository `examples/` in your current directory.
