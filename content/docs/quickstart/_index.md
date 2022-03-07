@@ -21,7 +21,7 @@ Run the Keptn Hello, World! example:
 docker run --rm -it \
 --name thekindkeptn \
 -v /var/run/docker.sock:/var/run/docker.sock:ro \
-gardnera/thekindkeptn:0.0.6
+gardnera/thekindkeptn:0.0.7
 ```
 
 The Keptn Bridge (UI) will be available on `http://localhost`
