@@ -31,6 +31,7 @@ The Keptn Bridge (UI) will be available on `http://localhost`
 ### Outcome
 
 The command above has:
+
 - Created a Kubernetes cluster in Docker using [kind](https://kind.sigs.k8s.io/)
 - Installed Keptn and removed all authentication (for demo purposes)
 - Installed and authenticated the `keptn` CLI
