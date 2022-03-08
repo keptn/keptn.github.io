@@ -11,6 +11,8 @@ Brand new to Keptn? The Hello World example is the easiest way to get up and run
 
 ## Keptn Hello World (Docker Based)
 
+![keptn hello world](./assets/keptn-hello-world-0.0.7.svg)
+
 ### Prerequisites for Hello World
 
 - Machine with Docker installed and at least 12GB RAM
