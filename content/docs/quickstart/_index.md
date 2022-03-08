@@ -11,6 +11,8 @@ Brand new to Keptn? The Hello World example is the easiest way to get up and run
 
 ## Keptn Hello World (Docker Based)
 
+![keptn hello world](./assets/keptn-hello-world-0.0.8.svg)
+
 ### Prerequisites for Hello World
 
 - Machine with Docker installed and at least 12GB RAM
@@ -21,7 +23,7 @@ Run the Keptn Hello, World! example:
 docker run --rm -it \
 --name thekindkeptn \
 -v /var/run/docker.sock:/var/run/docker.sock:ro \
-gardnera/thekindkeptn:0.0.6
+gardnera/thekindkeptn:0.0.8
 ```
 
 The Keptn Bridge (UI) will be available on `http://localhost`
@@ -29,7 +31,8 @@ The Keptn Bridge (UI) will be available on `http://localhost`
 ### Outcome
 
 The command above has:
-- Created a Kubernetes cluster in Docker using [kind](https://kind.sigs.k8s.io/)
+
+- Created a Kubernetes cluster in Docker using [k3d](https://k3d.io/)
 - Installed Keptn and removed all authentication (for demo purposes)
 - Installed and authenticated the `keptn` CLI
 - Created a `helloworld` project
