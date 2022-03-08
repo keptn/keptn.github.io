@@ -11,7 +11,7 @@ Brand new to Keptn? The Hello World example is the easiest way to get up and run
 
 ## Keptn Hello World (Docker Based)
 
-![keptn hello world](./assets/keptn-hello-world-0.0.7.svg)
+![keptn hello world](./assets/keptn-hello-world-0.0.8.svg)
 
 ### Prerequisites for Hello World
 
@@ -23,7 +23,7 @@ Run the Keptn Hello, World! example:
 docker run --rm -it \
 --name thekindkeptn \
 -v /var/run/docker.sock:/var/run/docker.sock:ro \
-gardnera/thekindkeptn:0.0.7
+gardnera/thekindkeptn:0.0.8
 ```
 
 The Keptn Bridge (UI) will be available on `http://localhost`
