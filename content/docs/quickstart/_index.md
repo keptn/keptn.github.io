@@ -32,7 +32,7 @@ The Keptn Bridge (UI) will be available on `http://localhost`
 
 The command above has:
 
-- Created a Kubernetes cluster in Docker using [kind](https://kind.sigs.k8s.io/)
+- Created a Kubernetes cluster in Docker using [k3d](https://k3d.io/)
 - Installed Keptn and removed all authentication (for demo purposes)
 - Installed and authenticated the `keptn` CLI
 - Created a `helloworld` project
