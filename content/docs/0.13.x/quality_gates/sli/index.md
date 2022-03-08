@@ -16,7 +16,7 @@ A Service-Level Indicator (SLI) is a defined quantitative measure of some aspect
 
 Please follow the links to the provider-specific SLIs: 
 
-* [Dynatrace](../../monitoring/dynatrace/sli_provider/#configure-custom-dynatrace-slis) 
+* [Dynatrace](../../monitoring/dynatrace/configure_slis/) 
 
 * [Prometheus](../../monitoring/prometheus/install/#configure-custom-prometheus-slis) 
 
