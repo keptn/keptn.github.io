@@ -129,6 +129,7 @@ curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=v4.4
   ```
 
 5. **Access Bridge**: you can now access the Keptn Web UI at `http://127.0.0.1.nip.io:8082/bridge`.
+
   For different way on how to expose your Keptn installation, please refer to <https://keptn.sh/docs/0.13.x/operate/install/#install-keptn>.
 
 
