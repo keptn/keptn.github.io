@@ -1,4 +1,4 @@
-# Contribute to the Keptn Website
+# Contribute to the Keptn documentation
 
 This document provides information about contributing to the [Keptn documentation](https://keptn.sh/docs/), which is part of the [Keptn](https://keptn.sh) website.
 This documentation is authored with [markdown](https://www.markdownguide.org/basic-syntax/)
@@ -62,6 +62,18 @@ Click the icon at the right end of that box to copy that URL.
     git clone git@github.com:<UserName>/keptn.github.io.git
     ```
 	Where <*UserName*> is your github username. The keptn.github.io directory is now available in the local directory.
+
+4. Remember to sync your fork with the master branch regularly.
+To do this:
+
+   - Go to the github page for your fork;
+if you need a link, go to the github page for the repository
+and click the **Fork** button;
+it will display the link to your clone.
+   - Use the **Fetch upstream** dropdown menu
+to determine if your fork is current.
+   - If your fork is not current,
+use the **Fetch and merge** button to sync it.
 
 ## Install Hugo to build the docs locally
 
