@@ -10,7 +10,7 @@ Keptn's helm-service supports the following deployment strategies:
 
 * **Direct deployments**
 * **Blue-green deployments**
-* **user-managed deployments** (experimental)
+* **user-managed deployments**
 
 The explanation below is based on the provided Helm Chart for the carts microservice, see [Charts](https://github.com/keptn/examples/tree/0.11.0/onboarding-carts/carts) for details.
 
@@ -124,18 +124,16 @@ keptn add-resource --project=<project-name> --service=<service-name> --all-stage
 ```
 
 3. Upload a file called `endpoints.yaml` where you can defined the host name under which your deployed service will be available:
-```
-keptn add-resource --project=<project-name> --service=<service-name> --all-stages --resource=<path_to_endpoints.yaml> --resourceUri=helm/endpoints.yaml
-```
-
-**Note**: This step is required, if you will need the `data.deployment.deploymentURIsPublic` and/or `data.deployment.deploymentURIsLocal` property of the `deployment.finished` event sent by the helm-service. This is the case, e.g., when the `jmeter-service`, which performs the `test` task needs to determine the URL for the service to be tested. The `endpoints.yaml` file has the following structure:
-
-```yaml
-deploymentURIsLocal:
-  - "<my-local-url>" # e.g. http://my-service.sockshop-dev:8080
-deploymentURIsPublic:
-  - "<my-public-url>" # e.g. http://123.123.123.nip.io:80
-```
+  ```
+  keptn add-resource --project=<project-name> --service=<service-name> --all-stages --resource=<path_to_endpoints.yaml> --resourceUri=helm/endpoints.yaml
+  ```
+  **Note**: This step is required, if you will need the `data.deployment.deploymentURIsPublic` and/or `data.deployment.deploymentURIsLocal` property of the `deployment.finished` event sent by the helm-service. This is the case, e.g., when the `jmeter-service`, which performs the `test` task needs to determine the URL for the service to be tested. The `endpoints.yaml` file has the following structure:
+  ```yaml
+  deploymentURIsLocal:
+    - "<my-local-url>" # e.g. http://my-service.sockshop-dev:8080
+  deploymentURIsPublic:
+    - "<my-public-url>" # e.g. http://123.123.123.nip.io:80
+  ```
 
 4. Send an event to trigger the delivery of your service:
 ```
