@@ -124,11 +124,13 @@ curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=v4.4
 
 4. **Configure Ingress** and authenticate Keptn CLI
 
-```bash
-curl -SL https://raw.githubusercontent.com/keptn/examples/master/quickstart/expose-keptn.sh | bash
-```
+  ```bash
+  curl -SL https://raw.githubusercontent.com/keptn/examples/master/quickstart/expose-keptn.sh | bash
+  ```
 
-5. **Access Bridge**: you can now access the Keptn Web UI at `http://127.0.0.1.nip.io:8082/bridge`. For different way on how to expose your Keptn installation, please refer to <https://keptn.sh/docs/0.13.x/operate/install/#install-keptn>.
+5. **Access Bridge**: you can now access the Keptn Web UI at `http://127.0.0.1.nip.io:8082/bridge`.
+  For different way on how to expose your Keptn installation, please refer to <https://keptn.sh/docs/0.13.x/operate/install/#install-keptn>.
+
 
 ### Try Multi-Stage Delivery
 
