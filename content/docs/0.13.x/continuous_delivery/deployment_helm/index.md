@@ -12,7 +12,7 @@ Keptn's helm-service supports the following deployment strategies:
 * **Blue-green deployments**
 * **user-managed deployments** (experimental)
 
-The explanation below is based on the provided  for the carts microservice, see [Charts](https://github.com/keptn/examples/tree/0.11.0/onboarding-carts/carts) for details.
+The explanation below is based on the provided Helm Chart for the carts microservice, see [Charts](https://github.com/keptn/examples/tree/0.11.0/onboarding-carts/carts) for details.
 
 ## Direct deployments
 
@@ -28,7 +28,7 @@ NAME    READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS   IMAGES              
 carts   1/1     1            1           56m   carts        docker.io/keptnexamples/carts:0.13.1   app=carts
 ```
 
-When triggering a delivery (with a new artifact), we are updating the values.yaml file in the s with the respective image name.
+When triggering a delivery (with a new artifact), we are updating the values.yaml file in the Helm Chart with the respective image name.
 
 * [chart/values.yaml](https://github.com/keptn/examples/blob/0.11.0/onboarding-carts/carts/values.yaml#L1)
 * [chart/templates/deployment.yaml](https://github.com/keptn/examples/blob/0.11.0/onboarding-carts/carts/templates/deployment.yaml#L22)
