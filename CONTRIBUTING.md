@@ -61,11 +61,11 @@ Click the icon at the right end of that box to copy that URL.
     or
     git clone git@github.com:<UserName>/keptn.github.io.git
     ```
-	Where <*UserName*> is your github username. The keptn.github.io directory is now available in the local directory.
+    Where <*UserName*> is your github username. The keptn.github.io directory is now available in the local directory.
 
 ## Install Hugo to build the docs locally
 
-1. Install the extended version of [Hugo](http://gohugo.io) in [Version 0.53](https://github.com/gohugoio/hugo/releases/tag/v0.53) (see [netlify.toml](netlify.toml) - `HUGO_VERSION = "0.53"`). 
+1. Install the extended version of [Hugo](http://gohugo.io) in [Version 0.53](https://github.com/gohugoio/hugo/releases/tag/v0.53) (see [netlify.toml](netlify.toml) - `HUGO_VERSION = "0.53"`).
 
    :warning: It is important that you install the **extended** version of Hugo. Learn how to install Hugo, depending on your OS, here: [install Hugo](https://gohugo.io/getting-started/installing/).
 
@@ -106,7 +106,7 @@ When *grip* is installed, you can format the specified file locally by running t
      ```
      Point your browser at `localhost:6419` to view the formatted file.
      The document updates automatically each time you write your changes to disk.
-     
+
 
 ## Source file structure
 
@@ -236,7 +236,7 @@ People can still review the content but can not merge the PR until you remove th
      ```
    - When the PR is ready to be reviewed, approved, and merged, click the "Ready to review" button to remove the "Draft" status. Then, if you added "WIP" or "Draft" to the PR title, remove it now.
 
-7. Your PR should be reviewed within a few days.  Watch for any comments that may be added by reviewers and implement or respond to the recommended changes as soon as possible.  
+7. Your PR should be reviewed within a few days.  Watch for any comments that may be added by reviewers and implement or respond to the recommended changes as soon as possible.
 
    * If a reviewer makes a github suggestion and you agree with the change, just click "Accept this change" to create a commit for that modification.  You can also group several suggestions into a single commit using the github tools.
    * You can make other changes using the github editor or you can work in your local branch to make modifications.
@@ -250,5 +250,68 @@ People can still review the content but can not merge the PR until you remove th
    ```
    git branch -d <branch-name>
    ```
+### Developer Certification of Origin (DCO)
+
+Licensing is very important to open source projects. It helps ensure the software continues to be available under the terms that the author desired.
+
+Keptn uses [Apache License 2.0](https://github.com/keptn/keptn.github.io/blob/master/LICENSE) to strike a balance between open contributions and allowing you to use the software however you would like to.
+
+The license tells you what rights you have that are provided by the copyright holder. It is important that the contributor fully understands what rights they are licensing and agrees to them. Sometimes the copyright holder isn't the contributor, such as when the contributor is doing work on behalf of a company.
+
+To make a good faith effort to ensure these criteria are met, Keptn requires the Developer Certificate of Origin (DCO) process to be followed.
+
+The DCO is an attestation attached to every contribution made by every developer. In the commit message of the contribution, the developer simply adds a Signed-off-by statement and thereby agrees to the DCO, which you can find below or at <http://developercertificate.org/>.
+
+```
+Developer Certificate of Origin
+Version 1.1
+
+Copyright (C) 2004, 2006 The Linux Foundation and its contributors.
+
+Everyone is permitted to copy and distribute verbatim copies of this
+license document, but changing it is not allowed.
 
 
+Developer's Certificate of Origin 1.1
+
+By making a contribution to this project, I certify that:
+
+(a) The contribution was created in whole or in part by me and I
+    have the right to submit it under the open source license
+    indicated in the file; or
+
+(b) The contribution is based upon previous work that, to the best
+    of my knowledge, is covered under an appropriate open source
+    license and I have the right under that license to submit that
+    work with modifications, whether created in whole or in part
+    by me, under the same open source license (unless I am
+    permitted to submit under a different license), as indicated
+    in the file; or
+
+(c) The contribution was provided directly to me by some other
+    person who certified (a), (b) or (c) and I have not modified
+    it.
+
+(d) I understand and agree that this project and the contribution
+    are public and that a record of the contribution (including all
+    personal information I submit with it, including my sign-off) is
+    maintained indefinitely and may be redistributed consistent with
+    this project or the open source license(s) involved.
+```
+
+#### DCO Sign-Off Methods
+
+The DCO requires a sign-off message in the following format to appear on each commit in the pull request:
+
+```
+Signed-off-by: Humpty Dumpty <humpty.dumpty@example.com>
+```
+
+The DCO text can either be manually added to your commit body, or you can add either **-s** or **--signoff** to your usual git commit commands. If you are using the GitHub UI to make a change you can add the sign-off message directly to the commit message when creating the pull request. If you forget to add the sign-off you can also amend a previous commit with the sign-off by running **git commit --amend -s**. If you've pushed your changes to GitHub already you'll need to force push your branch after this with **git push -f**.
+
+**ATTRIBUTION**:
+
+- https://probot.github.io/apps/dco/
+- https://github.com/opensearch-project/common-utils/blob/main/CONTRIBUTING.md
+- https://code.asam.net/simulation/wiki/-/wikis/docs/project_guidelines/ASAM-DCO?version_id=c510bffb1195dc04deb9db9451112669073f0ba5
+- https://thesofproject.github.io/latest/contribute/contribute_guidelines.html
