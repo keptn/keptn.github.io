@@ -23,7 +23,8 @@ Run the Keptn Hello, World! example:
 docker run --rm -it \
 --name thekindkeptn \
 -v /var/run/docker.sock:/var/run/docker.sock:ro \
-gardnera/thekindkeptn:0.0.8
+--add-host=host.docker.internal:host-gateway \
+gardnera/thekindkeptn:0.0.9
 ```
 
 The Keptn Bridge (UI) will be available on `http://localhost`
@@ -43,7 +44,7 @@ You can also run additional `hello` sequences with: `keptn send event -f /helloe
 ![keptn hello world](./assets/keptn-hello-world.png)
 
 ### Next Steps
-Now try the Multi-Stage Delivery and / or Auto-Remediation examples (see below).
+Now try the [Multi-Stage Delivery](#try-multi-stage-delivery) example and / or [Auto-Remediation](#try-auto-remediation) examples (see below). 
 
 ## k3d Keptn
 
