@@ -7,7 +7,7 @@ keywords: [0.14.x-bridge]
 
 ## Trigger new sequences
 
-To trigger new sequences, head to the environment view. There you can find the button "Trigger a new sequence". This button can also be found on the sequences view, and will redirect you to the the environment view too.
+To trigger new sequences, head to the environment view. There you can find the button "Trigger a new sequence". This button can also be found on the sequences view and redirects you to the the environment view.
 
 {{< popup_image
 link="./assets/trigger-01-environment-screen.png"
@@ -17,26 +17,26 @@ caption="Sequences">}}
 link="./assets/trigger-02-sequence-screen.png"
 caption="Sequences">}}
 
-The first step in triggering a sequence is to select the sequence, as well as the service and stage you want to trigger the sequence for. For sequences you have the possibility to choose from 3 sequence types:
-* Delivery - This will trigger the `delivery` sequence as defined in the [shipyard](https://keptn.sh/docs/0.14.x/manage/shipyard)
-* Evaluation - This will trigger the Keptn default evaluation sequence, which has not to be defined in the shipyard
-* Custom - Trigger any other sequence defined in the shipyard, except the delivery and evaluation sequences
+For sequences you have the possibility to choose from 3 sequence types:
+* Delivery - This will trigger the `delivery` sequence as defined in the [shipyard](../../../manage/shipyard/).
+* Evaluation - This will trigger the Keptn default evaluation sequence.
+* Custom - Trigger any other sequence defined in the shipyard, except the delivery and evaluation sequences.
 
 {{< popup_image
 link="./assets/trigger-03-select-sequence.png"
 caption="Sequences">}}
 
-After you have selected the desired sequence, service and stage click on "Next" to define the details of your sequence.
+After you have selected the desired sequence type, service, and stage click on "Next" to define the details of your sequence.
 
 ### Trigger a delivery
 
 Mandatory fields:
-* Image - The image name that is going to be deployed
-* Tag - The version tag of the image
+* Image - The image name that is going to be deployed.
+* Tag - The version tag of the image.
 
 Optional fields:
-* Labels - Additional labels that will be used in Bridge for displaying additional info
-* Values - Values in JSON format, for the new artifact to be delivered. Can be used for configuation of helm-service.
+* Labels - Additional labels that will be used in Bridge for displaying additional info.
+* Values - Values in JSON format, for the new artifact to be delivered. They can be used for the configuation of helm-service.
 
 {{< popup_image
 link="./assets/trigger-04-trigger-delivery.png"
@@ -46,42 +46,42 @@ caption="Sequences">}}
 
 For triggering an evaluation, you can choose beween two variants to select the evaluation timeframe:
 * Timeframe
-* Use start / end date
+* Start / end date and time
 
 #### **Timeframe**
 For the timeframe, there are no mandatory fields. If nothing is given as timeframe it defaults to 5 minutes. If nothing is given for the start date, it defaults to the current time.
 
 Fields:
 * Timeframe - Takes hours, minutes, seconds, milliseconds and microseconds. Defines the timeframe from the given start date and time (or current date-time if not given) where an evaluation is performed. Defaults to 5 minutes and has a minimum duration of 1 minute.
-* Start at - Defines the start date and time from where on the evaluation is performed.
-* Labels - Additional labels that will be used in Bridge for displaying additional info
+* Start at - Defines the start date and time from when the evaluation is performed.
+* Labels - Additional labels that will be used in Bridge for displaying additional info.
 
 {{< popup_image
 link="./assets/trigger-05-trigger-evaluation-timeframe"
 caption="Sequences">}}
 
 #### **Start / end date**
-Please mind, that an evaluation is performed into the past. That means that the start date has to be **after** the end date.
+Please mind, that an evaluation is performed in the past. That means that the start date has to be **after** the end date.
 
 Mandatory fields:
-* Start at - Defines the start date and time from where on the evaluation is performed. Has to be **after** the end date
-* End at - Defines the end date and time until when the evaluation is performed. Has to be **before** the start date
+* Start at - Defines the start date and time from when the evaluation is performed. Has to be **after** the end date.
+* End at - Defines the end date and time until when the evaluation is performed. Has to be **before** the start date.
 
 Optional fields:
-* Labels - Additional labels that will be used in Bridge for displaying additional info
+* Labels - Additional labels that will be used in Bridge for displaying additional info.
 
 {{< popup_image
 link="./assets/trigger-06-trigger-evaluation-start-end.png"
 caption="Sequences">}}
 
 ### Trigger a custom sequence
-Custom sequences are automatically fetched from the [shipyard](https://keptn.sh/docs/0.14.x/manage/shipyard). All sequences that are defined in this file, except delivery and evaluation, are then selectable as sequence in the sequence dropdown.
+Custom sequences are automatically fetched from the [shipyard](../../../manage/shipyard/). All sequences that are defined in this file, except delivery and evaluation, are then selectable as sequences in the sequence dropdown.
 
 Mandatory fields:
-* Sequence - The custom sequence to be triggered
+* Sequence - The custom sequence to be triggered.
 
 Optional fields:
-* Labels - Additional labels that will be used in Bridge for displaying additional info
+* Labels - Additional labels that will be used in Bridge for displaying additional info.
 
 {{< popup_image
 link="./assets/trigger-07-trigger-custom.png"
