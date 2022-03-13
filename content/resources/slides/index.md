@@ -1,11 +1,10 @@
 ---
-title: Slides & Logos
+title: Slides & Branding Assets
 #linktitle: Release 0.1.0
 weight: 50
 sidebar_multicard: true
 icon: examples
 ---
- 
 
 ## What is Keptn?
 
@@ -17,6 +16,6 @@ icon: examples
 
 Find more of our [public slide decks for you to use here](https://drive.google.com/drive/u/0/folders/1rOX1JQM0xM1ATNmCq1Ps4YrsKL7vmcI3). Please let us know if you speak publicly about Keptn and we are happy to support you!
 
-## Keptn logos
+## Keptn Branding Assets
 
-Please find our logos in the public Github repo: [https://github.com/keptn/community/tree/master/logos](https://github.com/keptn/community/tree/master/logos)
+Please find our branding assets in the public GitHub repo: [https://github.com/keptn/community/tree/main/branding](https://github.com/keptn/community/tree/main/branding).
