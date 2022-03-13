@@ -1,4 +1,4 @@
-# Contribute to the Keptn documentation
+# Contribute to the Keptn website
 
 This document provides information about contributing to the [Keptn documentation](https://keptn.sh/docs/), which is part of the [Keptn](https://keptn.sh) website.
 This documentation is authored with [markdown](https://www.markdownguide.org/basic-syntax/)
