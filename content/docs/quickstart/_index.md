@@ -1,13 +1,34 @@
 ---
 title: Quick Start
-description: Learn how to get Keptn running in five minutes. We'll run Keptn on a local k3d cluster.
+description: Learn how to get Keptn running in five minutes. Whether you prefer Helm, Docker or Keptn CLI, or k3d, we have you covered.
 icon: concepts
 layout: quickstart
 weight: 1
 hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
 ---
 
-Brand new to Keptn? The Hello World example is the easiest way to get up and running.
+Pick your favourite installation method: [Helm](#helm), [Docker](#keptn-hello-world-docker-based), [Keptn CLI](#keptn-cli) or [k3d](#k3d-keptn).
+
+## Helm
+
+1) Install core control plane components and expose via a LoadBalancer:
+```
+helm repo add keptn https://charts.keptn.sh && helm repo update
+helm install keptn keptn/keptn \
+-n keptn --create-namespace \
+--wait \
+--set=control-plane.apiGatewayNginx.type=LoadBalancer
+```
+
+2) Install the execution plane components. These are additional microservices that will handle certain tasks:
+
+```
+helm install jmeter-service keptn/jmeter-service -n keptn
+helm install helm-service keptn/helm-service -n keptn
+```
+
+### Next Steps
+Now try the [Multi-Stage Delivery](#try-multi-stage-delivery) example and / or [Auto-Remediation](#try-auto-remediation) examples (see below). 
 
 ## Keptn Hello World (Docker Based)
 
@@ -15,7 +36,7 @@ Brand new to Keptn? The Hello World example is the easiest way to get up and run
 
 ### Prerequisites for Hello World
 
-- Machine with Docker installed and at least 12GB RAM
+- Machine with Docker installed and at least 8GB RAM
 
 Run the Keptn Hello, World! example:
 
@@ -45,6 +66,18 @@ You can also run additional `hello` sequences with: `keptn send event -f /helloe
 
 ### Next Steps
 Now try the [Multi-Stage Delivery](#try-multi-stage-delivery) example and / or [Auto-Remediation](#try-auto-remediation) examples (see below). 
+
+## Keptn CLI
+
+1) Download the Keptn Command Line Tool:
+```
+curl -sL https://get.keptn.sh | bash
+```
+
+2) Install Keptn core control plane and execution plane services for continuous delivery using the CLI:
+```
+keptn install -n keptn --use-case=continuous-delivery --endpoint-service-type=LoadBalancer
+```
 
 ## k3d Keptn
 
