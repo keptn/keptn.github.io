@@ -22,7 +22,7 @@ The Keptn CLI needs to be installed on the local machine and is used to send com
 
 The *Keptn Bridge* provides a user interface that shows all Keptn-managed projects and services. Besides, it gives an overview of the staging environment. 
 
-**Note:** A dedicated section for the Keptn Bridge is provided [here](../../0.8.x/reference/bridge/), which explains how to access it and shows the user interface.
+**Note:** A dedicated section for the Keptn Bridge is provided [here](../../0.13.x/reference/bridge/), which explains how to access it and shows the user interface.
 
 ## Keptn Control Plane
 
