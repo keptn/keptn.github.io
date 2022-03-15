@@ -101,9 +101,9 @@ done
 EOT
 
 CONFIG_SERVICE_POD=$(kubectl get pods -n keptn -lapp.kubernetes.io/name=configuration-service -ojsonpath='{.items[0].metadata.name}')
-kubectl cp ./reset-git-repos.sh keptn/$CONFIG_SERVICE_POD:/ -c configuration-service
-kubectl exec -n keptn $CONFIG_SERVICE_POD -c configuration-service -- chmod +x -R ./reset-git-repos.sh
-kubectl exec -n keptn $CONFIG_SERVICE_POD -c configuration-service -- ./reset-git-repos.sh
+kubectl cp ./reset-git-repos.sh keptn/$CONFIG_SERVICE_POD:/data/config -c configuration-service
+kubectl exec -n keptn $CONFIG_SERVICE_POD -c configuration-service -- chmod +x -R ./data/config/reset-git-repos.sh
+kubectl exec -n keptn $CONFIG_SERVICE_POD -c configuration-service -- ./data/config/reset-git-repos.sh
 ``` 
 
 ### Restore MongoDB data
