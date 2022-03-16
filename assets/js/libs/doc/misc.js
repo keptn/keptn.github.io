@@ -110,9 +110,9 @@ function handleDOMLoaded() {
                     if ((codes !== null) && (codes.length > 0)) {
                         var code = codes[0];
                         var text = getToolbarDivText(div);
-                        var downloadas = code.getAttribute("data-downloadas");
-                        if (downloadas === null || downloadas === "") {
-                            downloadas = "foo";
+                        var downloads = code.getAttribute("data-downloadas");
+                        if (downloads === null || downloads === "") {
+                            downloads = "foo";
 
                             var lang = "";
                             for (var j = 0; j < code.classList.length; j++) {

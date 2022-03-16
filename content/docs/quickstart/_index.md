@@ -4,7 +4,7 @@ description: Learn how to get Keptn running in five minutes. Whether you prefer 
 icon: concepts
 layout: quickstart
 weight: 1
-hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
+hidechildren: true # this flag hides all sub-pages in the sidebar-multicard.html
 ---
 
 Pick your favourite installation method: [Helm](#helm), [Docker](#keptn-hello-world-docker-based), [Keptn CLI](#keptn-cli) or [k3d](#k3d-keptn).
@@ -86,7 +86,7 @@ Use this method if you don't have Docker and either have or don't mind installin
 ### Prerequisites for k3d based Keptn
 
 This quickstart is designed for Linux-based systems.
-Consequently, use Linux, MacOS, or Windows subsystem for Linux v2 with a full virtual machine (WSL2).
+Consequently, use Linux, macOS, or Windows subsystem for Linux v2 with a full virtual machine (WSL2).
 Note that this tutorial has not been fully verified on  non-amd64 architectures (including Arm-based Apple M1).
 
 The following tools need to be installed for this tutorial:

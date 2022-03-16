@@ -12,7 +12,7 @@ In this section, the functionality and commands of the Keptn CLI are described. 
 
 ## Automatic install of Keptn CLI
 
-**Note**: This will work on Linux (and WSL2), as well as MacOS. Windows users need `bash`, `curl`, and `awk` installed (e.g., using Git Bash).
+**Note**: This will work on Linux (and WSL2), as well as macOS. Windows users need `bash`, `curl`, and `awk` installed (e.g., using Git Bash).
 
 1. Download the *latest stable Keptn version* from [GitHub](https://github.com/keptn/keptn/releases), unpack it and move it to `/usr/local/bin/keptn`.
 ```console
@@ -28,7 +28,7 @@ curl -sL https://get.keptn.sh | bash
     .\keptn.exe version
     ```
 
-## Installation on MacOS using brew
+## Installation on macOS using brew
 
 The following command will automatically fetch the latest Keptn CLI via Homebrew
 
@@ -93,7 +93,7 @@ NAME                TYPE        CLUSTER-IP    EXTERNAL-IP                  PORT(
 api-gateway-nginx   ClusterIP   10.117.0.20   <ENDPOINT_OF_API_GATEWAY>    80/TCP    44m
   ```
 
-<details><summary>Retrieve API Token and Authenticate Keptn CLI on **Linux / MacOS**</summary>
+<details><summary>Retrieve API Token and Authenticate Keptn CLI on **Linux / macOS**</summary>
 <p>
 
 * Set the environment variable `KEPTN_ENDPOINT`:
@@ -279,7 +279,7 @@ echo 'complete -F __start_keptn kc' >>~/.bashrc
 After reloading your shell, Keptn CLI autocompletion will be enabled successfully.
 </details>
 
-<details><summary>Autocompletion for Bash (MacOS)</summary>
+<details><summary>Autocompletion for Bash (macOS)</summary>
 
 The Keptn CLI completion script for Bash can be generated with `keptn completion bash`. Sourcing this script in your shell enables Keptn CLI autocompletion.
 
@@ -287,7 +287,7 @@ However, the Keptn CLI autocompletion script depends on bash-completion which yo
 
 > Warning: There are two versions of bash-completion, v1 and v2. V1 is for Bash 3.2 (which is the default on macOS), and v2 is for Bash 4.1+. The Keptn CLI autocompletion script doesn't work correctly with bash-completion v1 and Bash 3.2. It requires bash-completion v2 and Bash 4.1+. Thus, to be able to correctly use the Keptn CLI autocompletion on macOS, you have to install and use Bash 4.1+ (instructions). The following instructions assume that you use Bash 4.1+ (that is, any Bash version of 4.1 or newer).
 
-### Install bash-completion for MacOS
+### Install bash-completion for macOS
 
 **Note**: As mentioned, these instructions assume you use Bash 4.1+, which means you will install bash-completion v2 (in contrast to Bash 3.2 and bash-completion v1, in which case Keptn CLI completion won't work).
 
@@ -306,7 +306,7 @@ export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
 
 Reload your shell and verify that bash-completion v2 is correctly installed with `type _init_completion`.
 
-### Enable autocompletion for MacOS (bash)
+### Enable autocompletion for macOS (bash)
 
 You now have to ensure that the Keptn CLI completion script gets sourced in all your shell sessions. There are multiple ways to achieve this:
 
