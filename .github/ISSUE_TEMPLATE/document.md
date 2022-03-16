@@ -10,7 +10,7 @@ labels: ["Documentation"]
   if it is easier to submit a documentation patch instead of writing an issue, just do it!
 -->
 
-##l Links
+## Links
 
 <!-- link any related documentation pages and other materials. -->
 
