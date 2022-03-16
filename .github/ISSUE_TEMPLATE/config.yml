@@ -1,0 +1,7 @@
+contact_links:
+  - name: Mailing List
+    url:
+    about: Jenkins Documentation SIG mailing list
+  - name: Gitter Chat
+    url:
+    about: Jenkins Documentation SIG chat
