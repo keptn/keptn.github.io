@@ -86,6 +86,10 @@ kubectl cp ./config-svc-backup/config/ keptn/$CONFIG_SERVICE_POD:/data -c config
 To make sure the Git repositories within the configuration service are in a consistent state, they need to be reset to the current HEAD. To do so, 
 please execute the following commands:
 
+<!-- 
+Please note: This script is tested with an integration test here: https://github.com/keptn/keptn/blob/master/test/go-tests/test_backuprestore.go#L73
+Do not change, without adapting the change in the integration test. 
+-->
 ```console
 cat <<EOT >> reset-git-repos.sh
 #!/bin/sh
@@ -101,9 +105,9 @@ done
 EOT
 
 CONFIG_SERVICE_POD=$(kubectl get pods -n keptn -lapp.kubernetes.io/name=configuration-service -ojsonpath='{.items[0].metadata.name}')
-kubectl cp ./reset-git-repos.sh keptn/$CONFIG_SERVICE_POD:/ -c configuration-service
-kubectl exec -n keptn $CONFIG_SERVICE_POD -c configuration-service -- chmod +x -R ./reset-git-repos.sh
-kubectl exec -n keptn $CONFIG_SERVICE_POD -c configuration-service -- ./reset-git-repos.sh
+kubectl cp ./reset-git-repos.sh keptn/$CONFIG_SERVICE_POD:/data/config -c configuration-service
+kubectl exec -n keptn $CONFIG_SERVICE_POD -c configuration-service -- chmod +x -R ./data/config/reset-git-repos.sh
+kubectl exec -n keptn $CONFIG_SERVICE_POD -c configuration-service -- ./data/config/reset-git-repos.sh
 ``` 
 
 ### Restore MongoDB data
