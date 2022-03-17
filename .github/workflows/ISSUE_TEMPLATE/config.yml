@@ -1,0 +1,4 @@
+contact_links:
+  - name: Discuss on Slack
+    url: "https://keptn.sh/community/#slack"
+    about: You can discuss Keptn website in the keptn-website and keptn-docs channels on Keptn Slack
