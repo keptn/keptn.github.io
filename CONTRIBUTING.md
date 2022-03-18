@@ -60,8 +60,12 @@ Click the icon at the right end of that box to copy that URL.
     git clone https://github.com/<UserName>/keptn.github.io
     or
     git clone git@github.com:<UserName>/keptn.github.io.git
+    or
+    gh repo clone <UserName>/keptn.github.io
     ```
     Where <*UserName*> is your github username. The keptn.github.io directory is now available in the local directory.
+
+> Make sure you have installed [Github CLI](https://cli.github.com/) to follow the last instructions.
 
 4. Remember to sync your fork with the master branch regularly.
 To do this:
@@ -92,7 +96,6 @@ You need to load the git submodule (see next step) to install this theme.
 3. Execute the following command from the root folder of your clone:
     ```
     hugo server -D
-    ```
     ```
 4. Start contributing!
 Leave the Hugo server running in a shell.
