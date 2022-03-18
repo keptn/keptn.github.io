@@ -13,6 +13,8 @@ and then push your changes to the repository as a pull request.
 If you need help getting started, feel free to ask for help on the `#help-contributing` or `#keptn-docs` channels on the [Keptn Slack](https://keptn.sh/community/#slack).
 We were all new to this once and are happy to help you!
 
+If you want an already configured online IDE to contribute to Jest, you can use [Gitpod](https://gitpod.io/#https://github.com/keptn/keptn.github.io)!
+
 ## Guidelines for contributing
 
 * Always fork the repository then clone that fork to your local system rather than clone master directly.
