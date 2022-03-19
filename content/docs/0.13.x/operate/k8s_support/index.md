@@ -42,7 +42,7 @@ Keptn versions are expressed as `x.y.z`, where `x` is the major version, `y` is 
 * **EKS** ... Amazon Elastic Kubernetes Service
 * **GKE** ... Google Kubernetes Engine
 * **K3s** ... A certified Kubernetes distribution built for IoT & Edge computing: [k3s.io](https://k3s.io/)
-* **K3d** ... k3d is a lightweight wrapper to run k3s (Rancher Lab’s minimal Kubernetes distribution) in docker: [k3d.io](https://k3d.io/v5.3.0/)
+* **K3d** ... A lightweight wrapper that runs k3s (Rancher Lab’s minimal Kubernetes distribution) in Docker: [k3d.io](https://k3d.io/v5.3.0/)
 
 **Test Strategy for Kubernetes support:**
 
