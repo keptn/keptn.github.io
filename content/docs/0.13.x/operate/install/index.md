@@ -201,7 +201,7 @@ Note: k3d v5.x.x requires at least Docker v20.10.5 (runc >= v1.0.0-rc93) to work
    ```
    This installs version `v5.3.0` (please refer to the [K3d GitHub releases page](https://github.com/k3d-io/k3d/) for newer releases).
 
-1. Create a cluster called My keptn which will have port fowarding also will disable the traffic which is a ingress gateaway.
+1. Create a cluster called My keptn which has port fowarding and disables the traffic, which is a ingress gateaway.
    ```console
    k3d cluster create mykeptn -p "8082:80@loadbalancer" --k3s-arg "--no-deploy=traefik@server:*"
    ```
