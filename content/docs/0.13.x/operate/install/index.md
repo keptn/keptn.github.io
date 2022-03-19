@@ -188,7 +188,7 @@ Please refer to the [official homepage of K3s](https://k3s.io) for detailed inst
 <details><summary>K3d</summary>
 <p>
 
-Please refer to the [official homepage of K3d](https://k3d.io/v5.3.0/) for detailed installation instructions. Here, a short guide on how to run Keptn on K3d is provided for a Linux environment. **Note:** [docker](https://docs.docker.com/get-docker/) is required to be able to use k3d at all
+Please refer to the [official homepage of K3d](https://k3d.io/v5.3.0/) for detailed installation instructions. Here, a short guide on how to run Keptn on K3d is provided for a Linux environment. **Note:** [Docker](https://docs.docker.com/get-docker/) is required to be able to use k3d at all
 Note: k3d v5.x.x requires at least Docker v20.10.5 (runc >= v1.0.0-rc93) to work properly.
 [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) to interact with the Kubernetes cluster
 
