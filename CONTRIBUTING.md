@@ -74,7 +74,7 @@ To do this:
    ```
    git remote add upstream https://github.com/keptn/keptn.github.io.git 
    ```
-   Now you have your upstream setup in your local machine,whenver you need to make a new branch for making changes make sure your master branch is in sync with the main repository, to do this,make sure to be in the master branch
+   Now you have your upstream setup in your local machine,whenever you need to make a new branch for making changes make sure your master branch is in sync with the main repository, to do this,make sure to be in the master branch
 
    ```
    git pull upstream master
