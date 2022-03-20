@@ -66,14 +66,22 @@ Click the icon at the right end of that box to copy that URL.
 4. Remember to sync your fork with the master branch regularly.
 To do this:
 
-   - Go to the github page for your fork;
-if you need a link, go to the github page for the repository
-and click the **Fork** button;
-it will display the link to your clone.
-   - Use the **Fetch upstream** dropdown menu
-to determine if your fork is current.
-   - If your fork is not current,
-use the **Fetch and merge** button to sync it.
+   Go to github and copy the url of the main keptn-github-io repo
+   ```   
+   https://github.com/keptn/keptn.github.io.git
+   ```
+   make sure to be in the rootfolder of the project and the branch should be master branch and type
+   ```
+   git remote add upstream https://github.com/keptn/keptn.github.io.git 
+   ```
+   Now you have your upstream setup in your local machine,whenever you need to make a new branch for making changes make sure your master branch is in sync with the main repository, to do this,make sure to be in the master branch
+
+   ```
+   git pull upstream master
+   git push origin master
+   ```
+
+
 
 ## Install Hugo to build the docs locally
 
@@ -92,7 +100,6 @@ You need to load the git submodule (see next step) to install this theme.
 3. Execute the following command from the root folder of your clone:
     ```
     hugo server -D
-    ```
     ```
 4. Start contributing!
 Leave the Hugo server running in a shell.
