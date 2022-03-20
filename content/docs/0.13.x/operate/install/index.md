@@ -8,14 +8,32 @@ aliases:
   - /docs/0.13.1/operate/install/
 ---
 
+This page gives full instructions for installing Keptn in various scenarios.
+
+:bulb: For instructions about creating a lightweight Keptn installation
+for studying,demonstrations, or for Keptn development work,
+see [Quick Start](../../../quickstart/#2-install-keptn).
+
+The installation process involves the following steps:
+
+- Check and install prerequisites
+- Create or bring a Kubernetes cluster
+- Install Keptn CLI
+- Install Keptn, choosing the method you will use to expose and access Keptn
+- Authenticate Keptn CLI against the cluster
+- Authenticate the Keptn Bridge (Web UI)
+
 ## Prerequisites
-- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+
+- Check [Kubernetes support & Cluster size](../k8s_support/)
+for information about Keptn requirements.
+- Install [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
 
 ## Create or bring a Kubernetes cluster
 
 To create a Kubernetes cluster, select one of the following options:
 
-<details><summary>Azure Kubernetes Service (AKS)</summary>
+<details><summary markdown="span">Azure Kubernetes Service (AKS)</summary>
 <p>
 
 1. Install local tools
@@ -213,19 +231,17 @@ However, if you are facing problems, please let us know on https://slack.keptn.s
 </p>
 </details>
 
-## Quick Start
-
-:bulb: If you would like to install Keptn in a default way, please go to [Quick Start](../../../quickstart/#2-install-keptn).
-
-Use this page if you have already Keptn experience and would like to install it according to your needs.
 
 ## Install Keptn CLI
 
-Every Keptn release provides binaries for the Keptn CLI. These binaries are available for Linux, macOS, and Windows.
+Every Keptn release provides binaries for the Keptn CLI.
+You must install these separately so you can use the commands to install Keptn itself.
+These binaries are available for Linux, macOS, and Windows.
 
 - Download the version for your operating system from: [GitHub](https://github.com/keptn/keptn/releases/tag/0.13.1)
 - Unpack the archive
-- Find the `keptn` binary in the unpacked directory
+- Make the `keptn` binary executable;
+it is located in the unpacked directory
 
   - *Linux / macOS*: Add executable permissions (``chmod +x keptn``), and move it to the desired destination (e.g. `mv keptn /usr/local/bin/keptn`)
 
