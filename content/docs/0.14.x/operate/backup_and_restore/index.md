@@ -2,7 +2,7 @@
 title: Back up and restore Keptn
 description: How to back up and restore Keptn.
 weight: 50
-keywords: back up
+keywords: backup
 ---
 
 To secure all your data in your projects' Git repository, as well as all events that have occurred for these projects, you need to 
