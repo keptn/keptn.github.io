@@ -65,7 +65,7 @@ Click the icon at the right end of that box to copy that URL.
     ```
     Where <*UserName*> is your github username. The keptn.github.io directory is now available in the local directory.
 
-> Make sure you have installed [Github CLI](https://cli.github.com/) to follow the last instructions.
+> Be sure that [Git](https://github.com/git-guides/install-git) and [Github CLI](https://cli.github.com/) are installed on your system.
 
 4. Remember to sync your fork with the master branch regularly.
 To do this:
