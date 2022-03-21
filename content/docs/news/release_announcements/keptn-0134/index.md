@@ -3,7 +3,7 @@ title: Keptn 0.13.4
 weight: 76
 ---
 
-This is a bug fix release for Keptn 0.13.3, containing fixes for the shipyard-controller, webhook-service, and distributor.
+This is a bug fix release for Keptn containing fixes for the shipyard-controller, webhook-service, and distributor.
 
 ---
 

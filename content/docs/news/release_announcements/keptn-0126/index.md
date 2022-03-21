@@ -3,7 +3,7 @@ title: Keptn 0.12.6
 weight: 79
 ---
 
-This is a bug fix release for Keptn 0.12.4, containing fixes for the configuration-service, webhook-service, and distributor.
+This is a bug fix release for Keptn containing fixes for the configuration-service, webhook-service, and distributor.
 
 ---
 ### Bug Fixes
