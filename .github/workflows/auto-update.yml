@@ -72,7 +72,7 @@ jobs:
           ./dist/keptn generate docs --dir="$DOCS_PATH"
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v4
         with:
           add-paths: "./content/docs/${{ env.SOURCE_VERSION_SLUG }}/reference/cli/commands"
           token: ${{ secrets.KEPTN_BOT_TOKEN }}
