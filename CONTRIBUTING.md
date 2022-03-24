@@ -46,13 +46,13 @@ Currently, the Keptn project follows the approach outlined below. For clarificat
 
 **Documentation for new features**
 
-For the new `0.14.x` release, a folder in [content/docs](https://github.com/keptn/keptn.github.io/tree/master/content/docs) is available, which receives documentation for new features or breaking changes. This folder is *hidden*  and not publically rendered. This is controlled with the `ignoreFiles` flag in [config.toml](https://github.com/keptn/keptn.github.io/blob/master/config.toml). 
+For the new `0.14.x` release, a folder in [./content/docs](https://github.com/keptn/keptn.github.io/tree/master/content/docs) is available, which receives documentation for new features or breaking changes. This folder is *hidden*  and not publically rendered. This is controlled with the `ignoreFiles` flag in [config.toml](https://github.com/keptn/keptn.github.io/blob/master/config.toml). 
 
 > Update the content in folder `0.14.x` when documentation for a new feature is needed. 
 
 **Documentation for already released Keptn versions**
 
-For all previous releases like `0.13.x`, `0.12.x`, and lower, a folder in `https://github.com/keptn/keptn.github.io/tree/master/content/docs` is available. If a fix or enhancement of an already released version is needed, the documentation update needs to go into the corresponding folder **and** into the documentation for the release under development if the change is valid for upcoming releases too.
+For all previous releases like `0.13.x`, `0.12.x`, and lower, a folder in [./content/docs](https://github.com/keptn/keptn.github.io/tree/master/content/docs) is available. If a fix or enhancement of an already released version is needed, the documentation update needs to go into the corresponding folder **and** into the documentation for the release under development if the change is valid for upcoming releases too.
 
 > Update the content in the corresponding folder of the Keptn release **and** in the current folder that is in development. Consequently, your PR will target at least two folders if the change is relevant for the upcoming releases too.
 
