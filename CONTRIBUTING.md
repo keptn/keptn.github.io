@@ -36,7 +36,7 @@ If you see a problem and are unable to fix it yourself or have an idea for an en
 If possible, also attach screenshots that illustrate the bug.
 * If you want to do the work on an issue, include that information in your description of the issue.
 
-### Guidelines for working on documentation in development or already released documentation
+## Guidelines for working on documentation in development or already released documentation
 
 If you want to work on an issue or enhancement, two questions arise: 
 1. Does it relate to a *new feature* that is not yet released? 
@@ -139,7 +139,7 @@ The Hugo generator described above only renders the markdown files under the */c
 If you need to render another markdown file (such as this *CONTRIBUTING.md* file) to check your formatting, you have the following options:
 
    - If you are using an IDE to author the markdown text, use the markdown preview browser for the IDE.
-   - You can push your changes to github and use the Github previewer (*View Page*).
+   - You can push your changes to GitHub and use the Github previewer (*View Page*).
    - You can install and use the [grip](https://github.com/joeyespo/grip/blob/master/README.md) previewer to view the rendered content locally.
 When *grip* is installed, you can format the specified file locally by running the following in its own shell:
      ```
@@ -204,10 +204,10 @@ you can modify the documentation or add new material
 by editing the markdown file(s) in the local clone of your fork
 and then submitting a _pull request (PR)_.
 
-Note that you can also modify the source using the github editor.
+Note that you can also modify the source using the GitHub editor.
 This is very useful when you want to fix a typo or make a small editorial change but, if you are doing significant writing, it is generally better to work on files in your local clone.
 
-The following sequence of steps is a reasonable workflow for creating new content on your local clone and pushing it to github to be reviewed and merged.
+The following sequence of steps is a reasonable workflow for creating new content on your local clone and pushing it to GitHub to be reviewed and merged.
 
 1. Execute the following command from the root folder and leave it running in a shell:
     ```
@@ -236,7 +236,7 @@ The `git commit -s` command commits the files and signs that you are contributin
    ```
 
    Use vi commands to add a description of the PR (should be 80 characters or less) to the commit. This will be displayed as the title of the PR in listings.
-You can add multiple lines explaining the PR here but, in general, it is better to only supply the PR title here; you can add more information and edit the PR title when you create the PR on the github UI page.
+You can add multiple lines explaining the PR here but, in general, it is better to only supply the PR title here; you can add more information and edit the PR title when you create the PR on the GitHub UI page.
 
 5. Push your branch to github:
    - If you cloned your fork to use SSH, the command is:
@@ -263,10 +263,10 @@ Git responds with an error message that gives you the full command line to use; 
      ```
    - Check that the title of the PR is correct; click the "Edit" button to modify it.
 Add "WIP" (Work in Progress) or "Draft" to the title if the PR is not yet ready for general review.
-   - Add a full description of the work in the PR, including any notes for reviewers, a reference to the relevant github issue (if any), and tags for specific people (if any) who may be interested in this PR.
-   - Carefully review the changes github displays for this PR to ensure that they are what you want.
+   - Add a full description of the work in the PR, including any notes for reviewers, a reference to the relevant GitHub issue (if any), and tags for specific people (if any) who may be interested in this PR.
+   - Carefully review the changes GitHub displays for this PR to ensure that they are what you want.
    - Click the green "Create pull request" button to create the PR.
-You may want to record the PR number somewhere for future reference although you can always find the PR in the github lists of open and closed PRs.
+You may want to record the PR number somewhere for future reference although you can always find the PR in the GitHub lists of open and closed PRs.
    - Github automatically populates the "Reviewers" block.
    - If this PR is not ready for review, click the "Still in progress? Convert to draft" string under the list of reviewers.
 People can still review the content but can not merge the PR until you remove the "Draft" status.
@@ -279,10 +279,10 @@ People can still review the content but can not merge the PR until you remove th
 
 7. Your PR should be reviewed within a few days.  Watch for any comments that may be added by reviewers and implement or respond to the recommended changes as soon as possible.
 
-   * If a reviewer makes a github suggestion and you agree with the change, just click "Accept this change" to create a commit for that modification.  You can also group several suggestions into a single commit using the github tools.
-   * You can make other changes using the github editor or you can work in your local branch to make modifications.
+   * If a reviewer makes a GitHub suggestion and you agree with the change, just click "Accept this change" to create a commit for that modification.  You can also group several suggestions into a single commit using the GitHub tools.
+   * You can make other changes using the GitHub editor or you can work in your local branch to make modifications.
 
-      * If changes have been made using the github editor, you will need to do a `git pull` request to pull those commits back to your local branch before you push the new changes.
+      * If changes have been made using the GitHub editor, you will need to do a `git pull` request to pull those commits back to your local branch before you push the new changes.
       * After modifying the local source, issue the `git add .`, `git commit`, and `git push` commands to push your changes to github.
 
 8. When your PR has the appropriate approvals, it will be merged and the revised content should be published on the web site within a few minutes.
