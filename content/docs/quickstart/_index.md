@@ -7,7 +7,14 @@ weight: 1
 hidechildren: true # this flag hides all sub-pages in the sidebar-multicard.html
 ---
 
-Pick your favourite installation method: [Helm](#helm), [Docker](#keptn-hello-world-docker-based), [Keptn CLI](#keptn-cli) or [k3d](#k3d-keptn).
+This Quick Start guide shows how to quickly create a local Keptn installation
+that runs either as a [Helm](#helm) chart
+or as a [Docker](#keptn-hello-world-docker-based) container
+and run some exercises to demonstrate Keptn functionality.
+
+You can install and run Keptn on virtually any Kubernetes cluster.
+See Install CLI and Keptn for detailed instructions
+about creating a Keptn cluster locally or in the cloud.
 
 ## Helm
 
