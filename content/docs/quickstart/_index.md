@@ -8,8 +8,8 @@ hidechildren: true # this flag hides all sub-pages in the sidebar-multicard.html
 ---
 
 This Quick Start guide shows how to quickly create a local Keptn installation
-that runs either as a [Helm](#helm) chart
-or as a [Docker](#keptn-hello-world-docker-based) container
+that runs either as a [Helm](#helm) chart in Kubernetes
+or as [Docker](#keptn-hello-world-docker-based) container in K3d
 and run some exercises to demonstrate Keptn functionality.
 
 You can install and run Keptn on virtually any Kubernetes cluster.
