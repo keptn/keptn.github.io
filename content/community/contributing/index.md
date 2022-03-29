@@ -15,18 +15,18 @@ regardless of your background and experience!
 2. Join the `#help-contributing` channel.
    It can be used for any questions related to Keptn contributions.
    See the links to more specific channels, e.g. working groups, below.
-3. Explore the newcomer friendly issues, see the links below.
+3. Explore the good first issues, see the links below.
 
 ## Keptn development
 
 If you are interested 
-The most of Keptn codebase is implemented in Golang and JavaScript/Angular.
+Most of the Keptn codebase is implemented in Golang and JavaScript/Angular.
 We also heavily use Kubernetes, Helm, Docker and
-other container technologies like CloudEvents or OpenTelemetry.
+other container technologies like CloudEvents and OpenTelemetry.
 
 ### Keptn core components
 
-**1️.** If you are new to Keptn and want to get started contributing, please take a look at our [**CONTRIBUTING.md**](https://github.com/keptn/keptn/blob/master/CONTRIBUTING.md) file that lays out the process on how to contribute to the project.
+**1️.** If you are new to Keptn and want to begin contributing, please take a look at our [**CONTRIBUTING.md**](https://github.com/keptn/keptn/blob/master/CONTRIBUTING.md) file that lays out the process on how to contribute to the project.
 
 **2️.** We curate a list of [**good first issues**](https://github.com/keptn/keptn/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) which are suitable for first-time contributors as they do not require in-depth knowledge of our project. If you find a good first issue, please comment on it and a Keptn maintainer will be happy to assign it to you.
 
