@@ -6,7 +6,7 @@ This documentation is authored with [markdown](https://www.markdownguide.org/bas
 and rendered using the [Hugo static website generator framework](http://gohugo.io).
 
 We welcome and encourage contributions of all levels.
-You can make modifications using the Github editor;
+You can make modifications using the GitHub editor;
 this works well for small modifications but, if you are making significant changes, you may find it better to fork and clone the repository and make changes using the text editor or IDE of your choice.
 You can also run the [Hugo](https://gohugo.io/) based website locally to check the rendered documentation
 and then push your changes to the repository as a pull request.
@@ -36,36 +36,16 @@ If you see a problem and are unable to fix it yourself or have an idea for an en
 If possible, also attach screenshots that illustrate the bug.
 * If you want to do the work on an issue, include that information in your description of the issue.
 
-## Guidelines for working on documentation in development or already released documentation
-
-If you want to work on an issue or enhancement, two questions arise: 
-1. Does it relate to a *new feature* that is not yet released? 
-1. Does it relate to an *already released* Keptn version?
-
-Currently, the Keptn project follows the approach outlined below. For clarification, an example is used in which the Keptn project recently released `0.13.x` and is currently working on `0.14.x`. These release versions will of course increase when the release train moves on. 
-
-**Documentation for new features**
-
-For the new `0.14.x` release, a folder in [./content/docs](https://github.com/keptn/keptn.github.io/tree/master/content/docs) is available, which receives documentation for new features or breaking changes. This folder is *hidden*  and not publically rendered. This is controlled with the `ignoreFiles` flag in [config.toml](https://github.com/keptn/keptn.github.io/blob/master/config.toml). 
-
-> Update the content in folder `0.14.x` when documentation for a new feature is needed. 
-
-**Documentation for already released Keptn versions**
-
-For all previous releases like `0.13.x`, `0.12.x`, and lower, a folder in [./content/docs](https://github.com/keptn/keptn.github.io/tree/master/content/docs) is available. If a fix or enhancement of an already released version is needed, the documentation update needs to go into the corresponding folder **and** into the documentation for the release under development if the change is valid for upcoming releases too.
-
-> Update the content in the corresponding folder of the Keptn release **and** in the current folder that is in development. Consequently, your PR will target at least two folders if the change is relevant for the upcoming releases too.
-
 ## Fork and clone the repository
 
 Perform the following steps to create a copy of this repository on your local machine:
 
 1. Fork the Keptn repository:
 
-     - Log into Github (or create a GitHub account and then log into it).
+     - Log into GitHub (or create a GitHub account and then log into it).
      - Go to the [Keptn docs repository](https://github.com/keptn/keptn.github.io).
      - Click the **Fork** button at the top of the screen.
-     - Choose the user for the fork from the options you are given, usually your Github ID.
+     - Choose the user for the fork from the options you are given, usually your GitHub ID.
 
    A copy of this repository is available in your GitHub account.
 
@@ -104,6 +84,25 @@ To do this:
    git push origin master
    ```
 
+## Guidelines for working on documentation in development or already released documentation
+
+If you want to work on an issue or enhancement, two questions arise: 
+1. Does it relate to a *new feature* that is not yet released? 
+1. Does it relate to an *already released* Keptn version?
+
+Currently, the Keptn project follows the approach outlined below. For clarification, an example is used in which the Keptn project recently released `0.13.x` and is currently working on `0.14.x`. These release versions will of course increase when the release train moves on. 
+
+**Documentation for new features**
+
+For each recent release (e.g. `0.14.x`), a folder in [./content/docs](https://github.com/keptn/keptn.github.io/tree/master/content/docs) is available, which receives documentation for new features or breaking changes. This folder is *hidden*  and not publically rendered. This is controlled with the `ignoreFiles` flag in [config.toml](https://github.com/keptn/keptn.github.io/blob/master/config.toml). When writing your documenation enhancements or changes locally - as explained in the section [Install Hugo to build the docs locally](https://github.com/keptn/keptn.github.io/blob/master/CONTRIBUTING.md#install-hugo-to-build-the-docs-locally) - control the rendering by adding/removing the folder from the `ignoreFiles` in `config.toml`. However, make sure to not push the modified `config.toml` when filing your PR. 
+
+> Update the content in folder `0.14.x` when documentation for a new feature is needed. 
+
+**Documentation for already released Keptn versions**
+
+For all previous releases like `0.13.x`, `0.12.x`, and lower, a folder in [./content/docs](https://github.com/keptn/keptn.github.io/tree/master/content/docs) is available. If a fix or enhancement of an already released version is needed, the documentation update needs to go into the corresponding folder **and** into the documentation for the release under development if the change is valid for upcoming releases too.
+
+> Update the content in the corresponding folder of the Keptn release **and** in the current folder that is in development. Consequently, your PR will target at least two folders if the change is relevant for the upcoming releases too.
 
 ## Install Hugo to build the docs locally
 
@@ -139,7 +138,7 @@ The Hugo generator described above only renders the markdown files under the */c
 If you need to render another markdown file (such as this *CONTRIBUTING.md* file) to check your formatting, you have the following options:
 
    - If you are using an IDE to author the markdown text, use the markdown preview browser for the IDE.
-   - You can push your changes to GitHub and use the Github previewer (*View Page*).
+   - You can push your changes to GitHub and use the GitHub previewer (*View Page*).
    - You can install and use the [grip](https://github.com/joeyespo/grip/blob/master/README.md) previewer to view the rendered content locally.
 When *grip* is installed, you can format the specified file locally by running the following in its own shell:
      ```
@@ -147,7 +146,6 @@ When *grip* is installed, you can format the specified file locally by running t
      ```
      Point your browser at `localhost:6419` to view the formatted file.
      The document updates automatically each time you write your changes to disk.
-
 
 ## Source file structure
 
@@ -267,7 +265,7 @@ Add "WIP" (Work in Progress) or "Draft" to the title if the PR is not yet ready 
    - Carefully review the changes GitHub displays for this PR to ensure that they are what you want.
    - Click the green "Create pull request" button to create the PR.
 You may want to record the PR number somewhere for future reference although you can always find the PR in the GitHub lists of open and closed PRs.
-   - Github automatically populates the "Reviewers" block.
+   - GitHub automatically populates the "Reviewers" block.
    - If this PR is not ready for review, click the "Still in progress? Convert to draft" string under the list of reviewers.
 People can still review the content but can not merge the PR until you remove the "Draft" status.
    - The block of the PR that reports on checks will include the following item:
@@ -291,6 +289,7 @@ People can still review the content but can not merge the PR until you remove th
    ```
    git branch -d <branch-name>
    ```
+
 ### Developer Certification of Origin (DCO)
 
 Licensing is very important to open source projects. It helps ensure the software continues to be available under the terms that the author desired.
