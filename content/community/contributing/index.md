@@ -6,18 +6,33 @@ sidebar_multicard: false
 icon: tasks
 ---
  
-
-We are welcoming new contributors to the Keptn project!
+We welcome new contributors to the Keptn project,
+regardless of your background and experience!
 
 ## Getting started
 
-**1️.** If you are new to Keptn and want to get started contributing, please take a look at our [**CONTRIBUTING.md**](https://github.com/keptn/keptn/blob/master/CONTRIBUTING.md) file that lays out the process on how to contribute to the project.
+1. Join us on [Keptn Slack](/community/#slack).
+2. Join the `#help-contributing` channel.
+   It can be used for any questions related to Keptn contributions.
+   See the links to more specific channels, e.g. working groups, below.
+3. Explore the good first issues, see the links below.
+
+## Keptn development
+
+If you are interested 
+Most of the Keptn codebase is implemented in Golang and JavaScript/Angular.
+We also heavily use Kubernetes, Helm, Docker and
+other container technologies like CloudEvents and OpenTelemetry.
+
+### Keptn core components
+
+**1️.** If you are new to Keptn and want to begin contributing, please take a look at our [**CONTRIBUTING.md**](https://github.com/keptn/keptn/blob/master/CONTRIBUTING.md) file that lays out the process on how to contribute to the project.
 
 **2️.** We curate a list of [**good first issues**](https://github.com/keptn/keptn/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) which are suitable for first-time contributors as they do not require in-depth knowledge of our project. If you find a good first issue, please comment on it and a Keptn maintainer will be happy to assign it to you.
 
 **3️.** Once you have finished implementing your feature or bug fix, please consider [**presenting it in a Keptn developer meeting**](../meetings/) to let the Keptn community know and celebrate your achievement! 
 
-## Keptn integrations
+### Keptn integrations
 
 If you want to contribute an **integration** to Keptn, please take a look at the [**Keptn Sandbox**](https://github.com/keptn-sandbox/contributing), which is the starting point for Keptn integrations.
 
@@ -73,9 +88,10 @@ If you want to join as sponsor, reach out to the community in the `#advocacy-and
 
 ## Internships and Mentorship programs
 
-Keptn intends to participate in global mentorship programs like Google Summer of Code.
+Keptn participates in global mentorship programs like Google Summer of Code and Google Season of Docs.
 We also have an account on [LFX Mentorship](https://mentorship.lfx.linuxfoundation.org/#projects_all)
 and can host our own mentorship programs for important topics contributing to the Keptn roadmap.
+Learn more about our programs on [this page](https://github.com/keptn/community/tree/main/mentorship).
 
 If you are interested in mentorship programs as a potential mentor or mentee,
 reach out to the community in the `#advocacy-and-outreach` channel on the Keptn Slack.
@@ -84,3 +100,4 @@ reach out to the community in the `#advocacy-and-outreach` channel on the Keptn 
 
 Any contributions will be appreciated even if they aren't listed here yet!
 We welcome contributors with any backgrounds and levels of experience: code reviews, design and artwork, organizing events, content management, testing, issue triage, localization, etc.
+For any questions, use the `#help-contributing` channel.
