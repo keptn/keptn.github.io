@@ -9,21 +9,27 @@ icon: setup
 
 Bring your Dynatrace SaaS or Dynatrace-managed tenant. If you do not have a Dynatrace tenant, sign up for a [free trial](https://www.dynatrace.com/trial/) or a [developer account](https://www.dynatrace.com/developer/).
 
-To setup Dynatrace monitoring on your Kubernetes cluster, please follow the official Dynatrace documentation on [Deploy Dynatrace Operator](https://www.dynatrace.com/support/help/technology-support/container-platforms/kubernetes/monitor-kubernetes-environments/). 
+To set up Dynatrace monitoring on your Kubernetes cluster, please follow the official Dynatrace documentation on [Deploy Dynatrace Operator](https://www.dynatrace.com/support/help/technology-support/container-platforms/kubernetes/monitor-kubernetes-environments/). 
 
 **Notes:**
-- By default, most Kubernetes clusters will only offer a self-signed certificate. In such cases, please select *Skip SSL Security Check* when deploying the Dynatrace Operator.
-- When deploying the Dynatrace Operator to a cluster running on a *Container-Optimized OS (COS)*, which includes GKE, Anthos, CaaS and PKS environments, please select the *Enable volume storage* option.
-- To verify that the Dynatrace Operator is working properly, check the status of the pods, e.g. using kubectl:
 
-  ```console
-  kubectl get pods -n dynatrace
-  ```
-  A status of `Running` indicates that the Dynatrace Operator is functioning normally, while `Error` or `CrashLoopBackOff` are signs of a problem.
-- To ensure that existing workloads are being monitored, please restart the pods. For example, to restart the pods in the `sockshop-dev` namespace:
-  ```console
-  kubectl delete pods --all --namespace=sockshop-dev
-  ```
+* By default, most Kubernetes clusters only offer a self-signed certificate. In such cases, please select *Skip SSL Security Check* when deploying the Dynatrace Operator.
+
+* When deploying the Dynatrace Operator to a cluster running on a *Container-Optimized OS (COS)*, which includes GKE, Anthos, CaaS and PKS environments, please select the *Enable volume storage* option.
+
+* To verify that the Dynatrace Operator is working properly, check the status of the pods by using the kubectl command:
+
+    A status of `Running` indicates that the Dynatrace Operator is functioning normally, while `Error` or `CrashLoopBackOff` are signs of a problem.
+
+    ```console
+    kubectl get pods -n dynatrace
+    ```
+
+* To ensure that existing workloads are being monitored, restart the pods. For example, to restart the pods in the `sockshop-dev` namespace:
+ 
+    ```console
+    kubectl delete pods --all --namespace=sockshop-dev
+    ```
 
 ## Install Dynatrace Keptn integration
 
