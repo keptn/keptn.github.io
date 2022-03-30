@@ -96,7 +96,7 @@ The Dynatrace integration into Keptn is handled by the *dynatrace-service*.
 * Specify the version of the dynatrace-service you want to deploy. Please see the [compatibility matrix](https://github.com/keptn-contrib/dynatrace-service#compatibility-matrix) of the dynatrace-service to pick the version that works with your Keptn.
 
     ```console
-    VERSION=<VERSION>   # e.g.: VERSION=0.17.0
+    VERSION=<VERSION>   # e.g.: VERSION=0.22.0
     ```
 
 *  To install the *dynatrace-service*, execute:
