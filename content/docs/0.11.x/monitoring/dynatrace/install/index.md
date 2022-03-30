@@ -96,7 +96,7 @@ The *dynatrace-service* also requires access to the Keptn API, provided through 
 
 The Dynatrace integration into Keptn is handled by the *dynatrace-service*.
 
-* Specify the version of the dynatrace-service you want to deploy. Please see the [compatibility matrix](https://github.com/keptn-contrib/dynatrace-service#compatibility-matrix) of the dynatrace-service to pick the version that works with your Keptn.
+* Specify the version of the dynatrace-service you want to deploy. Please see the [compatibility matrix](https://github.com/keptn-contrib/dynatrace-service/blob/master/documentation/compatibility.md) of the dynatrace-service to pick the version that works with your Keptn.
 
     ```console
     VERSION=<VERSION>   # e.g.: VERSION=0.20.0
