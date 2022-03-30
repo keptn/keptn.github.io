@@ -69,7 +69,7 @@ To function correctly, the *dynatrace-service* requires access to a Dynatrace te
 * Create a secret (named `dynatrace` by default) containing the credentials for the Dynatrace Tenant (`DT_API_TOKEN` and `DT_TENANT`).
 
     ```console
-   keptn create secret dynatrace --from-literal="DT_TENANT=$DT_TENANT" --from-literal="DT_API_TOKEN=$DT_API_TOKEN"
+   keptn create secret dynatrace --scope="dynatrace-service" --from-literal="DT_TENANT=$DT_TENANT" --from-literal="DT_API_TOKEN=$DT_API_TOKEN"
     ```
 
 ### 3. Gather Keptn credentials
@@ -96,7 +96,7 @@ The Dynatrace integration into Keptn is handled by the *dynatrace-service*.
 * Specify the version of the dynatrace-service you want to deploy. Please see the [compatibility matrix](https://github.com/keptn-contrib/dynatrace-service#compatibility-matrix) of the dynatrace-service to pick the version that works with your Keptn.
 
     ```console
-    VERSION=<VERSION>   # e.g.: VERSION=0.17.0
+    VERSION=<VERSION>   # e.g.: VERSION=0.22.0
     ```
 
 *  To install the *dynatrace-service*, execute:
