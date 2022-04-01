@@ -23,7 +23,7 @@ Finally, the webhook UI allows configuring if Keptn has to wait for the acknowle
 ---
 
 
-## [0.14.1](https://github.com/keptn/keptn/compare/0.13.0...0.14.1) (2022-03-30)
+## [0.14.1](https://github.com/keptn/keptn/compare/0.13.0...0.14.1) (2022-04-01)
 
 
 ### ⚠ BREAKING CHANGES
