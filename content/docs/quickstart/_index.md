@@ -123,10 +123,10 @@ curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=v4.4
     k3d cluster create mykeptn -p "8082:80@loadbalancer" --k3s-server-arg "--kube-proxy-arg=conntrack-max-per-core=0"  --k3s-agent-arg "--kube-proxy-arg=conntrack-max-per-core=0" --agents 1
     ```
 
-2. **Download and install the [Keptn CLI](../0.13.x/reference/cli)**
+2. **Download and install the [Keptn CLI](../0.14.x/reference/cli)**
 
     ```
-    curl -sL https://get.keptn.sh | KEPTN_VERSION=0.13.4 bash
+    curl -sL https://get.keptn.sh | bash
     ```
 
 3. **Install Keptn** control-plane and execution-plane for continuous delivery use case or use the `helm install` version [mentioned below](#kubernetes-version-not-supported).
@@ -135,14 +135,14 @@ curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=v4.4
     keptn install --use-case=continuous-delivery
     ```
 
-    Keptn comes with different installation options, please have a look at the [installation documentation](../0.13.x/operate) for more details on cluster requirements, resource consumption, supported Kubernetes versions, and more.
+    Keptn comes with different installation options, please have a look at the [installation documentation](../0.14.x/operate) for more details on cluster requirements, resource consumption, supported Kubernetes versions, and more.
     Please note that although during the installation procedure it might be mentioned that Istio is required, it is *not required* for this quickstart guide.
 
     <details><summary>Installation logs</summary>
     <p>The installation logs will print the following output:
     <pre>
     Installing Keptn ...
-    Helm Chart used for Keptn installation: https://charts.keptn.sh/packages/keptn-0.13.4.tgz
+    Helm Chart used for Keptn installation: https://charts.keptn.sh/packages/keptn-0.14.1.tgz
     Start upgrading Helm Chart keptn in namespace keptn
     Finished upgrading Helm Chart keptn in namespace keptn
     Keptn control plane has been successfully set up on your cluster.
@@ -155,9 +155,9 @@ curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=v4.4
     &nbsp;* To quickly access Keptn, you can use a port-forward and then authenticate your Keptn CLI:
     &nbsp;- kubectl -n keptn port-forward service/api-gateway-nginx 8080:80
     &nbsp;- keptn auth --endpoint=http://localhost:8080/api --api-token=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
-    &nbsp;* Alternatively, follow the instructions provided at: https://keptn.sh/docs/0.13.x/operate/install/#authenticate-keptn-cli
+    &nbsp;* Alternatively, follow the instructions provided at: https://keptn.sh/docs/0.14.x/operate/install/#authenticate-keptn-cli
     &nbsp;* To expose Keptn on a public endpoint, please continue with the installation guidelines provided at:
-    &nbsp;- https://keptn.sh/docs/0.13.x/operate/install#install-keptn
+    &nbsp;- https://keptn.sh/docs/0.14.x/operate/install#install-keptn
     </pre>
     **There is no need to follow the instructions from the installation log - the quickstart guide will cover this!**
     </p>
@@ -171,7 +171,7 @@ curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=v4.4
 
 5. **Access Bridge**: you can now access the Keptn Web UI at `http://127.0.0.1.nip.io:8082/bridge`.
 
-    For different way on how to expose your Keptn installation, please refer to <https://keptn.sh/docs/0.13.x/operate/install/#install-keptn>.
+    For different way on how to expose your Keptn installation, please refer to <https://keptn.sh/docs/0.14.x/operate/install/#install-keptn>.
 
 
 ### Try Multi-Stage Delivery
@@ -256,12 +256,12 @@ With Keptn installed, have a look at the different [tutorials](https://tutorials
 
 Review the documentation for a full reference on all Keptn capabilities and components and how they can be combined/extended to your needs:
 
-- [Operate Keptn](../0.13.x/operate)
-- [Manage Keptn](../0.13.x/manage)
-- [Continuous Delivery](../0.13.x/continuous_delivery)
-- [Quality Gates](../0.13.x/quality_gates)
-- [Automated Operations](../0.13.x/automated_operations)
-- [Custom Integrations](../0.13.x/integrations)
+- [Operate Keptn](../0.14.x/operate)
+- [Manage Keptn](../0.14.x/manage)
+- [Continuous Delivery](../0.14.x/continuous_delivery)
+- [Quality Gates](../0.14.x/quality_gates)
+- [Automated Operations](../0.14.x/automated_operations)
+- [Custom Integrations](../0.14.x/integrations)
 
 ## Wrapping up
 
@@ -284,9 +284,9 @@ k3d cluster delete mykeptn
 In case `keptn install` prevents you from installing Keptn due to a (currently) unsupported Kubernetes version, you can bypass this check at your own risk by using the Helm installation option of Keptn.
 
 ```bash
-helm install keptn https://github.com/keptn/keptn/releases/download/0.13.4/keptn-0.13.4.tgz -n keptn --create-namespace --set=continuous-delivery.enabled=true --wait
-helm install helm-service https://github.com/keptn/keptn/releases/download/0.13.4/helm-service-0.13.4.tgz -n keptn --create-namespace --wait
-helm install jmeter-service https://github.com/keptn/keptn/releases/download/0.13.4/jmeter-service-0.13.4.tgz -n keptn --create-namespace --wait
+helm install keptn https://github.com/keptn/keptn/releases/download/0.14.1/keptn-0.14.1.tgz -n keptn --create-namespace --set=continuous-delivery.enabled=true --wait
+helm install helm-service https://github.com/keptn/keptn/releases/download/0.14.1/helm-service-0.14.1.tgz -n keptn --create-namespace --wait
+helm install jmeter-service https://github.com/keptn/keptn/releases/download/0.14.1/jmeter-service-0.14.1.tgz -n keptn --create-namespace --wait
 ```
 
 Now continue with step 4 from the quickstart guide.
