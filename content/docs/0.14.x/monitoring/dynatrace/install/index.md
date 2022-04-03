@@ -9,21 +9,27 @@ icon: setup
 
 Bring your Dynatrace SaaS or Dynatrace-managed tenant. If you do not have a Dynatrace tenant, sign up for a [free trial](https://www.dynatrace.com/trial/) or a [developer account](https://www.dynatrace.com/developer/).
 
-To setup Dynatrace monitoring on your Kubernetes cluster, please follow the official Dynatrace documentation on [Deploy Dynatrace Operator](https://www.dynatrace.com/support/help/technology-support/container-platforms/kubernetes/monitor-kubernetes-environments/). 
+To set up Dynatrace monitoring on your Kubernetes cluster, please follow the official Dynatrace documentation on [Deploy Dynatrace Operator](https://www.dynatrace.com/support/help/technology-support/container-platforms/kubernetes/monitor-kubernetes-environments/). 
 
 **Notes:**
-- By default, most Kubernetes clusters will only offer a self-signed certificate. In such cases, please select *Skip SSL Security Check* when deploying the Dynatrace Operator.
-- When deploying the Dynatrace Operator to a cluster running on a *Container-Optimized OS (COS)*, which includes GKE, Anthos, CaaS and PKS environments, please select the *Enable volume storage* option.
-- To verify that the Dynatrace Operator is working properly, check the status of the pods, e.g. using kubectl:
 
-  ```console
-  kubectl get pods -n dynatrace
-  ```
-  A status of `Running` indicates that the Dynatrace Operator is functioning normally, while `Error` or `CrashLoopBackOff` are signs of a problem.
-- To ensure that existing workloads are being monitored, please restart the pods. For example, to restart the pods in the `sockshop-dev` namespace:
-  ```console
-  kubectl delete pods --all --namespace=sockshop-dev
-  ```
+* By default, most Kubernetes clusters only offer a self-signed certificate. In such cases, please select *Skip SSL Security Check* when deploying the Dynatrace Operator.
+
+* When deploying the Dynatrace Operator to a cluster running on a *Container-Optimized OS (COS)*, which includes GKE, Anthos, CaaS and PKS environments, please select the *Enable volume storage* option.
+
+* To verify that the Dynatrace Operator is working properly, check the status of the pods by using the kubectl command:
+
+    A status of `Running` indicates that the Dynatrace Operator is functioning normally, while `Error` or `CrashLoopBackOff` are signs of a problem.
+
+    ```console
+    kubectl get pods -n dynatrace
+    ```
+
+* To ensure that existing workloads are being monitored, restart the pods. For example, to restart the pods in the `sockshop-dev` namespace:
+
+    ```console
+    kubectl delete pods --all --namespace=sockshop-dev
+    ```
 
 ## Install Dynatrace Keptn integration
 
@@ -63,7 +69,7 @@ To function correctly, the *dynatrace-service* requires access to a Dynatrace te
 * Create a secret (named `dynatrace` by default) containing the credentials for the Dynatrace Tenant (`DT_API_TOKEN` and `DT_TENANT`).
 
     ```console
-   keptn create secret dynatrace --from-literal="DT_TENANT=$DT_TENANT" --from-literal="DT_API_TOKEN=$DT_API_TOKEN"
+   keptn create secret dynatrace --scope="dynatrace-service" --from-literal="DT_TENANT=$DT_TENANT" --from-literal="DT_API_TOKEN=$DT_API_TOKEN"
     ```
 
 ### 3. Gather Keptn credentials
@@ -87,10 +93,10 @@ The *dynatrace-service* also requires access to the Keptn API, provided through 
 
 The Dynatrace integration into Keptn is handled by the *dynatrace-service*.
 
-* Specify the version of the dynatrace-service you want to deploy. Please see the [compatibility matrix](https://github.com/keptn-contrib/dynatrace-service#compatibility-matrix) of the dynatrace-service to pick the version that works with your Keptn.
+* Specify the version of the dynatrace-service you want to deploy. Please see the [compatibility matrix](https://github.com/keptn-contrib/dynatrace-service/blob/master/documentation/compatibility.md) of the dynatrace-service to pick the version that works with your Keptn.
 
     ```console
-    VERSION=<VERSION>   # e.g.: VERSION=0.17.0
+    VERSION=<VERSION>   # e.g.: VERSION=0.22.0
     ```
 
 *  To install the *dynatrace-service*, execute:

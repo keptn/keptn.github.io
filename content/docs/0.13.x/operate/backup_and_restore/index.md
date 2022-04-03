@@ -1,23 +1,23 @@
 ---
-title: Backup and restore Keptn
-description: How to backup and restore Keptn.
+title: Back up and restore Keptn
+description: How to back up and restore Keptn.
 weight: 50
 keywords: backup
 ---
 
 To secure all your data in your projects' Git repository, as well as all events that have occurred for these projects, you need to 
-backup the data within the *Configuration Service*, the *MongoDB*, and credentials to your projects' Git upstream repos (if you have configured those).
+back up the data within the *Configuration Service*, the *MongoDB*, and credentials to your projects' Git upstream repos (if you have configured those).
 The following sections describe how to back up that data and how to restore it.
 
 **Note:** These instructions do not cover backing up any Helm- or Istio-related configurations.
 
 :warning: Please make sure your `kubectl` is connected to the cluster where Keptn is running. 
 
-## Backup Keptn
+## Back up Keptn
 
-This section describes how to backup your Keptn and store it on your local machine. 
+This section describes how to back up your Keptn and store it on your local machine. 
 
-### Backup Configuration Service
+### Back up Configuration Service
 
 First, create a local backup directory containing all data within the Git repos of the configuration-service. To do so, please execute the following command:
 
@@ -37,7 +37,7 @@ $ ls config-svc-backup/config
 lost+found	sockshop my-project
 ```
 
-### Backup Mongodb Data
+### Back up Mongodb Data
 
 The next step is to create a backup of the mongodb database in the `keptn-datastore` namespace using the `mongodump` tool.`
 
@@ -60,9 +60,9 @@ MONGODB_POD=$(kubectl get pods -n keptn -lapp.kubernetes.io/name=mongo -ojsonpat
 kubectl cp keptn/$MONGODB_POD:/tmp/dump ./mongodb-backup/ -c mongodb
 ```
 
-### Backup Git credentials
+### Back up Git credentials
 
-For projects where you have configured a Git upstream repository, we advise you to backup the Kubernetes secrets needed to access those.
+For projects where you have configured a Git upstream repository, we advise you to back up the Kubernetes secrets needed to access those.
 To do so, please execute the following command for each project for which you have configured an upstream repo:
 
 ```console
@@ -86,6 +86,10 @@ kubectl cp ./config-svc-backup/config/ keptn/$CONFIG_SERVICE_POD:/data -c config
 To make sure the Git repositories within the configuration service are in a consistent state, they need to be reset to the current HEAD. To do so, 
 please execute the following commands:
 
+<!-- 
+Please note: This script is tested with an integration test here: https://github.com/keptn/keptn/blob/master/test/go-tests/test_backuprestore.go#L73
+Do not change, without adapting the change in the integration test. 
+-->
 ```console
 cat <<EOT >> reset-git-repos.sh
 #!/bin/sh
@@ -101,9 +105,9 @@ done
 EOT
 
 CONFIG_SERVICE_POD=$(kubectl get pods -n keptn -lapp.kubernetes.io/name=configuration-service -ojsonpath='{.items[0].metadata.name}')
-kubectl cp ./reset-git-repos.sh keptn/$CONFIG_SERVICE_POD:/ -c configuration-service
-kubectl exec -n keptn $CONFIG_SERVICE_POD -c configuration-service -- chmod +x -R ./reset-git-repos.sh
-kubectl exec -n keptn $CONFIG_SERVICE_POD -c configuration-service -- ./reset-git-repos.sh
+kubectl cp ./reset-git-repos.sh keptn/$CONFIG_SERVICE_POD:/data/config -c configuration-service
+kubectl exec -n keptn $CONFIG_SERVICE_POD -c configuration-service -- chmod +x -R ./data/config/reset-git-repos.sh
+kubectl exec -n keptn $CONFIG_SERVICE_POD -c configuration-service -- ./data/config/reset-git-repos.sh
 ``` 
 
 ### Restore MongoDB data

@@ -65,7 +65,7 @@ NAME                TYPE        CLUSTER-IP    EXTERNAL-IP                  PORT(
 api-gateway-nginx   ClusterIP   10.107.0.20   <ENDPOINT_OF_API_GATEWAY>    80/TCP    44m
   ```
 
-<details><summary>Retrieve API Token and Authenticate Keptn CLI on **Linux / MacOS**</summary>
+<details><summary>Retrieve API Token and Authenticate Keptn CLI on **Linux / macOS**</summary>
 <p>
 
 * Set the environment variable `KEPTN_ENDPOINT`:

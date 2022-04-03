@@ -185,6 +185,38 @@ Please refer to the [official homepage of K3s](https://k3s.io) for detailed inst
 </p>
 </details>
 
+ <details><summary>K3d</summary>
+<p>
+
+Please refer to the [official homepage of K3d](https://k3d.io/v5.3.0/) for detailed installation instructions. Here, a short guide on how to run Keptn on K3d is provided for a Linux environment.
+
+**Note:** [Docker](https://docs.docker.com/get-docker/) is required to use k3d.
+k3d v5.x.x requires at least Docker v20.10.5 (runc >= v1.0.0-rc93) to work properly.
+
+You must install [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) before installing K3d. This is used to interact with the Kubernetes cluster.
+
+
+ 
+1. Download, install [K3d](https://k3d.io/v5.3.0/) (tested with [v5.3.0](../k8s_support)) and run K3d using the following command:
+
+   ```console
+   curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=v5.3.0 bash
+   ```
+   This installs version `v5.3.0` (please refer to the [K3d GitHub releases page](https://github.com/k3d-io/k3d/) for newer releases).
+
+1. Create a cluster called My keptn which has port fowarding and disables the traffic, which is a ingress gateaway.
+   ```console
+   k3d cluster create mykeptn -p "8082:80@loadbalancer" --k3s-arg "--no-deploy=traefik@server:*"
+   ```
+   
+1. Verify that the connection to the cluster works
+   ```console
+   kubectl get nodes   
+   ```
+
+</p>
+</details>
+
 <details><summary>Minikube</summary>
 <p>
 
@@ -223,7 +255,7 @@ Use this page if you have already Keptn experience and would like to install it 
 
 Every Keptn release provides binaries for the Keptn CLI. These binaries are available for Linux, macOS, and Windows.
 
-- Download the version for your operating system from: [GitHub](https://github.com/keptn/keptn/releases/tag/0.14.0)
+- Download the version for your operating system from: [GitHub](https://github.com/keptn/keptn/releases/tag/0.14.1)
 - Unpack the archive
 - Find the `keptn` binary in the unpacked directory
 
