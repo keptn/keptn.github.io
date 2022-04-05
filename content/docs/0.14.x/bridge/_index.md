@@ -1,7 +1,7 @@
 ---
-title: Keptn Bridge
+title: Keptn Bridge (Web UI)
 description: The user interface of Keptn that presents all projects and services managed by Keptn. It is automatically installed with your Keptn deployment.
-weight: 21
+weight: 8
 ---
 
 ## Views in Keptn Bridge
