@@ -11,7 +11,7 @@ aliases:
 
 With Keptn 0.14.x, we upgraded the NATS cluster and with that, we changed its name.
 For existing integration that are not yet updated to use a 0.14.x distributor, please update the distributor `PUBSUB_URL` environment variable and set it to `nats://keptn-nats`.
-Please, refer to the [distributor documentation](https://github.com/keptn/keptn/tree/master/distributor#distributor).
+Please, refer to the [distributor documentation](https://github.com/keptn/keptn/tree/master/distributor#distributor) for further details.
 
 <details><summary>Expand to see upgrade instructions:</summary>
 <p>
