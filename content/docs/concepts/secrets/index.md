@@ -46,5 +46,5 @@ Based on the `scopes.yaml` file above, when a secret with scope `keptn-webhook-s
 Thus, every Kubernetes Pod bound to the service account *keptn-webhook-service* is able to read the secret.
 
 **NOTE:** The `scopes.yaml` must be modified manually in order to add, modify or delete any scopes.
-Currently,is no API endpoint is provided for that.
+Currently, no API endpoint is provided for that.
 
