@@ -35,7 +35,7 @@ An example of an SLI is the *response time* (also named request latency), which 
 
 A service-level objective is *"a target value or range of values for a service level that is measured by an SLI."* (as defined in the [Site-Reliability Engineering Book](https://landing.google.com/sre/sre-book/chapters/service-level-objectives/)). 
 
-An example of an SLO can define that a specific request must return results within 100 milliseconds. Keptn quality gates can comprise several SLOs that are all evaluated and scored, based even on different weights for each SLO to consider different importance of each SLO. Keptn defines SLOs in a dedicated `slo.yaml`. To learn more about the SLO configuration, please continue [here](../../0.13.x/quality_gates/slo/). 
+An example of an SLO can define that a specific request must return results within 100 milliseconds. Keptn quality gates can comprise several SLOs that are all evaluated and scored, based even on different weights for each SLO to consider different importance of each SLO. Keptn defines SLOs in a dedicated `slo.yaml`. To learn more about the SLO configuration, please continue [here](../../0.14.x/quality_gates/slo/). 
 
 ## References
 
