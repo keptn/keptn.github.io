@@ -13,7 +13,7 @@ Keptn addresses this challenge by introducing the concept of micro-operations th
 
 Keptn complies with a declarative approach for configuring remediation and operations workflows as code on the level of individual microservices (rather than on applications). Consequently, this declaration is versioned next to the operational config and deployed with each new version of the microservice.
 
-Below is an example of a declarative `remediation.yaml` file as used in Keptn. The file defines two problem types and the respective remediation actions. In case of a response time degradation, new instances are scaled up and in the case of a failure rate increase, a feature is disabled. To learn more about the remediation configuration, please continue [here](../../0.13.x/automated_operations/remediation). 
+Below is an example of a declarative `remediation.yaml` file as used in Keptn. The file defines two problem types and the respective remediation actions. In case of a response time degradation, new instances are scaled up and in the case of a failure rate increase, a feature is disabled. To learn more about the remediation configuration, please continue [here](../../0.14.x/automated_operations/remediation). 
 
 ```yaml
 version: 0.2.0
