@@ -16,7 +16,7 @@ During the installation of Keptn, [NATS](https://nats.io/) is installed into the
 ## Keptn CLI
 The Keptn CLI needs to be installed on the local machine and is used to send commands to Keptn by interacting with the API of Keptn. To communicate with Keptn you need to know a shared secret that is generated during the installation and verified by the *api* component.
 
-**Note:** A dedicated Keptn CLI section is provided [here](../../0.13.x/reference/cli/), which helps you to get started and lists all available commands.
+**Note:** A dedicated Keptn CLI section is provided [here](../../0.14.x/reference/cli/), which helps you to get started and lists all available commands.
 
 ## Keptn Bridge
 
