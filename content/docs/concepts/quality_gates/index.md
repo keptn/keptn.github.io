@@ -29,7 +29,7 @@ Keptn quality gates base on the concepts of *Service-Level Indicators (SLIs)* an
 
 A service-level indicator is a *"carefully defined quantitative measure of some aspect of the level of service that is provided"* (as defined in the [Site-Reliability Engineering Book](https://landing.google.com/sre/sre-book/chapters/service-level-objectives/)). 
 
-An example of an SLI is the *response time* (also named request latency), which is the indicator of how long it takes for a request to respond with an answer. Other prominent SLIs are *error rate* (or failure rate), and throughput. Keptn defines all SLIs in a dedicated `sli.yaml` file to make SLIs reusable within several quality gates. To learn more about the SLI configuration, please continue [here](../../0.13.x/quality_gates/sli/). 
+An example of an SLI is the *response time* (also named request latency), which is the indicator of how long it takes for a request to respond with an answer. Other prominent SLIs are *error rate* (or failure rate), and throughput. Keptn defines all SLIs in a dedicated `sli.yaml` file to make SLIs reusable within several quality gates. To learn more about the SLI configuration, please continue [here](../../0.14.x/quality_gates/sli/). 
 
 ## What is a Service-Level Objective (SLO)?
 
