@@ -6,7 +6,10 @@ weight: 75
 Keptn 0.14.1 contains improvements in the inner models used by the Keptn core services. This improves the resiliency of Keptn and pushes forward upgrading your Keptn installation without any downtime.
 Besides, it is now possible to trigger any sequence using the CLI and the Bridge.
 Furthermore, the environment screen contains new features: the button for triggering a sequence is on the top of the page and the history of the previous evaluations for the selected service is shown.
-Finally, the webhook UI allows configuring if Keptn has to wait for the acknowledgment of the webhook receiver.
+The webhook UI allows configuring if Keptn has to wait for the acknowledgment of the webhook receiver.
+Finally, Keptn 0.14.x upgrades the NATS dependency and with that, the cluster name changed.
+For existing integration that are not yet updated to use a 0.14.x distributor, please update the `PUBSUB_URL` environment variable and set it to `nats://keptn-nats`.
+
 
 ---
 
@@ -30,6 +33,7 @@ Finally, the webhook UI allows configuring if Keptn has to wait for the acknowle
 
 * **cli:** The CLI does not require anymore passing git_user as a parameter to create or upgrade a project. In case you are experiencing issues with the command, we suggest trying it without specifying the user.
 * **configuration-service:** adding invalid token results in a 404 HTTP status code (424 previously)
+* **nats**: the NATS cluster name changed from `keptn-nats-cluster` to `keptn-nats`. Please check the [upgrade documentation](https://keptn.sh/docs/0.14.x/operate/upgrade/).
 
 ### Features
 
