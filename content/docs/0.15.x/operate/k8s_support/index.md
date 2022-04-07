@@ -2,7 +2,7 @@
 title: Kubernetes support & Cluster size
 description: Keptn and Kubernetes compatibility overview and required cluster size.
 weight: 70
-keywords: [0.14.x-operate]
+keywords: [0.15.x-operate]
 ---
 
 This document describes the maximum version skew supported between Keptn and Kubernetes.
@@ -21,8 +21,8 @@ Keptn versions are expressed as `x.y.z`, where `x` is the major version, `y` is 
 
 | Keptn Version /<br>Installation                           | Kubernetes  | AKS                       | EKS                       | GKE           | OpenShift   | K3s         | Minishift               |
 |-----------------------------------------------------------|:-----------:|:-------------------------:|:-------------------------:|:-------------:|:-----------:|:-----------:|:------------------------|
-| **0.14.x** / <br>Control & Execution plane<br>*see: (2)*   | 1.21 - 1.19 | 1.21 - 1.19 | 1.18 - 1.16<br>*see: (1)* | 1.21 - 1.19   | 4, 3.11     | 1.21 - 1.16 | 1.34.2<br>(K8s: 1.11)   |
-| **0.14.x** / <br>Control plane                             | 1.21 - 1.19 | 1.21 - 1.19 | 1.18 - 1.16<br>*see: (1)* | 1.21 - 1.19   | 4, 3.11     | 1.21 - 1.16 | 1.34.2<br>(K8s: 1.11)   |
+| **0.15.x** / <br>Control & Execution plane<br>*see: (2)*   | 1.21 - 1.19 | 1.21 - 1.19 | 1.18 - 1.16<br>*see: (1)* | 1.21 - 1.19   | 4, 3.11     | 1.21 - 1.16 | 1.34.2<br>(K8s: 1.11)   |
+| **0.15.x** / <br>Control plane                             | 1.21 - 1.19 | 1.21 - 1.19 | 1.18 - 1.16<br>*see: (1)* | 1.21 - 1.19   | 4, 3.11     | 1.21 - 1.16 | 1.34.2<br>(K8s: 1.11)   |
 
 **Remarks:**
 
@@ -54,7 +54,7 @@ Keptn versions are expressed as `x.y.z`, where `x` is the major version, `y` is 
 
 The size of the Keptn control- and execution plane has been derived automatically and is also reported at the latest release; see *Kubernetes Resource Data* at: [https://github.com/keptn/keptn/releases](https://github.com/keptn/keptn/releases).
 
-The predefined resource values for the Keptn services are available in the [helm-charts](https://github.com/keptn/keptn/blob/0.14.1/installer/manifests/keptn/charts/control-plane/templates/core.yaml).
+The predefined resource values for the Keptn services are available in the [helm-charts](https://github.com/keptn/keptn/blob/0.15.0/installer/manifests/keptn/charts/control-plane/templates/core.yaml).
 
 As a rule of thumb, Keptn control-plane will run with 2 vCPUs, 4 GB of memory and roughly 10 GB of additional disk space (Docker Images + Persistent Volumes).
 For execution plane services with continuous-delivery support, your Kubernetes cluster requires additional resources.

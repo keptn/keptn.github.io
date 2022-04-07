@@ -1,10 +1,9 @@
 ---
-title: Release 0.14.x
-linktitle: Release 0.14.x
-weight: 982
+title: Release 0.15.x
+linktitle: Release 0.15.x
+weight: 981
 sidebar_multicard: true
 icon: docs
 aliases:
-  - /docs/0.14.0/
-  - /docs/0.14.1/
+  - /docs/0.15.0/
 ---

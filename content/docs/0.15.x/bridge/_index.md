@@ -176,13 +176,13 @@ You can find links to for different integration possibilities here. This makes i
 integrations for different CI providers.
 
 Please note that the page contains dynamic content that is loaded from https://get.keptn.sh/integrations.html. By clicking the button the data is requested,
-and additional data is gathered from the client. For more information about this see https://keptn.sh/docs/0.14.x/reference/load_information/.
+and additional data is gathered from the client. For more information about this see https://keptn.sh/docs/0.15.x/reference/load_information/.
 
 ### Settings
 
 #### Project settings
 In the settings view the project settings can be edited. 
-To get more information about how to manage your projects with the settings, visit [Manage Projects](https://keptn.sh/docs/0.14.x/reference/bridge/manage_projects).
+To get more information about how to manage your projects with the settings, visit [Manage Projects](https://keptn.sh/docs/0.15.x/reference/bridge/manage_projects).
 
 {{< popup_image
 link="./assets/project-settings.png"
@@ -191,7 +191,7 @@ caption="Keptn Bridge Project Settings View">}}
 
 #### Service settings
 In this view, services can be created, updated and deleted.
-To get more information about how services can be managed in your settings, visit [Manage Services](https://keptn.sh/docs/0.14.x/reference/bridge/manage_services).
+To get more information about how services can be managed in your settings, visit [Manage Services](https://keptn.sh/docs/0.15.x/reference/bridge/manage_services).
 
 {{< popup_image
 link="./assets/service-settings.png"
@@ -202,7 +202,7 @@ caption="Keptn Bridge Service Settings View">}}
 
 ### Approvals
 
-If you have a [manual approval strategy](https://keptn.sh/docs/0.14.x/continuous_delivery/multi_stage/#approval) defined in your shipyard.yaml file, approvals can be handled with the Keptn Bridge.
+If you have a [manual approval strategy](https://keptn.sh/docs/0.15.x/continuous_delivery/multi_stage/#approval) defined in your shipyard.yaml file, approvals can be handled with the Keptn Bridge.
 At sequence execution, if the approval task is reached, a panel is shown in all relevant screens:
 
 In the environment view a pending approval can be recognized by the blue service out-of-sync icon at the according stage.
@@ -226,7 +226,7 @@ caption="Approval in Sequences">}}
 
 ### Manage projects
 
-See the documentation for [managing projects](https://keptn.sh/docs/0.14.x/reference/bridge/manage_projects) to see which features for creating and updating projects the Bridge provides.
+See the documentation for [managing projects](https://keptn.sh/docs/0.15.x/reference/bridge/manage_projects) to see which features for creating and updating projects the Bridge provides.
 
 ## Early access version of Keptn Bridge
 

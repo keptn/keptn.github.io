@@ -2,7 +2,7 @@
 title: Working and Integrating with Quality Gates
 description: Integrate a Quality Gate into an existing pipeline.
 weight: 7
-keywords: [0.14.x-quality_gates]
+keywords: [0.15.x-quality_gates]
 ---
 
 In order to work with and integrate quality gates, two actions are needed:

@@ -2,7 +2,7 @@
 title: Manage Sequences
 description: Manage sequences from the Bridge
 weight: 40
-keywords: [0.14.x-bridge]
+keywords: [0.15.x-bridge]
 ---
 
 ## Trigger new sequences

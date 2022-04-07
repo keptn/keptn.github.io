@@ -2,7 +2,7 @@
 title: Service
 description: Create a service in Keptn.
 weight: 30
-keywords: [0.14.x-manage]
+keywords: [0.15.x-manage]
 aliases:
 ---
 

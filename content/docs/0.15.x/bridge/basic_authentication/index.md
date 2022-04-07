@@ -2,7 +2,7 @@
 title: Basic Authentication
 description: Enable/Disable basic authentication
 weight: 10
-keywords: [0.14.x-bridge]
+keywords: [0.15.x-bridge]
 ---
 
 The Keptn Bridge has a basic authentication feature, which can be controlled by setting the following two environment variables in the deployment of the bridge:

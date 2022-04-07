@@ -2,9 +2,9 @@
 title: Delivery Assistant
 description: Approval to control the delivery process
 weight: 50
-keywords: [0.14.x-cd]
+keywords: [0.15.x-cd]
 aliases:
-  - /docs/0.14.x/reference/bridge/delivery_assistent/
+  - /docs/0.15.x/reference/bridge/delivery_assistent/
 ---
 
 If you would like to extend the [multi-stage delivery](../multi_stage/#approval-strategy) with the capabilities of the delivery assistant, just add the `approval` task to a sequence in your shipyard, as shown by the example of the *delivery* sequence in the *staging* stage: 

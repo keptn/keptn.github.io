@@ -2,7 +2,7 @@
 title: Write a Keptn-service
 description: Implement your Keptn-service that listens to Keptn events and extends your Keptn with certain functionality.
 weight: 2
-keywords: [0.14.x-integration]
+keywords: [0.15.x-integration]
 ---
 
 Here you learn how to add additional functionality to your Keptn installation with a custom [*Keptn-service*](#write-your-keptn-service), [*SLI-provider*](../sli_provider), or [*Action-provider*](../action_provider).
@@ -54,7 +54,7 @@ The `PUBSUB_TOPIC` variable sets the initial subscription for your service. If a
 spec:
   containers:
   - name: distributor
-    image: keptn/distributor:0.14.1
+    image: keptn/distributor:0.15.0
     ports:
     - containerPort: 8080
     resources:
@@ -271,7 +271,7 @@ spec:
     spec:
       containers:
       - name: distributor
-        image: keptn/distributor:0.14.1
+        image: keptn/distributor:0.15.0
         ports:
         - containerPort: 8080
         resources:

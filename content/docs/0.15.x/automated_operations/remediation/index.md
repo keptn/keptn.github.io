@@ -3,7 +3,7 @@ title: Remediation Config
 description: Configure a remediation and add it to your service.
 weight: 1
 icon: setup
-keywords: [0.14.x-automated-operations]
+keywords: [0.15.x-automated-operations]
 ---
 
 The remediation config describes a remediation workflow in a declarative manner. Hence, it only defines what needs to be done and leaves all the details to other components. 
