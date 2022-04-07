@@ -54,7 +54,8 @@ Please, refer to the [distributor documentation](https://github.com/keptn/keptn/
    * If the CLI still complains about the context, please use the Helm approach to upgrade your cluster:
 
    ```console
-   helm upgrade keptn keptn --install -n keptn --create-namespace --repo=https://charts.keptn.sh --version=0.14.1 --reuse-values --wait
+   helm get values keptn -n keptn > MY_VALUES.yaml
+   helm upgrade keptn keptn --install -n keptn --create-namespace --repo=https://charts.keptn.sh --version=0.14.1 --wait --values=MY_VALUES.yaml
    ```
 
 * :warning: **Step 3.** If you are using the **jmeter-service** or **helm-service**, upgrade them to 0.14.1 using the following commands:
