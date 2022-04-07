@@ -2,7 +2,7 @@
 title: Tutorials
 icon: tasks
 layout: tutorials
-weight: 4
+weight: 40
 hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
 ---
 
