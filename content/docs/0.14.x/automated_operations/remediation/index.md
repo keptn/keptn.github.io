@@ -129,3 +129,4 @@ spec:
     ```console
     keptn add-resource --project=sockshop --stage=production --service=serviceXYZ --resource=remediation.yaml --resourceUri=remediation.yaml
     ```
+
