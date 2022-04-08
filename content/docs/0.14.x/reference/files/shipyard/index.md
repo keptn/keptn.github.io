@@ -1,25 +1,29 @@
 ---
 title: Shipyard
 description: Information about shipyard, sequences and tasks to define processes and workflows.
-weight: 25
+weight: 715
 keywords: [0.14.x-manage]
 aliases:
 ---
 
-## Declare Shipyard (before creating a project)
+The *shipyard.yaml* file defines the activities to be performed for a Keptn project
+and the order in which those activities are executed.
 
-* A shipyard is defined at the level of a project. This means that all services in a project share the same shipyard definition.
+* Each project must have one, and only one, *shipyard.yaml* file.
 
-* A shipyard defines the stages each deployment has to go through until it is released in the final stage, e.g., the production stage.
+* Each *shipyard.yaml* file contains one or more `stage`s,
+which are groupings of activities to be executed until the project is deployed and,
+optionally, a "production" change that defines remediation activities to be found
+in response to issues detected on the production site.
+deployment is released in the final stage
 
-* A shipyard can consist of any number of stages; but at least one. A stage must have at least the name property.
+* Each stage must contain one or more `sequences`
+that define the `tasks` to be performed and what triggers that sequence.
 
-* A stage can consist of any number of sequences; but at least one.
 
+## Definition of Stage
 
-### Definition of Stage
-
-A stage is declared by its name. This name will be used for the branch in the Git repository and Kubernetes namespace to which services at this stage will be deployed to.
+A stage is declared by its name. This name is used for the branch in the Git repository and Kubernetes namespace to which services at this stage are deployed.
 
 **Example of a shipyard with three stages:**
 
@@ -35,7 +39,7 @@ spec:
     - name: "production"
 ```
 
-### Definition of Sequence in a Stage
+## Definition of Sequence in a Stage
 
 After defining stages, sequences can be added to a stage. A sequence is an ordered list of tasks that are triggered sequentially. A `sequence` consists of the following properties:
 
@@ -77,8 +81,131 @@ spec:
         - name: "deployment"
         - name: "release"
 ```
+### Remediation sequence
 
-### Reserved Keptn Tasks
+The `remediation` sequence describes the activities performed
+to remedy problems that are found
+either in a [multi stage delivery](../../continuous_delivery/multi_stage) workflow
+or on the production site.
+
+**Example**: Simple shipyard file with a remediation sequence in a single stage
+```yaml
+apiVersion: "spec.keptn.sh/0.2.3"
+kind: "Shipyard"
+metadata:
+  name: "shipyard-sockshop"
+spec:
+  stages:
+    - name: "production"
+      sequences:
+        - name: "remediation"
+          triggeredOn:
+            - event: "production.remediation.finished"
+              selector:
+                match:
+                  evaluation.result: "fail"
+          tasks:
+            - name: "get-action"
+            - name: "action"
+            - name: "evaluation"
+              triggeredAfter: "10m"
+              properties:
+                timeframe: "10m"
+```
+
+#### Configure Remediation
+
+Below is an example of a declarative remediation config:
+
+**Example of a remediation configuration:**
+
+```yaml
+apiVersion: spec.keptn.sh/0.1.4
+kind: Remediation
+metadata:
+  name: serviceXYZ-remediation
+spec:
+  remediations:
+    - problemType: Response time degradation
+      actionsOnOpen:
+        - action: scaling
+          name: Scaling ReplicaSet by 1
+          description: Scaling the ReplicaSet of a Kubernetes Deployment by 1
+          value: "1"
+```
+
+A remediation is configured based on two properties:
+
+* **problemType**: Maps a problem to a remediation.
+* **actionsOnOpen**: Declares a list of actions triggered in the course of the remediation.
+
+The problem type maps a problem to a remediation by a matching problem title.
+
+* Multiple problem types can be declared for a single remediation.
+* When triggering a remediation based on an unknown problem, the problem type `default` is supported.
+
+The example below shows a remediation configured for the problem type *Response time degradation*
+and *Failure rate increase* as well as any unknown problem.
+
+```yaml
+apiVersion: spec.keptn.sh/0.1.4
+kind: Remediation
+metadata:
+  name: serviceXYZ-remediation
+spec:
+  remediations:
+  - problemType: Response time degradation
+    actionsOnOpen:
+  - problemType: Failure rate increase
+    actionsOnOpen:
+  - problemType: default
+    actionsOnOpen:
+```
+
+#### Actions on open
+
+* An **action** has a name used for display purposes.
+* The **description** provides more details about the action.
+* The **action** property specifies a unique name required by the action-provider (Keptn-service) that executes the action.
+* The **value** property allows adding an arbitrary list of values for configuring the action.
+
+If multiple actions are declared, Keptn sends out events in sequential order.
+In the following example, the event for triggering `scaling` is sent out
+before the event for `featuretoggle` is fired.
+
+```yaml
+---
+apiVersion: spec.keptn.sh/0.1.4
+kind: Remediation
+metadata:
+  name: serviceXYZ-remediation
+spec:
+  remediations:
+  - problemType: Response time degradation
+    actionsOnOpen:
+    - name: Scaling ReplicaSet by 1
+      description: Scaling the ReplicaSet of a Kubernetes Deployment by 1
+      action: scaling
+      value: "1"
+    - name: Toogle feature flag
+      action: featuretoggle
+      description: Toggle feature flag EnablePromotion from ON to OFF.
+      value:
+        EnablePromotion: off
+```
+
+#### Add Remediation Configuration to a Service
+
+**Important:** In the following command, the value of `resourceUri` must be set to `remediation.yaml`.
+
+* To add a remediation configuration to a service,
+use the [keptn add-resource](../../reference/cli/commands/keptn_add-resource) command:
+
+    ```console
+    keptn add-resource --project=sockshop --stage=production --service=serviceXYZ --resource=remediation.yaml --resourceUri=remediation.yaml
+    ```
+
+## Reserved Keptn Tasks
 
 Keptn supports a set of opinionated tasks for declaring a delivery or remediation sequence:
 
@@ -91,9 +218,10 @@ Keptn supports a set of opinionated tasks for declaring a delivery or remediatio
 * rollback
 * test
 
-#### Action
+### Action
 
-The action task indicates that a remediation action should be executed by an action provider. It is used within a [remediation workflow](../../automated_operations/remediation).
+The action task indicates that a remediation action should be executed by an action provider.
+It is used within a [remediation workflow](../../../automated_operations/remediation).
 
 **Usage:**
 
@@ -101,9 +229,13 @@ The action task indicates that a remediation action should be executed by an act
 - name: action
 ```
 
-#### Approval
+### Approval
 
-The approval task intercepts the task sequence and waits for a user to approve or decline the open approval. This task can be added, for example, before deploying an artifact into the next stage. The approval strategy can be defined based on the evaluation result `pass` and `warning`. Keptn supports the following approval strategies for the evaluation results `pass` and `warning`:
+The approval task intercepts the task sequence
+and waits for a user to approve or decline the open approval.
+This task can be added, for example, before deploying an artifact into the next stage.
+The approval strategy can be defined based on the evaluation result `pass` and `warning`.
+Keptn supports the following approval strategies for the evaluation results `pass` and `warning`:
 
 * `automatic`: The artifact is deployed automatically.
 * `manual`: The user is asked for approval before triggering the deployment.
@@ -128,7 +260,9 @@ Per default, an `automatic` approval strategy is used for evaluation result `pas
     warning: manual
 ```
 
-**Note:** If the approval is the first task of a sequence, the approval service will not be provided with the result from a previous task. In this case, it will always fall back to the `manual` approval strategy.
+**Note:** If the approval is the first task of a sequence,
+the approval service will not be provided with the result from a previous task.
+In this case, it will always fall back to the `manual` approval strategy.
 
 <details><summary>**Example:** Extended shipyard with a mandatory approval task in production</summary>
 
@@ -156,9 +290,11 @@ spec:
 </p>
 </details>
 
-#### Deployment
+### Deployment
 
-Defines the deployment strategy (see [Continuous Delivery](../../continuous_delivery/)) used to deploy a new version of a service. Keptn supports deployment strategies of type:
+Defines the deployment strategy (see [Continuous Delivery](../../continuous_delivery/))
+used to deploy a new version of a service.
+Keptn supports deployment strategies of type:
 
 * `direct`: Deploys a new version of a service by replacing the old version of the service.
 * `blue_green_service`: Deploys a new version of a service next to the old one. After a successful validation of this new version, it replaces the old one and is marked as stable (i.e., it becomes the `primary`-version).
@@ -184,7 +320,7 @@ Defines the deployment strategy (see [Continuous Delivery](../../continuous_deli
     deploymentstrategy: user_managed
 ```
 
-#### Evaluation
+### Evaluation
 
 Defines the quality evaluation that is executed to verify the quality of a deployment based on its SLOs/SLIs.
 
@@ -193,9 +329,10 @@ Defines the quality evaluation that is executed to verify the quality of a deplo
 - name: evaluation
 ```
 
-#### Get-Action
+### Get-Action
 
-The get-action task is used to extract the desired remediation action from a remediation.yaml within a [remediation workflow](../../automated_operations/remediation).
+The get-action task extracts the desired remediation action from a remediation.yaml
+within a [remediation workflow](../../automated_operations/remediation).
 
 **Usage:**
 
@@ -203,16 +340,17 @@ The get-action task is used to extract the desired remediation action from a rem
 - name: get-action
 ```
 
-#### Release
+### Release
 
-Defines the releasing task that is executed after a successful deployment happened. This means that production traffic is shifted towards the new deployment in this task.
+Defines the releasing task that is executed after a successful deployment happened.
+This means that production traffic is shifted towards the new deployment in this task.
 
 **Usage:**
 ```
 - name: release
 ```
 
-#### Action
+### Action
 
 Defines the execution of a remediation action retrieved by `get-action`.
 
@@ -221,7 +359,7 @@ Defines the execution of a remediation action retrieved by `get-action`.
 - name: action
 ```
 
-#### Rollback
+### Rollback
 
 Defines the rollback task that is executed when a rollback shall be triggered.
 
@@ -230,7 +368,7 @@ Defines the rollback task that is executed when a rollback shall be triggered.
 - name: rollback
 ```
 
-#### Test
+### Test
 
 Defines the test strategy used to validate a deployment. Keptn supports tests of type:
 
@@ -456,7 +594,7 @@ spec:
 
 **Result:** After extending the shipyard as shown above, remediations should be executed when a problem event is retrieved (see [remediation workflow](../../automated_operations/remediation)).
 
-### Define a trigger for a sequence 
+## Define a trigger for a sequence 
 
 An advanced and powerful feature of the shipyard is that you can define *triggers* to kick-off a sequence. Therefore, a sequence offers the `triggeredOn` property where a list of events can be specified. The event type you can list there are events that refer to the status of a sequence execution. Their name follows the pattern:
 
@@ -664,3 +802,10 @@ Since we want to trigger an evaluation, we need to provide addition properties a
   "shkeptnspecversion": "0.2.3"
 }
 ```
+
+## See also
+
+* [Deployment with Helm](../../../continuous_delivery/deployment_helm) 
+describes how to use the various `deploymentstrategy` options that are supported.
+
+
