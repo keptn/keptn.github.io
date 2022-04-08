@@ -53,7 +53,7 @@ For triggering an evaluation, you can choose beween two variants to select the e
 * Start / end date and time
 
 #### **Timeframe**
-For the timeframe, there are no mandatory fields. If nothing is given as timeframe it defaults to 5 minutes. If nothing is given for the start date, it defaults to the current time.
+For the timeframe, there are no mandatory fields.
 
 Fields:
 
@@ -65,13 +65,20 @@ Fields:
 link="./assets/trigger-05-trigger-evaluation-timeframe"
 caption="Sequences">}}
 
-#### **Start / end date**
-Please mind, that an evaluation is performed in the past. That means that the start date has to be **after** the end date.
+Special considerations:
+* If you set a timeframe but no start date, the evaluation will be performed to the past for the given timeframe. This is the only case where evaluations will be performed to the past.
+* As soon as a start date is given, the evaluation is always performed from this point to an end date. The end date is either given or will be calculated from the timeframe.
+* Please note: If the timeframe is calculated to an end date too far into the future, evaluation sequences might fail depending on the configured SLI provider.
 
+{{< popup_image
+link="./assets/trigger-08-failed-sequence-dt-service"
+caption="Dynatrace-service will fail sequence if end date is too far in the future">}}
+
+#### **Start / end date**
 Mandatory fields:
 
-* Start at - Defines the start date and time from when the evaluation is performed. Has to be **after** the end date.
-* End at - Defines the end date and time until when the evaluation is performed. Has to be **before** the start date.
+* Start at - Defines the start date and time from when the evaluation is performed. Has to be before the end date.
+* End at - Defines the end date and time until when the evaluation is performed. Has to be after the start date.
 
 Optional fields:
 
