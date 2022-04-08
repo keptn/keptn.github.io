@@ -11,7 +11,7 @@ In Keptn 0.14.x, this can be either *Dynatrace* or *Prometheus*.
 
 ## Dynatrace SLI-Provider
 
-* Complete steps from section [Install Dynatrace Keptn integration](../../../monitoring/dynatrace/install/#install-dynatrace-keptn-integration).
+* Complete steps from section [Install Dynatrace Keptn integration](../../monitoring/dynatrace/install/#install-dynatrace-keptn-integration).
 
 * To configure Keptn to use Dynatrace SLIs for your project (e.g. **musicshop**), execute the following command:
 
@@ -23,7 +23,7 @@ In Keptn 0.14.x, this can be either *Dynatrace* or *Prometheus*.
 
 ## Prometheus SLI-Provider
 
-* Complete steps from section [Set Up Prometheus SLI-provider](../../../monitoring/prometheus/install/#setup-prometheus-sli-provider).
+* Complete steps from section [Set Up Prometheus SLI-provider](../../monitoring/prometheus/install/#setup-prometheus-sli-provider).
 
 * To configure Keptn to use the Prometheus SLI-provider for your project (e.g. **musicshop**), execute the following command:
 
@@ -38,14 +38,3 @@ In Keptn 0.14.x, this can be either *Dynatrace* or *Prometheus*.
 * To create and add your custom SLI-provider to Keptn, please follow the instructions [here](../../../integrations/sli_provider).
 
 
-* [sli](sli)
-
-* [Dynatrace](../../../monitoring/dynatrace/configure_slis/)
-
-* [Prometheus](../../../monitoring/prometheus/install/#configure-custom-prometheus-slis)
-
-* [Quality Gates](../../../quality_gates)
-
-*  [Set Up Prometheus SLI-provider](../../../monitoring/prometheus/install/#setup-prometheus-sli-provider)
-
-* [Configure custom Prometheus SLIs](../../../monitoring/prometheus/install/#configure-custom-prometheus-slis).
