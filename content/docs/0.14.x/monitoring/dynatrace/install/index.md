@@ -37,9 +37,9 @@ To set up Dynatrace monitoring on your Kubernetes cluster, please follow the off
 
 To function correctly, the *dynatrace-service* requires access to a Dynatrace tenant, specified through `DT_TENANT` and `DT_API_TOKEN`:
 
-* The `DT_TENANT` has to be set according to the appropriate pattern:
-    - Dynatrace SaaS tenant: `{your-environment-id}.live.dynatrace.com`
-    - Dynatrace-managed tenant: `{your-domain}/e/{your-environment-id}`
+* The `DT_TENANT` has to be set according to the appropriate [pattern](https://www.dynatrace.com/support/help/get-started/monitoring-environment/environment-id):
+    - Dynatrace SaaS: `https://{your-environment-id}.live.dynatrace.com`
+    - Dynatrace Managed: `https://{your-domain}/e/{your-environment-id}`
 
 * To create a Dynatrace API token `DT_API_TOKEN`, log in to your Dynatrace tenant and go to **Settings > Integration > Dynatrace API**. In this settings page, create a new API token with the following permissions:
     - Read metrics
