@@ -1,36 +1,47 @@
 ---
-title: Service-Level Indicators (SLI)
+title: sli.yaml
 description: Configure and add Service-Level Indicators (SLIs) to your service.
-weight: 10
-keywords: [0.15.x-quality_gates]
+weight: 725
+keywords: [0.14.x-quality_gates]
 ---
 
-A Service-Level Indicator (SLI) is a defined quantitative measure of some aspects of the service level. The query for an SLI is provider/tool-dependent and therefore each SLI-provider relies on a specific SLI configuration. The SLI configuration contains a list of indicators, which always consists of a name and the provider-specific query.
+The *sli.yaml* file contains definitions of the Service-Level Indicators (SLIs)
+defined for your Keptn installation.
+Each SLI is a defined quantitative measure of some aspects of the service level.
+The query for an SLI is provider/tool-dependent;
+therefore, each SLI-provider relies on a specific SLI configuration.
+The SLI configuration contains a list of indicators,
+each of which always consists of a name and the provider-specific query.
 
 ## Service-Level Indicator
 
-* An SLI is a key-value pair with the SLI name as key and the provider-specific query as value.
-* An SLI configuration can contain any number of SLIs.
+* Each SLI is a key-value pair with the SLI name as key and the provider-specific query as value.
+* The *sli.yaml* file can contain any number of SLIs.
 
 ## Provider-specific SLIs
 
 Please follow the links to the provider-specific SLIs: 
 
-* [Dynatrace](../../monitoring/dynatrace/configure_slis/) 
+* [Dynatrace](../../../monitoring/dynatrace/configure_slis/) 
 
-* [Prometheus](../../monitoring/prometheus/install/#configure-custom-prometheus-slis) 
+* [Prometheus](../../../monitoring/prometheus/install/#configure-custom-prometheus-slis) 
 
 ## Add SLI configuration to a Service, Stage, or Project
 
-**Important:** In the following commands, the value of the `resourceUri` must specify the SLI-provider that can fetch the declared SLIs. In case of Dynatrace, for example, the value of the `resourceUri` must be: `dynatrace/sli.yaml`.
+**Important:** In the following commands,
+the value of the `resourceUri` must specify the SLI-provider
+that can fetch the declared SLIs.
+For Dynatrace, the value of the `resourceUri` must be: `dynatrace/sli.yaml`.
 
-* To add an SLI configuration to a service, use the [keptn add-resource](../../reference/cli/commands/keptn_add-resource) command:
+* To add an SLI configuration to a service,
+use the [keptn add-resource](../../reference/cli/commands/keptn_add-resource) command:
 
   ```console
   keptn add-resource --project=sockshop --stage=staging --service=carts --resource=sli-config.yaml  --resourceUri=dynatrace/sli.yaml
   ```
 
-* To add an SLI configuration to a stage, use the [keptn add-resource](../../reference/cli/commands/keptn_add-resource) command:
+* To add an SLI configuration to a stage,
+use the [keptn add-resource](../../reference/cli/commands/keptn_add-resource) command:
 
   ```console
   keptn add-resource --project=sockshop --stage=staging --resource=sli-config.yaml --resourceUri=dynatrace/sli.yaml
@@ -39,7 +50,8 @@ Please follow the links to the provider-specific SLIs:
   **Note:** This SLI configuration is applied for all services in this stage. 
 
 
-* To add an SLI configuration to a project, use the [keptn add-resource](../../reference/cli/commands/keptn_add-resource) command:
+* To add an SLI configuration to a project,
+use the [keptn add-resource](../../reference/cli/commands/keptn_add-resource) command:
 
   ```console
   keptn add-resource --project=sockshop --resource=sli-config.yaml --resourceUri=dynatrace/sli.yaml
@@ -79,7 +91,7 @@ Please follow the links to the provider-specific SLIs:
       sql-statements: "query E-3"
     ```
 
-* If an evaluation of a service gets triggered, the following SLI configuration will be used: 
+* If an evaluation of a service gets triggered, the following SLI configuration is used: 
 
     ```yaml
     spec_version: "1.0"
@@ -90,4 +102,16 @@ Please follow the links to the provider-specific SLIs:
       response_time_p99: "query D-3"  # SLI from service-level overrides SLI from stage-level
       sql-statements: "query E-3"     # SLI from service-level
     ```
+
+## See also
+
+* [slo](../slo)
+
+* [Dynatrace](../../../monitoring/dynatrace/configure_slis/) 
+
+* [Prometheus](../../../monitoring/prometheus/install/#configure-custom-prometheus-slis) 
+
+* [Quality Gates](../../../quality_gates)
+
+
 
