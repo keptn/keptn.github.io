@@ -4,7 +4,7 @@ description: Upgrade your Keptn to 0.13
 weight: 30
 aliases:
   - /docs/0.13.0/operate/upgrade/
-  - /docs/0.13.1/operate/upgrade/
+  - /docs/0.13.4/operate/upgrade/
 ---
 
 ## Upgrade from Keptn 0.12.x to Keptn 0.13.x
@@ -12,12 +12,12 @@ aliases:
 <details><summary>Expand to see upgrade instructions:</summary>
 <p>
 
-* **Step 1.** To download and install the Keptn CLI for version 0.13.1, you can choose between:
+* **Step 1.** To download and install the Keptn CLI for version 0.13.4, you can choose between:
    * *Automatic installation of the Keptn CLI (Linux and Mac):*
 
-      * The next command will download the 0.13.1 release from [GitHub](https://github.com/keptn/keptn/releases), unpack it, and move it to `/usr/local/bin/keptn`.
+      * The next command will download the 0.13.4 release from [GitHub](https://github.com/keptn/keptn/releases), unpack it, and move it to `/usr/local/bin/keptn`.
       ```console
-      curl -sL https://get.keptn.sh | KEPTN_VERSION=0.13.1 bash
+      curl -sL https://get.keptn.sh | KEPTN_VERSION=0.13.4 bash
       ```
 
       * Verify that the installation has worked and that the version is correct by running:
@@ -27,14 +27,14 @@ aliases:
 
    * *Manual installation of the Keptn CLI:*
 
-      * Download the release for your platform from the [GitHub](https://github.com/keptn/keptn/releases/tag/0.13.1)
+      * Download the release for your platform from the [GitHub](https://github.com/keptn/keptn/releases/tag/0.13.4)
       * Unpack the binary and move it to a directory of your choice (e.g., `/usr/local/bin/`)
       * Verify that the installation has worked and that the version is correct by running:
       ```console
       keptn version
       ```
 
-* **Step 2.** To upgrade your Keptn installation from 0.12.x to 0.13.1, the Keptn CLI offers the command:
+* **Step 2.** To upgrade your Keptn installation from 0.12.x to 0.13.4, the Keptn CLI offers the command:
   
    ```console
    keptn upgrade
@@ -50,15 +50,15 @@ aliases:
    * If the CLI still complains about the context, please use the Helm approach to upgrade your cluster:
 
    ```console
-   helm upgrade keptn keptn --install -n keptn --create-namespace --repo=https://charts.keptn.sh --version=0.13.1 --reuse-values --wait
+   helm upgrade keptn keptn --install -n keptn --create-namespace --repo=https://charts.keptn.sh --version=0.13.4 --reuse-values --wait
    ```
 
-* :warning: **Step 3.** If you are using the **jmeter-service** or **helm-service**, upgrade them to 0.13.1 using the following commands: 
+* :warning: **Step 3.** If you are using the **jmeter-service** or **helm-service**, upgrade them to 0.13.4 using the following commands: 
 
    ```console
    helm repo update
-   helm upgrade jmeter-service https://github.com/keptn/keptn/releases/download/0.13.1/jmeter-service-0.13.1.tgz -n keptn --create-namespace --wait --reuse-values
-   helm upgrade helm-service https://github.com/keptn/keptn/releases/download/0.13.1/helm-service-0.13.1.tgz -n keptn --create-namespace --wait --reuse-values
+   helm upgrade jmeter-service https://github.com/keptn/keptn/releases/download/0.13.4/jmeter-service-0.13.4.tgz -n keptn --create-namespace --wait --reuse-values
+   helm upgrade helm-service https://github.com/keptn/keptn/releases/download/0.13.4/helm-service-0.13.4.tgz -n keptn --create-namespace --wait --reuse-values
    ```
 
 </p>
