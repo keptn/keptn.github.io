@@ -23,7 +23,7 @@ or a cluster that you create;
 instructions, including information about creating a small Kubernetes locally,
 are in [Install CLI and Keptn](../0.14.x/operate/install).
 
-## Install Keptn with a Helm chart
+### Install Keptn with a Helm chart
 
 1) Install core control plane components and expose via a LoadBalancer:
 ```
@@ -34,15 +34,12 @@ helm install keptn keptn/keptn \
 --set=control-plane.apiGatewayNginx.type=LoadBalancer
 ```
 
-2) Install the execution plane components. These are additional microservices that will handle certain tasks:
+2) Install the execution plane components. These are additional microservices that handle specific tasks:
 
 ```
 helm install jmeter-service keptn/jmeter-service -n keptn
 helm install helm-service keptn/helm-service -n keptn
 ```
-
-### Next Steps
-Now try the [Multi-Stage Delivery](#try-multi-stage-delivery) example and / or [Auto-Remediation](#try-auto-remediation) examples (see below). 
 
 ### Install Keptn Hello World (Docker Based)
 
@@ -117,6 +114,17 @@ in this case, we are using Prometheus.
 You can set an SLO as an actual number (for example, 10 or `less than or equal to 5")
 or you can set it to compare to a previous run (e.g. at least 5ms faster than previous run).
 
+    * The items in the `Name` column are metrics defined for the SLI provider conntected to Keptn.
+For this exercise, we are using Prometheus,
+so the `prometheus-service` is connected to a Prometheus Environment,
+which is configured as a secret and referenced in the *dynatrace.conf.yaml.
+
+    * The `Value` column shows the value calculated for this evaluation.
+
+    * The `Pass criteria` column represents the SLO defined for each item.
+
+    * The `Results` column shows the results of the evaluation process for this metric.
+
 * Each Keptn project has a *shipyard.yaml* [link to ref page]
 that defines the activities Keptn performs and the order in which they run.
 The *shipyard* file is arranged in stages,
@@ -133,6 +141,11 @@ then sends an event to tell that data source to retrieve the appropriate SLI and
 and it then evaluates the results.
 
 * [Explain what evaulation lighthouse does here and how it leads to what is displayed]
+
+* [Should we show the "Evaluation of test on production" screen and discuss briefly?
+Something like the following:
+
+* The "Evaluation of test on production" screen provides some details.]
 
 
 ## Exercise 2: Try Auto-Remediation
