@@ -4,6 +4,9 @@ description: Upgrade your Keptn to 0.13
 weight: 30
 aliases:
   - /docs/0.13.0/operate/upgrade/
+  - /docs/0.13.1/operate/upgrade/
+  - /docs/0.13.2/operate/upgrade/
+  - /docs/0.13.3/operate/upgrade/
   - /docs/0.13.4/operate/upgrade/
 ---
 
