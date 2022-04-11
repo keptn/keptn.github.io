@@ -1,22 +1,29 @@
 ---
 title: Quick Start
-description: Learn how to get Keptn running in five minutes. Whether you prefer Helm, Docker or Keptn CLI, or k3d, we have you covered.
+description: Familiarize yourself with Keptn by running small exercises on a local Keptn installation
 icon: concepts
 layout: quickstart
 weight: 10
 hidechildren: true # this flag hides all sub-pages in the sidebar-multicard.html
 ---
 
-This Quick Start guide shows how to quickly create a local Keptn installation
-that runs either as a [Helm](#helm) chart in Kubernetes
-or as [Docker](#keptn-hello-world-docker-based) container in K3d
-and run some exercises to demonstrate Keptn functionality.
+In this Quick Start guide, you can download a container
+(either Docker or Kubernetes)
+that contains a Kubernetes cluster with Keptn installed.
+You can then run some simple exercises that demonstrate Keptn functionality.
 
-You can install and run Keptn on virtually any Kubernetes cluster.
-See Install CLI and Keptn for detailed instructions
-about creating a Keptn cluster locally or in the cloud.
+## Install Keptn in a container
 
-## Helm
+We provide a Helm chart and a Docker container that you can install locally
+to explore Keptn.
+You need to have about 12GB of memory and 50-60 GB of disk space to install these containers.
+
+You can instead install Keptn yourself on either an existing Kubernetes cluster
+or a cluster that you create;
+instructions, including information about creating a small Kubernetes locally,
+are in [Install CLI and Keptn](../0.14.x/operate/install).
+
+## Install Keptn with a Helm chart
 
 1) Install core control plane components and expose via a LoadBalancer:
 ```
@@ -37,13 +44,14 @@ helm install helm-service keptn/helm-service -n keptn
 ### Next Steps
 Now try the [Multi-Stage Delivery](#try-multi-stage-delivery) example and / or [Auto-Remediation](#try-auto-remediation) examples (see below). 
 
-## Keptn Hello World (Docker Based)
+### Install Keptn Hello World (Docker Based)
 
 ![keptn hello world](./assets/keptn-hello-world-0.0.11.svg)
 
 ### Prerequisites for Hello World
 
 - Machine with Docker installed and at least 8GB RAM
+- [Start Docker on your system]
 
 Run the Keptn Hello, World! example:
 
@@ -72,115 +80,18 @@ You can also run additional `hello` sequences with: `keptn send event -f /helloe
 ![keptn hello world](./assets/keptn-hello-world.png)
 
 ### Next Steps
+
 Now try the [Multi-Stage Delivery](#try-multi-stage-delivery) example and / or [Auto-Remediation](#try-auto-remediation) examples (see below). 
 
-## Keptn CLI
+## Exercise 1: Multi-Stage Delivery
 
-1) Download the Keptn Command Line Tool:
-```
-curl -sL https://get.keptn.sh | bash
-```
-
-2) Install Keptn core control plane and execution plane services for continuous delivery using the CLI:
-```
-keptn install -n keptn --use-case=continuous-delivery --endpoint-service-type=LoadBalancer
-```
-
-## k3d Keptn
-
-Use this method if you don't have Docker and either have or don't mind installing [k3d](https://k3d.io).
-
-### Prerequisites for k3d based Keptn
-
-This quickstart is designed for Linux-based systems.
-Consequently, use Linux, macOS, or Windows subsystem for Linux v2 with a full virtual machine (WSL2).
-Note that this tutorial has not been fully verified on  non-amd64 architectures (including Arm-based Apple M1).
-
-The following tools need to be installed for this tutorial:
-
-- [Docker](https://docker.com/) with minimum  4vCPUS, 12GB RAM, 20GB disk space left (see [FAQ](#faq))
-- [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) version `>= 1.19`
-- [helm](https://helm.sh/) version `>= 3.3.0` - [Installation Guide](https://helm.sh/docs/intro/install/)
-- [git](https://git-scm.com/downloads)
-- [k3d](https://k3d.io) version `4.4.4`
-
-All executables should be configured to be executable in the user space without `sudo` or equivalents.
-
-### Installing K3d
-
- If you already have `k3d` installed, you can check its version by running `k3d --version`.
- This tutrial targets version `4.4.4` and may not work properly with older or newer versions.
-
-```bash
-curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=v4.4.4 bash
-```
-
-### Install Keptn
-
-1. Start a [k3d](https://k3d.io) cluster for Keptn
-
-    ```
-    k3d cluster create mykeptn -p "8082:80@loadbalancer" --k3s-server-arg "--kube-proxy-arg=conntrack-max-per-core=0"  --k3s-agent-arg "--kube-proxy-arg=conntrack-max-per-core=0" --agents 1
-    ```
-
-2. **Download and install the [Keptn CLI](../0.14.x/reference/cli)**
-
-    ```
-    curl -sL https://get.keptn.sh | bash
-    ```
-
-3. **Install Keptn** control-plane and execution-plane for continuous delivery use case or use the `helm install` version [mentioned below](#kubernetes-version-not-supported).
-
-    ```
-    keptn install --use-case=continuous-delivery
-    ```
-
-    Keptn comes with different installation options, please have a look at the [installation documentation](../0.14.x/operate) for more details on cluster requirements, resource consumption, supported Kubernetes versions, and more.
-    Please note that although during the installation procedure it might be mentioned that Istio is required, it is *not required* for this quickstart guide.
-
-    <details><summary>Installation logs</summary>
-    <p>The installation logs will print the following output:
-    <pre>
-    Installing Keptn ...
-    Helm Chart used for Keptn installation: https://charts.keptn.sh/packages/keptn-0.14.1.tgz
-    Start upgrading Helm Chart keptn in namespace keptn
-    Finished upgrading Helm Chart keptn in namespace keptn
-    Keptn control plane has been successfully set up on your cluster.
-    Installing execution plane services for continuous-delivery use case.
-    Start upgrading Helm Chart helm-service in namespace keptn
-    Finished upgrading Helm Chart helm-service in namespace keptn
-    Start upgrading Helm Chart jmeter-service in namespace keptn
-    Finished upgrading Helm Chart jmeter-service in namespace keptn
-    &nbsp;---------------------------------------------------
-    &nbsp;* To quickly access Keptn, you can use a port-forward and then authenticate your Keptn CLI:
-    &nbsp;- kubectl -n keptn port-forward service/api-gateway-nginx 8080:80
-    &nbsp;- keptn auth --endpoint=http://localhost:8080/api --api-token=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
-    &nbsp;* Alternatively, follow the instructions provided at: https://keptn.sh/docs/0.14.x/operate/install/#authenticate-keptn-cli
-    &nbsp;* To expose Keptn on a public endpoint, please continue with the installation guidelines provided at:
-    &nbsp;- https://keptn.sh/docs/0.14.x/operate/install#install-keptn
-    </pre>
-    **There is no need to follow the instructions from the installation log - the quickstart guide will cover this!**
-    </p>
-    </details>
-
-4. **Configure Ingress** and authenticate Keptn CLI
-
-    ```bash
-    curl -SL https://raw.githubusercontent.com/keptn/examples/master/quickstart/expose-keptn.sh | bash
-    ```
-
-5. **Access Bridge**: you can now access the Keptn Web UI at `http://127.0.0.1.nip.io:8082/bridge`.
-
-    For different way on how to expose your Keptn installation, please refer to <https://keptn.sh/docs/0.14.x/operate/install/#install-keptn>.
-
-
-### Try Multi-Stage Delivery
-
-Perform a [**multi-stage delivery**](../concepts/delivery/) with [SLO-based quality gates](../concepts/quality_gates/) in place.
-Please note this will create a local repository `examples/` in your current directory.
+This exercise performs a [**multi-stage delivery**](../concepts/delivery/)
+with [SLO-based quality gates](../concepts/quality_gates/) in place.
+Please note this creates a local repository `examples/` in your current directory.
 Make sure to run it from a directory you are fine having the examples stored in.
 
 ```bash
+cd ??
 curl -SL https://raw.githubusercontent.com/keptn/examples/master/quickstart/multistage-delivery.sh | bash
 ```
 
@@ -190,9 +101,52 @@ curl -SL https://raw.githubusercontent.com/keptn/examples/master/quickstart/mult
 </p>
 </details>
 
-## Try Auto-Remediation
+What did this exercise do?
 
-Run [**automated operations**](../concepts/automated_operations/) with auto-remediation in action:
+This exercise includes a small application called podtatohead.
+
+* This uses a Service Level Indicator (SLI) that represents [the time to do something] in the application.
+This is a standard SLI that is included in Keptn by default.
+You can define your own SLIs for any value that can be calculated
+from the data provided by your observability platform;
+in this case, we are using Prometheus.
+
+* [omitting mention of keptn add-resource -- seems an unnecessary complication here]
+
+* This then sets a Service Level Objective (SLO [link to ref page)] of [slo value].
+You can set an SLO as an actual number (for example, 10 or `less than or equal to 5")
+or you can set it to compare to a previous run (e.g. at least 5ms faster than previous run).
+
+* Each Keptn project has a *shipyard.yaml* [link to ref page]
+that defines the activities Keptn performs and the order in which they run.
+The *shipyard* file is arranged in stages,
+each of which includes sequences that define tasks.
+For this exercise, we have a small *shipyard* file with a single stage called **delivery**
+
+* Keptn evaluations are triggered by events.
+Triggers can be defined in the *shipyard* file or through the API.
+For this exercise, we trigger the evaluation with the [command].
+
+* When an event of the appropriate type is received,
+the `lighthouse-service` determines the data source (currently, either Prometheus or Dynatrace),
+then sends an event to tell that data source to retrieve the appropriate SLI and SLO information
+and it then evaluates the results.
+
+* [Explain what evaulation lighthouse does here and how it leads to what is displayed]
+
+
+## Exercise 2: Try Auto-Remediation
+
+When Keptn discovers a "problem" in your application
+(in other words, an SLO that is not met),
+it can take `actions` to try to fix the problem.
+This is called "Auto-Remediation".
+
+Exercise 2 gives a simple example of how
+[**automated operations**](../concepts/automated_operations/) capability.
+It builds on Exercise 1 so be sure to run that before attempting to run this exercise.
+
+When you are ready, execute the following command:
 
 ```bash
 curl -SL https://raw.githubusercontent.com/keptn/examples/master/quickstart/automated-operations.sh | bash
@@ -203,6 +157,25 @@ curl -SL https://raw.githubusercontent.com/keptn/examples/master/quickstart/auto
 ![](./assets/remediation-sequence.png)
 </p>
 </details>
+
+What did this exercise do?
+
+* [runs evaluation]
+
+* If the evaluation fails, Keptn can take actions based on what is defined in the *shipyard* file.
+Actions include `release` and `rollback`.
+Autoremediation is implemented by the `get-action` action,
+which extracts the remediation option from the *remediation.yaml* file.
+
+* in this case, the action defined is to restart the pod where the test is run.
+
+* Keptn takes this action then reruns the evaluation to see if the remediation solved the problem.
+
+* If the evaluation still fails, Keptn executes the next action (if one is defined)
+to try to remediate the problem.
+
+* If Keptn executes all the defined actions and the evaluation still fails,
+Keptn [does what?]
 
 ## Explore Keptn
 
