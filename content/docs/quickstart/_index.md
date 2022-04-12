@@ -7,10 +7,16 @@ weight: 10
 hidechildren: true # this flag hides all sub-pages in the sidebar-multicard.html
 ---
 
-In this Quick Start guide, you can download a container
-(either Docker or Kubernetes)
-that contains a Kubernetes cluster with Keptn installed.
-You can then run some simple exercises that demonstrate Keptn functionality.
+This Quick Start guide enables you to quickly access a Keptn environment locally
+and run some simple exercises that demonstrate Keptn functionality.
+The steps are:
+
+* Download a container (either Docker or Kubernetes)
+that providea a small but complete Kubernetes cluster with Keptn installed.
+* Run a simple exercise that runs a Quality Gate
+against a multi-stage delivery operation.
+* Run another exercise that shows how the Keptn auto-remediation feature
+can automatically fix problems that the quality gates report.
 
 ## Install Keptn in a container
 
@@ -60,7 +66,7 @@ docker run --rm -it \
 gardnera/thekindkeptn:0.0.11
 ```
 
-The Keptn Bridge (UI) will be available on `http://localhost`
+The Keptn Bridge (UI) is available on `http://localhost`
 
 ### Outcome
 
@@ -75,10 +81,6 @@ The command above has:
 You can also run additional `hello` sequences with: `keptn send event -f /helloevent.cloudevent.json`
 
 ![keptn hello world](./assets/keptn-hello-world.png)
-
-### Next Steps
-
-Now try the [Multi-Stage Delivery](#try-multi-stage-delivery) example and / or [Auto-Remediation](#try-auto-remediation) examples (see below). 
 
 ## Exercise 1: Multi-Stage Delivery
 
@@ -103,10 +105,12 @@ What did this exercise do?
 This exercise includes a small application called podtatohead.
 
 * This uses a Service Level Indicator (SLI) that represents [the time to do something] in the application.
-This is a standard SLI that is included in Keptn by default.
-You can define your own SLIs for any value that can be calculated
-from the data provided by your observability platform;
-in this case, we are using Prometheus.
+And SLI is a value that that can represent any information
+that your observability data platform stores about your software..
+This exercise uses an SLI that is included in Keptn by default for Prometheus,
+which is the data platform we are using.
+You can also define your own SLIs for any value that can be calculated
+from the data provided by your observability platform.
 
 * [omitting mention of keptn add-resource -- seems an unnecessary complication here]
 
