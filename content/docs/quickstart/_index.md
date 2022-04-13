@@ -12,7 +12,7 @@ and run some simple exercises that demonstrate Keptn functionality.
 The steps are:
 
 * Download a container (either Docker or Kubernetes)
-that providea a small but complete Kubernetes cluster with Keptn installed.
+that provides a small but complete Kubernetes cluster with Keptn installed.
 * Run a simple exercise that runs a Quality Gate
 against a multi-stage delivery operation.
 * Run another exercise that shows how the Keptn auto-remediation feature
@@ -20,8 +20,9 @@ can automatically fix problems that the quality gates report.
 
 ## Install Keptn in a container
 
-We provide a Helm chart and a Docker container that you can install locally
-to explore Keptn.
+We provide a Docker container that you can install locally.
+Alternatively, we provide a Helm chart that can installed on your own cluster
+to provide the Keptn installation.
 You need to have about 12GB of memory and 50-60 GB of disk space to install these containers.
 
 You can instead install Keptn yourself on either an existing Kubernetes cluster
