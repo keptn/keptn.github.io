@@ -66,8 +66,8 @@ link="./assets/trigger-05-trigger-evaluation-timeframe"
 caption="Sequences">}}
 
 Special considerations:
-* If you set a timeframe but no start date, the evaluation will be performed to the past for the given timeframe. This is the only case where evaluations will be performed to the past.
-* As soon as a start date is given, the evaluation is always performed from this point to an end date. The end date is either given or will be calculated from the timeframe.
+* If you set a timeframe but no start date, the evaluation is performed on the previous timeframe span. This is the only case where evaluations are performed on data from the past.
+* When a start date is specified, the evaluation is performed from this point to an end date. The end date can be specified or is calculated from the timeframe value.
 * Please note: If the timeframe is calculated to an end date too far into the future, evaluation sequences might fail depending on the configured SLI provider.
 
 {{< popup_image
