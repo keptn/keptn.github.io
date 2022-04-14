@@ -39,7 +39,7 @@ Now try the [Multi-Stage Delivery](#try-multi-stage-delivery) example and / or [
 
 ## Keptn Hello World (Docker Based)
 
-![keptn hello world](./assets/keptn-hello-world-0.0.11.svg)
+![keptn hello world](./assets/keptn-hello-world-0.0.12.svg)
 
 ### Prerequisites for Hello World
 
@@ -52,7 +52,7 @@ docker run --rm -it \
 --name thekindkeptn \
 -v /var/run/docker.sock:/var/run/docker.sock:ro \
 --add-host=host.docker.internal:host-gateway \
-gardnera/thekindkeptn:0.0.11
+gardnera/thekindkeptn:0.0.12
 ```
 
 The Keptn Bridge (UI) will be available on `http://localhost`
