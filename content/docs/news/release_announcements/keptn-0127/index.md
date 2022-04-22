@@ -3,7 +3,7 @@ title: Keptn 0.12.7
 weight: 79
 ---
 
-This is a bug fix release for Keptn containing fixes for the shipyard-controller.
+This is a bug fix release for Keptn addressing a problem with MongoDB client connection handling, an incorrect sequence state, and an issue when deleting a service.
 
 ---
 
