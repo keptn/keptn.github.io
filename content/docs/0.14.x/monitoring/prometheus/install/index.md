@@ -19,7 +19,8 @@ helm install prometheus prometheus-community/prometheus --namespace default
 ```
 
 - The prometheus-service (which will be deployed later) needs access to the Prometheus instance.
-By default it uses the Prometheus instance running in the same name space as Keptn.
+By default it uses the Prometheus instance running on the same Kubernetes cluster as Keptn,
+in the monitoring namespace.
 If you are using another, external Prometheus instance, create a secret containing the user, password, and url.
 The secret must have the following format (please note the double-space indentation):
 
