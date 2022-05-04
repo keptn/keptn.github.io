@@ -140,8 +140,8 @@ helm upgrade keptn keptn --install -n keptn --create-namespace
       control-plane.mongo.auth.database=<YOUR_DATABASE_NAME>
 ```
 
-When using the externally hosted MongoDB with multiple replicas, we recommend setting the `write concern` options (docs [here]([../install/#authenticate-keptn-cli](https://www.mongodb.com/docs/manual/reference/connection-string/#write-concern-options))) 
-as part of the `control-plane.mongo.external.connectionString` helm value. Without these options there is a risk of a potential replica lags in MongoDB. Example of YOUR_MONGODB_CONNECTION_STRING with `write concern` options enabled:
+When using the externally hosted MongoDB with multiple replicas, we recommend setting the `write concern` options (docs [here](https://www.mongodb.com/docs/manual/reference/connection-string/#write-concern-options))
+as part of the `control-plane.mongo.external.connectionString` helm value. Without these options there is a risk of a potential replica lags in MongoDB. Example of `YOUR_MONGODB_CONNECTION_STRING` with `write concern` options enabled:
 
 ```console
 mongodb://user:password@localhost:27017/database-name?w=majority&wtimeoutMS=30000
