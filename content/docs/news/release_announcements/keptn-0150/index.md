@@ -5,8 +5,8 @@ weight: 73
 Keptn 0.15.0 improves Keptn core services to be a step closer to Zero Downtime upgrades.
 For this, we introduced a new library `cp-connector` that will replace the Distributor in the Keptn core services.
 Since Keptn will require an upstream in future versions, a new Git Provisioning API is introduced.
-This will allow to create Git repository on demand when a new project is created. For further information, please refer to the [documentation](TBD).
-Furthermore, Keptn operators can provide a deny list for webhook URLs via a `ConfigMap`, please check out the (documentation](TBD).
+This will allow to create Git repository on demand when a new project is created. For further information, please refer to the [documentation](../../../../docs/0.15.x/api/git_provisioning/).
+Furthermore, Keptn operators can provide a deny list for webhook URLs via a `ConfigMap`, please check out the [documentation](../../../0.15.x/operate/webhook_service/).
 Finally, the CLI offers support for datadog as a SLI-provider.
 
 ---
