@@ -63,7 +63,7 @@ The following artifacts need to be available locally:
 
 **Download Keptn Helm Charts**
 
-Download the Helm charts from the [Keptn 0.13.0 release](https://github.com/keptn/keptn/releases/tag/0.14.1):
+Download the Helm charts from the [Keptn 0.14.1 release](https://github.com/keptn/keptn/releases/tag/0.14.1):
 
 * Keptn Control Plane: https://github.com/keptn/keptn/releases/download/0.14.1/keptn-0.14.1.tgz
 * helm-service (if needed): https://github.com/keptn/keptn/releases/download/0.14.1/helm-service-0.14.1.tgz
