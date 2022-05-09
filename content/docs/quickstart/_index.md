@@ -41,9 +41,22 @@ Now try the [Multi-Stage Delivery](#try-multi-stage-delivery) example and then [
 
 ![keptn hello world](./assets/keptn-hello-world-0.0.13.svg)
 
-### Prerequisites for Hello World
+### Running Keptn Hello World
 
-- Machine with Docker installed and at least 8GB RAM
+Prerequisites:
+
+- Machine with Docker installed and at least 8GB RAM.
+Run the following to confirm that Docker is configured:
+
+```
+docker ps
+```
+
+- Add your user ID to the docker group.
+See [Manage Docker as a non-root user](https://docs.docker.com/engine/install/linux-postinstall/)
+for instructions.
+You can instead run **docker** commands under **sudo**,
+although this is less safe than using the docker group.
 
 Run the Keptn Hello, World! example:
 
