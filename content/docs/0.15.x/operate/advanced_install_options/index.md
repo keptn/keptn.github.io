@@ -140,6 +140,8 @@ helm upgrade keptn keptn --install -n keptn --create-namespace
       control-plane.mongo.auth.database=<YOUR_DATABASE_NAME>
 ```
 
+Keptn has no opinion on how to fine-tune the database connection. We recommend the user specify any special configuration via the connection string (docs [here](https://www.mongodb.com/docs/manual/reference/connection-string/)) in the `control-plane.mongo.external.connectionString` helm value.
+
 ### Install Keptn with an ingress object
 
 If you are already using an Ingress-Controller and want to create an ingress object for Keptn, you can leverage the ingress section of the helm chart. By default enabled is set to false.

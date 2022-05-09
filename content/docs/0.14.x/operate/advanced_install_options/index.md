@@ -63,7 +63,7 @@ The following artifacts need to be available locally:
 
 **Download Keptn Helm Charts**
 
-Download the Helm charts from the [Keptn 0.13.0 release](https://github.com/keptn/keptn/releases/tag/0.14.1):
+Download the Helm charts from the [Keptn 0.14.1 release](https://github.com/keptn/keptn/releases/tag/0.14.1):
 
 * Keptn Control Plane: https://github.com/keptn/keptn/releases/download/0.14.1/keptn-0.14.1.tgz
 * helm-service (if needed): https://github.com/keptn/keptn/releases/download/0.14.1/helm-service-0.14.1.tgz
@@ -139,6 +139,8 @@ helm upgrade keptn keptn --install -n keptn --create-namespace
       control-plane.mongo.external.connectionString=<YOUR_MONGODB_CONNECTION_STRING>,
       control-plane.mongo.auth.database=<YOUR_DATABASE_NAME>
 ```
+
+Keptn has no opinion on how to fine-tune the database connection. We recommend the user specify any special configuration via the connection string (docs [here](https://www.mongodb.com/docs/manual/reference/connection-string/)) in the `control-plane.mongo.external.connectionString` helm value.
 
 ### Install Keptn with an ingress object
 

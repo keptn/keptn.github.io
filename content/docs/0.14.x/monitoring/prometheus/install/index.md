@@ -1,24 +1,28 @@
 ---
 title: Install
-description: Setup Prometheus monitoring
+description: Set up Prometheus monitoring
 weight: 1
 icon: setup
 ---
 
-In order to evaluate the quality gates and allow self-healing in production, we have to set up monitoring to get the needed data and fetch the values for the SLIs that are referenced in a SLO configuration.
+In order to evaluate the quality gates and allow self-healing in production, we must set up monitoring to get the needed data and fetch the values for the SLIs that are referenced in an SLO configuration.
 
 
 ## Prerequisites
 
 - Keptn project and at least one onboarded service must be available.
-- Keptn doesn't install or manage Prometheus and its components. Users need to install *Prometheus* and *Prometheus Alert Manager* as a prerequisite.
+- Keptn does not install or manage Prometheus and its components. Users must install *Prometheus* and *Prometheus Alert Manager* as a prerequisite.
 
 ```bash
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm install prometheus prometheus-community/prometheus --namespace default
 ```
 
-- The prometheus-service (which will be deployed later) needs access to the Prometheus instance. By default it uses the Prometheus instance running in the cluster. If another Prometheus instance shall be used, create a secret containing the user, password, and url. The secret must have the following format (please note the double-space indentation):
+- The prometheus-service (which will be deployed later) needs access to the Prometheus instance.
+By default it uses the Prometheus instance running on the same Kubernetes cluster as Keptn,
+in the monitoring namespace.
+If you are using another, external Prometheus instance, create a secret containing the user, password, and url.
+The secret must have the following format (please note the double-space indentation):
 
 ```yaml
     user: username
@@ -26,13 +30,18 @@ helm install prometheus prometheus-community/prometheus --namespace default
     url: http://prometheus-service.monitoring.svc.cluster.local:8080
 ```
 
-If this information is stored in a file, e.g. `prometheus-creds.yaml`, the secret can be created with the following command. Please note that there is a naming convention for the secret because this can be configured per **project**. Thus, the secret has to have the name `prometheus-credentials-<project>`. Do not forget to replace the `<project>` placeholder with the name of your project:
+If this information is stored in a file, e.g. `prometheus-creds.yaml`, the secret can be created with the following command.
+Please note that there is a naming convention for the secret because this can be configured per **project**.
+Thus, the secret must have the name `prometheus-credentials-<project>`.
+Do not forget to replace the `<project>` placeholder with the name of your project:
 
 ```console
 kubectl create secret -n keptn generic prometheus-credentials-<project> --from-file=prometheus-credentials=./prometheus-creds.yaml
 ```
 
-## Setup Prometheus Keptn integration
+For more details, see the [README for prometheus-service](https://github.com/keptn-contrib/prometheus-service#advanced-usage).
+
+## Set up Prometheus Keptn integration
 
 After creating a project and service, you can set up Prometheus monitoring and configure scrape jobs using the Keptn CLI.
 
