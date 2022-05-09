@@ -3,18 +3,36 @@ title: Keptn 0.15.0
 weight: 73
 ---
 
-Keptn 0.15.0 improves Keptn core services to be closer to Zero Downtime upgrades.
-For this, Keptn introduces `cp-connector`, a library that will replace the Distributor in all Keptn core services.
-Since Keptn will require an upstream in future versions, a new Git Provisioning API is introduced.
-This provides an extension point to create Git repositories on demand when a new projects are created. For further information, please refer to the [documentation](../../../../docs/0.15.x/api/git_provisioning/).
-Furthermore, Keptn operators can provide a deny list for webhook URLs via a `ConfigMap`, please check out the [documentation](../../../0.15.x/operate/webhook_service/).
-Finally, the CLI offers support for Datadog as an SLI provider.
+
+# Release Notes 0.15.0
+
+Keptn 0.15.0 improves the upgrade capabilities of Keptn to achieve zero-downtime upgrades and enhances the trigger a sequence functionality in the Bridge.
 
 ---
 
+**Key announcements:**
 
-## [0.15.0](https://github.com/keptn/keptn/compare/0.14.0...0.15.0) (2022-05-06)
+:tada: *Improved upgrade capabilities*: Keptn introduces the `cp-connector` library, which will replace the *Distributor* in all Keptn core services to ensure reliable event distribution. Besides, upgrade strategies of core components were adjusted.
 
+:star: *Git repository provisioning*: Since Keptn will require an upstream in future versions, a new Git Provisioning API is introduced. This provides an extension point to automatically provision Git repositories on demand when creating new projects. For further information, please refer to the [documentation](../../../../docs/0.15.x/api/git_provisioning/).
+
+:dash: *Improved sequence trigger:* Community feedback on triggering a sequence via Bridge has been incorporated.
+
+:lock: *Deny list for Webhooks*: Keptn administrators can provide a deny list for Webhook URLs via a `ConfigMap`, please check out the [documentation](../../../0.15.x/operate/webhook_service/).
+
+:sparkles: *SLI provider support*: Finally, the Keptn CLI supports Datadog as a provider of Service Level Indicators (SLIs).
+
+---
+
+## Keptn Enhancement Proposals
+
+This release focuses on the KEP: [KEP 48](https://github.com/keptn/enhancement-proposals/pull/48).
+
+## Keptn Specification
+
+Implemented **Keptn spec** version: [0.2.4](https://github.com/keptn/spec/tree/0.2.4)
+
+---
 
 ### ⚠ BREAKING CHANGES
 
