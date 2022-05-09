@@ -22,3 +22,22 @@ localhost
 127.0.0.1
 ::1
 ```
+
+For example, Keptn will create the following `ConfigMap`:
+
+```yaml
+apiVersion: v1
+data:
+  denyList: |-
+    kubernetes
+    kubernetes.default
+    kubernetes.default.svc
+    kubernetes.default.svc.cluster.local
+    localhost
+    127.0.0.1
+    ::1
+kind: ConfigMap
+metadata:
+  name: keptn-webhook-config
+```
+
