@@ -100,15 +100,15 @@ spec:
 
 ## Step 2: Configure Keptn to use your SLI-provider and add SLIs
 
-Depending on the monitoring solution you have in place, a corresponding SLI-provider is required by Keptn. This SLI-provider gets its queries for the individual metrics from the [Service-Level Indicator (SLI)](../sli/#service-level-indicator) config. 
+Depending on the monitoring solution you have in place, a corresponding SLI-provider is required by Keptn. This SLI-provider gets its queries for the individual metrics from the [Service-Level Indicator (SLI)](../../reference/files/sli/#service-level-indicator) config.
 
-* Familiarize with the concept of an [SLI](../sli/#service-level-indicator) and derive the set of indicators required for, e.g., the `booking` service. 
+* Familiarize yourself with the concept of an [SLI](../../reference/files/sli/#service-level-indicator) and derive the set of indicators required for, e.g., the `booking` service.
 
 * Follow the steps of deploying an SLI-provider and uploading an SLI config as described [here](../sli-provider/).
 
 ## Step 3: Add SLO configuration to a service
 
-By adding an [Service-Level Objective (SLO)](../slo/#service-level-objective) config to your service, you *activate* a quality gate for that service.
+By adding an [Service-Level Objective (SLO)](../../reference/files/slo/#service-level-objective) config to your service, you *activate* a quality gate for that service.
 
 * To add an SLO to the `booking` service, use the [keptn add-resource](../../reference/cli/commands/keptn_add-resource/) CLI command.
 

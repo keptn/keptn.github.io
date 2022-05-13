@@ -52,8 +52,9 @@ For triggering an evaluation, you can choose beween two variants to select the e
 * Timeframe
 * Start / end date and time
 
-#### **Timeframe**
-For the timeframe, there are no mandatory fields. If nothing is given as timeframe it defaults to 5 minutes. If nothing is given for the start date, it defaults to the current time.
+**Timeframe**
+
+For the timeframe, there are no mandatory fields.
 
 Fields:
 
@@ -62,16 +63,25 @@ Fields:
 * Labels - Additional labels that will be used in Bridge for displaying additional info.
 
 {{< popup_image
-link="./assets/trigger-05-trigger-evaluation-timeframe"
+link="./assets/trigger-05-trigger-evaluation-timeframe.png"
 caption="Sequences">}}
 
-#### **Start / end date**
-Please mind, that an evaluation is performed in the past. That means that the start date has to be **after** the end date.
+Special considerations:
+
+* If you set a timeframe but no start date, the evaluation is performed on the previous timeframe span. This is the only case where evaluations are performed on data from the past.
+* When a start date is specified, the evaluation is performed from this point to an end date. The end date can be specified or is calculated from the timeframe value.
+* Please note: If the timeframe is calculated to an end date too far into the future, evaluation sequences might fail depending on the configured SLI provider.
+
+{{< popup_image
+link="./assets/trigger-08-failed-sequence-dt-service.png"
+caption="Dynatrace-service will fail sequence if end date is too far in the future">}}
+
+**Start / end date**
 
 Mandatory fields:
 
-* Start at - Defines the start date and time from when the evaluation is performed. Has to be **after** the end date.
-* End at - Defines the end date and time until when the evaluation is performed. Has to be **before** the start date.
+* Start at - Defines the start date and time from when the evaluation is performed. Has to be before the end date.
+* End at - Defines the end date and time until when the evaluation is performed. Has to be after the start date.
 
 Optional fields:
 
@@ -82,6 +92,7 @@ link="./assets/trigger-06-trigger-evaluation-start-end.png"
 caption="Sequences">}}
 
 ### Trigger a custom sequence
+
 Custom sequences are automatically fetched from the [shipyard](../../../manage/shipyard/). All sequences that are defined in this file, except delivery and evaluation, are then selectable as sequences in the sequence dropdown.
 
 Mandatory fields:
