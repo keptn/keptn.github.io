@@ -3,7 +3,7 @@ title: Quick Start
 description: Learn how to get Keptn running in five minutes. Whether you prefer Helm, Docker or Keptn CLI, or k3d, we have you covered.
 icon: concepts
 layout: quickstart
-weight: 1
+weight: 10
 hidechildren: true # this flag hides all sub-pages in the sidebar-multicard.html
 ---
 
@@ -35,11 +35,11 @@ helm install helm-service keptn/helm-service -n keptn
 ```
 
 ### Next Steps
-Now try the [Multi-Stage Delivery](#try-multi-stage-delivery) example and / or [Auto-Remediation](#try-auto-remediation) examples (see below). 
+Now try the [Multi-Stage Delivery](#try-multi-stage-delivery) example and then [Auto-Remediation](#try-auto-remediation) (see below). 
 
 ## Keptn Hello World (Docker Based)
 
-![keptn hello world](./assets/keptn-hello-world-0.0.11.svg)
+![keptn hello world](./assets/keptn-hello-world-0.0.14.svg)
 
 ### Prerequisites for Hello World
 
@@ -52,7 +52,7 @@ docker run --rm -it \
 --name thekindkeptn \
 -v /var/run/docker.sock:/var/run/docker.sock:ro \
 --add-host=host.docker.internal:host-gateway \
-gardnera/thekindkeptn:0.0.11
+gardnera/thekindkeptn:0.0.14
 ```
 
 The Keptn Bridge (UI) will be available on `http://localhost`
@@ -67,12 +67,10 @@ The command above has:
 - Created a `helloworld` project
 - Ran your first `hello` Keptn sequence
 
-You can also run additional `hello` sequences with: `keptn send event -f /helloevent.cloudevent.json`
-
-![keptn hello world](./assets/keptn-hello-world.png)
+You can also run additional `hello` sequences with: `keptn trigger sequence --sequence hello --project helloworld --service demoservice --stage demo`
 
 ### Next Steps
-Now try the [Multi-Stage Delivery](#try-multi-stage-delivery) example and / or [Auto-Remediation](#try-auto-remediation) examples (see below). 
+Now try the [Multi-Stage Delivery](#try-multi-stage-delivery) example and then [Auto-Remediation](#try-auto-remediation) (see below). 
 
 ## Keptn CLI
 
@@ -109,7 +107,7 @@ All executables should be configured to be executable in the user space without 
 ### Installing K3d
 
  If you already have `k3d` installed, you can check its version by running `k3d --version`.
- This tutrial targets version `4.4.4` and may not work properly with older or newer versions.
+ This tutorial targets version `4.4.4` and may not work properly with older or newer versions.
 
 ```bash
 curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=v4.4.4 bash
