@@ -13,19 +13,13 @@ aliases:
 
 ## Create or bring a Kubernetes cluster
 
-To create a Kubernetes cluster, select one of the following options:
+Keptn is designed to run on top of [Kubernetes](../k8s_support). Consequently, it is required to bring a Kubernetes cluster. For instance, you can select one of the following options:
 
 <details><summary>Azure Kubernetes Service (AKS)</summary>
 <p>
 
-1. Install local tools
-  - [az](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
-
-1. Make sure you are logged in to your Azure account with `az login`
-
-1. Create AKS cluster
-  - [Master version:](../k8s_support/#supported-versions) `1.20.x` (tested version: `v1.20.7`)
-  - One **D8s_v3** node
+- Create AKS cluster by following the guide [here](https://docs.microsoft.com/en-us/azure/aks/learn/quick-kubernetes-deploy-cli)
+- Recommended node size: One **D8s_v3** node
 
  </p>
 </details>
@@ -33,27 +27,8 @@ To create a Kubernetes cluster, select one of the following options:
 <details><summary>Amazon Elastic Kubernetes Service (EKS)</summary>
 <p>
 
-1. Install local tools
-  - [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html) (version >= 1.16.156)
-
-1. Create EKS cluster on AWS
-  - [Master version:](../k8s_support/#supported-versions) `1.17` (tested version: `1.17`)
-  - One `m5.2xlarge` node
-  - Sample script using [eksctl](https://eksctl.io) to create such a cluster
-
-    ```console
-    eksctl create cluster --version=1.17 --name=keptn-cluster --node-type=m5.2xlarge --nodes=1 --region=eu-west-3
-    ```
-
-    <details><summary>**Known issue on EKS 1.13**</summary>
-
-    Please note that for EKS version `1.13` in our testing we learned that the default CoreDNS that comes with certain EKS versions has a bug. To solve that issue we can use eksctl to update the CoreDNS service like this: 
-    
-    ```console
-    eksctl utils update-coredns --name=keptn-cluster --region=eu-west-3 --approve
-    ```
-    
-    </details>
+- Create EKS cluster following by following the guide [here](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html)
+- Recommended node size: One `m5.2xlarge` node
 
 </p>
 </details>
@@ -61,31 +36,13 @@ To create a Kubernetes cluster, select one of the following options:
 <details><summary>Google Kubernetes Engine (GKE)</summary>
 <p>
 
-Run your Keptn installation for free on GKE! If you [sign up for a Google Cloud account](https://console.cloud.google.com/getting-started), Google gives you an initial $300 credit. For deploying Keptn you can apply for an additional $200 credit, which you can use towards that GKE cluster needed to run Keptn.<br><br>
+Run your Keptn installation for free on GKE! If you [sign up for a Google Cloud account](https://console.cloud.google.com/getting-started), Google gives you an initial $300 credit. For deploying Keptn, you can apply for an additional $200 credit, which you can use towards that GKE cluster needed to run Keptn.<br><br>
 <a class="button button-primary" href="https://bit.ly/keptngkecredit" target="_blank">Apply for your credit here</a>
 
-1. Install local tools
-  - [gcloud](https://cloud.google.com/sdk/gcloud/)
-
-2. Create GKE cluster
-  - [Master version:](../k8s_support/#supported-versions) `1.17.x` and `1.18.x` (tested version: `1.18.12`)
-  - One node with 8 vCPUs and 32 GB memory (e.g., one **n1-standard-8** node)
+- Create GKE cluster by following the guide [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-a-regional-cluster)
+- Recommended node size: One node with 8 vCPUs and 32 GB memory (e.g., one **n1-standard-8** node)
   - Image type `Ubuntu` or `COS` (**Note:** If you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../monitoring/dynatrace/).)
-  - Sample script to create such a cluster:
-
-    ```console
-    // set environment variables
-    PROJECT=<NAME_OF_CLOUD_PROJECT>
-    CLUSTER_NAME=<NAME_OF_CLUSTER>
-    ZONE=us-central1-a
-    REGION=us-central1
-    GKE_VERSION="1.18"
-    IMAGE_TYPE="Ubuntu"
-    ```
-
-    ```console
-    gcloud container clusters create $CLUSTER_NAME --project $PROJECT --zone $ZONE --no-enable-basic-auth --cluster-version $GKE_VERSION --machine-type "n1-standard-8" --image-type "$IMAGE_TYPE" --disk-type "pd-standard" --disk-size "100" --metadata disable-legacy-endpoints=true --scopes "https://www.googleapis.com/auth/devstorage.read_only","https://www.googleapis.com/auth/logging.write","https://www.googleapis.com/auth/monitoring","https://www.googleapis.com/auth/servicecontrol","https://www.googleapis.com/auth/service.management.readonly","https://www.googleapis.com/auth/trace.append" --num-nodes "1" --enable-stackdriver-kubernetes --no-enable-ip-alias --network "projects/$PROJECT/global/networks/default" --subnetwork "projects/$PROJECT/regions/$REGION/subnetworks/default" --addons HorizontalPodAutoscaling,HttpLoadBalancing --enable-shielded-nodes --no-enable-autoupgrade
-    ```
+  
  </p>
 </details>
 
@@ -109,7 +66,6 @@ Run your Keptn installation for free on GKE! If you [sign up for a Google Cloud 
 1. Install local tools
 
   - [oc CLI - v3.11](https://github.com/openshift/origin/releases/tag/v3.11.0)
-
 
 1. On the OpenShift master node, execute the following steps:
 
@@ -195,8 +151,6 @@ k3d v5.x.x requires at least Docker v20.10.5 (runc >= v1.0.0-rc93) to work prope
 
 You must install [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) before installing K3d. This is used to interact with the Kubernetes cluster.
 
-
- 
 1. Download, install [K3d](https://k3d.io/v5.3.0/) (tested with [v5.3.0](../k8s_support)) and run K3d using the following command:
 
    ```console
@@ -239,8 +193,8 @@ You must install [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) befo
 <details><summary>Any other Kubernetes distribution</summary>
 <p>
 
-Keptn should run on any other Kubernetes distribution as it only consists of Kubernetes deployments, services, RBAC rules, and PVCs.
-However, if you are facing problems, please let us know on https://slack.keptn.sh.
+Keptn runs on any other Kubernetes distribution as it only consists of Kubernetes deployments, services, RBAC rules, and PVCs.
+If you are facing problems, please let us know on https://slack.keptn.sh.
 
 </p>
 </details>
