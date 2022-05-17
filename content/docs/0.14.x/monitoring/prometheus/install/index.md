@@ -10,17 +10,18 @@ In order to evaluate the quality gates and allow self-healing in production, we 
 
 ## Prerequisites
 
-- Keptn project and at least one onboarded service must be available.
-- Keptn does not install or manage Prometheus and its components. Users must install *Prometheus* and *Prometheus Alert Manager* as a prerequisite.
+- Keptn project with at least one deployed service with a `/metrics` endpoint for Prometheus.
+- Prometheus Monitoring installed in `monitoring` namespace
+  ```bash
+  kubectl create namespace monitoring
+  helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+  helm install prometheus prometheus-community/prometheus --namespace monitoring
+  ```
 
-```bash
-helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-helm install prometheus prometheus-community/prometheus --namespace default
-```
 
-- The prometheus-service (which will be deployed later) needs access to the Prometheus instance.
-By default it uses the Prometheus instance running on the same Kubernetes cluster as Keptn,
-in the monitoring namespace.
+- The *prometheus-service* (which will be deployed later) needs access to the Prometheus instance.
+By default it uses the Prometheus instance running on the same Kubernetes cluster as Keptn control-plane,
+in the `monitoring` namespace.
 If you are using another, external Prometheus instance, create a secret containing the user, password, and url.
 The secret must have the following format (please note the double-space indentation):
 
@@ -43,61 +44,18 @@ For more details, see the [README for prometheus-service](https://github.com/kep
 
 ## Set up Prometheus Keptn integration
 
-After creating a project and service, you can set up Prometheus monitoring and configure scrape jobs using the Keptn CLI.
-
-* Replace the environment variable value according to the use case and apply the manifest
-
-```yaml
-    # Prometheus installed namespace
-    - name: PROMETHEUS_NS
-      value: 'default'
-    # Prometheus server configmap name
-    - name: PROMETHEUS_CM
-      value: 'prometheus-server'
-    # Prometheus server app labels
-    - name: PROMETHEUS_LABELS
-      value: 'component=server'
-    # Prometheus configmap data's config filename
-    - name: PROMETHEUS_CONFIG_FILENAME
-      value: 'prometheus.yml'
-    # AlertManager configmap data's config filename
-    - name: ALERT_MANAGER_CONFIG_FILENAME
-      value: 'alertmanager.yml'
-    # Alert Manager config map name
-    - name: ALERT_MANAGER_CM
-      value: 'prometheus-alertmanager'
-    # Alert Manager app labels
-    - name: ALERT_MANAGER_LABELS
-     value: 'component=alertmanager'
-    # Alert Manager installed namespace
-    - name: ALERT_MANAGER_NS
-      value: 'default'
-    # Alert Manager template configmap name
-    - name: ALERT_MANAGER_TEMPLATE_CM
-      value: 'alertmanager-templates'
-    # Prometheus Server Endpoint
-    - name: PROMETHEUS_ENDPOINT
-      value: "http://prometheus-server.monitoring.svc.cluster.local:80"
-```
-
 **Execute the following steps to install prometheus-service**
 
-* Download the manifest of the prometheus-service:
+* Install prometheus-service in `keptn` namespace
 
 ```bash
-wget https://raw.githubusercontent.com/keptn-contrib/prometheus-service/release-0.7.0/deploy/service.yaml
-```
-
-* Replace the environment variable value according to the use case and apply the manifest
-
-```bash
-kubectl apply -f service.yaml -n keptn
+helm upgrade --install -n keptn prometheus-service https://github.com/keptn-contrib/prometheus-service/releases/download/0.8.0/prometheus-service-0.8.0.tgz --reuse-values
 ```
 
 * Install Role and RoleBinding to permit the prometheus-service for performing operations in the Prometheus installed namespace:
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/release-0.7.0/deploy/role.yaml -n keptn
+kubectl -n monitoring apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/0.8.0/deploy/role.yaml
 ```
 
 * Execute the following command which performs: 
@@ -113,7 +71,7 @@ keptn configure monitoring prometheus --project=sockshop --service=carts
 * To verify that the Prometheus scrape jobs are correctly set up, you can access Prometheus by enabling port-forwarding for the prometheus-server:
 
 ```BASH
-kubectl port-forward svc/prometheus-server 8080:80 -n default
+kubectl -n monitoring port-forward svc/prometheus-server 8080:80
 ```
 
 Prometheus is then available on [localhost:8080/targets](http://localhost:8080/targets) where you can see the targets for the service.
@@ -135,7 +93,7 @@ keptn add-resource --project=sockshop --stage=hardening --service=carts --resour
 
 **Example for custom SLI:** 
 
-Please take a look at this snippet, which implements a concrete SLI configuration to learn more about the structure of a SLI file. It is possible to use placeholders such as `$PROJECT`, `$SERVICE`, `$STAGE` and `$DURATION_SECONDS` in the queries.
+Please take a look at this snippet, which implements a concrete SLI configuration to learn more about the structure of a SLI file. It is possible to use placeholders such as `$PROJECT` (e.g., sockshop), `$SERVICE` (e.g., carts), `$STAGE` (e.g., staging) and `$DURATION_SECONDS` in the queries.
 
 ```yaml
 ---
