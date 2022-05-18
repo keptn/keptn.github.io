@@ -20,5 +20,11 @@ IgnoreURLs:
 - "mailto"
 - "localhost:8080"
 - "linkedin.com"
+- "twitter.com/keptnProject"
+- "twitter.com/keptnproject"
 - "YOUR-ORG"
+- "YOUR.DOMAIN"
+- "your.domain"
+- "sockshop-dev"
+- "nip.io"
 StripQueryString: false
