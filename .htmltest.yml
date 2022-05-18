@@ -2,7 +2,6 @@ IgnoreDirectoryMissingTrailingSlash: true
 CheckDoctype: false
 #CheckExternal: false
 IgnoreDirs:
-- "docs/0.1."
 - "docs/0.2."
 - "docs/0.3."
 - "docs/0.4."
@@ -21,6 +20,5 @@ IgnoreURLs:
 - "mailto"
 - "localhost:8080"
 - "linkedin.com"
-- "twitter.com/keptnProject"
-- "twitter.com/keptnproject"
+- "YOUR-ORG"
 StripQueryString: false

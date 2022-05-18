@@ -11,4 +11,4 @@ clean:
 	docker run --rm -it $(VOLUMES) klakegg/hugo:0.53-ext --cleanDestinationDir
 
 htmltest:
-	docker run -v $(CURDIR):/test --rm wjdp/htmltest -c .htmltest.yml public
+	docker run -v $(CURDIR):/test --rm wjdp/htmltest -s -c .htmltest.yml public
