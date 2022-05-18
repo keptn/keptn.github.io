@@ -1,0 +1,26 @@
+IgnoreDirectoryMissingTrailingSlash: true
+CheckDoctype: false
+#CheckExternal: false
+IgnoreDirs:
+- "docs/0.1."
+- "docs/0.2."
+- "docs/0.3."
+- "docs/0.4."
+- "docs/0.5."
+- "docs/0.6."
+- "docs/0.7."
+- "docs/0.8."
+- "docs/0.9."
+- "docs/0.10."
+- "docs/0.11."
+- "docs/0.12."
+- "docs/0.13."
+IgnoreURLs:
+- "github.com/keptn/keptn/issues"
+- "github.com/keptn/keptn/commit"
+- "mailto"
+- "localhost:8080"
+- "linkedin.com"
+- "twitter.com/keptnProject"
+- "twitter.com/keptnproject"
+StripQueryString: false

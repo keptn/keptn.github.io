@@ -104,7 +104,20 @@ For all previous releases like `0.13.x`, `0.12.x`, and lower, a folder in [./con
 
 > Update the content in the corresponding folder of the Keptn release **and** in the current folder that is in development. Consequently, your PR will target at least two folders if the change is relevant for the upcoming releases too.
 
-## Install Hugo to build the docs locally
+## Building the documentation locally
+
+### Using makefile
+
+We provde a makefile with the targets:
+
+- build: for building
+- server: for building and starting the server at http://localhost:1313/
+- clean: for cleaning the public directory
+- htmltest: to run htmltest against generated output
+
+The makefile targets are utilizing docker for easier setup. This requires no additional setup as all the build specific software is encapsulated in proper docker images.
+
+### Using a locally installed Hugo
 
 1. Install the extended version of [Hugo](http://gohugo.io) in [Version 0.53](https://github.com/gohugoio/hugo/releases/tag/v0.53) (see [netlify.toml](netlify.toml) - `HUGO_VERSION = "0.53"`).
 
@@ -132,7 +145,7 @@ Note that Hugo updates the rendered documentation each time you write the file.
     ```
 6. Use Ctrl+C to stop the local Hugo server when you are done.
 
-## Building markdown files without Hugo
+### Building markdown files without Hugo
 
 The Hugo generator described above only renders the markdown files under the */content/docs* directory.
 If you need to render another markdown file (such as this *CONTRIBUTING.md* file) to check your formatting, you have the following options:
