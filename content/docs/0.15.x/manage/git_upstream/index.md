@@ -13,6 +13,22 @@ Keptn manages a project in an internal Git repository. To upstream this reposito
 * If you have already a Keptn project created and you want to set an upstream afterwards, you can do this with the [keptn update project](../../reference/cli/commands/keptn_update_project/) command explained [below](/#create-keptn-project-or-set-git-upstream). 
 * :warning: The Git repository you want to define as upstream for an already created project **must not be initialized**, i.e., an empty repo without any commits. Therefore, **do not select** the check-box: *Initialize this repository with a README* when creating the repository.
 
+**Note about certificates:**
+Keptn Release 0.15.x and earlier releases do not support self-signed certificates for the upstream Git repository.
+The new [*resource-service*](https://github.com/keptn/keptn/tree/master/resource-service),
+which replaces the *configuration-service*, supports self-signed certificates.
+This feature is currently in Beta state but can be enabled with these steps:
+
+1. Use the following in the **helm install** command used for installing Keptn:
+    ```
+    --set control-plane.resourceService.enabled=true in 
+    ```
+1. Use the `insecure-skip-tls` flag in the CLI.  For example:
+    ```
+    keptn create project <project> --shipyard=./shipyard.yaml --git-remote-url=<git-remote-url> \
+    --git-user=<git-user> --git-token=<git-token> --insecure-skip-tls
+    ```
+
 ## Create a Git repository
 
 Select one of the four options and make sure to have the Git **user**, **token**, and **remote url** before continuing.
