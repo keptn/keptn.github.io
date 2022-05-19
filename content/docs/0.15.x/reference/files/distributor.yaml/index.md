@@ -43,7 +43,7 @@ spec:
             - name: PUBSUB_TOPIC
               value: 'sh.keptn.internal.event.some-event'
             - name: PUBSUB_RECIPIENT
-              value: 'your-service'
+              value: '127.0.0.1`'
 ```
 ~               
 
