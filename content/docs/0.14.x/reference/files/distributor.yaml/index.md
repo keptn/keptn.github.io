@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
         - name: distributor
-          image: keptndev/distributor:latest
+          image: keptndev/distributor:0.14.2
           ports:
             - containerPort: 8080
           resources:
