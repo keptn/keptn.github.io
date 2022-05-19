@@ -15,8 +15,8 @@ Keptn manages a project in an internal Git repository. To upstream this reposito
 
 **Note about certificates:**
 Keptn Release 0.15.x and earlier releases do not support self-signed certificates for the upstream Git repository.
-The new *resource-service*, which replaces the *configuration-service*,
-supports self-signed certificates.
+The new [*resource-service*](https://github.com/keptn/keptn/tree/master/resource-service),
+which replaces the *configuration-service*, supports self-signed certificates.
 This feature is currently in Beta state but can be enabled with these steps:
 
 1. Use the following in the **helm install** command used for installing Keptn:
