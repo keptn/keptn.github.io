@@ -19,7 +19,11 @@ aliases:
 
 ### Definition of Stage
 
-A stage is declared by its name. This name will be used for the branch in the Git repository and Kubernetes namespace to which services at this stage will be deployed to.
+A stage is named for the particular activity to be performed,
+such as `development`, `hardening`, `staging`, or `production.
+Each *shipyard* file must have at least one `stage`.
+The name of the stage becomes the name of the branch in the upstream Git repository
+and the Kubernetes namespace to which services are deployed.
 
 **Example of a shipyard with three stages:**
 
