@@ -2,6 +2,8 @@
 VOLUMES := -v $(CURDIR):/src -v $(CURDIR)/public:/target 
 IMAGE := klakegg/hugo:0.53-ext-alpine
 
+.PHONY: build server clean htmltest
+
 build:
 	docker run --rm -it $(VOLUMES) $(IMAGE) -D -v
 
