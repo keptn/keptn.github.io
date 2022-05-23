@@ -114,7 +114,7 @@ and are part of a `stage`.. A sequence has the properties:
                 result: failed
 
     It is also possible to refer to certain tasks within the preceeding sequence.
-    For example, if `match` s changed to `release.result: failed`,
+    For example, if `match` is changed to `release.result: failed`,
     the `rollback` sequence is executed only if the task `release` of the sequence `delivery` has a result of `failed`:
 
         - name: rollback
@@ -154,10 +154,11 @@ Each of these are discussed below.
 
 * `action`
 
-    ` Indicates that a remediation action should be executed by an action provider.
+    Indicates that a remediation action should be executed by an action provider.
     It is used within a [remediation workflow](../../../automated_operations/remediation).
 
-       Synopsis:
+    *Synopsis:*
+
         - name: action
 
 * `approval`
@@ -170,11 +171,12 @@ Each of these are discussed below.
     - `automatic`: Task sequence continues without requesting approval
     - `manual`:  Task sequence requests for approval before continuing
 
-        Synopsis:
+    *Synopsis:*
+
         - name: approval
-          properties:
-            pass: automatic
-            warning: manual
+           properties:
+             pass: automatic
+             warning: manual
 
     This allows combinations as follows:
     
