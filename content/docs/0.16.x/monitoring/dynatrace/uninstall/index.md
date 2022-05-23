@@ -13,7 +13,7 @@ To uninstall the *dynatrace-service*, use the Helm CLI to delete the release of 
 helm delete -n keptn dynatrace-service
 ```
 
-Note, this command only removes the Dynatrace integration into Keptn. Other components, such as the Dynatrace OneAgent on Kubernetes will be unaffected.
+Note, this command only removes the Dynatrace integration into Keptn. Other components, such as the Dynatrace OneAgent on Kubernetes are unaffected.
 
 ## Uninstall OneAgent Operator
 

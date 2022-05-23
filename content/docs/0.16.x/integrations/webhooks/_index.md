@@ -9,7 +9,7 @@ Keptn has a built-in capability, via the [Keptn webhook service](https://github.
 
 Webhooks allow you to easily integrate various third-party tools such as testing services, CI/CD pipelines, and incident management services. In addition to just invoking the third-party webhook receiver, webhook subscriptions can be configured to wait for the third-party webhook receiver to send back details about what it did. 
 
-Depending on the receiving tools configuration, data can be either passed within the payload body or as query params in the URL along with any required headers and API tokens.
+Depending on the receiving tools configuration, data can be passed either  within the payload body or as query params in the URL, along with any required headers and API tokens.
 
 ## Webhook subscriptions
 
@@ -32,7 +32,7 @@ Broadly, there are two types of webhooks:
 
 ## Configure Passive on task "started" or "finished" events
 
-For this use case, a webhook subscription is configured to listen to a task `started` or `finished` event. For this to work, some other Keptn service is responsible to send the task `started` and `finished` events to complete the sequence task.
+For this use case, a webhook subscription is configured to listen to a task `started` or `finished` event. For this to work, some other Keptn service must send the task `started` and `finished` events to complete the sequence task.
 
 One example is the `evaluation` task. Here the Keptn lighthouse service sends the evaluation `started` and `finished` event with Service Level Objective (SLO) evaluation results. By subscribing to the `finished` event, the SLO results can be sent to some third-party webhook receiver such as Slack.
 
@@ -70,7 +70,7 @@ width="500px">}}
 *Important Notes:* 
 
 * Many APIs require `Content-Type: application/json` so be sure to add this as a custom header. 
-* Webhook subscriptions are stored in clear text within the upstream Git repo, so be sure to store tokens or other secret data as Keptn secrets. Details on creating and using secrets this is [described below](#include-sensitive-data).
+* Webhook subscriptions are stored in clear text within the upstream Git repo, so be sure to store tokens or other secret data as Keptn secrets. Details on creating and using secrets are [described below](#include-sensitive-data).
 
 {{< popup_image
 link="./assets/header-secret.png"
@@ -81,7 +81,7 @@ width="500px">}}
 
 If the third-party webhook receiver requires this, add a payload to match the format requested by the receiving endpoint.
 
-The output format of the webhook (i.e., the payload of the request body) can be customized using event data to match the required input format of the tool you are integrating with. Therefore, you can reference the data field (event property) using [Go templating](https://blog.gopheracademy.com/advent-2017/using-go-templates/). 
+The output format of the webhook (i.e., the payload of the request body) can be customized using event data to match the required input format of the tool with which you are integrating. Therefore, you can reference the data field (event property) using [Go templating](https://blog.gopheracademy.com/advent-2017/using-go-templates/).
 
 For example, if you would like to get the value of the `project` property from the subscribed event, type in: `{{.data.project}}`. A look at the example event can help to identify the proper data field. 
 
@@ -109,7 +109,7 @@ Based on the Go templating capabilities, you can:
 
 A convenient way to add event properties to the URL or custom payload is the property picker. 
 
-To use this, put your cursor in the URL or text field at the spot where you would like to customize the payload. Clicking the *computer* icon will open a list of data fields you can add to the payload or URL. This list of data fields is derived from the event your webhook is subscribed to. 
+To use this, put your cursor in the URL or text field at the spot where you would like to customize the payload. Clicking the *computer* icon opens a list of data fields you can add to the payload or URL. This list of data fields is derived from the event to which your webhook is subscribed.
 
 {{< popup_image
 link="./assets/customize-payload.png"
@@ -138,7 +138,7 @@ An example *Passive* webhook is setting a feature flag where the Third-party web
 **Add subscription**
 
 1. Follow the same steps above to add a new webhook subscription, but configure it to listen to a Task suffix of `triggered`. 
-1. Ensure that the `Automatically` option is selected as shown below. When this is set, the webhook service will automatically send the task `finished` event for your subscription.
+1. Ensure that the `Automatically` option is selected as shown below. When this is set, the webhook service automatically sends the task `finished` event for your subscription.
 
     {{< popup_image
     link="./assets/finished-event-auto.png"
@@ -149,13 +149,13 @@ An example *Passive* webhook is setting a feature flag where the Third-party web
 
 ## Configure Active webhook on task "triggered" events
 
-This type is called *Active* because the Keptn webhook service will first send the task `started` event and the third-party webhook receiver sends back the `finished` task event to complete the task sequence.
+This type is called *Active* because the Keptn webhook service first sends the task `started` event and the third-party webhook receiver sends back the `finished` task event to complete the task sequence.
 
 An example *Active* webhook is to trigger a system to open an incident management ticket and send back the newly created incident ticket number within the task `finished` event so that the sequence can continue.
 
 *Important Note:* 
 
-* If the third-party webhook receiver does NOT send back the task `finished` event, the sequence will remain in a waiting state and will not continue until it times out or it receives the task `finished` event.
+* If the third-party webhook receiver does NOT send back the task `finished` event, the sequence remains in a waiting state and does not continue until it times out or it receives the task `finished` event.
 
 **Step 1: Add subscription**
 
@@ -165,7 +165,7 @@ An example *Active* webhook is to trigger a system to open an incident managemen
   * `{{.shkeptncontext}}` - required in the `shkeptncontext` attribute of the `finished` event
   * Optional, but depends on your implementation: `{{.data.project}}`, `{{.data.service}}`, `{{.data.stage}}`
 1. Follow the same steps above to add a new webhook subscription, but configure it to listen to a Task suffix of `triggered`. 
-1. Ensure that the `By webhook receiver` option is selected as shown below. When this is set, the webhook service will expect the webhook receiver to send back the task `finished` event.
+1. Ensure that the `By webhook receiver` option is selected as shown below. When this is set, the webhook service expects the webhook receiver to send back the task `finished` event.
 
     {{< popup_image
     link="./assets/finished-event-receiver.png"
@@ -247,13 +247,13 @@ width="700px">}}
 
 When integrating tools by calling their endpoints, many times authentication is needed. This is done by storing an authentication token that is part of the webhook request. Since Webhook subscriptions are stored in clear text within the upstream Git repo, so be sure to store tokens or other secret data as Keptn secrets as follows: 
 
-* Create a secret with a unique `name`, secret scope set to `keptn-webhook-service`, and a `key:value` pair whereas the key is a unique identifier of your secret and the value holds the sensitive data.
+* Create a secret with a unique `name`, secret scope set to `keptn-webhook-service`, and a `key:value` pair where the key is a unique identifier of your secret and the value holds the sensitive data.
   {{< popup_image
   link="./assets/create-secret.png"
   caption="Create a secret for webhook-service"
   width="700px">}}
 
-* When configuring your webhook, you can reference the sensitive data as part of the *URL*, *Custom header*, and in the *Custom payload*. Therefore, click the *key* icon that opens the list of available secrets. Select your secret and specify the key that refers to the sensitive data you would like to include at this point and the key-value pair will be automatically inserted into the selected field in the format `{{.secret.name.key}}`. 
+* When configuring your webhook, you can reference the sensitive data as part of the *URL*, *Custom header*, and in the *Custom payload*. Therefore, click the *key* icon that opens the list of available secrets. Select your secret and specify the key that refers to the sensitive data you would like to include at this point and the key-value pair is  automatically inserted into the selected field in the format `{{.secret.name.key}}`.
 
   {{< popup_image
   link="./assets/add-secret-value.png"
@@ -268,7 +268,7 @@ When integrating tools by calling their endpoints, many times authentication is 
 
 *Important Note:*
 
-* When the webhook configuration is saved, the secret will be parsed into a different format, which looks like this: `{{.env.secret_name_key}}`. This format represents a unique name that is a referrer to an entry in the `envFrom` property in the `webhook.yaml` file. This `envFrom` property contains added secrets with a referrer name, the given secret name, and secret key.
+* When the webhook configuration is saved, the secret is parsed into a different format, which looks like this: `{{.env.secret_name_key}}`. This format represents a unique name that is a referrer to an entry in the `envFrom` property in the `webhook.yaml` file. This `envFrom` property contains added secrets with a referrer name, the given secret name, and secret key.
 
     ```
     apiVersion: webhookconfig.keptn.sh/v1alpha1

@@ -41,13 +41,13 @@ Furthermore, additional values are required for OpenID to work:
 
 ## Authentication flow with the identity provider
 
-The following diagram shows the expected authentication flow with a custom identity provider that follows the implementation details explained below. 
+The following diagram shows the expected authentication flow with a custom identity provider that follows the implementation details explained below.
 
 {{< popup_image
 link="./assets/oauth-flow.png"
 caption="Authentication flow with identity provider" width="800px">}}
 
-Keptn Bridge will check the existence of the identity provider and also validate responses obtained from it. For example, next are requests and responses the Keptn Bridge can expect from the identity provider.
+Keptn Bridge checks the existence of the identity provider and also validates responses obtained from it. For example, the following are requests and responses the Keptn Bridge can expect from the identity provider.
 
 *To obtain discovery request:*
 
@@ -374,7 +374,7 @@ Content-Type: application/json
 ```
 
 ### jwks_uri endpoint
-It contains a set of JSON Web Keys that is used for validating the received id token.
+It contains a set of JSON Web Keys that are used for validating the received id token.
 
 ```
 GET http://identity-provider:8080/jwks_endpoint

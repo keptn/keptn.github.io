@@ -90,7 +90,7 @@ spec:
 
 * To create the Keptn service `booking`, use the [keptn create service](../../reference/cli/commands/keptn_create_service/) command.
 
-**Note:** It is not needed to create the stage since it is declared in the Shipyard that is applied during the project creation. 
+**Note:** It is not necessary to create the stage since it is declared in the Shipyard that is applied during the project creation.
 
 ## Step 1: Create project and service
 

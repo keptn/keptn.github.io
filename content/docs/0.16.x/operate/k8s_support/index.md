@@ -44,7 +44,7 @@ Keptn versions are expressed as `x.y.z`, where `x` is the major version, `y` is 
 
 **Test Strategy for Kubernetes support:**
 
-* With a new Keptn release, Keptn is tested based on the default K8s version of each Cloud Provider: AKS, EKS and GKE available at the release date.
+* With a new Keptn release, Keptn is tested based on the default Kubernetes version of each Cloud Provider: AKS, EKS and GKE available at the release date.
 
 * Internally, a test pipeline with newer Kubernetes versions is verifying the master branch of Keptn. Known-limitations identified by these tests are referenced at the corresponding Keptn release.
 

@@ -5,7 +5,7 @@ weight: 10
 keywords: [0.16.x-integration]
 ---
 
-An *action-provider* is an implementation of a [*Keptn-service*](../custom_integration/#keptn-service) with a dedicated purpose. This type of service is responsible for executing a remediation action and therefore might even use another tool. The [Keptn CloudEvents](#cloudevents) an action-provider has to subscribe to is:
+An *action-provider* is an implementation of a [*Keptn-service*](../custom_integration/#keptn-service) with a dedicated purpose. This type of service is responsible for executing a remediation action and therefore might even use another tool. The [Keptn CloudEvents](#cloudevents) to which an action-provider must subscribe is:
 
 - `sh.keptn.event.action.triggered`
 
@@ -61,9 +61,9 @@ Next to meta-data such as project, stage, or service name, the event contains in
 
 ### Functionality 
 
-After receiving the `sh.keptn.event.action.triggered` event, an action-provider must perform following tasks:
+After receiving the `sh.keptn.event.action.triggered` event, an action-provider must perform the following tasks:
 
-1. Process the incoming Keptn CloudEvent to receive meta-data such as project, stage, and service name. Besides, the action and value properties are required.
+1. Process the incoming Keptn CloudEvent to receive meta-data such as project, stage, and service name. The action and value properties are also required.
 
 2. Decide based on the `action` property whether the action is supported. If the action is not supported, no further task is required.
 
@@ -111,7 +111,7 @@ After receiving the `sh.keptn.event.action.triggered` event, an action-provider 
 
 A default deployment manifest is provided in the keptn-service-template-go template, see: [deploy/service.yaml](https://github.com/keptn-sandbox/keptn-service-template-go/blob/master/deploy/service.yaml). 
 
-* Change the deployment manifest for your *action-provider* and the apply it to the Kubernetes cluster where Keptn is running:
+* Change the deployment manifest for your *action-provider* and then apply it to the Kubernetes cluster where Keptn is running:
 
 ```console
 kubectl apply -f service.yaml -n keptn

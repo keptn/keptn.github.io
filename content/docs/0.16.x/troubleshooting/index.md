@@ -9,7 +9,7 @@ In this section, instructions have been summarized that help to troubleshoot kno
 
 ## Generating a Support Archive
 
-The Keptn CLI allows to generate a support archive, which can be used as data source for debugging a Keptn installation.
+Use the Keptn CLI to generate a support archive, which can be used as a data source for debugging a Keptn installation.
 For generating a support archive, please checkout the CLI command [keptn generate support-archive](../reference/cli/commands/keptn_generate_support-archive).
 
 ## Keptn API cannot be reached
@@ -269,12 +269,12 @@ Resource has been uploaded.
 
 ## Keptn on Minikube causes a MongoDB issue after a reboot
 
-When rebooting the machine Minikube is installed on, the MongoDB pod in the `keptn` namespace runs in a `CrashLoopBackoff`. 
+When rebooting the machine on which Minikube is installed, the MongoDB pod in the `keptn` namespace runs in a `CrashLoopBackoff`. 
 
 <details><summary>Expand instructions</summary>
 <p>
 
-**Note:** Minikube is a K8s distribution for development environments. Please go with K3s/K3d for a more stable setup.
+**Note:** Minikube is a Kubernetes distribution for development environments. Please go with K3s/K3d for a more stable setup.
 
 **Investigation:**
 
@@ -368,7 +368,7 @@ More details can be found at [GitHub Kubernetes Issue #64924](https://github.com
 
 **Solutions**: 
 
-* Verify your clusters nameserver configuration is working as expected, especially the searchdomains. Easiest way to verify is to look at the output of
+* Verify that your cluster's nameserver configuration is working as expected, especially the searchdomains. Easiest way to verify is to look at the output of
    ```console
    nslookup keptn.sh
    ```

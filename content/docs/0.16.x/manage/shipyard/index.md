@@ -19,7 +19,7 @@ aliases:
 
 ### Definition of Stage
 
-A stage is declared by its name. This name will be used for the branch in the Git repository and Kubernetes namespace to which services at this stage will be deployed to.
+A stage is declared by its name. This name is used for the branch in the Git repository and Kubernetes namespace to which services at this stage will be deployed.
 
 **Example of a shipyard with three stages:**
 
@@ -117,7 +117,7 @@ This allows combinations as follows:
 | **Depending on evaluation result:**   | pass:manual    | warning:automatic | If the evaluation result is a **pass**, an approval is required |
 | **Mandatory approval task:**          | pass:manual    | warning:manual    | Regardless of the evaluation result, an approval is required |
 
-Per default, an `automatic` approval strategy is used for evaluation result `pass` and `warning`.
+By default, an `automatic` approval strategy is used for evaluation result `pass` and `warning`.
 
 **Usage:**
 
@@ -128,7 +128,7 @@ Per default, an `automatic` approval strategy is used for evaluation result `pas
     warning: manual
 ```
 
-**Note:** If the approval is the first task of a sequence, the approval service will not be provided with the result from a previous task. In this case, it will always fall back to the `manual` approval strategy.
+**Note:** If the approval is the first task of a sequence, the approval service is not provided with the result from a previous task. In this case, it always falls back to the `manual` approval strategy.
 
 <details><summary>**Example:** Extended shipyard with a mandatory approval task in production</summary>
 
@@ -205,7 +205,7 @@ The get-action task is used to extract the desired remediation action from a rem
 
 #### Release
 
-Defines the releasing task that is executed after a successful deployment happened. This means that production traffic is shifted towards the new deployment in this task.
+Defines the releasing task that is executed after a successful deployment happens. This means that production traffic is shifted towards the new deployment in this task.
 
 **Usage:**
 ```
@@ -223,7 +223,7 @@ Defines the execution of a remediation action retrieved by `get-action`.
 
 #### Rollback
 
-Defines the rollback task that is executed when a rollback shall be triggered.
+Defines the rollback task that is executed when a rollback is triggered.
 
 **Usage:**
 ```
@@ -347,7 +347,7 @@ spec:
             - name: "release"
 ```
 
-**Result:** The next time this sequence gets triggered by Keptn, the task will be executed meaning that a `sh.keptn.event.[task].triggered` event is sent out. Make sure to have a Keptn-service that listens to this event type and can execute it. 
+**Result:** The next time Keptn triggers this sequence, the task is executed, meaning that a `sh.keptn.event.[task].triggered` event is sent out. Be sure to have a Keptn-service that listens to this event type and can execute it. 
 
 ### Add/Remove a task sequence to/from a stage
 
@@ -376,7 +376,7 @@ spec:
             - name: "release"
 ```
 
-**Use-case 1:** I would like to add an additional delivery process to the production stage that allows rolling-out a hotfix without testing and evaluation. 
+**Use-case 1:** I would like to add an additional delivery process to the production stage that allows rolling out a hotfix without testing and evaluation. 
 
 *Updated shipyard:*
 
@@ -458,13 +458,13 @@ spec:
 
 ### Define a trigger for a sequence 
 
-An advanced and powerful feature of the shipyard is that you can define *triggers* to kick-off a sequence. Therefore, a sequence offers the `triggeredOn` property where a list of events can be specified. The event type you can list there are events that refer to the status of a sequence execution. Their name follows the pattern:
+An advanced and powerful feature of the shipyard is that you can define *triggers* to kick-off a sequence. Therefore, a sequence offers the `triggeredOn` property where a list of events can be specified. The event types you can list there are events that refer to the status of a sequence execution. Their name follows the pattern:
 
 * `[stage_name].[sequence_name].finished` 
 
 **Note:** It is not required to specify the full qualified event name which would be `sh.keptn.event.[stage_name].[sequence_name].finished` in this case
 
-Besides, a *match selector* can be added to an event that works as a filter on the `result` property of the event. Consequently, you can filter based on sequence executions that *failed* or *passed*, shown by the next example that filters on `failed`: 
+In addition, a *match selector* can be added to an event to work as a filter on the `result` property of the event. Consequently, you can filter based on sequence executions that *failed* or *passed*, shown by the next example that filters on `failed`:
 
 ```
 sequences:
@@ -607,7 +607,7 @@ spec:
             - name: "release"
 ```
 
-If we want to trigger the `delivery` sequence in the *hardening* stage, the following payload should be posted to the `POST /event` endpoint.
+To trigger the `delivery` sequence in the *hardening* stage, post the following payload to the `POST /event` endpoint.
 
 ```json
 {
@@ -624,7 +624,7 @@ If we want to trigger the `delivery` sequence in the *hardening* stage, the foll
 }
 ```
 
-If we want to trigger the `delivery` sequence in the *production* stage, the following payload should be posted to the `POST /event` endpoint.
+To trigger the `delivery` sequence in the *production* stage, post the following payload to the `POST /event` endpoint.
 
 ```json
 {
@@ -641,8 +641,8 @@ If we want to trigger the `delivery` sequence in the *production* stage, the fol
 }
 ```
 
-If we want to trigger the `evaluation-only` sequence in the *hardening* stage, the following payload should be posted to the `POST /event` endpoint.
-Since we want to trigger an evaluation, we need to provide addition properties about the evaluation timeframe. More info are available in the
+To trigger the `evaluation-only` sequence in the *hardening* stage, post the following payload to the `POST /event` endpoint.
+Since we want to trigger an evaluation, we need to provide addition properties about the evaluation timeframe. More information is provided in the
 [Quality Gates](../../quality_gates/get_started/) section of our documentation.
 
 ```json

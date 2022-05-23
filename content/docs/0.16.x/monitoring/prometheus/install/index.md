@@ -101,7 +101,7 @@ kubectl apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-serv
 
 * Execute the following command which performs: 
   * an update of the Prometheus configuration to add scrape jobs for the service in the specified Keptn project
-  * the defintion of alert rules based on the SLO configuration of that service in the various stages. *Please note:* If no SLO is available in a stage, no alert rule will be created. Besides, the alert will be firing after monitoring a violation of the SLO for more than 10 minutes. 
+  * the defintion of alert rules based on the SLO configuration of that service in the various stages. *Please note:* If no SLO is available in a stage, no alert rule is created.  In addition, the alert will be firing after monitoring a violation of the SLO for more than 10 minutes. 
 
 ```bash
 keptn configure monitoring prometheus --project=sockshop --service=carts
@@ -122,7 +122,7 @@ Prometheus is then available on [localhost:8080/targets](http://localhost:8080/t
 
 ## Configure custom Prometheus SLIs
 
-To tell the *prometheus-service* how to acquire the values of an SLI, the correct query needs to be configured. This is done by adding an SLI configuration to a project, stage, or service using the [add-resource](../../../reference/cli/commands/keptn_add-resource) command. The resource identifier must be `prometheus/sli.yaml`.
+The correct query must be configured to tell the *prometheus-service* how to acquire the values of an SLI. This is done by adding an SLI configuration to a project, stage, or service using the [add-resource](../../../reference/cli/commands/keptn_add-resource) command. The resource identifier must be `prometheus/sli.yaml`.
 
 * In the below example, the SLI configuration as specified in the `sli-config-prometheus.yaml` file is added to the service `carts` in stage `hardening` from project `sockshop`. 
 
@@ -130,7 +130,7 @@ To tell the *prometheus-service* how to acquire the values of an SLI, the correc
 keptn add-resource --project=sockshop --stage=hardening --service=carts --resource=sli-config-prometheus.yaml --resourceUri=prometheus/sli.yaml
 ```
 
-**Note:** The add-resource command can be used to store a configuration on project-, stage-, or service-level. If you store SLI configurations on different levels, see [Add SLI configuration to a Service, Stage, or Project](../../../quality_gates/sli/#add-sli-configuration-to-a-service-stage-or-project) to learn which configuration overrides the others based on an example.
+**Note:** Use the add-resource command to store a configuration on project-, stage-, or service-level. If you store SLI configurations on different levels, see [Add SLI configuration to a Service, Stage, or Project](../../../quality_gates/sli/#add-sli-configuration-to-a-service-stage-or-project) to learn which configuration overrides the others based on an example.
 
 **Example for custom SLI:** 
 

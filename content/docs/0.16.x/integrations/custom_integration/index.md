@@ -14,7 +14,7 @@ Here you learn how to add additional functionality to your Keptn installation wi
 ## Template repository
 
 A template for writing a new *Keptn-service*  is provided here: [keptn-service-template-go](https://github.com/keptn-sandbox/keptn-service-template-go).
-Please note that the master branch of this repository might represent a development state. Check out the [releases page](https://github.com/keptn-sandbox/keptn-service-template-go/releases) and download the code for a release that's compatible with the Keptn version you are going to develop for.
+Please note that the master branch of this repository might represent a development state. Check out the [releases page](https://github.com/keptn-sandbox/keptn-service-template-go/releases) and download the code for a release that's compatible with the Keptn version for which you are developing.
 
 Since a *Keptn-service* is a Kubernetes service with a deployment and service template, the deployment manifest in the template repository can be re-used; see [deploy/service.yaml](https://github.com/keptn-sandbox/keptn-service-template-go/blob/master/deploy/service.yaml).
 
@@ -36,7 +36,7 @@ A Keptn-service has the following characteristics:
 
 ### Subscription to a triggered event
 
-Your Keptn-service must have a subscription to at least one [Keptn CloudEvent](https://github.com/keptn/spec/blob/0.2.2/cloudevents.md). The event type to subscribe to looks as follows:
+Your Keptn-service must have a subscription to at least one [Keptn CloudEvent](https://github.com/keptn/spec/blob/0.2.2/cloudevents.md). The event type to subscribe to looks like:
 
 - `sh.keptn.event.[task].triggered`
 
@@ -47,7 +47,7 @@ In this example, `[task]` works as a placeholder for tasks such as: `deployment`
 
 * To subscribe your Keptn-service to the `sh.keptn.event.[task].triggered` event, a distributor with `PUBSUB_TOPIC` set to the specific event type is required, see example below. Alternatively, a default distributor listening to all events (e.g., `PUBSUB_TOPIC: sh.keptn.>`) is provided in the deployment manifest of the keptn-service-template-go template (see [deploy/service.yaml](https://github.com/keptn-sandbox/keptn-service-template-go/blob/master/deploy/service.yaml)).
 
-The `PUBSUB_TOPIC` variable sets the initial subscription for your service. If a subscription has been modified through the Bridge, Keptn will prioritize this information and it discards the value of `PUBSUB_TOPIC`. Please, look at the Bridge paragraph later on this page for more information on the subject.
+The `PUBSUB_TOPIC` variable sets the initial subscription for your service. If a subscription has been modified through the Bridge, Keptn prioritizes this information and it discards the value of `PUBSUB_TOPIC`. Please, look at the Bridge paragraph later on this page for more information on the subject.
 
 
 ```yaml
@@ -74,7 +74,7 @@ spec:
 ```
 
 In addition to forwarding received events for the subscribed topic to the Keptn-service, the distributor also provides the feature to act as a proxy to the Keptn API.
-Using this feature, the following Keptn API services will be reachable for the Keptn-service via the following URLs, if the **distributor runs within the same K8s pod as the Keptn-service**:
+Using this feature, the following Keptn API services are reachable for the Keptn-service via the following URLs, if the **distributor runs within the same K8s pod as the Keptn-service**:
 
 - Mongodb-datastore:
     - `http://localhost:8081/mongodb-datastore`
@@ -167,20 +167,20 @@ width="700px">}}
 
 In this form, you can provide the information for the task subscription:
 
-* *Task*: The task the integration should be fired on (e.g., `test` or `deployment`)
+* *Task*: The task on which the integration should be fired (e.g., `test` or `deployment`)
 * *Task suffix*: The state of the task when the integration should be fired; select one of: `triggered`, `started`, of `finished`
 * *Filter*: To restrict your integration to certain stages and services you can specify those using filters.
 
 *Note:* multiple subscriptions can be added for the same service.
 
-Keptn stores this subscriptions information also if the integration is not running.
-By default, Keptn will still keep this information for 48h after the last contact with the integration.
+Keptn stores this subscriptions information even if the integration is not running.
+By default, Keptn keeps this information for 48h after the last contact with the integration.
 This value can be configured using the [Advanced Install](../../operate/advanced_install_options/) option `shipyardController.config.uniformIntegrationTTL`.
 
 
 ### Send a started event
 
-After receiving a `triggered` event for a particular task, your *Keptn-service* has to inform Keptn by sending an event of the type: 
+After receiving a `triggered` event for a particular task, your *Keptn-service* must inform Keptn by sending an event of the type:
 
 - `sh.keptn.event.[task].started`
 
@@ -188,7 +188,7 @@ The request body needs to follow the [CloudEvent specification](https://github.c
 
 **Send the event:**
 
-To send the event to Keptn, two ways are possible:
+The event can be sent to Keptn in either of the following ways:
 
 1. Post it on the `v1/event` endpoint of Keptn
 1. If the distributor is running as sidecar, post the event on `127.0.0.1:8081`
@@ -203,7 +203,7 @@ After your *Keptn-service* has completed its functionality, it has to inform Kep
 
 - `sh.keptn.event.[task].finished`
 
-The request body needs to follow the [CloudEvent specification](https://github.com/keptn/spec/blob/0.2.2/cloudevents.md) and the HTTP header attribute `Content-Type` has to be set to `application/cloudevents+json`.
+The request body must follow the [CloudEvent specification](https://github.com/keptn/spec/blob/0.2.2/cloudevents.md) and the HTTP header attribute `Content-Type` must be set to `application/cloudevents+json`.
 
 **Add property to event header:**
 
@@ -247,7 +247,7 @@ You can send data back to Keptn by adding it to the data block in the event payl
 
 **Send the event:**
 
-To send the event to Keptn, two ways are possible:
+The event can be sent to Keptn, in either of the following ways:
 
 1. Post it on the `v1/event` endpoint of Keptn
 1. If the distributor is running as sidecar, post the event on `127.0.0.1:8081`
@@ -330,18 +330,18 @@ kubectl apply -f service.yaml -n keptn
 
 ## CloudEvents
 
-CloudEvents have to be sent with the HTTP header `Content-Type` set to `application/cloudevents+json`. For a detailed look into CloudEvents, please go the Keptn [CloudEvent specification](https://github.com/keptn/spec/blob/0.2.3/cloudevents.md).
+CloudEvents must be sent with the HTTP header `Content-Type` set to `application/cloudevents+json`. For a detailed look into CloudEvents, please go the Keptn [CloudEvent specification](https://github.com/keptn/spec/blob/0.2.3/cloudevents.md).
 
 ## Error Logging
 
-By default, the distributor will automatically extract error logs from received `sh.keptn.<task>.finished` events with `data.status=errored` and/or `data.result=fail`, that have been sent by your service. These error messages will then be forwarded to Keptn's Log Ingestion API.
+By default, the distributor automatically extracts error logs from received `sh.keptn.<task>.finished` events with `data.status=errored` and/or `data.result=fail`, that have been sent by your service. These error messages are then forwarded to Keptn's Log Ingestion API.
 
 Additionally, for easier debugging of errors that occur either during the execution of a task of a sequence, or while performing any other operation, Keptn integration services can send error log events to the Keptn API via the distributor.
 Examples for those events are listed below.
 
 ### Logging an error related task sequence execution:
 
-If the error log event should be associated to an execution of a specific task that has been triggered by a `sh.keptn.event.<task>.triggered` event, the following properties need to be set in order to correlate them to the correct task sequence execution:
+If the error log event is associated with the execution of a specific task that has been triggered by a `sh.keptn.event.<task>.triggered` event, the following properties must be set in order to correlate them to the correct task sequence execution:
 
 - `shkeptncontext`: The context of the task sequence execution. Can be adapted from the received `sh.keptn.event.<task>.triggered` event
 - `triggeredid`: The `id` of the received `sh.keptn.event.<task>.triggered` event
@@ -369,7 +369,7 @@ If the error log event should be associated to an execution of a specific task t
 
 ### Logging an error that is not related to the execution of a task
 
-If the error log event should not be associated to an execution of a specific task, the properties `shkeptncontext`, `triggeredid`, and `data.task` are not required. In this case, an example payload would look as follows:
+If the error log event is not associated with an execution of a specific task, the properties `shkeptncontext`, `triggeredid`, and `data.task` are not required. In this case, an example payload would look as follows:
 
 ```json
 {

@@ -136,7 +136,7 @@ In this section, the management of the API token of a Keptn installation is expl
     </details>
 
 If you want to make use of a self provided API token during the installation of Keptn, you can use the  `tokenSecretName` helm value.
-This will prevent Helm from generating a new secret on installation and instead will have helm use the secret you provided.
+This prevents Helm from generating a new secret on installation and instead has Helm use the secret you provided.
 
 ## Reset API Token
 
@@ -156,4 +156,4 @@ This will prevent Helm from generating a new secret on installation and instead 
 
 * Re-authenticate Keptn CLI as explained [here](../../reference/cli/commands/keptn_auth).
 
-* **Don't forget** to replace the API token at tools that interact with the Keptn API, e.g., *Problem Notification* setting in Dynatrace or *WebHook* in Prometheus.
+* **Don't forget** to replace the API token for tools that interact with the Keptn API, e.g., *Problem Notification* setting in Dynatrace or *WebHook* in Prometheus.

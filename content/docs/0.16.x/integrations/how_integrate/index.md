@@ -7,7 +7,7 @@ keywords: [0.16.x-integration]
 
 There are multiple ways on how to interact with the Keptn control-plane. Besides the [Keptn API](../../reference/api/) and [Keptn CLI](../../reference/api/), there are more options how external tools can make use of the orchestration capabilities of Keptn. Those external tools can be triggered by Keptn and therefore integrated into a Keptn sequence execution.
 
-In the following, we'll have a look at different use cases to help you get started. If your use case is not listed, have a look at the generic option of Keptn service templates or feel free to [start a conversation in the #keptn-integrations channel in the Keptn Slack](https://slack.keptn.sh).
+In the following sections we look at different use cases to help you get started. If your use case is not listed, have a look at the generic option of Keptn service templates or feel free to [start a conversation in the #keptn-integrations channel in the Keptn Slack](https://slack.keptn.sh).
 
 ## General overview
 
@@ -54,13 +54,13 @@ spec:
 
 **Please note**: In general the task can be renamed. However, the important part is that both the event type and the task name correlate with your integration.
 
-* Typically, test tools rely on some way of test definition files, such as a `*.jmx` file for JMeter or `locustfile.py` for Locust. These files have to be added to Keptn and will be managed by Keptn. Files can be added to Keptn via the [keptn add-resource](../../reference/cli/commands/keptn_add-resource/) Keptn CLI command. Let us assume we have a project *sockshop* with a *carts* microservice, the following command will add the local resource `locustfile.py` to Keptn in both the two sequences mentioned in our shipyard.
+* Typically, test tools rely on some sort of test definition file, such as a `*.jmx` file for JMeter or `locustfile.py` for Locust. These files must be added to Keptn and will be managed by Keptn. Files can be added to Keptn via the [keptn add-resource](../../reference/cli/commands/keptn_add-resource/) Keptn CLI command. For example, if we have a project *sockshop* with a *carts* microservice, the following command adds the local resource `locustfile.py` to Keptn for each of the two sequences mentioned in our shipyard.
 
 ```
 keptn add-resource --project=sockshop --stage=test-automation --service=carts --resource=./locustfile.py --resourceUri=locust/locustfile.py
 ```
 
-* Once a `test` task is defined in the shipyard, and the test definitions are added to Keptn, the integration needs to subscribe for the test events. Depending on how your integration is built, this can be done either via adding the subscription in the [distributor](../custom_integration/#subscription-to-a-triggered-event) or to the [job-executor definition](https://github.com/keptn-sandbox/job-executor-service#how).
+* After a `test` task is defined in the shipyard and the test definitions are added to Keptn, the integration must subscribe to the test events. Depending on how your integration is built, this can be done by adding the subscription either in the [distributor](../custom_integration/#subscription-to-a-triggered-event) or to the [job-executor definition](https://github.com/keptn-sandbox/job-executor-service#how).
 
 * Since the tests might run for some time, it is important that once the integration receives the `sh.keptn.event.test.triggered` event, it will respond with a `sh.keptn.event.test.started` event, and once finished it sends a `sh.keptn.event.test.finished` event.
 
@@ -68,21 +68,9 @@ keptn add-resource --project=sockshop --stage=test-automation --service=carts --
 
 Let us have a look at notification tool integrations such as Slack, or MS Team where you want to push (specific) events to a channel to notify members of it.
 
-* Usually, a notification tool reacts to a specific type of event or a set of events. The tool integration will subscribe to these event types and then send a defined payload to the channels. Consequently, there is no need to indicate that a notification integration starts and finishes the distribution of messages (i.e., no `*.started` or `*.finished` event has to be sent).
+* Usually, a notification tool reacts to a specific type of event or a set of events. The tool integration subscribes to these event types and then sends a defined payload to the channels. Consequently, there is no need to indicate that a notification integration starts and finishes the distribution of messages (i.e., no `*.started` or `*.finished` event is required).
 
 * The easiest way to set up such an integration is by configuring a [Webhook Integration](./#webhook-integration). 
-
-<!-- disabled, since we don't allow to run SLI-providers on the execution plane. 
-### Monitoring/observability tools (SLI-providers)
-
-Keptn quality gates are defined by [SLOs and SLIs](../../../concepts/quality_gates/) and the data will be provided via SLI-providers. The job of an SLI provider is to:
-
-1. listen for a `sh.keptn.event.get-sli.triggered` event and
-2. respond with a `sh.keptn.event.get-sli.started` event once the retrieval of the data is started and
-3. with a `sh.keptn.event.get-sli.finished` event including the SLIs as the payload once the retrieval of the data is finished.
-
-Please have a look at the [Keptn service template](https://github.com/keptn-sandbox/keptn-service-template-go) that provides a stub about how to build your own SLI provider in the `eventhanders.go` file.
--->
 
 ### Tools for your use cases
 
@@ -98,18 +86,18 @@ The Keptn community currently provides two [Keptn service templates](https://git
 1. [Keptn service template written in Go](https://github.com/keptn-sandbox/keptn-service-template-go)
 2. [Keptn service template written in Python](https://github.com/keptn-sandbox/keptn-service-template-python)
 
-The service templates provide the best starting point for integrations that need to stay in full control how to integrate with the Keptn control-plane while still making use of some utility functions.
-It is also best for integrations which business logic goes beyond a single execution of an action. For example, if an authentication, execution, status check, error handling, etc are needed, the Keptn service templates allow handling this.
+The service templates provide the best starting point for integrations that need to stay in full control of how they integrate with the Keptn control-plane while still making use of some utility functions.
+It is also best for integrations where business logic goes beyond a single execution of an action. For example, the Keptn service templates can handle a check  that combines authentication, execution, status check, error handling, etc.
 
 
 ### Job Executor
 
-The [Keptn job executor](https://github.com/keptn-sandbox/job-executor-service) is used best for integrations that can be executed via the command-line interface. The job executor will handle the interaction with the Keptn control-plane for sending `*.started` and `*.finished` events and is able to provide a list of files (e.g., test instructions) that are needed for integrations. Find all information regarding the capabilities and usage of the [job executor in its Github repository](https://github.com/keptn-sandbox/job-executor-service).
+The [Keptn job executor](https://github.com/keptn-sandbox/job-executor-service) is appropriate for integrations that can be executed via the command-line interface. The job executor handles the interaction with the Keptn control-plane for sending `*.started` and `*.finished` events and can provide a list of files (e.g., test instructions) that are needed for integrations. Find all information regarding the capabilities and usage of the [job executor in its Github repository](https://github.com/keptn-sandbox/job-executor-service).
 
 
 ### Generic Executor
 
-The purpose of the [generic-executor-service](https://github.com/keptn-sandbox/generic-executor-service) is to allow users to provide either `.sh` (shell scripts), `.py` (Python3) or `.http` (HTTP Request) files that will be executed when Keptn sends different events, e.g: you want to execute a specific script when a deployment-finished event is sent.
+The [generic-executor-service](https://github.com/keptn-sandbox/generic-executor-service) allows users to provide `.sh` (shell scripts), `.py` (Python3) or `.http` (HTTP Request) files that are executed when Keptn sends different events, such as executing a specific script when a deployment-finished event is sent.
 
 
 ### Webhook Integration

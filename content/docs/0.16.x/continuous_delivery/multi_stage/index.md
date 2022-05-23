@@ -88,7 +88,7 @@ spec:
         - name: "release"
 ```
 
-**Example:** Extended shipyard with two delivery sequence with varying deployment strategies (e.g., `delivery` is used for a Java-service, whereas `delivery-direct` is used for a database):
+**Example:** Extended shipyard with two delivery sequences, each of which has different deployment strategies (e.g., `delivery` is used for a Java-service, whereas `delivery-direct` is used for a database):
 
 ```yaml
 apiVersion: spec.keptn.sh/0.2.3

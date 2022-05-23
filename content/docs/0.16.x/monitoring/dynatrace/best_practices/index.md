@@ -27,7 +27,7 @@ You can specify [Kubernetes labels](https://kubernetes.io/docs/concepts/overview
 kubectl -n keptn create rolebinding default-view --clusterrole=view --serviceaccount=keptn:keptn-default
 ```
 
-As a result, Dynatrace will add the recommended Kubernetes labels to the processes, e.g.: 
+As a result, Dynatrace adds the recommended Kubernetes labels to the processes, e.g.: 
 
 {{< popup_image
     link="./assets/k8s_labels.png"
@@ -36,7 +36,7 @@ As a result, Dynatrace will add the recommended Kubernetes labels to the process
 
 ## Disable frequent issue detection
 
-When using Keptn for automating operations, e.g., to trigger remediation actions to resolve a problem identified by Dynatrace, it is recommended to disable the *Frequent Issue Detection* within Dynatrace. If this feature is disabled, Dynatrace sends *brand new* alerts every time a problem is detected. To disable it, go to **Settings > Anomaly Detection > Frequent Issue Detection**, and toggle all switches found in this menu:
+When using Keptn for automating operations, e.g., to trigger remediation actions to resolve a problem identified by Dynatrace, you should disable the *Frequent Issue Detection* within Dynatrace. If this feature is disabled, Dynatrace sends *brand new* alerts every time a problem is detected. To disable it, go to **Settings > Anomaly Detection > Frequent Issue Detection**, and toggle all switches found in this menu:
 
 {{< popup_image
     link="./assets/disable-fid.png"
@@ -71,7 +71,7 @@ To configure this rule, follow these steps:
 
 ## See Keptn events
 
-The *dynatrace-service* in Keptn will take care of pushing events of the Keptn workflow to the artifacts that have been onboarded. For example, the deployment and custom infos - like starting and finishing of tests - will appear in the details screen of your services in your Dynatrace tenant.
+The Keptn *dynatrace-service* pushes events of the Keptn workflow to the artifacts that have been onboarded. For example, the deployment and custom information, such as starting and finishing of tests, appears in the details screen of your services in your Dynatrace tenant.
     {{< popup_image
     link="./assets/custom_events.png"
     caption="Keptn events"

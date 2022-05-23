@@ -7,7 +7,7 @@ weight: 20
 ## Advanced Install Options: Install Keptn using the Helm chart
 
 When executing `keptn install`, Keptn is installed via a Helm chart, which can also be done using the Helm CLI directly.
-Therefore, the [helm CLI](https://helm.sh) is required to execute of the following command:
+Therefore, the [helm CLI](https://helm.sh) is required to execute the following command:
 
 * *Install Keptn control-plane (with Continuous Delivery support and exposed on a LoadBalancer)*: 
 
@@ -54,7 +54,7 @@ helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=
 
 The following section contains instructions for installing Keptn in an air-gapped / offline installation scenario.
 
-The following artifacts need to be available locally:
+The following artifacts must be available locally:
 
 * Keptn Helm Chart (control-plane + helm + jmeter)
 * Several Docker Images (e.g., pushed into a private registry)
@@ -69,9 +69,9 @@ Download the Helm charts from the [Keptn 0.16.x release](https://github.com/kept
 * helm-service (if needed): https://github.com/keptn/keptn/releases/download/0.16.0/helm-service-0.16.0.tgz
 * jmeter-service (if needed): https://github.com/keptn/keptn/releases/download/0.16.0/jmeter-service-0.16.0.tgz
 
-Move the helm charts to a directory on your local machine, e.g., `offline-keptn`.
+Move the Helm Charts to a directory on your local machine, e.g., `offline-keptn`.
 
-For convenience, the following script creates this directory and downloads the required helm charts into it:
+For convenience, the following script creates this directory and downloads the required Helm Charts into it:
 
 ```console
 mkdir offline-keptn
@@ -85,9 +85,9 @@ cd ..
 **Download Containers/Images**
 
 Within the Helm Charts several Docker Images are referenced (Keptn specific and some third party dependencies).
-We recommend to pulling, re-tagging and pushing those images to a local registry that the Kubernetes cluster can reach.
+We recommend pulling, re-tagging and pushing those images to a local registry that the Kubernetes cluster can reach.
 
-We are providing a helper script for this in our Git repository: https://github.com/keptn/keptn/blob/master/installer/airgapped/pull_and_retag_images.sh
+A helper script is provided for this in our Git repository: https://github.com/keptn/keptn/blob/master/installer/airgapped/pull_and_retag_images.sh
 
 For convenience, you can use the following commands to download and execute the script:
 
@@ -99,13 +99,13 @@ KEPTN_TAG=0.16.0 ./pull_and_retag_images.sh "your-registry.localhost:5000/"
 cd ..
 ```
 
-Please mind the trailing slash for the registry url (e.g., `your-registry.localhost:5000/`).
+Be sure to include the trailing slash for the registry url (e.g., `your-registry.localhost:5000/`).
 
 **Installation**
 
 Keptn's Helm chart allows you to specify the name of all images, which can be especially handy in air-gapped systems where you cannot access DockerHub for pulling the images.
 
-We are providing a helper script for this in our Git repository: https://github.com/keptn/keptn/blob/master/installer/airgapped/install_keptn.sh
+A helper script for this is provided in our Git repository: https://github.com/keptn/keptn/blob/master/installer/airgapped/install_keptn.sh
 
 For convenience, you can use the following commands to download and execute the script:
 
@@ -119,9 +119,9 @@ cd ..
 
 ### Install Keptn using a Root-Context
 
-The Helm chart allows customizing the root-context for the Keptn API and Bridge.
+The Helm Chart allows customizing the root-context for the Keptn API and Bridge.
 By default, the Keptn API is located under `http://HOSTNAME/api` and the Keptn Bridge is located under `http://HOSTNAME/bridge`.
-By specifying a value for `control-plane.prefixPath`, the used prefix for the root-context can be configured.
+By specifying a value for `control-plane.prefixPath`, the prefix used for the root-context can be configured.
 For example, if a user sets `control-plane.prefixPath=/mykeptn` in the Helm install/upgrade command,
 the Keptn API is located under `http://HOSTNAME/mykeptn/api` and the Keptn Bridge is located under `http://HOSTNAME/mykeptn/bridge`:
 
@@ -146,7 +146,7 @@ Keptn has no opinion on how to fine-tune the database connection. We recommend t
 
 If you are already using an Ingress-Controller and want to create an ingress object for Keptn, you can leverage the ingress section of the helm chart. By default enabled is set to false.
 
-The Helm chart allows customizing the ingress object to your needs.  When enabled is set the true, the chart allows you to specify optional parameters of host, path, pathType, tls, and annotations. This will cater for alot of different Ingress-Controllers and configurations.
+The Helm chart allows customizing the ingress object to your needs.  When enabled is set the true, the chart allows you to specify optional parameters of host, path, pathType, tls, and annotations. This supports many different Ingress-Controllers and configurations.
 
 ```console
 helm upgrade keptn keptn --install -n keptn --create-namespace
@@ -164,5 +164,5 @@ You can provide your own API token for Keptn to use by setting the secret name
 in the `apiService.tokenSecretName` Helm value during installation. For Helm-Service and JMeter-Service you
 can also provide the API token by using the `remoteControlPlane.tokenSecretName` Helm value.
 
-The user-provided secret needs to live in the same namespace where Keptn will be installed into.
+The user-provided secret needs to live in the same namespace where Keptn will be installed.
 The user-provided secret should contain a single key `keptn-api-token` with a token consisting of numbers and letters as its value.

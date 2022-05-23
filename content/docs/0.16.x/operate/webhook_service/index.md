@@ -23,7 +23,7 @@ localhost
 ::1
 ```
 
-For example, Keptn will create the following `ConfigMap`:
+For example, Keptn creates the following `ConfigMap`:
 
 ```yaml
 apiVersion: v1

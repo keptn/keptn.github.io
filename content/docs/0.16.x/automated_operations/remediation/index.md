@@ -10,7 +10,7 @@ The remediation config describes a remediation workflow in a declarative manner.
 
 ## Declare a remediation sequence in shipyard
 
-The definition of a remediation sequence is done in a so-called [Shipyard](../../manage/shipyard) file.
+The definition of a remediation sequence is done in the project's [Shipyard](../../manage/shipyard) file.
 
 **Example**: Simple shipyard file with a remediation sequence in a single stage
 ```yaml
@@ -42,7 +42,7 @@ spec:
 
 ## Configure Remediation
 
-Below is an example of a declarative remediation config: 
+Below is an example of a declarative remediation config:
 
 **Example of a remediation configuration:**
 
@@ -63,15 +63,15 @@ spec:
 
 A remediation is configured based on two properties:
 
-* **problemType**: Maps a problem to a remediation. 
-* **actionsOnOpen**: Declares a list of actions triggered in course of the remediation.
+* **problemType**: Maps a problem to a remediation.
+* **actionsOnOpen**: Declares a list of actions triggered in the course of the remediation.
 
 ### Problem type
 
-The problem type maps a problem to a remediation by a matching problem title. 
+The problem type maps a problem to a remediation by a matching problem title.
 
--	It is possible to declare multiple problem types for a remediation. 
--	For the case of triggering a remediation based on an unknown problem, the problem type `default` is supported. 
+-	It is possible to declare multiple problem types for a remediation.
+-	For the case of triggering a remediation based on an unknown problem, the problem type `default` is supported.
 
 The below example shows a remediation configured for the problem type *Response time degradation* and *Failure rate increase* as well as any unknown problem.
 
@@ -81,7 +81,7 @@ kind: Remediation
 metadata:
   name: serviceXYZ-remediation
 spec:
-  remediations:  
+  remediations:
   - problemType: Response time degradation
     actionsOnOpen:
   - problemType: Failure rate increase
@@ -106,7 +106,7 @@ kind: Remediation
 metadata:
   name: serviceXYZ-remediation
 spec:
-  remediations:  
+  remediations:
   - problemType: Response time degradation
     actionsOnOpen:
     - name: Scaling ReplicaSet by 1
@@ -116,7 +116,7 @@ spec:
     - name: Toogle feature flag
       action: featuretoggle
       description: Toggle feature flag EnablePromotion from ON to OFF.
-      value: 
+      value:
         EnablePromotion: off
 ```
 
@@ -124,7 +124,7 @@ spec:
 
 **Important:** In the following command, the value of `resourceUri` must be set to `remediation.yaml`.
 
-* To add an remediation config to a service, use the [keptn add-resource](../../reference/cli/commands/keptn_add-resource) command:
+* To add a remediation configuration to a service, use the [keptn add-resource](../../reference/cli/commands/keptn_add-resource) command:
 
     ```console
     keptn add-resource --project=sockshop --stage=production --service=serviceXYZ --resource=remediation.yaml --resourceUri=remediation.yaml

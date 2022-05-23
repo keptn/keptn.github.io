@@ -5,7 +5,7 @@ weight: 1
 keywords: [0.16.x-integration]
 ---
 
-With a Jenkins integration, you can call existing pipelines from Keptn. In addition, with the optional [keptn-jenkins-library](https://github.com/keptn-sandbox/keptn-jenkins-library/)
+With a Jenkins integration, you can call existing Jenkins Pipelines from Keptn. In addition, with the optional [keptn-jenkins-library](https://github.com/keptn-sandbox/keptn-jenkins-library/)
 you can even provide information back to Keptn (e.g., `test.finished` with `result=fail`).
 
 *Note*: The instructions on this page assume that you do **not** have `jmeter-service` installed.
@@ -56,7 +56,7 @@ To create a webhook integration, a subscription needs to be created:
 * Once the above-configured event gets fired, the Jenkins pipeline has to be triggered. Therefore, you need to select/enter:
     * *Request method*: `GET`
     * *URL*: The webhook URL from above: `http://jenkins.127.0.0.1.nip.io/jobs/build?token=`
-    * Reference the secret to add the webhook identifier at the end of the URL. Therefore, clicking on the *key* icon, select the secret `jenkins-secret` and the key `my-pipeline-secret`. This will reference the secret value containing the sensitive data of your webhook URL: `http://jenkins.127.0.0.1.nip.io/jobs/build?token={{.secret.jenkins-secret.my-pipeline-secret}}`
+    * Reference the secret to add the webhook identifier at the end of the URL by clicking on the *key* icon, select the secret `jenkins-secret` and the key `my-pipeline-secret`. This will reference the secret value containing the sensitive data of your webhook URL: `http://jenkins.127.0.0.1.nip.io/jobs/build?token={{.secret.jenkins-secret.my-pipeline-secret}}`
 
   {{< popup_image
   link="./assets/jenkins-webhook-subscription.png"
@@ -78,7 +78,7 @@ In order to do this, the following steps are needed:
 * Append parameters to the webhook URL, e.g., `/buildWithParameters?token={{.secret.jenkins-secret.my-pipeline-secret}}&triggeredid={{.id}}&shkeptncontext={{.shkeptncontext}}&stage={{.data.stage}}`
 * Change the webhook configuration [to not auto-respond with a .finished event](../#configure-webhook-to-not-auto-respond-with-a-finished-event) (`sendFinished: false`)
 * Install [keptn-jenkins-library](https://github.com/keptn-sandbox/keptn-jenkins-library/) on your Jenkins Server
-* Configure secrets and environments variable as detailed in the install instructions of keptn-jenkins-library
+* Configure the secrets and environments variable as detailed in the install instructions of keptn-jenkins-library
 * Modify the Jenkins Pipeline to accept `triggeredid`, `shkeptncontext` and `stage` (see example below)
 * Use the keptn-jenkins-library function `sendFinishedEvent` at the end of your pipeline (see example below)
 

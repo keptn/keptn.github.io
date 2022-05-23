@@ -6,17 +6,17 @@ weight: 8
 
 ## Views in Keptn Bridge
 
-The Keptn Bridge provides an easy way to browse all events that are sent within Keptn. When you access the Keptn Bridge, all projects will be shown on the start screen. When clicking on a project, the stages of this project, and all services are shown on the next view. An overview of those views is given below.
+The Keptn Bridge provides an easy way to browse all events that are sent within Keptn. When you access the Keptn Bridge, all projects are shown on the start screen. When clicking on a project, the stages of this project, and all services are shown on the next view. An overview of those views is given below.
 
 ### Project view
 
-* When you enter the Keptn Bridge and have not created a project yet, you will be guided to the instructions on how to setup a project and create a sample app.
+* When you enter the Keptn Bridge and have not created a project yet, you are guided to the instructions about how to set up a project and create a sample app.
 
     {{< popup_image
       link="./assets/project-dashboard-empty.png"
       caption="Keptn Bridge empty project view">}}
 
-* If you have created projects, you will see the project listed including their stages.
+* If you have created projects, you see the projects listed, including their stages.
 
     {{< popup_image
       link="./assets/project-dashboard.png"
@@ -25,9 +25,9 @@ The Keptn Bridge provides an easy way to browse all events that are sent within 
 ### Environment view
 
 * When you select a project, you see the environment overview of the entire Keptn context.
-* This view allows to easily see the current deployed services on each stage and if there are any errors or pending approvals for one stage.
-  By clicking on a stage you can see more information about the deployed services on the specific stage on the right side.
-* The service details on the right are showing the current and the past 5 evaluations, open approvals and running remediations for each service.
+* This view shows the currently deployed services on each stage and whether any stages have errors or pending approvals.
+  When you click on a stage, more information about the services deployed on this stage.
+* The service details on the right show the current and the past 5 evaluations, open approvals and running remediations for each service.
 
   {{< popup_image
   link="./assets/environment-view.png"
@@ -35,9 +35,9 @@ The Keptn Bridge provides an easy way to browse all events that are sent within 
 
 ### Services view
 
-* One of the key steps for continuous delivery and remediation is the evaluation result based on SLO/SLIs. The services view gives you a clear overview
-  over the result of this evaluation step.
-* For each service the deployed artifacts are listed. Accordingly, for each artifact and executed stage, the evaluation result is displayed
+* One of the key steps for continuous delivery and remediation is the evaluation result based on SLOs and SLIs.
+  The services view gives an overview of the results of this evaluation step.
+* The deployed artifacts for each service are listed, with the evaluation result for each artifact and executed stage
   as *HeatMap* and *Chart*:
 
     {{< popup_image
@@ -50,16 +50,16 @@ The Keptn Bridge provides an easy way to browse all events that are sent within 
         caption="Evaluation Chart"
         width="50%">}}
 
-* To customize the chart, labels can be used. If the `sh.keptn.event.evaluation.triggered` event has the label `buildId` attached, the Keptn Bridge reads the value
-  of this label and uses it as label for the x-axis in the *Chart*. If the value of the label is an URL, the label will be displayed as a link, 
-  so you can easily link back to the Dynatrace Dashboard for example. 
+* Use labels to customize the chart. If the `sh.keptn.event.evaluation.triggered` event has the label `buildId` attached, the Keptn Bridge reads the value
+  of this label and uses it as label for the x-axis in the *Chart*. If the value of the label is a URL, the label is displayed as a link,
+  so you can easily link back to the Dashboard of your observability server.
 
     {{< popup_image
         link="./assets/buildId.png"
         caption="Use `buildId` as label"
         width="50%">}}
-  
-* If you are using relative SLO values that are based on past evaluations *Ignore for comparison* could come in handy. With this you can exclude an evaluation when 
+
+* If you are using relative SLO values that are based on past evaluations *Ignore for comparison* could come in handy. With this you can exclude an evaluation when
   determining the relative values. To do so click on the desired evaluation in the heatmap and click the button *Ignore for comparison*. The evaluation is then
   removed from the heatmap and the evaluation calculation.
 
@@ -67,8 +67,8 @@ The Keptn Bridge provides an easy way to browse all events that are sent within 
         link="./assets/services-view-invalidate-evaluation.png"
         caption="Ignore evaluation for comparison"
         width="50%">}}
-  
-* For your convenience the SLOs that the evaluation was executed against, as well as the event payload, can be viewed.
+
+* For your convenience, you can view both the SLOs against which the evaluation was executed against, and the event payload.
 
     {{< popup_image
         link="./assets/services-view-slo.png"
@@ -79,8 +79,8 @@ The Keptn Bridge provides an easy way to browse all events that are sent within 
         link="./assets/services-view-payload.png"
         caption="Event Payload"
         width="50%">}}
-        
-* If you configured some remediations and one of them is currently running, the affected service, deployment and stage is indicated. You can also see, which type of remediation is
+
+* If you configured some remediations and one of them is currently running, the affected service, deployment and stage is indicated. You can also see which type of remediation is
   being executed and view its configuration and sequence execution.
 
     {{< popup_image
@@ -95,17 +95,17 @@ The Keptn Bridge provides an easy way to browse all events that are sent within 
 
 ### Evaluation board
 
-* Next to the evaluation comparison as a heatmap or chart in the *Services* view, we provide a link to the *Evaluation Board*, which displays only 
-  the evaluation comparison on this stage. 
-  
+* Next to the evaluation comparison as a heatmap or chart in the *Services* view, we provide a link to the *Evaluation Board*, which displays only
+  the evaluation comparison for this stage.
+
     {{< popup_image
     link="./assets/bridge_evaluationboard.png"
     caption="Keptn Bridge Evaluation Board">}}
-  
+
 ### Sequences view
 
-* The sequences for the selected project are shown on this screen. It has a lot of filter possibilities, that can either be selected
-  in the left pane or be applied by using the search bar.
+* The sequences for the selected project are shown on this screen. It has many filter possibilities which can either be selected
+  in the left pane or applied by using the search bar.
 * When you select a sequence, the related tasks are shown for each stage. The stages can be selected by clicking onto the stage name in
   the timeline, or the badge of the sequence list item.
 * You can also expand each task to show the related events.
@@ -113,17 +113,17 @@ The Keptn Bridge provides an easy way to browse all events that are sent within 
   {{< popup_image
   link="./assets/sequences-screen-filter.png"
   caption="Keptn Bridge Sequences View">}}
-  
+
 ### Uniform view
 
-The uniform view gives you an overview over all integrations installed within your Keptn installation. 
+The uniform view gives you an overview of all integrations installed within your Keptn installation. 
 The data is fetched from your Kubernetes cluster and shows useful information like
 * Unread/New error events
 * Deployment version of the service
 * The cluster or host where it is running
 * The Kubernetes namespace
 * The location within Keptn
-* The Cloud Events the services are subscribed to
+* The Cloud Events to which the services are subscribed
 
 
 {{< popup_image
@@ -131,8 +131,8 @@ link="./assets/uniform-view.png"
 caption="Keptn Bridge Uniform View">}}
 
 You can view the related subscriptions, events on error level, and sequence failures by selecting an integration. It is also possible to directly configure the subscriptions to listen to specific events.
-If there are new error events since the last time the integration was viewed, a red indicator shows up for this integration. When a sequence in this particular scope failed, then there is
-a link provided that takes you directly to the failed task in the sequence. 'n/a' in this regard means that the error is not related to any sequence execution. 
+If there are new error events since the last time the integration was viewed, a red indicator shows up for this integration. When a sequence in this particular scope fails,
+a link is provided that takes you directly to the failed task in the sequence. 'n/a' in this regard means that the error is not related to any sequence execution.
 
 {{< popup_image
 link="./assets/uniform-view-logs.png"
@@ -161,28 +161,28 @@ gives you an overview of all secrets that have been created by the *secret-servi
 link="./assets/secrets-view.png"
 caption="List Secrets View">}}
 
-By clicking on the delete button, you can delete secrets after a confirmation.
+Click on the delete button to delete secrets after a confirmation.
 
-If you want to add a secret, just click on the "*Add secret*"-Button. It will show you a form
+To add a secret, click on the "*Add secret*"-Button. It will show you a form
 where you can set the secret name and provide key-value-pairs that should be stored with that secret
 name.
 
 {{< popup_image
 link="./assets/secrets-view-create-secret.png"
 caption="Create Secret View">}}
-  
+
 ### Integrations
-You can find links to for different integration possibilities here. This makes it easier to start using Keptn. Integrate either with Keptn CLI / API or use our custom 
+You can find links for different integration possibilities here. This makes it easier to start using Keptn. Integrate either with Keptn CLI / API or use our custom
 integrations for different CI providers.
 
 Please note that the page contains dynamic content that is loaded from https://get.keptn.sh/integrations.html. By clicking the button the data is requested,
-and additional data is gathered from the client. For more information about this see https://keptn.sh/docs/0.16.x/reference/load_information/.
+and additional data is gathered from the client. For more information about this see https://keptn.sh/docs/0.16.x/bridge/load_information/.
 
 ### Settings
 
 #### Project settings
-In the settings view the project settings can be edited. 
-To get more information about how to manage your projects with the settings, visit [Manage Projects](https://keptn.sh/docs/0.16.x/reference/bridge/manage_projects).
+Use the settings view to edit the project settings.
+To get more information about how to manage your projects with the settings, visit [Manage Services](https://keptn.sh/docs/0.16.x/bridge/manage_projects).
 
 {{< popup_image
 link="./assets/project-settings.png"
@@ -190,7 +190,7 @@ caption="Keptn Bridge Project Settings View">}}
 
 
 #### Service settings
-In this view, services can be created, updated and deleted.
+Use this view to create, update, and delete services.
 To get more information about how services can be managed in your settings, visit [Manage Services](https://keptn.sh/docs/0.16.x/reference/bridge/manage_services).
 
 {{< popup_image
@@ -206,13 +206,13 @@ If you have a [manual approval strategy](https://keptn.sh/docs/0.16.x/continuous
 At sequence execution, if the approval task is reached, a panel is shown in all relevant screens:
 
 In the environment view a pending approval can be recognized by the blue service out-of-sync icon at the according stage.
-Examining the stage allows to directly approve or decline the sequence in the stage overview.
+You can directly approve or decline the sequence by examining the stage in the stage overview.
 
 {{< popup_image
 link="./assets/approval-environment.png"
 caption="Approval in Environments">}}
 
-In the services view, a pending approval can be recognized by the blue border of the stage. By examining the stage, approval can also be directly triggered there. 
+In the services view, a pending approval can be recognized by the blue border of the stage.  You can directly trigger an approval when you examine the stage.
 
 {{< popup_image
 link="./assets/approval-service.png"
@@ -226,11 +226,11 @@ caption="Approval in Sequences">}}
 
 ### Manage projects
 
-See the documentation for [managing projects](https://keptn.sh/docs/0.16.x/reference/bridge/manage_projects) to see which features for creating and updating projects the Bridge provides.
+See the documentation for [managing projects](https://keptn.sh/docs/0.16.x/bridge/manage_projects) to see which features for creating and updating projects the Bridge provides.
 
 ## Early access version of Keptn Bridge
 
-Right now there is no early access version of Keptn Bridge available.
+No early access version of Keptn Bridge is currently available.
 
 If you have any questions or feedback regarding Keptn Bridge, please contact us through our [Keptn Community Channels](https://github.com/keptn/community).
 

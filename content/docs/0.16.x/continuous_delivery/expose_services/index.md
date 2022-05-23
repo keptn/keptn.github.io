@@ -1,19 +1,19 @@
 ---
 title: Expose deployed services
-description: Configure Istio and create a ConfigMap to expose services deployed by Keptn. 
+description: Configure Istio and create a ConfigMap to expose services deployed by Keptn.
 weight: 1
 keywords: [0.16.x-cd]
 ---
 
-To be able to access the services you will deploy by Keptn, Istio has to be installed. This means that the `istio-ingressgateway` service should already be available in the `istio-system` namespace and a `public-gateway` need to be created as explained below. Besides, a ConfigMap must be edited that tells Keptn how the gateway is configured. 
+Istio must be installed in order to access the services that Keptn deploys. This means that the `istio-ingressgateway` service should already be available in the `istio-system` namespace and a `public-gateway` need to be created as explained below. In addition, a ConfigMap must be edited that tells Keptn how the gateway is configured.
 
 Please follow the steps in sequential order:
 
 1. Install Istio
 1. Create Istio gateway
-1. Create ConfigMap with ingress information 
+1. Create ConfigMap with ingress information
 
-## Install Istio 
+## Install Istio
 
 * If you have not installed Istio during the [Keptn installation](../../operate/install/#3-install-ingress-controller-and-apply-an-ingress-object), please refer to the official [Installation Guides](https://istio.io/latest/docs/setup/install/) to install Istio on your cluster.
 
@@ -63,7 +63,7 @@ kubectl apply -f gateway-manifest.yaml
     ```
 
       **Note:** In the above example, `nip.io` is used as wildcard DNS for the IP address.
-      **Note:** The `HOSTNAME_TEMPLATE` describes how the hostname for the automatically generated `VirtualService` should look like. This value will also be used for the `deploymentURIPublic` property contained in the `deployment.finished` events sent by the helm-service will look like. This URL can then be used by execution plane services that need to access the deployed service (e.g. a testing service like the jmeter-service).
+      **Note:** The `HOSTNAME_TEMPLATE` describes how the hostname for the automatically generated `VirtualService` should look. This value is also used for the `deploymentURIPublic` property contained in the `deployment.finished` events sent by the helm-service will look like. This URL can then be used by execution plane services that need to access the deployed service (e.g. a testing service like the jmeter-service).
       Within the `HOSTNAME_TEMPLATE`, you can use the variables `INGRESS_HOSTNAME_SUFFIX`, `INGRESS_PORT`, `INGRESS_PROTOCOL`, as well as `project`, `stage` and `service`. Please escape those variables using `\${}` when defining the value for `HOSTNAME_TEMPLATE`, since the resulting string should contain the placeholders of those variables instead of their actual values.
 
     ```console

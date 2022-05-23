@@ -1,6 +1,6 @@
 ---
 title: Manage Projects
-description: Create, update and deletes projects from the Bridge
+description: Create, update and delete projects from the Bridge
 weight: 40
 keywords: [0.16.x-bridge]
 ---
@@ -15,7 +15,7 @@ This may also be interesting for you:
 
 ## Create a new project in Bridge
 
-Going to the project overview, there is a "Create a new project" button at the bottom of the page.
+The bottom of the project overview, has a "Create a new project" button.
 Clicking on this button redirects you to a new page with a form that provides all the necessary information needed for creating a new project in Keptn.
 
 {{< popup_image
@@ -33,7 +33,7 @@ caption="Create project page filled in with examples">}}
 This information needs to be provided:
 
 #### Project name
-The project name has to be unique in the Keptn installation. Therefore, it must not be a name that is already in use for another project.
+The project name must be unique in the Keptn installation, meaning that it must not be a name that is used for another project.
 
 #### Git repository settings
 The Git upstream can be set by providing the Git repository URL, Git username and the Git token. This is parallel to the Git ``--git-user=GIT_USER --git-token=GIT_TOKEN --git-remote-url=GIT_REMOTE_URL`` parameters when using the Keptn CLI.
@@ -55,14 +55,14 @@ link="./assets/project-dashboard.png"
 caption="Project overview">}}
 
 ## Update your project
-On the project settings page, you can update your project.
+You can update your project on the project settings page.
 
 {{< popup_image
 link="./assets/settings.png"
 caption="Project settings">}}
 
 ## Delete your project
-On the project settings page, you can delete your project. Please be careful when using this feature, as the project will be removed 
+You can delete your project on the project settings page. Please be careful when using this feature, as the project will be removed
 permanently from your Keptn installation and cannot be restored.
 
 {{< popup_image

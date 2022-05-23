@@ -5,8 +5,8 @@ weight: 50
 keywords: backup
 ---
 
-To secure all your data in your projects' Git repository, as well as all events that have occurred for these projects, you need to 
-back up the data within the *Configuration Service*, the *MongoDB*, and credentials to your projects' Git upstream repos (if you have configured those).
+To secure all your data in your project's Git repository, as well as all events that have occurred for these projects, you must
+back up the data within the *Configuration Service*, the *MongoDB*, and credentials to your project's Git upstream repos (if you have configured those).
 The following sections describe how to back up that data and how to restore it.
 
 **Note:** These instructions do not cover backing up any Helm- or Istio-related configurations.
@@ -62,7 +62,7 @@ kubectl cp keptn/$MONGODB_POD:/tmp/dump ./mongodb-backup/ -c mongodb
 
 ### Back up Git credentials
 
-For projects where you have configured a Git upstream repository, we advise you to back up the Kubernetes secrets needed to access those.
+For projects where you have configured a Git upstream repository, you should back up the Kubernetes secrets needed to access those.
 To do so, please execute the following command for each project for which you have configured an upstream repo:
 
 ```console
@@ -129,7 +129,7 @@ kubectl exec svc/keptn-mongo -n keptn -- mongorestore --drop --preserveUUID --au
 
 ### Restore Git credentials
 
-To re-establish the communication between the configuration-service and your projects' upstream repositories, restore the K8s secrets you have previously stored in the `keptn-backup` directory , using `kubectl apply`:
+To re-establish the communication between the configuration-service and your projects' upstream repositories, restore the Kubernetes secrets you have previously stored in the `keptn-backup` directory , using `kubectl apply`:
 
 ```console
 PROJECT_NAME=<project_name>

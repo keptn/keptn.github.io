@@ -37,7 +37,7 @@ If this task is in place, you can control how to proceed with the delivery depen
 | If evaluation returned is `pass`      | `manual` - the user has to manually approve/decline it.   | `automatic`- Keptn automatically approves it.   |
 | If evaluation returned is `warning`   | `manual` - the user has to manually approve/decline it.   | `automatic` - Keptn automatically approves it.  |
 
-*Example - Regardless of the evaluation result, the user needs to approve or decline it:*
+*Example - Regardless of the evaluation result, the user must approve or decline it:*
 ```
 - name: "approval"
   properties:
@@ -91,7 +91,7 @@ If this task is in place, you can control how to proceed with the delivery depen
         "type": "sh.keptn.event.approval.triggered"
     }
     ```
-* In addition, by using the command [`keptn send-event approval.finished`](../../reference/cli/commands/keptn_send_event_approval.finished/) the CLI will print a list of open approvals and allows you to choose which one you want to approve/decline:
+* In addition, by using the command [`keptn send-event approval.finished`](../../reference/cli/commands/keptn_send_event_approval.finished/) the CLI prints a list of open approvals and allows you to choose which one you want to approve/decline:
 
     ```console
     $ keptn send event approval.finished --project=ck-sockshop --stage=production --service=carts
