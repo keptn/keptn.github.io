@@ -63,8 +63,12 @@ Click the icon at the right end of that box to copy that URL.
     or
     ```
     git clone git@github.com:<UserName>/keptn.github.io.git
+    or
+    gh repo clone <UserName>/keptn.github.io
     ```
     Where <*UserName*> is your GitHub username. The keptn.github.io directory is now available in the local directory.
+
+> Be sure that [Git](https://github.com/git-guides/install-git) and [Github CLI](https://cli.github.com/) are installed on your system.
 
 4. Remember to sync your fork with the master branch regularly.
 To do this:
