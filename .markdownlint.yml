@@ -17,3 +17,6 @@ MD013:
 
 # inline html https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md033
 MD033: false
+
+# Fenced Code block should have a language specified https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md040
+MD040: false
