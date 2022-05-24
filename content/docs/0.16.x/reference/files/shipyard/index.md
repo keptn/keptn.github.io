@@ -1,0 +1,303 @@
+---
+title: shipyard.yaml
+description: Control orchestation for a Keptn project
+weight: 715
+---
+
+The *shipyard.yaml* file defines the activiies to be performed for a Keptn project
+and the order in which those activities are executed.
+
+Each project must have one, and only one, *shipyard.yaml* file
+which is passed [**keptn create project**](../../cli/commands/keptn_create_project/) command.
+
+* Each *shipyard.yaml* file contains  one or more `stages`, which can be given any name that is meaningful.
+Examples are "dev", "hardening", "production", "remediation".
+A `stage` is a grouping of activities to be executed until the project is deployed and,
+optionally, a "production" stage that defines remediation activities
+that can be executed in response to issues detected on the production site.
+
+* Each `stage` must have one or more `sequences`, which can be given any name that is meaningful.
+A `sequence` defines the `tasks` to be performed and, optionally, an event that triggers that sequence.
+
+The following **Synopsis** shows all the constructions that are supported for a *shipyard.yaml* file
+although most projects only use some of the constructions.
+The requirements are:
+
+## Synopsis
+
+    apiVersion: spec.keptn.sh/0.2.3
+    kind: "Shipyard"
+    metadata:
+      name: "shipyard-<project-name>"
+    spec:
+      stages:
+        - name: "<stagename-1>"
+          sequences:
+          - name: "delivery"
+            tasks:
+            - name: "deployment"
+              properties:
+                deploymentstrategy: "direct" | "blue_greem_service" | "user_managed"
+            - name: "release"
+        - name: "hardening"
+        - name: "production"
+          sequences:
+          - name: "<delivery-sequence>"
+            [triggeredOn:
+               - event: "<event>.finished"
+             tasks:
+             - name: "delivery"
+          - name: "remediation-sequence>"
+            [triggeredOn:
+               -event: "<event>"
+                selector:
+                  match:
+                    evaluation.result: "<result>"]
+             tasks:
+                - name: "get-action"
+                - name: "action"
+                - name: "evaluation"
+                  triggeredAfter: "<timeframe>"
+                  properties:
+                    timeframe: "<xx>m"
+
+## Fields
+
+**Meta-data**
+* `apiVersion`: The version of the shipyard specification in the format: `spec.keptn.sh/x.y.z`
+* `kind`: is `Shipyard`
+* `metadata`:
+    `name`: Unique name for this *shipyard* file
+    Typically, this is the string `shipyard` followed by a dash and the project name; for example, `shipyard-sockshop`
+* `spec`: Consists of the property stages.
+    * `stages`: An array of stages, each of which has a name and a sequence of tasks to execute
+
+**Stage**
+
+A stage is named for the particular activity to be performed,
+such as `development`, `hardening`, `staging`, or `production`.
+Each *shipyard* file must have at least one `stage`.
+The name of the stage becomes the name of the branch in the upstream Git repository
+and the Kubernetes namespace to which services are deployed.
+A stage has the properties:
+
+* `name`: A unique name for the stage
+such as `development`, `hardening`, `staging`, or `production.
+* `sequences`: An array of sequences that define the tasks to be performed
+and, optionally, the events that trigger each task.
+
+At this time, you can not add or delete stages in the *shipyard* file for an existing project
+although you can make other modifications.
+See [KEP-70](https://github.com/keptn/enhancement-proposals/pull/70) for details
+about the ongoing initiative to overcome this limitation.
+
+**Sequence**
+
+A sequence is an ordered list of `task`s that are triggered sequentially
+and are part of a `stage`.. A sequence has the properties:
+
+* `name`: A unique name for the sequence
+* `tasks`: An array of tasks executed by the sequence in the declared order.
+* `triggeredOn` *(optional)*: An array of events that trigger the sequence.
+    This property can be used to trigger a sequence once another sequence has been finished.
+    In addition to specifying the sequence whose completion should activate the trigger,
+    You can define a `selector` that defines whether the sequence should be triggered
+    if the preceeding sequence has been executed successfuly, or had a `failed` or `warning` result.
+    For example, the following sequence with the name `rollback` is only triggered
+    if the sequence `delivery` in production had a result of `failed`:
+
+        - name: rollback
+          triggeredOn:
+          - event: production.delivery.finished
+            selector:
+              match:
+                result: failed
+
+    It is also possible to refer to certain tasks within the preceeding sequence.
+    For example, if `match` is changed to `release.result: failed`,
+    the `rollback` sequence is executed only if the task `release` of the sequence `delivery` has a result of `failed`:
+
+        - name: rollback
+          triggeredOn:
+          - event: production.delivery.finished
+            selector:
+              match:
+                release.result: failed
+
+    If no `selector` is specified, the sequence is triggered only if the preceeding `delivery` sequence has a result of `pass`:
+
+        - name: rollback
+          triggeredOn:
+          - event: production.delivery.finished
+
+**Task**
+
+A single `task` is the smallest executable unit and is contained in a `sequences` block. A task has the properties:
+
+* `name`: A unique name of the task
+* `triggeredAfter` *(optional)*: Wait time before task is triggered.
+* `properties` *(optional)*: Task properties as individual `key:value` pairs. These properties precise the task and are
+  consumed by the unit that executes the task.
+
+Keptn supports a set of opinionated tasks for declaring a delivery or remediation sequence:
+
+* action
+* approval
+* deployment
+* evaluation
+* get-action
+* release
+* rollback
+* test
+
+Each of these are discussed below.
+
+* `action`
+
+    Indicates that a remediation action should be executed by an action provider.
+    It is used within a [remediation workflow](../../../automated_operations/remediation).
+
+    *Synopsis:*
+
+        - name: action
+
+* `approval`
+
+    Intercepts the `task` sequence and waits for a user to approve or decline the open approval.
+    This task can be added, for example, before deploying an artifact into the next stage. 
+    The approval strategy is defined based on the `evaluation` result `pass` and `warning`.
+    The approval strategies for the evaluation results `pass` and `warning` can be set to:
+
+    - `automatic`: Task sequence continues without requesting approval
+    - `manual`:  Task sequence requests for approval before continuing
+
+    *Synopsis:*
+
+        - name: approval
+           properties:
+             pass: automatic
+             warning: manual
+
+    This allows combinations as follows:
+    
+    |                          | Evaluation result: pass           | Evaluation result: warning                 | Behavior  |
+    |--------------------------|-----------------------------------|--------------------------------------------|-----------|
+    | **Skip approval task:** | pass:automatic | warning:automatic | Regardless of the evaluation result, the approval task is skipped |
+    | **Depending on evaluation result:**   | pass:automatic | warning:manual    | If the evaluation result is a **warning**, an approval is required |
+    | **Depending on evaluation result:**   | pass:manual    | warning:automatic | If the evaluation result is a **pass**, an approval is required |
+    | **Mandatory approval task:**          | pass:manual    | warning:manual    | Regardless of the evaluation result, an approval is required |
+
+
+    By default, an `automatic` approval strategy is used for the `pass` and `warning` evaluation results.
+
+* `deployment`
+
+    Defines the deployment strategy used to deploy a new version of a service.
+    For example, the *helm-service* supports the deployment `strategy` set to:
+
+    * `direct`: Deploys a new version of a service by replacing the old version of the service.
+    See [Direct deployments](../../../continuous_delivery/deployment_helm/#direct-deployments)
+    * `blue_green_service`: Deploys a new version of a service next to the old one.
+    After a successful validation of this new version, it replaces the old one and is marked as stable.
+    See [Direct deployments](../../../continuous_delivery/deployment_helm/#blue-green-deployments)
+    * `user_managed`: Deploys a new version of a service
+    by fetching the current Helm chart from the Git repo and updating appropriate values.
+    See [Direct deployments](../../../continuous_delivery/deployment_helm/#user-managed-deployments)
+
+    *Synopsis:*
+
+        - name: deployment
+          properties:
+            deploymentstrategy: blue_green_service
+
+* `evaluation`
+
+    Defines the quality evaluation that is executed to verify the quality of a deplyoment based on its SLOs/SLIs.
+
+    *Synopsis:*
+
+        - name: evaluation
+
+* `get-action`
+    Extracts the desired remediation action from a *remediation.yaml* file
+    within a [remediation workflow](../../../automated_operations/remediation).
+
+    *Synopsis:*
+
+        - name: get-action
+
+* `release`
+
+    Defines the releasing task that is executed after a successful deployment occurs.
+    This task shifts production trafic towards the new deployment.
+
+    *Synopsis:*
+
+        - name: release
+
+* `rollback`
+
+    Defines the rollback task that is executed when a rollback is triggered.
+
+    *Synopsis:*
+
+        - name: rollback
+
+* `remediation`
+
+    Defines whether remediation actions are enabled or not.
+
+    *Synopsis:*
+
+        - name: remediation
+
+* `test`
+
+    Defines the test strategy used to validate a deployment.
+    Failed tests result in an automatic `rollback` of the latest deployment when using a blue/green deployment strategy.
+    For example, the *jmeter-service* supports the `teststrategy` set to:
+    * `functional`: Test a deployment based on functional tests.
+    * `performance`: Test a deployment based on performance/load tests.
+
+    *Synopsis:*
+
+        - name: test
+          properties:
+            teststrategy: functional | performance
+
+    For example, you may run `functional` tests in a `dev` stage
+    and `performance` tests in a `hardening` or `staging stage.
+
+## Usage
+
+A [shipyard.yaml](../../reference/files/shipyard) file is defined at the level of a project.
+This means that all services in a project share the same shipyard definition.
+
+At this time, you can not add or delete stages in the *shipyard* file for an existing project
+although you can make other modifications.
+
+* See [KEP-70](https://github.com/keptn/enhancement-proposals/pull/70) for details
+about the initiative to allow adding/removing stages to/from a *shipyard* file.
+* See [Updating a shipyard](../../../manage/shipyard/#updating-a-shipyard)
+for information about modifications that can be made to a *shipyard* file.
+
+## Example
+
+The **See also** section of this page references other pages in this documentation set
+that contain annotated examples for accomplishing various tasks.
+
+## Files
+
+* Your *shipyard* file is named to match the value of the `Metadata` name field in the file.
+
+## Differences between versions
+
+* [KEP-70](https://github.com/keptn/enhancement-proposals/pull/70) is active
+to allow `stage`s to be added to and removed from a *shipyard* in an existing project.
+
+## See also
+
+* [Working with shipyard files](../../../manage/shipyard)
+* [Multi-stage delivery](../../../continuous_delivery/multi_stage)
+* [Triggers](../../../manage/triggers)
+* [Remediation Config](../../../automated_operations/remediation)
