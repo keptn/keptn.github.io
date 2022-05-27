@@ -281,6 +281,12 @@ about the initiative to allow adding/removing stages to/from a *shipyard* file.
 * See [Updating a shipyard](../../../manage/shipyard/#updating-a-shipyard)
 for information about modifications that can be made to a *shipyard* file.
 
+As a workaround, you can temporarily skip the execution of a particular stage by doing either of the following:
+
+* Temporarily remove the `triggeredOn` attribute for the stage you want to skip
+* Add an `approval` step as the first task of the stage you want to skip
+and then `Deny` the approvals 
+
 ## Example
 
 The **See also** section of this page references other pages in this documentation set
