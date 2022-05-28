@@ -2,7 +2,7 @@
 title: Working with shipyard files
 description: Information about shipyard, sequences and tasks to define processes and workflows.
 weight: 25
-keywords: [0.15.x-manage]
+keywords: [0.16.x-manage]
 aliases:
 ---
 
@@ -51,8 +51,7 @@ This means that all services in a project share the same shipyard definition.
             - name: "deployment"
             - name: "release"
 
-        - name: "production"
-          sequences:
+
           - name: "delivery"
             triggeredOn:
               - event: "hardening.delivery.finished"

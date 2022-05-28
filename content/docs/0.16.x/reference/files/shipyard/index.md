@@ -4,11 +4,11 @@ description: Control orchestation for a Keptn project
 weight: 715
 ---
 
-The *shipyard.yaml* file defines the activiies to be performed for a Keptn project
+The *shipyard.yaml* file defines the activities to be performed for a Keptn project
 and the order in which those activities are executed.
 
 Each project must have one, and only one, *shipyard.yaml* file
-which is passed [**keptn create project**](../../cli/commands/keptn_create_project/) command.
+which is passed to the [**keptn create project**](../../cli/commands/keptn_create_project/) command.
 
 * Each *shipyard.yaml* file contains  one or more `stages`, which can be given any name that is meaningful.
 Examples are "dev", "hardening", "production", "remediation".
@@ -94,12 +94,17 @@ about the ongoing initiative to overcome this limitation.
 **Sequence**
 
 A sequence is an ordered list of `task`s that are triggered sequentially
-and are part of a `stage`.. A sequence has the properties:
+and are part of a `stage`.
+By default, a sequence is a standalone section that runs and finishes,
+unless you specify the `triggeredOn` property for form a chain of sequences.
+
+A sequence has the properties:
 
 * `name`: A unique name for the sequence
 * `tasks`: An array of tasks executed by the sequence in the declared order.
 * `triggeredOn` *(optional)*: An array of events that trigger the sequence.
-    This property can be used to trigger a sequence once another sequence has been finished.
+    This property can be used to trigger a sequence once another sequence has been finished,
+    essentially forming chains of sequences..
     In addition to specifying the sequence whose completion should activate the trigger,
     You can define a `selector` that defines whether the sequence should be triggered
     if the preceeding sequence has been executed successfuly, or had a `failed` or `warning` result.
@@ -136,8 +141,11 @@ A single `task` is the smallest executable unit and is contained in a `sequences
 
 * `name`: A unique name of the task
 * `triggeredAfter` *(optional)*: Wait time before task is triggered.
-* `properties` *(optional)*: Task properties as individual `key:value` pairs. These properties precise the task and are
-  consumed by the unit that executes the task.
+* `properties` *(optional)*: Task properties as individual `key:value` pairs.
+  These properties are properties that the actioning tool requires
+  and are consumed by the tool that executes the task.
+  Typically, properties are passed in at runtime using JSON data
+  rather than having the data hardcoding into the *shipyard* file.
 
 Keptn supports a set of opinionated tasks for declaring a delivery or remediation sequence:
 
@@ -146,9 +154,13 @@ Keptn supports a set of opinionated tasks for declaring a delivery or remediatio
 * deployment
 * evaluation
 * get-action
-* release
 * rollback
-* test
+
+In addition, the following two tasks are reserved
+although they are associated with specific services:
+
+* release (helm-service only)
+* test (jmeter-service)
 
 Each of these are discussed below.
 
@@ -189,26 +201,6 @@ Each of these are discussed below.
 
 
     By default, an `automatic` approval strategy is used for the `pass` and `warning` evaluation results.
-
-* `deployment`
-
-    Defines the deployment strategy used to deploy a new version of a service.
-    For example, the *helm-service* supports the deployment `strategy` set to:
-
-    * `direct`: Deploys a new version of a service by replacing the old version of the service.
-    See [Direct deployments](../../../continuous_delivery/deployment_helm/#direct-deployments)
-    * `blue_green_service`: Deploys a new version of a service next to the old one.
-    After a successful validation of this new version, it replaces the old one and is marked as stable.
-    See [Direct deployments](../../../continuous_delivery/deployment_helm/#blue-green-deployments)
-    * `user_managed`: Deploys a new version of a service
-    by fetching the current Helm chart from the Git repo and updating appropriate values.
-    See [Direct deployments](../../../continuous_delivery/deployment_helm/#user-managed-deployments)
-
-    *Synopsis:*
-
-        - name: deployment
-          properties:
-            deploymentstrategy: blue_green_service
 
 * `evaluation`
 
@@ -251,13 +243,41 @@ Each of these are discussed below.
 
         - name: remediation
 
+For historical reasons and backward compatibility, the following tasks are reserved in Keptn
+although they are actually associated with services that run on the execution pland
+rather than on the control plane.
+
+* `deployment`
+
+    Defines the deployment strategy used to deploy a new version of a service.
+    This is part of  *helm-service*, which assumes that Istio is installed on the cluster
+    and supports setting the deployment `strategy` to:
+
+    * `direct`: Deploys a new version of a service by replacing the old version of the service.
+    See [Direct deployments](../../../continuous_delivery/deployment_helm/#direct-deployments)
+    * `blue_green_service`: Deploys a new version of a service next to the old one.
+    After a successful validation of this new version, it replaces the old one and is marked as stable.
+    See [Direct deployments](../../../continuous_delivery/deployment_helm/#blue-green-deployments)
+    * `user_managed`: Deploys a new version of a service
+    by fetching the current Helm chart from the Git repo and updating appropriate values.
+    See [Direct deployments](../../../continuous_delivery/deployment_helm/#user-managed-deployments)
+
+    *Synopsis:*
+
+        - name: deployment
+          properties:
+            deploymentstrategy: blue_green_service
+
 * `test`
 
-    Defines the test strategy used to validate a deployment.
-    Failed tests result in an automatic `rollback` of the latest deployment when using a blue/green deployment strategy.
-    For example, the *jmeter-service* supports the `teststrategy` set to:
+    Defines the test strategy used to validate a deployment with the jmeter-service..
+    The *jmeter-service* supports the `teststrategy` set to:
+
     * `functional`: Test a deployment based on functional tests.
     * `performance`: Test a deployment based on performance/load tests.
+
+    Failed tests result in an automatic `rollback` of the latest deployment
+    when using a blue/green deployment strategy.
 
     *Synopsis:*
 

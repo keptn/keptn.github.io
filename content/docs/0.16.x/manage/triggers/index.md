@@ -2,17 +2,24 @@
 title: Triggers
 description: Using triggers to kick off a sequence
 weight: 50
-keywords: [0.15.x-manage]
+keywords: [0.16.x-manage]
 aliases:
 ---
 
-You can define *triggers* to kick off a sequence in response to specific events.
+A Keptn sequence can be triggered in any of the following ways:
 
-## Define a trigger for a sequence 
+* Using the Keptn API
+* Using the Keptn CLI
+* From the Bridge UI
+* Using the `triggeredOn`property in the `shipyard` file.
 
-To define a trigger,
-use the `triggeredOn` property and specify a list of events.
-Use event types that refer to the status of a sequence execution.
+## Using triggeredOn in a sequence
+
+Use the `triggeredOn` property in a project's [shipyard](../../reference/files/shipyard) file
+to kick off a sequence in response to specific events.
+Essentially, this links sequences together to form chains of sequences.
+Specify a list of events to `triggeredOn`,
+using event types that refer to the status of a sequence execution.
 Their name follows the pattern:
 
 * `[stage_name].[sequence_name].finished` 
