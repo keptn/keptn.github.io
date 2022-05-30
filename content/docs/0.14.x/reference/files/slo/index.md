@@ -200,7 +200,7 @@ The pass and warning criteria for the `total_score` use the logical operator ">=
 
 ## See also
 
-* [sli](sli)
+* [sli](../sli)
 
 * [Dynatrace](../../../monitoring/dynatrace/configure_slis/)
 
