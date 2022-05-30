@@ -16,16 +16,20 @@ IgnoreURLs:
 # GitHub Urls are ignored due to Request Limitations and getting a 429 instead
 - "github.com/keptn/keptn/issues"
 - "github.com/keptn/keptn/commit"
+# GitHub Help does not like GitHub Action access
+- "help.github.com"
 # Twitter seems to be not reachable via GitHub Action
 - "twitter.com/keptnProject"
 - "twitter.com/keptnproject"
 # LinkedIn does not like automation and is returning a 999 Response Code
 - "linkedin.com"
 - "mailto"
+# Domains used in documentation for local resources
 - "localhost:8080"
 - "YOUR-ORG"
 - "YOUR.DOMAIN"
 - "your.domain"
 - "sockshop-dev"
 - "nip.io"
+- ".local"
 StripQueryString: false
