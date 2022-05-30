@@ -10,7 +10,7 @@ The following sections provide details about the functionalities you can use to 
 
 This may also be interesting for you:
 
-* [Create a service with the CLI](https://keptn.sh/docs/0.16.x/reference/cli/commands/keptn_create_service/)
+* [Create a service with the CLI](../../reference/cli/commands/keptn_create_service/)
 
 ## Create a service in Bridge
 On the service settings page, you can find a "Create service" button.

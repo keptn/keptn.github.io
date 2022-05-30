@@ -151,9 +151,9 @@ curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=v4.4
     &nbsp;* To quickly access Keptn, you can use a port-forward and then authenticate your Keptn CLI:
     &nbsp;- kubectl -n keptn port-forward service/api-gateway-nginx 8080:80
     &nbsp;- keptn auth --endpoint=http://localhost:8080/api --api-token=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
-    &nbsp;* Alternatively, follow the instructions provided at: https://keptn.sh/docs/0.14.x/operate/install/#authenticate-keptn-cli
+    &nbsp;* Alternatively, follow the instructions provided at: [Authenticate Keptn CLI](../0.14.x/operate/install/#authenticate-keptn-cli)
     &nbsp;* To expose Keptn on a public endpoint, please continue with the installation guidelines provided at:
-    &nbsp;- https://keptn.sh/docs/0.14.x/operate/install#install-keptn
+    &nbsp;- [Install Keptn](../0.14.x/operate/install/#install-keptn)
     </pre>
     **There is no need to follow the instructions from the installation log - the quickstart guide will cover this!**
     </p>
@@ -167,7 +167,7 @@ curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=v4.4
 
 5. **Access Bridge**: you can now access the Keptn Web UI at `http://127.0.0.1.nip.io:8082/bridge`.
 
-    For different way on how to expose your Keptn installation, please refer to <https://keptn.sh/docs/0.14.x/operate/install/#install-keptn>.
+    For different way on how to expose your Keptn installation, please refer to [Install Keptn](../0.14.x/operate/install/#install-keptn).
 
 
 ### Try Multi-Stage Delivery
