@@ -13,6 +13,8 @@ IgnoreDirs:
 # exlcuded because the paths do not exist for styles and contact
 - "404"
 IgnoreURLs:
+# not released therefore we ignore it
+- "0.16.0"
 # GitHub Urls are ignored due to Request Limitations and getting a 429 instead
 - "github.com/keptn/keptn/issues"
 - "github.com/keptn/keptn/commit"
