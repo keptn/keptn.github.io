@@ -56,7 +56,7 @@ spec:
 ## See also
 
 * [Write a Keptn-service](../../../integrations/custom_integration)
-* [distributor](../miscellaneous/distributor)
+* [distributor](../../miscellaneous/distributor)
 * [distributor source code](https://github.com/keptn/keptn/tree/master/distributor)
 
 

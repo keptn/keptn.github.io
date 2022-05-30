@@ -11,7 +11,7 @@ Installs Keptn on a Kubernetes cluster
 
 The Keptn CLI allows installing Keptn on any Kubernetes derivative to which your kube config is pointing to, and on OpenShift.
 
-For more information, please follow the installation guide [Install Keptn](https://keptn.sh/docs/0.15.x/operate/install/#install-keptn)
+For more information, please follow the installation guide [Install Keptn](../../../../operate/install/#install-keptn)
 
 
 ```
