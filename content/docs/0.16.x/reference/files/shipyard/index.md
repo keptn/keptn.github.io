@@ -43,16 +43,16 @@ The requirements are:
         - name: "production"
           sequences:
           - name: "<delivery-sequence>"
-            [triggeredOn:
+            triggeredOn:                                   # optional
                - event: "<event>.finished"
              tasks:
              - name: "delivery"
           - name: "remediation-sequence>"
-            [triggeredOn:
+            triggeredOn:                                   # optional
                -event: "<event>"
-                selector:
+                selector:                                  # optional
                   match:
-                    evaluation.result: "<result>"]
+                    evaluation.result: "<result>"
              tasks:
                 - name: "get-action"
                 - name: "action"
