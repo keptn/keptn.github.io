@@ -1,6 +1,8 @@
 IgnoreDirectoryMissingTrailingSlash: true
 CheckDoctype: false
 #CheckExternal: false
+#Ignoring for now, might be improved later
+IgnoreAltMissing: true
 IgnoreDirs:
 # This excludes are not optimal and need refinement. 
 - "docs/0.\\d\\."
@@ -8,6 +10,8 @@ IgnoreDirs:
 - "docs/0.11."
 - "docs/0.12."
 - "docs/0.13."
+# exlcuded because the paths do not exist for styles and contact
+- "404"
 IgnoreURLs:
 # GitHub Urls are ignored due to Request Limitations and getting a 429 instead
 - "github.com/keptn/keptn/issues"
