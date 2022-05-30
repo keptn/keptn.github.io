@@ -55,7 +55,7 @@ Select one of the four options and make sure to have the Git **user**, **token**
     caption="GitHub access token" 
     width="600px">}} 
 
-1. Go to your account and create a [GitLab project](https://docs.gitlab.com/ee/gitlab-basics/create-project.html).
+1. Go to your account and create a [GitLab project](https://docs.gitlab.com/ee/user/project/working_with_projects.html#create-a-project).
 
     {{< popup_image 
     link="./assets/gitlab_create_project.png" 
@@ -71,14 +71,14 @@ Select one of the four options and make sure to have the Git **user**, **token**
 
 1. If you do not have a Bitbucket user, create a user by [signing up for a free trial](https://bitbucket.org/account/signup/). 
 
-1. Create an [app password](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html) for your user with *Write* permissions. Therefore, select your User > **View profile** > **Settings** > **App passwords** > **Create app password**
+1. Create an [app password](https://bitbucket.org/) for your user with *Write* permissions. Therefore, select your User > **View profile** > **Settings** > **App passwords** > **Create app password**
 
     {{< popup_image 
     link="./assets/bitbucket_access_token.png" 
     caption="Bitbucket access token" 
     width="600px">}} 
 
-1. Go to your account and create a [Bitbucket repository](https://docs.gitlab.com/ee/gitlab-basics/create-project.html).
+1. Go to your account and create a [Bitbucket repository](https://bitbucket.org/).
 
     {{< popup_image 
     link="./assets/bitbucket_create_repo.png" 

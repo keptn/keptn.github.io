@@ -69,7 +69,7 @@ Please find the Helm Charts here:
 * Download the `values.yaml` from the release branch, e.g., for the jmeter-service:
 
     ```
-    wget https://raw.githubusercontent.com/keptn/keptn/release-0.15.0/jmeter-service/chart/values.yaml
+    wget https://raw.githubusercontent.com/keptn/keptn/0.15.0/jmeter-service/chart/values.yaml
     ```
 
 * Edit the `values.yaml` to connect the services to the Keptn control plane, identified by its endpoint and API token. Therefore, set the values (1) - (5):
@@ -141,9 +141,9 @@ Please find the Helm Charts here:
 
 See the configuration parameters of the supported execution plane services:
 
-  - `helm-service`: [Helm Chart values](https://github.com/keptn/keptn/blob/release-0.15.0/helm-service/chart/README.md#configuration)
+  - `helm-service`: [Helm Chart values](https://github.com/keptn/keptn/blob/0.15.0/helm-service/chart/README.md#configuration)
 
-  - `jmeter-service`: [Helm Chart values](https://github.com/keptn/keptn/blob/release-0.15.0/jmeter-service/chart/README.md#configuration)
+  - `jmeter-service`: [Helm Chart values](https://github.com/keptn/keptn/blob/0.15.0/jmeter-service/chart/README.md#configuration)
 
 The important once that are used in the above example are:
 

@@ -55,7 +55,7 @@ Select one of the four options and make sure to have the Git **user**, **token**
     caption="GitHub access token" 
     width="600px">}} 
 
-1. Go to your account and create a [GitLab project](https://docs.gitlab.com/ee/gitlab-basics/create-project.html).
+1. Go to your account and create a [GitLab project](https://docs.gitlab.com/ee/user/project/working_with_projects.html#create-a-project).
 
     {{< popup_image 
     link="./assets/gitlab_create_project.png" 
