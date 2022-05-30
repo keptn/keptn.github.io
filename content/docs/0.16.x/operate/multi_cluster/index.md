@@ -16,12 +16,12 @@ width="600px">}}
 * **Keptn Control plane**
   * The control plane is the minimum set of components, which are required to run a Keptn and to manage projects, stages, and services, to handle events, and to provide integration points.
   * The control plane orchestrates the task sequences defined in Shipyard, but does not actively execute the tasks.
-  * Minimum [Cluster size](../k8s_support/#control-plane)
+  * Minimum [Cluster size](../k8s_support/#cluster-size)
 
 * **Keptn Execution plane**
   * The execution plane consists of all Keptn-services that are required to process all tasks (like deployment, test, etc.).
   * The execution plane is the cluster where you deploy your application too and execute certain tasks of a task sequence. 
-  * Minimum [Cluster size](../k8s_support/#execution-plane)
+  * Minimum [Cluster size](../k8s_support/#cluster-size)
 
 ## Create or bring two (or more) Kubernetes clusters
 

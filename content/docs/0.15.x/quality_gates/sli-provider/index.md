@@ -23,7 +23,7 @@ In Keptn 0.14.x, this can be either *Dynatrace* or *Prometheus*.
 
 ## Prometheus SLI-Provider
 
-* Complete steps from section [Set Up Prometheus SLI-provider](../../monitoring/prometheus/install/#setup-prometheus-sli-provider).
+* Complete steps from section [Set Up Prometheus SLI-provider](../../monitoring/prometheus/install/#set-up-prometheus-keptn-integration).
 
 * To configure Keptn to use the Prometheus SLI-provider for your project (e.g. **musicshop**), execute the following command:
 

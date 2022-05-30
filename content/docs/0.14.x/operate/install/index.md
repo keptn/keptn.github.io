@@ -247,7 +247,7 @@ However, if you are facing problems, please let us know on https://slack.keptn.s
 
 ## Quick Start
 
-:bulb: If you would like to install Keptn in a default way, please go to [Quick Start](../../../quickstart/#2-install-keptn).
+:bulb: If you would like to install Keptn in a default way, please go to [Quick Start](../../../quickstart/).
 
 Use this page if you have already Keptn experience and would like to install it according to your needs.
 
