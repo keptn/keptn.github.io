@@ -31,7 +31,7 @@ In Keptn 0.16.x, this can be either *Dynatrace*, *Prometheus*, or *Datadog*.
     keptn configure monitoring prometheus --project=musicshop --service=catalogue
     ```
 
-* Configure custom SLIs for the Prometheus SLI-provider as explained [here](../../../monitoring/prometheus/install/#configure-custom-prometheus-slis).
+* Configure custom SLIs for the Prometheus SLI-provider as explained [here](../../monitoring/prometheus/install/#configure-custom-prometheus-slis).
 
 ## Datadog SLI-Provider
 
@@ -39,6 +39,6 @@ Please, refer to the documentation of the [SLI-Provider](https://github.com/kept
 
 ## Add custom SLI-Provider
 
-* To create and add your custom SLI-provider to Keptn, please follow the instructions [here](../../../integrations/sli_provider).
+* To create and add your custom SLI-provider to Keptn, please follow the instructions [here](../../integrations/sli_provider).
 
 

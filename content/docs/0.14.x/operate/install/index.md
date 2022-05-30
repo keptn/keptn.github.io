@@ -738,7 +738,7 @@ kubectl get secret -n keptn bridge-credentials -o jsonpath="{.data.BASIC_AUTH_US
 kubectl get secret -n keptn bridge-credentials -o jsonpath="{.data.BASIC_AUTH_PASSWORD}" | base64 --decode
 ```
 
-* If you want to change the user and password for the authentication, follow the instructions [here](../../reference/bridge/basic_authentication/#enable-authentication).
+* If you want to change the user and password for the authentication, follow the instructions [here](../../bridge/basic_authentication/#enable-authentication).
 
 
 ## Change how to expose Keptn
