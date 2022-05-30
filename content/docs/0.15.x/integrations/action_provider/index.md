@@ -5,7 +5,7 @@ weight: 10
 keywords: [0.15.x-integration]
 ---
 
-An *action-provider* is an implementation of a [*Keptn-service*](../custom_integration/#keptn-service) with a dedicated purpose. This type of service is responsible for executing a remediation action and therefore might even use another tool. The [Keptn CloudEvents](#cloudevents) an action-provider has to subscribe to is:
+An *action-provider* is an implementation of a [*Keptn-service*](../custom_integration/#write-your-keptn-service) with a dedicated purpose. This type of service is responsible for executing a remediation action and therefore might even use another tool. The [Keptn CloudEvents](../custom_integration/#cloudevents) an action-provider has to subscribe to is:
 
 - `sh.keptn.event.action.triggered`
 
@@ -57,7 +57,7 @@ Next to meta-data such as project, stage, or service name, the event contains in
 
 **Distributor:**
 
-* To subscribe your action-provider to the `sh.keptn.event.action.triggered` event, please follow [Subscription to Keptn event](../custom_integration/#subscription-to-keptn-event).
+* To subscribe your action-provider to the `sh.keptn.event.action.triggered` event, please follow [Subscription to Keptn event](../custom_integration/#subscription-to-a-triggered-event).
 
 ### Functionality 
 
