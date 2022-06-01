@@ -199,12 +199,6 @@ If you are facing problems, please let us know on https://slack.keptn.sh.
 </p>
 </details>
 
-## Quick Start
-
-:bulb: If you would like to install Keptn in a default way, please go to [Quick Start](../../../quickstart/#2-install-keptn).
-
-Use this page if you have already Keptn experience and would like to install it according to your needs.
-
 ## Install Keptn CLI
 
 Every Keptn release provides binaries for the Keptn CLI. These binaries are available for Linux, macOS, and Windows.
@@ -692,7 +686,7 @@ kubectl get secret -n keptn bridge-credentials -o jsonpath="{.data.BASIC_AUTH_US
 kubectl get secret -n keptn bridge-credentials -o jsonpath="{.data.BASIC_AUTH_PASSWORD}" | base64 --decode
 ```
 
-* If you want to change the user and password for the authentication, follow the instructions [here](../../reference/bridge/basic_authentication/#enable-authentication).
+* If you want to change the user and password for the authentication, follow the instructions [here](../../bridge/basic_authentication/#enable-authentication).
 
 
 ## Change how to expose Keptn

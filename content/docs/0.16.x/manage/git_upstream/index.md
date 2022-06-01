@@ -8,10 +8,15 @@ aliases:
   - /docs/0.8.1/manage/git_upstream/
 ---
 
-Keptn manages a project in an internal Git repository. To upstream this repository to a remote place that also works as backup, it is recommended to create, for example, a GitHub repository. This GitHub repository is then specified as upstream repo when creating a project. 
+Keptn manages a project in an internal Git repository which is separate from the repository that stores your source code.
+To upstream this repository to a remote place that also works as backup,
+you must create a new Git repository.
+This GitHub repository is then specified as the upstream repo when creating a project. 
 
-* If you already have a Keptn project created and you want to set an upstream afterwards, you can do this with the [keptn update project](../../reference/cli/commands/keptn_update_project/) command explained [below](/#create-keptn-project-or-set-git-upstream).
-* :warning: The Git repository you want to define as upstream for an already created project **must not be initialized**, i.e., an empty repo without any commits. Therefore, **do not select** the check-box: *Initialize this repository with a README* when creating the repository.
+* If you already have a Keptn project created and you want to add an upstream Git repository to it,
+you can do this with the [keptn update project](../../reference/cli/commands/keptn_update_project/) command.
+* :warning: The Git repository you want to define as upstream for an already created project **must not be initialized**.
+In other words, it must be an empty repo without any commits. Therefore, **do not select** the check-box: *Initialize this repository with a README* when creating the repository.
 
 ## Create a Git repository
 
@@ -55,7 +60,7 @@ Select one of the four options and make sure to have the Git **user**, **token**
     caption="GitHub access token" 
     width="600px">}} 
 
-1. Go to your account and create a [GitLab project](https://docs.gitlab.com/ee/gitlab-basics/create-project.html).
+1. Go to your account and create a GitLab project.
 
     {{< popup_image 
     link="./assets/gitlab_create_project.png" 
