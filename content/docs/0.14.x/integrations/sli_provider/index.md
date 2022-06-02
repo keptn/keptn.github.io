@@ -143,7 +143,7 @@ After receiving the `sh.keptn.event.get-sli.triggered` event, an SLI-provider mu
 
 ## Deploy SLI-provider with distributor
 
-A default deployment manifest is provided in the keptn-service-template-go template, see: [deploy/service.yaml](https://github.com/keptn-sandbox/keptn-service-template-go/blob/master/deploy/service.yaml). 
+A default deployment manifest is provided in the keptn-service-template-go template, see: [deploy/service.yaml](https://github.com/keptn-sandbox/keptn-service-template-go/tree/0.14.0/chart). 
 
 * Change the deployment manifest for your *SLI-provider* and the apply it to the Kubernetes cluster where Keptn is running:
 

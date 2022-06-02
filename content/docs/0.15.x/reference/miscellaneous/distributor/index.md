@@ -47,7 +47,7 @@ when it runs within the Keptn cluster:
 when the distributor is running within the Keptn cluster. default = `nats://keptn-nats`
 - `PUBSUB_TOPIC` - Comma separated list of topics (i.e. event types)
 for which the distributor should listen
-(see https://github.com/keptn/spec/blob/master/cloudevents.md for details).
+(see https://github.com/keptn/spec/blob/0.2.4/cloudevents.md for details).
 This is the initial subscription for the service;
 it is overridden by subscription information supplied through the Bridge.
    * When running within the Keptn cluster, it is possible to use NATS
@@ -162,8 +162,7 @@ The remaining parameters, such as `PUBSUB_RECIPIENT`, `PUBSUB_RECIPIENT_PORT` an
 
 ## Installation
 
-Distributors are installed automatically as a part of [Keptn](https://keptn.sh). See
-[core-distributors.yaml](/installer/manifests/keptn/core-distributors.yaml) for details.
+Distributors are installed automatically as a part of [Keptn](https://keptn.sh).
 
 ## Deploy in your Kubernetes cluster
 

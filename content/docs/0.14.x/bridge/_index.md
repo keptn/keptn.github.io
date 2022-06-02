@@ -202,7 +202,7 @@ caption="Keptn Bridge Service Settings View">}}
 
 ### Approvals
 
-If you have a [manual approval strategy](../continuous_delivery/multi_stage/#approval) defined in your shipyard.yaml file, approvals can be handled with the Keptn Bridge.
+If you have a [manual approval strategy](../continuous_delivery/multi_stage/ defined in your shipyard.yaml file, approvals can be handled with the Keptn Bridge.
 At sequence execution, if the approval task is reached, a panel is shown in all relevant screens:
 
 In the environment view a pending approval can be recognized by the blue service out-of-sync icon at the according stage.
