@@ -47,7 +47,7 @@ when it runs within the Keptn cluster:
 when the distributor is running within the Keptn cluster. default = `nats://keptn-nats`
 - `PUBSUB_TOPIC` - Comma separated list of topics (i.e. event types)
 for which the distributor should listen
-(see https://github.com/keptn/keptn/blob/master/specification/cloudevents.md for details).
+(see https://github.com/keptn/spec/blob/master/cloudevents.md for details).
 This is the initial subscription for the service;
 it is overridden by subscription information supplied through the Bridge.
    * When running within the Keptn cluster, it is possible to use NATS

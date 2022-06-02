@@ -23,8 +23,7 @@ IgnoreURLs:
 # Old Announcements
 - "keptn.sh/docs/0.7"
 # Twitter seems to be not reachable via GitHub Action
-- "twitter.com/keptnProject"
-- "twitter.com/keptnproject"
+- "twitter.com"
 # LinkedIn does not like automation and is returning a 999 Response Code
 - "linkedin.com"
 - "mailto"
