@@ -9,61 +9,15 @@ aliases:
 
 ## Upgrade from Keptn 0.15.x to Keptn 0.16.x
 
-With Keptn 0.16.x, we upgraded the NATS cluster and with that, we changed its name.
-For existing integration that are not yet updated to use a 0.16.x distributor, please update the distributor `PUBSUB_URL` environment variable and set it to `nats://keptn-nats`.
-Please, refer to the [distributor documentation](https://github.com/keptn/keptn/tree/master/distributor#distributor) for further details.
+With Keptn 0.16.x, every Keptn project requires an upstream. Hence, before upgrading Keptn it is required to (i) attach an upstream to your Keptn projects and (ii) do a [backup](..//backup_and_restore/#back-up-configuration-service).
+If you set an upstream for all your Keptn projects, no additional steps are required.
 
-<details><summary>Expand to see upgrade instructions:</summary>
-<p>
+Suppose you need the additional features provided by the *resource-service*,  such as HTTPS/SSH or Proxy, to configure your Keptn project with an upstream. In that case,
+you can also deploy the *resource-service* and configure the Git repositories later. For this, a backup is necessary.
 
-* **Step 1.** To download and install the Keptn CLI for version 0.16.0, you can choose between:
-   * *Automatic installation of the Keptn CLI (Linux and Mac):*
-
-      * The next command will download the 0.16.0 release from [GitHub](https://github.com/keptn/keptn/releases), unpack it, and move it to `/usr/local/bin/keptn`.
-      ```console
-      curl -sL https://get.keptn.sh | KEPTN_VERSION=0.16.0 bash
-      ```
-
-      * Verify that the installation has worked and that the version is correct by running:
-      ```console
-      keptn version
-      ```
-
-   * *Manual installation of the Keptn CLI:*
-
-      * Download the release for your platform from the [GitHub](https://github.com/keptn/keptn/releases/tag/0.16.0)
-      * Unpack the binary and move it to a directory of your choice (e.g., `/usr/local/bin/`)
-      * Verify that the installation has worked and that the version is correct by running:
-      ```console
-      keptn version
-      ```
-
-* **Step 2.** To upgrade your Keptn installation from 0.15.x to 0.16.x, the Keptn CLI offers the command:
-
-   ```console
-   keptn upgrade
-   ```
-
-   * Please [verify that you are connected to the correct Kubernetes cluster](../../troubleshooting/#verify-kubernetes-context-with-keptn-installation) before executing this command.
-   * If you encounter an issue of the CLI saying: `Error: your current Keptn CLI context 'cluster' does not match current Kubeconfig '` when executing the above command, please set the config *KubeContextCheck* using: 
-
-   ```
-   keptn set config KubeContextCheck true
-   ```
-
-   * If the CLI still complains about the context, please use the Helm approach to upgrade your cluster:
-
-   ```console
-   helm upgrade keptn keptn --install -n keptn --create-namespace --repo=https://charts.keptn.sh --version=0.16.0 --reuse-values --wait
-   ```
-
-* :warning: **Step 3.** If you are using the **jmeter-service** or **helm-service**, upgrade them to 0.16.0 using the following commands:
-
-   ```console
-   helm repo update
-   helm upgrade jmeter-service https://github.com/keptn/keptn/releases/download/0.16.0/jmeter-service-0.16.0.tgz -n keptn --create-namespace --wait --reuse-values
-   helm upgrade helm-service https://github.com/keptn/keptn/releases/download/0.16.0/helm-service-0.16.0.tgz -n keptn --create-namespace --wait --reuse-values
-   ```
-
-</p>
-</details>
+1. Back up of the [configuration-service](../backup_and_restore/#back-up-configuration-service).
+2. For each Keptn project in the backup data, open a shell in that directory and make sure the `Git` CLI is available.
+3. Attach your upstream to the Keptn project via the Git CLI with `git remote add origin <remoteURL>`, where `<remoteURL>` is your Git upstream.
+4. Run `git push --all` to synchronize your backup with your Git repository.
+5. Upgrade to Keptn 0.16.x
+6. Navigate to your Bridge installation and configure an upstream to the Keptn projects.
