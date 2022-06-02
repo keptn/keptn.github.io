@@ -199,12 +199,6 @@ If you are facing problems, please let us know on https://slack.keptn.sh.
 </p>
 </details>
 
-## Quick Start
-
-:bulb: If you would like to install Keptn in a default way, please go to [Quick Start](../../../quickstart/).
-
-Use this page if you have already Keptn experience and would like to install it according to your needs.
-
 ## Install Keptn CLI
 
 Every Keptn release provides binaries for the Keptn CLI. These binaries are available for Linux, macOS, and Windows.
