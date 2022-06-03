@@ -1,17 +1,18 @@
 ---
-title: shipyard.yaml
+title: shipyard
 description: Control orchestation for a Keptn project
 weight: 715
 ---
 
-The *shipyard.yaml* file defines the activities to be performed for a Keptn project
+The shipyard is configured in the  *shipyard.yaml* file,
+which defines the activities to be performed for a Keptn project
 and the order in which those activities are executed.
 
 Each project must have one, and only one, *shipyard.yaml* file
 which is passed to the [**keptn create project**](../../cli/commands/keptn_create_project/) command.
 
-* Each *shipyard.yaml* file contains  one or more `stages`, which can be given any name that is meaningful.
-Examples are "dev", "hardening", "production", "remediation".
+* Each *shipyard* contains  one or more `stages`, which can be given any name that is meaningful.
+Examples are "development", "hardening", "production", and "remediation".
 A `stage` is a grouping of activities to be executed until the project is deployed and,
 optionally, a "production" stage that defines remediation activities
 that can be executed in response to issues detected on the production site.
@@ -19,9 +20,8 @@ that can be executed in response to issues detected on the production site.
 * Each `stage` must have one or more `sequences`, which can be given any name that is meaningful.
 A `sequence` defines the `tasks` to be performed and, optionally, an event that triggers that sequence.
 
-The following **Synopsis** shows all the constructions that are supported for a *shipyard.yaml* file
+The following **Synopsis** shows all the constructions that are supported for a *shipyard*
 although most projects only use some of the constructions.
-The requirements are:
 
 ## Synopsis
 
@@ -43,14 +43,14 @@ The requirements are:
         - name: "production"
           sequences:
           - name: "<delivery-sequence>"
-            triggeredOn:                                   # optional
+            triggeredOn:
                - event: "<event>.finished"
              tasks:
              - name: "delivery"
           - name: "remediation-sequence>"
-            triggeredOn:                                   # optional
+            triggeredOn:
                -event: "<event>"
-                selector:                                  # optional
+                selector:
                   match:
                     evaluation.result: "<result>"
              tasks:
@@ -96,7 +96,7 @@ about the ongoing initiative to overcome this limitation.
 A sequence is an ordered list of `task`s that are triggered sequentially
 and are part of a `stage`.
 By default, a sequence is a standalone section that runs and finishes,
-unless you specify the `triggeredOn` property for form a chain of sequences.
+unless you specify the `triggeredOn` property to form a chain of sequences.
 
 A sequence has the properties:
 
@@ -104,9 +104,9 @@ A sequence has the properties:
 * `tasks`: An array of tasks executed by the sequence in the declared order.
 * `triggeredOn` *(optional)*: An array of events that trigger the sequence.
     This property can be used to trigger a sequence once another sequence has been finished,
-    essentially forming chains of sequences..
+    essentially forming chains of sequences.
     In addition to specifying the sequence whose completion should activate the trigger,
-    You can define a `selector` that defines whether the sequence should be triggered
+    you can define a `selector` that defines whether the sequence should be triggered
     if the preceeding sequence has been executed successfuly, or had a `failed` or `warning` result.
     For example, the following sequence with the name `rollback` is only triggered
     if the sequence `delivery` in production had a result of `failed`:
@@ -120,7 +120,8 @@ A sequence has the properties:
 
     It is also possible to refer to certain tasks within the preceeding sequence.
     For example, if `match` is changed to `release.result: failed`,
-    the `rollback` sequence is executed only if the task `release` of the sequence `delivery` has a result of `failed`:
+    the `rollback` sequence is executed only if the task `release` of the sequence `delivery`
+    has a result of `failed`:
 
         - name: rollback
           triggeredOn:
@@ -129,7 +130,8 @@ A sequence has the properties:
               match:
                 release.result: failed
 
-    If no `selector` is specified, the sequence is triggered only if the preceeding `delivery` sequence has a result of `pass`:
+    If no `selector` is specified, the sequence is triggered
+    only if the preceeding `delivery` sequence has a result of `pass`:
 
         - name: rollback
           triggeredOn:
@@ -137,17 +139,19 @@ A sequence has the properties:
 
 **Task**
 
-A single `task` is the smallest executable unit and is contained in a `sequences` block. A task has the properties:
+A single `task` is the smallest executable unit and is contained in a `sequences` block.
+A task has the properties:
 
-* `name`: A unique name of the task
-* `triggeredAfter` *(optional)*: Wait time before task is triggered.
+* `name`: A unique name for the task
+* `triggeredAfter` *(optional)*: Wait time before the task is triggered.
 * `properties` *(optional)*: Task properties as individual `key:value` pairs.
   These properties are properties that the actioning tool requires
   and are consumed by the tool that executes the task.
   Typically, properties are passed in at runtime using JSON data
-  rather than having the data hardcoding into the *shipyard* file.
+  rather than having the data hardcoded into the *shipyard* file.
 
-Keptn supports a set of opinionated tasks for declaring a delivery or remediation sequence:
+Keptn supports a set of opinionated tasks for declaring a delivery or remediation sequence.
+Additional tasks may be defined for the services you integrate.
 
 * action
 * approval
@@ -160,7 +164,7 @@ In addition, the following two tasks are reserved
 although they are associated with specific services:
 
 * release (helm-service only)
-* test (jmeter-service)
+* test (jmeter-service only)
 
 Each of these are discussed below.
 
@@ -168,10 +172,6 @@ Each of these are discussed below.
 
     Indicates that a remediation action should be executed by an action provider.
     It is used within a [remediation workflow](../../../automated_operations/remediation).
-
-    *Synopsis:*
-
-        - name: action
 
 * `approval`
 
@@ -206,52 +206,53 @@ Each of these are discussed below.
 
     Defines the quality evaluation that is executed to verify the quality of a deplyoment based on its SLOs/SLIs.
 
-    *Synopsis:*
+    Use the optional `triggeredAfter` parameter to specify when to trigger the evaluation.
 
-        - name: evaluation
+    Set the `timeframe` property to specify the timespan to be evaluated.
+    For example, `timeframe: 5m` says that the quality gate evaluation looks at the previous five minutes.
+
+    `timeframe` must be specified but
+    you can specify the `timeframe` as part of the JSON payload
+    and pass it in when you trigger the sequence using curl
+    rather than hard-coding it in the file.
+    This makes the timeframe value dynamic.  For example:
+
+        {
+         "type": "sh.keptn.event.SomeStage.MySequence.triggered",
+         # Other fields removed for brevity
+         "data": {
+           "evaluation": {
+             "timeframe": "5m"
+           }
+        }
 
 * `get-action`
-    Extracts the desired remediation action from a *remediation.yaml* file
+    Extracts the desired remediation action from a *remediation* configuration
     within a [remediation workflow](../../../automated_operations/remediation).
-
-    *Synopsis:*
-
-        - name: get-action
 
 * `release`
 
     Defines the releasing task that is executed after a successful deployment occurs.
     This task shifts production trafic towards the new deployment.
 
-    *Synopsis:*
-
-        - name: release
-
 * `rollback`
 
     Defines the rollback task that is executed when a rollback is triggered.
-
-    *Synopsis:*
-
-        - name: rollback
 
 * `remediation`
 
     Defines whether remediation actions are enabled or not.
 
-    *Synopsis:*
-
-        - name: remediation
-
 For historical reasons and backward compatibility, the following tasks are reserved in Keptn
-although they are actually associated with services that run on the execution pland
+although they are actually associated with services that run on the execution plane
 rather than on the control plane.
 
 * `deployment`
 
     Defines the deployment strategy used to deploy a new version of a service.
     This is part of  *helm-service*, which assumes that Istio is installed on the cluster
-    and supports setting the deployment `strategy` to:
+    unless the Job Executor Service is installed in the cluster.
+    The deployment `strategy` is set to one of the following:
 
     * `direct`: Deploys a new version of a service by replacing the old version of the service.
     See [Direct deployments](../../../continuous_delivery/deployment_helm/#direct-deployments)
@@ -262,24 +263,16 @@ rather than on the control plane.
     by fetching the current Helm chart from the Git repo and updating appropriate values.
     See [Direct deployments](../../../continuous_delivery/deployment_helm/#user-managed-deployments)
 
-    *Synopsis:*
-
-        - name: deployment
-          properties:
-            deploymentstrategy: blue_green_service
-
 * `test`
 
-    Defines the test strategy used to validate a deployment with the jmeter-service..
-    The *jmeter-service* supports the `teststrategy` set to:
+    Defines the test strategy used to validate a deployment with the *jmeter-service*.
+    The *jmeter-service* supports setting the `teststrategy` to one of the following:
 
     * `functional`: Test a deployment based on functional tests.
     * `performance`: Test a deployment based on performance/load tests.
 
     Failed tests result in an automatic `rollback` of the latest deployment
     when using a blue/green deployment strategy.
-
-    *Synopsis:*
 
         - name: test
           properties:
@@ -314,7 +307,8 @@ that contain annotated examples for accomplishing various tasks.
 
 ## Files
 
-* Your *shipyard* file is named to match the value of the `Metadata` name field in the file.
+* Your *shipyard* is stored in the upstage Git repo for the project
+and  named to match the value of the `Metadata` name field in the shipyard file.
 
 ## Differences between versions
 
