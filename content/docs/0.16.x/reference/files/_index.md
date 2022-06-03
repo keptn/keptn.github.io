@@ -1,4 +1,4 @@
 ---
-title: Files
-description: Reference pages for Keptn configuration files
+title: Configurations
+description: Reference pages for Keptn configurations
 ---
