@@ -19,12 +19,19 @@ Make sure to check the [upgrade instructions](../../../0.16.x/operate/upgrade/) 
 
 :sparkles: *(experimental) New heatmap for SLI breakdown*: Keptn Bridge is leveraging a new rendering library that offers more flexibility for displaying the SLI breakdown. If you want to try it out, you can enable it by setting the Helm value `control-plane.bridge.d3heatmap.enabled` to `true`.
 
+:information_source: From Keptn 0.17, the CLI will remove the install/uninstall/upgrade commands. Please refer to our [documentation](https://keptn.sh/docs/0.16.x/operate/) to see how you can use helm to operate Keptn.
+
 ---
+
+
+
+## [0.16.0](https://github.com/keptn/keptn/compare/0.15.0...0.16.0) (2022-06-07)
 
 
 ### ⚠ BREAKING CHANGES
 
 * The `resource-service` replaces the old `configuration-service`. The new service always requires a Git upstream to be configured for a Keptn project. The new service will bring many advantages, such as faster response times and the possibility to upgrade Keptn without any downtime.
+* From Keptn 0.17, the CLI will remove the install/uninstall/upgrade commands. Please refer to our [documentation](https://keptn.sh/docs/0.16.x/operate/) to see how you can use helm to operate Keptn.
 
 ### Features
 
@@ -63,6 +70,7 @@ Make sure to check the [upgrade instructions](../../../0.16.x/operate/upgrade/) 
 * **bridge:** Allow Webhook configuration URL to be a secret ([#7728](https://github.com/keptn/keptn/issues/7728)) ([0372484](https://github.com/keptn/keptn/commit/0372484907c9a7ce0a70f1397fb672205b2c4e52))
 * **bridge:** Duplicate headline in project settings page ([#7988](https://github.com/keptn/keptn/issues/7988)) ([1645230](https://github.com/keptn/keptn/commit/1645230fffa3df299c6270b13bb8196ce5e3eb23))
 * **bridge:** Fix D3 heatmap selection ([#7842](https://github.com/keptn/keptn/issues/7842)) ([c15740a](https://github.com/keptn/keptn/commit/c15740a9cc6e72531b430bede317509ff59e4fc0))
+* **bridge:** Fix flickering of filter in sequence view ([#8009](https://github.com/keptn/keptn/issues/8009)) ([3e6ec42](https://github.com/keptn/keptn/commit/3e6ec428adab2b52db2c7ce1d7f40bdef47cca56))
 * **bridge:** Fix logout not being visible if metadata is not returned ([#7794](https://github.com/keptn/keptn/issues/7794)) ([1c2b196](https://github.com/keptn/keptn/commit/1c2b1967442db69e6d398e07631370d8b3a1e63e))
 * **bridge:** Fixed D3 heatmap issues ([#7833](https://github.com/keptn/keptn/issues/7833)) ([3e697bf](https://github.com/keptn/keptn/commit/3e697bf16d700d6398ca3c907b0b1a7c14068843))
 * **bridge:** Fixed missing 'View service details' button ([#7806](https://github.com/keptn/keptn/issues/7806)) ([41cb52d](https://github.com/keptn/keptn/commit/41cb52de9552d1d9b56d1625be3474b4360924e2))
@@ -70,7 +78,7 @@ Make sure to check the [upgrade instructions](../../../0.16.x/operate/upgrade/) 
 * **cli:** Remove unnecessary `--sequence` flag from `keptn trigger sequence` ([#7902](https://github.com/keptn/keptn/issues/7902)) ([b252b6d](https://github.com/keptn/keptn/commit/b252b6d70ec70d34afc2dc02709e9cde30a6544f))
 * Correctly match nginx location for Bridge ([#7729](https://github.com/keptn/keptn/issues/7729)) ([dd236ef](https://github.com/keptn/keptn/commit/dd236ef4fa97ece1b9ba3703c2b66e939dbc9215))
 * **cp-connector:** Added missing Register() method to FixedSubscriptionSource ([#7731](https://github.com/keptn/keptn/issues/7731)) ([fe5b978](https://github.com/keptn/keptn/commit/fe5b9782f67d7ae14524d38f1712ea0cf3eb9703))
-* **cp-connector:** Fix passing deduplicated subjects to nats subscriber ([#7782](https://github.com/keptn/keptn/issues/7782)) ([39124e1](https://github.com/keptn/keptn/commit/39124e19d65f7455ad2aaffee0110fd33b503cba))
+* **cp-connector:** fix passing deduplicated subjects to nats subscriber ([#7782](https://github.com/keptn/keptn/issues/7782)) ([39124e1](https://github.com/keptn/keptn/commit/39124e19d65f7455ad2aaffee0110fd33b503cba))
 * **cp-connector:** Flaky unit test ([#7976](https://github.com/keptn/keptn/issues/7976)) ([be9cafb](https://github.com/keptn/keptn/commit/be9cafbd2b97d36e86198b2f8ca78993639ccdc4))
 * **cp-connector:** Subscribe to integrations before creating a job ([#7952](https://github.com/keptn/keptn/issues/7952)) ([ccc4f26](https://github.com/keptn/keptn/commit/ccc4f2648267e54bc6b92893120183420064c409))
 * **cp-connector:** Unsubscribe instead of disconnect from nats on cancel ([#7795](https://github.com/keptn/keptn/issues/7795)) ([8854339](https://github.com/keptn/keptn/commit/885433905cc0bc0eb727d89986c41d048c5cfd46))
@@ -98,6 +106,7 @@ Make sure to check the [upgrade instructions](../../../0.16.x/operate/upgrade/) 
 * **shipyard-controller:** Dispatch new sequence directly only if no older sequence is waiting ([#7793](https://github.com/keptn/keptn/issues/7793)) ([b8bad71](https://github.com/keptn/keptn/commit/b8bad7162821aba8c7d09794a4a1337756adee5e))
 * **shipyard-controller:** Make sure result and status are set if sequence is timed out ([#7901](https://github.com/keptn/keptn/issues/7901)) ([81858c0](https://github.com/keptn/keptn/commit/81858c0372ee9d494f8976594598fe989b3731b9))
 * **shipyard-controller:** Set the sequence execution state back to `started` when approval task has been finished ([#7838](https://github.com/keptn/keptn/issues/7838)) ([8444b48](https://github.com/keptn/keptn/commit/8444b481dbb315f234116530e0c1d03040436446))
+* **shipyard-controller:** Update registration info based on integration name/namespace ([#8006](https://github.com/keptn/keptn/issues/8006)) ([d277a83](https://github.com/keptn/keptn/commit/d277a83915c65aaaf42544cd371d7f8a972e8494))
 * **webhook-service:** Added denied curl in webhook beta based on host ([#7716](https://github.com/keptn/keptn/issues/7716)) ([d194367](https://github.com/keptn/keptn/commit/d1943671b8ccc5a13c50dafd833c486a54aedb9b))
 * **webhook-service:** Added missing webhook-config version check ([#7832](https://github.com/keptn/keptn/issues/7832)) ([445000a](https://github.com/keptn/keptn/commit/445000a88258801aae32ad395b073d47dff9ffc7))
 
@@ -132,5 +141,30 @@ Make sure to check the [upgrade instructions](../../../0.16.x/operate/upgrade/) 
 * Reduce execution time of shipyard-controller tests ([#7929](https://github.com/keptn/keptn/issues/7929)) ([3562e44](https://github.com/keptn/keptn/commit/3562e44ca8359e1ce77137480dfbeef5b2b02db8))
 * **shipyard-controller:** Improve logs with ctx of blocking sequence ([#7948](https://github.com/keptn/keptn/issues/7948)) ([6cc9544](https://github.com/keptn/keptn/commit/6cc9544f7a456b571cedb9d3061984e3a7ef89af))
 * Update references to cp-common ([#7823](https://github.com/keptn/keptn/issues/7823)) ([a07259f](https://github.com/keptn/keptn/commit/a07259f33b53c38984a707bd1519f3dbbe36f8ea))
-* Updated refs to go-sdk ([#7811](https://github.com/keptn/keptn/issues/7811)) ([5a03c55](https://github.com/keptn/keptn/commit/5a03c555f674138af9c39ad938817a87de505290))
+* updated refs to go-sdk ([#7811](https://github.com/keptn/keptn/issues/7811)) ([5a03c55](https://github.com/keptn/keptn/commit/5a03c555f674138af9c39ad938817a87de505290))
 
+<details>
+<summary>Kubernetes Resource Data</summary>
+
+### Resource Stats
+
+| Name                | Container Name      | CPU Request | CPU Limit | RAM Request | RAM Limit | Image                                               |
+| ------------------- | ------------------- | ----------- | --------- | ----------- | --------- | --------------------------------------------------- |
+| keptn-mongo         | mongodb             | null        | null      | null        | null      | docker.io/bitnami/mongodb:4.4.13-debian-10-r52      |
+| api-gateway-nginx   | api-gateway-nginx   | 50m         | 100m      | 64Mi        | 128Mi     | docker.io/nginxinc/nginx-unprivileged:1.22.0-alpine |
+| api-service         | api-service         | 50m         | 100m      | 32Mi        | 64Mi      | docker.io/keptn/api:0.16.0                          |
+| approval-service    | approval-service    | 25m         | 100m      | 32Mi        | 128Mi     | docker.io/keptn/approval-service:0.16.0             |
+| resource-service    | resource-service    | 25m         | 100m      | 32Mi        | 256Mi     | docker.io/keptn/resource-service:0.16.0             |
+| remediation-service | remediation-service | 50m         | 200m      | 64Mi        | 1Gi       | docker.io/keptn/remediation-service:0.16.0          |
+| bridge              | bridge              | 25m         | 200m      | 64Mi        | 256Mi     | docker.io/keptn/bridge2:0.16.0                      |
+| mongodb-datastore   | mongodb-datastore   | 50m         | 300m      | 32Mi        | 512Mi     | docker.io/keptn/mongodb-datastore:0.16.0            |
+| lighthouse-service  | lighthouse-service  | 50m         | 200m      | 128Mi       | 1Gi       | docker.io/keptn/lighthouse-service:0.16.0           |
+| secret-service      | secret-service      | 25m         | 200m      | 32Mi        | 64Mi      | docker.io/keptn/secret-service:0.16.0               |
+| shipyard-controller | shipyard-controller | 50m         | 100m      | 32Mi        | 128Mi     | docker.io/keptn/shipyard-controller:0.16.0          |
+| statistics-service  | statistics-service  | 25m         | 100m      | 32Mi        | 64Mi      | docker.io/keptn/statistics-service:0.16.0           |
+| statistics-service  | distributor         | 25m         | 100m      | 16Mi        | 32Mi      | docker.io/keptn/distributor:0.16.0                  |
+| webhook-service     | webhook-service     | 25m         | 100m      | 32Mi        | 64Mi      | docker.io/keptn/webhook-service:0.16.0              |
+| keptn-nats          | nats                | null        | null      | null        | null      | nats:2.7.3-alpine                                   |
+| keptn-nats          | metrics             | null        | null      | null        | null      | natsio/prometheus-nats-exporter:0.9.1               |
+
+</details>

@@ -11,10 +11,10 @@ keywords: [0.16.x-operate]
 
 ## Uninstall Keptn
 
-- To uninstall Keptn from your cluster, run the uninstall command using the Keptn CLI:
+- To uninstall Keptn from your cluster, run the uninstall command using the Helm CLI:
 
 ``` console
-keptn uninstall
+helm uninstall keptn
 ```
 
 - To verify the cleanup, retrieve the list of namespaces in your cluster and ensure that the **keptn** namespace is not included in the output of the following command:
