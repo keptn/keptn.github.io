@@ -230,16 +230,17 @@ Every Keptn release provides binaries for the Keptn CLI. These binaries are avai
 
 Keptn consists of a **Control Plane** and an **Execution Plane**:
 
-* The **Control Plane** allows using Keptn for the [Quality Gates](../../../concepts/quality_gates/) and [Automated Operations](../../../concepts/automated_operations/) use cases. To install the control plane containing the components for *quality gates* and *automated operations*, execute: 
+* The **Control Plane** allows using Keptn for the [Quality Gates](../../../concepts/quality_gates/) and [Automated Operations](../../../concepts/automated_operations/) use cases. To install the control plane containing the components for *quality gates* and *automated operations*, execute:
 
     ```console
-    keptn install
+    helm repo add keptn https://charts.keptn.sh
+    helm install keptn keptn/keptn -n keptn
     ```
 
 * The **Control Plane with the Execution Plane (for Continuous Delivery)** allows to implement [Continuous Delivery](../../../concepts/delivery/) on top of *quality gates* and *automated operations* use cases. Please not that for this use-case [Istio](https://istio.io) is required as well, as this is used for traffic routing between blue/green versions during deployment. To install the control plane with the execution plane for continuous delivery, execute:
 
     ```
-    keptn install --use-case=continuous-delivery
+    helm install keptn keptn/keptn -n keptn --create-namespace --set=continuous-delivery.enabled=true
     ```
 
 **How to access Keptn?**
@@ -262,10 +263,10 @@ width="1000px">}}
 ### Option 1: Expose Keptn via a LoadBalancer
 This option exposes Keptn externally using a cloud provider's load balancer (if available).
 
-1. **Install Keptn:** For installing Keptn on your cluster, please use the Keptn CLI.
-Depending on whether you would like to install the execution plane for continuous delivery, add the flag `--use-case=continuous-delivery`. Furthermore, if you are on OpenShift, please add `--platform=openshift`.
+1. **Install Keptn:** For installing Keptn on your cluster, please use the Helm CLI.
+Depending on whether you would like to install the execution plane for continuous delivery, add the flag `continuous-delivery.enabled=true`.
   ```console
-  keptn install --endpoint-service-type=LoadBalancer (--use-case=continuous-delivery) (--platform=openshift)
+   helm install keptn keptn/keptn -n keptn --create-namespace --set=continuous-delivery.enabled=true,control-plane.apiGatewayNginx.type=LoadBalancer
   ```
 
 1. **Get Keptn endpoint:**  Get the EXTERNAL-IP of the `api-gateway-ngix` using the command below. The Keptn API endpoint is: `http://<ENDPOINT_OF_API_GATEWAY>/api`
@@ -295,9 +296,9 @@ Depending on whether you would like to install the execution plane for continuou
 This option exposes Keptn on each Kubernetes Node's IP at a static port. Therefore, please make sure that you can access the Kubernetes Nodes in your network.
 
 1. **Install Keptn:** For installing Keptn on your cluster, please use the Keptn CLI.
-Depending on whether you would like to install the execution plane for continuous delivery, add the flag `--use-case=continuous-delivery`. Furthermore, if you are on OpenShift, please add `--platform=openshift`.
+Depending on whether you would like to install the execution plane for continuous delivery, add the flag `continuous-delivery.enabled=true`.
   ```console
-  keptn install --endpoint-service-type=NodePort (--use-case=continuous-delivery) (--platform=openshift)
+  helm install keptn keptn/keptn -n keptn --create-namespace --set=continuous-delivery.enabled=true,control-plane.apiGatewayNginx.type=NodePort
   ```
 
 1. **Get Keptn endpoint:** Get the mapped port of the `api-gateway-nginx` using the command below.
@@ -331,9 +332,9 @@ Depending on whether you would like to install the execution plane for continuou
 ### Option 3: Expose Keptn via an Ingress
 
 1. **Install Keptn:** For installing Keptn on your cluster, please use the Keptn CLI.
-Depending on whether you would like to install the execution plane for continuous delivery, add the flag `--use-case=continuous-delivery`. Furthermore, if you are on OpenShift, please add `--platform=openshift`.
+Depending on whether you would like to install the execution plane for continuous delivery, add the flag `continuous-delivery.enabled=true`.
   ```console
-  keptn install (--use-case=continuous-delivery) (--platform=openshift)
+  helm install keptn keptn/keptn -n keptn --create-namespace --set=continuous-delivery.enabled=true
   ```
 
 1. **Install an Ingress-Controller and create an Ingress:**
@@ -531,9 +532,9 @@ Depending on whether you would like to install the execution plane for continuou
 This option does not expose Keptn to the public but exposes Keptn on a *cluster-internal* IP.
 
 1. **Install Keptn:** For installing Keptn on your cluster, please use the Keptn CLI.
-Depending on whether you would like to install the execution plane for continuous delivery, add the flag `--use-case=continuous-delivery`. Furthermore, if you are on OpenShift, please add `--platform=openshift`.
+Depending on whether you would like to install the execution plane for continuous delivery, add the flag `continuous-delivery.enabled=true`.
   ```console
-  keptn install (--use-case=continuous-delivery) (--platform=openshift)
+  helm install keptn keptn/keptn -n keptn --create-namespace --set=continuous-delivery.enabled=true
   ```
 
 1. **Setup a Port-Forward:** Configure the port-forward by using the command below.

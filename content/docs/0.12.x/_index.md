@@ -4,6 +4,7 @@ linktitle: Release 0.12.x
 weight: 984
 sidebar_multicard: true
 icon: docs
+hide: true
 aliases:
   - /docs/0.12.0/
   - /docs/0.12.1/
