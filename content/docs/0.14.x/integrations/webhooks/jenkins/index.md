@@ -76,7 +76,7 @@ In order to do this, the following steps are needed:
 
 * Change the webhook to use `/buildWithParameters` instead of `/build` 
 * Append parameters to the webhook URL, e.g., `/buildWithParameters?token={{.secret.jenkins-secret.my-pipeline-secret}}&triggeredid={{.id}}&shkeptncontext={{.shkeptncontext}}&stage={{.data.stage}}`
-* Change the webhook configuration [to not auto-respond with a .finished event](../#configure-webhook-to-not-auto-respond-with-a-finished-event) (`sendFinished: false`)
+* Change the webhook configuration [to not auto-respond with a .finished event](../#configure-active-webhook-on-task-triggered-events) (`sendFinished: false`)
 * Install [keptn-jenkins-library](https://github.com/keptn-sandbox/keptn-jenkins-library/) on your Jenkins Server
 * Configure secrets and environments variable as detailed in the install instructions of keptn-jenkins-library
 * Modify the Jenkins Pipeline to accept `triggeredid`, `shkeptncontext` and `stage` (see example below)
