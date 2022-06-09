@@ -99,27 +99,6 @@ spec:
 
 If multiple actions are declared, Keptn sends out events in sequential order. Given the below example, the event for triggering `scaling` is sent out before the event for `featuretoggle` is fired. 
 
-```yaml
----
-apiVersion: spec.keptn.sh/0.1.4
-kind: Remediation
-metadata:
-  name: serviceXYZ-remediation
-spec:
-  remediations:  
-  - problemType: Response time degradation
-    actionsOnOpen:
-    - name: Scaling ReplicaSet by 1
-      description: Scaling the ReplicaSet of a Kubernetes Deployment by 1
-      action: scaling
-      value: "1"
-    - name: Toogle feature flag
-      action: featuretoggle
-      description: Toggle feature flag EnablePromotion from ON to OFF.
-      value: 
-        EnablePromotion: off
-```
-
 ## Add Remediation Config to a Service
 
 **Important:** In the following command, the value of `resourceUri` must be set to `remediation.yaml`.

@@ -65,7 +65,7 @@ although most projects only use some of the constructions.
 
 **Meta-data**
 * `apiVersion`: The version of the shipyard specification in the format: `spec.keptn.sh/x.y.z`
-* `kind`: is `Shipyard`
+* `kend`: is `Shipyard`
 * `metadata`:
     `name`: Unique name for this *shipyard* file
     Typically, this is the string `shipyard` followed by a dash and the project name; for example, `shipyard-sockshop`
@@ -170,8 +170,8 @@ Each of these are discussed below.
 
 * `action`
 
-    Indicates that a remediation action should be executed by an action provider.
-    It is used within a [remediation workflow](../../../automated_operations/remediation).
+    Indicates that a remediation action should be executed by an action provider
+    That is defined in a [remediation](../remediation) configuration.
 
 * `approval`
 
@@ -227,8 +227,7 @@ Each of these are discussed below.
         }
 
 * `get-action`
-    Extracts the desired remediation action from a *remediation* configuration
-    within a [remediation workflow](../../../automated_operations/remediation).
+    Extracts the desired remediation action from a [remediation](../remediation) configuration.
 
 * `release`
 

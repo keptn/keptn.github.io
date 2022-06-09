@@ -1,18 +1,23 @@
 ---
 title: Action-Provider
 description: Add an action-provider to execute custom remediation actions.
-weight: 5
+weight: 20
 icon: setup
-keywords: [0.16.x-automated-operations]
 ---
 
-Depending on the action that should be executed in the course of a remediation (or operational), a corresponding action-provider must be deployed. This action-provider receives a Keptn event, performs its action, and notifies Keptn about the execution.
+An action-provider defines the actions that can be declared in a [remediation](../remediation) configuration.
+The action-provider receives a Keptn event, performs its action, and notifies Keptn about the execution.
+Keptn serves as the control plane that orchestrates the remediation
+but the action-provider executes the corrective action.
 
-To plug an action-provider into a remediation, the remediation configuration must be extended by an action that the provider supports. Consequently, Keptn - as control plane and responsible for orchestrating the remediation - can send out the proper event for the action-provider.
+An action-provider can be a Keptn service that is installed in your Keptn environment
+or a custom action-provider that you create.
 
 ## Unleash Action-Provider
 
-This action-provider toggles the feature flag specified by the *key-value* map in the value property. While the key declares the name of the feature toggle, the value specifies the target setting. 
+The [Unleash](https://artifacthub.io/packages/keptn/keptn-integrations/unleash-service) action-provider
+toggles the feature flag specified by the `key-value` map in the value property.
+The `key` declares the name of the feature toggle and the `value` specifies the target setting. 
 
 * Action that needs to be added to [actionsOnOpen](../remediation/#actions-on-open) in the remediation config:
 
@@ -49,4 +54,5 @@ This action-provider increases the ReplicaSet of a Kubernetes deployment by the 
 
 ## Add a custom Action-Provider
 
-* To create and add your custom action-provider to Keptn, please follow the instructions [here](../../integrations/action_provider).
+* To create and add your custom action-provider to Keptn,
+follow the instructions [Custom Action-Provider](../../../integrations/action_provider) page.
