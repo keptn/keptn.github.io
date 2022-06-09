@@ -283,7 +283,7 @@ rather than on the control plane.
 
 ## Usage
 
-A [shipyard.yaml](../../reference/files/shipyard) file is defined at the level of a project.
+A shipyard is defined at the level of a project.
 This means that all services in a project share the same shipyard definition.
 
 At this time, you can not add or delete stages in the *shipyard* file for an existing project
