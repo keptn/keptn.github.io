@@ -34,14 +34,14 @@ that can fetch the declared SLIs.
 For Dynatrace, the value of the `resourceUri` must be: `dynatrace/sli.yaml`.
 
 * To add an SLI configuration to a service,
-use the [keptn add-resource](../../reference/cli/commands/keptn_add-resource) command:
+use the [keptn add-resource](../../cli/commands/keptn_add-resource) command:
 
   ```console
   keptn add-resource --project=sockshop --stage=staging --service=carts --resource=sli-config.yaml  --resourceUri=dynatrace/sli.yaml
   ```
 
 * To add an SLI configuration to a stage,
-use the [keptn add-resource](../../reference/cli/commands/keptn_add-resource) command:
+use the [keptn add-resource](../../cli/commands/keptn_add-resource) command:
 
   ```console
   keptn add-resource --project=sockshop --stage=staging --resource=sli-config.yaml --resourceUri=dynatrace/sli.yaml
@@ -51,7 +51,7 @@ use the [keptn add-resource](../../reference/cli/commands/keptn_add-resource) co
 
 
 * To add an SLI configuration to a project,
-use the [keptn add-resource](../../reference/cli/commands/keptn_add-resource) command:
+use the [keptn add-resource](../../cli/commands/keptn_add-resource) command:
 
   ```console
   keptn add-resource --project=sockshop --resource=sli-config.yaml --resourceUri=dynatrace/sli.yaml

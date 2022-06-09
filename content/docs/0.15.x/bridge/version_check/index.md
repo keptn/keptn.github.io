@@ -61,13 +61,13 @@ Before processing the collected data, any personally-identifying information is 
 
 ## How to enable/disable feature in Keptn CLI?
 
-* To enable the feature, use the [keptn set config](../cli/commands/keptn_set_config/) command and set the `AutomaticVersionCheck` setting to `true`. 
+* To enable the feature, use the [keptn set config](../../reference/cli/commands/keptn_set_config/) command and set the `AutomaticVersionCheck` setting to `true`. 
 
     ```console
     keptn set config AutomaticVersionCheck true
     ```
 
-* To disable the feature, use the [keptn set config](../cli/commands/keptn_set_config/) command and set the `AutomaticVersionCheck` setting to `false`. 
+* To disable the feature, use the [keptn set config](../../reference/cli/commands/keptn_set_config/) command and set the `AutomaticVersionCheck` setting to `false`. 
 
     ```console
     keptn set config AutomaticVersionCheck false

@@ -16,7 +16,7 @@ Here you learn how to add additional functionality to your Keptn installation wi
 A template for writing a new *Keptn-service*  is provided here: [keptn-service-template-go](https://github.com/keptn-sandbox/keptn-service-template-go).
 Please note that the master branch of this repository might represent a development state. Check out the [releases page](https://github.com/keptn-sandbox/keptn-service-template-go/releases) and download the code for a release that's compatible with the Keptn version you are going to develop for.
 
-Since a *Keptn-service* is a Kubernetes service with a deployment and service template, the deployment manifest in the template repository can be re-used; see [deploy/service.yaml](https://github.com/keptn-sandbox/keptn-service-template-go/blob/master/deploy/service.yaml).
+Since a *Keptn-service* is a Kubernetes service with a deployment and service template, the deployment manifest in the template repository can be re-used; see [deploy/service.yaml](https://github.com/keptn-sandbox/keptn-service-template-go/tree/0.14.0/chart).
 
 This deployment manifest contains:
 
@@ -45,7 +45,7 @@ In this example, `[task]` works as a placeholder for tasks such as: `deployment`
 
 **Distributor:**
 
-* To subscribe your Keptn-service to the `sh.keptn.event.[task].triggered` event, a distributor with `PUBSUB_TOPIC` set to the specific event type is required, see example below. Alternatively, a default distributor listening to all events (e.g., `PUBSUB_TOPIC: sh.keptn.>`) is provided in the deployment manifest of the keptn-service-template-go template (see [deploy/service.yaml](https://github.com/keptn-sandbox/keptn-service-template-go/blob/master/deploy/service.yaml)).
+* To subscribe your Keptn-service to the `sh.keptn.event.[task].triggered` event, a distributor with `PUBSUB_TOPIC` set to the specific event type is required, see example below. Alternatively, a default distributor listening to all events (e.g., `PUBSUB_TOPIC: sh.keptn.>`) is provided in the deployment manifest of the keptn-service-template-go template (see [deploy/service.yaml](https://github.com/keptn-sandbox/keptn-service-template-go/tree/0.14.0/chart)).
 
 The `PUBSUB_TOPIC` variable sets the initial subscription for your service. If a subscription has been modified through the Bridge, Keptn will prioritize this information and it discards the value of `PUBSUB_TOPIC`. Please, look at the Bridge paragraph later on this page for more information on the subject.
 

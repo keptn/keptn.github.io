@@ -35,4 +35,4 @@ Please subscribe to our [Keptn YouTube channel](https://www.youtube.com/c/keptn/
 
 ## Tutorials
 
-Please take a look at our [tutorials](https://tutorials.keptn.sh/tutorials/keptn-in-a-box-07/index.html?index=..%2F..index#0) for more hands-on experience with Keptn.
+Please take a look at our [tutorials](https://tutorials.keptn.sh/tutorials/keptn-in-a-box-011/index.html?index=..%2F..index#0) for more hands-on experience with Keptn.

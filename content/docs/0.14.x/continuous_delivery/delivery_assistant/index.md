@@ -7,7 +7,7 @@ aliases:
   - /docs/0.14.x/reference/bridge/delivery_assistent/
 ---
 
-If you would like to extend the [multi-stage delivery](../multi_stage/#approval-strategy) with the capabilities of the delivery assistant, just add the `approval` task to a sequence in your shipyard, as shown by the example of the *delivery* sequence in the *staging* stage: 
+If you would like to extend the [multi-stage delivery](../multi_stage/ with the capabilities of the delivery assistant, just add the `approval` task to a sequence in your shipyard, as shown by the example of the *delivery* sequence in the *staging* stage: 
 
 ```
 - name: "staging"

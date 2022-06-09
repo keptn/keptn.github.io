@@ -9,7 +9,7 @@ icon: setup
 
 Bring your Dynatrace SaaS or Dynatrace-managed tenant. If you do not have a Dynatrace tenant, sign up for a [free trial](https://www.dynatrace.com/trial/) or a [developer account](https://www.dynatrace.com/developer/).
 
-To set up Dynatrace monitoring on your Kubernetes cluster, please follow the official Dynatrace documentation on [Deploy Dynatrace Operator](https://www.dynatrace.com/support/help/technology-support/container-platforms/kubernetes/monitor-kubernetes-environments/). 
+To set up Dynatrace monitoring on your Kubernetes cluster, please follow the official Dynatrace documentation on [Deploy Dynatrace Operator](https://www.dynatrace.com/support/help/how-to-use-dynatrace/infrastructure-monitoring/container-platform-monitoring/kubernetes-monitoring). 
 
 **Notes:**
 
