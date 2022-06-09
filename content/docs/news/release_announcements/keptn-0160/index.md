@@ -5,7 +5,7 @@ weight: 72
 
 # Release Notes 0.16.0
 
-Keptn 0.16.0 provides the ability to upgrade your Keptn installation without any downtime. For this, Keptn requires each project to have an [upstream Git repository](../manage/git_upstream).
+Keptn 0.16.0 provides the ability to upgrade your Keptn installation without any downtime. For this, Keptn requires each project to have an [upstream Git repository](../../../0.16.x/manage/git_upstream).
 Make sure to check the [upgrade instructions](../../../0.16.x/operate/upgrade/) to ensure that you do not lose any data.
 
 
