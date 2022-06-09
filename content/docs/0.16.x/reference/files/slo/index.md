@@ -1,5 +1,5 @@
 ---
-title: slo.yaml
+title: slo
 description: Configure and add Service-Level Objectives (SLO) to your service.
 weight: 740
 keywords: [0.16.x-quality_gates]
