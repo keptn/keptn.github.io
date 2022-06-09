@@ -65,7 +65,7 @@ although most projects only use some of the constructions.
 
 **Meta-data**
 * `apiVersion`: The version of the shipyard specification in the format: `spec.keptn.sh/x.y.z`
-* `kend`: is `Shipyard`
+* `kind`: is `Shipyard`
 * `metadata`:
     `name`: Unique name for this *shipyard* file
     Typically, this is the string `shipyard` followed by a dash and the project name; for example, `shipyard-sockshop`
