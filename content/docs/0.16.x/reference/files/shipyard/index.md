@@ -171,7 +171,7 @@ Each of these are discussed below.
 * `action`
 
     Indicates that a remediation action should be executed by an action provider
-    That is defined in a [remediation](../remediation) configuration.
+    that is defined in a [remediation](../remediation) configuration.
 
 * `approval`
 
