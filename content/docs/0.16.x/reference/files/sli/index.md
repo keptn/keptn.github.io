@@ -1,5 +1,5 @@
 ---
-title: sli.yaml
+title: sli
 description: Configure and add Service-Level Indicators (SLIs) to your service.
 weight: 725
 keywords: [0.16.x-quality_gates]
