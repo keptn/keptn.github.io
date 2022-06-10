@@ -319,4 +319,4 @@ to allow `stage`s to be added to and removed from a *shipyard* in an existing pr
 * [Working with shipyard files](../../../manage/shipyard)
 * [Multi-stage delivery](../../../continuous_delivery/multi_stage)
 * [Triggers](../../../manage/triggers)
-* [Remediation Config](../../../automated_operations/remediation)
+* [Remediation Config](../remediation)

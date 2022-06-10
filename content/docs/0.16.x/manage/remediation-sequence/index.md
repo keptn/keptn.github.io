@@ -5,12 +5,11 @@ weight: 1
 icon: setup
 ---
 
-A remediation sequence implements self-healing for a problem detected by an evaluation sequence.
+A remediation sequence implements self-healing for a problem
+detected by a monitoring solution and sent to Keptn
+The remediation defines the action to take
+to attempt to correct the problem.
 It is most commonly used in production stages but can be used in any type of stage.
-
-A remediation sequence is triggered by an event posted by an evaluation sequence.
-The remediation defines the action to take to attempt to correct the problem
-that the evaluation sequence identified.
 
 To implement a remediation sequence, you must:
 
@@ -50,7 +49,7 @@ The definition of a remediation sequence is done in the project's [Shipyard](../
 
 ## Example remediation configuration
 
-Below is an example of a [remediation](../reference/files/remediation) configuration
+Below is an example of a [remediation](../../reference/files/remediation) configuration
 that uses the [Helm action-provider](../../reference/files/action-provider/#helm-action-provider)
 to add pods to the cluster:
 

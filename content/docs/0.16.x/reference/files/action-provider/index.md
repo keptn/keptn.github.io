@@ -19,7 +19,7 @@ The [Unleash](https://artifacthub.io/packages/keptn/keptn-integrations/unleash-s
 toggles the feature flag specified by the `key-value` map in the value property.
 The `key` declares the name of the feature toggle and the `value` specifies the target setting. 
 
-* Action that needs to be added to [actionsOnOpen](../remediation/#actions-on-open) in the remediation config:
+* Action that needs to be added to the `actionsOnOpen` field in the [remediation](../remediation) configuration:
 
 ```yaml
 - name: Toogle feature flag
@@ -41,7 +41,7 @@ kubectl apply -f kubectl apply -f https://raw.githubusercontent.com/keptn-contri
 
 This action-provider increases the ReplicaSet of a Kubernetes deployment by the number defined by the value *increment*.
 
-* Action that needs to add to [actionsOnOpen](../remediation/#actions-on-open) in the remediation config:
+* Action that needs to add to the `actionsOnOpen` field in the [remediation](../remediation/) configuration:
 
 ```yaml
 - name: Scaling ReplicaSet by 1
