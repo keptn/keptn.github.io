@@ -9,7 +9,7 @@ aliases:
 
 ## Upgrade from Keptn 0.15.x to Keptn 0.16.x
 
-With Keptn 0.16.x, every Keptn project requires an [upstream Git repository](../manage/git_upstream). Hence, before upgrading Keptn you must (i) attach an upstream to your Keptn projects and (ii) do a [backup](..//backup_and_restore/#back-up-configuration-service).
+With Keptn 0.16.x, every Keptn project requires an [upstream Git repository](../../manage/git_upstream). Hence, before upgrading Keptn you must (i) attach an upstream to your Keptn projects and (ii) do a [backup](..//backup_and_restore/#back-up-configuration-service).
 If you already have an upstream for all your Keptn projects, no additional steps are required and you can run `helm upgrade keptn keptn/keptn -n keptn --version 0.16.0 --reuse-values`.
 
 Suppose you need the additional features provided by the *resource-service*,  such as HTTPS/SSH or Proxy, to configure your Keptn project with an upstream. In that case,

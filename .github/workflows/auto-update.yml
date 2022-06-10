@@ -42,7 +42,7 @@ jobs:
           shopt -u extglob
 
       - name: Download CLI from release build
-        uses: dawidd6/action-download-artifact@v2.19.0
+        uses: dawidd6/action-download-artifact@v2.21.0
         with:
           name: keptn-cli
           github_token: ${{ secrets.KEPTN_BOT_TOKEN }}
@@ -64,12 +64,16 @@ jobs:
         env:
           SOURCE_VERSION_SLUG: ${{ env.SOURCE_VERSION_SLUG }}
           DOCS_PATH: "./content/docs/${{ env.SOURCE_VERSION_SLUG }}/reference/cli/commands"
+          RELATIVE_PATH: "../../../../"
         run: |
           if [[ ! -d "$DOCS_PATH" ]]; then
             mkdir -p "$DOCS_PATH"
           fi
           
           ./dist/keptn generate docs --dir="$DOCS_PATH"
+
+          # Replaces All Occurences of version links with a relative path
+          find $DOCS_PATH -print -type f -name '*.md' -exec sed -i "s@https://keptn.sh/docs/[[:digit:]][^/]*/@${RELATIVE_PATH}@g" {} \;
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4

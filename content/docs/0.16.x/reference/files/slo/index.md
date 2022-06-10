@@ -92,7 +92,20 @@ In other words, the overall evaluation result decides whether SLI values are con
 * `number_of_comparison_results`: Defines the exact number of previous results to consider (1 is the default and is used if not specified).
 * `aggregate_function` *(optional)*: Allows overriding the default aggregation function which is `avg`. 
 
-**Note:** If you configure `compare_with: "single_result"` in combination with number_of_comparison_results, compare_with negates the number_of_comparison_results. 
+**Note:**:
+
+* If you configure both of the following:
+
+      compare_with: "single_result"
+      number_of_comparison_results
+
+  the `compare_with` setting overrides the `number_of_comparison_results` setting. 
+
+* Comparison calculations are based on the true `float64` encoded values
+but the evaluation results displayed on the Bridge are rounded to two decimal points.
+This can lead to surprising results when a value is extremely close to the threshhold.
+For example, if the SLO is &le; 4.00 and the true calculated value is 0.4009601926605503,
+the Bridge displays the result as 4.00 but the SLO fails because the true value is slightly more than 4.00.
 
 **1. Example:**
 
