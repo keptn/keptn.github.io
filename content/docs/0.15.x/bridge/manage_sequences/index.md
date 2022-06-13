@@ -135,6 +135,7 @@ Filters can apply to:
 * Status - sequences can have the status active, succeeded, or failed. Active state includes all sequences that have not been completed with a finished event yet.
 
 ### Pausing and resuming sequences
+
 Running sequences have the option to be paused. The buttons' location to trigger pausing is on the top right of a list entry or the detail view. Clicking the button will halt the running sequence until it is resumed.
 Please note: Any running task is going to finish before the service pauses the sequence. That means that the Bridge may show a paused state, but the task list is still running.
 
@@ -143,6 +144,7 @@ link="./assets/paused-sequence.png"
 caption="Paused sequence">}}
 
 ### Aborting sequences
+
 Running and paused sequences have the option to be aborted. The buttons' location to trigger abortion is on the top right of a list entry or the detail view. Clicking the button will stop the running sequence entirely. After cancelation, it is not possible to restart it in any way. Please be certain before aborting it.
 Please note: Any running task is going to finish before the service aborts the sequence. That means that the sequence may be still in progress directly after aborting. It may take some minutes until the sequence has a completed state. An example can be seen below. In this case the sequence is marked as succeeded, but some tasks are still in progress.
 

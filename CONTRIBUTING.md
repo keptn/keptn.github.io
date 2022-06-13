@@ -42,41 +42,49 @@ Perform the following steps to create a copy of this repository on your local ma
 
 1. Fork the Keptn repository:
 
-     - Log into GitHub (or create a GitHub account and then log into it).
-     - Go to the [Keptn docs repository](https://github.com/keptn/keptn.github.io).
-     - Click the **Fork** button at the top of the screen.
-     - Choose the user for the fork from the options you are given, usually your GitHub ID.
+     * Log into GitHub (or create a GitHub account and then log into it).
+     * Go to the [Keptn docs repository](https://github.com/keptn/keptn.github.io).
+     * Click the **Fork** button at the top of the screen.
+     * Choose the user for the fork from the options you are given, usually your GitHub ID.
 
    A copy of this repository is available in your GitHub account.
 
 2. Get the string to use when cloning your fork:
 
-     - Click the green "Code" button on the UI page.
-     - Select the protocol to use for this clone (either HTTPS or SSH).
-     - A box is displayed that gives the URL for the selected protocol.
+     * Click the green "Code" button on the UI page.
+     * Select the protocol to use for this clone (either HTTPS or SSH).
+     * A box is displayed that gives the URL for the selected protocol.
 Click the icon at the right end of that box to copy that URL.
 
 3. Clone the forked repository from the shell in a local directory with the **git clone** command, pasting in the URl you saved in the previous step:
+
     ```
     git clone https://github.com/<UserName>/keptn.github.io
     ```
+
     or
+
     ```
     git clone git@github.com:<UserName>/keptn.github.io.git
     ```
+
     Where <*UserName*> is your GitHub username. The keptn.github.io directory is now available in the local directory.
 
 4. Remember to sync your fork with the master branch regularly.
 To do this:
 
    Go to GitHub and copy the url of the main keptn-github-io repo:
-   ```   
+
+   ```
    https://github.com/keptn/keptn.github.io.git
    ```
+
    make sure to be in the root folder of the project and the branch should be master branch and type:
+
    ```
    git remote add upstream https://github.com/keptn/keptn.github.io.git 
    ```
+
    Now you have your upstream setup in your local machine, whenever you need to make a new branch for making changes make sure your master branch is in sync with the main repository, to do this, make sure to be in the master branch:
 
    ```
@@ -86,17 +94,18 @@ To do this:
 
 ## Guidelines for working on documentation in development or already released documentation
 
-If you want to work on an issue or enhancement, two questions arise: 
-1. Does it relate to a *new feature* that is not yet released? 
+If you want to work on an issue or enhancement, two questions arise:
+
+1. Does it relate to a *new feature* that is not yet released?
 1. Does it relate to an *already released* Keptn version?
 
-Currently, the Keptn project follows the approach outlined below. For clarification, an example is used in which the Keptn project recently released `0.13.x` and is currently working on `0.14.x`. These release versions will of course increase when the release train moves on. 
+Currently, the Keptn project follows the approach outlined below. For clarification, an example is used in which the Keptn project recently released `0.13.x` and is currently working on `0.14.x`. These release versions will of course increase when the release train moves on.
 
 **Documentation for new features**
 
-For each recent release (e.g. `0.14.x`), a folder in [./content/docs](https://github.com/keptn/keptn.github.io/tree/master/content/docs) is available, which receives documentation for new features or breaking changes. This folder is *hidden*  and not publically rendered. This is controlled with the `ignoreFiles` flag in [config.toml](https://github.com/keptn/keptn.github.io/blob/master/config.toml). When writing your documentation enhancements or changes locally - as explained in the section [Install Hugo to build the docs locally](https://github.com/keptn/keptn.github.io/blob/master/CONTRIBUTING.md#install-hugo-to-build-the-docs-locally) - control the rendering by adding/removing the folder from the `ignoreFiles` in `config.toml`. However, make sure to not push the modified `config.toml` when filing your PR. 
+For each recent release (e.g. `0.14.x`), a folder in [./content/docs](https://github.com/keptn/keptn.github.io/tree/master/content/docs) is available, which receives documentation for new features or breaking changes. This folder is *hidden*  and not publically rendered. This is controlled with the `ignoreFiles` flag in [config.toml](https://github.com/keptn/keptn.github.io/blob/master/config.toml). When writing your documentation enhancements or changes locally - as explained in the section [Install Hugo to build the docs locally](https://github.com/keptn/keptn.github.io/blob/master/CONTRIBUTING.md#install-hugo-to-build-the-docs-locally) - control the rendering by adding/removing the folder from the `ignoreFiles` in `config.toml`. However, make sure to not push the modified `config.toml` when filing your PR.
 
-> Update the content in folder `0.14.x` when documentation for a new feature is needed. 
+> Update the content in folder `0.14.x` when documentation for a new feature is needed.
 
 **Documentation for already released Keptn versions**
 
@@ -125,7 +134,7 @@ To run a target call:
 We provde the following targets:
 
 * build: for building
-* server: for building and starting the server at http://localhost:1313/
+* server: for building and starting the server at <http://localhost:1313/>
 * clean: for cleaning the public directory
 * htmltest: to run htmltest against generated output
 
@@ -138,22 +147,25 @@ The makefile targets are utilizing docker for easier setup. This requires no add
    :warning: It is important that you install the **extended** version of Hugo. Learn how to install Hugo, depending on your OS, here: [install Hugo](https://gohugo.io/getting-started/installing/).
 
 The themes directory on your local machine (localdirectory/keptn.github.io/themes) is empty.
-Currently the website uses the _Hugo serif theme_ which is available at https://github.com/zerostaticthemes/hugo-serif-theme.
+Currently the website uses the *Hugo serif theme* which is available at <https://github.com/zerostaticthemes/hugo-serif-theme>.
 You need to load the git submodule (see next step) to install this theme.
 
-
 1. Execute the following command from the root folder of your clone:
+
     ```
     hugo server -D
     ```
+
 1. Start contributing!
 Leave the Hugo server running in a shell.
 Note that Hugo updates the rendered documentation each time you write the file.
 
 1. Enter the following in a browser to view the website:
+
     ```
     http://localhost:1313/
     ```
+
 1. Use Ctrl+C to stop the local Hugo server when you are done.
 
 ### Building markdown files without Hugo
@@ -161,13 +173,15 @@ Note that Hugo updates the rendered documentation each time you write the file.
 The Hugo generator described above only renders the markdown files under the */content/docs* directory.
 If you need to render another markdown file (such as this *CONTRIBUTING.md* file) to check your formatting, you have the following options:
 
-   - If you are using an IDE to author the markdown text, use the markdown preview browser for the IDE.
-   - You can push your changes to GitHub and use the GitHub previewer (*View Page*).
-   - You can install and use the [grip](https://github.com/joeyespo/grip/blob/master/README.md) previewer to view the rendered content locally.
+* If you are using an IDE to author the markdown text, use the markdown preview browser for the IDE.
+* You can push your changes to GitHub and use the GitHub previewer (*View Page*).
+* You can install and use the [grip](https://github.com/joeyespo/grip/blob/master/README.md) previewer to view the rendered content locally.
 When *grip* is installed, you can format the specified file locally by running the following in its own shell:
+
      ```
      grip <file>.md
      ```
+
      Point your browser at `localhost:6419` to view the formatted file.
      The document updates automatically each time you write your changes to disk.
 
@@ -215,8 +229,8 @@ The system for assigning weights for the docs landing page is:
 Each subdirectory contains topical subdirectories for each chapter in that section.
 Each topical subdirectory contains:
 
-  - An *index.md* file that has the metadata discussed above plus the text for the section
-  - An *assets* subdirectory where graphical files for that topic are stored.
+* An *index.md* file that has the metadata discussed above plus the text for the section
+* An *assets* subdirectory where graphical files for that topic are stored.
 No *assets* subdirectory is present if the topic has no graphics.
 
 ## Submitting new content through a pull request
@@ -224,7 +238,7 @@ No *assets* subdirectory is present if the topic has no graphics.
 If you have forked and cloned the repository,
 you can modify the documentation or add new material
 by editing the markdown file(s) in the local clone of your fork
-and then submitting a _pull request (PR)_.
+and then submitting a *pull request (PR)*.
 
 Note that you can also modify the source using the GitHub editor.
 This is very useful when you want to fix a typo or make a small editorial change but, if you are doing significant writing, it is generally better to work on files in your local clone.
@@ -232,16 +246,21 @@ This is very useful when you want to fix a typo or make a small editorial change
 The following sequence of steps is a reasonable workflow for creating new content on your local clone and pushing it to GitHub to be reviewed and merged.
 
 1. Execute the following command from the root folder and leave it running in a shell:
+
     ```
     hugo server -D
     ```
+
 2. Create a local branch for your changes.  Be sure to base your new branch on the contents of the `master` branch unless you intend to create a derivative PR:
+
    ```
    git checkout master
    git pull
    git checkout -b <your-new-branch>
    ```
+
 3. Execute the following and check the output to ensure that your branch is set up correctly:
+
    ```
    git status
    ```
@@ -252,6 +271,7 @@ The following sequence of steps is a reasonable workflow for creating new conten
 
 4. Add and commit your changes.  Here, we commit all modified files but you can specify individual files to the `git add` command.
 The `git commit -s` command commits the files and signs that you are contributing this intellectual property to the Keptn project.
+
    ```
    git add .
    git commit -s
@@ -261,43 +281,50 @@ The `git commit -s` command commits the files and signs that you are contributin
 You can add multiple lines explaining the PR here but, in general, it is better to only supply the PR title here; you can add more information and edit the PR title when you create the PR on the GitHub UI page.
 
 5. Push your branch to github:
-   - If you cloned your fork to use SSH, the command is:
+   * If you cloned your fork to use SSH, the command is:
+
      ```
      git push --set-upstream origin <branch-name>
      ```
 
      Note that you can just issue the `git push` command.
 Git responds with an error message that gives you the full command line to use; you can copy this command and paste it into your shell to push the content.
-   - If you cloned your fork to use HTTP, the command is:
+   * If you cloned your fork to use HTTP, the command is:
+
      ```
      git push <need options/arguments>
      ```
 
 6. Create the PR by going to the [keptn.github.io](https://github.com/keptn/keptn.github.io) GitHub repository.
-   - You should see a yellow shaded area that says something like:
+   * You should see a yellow shaded area that says something like:
+
      ```
      <GitID>:<branch> had recent pushes less than a minute ago
      ```
 
-   - Click on the button in that shaded area marked:
+   * Click on the button in that shaded area marked:
+
      ```
      Compare & pull request
      ```
-   - Check that the title of the PR is correct; click the "Edit" button to modify it.
+
+   * Check that the title of the PR is correct; click the "Edit" button to modify it.
 Add "WIP" (Work in Progress) or "Draft" to the title if the PR is not yet ready for general review.
-   - Add a full description of the work in the PR, including any notes for reviewers, a reference to the relevant GitHub issue (if any), and tags for specific people (if any) who may be interested in this PR.
-   - Carefully review the changes GitHub displays for this PR to ensure that they are what you want.
-   - Click the green "Create pull request" button to create the PR.
+   * Add a full description of the work in the PR, including any notes for reviewers, a reference to the relevant GitHub issue (if any), and tags for specific people (if any) who may be interested in this PR.
+   * Carefully review the changes GitHub displays for this PR to ensure that they are what you want.
+   * Click the green "Create pull request" button to create the PR.
 You may want to record the PR number somewhere for future reference although you can always find the PR in the GitHub lists of open and closed PRs.
-   - GitHub automatically populates the "Reviewers" block.
-   - If this PR is not ready for review, click the "Still in progress? Convert to draft" string under the list of reviewers.
+   * GitHub automatically populates the "Reviewers" block.
+   * If this PR is not ready for review, click the "Still in progress? Convert to draft" string under the list of reviewers.
 People can still review the content but can not merge the PR until you remove the "Draft" status.
-   - The block of the PR that reports on checks will include the following item:
+   * The block of the PR that reports on checks will include the following item:
+
      ```
      This pull request is still a work in progress
      Draft pull requests cannot be merged.
      ```
-   - When the PR is ready to be reviewed, approved, and merged, click the "Ready to review" button to remove the "Draft" status. Then, if you added "WIP" or "Draft" to the PR title, remove it now.
+
+   * When the PR is ready to be reviewed, approved, and merged, click the "Ready to review" button to remove the "Draft" status. Then, if you added "WIP" or "Draft" to the PR title, remove it now.
 
 7. Your PR should be reviewed within a few days.  Watch for any comments that may be added by reviewers and implement or respond to the recommended changes as soon as possible.
 
@@ -310,6 +337,7 @@ People can still review the content but can not merge the PR until you remove th
 8. When your PR has the appropriate approvals, it will be merged and the revised content should be published on the web site within a few minutes.
 
 9. When your PR has been approved and merged, you can delete your local branch with the following command:
+
    ```
    git branch -d <branch-name>
    ```
@@ -375,7 +403,7 @@ The DCO text can either be manually added to your commit body, or you can add ei
 
 **ATTRIBUTION**:
 
-- https://probot.github.io/apps/dco/
-- https://github.com/opensearch-project/common-utils/blob/main/CONTRIBUTING.md
-- https://code.asam.net/simulation/wiki/-/wikis/docs/project_guidelines/ASAM-DCO?version_id=c510bffb1195dc04deb9db9451112669073f0ba5
-- https://thesofproject.github.io/latest/contribute/contribute_guidelines.html
+* <https://probot.github.io/apps/dco/>
+* <https://github.com/opensearch-project/common-utils/blob/main/CONTRIBUTING.md>
+* <https://code.asam.net/simulation/wiki/-/wikis/docs/project_guidelines/ASAM-DCO?version_id=c510bffb1195dc04deb9db9451112669073f0ba5>
+* <https://thesofproject.github.io/latest/contribute/contribute_guidelines.html>

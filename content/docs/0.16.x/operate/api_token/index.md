@@ -36,7 +36,7 @@ In this section, the management of the API token of a Keptn installation is expl
 
     For the Windows PowerShell, a small script is provided that installs the `PSYaml` module and sets the environment variables. Please note that the PowerShell might have to be started with **Run as Administrator** privileges to install the module.
 
-    * Copy the following snippet and paste it in the PowerShell. The snippet will be automatically executed line by line.
+  * Copy the following snippet and paste it in the PowerShell. The snippet will be automatically executed line by line.
 
         ```
         $tokenEncoded = $(kubectl get secret keptn-api-token -n keptn -ojsonpath='{.data.keptn-api-token}')
@@ -83,13 +83,13 @@ In this section, the management of the API token of a Keptn installation is expl
     <details><summary>on Linux </summary>
     <p>
 
-    * To generate an API token, use the following command and store it into the environment variable `KEPTN_API_TOKEN`:
+  * To generate an API token, use the following command and store it into the environment variable `KEPTN_API_TOKEN`:
 
         ```console
         KEPTN_API_TOKEN=$(tr -dc "a-zA-Z0-9" < /dev/urandom | head -c 45)
         ```
 
-    * To create an API token, execute:
+  * To create an API token, execute:
 
         ```console
         kubectl create secret generic -n keptn keptn-api-token --from-literal=keptn-api-token="$KEPTN_API_TOKEN"
@@ -101,13 +101,13 @@ In this section, the management of the API token of a Keptn installation is expl
     <details><summary>on macOS</summary>
     <p>
 
-    * To generate an API token, use the following command and store it into the environment variable `KEPTN_API_TOKEN`:
+  * To generate an API token, use the following command and store it into the environment variable `KEPTN_API_TOKEN`:
 
         ```console
         KEPTN_API_TOKEN=$(LC_CTYPE=C tr -dc "a-zA-Z0-9" < /dev/urandom | head -c 45)
         ```
 
-    * To create an API token, execute:
+  * To create an API token, execute:
 
         ```console
         kubectl create secret generic -n keptn keptn-api-token --from-literal=keptn-api-token="$KEPTN_API_TOKEN"
@@ -116,17 +116,16 @@ In this section, the management of the API token of a Keptn installation is expl
     </p>
     </details>
 
-
     <details><summary>on Windows PowerShell</summary>
     <p>
 
-    * To generate an API token, use the following command and store it into the environment variable `$Env:KEPTN_API_TOKEN`:
+  * To generate an API token, use the following command and store it into the environment variable `$Env:KEPTN_API_TOKEN`:
 
         ```console
         $Env:KEPTN_API_TOKEN =  Write-Output ( -join ((0x30..0x39) + ( 0x41..0x5A) + ( 0x61..0x7A) | Get-Random -Count 45  | % {[char]$_}) )
         ```
 
-    * To create an API token, execute:
+  * To create an API token, execute:
 
         ```console
         kubectl create secret generic -n keptn keptn-api-token --from-literal=keptn-api-token="$Env:KEPTN_API_TOKEN"

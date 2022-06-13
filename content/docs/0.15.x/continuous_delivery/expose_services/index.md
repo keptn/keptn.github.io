@@ -5,15 +5,15 @@ weight: 1
 keywords: [0.15.x-cd]
 ---
 
-To be able to access the services you will deploy by Keptn, Istio has to be installed. This means that the `istio-ingressgateway` service should already be available in the `istio-system` namespace and a `public-gateway` need to be created as explained below. Besides, a ConfigMap must be edited that tells Keptn how the gateway is configured. 
+To be able to access the services you will deploy by Keptn, Istio has to be installed. This means that the `istio-ingressgateway` service should already be available in the `istio-system` namespace and a `public-gateway` need to be created as explained below. Besides, a ConfigMap must be edited that tells Keptn how the gateway is configured.
 
 Please follow the steps in sequential order:
 
 1. Install Istio
 1. Create Istio gateway
-1. Create ConfigMap with ingress information 
+1. Create ConfigMap with ingress information
 
-## Install Istio 
+## Install Istio
 
 * If you have not installed Istio during the [Keptn installation](../../operate/install/#option-3-expose-keptn-via-an-ingress), please refer to the official [Installation Guides](https://istio.io/latest/docs/setup/install/) to install Istio on your cluster.
 
@@ -79,7 +79,7 @@ kubectl apply -f gateway-manifest.yaml
     ISTIO_GATEWAY=<GATEWAY_NAME>.<NAMESPACE_OF_GATEWAY>  # e.g. public-gateway.istio-system
     HOSTNAME_TEMPLATE=<HOSTNAME_TEMPLATE> # optional, default = \${INGRESS_PROTOCOL}://\${service}.\${project}-\${stage}.\${INGRESS_HOSTNAME_SUFFIX}:\${INGRESS_PORT}
     ```
-    
+
     ```console
     kubectl create configmap -n keptn ingress-config --from-literal=ingress_hostname_suffix=${INGRESS_HOSTNAME_SUFFIX} --from-literal=ingress_port=${INGRESS_PORT} --from-literal=ingress_protocol=${INGRESS_PROTOCOL} --from-literal=istio_gateway=${ISTIO_GATEWAY} --from-literal=hostname_template=${HOSTNAME_TEMPLATE} -oyaml --dry-run | kubectl replace -f -
     ```

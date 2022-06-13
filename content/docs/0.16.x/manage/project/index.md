@@ -16,6 +16,7 @@ To create a project, you can use the CLI command [keptn create project](../../re
 **Note**: To learn more about the shipyard specification, please have a look at [shipyard section](../shipyard/) and the [the Keptn spec](https://github.com/keptn/spec/blob/0.2.1/shipyard.md).
 
 The simplest shipyard.yaml file with a single stage and no sequences defined would look like this:
+
 ```yaml
 apiVersion: spec.keptn.sh/0.2.3
 kind: "Shipyard"
@@ -26,13 +27,16 @@ spec:
     - name: "single-stage"
 ```
 
-* **Recommended approach for Keptn in production:** Create a project with the Keptn CLI using a Git upstream: 
+* **Recommended approach for Keptn in production:** Create a project with the Keptn CLI using a Git upstream:
+
   ```console
   keptn create project PROJECTNAME --shipyard=FILEPATH --git-user=GIT_USER --git-token=GIT_TOKEN --git-remote-url=GIT_REMOTE_URL
   ```
+
   See [Git based upstream](../../manage/git_upstream/) for more information.
 
 * **Demo/Lab setting:** Create a project with the Keptn CLI without a Git upstream and **no** backup:
+
   ```console
   keptn create project PROJECTNAME --shipyard=FILEPATH
   ```
@@ -40,6 +44,7 @@ spec:
 ## Delete a project
 
 To delete a Keptn project, the [keptn delete project](../../reference/cli/commands/keptn_delete_project) command is provided:
+
   ```console
   keptn delete project PROJECTNAME
   ```
@@ -66,7 +71,7 @@ The following updates of shipyard.yaml are currently supported by Keptn:
 
 * Add/Remove a task to/from a task sequence
 * Add/Remove a task sequence to/from a stage
-* Define a trigger for a sequence 
+* Define a trigger for a sequence
 
 In contrast, the following updates are not supported by Keptn:
 

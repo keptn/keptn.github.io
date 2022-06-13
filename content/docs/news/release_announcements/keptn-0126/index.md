@@ -6,6 +6,7 @@ weight: 79
 This is a bug fix release for Keptn containing fixes for the configuration-service, webhook-service, and distributor.
 
 ---
+
 ### Bug Fixes
 
 * **configuration-service:** Return 404 when token is invalid ([#7188](https://github.com/keptn/keptn/issues/7188)) ([0ab35df](https://github.com/keptn/keptn/commit/0ab35dfa481d2d7c96b3cefe8ef56ed7931c232a))

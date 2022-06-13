@@ -6,13 +6,14 @@ icon: setup
 keywords: [0.16.x-automated-operations]
 ---
 
-The remediation config describes a remediation workflow in a declarative manner. Hence, it only defines what needs to be done and leaves all the details to other components. 
+The remediation config describes a remediation workflow in a declarative manner. Hence, it only defines what needs to be done and leaves all the details to other components.
 
 ## Declare a remediation sequence in shipyard
 
 The definition of a remediation sequence is done in the project's [Shipyard](../../manage/shipyard) file.
 
 **Example**: Simple shipyard file with a remediation sequence in a single stage
+
 ```yaml
 apiVersion: "spec.keptn.sh/0.2.3"
 kind: "Shipyard"
@@ -38,7 +39,6 @@ spec:
 ```
 
 *Note*: Remediations can also be used in combination with [multi stage delivery](../../continuous_delivery/multi_stage) workflows.
-
 
 ## Configure Remediation
 
@@ -70,8 +70,8 @@ A remediation is configured based on two properties:
 
 The problem type maps a problem to a remediation by a matching problem title.
 
--	It is possible to declare multiple problem types for a remediation.
--	For the case of triggering a remediation based on an unknown problem, the problem type `default` is supported.
+* It is possible to declare multiple problem types for a remediation.
+* For the case of triggering a remediation based on an unknown problem, the problem type `default` is supported.
 
 The below example shows a remediation configured for the problem type *Response time degradation* and *Failure rate increase* as well as any unknown problem.
 
@@ -97,7 +97,7 @@ spec:
 * The **action** property specifies a unique name required by the action-provider (Keptn-service) that executes the action.
 * The **value** property allows adding an arbitrary list of values for configuring the action.
 
-If multiple actions are declared, Keptn sends out events in sequential order. Given the below example, the event for triggering `scaling` is sent out before the event for `featuretoggle` is fired. 
+If multiple actions are declared, Keptn sends out events in sequential order. Given the below example, the event for triggering `scaling` is sent out before the event for `featuretoggle` is fired.
 
 ```yaml
 ---

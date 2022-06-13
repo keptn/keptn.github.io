@@ -40,5 +40,3 @@ Please, refer to the documentation of the [SLI-Provider](https://github.com/kept
 ## Add custom SLI-Provider
 
 * To create and add your custom SLI-provider to Keptn, please follow the instructions [here](../../integrations/sli_provider).
-
-

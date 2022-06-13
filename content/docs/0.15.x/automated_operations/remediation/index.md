@@ -6,13 +6,14 @@ icon: setup
 keywords: [0.15.x-automated-operations]
 ---
 
-The remediation config describes a remediation workflow in a declarative manner. Hence, it only defines what needs to be done and leaves all the details to other components. 
+The remediation config describes a remediation workflow in a declarative manner. Hence, it only defines what needs to be done and leaves all the details to other components.
 
 ## Declare a remediation sequence in shipyard
 
 The definition of a remediation sequence is done in a so-called [Shipyard](../../manage/shipyard) file.
 
 **Example**: Simple shipyard file with a remediation sequence in a single stage
+
 ```yaml
 apiVersion: "spec.keptn.sh/0.2.3"
 kind: "Shipyard"
@@ -39,10 +40,9 @@ spec:
 
 *Note*: Remediations can also be used in combination with [multi stage delivery](../../continuous_delivery/multi_stage) workflows.
 
-
 ## Configure Remediation
 
-Below is an example of a declarative remediation config: 
+Below is an example of a declarative remediation config:
 
 **Example of a remediation configuration:**
 
@@ -63,15 +63,15 @@ spec:
 
 A remediation is configured based on two properties:
 
-* **problemType**: Maps a problem to a remediation. 
+* **problemType**: Maps a problem to a remediation.
 * **actionsOnOpen**: Declares a list of actions triggered in course of the remediation.
 
 ### Problem type
 
-The problem type maps a problem to a remediation by a matching problem title. 
+The problem type maps a problem to a remediation by a matching problem title.
 
--	It is possible to declare multiple problem types for a remediation. 
--	For the case of triggering a remediation based on an unknown problem, the problem type `default` is supported. 
+* It is possible to declare multiple problem types for a remediation.
+* For the case of triggering a remediation based on an unknown problem, the problem type `default` is supported.
 
 The below example shows a remediation configured for the problem type *Response time degradation* and *Failure rate increase* as well as any unknown problem.
 
@@ -97,7 +97,7 @@ spec:
 * The **action** property specifies a unique name required by the action-provider (Keptn-service) that executes the action.
 * The **value** property allows adding an arbitrary list of values for configuring the action.
 
-If multiple actions are declared, Keptn sends out events in sequential order. Given the below example, the event for triggering `scaling` is sent out before the event for `featuretoggle` is fired. 
+If multiple actions are declared, Keptn sends out events in sequential order. Given the below example, the event for triggering `scaling` is sent out before the event for `featuretoggle` is fired.
 
 ```yaml
 ---

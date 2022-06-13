@@ -9,7 +9,7 @@ Keptn 0.8.1 improves the user experience of Keptn by allowing custom names for S
 
 **Key announcements:**
 
-:tada: *API/CLI support for creating secrets*:  This release introduces the new feature to create a secret on the Keptn control-plane, which is then stored as [Kubernetes Secret](https://kubernetes.io/docs/concepts/configuration/secret/). Therefore, the Keptn API and CLI provide the required functionality. Please see [keptn create secret](https://keptn.sh/docs/0.8.x/reference/cli/commands/keptn_create_secret/) to learn how to use this feature. 
+:tada: *API/CLI support for creating secrets*:  This release introduces the new feature to create a secret on the Keptn control-plane, which is then stored as [Kubernetes Secret](https://kubernetes.io/docs/concepts/configuration/secret/). Therefore, the Keptn API and CLI provide the required functionality. Please see [keptn create secret](https://keptn.sh/docs/0.8.x/reference/cli/commands/keptn_create_secret/) to learn how to use this feature.
 
 :star: *Bridge improvements for SLO names and stage overview*: The SLO spec allows adding a `displayName` for an SLO. This name is optional but will be used in the Bridge when available; please see the snippet below. Additionally, the Bridge provides enhancements for the environment screen where an overview of the currently running sequences is given and the evaluation of a quality gate is displayed:
 
@@ -33,15 +33,16 @@ objectives:
     weight: 1
 ...
 ```
+
 </p>
 </details>
 
-:dizzy: *(UI mockup for the Keptn Uniform) Bridge displays deployed Keptn-services (integrations) and their subscriptions*: In this release, a UI mockup is provided that should provide a look-and-feel on how to display Keptn-services that are connected to the control-plane. To take a look at this mockup, open the Bridge and navigate to: `your.keptn.endpoint/bridge/project/{project_name}/ff-uniform` 
+:dizzy: *(UI mockup for the Keptn Uniform) Bridge displays deployed Keptn-services (integrations) and their subscriptions*: In this release, a UI mockup is provided that should provide a look-and-feel on how to display Keptn-services that are connected to the control-plane. To take a look at this mockup, open the Bridge and navigate to: `your.keptn.endpoint/bridge/project/{project_name}/ff-uniform`
 
 ---
 
-Many thanks to the community for the enhancements on this release! 
- 
+Many thanks to the community for the enhancements on this release!
+
 ## Keptn Specification
 
 Implemented **Keptn spec** version: [0.2.1](https://github.com/keptn/spec/tree/0.2.1)
@@ -85,7 +86,7 @@ Implemented **Keptn spec** version: [0.2.1](https://github.com/keptn/spec/tree/0
 - *distributor*:
   - Allow comma-separated list on event filters for distributors [3577](https://github.com/keptn/keptn/issues/3577)
 
-- *helm-service & jmeter-service*: 
+- *helm-service & jmeter-service*:
   - Add Helm schema validation support for a 'remoteControlPlane.api.hostname' port value [3450](https://github.com/keptn/keptn/issues/3450)
   - Allow helm-service to work without admin permissions [3511](https://github.com/keptn/keptn/issues/3511)
 
@@ -108,7 +109,7 @@ Implemented **Keptn spec** version: [0.2.1](https://github.com/keptn/spec/tree/0
 - *Fixed*: Approval events sent by bridge should only include approval-related properties [3557](https://github.com/keptn/keptn/issues/3557)
 - *Fixed*: Bridge no longer shows a link to deployment URLs in environment screen [3535](https://github.com/keptn/keptn/issues/3535)
 - *Fixed*: Evaluation component in *Service screen* does not show all labels as compared to full-screen view [3537](https://github.com/keptn/keptn/issues/3537)
-- *Fixed*: Bridge shows empty test events due to wrong order of events (test.started timestamp < test.triggered timestamp) [3435](https://github.com/keptn/keptn/issues/3435) 
+- *Fixed*: Bridge shows empty test events due to wrong order of events (test.started timestamp < test.triggered timestamp) [3435](https://github.com/keptn/keptn/issues/3435)
 - *Fixed*: Bridge does not list failed quality gate evaluations in *Environment screen* [3438](https://github.com/keptn/keptn/issues/3438)
 - *Fixed*: Version check failed [3446](https://github.com/keptn/keptn/issues/3446)
 - *Fixed*: Approvals are not working [3477](https://github.com/keptn/keptn/issues/3477)
@@ -135,11 +136,11 @@ Implemented **Keptn spec** version: [0.2.1](https://github.com/keptn/spec/tree/0
 <details><summary>Open issues that will be fixed in upcoming releases</summary>
 <p>
 
-  - Lighthouse-service needs to properly set result, status, and message [3412](https://github.com/keptn/keptn/issues/3412)
-  - Helm-service is not working parallel when deployed in the execution-plane [3427](https://github.com/keptn/keptn/issues/3427)
-  - Shipyard-controller: Only last `.finished` event for a task determines further sequence execution [3493](https://github.com/keptn/keptn/issues/3493)
-  - Auto-remediation does not work with remote execution plane [3498](https://github.com/keptn/keptn/issues/3498)
-  - Quality gate icon in the environment screen does not turn red [3592](https://github.com/keptn/keptn/issues/3592)
+- Lighthouse-service needs to properly set result, status, and message [3412](https://github.com/keptn/keptn/issues/3412)
+- Helm-service is not working parallel when deployed in the execution-plane [3427](https://github.com/keptn/keptn/issues/3427)
+- Shipyard-controller: Only last `.finished` event for a task determines further sequence execution [3493](https://github.com/keptn/keptn/issues/3493)
+- Auto-remediation does not work with remote execution plane [3498](https://github.com/keptn/keptn/issues/3498)
+- Quality gate icon in the environment screen does not turn red [3592](https://github.com/keptn/keptn/issues/3592)
 
 </p>
 </details>
@@ -147,5 +148,6 @@ Implemented **Keptn spec** version: [0.2.1](https://github.com/keptn/spec/tree/0
 ## Upgrade to 0.8.1
 
 - The upgrade from 0.8.0 to 0.8.1 is supported by the `keptn upgrade` command. Find the documentation here: [Upgrade from Keptn 0.8.0 to 0.8.1](https://keptn.sh/docs/0.8.x/operate/upgrade/#upgrade-from-keptn-0-8-0-to-0-8-1)
+
 <details><summary>CI Information</summary>
 <p>

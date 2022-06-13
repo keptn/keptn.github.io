@@ -1,6 +1,3 @@
-# Assets 
+# Assets
 
 This directory contains images.
-
-
-

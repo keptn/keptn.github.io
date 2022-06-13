@@ -54,7 +54,7 @@ In the following you'll find integrations that are already provided by the Keptn
 
 - If you need more information on version compatibility, please go to the repository where a compatibility-matrix should be provided.
 
-- A template for getting started with writing your Keptn service is provided here: https://github.com/keptn-sandbox/keptn-service-template-go
+- A template for getting started with writing your Keptn service is provided here: <https://github.com/keptn-sandbox/keptn-service-template-go>
 
 - Please follow the [contributions guide](https://github.com/keptn-sandbox/contributing) for contributing it to Keptn Sandbox.
 

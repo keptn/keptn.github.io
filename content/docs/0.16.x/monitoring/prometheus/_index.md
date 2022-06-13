@@ -12,5 +12,3 @@ It is also possible to fetch SLIs from a remote Prometheus installation
 by installing one external *prometheus-server* for collecting metrics
 and creating a secret to access the external *prometheus-server*.
 These are the only use cases currently supported for Prometheus.
-
-  

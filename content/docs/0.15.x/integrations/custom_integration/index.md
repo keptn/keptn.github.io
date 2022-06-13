@@ -38,17 +38,15 @@ A Keptn-service has the following characteristics:
 
 Your Keptn-service must have a subscription to at least one [Keptn CloudEvent](https://github.com/keptn/spec/blob/0.2.2/cloudevents.md). The event type to subscribe to looks as follows:
 
-- `sh.keptn.event.[task].triggered`
+* `sh.keptn.event.[task].triggered`
 
 In this example, `[task]` works as a placeholder for tasks such as: `deployment`, `test`, `evaluation`, `remediation`, etc. The task defines the topic the Keptn-service is interested in. Assuming you are writing a Keptn-service for testing, the event type would be: `sh.keptn.event.test.triggered`.
-
 
 **Distributor:**
 
 * To subscribe your Keptn-service to the `sh.keptn.event.[task].triggered` event, a distributor with `PUBSUB_TOPIC` set to the specific event type is required, see example below. Alternatively, a default distributor listening to all events (e.g., `PUBSUB_TOPIC: sh.keptn.>`) is provided in the deployment manifest of the keptn-service-template-go template (see [deploy/service.yaml](https://github.com/keptn-sandbox/keptn-service-template-go/tree/0.14.0/chart)).
 
 The `PUBSUB_TOPIC` variable sets the initial subscription for your service. If a subscription has been modified through the Bridge, Keptn will prioritize this information and it discards the value of `PUBSUB_TOPIC`. Please, look at the Bridge paragraph later on this page for more information on the subject.
-
 
 ```yaml
 spec:
@@ -76,15 +74,14 @@ spec:
 In addition to forwarding received events for the subscribed topic to the Keptn-service, the distributor also provides the feature to act as a proxy to the Keptn API.
 Using this feature, the following Keptn API services will be reachable for the Keptn-service via the following URLs, if the **distributor runs within the same K8s pod as the Keptn-service**:
 
-- Mongodb-datastore:
-    - `http://localhost:8081/mongodb-datastore`
+* Mongodb-datastore:
+  * `http://localhost:8081/mongodb-datastore`
 
-- Configuration-service:
-    - `http://localhost:8081/configuration-service`
+* Configuration-service:
+  * `http://localhost:8081/configuration-service`
 
-- Shipyard-controller:
-    - `http://localhost:8081/controlPlane`
-
+* Shipyard-controller:
+  * `http://localhost:8081/controlPlane`
 
 To configure this distributor for your *Keptn-service*, the following environment variables can be adapted. However, in most scenarios only a subset of them needs to be configured. The full list of environment variables is as follows:
 
@@ -121,38 +118,36 @@ The above list of environment variables is pretty long, but in most scenarios on
 
 <p>
 
-| Environment variable  	| Setting 	|
-|-----------------------	|:--------	|
-| PUBSUB_RECIPIENT      	| Host name of the Keptn-service.        	|
-| PUBSUB_RECIPIENT_PORT 	| Service port to receive the event (default: `8080`)        	|
-| PUBSUB_RECIPIENT_PATH 	| Service endpoint to receive the event (default: `/`)        	|
-| PUBSUB_TOPIC          	| Event(s) the Keptn-service is subscribed to. To subscribe to multiple events, declare a comma-separated list, e.g.: `sh.keptn.event.test.triggered, sh.keptn.event.evaluation.triggered` |
+| Environment variable   | Setting  |
+|----------------------- |:-------- |
+| PUBSUB_RECIPIENT       | Host name of the Keptn-service.         |
+| PUBSUB_RECIPIENT_PORT  | Service port to receive the event (default: `8080`)         |
+| PUBSUB_RECIPIENT_PATH  | Service endpoint to receive the event (default: `/`)         |
+| PUBSUB_TOPIC           | Event(s) the Keptn-service is subscribed to. To subscribe to multiple events, declare a comma-separated list, e.g.: `sh.keptn.event.test.triggered, sh.keptn.event.evaluation.triggered` |
 
 If your Keptn-service is running in the same pod as the distributor (which we recommend), and receives events at the port `8080` and the path `/`, you will only need to set the `PUBSUB_TOPIC` environment variable.
 
 </p>
 </details>
-
 
 <details><summary>*Distributor for Keptn-service that is running* **outside the Keptn control plane (in execution plane)**: </summary>
 
 <p>
 
-| Environment variable  	| Setting 	|
-|-----------------------	|:--------	|
-| KEPTN_API_ENDPOINT       | The endpoint of the Keptn API, e.g. `https://my-keptn.dev/api`  	|
+| Environment variable   | Setting  |
+|----------------------- |:-------- |
+| KEPTN_API_ENDPOINT       | The endpoint of the Keptn API, e.g. `https://my-keptn.dev/api`   |
 | KEPTN_API_TOKEN    | Keptn API token |
-| HTTP_POLLING_INTERVAL            	| Polling interval in seconds   	|
-| PUBSUB_RECIPIENT      	| Host name of the Keptn-service        	|
-| PUBSUB_RECIPIENT_PORT 	| Service port to receive the event (default: `8080`)        	|
-| PUBSUB_RECIPIENT_PATH 	| Service endpoint to receive the event (default: `/`)        	|
-| PUBSUB_TOPIC          	| Event(s) the Keptn-service is subscribed to. To subscribe to multiple events, declare a comma-separated list, e.g.: `sh.keptn.event.test.triggered, sh.keptn.event.evaluation.triggered` |
+| HTTP_POLLING_INTERVAL             | Polling interval in seconds    |
+| PUBSUB_RECIPIENT       | Host name of the Keptn-service         |
+| PUBSUB_RECIPIENT_PORT  | Service port to receive the event (default: `8080`)         |
+| PUBSUB_RECIPIENT_PATH  | Service endpoint to receive the event (default: `/`)         |
+| PUBSUB_TOPIC           | Event(s) the Keptn-service is subscribed to. To subscribe to multiple events, declare a comma-separated list, e.g.: `sh.keptn.event.test.triggered, sh.keptn.event.evaluation.triggered` |
 
 If your Keptn-service is running in the same pod as the distributor (which we recommend), and receives events at the port `8080` and the path `/`, you will only need to set the `PUBSUB_TOPIC` environment variable.
 
 </p>
 </details>
-
 
 **Bridge:**
 
@@ -177,12 +172,11 @@ Keptn stores this subscriptions information also if the integration is not runni
 By default, Keptn will still keep this information for 48h after the last contact with the integration.
 This value can be configured using the [Advanced Install](../../operate/advanced_install_options/) option `shipyardController.config.uniformIntegrationTTL`.
 
-
 ### Send a started event
 
-After receiving a `triggered` event for a particular task, your *Keptn-service* has to inform Keptn by sending an event of the type: 
+After receiving a `triggered` event for a particular task, your *Keptn-service* has to inform Keptn by sending an event of the type:
 
-- `sh.keptn.event.[task].started`
+* `sh.keptn.event.[task].started`
 
 The request body needs to follow the [CloudEvent specification](https://github.com/keptn/spec/blob/0.2.2/cloudevents.md) and the HTTP header attribute `Content-Type` has to be set to `application/cloudevents+json`.
 
@@ -201,7 +195,7 @@ The functionality of your *Keptn-service* depends on the capability you want to 
 
 After your *Keptn-service* has completed its functionality, it has to inform Keptn by sending an event of the type:
 
-- `sh.keptn.event.[task].finished`
+* `sh.keptn.event.[task].finished`
 
 The request body needs to follow the [CloudEvent specification](https://github.com/keptn/spec/blob/0.2.2/cloudevents.md) and the HTTP header attribute `Content-Type` has to be set to `application/cloudevents+json`.
 
@@ -209,7 +203,7 @@ The request body needs to follow the [CloudEvent specification](https://github.c
 
 Add to the *header* of the event:
 
-  * `triggeredid`: The value of this property is the `id` of the `sh.keptn.event.[task].triggered` event.
+* `triggeredid`: The value of this property is the `id` of the `sh.keptn.event.[task].triggered` event.
 
 **Add data to event payload:**
 
@@ -339,14 +333,14 @@ By default, the distributor will automatically extract error logs from received 
 Additionally, for easier debugging of errors that occur either during the execution of a task of a sequence, or while performing any other operation, Keptn integration services can send error log events to the Keptn API via the distributor.
 Examples for those events are listed below.
 
-### Logging an error related task sequence execution:
+### Logging an error related task sequence execution
 
 If the error log event should be associated to an execution of a specific task that has been triggered by a `sh.keptn.event.<task>.triggered` event, the following properties need to be set in order to correlate them to the correct task sequence execution:
 
-- `shkeptncontext`: The context of the task sequence execution. Can be adapted from the received `sh.keptn.event.<task>.triggered` event
-- `triggeredid`: The `id` of the received `sh.keptn.event.<task>.triggered` event
-- `data.task`: The name of the executed task.
-- `data.message`: The message you would like to log
+* `shkeptncontext`: The context of the task sequence execution. Can be adapted from the received `sh.keptn.event.<task>.triggered` event
+* `triggeredid`: The `id` of the received `sh.keptn.event.<task>.triggered` event
+* `data.task`: The name of the executed task.
+* `data.message`: The message you would like to log
 
 **Example event payload**
 

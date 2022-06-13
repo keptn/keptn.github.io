@@ -1,7 +1,7 @@
 ### Keptn automates
 
 - Observability, dashboards & alerting
-- SLO-driven multi-stage delivery 
+- SLO-driven multi-stage delivery
 - Operations & remediation
 
 declarative, extensible and based on GitOps

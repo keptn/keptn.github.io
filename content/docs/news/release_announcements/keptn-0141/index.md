@@ -10,7 +10,6 @@ The webhook UI allows configuring if Keptn has to wait for the acknowledgment of
 Finally, Keptn 0.14.x upgrades the NATS dependency and with that, the cluster name changed.
 For existing integration that are not yet updated to use a 0.14.x distributor, please update the `PUBSUB_URL` environment variable and set it to `nats://keptn-nats`.
 
-
 ---
 
 **Key announcements:**
@@ -25,9 +24,7 @@ For existing integration that are not yet updated to use a 0.14.x distributor, p
 
 ---
 
-
 ## [0.14.1](https://github.com/keptn/keptn/compare/0.13.0...0.14.1) (2022-04-01)
-
 
 ### ⚠ BREAKING CHANGES
 
@@ -55,7 +52,6 @@ For existing integration that are not yet updated to use a 0.14.x distributor, p
 * **shipyard-controller:** Subscribe to events using Jetstream ([#6834](https://github.com/keptn/keptn/issues/6834)) ([753547b](https://github.com/keptn/keptn/commit/753547b592dfd588a51aed939c1e6a5a1d11df43))
 * Support --git-commit-id flag in CLI trigger evaluation ([#6956](https://github.com/keptn/keptn/issues/6956)) ([f98155c](https://github.com/keptn/keptn/commit/f98155c54c8732a5caf408ccd12b8c14ed4f2cde))
 * Support auth via proxy ([#6984](https://github.com/keptn/keptn/issues/6984)) ([63fca54](https://github.com/keptn/keptn/commit/63fca54f18379d98dba21ed2d5121dc23bb82f05))
-
 
 ### Bug Fixes
 
@@ -104,7 +100,6 @@ For existing integration that are not yet updated to use a 0.14.x distributor, p
 * **webhook-service:** enhance denylist of disallowed urls ([#7191](https://github.com/keptn/keptn/issues/7191)) ([048dbe4](https://github.com/keptn/keptn/commit/048dbe45685b3b383cea052f42612f37079bd323))
 * **webhook-service:** Fix retrieval of webhook config ([#7144](https://github.com/keptn/keptn/issues/7144)) ([08ae798](https://github.com/keptn/keptn/commit/08ae798e5436055e936f60628ca2c3b41fdce341))
 
-
 ### Docs
 
 * **bridge:** Add documentation for environment variables ([0bb45a9](https://github.com/keptn/keptn/commit/0bb45a9475a4d4411e1d0b0ee86ae468a9b03e39))
@@ -112,10 +107,9 @@ For existing integration that are not yet updated to use a 0.14.x distributor, p
 * Stop-gap info about filtering by stage, project,service ([#7155](https://github.com/keptn/keptn/issues/7155)) ([ee03d92](https://github.com/keptn/keptn/commit/ee03d9260d55c197d7b7aed7b54b707adedf0b9c))
 * Use K3d 5.3.0 in README for developing ([#6926](https://github.com/keptn/keptn/issues/6926)) ([f02cad5](https://github.com/keptn/keptn/commit/f02cad5de1c584621504fdd4b3fe7bf4c19870e2))
 
-
 ### Other
 
-*  Changed all integration tests to use go utils ([#7165](https://github.com/keptn/keptn/issues/7165)) ([d926eb4](https://github.com/keptn/keptn/commit/d926eb429404f892c1628862a3d5ff6bf075d4d8))
+* Changed all integration tests to use go utils ([#7165](https://github.com/keptn/keptn/issues/7165)) ([d926eb4](https://github.com/keptn/keptn/commit/d926eb429404f892c1628862a3d5ff6bf075d4d8))
 * Add [@j-poecher](https://github.com/j-poecher) as member ([#7294](https://github.com/keptn/keptn/issues/7294)) ([979e81d](https://github.com/keptn/keptn/commit/979e81daa1803f2b21069ba12274fe24275968ad))
 * Add [@pchila](https://github.com/pchila) as member to maintainers.md ([#6946](https://github.com/keptn/keptn/issues/6946)) ([b919720](https://github.com/keptn/keptn/commit/b9197205ce633f6b0dd277337d72aff1840b1931))
 * Add [@raffy23](https://github.com/raffy23) as member ([#7174](https://github.com/keptn/keptn/issues/7174)) ([67fa5a5](https://github.com/keptn/keptn/commit/67fa5a5e4c139e6672c28e88015af62118366593))

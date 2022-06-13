@@ -8,7 +8,6 @@ weight: 72
 Keptn 0.16.0 provides the ability to upgrade your Keptn installation without any downtime. For this, Keptn requires each project to have an [upstream Git repository](../../../0.16.x/manage/git_upstream).
 Make sure to check the [upgrade instructions](../../../0.16.x/operate/upgrade/) to ensure that you do not lose any data.
 
-
 ---
 
 **Key announcements**:
@@ -23,10 +22,7 @@ Make sure to check the [upgrade instructions](../../../0.16.x/operate/upgrade/) 
 
 ---
 
-
-
 ## [0.16.0](https://github.com/keptn/keptn/compare/0.15.0...0.16.0) (2022-06-07)
-
 
 ### ⚠ BREAKING CHANGES
 
@@ -60,7 +56,6 @@ Make sure to check the [upgrade instructions](../../../0.16.x/operate/upgrade/) 
 * **mongodb-datastore:** Use cp-connector library ([#7685](https://github.com/keptn/keptn/issues/7685)) ([defee50](https://github.com/keptn/keptn/commit/defee50b0a039ecec36312a315dc466141ebb31c))
 * Refactor `go-sdk` to use `cp-connector` internally ([#7686](https://github.com/keptn/keptn/issues/7686)) ([1712149](https://github.com/keptn/keptn/commit/171214903be538942fbc32e41435a1746abd56cc))
 * **resource-service:** Removed NATS ([#7694](https://github.com/keptn/keptn/issues/7694)) ([fa48649](https://github.com/keptn/keptn/commit/fa48649afe87d11bdebc773d37f695ca6fca1c87))
-
 
 ### Bug Fixes
 
@@ -110,11 +105,9 @@ Make sure to check the [upgrade instructions](../../../0.16.x/operate/upgrade/) 
 * **webhook-service:** Added denied curl in webhook beta based on host ([#7716](https://github.com/keptn/keptn/issues/7716)) ([d194367](https://github.com/keptn/keptn/commit/d1943671b8ccc5a13c50dafd833c486a54aedb9b))
 * **webhook-service:** Added missing webhook-config version check ([#7832](https://github.com/keptn/keptn/issues/7832)) ([445000a](https://github.com/keptn/keptn/commit/445000a88258801aae32ad395b073d47dff9ffc7))
 
-
 ### Performance
 
 * **bridge:** Use adapted sequence endpoint for project endpoint of bridge server ([#7696](https://github.com/keptn/keptn/issues/7696)) ([5bed56d](https://github.com/keptn/keptn/commit/5bed56d4b62cd996b09f8c15ab5a81e02aa03d70))
-
 
 ### Docs
 
@@ -122,7 +115,6 @@ Make sure to check the [upgrade instructions](../../../0.16.x/operate/upgrade/) 
 * Improve developer API + integration tests docs ([#7771](https://github.com/keptn/keptn/issues/7771)) ([b6fb2d6](https://github.com/keptn/keptn/commit/b6fb2d64afad324f75a85fec0ec24f6acd9d1cec))
 * Improve documentation for resource-service ([#7765](https://github.com/keptn/keptn/issues/7765)) ([0995fda](https://github.com/keptn/keptn/commit/0995fda85ac681a4d82219109ad801c9132af553))
 * Update version for installation of Helm and JMeter services ([#7700](https://github.com/keptn/keptn/issues/7700)) ([788366a](https://github.com/keptn/keptn/commit/788366aa1af7ba4414d4fced30cb3bbe0f7b3080))
-
 
 ### Other
 

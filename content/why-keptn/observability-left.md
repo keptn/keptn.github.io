@@ -1,4 +1,4 @@
-## Observability built in for better visibility 
+## Observability built in for better visibility
 
 Keptn was created by Dynatrace, the inventor of distributed transaction tracing. So it should be no surprise that we’ve embedded tracing capabilities into Keptn.
 

@@ -64,13 +64,14 @@ although most projects only use some of the constructions.
 ## Fields
 
 **Meta-data**
+
 * `apiVersion`: The version of the shipyard specification in the format: `spec.keptn.sh/x.y.z`
 * `kind`: is `Shipyard`
 * `metadata`:
     `name`: Unique name for this *shipyard* file
     Typically, this is the string `shipyard` followed by a dash and the project name; for example, `shipyard-sockshop`
 * `spec`: Consists of the property stages.
-    * `stages`: An array of stages, each of which has a name and a sequence of tasks to execute
+  * `stages`: An array of stages, each of which has a name and a sequence of tasks to execute
 
 **Stage**
 
@@ -176,12 +177,12 @@ Each of these are discussed below.
 * `approval`
 
     Intercepts the `task` sequence and waits for a user to approve or decline the open approval.
-    This task can be added, for example, before deploying an artifact into the next stage. 
+    This task can be added, for example, before deploying an artifact into the next stage.
     The approval strategy is defined based on the `evaluation` result `pass` and `warning`.
     The approval strategies for the evaluation results `pass` and `warning` can be set to:
 
-    - `automatic`: Task sequence continues without requesting approval
-    - `manual`:  Task sequence requests for approval before continuing
+  * `automatic`: Task sequence continues without requesting approval
+  * `manual`:  Task sequence requests for approval before continuing
 
     *Synopsis:*
 
@@ -191,14 +192,13 @@ Each of these are discussed below.
              warning: manual
 
     This allows combinations as follows:
-    
+
     |                          | Evaluation result: pass           | Evaluation result: warning                 | Behavior  |
     |--------------------------|-----------------------------------|--------------------------------------------|-----------|
     | **Skip approval task:** | pass:automatic | warning:automatic | Regardless of the evaluation result, the approval task is skipped |
     | **Depending on evaluation result:**   | pass:automatic | warning:manual    | If the evaluation result is a **warning**, an approval is required |
     | **Depending on evaluation result:**   | pass:manual    | warning:automatic | If the evaluation result is a **pass**, an approval is required |
     | **Mandatory approval task:**          | pass:manual    | warning:manual    | Regardless of the evaluation result, an approval is required |
-
 
     By default, an `automatic` approval strategy is used for the `pass` and `warning` evaluation results.
 
@@ -254,12 +254,12 @@ rather than on the control plane.
     unless the Job Executor Service is installed in the cluster.
     The deployment `strategy` is set to one of the following:
 
-    * `direct`: Deploys a new version of a service by replacing the old version of the service.
+  * `direct`: Deploys a new version of a service by replacing the old version of the service.
     See [Direct deployments](../../../continuous_delivery/deployment_helm/#direct-deployments)
-    * `blue_green_service`: Deploys a new version of a service next to the old one.
+  * `blue_green_service`: Deploys a new version of a service next to the old one.
     After a successful validation of this new version, it replaces the old one and is marked as stable.
     See [Direct deployments](../../../continuous_delivery/deployment_helm/#blue-green-deployments)
-    * `user_managed`: Deploys a new version of a service
+  * `user_managed`: Deploys a new version of a service
     by fetching the current Helm chart from the Git repo and updating appropriate values.
     See [Direct deployments](../../../continuous_delivery/deployment_helm/#user-managed-deployments)
 
@@ -268,8 +268,8 @@ rather than on the control plane.
     Defines the test strategy used to validate a deployment with the *jmeter-service*.
     The *jmeter-service* supports setting the `teststrategy` to one of the following:
 
-    * `functional`: Test a deployment based on functional tests.
-    * `performance`: Test a deployment based on performance/load tests.
+  * `functional`: Test a deployment based on functional tests.
+  * `performance`: Test a deployment based on performance/load tests.
 
     Failed tests result in an automatic `rollback` of the latest deployment
     when using a blue/green deployment strategy.
@@ -298,7 +298,7 @@ As a workaround, you can temporarily skip the execution of a particular stage by
 
 * Temporarily remove the `triggeredOn` attribute for the stage you want to skip
 * Add an `approval` step as the first task of the stage you want to skip
-and then `Deny` the approvals 
+and then `Deny` the approvals
 
 ## Example
 

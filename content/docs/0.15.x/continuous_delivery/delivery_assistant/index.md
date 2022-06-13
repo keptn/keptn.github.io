@@ -7,7 +7,7 @@ aliases:
   - /docs/0.15.x/reference/bridge/delivery_assistent/
 ---
 
-If you would like to extend the [multi-stage delivery](../multi_stage/ with the capabilities of the delivery assistant, just add the `approval` task to a sequence in your shipyard, as shown by the example of the *delivery* sequence in the *staging* stage: 
+If you would like to extend the [multi-stage delivery](../multi_stage/ with the capabilities of the delivery assistant, just add the `approval` task to a sequence in your shipyard, as shown by the example of the *delivery* sequence in the *staging* stage:
 
 ```
 - name: "staging"
@@ -30,7 +30,7 @@ If you would like to extend the [multi-stage delivery](../multi_stage/ with the 
         - name: "release"
 ```
 
-If this task is in place, you can control how to proceed with the delivery depending on the evaluation result from the previous stage. You have the options to configure this as follows: 
+If this task is in place, you can control how to proceed with the delivery depending on the evaluation result from the previous stage. You have the options to configure this as follows:
 
 | Evaluation result                 | Option: `manual`                                  | Option: `automatic`                 |
 |---------------------------------  |-----------------------------------------------  |---------------------------------- |
@@ -38,6 +38,7 @@ If this task is in place, you can control how to proceed with the delivery depen
 | If evaluation returned is `warning`   | `manual` - the user has to manually approve/decline it.   | `automatic` - Keptn automatically approves it.  |
 
 *Example - Regardless of the evaluation result, the user needs to approve or decline it:*
+
 ```
 - name: "approval"
   properties:
@@ -46,6 +47,7 @@ If this task is in place, you can control how to proceed with the delivery depen
 ```
 
 *Example - Automatically continue when result pass, but ask for approval when a warning is returned:*
+
 ```
 - name: "approval"
   properties:
@@ -54,10 +56,10 @@ If this task is in place, you can control how to proceed with the delivery depen
 ```
 
 ## Approve or decline an open approval with Keptn Bridge
- 
+
 * To approve/decline an approval, open the *Environment* view and click on the stage that has a pending approval. When there are pending approvals for a service available, the service tile is expanded automatically. Additionally, you can filter the services to see only services with pending approvals by clicking on the blue icon.
 
-* By clicking on the green checkmark, the deployment will be approved. You can also decline by clicking on the red abort button. 
+* By clicking on the green checkmark, the deployment will be approved. You can also decline by clicking on the red abort button.
 
     {{< popup_image
       link="./assets/bridge_environment_assisteddelivery.png"
@@ -91,6 +93,7 @@ If this task is in place, you can control how to proceed with the delivery depen
         "type": "sh.keptn.event.approval.triggered"
     }
     ```
+
 * In addition, by using the command [`keptn send-event approval.finished`](../../reference/cli/commands/keptn_send_event_approval.finished/) the CLI will print a list of open approvals and allows you to choose which one you want to approve/decline:
 
     ```console
@@ -106,10 +109,10 @@ If this task is in place, you can control how to proceed with the delivery depen
     ID of Keptn context: 654c80b0-4a02-4d36-96f3-7447df1cdf41
     ```
 
-
 ## Approve or decline an open approval with Keptn API
 
-* Note down the keptn-context (`shkeptncontext`) and `id` (maps to `triggeredid`) of the [sh.keptn.event.approval.triggered](https://github.com/keptn/spec/blob/0.2.2/cloudevents.md#approval-triggered) CloudEvent, e.g., 
+* Note down the keptn-context (`shkeptncontext`) and `id` (maps to `triggeredid`) of the [sh.keptn.event.approval.triggered](https://github.com/keptn/spec/blob/0.2.2/cloudevents.md#approval-triggered) CloudEvent, e.g.,
+
 ```
   "shkeptncontext": "654c80b0-4a02-4d36-96f3-7447df1cdf41",
   "id": "5bf26759-4afa-4045-8ccf-81bc398c2fcd",

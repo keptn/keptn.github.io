@@ -45,7 +45,8 @@ spec:
             - name: PUBSUB_RECIPIENT
               value: '127.0.0.1`'
 ```
-~               
+
+~
 
 `
 
@@ -58,6 +59,3 @@ spec:
 * [Write a Keptn-service](../../../integrations/custom_integration)
 * [distributor](../../miscellaneous/distributor)
 * [distributor source code](https://github.com/keptn/keptn/tree/master/distributor)
-
-
-

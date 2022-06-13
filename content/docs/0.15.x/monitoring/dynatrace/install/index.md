@@ -9,7 +9,7 @@ icon: setup
 
 Bring your Dynatrace SaaS or Dynatrace-managed tenant. If you do not have a Dynatrace tenant, sign up for a [free trial](https://www.dynatrace.com/trial/) or a [developer account](https://www.dynatrace.com/developer/).
 
-To set up Dynatrace monitoring on your Kubernetes cluster, please follow the official Dynatrace documentation on [Deploy Dynatrace Operator](https://www.dynatrace.com/support/help/how-to-use-dynatrace/infrastructure-monitoring/container-platform-monitoring/kubernetes-monitoring). 
+To set up Dynatrace monitoring on your Kubernetes cluster, please follow the official Dynatrace documentation on [Deploy Dynatrace Operator](https://www.dynatrace.com/support/help/how-to-use-dynatrace/infrastructure-monitoring/container-platform-monitoring/kubernetes-monitoring).
 
 **Notes:**
 
@@ -38,19 +38,19 @@ To set up Dynatrace monitoring on your Kubernetes cluster, please follow the off
 To function correctly, the *dynatrace-service* requires access to a Dynatrace tenant, specified through `DT_TENANT` and `DT_API_TOKEN`:
 
 * The `DT_TENANT` has to be set according to the appropriate [pattern](https://www.dynatrace.com/support/help/get-started/monitoring-environment/environment-id):
-    - Dynatrace SaaS: `https://{your-environment-id}.live.dynatrace.com`
-    - Dynatrace Managed: `https://{your-domain}/e/{your-environment-id}`
+  * Dynatrace SaaS: `https://{your-environment-id}.live.dynatrace.com`
+  * Dynatrace Managed: `https://{your-domain}/e/{your-environment-id}`
 
 * To create a Dynatrace API token `DT_API_TOKEN`, log in to your Dynatrace tenant and go to **Settings > Integration > Dynatrace API**. In this settings page, create a new API token with the following permissions:
-    - Read metrics
-    - Ingest metrics
-    - Read logs
-    - Read entities
-    - Read problems
-    - Access problem and event feed, metrics, and topology
-    - Read configuration
-    - Write configuration
-    - Capture request data
+  * Read metrics
+  * Ingest metrics
+  * Read logs
+  * Read entities
+  * Read problems
+  * Access problem and event feed, metrics, and topology
+  * Read configuration
+  * Write configuration
+  * Capture request data
 
     {{< popup_image
     link="./assets/dt_api_token.png"
@@ -99,7 +99,7 @@ The Dynatrace integration into Keptn is handled by the *dynatrace-service*.
     VERSION=<VERSION>   # e.g.: VERSION=0.22.0
     ```
 
-*  To install the *dynatrace-service*, execute:
+* To install the *dynatrace-service*, execute:
 
     ```console
     helm upgrade --install dynatrace-service -n keptn \
@@ -124,19 +124,19 @@ The Dynatrace integration into Keptn is handled by the *dynatrace-service*.
 
 When you execute the [`keptn configure monitoring`](../../../reference/cli/commands/keptn_configure_monitoring/) command, the *dynatrace-service* will configure the Dynatrace tenant by creating *tagging rules*, a *problem notification*, an *alerting profile* as well as a project-specific *dashboard* and *management zone*.
 
-- *Tagging rules:* When you navigate to **Settings > Tags > Automatically applied tags** in your Dynatrace tenant, you will find following tagging rules:
-    - keptn_deployment
-    - keptn_project
-    - keptn_service
-    - keptn_stage
+* *Tagging rules:* When you navigate to **Settings > Tags > Automatically applied tags** in your Dynatrace tenant, you will find following tagging rules:
+  * keptn_deployment
+  * keptn_project
+  * keptn_service
+  * keptn_stage
 
     This means that Dynatrace will automatically apply tags to your onboarded services.
 
-- *Problem notification:* A problem notification has been set up to inform Keptn of any problems with your services to allow auto-remediation. You can check the problem notification by navigating to **Settings > Integration > Problem notifications** and you will find a **keptn remediation** problem notification.
+* *Problem notification:* A problem notification has been set up to inform Keptn of any problems with your services to allow auto-remediation. You can check the problem notification by navigating to **Settings > Integration > Problem notifications** and you will find a **keptn remediation** problem notification.
 
-- *Alerting profile:* An alerting profile with all problems set to *0 minutes* (immediate) is created. You can review this profile by navigating to **Settings > Alerting > Alerting profiles**.
+* *Alerting profile:* An alerting profile with all problems set to *0 minutes* (immediate) is created. You can review this profile by navigating to **Settings > Alerting > Alerting profiles**.
 
-- *Dashboard and Management zone:* When creating a new Keptn project or executing the [keptn configure monitoring](../../../reference/cli/commands/keptn_configure_monitoring/) command for a particular project (see Note 1), a dashboard and management zone will be generated reflecting the environment as specified in the shipyard.
+* *Dashboard and Management zone:* When creating a new Keptn project or executing the [keptn configure monitoring](../../../reference/cli/commands/keptn_configure_monitoring/) command for a particular project (see Note 1), a dashboard and management zone will be generated reflecting the environment as specified in the shipyard.
 
 **Note:** If you already have created a project using Keptn and would like to enable Dynatrace monitoring for that project, please execute the following command:
 

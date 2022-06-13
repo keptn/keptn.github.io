@@ -16,7 +16,6 @@ Besides, it delivers an alpha version of the new resource-service, which will re
 
 :hammer: Zero Downtime upgrades of Keptn: This release improves the upgrade capabilities of Keptn by providing a graceful shutdown of all components, which is a key capability for scaling a Keptn instance.
 
-
 ---
 
 ## Keptn Enhancement Proposals
@@ -26,7 +25,6 @@ This release implements the parts of [KEP 60](https://github.com/keptn/enhanceme
 ## Keptn Specification
 
 Implemented **Keptn spec** version: [0.2.3](https://github.com/keptn/spec/tree/0.2.3)
-
 
 ### Features
 
@@ -67,7 +65,6 @@ Implemented **Keptn spec** version: [0.2.3](https://github.com/keptn/spec/tree/0
 * **shipyard-controller:** Handle sigterm ([#6051](https://github.com/keptn/keptn/issues/6051)) ([adfba40](https://github.com/keptn/keptn/commit/adfba40e4b21f01f0a806b5d525d3944305e6ca3))
 * **shipyard-controller:** Introduced sequence aborted state ([#6214](https://github.com/keptn/keptn/issues/6214)) ([02ab54b](https://github.com/keptn/keptn/commit/02ab54bfd949f720b41d7f71e3ff0aff06b754c5))
 * validate shipyard.yaml when updating project ([#6222](https://github.com/keptn/keptn/issues/6222)) ([499352d](https://github.com/keptn/keptn/commit/499352d322a64b4a0207fb0be48d093198f6dcc1))
-
 
 ### Bug Fixes
 
@@ -123,12 +120,10 @@ Implemented **Keptn spec** version: [0.2.3](https://github.com/keptn/spec/tree/0
 * Update the JMeter Service to JMeter 5.4.2 ([#6405](https://github.com/keptn/keptn/issues/6405)) ([ccef405](https://github.com/keptn/keptn/commit/ccef4050a7a2497e6da01bf7d2f0632e72206a20))
 * **webhook-service:** Disallow requests to loopback addresses ([#6361](https://github.com/keptn/keptn/issues/6361)) ([e7f814e](https://github.com/keptn/keptn/commit/e7f814e8bd6f975ff4a10c2bb7b056daaeae016f))
 
-
 ### Refactoring
 
 * **bridge:** Move secret picker in own component ([#5733](https://github.com/keptn/keptn/issues/5733)) ([#6099](https://github.com/keptn/keptn/issues/6099)) ([a54f6a7](https://github.com/keptn/keptn/commit/a54f6a7ea6508eac4e27af61877c04cd6a52aa30))
 * **bridge:** Replace data service mock with api service mock ([#5093](https://github.com/keptn/keptn/issues/5093)) ([101e472](https://github.com/keptn/keptn/commit/101e4728c2c272658497fe9c4023398757f703b7))
-
 
 ### Docs
 
@@ -136,11 +131,9 @@ Implemented **Keptn spec** version: [0.2.3](https://github.com/keptn/spec/tree/0
 * **configuration-service:** Update API documentation ([#6008](https://github.com/keptn/keptn/issues/6008)) ([76f9ef2](https://github.com/keptn/keptn/commit/76f9ef2d24cc0a86e0e73d465cf6a6921b4de0cf))
 * Update Integration Tests Developer documentation ([#6548](https://github.com/keptn/keptn/issues/6548)) ([d34b70c](https://github.com/keptn/keptn/commit/d34b70c4d5f0dd63909146d1b205c8056a910e1d))
 
-
 ### Performance
 
 * **shipyard-controller:** Remove DB connection locking ([#6326](https://github.com/keptn/keptn/issues/6326)) ([690ce1c](https://github.com/keptn/keptn/commit/690ce1cacfe77529ff4189463ff5f3cd37496181))
-
 
 ### Other
 

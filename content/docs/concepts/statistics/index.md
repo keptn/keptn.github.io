@@ -61,10 +61,8 @@ A cURL example using a timestamp is:
 curl -X GET "http://keptn-api-url.com/api/statistics/v1/statistics?from=1600656105&to=1600696105" -H "accept: application/json" -H "x-token: <keptn-api-token>"
 ```
 
-
 ## Configuring the aggregating interval
 
 By default, the service aggregates data every 30 minutes.
 When this period has passed, the service creates a new entry in the Keptn-MongoDB within the Keptn cluster.
 To change how often statistics are stored, set the `AGGREGATION_INTERVAL_SECONDS` variable to your desired value.
-

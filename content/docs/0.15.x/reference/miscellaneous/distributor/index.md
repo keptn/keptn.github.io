@@ -23,71 +23,71 @@ its subscription can be changed directly in the Bridge.
 The following environment variables configure the distributor
 when it runs outside the Keptn cluster:
 
-- `KEPTN_API_ENDPOINT` - Keptn API Endpoint - needed when the distributor runs outside of the Keptn cluster. default = `""`
-- `KEPTN_API_TOKEN` - Keptn API Token - needed when the distributor runs outside of the Keptn cluster. default = `""`
+* `KEPTN_API_ENDPOINT` - Keptn API Endpoint - needed when the distributor runs outside of the Keptn cluster. default = `""`
+* `KEPTN_API_TOKEN` - Keptn API Token - needed when the distributor runs outside of the Keptn cluster. default = `""`
 
 The following environment variables configure Keptn to serve as a proxy for the Keptn API:
 
-- `API_PROXY_PORT` - Port on which the distributor listens for incoming Keptn API requests
+* `API_PROXY_PORT` - Port on which the distributor listens for incoming Keptn API requests
 by its execution plane service. default = `8081`.
-- `API_PROXY_PATH` - Path on which the distributor listens for incoming Keptn API requests
+* `API_PROXY_PATH` - Path on which the distributor listens for incoming Keptn API requests
 by its execution plane service. default = `/`.
-- `API_PROXY_HTTP_TIMEOUT` - Timeout value (in seconds) for the API Proxy's HTTP Client. default = `30`.
-- `HTTP_POLLING_INTERVAL` - Interval (in seconds) in which the distributor
+* `API_PROXY_HTTP_TIMEOUT` - Timeout value (in seconds) for the API Proxy's HTTP Client. default = `30`.
+* `HTTP_POLLING_INTERVAL` - Interval (in seconds) in which the distributor
 checks for new triggered events on the Keptn API. default = `10`
-- `EVENT_FORWARDING_PATH` - Path on which the distributor listens for incoming events
+* `EVENT_FORWARDING_PATH` - Path on which the distributor listens for incoming events
 from its execution plane service. default = `/event`
-- `HTTP_SSL_VERIFY` - Determines whether the distributor should check the validity of SSL certificates
+* `HTTP_SSL_VERIFY` - Determines whether the distributor should check the validity of SSL certificates
 when sending requests to a Keptn API endpoint via HTTPS. default = `true`
 
 The following environment variables configure the distributor
 when it runs within the Keptn cluster:
 
-- `PUBSUB_URL` - The URL of the NATS cluster to which the distributor should connect
+* `PUBSUB_URL` - The URL of the NATS cluster to which the distributor should connect
 when the distributor is running within the Keptn cluster. default = `nats://keptn-nats`
-- `PUBSUB_TOPIC` - Comma separated list of topics (i.e. event types)
+* `PUBSUB_TOPIC` - Comma separated list of topics (i.e. event types)
 for which the distributor should listen
-(see https://github.com/keptn/spec/blob/0.2.4/cloudevents.md for details).
+(see <https://github.com/keptn/spec/blob/0.2.4/cloudevents.md> for details).
 This is the initial subscription for the service;
 it is overridden by subscription information supplied through the Bridge.
-   * When running within the Keptn cluster, it is possible to use NATS
+  * When running within the Keptn cluster, it is possible to use NATS
 [Subject hierarchies](https://nats-io.github.io/docs/developer/concepts/subjects.html#matching-a-single-token).
-   * When running outside of the cluster (polling events via HTTP), wildcards can not be used.
+  * When running outside of the cluster (polling events via HTTP), wildcards can not be used.
 In this case, each specific topic must be included in the list.
-- `PUBSUB_RECIPIENT` - Hostname of the execution plane service to which the distributor
+* `PUBSUB_RECIPIENT` - Hostname of the execution plane service to which the distributor
 should forward incoming CloudEvents. default = `http://127.0.0.1`
-- `PUBSUB_RECIPIENT_PORT` - Port of the execution plane service
+* `PUBSUB_RECIPIENT_PORT` - Port of the execution plane service
 to which the distributor should forward incoming CloudEvents. default = `8080`
-- `PUBSUB_RECIPIENT_PATH` - Path of the execution plane service
+* `PUBSUB_RECIPIENT_PATH` - Path of the execution plane service
 to which the distributor should forward incoming CloudEvents. default = `/`
-- `PUBSUB_GROUP` - Used to join a group for receiving messages from the message broker.
+* `PUBSUB_GROUP` - Used to join a group for receiving messages from the message broker.
 Note that only **one** instance of a distributor in a set of distributors having the same `PUBSUB_GROUP`
 are able to receive the event. default = `""`
 
 The following environment variables filter events:
 
-- `PROJECT_FILTER` - Filter events for a specific project. default = `""`, supports a comma-separated list of projects.
-- `STAGE_FILTER` - Filter events for a specific stage. default = `""`, supports a comma-separated list of stages.
-- `SERVICE_FILTER` - Filter events for a specific service. default = `""`, supports a comma-separated list of services.
+* `PROJECT_FILTER` - Filter events for a specific project. default = `""`, supports a comma-separated list of projects.
+* `STAGE_FILTER` - Filter events for a specific stage. default = `""`, supports a comma-separated list of stages.
+* `SERVICE_FILTER` - Filter events for a specific service. default = `""`, supports a comma-separated list of services.
 
-The following 
+The following
 
-- `DISABLE_REGISTRATION` - Disables automatic registration of the Keptn integration to the control plane.
+* `DISABLE_REGISTRATION` - Disables automatic registration of the Keptn integration to the control plane.
 default = `false`
-- `REGISTRATION_INTERVAL` - Time duration between trying to re-register to the Keptn control plane.
+* `REGISTRATION_INTERVAL` - Time duration between trying to re-register to the Keptn control plane.
 default =`10s`
-- `LOCATION` - Location on which the distributor is running, e.g. "executionPlane-A". default = `""`
-- `DISTRIBUTOR_VERSION` - The software version of the distributor. default = `""`
-- `VERSION` - The version of the Keptn integration. default = `""`
-- `K8S_DEPLOYMENT_NAME` - Kubernetes deployment name of the Keptn integration. default = `""`
-- `K8S_POD_NAME` -  Kubernetes deployment name of the Keptn integration. default = `""`
-- `K8S_NAMESPACE` - Kubernetes namespace of the Keptn integration. default = `""`
-- `K8S_NODE_NAME` - Kubernetes node name the Keptn integration is running on. default = `""`
-- `OAUTH_CLIENT_ID` - OAuth client ID used when performing Oauth Client Credentials Flow. default = `""`
-- `OAUTH_CLIENT_SECRET` - OAuth client ID used when performing Oauth Client Credentials Flow. default = `""`
-- `OAUTH_DISCOVERY` - Discovery URL called by the distributor to obtain further information for the OAuth Client Credentials Flow, e.g. the token URL. default = `""`
-- `OAUTH_TOKEN_URL` - Url to obtain the access token. If set, this will override `OAUTH_DISCOVERY` meaning, that no discovery will happen. default = `""`
-- `OAUTH_SCOPES` - Comma separated list of tokens to be used during the OAuth Client Credentials Flow. =`""`
+* `LOCATION` - Location on which the distributor is running, e.g. "executionPlane-A". default = `""`
+* `DISTRIBUTOR_VERSION` - The software version of the distributor. default = `""`
+* `VERSION` - The version of the Keptn integration. default = `""`
+* `K8S_DEPLOYMENT_NAME` - Kubernetes deployment name of the Keptn integration. default = `""`
+* `K8S_POD_NAME` -  Kubernetes deployment name of the Keptn integration. default = `""`
+* `K8S_NAMESPACE` - Kubernetes namespace of the Keptn integration. default = `""`
+* `K8S_NODE_NAME` - Kubernetes node name the Keptn integration is running on. default = `""`
+* `OAUTH_CLIENT_ID` - OAuth client ID used when performing Oauth Client Credentials Flow. default = `""`
+* `OAUTH_CLIENT_SECRET` - OAuth client ID used when performing Oauth Client Credentials Flow. default = `""`
+* `OAUTH_DISCOVERY` - Discovery URL called by the distributor to obtain further information for the OAuth Client Credentials Flow, e.g. the token URL. default = `""`
+* `OAUTH_TOKEN_URL` - Url to obtain the access token. If set, this will override `OAUTH_DISCOVERY` meaning, that no discovery will happen. default = `""`
+* `OAUTH_SCOPES` - Comma separated list of tokens to be used during the OAuth Client Credentials Flow. =`""`
 
 All cloud events specified in `PUBSUB_TOPIC` that match the filters
 are forwarded to `http://{PUBSUB_RECIPIENT}:{PUBSUB_RECIPIENT_PORT}{PUBSUB_RECIPIENT_PATH}`,
@@ -130,15 +130,14 @@ The execution plane service can then access the distributor's Keptn API proxy at
 and can forward events by sending them to `http://localhost:8081/event`.
 The Keptn API services are then reachable for the execution plane service via the following URLs:
 
+* Mongodb-datastore:
+  * `http://localhost:8081/mongodb-datastore`
 
-- Mongodb-datastore:
-  - `http://localhost:8081/mongodb-datastore`
+* Configuration-service:
+  * `http://localhost:8081/configuration-service`
 
-- Configuration-service:
-  - `http://localhost:8081/configuration-service`
-
-- Shipyard-controller:
-  - `http://localhost:8081/controlPlane`
+* Shipyard-controller:
+  * `http://localhost:8081/controlPlane`
 
 If the distributor should listen on a port other than `8081`
 (e.g. when that port is needed by the execution plane service),
@@ -198,4 +197,3 @@ for details.
 
 * [distributor.yaml](../../files/distributor.yaml)
 * [Write a Keptn-service](../../../integrations/custom_integration)
-

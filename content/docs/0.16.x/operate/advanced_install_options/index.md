@@ -23,12 +23,11 @@ helm install jmeter-service https://github.com/keptn/keptn/releases/download/0.1
 helm install helm-service https://github.com/keptn/keptn/releases/download/0.16.0/helm-service-0.16.0.tgz -n keptn --create-namespace --wait
 ```
 
-**Note:** To continue with Keptn after the installation with Helm, we recommend authenticating the Ketpn CLI as explained [here](../install/#authenticate-keptn-cli). 
+**Note:** To continue with Keptn after the installation with Helm, we recommend authenticating the Ketpn CLI as explained [here](../install/#authenticate-keptn-cli).
 
 As shown above, the `helm install` or `helm upgrade` commands offer a flag called `--set`, which can be used to specify several configuration options using the format `key1=value1,key2=value2,...`.
 
 The full list of available flags can be found in the [helm-charts](https://github.com/keptn/keptn/tree/0.16.0/installer/manifests/keptn).
-
 
 ### Use a LoadBalancer for api-gateway-nginx
 
@@ -39,6 +38,7 @@ helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=
 ### Install execution plane for Continuous Delivery use-case
 
 For example, the **Control Plane with the Execution Plane (for Continuous Delivery)** can be installed by the following command:
+
 ```console
 helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.16.0 --repo=https://charts.keptn.sh --set=continuous-delivery.enabled=true
 ```
@@ -46,6 +46,7 @@ helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=
 ### Install execution plane for Continuous Delivery use-case and use a LoadBalancer for api-gateway-nginx
 
 For example, the **Control Plane with the Execution Plane (for Continuous Delivery)** and a `LoadBalancer` for exposing Keptn can be installed by the following command:
+
 ```console
 helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.16.0 --repo=https://charts.keptn.sh --set=continuous-delivery.enabled=true,control-plane.apiGatewayNginx.type=LoadBalancer
 ```
@@ -65,9 +66,9 @@ The following artifacts must be available locally:
 
 Download the Helm charts from the [Keptn 0.16.x release](https://github.com/keptn/keptn/releases/tag/0.16.0):
 
-* Keptn Control Plane: https://github.com/keptn/keptn/releases/download/0.16.0/keptn-0.16.0.tgz
-* helm-service (if needed): https://github.com/keptn/keptn/releases/download/0.16.0/helm-service-0.16.0.tgz
-* jmeter-service (if needed): https://github.com/keptn/keptn/releases/download/0.16.0/jmeter-service-0.16.0.tgz
+* Keptn Control Plane: <https://github.com/keptn/keptn/releases/download/0.16.0/keptn-0.16.0.tgz>
+* helm-service (if needed): <https://github.com/keptn/keptn/releases/download/0.16.0/helm-service-0.16.0.tgz>
+* jmeter-service (if needed): <https://github.com/keptn/keptn/releases/download/0.16.0/jmeter-service-0.16.0.tgz>
 
 Move the Helm Charts to a directory on your local machine, e.g., `offline-keptn`.
 
@@ -87,7 +88,7 @@ cd ..
 Within the Helm Charts several Docker Images are referenced (Keptn specific and some third party dependencies).
 We recommend pulling, re-tagging and pushing those images to a local registry that the Kubernetes cluster can reach.
 
-A helper script is provided for this in our Git repository: https://github.com/keptn/keptn/blob/master/installer/airgapped/pull_and_retag_images.sh
+A helper script is provided for this in our Git repository: <https://github.com/keptn/keptn/blob/master/installer/airgapped/pull_and_retag_images.sh>
 
 For convenience, you can use the following commands to download and execute the script:
 
@@ -105,7 +106,7 @@ Be sure to include the trailing slash for the registry url (e.g., `your-registry
 
 Keptn's Helm chart allows you to specify the name of all images, which can be especially handy in air-gapped systems where you cannot access DockerHub for pulling the images.
 
-A helper script for this is provided in our Git repository: https://github.com/keptn/keptn/blob/master/installer/airgapped/install_keptn.sh
+A helper script for this is provided in our Git repository: <https://github.com/keptn/keptn/blob/master/installer/airgapped/install_keptn.sh>
 
 For convenience, you can use the following commands to download and execute the script:
 

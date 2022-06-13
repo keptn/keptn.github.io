@@ -15,5 +15,5 @@ In Keptn, the roadmap is organized based on *Keptn Enhancements Proposals* ([KEP
 
 ## How can I contribute to the Roadmap?
 
-* Feel free to start discussing KEPs that are already planned and put on the roadmap. 
+* Feel free to start discussing KEPs that are already planned and put on the roadmap.
 * Feel free to file a new KEP to tell us the value increment you would like to have in Keptn: Instructions therefore are provided [here](https://github.com/keptn/enhancement-proposals#writing-a-new-proposal)

@@ -9,7 +9,7 @@ Keptn 0.7.2 enhances the 0.7.1 release with great UX/UI improvements; especially
 
 :rocket: *Improved UX for Quality Gates*: This release introduces an `/evaluation` endpoint that brings the same user-experience to the API as used from the Keptn CLI. Hence, you can now easily trigger a quality gate evaluation based on the parameters `start`, `end`, and `timeframe` for a specific `service` in a particular `project`/`stage`.
 
-:sparkles: *Focused UI enhancements for Quality Gates*: The evaluation tile that displays the quality gate evaluation result has been improved in various ways. First, the Heatmap in this tile now highlights the currently selected evaluation result. Second, it also displays the evaluation results that were used for comparisons giving the user more insights into the quality gate. 
+:sparkles: *Focused UI enhancements for Quality Gates*: The evaluation tile that displays the quality gate evaluation result has been improved in various ways. First, the Heatmap in this tile now highlights the currently selected evaluation result. Second, it also displays the evaluation results that were used for comparisons giving the user more insights into the quality gate.
 
 :tada: *Usage statistics for Keptn installation*: If you want to get more insights into your Keptn installation, feel free to deploy the [statistics-service v0.1.1](https://github.com/keptn-sandbox/statistics-service/tree/release-0.1.1) from the Keptn sandbox. This service provides usage statistics based on events and service executions.
 
@@ -21,7 +21,7 @@ Last but not least, many thanks to the community for all their contributions!
 
 Implemented **Keptn spec** version: [0.1.6](https://github.com/keptn/spec/tree/0.1.6)
 
-- The `evaluationDetails` property of the `sh.keptn.events.evaluation-done` event lists the evaluations that were taken for comparison [#42](https://github.com/keptn/spec/issues/42) 
+- The `evaluationDetails` property of the `sh.keptn.events.evaluation-done` event lists the evaluations that were taken for comparison [#42](https://github.com/keptn/spec/issues/42)
 
 ## New Features
 
@@ -60,7 +60,7 @@ Implemented **Keptn spec** version: [0.1.6](https://github.com/keptn/spec/tree/0
 
 - Increased password and token entropy [#2295](https://github.com/keptn/keptn/issues/2295)
 
-- *configuration-service*: 
+- *configuration-service*:
   - Ensure availability of master branch in Git repo [#2487](https://github.com/keptn/keptn/issues/2487)
   - Allow non-HTTPS connections to Git-upstream [#2336](https://github.com/keptn/keptn/issues/2336)
 

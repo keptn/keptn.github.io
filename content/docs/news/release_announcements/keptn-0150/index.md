@@ -67,11 +67,10 @@ Implemented **Keptn spec** version: [0.2.4](https://github.com/keptn/spec/tree/0
 * **webhook-service:** Implement `v1beta1` webhook config version ([#7329](https://github.com/keptn/keptn/issues/7329)) ([56c082f](https://github.com/keptn/keptn/commit/56c082fa971eda89b4bc826b4d014e4aa5c049f0))
 * **webhook-service:** Introduce `keptn-webhook-config` ConfigMap with denyList ([#7548](https://github.com/keptn/keptn/issues/7548)) ([b392dc0](https://github.com/keptn/keptn/commit/b392dc025a893d69e87dd7ccf209d5ffe93fbb92))
 
-
 ### Bug Fixes
 
 * Better error message for jmeter-service ([#7377](https://github.com/keptn/keptn/issues/7377)) ([f689877](https://github.com/keptn/keptn/commit/f68987703d3ab7b3a9a6e821f800cf631e9d0826))
-*  Resource-service clean-up  ([#7427](https://github.com/keptn/keptn/issues/7427)) ([0e75970](https://github.com/keptn/keptn/commit/0e7597043d35c0f0f9d11f6179a8dec732b1a026))
+* Resource-service clean-up  ([#7427](https://github.com/keptn/keptn/issues/7427)) ([0e75970](https://github.com/keptn/keptn/commit/0e7597043d35c0f0f9d11f6179a8dec732b1a026))
 * Add support for ingress class name ([#7324](https://github.com/keptn/keptn/issues/7324)) ([2fe45a8](https://github.com/keptn/keptn/commit/2fe45a872e6247a1703bd270ac503c0f763350dd))
 * Added default user string ([#7430](https://github.com/keptn/keptn/issues/7430)) ([3b8f1ca](https://github.com/keptn/keptn/commit/3b8f1caed9dcdb49e40007cf9fc604bb76ce1ce7))
 * Added missing UpdateProject parameters ([#7362](https://github.com/keptn/keptn/issues/7362)) ([ae5b81c](https://github.com/keptn/keptn/commit/ae5b81c82e55de2f4c92493ac0ab068b10ea1ce1))
@@ -104,11 +103,9 @@ Implemented **Keptn spec** version: [0.2.4](https://github.com/keptn/spec/tree/0
 * **shipyard-controller:** Proceed with service deletion if the service is not present on the configuration service anymore ([#7461](https://github.com/keptn/keptn/issues/7461)) ([6ee9f48](https://github.com/keptn/keptn/commit/6ee9f4851ba498d8948e60d006bd7e6459802154))
 * URL-provisioning test should wait for pod restart ([#7411](https://github.com/keptn/keptn/issues/7411)) ([966a549](https://github.com/keptn/keptn/commit/966a549600d6c8a4f0f50ddca5e515014d3d4b00))
 
-
 ### Refactoring
 
 * **bridge:** Move static server pages to angular client ([#7369](https://github.com/keptn/keptn/issues/7369)) ([0ff21f3](https://github.com/keptn/keptn/commit/0ff21f3a335379f32afa3b6bc715e574f3ec886d))
-
 
 ### Other
 
@@ -117,7 +114,6 @@ Implemented **Keptn spec** version: [0.2.4](https://github.com/keptn/spec/tree/0
 * **installer:** Upgrade MongoDB to v11 ([#7444](https://github.com/keptn/keptn/issues/7444)) ([9346d41](https://github.com/keptn/keptn/commit/9346d41f851300bf308fcc8fe1112ee875924506))
 * Make filter a mandatory field in mongo datastore get event by type ([#7355](https://github.com/keptn/keptn/issues/7355)) ([117f904](https://github.com/keptn/keptn/commit/117f904ccb1d270e9cc093b5a346b30803c0892c))
 * Updated go-utils to version removing gitcommit from finished events ([#7320](https://github.com/keptn/keptn/issues/7320)) ([c241059](https://github.com/keptn/keptn/commit/c24105911e36b1c9695b5b424ab66740db586bc9))
-
 
 ### Docs
 

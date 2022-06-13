@@ -22,14 +22,14 @@ Specify a list of events to `triggeredOn`,
 using event types that refer to the status of a sequence execution.
 Their name follows the pattern:
 
-* `[stage_name].[sequence_name].finished` 
+* `[stage_name].[sequence_name].finished`
 
 **Note:** It is not necessary to specify the full qualified event name
 which, in this case, would be `sh.keptn.event.[stage_name].[sequence_name].finished`.
 
 A *match selector* can be added to an event to work as a filter on the `result` property of the event.
 This enables you to filter based on sequence executions that *failed* or *passed*
-as shown in the next example that filters on `failed`: 
+as shown in the next example that filters on `failed`:
 
 ```
 sequences:
@@ -65,7 +65,7 @@ spec:
 ```
 
 **Use-case:** Add a process (additional sequence)
-that covers a failed delivery in the production stage with a notification and rollback task. 
+that covers a failed delivery in the production stage with a notification and rollback task.
 
 *Updated shipyard:*
 

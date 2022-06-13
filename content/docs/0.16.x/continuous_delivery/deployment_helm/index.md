@@ -20,7 +20,7 @@ If the deployment strategy of a stage in the [shipyard](https://github.com/keptn
  release called `sockshop-dev-carts` as `carts` in namespace `sockshop-dev`.
 
 ```console
-$ kubectl get deployments -n sockshop-dev carts -owide
+kubectl get deployments -n sockshop-dev carts -owide
 ```
 
 ```
@@ -40,7 +40,7 @@ If the deployment strategy of a stage in the [shipyard](https://github.com/keptn
  following command:
 
 ```console
-$ kubectl get deployments -n sockshop-staging carts carts-primary -owide
+kubectl get deployments -n sockshop-staging carts carts-primary -owide
 ```
 
 ```
@@ -48,7 +48,6 @@ NAME            READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS   IMAGES      
 carts-primary   1/1     1            1           56m   carts        docker.io/keptnexamples/carts:0.13.1   app=carts-primary
 carts           0/0     0            0            3m   carts        docker.io/keptnexamples/carts:0.13.2   app=carts
 ```
-
 
 When triggering a delivery (with a new artifact, e.g., 0.13.2), a canary deployment will be modified and scaled up.
 
@@ -114,20 +113,25 @@ spec:
 Assuming that your project's shipyard file contains a stage with `deploymentstrategy: user_managed`, you need to:
 
 1. Create a service in your stage:
+
 ```
 keptn create service <service-name> --project <project-name>
 ```
 
 2. Add your desired Helm Chart to each stage:
+
 ```
 keptn add-resource --project=<project-name> --service=<service-name> --all-stages --resource=<your-helm-chart.tgz> --resourceUri=helm/<service-name>.tgz
 ```
 
 3. Upload a file called `endpoints.yaml` where you define the host name under which your deployed service will be available:
+
   ```
   keptn add-resource --project=<project-name> --service=<service-name> --all-stages --resource=<path_to_endpoints.yaml> --resourceUri=helm/endpoints.yaml
   ```
+
   **Note**: This step is required, if you need the `data.deployment.deploymentURIsPublic` and/or `data.deployment.deploymentURIsLocal` property of the `deployment.finished` event sent by the helm-service. This is the case, e.g., when the `jmeter-service`, which performs the `test` task needs to determine the URL for the service to be tested. The `endpoints.yaml` file has the following structure:
+
   ```yaml
   deploymentURIsLocal:
     - "<my-local-url>" # e.g. http://my-service.sockshop-dev:8080
@@ -136,9 +140,11 @@ keptn add-resource --project=<project-name> --service=<service-name> --all-stage
   ```
 
 4. Send an event to trigger the delivery of your service:
+
 ```
 keptn send event --file=./delivery.json
 ```
+
 where the content of `delivery.json` looks something like:
 
 ```

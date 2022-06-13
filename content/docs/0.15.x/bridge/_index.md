@@ -51,15 +51,15 @@ The Keptn Bridge provides an easy way to browse all events that are sent within 
         width="50%">}}
 
 * To customize the chart, labels can be used. If the `sh.keptn.event.evaluation.triggered` event has the label `buildId` attached, the Keptn Bridge reads the value
-  of this label and uses it as label for the x-axis in the *Chart*. If the value of the label is an URL, the label will be displayed as a link, 
-  so you can easily link back to the Dynatrace Dashboard for example. 
+  of this label and uses it as label for the x-axis in the *Chart*. If the value of the label is an URL, the label will be displayed as a link,
+  so you can easily link back to the Dynatrace Dashboard for example.
 
     {{< popup_image
         link="./assets/buildId.png"
         caption="Use `buildId` as label"
         width="50%">}}
   
-* If you are using relative SLO values that are based on past evaluations *Ignore for comparison* could come in handy. With this you can exclude an evaluation when 
+* If you are using relative SLO values that are based on past evaluations *Ignore for comparison* could come in handy. With this you can exclude an evaluation when
   determining the relative values. To do so click on the desired evaluation in the heatmap and click the button *Ignore for comparison*. The evaluation is then
   removed from the heatmap and the evaluation calculation.
 
@@ -79,7 +79,7 @@ The Keptn Bridge provides an easy way to browse all events that are sent within 
         link="./assets/services-view-payload.png"
         caption="Event Payload"
         width="50%">}}
-        
+
 * If you configured some remediations and one of them is currently running, the affected service, deployment and stage is indicated. You can also see, which type of remediation is
   being executed and view its configuration and sequence execution.
 
@@ -95,8 +95,8 @@ The Keptn Bridge provides an easy way to browse all events that are sent within 
 
 ### Evaluation board
 
-* Next to the evaluation comparison as a heatmap or chart in the *Services* view, we provide a link to the *Evaluation Board*, which displays only 
-  the evaluation comparison on this stage. 
+* Next to the evaluation comparison as a heatmap or chart in the *Services* view, we provide a link to the *Evaluation Board*, which displays only
+  the evaluation comparison on this stage.
   
     {{< popup_image
     link="./assets/bridge_evaluationboard.png"
@@ -116,8 +116,9 @@ The Keptn Bridge provides an easy way to browse all events that are sent within 
   
 ### Uniform view
 
-The uniform view gives you an overview over all integrations installed within your Keptn installation. 
+The uniform view gives you an overview over all integrations installed within your Keptn installation.
 The data is fetched from your Kubernetes cluster and shows useful information like
+
 * Unread/New error events
 * Deployment version of the service
 * The cluster or host where it is running
@@ -125,20 +126,20 @@ The data is fetched from your Kubernetes cluster and shows useful information li
 * The location within Keptn
 * The Cloud Events the services are subscribed to
 
-
 {{< popup_image
 link="./assets/uniform-view.png"
 caption="Keptn Bridge Uniform View">}}
 
 You can view the related subscriptions, events on error level, and sequence failures by selecting an integration. It is also possible to directly configure the subscriptions to listen to specific events.
 If there are new error events since the last time the integration was viewed, a red indicator shows up for this integration. When a sequence in this particular scope failed, then there is
-a link provided that takes you directly to the failed task in the sequence. 'n/a' in this regard means that the error is not related to any sequence execution. 
+a link provided that takes you directly to the failed task in the sequence. 'n/a' in this regard means that the error is not related to any sequence execution.
 
 {{< popup_image
 link="./assets/uniform-view-logs.png"
 caption="Integrated Service Error Events">}}
 
 #### Create/Edit subscriptions view
+
 By clicking on the edit icon next to the subscription detail or the "*Add sequence*"-button, you are redirected to the subscription view. In this view, you can configure the task, stage and service for the subscription. The values used for the configuration are defined in the shipyard file. It is also possible to define whether the subscription is active for all projects or just the currently selected one.
 
 {{< popup_image
@@ -150,7 +151,6 @@ Once you have selected an event and configured your filters, you may inspect an 
 {{< popup_image
 link="./assets/uniform-view-show-payload.png"
 caption="Show example payload">}}
-
 
 #### Secrets view
 
@@ -172,31 +172,32 @@ link="./assets/secrets-view-create-secret.png"
 caption="Create Secret View">}}
   
 ### Integrations
-You can find links to for different integration possibilities here. This makes it easier to start using Keptn. Integrate either with Keptn CLI / API or use our custom 
+
+You can find links to for different integration possibilities here. This makes it easier to start using Keptn. Integrate either with Keptn CLI / API or use our custom
 integrations for different CI providers.
 
-Please note that the page contains dynamic content that is loaded from https://get.keptn.sh/integrations.html. By clicking the button the data is requested,
+Please note that the page contains dynamic content that is loaded from <https://get.keptn.sh/integrations.html>. By clicking the button the data is requested,
 and additional data is gathered from the client. For more information about this see [Load Information](./load_information/).
 
 ### Settings
 
 #### Project settings
-In the settings view the project settings can be edited. 
+
+In the settings view the project settings can be edited.
 To get more information about how to manage your projects with the settings, visit [Manage Projects](./manage_projects).
 
 {{< popup_image
 link="./assets/project-settings.png"
 caption="Keptn Bridge Project Settings View">}}
 
-
 #### Service settings
+
 In this view, services can be created, updated and deleted.
 To get more information about how services can be managed in your settings, visit [Manage Services](./manage_services).
 
 {{< popup_image
 link="./assets/service-settings.png"
 caption="Keptn Bridge Service Settings View">}}
-
 
 ## Keptn Bridge features
 
@@ -212,7 +213,7 @@ Examining the stage allows to directly approve or decline the sequence in the st
 link="./assets/approval-environment.png"
 caption="Approval in Environments">}}
 
-In the services view, a pending approval can be recognized by the blue border of the stage. By examining the stage, approval can also be directly triggered there. 
+In the services view, a pending approval can be recognized by the blue border of the stage. By examining the stage, approval can also be directly triggered there.
 
 {{< popup_image
 link="./assets/approval-service.png"

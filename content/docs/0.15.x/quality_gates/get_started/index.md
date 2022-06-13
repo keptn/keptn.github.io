@@ -7,13 +7,13 @@ keywords: [0.15.x-quality_gates]
 
 In this section, you will get an overview of the use-case and learn how to get started setting up a quality gate for your project.
 
-:information_source: If you are not familiar with the concept of a quality gate, learn more [here](../../../concepts/quality_gates). 
+:information_source: If you are not familiar with the concept of a quality gate, learn more [here](../../../concepts/quality_gates).
 
 **Quality gate result**
 
 :bulb: *A quality gate answers one question: Does my service meet all defined quality criteria?*
 
-Keptn quality gates help you answer this question by representing a quality gate results like this: 
+Keptn quality gates help you answer this question by representing a quality gate results like this:
 
 <!--TODO: Change image and add annotations [1] ... [5] -->
 
@@ -24,17 +24,17 @@ Keptn quality gates help you answer this question by representing a quality gate
 
 This visualization in the Keptn Bridge allows you to answer the following questions:
 
-* First and most important, *does the service meet all defined quality criteria*? 
+* First and most important, *does the service meet all defined quality criteria*?
   * :one: Here, the overall result is a *warning* as shown by the orange bar and with the total score between 50 (fail) and 90 (pass) points.
 * Which criteria did not meet its objective?
   * :two: The *response time P95* was measured with 1048 ms. This value is higher than the pass criteria set at 600 ms.
-* What does the <=10% mean? 
+* What does the <=10% mean?
   * :three: This is a relative comparison for which the quality gate result of a previous evaluation is taken into account. In fact, the last passed comparison is taken as a reference value.
-* How did this quality result perform compared to others? 
+* How did this quality result perform compared to others?
   * :four: The answer to this question can be found in the Heatmap and Chart on the top.
-  * The Heatmap highlights the currently selected quality gate result with a gray and solid border. The quality gate result that is taken into comparison is highlighted by the dashed border. 
+  * The Heatmap highlights the currently selected quality gate result with a gray and solid border. The quality gate result that is taken into comparison is highlighted by the dashed border.
   * :five: The total score of a quality gate result is depicted by the cell on the top.
-  * The individual criteria are represented by a separate cell in the column. 
+  * The individual criteria are represented by a separate cell in the column.
 
 The rest of this section assumes you have Keptn [installed](../../operate/install/) on your cluster, your Keptn CLI is [authenticated](../../operate/install/#authenticate-keptn-cli), and you have a deployed application that is monitored by your favorite monitoring solution.
 
@@ -65,7 +65,7 @@ spec:
 <details><summary>*Why I do not need to specify a task sequence for quality gates in this stage?*</summary>
 <p>
 
-You do not have to define any task sequence in a stage because quality gates (aka. `evaluation`) are a built-in Keptn capability. Hence, there is no need to explicitly add an `evaluation` sequence. However, the explicit form of the above Shipyard file would look as the following one, which behaves the same way: 
+You do not have to define any task sequence in a stage because quality gates (aka. `evaluation`) are a built-in Keptn capability. Hence, there is no need to explicitly add an `evaluation` sequence. However, the explicit form of the above Shipyard file would look as the following one, which behaves the same way:
 
 ```yaml
 apiVersion: "spec.keptn.sh/0.2.3"
@@ -90,7 +90,7 @@ spec:
 
 * To create the Keptn service `booking`, use the [keptn create service](../../reference/cli/commands/keptn_create_service/) command.
 
-**Note:** It is not needed to create the stage since it is declared in the Shipyard that is applied during the project creation. 
+**Note:** It is not needed to create the stage since it is declared in the Shipyard that is applied during the project creation.
 
 ## Step 1: Create project and service
 
@@ -125,4 +125,3 @@ At this point, you have:
 To trigger a quality gate evaluation, execute the [keptn trigger evaluation](../../reference/cli/commands/keptn_trigger_evaluation/) CLI command. This CLI command sends an event to Keptn, which acknowledges receipt of the event by returning a unique ID (`keptn-context`). This unique ID is required to fetch the result of the quality gate evaluation.
 
 :information_source: Learn [here](../integration/) more about working with a quality gate and integrating it into an existing pipeline.
-

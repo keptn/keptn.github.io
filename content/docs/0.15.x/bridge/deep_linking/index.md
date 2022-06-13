@@ -5,7 +5,7 @@ weight: 30
 keywords: [0.15.x-bridge]
 ---
 
-For integration of the Keptn Bridge into DevOps tools, a list of deep links is provided. 
+For integration of the Keptn Bridge into DevOps tools, a list of deep links is provided.
 
 ## Links to project and events
 

@@ -58,23 +58,26 @@ openshift-route-service-57b45c4dfc-4x5lm                          2/2     Runnin
 </p></details>
 
 ## MongoDB on OpenShift 4 fails
+
 <details><summary>Expand instructions</summary>
 <p>
 
-**Reason:** 
+**Reason:**
 
 The root cause of this issue is that the MongoDB (as deployed by the default Keptn installation) tries to set `mongodb` as the owner for the files in `/var/lib/mongodb/data`. However, this is not allowed for some Persistent Volumes (PVs) with the assigned rights.
 
-**Solution:** 
+**Solution:**
 
-Please execute the following command to change the image of the `mongodb` deployment to run `mongodb` as root: 
+Please execute the following command to change the image of the `mongodb` deployment to run `mongodb` as root:
 
 ```console
 kubectl set image deployment/mongodb mongodb=keptn/mongodb-privileged:latest -n keptn
 ```
+
 </p></details>
 
 ## Installation on Azure aborts
+
 <details><summary>Expand instructions</summary>
 <p>
 
@@ -86,16 +89,15 @@ The Keptn installation is aborting with the following error:
 Cannot obtain the cluster/pod IP CIDR
 ```
 
-**Reason:** 
+**Reason:**
 
-The root cause of this issue is that `kubenet` is not used in your AKS cluster. However, it is needed to retrieve the `podCidr` according to the official docs: https://docs.microsoft.com/en-us/rest/api/aks/managedclusters/createorupdate#containerservicenetworkprofile 
+The root cause of this issue is that `kubenet` is not used in your AKS cluster. However, it is needed to retrieve the `podCidr` according to the official docs: <https://docs.microsoft.com/en-us/rest/api/aks/managedclusters/createorupdate#containerservicenetworkprofile>
 
-**Solution:** 
+**Solution:**
 
-Please select the **Kubenet network plugin (basic)** when setting up your AKS cluster, instead of *Azure network plugin (advanced)* and retry the installation. You can find more information here: https://docs.microsoft.com/en-us/azure/aks/configure-kubenet 
+Please select the **Kubenet network plugin (basic)** when setting up your AKS cluster, instead of *Azure network plugin (advanced)* and retry the installation. You can find more information here: <https://docs.microsoft.com/en-us/azure/aks/configure-kubenet>
 
 </p></details>
-
 
 ## Broken Keptn project
 
@@ -104,7 +106,7 @@ When creating a project failed, this can cause a problematic state that manifest
 <details><summary>Expand instructions</summary>
 <p>
 
-**Situation**: Executing [keptn create project](../reference/cli/commands/keptn_create_project) failed with following error message: 
+**Situation**: Executing [keptn create project](../reference/cli/commands/keptn_create_project) failed with following error message:
 
 ```console
 Starting to create project   
@@ -112,28 +114,29 @@ ID of Keptn context: 9d1a30cd-e00b-4354-a308-03e50368bc40
 Creating project sockshop failed. Could not commit changes.
 ```
 
-**Problem**: The Keptn Bridge does not show any project even though other projects were already displayed. 
+**Problem**: The Keptn Bridge does not show any project even though other projects were already displayed.
 
-**Solution**: 
+**Solution**:
 
-* Try to execute the command [keptn delete project](../reference/cli/commands/keptn_delete_project):
+- Try to execute the command [keptn delete project](../reference/cli/commands/keptn_delete_project):
 
-* If the command did not work, manually delete the faulty project in the `configuration-service` pod.
+- If the command did not work, manually delete the faulty project in the `configuration-service` pod.
 
-    1. Connect to the pod of `configuration-service`: 
+    1. Connect to the pod of `configuration-service`:
+
     ```console
     kubectl -n keptn exec -it svc/configuration-service sh`
     ```
 
     1. In the pod, go to: `/data/config/`
 
-    1. Delete the directory with the name of the faulty project: 
+    1. Delete the directory with the name of the faulty project:
+
     ```console
     rm -rf projectXYZ 
     ```
 
 </p></details>
-
 
 ## Error: UPGRADE FAILED: timed out waiting for the condition
 
@@ -150,9 +153,9 @@ The Helm upgrade runs into a time-out when deploying a new artifact of your serv
 keptn trigger delivery
 ```
 
-**Reason:** 
+**Reason:**
 
-In this case, Helm creates a new Kubernetes Deployment with the new artifact, but Kubernetes fails to start the pod. 
+In this case, Helm creates a new Kubernetes Deployment with the new artifact, but Kubernetes fails to start the pod.
 Unfortunately, there is no way to catch this error by Helm (right now). A good way to detect the error is to look at the Kubernetes events captured by the cluster:
 
 ```console
@@ -163,25 +166,25 @@ where `sockshop-dev` is the project and stage that you are trying to deploy to.
 
 *Note*: This error can also occur at a later stage (e.g., when using blue-green deployments).
 
-**Solution:** 
+**Solution:**
 
 Increase the number of vCPUs and/or memory, or add another Kubernetes worker node.
 
 </p></details>
 
-
 ## Helm upgrade runs into a time-out on EKS
 
-Same as the error above, but this issue occurs sometimes using a _single_ worker node on EKS.
+Same as the error above, but this issue occurs sometimes using a *single* worker node on EKS.
 
-**Solution:** 
+**Solution:**
 
 Increase the number of worker nodes. For example, you can therefore use the `eksctl` CLI:
-https://eksctl.io/usage/managing-nodegroups/
+<https://eksctl.io/usage/managing-nodegroups/>
 
 ## Deployment failed: no matches for kind "DestinationRule" in version "networking.istio.io/v1alpha3"
 
 This error can appear after triggering a delivery (e.g., `keptn trigger delivery --project=sockshop --service=carts-db ...`):
+
 ```
 Error when installing/upgrading chart sockshop-dev-carts-db-generated in namespace sockshop-dev: 
 unable to build kubernetes objects from release manifest: [unable to recognize "": no matches for kind "DestinationRule" in version "networking.istio.io/v1alpha3", unable to recognize "": no matches for kind "VirtualService" in version "networking.istio.io/v1alpha3"]
@@ -205,13 +208,12 @@ Install Istio as described in the [Continuous Delivery section](../continuous_de
 
 </p></details>
 
-
 ## Verify Kubernetes Context with Keptn Installation
 
 If you are performing critical operations, such as installing new Keptn services or upgrading something, please verify
 that you are connected to the correct cluster.
 
-* Execute `keptn status` to get the Keptn endpoint: 
+- Execute `keptn status` to get the Keptn endpoint:
 
 ```console
 keptn status
@@ -269,7 +271,7 @@ Resource has been uploaded.
 
 ## Keptn on Minikube causes a MongoDB issue after a reboot
 
-When rebooting the machine Minikube is installed on, the MongoDB pod in the `keptn` namespace runs in a `CrashLoopBackoff`. 
+When rebooting the machine Minikube is installed on, the MongoDB pod in the `keptn` namespace runs in a `CrashLoopBackoff`.
 
 <details><summary>Expand instructions</summary>
 <p>
@@ -278,7 +280,7 @@ When rebooting the machine Minikube is installed on, the MongoDB pod in the `kep
 
 **Investigation:**
 
-* To verify the problem, investigate the logs of the mongodb pod:
+- To verify the problem, investigate the logs of the mongodb pod:
 
 ```console
 kubectl logs -n keptn mongodb-578b4d8bcd-dhgb8
@@ -296,13 +298,13 @@ stat: failed to get security context of '/var/lib/mongodb/data': No data availab
 DETAILS: directory permissions: drwxr-xr-x owned by 0:0, SELinux: ?
 ```
 
-**Reason:** 
+**Reason:**
 
-The problem is a permission issue on the `/var/lib/mongodb/data` folder. See [kubernetes/minikube#1184](https://github.com/kubernetes/minikube/issues/1184) and Minikube 'none' driver: https://minikube.sigs.k8s.io/docs/reference/drivers/none/ which lay out complexity for persistence.
+The problem is a permission issue on the `/var/lib/mongodb/data` folder. See [kubernetes/minikube#1184](https://github.com/kubernetes/minikube/issues/1184) and Minikube 'none' driver: <https://minikube.sigs.k8s.io/docs/reference/drivers/none/> which lay out complexity for persistence.
 
-**Solution:** 
+**Solution:**
 
-A workaround for this issue is to add an `initContainer` to the mongodb deployment as shown below. This container will be executed before the actual mongodb container and sets the right permissions on the `/var/lib/mongodb/data` folder. 
+A workaround for this issue is to add an `initContainer` to the mongodb deployment as shown below. This container will be executed before the actual mongodb container and sets the right permissions on the `/var/lib/mongodb/data` folder.
 
 ```yaml
 initContainers:
@@ -316,10 +318,10 @@ initContainers:
 
 </p></details>
 
-
 ## Fully Qualified Domain Names cannot be reached from within the cluster
 
 Depending on your Kubernetes cluster configuration, certain hostnames cannot be reached from within the Kubernetes cluster. This is usually visible via an error message that looks as follows:
+
 ```
 Failed to send cloudevent:, Post http://event-broker.keptn.svc.cluster.local/keptn: dial tcp: lookup event-broker.keptn.svc.cluster.local: Try again
 ```
@@ -334,7 +336,6 @@ The problem can appear in virtually any service and scenario:
 
 <details><summary>Expand instructions</summary>
 <p>
-
 
 **Problem**: Trying to access certain hostnames does not work within the cluster.
 
@@ -351,34 +352,39 @@ kubectl run -i --restart=Never --rm test-${RANDOM} --image=alpine:3.11 -- sh -c 
 ```
 
 If in any of the above instances you get a "bad address", then you are most likely affected, e.g.:
+
 ```
 wget: bad address 'kubernetes.default.svc.cluster.local'
 ```
 
 If it prints a download bar, the content of the requested URL or an HTTP 400 error (or similar), the connection works, e.g.:
+
 ```
 Connecting to kubernetes.default.svc.cluster.local (10.0.80.1:443)
 saving to 'v1'
 v1                   100% |********************************| 10337  0:00:00 ETA
 ```
 
-The problem behind this is usually a misconfiguration for the nameserver or the local `/etc/resolv.conf` configuration (e.g., searchdomains). 
+The problem behind this is usually a misconfiguration for the nameserver or the local `/etc/resolv.conf` configuration (e.g., searchdomains).
 
 More details can be found at [GitHub Kubernetes Issue #64924](https://github.com/kubernetes/kubernetes/issues/64924).
 
-**Solutions**: 
+**Solutions**:
 
-* Verify your clusters nameserver configuration is working as expected, especially the searchdomains. Easiest way to verify is to look at the output of
+- Verify your clusters nameserver configuration is working as expected, especially the searchdomains. Easiest way to verify is to look at the output of
+
    ```console
    nslookup keptn.sh
    ```
+
    on your physical machine as well as within your Kubernetes cluster:
+
    ```console
    kubectl run -i --restart=Never --rm test-${RANDOM} --image=alpine:3.11 -- sh -c "nslookup keptn.sh" 
    ```
-   * If a nameserver returns `NXDOMAIN` or `Non-authoritative answer`, everything is fine. 
-   * If at any point a nameserver returns an `ERRFAIL`, `SERVFAIL` or similar, update the hosts `/etc/resolv.conf` file (together with your administrator) and try again.
-   
-* Overwrite the DNS config `ndots` to `ndots:1` [in all deployment manifests](https://pracucci.com/kubernetes-dns-resolution-ndots-options-and-why-it-may-affect-application-performances.html).
+  - If a nameserver returns `NXDOMAIN` or `Non-authoritative answer`, everything is fine.
+  - If at any point a nameserver returns an `ERRFAIL`, `SERVFAIL` or similar, update the hosts `/etc/resolv.conf` file (together with your administrator) and try again.
+
+- Overwrite the DNS config `ndots` to `ndots:1` [in all deployment manifests](https://pracucci.com/kubernetes-dns-resolution-ndots-options-and-why-it-may-affect-application-performances.html).
 
 </p></details>

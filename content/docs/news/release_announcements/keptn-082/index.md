@@ -9,11 +9,11 @@ Keptn 0.8.2 is a hardening release and incorporates changes that are required to
 
 **Key announcements:**
 
-:cocktail: *Keptn drinks its own champagne*: Each merge on the *master* (aka. main) branch of the keptn/keptn repository triggers a Keptn to deploy this new version into a development environment. This helps the Keptn project to have the latest and greatest version of Keptn running and to do feature presentations using this deployment. 
+:cocktail: *Keptn drinks its own champagne*: Each merge on the *master* (aka. main) branch of the keptn/keptn repository triggers a Keptn to deploy this new version into a development environment. This helps the Keptn project to have the latest and greatest version of Keptn running and to do feature presentations using this deployment.
 
 > A GitHub action has been implemented that allows sending a Keptn event to a Keptn installation: [gh-action-send-event](https://github.com/keptn/gh-action-send-event). Don't wait to integrate it into your CI on GitHub today!
 
-:hammer: *Hardening of Keptn*: Containers of Keptn core services are not running as root users and a security context has been defined. *Please note*: Defining the security context for NATS is not possible yet, since we are waiting for a new release containing the PR: https://github.com/nats-io/k8s/pull/222.  
+:hammer: *Hardening of Keptn*: Containers of Keptn core services are not running as root users and a security context has been defined. *Please note*: Defining the security context for NATS is not possible yet, since we are waiting for a new release containing the PR: <https://github.com/nats-io/k8s/pull/222>.  
 
 :star: *Service/Sequence screen enhancements*: Instead of listing all sequences that were executed on a service, the *Service* screen now displays the deployments of a service that are currently running in the different stages. Besides, the *Sequence* screen improved in displaying sequences that are executed sequentially in the same stage.
 
@@ -21,8 +21,8 @@ Keptn 0.8.2 is a hardening release and incorporates changes that are required to
 
 ---
 
-Many thanks to the community for the enhancements on this release! 
- 
+Many thanks to the community for the enhancements on this release!
+
 ## Keptn Specification
 
 Implemented **Keptn spec** version: [0.2.1](https://github.com/keptn/spec/tree/0.2.1)
@@ -112,12 +112,12 @@ Implemented **Keptn spec** version: [0.2.1](https://github.com/keptn/spec/tree/0
 <p>
 
   <!--TODO: final check-->
-  - Auto-remediation does not work with remote execution plane [3498](https://github.com/keptn/keptn/issues/3498)
-  - Bridge shows "started" wording on status.changed [3583](https://github.com/keptn/keptn/issues/3583)
-  - Inconsistent usage of user-managed and user_managed causing issues [3624](https://github.com/keptn/keptn/issues/3624)
-  - Keptn API: `configure monitoring` not functioning according to spec [3638](https://github.com/keptn/keptn/issues/3638)
-  - Keptn CLI: Disable Kube context check [3666](https://github.com/keptn/keptn/issues/3666)
-  - Homebrew installed CLI fails install with 'Malformed constraint: ""' [3805](https://github.com/keptn/keptn/issues/3805)
+- Auto-remediation does not work with remote execution plane [3498](https://github.com/keptn/keptn/issues/3498)
+- Bridge shows "started" wording on status.changed [3583](https://github.com/keptn/keptn/issues/3583)
+- Inconsistent usage of user-managed and user_managed causing issues [3624](https://github.com/keptn/keptn/issues/3624)
+- Keptn API: `configure monitoring` not functioning according to spec [3638](https://github.com/keptn/keptn/issues/3638)
+- Keptn CLI: Disable Kube context check [3666](https://github.com/keptn/keptn/issues/3666)
+- Homebrew installed CLI fails install with 'Malformed constraint: ""' [3805](https://github.com/keptn/keptn/issues/3805)
 
 </p>
 </details>

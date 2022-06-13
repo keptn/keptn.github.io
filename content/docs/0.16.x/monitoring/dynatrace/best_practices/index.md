@@ -7,7 +7,7 @@ icon: setup
 
 ## Set DT_CUSTOM_PROP before onboarding a service
 
-The created tagging rules in Dynatrace expect the environment variable `DT_CUSTOM_PROP` for your onboarded service. Consequently, make sure to specify the environment variable for deployment in the Helm chart of the service you are going to onboard with the following value: 
+The created tagging rules in Dynatrace expect the environment variable `DT_CUSTOM_PROP` for your onboarded service. Consequently, make sure to specify the environment variable for deployment in the Helm chart of the service you are going to onboard with the following value:
 
 ```yaml
 env:
@@ -21,13 +21,13 @@ You can specify [Kubernetes labels](https://kubernetes.io/docs/concepts/overview
 
 * Please follow the official Dynatrace documentation to [grant viewer role to service accounts](https://www.dynatrace.com/support/help/shortlink/kubernetes-tagging#grant-viewer-role-to-service-accounts).
 
-* If you want to automatically detect the Kubernetes labels for Keptn, grant the viewer role to the `keptn-default` service account: 
+* If you want to automatically detect the Kubernetes labels for Keptn, grant the viewer role to the `keptn-default` service account:
 
 ```console
 kubectl -n keptn create rolebinding default-view --clusterrole=view --serviceaccount=keptn:keptn-default
 ```
 
-As a result, Dynatrace adds the recommended Kubernetes labels to the processes, e.g.: 
+As a result, Dynatrace adds the recommended Kubernetes labels to the processes, e.g.:
 
 {{< popup_image
     link="./assets/k8s_labels.png"
@@ -48,7 +48,7 @@ When using Keptn for automating operations, e.g., to trigger remediation actions
 While it is not a technical requirement, we encourage you to set up a process group naming rule within Dynatrace for better visibility of services, e.g.:
 
 Screenshot shows the applied rules in action
-{{< popup_image 
+{{< popup_image
 link="./assets/pg_example.png"
 caption="Dynatrace naming rule in action"
 width="800px">}}

@@ -5,7 +5,7 @@ weight: 1
 keywords: [keptn, use-cases]
 ---
 
-> Today, many organizations build their continuous delivery workflows by hand and in an imperative way. This can lead to a lot of manual work when a scripted delivery pipeline - with slight modifications - is spread across the organization and re-used by different teams. Just imagine the difficulty to keep all variations of this pipeline up-to-date and to consider future changes in the delivery workflow of a new artifact. 
+> Today, many organizations build their continuous delivery workflows by hand and in an imperative way. This can lead to a lot of manual work when a scripted delivery pipeline - with slight modifications - is spread across the organization and re-used by different teams. Just imagine the difficulty to keep all variations of this pipeline up-to-date and to consider future changes in the delivery workflow of a new artifact.
 
 Keptn allows to declaratively define *multi-stage delivery* workflows by defining *what* needs to be done. *How* to achieve this delivery workflow is then left to other components and also here Keptn provides deployment services, which allow you to setup a multi-stage delivery workflow without a single line of pipeline code.
 

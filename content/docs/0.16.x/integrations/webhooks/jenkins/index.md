@@ -39,8 +39,6 @@ To secure the sensitive data of your Jenkins webhook URL, a secret needs to be c
   caption="Create a secret for storing the Jenkins authentication token"
   width="700px">}}
 
-
-
 ## Set up Jenkins integration via Webhook
 
 To create a webhook integration, a subscription needs to be created:
@@ -48,21 +46,19 @@ To create a webhook integration, a subscription needs to be created:
 * Go to **Uniform page** > **Uniform**, select the *webhook-service*, and click the **Add subscription** button.
 
 * For this integration, we would like trigger a Jenkins pipeline when a *test* task in the *dev* and *staging* stage is triggered. Therefore, you need to select:
-    * *Task*: `test`
-    * *Task suffix*: `triggered`
-    * *Filter*: `Stage:dev`, `Stage:staging`
-
+  * *Task*: `test`
+  * *Task suffix*: `triggered`
+  * *Filter*: `Stage:dev`, `Stage:staging`
 
 * Once the above-configured event gets fired, the Jenkins pipeline has to be triggered. Therefore, you need to select/enter:
-    * *Request method*: `GET`
-    * *URL*: The webhook URL from above: `http://jenkins.127.0.0.1.nip.io/jobs/build?token=`
-    * Reference the secret to add the webhook identifier at the end of the URL by clicking on the *key* icon, select the secret `jenkins-secret` and the key `my-pipeline-secret`. This will reference the secret value containing the sensitive data of your webhook URL: `http://jenkins.127.0.0.1.nip.io/jobs/build?token={{.secret.jenkins-secret.my-pipeline-secret}}`
+  * *Request method*: `GET`
+  * *URL*: The webhook URL from above: `http://jenkins.127.0.0.1.nip.io/jobs/build?token=`
+  * Reference the secret to add the webhook identifier at the end of the URL by clicking on the *key* icon, select the secret `jenkins-secret` and the key `my-pipeline-secret`. This will reference the secret value containing the sensitive data of your webhook URL: `http://jenkins.127.0.0.1.nip.io/jobs/build?token={{.secret.jenkins-secret.my-pipeline-secret}}`
 
   {{< popup_image
   link="./assets/jenkins-webhook-subscription.png"
   caption="Create a secret for storing the Jenkins authentication token"
   width="700px">}}
-
 
 * Finally, click **Create subscription** to save and enable the webhook for your Slack integration.
 
@@ -74,7 +70,7 @@ While the previous example just triggers a Jenkins Pipeline, it does not tell Ke
 
 In order to do this, the following steps are needed:
 
-* Change the webhook to use `/buildWithParameters` instead of `/build` 
+* Change the webhook to use `/buildWithParameters` instead of `/build`
 * Append parameters to the webhook URL, e.g., `/buildWithParameters?token={{.secret.jenkins-secret.my-pipeline-secret}}&triggeredid={{.id}}&shkeptncontext={{.shkeptncontext}}&stage={{.data.stage}}`
 * Change the webhook configuration [to not auto-respond with a .finished event](../#configure-active-webhook-on-task-triggered-events) (`sendFinished: false`)
 * Install [keptn-jenkins-library](https://github.com/keptn-sandbox/keptn-jenkins-library/) on your Jenkins Server
@@ -83,6 +79,7 @@ In order to do this, the following steps are needed:
 * Use the keptn-jenkins-library function `sendFinishedEvent` at the end of your pipeline (see example below)
 
 **Modified webhook.yaml**
+
 ```yaml
 apiVersion: webhookconfig.keptn.sh/v1alpha1
 kind: WebhookConfig
@@ -99,6 +96,7 @@ spec:
 ```
 
 **Jenkinsfile**
+
 ```groovy
 @Library('keptn-library@5.0')_
 def keptn = new sh.keptn.Keptn()
@@ -135,8 +133,6 @@ node {
 }
 ```
 
-
 ## Cleanup
 
 To delete a webhook, click on the *trash can* icon next to the subscription. Note that deleting a webhook is permanent and cannot be reversed. Once deleted, Keptn will no longer send requests to the endpoint.
-

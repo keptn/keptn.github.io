@@ -11,21 +11,20 @@ An *action-provider* is an implementation of a [*Keptn-service*](../custom_integ
 
 ## Write your custom Action-provider
 
-Like a Keptn-service, an action-provider has the following characteristics: 
+Like a Keptn-service, an action-provider has the following characteristics:
 
-* has a **subscription** to an event (i.e., `sh.keptn.event.action.triggered`)
-* sends a **started event** to inform Keptn about receiving the event and acting on it
-* processes functionality and can therefore leverage additional tools, e.g., through their REST interface
-* sends a **finished event** to inform Keptn about its execution status and the result 
+- has a **subscription** to an event (i.e., `sh.keptn.event.action.triggered`)
+- sends a **started event** to inform Keptn about receiving the event and acting on it
+- processes functionality and can therefore leverage additional tools, e.g., through their REST interface
+- sends a **finished event** to inform Keptn about its execution status and the result
 
 ### Subscription to Keptn event
 
 An *action-provider* starts working, when receiving a Keptn CloudEvent of type:
 
--  [sh.keptn.event.action.triggered](https://github.com/keptn/spec/blob/0.2.2/cloudevents.md#action-triggered)
+- [sh.keptn.event.action.triggered](https://github.com/keptn/spec/blob/0.2.2/cloudevents.md#action-triggered)
 
-Next to meta-data such as project, stage, or service name, the event contains information about the action to execute. For more details, please see the specification [here](https://github.com/keptn/spec/blob/0.2.2/cloudevents.md#action-triggered) and take a look at the example: 
-
+Next to meta-data such as project, stage, or service name, the event contains information about the action to execute. For more details, please see the specification [here](https://github.com/keptn/spec/blob/0.2.2/cloudevents.md#action-triggered) and take a look at the example:
 
 ```json
 {
@@ -57,9 +56,9 @@ Next to meta-data such as project, stage, or service name, the event contains in
 
 **Distributor:**
 
-* To subscribe your action-provider to the `sh.keptn.event.action.triggered` event, please follow [Subscription to Keptn event](../custom_integration/#subscription-to-a-triggered-event).
+- To subscribe your action-provider to the `sh.keptn.event.action.triggered` event, please follow [Subscription to Keptn event](../custom_integration/#subscription-to-a-triggered-event).
 
-### Functionality 
+### Functionality
 
 After receiving the `sh.keptn.event.action.triggered` event, an action-provider must perform the following tasks:
 
@@ -67,18 +66,18 @@ After receiving the `sh.keptn.event.action.triggered` event, an action-provider 
 
 2. Decide based on the `action` property whether the action is supported. If the action is not supported, no further task is required.
 
-3. **Send a started event:** If the action is supported, send a start event of type: `sh.keptn.event.action.started`. This CloudEvent informs Keptn that a service takes care of executing the action. 
+3. **Send a started event:** If the action is supported, send a start event of type: `sh.keptn.event.action.started`. This CloudEvent informs Keptn that a service takes care of executing the action.
 
-4. Execute the implemented functionality. At this step, the action-provider can make use of another automation tool. 
+4. Execute the implemented functionality. At this step, the action-provider can make use of another automation tool.
 
 5. **Send a finished event:** Send a finished event of type: `sh.keptn.event.action.finished` with the added properties:  
 
-  * Add to the *header* of the event: 
-      * `triggeredid`: The value of this property is the `id` of the `sh.keptn.event.action.triggered` event. 
+- Add to the *header* of the event:
+  - `triggeredid`: The value of this property is the `id` of the `sh.keptn.event.action.triggered` event.
 
-  * Add to the *data block* at least a value for `status` and `result` in `data.action`:
-     * `status`: [succeeded, errored, unknown] - The status of the task execution
-      * `result`: [pass, failed] - The result of a successful task execution 
+- Add to the *data block* at least a value for `status` and `result` in `data.action`:
+  - `status`: [succeeded, errored, unknown] - The status of the task execution
+  - `result`: [pass, failed] - The result of a successful task execution
 
 ```json
 {
@@ -109,9 +108,9 @@ After receiving the `sh.keptn.event.action.triggered` event, an action-provider 
 
 ## Deploy Action-provider with distributor
 
-A default deployment manifest is provided in the keptn-service-template-go template, see: [deploy/service.yaml](https://github.com/keptn-sandbox/keptn-service-template-go/tree/0.14.0/chart). 
+A default deployment manifest is provided in the keptn-service-template-go template, see: [deploy/service.yaml](https://github.com/keptn-sandbox/keptn-service-template-go/tree/0.14.0/chart).
 
-* Change the deployment manifest for your *action-provider* and then apply it to the Kubernetes cluster where Keptn is running:
+- Change the deployment manifest for your *action-provider* and then apply it to the Kubernetes cluster where Keptn is running:
 
 ```console
 kubectl apply -f service.yaml -n keptn

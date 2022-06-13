@@ -20,7 +20,7 @@ width="600px">}}
 
 * **Keptn Execution plane**
   * The execution plane consists of all Keptn-services that are required to process all tasks (like deployment, test, etc.).
-  * The execution plane is the cluster where you deploy your application too and execute certain tasks of a task sequence. 
+  * The execution plane is the cluster where you deploy your application too and execute certain tasks of a task sequence.
   * Minimum [Cluster size](../k8s_support/#cluster-size)
 
 ## Create or bring two (or more) Kubernetes clusters
@@ -51,8 +51,8 @@ The **Control Plane** of Keptn is responsible for orchestrating your processes f
 
 * Before continuing, please retrieve:
 
-    * `KEPTN_ENDPOINT`: Follow the instructions [here](../install/#install-keptn), depending on the option you chose for exposing Keptn.
-    * `KEPTN_API_TOKEN`: Follow the instructions [here](../install/#authenticate-keptn-cli).
+  * `KEPTN_ENDPOINT`: Follow the instructions [here](../install/#install-keptn), depending on the option you chose for exposing Keptn.
+  * `KEPTN_API_TOKEN`: Follow the instructions [here](../install/#authenticate-keptn-cli).
 
 ## Install Keptn Execution plane
 
@@ -60,9 +60,9 @@ In this release of Keptn, the execution plane services for deployment (`helm-ser
 
 Please find the Helm Charts here:
 
-  - `helm-service`: GitHub Release for [0.16.0](https://github.com/keptn/keptn/releases/tag/0.16.0) at **Assets** > `helm-service-0.16.0.tgz`
+* `helm-service`: GitHub Release for [0.16.0](https://github.com/keptn/keptn/releases/tag/0.16.0) at **Assets** > `helm-service-0.16.0.tgz`
 
-  - `jmeter-service`: GitHub Release for [0.16.0](https://github.com/keptn/keptn/releases/tag/0.16.0) at **Assets** > `jmeter-service-0.16.0.tgz`
+* `jmeter-service`: GitHub Release for [0.16.0](https://github.com/keptn/keptn/releases/tag/0.16.0) at **Assets** > `jmeter-service-0.16.0.tgz`
 
 ### How to deploy an execution plane services?
 
@@ -84,13 +84,13 @@ Please find the Helm Charts here:
         token: ""                           # < (5) set Keptn API token
     ```
 
-* Depending on your setup of the multi-cluster environment and the approach you modeled your staging process, one stage can be for example on a separate cluster. Let's assume the following setup: 
+* Depending on your setup of the multi-cluster environment and the approach you modeled your staging process, one stage can be for example on a separate cluster. Let's assume the following setup:
 
   * Project: `sockshop`
   * Service: `carts`
   * Stages:
-      * `hardening` - on Cluster-A
-      * `production` - on Cluster-B
+    * `hardening` - on Cluster-A
+    * `production` - on Cluster-B
 
     To properly configure the execution plane services that run, for example, on **Cluster-A**, the distributor in the `values.yaml` needs to be configured:
 
@@ -141,9 +141,9 @@ Please find the Helm Charts here:
 
 See the configuration parameters of the supported execution plane services:
 
-  - `helm-service`: [Helm Chart values](https://github.com/keptn/keptn/blob/0.16.0/helm-service/chart/README.md#configuration)
+* `helm-service`: [Helm Chart values](https://github.com/keptn/keptn/blob/0.16.0/helm-service/chart/README.md#configuration)
 
-  - `jmeter-service`: [Helm Chart values](https://github.com/keptn/keptn/blob/0.16.0/jmeter-service/chart/README.md#configuration)
+* `jmeter-service`: [Helm Chart values](https://github.com/keptn/keptn/blob/0.16.0/jmeter-service/chart/README.md#configuration)
 
 The important once that are used in the above example are:
 
@@ -157,7 +157,6 @@ The important once that are used in the above example are:
 | `remoteControlPlane.api.hostname` | Hostname of the control plane cluster (and port) | `""` |
 | `remoteControlPlane.api.apiValidateTls` | Defines if the control plane certificate should be validated | `true` |
 | `remoteControlPlane.api.token` | Keptn API token | `""` |
-
 
 ## Troubleshooting
 
@@ -179,7 +178,9 @@ If you see in the Keptn Bridge that an event was triggered but no service was re
 * For example, you want to test `jmeter-service` that is running in `keptn-exec` namespace, execute:
 
   ```console
+
 helm test jmeter-service -n keptn-exec
+
   ```
 
 * The expected outcome should be:
@@ -212,10 +213,10 @@ remoteControlPlane:
     token: ""                           # < (5) set Keptn API token
   ```
 
-  - Is `enabled` set to `true`?
-  - Is the Keptn API endpoint on `http` or `https`?
-  - Is the hostname of the Keptn API endpoint correct, e.g. `my.keptn-dev.company.com` (without `/api`)
-  - Do you want to skip TLS verification?
-  - Is the Keptn API token correct? (You can find it in the Keptn Bridge, or by following the guide for [authenticating](../install/#authenticate-keptn-cli))
+* Is `enabled` set to `true`?
+* Is the Keptn API endpoint on `http` or `https`?
+* Is the hostname of the Keptn API endpoint correct, e.g. `my.keptn-dev.company.com` (without `/api`)
+* Do you want to skip TLS verification?
+* Is the Keptn API token correct? (You can find it in the Keptn Bridge, or by following the guide for [authenticating](../install/#authenticate-keptn-cli))
 
 </p></details>

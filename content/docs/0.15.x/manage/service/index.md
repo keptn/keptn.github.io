@@ -6,7 +6,7 @@ keywords: [0.15.x-manage]
 aliases:
 ---
 
-After creating a project, Keptn allows creating a service into Keptn. 
+After creating a project, Keptn allows creating a service into Keptn.
 
 ## Service name restrictions
 
@@ -16,7 +16,7 @@ After creating a project, Keptn allows creating a service into Keptn.
 
 ## Create a service
 
-* To create a service, use the [keptn create service](../../reference/cli/commands/keptn_create_service) command and provide the service and project name (`--project` flag): 
+* To create a service, use the [keptn create service](../../reference/cli/commands/keptn_create_service) command and provide the service and project name (`--project` flag):
 
 ```console
 keptn create service SERVICENAME --project=PROJECTNAME
@@ -26,11 +26,11 @@ keptn create service SERVICENAME --project=PROJECTNAME
 
 After creating a service, you need to provide a Helm Chart for the service to deploy it. For Keptn, the [Helm Chart](https://Helm.sh/) has the following requirements:
 
-1. The Helm chart _has_ to contain exactly one [deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/). In this deployment, the properties `spec.selector.matchLabels.app` and `spec.template.metadata.labels.app` have to be set.
+1. The Helm chart *has* to contain exactly one [deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/). In this deployment, the properties `spec.selector.matchLabels.app` and `spec.template.metadata.labels.app` have to be set.
 
-1. The Helm chart _has_ to contain exactly one [service](https://kubernetes.io/docs/concepts/services-networking/service/). In this service, the property `spec.selector.app` has to be set.
+1. The Helm chart *has* to contain exactly one [service](https://kubernetes.io/docs/concepts/services-networking/service/). In this service, the property `spec.selector.app` has to be set.
 
-1. The Helm chart _has_ to contain a `values.yaml` file with at least the `image` and `replicaCount` parameter for the deployment. These `image` and `replicaCount` parameters have to be used in the deployment. An example is shown below:
+1. The Helm chart *has* to contain a `values.yaml` file with at least the `image` and `replicaCount` parameter for the deployment. These `image` and `replicaCount` parameters have to be used in the deployment. An example is shown below:
   
   ```yaml
   image: docker.io/keptnexamples/carts:0.13.1
@@ -73,7 +73,7 @@ env:
   value: "{{ .Values.SERVICE_PLACEHOLDER_C.service.name }}"
 ```
 
-* Finally, upload the Helm Chart to your service: 
+* Finally, upload the Helm Chart to your service:
 
 ```console
 keptn add-resource --project=PROJECTNAME --service=SERVICENAME --all-stages --resource=HELM_CHART.tgz --resourceUri=helm/SERVICENAME.tgz

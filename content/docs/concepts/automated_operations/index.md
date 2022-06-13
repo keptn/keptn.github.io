@@ -13,7 +13,7 @@ Keptn addresses this challenge by introducing the concept of micro-operations th
 
 Keptn complies with a declarative approach for configuring remediation and operations workflows as code on the level of individual microservices (rather than on applications). Consequently, this declaration is versioned next to the operational config and deployed with each new version of the microservice.
 
-Below is an example of a declarative `remediation.yaml` file as used in Keptn. The file defines two problem types and the respective remediation actions. In case of a response time degradation, new instances are scaled up and in the case of a failure rate increase, a feature is disabled. To learn more about the remediation configuration, please continue [here](../../0.15.x/automated_operations/remediation). 
+Below is an example of a declarative `remediation.yaml` file as used in Keptn. The file defines two problem types and the respective remediation actions. In case of a response time degradation, new instances are scaled up and in the case of a failure rate increase, a feature is disabled. To learn more about the remediation configuration, please continue [here](../../0.15.x/automated_operations/remediation).
 
 ```yaml
 version: 0.2.0
@@ -50,7 +50,7 @@ spec:
 
 In Keptn, a remediation action or operational task is implemented as micro-operation. Such a micro-operation is reduced to the max, meaning that it is designed to execute a single action. This action is implemented for a single microservice rather than an entire application. Consequently, declarative instructions procedures are written on a per-microservice basis, which you can select and combine as needed.
 
-A micro-operation is implemented by an [action-provider](../../0.15.x/integrations/custom_integration/), which is a Keptn-service with a dedicated purpose. This type of service is responsible for executing an action (aka. micro-operation) and therefore might even use another tool. An action-provider starts working, when receiving a Keptn CloudEvent of type: `sh.keptn.event.action.triggered`. To learn more about the implementation of a micro-operation by an action-provider, please continue [here](../../0.15.x/automated_operations/action-provider). 
+A micro-operation is implemented by an [action-provider](../../0.15.x/integrations/custom_integration/), which is a Keptn-service with a dedicated purpose. This type of service is responsible for executing an action (aka. micro-operation) and therefore might even use another tool. An action-provider starts working, when receiving a Keptn CloudEvent of type: `sh.keptn.event.action.triggered`. To learn more about the implementation of a micro-operation by an action-provider, please continue [here](../../0.15.x/automated_operations/action-provider).
 
 ## Event-driven Choreography
 
@@ -60,11 +60,11 @@ Assuming a developer has deployed a new artifact with a remediation file, the ta
 
 1. Keptn receives this problem event and retrieves the remediation file from the Git repository.
 
-1. An internal Keptn-service interprets the remediation file and sends out events for action-providers. 
+1. An internal Keptn-service interprets the remediation file and sends out events for action-providers.
 
-1. Depending on the problem type, the action-providers executes its action and informs Keptn about the execution. 
+1. Depending on the problem type, the action-providers executes its action and informs Keptn about the execution.
 
-1. Keptn triggers a re-evaluation of the quality gate in this stage. 
+1. Keptn triggers a re-evaluation of the quality gate in this stage.
 
 1. Based on the result of this evaluation, Keptn sends out an event to escalate the problem or to mark it as resolved.
 
@@ -75,5 +75,5 @@ Assuming a developer has deployed a new artifact with a remediation file, the ta
 
 ## References
 
-- [Micro operations — A new operations model for the micro services age](https://medium.com/@alois.reitbauer_97826/micro-operations-a-new-operations-model-for-the-micro-services-age-e29cd1bbd0cd)
-- [Closed-loop Remediation with custom Integrations](https://medium.com/keptn/closed-loop-remediation-with-custom-integrations-43bde377b796)
+* [Micro operations — A new operations model for the micro services age](https://medium.com/@alois.reitbauer_97826/micro-operations-a-new-operations-model-for-the-micro-services-age-e29cd1bbd0cd)
+* [Closed-loop Remediation with custom Integrations](https://medium.com/keptn/closed-loop-remediation-with-custom-integrations-43bde377b796)

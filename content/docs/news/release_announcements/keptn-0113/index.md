@@ -18,5 +18,4 @@ This is a hotfix release for Keptn 0.11.2, containing several fixes to improve t
 
 ## Upgrade to 0.11.x
 
-- The upgrade from 0.10.x to 0.11.x is supported by the `keptn upgrade` command. Find the documentation here: [Upgrade from Keptn 0.10.x to 0.11.x](https://keptn.sh/docs/0.11.x/operate/upgrade/)
-
+* The upgrade from 0.10.x to 0.11.x is supported by the `keptn upgrade` command. Find the documentation here: [Upgrade from Keptn 0.10.x to 0.11.x](https://keptn.sh/docs/0.11.x/operate/upgrade/)

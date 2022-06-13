@@ -19,6 +19,7 @@ about creating a Keptn cluster locally or in the cloud.
 ## Helm
 
 1) Install core control plane components and expose via a LoadBalancer:
+
 ```
 helm repo add keptn https://charts.keptn.sh && helm repo update
 helm install keptn keptn/keptn \
@@ -35,7 +36,8 @@ helm install helm-service keptn/helm-service -n keptn
 ```
 
 ### Next Steps
-Now try the [Multi-Stage Delivery](#try-multi-stage-delivery) example and then [Auto-Remediation](#try-auto-remediation) (see below). 
+
+Now try the [Multi-Stage Delivery](#try-multi-stage-delivery) example and then [Auto-Remediation](#try-auto-remediation) (see below).
 
 ## Keptn Hello World (Docker Based)
 
@@ -68,16 +70,19 @@ The command above has:
 You can also run additional `hello` sequences with: `keptn trigger sequence --sequence hello --project helloworld --service demoservice --stage demo`
 
 ### Next Steps
-Now try the [Multi-Stage Delivery](#try-multi-stage-delivery) example and then [Auto-Remediation](#try-auto-remediation) (see below). 
+
+Now try the [Multi-Stage Delivery](#try-multi-stage-delivery) example and then [Auto-Remediation](#try-auto-remediation) (see below).
 
 ## Keptn CLI
 
 1) Download the Keptn Command Line Tool:
+
 ```
 curl -sL https://get.keptn.sh | bash
 ```
 
 2) Install Keptn core control plane and execution plane services for continuous delivery using the CLI:
+
 ```
 keptn install -n keptn --use-case=continuous-delivery --endpoint-service-type=LoadBalancer
 ```
@@ -148,7 +153,7 @@ curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=v4.4
     Start upgrading Helm Chart jmeter-service in namespace keptn
     Finished upgrading Helm Chart jmeter-service in namespace keptn
     &nbsp;---------------------------------------------------
-    &nbsp;* To quickly access Keptn, you can use a port-forward and then authenticate your Keptn CLI:
+    &nbsp;*To quickly access Keptn, you can use a port-forward and then authenticate your Keptn CLI:
     &nbsp;- kubectl -n keptn port-forward service/api-gateway-nginx 8080:80
     &nbsp;- keptn auth --endpoint=http://localhost:8080/api --api-token=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
     &nbsp;* Alternatively, follow the instructions provided at: [Authenticate Keptn CLI](../0.14.x/operate/install/#authenticate-keptn-cli)
@@ -168,7 +173,6 @@ curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=v4.4
 5. **Access Bridge**: you can now access the Keptn Web UI at `http://127.0.0.1.nip.io:8082/bridge`.
 
     For different way on how to expose your Keptn installation, please refer to [Install Keptn](../0.14.x/operate/install/#install-keptn).
-
 
 ### Try Multi-Stage Delivery
 
@@ -277,6 +281,7 @@ k3d cluster delete mykeptn
 ## FAQ
 
 ### Kubernetes version not supported
+
 In case `keptn install` prevents you from installing Keptn due to a (currently) unsupported Kubernetes version, you can bypass this check at your own risk by using the Helm installation option of Keptn.
 
 ```bash
@@ -297,6 +302,7 @@ Please ensure that your local k3d environment has enough resources. You can veri
 </details>
 
 ### Docker resources
+
 Please make sure your Docker environment has been granted enough resources to run k3d and Keptn on top of it.
 This quickstart guide has been tested with the following configuration:
 <details><summary>Resources</summary>

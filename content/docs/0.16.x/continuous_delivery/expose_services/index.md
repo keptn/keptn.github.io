@@ -79,7 +79,7 @@ kubectl apply -f gateway-manifest.yaml
     ISTIO_GATEWAY=<GATEWAY_NAME>.<NAMESPACE_OF_GATEWAY>  # e.g. public-gateway.istio-system
     HOSTNAME_TEMPLATE=<HOSTNAME_TEMPLATE> # optional, default = \${INGRESS_PROTOCOL}://\${service}.\${project}-\${stage}.\${INGRESS_HOSTNAME_SUFFIX}:\${INGRESS_PORT}
     ```
-    
+
     ```console
     kubectl create configmap -n keptn ingress-config --from-literal=ingress_hostname_suffix=${INGRESS_HOSTNAME_SUFFIX} --from-literal=ingress_port=${INGRESS_PORT} --from-literal=ingress_protocol=${INGRESS_PROTOCOL} --from-literal=istio_gateway=${ISTIO_GATEWAY} --from-literal=hostname_template=${HOSTNAME_TEMPLATE} -oyaml --dry-run | kubectl replace -f -
     ```

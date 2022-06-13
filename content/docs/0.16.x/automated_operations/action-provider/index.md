@@ -12,7 +12,7 @@ To plug an action-provider into a remediation, the remediation configuration mus
 
 ## Unleash Action-Provider
 
-This action-provider toggles the feature flag specified by the *key-value* map in the value property. While the key declares the name of the feature toggle, the value specifies the target setting. 
+This action-provider toggles the feature flag specified by the *key-value* map in the value property. While the key declares the name of the feature toggle, the value specifies the target setting.
 
 * Action that needs to be added to [actionsOnOpen](../remediation/#actions-on-open) in the remediation config:
 

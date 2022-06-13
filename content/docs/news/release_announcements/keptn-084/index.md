@@ -86,7 +86,6 @@ Implemented **Keptn spec** version: [0.2.3](https://github.com/keptn/spec/tree/0
   - *Fixed*: Keptn 0.8.3 shows that it uses specversion 0.2.1 instead of 0.2.2 [4192](https://github.com/keptn/keptn/issues/4192)
   - *Fixed*: Shipyard-controller keeps sending events for tasks with the same name indefinitely [4039](https://github.com/keptn/keptn/issues/4039)
 
-
 </p>
 </details>
 

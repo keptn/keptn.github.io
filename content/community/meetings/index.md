@@ -30,10 +30,11 @@ At these monthly meetings Keptn users present their stories and experiences on
 We also invite Keptn contributors to participate
 and discuss how we could improve Keptn based on feedback.
 
-🗓️ **Cadence**: 
+🗓️ **Cadence**:
+
 * **Americas/EMEA meetings** - Every 3rd Tuesday of the month at 5pm CET / 8am PT / 11am ET.
 * **APAC/EMEA** - We intend to do meetings every month,
-  commonly on Wednesdays at 9AM UTC. 
+  commonly on Wednesdays at 9AM UTC.
   The meeting time may vary depending on speaker timezone and availability.
 
 📺 [**Schedule and RSVP**](https://community.cncf.io/keptn-community/)
@@ -48,6 +49,7 @@ We also invite Keptn developers abd users to join the meetings and show the demo
 Anyone is also welcome to join these meetings and ask any questions about Keptn.
 
 🗓️ **Cadence**: each **Thursday** at 10am CET / 9am UTC.
+
 * **Americas/EMEA meetings** - Every other Thursday at 4pm UTC / 5pm CET.
 * **APAC/EMEA** -  Every other Wednesday at 9am UTC / 10am CET.
 
@@ -65,4 +67,3 @@ You are welcome to join and contribute to Keptn or just discuss with the Keptn t
 📺 [**Schedule and RSVP**](https://community.cncf.io/keptn-community/)
 🗒️ [**Meeting notes**](https://tinyurl.com/keptn-meeting-notes)
 🎥 [**Recordings**](https://www.youtube.com/playlist?list=PL6i801Rjt9DakR1wOVkSY-uSH2kMpBFKX)
-

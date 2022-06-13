@@ -115,6 +115,7 @@ Implemented **Keptn spec** version: [0.2.3](https://github.com/keptn/spec/tree/0
   - Allow to control if webhook-service is installed [#5574](https://github.com/keptn/keptn/issues/5574)
   - Add required scope to secret created for webhook integration test [#5594](https://github.com/keptn/keptn/issues/5594)
   - Allow to control if the webhook-service is installed [#5556](https://github.com/keptn/keptn/issues/5556)
+
 </p>
 </details>
 
@@ -162,7 +163,6 @@ Implemented **Keptn spec** version: [0.2.3](https://github.com/keptn/spec/tree/0
   - Adapt retry-mechanism [#4867](https://github.com/keptn/keptn/issues/4867)
   - Add cypress setup [#5190](https://github.com/keptn/keptn/issues/5190)
 
-
 - *Fixes:*
   - 'Show SLO' button disappeared after loading evaluation results [#5393](https://github.com/keptn/keptn/issues/5393)
   - Project settings page styles[#5444](https://github.com/keptn/keptn/issues/5444)
@@ -181,44 +181,44 @@ Implemented **Keptn spec** version: [0.2.3](https://github.com/keptn/spec/tree/0
   - Fixed missing view updates when sending an approval [#5505](https://github.com/keptn/keptn/issues/5505)
   - Service incorrectly shows that there are open remediations [#5688](https://github.com/keptn/keptn/issues/5688)
   - Catch error only in interceptor and show toast [#5213](https://github.com/keptn/keptn/issues/5213)
+
 </p>
 </details>
-
 
 <details><summary>Platform Support / Installer</summary>
 <p>
 
- - Temporarily revert customization of repository string in chart [#5414](https://github.com/keptn/keptn/issues/5414)
- - Add option for Ingress to control-plane Helm Chart Keptn installer [#5066](https://github.com/keptn/keptn/issues/5066)
- - Use correct images in airgapped installation [#5532](https://github.com/keptn/keptn/issues/5532)
- - Bump nginx image version to 1.21.3-alpine [#5564](https://github.com/keptn/keptn/issues/5564)
- - *Fix* bug where OpenShift route service go-utils were not upgraded during auto upgrade
+- Temporarily revert customization of repository string in chart [#5414](https://github.com/keptn/keptn/issues/5414)
+- Add option for Ingress to control-plane Helm Chart Keptn installer [#5066](https://github.com/keptn/keptn/issues/5066)
+- Use correct images in airgapped installation [#5532](https://github.com/keptn/keptn/issues/5532)
+- Bump nginx image version to 1.21.3-alpine [#5564](https://github.com/keptn/keptn/issues/5564)
+- *Fix* bug where OpenShift route service go-utils were not upgraded during auto upgrade
+
 </p>
 </details>
-
 
 <details><summary>CLI</summary>
 <p>
 
- - Added zones to times format according to (ISO8601) [#4788](https://github.com/keptn/keptn/issues/4788)
- - Check if kubectl context matches Keptn CLI context before applying upgrade [#5250](https://github.com/keptn/keptn/issues/5250)
- - Skip version check on install [#5046](https://github.com/keptn/keptn/issues/5046)
- - Remove the upgrade available message while upgrading Keptn [#5276](https://github.com/keptn/keptn/issues/5276)
- - Configure automatic version check based on config [#5290](https://github.com/keptn/keptn/issues/5290)
- - Option to continue install/upgrade if K8s version is higher than the supported one [#5698](https://github.com/keptn/keptn/issues/5698)
+- Added zones to times format according to (ISO8601) [#4788](https://github.com/keptn/keptn/issues/4788)
+- Check if kubectl context matches Keptn CLI context before applying upgrade [#5250](https://github.com/keptn/keptn/issues/5250)
+- Skip version check on install [#5046](https://github.com/keptn/keptn/issues/5046)
+- Remove the upgrade available message while upgrading Keptn [#5276](https://github.com/keptn/keptn/issues/5276)
+- Configure automatic version check based on config [#5290](https://github.com/keptn/keptn/issues/5290)
+- Option to continue install/upgrade if K8s version is higher than the supported one [#5698](https://github.com/keptn/keptn/issues/5698)
+
 </p>
 </details>
-
 
 <details><summary>API</summary>
 <p>
 
- - Try to use X-real-ip and X-forwarded-for headers [#5082](https://github.com/keptn/keptn/issues/5082)
- - *Fixed* broken go-sum in go-sdk module [#5463](https://github.com/keptn/keptn/issues/5463)
- - Option to disable automatic event response in SDK [#5453](https://github.com/keptn/keptn/issues/5453)
+- Try to use X-real-ip and X-forwarded-for headers [#5082](https://github.com/keptn/keptn/issues/5082)
+- *Fixed* broken go-sum in go-sdk module [#5463](https://github.com/keptn/keptn/issues/5463)
+- Option to disable automatic event response in SDK [#5453](https://github.com/keptn/keptn/issues/5453)
+
 </p>
 </details>
-
 
 ## Development Process / Testing
 
@@ -229,14 +229,11 @@ Implemented **Keptn spec** version: [0.2.3](https://github.com/keptn/spec/tree/0
 - Add disclamer to avoid security vulnerabilities to be reported reported as bugs [#5169](https://github.com/keptn/keptn/issues/5169)
 - Update Maintainers file [#5314](https://github.com/keptn/keptn/issues/5314)
 
-
 ## Good to know / Known Limitations
 
 - Aborting a pending deployment sequence in helm-service leads to failure until the aborted sequence finally finishes [#5557](https://github.com/keptn/keptn/issues/5557)
-- The following characters/strings are forbidden in the WebHook payload: `$`, `|`, `;`, `>`, `$(`, ` &`, `&&`, \`, `/var/run`
-
+- The following characters/strings are forbidden in the WebHook payload: `$`, `|`, `;`, `>`, `$(`, `&`, `&&`, \`, `/var/run`
 
 ## Upgrade to 0.10.0
 
 - The upgrade from 0.9.x to 0.10.0 is supported by the `keptn upgrade` command. Find the documentation here: [Upgrade from Keptn 0.9.x to 0.10.0](https://keptn.sh/docs/0.10.x/operate/upgrade/#upgrade-from-keptn-0-9-x-to-0-10-0)
-

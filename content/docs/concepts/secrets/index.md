@@ -17,6 +17,7 @@ A scope contains a set of capabilities which are a set of permissions.
 Currently, scopes are hardcoded into a file called `scopes.yaml` which is read by the secret-service during startup.
 
 The default scope for Keptn looks like this:
+
 ```
 Scopes:
   keptn-default:
@@ -39,6 +40,7 @@ Scopes:
 In Kubernetes, *scope* maps to a Kubernetes *ServiceAccount* and a capability maps to a Kubernetes *Role*.
 
 Based on the `scopes.yaml` file above, when a secret with scope `keptn-webhook-service` is created, the secret-service does the following:
+
 - Creates a Kubernetes secret
 - Creates a *Role* named `keptn-webhook-svc-read` containing rules to access the created secret with permissions `get`
 - Creates a *Rolebinding* `keptn-webhook-service-rolebinding` with *subjects* set to the *ServiceAccount* named `keptn-webhook-service`
@@ -47,4 +49,3 @@ Thus, every Kubernetes Pod bound to the service account *keptn-webhook-service* 
 
 **NOTE:** The `scopes.yaml` must be modified manually in order to add, modify or delete any scopes.
 Currently, no API endpoint is provided for that.
-

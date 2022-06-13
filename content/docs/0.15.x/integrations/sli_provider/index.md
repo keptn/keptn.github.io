@@ -20,11 +20,11 @@ indicators:
 
 The [Keptn CloudEvents](../custom_integration/#cloudevents) an *SLI-provider* has to subscribe to is:
 
-- `sh.keptn.event.get-sli.triggered`
+* `sh.keptn.event.get-sli.triggered`
 
 ## Write your custom SLI-provider
 
-Like a Keptn-service, an SLI-provider has the following characteristics: 
+Like a Keptn-service, an SLI-provider has the following characteristics:
 
 * has a **subscription** to an event (i.e., `sh.keptn.event.get-sli.triggered`)
 * sends a **started event** to inform Keptn about receiving the event and acting on it
@@ -35,9 +35,9 @@ Like a Keptn-service, an SLI-provider has the following characteristics:
 
 An *SLI-provider* starts working, when receiving a Keptn CloudEvent of type:
 
-- [sh.keptn.event.get-sli.triggered](https://github.com/keptn/spec/blob/0.2.2/cloudevents.md#get-sli) 
+* [sh.keptn.event.get-sli.triggered](https://github.com/keptn/spec/blob/0.2.2/cloudevents.md#get-sli)
 
-Next to event meta-data such as project, stage, or service name, the event contains information about the indicators, time frame, and labels to query. For more details, please see the specification [here](https://github.com/keptn/spec/blob/0.2.2/cloudevents.md#get-sli) and take a look at the example: 
+Next to event meta-data such as project, stage, or service name, the event contains information about the indicators, time frame, and labels to query. For more details, please see the specification [here](https://github.com/keptn/spec/blob/0.2.2/cloudevents.md#get-sli) and take a look at the example:
 
 ```json
 {
@@ -74,9 +74,7 @@ Next to event meta-data such as project, stage, or service name, the event conta
 
 * To subscribe your SLI-provider to the `sh.keptn.event.action.triggered` event, please follow [Subscription to Keptn event](../custom_integration/#subscription-to-a-triggered-event).
 
-
 ### Functionality
-
 
 After receiving the `sh.keptn.event.get-sli.triggered` event, an SLI-provider must perform following tasks:
 
@@ -84,23 +82,24 @@ After receiving the `sh.keptn.event.get-sli.triggered` event, an SLI-provider mu
 
 2. Decide based on the `sliProvider` property whether the mentioned data source is supported by your SLI-provider. If the data source is not supported, no further task is required.
 
-3. **Send a started event:** If the data source is supported, send a start event of type: `sh.keptn.event.get-sli.started`. This CloudEvent informs Keptn that your service takes care of fetching the SLIs. 
+3. **Send a started event:** If the data source is supported, send a start event of type: `sh.keptn.event.get-sli.started`. This CloudEvent informs Keptn that your service takes care of fetching the SLIs.
 
-4. Get the SLI configuration from Keptn's configuration-service. This SLI configuration is identified by the `resourceURI`, which follows the pattern: `[tool-name]/sli.yaml` (e.g., `dynatrace/sli.yaml`). 
-  * Service URL: http://configuration-service.keptn.svc.cluster.local:8080
-  * Endpoint: `v1/project/{projectName}/stage/{stageName}/service/{serviceName}/resource/{resourceURI}`
+4. Get the SLI configuration from Keptn's configuration-service. This SLI configuration is identified by the `resourceURI`, which follows the pattern: `[tool-name]/sli.yaml` (e.g., `dynatrace/sli.yaml`).
 
-5. Process the SLI configuration and use the defined queries to retrieve the values of each indicator. 
+* Service URL: <http://configuration-service.keptn.svc.cluster.local:8080>
+* Endpoint: `v1/project/{projectName}/stage/{stageName}/service/{serviceName}/resource/{resourceURI}`
+
+5. Process the SLI configuration and use the defined queries to retrieve the values of each indicator.
 
 6. **Send a finished event:** Send a finished event of type: `sh.keptn.event.get-sli.finished` with the added properties:  
 
-  * Add to the *header* of the event: 
-      * `triggeredid`: The value of this property is the `id` of the `sh.keptn.event.get-sli.triggered` event. 
+* Add to the *header* of the event:
+  * `triggeredid`: The value of this property is the `id` of the `sh.keptn.event.get-sli.triggered` event.
 
-  * Add to the *data block* at least a value for `status`, `result` and `indicatorValues` in `data.get-sli`:
-      * `status`: [succeeded, errored, unknown] - The status of the task execution
-      * `result`: [pass, failed] - The result of a successful task execution
-      * `indicatorValues`: List of indicators and their measured values
+* Add to the *data block* at least a value for `status`, `result` and `indicatorValues` in `data.get-sli`:
+  * `status`: [succeeded, errored, unknown] - The status of the task execution
+  * `result`: [pass, failed] - The result of a successful task execution
+  * `indicatorValues`: List of indicators and their measured values
 
 ```json
 {
@@ -139,11 +138,11 @@ After receiving the `sh.keptn.event.get-sli.triggered` event, an SLI-provider mu
     }
   }
 }
-``` 
+```
 
 ## Deploy SLI-provider with distributor
 
-A default deployment manifest is provided in the keptn-service-template-go template, see: [deploy/service.yaml](https://github.com/keptn-sandbox/keptn-service-template-go/tree/0.14.0/chart). 
+A default deployment manifest is provided in the keptn-service-template-go template, see: [deploy/service.yaml](https://github.com/keptn-sandbox/keptn-service-template-go/tree/0.14.0/chart).
 
 * Change the deployment manifest for your *SLI-provider* and the apply it to the Kubernetes cluster where Keptn is running:
 

@@ -3,13 +3,13 @@ title: Keptn 0.7.0
 weight: 100
 ---
 
-[Keptn 0.7](https://medium.com/keptn/advanced-production-support-with-keptn-0-7-d24f9cac8805) improves the core use cases of continuous delivery and automated operations by providing enhanced stage control in the delivery workflow and by allowing the integration of custom remediation (aka. action) providers. Internally, Keptn has been hardened by restricting its permissions to the set of required ones, and it does not install Istio nor NGINX during the setup process. 
+[Keptn 0.7](https://medium.com/keptn/advanced-production-support-with-keptn-0-7-d24f9cac8805) improves the core use cases of continuous delivery and automated operations by providing enhanced stage control in the delivery workflow and by allowing the integration of custom remediation (aka. action) providers. Internally, Keptn has been hardened by restricting its permissions to the set of required ones, and it does not install Istio nor NGINX during the setup process.
 
 **The six key announcements of Keptn 0.7:**
 
 :rocket: *Delivery Assistant - [SPEC 26](https://github.com/keptn/spec/pull/26)*: To better support the continuous delivery workflow of production-like use cases, Keptn 0.7 introduces the concept of manual deployment approvals for certain stages and it improves stage visibility in the Keptn Bridge.
 
-:star2: *Continuous Delivery with Helm 3 (instead of Helm 2):* Keptn 0.7 moves away from using Helm 2 for deploying services; instead [Helm 3](https://helm.sh/blog/helm-3-released/) is used. As a result, Tiller - *a core component of Helm 2* - is gone. 
+:star2: *Continuous Delivery with Helm 3 (instead of Helm 2):* Keptn 0.7 moves away from using Helm 2 for deploying services; instead [Helm 3](https://helm.sh/blog/helm-3-released/) is used. As a result, Tiller - *a core component of Helm 2* - is gone.
 
 :sparkles: *Closed-loop Remediation with custom Integration  - [KEP 09](https://github.com/keptn/enhancement-proposals/pull/9) | [SPEC 31](https://github.com/keptn/spec/pull/31):* Keptn 0.7 lifts the automation of remediation workflows and the integration of custom remediation (aka. action) providers to the next level. A level where multiple remediation actions per problem type can be configured and the effect of each remediation action is validated based on the SLO/SLI validation Keptn offers. Consequently, fast feedback on executed remediation actions is given, providing better visibility into entire remediation scenarios. Please find a detailed blog post about this use case [here](https://medium.com/keptn/closed-loop-remediation-with-custom-integrations-43bde377b796).
 
@@ -46,11 +46,10 @@ Implemented **Keptn spec** version: [0.1.4](https://github.com/keptn/spec/tree/0
 - Expose `/event` endpoint from mongodb-datastore to the public Keptn API [#1791](https://github.com/keptn/keptn/issues/1791)
 - Change Keptn API and Keptn Bridge path on ingress from subdomain to suffix [#1994](https://github.com/keptn/keptn/issues/1994)
 - Retrieve metadata of Keptn installation [#1843](https://github.com/keptn/keptn/issues/1843)
-- *Keptn Configure Bridge:* Do not expose the service, nor apply Istio/NGINX manifests [#1962](https://github.com/keptn/keptn/issues/1962) 
+- *Keptn Configure Bridge:* Do not expose the service, nor apply Istio/NGINX manifests [#1962](https://github.com/keptn/keptn/issues/1962)
 
 </p>
 </details>
-
 
 <details><summary>CLI</summary>
 <p>
@@ -78,30 +77,30 @@ Implemented **Keptn spec** version: [0.1.4](https://github.com/keptn/spec/tree/0
 <p>
 
 - *configuration-service:*
-  * Manage open remediation workflows in the materialized view [#1848](https://github.com/keptn/keptn/issues/1848)
-  * Allow retrieving all open approval events for a specific project, stage, and service [#1757](https://github.com/keptn/keptn/issues/1757)
+  - Manage open remediation workflows in the materialized view [#1848](https://github.com/keptn/keptn/issues/1848)
+  - Allow retrieving all open approval events for a specific project, stage, and service [#1757](https://github.com/keptn/keptn/issues/1757)
 
 - *gatekeeper-service:*
-  * React on an approval.finished event to send configuration.changed event for the current stage [#1737](https://github.com/keptn/keptn/issues/1737)
-  * Read approval_strategy and send event based on configured strategy and evaluation result [#1658](https://github.com/keptn/keptn/issues/1658)
+  - React on an approval.finished event to send configuration.changed event for the current stage [#1737](https://github.com/keptn/keptn/issues/1737)
+  - Read approval_strategy and send event based on configured strategy and evaluation result [#1658](https://github.com/keptn/keptn/issues/1658)
 
 - *helm-service:*
-  * Introduce a new ConfigMap for INGRESS_HOSTNAME_SUFFIX [#1963](https://github.com/keptn/keptn/issues/1963)
-  * Gateway in generated VirtualServices is configurable via environment variable [#1986](https://github.com/keptn/keptn/issues/1986)
+  - Introduce a new ConfigMap for INGRESS_HOSTNAME_SUFFIX [#1963](https://github.com/keptn/keptn/issues/1963)
+  - Gateway in generated VirtualServices is configurable via environment variable [#1986](https://github.com/keptn/keptn/issues/1986)
 
 - *jmeter-service:*
-  * Properly handle errors from configuration-service [#1480](https://github.com/keptn/keptn/issues/1480)
+  - Properly handle errors from configuration-service [#1480](https://github.com/keptn/keptn/issues/1480)
 
 - *mongodb-service:*
-  * Manage open approval events in a collection [#1756](https://github.com/keptn/keptn/issues/1756)
-  * Moved MongoDB credentials into a Kubernetes secret [#1528](https://github.com/keptn/keptn/issues/1528) 
-  * Increased MongoDB datastore volume size [#1900](https://github.com/keptn/keptn/issues/1900)
+  - Manage open approval events in a collection [#1756](https://github.com/keptn/keptn/issues/1756)
+  - Moved MongoDB credentials into a Kubernetes secret [#1528](https://github.com/keptn/keptn/issues/1528)
+  - Increased MongoDB datastore volume size [#1900](https://github.com/keptn/keptn/issues/1900)
 
 - *remediation-service:*
-  * Extracted featuretoggle action from remediation-service into *unleash-service* [#1816](https://github.com/keptn/keptn/issues/1816)
-  * Moved functionality of scaler to *helm-service* [#1817](https://github.com/keptn/keptn/issues/1817)
-  * Moved posting Dynatrace problem comments to *dynatrace-service* [#1818](https://github.com/keptn/keptn/issues/1818)
-  * React on problem.open and process pre-defined workflow: trigger action, wait, evaluate, continue remediation or send a remediation.finished [#1849](https://github.com/keptn/keptn/issues/1849)
+  - Extracted featuretoggle action from remediation-service into *unleash-service* [#1816](https://github.com/keptn/keptn/issues/1816)
+  - Moved functionality of scaler to *helm-service* [#1817](https://github.com/keptn/keptn/issues/1817)
+  - Moved posting Dynatrace problem comments to *dynatrace-service* [#1818](https://github.com/keptn/keptn/issues/1818)
+  - React on problem.open and process pre-defined workflow: trigger action, wait, evaluate, continue remediation or send a remediation.finished [#1849](https://github.com/keptn/keptn/issues/1849)
 
 </p>
 </details>
@@ -155,6 +154,6 @@ Implemented **Keptn spec** version: [0.1.4](https://github.com/keptn/spec/tree/0
 
 ## Good to know / Known Limitations
 
-* **Upgrade from 0.6.2 to 0.7:** *Keptn 0.7 uses Helm 3 while previous Keptn releases rely on Helm 2*. To upgrade  your Helm releases from Helm 2 to 3, two options are provided: 
+- **Upgrade from 0.6.2 to 0.7:** *Keptn 0.7 uses Helm 3 while previous Keptn releases rely on Helm 2*. To upgrade  your Helm releases from Helm 2 to 3, two options are provided:
   1. *Job without Helm 3 Upgrade:* This option is needed when the cluster contains Helm releases not managed by Keptn. If this job is executed, it is necessary to manually convert the releases from Helm 2 to 3 as explained on [keptn.sh/docs](https://keptn.sh/docs/0.7.0/operate/upgrade/#job-without-helm-3-0-upgrade).
   1. *Job with Helm 3 Upgrade:* Full automation of Helm upgrade for installations were just Keptn is installed. If this job is executed, **all** Helm releases on the cluster are converted from Helm 2 to 3 and Tiller will be removed.

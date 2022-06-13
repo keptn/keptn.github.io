@@ -7,4 +7,3 @@ icon: contribute
 ---
 
 Keptn is maintaining its blog on [medium.com/keptn](https://medium.com/keptn). Please head over and don't forget to subscribe!
-

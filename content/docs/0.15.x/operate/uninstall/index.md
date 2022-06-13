@@ -6,6 +6,7 @@ keywords: [0.15.x-operate]
 ---
 
 ## Prerequisites
+
 - [keptn CLI](../install/#install-keptn-cli)
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
@@ -15,7 +16,7 @@ keywords: [0.15.x-operate]
 
 ``` console
 keptn uninstall
-``` 
+```
 
 - To verify the cleanup, retrieve the list of namespaces in your cluster and ensure that the **keptn** namespace is not included in the output of the following command:
 

@@ -101,14 +101,13 @@ This means that all services in a project share the same shipyard definition.
 </p>
 </details>
 
-
 ## Updating a Shipyard
 
 This section provides examples on how to update a shipyard file.
 
 ### Add/Remove a task to/from a task sequence
 
-If you want to add or remove an additional task to a sequence, you can do this by adding/removing the task directly in the shipyard: 
+If you want to add or remove an additional task to a sequence, you can do this by adding/removing the task directly in the shipyard:
 
 *Initial shipyard:*
 
@@ -159,11 +158,11 @@ spec:
             - name: "release"
 ```
 
-**Result:** The next time this sequence gets triggered by Keptn, the task will be executed meaning that a `sh.keptn.event.[task].triggered` event is sent out. Make sure to have a Keptn-service that listens to this event type and can execute it. 
+**Result:** The next time this sequence gets triggered by Keptn, the task will be executed meaning that a `sh.keptn.event.[task].triggered` event is sent out. Make sure to have a Keptn-service that listens to this event type and can execute it.
 
 ### Add/Remove a task sequence to/from a stage
 
-If you want to add or remove an additional task sequence to a stage, you can do this by adding/removing the sequence directly in the shipyard: 
+If you want to add or remove an additional task sequence to a stage, you can do this by adding/removing the sequence directly in the shipyard:
 
 *Initial shipyard:*
 
@@ -188,7 +187,7 @@ spec:
             - name: "release"
 ```
 
-**Use-case 1:** I would like to add an additional delivery process to the production stage that allows rolling-out a hotfix without testing and evaluation. 
+**Use-case 1:** I would like to add an additional delivery process to the production stage that allows rolling-out a hotfix without testing and evaluation.
 
 *Updated shipyard:*
 
@@ -220,7 +219,7 @@ spec:
             - name: "release"
 ```
 
-**Result:** After extending the shipyard as shown above, you can trigger this sequence using: 
+**Result:** After extending the shipyard as shown above, you can trigger this sequence using:
 
 ```
 keptn trigger delivery --project=<project> --service=<service> --image=<image> --tag=<tag> --sequence=hotfix-delivery
@@ -267,4 +266,3 @@ spec:
 ```
 
 **Result:** After extending the shipyard as shown above, remediations should be executed when a problem event is retrieved (see [remediation workflow](../../automated_operations/remediation)).
-

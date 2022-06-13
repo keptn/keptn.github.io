@@ -19,7 +19,7 @@ regardless of your background and experience!
 
 ## Keptn development
 
-If you are interested 
+If you are interested
 Most of the Keptn codebase is implemented in Golang and JavaScript/Angular.
 We also heavily use Kubernetes, Helm, Docker and
 other container technologies like CloudEvents and OpenTelemetry.
@@ -30,7 +30,7 @@ other container technologies like CloudEvents and OpenTelemetry.
 
 **2️.** We curate a list of [**good first issues**](https://github.com/keptn/keptn/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) which are suitable for first-time contributors as they do not require in-depth knowledge of our project. If you find a good first issue, please comment on it and a Keptn maintainer will be happy to assign it to you.
 
-**3️.** Once you have finished implementing your feature or bug fix, please consider [**presenting it in a Keptn developer meeting**](../meetings/) to let the Keptn community know and celebrate your achievement! 
+**3️.** Once you have finished implementing your feature or bug fix, please consider [**presenting it in a Keptn developer meeting**](../meetings/) to let the Keptn community know and celebrate your achievement!
 
 ### Keptn integrations
 
@@ -49,7 +49,7 @@ Major documentation areas:
 
 * Documentation ([keptn.sh/docs](https://keptn.sh/docs/)) - extend and improve the documentation for Keptn
   * [GitHub Repository](https://github.com/keptn/keptn.github.io/)
-  * [How to contribute?](https://github.com/keptn/keptn.github.io/blob/master/CONTRIBUTING.md) 
+  * [How to contribute?](https://github.com/keptn/keptn.github.io/blob/master/CONTRIBUTING.md)
   * [Good First Issues](https://github.com/keptn/keptn.github.io/labels/good%20first%20issue)
 * Tutorials ([tutorials.keptn.sh](https://tutorials.keptn.sh/)) - add new tutorials and extend the existing ones to help newcomer users to study Keptn, and to integrate it into their application management.
   * [GitHub Repository](https://github.com/keptn/tutorials)
@@ -59,7 +59,7 @@ Major documentation areas:
 * [Keptn Examples](https://github.com/keptn/examples) - expand and document Keptn examples that can be used by end users
 * Contributing guidelines
 
-## Spread the word about Keptn!
+## Spread the word about Keptn
 
 In the Keptn community we heavily rely on the community members to promote Keptn among their professional networks and social media.
 Any contributions will be appreciated!

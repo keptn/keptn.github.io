@@ -27,7 +27,6 @@ Keptn 0.11.2 provides a new MongoDB, which was updated from 3.6 to 4.4. This mea
 * **lighthouse-service:** Added SIGTERM for lighthouse handlers ([#5304](https://github.com/keptn/keptn/issues/5304)) ([#5558](https://github.com/keptn/keptn/issues/5558)) ([ca9742c](https://github.com/keptn/keptn/commit/ca9742cc6a841bcb59ade85789e2155fbc7d8693))
 * Switch mongoDB image to bitnami mongoDB chart ([#4801](https://github.com/keptn/keptn/issues/4801)) ([b3dabd6](https://github.com/keptn/keptn/commit/b3dabd6297bd0ddd0b6e2e5815c53919892045c2))
 
-
 ### Bug Fixes
 
 * Adapt log level of SDK logs ([#5920](https://github.com/keptn/keptn/issues/5920)) ([#5921](https://github.com/keptn/keptn/issues/5921)) ([d314008](https://github.com/keptn/keptn/commit/d314008f3026c90252533fdf1c8ebe46538f9e42))
@@ -70,7 +69,6 @@ Keptn 0.11.2 provides a new MongoDB, which was updated from 3.6 to 4.4. This mea
 * **webhook-service:** Avoid .finished.finished/.started.finished events ([#5954](https://github.com/keptn/keptn/issues/5954)) ([#6000](https://github.com/keptn/keptn/issues/6000)) ([fbe01a8](https://github.com/keptn/keptn/commit/fbe01a88a642904eaecf507d22f9615a560f124f))
 * **webhook-service:** Invalid conversion of eventType ([#5998](https://github.com/keptn/keptn/issues/5998)) ([67dba55](https://github.com/keptn/keptn/commit/67dba55d8fed3e978ce596a02073ff059581e165))
 
-
 ### Other
 
 * Add RealAnna to Maintainers list ([34175bb](https://github.com/keptn/keptn/commit/34175bb5aa9cb03b1ba2600ae1d93e5e8602d13d))
@@ -102,7 +100,6 @@ Keptn 0.11.2 provides a new MongoDB, which was updated from 3.6 to 4.4. This mea
 * Updated go-utils dependency ([#5968](https://github.com/keptn/keptn/issues/5968)) ([#5969](https://github.com/keptn/keptn/issues/5969)) ([f2c796e](https://github.com/keptn/keptn/commit/f2c796e19b8cac6ae737b2a85e7868b763816e0b))
 * Use correct link in CLI upgrade message ([961ea2a](https://github.com/keptn/keptn/commit/961ea2a6f9572d3289abb61b2827289e5e2ac224))
 
-
 ### Refactoring
 
 * **bridge:** Reduce number of API calls for project endpoint ([#5450](https://github.com/keptn/keptn/issues/5450)) ([25fd876](https://github.com/keptn/keptn/commit/25fd8766b781797b0e043dc929ec92841745982c))
@@ -111,10 +108,6 @@ Keptn 0.11.2 provides a new MongoDB, which was updated from 3.6 to 4.4. This mea
 * **bridge:** Refactoring of services settings ([#5100](https://github.com/keptn/keptn/issues/5100)) ([771ec59](https://github.com/keptn/keptn/commit/771ec595b482d24c9e0d2473d2eabf303e139bc2))
 * **cli:** Use viper to manage keptn config ([#5694](https://github.com/keptn/keptn/issues/5694)) ([498d893](https://github.com/keptn/keptn/commit/498d89345e42605fe24aea731e66b03dea722be7))
 
-
-
-
 ## Upgrade to 0.11.x
 
-- The upgrade from 0.10.x to 0.11.x is supported by the `keptn upgrade` command. Find the documentation here: [Upgrade from Keptn 0.10.x to 0.11.x](https://keptn.sh/docs/0.11.x/operate/upgrade/)
-
+* The upgrade from 0.10.x to 0.11.x is supported by the `keptn upgrade` command. Find the documentation here: [Upgrade from Keptn 0.10.x to 0.11.x](https://keptn.sh/docs/0.11.x/operate/upgrade/)

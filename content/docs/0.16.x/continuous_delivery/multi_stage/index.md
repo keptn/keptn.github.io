@@ -114,7 +114,6 @@ spec:
             - name: "release"
 ```
 
-
 ## Create project with multi-stage delivery
 
 After declaring the delivery for a project in a shipyard, you are ready to create a Keptn project as explained in [create a project](../../manage/project/#create-a-project).
@@ -171,7 +170,3 @@ curl -X POST "${KEPTN_ENDPOINT}/v1/event" \
 
 </p>
 </details>
-
-
-
-

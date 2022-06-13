@@ -20,6 +20,7 @@ These two variables are used to set your credentials: `BASIC_AUTH_USERNAME` and 
     ```
 
     **Example:**
+
     ```
     apiVersion: v1
     data:

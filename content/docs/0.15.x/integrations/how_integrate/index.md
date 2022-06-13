@@ -27,6 +27,7 @@ Integrating (load and performance) test tools such as [JMeter](https://github.co
 Usually, a testing tool integration is getting triggered upon a `sh.keptn.event.test.triggered` event. This event is sent by the Keptn control-plane and the tool integration only has to listen for this type of event. In order to make sure that this event is sent by the Keptn control-plane, a `test` task needs to be present in the [shipyard](../../manage/shipyard/).
 
 **Example shipyard** with a test task in each sequence:
+
 ```
 apiVersion: spec.keptn.sh/0.2.3
 kind: "Shipyard"
@@ -70,7 +71,7 @@ Let us have a look at notification tool integrations such as Slack, or MS Team w
 
 * Usually, a notification tool reacts to a specific type of event or a set of events. The tool integration will subscribe to these event types and then send a defined payload to the channels. Consequently, there is no need to indicate that a notification integration starts and finishes the distribution of messages (i.e., no `*.started` or `*.finished` event has to be sent).
 
-* The easiest way to set up such an integration is by configuring a [Webhook Integration](./#webhook-integration). 
+* The easiest way to set up such an integration is by configuring a [Webhook Integration](./#webhook-integration).
 
 <!-- disabled, since we don't allow to run SLI-providers on the execution plane. 
 ### Monitoring/observability tools (SLI-providers)
@@ -101,16 +102,13 @@ The Keptn community currently provides two [Keptn service templates](https://git
 The service templates provide the best starting point for integrations that need to stay in full control how to integrate with the Keptn control-plane while still making use of some utility functions.
 It is also best for integrations which business logic goes beyond a single execution of an action. For example, if an authentication, execution, status check, error handling, etc are needed, the Keptn service templates allow handling this.
 
-
 ### Job Executor
 
 The [Keptn job executor](https://github.com/keptn-sandbox/job-executor-service) is used best for integrations that can be executed via the command-line interface. The job executor will handle the interaction with the Keptn control-plane for sending `*.started` and `*.finished` events and is able to provide a list of files (e.g., test instructions) that are needed for integrations. Find all information regarding the capabilities and usage of the [job executor in its Github repository](https://github.com/keptn-sandbox/job-executor-service).
 
-
 ### Generic Executor
 
 The purpose of the [generic-executor-service](https://github.com/keptn-sandbox/generic-executor-service) is to allow users to provide either `.sh` (shell scripts), `.py` (Python3) or `.http` (HTTP Request) files that will be executed when Keptn sends different events, e.g: you want to execute a specific script when a deployment-finished event is sent.
-
 
 ### Webhook Integration
 

@@ -6,7 +6,7 @@ icon: setup
 keywords: [0.15.x-automated-operations]
 ---
 
-Depending on the action that should be executed in course of a remediation (or operational), a corresponding action-provider must be deployed. This action-provider receives a Keptn event, performs its action, and notifies Keptn about the execution. 
+Depending on the action that should be executed in course of a remediation (or operational), a corresponding action-provider must be deployed. This action-provider receives a Keptn event, performs its action, and notifies Keptn about the execution.
 
 To plug-in an action-provider into a remediation, the remediation config must be extended by an action supported by the provider. Consequently, Keptn - as control plane and responsible for orchestrating the remediation - can send out the proper event for the action-provider.  
 
@@ -36,7 +36,7 @@ kubectl apply -f kubectl apply -f https://raw.githubusercontent.com/keptn-contri
 
 This action-provider increases the ReplicaSet of a Kubernetes deployment by the number defined by the value *increment*.  
 
-* Action that needs to be added to [actionsOnOpen](../remediation/#actions-on-open) in the remediation config: 
+* Action that needs to be added to [actionsOnOpen](../remediation/#actions-on-open) in the remediation config:
 
 ```yaml
 - name: Scaling ReplicaSet by 1
@@ -45,7 +45,7 @@ This action-provider increases the ReplicaSet of a Kubernetes deployment by the 
   value: "1"
 ```
 
-* The `helm-service` is installed by default. 
+* The `helm-service` is installed by default.
 
 ## Add a custom Action-Provider
 

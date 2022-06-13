@@ -7,17 +7,16 @@ icon: setup
 
 In order to evaluate the quality gates and allow self-healing in production, we must set up monitoring to get the needed data and fetch the values for the SLIs that are referenced in an SLO configuration.
 
-
 ## Prerequisites
 
 - Keptn project with at least one deployed service with a `/metrics` endpoint for Prometheus.
 - Prometheus Monitoring installed in `monitoring` namespace
+
   ```bash
   kubectl create namespace monitoring
   helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
   helm install prometheus prometheus-community/prometheus --namespace monitoring
   ```
-
 
 - The *prometheus-service* (which will be deployed later) needs access to the Prometheus instance.
 By default it uses the Prometheus instance running on the same Kubernetes cluster as Keptn control-plane,
@@ -46,21 +45,21 @@ For more details, see the [README for prometheus-service](https://github.com/kep
 
 **Execute the following steps to install prometheus-service**
 
-* Install prometheus-service in `keptn` namespace
+- Install prometheus-service in `keptn` namespace
 
 ```bash
 helm upgrade --install -n keptn prometheus-service https://github.com/keptn-contrib/prometheus-service/releases/download/0.8.0/prometheus-service-0.8.0.tgz --reuse-values
 ```
 
-* Install Role and RoleBinding to permit the prometheus-service for performing operations in the Prometheus installed namespace:
+- Install Role and RoleBinding to permit the prometheus-service for performing operations in the Prometheus installed namespace:
 
 ```bash
 kubectl -n monitoring apply -f https://raw.githubusercontent.com/keptn-contrib/prometheus-service/0.8.0/deploy/role.yaml
 ```
 
-* Execute the following command which performs:
-  * an update of the Prometheus configuration to add scrape jobs for the service in the specified Keptn project
-  * the defintion of alert rules based on the SLO configuration of that service in the various stages. *Please note:* If no SLO is available in a stage, no alert rule will be created. Besides, the alert will be firing after monitoring a violation of the SLO for more than 10 minutes.
+- Execute the following command which performs:
+  - an update of the Prometheus configuration to add scrape jobs for the service in the specified Keptn project
+  - the defintion of alert rules based on the SLO configuration of that service in the various stages. *Please note:* If no SLO is available in a stage, no alert rule will be created. Besides, the alert will be firing after monitoring a violation of the SLO for more than 10 minutes.
 
 ```bash
 keptn configure monitoring prometheus --project=sockshop --service=carts
@@ -68,7 +67,7 @@ keptn configure monitoring prometheus --project=sockshop --service=carts
 
 ## Verify Prometheus setup in your cluster
 
-* To verify that the Prometheus scrape jobs are correctly set up, you can access Prometheus by enabling port-forwarding for the prometheus-server:
+- To verify that the Prometheus scrape jobs are correctly set up, you can access Prometheus by enabling port-forwarding for the prometheus-server:
 
 ```BASH
 kubectl -n monitoring port-forward svc/prometheus-server 8080:80
@@ -78,12 +77,11 @@ Prometheus is then available on [localhost:8080/targets](http://localhost:8080/t
 
 {{< popup_image link="./assets/prometheus-targets.png" caption="Prometheus Targets">}}
 
-
 ## Configure custom Prometheus SLIs
 
 To tell the *prometheus-service* how to acquire the values of an SLI, the correct query needs to be configured. This is done by adding an SLI configuration to a project, stage, or service using the [add-resource](../../../reference/cli/commands/keptn_add-resource) command. The resource identifier must be `prometheus/sli.yaml`.
 
-* In the below example, the SLI configuration as specified in the `sli-config-prometheus.yaml` file is added to the service `carts` in stage `hardening` from project `sockshop`. 
+- In the below example, the SLI configuration as specified in the `sli-config-prometheus.yaml` file is added to the service `carts` in stage `hardening` from project `sockshop`.
 
 ```console
 keptn add-resource --project=sockshop --stage=hardening --service=carts --resource=sli-config-prometheus.yaml --resourceUri=prometheus/sli.yaml

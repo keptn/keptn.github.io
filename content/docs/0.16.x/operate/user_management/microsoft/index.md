@@ -11,6 +11,7 @@ To set up SSO via OpenID with Microsoft, you have to [register an application](h
 ## Keptn Bridge
 
 Set the following environment variables when installing Keptn:
+
 ```
 bridge:
   ...
@@ -25,6 +26,7 @@ bridge:
 ```
 
 Note: It is also possible to directly change the `Deployment` manifest of an existing Keptn installation. After entering the new environment values, the Bridge pod has to be restarted.
+
 ```
 OAUTH_ENABLED: "true"
 OAUTH_DISCOVERY: "https://login.microsoftonline.com/<directory_tenant_id>/v2.0/.well-known/openid-configuration"

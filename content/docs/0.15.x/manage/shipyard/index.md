@@ -16,7 +16,6 @@ aliases:
 
 * A stage can consist of any number of sequences; but at least one.
 
-
 ### Definition of Stage
 
 A stage is declared by its name. This name will be used for the branch in the Git repository and Kubernetes namespace to which services at this stage will be deployed to.
@@ -189,6 +188,7 @@ Defines the deployment strategy (see [Continuous Delivery](../../continuous_deli
 Defines the quality evaluation that is executed to verify the quality of a deployment based on its SLOs/SLIs.
 
 **Usage:**
+
 ```
 - name: evaluation
 ```
@@ -208,6 +208,7 @@ The get-action task is used to extract the desired remediation action from a rem
 Defines the releasing task that is executed after a successful deployment happened. This means that production traffic is shifted towards the new deployment in this task.
 
 **Usage:**
+
 ```
 - name: release
 ```
@@ -217,6 +218,7 @@ Defines the releasing task that is executed after a successful deployment happen
 Defines the execution of a remediation action retrieved by `get-action`.
 
 **Usage:**
+
 ```
 - name: action
 ```
@@ -226,6 +228,7 @@ Defines the execution of a remediation action retrieved by `get-action`.
 Defines the rollback task that is executed when a rollback shall be triggered.
 
 **Usage:**
+
 ```
 - name: rollback
 ```
@@ -238,6 +241,7 @@ Defines the test strategy used to validate a deployment. Keptn supports tests of
 * `performance`: Test a deployment based on performance/load tests.
 
 **Usage:**
+
 ```
 - name: test
   properties: 
@@ -284,11 +288,10 @@ spec:
             - name: "evaluation"
             - name: "release"
 
-``` 
+```
 
 </p>
 </details>
-
 
 ## Updating a Shipyard
 
@@ -296,7 +299,7 @@ This section provides examples on how to update a shipyard file.
 
 ### Add/Remove a task to/from a task sequence
 
-If you want to add or remove an additional task to a sequence, you can do this by adding/removing the task directly in the shipyard: 
+If you want to add or remove an additional task to a sequence, you can do this by adding/removing the task directly in the shipyard:
 
 *Initial shipyard:*
 
@@ -347,11 +350,11 @@ spec:
             - name: "release"
 ```
 
-**Result:** The next time this sequence gets triggered by Keptn, the task will be executed meaning that a `sh.keptn.event.[task].triggered` event is sent out. Make sure to have a Keptn-service that listens to this event type and can execute it. 
+**Result:** The next time this sequence gets triggered by Keptn, the task will be executed meaning that a `sh.keptn.event.[task].triggered` event is sent out. Make sure to have a Keptn-service that listens to this event type and can execute it.
 
 ### Add/Remove a task sequence to/from a stage
 
-If you want to add or remove an additional task sequence to a stage, you can do this by adding/removing the sequence directly in the shipyard: 
+If you want to add or remove an additional task sequence to a stage, you can do this by adding/removing the sequence directly in the shipyard:
 
 *Initial shipyard:*
 
@@ -376,7 +379,7 @@ spec:
             - name: "release"
 ```
 
-**Use-case 1:** I would like to add an additional delivery process to the production stage that allows rolling-out a hotfix without testing and evaluation. 
+**Use-case 1:** I would like to add an additional delivery process to the production stage that allows rolling-out a hotfix without testing and evaluation.
 
 *Updated shipyard:*
 
@@ -408,7 +411,7 @@ spec:
             - name: "release"
 ```
 
-**Result:** After extending the shipyard as shown above, you can trigger this sequence using: 
+**Result:** After extending the shipyard as shown above, you can trigger this sequence using:
 
 ```
 keptn trigger delivery --project=<project> --service=<service> --image=<image> --tag=<tag> --sequence=hotfix-delivery
@@ -456,15 +459,15 @@ spec:
 
 **Result:** After extending the shipyard as shown above, remediations should be executed when a problem event is retrieved (see [remediation workflow](../../automated_operations/remediation)).
 
-### Define a trigger for a sequence 
+### Define a trigger for a sequence
 
 An advanced and powerful feature of the shipyard is that you can define *triggers* to kick-off a sequence. Therefore, a sequence offers the `triggeredOn` property where a list of events can be specified. The event type you can list there are events that refer to the status of a sequence execution. Their name follows the pattern:
 
-* `[stage_name].[sequence_name].finished` 
+* `[stage_name].[sequence_name].finished`
 
 **Note:** It is not required to specify the full qualified event name which would be `sh.keptn.event.[stage_name].[sequence_name].finished` in this case
 
-Besides, a *match selector* can be added to an event that works as a filter on the `result` property of the event. Consequently, you can filter based on sequence executions that *failed* or *passed*, shown by the next example that filters on `failed`: 
+Besides, a *match selector* can be added to an event that works as a filter on the `result` property of the event. Consequently, you can filter based on sequence executions that *failed* or *passed*, shown by the next example that filters on `failed`:
 
 ```
 sequences:
@@ -499,7 +502,7 @@ spec:
             - name: "release"
 ```
 
-**Use-case:** I would like to add a process (additional sequence) that covers a failed delivery in the production stage by a notification and rollback task. 
+**Use-case:** I would like to add a process (additional sequence) that covers a failed delivery in the production stage by a notification and rollback task.
 
 *Updated shipyard:*
 

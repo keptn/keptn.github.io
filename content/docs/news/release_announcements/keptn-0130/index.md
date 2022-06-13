@@ -29,11 +29,10 @@ Implemented **Keptn spec** version: [0.2.4](https://github.com/keptn/spec/tree/0
 
 ---
 
-
 ### ⚠ BREAKING CHANGES
 
 * **bridge:** The uniform screen has been moved into the settings screen.
-* In keptn sdk the keptn_fake interfaces have been updated to have api.GetOption in their signature (see https://github.com/keptn/go-utils/pull/375/files#diff-245aca76b6ab2043d44c217312e1b9d487545aca0dd53418fb2106efacaec7b3
+* In keptn sdk the keptn_fake interfaces have been updated to have api.GetOption in their signature (see <https://github.com/keptn/go-utils/pull/375/files#diff-245aca76b6ab2043d44c217312e1b9d487545aca0dd53418fb2106efacaec7b3>
 * The sequence control now supports also a `waiting` state.
 * Several API endpoints have been marked as internal. For more information, please check [#6303](https://github.com/keptn/keptn/issues/6303).
 
@@ -65,7 +64,6 @@ Implemented **Keptn spec** version: [0.2.4](https://github.com/keptn/spec/tree/0
 * Update pod config to be more strict w.r.t. security ([#6020](https://github.com/keptn/keptn/issues/6020)) ([6d69563](https://github.com/keptn/keptn/commit/6d6956332ad2259a57b965574c0a411e26bf285e))
 * **webhook-service:** Allow disabling .started events ([#6524](https://github.com/keptn/keptn/issues/6524)) ([#6664](https://github.com/keptn/keptn/issues/6664)) ([e07091f](https://github.com/keptn/keptn/commit/e07091f2aa883b1250bbdd66c5618b167f500b30))
 
-
 ### Bug Fixes
 
 * Adapt http status code for not found upstream repositories ([#6641](https://github.com/keptn/keptn/issues/6641)) ([a3ad118](https://github.com/keptn/keptn/commit/a3ad118f4d80ee44addbe39ab11945cd3c8c4548))
@@ -94,14 +92,11 @@ Implemented **Keptn spec** version: [0.2.4](https://github.com/keptn/spec/tree/0
 * Support Openshift 3.11 ([#6578](https://github.com/keptn/keptn/issues/6578)) ([c72dbf2](https://github.com/keptn/keptn/commit/c72dbf2aca410359baa90c52e2cc541ff9ce77f8))
 * Trim Incoming Keptn Context and Triggered ID via API ([#6845](https://github.com/keptn/keptn/issues/6845)) ([32d98d9](https://github.com/keptn/keptn/commit/32d98d9ae55a9ad1dd0f61dac20aa56cf865a85a))
 
-
 ### Performance
 
 * Directly return Bridge version ([#6764](https://github.com/keptn/keptn/issues/6764)) ([345469c](https://github.com/keptn/keptn/commit/345469c15106510e786eee1a6e7ce87d7a18840c))
 
-
 * **bridge:** Restructuring of Bridge settings for project ([75e2842](https://github.com/keptn/keptn/commit/75e284268271070918ec5541997b8db4d6ef1d54))
-
 
 ### Other
 
@@ -114,7 +109,6 @@ Implemented **Keptn spec** version: [0.2.4](https://github.com/keptn/spec/tree/0
 * **bridge:** Remove unused dependency puppeteer ([#6762](https://github.com/keptn/keptn/issues/6762)) ([9224afe](https://github.com/keptn/keptn/commit/9224afe051a45e09240ebe2a748e7b3273cb57b9))
 * **installer:** Added metadata to keptn helm chart ([#6624](https://github.com/keptn/keptn/issues/6624)) ([88c3e2b](https://github.com/keptn/keptn/commit/88c3e2bc51b30cd9956aa946eb427610e0cffbac))
 * Promote [@thschue](https://github.com/thschue) to maintainers ([#6640](https://github.com/keptn/keptn/issues/6640)) ([fb06427](https://github.com/keptn/keptn/commit/fb06427e36ab03371fdd717463d161e2632eb79a))
-
 
 ### Docs
 
@@ -153,9 +147,6 @@ Implemented **Keptn spec** version: [0.2.4](https://github.com/keptn/spec/tree/0
 
 </details>
 
-
-
 ## Upgrade to 0.13.0
 
-- The upgrade from 0.12.x to 0.13.0 is supported by the `keptn upgrade` command. Find the documentation here: [Upgrade from Keptn 0.12.x to 0.13.0](https://keptn.sh/docs/0.13.x/operate/upgrade/#upgrade-from-keptn-0-12-x-to-0-13-0)
-
+* The upgrade from 0.12.x to 0.13.0 is supported by the `keptn upgrade` command. Find the documentation here: [Upgrade from Keptn 0.12.x to 0.13.0](https://keptn.sh/docs/0.13.x/operate/upgrade/#upgrade-from-keptn-0-12-x-to-0-13-0)

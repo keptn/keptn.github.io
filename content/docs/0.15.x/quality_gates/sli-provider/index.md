@@ -7,7 +7,7 @@ keywords: [0.14.x-quality_gates]
 
 Depending on the monitoring solution you have in place and the SLIs you have configured for your services,
 you need to deploy the corresponding SLI-provider.
-In Keptn 0.14.x, this can be either *Dynatrace* or *Prometheus*. 
+In Keptn 0.14.x, this can be either *Dynatrace* or *Prometheus*.
 
 ## Dynatrace SLI-Provider
 
@@ -36,5 +36,3 @@ In Keptn 0.14.x, this can be either *Dynatrace* or *Prometheus*.
 ## Add custom SLI-Provider
 
 * To create and add your custom SLI-provider to Keptn, please follow the instructions [here](../../integrations/sli_provider).
-
-

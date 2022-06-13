@@ -9,7 +9,7 @@ aliases:
 
 ## Enable/Disable Authentication
 
-The Keptn Bridge contains a switch to enable/disable OpenID Connect-based authentication. This switch also enables session cookies. 
+The Keptn Bridge contains a switch to enable/disable OpenID Connect-based authentication. This switch also enables session cookies.
 
 You can enable/disable OpenID via the Helm Chart values when installing Keptn setting `enabled` to `true`:
 
@@ -32,7 +32,7 @@ bridge:
 Furthermore, additional values are required for OpenID to work:
 
 - `baseUrl` - URL of the bridge (e.g. `http://localhost:3000` or `https://myBridgeInstallation.com`).
-- `discovery` - Discovery URL of the identity provider (e.g. https://api.login.yahoo.com/.well-known/openid-configuration).
+- `discovery` - Discovery URL of the identity provider (e.g. <https://api.login.yahoo.com/.well-known/openid-configuration>).
 - `clientID` - Client ID, provided by the identity provider.
 - `clientSecret` (optional) - Client secret, provided by the identity provider.
 - `IDTokenAlg` (optional) - Algorithm that is used to verify the ID token (e.g. `ES256`). Default is `RS256`.
@@ -41,7 +41,7 @@ Furthermore, additional values are required for OpenID to work:
 
 ## Authentication flow with the identity provider
 
-The following diagram shows the expected authentication flow with a custom identity provider that follows the implementation details explained below. 
+The following diagram shows the expected authentication flow with a custom identity provider that follows the implementation details explained below.
 
 {{< popup_image
 link="./assets/oauth-flow.png"
@@ -95,6 +95,7 @@ OIDC Provider Response :
 ```
 
 The identity provider must implement logic to:
+
 - generate authorization requests,
 - obtain tokens for valid authorization codes, and
 - validate permission checks based on token contents or user information.
@@ -287,7 +288,7 @@ definitions:
 ```
 
 </p>
-</details> 
+</details>
 
 When enabled, the Keptn Bridge expects the environment variable `OAUTH_DISCOVERY` to be correctly set. This must direct to a discovery endpoint with the following details:
 
@@ -311,9 +312,11 @@ GET http://identity-provider:8080/.well-known/openid-configuration
 From the response, Keptn bridge identifies the specific endpoints it needs to consume. The following sections provide specific details of these endpoints.
 
 ### authorization endpoint
+
 It generates an authentication code and redirects to the given redirect URI.
 
 The following query parameters must be supported:
+
 - client_id
 - redirect_uri
 - scope
@@ -374,6 +377,7 @@ Content-Type: application/json
 ```
 
 ### jwks_uri endpoint
+
 It contains a set of JSON Web Keys that is used for validating the received id token.
 
 ```

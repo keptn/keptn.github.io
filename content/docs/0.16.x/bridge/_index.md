@@ -116,15 +116,15 @@ The Keptn Bridge provides an easy way to browse all events that are sent within 
 
 ### Uniform view
 
-The uniform view gives you an overview of all integrations installed within your Keptn installation. 
+The uniform view gives you an overview of all integrations installed within your Keptn installation.
 The data is fetched from your Kubernetes cluster and shows useful information like
+
 * Unread/New error events
 * Deployment version of the service
 * The cluster or host where it is running
 * The Kubernetes namespace
 * The location within Keptn
 * The Cloud Events to which the services are subscribed
-
 
 {{< popup_image
 link="./assets/uniform-view.png"
@@ -139,6 +139,7 @@ link="./assets/uniform-view-logs.png"
 caption="Integrated Service Error Events">}}
 
 #### Create/Edit subscriptions view
+
 By clicking on the edit icon next to the subscription detail or the "*Add sequence*"-button, you are redirected to the subscription view. In this view, you can configure the task, stage and service for the subscription. The values used for the configuration are defined in the shipyard file. It is also possible to define whether the subscription is active for all projects or just the currently selected one.
 
 {{< popup_image
@@ -150,7 +151,6 @@ Once you have selected an event and configured your filters, you may inspect an 
 {{< popup_image
 link="./assets/uniform-view-show-payload.png"
 caption="Show example payload">}}
-
 
 #### Secrets view
 
@@ -172,15 +172,17 @@ link="./assets/secrets-view-create-secret.png"
 caption="Create Secret View">}}
 
 ### Integrations
+
 You can find links for different integration possibilities here. This makes it easier to start using Keptn. Integrate either with Keptn CLI / API or use our custom
 integrations for different CI providers.
 
-Please note that the page contains dynamic content that is loaded from https://get.keptn.sh/integrations.html. By clicking the button the data is requested,
+Please note that the page contains dynamic content that is loaded from <https://get.keptn.sh/integrations.html>. By clicking the button the data is requested,
 and additional data is gathered from the client. For more information about this see [Load Information](./load_information/).
 
 ### Settings
 
 #### Project settings
+
 Use the settings view to edit the project settings.
 To get more information about how to manage your projects with the settings, visit [Manage Services](./manage_projects).
 
@@ -188,15 +190,14 @@ To get more information about how to manage your projects with the settings, vis
 link="./assets/project-settings.png"
 caption="Keptn Bridge Project Settings View">}}
 
-
 #### Service settings
+
 Use this view to create, update, and delete services.
 To get more information about how services can be managed in your settings, visit [Manage Services](./manage_services).
 
 {{< popup_image
 link="./assets/service-settings.png"
 caption="Keptn Bridge Service Settings View">}}
-
 
 ## Keptn Bridge features
 

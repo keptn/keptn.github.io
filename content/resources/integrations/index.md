@@ -8,12 +8,11 @@ icon: callout-idea
 
 Please subscribe to our [Keptn YouTube channel](https://www.youtube.com/c/keptn/) that holds **all** of our videos. Below, we are highlighting the most watched and demanded videos by the community.
 
-
 ## Enabling interoperability in CI/CD on the example of Tekton + Keptn
+
 | | |
 | --- | --- |
 | **Enabling interoperability in CI/CD** with Mauricio Salatino, VMware<br><br> Mauricio Salatino joins us at this Keptn User Group meeting to present how interoperability between CI/CD systems can be achieved by defining a common language based on cloud events. He will demo a PoC that allows to bridge the gap between different CI/CD systems on the example of Tekton and Keptn and make them interact with each other on a common set of events that both systems are able to interpret and act upon. <br><br>[Find the PoC here](https://github.com/cdfoundation/sig-events/tree/main/poc). | <iframe width="560" height="315" src="https://www.youtube.com/embed/YojRJJvN4N8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> |
-
 
 ## Automating performance and load tests with Artillery + Keptn
 
@@ -21,13 +20,11 @@ Please subscribe to our [Keptn YouTube channel](https://www.youtube.com/c/keptn/
 | --- | --- |
 | **Automating & evaluating load testing with Locust and Keptn** with Francesco Lentini, Artillery<br><br> Francesco Lentini from Artillery shows how you can use Artillery to run load tests and smoke tests to help your services maintain their SLOs. <br><br>[Find the integration in the Keptn Sandbox](https://github.com/keptn-sandbox/artillery-service). | <iframe width="560" height="315" src="https://www.youtube.com/embed/j1Spkw0faq0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> |
 
-
 ## Automating & evaluating load testing with Locust and Keptn
 
 | | |
 | --- | --- |
 | **Automating & evaluating load testing with Locust and Keptn** with Lars Holmberg, RedShirt<br><br> Learn how to use Locust load testing and how to write powerful load tests in a simple way. We will then use Keptn to have the tests automatically executed as part of our CD and Keptn Quality Gates to evaluate the impact of the tests on our applications. We even build a self-service platform for developers to be able to trigger deployment, tests, and evaluations for new version of their applications. <br><br>[Find the integration in the Keptn Sandbox](https://github.com/keptn-sandbox/locust-service). | <iframe width="560" height="315" src="https://www.youtube.com/embed/Ok4x2LIbEEY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> |
-
 
 ## Automating Quality Gates in Azure DevOps with Keptn
 
@@ -48,10 +45,10 @@ Please subscribe to our [Keptn YouTube channel](https://www.youtube.com/c/keptn/
 | **Manage Keptn with a Slackbot** with Nestor Zapata and Zohaib Ul-Hassan, Citrix<br><br> Learn how to use our Slackbot to get answers from Keptn and also to trigger tests and quality gate evaluation with all results directly delivered to Slack! No need to ever leave one of your favorite tools again.<br><br>[Find the integration in the Keptn Sandbox](https://github.com/keptn-sandbox/slackbot-service).  | <iframe width="560" height="315" src="https://www.youtube.com/embed/_uJkwapoDuo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> |
 
 ## Performance as a self service with Keptn and Neoload
+
 | | |
 | --- | --- |
 | **Performance as a self service with Keptn and Neoload** with Henrik Rexed, Neotys<br><br> Organizations are moving to cloud-native platforms and more loosely coupled architectures. When done right, it improves the developer experience and increases overall productivity as developers can do most things (build, deploy, run) as a self-service. Continuous performance feedback is a crucial capability of a modern cloud-native platform. It requires the traditional Performance Center of Excellence teams to automate their testing and analysis tasks and provide it as a built-in self-service platform capability as the conventional approaches don’t scale any longer.<br><br>[Find the integration in the Keptn Contrib repository](https://github.com/keptn-contrib/neoload-service). | <iframe width="560" height="315" src="https://www.youtube.com/embed/_s2EcAq1RSE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> |
-
 
 ## More integrations
 

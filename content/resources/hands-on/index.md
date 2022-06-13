@@ -9,7 +9,7 @@ icon: callout-idea
 
 Please subscribe to our [Keptn YouTube channel](https://www.youtube.com/c/keptn/) that holds **all** of our videos. Below, we are highlighting the most watched and demanded videos by the community.
 
-## Level-Up your Jenkins-based Delivery with Keptn 
+## Level-Up your Jenkins-based Delivery with Keptn
 
 | | |
 | --- | ---

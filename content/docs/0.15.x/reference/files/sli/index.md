@@ -20,11 +20,11 @@ each of which always consists of a name and the provider-specific query.
 
 ## Provider-specific SLIs
 
-Please follow the links to the provider-specific SLIs: 
+Please follow the links to the provider-specific SLIs:
 
-* [Dynatrace](../../../monitoring/dynatrace/configure_slis/) 
+* [Dynatrace](../../../monitoring/dynatrace/configure_slis/)
 
-* [Prometheus](../../../monitoring/prometheus/install/#configure-custom-prometheus-slis) 
+* [Prometheus](../../../monitoring/prometheus/install/#configure-custom-prometheus-slis)
 
 ## Add SLI configuration to a Service, Stage, or Project
 
@@ -47,8 +47,7 @@ use the [keptn add-resource](../../cli/commands/keptn_add-resource) command:
   keptn add-resource --project=sockshop --stage=staging --resource=sli-config.yaml --resourceUri=dynatrace/sli.yaml
   ```
 
-  **Note:** This SLI configuration is applied for all services in this stage. 
-
+  **Note:** This SLI configuration is applied for all services in this stage.
 
 * To add an SLI configuration to a project,
 use the [keptn add-resource](../../cli/commands/keptn_add-resource) command:
@@ -61,9 +60,9 @@ use the [keptn add-resource](../../cli/commands/keptn_add-resource) command:
 
 **Example of multiple SLI configurations:**
 
-* Let's assume, we add the following SLI configurations to a project, stage, and service: 
+* Let's assume, we add the following SLI configurations to a project, stage, and service:
 
-    * SLI configuration on project-level:
+  * SLI configuration on project-level:
 
     ```yaml
     spec_version: "1.0"
@@ -73,7 +72,7 @@ use the [keptn add-resource](../../cli/commands/keptn_add-resource) command:
       response_time_p95: "query C-1"
     ```
 
-    * SLI configuration on stage-level:
+  * SLI configuration on stage-level:
 
     ```yaml
     spec_version: "1.0"
@@ -82,7 +81,7 @@ use the [keptn add-resource](../../cli/commands/keptn_add-resource) command:
       response_time_p99: "query D-2"
     ```
 
-    * SLI configuration on service-level: 
+  * SLI configuration on service-level:
 
     ```yaml
     spec_version: "1.0"
@@ -91,7 +90,7 @@ use the [keptn add-resource](../../cli/commands/keptn_add-resource) command:
       sql-statements: "query E-3"
     ```
 
-* If an evaluation of a service gets triggered, the following SLI configuration is used: 
+* If an evaluation of a service gets triggered, the following SLI configuration is used:
 
     ```yaml
     spec_version: "1.0"
@@ -107,11 +106,8 @@ use the [keptn add-resource](../../cli/commands/keptn_add-resource) command:
 
 * [slo](../slo)
 
-* [Dynatrace](../../../monitoring/dynatrace/configure_slis/) 
+* [Dynatrace](../../../monitoring/dynatrace/configure_slis/)
 
-* [Prometheus](../../../monitoring/prometheus/install/#configure-custom-prometheus-slis) 
+* [Prometheus](../../../monitoring/prometheus/install/#configure-custom-prometheus-slis)
 
 * [Quality Gates](../../../quality_gates)
-
-
-

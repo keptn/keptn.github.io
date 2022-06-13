@@ -3,7 +3,7 @@ title: Keptn 0.7.3
 weight: 97
 ---
 
-Keptn 0.7.3 provides a new feature that allows invalidating a quality gate evaluation result. Besides, this release addresses minor bugs as well as UI/UX improvements. 
+Keptn 0.7.3 provides a new feature that allows invalidating a quality gate evaluation result. Besides, this release addresses minor bugs as well as UI/UX improvements.
 
 **The key announcement of Keptn 0.7.3**:
 
@@ -13,7 +13,7 @@ Keptn 0.7.3 provides a new feature that allows invalidating a quality gate evalu
 
 Implemented **Keptn spec** version: [0.1.7](https://github.com/keptn/spec/tree/0.1.7)
 
-- Added new event of type: `sh.keptn.events.evaluation.invalidated` - this event marks a quality gate evaluation result as invalid [#47](https://github.com/keptn/spec/issues/47) 
+- Added new event of type: `sh.keptn.events.evaluation.invalidated` - this event marks a quality gate evaluation result as invalid [#47](https://github.com/keptn/spec/issues/47)
 
 ## New Features
 
@@ -38,17 +38,17 @@ Implemented **Keptn spec** version: [0.1.7](https://github.com/keptn/spec/tree/0
 <details><summary>Keptn Core</summary>
 <p>
 
-- *configuration-service*: 
+- *configuration-service*:
   - Update Git upstream information  in materialized view [#2577](https://github.com/keptn/keptn/issues/2577)
   - Fixed create project with upstream credentials [#2639](https://github.com/keptn/keptn/issues/2639)
 
-- *helm-service*: 
+- *helm-service*:
   - Added timeout when waiting for deployment to be rolled out [#2578](https://github.com/keptn/keptn/issues/2578)  
 
-- *lighthouse-service*: 
-  -  Support the invalidation of evaluation results [#2449](https://github.com/keptn/keptn/issues/2449)
+- *lighthouse-service*:
+  - Support the invalidation of evaluation results [#2449](https://github.com/keptn/keptn/issues/2449)
 
-- *mongodb-datastore*: 
+- *mongodb-datastore*:
   - Removed cloudevents+json from list of produced content types [#2582](https://github.com/keptn/keptn/issues/2582)
 
 </p>
@@ -81,7 +81,6 @@ This section lists bugs and limitations that are known but not fixed in this rel
 - Bridge ignores deployed service artifact [#2543](https://github.com/keptn/keptn/issues/2543)
   - The Bridge loads the last 20 triggers (aka. root events) and if this list does not contain a `sh.keptn.event.configuration.change` or `sh.keptn.event.start-evaluation` event, the label below the service name shows: *Service not deployed*.
 - Hovering over the score in an `approval.triggered` events in the Bridge leads to a scroll-up / jump-up in Firefox [#2369](https://github.com/keptn/keptn/issues/2369)
-
 
 ## Upgrade to 0.7.3
 

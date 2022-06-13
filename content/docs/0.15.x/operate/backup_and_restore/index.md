@@ -5,17 +5,17 @@ weight: 50
 keywords: backup
 ---
 
-To secure all your data in your projects' Git repository, as well as all events that have occurred for these projects, you need to 
+To secure all your data in your projects' Git repository, as well as all events that have occurred for these projects, you need to
 back up the data within the *Configuration Service*, the *MongoDB*, and credentials to your projects' Git upstream repos (if you have configured those).
 The following sections describe how to back up that data and how to restore it.
 
 **Note:** These instructions do not cover backing up any Helm- or Istio-related configurations.
 
-:warning: Please make sure your `kubectl` is connected to the cluster where Keptn is running. 
+:warning: Please make sure your `kubectl` is connected to the cluster where Keptn is running.
 
 ## Back up Keptn
 
-This section describes how to back up your Keptn and store it on your local machine. 
+This section describes how to back up your Keptn and store it on your local machine.
 
 ### Back up Configuration Service
 
@@ -29,12 +29,12 @@ CONFIG_SERVICE_POD=$(kubectl get pods -n keptn -lapp.kubernetes.io/name=configur
 kubectl cp keptn/$CONFIG_SERVICE_POD:/data ./config-svc-backup/ -c configuration-service
 ```
 
-Verify that the data has been copied correctly to your local machine by checking the content of the directory you just created. 
+Verify that the data has been copied correctly to your local machine by checking the content of the directory you just created.
 This should include all projects you have onboarded with Keptn and a `lost+found` directory, which can be ignored.
 
 ```console
 $ ls config-svc-backup/config
-lost+found	sockshop my-project
+lost+found sockshop my-project
 ```
 
 ### Back up Mongodb Data
@@ -83,7 +83,7 @@ CONFIG_SERVICE_POD=$(kubectl get pods -n keptn -lapp.kubernetes.io/name=configur
 kubectl cp ./config-svc-backup/config/ keptn/$CONFIG_SERVICE_POD:/data -c configuration-service
 ```
 
-To make sure the Git repositories within the configuration service are in a consistent state, they need to be reset to the current HEAD. To do so, 
+To make sure the Git repositories within the configuration service are in a consistent state, they need to be reset to the current HEAD. To do so,
 please execute the following commands:
 
 <!-- 
@@ -108,7 +108,7 @@ CONFIG_SERVICE_POD=$(kubectl get pods -n keptn -lapp.kubernetes.io/name=configur
 kubectl cp ./reset-git-repos.sh keptn/$CONFIG_SERVICE_POD:/data/config -c configuration-service
 kubectl exec -n keptn $CONFIG_SERVICE_POD -c configuration-service -- chmod +x -R ./data/config/reset-git-repos.sh
 kubectl exec -n keptn $CONFIG_SERVICE_POD -c configuration-service -- ./data/config/reset-git-repos.sh
-``` 
+```
 
 ### Restore MongoDB data
 

@@ -3,24 +3,24 @@ title: Keptn 0.7.1
 weight: 99
 ---
 
-Keptn 0.7.1 improves the capabilities of the 0.7.0 release by adding more flexibility to the tasks of installing/operating Keptn, introducing three new CLI commands and improving the UX in the Keptn Bridge. Especially the new feature of installing Keptn in different namespaces is a door opener for various use-cases since multiple Keptn deployments, e.g., one for each team, can be operated on one cluster. 
+Keptn 0.7.1 improves the capabilities of the 0.7.0 release by adding more flexibility to the tasks of installing/operating Keptn, introducing three new CLI commands and improving the UX in the Keptn Bridge. Especially the new feature of installing Keptn in different namespaces is a door opener for various use-cases since multiple Keptn deployments, e.g., one for each team, can be operated on one cluster.
 
 **The key announcements of Keptn 0.7.1**:
 
-:star2: *More flexibility in installing/operating Keptn*: 
+:star2: *More flexibility in installing/operating Keptn*:
 
-- `keptn install --namespace`: Allows you to specify the namespace to install Keptn in. 
-- `keptn upgrade`: Instead of manually executing a K8s job as done by the previous upgrade processes, this CLI command performs the upgrade. 
-- Set `root context`: As part of the installation Helm Chart of Keptn, a root context can be specified that allows you to customize the prefix of the API and Bridge endpoint of Keptn. 
+- `keptn install --namespace`: Allows you to specify the namespace to install Keptn in.
+- `keptn upgrade`: Instead of manually executing a K8s job as done by the previous upgrade processes, this CLI command performs the upgrade.
+- Set `root context`: As part of the installation Helm Chart of Keptn, a root context can be specified that allows you to customize the prefix of the API and Bridge endpoint of Keptn.
 
 :rocket: *New CLI commands*:
 
-- `keptn delete service`: This command will delete a service from a project and *undeploy* the service from the cluster. 
+- `keptn delete service`: This command will delete a service from a project and *undeploy* the service from the cluster.
 - `keptn get events`: This command is a generic implementation to retrieve Keptn events of any event type.  
 
 :sparkles: *UX improvements in environment screen*: Based on feedback on the features of the Keptn delivery assistant, improvements regarding the user experience of the Keptn Bridge has been implemented.
 
-:tada: *Keptn on OpenShift 4*: Thanks to the work of @marcredhat, Keptn has been successfully tested on an OpenShift 4 cluster. Two assets of this task are provided here: (1) Docu for [Automated install of OpenShift 4.5 and Keptn](https://github.com/marcredhat/crcdemos/tree/master/keptn) and (2) [YouTube - Deploy to OpenShift 4.5 / Service Mesh using Keptn](https://www.youtube.com/watch?v=ji03EjFx6CA). 
+:tada: *Keptn on OpenShift 4*: Thanks to the work of @marcredhat, Keptn has been successfully tested on an OpenShift 4 cluster. Two assets of this task are provided here: (1) Docu for [Automated install of OpenShift 4.5 and Keptn](https://github.com/marcredhat/crcdemos/tree/master/keptn) and (2) [YouTube - Deploy to OpenShift 4.5 / Service Mesh using Keptn](https://www.youtube.com/watch?v=ji03EjFx6CA).
 
 *Additional note:* Added documentation of [GOVERNANCE](https://github.com/keptn/keptn/blob/0.7.1/GOVERNANCE.md) & [SECURITY](https://github.com/keptn/keptn/blob/0.7.1/GOVERNANCE.md) process
 
@@ -69,7 +69,7 @@ Implemented **Keptn spec** version: [0.1.5](https://github.com/keptn/spec/tree/0
 - *helm-service*:
   - Delete a service from the cluster when deleting it from a project [#2201](https://github.com/keptn/keptn/issues/2201)
 
-- *lighthouse-service*: 
+- *lighthouse-service*:
   - Mark info SLI correctly when empty pass/warning array is provided [#2231](https://github.com/keptn/keptn/issues/2231)
   - Change the comparison strategy to match the full quality gate result [#2224](https://github.com/keptn/keptn/issues/2224)
 
