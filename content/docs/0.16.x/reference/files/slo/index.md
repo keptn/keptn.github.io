@@ -102,7 +102,7 @@ In other words, the overall evaluation result decides whether SLI values are con
       compare_with: "single_result"
       number_of_comparison_results
 
-  the `compare_with` setting overrides the `number_of_comparison_results` setting. 
+  the `compare_with` setting overrides the `number_of_comparison_results` setting.
 
 * Comparison calculations are based on the true `float64` encoded values
 but the evaluation results displayed on the Bridge are rounded to two decimal points.

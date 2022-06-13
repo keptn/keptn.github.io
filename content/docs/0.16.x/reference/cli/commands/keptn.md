@@ -10,7 +10,7 @@ The CLI for using Keptn
 ### Synopsis
 
 The CLI allows interaction with a Keptn installation to manage Keptn, to trigger workflows, and to get details.
- 
+
 ### Options
 
 ```

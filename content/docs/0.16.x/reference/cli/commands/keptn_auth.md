@@ -15,7 +15,7 @@ If the authentication is successful, the endpoint and the API token are stored i
 More precisely, the Keptn CLI stores the endpoint and API token using *pass* in case of Linux, using *Keychain* in case of macOS, or *Wincred* in case of Windows.
 
 **Note:** If you receive a warning *Using a file-based storage for the key because the password-store seems to be not set up.* this is because a password store could not be found in your environment. In this case, the credentials are stored in *~/.keptn/.keptn* in your home directory.
- 
+
 ```
 keptn auth --endpoint=https://api.keptn.MY.DOMAIN.COM --api-token=SECRET_TOKEN [flags]
 ```

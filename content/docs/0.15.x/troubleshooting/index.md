@@ -382,6 +382,7 @@ More details can be found at [GitHub Kubernetes Issue #64924](https://github.com
    ```console
    kubectl run -i --restart=Never --rm test-${RANDOM} --image=alpine:3.11 -- sh -c "nslookup keptn.sh" 
    ```
+
   - If a nameserver returns `NXDOMAIN` or `Non-authoritative answer`, everything is fine.
   - If at any point a nameserver returns an `ERRFAIL`, `SERVFAIL` or similar, update the hosts `/etc/resolv.conf` file (together with your administrator) and try again.
 
