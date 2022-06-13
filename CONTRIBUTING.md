@@ -101,13 +101,17 @@ If you want to work on an issue or enhancement, two questions arise:
 
 Currently, the Keptn project follows the approach outlined below. For clarification, an example is used in which the Keptn project recently released `0.13.x` and is currently working on `0.14.x`. These release versions will of course increase when the release train moves on.
 
-**Documentation for new features**
+### Documentation for new features
 
-For each recent release (e.g. `0.14.x`), a folder in [./content/docs](https://github.com/keptn/keptn.github.io/tree/master/content/docs) is available, which receives documentation for new features or breaking changes. This folder is *hidden*  and not publically rendered. This is controlled with the `ignoreFiles` flag in [config.toml](https://github.com/keptn/keptn.github.io/blob/master/config.toml). When writing your documentation enhancements or changes locally - as explained in the section [Install Hugo to build the docs locally](https://github.com/keptn/keptn.github.io/blob/master/CONTRIBUTING.md#install-hugo-to-build-the-docs-locally) - control the rendering by adding/removing the folder from the `ignoreFiles` in `config.toml`. However, make sure to not push the modified `config.toml` when filing your PR.
+For each recent release (e.g. `0.14.x`), a folder in [./content/docs](https://github.com/keptn/keptn.github.io/tree/master/content/docs) is available, which receives documentation for new features or breaking changes.
+This folder is *hidden*  and not publically rendered.
+This is controlled with the `ignoreFiles` flag in [config.toml](https://github.com/keptn/keptn.github.io/blob/master/config.toml).
+When writing your documentation enhancements or changes locally - as explained in the section [Install Hugo to build the docs locally](https://github.com/keptn/keptn.github.io/blob/master/CONTRIBUTING.md#install-hugo-to-build-the-docs-locally) - control the rendering by adding/removing the folder from the `ignoreFiles` in `config.toml`.
+However, make sure to not push the modified `config.toml` when filing your PR.
 
 > Update the content in folder `0.14.x` when documentation for a new feature is needed.
 
-**Documentation for already released Keptn versions**
+### Documentation for already released Keptn versions
 
 For all previous releases like `0.13.x`, `0.12.x`, and lower, a folder in [./content/docs](https://github.com/keptn/keptn.github.io/tree/master/content/docs) is available. If a fix or enhancement of an already released version is needed, the documentation update needs to go into the corresponding folder **and** into the documentation for the release under development if the change is valid for upcoming releases too.
 
@@ -251,7 +255,7 @@ The following sequence of steps is a reasonable workflow for creating new conten
     hugo server -D
     ```
 
-2. Create a local branch for your changes.  Be sure to base your new branch on the contents of the `master` branch unless you intend to create a derivative PR:
+1. Create a local branch for your changes.  Be sure to base your new branch on the contents of the `master` branch unless you intend to create a derivative PR:
 
    ```
    git checkout master
@@ -259,17 +263,17 @@ The following sequence of steps is a reasonable workflow for creating new conten
    git checkout -b <your-new-branch>
    ```
 
-3. Execute the following and check the output to ensure that your branch is set up correctly:
+1. Execute the following and check the output to ensure that your branch is set up correctly:
 
    ```
    git status
    ```
 
-3. Do the writing you want to do in your local branch, checking the formatted version at `localhost:1313`.
+1. Do the writing you want to do in your local branch, checking the formatted version at `localhost:1313`.
 
-4. When you have completed the writing you want to do, close all files in your branch and run `git status` to confirm that it correctly reflects the files you have modified, added, and deleted.
+1. When you have completed the writing you want to do, close all files in your branch and run `git status` to confirm that it correctly reflects the files you have modified, added, and deleted.
 
-4. Add and commit your changes.  Here, we commit all modified files but you can specify individual files to the `git add` command.
+1. Add and commit your changes.  Here, we commit all modified files but you can specify individual files to the `git add` command.
 The `git commit -s` command commits the files and signs that you are contributing this intellectual property to the Keptn project.
 
    ```
@@ -280,7 +284,7 @@ The `git commit -s` command commits the files and signs that you are contributin
    Use vi commands to add a description of the PR (should be 80 characters or less) to the commit. This will be displayed as the title of the PR in listings.
 You can add multiple lines explaining the PR here but, in general, it is better to only supply the PR title here; you can add more information and edit the PR title when you create the PR on the GitHub UI page.
 
-5. Push your branch to github:
+1. Push your branch to github:
    * If you cloned your fork to use SSH, the command is:
 
      ```
@@ -295,7 +299,7 @@ Git responds with an error message that gives you the full command line to use; 
      git push <need options/arguments>
      ```
 
-6. Create the PR by going to the [keptn.github.io](https://github.com/keptn/keptn.github.io) GitHub repository.
+1. Create the PR by going to the [keptn.github.io](https://github.com/keptn/keptn.github.io) GitHub repository.
    * You should see a yellow shaded area that says something like:
 
      ```
@@ -309,14 +313,14 @@ Git responds with an error message that gives you the full command line to use; 
      ```
 
    * Check that the title of the PR is correct; click the "Edit" button to modify it.
-Add "WIP" (Work in Progress) or "Draft" to the title if the PR is not yet ready for general review.
+      Add "WIP" (Work in Progress) or "Draft" to the title if the PR is not yet ready for general review.
    * Add a full description of the work in the PR, including any notes for reviewers, a reference to the relevant GitHub issue (if any), and tags for specific people (if any) who may be interested in this PR.
    * Carefully review the changes GitHub displays for this PR to ensure that they are what you want.
    * Click the green "Create pull request" button to create the PR.
-You may want to record the PR number somewhere for future reference although you can always find the PR in the GitHub lists of open and closed PRs.
+      You may want to record the PR number somewhere for future reference although you can always find the PR in the GitHub lists of open and closed PRs.
    * GitHub automatically populates the "Reviewers" block.
    * If this PR is not ready for review, click the "Still in progress? Convert to draft" string under the list of reviewers.
-People can still review the content but can not merge the PR until you remove the "Draft" status.
+      People can still review the content but can not merge the PR until you remove the "Draft" status.
    * The block of the PR that reports on checks will include the following item:
 
      ```
@@ -326,7 +330,7 @@ People can still review the content but can not merge the PR until you remove th
 
    * When the PR is ready to be reviewed, approved, and merged, click the "Ready to review" button to remove the "Draft" status. Then, if you added "WIP" or "Draft" to the PR title, remove it now.
 
-7. Your PR should be reviewed within a few days.  Watch for any comments that may be added by reviewers and implement or respond to the recommended changes as soon as possible.
+1. Your PR should be reviewed within a few days.  Watch for any comments that may be added by reviewers and implement or respond to the recommended changes as soon as possible.
 
    * If a reviewer makes a GitHub suggestion and you agree with the change, just click "Accept this change" to create a commit for that modification.  You can also group several suggestions into a single commit using the GitHub tools.
    * You can make other changes using the GitHub editor or you can work in your local branch to make modifications.
@@ -334,9 +338,9 @@ People can still review the content but can not merge the PR until you remove th
       * If changes have been made using the GitHub editor, you will need to do a `git pull` request to pull those commits back to your local branch before you push the new changes.
       * After modifying the local source, issue the `git add .`, `git commit`, and `git push` commands to push your changes to github.
 
-8. When your PR has the appropriate approvals, it will be merged and the revised content should be published on the web site within a few minutes.
+1. When your PR has the appropriate approvals, it will be merged and the revised content should be published on the web site within a few minutes.
 
-9. When your PR has been approved and merged, you can delete your local branch with the following command:
+1. When your PR has been approved and merged, you can delete your local branch with the following command:
 
    ```
    git branch -d <branch-name>
