@@ -1,19 +1,5 @@
 # line length https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md013
-MD013:
-  # Number of characters
-  line_length: 600
-  # Include code blocks
-  code_blocks: false
-  # Include tables
-  tables: false
-  # Include headings
-  headings: false
-  # Include headings
-  headers: false
-  # Strict length checking
-  strict: false
-  # Stern length checking
-  stern: false
+MD013: false
 
 # inline html https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md033
 MD033: false
