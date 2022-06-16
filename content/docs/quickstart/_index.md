@@ -9,8 +9,11 @@ hidechildren: true # this flag hides all sub-pages in the sidebar-multicard.html
 
 The [Keptn End-to-End Delivery](https://killercoda.com/keptn/scenario/keptn-end-to-end-delivery) exercise
 uses [KillerCoda](https://killercoda.com/) to quickly introduce you to Keptn
-without needing to install anything.
-In less than an hour, you will learn about Keptn's main features and how to implement them.
+without requiring you to install anything.
+In less than an hour, you will learn about the main features of Keptn and how to implement them.
+
+**Note:** The kilrcoda session expires after an hour or if it is idle for five minutes or longer
+so you should plan to sit down and do the exercise without interruptions..
 
 ## Next steps
 
@@ -23,7 +26,13 @@ If you like what you saw in the exercise, you can start using Keptn yourself by 
 
 You can install and run Keptn on virtually any Kubernetes cluster:
 
-1. Install core control plane components and expose via a LoadBalancer:
+1. Download the Keptn Command Line Tool:
+
+```
+curl -sL https://get.keptn.sh | bash
+```
+
+2. Install the core Keptn control plane components and expose them via a LoadBalancer:
 ```
 helm repo add keptn https://charts.keptn.sh && helm repo update
 helm install keptn keptn/keptn \
@@ -32,12 +41,15 @@ helm install keptn keptn/keptn \
 --set=control-plane.apiGatewayNginx.type=LoadBalancer
 ```
 
-2. Install the execution plane components. These are additional microservices that will handle certain tasks:
+3. Install some standard Keptn execution plane components. These are additional microservices that handle specific tasks:
 
 ```
 helm install jmeter-service keptn/jmeter-service -n keptn
 helm install helm-service keptn/helm-service -n keptn
 ```
+
+  Note that you do not have to use these particular microservices.
+  See [Deploying Services](../0.16.x/manage/service) for more information.
 
 See [Install Keptn using the Helm chart](../0.16.x/operate/advanced_install_options)
 for more details.
