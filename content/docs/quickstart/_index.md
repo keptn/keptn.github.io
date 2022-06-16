@@ -32,6 +32,8 @@ You can install and run Keptn on virtually any Kubernetes cluster:
 curl -sL https://get.keptn.sh | bash
 ```
 
+See [Keptn CLI](../0.16.x/reference/cli) for more information.
+
 2. Install the core Keptn control plane components and expose them via a LoadBalancer:
 ```
 helm repo add keptn https://charts.keptn.sh && helm repo update

@@ -15,7 +15,7 @@ It can be installed in its own namespace on an existing Kubernetes cluster
 or on it's own cluster.
 You can also deploy the Keptn Control Plane on one Kubernetes cluster
 and deploy the Keptn Execution Plane on another Kubernetes cluster;
-see [Multi-cluster setup](../multi-cluster) for details.
+see [Multi-cluster setup](../multi_cluster) for details.
 
 Before you install a new Kubernetes cluster,
 you must install the [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) utility.
