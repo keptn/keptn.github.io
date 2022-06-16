@@ -1,7 +1,7 @@
 ---
 title: Release 0.16.x
 linktitle: Release 0.16.x
-weight: 981
+weight: 980
 sidebar_multicard: true
 icon: docs
 hide: false
