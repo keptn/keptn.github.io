@@ -243,7 +243,7 @@ Keptn consists of a **Control Plane** and an **Execution Plane**:
     helm install keptn keptn/keptn -n keptn --create-namespace --set=continuous-delivery.enabled=true
     ```
 
-**How to access Keptn?**
+## Access options
 
 Before installing Keptn on your cluster, please also consider how you would like to access Keptn.
 Kubernetes provides the following four options:
