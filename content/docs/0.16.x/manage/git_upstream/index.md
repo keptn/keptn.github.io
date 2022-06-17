@@ -1,7 +1,7 @@
 ---
 title: Git-based upstream  
-description: Select a Git-based upstream for a project.
-weight: 20
+description: Create a Git-based upstream for a project.
+weight: 30
 keywords: [0.8.x-manage]
 aliases:
   - /docs/0.8.0/manage/git_upstream/
