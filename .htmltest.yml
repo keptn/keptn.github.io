@@ -25,6 +25,8 @@ IgnoreURLs:
 # LinkedIn does not like automation and is returning a 999 Response Code
 - "linkedin.com"
 - "mailto"
+# fileformat.com returns 403
+- "fileformat.com" 
 # Domains used in documentation for local resources
 - "localhost:8080"
 - "YOUR-ORG"
