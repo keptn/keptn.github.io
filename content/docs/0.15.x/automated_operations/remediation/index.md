@@ -106,7 +106,7 @@ kind: Remediation
 metadata:
   name: serviceXYZ-remediation
 spec:
-  remediations:  
+  remediations:
   - problemType: Response time degradation
     actionsOnOpen:
     - name: Scaling ReplicaSet by 1
@@ -116,7 +116,7 @@ spec:
     - name: Toogle feature flag
       action: featuretoggle
       description: Toggle feature flag EnablePromotion from ON to OFF.
-      value: 
+      value:
         EnablePromotion: off
 ```
 

@@ -266,5 +266,7 @@ spec:
                 timeframe: "10m"
 ```
 
-**Result:** After extending the shipyard as shown above, remediations should be executed when a problem event is retrieved (see [remediation workflow](../../automated_operations/remediation)).
+**Result:** After extending the shipyard as shown above,
+remediations should be executed when a problem event is retrieved.
+See [Remediation sequences](../remediation-sequence).
 

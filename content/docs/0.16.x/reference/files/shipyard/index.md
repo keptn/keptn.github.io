@@ -170,8 +170,8 @@ Each of these are discussed below.
 
 * `action`
 
-    Indicates that a remediation action should be executed by an action provider.
-    It is used within a [remediation workflow](../../../automated_operations/remediation).
+    Indicates that a remediation action should be executed by an action provider
+    that is defined in a [remediation](../remediation) configuration.
 
 * `approval`
 
@@ -227,8 +227,7 @@ Each of these are discussed below.
         }
 
 * `get-action`
-    Extracts the desired remediation action from a *remediation* configuration
-    within a [remediation workflow](../../../automated_operations/remediation).
+    Extracts the desired remediation action from a [remediation](../remediation) configuration.
 
 * `release`
 
@@ -320,4 +319,4 @@ to allow `stage`s to be added to and removed from a *shipyard* in an existing pr
 * [Working with shipyard files](../../../manage/shipyard)
 * [Multi-stage delivery](../../../continuous_delivery/multi_stage)
 * [Triggers](../../../manage/triggers)
-* [Remediation Config](../../../automated_operations/remediation)
+* [Remediation Config](../remediation)
