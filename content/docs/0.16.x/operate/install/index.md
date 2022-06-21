@@ -246,15 +246,22 @@ Keptn consists of a **Control Plane** and an **Execution Plane**:
 
     ```console
     helm repo add keptn https://charts.keptn.sh
-    helm install keptn keptn/keptn -n keptn
+    helm repo update
+    helm install keptn keptn/keptn -n keptn --version=$KeptnVersion
     ```
+
+  where, `$KeptnVersion` is the version of Keptn you want to install.
 
 * The **Control Plane with the Execution Plane (for Continuous Delivery)** allows to implement [Continuous Delivery](../../../concepts/delivery/) on top of *quality gates* and *automated operations* use cases. Please not that for this use-case [Istio](https://istio.io) is required as well, as this is used for traffic routing between blue/green versions during deployment. To install the control plane with the execution plane for continuous delivery, execute:
 
     ```
-    helm install keptn keptn/keptn -n keptn --create-namespace --set=continuous-delivery.enabled=true
+    helm repo add keptn https://charts.keptn.sh
+    helm repo update
+    helm install keptn keptn/keptn -n keptn --version=$KeptnVersion --create-namespace --set=continuous-delivery.enabled=true
     ```
 
+ where, `$KeptnVersion` is the version of Keptn you want to install.
+ 
 ## Access options
 
 Before installing Keptn on your cluster, please also consider how you would like to access Keptn.
@@ -278,7 +285,7 @@ This option exposes Keptn externally using a cloud provider's load balancer (if 
 1. **Install Keptn:** For installing Keptn on your cluster, please use the Helm CLI.
 Depending on whether you would like to install the execution plane for continuous delivery, add the flag `continuous-delivery.enabled=true`.
   ```console
-   helm install keptn keptn/keptn -n keptn --create-namespace --set=continuous-delivery.enabled=true,control-plane.apiGatewayNginx.type=LoadBalancer
+   helm install keptn keptn/keptn -n keptn --version=$KeptnVersion --create-namespace --set=continuous-delivery.enabled=true,control-plane.apiGatewayNginx.type=LoadBalancer
   ```
 
 1. **Get Keptn endpoint:**  Get the EXTERNAL-IP of the `api-gateway-ngix` using the command below. The Keptn API endpoint is: `http://<ENDPOINT_OF_API_GATEWAY>/api`
@@ -310,7 +317,7 @@ This option exposes Keptn on each Kubernetes Node's IP at a static port. Therefo
 1. **Install Keptn:** For installing Keptn on your cluster, please use the Keptn CLI.
 Depending on whether you would like to install the execution plane for continuous delivery, add the flag `continuous-delivery.enabled=true`.
   ```console
-  helm install keptn keptn/keptn -n keptn --create-namespace --set=continuous-delivery.enabled=true,control-plane.apiGatewayNginx.type=NodePort
+  helm install keptn keptn/keptn -n keptn --version=$KeptnVersion --create-namespace --set=continuous-delivery.enabled=true,control-plane.apiGatewayNginx.type=NodePort
   ```
 
 1. **Get Keptn endpoint:** Get the mapped port of the `api-gateway-nginx` using the command below.
@@ -346,7 +353,7 @@ Depending on whether you would like to install the execution plane for continuou
 1. **Install Keptn:** For installing Keptn on your cluster, please use the Keptn CLI.
 Depending on whether you would like to install the execution plane for continuous delivery, add the flag `continuous-delivery.enabled=true`.
   ```console
-  helm install keptn keptn/keptn -n keptn --create-namespace --set=continuous-delivery.enabled=true
+  helm install keptn keptn/keptn -n keptn --version=$KeptnVersion --create-namespace --set=continuous-delivery.enabled=true
   ```
 
 1. **Install an Ingress-Controller and create an Ingress:**
@@ -546,7 +553,7 @@ This option does not expose Keptn to the public but exposes Keptn on a *cluster-
 1. **Install Keptn:** For installing Keptn on your cluster, please use the Keptn CLI.
 Depending on whether you would like to install the execution plane for continuous delivery, add the flag `continuous-delivery.enabled=true`.
   ```console
-  helm install keptn keptn/keptn -n keptn --create-namespace --set=continuous-delivery.enabled=true
+  helm install keptn keptn/keptn -n keptn --version=$KeptnVersion --create-namespace --set=continuous-delivery.enabled=true
   ```
 
 1. **Setup a Port-Forward:** Configure the port-forward by using the command below.

@@ -388,6 +388,6 @@ If the error log event should not be associated to an execution of a specific ta
 ## See also
 
 * [Distributor](../../reference/miscellaneous/distributor)
-* [distributor.yaml](../../reference/files/distributor.yaml)
+* [distributor](../../reference/files/distributor)
 
 ```
