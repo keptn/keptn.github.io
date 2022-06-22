@@ -13,6 +13,7 @@ IgnoreDirs:
 # exlcuded because the paths do not exist for styles and contact
 - "404"
 IgnoreURLs:
+- "github.com/keptn/keptn/.*/\\d*\\.\\d*\\.\\d*"
 # GitHub Urls are ignored due to Request Limitations and getting a 429 instead
 - "github.com/keptn/keptn/issues"
 - "github.com/keptn/keptn/commit"
