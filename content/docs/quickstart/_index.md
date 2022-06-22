@@ -3,7 +3,7 @@ title: Quick Start
 description: Learn how to get Keptn running in five minutes. Whether you prefer Helm, Docker or Keptn CLI, or k3d, we have you covered.
 icon: concepts
 layout: quickstart
-weight: 10
+weight: 15
 hidechildren: true # this flag hides all sub-pages in the sidebar-multicard.html
 ---
 

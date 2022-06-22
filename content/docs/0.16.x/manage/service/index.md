@@ -1,5 +1,5 @@
 ---
-title: Service
+title: Deploying Services
 description: Create a service in Keptn.
 weight: 30
 keywords: [0.16.x-manage]
