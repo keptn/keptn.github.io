@@ -6,12 +6,46 @@ keywords: [0.16.x-manage]
 aliases:
 ---
 
-In Keptn, a project is a structure that allows organizing your services. A project is stored as a git repository and contains branches representing the multi-stage environment (e.g., dev, staging, and production stage).
-In other words, the separation of stage configurations is based on git repository branches.
+In Keptn, a project is a structure that allows organizing your services.
+A project is stored as a Git repository and contains branches
+representing the multi-stage environment (e.g., dev, staging, and production stage).
+In other words, the separation of stage configurations is based on Git repository branches.
+
+## Before you create a project
+
+Before you create a project, you must install Keptn and the Keptn CLI
+on a Kubernetes cluster that has **kubectl** installed.
+See [Install CLI and Keptn](../../operate/install).
+
+We also suggest reading [Plan your project](../plan)
+to anticipate some of the choices you must make as you create a new project.
 
 ## Create a project
 
-To create a project, you can use the CLI command [keptn create project](../../reference/cli/commands/keptn_create_project) and pass a shipyard file.
+Use the [keptn create project](../../reference/cli/commands/keptn_create_project) command
+to create a new project.
+Before you run that command, you must create some resources
+that are specified to that command:
+
+* A new, unitialized Git-based upstream repository that will store
+all the configuration and data information that Keptn needs.
+You also need to create and save a user token for that repository.
+See [Git-based upstream](../git_upstream) for details.
+
+  * Note that, in Keptn releases 0.15.x and earlier, the upstream git-based repository was optional
+  although strongly recommended.
+  Beginning with Keptn release 0.16.x, all Keptn projects must have an associated Git-upstream repository.
+
+* A [shipyard](../../reference/files/shipyard) file
+that defines the `stages` for your project.
+
+
+
+### Issue the keptn create project command
+
+To create a project, you can use the CLI command
+[keptn create project](../../reference/cli/commands/keptn_create_project)
+and pass a shipyard file.
 
 **Note**: To learn more about the shipyard specification, please have a look at [shipyard section](../shipyard/) and the [the Keptn spec](https://github.com/keptn/spec/blob/0.2.1/shipyard.md).
 
@@ -28,8 +62,7 @@ spec:
 
 * **Recommended approach for Keptn in production:** Create a project with the Keptn CLI using a Git upstream: 
   ```console
-  keptn create project PROJECTNAME --shipyard=FILEPATH --git-user=GIT_USER --git-token=GIT_TOKEN --git-remote-url=GIT_REMOTE_URL
-  ```
+  keptn create project PROJECTNAME --shipyard=FILEPATH --git-user=GIT_USER --git-token=GIT_TOKEN --git-remote-url=GIT_REMOTE_URL ```
   See [Git based upstream](../../manage/git_upstream/) for more information.
 
 * **Demo/Lab setting:** Create a project with the Keptn CLI without a Git upstream and **no** backup:
