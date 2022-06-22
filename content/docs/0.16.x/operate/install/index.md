@@ -8,21 +8,33 @@ aliases:
   - /docs/0.16.0/operate/install/
 ---
 
-## Prerequisites
-- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
-
 ## Create or bring a Kubernetes cluster
 
-Keptn is designed to run on top of [Kubernetes](../k8s_support). Consequently, it is required to bring a Kubernetes cluster. For instance, you can select one of the following options:
+Keptn can run on top of virtually any [Kubernetes](../k8s_support) cluster.
+It can be installed in its own namespace on an existing Kubernetes cluster
+or on it's own cluster.
+You can also deploy the Keptn Control Plane on one Kubernetes cluster
+and deploy the Keptn Execution Plane on another Kubernetes cluster;
+see [Multi-cluster setup](../multi_cluster) for details.
 
-<details><summary>Azure Kubernetes Service (AKS)</summary>
-<p>
+Before you install a new Kubernetes cluster,
+you must install the [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) utility.
+
+Some of the more popular Kubernetes options are listed below
+with links to installation instructions.
+This includes major commercial Kubernetes providers
+as well as k3s and k3d, which allow you to install a small Kubernetes cluster
+on your laptop for study and demonstration purposes.
+
+
+<details>
+   <summary>Azure Kubernetes Service (AKS)</summary>
 
 - Create AKS cluster by following the guide [here](https://docs.microsoft.com/en-us/azure/aks/learn/quick-kubernetes-deploy-cli)
 - Recommended node size: One **D8s_v3** node
 
- </p>
 </details>
+
 
 <details><summary>Amazon Elastic Kubernetes Service (EKS)</summary>
 <p>
@@ -248,9 +260,9 @@ Keptn consists of a **Control Plane** and an **Execution Plane**:
     helm install keptn keptn/keptn -n keptn --version=$KeptnVersion --create-namespace --set=continuous-delivery.enabled=true
     ```
 
-  where, `$KeptnVersion` is the version of Keptn you want to install.
-
-**How to access Keptn?**
+ where, `$KeptnVersion` is the version of Keptn you want to install.
+ 
+## Access options
 
 Before installing Keptn on your cluster, please also consider how you would like to access Keptn.
 Kubernetes provides the following four options:
