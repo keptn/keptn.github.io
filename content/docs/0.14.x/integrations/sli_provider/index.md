@@ -5,7 +5,7 @@ weight: 5
 keywords: [0.14.x-integration]
 ---
 
-An *SLI-provider* is an implementation of a [*Keptn-service*](../custom_integration/#keptn-service) with a dedicated purpose. This type of service is responsible for querying an external data source for SLIs that are then used by Keptn to evaluate an SLO. To configure a query for an indicator, Keptn provides the concept of an [SLI configuration](https://github.com/keptn/spec/blob/0.2.2/service_level_indicator.md#service-level-indicators-sli).
+An *SLI-provider* is an implementation of a [*Keptn-service*](../custom_integration/#write-your-keptn-service) with a dedicated purpose. This type of service is responsible for querying an external data source for SLIs that are then used by Keptn to evaluate an SLO. To configure a query for an indicator, Keptn provides the concept of an [SLI configuration](https://github.com/keptn/spec/blob/0.2.2/service_level_indicator.md#service-level-indicators-sli).
 
 * Create a SLI configuration defining tool-specific queries for indicators. An example of an SLI configuration looks as follows:
 
@@ -18,7 +18,7 @@ indicators:
 
 **Note:** This SLI configuration file will then be stored in Keptn's configuration store using the [keptn add-resource](../../reference/cli/commands/keptn_add-resource) command.
 
-The [Keptn CloudEvents](#cloudevents) an *SLI-provider* has to subscribe to is:
+The [Keptn CloudEvents](../custom_integration/#cloudevents) an *SLI-provider* has to subscribe to is:
 
 - `sh.keptn.event.get-sli.triggered`
 
@@ -72,7 +72,7 @@ Next to event meta-data such as project, stage, or service name, the event conta
 
 **Distributor:**
 
-* To subscribe your SLI-provider to the `sh.keptn.event.action.triggered` event, please follow [Subscription to Keptn event](../custom_integration/#subscription-to-keptn-event).
+* To subscribe your SLI-provider to the `sh.keptn.event.action.triggered` event, please follow [Subscription to Keptn event](../custom_integration/#subscription-to-a-triggered-event).
 
 
 ### Functionality
@@ -143,7 +143,7 @@ After receiving the `sh.keptn.event.get-sli.triggered` event, an SLI-provider mu
 
 ## Deploy SLI-provider with distributor
 
-A default deployment manifest is provided in the keptn-service-template-go template, see: [deploy/service.yaml](https://github.com/keptn-sandbox/keptn-service-template-go/blob/master/deploy/service.yaml). 
+A default deployment manifest is provided in the keptn-service-template-go template, see: [deploy/service.yaml](https://github.com/keptn-sandbox/keptn-service-template-go/tree/0.14.0/chart). 
 
 * Change the deployment manifest for your *SLI-provider* and the apply it to the Kubernetes cluster where Keptn is running:
 

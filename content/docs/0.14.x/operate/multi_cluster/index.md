@@ -16,12 +16,12 @@ width="600px">}}
 * **Keptn Control plane**
   * The control plane is the minimum set of components, which are required to run a Keptn and to manage projects, stages, and services, to handle events, and to provide integration points.
   * The control plane orchestrates the task sequences defined in Shipyard, but does not actively execute the tasks.
-  * Minimum [Cluster size](../k8s_support/#control-plane)
+  * Minimum [Cluster size](../k8s_support/#cluster-size)
 
 * **Keptn Execution plane**
   * The execution plane consists of all Keptn-services that are required to process all tasks (like deployment, test, etc.).
   * The execution plane is the cluster where you deploy your application too and execute certain tasks of a task sequence. 
-  * Minimum [Cluster size](../k8s_support/#execution-plane)
+  * Minimum [Cluster size](../k8s_support/#cluster-size)
 
 ## Create or bring two (or more) Kubernetes clusters
 
@@ -69,7 +69,7 @@ Please find the Helm Charts here:
 * Download the `values.yaml` from the release branch, e.g., for the jmeter-service:
 
     ```
-    wget https://raw.githubusercontent.com/keptn/keptn/release-0.14.1/jmeter-service/chart/values.yaml
+    wget https://raw.githubusercontent.com/keptn/keptn/0.14.1/jmeter-service/chart/values.yaml
     ```
 
 * Edit the `values.yaml` to connect the services to the Keptn control plane, identified by its endpoint and API token. Therefore, set the values (1) - (5):
@@ -141,9 +141,9 @@ Please find the Helm Charts here:
 
 See the configuration parameters of the supported execution plane services:
 
-  - `helm-service`: [Helm Chart values](https://github.com/keptn/keptn/blob/release-0.14.1/helm-service/chart/README.md#configuration)
+  - `helm-service`: [Helm Chart values](https://github.com/keptn/keptn/blob/0.14.1/helm-service/chart/README.md#configuration)
 
-  - `jmeter-service`: [Helm Chart values](https://github.com/keptn/keptn/blob/release-0.14.1/jmeter-service/chart/README.md#configuration)
+  - `jmeter-service`: [Helm Chart values](https://github.com/keptn/keptn/blob/0.14.1/jmeter-service/chart/README.md#configuration)
 
 The important once that are used in the above example are:
 

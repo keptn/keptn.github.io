@@ -10,8 +10,8 @@ The following sections explain in detail which functionalities you can use to se
 
 This may also be interesting for you:
 
-* [Create a project with the CLI](https://keptn.sh/docs/0.14.x/reference/cli/commands/keptn_create_project/)
-* [Update a project with the CLI](https://keptn.sh/docs/0.14.x/reference/cli/commands/keptn_update_project/)
+* [Create a project with the CLI](../../reference/cli/commands/keptn_create_project/)
+* [Update a project with the CLI](../../reference/cli/commands/keptn_update_project/)
 
 ## Create a new project in Bridge
 
@@ -37,11 +37,11 @@ The project name has to be unique in the Keptn installation. Therefore, it must 
 
 #### Git repository settings
 The Git upstream can be set by providing the Git repository URL, Git username and the Git token. This is parallel to the Git ``--git-user=GIT_USER --git-token=GIT_TOKEN --git-remote-url=GIT_REMOTE_URL`` parameters when using the Keptn CLI.
-More information about how you can set up your git provider can be found in the [Git-based upstream documentation](https://keptn.sh/docs/0.14.x/manage/git_upstream/).
+More information about how you can set up your git provider can be found in the [Git-based upstream documentation](../../manage/git_upstream/).
 
 #### Shipyard file
 Please provide the `shipyard.yaml` file here for your project. You can either drag it into the panel or select it manually from your file system with the "Select a file" button.<br/>
-You can find more information about the shipyard file on the [Shipyard documentation page](https://keptn.sh/docs/0.14.x/manage/shipyard/).
+You can find more information about the shipyard file on the [Shipyard documentation page](../../manage/shipyard/).
 
 After the successful creation of the project, you are redirected directly to the new project's settings page.
 Your project should already be available in the project overview and in the navigation.
@@ -71,5 +71,5 @@ caption="Delete project">}}
 
 ### Update the Git upstream settings
 The git upstream can be updated by providing the Git repository URL, Git username and the Git token. This can also be achieved by
-using the [keptn update project](https://keptn.sh/docs/0.14.x/reference/cli/commands/keptn_update_project/) command.
-More information about how you can set up your Git provider can be found in the [Git-based upstream documentation](https://keptn.sh/docs/0.14.x/manage/git_upstream/).
+using the [keptn update project](../../reference/cli/commands/keptn_update_project/) command.
+More information about how you can set up your Git provider can be found in the [Git-based upstream documentation](../../manage/git_upstream/).

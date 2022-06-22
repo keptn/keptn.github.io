@@ -1,0 +1,39 @@
+IgnoreDirectoryMissingTrailingSlash: true
+CheckDoctype: false
+#CheckExternal: false
+#Ignoring for now, might be improved later
+IgnoreAltMissing: true
+IgnoreDirs:
+# This excludes are not optimal and need refinement. 
+- "docs/0.\\d\\."
+- "docs/0.10."
+- "docs/0.11."
+- "docs/0.12."
+- "docs/0.13."
+# exlcuded because the paths do not exist for styles and contact
+- "404"
+IgnoreURLs:
+- "github.com/keptn/keptn/.*/\\d*\\.\\d*\\.\\d*"
+# GitHub Urls are ignored due to Request Limitations and getting a 429 instead
+- "github.com/keptn/keptn/issues"
+- "github.com/keptn/keptn/commit"
+# GitHub Help does not like GitHub Action access
+- "help.github.com"
+# Old Announcements
+- "keptn.sh/docs/0.7"
+# Twitter seems to be not reachable via GitHub Action
+- "twitter.com"
+# LinkedIn does not like automation and is returning a 999 Response Code
+- "linkedin.com"
+- "mailto"
+# fileformat.com returns 403
+- "fileformat.com" 
+# Domains used in documentation for local resources
+- "localhost:8080"
+- "YOUR-ORG"
+- "YOUR.DOMAIN"
+- "your.domain"
+- "sockshop-dev"
+- "nip.io"
+- ".local"
+StripQueryString: false

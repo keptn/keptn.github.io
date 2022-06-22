@@ -16,13 +16,13 @@ During the installation of Keptn, [NATS](https://nats.io/) is installed into the
 ## Keptn CLI
 The Keptn CLI needs to be installed on the local machine and is used to send commands to Keptn by interacting with the API of Keptn. To communicate with Keptn you need to know a shared secret that is generated during the installation and verified by the *api* component.
 
-**Note:** A dedicated Keptn CLI section is provided [here](../../0.14.x/reference/cli/), which helps you to get started and lists all available commands.
+**Note:** A dedicated Keptn CLI section is provided [here](../../0.15.x/reference/cli/), which helps you to get started and lists all available commands.
 
 ## Keptn Bridge
 
 The *Keptn Bridge* provides a user interface that shows all Keptn-managed projects and services. Besides, it gives an overview of the staging environment. 
 
-**Note:** A dedicated section for the Keptn Bridge is provided [here](../../0.14.x/reference/bridge/), which explains how to access it and shows the user interface.
+**Note:** A dedicated section for the Keptn Bridge is provided [here](../../0.15.x/bridge/), which explains how to access it and shows the user interface.
 
 ## Keptn Control Plane
 
@@ -36,7 +36,7 @@ The *api-gateway-nginx* component is the single point used for exposing Keptn to
 
 The *api* component provides a REST API that allows communicating with Keptn. It provides endpoints to authenticate, get metadata about the Keptn installation within the cluster, forwarding CloudEvents to the NATS cluster, and triggering evaluations for a service.
 
-**Note:** A dedicated Keptn API section is provided [here](../../0.14.x/reference/api/), which helps you to access the API and to explore the available endpoints.
+**Note:** A dedicated Keptn API section is provided [here](../../0.15.x/reference/api/), which helps you to access the API and to explore the available endpoints.
 
 ### mongodb-service
 
@@ -78,4 +78,4 @@ without having to authenticate. In this case, the distributor sidecars directly 
 - When an execution plane is operated outside of the Cluster, it has the possibility to communicate with the HTTP API exposed by the `api-gateway-nginx`. In this case, every request to the API has to be authenticated using the `keptn-api` token. 
 Also, the distributor sidecars do not have the possibility to directly connect to the NATS cluster, but they can be configured to fetch open `.triggered` events from the HTTP API.
 
-To read more about developing execution plane services, please refer to the following section in the docs: [Write a Keptn-service](../../0.14.x/integrations/custom_integration/), which helps you to implement a custom service for Keptn. 
+To read more about developing execution plane services, please refer to the following section in the docs: [Write a Keptn-service](../../0.15.x/integrations/custom_integration/), which helps you to implement a custom service for Keptn. 
