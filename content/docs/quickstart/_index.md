@@ -9,7 +9,7 @@ hidechildren: true # this flag hides all sub-pages in the sidebar-multicard.html
 
 ***Note: We suggest that you use the newly-released [Explore Keptn](../explore) exercise,
 rather than the exercises in this page.
-That exercise  uses [KillerCoda](https://killercoda.com/)
+That exercise  uses [KillerCoda](https://killercoda.com/areas)
 to provide more extensive information
 without requiring you to install any software locally.***
 
