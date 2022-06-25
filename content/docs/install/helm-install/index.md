@@ -1,10 +1,8 @@
 ---
-title: Advanced Install Options
-description: Advanced Install Options using Helm
-weight: 20
+title: Install Keptn using the Helm chart
+description: Install Keptn on a single cluster using the Helm chart
+weight: 40
 ---
-
-## Advanced Install Options: Install Keptn using the Helm chart
 
 Keptn is installed via a Helm chart, which can also be done using the Helm CLI directly.
 Therefore, the [helm CLI](https://helm.sh) is required to execute the following command:

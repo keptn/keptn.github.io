@@ -1,8 +1,7 @@
 ---
 title: Multi-cluster setup
-description: Install Keptn control-plane and execution-plane separately.
-weight: 60
-keywords: [0.17.x-operate]
+description: Install Keptn control-plane and execution-plane on separate clusters
+weight: 50
 ---
 
 

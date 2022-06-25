@@ -1,12 +1,11 @@
 ---
 title: Uninstall Keptn
 description: Uninstall Keptn from a Kubernetes cluster.
-weight: 40
-keywords: [0.17.x-operate]
+weight: 550
 ---
 
 ## Prerequisites
-- [keptn CLI](../install/#install-keptn-cli)
+- [keptn CLI](../cli-install)
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
 ## Uninstall Keptn

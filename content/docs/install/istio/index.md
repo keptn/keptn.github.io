@@ -1,11 +1,17 @@
 ---
-title: Expose deployed services
+title: Install and configure Istio
 description: Configure Istio and create a ConfigMap to expose services deployed by Keptn.
-weight: 1
+weight: 75
 keywords: [0.17.x-cd]
 ---
 
-Istio must be installed in order to access the services that Keptn deploys. This means that the `istio-ingressgateway` service should already be available in the `istio-system` namespace and a `public-gateway` need to be created as explained below. In addition, a ConfigMap must be edited that tells Keptn how the gateway is configured.
+Istio can be installed in order to access the services that Keptn deploys.
+You can instead use and install the [Job Executor Service](../jes-install).
+
+If you are using Istio for this,
+that the `istio-ingressgateway` service must already be available in the `istio-system` namespace
+and a `public-gateway` need to be created as explained below.
+In addition, a ConfigMap must be edited that tells Keptn how the gateway is configured.
 
 Please follow the steps in sequential order:
 

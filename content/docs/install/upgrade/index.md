@@ -1,10 +1,7 @@
 ---
 title: Upgrade Keptn
 description: Upgrade your Keptn to 0.17
-weight: 30
-aliases:
-  - /docs/0.17.0/operate/upgrade/
-  - /docs/0.17.0/operate/upgrade/
+weight: 500
 ---
 
 ## Upgrade from Keptn 0.16.x to Keptn 0.17.x
