@@ -1,16 +1,22 @@
 ---
 title: Quick Start
-description: Learn how to get Keptn running in five minutes. Whether you prefer Helm, Docker or Keptn CLI, or k3d, we have you covered.
+description: Learn how to get Keptn running and explore a few basic features.
 icon: concepts
 layout: quickstart
 weight: 15
 hidechildren: true # this flag hides all sub-pages in the sidebar-multicard.html
 ---
 
+***Note: We suggest that you use the newly-released [Explore Keptn](../explore) exercise,
+rather than the exercises in this page.
+That exercise  uses the [KillerCoda](https://killercoda.com/areas) platform
+to provide more extensive information
+without requiring you to install any software locally.***
+
 This Quick Start guide shows how to quickly create a local Keptn installation
 that runs either as a [Helm](#helm) chart in Kubernetes
-or as [Docker](#keptn-hello-world-docker-based) container in K3d
-and run some exercises to demonstrate Keptn functionality.
+or as a [Docker](#keptn-hello-world-docker-based) container in K3d
+and run some basic exercises that demonstrate Keptn functionality.
 
 You can install and run Keptn on virtually any Kubernetes cluster.
 See Install CLI and Keptn for detailed instructions
