@@ -175,7 +175,7 @@ In this form, you can provide the information for the task subscription:
 
 Keptn stores this subscriptions information even if the integration is not running.
 By default, Keptn keeps this information for 48h after the last contact with the integration.
-This value can be configured using the [Advanced Install](../../operate/advanced_install_options/) option `shipyardController.config.uniformIntegrationTTL`.
+This value can be configured using the Helm option `shipyardController.config.uniformIntegrationTTL`.
 
 
 ### Send a started event
