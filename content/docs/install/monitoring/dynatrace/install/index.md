@@ -75,11 +75,11 @@ To function correctly, the *dynatrace-service* requires access to a Dynatrace te
 
 The *dynatrace-service* also requires access to the Keptn API, provided through the `KEPTN_API_URL`, `KEPTN_API_TOKEN` and optionally `KEPTN_BRIDGE_URL`:
 
-* To get the values for `KEPTN_API_URL` (also known as `KEPTN_ENDPOINT`), please see [Authenticate Keptn CLI](../../../operate/install/#authenticate-keptn-cli).
+* To get the values for `KEPTN_API_URL` (also known as `KEPTN_ENDPOINT`), please see [Authenticate Keptn CLI](../../../authenticate-cli-bridge/#authenticate-keptn-cli).
 
 * By default the `KEPTN_API_TOKEN` is read from the `keptn-api-token` secret (i.e. the secret from the control-plane) and does not need to be set during installation.
 
-* If you would like to use backlinks from your Dynatrace tenant to the Keptn Bridge, provide the service with `KEPTN_BRIDGE_URL`. For further details about this value, please see [Authenticate Keptn Bridge](../../../operate/install/#authenticate-keptn-bridge).
+* If you would like to use backlinks from your Dynatrace tenant to the Keptn Bridge, provide the service with `KEPTN_BRIDGE_URL`. For further details about this value, please see [Authenticate Keptn Bridge](../../../authenticate-cli-bridge/#authenticate-keptn-bridge).
 
 * If running on a Unix/Linux based system, you can use environment variables to set the values of these credentials just as you did for the Dynatrace tenant credentials above. It is also fine to just replace the variables with values in the `helm` command in the following section.
 
@@ -121,7 +121,7 @@ The Dynatrace integration into Keptn is handled by the *dynatrace-service*.
 
 ## Verify Dynatrace configuration
 
-When you execute the [`keptn configure monitoring`](../../../reference/cli/commands/keptn_configure_monitoring/) command, the *dynatrace-service* configures the Dynatrace tenant by creating *tagging rules*, a *problem notification*, an *alerting profile* as well as a project-specific *dashboard* and *management zone*.
+When you execute the [`keptn configure monitoring`](../../../../0.17.x/reference/cli/commands/keptn_configure_monitoring/) command, the *dynatrace-service* configures the Dynatrace tenant by creating *tagging rules*, a *problem notification*, an *alerting profile* as well as a project-specific *dashboard* and *management zone*.
 
 - *Tagging rules:* When you navigate to **Settings > Tags > Automatically applied tags** in your Dynatrace tenant, you will find following tagging rules:
     - keptn_deployment
@@ -135,7 +135,7 @@ When you execute the [`keptn configure monitoring`](../../../reference/cli/comma
 
 - *Alerting profile:* An alerting profile with all problems set to *0 minutes* (immediate) is created. You can review this profile by navigating to **Settings > Alerting > Alerting profiles**.
 
-- *Dashboard and Management zone:* When creating a new Keptn project or executing the [keptn configure monitoring](../../../reference/cli/commands/keptn_configure_monitoring/) command for a particular project (see Note 1), a dashboard and management zone that reflects the environment specified in the shipyard is generated.
+- *Dashboard and Management zone:* When creating a new Keptn project or executing the [keptn configure monitoring](../../../../0.17.x/reference/cli/commands/keptn_configure_monitoring/) command for a particular project (see Note 1), a dashboard and management zone that reflects the environment specified in the shipyard is generated.
 
 **Note:** If you already have created a project using Keptn and would like to enable Dynatrace monitoring for that project, please execute the following command:
 

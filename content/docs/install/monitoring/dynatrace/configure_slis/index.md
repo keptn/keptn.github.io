@@ -5,7 +5,7 @@ weight: 3
 icon: setup
 ---
 
-To tell the *dynatrace-service* how to acquire the values of an SLI, the correct query needs to be configured. This is done by adding an SLI configuration to a project, stage, or service using the [add-resource](../../../reference/cli/commands/keptn_add-resource/) command. The resource identifier must be `dynatrace/sli.yaml`.
+To tell the *dynatrace-service* how to acquire the values of an SLI, the correct query needs to be configured. This is done by adding an SLI configuration to a project, stage, or service using the [add-resource](../../../../0.17.x/reference/cli/commands/keptn_add-resource/) command. The resource identifier must be `dynatrace/sli.yaml`.
 
 * In the following example, the SLI configuration as specified in the `sli-config-dynatrace.yaml` file is added to the service `carts` in stage `hardening` from project `sockshop`.
 
@@ -13,7 +13,7 @@ To tell the *dynatrace-service* how to acquire the values of an SLI, the correct
 keptn add-resource --project=sockshop --stage=hardening --service=carts --resource=sli-config-dynatrace.yaml --resourceUri=dynatrace/sli.yaml
 ```
 
-**Note:** The add-resource command can be used to store a configuration on project-, stage-, or service-level. If you store SLI configurations on different levels, see [Add SLI configuration to a Service, Stage, or Project](../../../reference/files/sli/#add-sli-configuration-to-a-service-stage-or-project) to learn which configuration overrides the others based on an example.
+**Note:** The add-resource command can be used to store a configuration on project-, stage-, or service-level. If you store SLI configurations on different levels, see [Add SLI configuration to a Service, Stage, or Project](../../../../0.17.x/reference/files/sli/#add-sli-configuration-to-a-service-stage-or-project) to learn which configuration overrides the others based on an example.
 
 **Example for custom SLIs:**
 

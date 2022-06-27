@@ -4,11 +4,11 @@ description: Choose the method to use to access Keptn
 weight: 300
 ---
 
-1. [Verify the Keptn installation](../../troubleshooting#verifying-a-keptn-installation).
+1. [Verify the Keptn installation](../../0.16.x/troubleshooting#verifying-a-keptn-installation).
 
-1. [Generate a support-archive](../../reference/cli/commands/keptn_generate_support-archive) and ask for help in our [Slack channel](https://slack.keptn.sh).
+1. [Generate a support-archive](../../0.16.x/reference/cli/commands/keptn_generate_support-archive) and ask for help in our [Slack channel](https://slack.keptn.sh).
 
-1. Uninstall Keptn by executing the [keptn uninstall](../../reference/cli/commands/keptn_uninstall) command before conducting a re-installation.
+1. Uninstall Keptn by executing the [keptn uninstall](../../0.16.x/reference/cli/commands/keptn_uninstall) command before conducting a re-installation.
 
 
 You may run into issues that are caused by the way your Kubernetes cluster is set up and configured.

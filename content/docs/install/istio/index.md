@@ -2,7 +2,6 @@
 title: Install and configure Istio
 description: Configure Istio and create a ConfigMap to expose services deployed by Keptn.
 weight: 75
-keywords: [0.17.x-cd]
 ---
 
 Istio can be installed in order to access the services that Keptn deploys.

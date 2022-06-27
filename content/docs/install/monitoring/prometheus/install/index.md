@@ -81,7 +81,7 @@ Prometheus is then available on [localhost:8080/targets](http://localhost:8080/t
 
 ## Configure custom Prometheus SLIs
 
-To tell the *prometheus-service* how to acquire the values of an SLI, the correct query needs to be configured. This is done by adding an SLI configuration to a project, stage, or service using the [add-resource](../../../reference/cli/commands/keptn_add-resource) command. The resource identifier must be `prometheus/sli.yaml`.
+To tell the *prometheus-service* how to acquire the values of an SLI, the correct query needs to be configured. This is done by adding an SLI configuration to a project, stage, or service using the [add-resource](../../../../0.17.x/reference/cli/commands/keptn_add-resource) command. The resource identifier must be `prometheus/sli.yaml`.
 
 * In the below example, the SLI configuration as specified in the `sli-config-prometheus.yaml` file is added to the service `carts` in stage `hardening` from project `sockshop`. 
 
@@ -89,7 +89,7 @@ To tell the *prometheus-service* how to acquire the values of an SLI, the correc
 keptn add-resource --project=sockshop --stage=hardening --service=carts --resource=sli-config-prometheus.yaml --resourceUri=prometheus/sli.yaml
 ```
 
-**Note:** The add-resource command can be used to store a configuration on project-, stage-, or service-level. If you store SLI configurations on different levels, see [Add SLI configuration to a Service, Stage, or Project](../../../reference/files/sli/#add-sli-configuration-to-a-service-stage-or-project) to learn which configuration overrides the others based on an example.
+**Note:** The add-resource command can be used to store a configuration on project-, stage-, or service-level. If you store SLI configurations on different levels, see [Add SLI configuration to a Service, Stage, or Project](../../../../0.17.x/reference/files/sli/#add-sli-configuration-to-a-service-stage-or-project) to learn which configuration overrides the others based on an example.
 
 **Example for custom SLI:**
 

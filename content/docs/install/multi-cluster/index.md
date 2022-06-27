@@ -15,12 +15,12 @@ width="600px">}}
 * **Keptn Control plane**
   * The control plane is the minimum set of components, which are required to run a Keptn and to manage projects, stages, and services, to handle events, and to provide integration points.
   * The control plane orchestrates the task sequences defined in Shipyard, but does not actively execute the tasks.
-  * Minimum [Cluster size](../k8s_support/#cluster-size)
+  * Minimum [Cluster size](../k8s-support/#cluster-size)
 
 * **Keptn Execution plane**
   * The execution plane consists of all Keptn-services that are required to process all tasks (like deployment, test, etc.).
   * The execution plane is the cluster where you deploy your application too and execute certain tasks of a task sequence. 
-  * Minimum [Cluster size](../k8s_support/#cluster-size)
+  * Minimum [Cluster size](../k8s-support/#cluster-size)
 
 ## Create or bring two (or more) Kubernetes clusters
 
@@ -29,18 +29,20 @@ To operate Keptn in a multi-cluster setup, you need obviously at least two Kuber
 1. One that runs Keptn as control plane
 2. The second one that runs the execution-plane services for deploying, testing, executing remediation actions, etc.
 
-To create a Kubernetes cluster, please follow the instructions [here](../install/#create-or-bring-a-kubernetes-cluster).
+To create a Kubernetes cluster, please follow the instructions [here](../k8s).
 
 ## Prerequisites
 
-* [keptn CLI](../install/#install-keptn-cli)
+* [keptn CLI](../cli-install)
 * [helm CLI](https://helm.sh/docs/intro/install/)
 
 ## Install Keptn Control plane
 
 The **Control Plane** of Keptn is responsible for orchestrating your processes for continuous delivery or automated operations.
 
-* Before starting the installation, familiarize yourself with the ways of exposing Keptn as explained [here](../install/#install-keptn). Then come back and continue installing Keptn control plane.
+* Before starting the installation, familiarize yourself with the ways of exposing Keptn as explained  in
+[Choose access options](../access).
+Then come back and continue installing the Keptn control plane.
 
 * To install the control plane, execute `keptn install` with the option you chose for exposing Keptn:
 
@@ -50,8 +52,10 @@ The **Control Plane** of Keptn is responsible for orchestrating your processes f
 
 * Before continuing, please retrieve:
 
-    * `KEPTN_ENDPOINT`: Follow the instructions [here](../install/#install-keptn), depending on the option you chose for exposing Keptn.
-    * `KEPTN_API_TOKEN`: Follow the instructions [here](../install/#authenticate-keptn-cli).
+    * `KEPTN_ENDPOINT`: Follow the instructions for the option you chose for exposing Keptn
+    in the [Choose access option](../access) section.
+    * `KEPTN_API_TOKEN`: Follow the instructions
+    in [Authenticate Keptn CLI and Bridge](../authenticate-cli-bridge).
 
 ## Install Keptn Execution plane
 
@@ -215,6 +219,6 @@ remoteControlPlane:
   - Is the Keptn API endpoint on `http` or `https`?
   - Is the hostname of the Keptn API endpoint correct, e.g. `my.keptn-dev.company.com` (without `/api`)
   - Do you want to skip TLS verification?
-  - Is the Keptn API token correct? (You can find it in the Keptn Bridge, or by following the guide for [authenticating](../install/#authenticate-keptn-cli))
+  - Is the Keptn API token correct? (You can find it in the Keptn Bridge, or by following the guide for [authenticating](../authenticate-cli-bridge)
 
 </p></details>

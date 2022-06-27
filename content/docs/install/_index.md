@@ -31,10 +31,10 @@ The steps to install and configure your Keptn cluster are:
 
 6. Install software to run Keptn tasks
     * [Job Executor Service](https://github.com/keptn-contrib/job-executor-service/blob/main/docs/INSTALL.md)
-    * The [Job Executor Service](https://github.com/keptn-contrib/job-executor-service)
-     runs Kept customizable tasks as Kubernetes jobs.
-     See [Job Executor Service Features](https://github.com/keptn-contrib/job-executor-service/blob/main/docs/FEATURES.md) for more details.
-    * Also see [Job Executor Service Architecture](https://github.com/keptn-contrib/job-executor-service/blob/main/docs/ARCHITECTURE.md#example-configuration)
+        * The [Job Executor Service](https://github.com/keptn-contrib/job-executor-service)
+         runs Kept customizable tasks as Kubernetes jobs.
+         See [Job Executor Service Features](https://github.com/keptn-contrib/job-executor-service/blob/main/docs/FEATURES.md) for more details.
+        * Also see [Job Executor Service Architecture](https://github.com/keptn-contrib/job-executor-service/blob/main/docs/ARCHITECTURE.md#example-configuration)
     * [Istio](istio)
 
 7. If you are using [Quality Gates](../concepts/quality_gates),
