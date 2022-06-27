@@ -13,7 +13,7 @@ See [Choose access options](../access) for details.
 ## Authenticate Keptn CLI
 
 To authenticate the Keptn CLI against the Keptn cluster, the exposed Keptn endpoint and API token are required. 
-After [installing Keptn](#install-keptn), you already have your Keptn endpoint.
+After [installing Keptn](../helm-install), you already have your Keptn endpoint.
 
 <details><summary>Get API Token and Authenticate Keptn CLI on **Linux / MacOS**</summary>
 <p>
@@ -24,7 +24,7 @@ After [installing Keptn](#install-keptn), you already have your Keptn endpoint.
 KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
 ```
 
-* To authenticate the CLI against the Keptn cluster, use the [keptn auth](../../reference/cli/commands/keptn_auth) command:
+* To authenticate the CLI against the Keptn cluster, use the [keptn auth](../../0.17.x/reference/cli/commands/keptn_auth) command:
 
 ```console
 keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN
@@ -57,7 +57,7 @@ $tokenEncoded = $(kubectl get secret keptn-api-token -n keptn -ojsonpath='{.data
 $Env:KEPTN_API_TOKEN = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($tokenEncoded))
 ```
 
-* To authenticate the CLI against the Keptn cluster, use the [keptn auth](../../reference/cli/commands/keptn_auth) command:
+* To authenticate the CLI against the Keptn cluster, use the [keptn auth](../../0.17.x/reference/cli/commands/keptn_auth) command:
 
 ```
 keptn auth --endpoint=$Env:KEPTN_ENDPOINT --api-token=$Env:KEPTN_API_TOKEN
@@ -101,7 +101,7 @@ certutil -decode keptn-api-token-base64.txt keptn-api-token.txt
 set KEPTN_API_TOKEN=keptn-api-token
 ```
 
-* To authenticate the CLI against the Keptn cluster, use the [keptn auth](../../reference/cli/commands/keptn_auth) command:
+* To authenticate the CLI against the Keptn cluster, use the [keptn auth](../../0.17.x/reference/cli/commands/keptn_auth) command:
 
 ```
 keptn.exe auth --endpoint=$Env:KEPTN_ENDPOINT --api-token=$Env:KEPTN_API_TOKEN
@@ -137,5 +137,6 @@ kubectl get secret -n keptn bridge-credentials -o jsonpath="{.data.BASIC_AUTH_US
 kubectl get secret -n keptn bridge-credentials -o jsonpath="{.data.BASIC_AUTH_PASSWORD}" | base64 --decode
 ```
 
-* If you want to change the user and password for the authentication, follow the instructions [here](../../bridge/basic_authentication/#enable-authentication).
+* If you want to change the user and password for the authentication,
+follow the instructions [here](../../0.17.x/bridge/basic_authentication/#enable-authentication).
 

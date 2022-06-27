@@ -20,7 +20,7 @@ Please follow the steps in sequential order:
 
 ## Install Istio
 
-* If you have not installed Istio during the [Keptn installation](../../operate/install/#option-3-expose-keptn-via-an-ingress), please refer to the official [Installation Guides](https://istio.io/latest/docs/setup/install/) to install Istio on your cluster.
+* If you have not installed Istio during the [Keptn installation](../access/#option-3-expose-keptn-via-an-ingress), please refer to the official [Installation Guides](https://istio.io/latest/docs/setup/install/) to install Istio on your cluster.
 
 ## Create Istio Gateway
 
