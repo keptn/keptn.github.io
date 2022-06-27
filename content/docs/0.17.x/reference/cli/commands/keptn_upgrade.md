@@ -11,7 +11,7 @@ Upgrades Keptn on a Kubernetes cluster.
 
 The Keptn CLI allows upgrading Keptn on any Kubernetes derivative to which your kube config is pointing to, and on OpenShift.
 
-For more information, please follow the installation guide [Upgrade Keptn](../../../../operate/upgrade/)
+For more information, please follow the installation guide [Upgrade Keptn](../../../../../install/upgrade/)
 
 
 ```

@@ -25,7 +25,7 @@ The steps to install and configure your Keptn cluster are:
     using **keptn install** commands (deprecated as of Release 0.17.x)
     * Install using a [Multi-clster setup](multi-cluster),
     meaning that the Keptn Control Plane is installed in one Kubernetes cluster
-    and the Keptn Execution Plane is installed in another Kubernetes cluster.
+    and the Keptn Execution Plane is installed in one or more other Kubernetes clusters.
 
 5. [Authenticate CLI and Bridge](authenticate-cli-bridge)
 
