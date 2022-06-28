@@ -12,7 +12,7 @@ weight: 300
 
 
 You may run into issues that are caused by the way your Kubernetes cluster is set up and configured.
-You should learn the basics of Kubernetes, and know about  pods, deployments,
+You should learn the basics of Kubernetes, and know about pods, deployments,
 PVCs (Persistent Volume Claims), storage classes, ingress, and so forth.
 You should also learn how to do basic Kubernetes troubleshooting.
 

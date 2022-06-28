@@ -9,13 +9,13 @@ hidechildren: true # this flag hides all sub-pages in the sidebar-multicard.html
 
 ***Note: We suggest that you use the newly-released [Explore Keptn](../explore) exercise,
 rather than the exercises in this page.
-That exercise  uses the [KillerCoda](https://killercoda.com/areas) platform
+That exercise uses the [KillerCoda](https://killercoda.com/areas) platform
 to provide more extensive information
 without requiring you to install any software locally.***
 
 This Quick Start guide shows how to quickly create a local Keptn installation
 that runs either as a [Helm](#helm) chart in Kubernetes
-or as a [Docker](#keptn-hello-world-docker-based) container in K3d
+or as [Docker](#keptn-hello-world-docker-based) containers in K3d
 and run some basic exercises that demonstrate Keptn functionality.
 
 You can install and run Keptn on virtually any Kubernetes cluster.

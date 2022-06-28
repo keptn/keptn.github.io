@@ -1,6 +1,6 @@
 ---
 title: Create or bring a Kubernetes cluster
-description: Install Keptn on your Kubernetes cluster and expose it.
+description: Install Keptn on your Kubernetes cluster and expose it
 weight: 10
 ---
 
@@ -12,7 +12,7 @@ and deploy the Keptn Execution Plane on another Kubernetes cluster;
 see [Multi-cluster setup](../multi-cluster) for details.
 
 Before you install a new Kubernetes cluster,
-you must install the [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) utility.
+you must install the [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) CLI.
 
 Some of the more popular Kubernetes options are listed below
 with links to installation instructions.

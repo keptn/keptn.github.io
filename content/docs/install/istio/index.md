@@ -7,20 +7,20 @@ weight: 75
 Istio can be installed in order to access the services that Keptn deploys.
 You can instead use and install the [Job Executor Service](../jes-install).
 
-If you are using Istio for this,
-that the `istio-ingressgateway` service must already be available in the `istio-system` namespace
-and a `public-gateway` need to be created as explained below.
-In addition, a ConfigMap must be edited that tells Keptn how the gateway is configured.
-
-Please follow the steps in sequential order:
+Please follow the steps in sequential order
+to implement Istio for your Keptn instance:
 
 1. Install Istio
-1. Create Istio gateway
+1. Create Istio `public-gateway`.
+   The `istio-ingressgateway` service must already be available in the `istio-system` namespace
 1. Create ConfigMap with ingress information
+   by populating the `ingressConfig` section of the `values.yaml` file
+
+The following sections give more details.
 
 ## Install Istio
 
-* If you have not installed Istio during the [Keptn installation](../access/#option-3-expose-keptn-via-an-ingress), please refer to the official [Installation Guides](https://istio.io/latest/docs/setup/install/) to install Istio on your cluster.
+* If you did not install Istio during the [Keptn installation](../access/#option-3-expose-keptn-via-an-ingress), please refer to the official [Installation Guides](https://istio.io/latest/docs/setup/install/) to install Istio on your cluster.
 
 ## Create Istio Gateway
 

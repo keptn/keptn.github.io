@@ -30,7 +30,7 @@ Depending on whether you would like to install the execution plane for continuou
    helm install keptn keptn/keptn -n keptn --version=$KeptnVersion --create-namespace --set=continuous-delivery.enabled=true,control-plane.apiGatewayNginx.type=LoadBalancer
   ```
 
-1. **Get Keptn endpoint:**  Get the EXTERNAL-IP of the `api-gateway-ngix` using the command below. The Keptn API endpoint is: `http://<ENDPOINT_OF_API_GATEWAY>/api`
+1. **Get Keptn endpoint:**  Get the EXTERNAL-IP of the `api-gateway-nginx` using the command below. The Keptn API endpoint is: `http://<ENDPOINT_OF_API_GATEWAY>/api`
   ```console
   kubectl -n keptn get service api-gateway-nginx
   ```
@@ -102,7 +102,7 @@ Depending on whether you would like to install the execution plane for continuou
   Please first install your favorite Ingress-Controller and then apply an Ingress object in the `keptn` namespace, 
   which points to the service `api-gateway-nginx` on port 80. Note that the [Kubernetes Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) allows to setup TLS encryption. **Note**: Using Openshift 3.11 requires to use a configuration for this platform.
 
-    Commonly used Ingress-Controller are e.g. Istio and NGINX:
+    Commonly used Ingress controllers are Istio and NGINX:
 
     <details><summary>**Istio 1.8+** (recommended for use-case continuous delivery)</summary>
     <p>

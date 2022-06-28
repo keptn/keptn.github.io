@@ -40,7 +40,7 @@ To create a Kubernetes cluster, please follow the instructions [here](../k8s).
 
 The **Control Plane** of Keptn is responsible for orchestrating your processes for continuous delivery or automated operations.
 
-* Before starting the installation, familiarize yourself with the ways of exposing Keptn as explained  in
+* Before starting the installation, familiarize yourself with the ways of exposing Keptn as explained in
 [Choose access options](../access).
 Then come back and continue installing the Keptn control plane.
 

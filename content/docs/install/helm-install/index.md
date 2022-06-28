@@ -22,7 +22,7 @@ helm install helm-service https://github.com/keptn/keptn/releases/download/0.17.
 ```
 
 **Note:** To continue with Keptn after the installation with Helm,
-we recommend authenticating the Ketpn CLI as explained [here](../authenticate-cli-bridge/#authenticate-keptn-cli). 
+we recommend authenticating the Keptn CLI as explained [here](../authenticate-cli-bridge/#authenticate-keptn-cli). 
 
 As shown above, the `helm install` or `helm upgrade` commands offer a flag called `--set`, which can be used to specify several configuration options using the format `key1=value1,key2=value2,...`.
 
