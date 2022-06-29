@@ -44,10 +44,10 @@ The **Control Plane** of Keptn is responsible for orchestrating your processes f
 [Choose access options](../access).
 Then come back and continue installing the Keptn control plane.
 
-* To install the control plane, execute `keptn install` with the option you chose for exposing Keptn:
+* To install the control plane, execute `helm install` with the option you chose for exposing Keptn:
 
     ```console
-    keptn install --endpoint-service-type=[LoadBalancer, NodePort, ClusterIP]
+    helm install keptn keptn/keptn -n keptn --version=$KeptnVersion --create-namespace --set=control-plane.apiGatewayNginx.type=[LoadBalancer, NodePort, ClusterIP]
     ```
 
 * Before continuing, please retrieve:
