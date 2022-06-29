@@ -22,9 +22,9 @@ each of which always consists of a name and the provider-specific query.
 
 Please follow the links to the provider-specific SLIs: 
 
-* [Dynatrace](../../../monitoring/dynatrace/configure_slis/) 
+* [Dynatrace](../../../../install/monitoring/dynatrace/configure_slis/) 
 
-* [Prometheus](../../../monitoring/prometheus/install/#configure-custom-prometheus-slis) 
+* [Prometheus](../../../../install/monitoring/prometheus/install/#configure-custom-prometheus-slis) 
 
 ## Add SLI configuration to a Service, Stage, or Project
 
@@ -107,9 +107,9 @@ use the [keptn add-resource](../../cli/commands/keptn_add-resource) command:
 
 * [slo](../slo)
 
-* [Dynatrace](../../../monitoring/dynatrace/configure_slis/) 
+* [Dynatrace](../../../../install/monitoring/dynatrace/configure_slis/) 
 
-* [Prometheus](../../../monitoring/prometheus/install/#configure-custom-prometheus-slis) 
+* [Prometheus](../../../../install/monitoring/prometheus/install/#configure-custom-prometheus-slis) 
 
 * [Quality Gates](../../../quality_gates)
 

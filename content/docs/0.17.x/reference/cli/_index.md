@@ -7,9 +7,6 @@ icon: help
 
 In this section, the functionality and commands of the Keptn CLI are described. The Keptn CLI allows installing, configuring, and uninstalling Keptn. Furthermore, the CLI allows creating projects, services, and sending new artifact events.
 
-## Prerequisites
-- All prerequisites from the [setup](../../operate/install/#prerequisites) are needed.
-
 ## Automatic install of Keptn CLI
 
 **Note**: This will work on Linux (and WSL2), as well as macOS. Windows users need `bash`, `curl`, and `awk` installed (e.g., using Git Bash).

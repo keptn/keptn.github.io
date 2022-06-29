@@ -15,7 +15,7 @@ This command will upgrade the shipyard of the project to the specified version
 
 By executing the update project command, Keptn will fetch the current shipyard.yaml file of the project and convert it to the version specified in the 'toVersion'' flag.
 
-For more information about upgrading projects, go to [Manage Keptn](../../../../operate/upgrade)
+For more information about upgrading projects, go to [Manage Keptn](../../../../../install/upgrade)
 
 
 ```

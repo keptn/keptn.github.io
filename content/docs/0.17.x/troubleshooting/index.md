@@ -201,7 +201,7 @@ Most likely Istio is not installed on your Kubernetes cluster.
 
 **Solution:**
 
-Install Istio as described in the [Continuous Delivery section](../continuous_delivery/expose_services).
+Install Istio as described in the [Install and configure Istio](../../install/istio) section.
 
 </p></details>
 

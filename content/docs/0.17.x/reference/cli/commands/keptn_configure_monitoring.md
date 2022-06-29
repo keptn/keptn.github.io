@@ -12,7 +12,7 @@ Configures a monitoring provider
 Configure a monitoring solution for the deployments managed by Keptn.
 
 **Note:** If you are executing *keptn configure monitoring dynatrace*, the service flag is optional since Keptn automatically detects the services of a project. 
-See [Monitoring with Dynatrace](../../../../monitoring/dynatrace/install/) for more information.
+See [Monitoring with Dynatrace](../../../../../install/monitoring/dynatrace/install/) for more information.
 
 
 ```

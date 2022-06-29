@@ -36,7 +36,7 @@ This visualization in the Keptn Bridge allows you to answer the following questi
   * :five: The total score of a quality gate result is depicted by the cell on the top.
   * The individual criteria are represented by a separate cell in the column. 
 
-The rest of this section assumes you have Keptn [installed](../../operate/install/) on your cluster, your Keptn CLI is [authenticated](../../operate/install/#authenticate-keptn-cli), and you have a deployed application that is monitored by your favorite monitoring solution.
+The rest of this section assumes you have Keptn [installed](../../../install/helm-install) on your cluster, your Keptn CLI is [authenticated](../../../install/authenticate-cli-bridge/#authenticate-keptn-cli), and you have a deployed application that is monitored by your favorite monitoring solution.
 
 Given these requirements, this section defines the entities of a Keptn project, stage, and services using an example. Afterwards, four steps explain how to set up the quality gate, trigger it, and finally see the quality gate evaluation result.
 

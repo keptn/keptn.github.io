@@ -215,9 +215,9 @@ The pass and warning criteria for the `total_score` use the logical operator ">=
 
 * [sli](../sli)
 
-* [Dynatrace](../../../monitoring/dynatrace/configure_slis/)
+* [Dynatrace](../../../../install/monitoring/dynatrace/configure_slis/)
 
-* [Prometheus](../../../monitoring/prometheus/install/#configure-custom-prometheus-slis)
+* [Prometheus](../../../../install/monitoring/prometheus/install/#configure-custom-prometheus-slis)
 
 * [Quality Gates](../../../quality_gates)
 
