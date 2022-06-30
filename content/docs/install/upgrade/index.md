@@ -18,12 +18,14 @@ Detailed step by step guide:
 2. Make sure you are connected to the kubernetes cluster where Keptn is installed.
 3. Fetch your current Helm values with `helm get values -n <your-keptn-namespace> <your-keptn-release-name> > keptn-values.yaml`
    For namespace `keptn-test` and release name `keptn` (the default release name) the command would look like this:
+
    ```
    helm get values -n keptn-test keptn
    ```
-4. Download the released Helm chart using `helm pull https://charts.keptn.sh/packages/keptn-0.17.0.tgz` and unpack it.
-5. Use a merge tool to merge the `values.yaml` file from the unpacked chart and your previously downloaded `keptn-values.yaml` together.
-6. You will notice that some Helm values have changed compared to your `keptn-values.yaml` file:
+
+5. Download the released Helm chart using `helm pull https://charts.keptn.sh/packages/keptn-0.17.0.tgz` and unpack it.
+6. Use a merge tool to merge the `values.yaml` file from the unpacked chart and your previously downloaded `keptn-values.yaml` together.
+7. You will notice that some Helm values have changed compared to your `keptn-values.yaml` file:
   - `continuous-delivery` -> `continuousDelivery`
   - `control-plane`: Since the `control-plane` and `continuous-delivery` charts were merged into one, all values 
      previously under `control-plane` are now just directly in the values root without the `control-plane` key.
