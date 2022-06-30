@@ -62,7 +62,7 @@ to support the needs of the projects you are running:
    * To use a different Observability Platform as your data source,
    follow the instructions in [Custom Integrations](http://localhost:1313/docs/0.17.x/integrations/)
    to create an integration for your Observability Platform.
-   or start a conversation in the #keptn-integrations channel in the [Keptn Slack](https://slack.keptn.shi).
+   or start a conversation in the #keptn-integrations channel in the [Keptn Slack](https://keptn.slack.com).
 
 * Install any Webhook integrations you want
    and configure [webhooks](webhook_service) them (optional).
