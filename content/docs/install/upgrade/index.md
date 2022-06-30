@@ -13,25 +13,24 @@ to get any new default values that were introduced. Afterwards, you can use your
 [Helm installation instructions](../install/#install-keptn).
 
 Detailed step by step guide:
-
-1. Follow [Keptn's backup instructions](../backup_and_restore)
-2. Make sure you are connected to the kubernetes cluster where Keptn is installed.
-3. Fetch your current Helm values with `helm get values -n <your-keptn-namespace> <your-keptn-release-name> > keptn-values.yaml`
+- Follow [Keptn's backup instructions](../backup_and_restore)
+- Make sure you are connected to the kubernetes cluster where Keptn is installed.
+- Fetch your current Helm values with `helm get values -n <your-keptn-namespace> <your-keptn-release-name> > keptn-values.yaml`
    For namespace `keptn-test` and release name `keptn` (the default release name) the command would look like this:
 
    ```
    helm get values -n keptn-test keptn
    ```
 
-4. Download the released Helm chart using `helm pull https://charts.keptn.sh/packages/keptn-0.17.0.tgz` and unpack it.
-5. Use a merge tool to merge the `values.yaml` file from the unpacked chart and your previously downloaded `keptn-values.yaml` together.
-6. You will notice that some Helm values have changed compared to your `keptn-values.yaml` file:
+- Download the released Helm chart using `helm pull https://charts.keptn.sh/packages/keptn-0.17.0.tgz` and unpack it.
+- Use a merge tool to merge the `values.yaml` file from the unpacked chart and your previously downloaded `keptn-values.yaml` together.
+- You will notice that some Helm values have changed compared to your `keptn-values.yaml` file:
   - `continuous-delivery` -> `continuousDelivery`
   - `control-plane`: Since the `control-plane` and `continuous-delivery` charts were merged into one, all values 
      previously under `control-plane` are now just directly in the values root without the `control-plane` key.
   - All values under `control-plane.common` were moved to the root level of the values.
     e.g. `common.strategy.type` -> `strategy.type`
-7. After adjusting your Helm values you are ready to upgrade to the new version of Keptn. Since the `keptn upgrade` CLI command
+- After adjusting your Helm values you are ready to upgrade to the new version of Keptn. Since the `keptn upgrade` CLI command
    is deprecated with Keptn 0.17, please use Helm directly to do the upgrade:
 
    ```
