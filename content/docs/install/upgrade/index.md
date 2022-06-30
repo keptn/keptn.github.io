@@ -34,5 +34,32 @@ Detailed step by step guide:
    is deprecated with Keptn 0.17, please use Helm directly to do the upgrade:
 
    ```
+   helm upgrade keptn keptn/keptn -n keptn-test --version 0.17.0 --values <your-adjusted-values-file>
+   ```
+
+If you have helm-service or jmeter-service installed, please follow the steps below to upgrade:
+- Make sure you are connected to the kubernetes cluster where Keptn is installed.
+- Fetch your current Helm values with `helm get values -n <your-exec-plane-namespace> <your-exec-plane-service-release-name> > old-values.yaml`
+  For namespace `exec-plane` and release name `helm-service` (the default release name) the command would look like this:
+
+   ```
+   helm get values -n exec-plane helm-service
+   ```
+
+- Download the released Helm chart using `helm pull https://charts.keptn.sh/packages/helm-service-0.17.0.tgz` and unpack it.
+- Use a merge tool to merge the `values.yaml` file from the unpacked chart and your previously downloaded `helm-service-values.yaml` together.
+- You will notice that some Helm values have changed compared to your `helm-service-values.yaml` file:
+    - `resources` -> `continuousDelivery`
+    - `control-plane`: Since the `control-plane` and `continuous-delivery` charts were merged into one, all values
+      previously under `control-plane` are now just directly in the values root without the `control-plane` key.
+    - All values under `control-plane.common` were moved to the root level of the values.
+      e.g. `common.strategy.type` -> `strategy.type`
+- After adjusting your Helm values you are ready to upgrade to the new version of Keptn. Since the `keptn upgrade` CLI command
+  is deprecated with Keptn 0.17, please use Helm directly to do the upgrade:
+
+   ```
    helm upgrade keptn -n keptn-test --version 0.17.0 --values <your-adjusted-values-file>
    ```
+
+# TODO: adjust helm service instructions to fit for both helm and jmeter service
+# add a diff picture for keptn values to see adjustments clearly, use values file from 0.16 and values file from master
