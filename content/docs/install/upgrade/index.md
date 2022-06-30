@@ -18,7 +18,7 @@ Detailed step by step guide:
 2. Make sure you are connected to the kubernetes cluster where Keptn is installed.
 3. Fetch your current Helm values with `helm get values -n <your-keptn-namespace> <your-keptn-release-name> > keptn-values.yaml`
    For namespace `keptn-test` and release name `keptn` (the default release name) the command would look like this:
-   ```bash
+   ```
    helm get values -n keptn-test keptn
    ```
 4. Download the released Helm chart using `helm pull https://charts.keptn.sh/packages/keptn-0.17.0.tgz` and unpack it.
@@ -31,6 +31,7 @@ Detailed step by step guide:
     e.g. `common.strategy.type` -> `strategy.type`
 7. After adjusting your Helm values you are ready to upgrade to the new version of Keptn. Since the `keptn upgrade` CLI command
    is deprecated with Keptn 0.17, please use Helm directly to do the upgrade:
-   ```bash
+
+   ```
    helm upgrade keptn -n keptn-test --version 0.17.0 --values <your-adjusted-values-file>
    ```
