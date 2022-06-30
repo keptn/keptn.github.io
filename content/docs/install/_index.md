@@ -13,13 +13,13 @@ The steps to install and configure your Keptn instance are:
     with the Keptn version you are installing
     and that you have adequate resources.
 
-2. Decide [how you want to access Keptn](access).
-   Kubernetes supports exposing Keptn via a LoadBalancer, a NodePort, an Ingress
-   or using a Port-forward.
+2. Install [Keptn CLI](cli-install)
 
-3. Install [Keptn CLI](cli-install)
+3. Decide [how you want to access Keptn](access).
+   Kubernetes can expose Keptn using a LoadBalancer, a NodePort, an Ingress,
+   or using Port-forwarding.
 
-4. Install Keptn
+4. Install Keptn, specifying the access method you have chosen
     * Using a [Helm chart](helm-install), all on one cluster
     * [Manually](../0.16.x/operate/install/#install-keptn),
     using **keptn install** commands (deprecated as of Release 0.17.x)
@@ -29,24 +29,40 @@ The steps to install and configure your Keptn instance are:
 
 5. [Authenticate CLI and Bridge](authenticate-cli-bridge)
 
-6. Install software to run Keptn tasks
-    * [Job Executor Service](https://github.com/keptn-contrib/job-executor-service/blob/main/docs/INSTALL.md)
-        * The [Job Executor Service](https://github.com/keptn-contrib/job-executor-service)
-         runs Keptn customizable tasks as Kubernetes jobs.
-         See [Job Executor Service Features](https://github.com/keptn-contrib/job-executor-service/blob/main/docs/FEATURES.md) for more details.
-        * Also see [Job Executor Service Architecture](https://github.com/keptn-contrib/job-executor-service/blob/main/docs/ARCHITECTURE.md#example-configuration)
-    * [Istio](istio)
-
-7. If you are using [Quality Gates](../concepts/quality_gates),
-   install the [monitoring service](monitoring) you want to use.
-
-8. Configure [webhooks](webhook_service) (optional)
-
-9. If you have problems with your installation,
+6. If you have problems with your installation,
    check out the hints in [Troubleshooting the installation](troubleshooting)
+
+
+At this point, you should have a functional Keptn instance running.
 
 You may also be interested in the following topics:
 
 * [Upgrade Keptn](upgrade)
 
 * [Uninstall Keptn](uninstall)
+
+Additional software may need to be installed and configured
+to support the needs of the projects you are running:
+
+* Install software to run Keptn tasks
+    * [Job Executor Service](https://artifacthub.io/packages/keptn/keptn-integrations/job-executor-service)
+     that runs customizable Keptn tasks as Kubernetes jobs:
+        * Install the Integration on the Kubernetes cluster(s)
+        where the Keptn Execution Plane is installed.
+        * Follow the installation instructions for the integration.
+    * Install and configure [Istio](istio) on the Kubernetes cluster(s)
+    where the Keptn Execution Plane is installed.
+
+* If you are using [Quality Gates](../concepts/quality_gates),
+   install the [monitoring service](monitoring) you want to use
+   following the instructions for that Integration:
+   * DataDog
+   * [Dynatrace](https://artifacthub.io/packages/keptn/keptn-integrations/dynatrace-service)
+   * [Prometheus](https://artifacthub.io/packages/keptn/keptn-integrations/prometheus-service)
+   * To use a different Observability Platform as your data source,
+   follow the instructions in [Custom Integrations](http://localhost:1313/docs/0.17.x/integrations/)
+   to create an integration for your Observability Platform.
+   or start a conversation in the #keptn-integrations channel in the [Keptn Slack](https://slack.keptn.shi).
+
+* Install any Webhook integrations you want
+   and configure [webhooks](webhook_service) them (optional).
