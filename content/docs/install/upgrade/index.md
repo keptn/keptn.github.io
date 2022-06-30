@@ -13,6 +13,7 @@ to get any new default values that were introduced. Afterwards, you can use your
 [Helm installation instructions](../install/#install-keptn).
 
 Detailed step by step guide:
+
 1. Follow [Keptn's backup instructions](../backup_and_restore)
 2. Make sure you are connected to the kubernetes cluster where Keptn is installed.
 3. Fetch your current Helm values with `helm get values -n <your-keptn-namespace> <your-keptn-release-name> > keptn-values.yaml`
