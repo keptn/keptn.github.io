@@ -4,7 +4,12 @@ description: Install binaries for the Keptn CLI
 weight: 35
 ---
 
-Every Keptn release provides binaries for the Keptn CLI. These binaries are available for Linux, macOS, and Windows.
+The Keptn CLI must be installed on the local machine.
+It is used to send commands to Keptn by interacting with the API of Keptn.
+To communicate with Keptn, you must know a shared secret
+that is generated during the installation and verified by the *api* component.
+
+Binaries for the Keptn CLI are provided for Linux, macOS, and Windows.
 
 - Download the version for your operating system from: [GitHub](https://github.com/keptn/keptn/releases/tag/0.16.0)
 - Unpack the archive
