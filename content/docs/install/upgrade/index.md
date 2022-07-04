@@ -39,7 +39,7 @@ Detailed step by step guide:
 
   {{< popup_image
   link="./assets/helm-values-diff.png"
-  caption="Diff with old values on the left and updated values on the right.">}}
+  caption="Diff with old values on the left and updated values on the right">}}
 
 ### Execution Plane
 
