@@ -16,7 +16,7 @@ Detailed step by step guide:
 - Follow [Keptn's backup instructions](../../0.17.x/operate/backup_and_restore)
 - Make sure you are connected to the Kubernetes cluster where Keptn is installed.
 - Fetch your current Helm values with `helm get values -n <your-keptn-namespace> <your-keptn-release-name> > keptn-values.yaml`
-   For namespace `keptn-test` and release name `keptn` (the default release name) the command would look like this:
+   For namespace `keptn-test` and release name `keptn` (the default release name), the command would look like this:
 
    ```
    helm get values -n keptn-test keptn
