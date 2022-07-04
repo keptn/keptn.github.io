@@ -48,7 +48,7 @@ helm install keptn --version 0.17.0 -n keptn --repo=https://charts.keptn.sh --cr
 * Use a LoadBalancer for api-gateway-nginx
 
 ```console
-helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.17.0 --repo=https://charts.keptn.sh --set=control-plane.apiGatewayNginx.type=LoadBalancer
+helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.17.0 --repo=https://charts.keptn.sh --set=apiGatewayNginx.type=LoadBalancer
 ```
 
 * Install Keptn with an ingress object
@@ -65,11 +65,11 @@ helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=
   ```console
   helm upgrade keptn keptn --install -n keptn --create-namespace
   --set=control-plane.ingress.enabled=true,
-        control-plane.ingress.annotations=<YOUR_ANNOTATIONS>,
-        control-plane.ingress.host=<YOUR_HOST>,
-        control-plane.ingress.path=<YOUR_PATH>,
-        control-plane.ingress.pathType=<YOUR_PATH_TYPE>,  
-        control-plane.ingress.tls=<YOUR_TLS>
+       ingress.annotations=<YOUR_ANNOTATIONS>,
+       ingress.host=<YOUR_HOST>,
+       ingress.path=<YOUR_PATH>,
+       ingress.pathType=<YOUR_PATH_TYPE>,  
+       ingress.tls=<YOUR_TLS>
   ```
 
 ## Install Keptn execution-plane:

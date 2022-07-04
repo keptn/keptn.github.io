@@ -19,7 +19,7 @@ The steps to install and configure your Keptn instance are:
 
 3. Install [Keptn CLI](cli-install)
 
-4. Install the [helm CLI](https://helm.sh).
+4. Install the [Helm CLI](https://helm.sh).
 
 5. Install Keptn using a [Helm chart](helm-install)
     * All on one cluster
