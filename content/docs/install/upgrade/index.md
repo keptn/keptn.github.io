@@ -7,7 +7,7 @@ weight: 500
 ## Upgrade from Keptn 0.16.x to Keptn 0.17.x
 
 With Keptn 0.17.x, the Keptn CLI commands for `install`, `uninstall` and `upgrade` were deprecated. We recommend to upgrade using the Helm CLI instead.
-Additionally, the Keptn Helm chart was refactored heavily to make it ready for future features and structural changes.
+Additionally, the Keptn Helm chart has  been refactored heavily to make it ready for future features and structural changes.
 To upgrade, we recommend getting your old Helm values file, and then merging it together with the default Keptn Helm values
 to get any new default values that were introduced. Afterwards, you can use your new values file to follow the
 [Helm installation instructions](../install/#install-keptn).
