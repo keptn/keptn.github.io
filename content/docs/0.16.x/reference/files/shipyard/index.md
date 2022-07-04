@@ -77,8 +77,20 @@ although most projects only use some of the constructions.
 A stage is named for the particular activity to be performed,
 such as `development`, `hardening`, `staging`, or `production`.
 Each *shipyard* file must have at least one `stage`.
-The name of the stage becomes the name of the branch in the upstream Git repository
-and the Kubernetes namespace to which services are deployed.
+The name of the stage becomes the name of the branch
+in the [upstream Git repository](../../../manage/git_upstream)
+and the Kubernetes namespace to which
+[services](../../../manage/service) are deployed.
+
+A stage can be given any meaningful name that conforms to the
+[Kubernetes Object Names and IDs](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/)
+specification, meaning:
+
+* contains at most 63 characters
+* contains only lowercase alphanumeric characters or `-`.
+Most especially, must not contain `/` or `%`.
+* starts and ends with an alphanumeric character
+
 A stage has the properties:
 
 * `name`: A unique name for the stage
