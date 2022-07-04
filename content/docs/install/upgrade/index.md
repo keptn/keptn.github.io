@@ -10,7 +10,7 @@ With Keptn 0.17.x, the Keptn CLI commands for `install`, `uninstall` and `upgrad
 Additionally, the Keptn Helm chart has  been refactored heavily to make it ready for future features and structural changes.
 To upgrade, we recommend getting your old Helm values file, and then merging it together with the default Keptn Helm values
 to get any new default values that were introduced. Afterwards, you can use your new values file to follow the
-[Helm installation instructions](../install/#helm-install).
+[Helm installation instructions](../#helm-install).
 
 Detailed step by step guide:
 - Follow [Keptn's backup instructions](../../0.17.x/operate/backup_and_restore)
