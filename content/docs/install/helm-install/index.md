@@ -42,13 +42,13 @@ the Keptn Control Plane.
 * Install Keptn control-plane with Continuous Delivery support and exposed on a [LoadBalancer](../access/#option-1-expose-keptn-via-a-loadbalancer):
 
 ```
-helm install keptn https://github.com/keptn/keptn/releases/download/0.17.0/keptn-0.17.0.tgz -n keptn --create-namespace --wait --set=continuous-delivery.enabled=true,control-plane.apiGatewayNginx.type=LoadBalancer
+helm install keptn https://github.com/keptn/keptn/releases/download/0.17.0/keptn-0.17.0.tgz -n keptn --create-namespace --wait --set=continuousDelivery.enabled=true,apiGatewayNginx.type=LoadBalancer
 ```
 
 * Use a LoadBalancer for api-gateway-nginx
 
 ```console
-helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.17.0 --repo=https://charts.keptn.sh --set=control-plane.apiGatewayNginx.type=LoadBalancer
+helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.17.0 --repo=https://charts.keptn.sh --set=apiGatewayNginx.type=LoadBalancer
 ```
 
 * Install Keptn with an ingress object
@@ -65,11 +65,11 @@ helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=
   ```console
   helm upgrade keptn keptn --install -n keptn --create-namespace
   --set=control-plane.ingress.enabled=true,
-        control-plane.ingress.annotations=<YOUR_ANNOTATIONS>,
-        control-plane.ingress.host=<YOUR_HOST>,
-        control-plane.ingress.path=<YOUR_PATH>,
-        control-plane.ingress.pathType=<YOUR_PATH_TYPE>,  
-        control-plane.ingress.tls=<YOUR_TLS>
+       ingress.annotations=<YOUR_ANNOTATIONS>,
+       ingress.host=<YOUR_HOST>,
+       ingress.path=<YOUR_PATH>,
+       ingress.pathType=<YOUR_PATH_TYPE>,  
+       ingress.tls=<YOUR_TLS>
   ```
 
 ## Install Keptn execution-plane:
@@ -90,7 +90,7 @@ in the [helm-charts](https://github.com/keptn/keptn/tree/master/installer/manife
 * The **Control Plane with the Execution Plane (for Continuous Delivery)**
 can be installed by the following command:
 ```console
-helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.17.0 --repo=https://charts.keptn.sh --set=continuous-delivery.enabled=true
+helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.17.0 --repo=https://charts.keptn.sh --set=continuousDelivery.enabled=true
 ```
 
 * The **Control Plane with the Execution Plane (for Continuous Delivery)** and a `LoadBalancer` for exposing Keptn can be installed by the following command:
