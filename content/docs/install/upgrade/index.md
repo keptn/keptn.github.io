@@ -38,7 +38,7 @@ Detailed step by step guide:
    ```
 
 If you have helm-service or jmeter-service installed, please follow the steps below to upgrade:
-- Make sure you are connected to the kubernetes cluster where Keptn is installed.
+- Make sure you are connected to the Kubernetes cluster where Keptn is installed.
 - Fetch your current Helm values with `helm get values -n <your-exec-plane-namespace> <your-exec-plane-service-release-name> > old-values.yaml`
   For namespace `exec-plane` and release name `helm-service` (the default release name) the command would look like this:
 
