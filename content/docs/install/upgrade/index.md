@@ -14,7 +14,7 @@ to get any new default values that were introduced. Afterwards, you can use your
 
 Detailed step by step guide:
 - Follow [Keptn's backup instructions](../backup_and_restore)
-- Make sure you are connected to the kubernetes cluster where Keptn is installed.
+- Make sure you are connected to the Kubernetes cluster where Keptn is installed.
 - Fetch your current Helm values with `helm get values -n <your-keptn-namespace> <your-keptn-release-name> > keptn-values.yaml`
    For namespace `keptn-test` and release name `keptn` (the default release name) the command would look like this:
 
