@@ -29,13 +29,17 @@ Detailed step by step guide:
   - `control-plane`: Since the `control-plane` and `continuous-delivery` charts were merged into one, all values 
      previously under `control-plane` are now just directly in the values root without the `control-plane` key.
   - All values under `control-plane.common` were moved to the root level of the values.
-    e.g. `common.strategy.type` -> `strategy.type`
+    e.g. `control-plane.common.strategy.type` -> `strategy.type`
 - After adjusting your Helm values you are ready to upgrade to the new version of Keptn. Since the `keptn upgrade` CLI command
    is deprecated with Keptn 0.17, please use Helm directly to do the upgrade:
 
    ```
    helm upgrade keptn keptn/keptn -n keptn-test --version 0.17.0 --values <your-adjusted-values-file>
    ```
+
+  {{< popup_image
+  link="./assets/helm-values-diff.png"
+  caption="Diff with old values on the left and updated values on the right.">}}
 
 ### Execution Plane
 
