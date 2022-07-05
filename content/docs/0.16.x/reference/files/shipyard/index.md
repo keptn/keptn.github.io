@@ -86,10 +86,18 @@ A stage can be given any meaningful name that conforms to the
 [Kubernetes Object Names and IDs](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/)
 specification, meaning:
 
-* contains at most 63 characters
-* contains only lowercase alphanumeric characters or `-`.
+* Contains only lowercase alphanumeric characters or `-`.
 Most especially, must not contain `/` or `%`.
-* starts and ends with an alphanumeric character
+* Starts and ends with an alphanumeric character.
+* Contains at most 43 characters.
+
+  Kubernetes allows up to 63 character names (because of DNS limitations).
+  For continuous delivery, the `helm-service` creates Helm releases
+  named `<serviceName>-generated`, where `<serviceName>` is the stage name..
+  Because "-generated" is 10 characters, the stage name can not be longer than 43 characters.
+
+  It is possible that larger values are allowed if you are not using the `helm-service`
+  but this has not been tested and is not guaranteed.
 
 A stage has the properties:
 
