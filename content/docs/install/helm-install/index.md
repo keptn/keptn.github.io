@@ -64,7 +64,7 @@ helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=
 
   ```console
   helm upgrade keptn keptn --install -n keptn --create-namespace
-  --set=control-plane.ingress.enabled=true,
+  --set=ingress.enabled=true,
        ingress.annotations=<YOUR_ANNOTATIONS>,
        ingress.host=<YOUR_HOST>,
        ingress.path=<YOUR_PATH>,
@@ -95,7 +95,7 @@ helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=
 
 * The **Control Plane with the Execution Plane (for Continuous Delivery)** and a `LoadBalancer` for exposing Keptn can be installed by the following command:
 ```console
-helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.17.0 --repo=https://charts.keptn.sh --set=continuous-delivery.enabled=true,control-plane.apiGatewayNginx.type=LoadBalancer
+helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.17.0 --repo=https://charts.keptn.sh set=continuousDelivery.enabled=true,apiGatewayNginx.type=LoadBalancer
 ```
 
 ### Install Keptn using a user-provided API token
