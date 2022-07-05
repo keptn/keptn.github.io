@@ -47,7 +47,7 @@ Then come back and continue installing the Keptn control plane.
 * To install the control plane, execute `helm install` with the option you chose for exposing Keptn:
 
     ```console
-    helm install keptn keptn/keptn -n keptn --version=$KeptnVersion --create-namespace --set=control-plane.apiGatewayNginx.type=[LoadBalancer, NodePort, ClusterIP]
+    helm install keptn keptn/keptn -n keptn --version=$KeptnVersion --create-namespace --set=apiGatewayNginx.type=[LoadBalancer, NodePort, ClusterIP]
     ```
 
 * Before continuing, please retrieve:
