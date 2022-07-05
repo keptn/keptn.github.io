@@ -64,7 +64,7 @@ helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=
 
   ```console
   helm upgrade keptn keptn --install -n keptn --create-namespace
-  --set=control-plane.ingress.enabled=true,
+  --set=ingress.enabled=true,
        ingress.annotations=<YOUR_ANNOTATIONS>,
        ingress.host=<YOUR_HOST>,
        ingress.path=<YOUR_PATH>,
