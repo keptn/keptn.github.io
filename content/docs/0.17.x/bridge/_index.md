@@ -118,6 +118,7 @@ The Keptn Bridge provides an easy way to browse all events that are sent within 
 
 The uniform view gives you an overview of all integrations installed within your Keptn installation. 
 The data is fetched from your Kubernetes cluster and shows useful information like
+
 * Unread/New error events
 * Deployment version of the service
 * The cluster or host where it is running
