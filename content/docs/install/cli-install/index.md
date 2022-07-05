@@ -5,9 +5,9 @@ weight: 35
 ---
 
 The Keptn CLI must be installed on the local machine.
-It is used to send commands to Keptn by interacting with the API of Keptn.
-To communicate with Keptn, you must know a shared secret
-that is generated during the installation and verified by the *api* component.
+It is used to send commands to Keptn by interacting with the Keptn API.
+The [API Token](../../0.17.x/operate/api_token)
+that is used to communicate with Keptn is generated during the installation.
 
 Binaries for the Keptn CLI are provided for Linux, macOS, and Windows.
 
