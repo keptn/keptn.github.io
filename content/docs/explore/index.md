@@ -40,7 +40,7 @@ helm repo add keptn https://charts.keptn.sh && helm repo update
 helm install keptn keptn/keptn \
 -n keptn --create-namespace \
 --wait \
---set=control-plane.apiGatewayNginx.type=LoadBalancer
+--set=apiGatewayNginx.type=LoadBalancer
 ```
 
 3. Install some standard Keptn execution plane components. These are additional microservices that handle specific tasks:
