@@ -36,11 +36,11 @@ See [Keptn CLI](../0.16.x/reference/cli) for more information.
 
 2. Install the core Keptn control plane components and expose them via a LoadBalancer:
 ```
-helm repo add keptn https://charts.keptn.sh && helm repo update
-helm install keptn keptn/keptn \
+helm install keptn keptn --repo=https://charts.keptn.sh \
 -n keptn --create-namespace \
---wait \
---set=apiGatewayNginx.type=LoadBalancer
+--set=apiGatewayNginx.type=LoadBalancer \
+--set=continuousDelivery.enabled=true \
+--wait
 ```
 
 3. Install some standard Keptn execution plane components. These are additional microservices that handle specific tasks:
