@@ -6,17 +6,62 @@ weight: 500
 
 ## Upgrade from Keptn 0.16.x to Keptn 0.17.x
 
-With Keptn 0.17.x, every Keptn project requires an [upstream Git repository](../../0.17.x/manage/git_upstream).
-Hence, before upgrading Keptn you must (i) attach an upstream to your Keptn projects and
-(ii) do a [backup](../../0.17.x/operate/backup_and_restore/#back-up-configuration-service).
-If you already have an upstream for all your Keptn projects, no additional steps are required and you can run `helm upgrade keptn keptn/keptn -n keptn --version 0.17.0 --reuse-values`.
+With Keptn 0.17.x, the Keptn CLI commands for `install`, `uninstall` and `upgrade` were deprecated. We recommend that you instead use the Helm CLI to upgrade.
+The Keptn Helm chart has also been refactored heavily to make it ready for future features and structural changes.
+To upgrade, we recommend getting your old Helm values file, and then merging it together with the default Keptn Helm values
+to get any new default values that were introduced. Afterwards, you can use your new values file to follow the
+[Helm installation instructions](../helm-install).
 
-Suppose you need the additional features provided by the *resource-service*,  such as HTTPS/SSH or Proxy, to configure your Keptn project with an upstream. In that case,
-you can also deploy the *resource-service* and configure the Git repositories later. For this, a backup is necessary.
+Detailed step-by-step guide:
 
-1. Back up the [configuration-service](../../0.17.x/operate/backup_and_restore/#back-up-configuration-service).
-2. For each Keptn project in the backup data, open a shell in that directory and make sure the `Git` CLI is available.
-3. Attach your upstream to the Keptn project via the Git CLI with `git remote add origin <remoteURL>`, where `<remoteURL>` is your Git upstream.
-4. Run `git push --all` to synchronize your backup with your Git repository.
-5. Upgrade to Keptn 0.17.x using `helm upgrade keptn keptn/keptn -n keptn --version 0.17.0 --reuse-values`
-6. Navigate to your Bridge installation and configure an upstream to the Keptn projects.
+- Before upgrading to 0.17.x, please follow [Keptn's backup instructions](../../0.17.x/operate/backup_and_restore)
+- Make sure you are connected to the Kubernetes cluster where Keptn is installed.
+- Fetch your current Helm values with `helm get values -n <your-keptn-namespace> <your-keptn-release-name> > keptn-values.yaml`
+   For namespace `keptn-test` and release name `keptn` (the default release name), the command would look like this:
+
+   ```
+   helm get values -n keptn-test keptn
+   ```
+
+- Download the released Helm chart using `helm pull https://charts.keptn.sh/packages/keptn-0.17.0.tgz` and unpack it.
+- Use a merge tool to merge the `values.yaml` file from the unpacked chart and your previously downloaded `keptn-values.yaml` together.
+- You will notice that some Helm values have changed compared to your `keptn-values.yaml` file:
+  - `continuous-delivery` -> `continuousDelivery`
+  - `control-plane`: Since the `control-plane` and `continuous-delivery` charts were merged into one, all values 
+     previously under `control-plane` are now just directly in the values root without the `control-plane` key.
+  - All values under `control-plane.common` were moved to the root level of the values.
+    e.g. `control-plane.common.strategy.type` -> `strategy.type`
+- After adjusting your Helm values you are ready to upgrade to the new version of Keptn. Since the `keptn upgrade` CLI command
+   is deprecated with Keptn 0.17, please use Helm directly to do the upgrade:
+
+   ```
+   helm upgrade keptn keptn/keptn -n keptn-test --version 0.17.0 --values <your-adjusted-values-file>
+   ```
+
+  {{< popup_image
+  link="./assets/helm-values-diff.png"
+  caption="Diff with old values on the left and updated values on the right">}}
+
+### Execution Plane
+
+If you have helm-service or jmeter-service installed, please follow the steps below to upgrade:
+
+- Make sure you are connected to the Kubernetes cluster where Keptn is installed.
+- Fetch your current Helm values with `helm get values -n <your-exec-plane-namespace> <your-exec-plane-service-release-name> > old-values.yaml`
+  For namespace `exec-plane` and release name `helm-service` (the default release name), the command would look like this:
+
+   ```
+   helm get values -n exec-plane helm-service
+   ```
+
+- Download the released Helm chart using `helm pull https://charts.keptn.sh/packages/helm-service-0.17.0.tgz` and unpack it.
+- Use a merge tool to merge the `values.yaml` file from the unpacked chart and your previously downloaded `old-values.yaml` together.
+- You will notice that some Helm values have changed compared to your `old-values.yaml` file:
+    - `resources` -> `helm-service.resources`/`jmeter-service.resources`
+    - The distributor got its own set of `resources` in the values file. You can adjust them or leave them at the sensible defaults.
+- After adjusting your Helm values you are ready to upgrade to the new version of your execution plane service.
+  Please use Helm directly to do the upgrade:
+
+   ```
+   helm upgrade <your-exec-plane-service> -n exec-plane --version 0.17.0 --values <your-adjusted-values-file>
+   ```

@@ -25,7 +25,7 @@ and [Automated Operations](../../concepts/automated_operations/) use cases. To i
     ```
     helm repo add keptn https://charts.keptn.sh
     helm repo update
-    helm install keptn keptn/keptn -n keptn --version=$KeptnVersion --create-namespace --set=continuous-delivery.enabled=true
+    helm install keptn keptn/keptn -n keptn --version=$KeptnVersion --create-namespace --set=continuousDelivery.enabled=true
     ```
 
  where, `$KeptnVersion` is the version of Keptn you want to install.
