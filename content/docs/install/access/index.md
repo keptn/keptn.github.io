@@ -24,8 +24,8 @@ width="1000px">}}
 ### Option 1: Expose Keptn via a LoadBalancer
 This option exposes Keptn externally using a cloud provider's load balancer (if available).
 
-1. **Install Keptn:** For installing Keptn on your cluster, please use the Helm CLI.
-Depending on whether you would like to install the execution plane for continuous delivery, add the flag `continuousDelivery.enabled=true`.
+1. **Install Keptn:** Use the Helm CLI to install Keptn on your cluster.
+If you want to install the execution plane for continuous delivery, add the flag `continuousDelivery.enabled=true`.
   ```console
    helm install keptn keptn/keptn -n keptn --version=$KeptnVersion --create-namespace --set=continuousDelivery.enabled=true,apiGatewayNginx.type=LoadBalancer
   ```
@@ -56,8 +56,8 @@ Depending on whether you would like to install the execution plane for continuou
 ### Option 2: Expose Keptn via a NodePort
 This option exposes Keptn on each Kubernetes Node's IP at a static port. Therefore, please make sure that you can access the Kubernetes Nodes in your network.
 
-1. **Install Keptn:** For installing Keptn on your cluster, please use the Keptn CLI.
-Depending on whether you would like to install the execution plane for continuous delivery, add the flag `continuousDelivery.enabled=true`.
+1. **Install Keptn:** Use the Keptn CLI to install Keptn on your cluster.
+If you want to install the execution plane for continuous delivery, add the flag `continuousDelivery.enabled=true`.
   ```console
   helm install keptn keptn/keptn -n keptn --version=$KeptnVersion --create-namespace --set=continuousDelivery.enabled=true,apiGatewayNginx.type=NodePort
   ```
@@ -92,8 +92,8 @@ Depending on whether you would like to install the execution plane for continuou
 
 ### Option 3: Expose Keptn via an Ingress
 
-1. **Install Keptn:** For installing Keptn on your cluster, please use the Keptn CLI.
-Depending on whether you would like to install the execution plane for continuous delivery, add the flag `continuousDelivery.enabled=true`.
+1. **Install Keptn:** Use the Keptn CLI to install Keptn on your cluster.
+If you want to install the execution plane for continuous delivery, add the flag `continuousDelivery.enabled=true`.
   ```console
   helm install keptn keptn/keptn -n keptn --version=$KeptnVersion --create-namespace --set=continuousDelivery.enabled=true
   ```
@@ -292,8 +292,8 @@ Depending on whether you would like to install the execution plane for continuou
 ### Option 4: Access Keptn via a Port-forward
 This option does not expose Keptn to the public but exposes Keptn on a *cluster-internal* IP.
 
-1. **Install Keptn:** For installing Keptn on your cluster, please use the Keptn CLI.
-Depending on whether you would like to install the execution plane for continuous delivery, add the flag `continuousDelivery.enabled=true`.
+1. **Install Keptn:** Use the Keptn CLI to install Keptn on your cluster.
+If you want to install the execution plane for continuous delivery, add the flag `continuousDelivery.enabled=true`.
   ```console
   helm install keptn keptn/keptn -n keptn --version=$KeptnVersion --create-namespace --set=continuousDelivery.enabled=true
   ```
