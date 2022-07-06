@@ -26,7 +26,7 @@ about creating a Keptn cluster locally or in the cloud.
 
 1) Install core control plane components and expose via a LoadBalancer:
 ```
-helm install keptn keptn --repo=https://charts.keptn.sh
+helm install keptn keptn --repo=https://charts.keptn.sh \
 -n keptn --create-namespace \
 --set=apiGatewayNginx.type=LoadBalancer \
 --set=continuousDelivery.enabled=true \
