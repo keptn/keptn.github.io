@@ -4,16 +4,75 @@ description: Install Keptn on a single cluster using the Helm chart
 weight: 40
 ---
 
-Keptn is installed via a Helm chart, which can also be done using the Helm CLI directly.
-Therefore, the [helm CLI](https://helm.sh) is required to execute the following command:
+Keptn is installed using a Helm chart using the Helm CLI.
+You must install the [Helm CLI](https://helm.sh)
+and the [Keptn CLI](../cli-install)
+before attempting to install Keptn.
 
-* *Install Keptn control-plane (with Continuous Delivery support and exposed on a LoadBalancer)*:
+After installing Keptn,
+you must [authenticate the Keptn CLI](../authenticate-cli-bridge/#authenticate-keptn-cli). 
+
+Keptn consists of a **Control Plane** and an **Execution Plane**.
+
+* The **Control Plane** allows using Keptn for the [Quality Gates](../../concepts/quality_gates/)
+  and [Automated Operations](../../concepts/automated_operations/).
+  The Keptn Control Plane can run with no Execution Plane configured.
+* The **Control Plane with the Execution Plane** is required to implement
+  [Continuous Delivery](../../concepts/delivery/)
+  on top of Quality Gates and Automated Operations..
+  * Note that you must install either the
+  [Job Executor Service](https://artifacthub.io/packages/keptn/keptn-integrations/job-executor-service)
+  or [Istio](https://istio.io) on the Kubernetes cluster(s) where the Execution Plane is installed.
+
+See [Architecture](../../concepts/architecture) for more information
+about the Control Plane and the Execution Plane.
+
+Keptn can be installed on an existing Kubernetes cluster that hosts other software
+or on a dedicated Keptn Kubernetes cluster.
+The Control Plane and Execution Plane can also be installed on separate Kubernetes clusters;
+see [Multi-cluster setup](../multi-cluster) for instructions.
+* In a multi-cluster setup, one Keptn Control Plane can support multiple Execution Planes
+that are installed on different clusters.
+
+## Control Plane installation options
+
+You must specify the [access option](../access) when you install
+the Keptn Control Plane.
+
+* Install Keptn control-plane with Continuous Delivery support and exposed on a [LoadBalancer](../access/#option-1-expose-keptn-via-a-loadbalancer):
 
 ```
-helm install keptn https://github.com/keptn/keptn/releases/download/0.17.0/keptn-0.17.0.tgz -n keptn --create-namespace --wait --set=continuous-delivery.enabled=true,control-plane.apiGatewayNginx.type=LoadBalancer
+helm install keptn https://github.com/keptn/keptn/releases/download/0.17.0/keptn-0.17.0.tgz -n keptn --create-namespace --wait --set=continuousDelivery.enabled=true,apiGatewayNginx.type=LoadBalancer
 ```
 
-* *Install Keptn execution-plane:*
+* Use a LoadBalancer for api-gateway-nginx
+
+```console
+helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.17.0 --repo=https://charts.keptn.sh --set=apiGatewayNginx.type=LoadBalancer
+```
+
+* Install Keptn with an ingress object
+
+  If you are already using an [Ingress Controller](../access/#option-3-expose-keptn-via-an-ingress)
+  and want to create an ingress object for Keptn,
+  you can leverage the ingress section of the Helm chart. By default `enabled` is set to false.
+
+  The Helm chart allows customizing the ingress object to your needs.
+  When `enabled` is set to `true`, the chart allows you to specify optional parameters
+  of host, path, pathType, tls, and annotations.
+  This supports many different Ingress-Controllers and configurations.
+
+  ```console
+  helm upgrade keptn keptn --install -n keptn --create-namespace
+  --set=ingress.enabled=true,
+       ingress.annotations=<YOUR_ANNOTATIONS>,
+       ingress.host=<YOUR_HOST>,
+       ingress.path=<YOUR_PATH>,
+       ingress.pathType=<YOUR_PATH_TYPE>,  
+       ingress.tls=<YOUR_TLS>
+  ```
+
+## Install Keptn execution-plane:
 
 ```
 helm install jmeter-service https://github.com/keptn/keptn/releases/download/0.17.0/jmeter-service-0.17.0.tgz -n keptn --create-namespace --wait
@@ -21,33 +80,34 @@ helm install jmeter-service https://github.com/keptn/keptn/releases/download/0.1
 helm install helm-service https://github.com/keptn/keptn/releases/download/0.17.0/helm-service-0.17.0.tgz -n keptn --create-namespace --wait
 ```
 
-**Note:** To continue with Keptn after the installation with Helm,
-we recommend authenticating the Keptn CLI as explained [here](../authenticate-cli-bridge/#authenticate-keptn-cli). 
+## The --set flag
 
-As shown above, the `helm install` or `helm upgrade` commands offer a flag called `--set`, which can be used to specify several configuration options using the format `key1=value1,key2=value2,...`.
+The `helm install` and `helm upgrade` commands offer a flag called `--set`,
+which can be used to specify several configuration options using the format `key1=value1,key2=value2,...`.
+The full list of available flags can be found
+in the [helm-charts](https://github.com/keptn/keptn/tree/master/installer/manifests/keptn).
 
-The full list of available flags can be found in the [helm-charts](https://github.com/keptn/keptn/tree/0.17.0/installer/manifests/keptn).
-
-
-### Use a LoadBalancer for api-gateway-nginx
-
+* The **Control Plane with the Execution Plane (for Continuous Delivery)**
+can be installed by the following command:
 ```console
-helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.17.0 --repo=https://charts.keptn.sh --set=control-plane.apiGatewayNginx.type=LoadBalancer
+helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.17.0 --repo=https://charts.keptn.sh --set=continuousDelivery.enabled=true
 ```
 
-### Install execution plane for Continuous Delivery use-case
-
-For example, the **Control Plane with the Execution Plane (for Continuous Delivery)** can be installed by the following command:
+* The **Control Plane with the Execution Plane (for Continuous Delivery)** and a `LoadBalancer` for exposing Keptn can be installed by the following command:
 ```console
-helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.17.0 --repo=https://charts.keptn.sh --set=continuous-delivery.enabled=true
+helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.17.0 --repo=https://charts.keptn.sh set=continuousDelivery.enabled=true,apiGatewayNginx.type=LoadBalancer
 ```
 
-### Install execution plane for Continuous Delivery use-case and use a LoadBalancer for api-gateway-nginx
+### Install Keptn using a user-provided API token
 
-For example, the **Control Plane with the Execution Plane (for Continuous Delivery)** and a `LoadBalancer` for exposing Keptn can be installed by the following command:
-```console
-helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.17.0 --repo=https://charts.keptn.sh --set=continuous-delivery.enabled=true,control-plane.apiGatewayNginx.type=LoadBalancer
-```
+You can provide your own API token for Keptn to use by setting the secret name
+in the `apiService.tokenSecretName` Helm value during installation.
+For Helm-Service and JMeter-Service,
+you can also provide the API token by using the `remoteControlPlane.tokenSecretName` Helm value.
+
+The user-provided secret needs to live in the same namespace where Keptn will be installed.
+The user-provided secret should contain a single key `keptn-api-token`
+with a token consisting of numbers and letters as its value.
 
 ### Execute Helm upgrade without Internet connectivity
 
@@ -140,28 +200,3 @@ helm upgrade keptn keptn --install -n keptn --create-namespace
 ```
 
 Keptn has no opinion on how to fine-tune the database connection. We recommend the user specify any special configuration via the connection string (docs [here](https://www.mongodb.com/docs/manual/reference/connection-string/)) in the `control-plane.mongo.external.connectionString` helm value.
-
-### Install Keptn with an ingress object
-
-If you are already using an Ingress-Controller and want to create an ingress object for Keptn, you can leverage the ingress section of the helm chart. By default enabled is set to false.
-
-The Helm chart allows customizing the ingress object to your needs.  When enabled is set the true, the chart allows you to specify optional parameters of host, path, pathType, tls, and annotations. This supports many different Ingress-Controllers and configurations.
-
-```console
-helm upgrade keptn keptn --install -n keptn --create-namespace
---set=control-plane.ingress.enabled=true,
-      control-plane.ingress.annotations=<YOUR_ANNOTATIONS>,
-      control-plane.ingress.host=<YOUR_HOST>,
-      control-plane.ingress.path=<YOUR_PATH>,
-      control-plane.ingress.pathType=<YOUR_PATH_TYPE>,  
-      control-plane.ingress.tls=<YOUR_TLS>
-```
-
-### Install Keptn using a user-provided API token
-
-You can provide your own API token for Keptn to use by setting the secret name
-in the `apiService.tokenSecretName` Helm value during installation. For Helm-Service and JMeter-Service you
-can also provide the API token by using the `remoteControlPlane.tokenSecretName` Helm value.
-
-The user-provided secret needs to live in the same namespace where Keptn will be installed.
-The user-provided secret should contain a single key `keptn-api-token` with a token consisting of numbers and letters as its value.
