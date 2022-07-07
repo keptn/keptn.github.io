@@ -5,17 +5,13 @@ weight: 70
 
 # Release Notes 0.17.0
 
-Keptn 0.17.0 provides more customizability options in the helm-charts. Make sure to check the [upgrade guide](https://keptn.sh/docs/install/upgrade/#upgrade-from-keptn-0-16-x-to-keptn-0-17-x) to ensure that you do not lose any data. Furthermore, the **cp-connector** library can now be also used in the remote-execution plane to build new integration with ease.
+Keptn 0.17.0 provides more customizability options in the helm-charts. Make sure to check the [upgrade guide](https://keptn.sh/docs/install/upgrade/#upgrade-from-keptn-0-16-x-to-keptn-0-17-x) to ensure that you do not lose any data.
 
 ---
 
 **Key announcements**:
 
-:tada: *cp-connector*: Integrations in the remote-control plane can also make use of the library.
-
-:star: *Bridge*: The Bridge is being rewritten in more fine grain modules to improve load time.
-
-:information_source: *CLI*: The install/uninstall/upgrade commands are not supported anymore. Please refer to our [documentation](../../../install/helm-install/) to see how you can use helm to operate Keptn.
+:information_source: *CLI*: The CLI does not offer anymore the install/uninstall/upgrade commands. Please refer to our [documentation](../../../install/helm-install/) to see how you can use helm to operate Keptn.
 
 ---
 
