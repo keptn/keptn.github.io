@@ -5,13 +5,13 @@ weight: 70
 
 # Release Notes 0.17.0
 
-Keptn 0.17.0 provides more customizability options in the helm-charts. Make sure to check the [upgrade guide](https://keptn.sh/docs/install/upgrade/#upgrade-from-keptn-0-16-x-to-keptn-0-17-x) to ensure that you do not lose any data.
+Keptn 0.17.0 provides more customizability options in the Helm Charts. Make sure to check the [upgrade guide](https://keptn.sh/docs/install/upgrade/#upgrade-from-keptn-0-16-x-to-keptn-0-17-x) to ensure that you do not lose any data.
 
 ---
 
 **Key announcements**:
 
-:information_source: *CLI*: The CLI does not offer anymore the install/uninstall/upgrade commands. Please refer to our [documentation](../../../install/helm-install/) to see how you can use helm to operate Keptn.
+:information_source: *CLI*: The CLI does not offer anymore the install/uninstall/upgrade commands. Please refer to our [documentation](../../../install/helm-install/) to see how you can use Helm to operate Keptn.
 
 ---
 
