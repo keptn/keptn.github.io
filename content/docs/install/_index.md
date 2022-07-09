@@ -19,10 +19,10 @@ The steps to install and configure your Keptn instance are:
 
 3. Install [Keptn CLI](cli-install)
 
-4. Install Keptn
-    * Using a [Helm chart](helm-install), all on one cluster
-    * [Manually](../0.16.x/operate/install/#install-keptn),
-    using **keptn install** commands (deprecated as of Release 0.17.x)
+4. Install the [Helm CLI](https://helm.sh).
+
+5. Install Keptn using a [Helm chart](helm-install)
+    * All on one cluster
     * Install using a [Multi-cluster setup](multi-cluster),
     meaning that the Keptn Control Plane is installed in one Kubernetes cluster
     and the Keptn Execution Plane is installed in one or more other Kubernetes clusters.
