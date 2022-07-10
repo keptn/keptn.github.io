@@ -41,40 +41,7 @@ helm install helm-service keptn/helm-service -n keptn
 ```
 
 ### Next Steps
-Now try the [Multi-Stage Delivery](#try-multi-stage-delivery) example and then [Auto-Remediation](#try-auto-remediation) (see below). 
-
-## Keptn Hello World (Docker Based)
-
-### Prerequisites for Hello World
-
-- Machine with Docker installed and at least 8GB RAM
-
-Run the Keptn Hello, World! example:
-
-```
-docker run --rm -it \
---name thekindkeptn \
--v /var/run/docker.sock:/var/run/docker.sock:ro \
---add-host=host.docker.internal:host-gateway \
-gardnera/thekindkeptn:0.0.15
-```
-
-The Keptn Bridge (UI) will be available on `http://localhost`
-
-### Outcome
-
-The command above has:
-
-- Created a Kubernetes cluster in Docker using [k3d](https://k3d.io/)
-- Installed Keptn and removed all authentication (for demo purposes)
-- Installed and authenticated the `keptn` CLI
-- Created a `helloworld` project
-- Ran your first `hello` Keptn sequence
-
-You can also run additional `hello` sequences with: `keptn trigger sequence --sequence hello --project helloworld --service demoservice --stage demo`
-
-### Next Steps
-Now try the [Multi-Stage Delivery](#try-multi-stage-delivery) example and then [Auto-Remediation](#try-auto-remediation) (see below). 
+Now try the [Multi-Stage Delivery](#try-multi-stage-delivery) example and then [Auto-Remediation](#try-auto-remediation) (see below).
 
 ## Keptn CLI
 
