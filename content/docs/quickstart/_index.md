@@ -14,9 +14,8 @@ to provide more extensive information
 without requiring you to install any software locally.***
 
 This Quick Start guide shows how to quickly create a local Keptn installation
-that runs either as a [Helm](#helm) chart in Kubernetes
-or as [Docker](#keptn-hello-world-docker-based) containers in K3d
-and run some basic exercises that demonstrate Keptn functionality.
+that runs as a [Helm] chart in Kubernetes,
+then run some basic exercises that demonstrate Keptn functionality.
 
 You can install and run Keptn on virtually any Kubernetes cluster.
 See [Install Keptn CLI](../install/cli-install) and [Install Keptn using the Helm chart](../install/helm-install) for detailed instructions
@@ -40,41 +39,6 @@ helm install jmeter-service keptn/jmeter-service -n keptn
 helm install helm-service keptn/helm-service -n keptn
 ```
 
-### Next Steps
-Now try the [Multi-Stage Delivery](#try-multi-stage-delivery) example and then [Auto-Remediation](#try-auto-remediation) (see below). 
-
-## Keptn Hello World (Docker Based)
-
-### Prerequisites for Hello World
-
-- Machine with Docker installed and at least 8GB RAM
-
-Run the Keptn Hello, World! example:
-
-```
-docker run --rm -it \
---name thekindkeptn \
--v /var/run/docker.sock:/var/run/docker.sock:ro \
---add-host=host.docker.internal:host-gateway \
-gardnera/thekindkeptn:0.0.15
-```
-
-The Keptn Bridge (UI) will be available on `http://localhost`
-
-### Outcome
-
-The command above has:
-
-- Created a Kubernetes cluster in Docker using [k3d](https://k3d.io/)
-- Installed Keptn and removed all authentication (for demo purposes)
-- Installed and authenticated the `keptn` CLI
-- Created a `helloworld` project
-- Ran your first `hello` Keptn sequence
-
-You can also run additional `hello` sequences with: `keptn trigger sequence --sequence hello --project helloworld --service demoservice --stage demo`
-
-### Next Steps
-Now try the [Multi-Stage Delivery](#try-multi-stage-delivery) example and then [Auto-Remediation](#try-auto-remediation) (see below). 
 
 ## Keptn CLI
 
@@ -89,7 +53,7 @@ Use this method if you don't have Docker and either have or don't mind installin
 
 ### Prerequisites for k3d based Keptn
 
-This quickstart is designed for Linux-based systems.
+This quickstart should be run on Linux-based systems.
 Consequently, use Linux, macOS, or Windows subsystem for Linux v2 with a full virtual machine (WSL2).
 Note that this tutorial has not been fully verified on  non-amd64 architectures (including Arm-based Apple M1).
 
@@ -120,20 +84,34 @@ curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=v4.4
     k3d cluster create mykeptn -p "8082:80@loadbalancer" --k3s-server-arg "--kube-proxy-arg=conntrack-max-per-core=0"  --k3s-agent-arg "--kube-proxy-arg=conntrack-max-per-core=0" --agents 1
     ```
 
-2. **Download and install the [Keptn CLI](../0.14.x/reference/cli)**
+2. **Download and install the [Keptn CLI](../0.17.x/reference/cli)**
 
     ```
     curl -sL https://get.keptn.sh | bash
     ```
 
-3. **Install Keptn** control-plane and execution-plane for continuous delivery use case or use the `helm install` version [mentioned below](#kubernetes-version-not-supported).
+3. Install the core control plane components and expose via a LoadBalancer:
+```
+helm install keptn keptn --repo=https://charts.keptn.sh \
+-n keptn --create-namespace \
+--set=apiGatewayNginx.type=LoadBalancer \
+--set=continuousDelivery.enabled=true \
+--wait
+```
+
+4. Install the execution plane components, which are required for the continuous delivery use case. These are additional microservices that will handle certain tasks:
+
+```
+helm install jmeter-service keptn/jmeter-service -n keptn
+helm install helm-service keptn/helm-service -n keptn
+```
 
     ```
     keptn install --use-case=continuous-delivery
     ```
 
-    Keptn comes with different installation options, please have a look at the [installation documentation](../0.14.x/operate) for more details on cluster requirements, resource consumption, supported Kubernetes versions, and more.
-    Please note that although during the installation procedure it might be mentioned that Istio is required, it is *not required* for this quickstart guide.
+    Keptn comes with different installation options, please have a look at the [installation documentation](../install) for more details on cluster requirements, resource consumption, supported Kubernetes versions, and more.
+    Please note that, although during the installation procedure it might be mentioned that Istio is required, it is *not required* for this quickstart guide.
 
     <details><summary>Installation logs</summary>
     <p>The installation logs will print the following output:
@@ -253,23 +231,23 @@ With Keptn installed, have a look at the different [tutorials](https://tutorials
 
 Review the documentation for a full reference on all Keptn capabilities and components and how they can be combined/extended to your needs:
 
-- [Operate Keptn](../0.14.x/operate)
-- [Manage Keptn](../0.14.x/manage)
-- [Continuous Delivery](../0.14.x/continuous_delivery)
-- [Quality Gates](../0.14.x/quality_gates)
-- [Automated Operations](../0.14.x/automated_operations)
-- [Custom Integrations](../0.14.x/integrations)
+- [Operate Keptn](../0.17.x/operate)
+- [Manage Keptn](../0.17.x/manage)
+- [Continuous Delivery](../0.17.x/continuous_delivery)
+- [Quality Gates](../0.17.x/quality_gates)
+- [Automated Operations](../0.17.x/automated_operations)
+- [Custom Integrations](../0.17.x/integrations)
 
 ## Wrapping up
 
-If you are finished exploring Keptn, you can always stop and start the cluster and delete it eventually.
+If you are finished exploring Keptn, you can always stop and start the cluster:
 
 ```bash
 k3d cluster stop mykeptn
 k3d cluster start mykeptn
 ```
 
-Or delete it if you don't need it anymore
+Or you can delete the cluster if you don't need it anymore:
 
 ```bash
 k3d cluster delete mykeptn
