@@ -13,7 +13,7 @@ weight: 550
 - To uninstall Keptn from your cluster, run the uninstall command using the Helm CLI:
 
 ``` console
-helm uninstall keptn
+helm uninstall keptn -n <keptn-namespace>
 ```
 
 - To verify the cleanup, retrieve the list of namespaces in your cluster and ensure that the **keptn** namespace is not included in the output of the following command:

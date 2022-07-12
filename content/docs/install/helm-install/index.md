@@ -77,7 +77,12 @@ helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=
 ```
 helm install jmeter-service https://github.com/keptn/keptn/releases/download/0.17.0/jmeter-service-0.17.0.tgz -n keptn --create-namespace --wait
 
+<<<<<<< HEAD
 helm install helm-service https://github.com/keptn/keptn/releases/download/0.17.0/helm-service-0.17.0.tgz -n keptn --create-namespace --wait
+=======
+```console
+helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.17.0 --repo=https://charts.keptn.sh --set=apiGatewayNginx.type=LoadBalancer
+>>>>>>> 7388457ed86e39e3c97b5b92e46919af06410570
 ```
 
 ## The --set flag
@@ -95,7 +100,11 @@ helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=
 
 * The **Control Plane with the Execution Plane (for Continuous Delivery)** and a `LoadBalancer` for exposing Keptn can be installed by the following command:
 ```console
+<<<<<<< HEAD
 helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.17.0 --repo=https://charts.keptn.sh set=continuousDelivery.enabled=true,apiGatewayNginx.type=LoadBalancer
+=======
+helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.17.0 --repo=https://charts.keptn.sh --set=continuousDelivery.enabled=true,apiGatewayNginx.type=LoadBalancer
+>>>>>>> 7388457ed86e39e3c97b5b92e46919af06410570
 ```
 
 ### Install Keptn using a user-provided API token
@@ -180,12 +189,12 @@ cd ..
 
 The Helm Chart allows customizing the root-context for the Keptn API and Bridge.
 By default, the Keptn API is located under `http://HOSTNAME/api` and the Keptn Bridge is located under `http://HOSTNAME/bridge`.
-By specifying a value for `control-plane.prefixPath`, the prefix used for the root-context can be configured.
-For example, if a user sets `control-plane.prefixPath=/mykeptn` in the Helm install/upgrade command,
+By specifying a value for `prefixPath`, the prefix used for the root-context can be configured.
+For example, if a user sets `prefixPath=/mykeptn` in the Helm install/upgrade command,
 the Keptn API is located under `http://HOSTNAME/mykeptn/api` and the Keptn Bridge is located under `http://HOSTNAME/mykeptn/bridge`:
 
 ```console
-helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.17.0 --repo=https://charts.keptn.sh --set=control-plane.apiGatewayNginx.type=LoadBalancer,continuous-delivery.enabled=true,control-plane.prefixPath=/mykeptn
+helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.17.0 --repo=https://charts.keptn.sh --set=apiGatewayNginx.type=LoadBalancer,continuousDelivery.enabled=true,prefixPath=/mykeptn
 ```
 
 ### Install Keptn with externally hosted MongoDB
@@ -194,9 +203,38 @@ If you want to use an externally hosted MongoDB instead of the MongoDB installed
 
 ```console
 helm upgrade keptn keptn --install -n keptn --create-namespace
---set=control-plane.mongo.enabled=false,
-      control-plane.mongo.external.connectionString=<YOUR_MONGODB_CONNECTION_STRING>,
-      control-plane.mongo.auth.database=<YOUR_DATABASE_NAME>
+--set=mongo.enabled=false,
+      mongo.external.connectionString=<YOUR_MONGODB_CONNECTION_STRING>,
+      mongo.auth.database=<YOUR_DATABASE_NAME>
 ```
 
+<<<<<<< HEAD
 Keptn has no opinion on how to fine-tune the database connection. We recommend the user specify any special configuration via the connection string (docs [here](https://www.mongodb.com/docs/manual/reference/connection-string/)) in the `control-plane.mongo.external.connectionString` helm value.
+=======
+Keptn has no opinion on how to fine-tune the database connection. We recommend the user specify any special configuration via the connection string (docs [here](https://www.mongodb.com/docs/manual/reference/connection-string/)) in the `mongo.external.connectionString` helm value.
+
+### Install Keptn with an ingress object
+
+If you are already using an Ingress-Controller and want to create an ingress object for Keptn, you can leverage the ingress section of the helm chart. By default enabled is set to false.
+
+The Helm chart allows customizing the ingress object to your needs.  When enabled is set the true, the chart allows you to specify optional parameters of host, path, pathType, tls, and annotations. This supports many different Ingress-Controllers and configurations.
+
+```console
+helm upgrade keptn keptn --install -n keptn --create-namespace
+--set=ingress.enabled=true,
+      ingress.annotations=<YOUR_ANNOTATIONS>,
+      ingress.host=<YOUR_HOST>,
+      ingress.path=<YOUR_PATH>,
+      ingress.pathType=<YOUR_PATH_TYPE>,  
+      ingress.tls=<YOUR_TLS>
+```
+
+### Install Keptn using a user-provided API token
+
+You can provide your own API token for Keptn to use by setting the secret name
+in the `apiService.tokenSecretName` Helm value during installation. For Helm-Service and JMeter-Service you
+can also provide the API token by using the `remoteControlPlane.tokenSecretName` Helm value.
+
+The user-provided secret needs to live in the same namespace where Keptn will be installed.
+The user-provided secret should contain a single key `keptn-api-token` with a token consisting of numbers and letters as its value.
+>>>>>>> 7388457ed86e39e3c97b5b92e46919af06410570
