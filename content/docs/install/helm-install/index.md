@@ -180,12 +180,12 @@ cd ..
 
 The Helm Chart allows customizing the root-context for the Keptn API and Bridge.
 By default, the Keptn API is located under `http://HOSTNAME/api` and the Keptn Bridge is located under `http://HOSTNAME/bridge`.
-By specifying a value for `control-plane.prefixPath`, the prefix used for the root-context can be configured.
-For example, if a user sets `control-plane.prefixPath=/mykeptn` in the Helm install/upgrade command,
+By specifying a value for `prefixPath`, the prefix used for the root-context can be configured.
+For example, if a user sets `prefixPath=/mykeptn` in the Helm install/upgrade command,
 the Keptn API is located under `http://HOSTNAME/mykeptn/api` and the Keptn Bridge is located under `http://HOSTNAME/mykeptn/bridge`:
 
 ```console
-helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.17.0 --repo=https://charts.keptn.sh --set=control-plane.apiGatewayNginx.type=LoadBalancer,continuous-delivery.enabled=true,control-plane.prefixPath=/mykeptn
+helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.17.0 --repo=https://charts.keptn.sh --set=apiGatewayNginx.type=LoadBalancer,continuousDelivery.enabled=true,prefixPath=/mykeptn
 ```
 
 ### Install Keptn with externally hosted MongoDB
@@ -200,3 +200,5 @@ helm upgrade keptn keptn --install -n keptn --create-namespace
 ```
 
 Keptn has no opinion on how to fine-tune the database connection. We recommend the user specify any special configuration via the connection string (docs [here](https://www.mongodb.com/docs/manual/reference/connection-string/)) in the `control-plane.mongo.external.connectionString` helm value.
+```
+

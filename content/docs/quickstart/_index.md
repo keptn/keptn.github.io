@@ -19,18 +19,18 @@ or as [Docker](#keptn-hello-world-docker-based) containers in K3d
 and run some basic exercises that demonstrate Keptn functionality.
 
 You can install and run Keptn on virtually any Kubernetes cluster.
-See Install CLI and Keptn for detailed instructions
+See [Install Keptn CLI](../install/cli-install) and [Install Keptn using the Helm chart](../install/helm-install) for detailed instructions
 about creating a Keptn cluster locally or in the cloud.
 
 ## Helm
 
 1) Install core control plane components and expose via a LoadBalancer:
 ```
-helm repo add keptn https://charts.keptn.sh && helm repo update
-helm install keptn keptn/keptn \
+helm install keptn keptn --repo=https://charts.keptn.sh \
 -n keptn --create-namespace \
---wait \
---set=control-plane.apiGatewayNginx.type=LoadBalancer
+--set=apiGatewayNginx.type=LoadBalancer \
+--set=continuousDelivery.enabled=true \
+--wait
 ```
 
 2) Install the execution plane components. These are additional microservices that will handle certain tasks:
@@ -78,14 +78,9 @@ Now try the [Multi-Stage Delivery](#try-multi-stage-delivery) example and then [
 
 ## Keptn CLI
 
-1) Download the Keptn Command Line Tool:
+1) Download the latest stable version of the Keptn Command Line Tool:
 ```
 curl -sL https://get.keptn.sh | bash
-```
-
-2) Install Keptn core control plane and execution plane services for continuous delivery using the CLI:
-```
-keptn install -n keptn --use-case=continuous-delivery --endpoint-service-type=LoadBalancer
 ```
 
 ## k3d Keptn
