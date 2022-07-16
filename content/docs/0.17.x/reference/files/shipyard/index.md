@@ -118,6 +118,13 @@ and are part of a `stage`.
 By default, a sequence is a standalone section that runs and finishes,
 unless you specify the `triggeredOn` property to form a chain of sequences.
 
+Sequences that use the same service cannot be run in parallel.
+If you simultaneously trigger multiple sequences for the same service,
+they are queued to run sequentially.
+Sequences for different services can be run in parallel.
+This is possible when you have different automation projects
+or if you have multiple services within a project.
+
 A sequence has the properties:
 
 * `name`: A unique name for the sequence
