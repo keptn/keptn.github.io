@@ -19,6 +19,8 @@ IgnoreURLs:
 - "github.com/keptn/keptn/commit"
 # GitHub Help does not like GitHub Action access
 - "help.github.com"
+# Xrefs to Keptn slack are not resolving
+- "https://slack.keptn.sh" 
 # Old Announcements
 - "keptn.sh/docs/0.7"
 # Twitter seems to be not reachable via GitHub Action
