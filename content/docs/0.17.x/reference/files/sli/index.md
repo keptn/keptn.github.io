@@ -21,10 +21,15 @@ each of which always consists of a name and the provider-specific query.
 ## Provider-specific SLIs
 
 Please follow the links to the provider-specific SLIs: 
+Provider-specific SLIs are discussed in the documentation
+for the [integrations](../../../../integrations)
+for each monitoring platform:
 
-* [Dynatrace](../../../../install/monitoring/dynatrace/configure_slis/) 
+* [Dynatrace](https://artifacthub.io/packages/keptn/keptn-integrations/dynatrace-service)
 
-* [Prometheus](../../../../install/monitoring/prometheus/install/#configure-custom-prometheus-slis) 
+* [Prometheus](https://artifacthub.io/packages/keptn/keptn-integrations/prometheus-service)
+
+* [Datadog](https://artifacthub.io/packages/keptn/keptn-integrations/datadog-service)
 
 ## Add SLI configuration to a Service, Stage, or Project
 
@@ -107,9 +112,11 @@ use the [keptn add-resource](../../cli/commands/keptn_add-resource) command:
 
 * [slo](../slo)
 
-* [Dynatrace](../../../../install/monitoring/dynatrace/configure_slis/) 
+* [Dynatrace](https://artifacthub.io/packages/keptn/keptn-integrations/dynatrace-service)
 
-* [Prometheus](../../../../install/monitoring/prometheus/install/#configure-custom-prometheus-slis) 
+* [Prometheus](https://artifacthub.io/packages/keptn/keptn-integrations/prometheus-service)
+
+* [Datadog](https://artifacthub.io/packages/keptn/keptn-integrations/datadog-service)
 
 * [Quality Gates](../../../quality_gates)
 
