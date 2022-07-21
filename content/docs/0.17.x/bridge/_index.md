@@ -172,13 +172,6 @@ name.
 link="./assets/secrets-view-create-secret.png"
 caption="Create Secret View">}}
 
-### Integrations
-You can find links for different integration possibilities here. This makes it easier to start using Keptn. Integrate either with Keptn CLI / API or use our custom
-integrations for different CI providers.
-
-Please note that the page contains dynamic content that is loaded from https://get.keptn.sh/integrations.html. By clicking the button the data is requested,
-and additional data is gathered from the client. For more information about this see [Load Information](./load_information/).
-
 ### Settings
 
 #### Project settings
