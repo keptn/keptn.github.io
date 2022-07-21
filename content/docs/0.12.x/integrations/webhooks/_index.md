@@ -97,7 +97,7 @@ Based on the Go templating capabilities, you can:
 
 * Define conditions: `"{{if .fieldName}}{{.fieldName}}{{ else }}No field name set{{ end }}"` 
 * Access an array element: `"{{ index .articles.Content 0 }}"`
-* Refer to attributes with non-string characters `"(index .data "incident-management-tool").url"`
+* Refer to attributes with non-alphanumeric characters `"{{ index .data "incident-management-tool".url }}"`
 
 *An example of a customized request payload using a condition on an array element:*
 
