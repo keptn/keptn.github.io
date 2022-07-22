@@ -215,9 +215,11 @@ The pass and warning criteria for the `total_score` use the logical operator ">=
 
 * [sli](../sli)
 
-* [Dynatrace](../../../../install/monitoring/dynatrace/configure_slis/)
+* [Dynatrace](https://artifacthub.io/packages/keptn/keptn-integrations/dynatrace-service)
 
-* [Prometheus](../../../../install/monitoring/prometheus/install/#configure-custom-prometheus-slis)
+* [Prometheus](https://artifacthub.io/packages/keptn/keptn-integrations/prometheus-service)
+
+* [Datadog](https://artifacthub.io/packages/keptn/keptn-integrations/datadog-service)
 
 * [Quality Gates](../../../quality_gates)
 
