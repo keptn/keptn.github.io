@@ -221,4 +221,3 @@ The pass and warning criteria for the `total_score` use the logical operator ">=
 
 * [Quality Gates](../../../quality_gates)
 
-
