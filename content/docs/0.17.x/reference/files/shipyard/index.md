@@ -113,8 +113,7 @@ about the ongoing initiative to overcome this limitation.
 
 **Sequence**
 
-A sequence is an ordered list of `task`s that are triggered sequentially
-and are part of a `stage`.
+A sequence is an ordered list of `task`s that are triggered sequentially and are part of a `stage`.
 By default, a sequence is a standalone section that runs and finishes,
 unless you specify the `triggeredOn` property to form a chain of sequences.
 
@@ -345,5 +344,6 @@ to allow `stage`s to be added to and removed from a *shipyard* in an existing pr
 
 * [Working with shipyard files](../../../manage/shipyard)
 * [Multi-stage delivery](../../../continuous_delivery/multi_stage)
+* [Quality gates](../../../quality_gates)
 * [Triggers](../../../manage/triggers)
 * [Remediation Config](../remediation)
