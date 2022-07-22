@@ -47,7 +47,7 @@ Run your Keptn installation for free on GKE! If you [sign up for a Google Cloud 
 
 - Create GKE cluster by following the guide [here](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-a-regional-cluster)
 - Recommended node size: One node with 8 vCPUs and 32 GB memory (e.g., one **n1-standard-8** node)
-  - Image type `Ubuntu` or `COS` (**Note:** If you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../monitoring/dynatrace/).)
+  - Image type `Ubuntu` or `COS` (**Note:** If you plan to use Dynatrace monitoring, select `ubuntu` for a more convenient setup.
   
  </p>
 </details>
