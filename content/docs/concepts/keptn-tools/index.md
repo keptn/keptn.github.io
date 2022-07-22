@@ -44,7 +44,7 @@ In this *shipyard* file, we can guess that, when we trigger the `delivery` seque
 the `deployment` task will be executed.
 But nowhere does the *shipyard* define what tool performs this task.
 This is the flexibility of Keptn!
-Keptn will distribute an `sh.keptn.event.deployment.triggered` event
+Keptn distributes an `sh.keptn.event.deployment.triggered` event
 and your chosen tool simply listens for and reacts to that event.
 
 Want to swap deployment tool? Easy - just remove the subscription for the original tool,
@@ -57,7 +57,7 @@ So... out-of-the-box, which tools listen for the tasks above?
 * The Lighthouse service listens for `evaluation.triggered` events
 * The Helm service also listens for `release.triggered` events
 
-You are not restricted these task names.
+You are not restricted to these task names.
 Define whatever task names you need to implement your custom sequences.
 
 Let's have a look at some comparisons between popular tooling.
@@ -68,8 +68,8 @@ At first glance, a Keptn sequence as expressed in the *shipyard* file
 looks a lot like a pipeline.
 But you are in full control of which tools execute for each task.
 
-* For example, if one team wants CircleCI to action the deployment task?
-Fine - have CircleCI listen for the `deployment.triggered` task and run an entire pipeline in response.
+* For example, if one team wants CircleCI to action the deployment task.
+you can have CircleCI listen for the `deployment.triggered` task and run an entire pipeline in response.
 * If a different team uses Jenkins instead,
 their project can have Jenkins listen for the `deployment.triggered` event.
 The sequence is identical but the two teams are empowered to use different tooling.
@@ -79,23 +79,23 @@ The sequence is identical but the two teams are empowered to use different tooli
 Out-of-the box, Keptn includes the JMeter service that listens for the `test.triggered` event.
 
 Prefer a different load testing tool?
-Uninstall the Jmeter Service and install a service that listens for the `test.triggered` event and you're done.
+Uninstall the Jmeter Service and install a service that listens for the `test.triggered` event and you are done.
 
 ## Keptn and Observability Tools (Prometheus, Dynatrace, Splunk etc.)
 
 Keptn uses observability tools (more generally, tools that provide metrics)
-as the data source during the evaluation task.
-The evaluation task is an out-of-the-box Keptn feature
+as the data source for monitoring during the `evaluation` task.
+The `evaluation` task is an out-of-the-box Keptn feature
 that provides a [quality gate](../quality_gates).
-This quality gate can comprise any metric from any tool.
+This quality gate can work with any metric from any tool.
 
 During creation of a Keptn project,
-Keptn is configured to know which backend metric provider it should use for thsis particular project.
+Keptn is configured to know which backend metric provider it should use for this particular project.
 For example, Prometheus may be chosen as the metric store.
 You will also be required to install the relevant service
 which listens for the `get-sli.triggered` cloudevent.
 
-During the evaluation task, Keptn automatically issues a `get-sli.triggered command.
+During the evaluation task, Keptn automatically issues a `get-sli.triggered` event.
 Your metric provider then reacts and retrieves metrics from the backend of your choice.
 After all, the Prometheus Service should know how to retrieve Prometheus metrics!
 
@@ -122,9 +122,13 @@ Don't see your tool listed? You have three options:
 to run your container or script
 * Develop a custom Keptn service:
 
-  * There's a Go template here and / or
+  * Use this [Go template](https://github.com/keptn-sandbox/keptn-service-template-go)
+    to begin development of your Keptn service.
+    Please follow the [contributions guide](https://github.com/keptn-sandbox/contributing)
+    for contributing it to Keptn Sandbox.
+
   * Raise a GitHub issue and / or
-  * Join #help-integrations on Slack for guidance and assistance
+  * Join the #help-integrations channel on Slack for guidance and assistance
 
 More details are provided at the bottom of the Integrations page.
 
