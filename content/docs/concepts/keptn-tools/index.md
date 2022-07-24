@@ -17,7 +17,9 @@ They can be easily swapped for tooling you prefer.
 
 Keptn is designed to be tool and vendor agnostic.
 Keptn orchestrates and executes any tooling that you choose.
-Tools, which Keptn calls "integrations", are triggered via CloudEvents.
+Tools, which Keptn calls "integrations", are triggered via [CloudEvents](https://cloudevents.io/).
+This is an open specification for describing event data, and Keptn provides its own [event specification](https://github.com/keptn/spec) based on it.
+It allows for interoperability and any kinds of integrations in the Keptn ecosystem.
 
 ## Start with the shipyard
 
