@@ -90,7 +90,7 @@ curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=v4.4
     curl -sL https://get.keptn.sh | bash
     ```
 
-3. Install core the control plane components and expose via a LoadBalancer:
+3. Install the core control plane components and expose via a LoadBalancer:
 ```
 helm install keptn keptn --repo=https://charts.keptn.sh \
 -n keptn --create-namespace \
