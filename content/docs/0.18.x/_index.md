@@ -1,7 +1,7 @@
 ---
 title: Release 0.18.x
 linktitle: Release 0.18.x
-weight: 979
+weight: 978
 sidebar_multicard: true
 icon: docs
 hide: true
