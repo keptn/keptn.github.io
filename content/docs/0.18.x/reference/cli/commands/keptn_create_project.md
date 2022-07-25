@@ -19,7 +19,7 @@ For using proxy please specify proxy IP address together with port (*--git-proxy
 used scheme (*--git-proxy-scheme=*) to connect to proxy. Please be aware that authentication with public/private key and via proxy is 
 supported only when using resource-service.
 
-For more information about Shipyard, creating projects, or upstream repositories, please go to [Manage Keptn](https://keptn.sh/docs/0.18.x/manage/)
+For more information about Shipyard, creating projects, or upstream repositories, please go to [Manage Keptn](../../../../manage/)
 
 
 ```
