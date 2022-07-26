@@ -4,6 +4,7 @@ title = "keptn | Cloud-native application life-cycle orchestration"
 theme = "hugo-serif-theme"
 relativeUrls = false
 enableEmoji = true
+baseUrl = "https://keptn.sh"
 
 ignoreFiles = [
 "^(.*/docs/0.7.x/*)$",
