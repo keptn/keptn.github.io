@@ -100,11 +100,21 @@ spec:
 
 ## Step 2: Configure Keptn to use your SLI-provider and add SLIs
 
-Depending on the monitoring solution you have in place, a corresponding SLI-provider is required by Keptn. This SLI-provider gets its queries for the individual metrics from the [Service-Level Indicator (SLI)](../../reference/files/sli/#service-level-indicator) config.
+Depending on the monitoring solution you have in place, a corresponding SLI-provider is required by Keptn.
+This SLI-provider gets its queries for the individual metrics as discussed in the
+[Service-Level Indicator (SLI)](../../reference/files/sli/) reference page.
 
-* Familiarize yourself with the concept of an [SLI](../../reference/files/sli/#service-level-indicator) and derive the set of indicators required for, e.g., the `booking` service.
+* Familiarize yourself with the concept of an [SLI](../../reference/files/sli/)
+and derive the set of indicators required for, e.g., the `booking` service.
 
-* Follow the steps of deploying an SLI-provider and uploading an SLI config as described [here](../sli-provider/).
+* Follow the steps of deploying an SLI-provider and uploading an SLI config as described
+on the reference page for the monitoring service you are using as a data source:
+
+* [Datadog](https://artifacthub.io/packages/keptn/keptn-integrations/datadog-service)
+
+* [Dynatrace](https://artifacthub.io/packages/keptn/keptn-integrations/dynatrace-service)
+
+* [Prometheus](https://artifacthub.io/packages/keptn/keptn-integrations/prometheus-service)
 
 ## Step 3: Add SLO configuration to a service
 
