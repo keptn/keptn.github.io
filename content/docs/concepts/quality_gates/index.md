@@ -43,7 +43,7 @@ An example of an SLO can define that a specific request must return results with
 :bulb: *A quality gate answers one question: Does my service meet all defined quality criteria?*
 
 Keptn quality gates help you answer this question by representing
-quality gate results on the [Keptn Bridge](../0.18.x/bridge) like this:
+quality gate results on the [Keptn Bridge](../../0.18.x/bridge) like this:
 
 <!--TODO: Change image and add annotations [1] ... [5] -->
 
