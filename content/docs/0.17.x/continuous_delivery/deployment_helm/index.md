@@ -161,3 +161,15 @@ where the content of `delivery.json` looks something like:
 normally do. Hence, you need to send an event using `keptn send event` as described above.
 * Modifications to the Helm Chart via keptn configuration changes are currently not possible.
 
+## Clean-up after deleting a project
+
+When executing [keptn delete project](../../reference/cli/commands/keptn_delete_project/), Keptn does **not** clean up existing deployments nor Helm releases. To do so, delete all relevant namespaces:
+
+* For each stage defined in the shipyard of the project, execute `kubectl delete namespace <PROJECTNAME>-<STAGENAME>`, e.g. for `sockshop` with stages `dev`, `staging` and `production`:
+
+  ```console
+  kubectl delete namespace sockshop-dev
+  kubectl delete namespace sockshop-staging
+  kubectl delete namespace sockshop-production
+  ```
+
