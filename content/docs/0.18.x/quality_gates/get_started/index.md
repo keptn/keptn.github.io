@@ -5,40 +5,9 @@ weight: 5
 keywords: [0.18.x-quality_gates]
 ---
 
-In this section, you will get an overview of the use-case and learn how to get started setting up a quality gate for your project.
+In this section, you will learn how to get started setting up a quality gate for your project.
 
 :information_source: If you are not familiar with the concept of a quality gate, learn more [here](../../../concepts/quality_gates). 
-
-**Quality gate result**
-
-:bulb: *A quality gate answers one question: Does my service meet all defined quality criteria?*
-
-Keptn quality gates help you answer this question by representing a quality gate results like this: 
-
-<!--TODO: Change image and add annotations [1] ... [5] -->
-
-{{< popup_image
-  link="./assets/quality_gate.png"
-  caption="Quality gate result"
-  width="50%">}}
-
-This visualization in the Keptn Bridge allows you to answer the following questions:
-
-* First and most important, *does the service meet all defined quality criteria*? 
-  * :one: Here, the overall result is a *warning* as shown by the orange bar and with the total score between 50 (fail) and 90 (pass) points.
-* Which criteria did not meet its objective?
-  * :two: The *response time P95* was measured with 1048 ms. This value is higher than the pass criteria set at 600 ms.
-* What does the <=10% mean? 
-  * :three: This is a relative comparison for which the quality gate result of a previous evaluation is taken into account. In fact, the last passed comparison is taken as a reference value.
-* How did this quality result perform compared to others? 
-  * :four: The answer to this question can be found in the Heatmap and Chart on the top.
-  * The Heatmap highlights the currently selected quality gate result with a gray and solid border. The quality gate result that is taken into comparison is highlighted by the dashed border. 
-  * :five: The total score of a quality gate result is depicted by the cell on the top.
-  * The individual criteria are represented by a separate cell in the column. 
-
-The rest of this section assumes you have Keptn [installed](../../../install/helm-install) on your cluster, your Keptn CLI is [authenticated](../../../install/authenticate-cli-bridge/#authenticate-keptn-cli), and you have a deployed application that is monitored by your favorite monitoring solution.
-
-Given these requirements, this section defines the entities of a Keptn project, stage, and services using an example. Afterwards, four steps explain how to set up the quality gate, trigger it, and finally see the quality gate evaluation result.
 
 ## Definition of project, stage, and service
 
@@ -50,7 +19,8 @@ For the `easyBooking` application, the Keptn entities of a project, stage, and s
 * `stage`: *quality_assurance*
 * `service`: *booking* & *payment* (For the sake of simplicity, a quality gate will be configured for `booking` only.)
 
-For defining the stage(s) a service has to go through, a [Shipyard](../../manage/shipyard) file is needed. Since a quality gate should be configured for the *quality_assurance* environment only, the corresponding Shipyard for the *easyBooking* project looks as follows:
+For defining the stage(s) a service has to go through, a [Shipyard](../../reference/files/shipyard) file is needed.
+Since a quality gate should be configured for the *quality_assurance* environment only, the corresponding Shipyard for the *easyBooking* project looks as follows:
 
 ```yaml
 apiVersion: "spec.keptn.sh/0.2.3"
