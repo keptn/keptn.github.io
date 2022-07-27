@@ -172,4 +172,3 @@ When executing [keptn delete project](../../reference/cli/commands/keptn_delete_
   kubectl delete namespace sockshop-staging
   kubectl delete namespace sockshop-production
   ```
-
