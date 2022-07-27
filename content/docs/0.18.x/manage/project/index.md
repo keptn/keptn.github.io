@@ -46,30 +46,3 @@ To delete a Keptn project, the [keptn delete project](../../reference/cli/comman
 
 **Note:** If a Git upstream is configured for this project, the referenced repository or project will not be deleted. Besides, deployed services are also not deleted by this command. To clean-up all resources created by Keptn, please go to [Clean-up after deleting a project](../../continuous_delivery/deployment_helm/#clean-up-after-deleting-a-project).
 
-## Update a project
-
-Updating a project can either be achieved by [deleting a project](#delete-a-project) and [creating the project](#create-a-project) with updated settings, or by adapting it directly in the Git *upstream* repository.
-
-* If you do not have a Git upstream set for your project, please set one since it is the recommended way of using Keptn: [configure Git upstream](../../manage/git_upstream/#create-keptn-project-or-set-git-upstream).
-
-* If you do not have a Git repository to set an *upstream*, you can update the shipyard using:
-
-  ```
-  keptn add-resource --project=PROJECT --resource=./shipyard.yaml --resourceUri=./shipyard.yaml
-  ```
-
-:warning: Only modify your shipyard in ways mentioned in this section.
-
-:warning: Make sure to have no running sequence while you are updating the shipyard. Otherwise, running sequences will be updated.
-
-The following updates of shipyard.yaml are currently supported by Keptn:
-
-* Add/Remove a task to/from a task sequence
-* Add/Remove a task sequence to/from a stage
-* Define a trigger for a sequence 
-
-In contrast, the following updates are not supported by Keptn:
-
-* Add/Remove a stage
-
-Please have a look at the [shipyard section](../shipyard/#updating-a-shipyard) for more information regarding updating a shiypard file.
