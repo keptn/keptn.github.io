@@ -8,7 +8,7 @@ aliases:
 
 A Keptn project's [shipyard](../../reference/files/shipyard) can be modified in two ways:
 
-* [Delete the project](../project/delete) then [create a new project](../project/#create-a-project)
+* [Delete the project](../delete) then [create a new project](../project/#create-a-project)
   that contains the updated settings.
 * Modify the project files that are stored in the [Git *upstream* repository](../git_upstream)
 
