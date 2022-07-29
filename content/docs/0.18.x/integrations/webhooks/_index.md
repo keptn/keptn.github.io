@@ -271,7 +271,7 @@ When integrating tools by calling their endpoints, many times authentication is 
 * When the webhook configuration is saved, the secret is parsed into a different format, which looks like this: `{{.env.secret_name_key}}`. This format represents a unique name that is a referrer to an entry in the `envFrom` property in the `webhook.yaml` file. This `envFrom` property contains added secrets with a referrer name, the given secret name, and secret key.
 
     ```
-    apiVersion: webhookconfig.keptn.sh/v1alpha1
+    apiVersion: webhookconfig.keptn.sh/v1beta1
     kind: WebhookConfig
     metadata:
       name: webhook-configuration
@@ -285,7 +285,10 @@ When integrating tools by calling their endpoints, many times authentication is 
                 key: api-token
             
           requests:
-            - "curl --request POST https://example.com?token={{.env.secret_api_token}}"
+            - url: https://example.com?token={{.env.secret_api_token}}
+              method: POST
+              headers: []
+              payload: ""
     ```
 
 ## Advanced Webhook configuration
@@ -297,16 +300,27 @@ For more advanced configuration options, you can modify the raw request declared
 Example of a `webhook.yaml` containing a webhook request declared as curl command: 
 
 ```
-apiVersion: webhookconfig.keptn.sh/v1alpha1
+apiVersion: webhookconfig.keptn.sh/v1beta1
 kind: WebhookConfig
 metadata:
   name: webhook-configuration
 spec:
   webhooks:
     - type: sh.keptn.event.evaluation.finished
+      subscriptionID: 0123456987
+      sendStarted: true
+      sendFinished: true
+      envFrom: 
+        - name: "secretKey"
+          secretRef:
+            name: "my-webhook-secret"
+            key: "my-key"
       requests:
-        - "curl --request POST --data '{\"text\":\"Evaluation {{.data.evaluation.result}} with a score of {{.data.evaluation.score}} \"}'
-          https://hooks.slack.com/services/{{.env.secretKey}}"
+        - url: https://hooks.slack.com/services/{{.env.secretKey}}
+          method: POST
+          headers: []
+          payload: >-
+            {"text": "Evaluation {{.data.evaluation.result}} with a score of {{.data.evaluation.score}} "}
 ```
 
 * You can customize the curl depending on your needs. 
