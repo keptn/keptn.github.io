@@ -15,7 +15,7 @@ weight: 69
 
 :star: *Bridge* support lazy loading to provide a faster response time.
 
-:sparkles: *(experimental) New Import API*: Keptn provides a new _alpha_ version of an import API. This API can be used to completely setup your Keptn project.
+:sparkles: *(experimental) New Import API*: Keptn provides a new _alpha_ version of an import API. This API can be used to setup a Keptn project by importing a template as zip archive.
 
 :hammer: Keptn provides the ability to enable / disable "use-case" services in the control plane chart.
 
@@ -26,7 +26,7 @@ weight: 69
 
 * **cli:** The install/uninstall/upgrade commands are not available anymore. Please use Helm to [operate Keptn](https://keptn.sh/docs/install/helm-install/).
 * **resource-service:** Trailing `/` chars in the resource APIs will return a 404. This way, the difference between an empty URI and getting all the resources is explicit.
-* All Keptn core services depends on resource-service. From this moment on, the configuration-service is deprecated.
+* All Keptn core services depend on resource-service. From this moment on, the configuration-service is deprecated.
 
 ### Features
 
