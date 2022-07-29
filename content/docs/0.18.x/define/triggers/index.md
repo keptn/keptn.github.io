@@ -1,7 +1,7 @@
 ---
 title: Triggers
 description: Using triggers to kick off a sequence
-weight: 50
+weight: 160
 keywords: [0.18.x-manage]
 aliases:
 ---

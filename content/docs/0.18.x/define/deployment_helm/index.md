@@ -1,7 +1,7 @@
 ---
 title: Deployment with Helm
 description: Details about Keptn using Helm for deployment.
-weight: 10
+weight: 140
 keywords: [0.18.x-cd]
 ---
 

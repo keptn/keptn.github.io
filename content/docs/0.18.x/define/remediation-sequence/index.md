@@ -1,7 +1,7 @@
 ---
 title: Remediation Sequence
 description: Implement a remediation sequence
-weight: 1
+weight: 80
 icon: setup
 ---
 

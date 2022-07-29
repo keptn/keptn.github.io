@@ -1,7 +1,7 @@
 ---
-title: Multi-stage delivery
+title: Delivery sequence
 description: Customize your delivery and staging process.
-weight: 1
+weight: 50
 keywords: [0.18.x-cd]
 ---
 
