@@ -6,8 +6,7 @@ keywords: [0.18.x-quality_gates]
 ---
 
 The *sli.yaml* file contains definitions of the Service-Level Indicators (SLIs)
-that are used to implement [quality gates](../../../../concepts/quality_gates) evaluations
-in your project.
+defined for your Keptn installation.
 The SLI definition maps a query provided for the observability platform
 you are using as a data source to a metric value that Keptn uses.
 
