@@ -316,7 +316,7 @@ although you can make other modifications.
 
 * See [KEP-70](https://github.com/keptn/enhancement-proposals/pull/70) for details
 about the initiative to allow adding/removing stages to/from a *shipyard* file.
-* See [Updating a shipyard](../../../manage/shipyard/#updating-a-shipyard)
+* See [Updating project's shipyard](../../../manage/update)
 for information about modifications that can be made to a *shipyard* file.
 
 As a workaround, you can temporarily skip the execution of a particular stage by doing either of the following:
