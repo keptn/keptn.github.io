@@ -21,7 +21,7 @@ To implement a remediation sequence, you must:
 
 ## Example remediation sequence in shipyard
 
-The definition of a remediation sequence is done in the project's [Shipyard](../../manage/shipyard) file.
+The definition of a remediation sequence is done in the project's [Shipyard](../../reference/files/shipyard).
 
 **Example**: Simple shipyard file with a remediation sequence in a single stage
 

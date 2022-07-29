@@ -14,7 +14,7 @@ and using quality criteria that you define as Service Level Objectives (SLOs).
 ## Definition of project, stage, and service
 
 Let's assume you have an application that is running in an environment and composed of one or multiple services (aka. microservices). For example, you have an application called `easyBooking`, which can be broken down into the `booking` and `payment` service. Besides, the application is running in a `quality_assurance` environment (aka. stage).
-In order to manage your application and services in Keptn, you need a Keptn [project, stage](../../manage/project/) and [services](../../manage/service).
+In order to manage your application and services in Keptn, you need a Keptn [project, stage](../../manage/project/) and [services](../service).
 For the `easyBooking` application, the Keptn entities of a project, stage, and service map to the example as follows:
 
 * `project`: *easyBooking*
@@ -100,8 +100,7 @@ At this point, you have:
 :heavy_check_mark: activated the quality gate for e.g. `booking` by providing an SLO
 
 To trigger a quality gate evaluation, execute the [keptn trigger evaluation](../../reference/cli/commands/keptn_trigger_evaluation/) CLI command. This CLI command sends an event to Keptn, which acknowledges receipt of the event by returning a unique ID (`keptn-context`). This unique ID is required to fetch the result of the quality gate evaluation.
-
-:information_source: Learn [here](../integration/) more about working with a quality gate and integrating it into an existing pipeline.
+This is discussed more below.
 
 ## Working with quality gates
 
@@ -387,5 +386,6 @@ curl -X GET "${KEPTN_ENDPOINT}/api/mongodb-datastore/event?keptnContext={keptnCo
 
 ## Integrate into an existing pipeline
 
-To integrate quality gates into an existing pipeline, use the API-based approach outlined [above](./#using-the-keptn-api-to-work-with-quality-gates). As stated there, the evaluation result is not immediately available. Hence, build your integration using a polling mechanism that polls the evaluation result every 10 seconds and terminates after, e.g., 10 retries. 
+To integrate quality gates into an existing pipeline, use the API-based approach outlined above.
+As stated there, the evaluation result is not immediately available. Hence, build your integration using a polling mechanism that polls the evaluation result every 10 seconds and terminates after, e.g., 10 retries. 
 

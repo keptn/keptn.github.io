@@ -118,7 +118,7 @@ use the [keptn add-resource](../../cli/commands/keptn_add-resource) command:
 
 * [Datadog](https://artifacthub.io/packages/keptn/keptn-integrations/datadog-service)
 
-* [Quality Gates](../../../quality_gates)
+* [Quality Gates](../../../define/quality-gates)
 
 
 

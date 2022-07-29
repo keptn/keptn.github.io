@@ -221,5 +221,5 @@ The pass and warning criteria for the `total_score` use the logical operator ">=
 
 * [Datadog](https://artifacthub.io/packages/keptn/keptn-integrations/datadog-service)
 
-* [Quality Gates](../../../quality_gates)
+* [Quality Gates](../../../define/quality-gates)
 

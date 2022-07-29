@@ -41,7 +41,7 @@ More information about how you can set up your git provider can be found in the 
 
 #### Shipyard file
 Please provide the `shipyard.yaml` file here for your project. You can either drag it into the panel or select it manually from your file system with the "Select a file" button.<br/>
-You can find more information about the shipyard file on the [Shipyard documentation page](../../manage/shipyard/).
+You can find more information about the shipyard file on the [Shipyard reference page](../../reference/files/shipyard/).
 
 After the successful creation of the project, you are redirected directly to the new project's settings page.
 Your project should already be available in the project overview and in the navigation.

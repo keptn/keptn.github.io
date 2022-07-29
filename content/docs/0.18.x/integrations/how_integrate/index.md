@@ -24,7 +24,7 @@ width="700px">}}
 
 Integrating (load and performance) test tools such as [JMeter](https://github.com/keptn/keptn/tree/master/jmeter-service), [Neoload](https://github.com/keptn-contrib/neoload-service), [Artillery](https://github.com/keptn-sandbox/artillery-service), [Locust](https://github.com/keptn-sandbox/locust-service), etc. is a common use case in Keptn. In this section, we will learn what is needed to integrate such tools.
 
-Usually, a testing tool integration is getting triggered upon a `sh.keptn.event.test.triggered` event. This event is sent by the Keptn control-plane and the tool integration only has to listen for this type of event. In order to make sure that this event is sent by the Keptn control-plane, a `test` task needs to be present in the [shipyard](../../manage/shipyard/).
+Usually, a testing tool integration is getting triggered upon a `sh.keptn.event.test.triggered` event. This event is sent by the Keptn control-plane and the tool integration only has to listen for this type of event. In order to make sure that this event is sent by the Keptn control-plane, a `test` task needs to be present in the [shipyard](../../reference/files/shipyard/).
 
 **Example shipyard** with a test task in each sequence:
 ```

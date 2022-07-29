@@ -7,7 +7,7 @@ keywords: [0.18.x-cd]
 
 ## Declare a multi-stage delivery sequence in shipyard
 
-The definition of a multi-stage delivery manifests in a so-called [Shipyard](../../manage/shipyard) file. It can hold multiple stages with dedicated and opinionated delivery tasks to execute.
+The definition of a multi-stage delivery manifests in the [Shipyard](../../reference/files/shipyard) file. It can hold multiple stages with dedicated and opinionated delivery tasks to execute.
 
 **Example**: Simple shipyard file with a delivery sequence in the two stages `dev` and `production`, whereas `dev` uses a direct deployment and `prod` uses blue-green deployment:
 
@@ -121,7 +121,7 @@ After declaring the delivery for a project in a shipyard, you are ready to creat
 
 ## Trigger a multi-stage delivery
 
-After creating a project and [creating your service(s)](../../manage/service), you can trigger a delivery using the Keptn CLI or API.
+After creating a project and creating your [service(s)](../service), you can trigger a delivery using the Keptn CLI or API.
 
 <details><summary>**Trigger via Keptn CLI**</summary>
 <p>
