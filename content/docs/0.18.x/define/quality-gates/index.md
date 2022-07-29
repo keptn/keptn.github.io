@@ -77,7 +77,7 @@ as discussed in [Create a service](../service/#create-a-service).
 **Step 2: Configure Keptn to use your SLI-provider and add SLIs**
 
 Depending on the monitoring solution you have in place, a corresponding SLI-provider is required by Keptn.
-This SLI-provider gets its queries for the individual metrics from the [Service-Level Indicator (SLI)](../../reference/files/sli/#service-level-indicator) config.
+This SLI-provider gets its queries for the individual metrics from the [Service-Level Indicator (SLI)](../../reference/files/sli/) config.
 
 * Familiarize yourself with the concept of an [SLI](../../reference/files/sli/)
 and derive the set of indicators required for, e.g., the `booking` service.
