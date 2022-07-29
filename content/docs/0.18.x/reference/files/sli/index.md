@@ -7,31 +7,40 @@ keywords: [0.18.x-quality_gates]
 
 The *sli.yaml* file contains definitions of the Service-Level Indicators (SLIs)
 defined for your Keptn installation.
+The SLI definition maps a query provided for the observability platform
+you are using as a data source to a metric value that Keptn uses.
+
 Each SLI is a defined quantitative measure of some aspects of the service level.
 The query for an SLI is provider/tool-dependent;
 therefore, each SLI-provider relies on a specific SLI configuration.
-The SLI configuration contains a list of indicators,
-each of which always consists of a name and the provider-specific query.
 
-## Service-Level Indicator
-
-* Each SLI is a key-value pair with the SLI name as key and the provider-specific query as value.
-* The *sli.yaml* file can contain any number of SLIs.
-
-## Provider-specific SLIs
-
-Please follow the links to the provider-specific SLIs: 
 Provider-specific SLIs are discussed in the documentation
 for the [integrations](../../../../integrations)
-for each monitoring platform:
+of each monitoring platform:
+
+* [Datadog](https://artifacthub.io/packages/keptn/keptn-integrations/datadog-service)
 
 * [Dynatrace](https://artifacthub.io/packages/keptn/keptn-integrations/dynatrace-service)
 
 * [Prometheus](https://artifacthub.io/packages/keptn/keptn-integrations/prometheus-service)
 
-* [Datadog](https://artifacthub.io/packages/keptn/keptn-integrations/datadog-service)
+You can also create and add your custom SLI-provider to Keptn.
+Follow the instructions [Custom SLI-Provider](../../../integrations/sli_provider).
+
+## Service-Level Indicator format
+
+The SLI configuration contains a list of indicators,
+each of which always consists of a name and the provider-specific query.
+
+* Each SLI is a key-value pair
+  * The SLI name or metric is the `key`
+  * The provider-specific query is the `value`.
+* The *sli.yaml* file can contain any number of SLIs.
 
 ## Add SLI configuration to a Service, Stage, or Project
+
+You must add the SLI the Keptn service for your monitoring platform
+to your service, stage, or project.
 
 **Important:** In the following commands,
 the value of the `resourceUri` must specify the SLI-provider
