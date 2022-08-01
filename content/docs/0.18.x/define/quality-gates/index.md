@@ -1,13 +1,14 @@
 ---
 title: Quality Gates
-description: Implement Quality Gates evaluations in your project
+description: Implement Quality Gate evaluations in your project
 weight: 70
 keywords: [0.18.x-quality_gates]
 ---
 
 A quality gate allows you to validate a deployment or release
-using data delivered by your observability platform
-and using quality criteria that you define as Service Level Objectives (SLOs).
+using data provided by your observability platform
+and using quality criteria that you define as Service Level Objectives (SLOs);
+see the [SLO](../../reference/files/slo) reference page.
 
 :information_source: If you are not familiar with the concept of a quality gate, learn more [here](../../../concepts/quality_gates). 
 
@@ -97,7 +98,7 @@ By adding an [Service-Level Objective (SLO)](../../reference/files/slo/#service-
 
 * To add an SLO to the `booking` service, use the [keptn add-resource](../../reference/cli/commands/keptn_add-resource/) CLI command.
 
-**Step 4: Trigger the quality gate**
+**Step 4: Use the quality gate**
 
 At this point, you have:
 
