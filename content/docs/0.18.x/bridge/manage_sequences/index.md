@@ -19,7 +19,7 @@ caption="Sequences">}}
 
 For sequences you have the possibility to choose from three sequence types:
 
-* Delivery - This triggers the `delivery` sequence as defined in the [shipyard](../../manage/shipyard/).
+* Delivery - This triggers the `delivery` sequence as defined in the [shipyard](../../reference/files/shipyard/).
 * Evaluation - This triggers the Keptn default evaluation sequence.
 * Custom - Trigger any other sequence defined in the shipyard, except the delivery and evaluation sequences.
 
@@ -93,7 +93,7 @@ caption="Sequences">}}
 
 ### Trigger a custom sequence
 
-Custom sequences are automatically fetched from the [shipyard](../../manage/shipyard/). All sequences that are defined in this file, except delivery and evaluation, are then selectable as sequences in the sequence dropdown.
+Custom sequences are automatically fetched from the [shipyard](../../reference/files/shipyard/). All sequences that are defined in this file, except delivery and evaluation, are then selectable as sequences in the sequence dropdown.
 
 Mandatory fields:
 

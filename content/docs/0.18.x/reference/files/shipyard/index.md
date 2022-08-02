@@ -80,7 +80,7 @@ Each *shipyard* file must have at least one `stage`.
 The name of the stage becomes the name of the branch
 in the [upstream Git repository](../../../manage/git_upstream)
 and the Kubernetes namespace to which
-[services](../../../manage/service) are deployed.
+[services](../../../define/service) are deployed.
 
 A stage can be given any meaningful name that conforms to the
 [Kubernetes Object Names and IDs](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/)
@@ -280,13 +280,12 @@ rather than on the control plane.
     The deployment `strategy` is set to one of the following:
 
     * `direct`: Deploys a new version of a service by replacing the old version of the service.
-    See [Direct deployments](../../../continuous_delivery/deployment_helm/#direct-deployments)
     * `blue_green_service`: Deploys a new version of a service next to the old one.
     After a successful validation of this new version, it replaces the old one and is marked as stable.
-    See [Direct deployments](../../../continuous_delivery/deployment_helm/#blue-green-deployments)
     * `user_managed`: Deploys a new version of a service
     by fetching the current Helm chart from the Git repo and updating appropriate values.
-    See [Direct deployments](../../../continuous_delivery/deployment_helm/#user-managed-deployments)
+
+    This is discussed more in [Deployment with Helm](../../../define/deployment_helm/)
 
 * `test`
 
@@ -342,8 +341,8 @@ to allow `stage`s to be added to and removed from a *shipyard* in an existing pr
 
 ## See also
 
-* [Working with shipyard files](../../../manage/shipyard)
-* [Multi-stage delivery](../../../continuous_delivery/multi_stage)
-* [Quality gates](../../../quality_gates)
-* [Triggers](../../../manage/triggers)
-* [Remediation Config](../remediation)
+* [Define project in a shipyard](../../../define/shipyard)
+* [Delivery sequence](../../../define/delivery_sequence)
+* [Quality gates](../../../define/quality-gates)
+* [Triggers](../../../define/triggers)
+* [Remediation configuration](../remediation)

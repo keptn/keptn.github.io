@@ -1,7 +1,7 @@
 ---
-title: Working with shipyard files
-description: Information about shipyard, sequences and tasks to define processes and workflows.
-weight: 25
+title: Define project in a shipyard
+description: Overview of using a shipyard, sequences and tasks to define a project
+weight: 30
 keywords: [0.18.x-manage]
 aliases:
 ---
