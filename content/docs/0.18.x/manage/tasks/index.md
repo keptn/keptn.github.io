@@ -35,6 +35,7 @@ You can do this from the [Keptn Bridge](../../bridge):
   * Set (or add if missing) the value of `data.status` to `errored`
   and the value of `data.result` to `fail`.
   * Change the value of `type` to have the `finished` suffix instead of `started`.
-* Then authenticate the API via the API token
-as discussed in [Access the API](../../reference/eference/api/#access-the-keptn-api) and you can fire it.
-* This sends a `finished` event for your action, marking the task as failed.
+* Authenticate the API via the API token
+as discussed in [Access the API](../../reference/api/#access-the-keptn-api) and you can fire it.
+
+This sends a `finished` event for your action, marking the task as failed.
