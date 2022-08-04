@@ -23,7 +23,7 @@ of the CloudEvents standard.
 
 ## See also
 
-* [CloudEvents standard](https:/cloudevents.io),
+* [CloudEvents standard](https://cloudevents.io/),
 a vendor-neutral specification for defining the format of event data.
 * [Keptn CloudEvents specification](https://github.com/keptn/spec/blob/master/cloudevents.md)
 that defines the format of the event types recognized by Keptn core.
