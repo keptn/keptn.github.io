@@ -71,7 +71,7 @@ Hence, the service provides the REST endpoint `/events` to query events.
 The *configuration-service* is a Keptn core component
 that manages resources for Keptn project-related entities, i.e., project, stage, and service.
 To store the resources with version control,
-it uses the Git-based [upstream repository](../../manage/git_upstream)/ mounted as a persistent volume.
+it uses the Git-based [upstream repository](../../0.18.x/manage/git_upstream)/ mounted as a persistent volume.
 This service can upload the Git repository to any Git-based service
 such as GitLab, GitHub, and Bitbucket.
 
