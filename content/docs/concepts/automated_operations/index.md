@@ -13,7 +13,7 @@ Keptn addresses this challenge by introducing the concept of micro-operations th
 
 Keptn complies with a declarative approach for configuring remediation and operations workflows as code on the level of individual microservices (rather than on applications). Consequently, this declaration is versioned next to the operational config and deployed with each new version of the microservice.
 
-Below is an example of a declarative `remediation.yaml` file as used in Keptn. The file defines two problem types and the respective remediation actions. In case of a response time degradation, new instances are scaled up and in the case of a failure rate increase, a feature is disabled. To learn more about the remediation configuration, please continue [here](../../0.15.x/automated_operations/remediation). 
+Below is an example of a declarative `remediation.yaml` file as used in Keptn. The file defines two problem types and the respective remediation actions. In case of a response time degradation, new instances are scaled up and in the case of a failure rate increase, a feature is disabled. To learn more about the remediation configuration, please continue [here](../../0.18.x/automated_operations/remediation). 
 
 ```yaml
 version: 0.2.0
@@ -50,7 +50,7 @@ spec:
 
 In Keptn, a remediation action or operational task is implemented as micro-operation. Such a micro-operation is reduced to the max, meaning that it is designed to execute a single action. This action is implemented for a single microservice rather than an entire application. Consequently, declarative instructions procedures are written on a per-microservice basis, which you can select and combine as needed.
 
-A micro-operation is implemented by an [action-provider](../../0.15.x/integrations/custom_integration/), which is a Keptn-service with a dedicated purpose. This type of service is responsible for executing an action (aka. micro-operation) and therefore might even use another tool. An action-provider starts working, when receiving a Keptn CloudEvent of type: `sh.keptn.event.action.triggered`. To learn more about the implementation of a micro-operation by an action-provider, please continue [here](../../0.15.x/automated_operations/action-provider). 
+A micro-operation is implemented by an [action-provider](../../0.18.x/integrations/custom_integration/), which is a Keptn-service with a dedicated purpose. This type of service is responsible for executing an action (aka. micro-operation) and therefore might even use another tool. An action-provider starts working, when receiving a Keptn CloudEvent of type: `sh.keptn.event.action.triggered`. To learn more about the implementation of a micro-operation by an action-provider, please continue [here](../../0.15.x/automated_operations/action-provider). 
 
 ## Event-driven Choreography
 
