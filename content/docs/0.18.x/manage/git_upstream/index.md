@@ -51,7 +51,7 @@ Select one of the four options and make sure to have the Git **user**, **token**
 <details><summary>Create user, token, and project</summary>
 <p>
 
-1. If you do not have a GitLab user, create a user by [signing up for a free trial](https://customers.gitlab.com/trials/new?gl_com=true). 
+1. If you do not have a GitLab user, create a user by [signing up for a free trial](https://about.gitlab.com/free-trial/).
 
 1. Create a [personal access token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html) for your user with *write_repo* scope:
 
