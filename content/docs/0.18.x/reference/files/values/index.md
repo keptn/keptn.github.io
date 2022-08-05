@@ -504,7 +504,7 @@ that contain annotated examples for accomplishing various tasks.
 
 ## Differences between versions
 
-**Keptn 0.18.0 changes**
+**Keptn 0.17.0 changes**
 
 Keptn Helm chart was refactored heavily in Release 0.18.0
 to make it ready for future features and structural changes.
