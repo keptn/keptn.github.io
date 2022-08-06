@@ -19,8 +19,8 @@ in the Keptn GitHub repository for the default Keptn file.
 
 **continuousDelivery** section
 
-These settings are used to configure
-[Continuous Delivery](../../../continuous_delivery),
+These settings are used to configure the service mesh that implements continuous delivery
+in a [delivery_sequence](../../../../define/delivery_sequence),
 specifically the Blue-Green deployment option.
 
   * enabled: false
