@@ -84,7 +84,7 @@ curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=v4.4
     k3d cluster create mykeptn -p "8082:80@loadbalancer" --k3s-server-arg "--kube-proxy-arg=conntrack-max-per-core=0"  --k3s-agent-arg "--kube-proxy-arg=conntrack-max-per-core=0" --agents 1
     ```
 
-2. **Download and install the [Keptn CLI](../0.17.x/reference/cli)**
+2. **Download and install the [Keptn CLI](../0.18.x/reference/cli)**
 
     ```
     curl -sL https://get.keptn.sh | bash
@@ -117,7 +117,7 @@ helm install helm-service keptn/helm-service -n keptn
     <p>The installation logs will print the following output:
     <pre>
     Installing Keptn ...
-    Helm Chart used for Keptn installation: https://charts.keptn.sh/packages/keptn-0.14.1.tgz
+    Helm Chart used for Keptn installation: https://charts.keptn.sh/packages/keptn-0.18.0.tgz
     Start upgrading Helm Chart keptn in namespace keptn
     Finished upgrading Helm Chart keptn in namespace keptn
     Keptn control plane has been successfully set up on your cluster.
@@ -130,9 +130,9 @@ helm install helm-service keptn/helm-service -n keptn
     &nbsp;* To quickly access Keptn, you can use a port-forward and then authenticate your Keptn CLI:
     &nbsp;- kubectl -n keptn port-forward service/api-gateway-nginx 8080:80
     &nbsp;- keptn auth --endpoint=http://localhost:8080/api --api-token=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
-    &nbsp;* Alternatively, follow the instructions provided at: [Authenticate Keptn CLI](../0.14.x/operate/install/#authenticate-keptn-cli)
+    &nbsp;* Alternatively, follow the instructions provided at: [Authenticate Keptn CLI](../0.18.x/operate/install/#authenticate-keptn-cli)
     &nbsp;* To expose Keptn on a public endpoint, please continue with the installation guidelines provided at:
-    &nbsp;- [Install Keptn](../0.14.x/operate/install/#install-keptn)
+    &nbsp;- [Install Keptn](../0.18.x/operate/install/#install-keptn)
     </pre>
     **There is no need to follow the instructions from the installation log - the quickstart guide will cover this!**
     </p>
@@ -146,7 +146,7 @@ helm install helm-service keptn/helm-service -n keptn
 
 5. **Access Bridge**: you can now access the Keptn Web UI at `http://127.0.0.1.nip.io:8082/bridge`.
 
-    For different way on how to expose your Keptn installation, please refer to [Install Keptn](../0.14.x/operate/install/#install-keptn).
+    For different way on how to expose your Keptn installation, please refer to [Install Keptn](../0.18.x/operate/install/#install-keptn).
 
 
 ### Try Multi-Stage Delivery
