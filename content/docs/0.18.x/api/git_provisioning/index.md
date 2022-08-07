@@ -20,6 +20,13 @@ This feature is enabled via the Helm value [`control-plane.features.automaticPro
 
 ---
 
+### Available Provisioners
+
+- [Gitea](https://github.com/keptn-sandbox/keptn-gitea-provisioner-service)
+- Help us add more by [creating an issue](https://github.com/keptn/integrations/issues/new?assignees=&labels=integrations&template=integration_template.yaml&title=%5Bintegration%5D+) and / or filing a Pull Request.
+
+]---
+
 ### Resources
 
 [Swagger Documentation](../../../../api/)
