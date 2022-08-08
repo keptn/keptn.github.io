@@ -67,9 +67,9 @@ This visualization in the Keptn Bridge allows you to answer the following questi
   * The individual criteria are represented by a separate cell in the column.
 * How is the score calculated?
   * The score is a number between 0 and 100 (percentage). The sum of the weights of all indicator results is seen as 100%.
-  * The maximum reachable score of an indicator result depends on its contribution to the total weight. If the sum of all weights is 5 and the indicator result has a weight of 2, the maximum reachable score would be 40.
-  * If an indicator result is *failed*, the score is set to 0.
-  * :seven: If an indicator result is *warning*, the score is halved.
+  * The maximum reachable score of an indicator result depends on its contribution to the total weight. If the sum of all weights is 5 and the indicator result has a weight of 2, the maximum reachable score would be 40 (=2/5*100).
+  * If an indicator result is *failed*, its score is set to 0.
+  * :seven: If an indicator result is *warning*, its score is halved.
 
 ## References
 
