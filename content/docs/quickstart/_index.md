@@ -132,7 +132,7 @@ helm install helm-service keptn/helm-service -n keptn
     &nbsp;- keptn auth --endpoint=http://localhost:8080/api --api-token=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
     &nbsp;* Alternatively, follow the instructions provided at: [Authenticate Keptn CLI](../a)
     &nbsp;* To expose Keptn on a public endpoint, please continue with the installation guidelines provided at:
-    &nbsp;- [Install Keptn](../0.18.x/operate/install/#install-keptn)
+    &nbsp;- [Install Keptn](../0.18.x/docs/../../install/helm-install)
     </pre>
     **There is no need to follow the instructions from the installation log - the quickstart guide will cover this!**
     </p>
@@ -146,7 +146,7 @@ helm install helm-service keptn/helm-service -n keptn
 
 2. **Access Bridge**: you can now access the Keptn Web UI at `http://127.0.0.1.nip.io:8082/bridge`.
 
-    For different way on how to expose your Keptn installation, please refer to [Install Keptn](../0.18.x/operate/install/#install-keptn).
+    For different ways on how to expose your Keptn installation, please refer to [Install Keptn](../docs/install/../../install/helm-install).
 
 
 ### Try Multi-Stage Delivery
@@ -234,7 +234,7 @@ Review the documentation for a full reference on all Keptn capabilities and comp
 - [Operate Keptn](../0.18.x/operate)
 - [Manage Keptn](../0.18.x/manage)
 - [Continuous Delivery](../concepts/delivery)
-- [Quality Gates](../concepts/performance_validation)
+- [Continuous Performance Verification](../concepts/performance_validation)
 - [Automated Operations](../concepts/automated_operations)
 - [Custom Integrations](../docs/../integrations)
 
