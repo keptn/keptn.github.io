@@ -51,15 +51,15 @@ helm install helm-service keptn/helm-service -n keptn
 ```
 
   Note that you do not have to use these particular microservices.
-  See [Deploying Services](../0.18.x/manage/service) for more information.
+  See [Deploying Services](../0.18.x/define/service) for more information.
 
-See [Install Keptn using the Helm chart](../0.18.x/operate/advanced_install_options)
+See [Install Keptn using the Helm chart](../0.18.x/install/../../install/helm-install)
 for more details.
 
 Kubernetes provides methods other than LoadBalancer for exposing Keptn.
-See [Access options](../0.18.x/operate/install/#access-options) for more information.
+See [Access options](../0.18.x/install/access) for more information.
 
-See [Kubernetes support & Cluster size](../0.18.x/operate/k8s_support)
+See [Kubernetes support & Cluster size](../0.18.x/install/../../install/k8s-support)
 for information about supported versions of Kubernetes and sizing information.
 
 ### Create your first Keptn project
