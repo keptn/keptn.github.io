@@ -89,16 +89,9 @@ The Keptn community currently provides two [Keptn service templates](https://git
 The service templates provide the best starting point for integrations that need to stay in full control of how they integrate with the Keptn control-plane while still making use of some utility functions.
 It is also best for integrations where business logic goes beyond a single execution of an action. For example, the Keptn service templates can handle a check  that combines authentication, execution, status check, error handling, etc.
 
-
 ### Job Executor
 
-The [Keptn job executor](https://github.com/keptn-sandbox/job-executor-service) is appropriate for integrations that can be executed via the command-line interface. The job executor handles the interaction with the Keptn control-plane for sending `*.started` and `*.finished` events and can provide a list of files (e.g., test instructions) that are needed for integrations. Find all information regarding the capabilities and usage of the [job executor in its Github repository](https://github.com/keptn-sandbox/job-executor-service).
-
-
-### Generic Executor
-
-The [generic-executor-service](https://github.com/keptn-sandbox/generic-executor-service) allows users to provide `.sh` (shell scripts), `.py` (Python3) or `.http` (HTTP Request) files that are executed when Keptn sends different events, such as executing a specific script when a deployment-finished event is sent.
-
+The [Keptn job executor](https://github.com/keptn-sandbox/job-executor-service) can run any container image. This can also be used to run scripts such as Shell, Powershell or Python scripts. The job executor handles the interaction with the Keptn control-plane for sending `*.started` and `*.finished` events and can provide a list of files (e.g., test instructions) that are needed for integrations. Find all information regarding the capabilities and usage of the [job executor in its Github repository](https://github.com/keptn-sandbox/job-executor-service).
 
 ### Webhook Integration
 
