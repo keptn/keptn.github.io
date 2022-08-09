@@ -50,12 +50,12 @@ In the following you'll find integrations that are already provided by the Keptn
 
 ### Contributing
 
-- If you identify a bug you would like to report, please create an issue in the repository of the Keptn-service.
+- If you identify a bug you would like to report, please create an issue in the repository of the Keptn-service or speak to us on [Keptn Slack](https://slack.keptn.sh).
 
-- If you need more information on version compatibility, please go to the repository where a compatibility-matrix should be provided.
+- As long as your tool can either except a webhook trigger OR be containerised, Keptn will be able to orchestrate your tool.
 
-- A template for getting started with writing your Keptn service is provided here: https://github.com/keptn-sandbox/keptn-service-template-go
+- If your tool is deployed in a non-container way, there are options for integration. Please reach out to discuss on [Slack](https://slack.keptn.sh).
 
-- Please follow the [contributions guide](https://github.com/keptn-sandbox/contributing) for contributing it to Keptn Sandbox.
+- Want to submit or request a new integration? Start by [creating an issue here](https://github.com/keptn/integrations/issues/new?assignees=&labels=integrations&template=integration_template.yaml&title=%5Bintegration%5D+).
 
-- The integration overview is managed from the [keptn-sandbox/artifacthub repository](https://github.com/keptn-sandbox/artifacthub). If you have any new integration feel free to add an entry there.
+- Developing an integration and need help? Join `#help-integrations` on [Keptn Slack](https://slack.keptn.sh).
