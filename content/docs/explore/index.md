@@ -57,7 +57,7 @@ See [Install Keptn using the Helm chart](../0.18.x/install/../../install/helm-in
 for more details.
 
 Kubernetes provides methods other than LoadBalancer for exposing Keptn.
-See [Access options](../0.18.x/install/access) for more information.
+See [Access options](../0.18.x/../install/access/) for more information.
 
 See [Kubernetes support & Cluster size](../0.18.x/install/../../install/k8s-support)
 for information about supported versions of Kubernetes and sizing information.
