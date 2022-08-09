@@ -130,7 +130,7 @@ helm install helm-service keptn/helm-service -n keptn
     &nbsp;* To quickly access Keptn, you can use a port-forward and then authenticate your Keptn CLI:
     &nbsp;- kubectl -n keptn port-forward service/api-gateway-nginx 8080:80
     &nbsp;- keptn auth --endpoint=http://localhost:8080/api --api-token=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
-    &nbsp;* Alternatively, follow the instructions provided at: [Authenticate Keptn CLI](../0.18.x/operate/install/#authenticate-keptn-cli)
+    &nbsp;* Alternatively, follow the instructions provided at: [Authenticate Keptn CLI](../a)
     &nbsp;* To expose Keptn on a public endpoint, please continue with the installation guidelines provided at:
     &nbsp;- [Install Keptn](../0.18.x/operate/install/#install-keptn)
     </pre>
@@ -138,13 +138,13 @@ helm install helm-service keptn/helm-service -n keptn
     </p>
     </details>
 
-4. **Configure Ingress** and authenticate Keptn CLI
+1. **Configure Ingress** and authenticate Keptn CLI
 
     ```bash
     curl -SL https://raw.githubusercontent.com/keptn/examples/master/quickstart/expose-keptn.sh | bash
     ```
 
-5. **Access Bridge**: you can now access the Keptn Web UI at `http://127.0.0.1.nip.io:8082/bridge`.
+2. **Access Bridge**: you can now access the Keptn Web UI at `http://127.0.0.1.nip.io:8082/bridge`.
 
     For different way on how to expose your Keptn installation, please refer to [Install Keptn](../0.18.x/operate/install/#install-keptn).
 
@@ -231,12 +231,12 @@ With Keptn installed, have a look at the different [tutorials](https://tutorials
 
 Review the documentation for a full reference on all Keptn capabilities and components and how they can be combined/extended to your needs:
 
-- [Operate Keptn](../0.17.x/operate)
-- [Manage Keptn](../0.17.x/manage)
-- [Continuous Delivery](../0.17.x/continuous_delivery)
-- [Quality Gates](../0.17.x/quality_gates)
-- [Automated Operations](../0.17.x/automated_operations)
-- [Custom Integrations](../0.17.x/integrations)
+- [Operate Keptn](../0.18.x/operate)
+- [Manage Keptn](../0.18.x/manage)
+- [Continuous Delivery](../concepts/delivery)
+- [Quality Gates](../concepts/performance_validation)
+- [Automated Operations](../concepts/automated_operations)
+- [Custom Integrations](../docs/../integrations)
 
 ## Wrapping up
 
