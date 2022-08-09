@@ -21,6 +21,7 @@ width="600px">}}
   * The execution plane consists of all Keptn-services that are required to process all tasks (like deployment, test, etc.).
   * The execution plane is the cluster where you deploy your application too and execute certain tasks of a task sequence. 
   * Minimum [Cluster size](../k8s-support/#cluster-size)
+  * Execution plane services are normally Kubernetes based containers but you could regularly poll the Keptn API and therefore run a non-containerised process as a Keptn execution integration.
 
 ## Create or bring two (or more) Kubernetes clusters
 
@@ -63,16 +64,16 @@ In this release of Keptn, the execution plane services for deployment (`helm-ser
 
 Please find the Helm Charts here:
 
-  - `helm-service`: GitHub Release for [0.17.0](https://github.com/keptn/keptn/releases/tag/0.17.0) at **Assets** > `helm-service-0.17.0.tgz`
+  - `helm-service`: GitHub Release for [0.18.1](https://github.com/keptn/keptn/releases/tag/0.18.1) at **Assets** > `helm-service-0.18.1.tgz`
 
-  - `jmeter-service`: GitHub Release for [0.17.0](https://github.com/keptn/keptn/releases/tag/0.17.0) at **Assets** > `jmeter-service-0.17.0.tgz`
+  - `jmeter-service`: GitHub Release for [0.18.1](https://github.com/keptn/keptn/releases/tag/0.18.1) at **Assets** > `jmeter-service-0.18.1.tgz`
 
-### How to deploy an execution plane services?
+### How to deploy an execution plane service?
 
 * Download the `values.yaml` from the release branch, e.g., for the jmeter-service:
 
     ```
-    wget https://raw.githubusercontent.com/keptn/keptn/0.17.0/jmeter-service/chart/values.yaml
+    wget https://raw.githubusercontent.com/keptn/keptn/0.18.1/jmeter-service/chart/values.yaml
     ```
 
 * Edit the `values.yaml` to connect the services to the Keptn control plane, identified by its endpoint and API token. Therefore, set the values (1) - (5):
@@ -109,7 +110,7 @@ Please find the Helm Charts here:
 * Deploy the execution plane service (e.g., jmeter-service) from release assets with your `values.yaml` and by using `helm`:
 
     ```console
-    helm install jmeter-service https://github.com/keptn/keptn/releases/download/0.17.0/jmeter-service-0.17.0.tgz -n keptn-exec --create-namespace --values=values.yaml
+    helm install jmeter-service https://github.com/keptn/keptn/releases/download/0.18.1/jmeter-service-0.18.1.tgz -n keptn-exec --create-namespace --values=values.yaml
     ```
 
 * Test connection to Keptn control plane using:
@@ -144,9 +145,9 @@ Please find the Helm Charts here:
 
 See the configuration parameters of the supported execution plane services:
 
-  - `helm-service`: [Helm Chart values](https://github.com/keptn/keptn/blob/0.17.0/helm-service/chart/README.md#configuration)
+  - `helm-service`: [Helm Chart values](https://github.com/keptn/keptn/blob/0.18.1/helm-service/chart/README.md#configuration)
 
-  - `jmeter-service`: [Helm Chart values](https://github.com/keptn/keptn/blob/0.17.0/jmeter-service/chart/README.md#configuration)
+  - `jmeter-service`: [Helm Chart values](https://github.com/keptn/keptn/blob/0.18.1/jmeter-service/chart/README.md#configuration)
 
 The important once that are used in the above example are:
 
