@@ -22,7 +22,7 @@ We have a dedicated [Keptn slack workspace](https://slack.keptn.sh) (for in-dept
 
 ## Meetings
 
-We are hosting monthly [Keptn user groups](./meetings/) and regular  community amd developer [meetings](./meetings/) every two weeks.
+We are hosting monthly [Keptn user groups](./meetings/) and regular community and developer [meetings](./meetings/) every two weeks.
 All these meetings happen in the APAC/EMEA and Americas/EMEA timezones,
 approximately at 8..10AM and 3..5PM UTC.
 
