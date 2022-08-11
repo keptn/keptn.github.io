@@ -15,7 +15,7 @@ The [API Token](../../0.18.x/operate/api_token)
 that is used to communicate with Keptn is generated during the installation.
 
 It is not absolutely necessary to install the Keptn CLI for current Keptn releases,
-which allow you to create a project or run a sequence using the [Keptn Bridge](../0.18.x/bridge),
+which allow you to create a project or run a sequence using the [Keptn Bridge](../../0.18.x/bridge),
 but it is recommended for production systems.
 
 You can install the Keptn CLI using:
