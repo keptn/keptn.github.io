@@ -29,8 +29,7 @@ The shared secret is generated during the installation and verified by the *api*
 
 ## Keptn Bridge
 
-The *Keptn Bridge* provides a user interface that shows all projects and services that Keptn manages
-and gives an overview of the staging environment. 
+The *Keptn Bridge* is a user interface that can be used to manage Keptn projects and services.
 
 See [Keptn Bridge](../../0.18.x/bridge/),
 for information about how to access and use the Keptn Bridge.
@@ -50,7 +49,7 @@ It supports the four [access options](../../install/access) that Kubernetes supp
 LoadBalancer, NodePort, Ingress, and Port-Forward.
 
 It also redirects incoming requests to the appropriate internal Keptn endpoints --
-api, bridge, or configuration-service.
+api, bridge, or resource-service.
 
 ### api-service
 
@@ -66,12 +65,13 @@ The documentation shows you how to access the API and to explore the available e
 The *mongodb-datastore* stores event data in a MongoDB deployed in your Keptn namespace.
 Hence, the service provides the REST endpoint `/events` to query events.
 
-### configuration-service
+### resource-service
 
-The *configuration-service* is a Keptn core component
+The *resource-service* is a Keptn core component
 that manages resources for Keptn project-related entities, i.e., project, stage, and service.
-To store the resources with version control,
-it uses the Git-based [upstream repository](../../0.18.x/manage/git_upstream)/ mounted as a persistent volume.
+This replaces the `configuration-service` that was used in Keptn releases before 0.16.x.
+It uses the Git-based [upstream repository](../../0.18.x/manage/git_upstream)/ mounted as a persistent volume
+to store the resources with version control,
 This service can upload the Git repository to any Git-based service
 such as GitLab, GitHub, and Bitbucket.
 
@@ -124,6 +124,7 @@ The default Keptn installation includes Keptn-services for some Execution Plane 
 
 Any of these services can be replaced by a service for another tool
 that reacts to and sends the same signals.
+See [Keptn and other tools](../keptn-tools) for more information.
 
 As illustrated in the architecture diagram above,
 execution plane services can be operated within the same cluster as the Keptn Control Plane
