@@ -1,6 +1,6 @@
 ---
 title: Keptn Bridge (Web UI)
-description: Keptn dashboard used to view and manage projects and services managed by Keptn
+description: Keptn dashboard used to view and manage projects and services managed by Keptn.
 weight: 70
 ---
 
@@ -30,7 +30,7 @@ The Keptn Bridge provides an easy way to browse all events that are sent within 
 
 * When you select a project, you see the environment overview of the entire Keptn context.
 * This view shows the currently deployed services on each stage and whether any stages have errors or pending approvals.
-  When you click on a stage, more information about the services deployed on this stage.
+  When you click on a stage, more information about the services deployed on this stage is shown.
 * The service details on the right show the current and the past 5 evaluations, open approvals and running remediations for each service.
 
   {{< popup_image
@@ -42,7 +42,7 @@ The Keptn Bridge provides an easy way to browse all events that are sent within 
 * One of the key steps for continuous delivery and remediation is the evaluation result based on SLOs and SLIs.
   The services view gives an overview of the results of this evaluation step.
 * The deployed artifacts for each service are listed, with the evaluation result for each artifact and executed stage
-  as *HeatMap* and *Chart*:
+  as a *HeatMap* and *Chart*:
 
     {{< popup_image
         link="./assets/services-view-heatmap.png"
@@ -72,7 +72,7 @@ The Keptn Bridge provides an easy way to browse all events that are sent within 
         caption="Ignore evaluation for comparison"
         width="50%">}}
 
-* For your convenience, you can view both the SLOs against which the evaluation was executed against, and the event payload.
+* For your convenience, you can view both the SLOs which the evaluation was executed against, and the event payload.
 
     {{< popup_image
         link="./assets/services-view-slo.png"
@@ -150,7 +150,7 @@ By clicking on the edit icon next to the subscription detail or the "*Add sequen
 link="./assets/uniform-view-create-subscription.png"
 caption="Create/Edit Subscriptions">}}
 
-Once you have selected an event and configured your filters, you may inspect an example event payload by clicking on the "Show example payload"-Button. This will show you the payload of latest event in your environment, depending on your configuration.
+Once you have selected an event and configured your filters, you may inspect an example event payload by clicking on the "Show example payload"-Button. This will show you the payload of the latest event in your environment, depending on your configuration.
 
 {{< popup_image
 link="./assets/uniform-view-show-payload.png"
@@ -200,7 +200,7 @@ caption="Keptn Bridge Service Settings View">}}
 
 ### Approvals
 
-If you have a [manual approval strategy](../continuous_delivery/multi_stage/ defined in your shipyard.yaml file, approvals can be handled with the Keptn Bridge.
+If you have a manual approval strategy defined in your shipyard.yaml file, approvals can be handled with the Keptn Bridge.
 At sequence execution, if the approval task is reached, a panel is shown in all relevant screens:
 
 In the environment view a pending approval can be recognized by the blue service out-of-sync icon at the according stage.
