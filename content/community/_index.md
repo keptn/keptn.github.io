@@ -8,7 +8,7 @@ weight: 20
 
 This is the starting point for joining and contributing to the Keptn community - improving docs, improving code, discussing new features and use cases etc. For all collaboration and communication going on in all keptn projects, please read and follow our [Code of Conduct](https://github.com/keptn/community/blob/master/CODE_OF_CONDUCT.md).
 
-## Slack 
+## Slack
 
 We have a dedicated [Keptn slack workspace](https://slack.keptn.sh) (for in-depth discussions and getting in touch with the team) as well as a #keptn channel in the [CNCF Slack workspace](http://slack.cncf.io/). We are happy to talk to you!
 
@@ -18,11 +18,11 @@ We have a dedicated [Keptn slack workspace](https://slack.keptn.sh) (for in-dept
 
 ✅ Get help from the Keptn community
 
-❌ This is not a good place to submit bug reports 🐞 . Please [open an issue](https://github.com/keptn/keptn/issues) instead so the Keptn maintainers & developers can take care of it. 
+❌ This is not a good place to submit bug reports 🐞 . Please [open an issue](https://github.com/keptn/keptn/issues) instead so the Keptn maintainers & developers can take care of it.
 
 ## Meetings
 
-We are hosting monthly [Keptn user groups](./meetings/) and regular  community amd developer [meetings](./meetings/) every two weeks.
+We are hosting monthly [Keptn user groups](./meetings/) and regular community and developer [meetings](./meetings/) every two weeks.
 All these meetings happen in the APAC/EMEA and Americas/EMEA timezones,
 approximately at 8..10AM and 3..5PM UTC.
 
@@ -35,7 +35,7 @@ The Keptn community has a chapter on the [CNCF Community Portal](https://communi
 This chapter is used for Keptn meetings and other events hosted by the community.
 Please join the chapter and register for the events!
 
-## Newsletter 
+## Newsletter
 
 The [Keptn newsletter](/community/newsletter) is our way to inform the Keptn community on the latest updates of the project.
 
@@ -59,4 +59,4 @@ We are hosting [30 minute 1on1 sessions](https://calendly.com/jetzlstorfer/keptn
 
 ✅ Talk about Keptn in your environment
 
-❌ This is not a good place to submit bug reports 🐞 . Please [open an issue](https://github.com/keptn/keptn/issues) instead so the Keptn maintainers & developers can take care of it.  
+❌ This is not a good place to submit bug reports 🐞 . Please [open an issue](https://github.com/keptn/keptn/issues) instead so the Keptn maintainers & developers can take care of it.

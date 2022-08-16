@@ -37,7 +37,7 @@ although most projects only use some of the constructions.
             tasks:
             - name: "deployment"
               properties:
-                deploymentstrategy: "direct" | "blue_greem_service" | "user_managed"
+                deploymentstrategy: "direct" | "blue_green_service" | "user_managed"
             - name: "release"
         - name: "hardening"
         - name: "production"
@@ -294,6 +294,8 @@ rather than on the control plane.
 
     * `functional`: Test a deployment based on functional tests.
     * `performance`: Test a deployment based on performance/load tests.
+
+    Task properties are a way to pass additional Key / Value metadata that actioning integration uses as part of it's logic. In this case, the jmeter-service expects either `teststrategy: functional` or `teststrategy: performance` to be set. If you action the `test` task with another service you may not need to set these details.
 
     Failed tests result in an automatic `rollback` of the latest deployment
     when using a blue/green deployment strategy.
