@@ -8,12 +8,12 @@ The `values.yaml` configuration file defines the configuration used
 when installing Keptn with a Helm chart; see
 [Installing Keptn using the Helm chart](../../../../install/helm-install).
 `Values` is a built-in object of Helm templates; see the Helm documentation at
-[Values Files(https://helm.sh/docs/chart_template_guide/values_files/).
+[Values Files](https://helm.sh/docs/chart_template_guide/values_files/).
 
 ## Spec
 
 See [values.yaml](https://github.com/keptn/keptn/blob/master/installer/manifests/keptn/values.yaml)
-in the Keptn GitHub repository for the default Keptn file.
+in the Keptn GitHub repository for Keptn default Helm values file.
 
 ## Usage
 
@@ -21,19 +21,19 @@ The recommended practice is the declarative approach:
 you create your own Keptn values file that includes your customizations
 then use your customized values file to install Keptn.
 Alternatively, you can also set Helm values with `--set` during helm commands;
-this is the imparative approach.
+this is the imperative approach.
 The --set flags take precendence over whatever you have configured in your *values.yaml* file
 so can be used to temporarily override a value when necessary.
 
 ## Files
 
-* Default [values.yaml](https://github.com/keptn/keptn/blob/master/helm-service/chart/values.yaml#L10) file: 
+* Default [values.yaml](https://github.com/keptn/keptn/blob/master/installer/manifests/keptn/values.yaml) file
 
 ## Differences between versions
 
 **Keptn 0.17.0 changes**
 
-Keptn Helm chart was refactored heavily in Release 0.18.0
+Keptn Helm chart was refactored heavily in Release 0.17.0
 to make it ready for future features and structural changes.
 
 - The following Helm values changed for the Control Plane Helm chart:
