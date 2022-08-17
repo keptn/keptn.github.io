@@ -168,7 +168,7 @@ The important once that are used in the above example are:
 Keptn uses the integration name and version as identifier for connecting the integration to the control plane.
 Hence, in the case of multiple remote execution planes, each integration must have a different name/version pair, otherwise Keptn will assign the same set of subscriptions.
 To avoid this, we recommend to assign a different name to the integrations.
-Changing the integration name can be done by changing the Distributor `Deployment` manifest and change the environment variable `K8S_DEPLOYMENT_NAME`.
+Changing the integration name can be done by editing the Distributor `Deployment` manifest and change the environment variable `K8S_DEPLOYMENT_NAME`.
 
 ## Troubleshooting
 
