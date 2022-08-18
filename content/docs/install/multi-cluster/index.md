@@ -163,12 +163,13 @@ The important once that are used in the above example are:
 | `remoteControlPlane.api.token` | Keptn API token | `""` |
 
 
-## Known Limitations
-
-Keptn uses the integration name and version as identifier for connecting the integration to the control plane.
-Hence, in the case of multiple remote execution planes, each integration must have a different name/version pair, otherwise Keptn will assign the same set of subscriptions.
-To avoid this, we recommend to assign a different name to the integrations.
-Changing the integration name can be done by editing the Distributor `Deployment` manifest and change the environment variable `K8S_DEPLOYMENT_NAME`.
+Mind that, Keptn uses the execution plane service name and version as identifier for connecting the execution plane service to the control plane.
+Hence, in the case of multiple remote execution plane services, each service must have a different name/version pair, otherwise Keptn will assign
+the same set of subscriptions to them. To avoid this, you must assign a different name to each remote execution plane service.
+If the remote execution plane service uses the `Distributor`, the service name can be changed by setting the `nameOverride` configuration Helm Chart value.
+For example, `helm-service` and `jmeter-service` offer this possibility.
+Another option is to change the Kubernetes `Deployment` of your execution plane service changing the service name via the environment variable `K8S_DEPLOYMENT_NAME`.
+More information about the environment variables of the `Distributor` are available in the [reference page](../../0.18.x/reference/files/distributor/).
 
 ## Troubleshooting
 
