@@ -162,7 +162,7 @@ To access it:
    * Set the `apiGatewayNginx` parameter during installation
    * Issue the following command after installation:
      ```
-     kubectl -n kkeptn port-forward svc/api-gateway-nginx 8080:80
+     kubectl -n keptn port-forward svc/api-gateway-nginx 8080:80
      ```
 2. Open a browser window to `localhost:8080`
 
