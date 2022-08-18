@@ -75,7 +75,7 @@ To install the Control Plane, you must do the following:
   which implements the Kubernetes [LoadBalancer](../access/#option-1-expose-keptn-via-a-loadbalancer):**:
    ```
    helm repo add keptn https://charts.keptn.sh
-   helm install keptn keptn/keptn -nkeptn --createnamespace
+   helm install keptn keptn/keptn -n keptn --create-namespace
    kubectl -n keptn port-forward svc /api-gateway-nginx 8080:8080
    ```
    This command is useful for creating a basic Keptn installation
