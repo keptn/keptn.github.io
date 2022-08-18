@@ -139,7 +139,7 @@ it takes a couple minutes for the installation to finish.
 Use the following command to watch the progress:
 
 ```
-kubectl -n keptn get servers
+kubectl -n keptn get pods
 ```
 
 Wait for all the pods in the Keptn namespace to show `Running` under the `STATUS` column
