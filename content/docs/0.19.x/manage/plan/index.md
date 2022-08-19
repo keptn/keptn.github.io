@@ -21,11 +21,14 @@ For a broader explanation of this, you can read the seminal
 
 Before you can run the Keptn command to create a project,
 you must populate a [shipyard.yaml](../../reference/files/shipyard) file
-that defines the `stages` for your project.
+that at least defines the `stages` for your project.
 At the current time, it is not possible to add or remove stages
 after you create your project.
 
-A stage is a grouping of activities to be executed and it consistes of one or more sequences that define the actual tasks to perform. The shipyard.yaml file you use to create a project must show the stages to be used – at least one stage is required but most projects have multiple stages – and each stage must have a name property defined. For example,:
+A stage defines the stages and sequences of tasks that your Keptn project can orchestrate.
+The *shipyard.yaml* file you use to create a project must show the stages to be used
+– at least one stage is required but most projects have multiple stages –
+and each stage must have a name property defined. For example,:
 
 ```
 apiVersion: spec.keptn.sh/0.2.3
@@ -39,28 +42,38 @@ spec:
     - name: "production"
 ```
 
-In order to do any work, each stage must have at least one sequence and most sequences will contain one or more tasks but this information can be added to the shipyard after you create your project.
+You can add the sequences and tasks for the project to the *shipyard*
+either before or after you create the project.
 
 A `stage` corresponds to a phase in your Continuous Delivery process.
-You can name your stage what you want;
+Each stage that is defined for the project
+becomes a branch in the upstream repo when you create the project.
+.
+A stage can be given any meaningful name
+that conforms to the naming rules described in the
+[shipyard.yaml](../../reference/files/shipyard) reference page;
 some common stage types are:
 
-* development
-* testing, qa, validation
-* staging, hardening
-* production
-
-Your project could have multiple stages for one of these phases.
-For example, you might have one stage for testing your Java application
-and another stage for testing the associated database.
+* **development** -- typically used for basic functional testing before deploying the artifact to testing stages.
+* **testing, qa, validation** - typically used for more advanced testing
+  or perhaps testing that cannot be fully automated such as usability testing.
+  Your project could have multiple testing stages.
+  For example, you might have one stage for testing your Java application
+  and another stage for testing the associated database.
+* **staging, hardening** -- typically used for performance and security testing
+  before the artifact is deployed into production
+* **production** -- Keptn can monitor your active production site
+  for performance, stability, and functionality.
+  It can perform remediation (also called "self-healing") for some issues
+  and generate appropriate notifications for other issues.
 
 The [Define a Project](../../define) section contains pages
 about how to implement the different types of stages.
 
 ## What tools do you want to use with Keptn?
 
-Keptn orchestrates what to do.
-You can integrate almost any tool you like to define how this task is accomplished.
+Keptn orchestrates **what** to do.
+You can integrate almost any tool you like to define **how** this task is accomplished.
 You must identify each tool you use to Keptn;
 this can be done in a variety of ways.
 See [Keptn and other tools](../../../concepts/keptn-tools) for more information.
