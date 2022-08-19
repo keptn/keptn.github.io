@@ -63,12 +63,12 @@ Keptn orchestrates what to do.
 You can integrate almost any tool you like to define how this task is accomplished.
 You must identify each tool you use to Keptn;
 this can be done in a variety of ways.
-See [Keptn and other tools](../../keptn-tools) for more information.
+See [Keptn and other tools](../../../concepts/keptn-tools) for more information.
 
 ## Are you using quality gates evaluation?
 
 Most projects use quality gates to evaluate their software.
-See [Quality Gates](../../concepts/quality_gates) for more information.
+See [Quality Gates](../../../concepts/quality_gates) for more information.
 You can (and probably will) modify the details of your quality gates
 as you test and develop your project but it is useful to consider your goals from the beginning.
 
@@ -89,7 +89,7 @@ Absolute and relative results can be combined into a `total_score` for the evalu
 See [SLO](../../reference/files/slo) for more details.
 * What service will you use to deploy your artifact for quality gates evaluation?
 The most common choice is `helm-service`.
-See [Deploying Services](../service) for more information.
+See [Deploying Services](../../define/service) for more information.
 * Will you pass your artifact to the next stage
 (for example, from testing to hardening or from staging to production)
 automatically if the SLO results meet the specified goals
