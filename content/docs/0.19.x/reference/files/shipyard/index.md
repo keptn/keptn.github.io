@@ -113,9 +113,14 @@ about the ongoing initiative to overcome this limitation.
 
 **Sequence**
 
-A sequence is an ordered list of `task`s that are triggered sequentially and are part of a `stage`.
+A `sequence` is an ordered list of `task`s that are triggered sequentially and are part of a `stage`.
 By default, a sequence is a standalone section that runs and finishes,
 unless you specify the `triggeredOn` property to form a chain of sequences.
+
+Each `stage` includes an implicit `evaluation` sequence
+with a single task that is also called `evaluation`.
+You can define your own `evaluation` sequence with any set of tasks to override this default sequence
+but each stage must have either an implicit or explicit `evaluation` sequence.
 
 Sequences that use the same service cannot be run in parallel.
 If you simultaneously trigger multiple sequences for the same service,
@@ -231,6 +236,11 @@ Each of these are discussed below.
 * `evaluation`
 
     Defines the quality evaluation that is executed to verify the quality of a deplyoment based on its SLOs/SLIs.
+    Every stage must include an `evaluation` sequence.
+    If you do not define an `evaluation` sequence for a stage,
+    an "implicit" `evaluation` sequence with a single task that is also called `evaluation` is used.
+    This default `evaluation` sequence is overridden by any explicit `evaluation` sequence
+    that you define for your project.
 
     Use the optional `triggeredAfter` parameter to specify when to trigger the evaluation.
 
