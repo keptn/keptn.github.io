@@ -1,4 +1,4 @@
-# Keptn Website
+<h1 align="center"> Keptn Website </h1>
 
 The Keptn project has a static website powered by [Hugo](https://gohugo.io/).
 This repository contains the most of the contents though some of the resources hosted in separate repositories.
@@ -8,11 +8,11 @@ Related repositories:
 * [Keptn Tutorials](https://github.com/keptn/tutorials)
 * [Keptn Examples](https://github.com/keptn/examples)
 
-## Contributing
+<h2 align="left"> Contribution </h2>
 
 See the [Contributor Guide](./CONTRIBUTING.md)
 
-## License
+<h2 align="left"> License </h2>
 
 The Keptn website engine (keptn.sh) is licensed under the [Apache License Version 2.0](./LICENSE).
 
