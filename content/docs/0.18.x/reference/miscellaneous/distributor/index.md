@@ -160,15 +160,38 @@ This behavior can be changed by setting the variable `HTTP_SSL_VERIFY` to `false
 
 The remaining parameters, such as `PUBSUB_RECIPIENT`, `PUBSUB_RECIPIENT_PORT` and `PUBSUB_RECIPIENT_PATH`, as well as the `API_PROXY_PORT` can be configured as described above.
 
+**Providing a unique name for execution planes that run the same integration**
+
+If your Keptn [multi-cluster set-up](../../../../install/multi-cluster)
+includes multiple execution planes that run the same integration service,
+you must configure a unique name for each execution plane.
+By default, Keptn uses the execution plane integration name and version to identify the execution plane.
+Multiple execution planes that run the same integration service thus have the same identifier,
+so Keptn assigns the same set of event subscriptions to them all
+unless you assign a different name to each remote execution plane integration.
+
+Use the `K8S_DEPLOYMENT_NAME` environment variable on each execution plane
+to set a unique name label and distributor service name for that execution plane:
+
+```
+K8S_DEPLOYMENT_NAME: "server001-helm-server"
+```
+
+If the execution plane integration uses the Distributor to manage event subscriptions,
+(`helm-service` and `jmeter-service` are among the integrations that do),
+you can instead provide a unique name for the execution plane
+by editing the `values.yaml` on each execution plane and setting a unique value for the `nameOverride` value.
+
 ## Installation
 
 Distributors are installed automatically as a part of [Keptn](https://keptn.sh).
 
 ## Deploy in your Kubernetes cluster
 
-To deploy the current version of a *distributor* in your Keptn Kubernetes cluster, use the file `deploy/distributor.yaml` from this repository and apply it:
+To deploy the current version of a *distributor* in your Keptn Kubernetes cluster,
+apply the [deploy/distributor.yaml](../../files/distributor) file from this repository:
 
-```console
+```
 kubectl apply -f deploy/service.yaml
 ```
 
@@ -176,7 +199,7 @@ kubectl apply -f deploy/service.yaml
 
 To delete a deployed *distributor*, use the file `deploy/distributor.yaml` from this repository and delete the Kubernetes resources:
 
-```console
+```
 kubectl delete -f deploy/service.yaml
 ```
 
