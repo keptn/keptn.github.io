@@ -1,7 +1,7 @@
 <h1 align="center"> Keptn Website </h1>
 
 The Keptn project has a static website powered by [Hugo](https://gohugo.io/).
-This repository contains the most of the contents though some of the resources hosted in separate repositories.
+This repository contains most of the contents though some of the resources are hosted in separate repositories.
 
 Related repositories:
 
