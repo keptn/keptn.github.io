@@ -4,6 +4,7 @@ linktitle: Release 0.13.x
 weight: 983
 sidebar_multicard: true
 icon: docs
+hide: true
 aliases:
   - /docs/0.13.0/
   - /docs/0.13.1/
