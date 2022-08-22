@@ -70,7 +70,7 @@ The following environment variables filter events:
 - `STAGE_FILTER` - Filter events for a specific stage. default = `""`, supports a comma-separated list of stages.
 - `SERVICE_FILTER` - Filter events for a specific service. default = `""`, supports a comma-separated list of services.
 
-The following 
+The following environment variables configure how the distributor identifies specific integrations:
 
 - `DISABLE_REGISTRATION` - Disables automatic registration of the Keptn integration to the control plane.
 default = `false`
@@ -81,8 +81,11 @@ default =`10s`
 - `VERSION` - The version of the Keptn integration. default = `""`
 - `K8S_DEPLOYMENT_NAME` - Kubernetes deployment name of the Keptn integration. default = `""`
 - `K8S_POD_NAME` -  Kubernetes deployment name of the Keptn integration. default = `""`
-- `K8S_NAMESPACE` - Kubernetes namespace of the Keptn integration. default = `""`
-- `K8S_NODE_NAME` - Kubernetes node name the Keptn integration is running on. default = `""`
+- `K8S_NAMESPACE` - Kubernetes namespace of the Keptn integration,
+  which is `keptn-exec` for the Execution Plane. default = `""`
+
+The following environment variables configure the Oauth Client Credentials:
+
 - `OAUTH_CLIENT_ID` - OAuth client ID used when performing Oauth Client Credentials Flow. default = `""`
 - `OAUTH_CLIENT_SECRET` - OAuth client ID used when performing Oauth Client Credentials Flow. default = `""`
 - `OAUTH_DISCOVERY` - Discovery URL called by the distributor to obtain further information for the OAuth Client Credentials Flow, e.g. the token URL. default = `""`
@@ -177,10 +180,15 @@ to set a unique name label and distributor service name for that execution plane
 K8S_DEPLOYMENT_NAME: "server001-helm-server"
 ```
 
-If the execution plane integration uses the Distributor to manage event subscriptions,
-(`helm-service` and `jmeter-service` are among the integrations that do),
-you can instead provide a unique name for the execution plane
+Each integration that uses the distibutor must properly configure the value of `K8S_DEPLOYMENT_NAME`.
+Some integrations, including `helm-service` and `jmeter-service`,
+configure this value based on the value of the `app.kubernetes.io/name` Kubernetes label;
+for example, see the [Jmeter deployment.yaml](https://github.com/keptn/keptn/blob/master/jmeter-service/chart/templates/deployment.yaml#L105) file.
+For these integrations, you can provide a unique name for the execution plane
 by editing the `values.yaml` on each execution plane and setting a unique value for the `nameOverride` value.
+Note that, if the `nameOverride` value is set to a different value
+than the `K8S_DEPLOYMENT_NAME` environment variable,
+`K8S_DEPLOYMENT_NAME` takes precedence.
 
 ## Installation
 
@@ -206,6 +214,22 @@ kubectl delete -f deploy/service.yaml
 ## Usage notes
 
 ## Differences between versions
+
+* Keptn release 0.15.x and earlier supported the
+  `K8S_NODE_NAME` environment variable to define
+  the Kubernetes node name on which the Keptn integration runs.
+  Using this variable in conjunction with `K8S_DEPLOYMENT_NAME` and `K8S_NAMESPACE`
+  allowed Keptn to differentiate between instances of the same integration
+  that ran on different execution planes
+  so it was not necessary to manually set the value of `K8S_DEPLOYMENT_NAME`.
+  For Keptn release 0.16.x and later,
+  each integration is now uniquely defined by just two parameters:
+  `K8S_DEPLOYMENT_NAME` (which is a string such as `helm-service` or `jmeter-service` unless modified)
+  and `K8S_NAMESPACE` (which is `keptn-exec`),
+  so the `K8S_DEPLOYMENT_NAME` environment variable must be explicitly set to a unique value
+  on each execution plane
+  so that all instances of the integration are listed separately on the integrations page in the Keptn Bridge
+  and so that events for that integration are only delivered to the appropriate execution plane.
 
 * In Keptn Release 0.14.x, the NATS dependency is upgraded.
 Because of this, the NATS cluster name is now `keptn-nats`

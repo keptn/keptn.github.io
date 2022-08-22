@@ -92,29 +92,31 @@ Please find the Helm Charts here:
   you must configure a unique name for each execution plane.
   By default, Keptn uses the execution plane service name and version to identify the execution plane.
   Multiple execution planes that run the same integration service thus have the same identifier,
-  so Keptn assigns the same set of event subscriptions to them all
+  so only one instance of the integration service is displayed on the integration page in the Bridge
+  and Keptn assigns the same set of event subscriptions to them all
   unless you assign a different name to each remote execution plane service.
 
   You can assign a unique name label and distributor service name for the execution plane
   in either of the following ways:
 
-  * If the execution plane integration uses the Distributor to manage event subscriptions,
-    (`helm-service` and `jmeter-service` are among the integrations that do),
-    edit the `values.yaml` on each execution plane and set a unique value for the `nameOverride` value.
-    For example:
-
-    ```
-    distributor:
-      nameOverride: "server001-helm-server"
-    ```
-
   * Set the `K8S_DEPLOYMENT_NAME` environment variable on each execution plane to a unique name.
     See the [distributor](../../0.18.x/reference/miscellaneous/distributor) reference page
-    for more information about the environment variables that configure the distributor.
+    for more information about this and other environment variables that configure the distributor.
     For example:
 
     ```
     K8S_DEPLOYMENT_NAME: "server001-helm-server"
+    ```
+
+  * Some integrations (such as `helm-service` and `jmeter`
+    can configure the `K8S_DEPLOYMENT_NAME` value
+    based on the value of the `app.kubernetes.io/name` Kubernetes label.
+    For these integrations, you can edit the `values.yaml` on each execution plane
+    and set a unique value for the `nameOverride` value.
+    For example:
+
+    ```
+    nameOverride: "server001-helm-server"
     ```
 
 * Depending on your setup of the multi-cluster environment and the approach you modeled your staging process, one stage can be for example on a separate cluster. Let's assume the following setup: 
@@ -252,3 +254,25 @@ remoteControlPlane:
   - Is the Keptn API token correct? (You can find it in the Keptn Bridge, or by following the guide for [authenticating](../authenticate-cli-bridge)
 
 </p></details>
+
+### Keptn sees only one instance of an integration deployed on multiple execution planes
+
+The same integration service can be deployed to multiple execution planes in your Keptn installation.
+For example, you might deploy the `helm-services` integration
+to the execution plane that runs the `dev` stage as well as the execution plane that runs the `prod` stage.
+However, you must explicitly configure each execution plane name as described above
+so that Keptn can differentiate the two instances of the integration.
+
+If you do not correctly configure the execution plane names,
+you will see two issues:
+
+* Only one instance of the integration (such as `helm-service`)
+is displayed on the integration page in the Keptn Bridge.
+* All events for that integration are delivered to all execution planes that run the service,
+so that the execution plane for the `dev` stage
+also receives events intended for the `prod` stage.
+
+To correct this situation, follow the instructions above
+to set a unique name label and distributor service name for each execution plane
+that runs this integration service.
+
