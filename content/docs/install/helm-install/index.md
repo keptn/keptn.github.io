@@ -4,16 +4,18 @@ description: Install Keptn on a single cluster using the Helm chart
 weight: 40
 ---
 
-Keptn is installed using a Helm chart using the Helm CLI.
+Keptn is installed from a Helm chart using the Helm CLI.
 You must install the [Helm CLI](https://helm.sh)
 before attempting to install Keptn.
 
-You probably want to also install the [Keptn CLI](../cli-install)
-before installing Keptn.
+You should also install the [Keptn CLI](../cli-install)
+before installing Keptn although this is optional.
 It is possible to do most of what you need to do on modern releases of Keptn without the Keptn CLI
 but the CLI provides additional functionality that is useful.
 After installing Keptn,
-you must [authenticate the Keptn CLI](../authenticate-cli-bridge/#authenticate-keptn-cli). 
+If you install the Keptn CLI,
+you must [authenticate the Keptn CLI](../authenticate-cli-bridge/#authenticate-keptn-cli)
+to Keptn after installing Keptn. 
 
 Keptn consists of a **Control Plane** and an **Execution Plane**.
 
@@ -28,15 +30,11 @@ Keptn consists of a **Control Plane** and an **Execution Plane**.
   and [Automated Operations](../../concepts/automated_operations/) features
   but does not run microservices that integrate other tools with Keptn.
 
-* The **Execution Plane** runs the microservices that integrate other tools with Keptn
-  and is installed when you install the first microservice on the cluster.
-  For example, the JMeter test tool runs on the Execution Plane
-  and installing it installs the Execution Plane.
-  As another example, the [Continuous Delivery](../../concepts/delivery/) feature
-  requires that you install either the
-[Job Executor Service](https://artifacthub.io/packages/keptn/keptn-integrations/job-executor-service)
-or [Istio](https://istio.io) on the Kubernetes cluster(s)
-and they execute on the Execution Plane.
+* The **Execution Plane** refers to the microservices that integrate other tools with Keptn;
+  see [Keptn and other tools](../../concepts/keptn-tools).
+  For example, the JMeter test tool 
+  and the [Job Executor Service](https://artifacthub.io/packages/keptn/keptn-integrations/job-executor-service)
+  execute on the Execution Plane.
 
 See [Architecture](../../concepts/architecture) for more information
 about the Control Plane and the Execution Plane.
@@ -57,7 +55,7 @@ To install the Control Plane, you must do the following:
 
 * Define the Keptn chart repository
 * Install Keptn into the `keptn` namespace on the Kubernetes cluster
-* Expose the [API gateway's NGINX](../../concepts/architecture/#api-gateway-nginx) service
+* Expose the [API gateway](../../concepts/architecture/#api-gateway-nginx) service
   that controls how Keptn communicates with the internet.
   See [Choose access option](../access) for details about all the options
   that are available and how to install and use them.
@@ -65,14 +63,12 @@ To install the Control Plane, you must do the following:
 * You may also want to modify the Keptn configuration options.
   This is discussed more below.
 
-### Sample installation commands
-
-* **Simple Keptn installation**
+### Simple Keptn installation
 
   The following commands provide a basic Keptn installation,
-  Because the install command does not expose the API gateway's NGINX service,
+  Because the install command does not expose the API gateway service,
   we use the **kubectl** command to implement port forwarding,
-  which implements the Kubernetes [LoadBalancer](../access/#option-1-expose-keptn-via-a-loadbalancer):**:
+  which implements the Kubernetes [LoadBalancer](../access/#option-1-expose-keptn-via-a-loadbalancer):
    ```
    helm repo add keptn https://charts.keptn.sh
    helm install keptn keptn/keptn -n keptn --create-namespace
@@ -84,22 +80,27 @@ To install the Control Plane, you must do the following:
 
    *Watch a video demonstration of a simple installation [here](https://www.youtube.com/watch?v=neAqh4fAz-k).*
 
-  The following commands are appropriate for installing a fully-functional production Keptn instance.
+### Full Keptn installation
+
+  This section gives some sample commands
+  that are appropriate for installing a fully-functional production Keptn instance.
   They use the following options:
 
-    * `--version 0.18.1` -- Keptn release to be installed
-      If you do not specify the release, Helm uses the latest release.
+  * `--version 0.18.1` -- Keptn release to be installed
+     If you do not specify the release, Helm uses the latest release.
 
-    * `--repo=https://charts.keptn.sh` -- the location of the Helm chart
-      (rather than using the `helm repo add` command shown above).
-    * `apiGatewayNginx.type=<access-option>` -- this is necessary to access
-      the Keptn Bridge UI.
-      `<*access-option*>` must be `LoadBalancer`, `NodePort`, `Ingress`, or `Port-forward`.
-      See [Choose access options](../access/) for details.
-    * `--set=continuousDelivery.enabled=true` -- install Continuous Delivery support
-      for this Keptn instance.
+   * `--repo=https://charts.keptn.sh` -- the location of the Helm chart
+     (rather than using the `helm repo add` command shown above).
+   * `apiGatewayNginx.type=<access-option>` -- this is necessary to access
+     the Keptn Bridge UI.
+     `<*access-option*>` must be `LoadBalancer`, `NodePort`, or `ClusterIP`.
+     See [Choose access options](../access/) for details.
+   * `--create-namespace` -- has no effect if the namespace already exists
+     but is specified for safety and consistency with other Helm commands.
+   * `--set=continuousDelivery.enabled=true` -- install Continuous Delivery support
+     for this Keptn instance.
 
-* **Install Keptn control-plane with Continuous Delivery support and exposed on a LoadBalancer**
+* **Install Keptn control-plane with Continuous Delivery support and exposed through a LoadBalancer**
     ```
     helm install keptn keptn --version 0.18.1 -n keptn --repo=https://charts.keptn.sh --create-namespace --wait --set=continuousDelivery.enabled=true,apiGatewayNginx.type=LoadBalancer
     ```
@@ -110,7 +111,7 @@ To install the Control Plane, you must do the following:
 helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.18.1 --repo=https://charts.keptn.sh --set=apiGatewayNginx.type=LoadBalancer
 ```
 
-* **Install Keptn with an ingress object**
+* **Install Keptn with an Ingress object**
 
   If you are already using an [Ingress Controller](../access/#option-3-expose-keptn-via-an-ingress)
   and want to create an ingress object for Keptn,
@@ -135,7 +136,7 @@ helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=
 ## Confirm Installation
 
 After you issue the **helm install** command,
-it takes a couple minutes for the installation to finish.
+it takes a couple of minutes for the installation to finish.
 Use the following command to watch the progress:
 
 ```
@@ -171,8 +172,8 @@ To access it:
    to use if your site uses [Basic Authentication](../../0.18.x/bridge/basic_authentication):
 
    ```
-   kubectl -n keptn get secret bridge-credentials -o jsonpat-{.data.BASIC_AUTH_USERNAME} | base64 -d echo
-   kubectl -n keptn get secret bridge-credentials -o jsonpat-{.data.BASIC_AUTH_PASSWORD} | base64 -d echo
+   kubectl -n keptn get secret bridge-credentials -o jsonpath-{.data.BASIC_AUTH_USERNAME} | base64 -d echo
+   kubectl -n keptn get secret bridge-credentials -o jsonpath-{.data.BASIC_AUTH_PASSWORD} | base64 -d echo
    ```
    You can also use [OpenID Authentication](../../0.18.x/bridge/oauth) to access the Keptn Bridge.
 
@@ -180,8 +181,7 @@ To access it:
 
 To install the Execution Plane in the same namespace as the Control Plane,
 install a microservice.
-For example, the following two commands install the Jmeter and Helm-service microservices
-and, by extension, install the Execution Plane:
+For example, the following two commands install the Jmeter and Helm-service microservices:
 
 ```
 helm install jmeter-service https://github.com/keptn/keptn/releases/download/0.18.1/jmeter-service-0.18.1.tgz -n keptn --create-namespace --wait
