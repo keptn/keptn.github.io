@@ -28,7 +28,8 @@ after you create your project.
 A stage defines the stages and sequences of tasks that your Keptn project can orchestrate.
 The *shipyard.yaml* file you use to create a project must show the stages to be used
 – at least one stage is required but most projects have multiple stages –
-and each stage must have a name property defined. For example,:
+and each stage must have a name property defined.
+For example, a *shipyard.yaml* file like the following is enough to create the project:
 
 ```
 apiVersion: spec.keptn.sh/0.2.3
@@ -58,8 +59,8 @@ some common stage types are:
 * **testing, qa, validation** - typically used for more advanced testing
   or perhaps testing that cannot be fully automated such as usability testing.
   Your project could have multiple testing stages.
-  For example, you might have one stage for testing your Java application
-  and another stage for testing the associated database.
+  For example, you might have a `qa-java-app` stage for testing your Java application
+  and a `validate-database` stage for testing the associated database.
 * **staging, hardening** -- typically used for performance and security testing
   before the artifact is deployed into production
 * **production** -- Keptn can monitor your active production site
@@ -94,6 +95,16 @@ You can use an observability platform
 (integrations are currently provided for DataDog, Dynatrace, and Prometheus)
 or you can define another SLI provider by following the instructions in
 [Custom SLI-Provider](../../integrations/sli_provider).
+
+  If you are already using an observability platform,
+  you probably want to just configure Keptn to use that tool.
+  If you need to choose a platform, the following may be useful
+  or you can search for other resources:
+
+  * [Dynatrace, Prometheus, and others -- Comparison](https://medium.com/@balajijk/dynatrace-prometheus-and-others-comparison-debc897cb7a5)
+  * [Datadog vs Dynatrace comparison](https://www.peerspot.com/products/comparisons/datadog_vs_dynatrace)
+  * [Datadog vs Prometheus -- Key features and differences](https://signoz.io/blog/datadog-vs-prometheus/)
+
 * What are your SLO's (Service-Level Objectives) for each stage?
 For example, for an SLI that measures response time,
 you could define an SLO with an absolute value (less than 100ms)
