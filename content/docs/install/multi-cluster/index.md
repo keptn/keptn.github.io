@@ -164,9 +164,9 @@ Please find the Helm Charts here:
     Phase:          Succeeded
     ```
 
-### How to uninstall an execution plane services?
+### How to uninstall an execution plane service?
 
-* To uninstall an execution plane service, e.g., jmeter-service, just execute:
+* To uninstall an execution plane service -- in this case, the `jmeter-service`, execute:
 
     ```console
     helm uninstall jmeter-service -n keptn-exec
