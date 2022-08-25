@@ -22,8 +22,12 @@ See [Install Keptn CLI](../install/cli-install) and [Install Keptn using the Hel
 about creating a Keptn cluster locally or in the cloud.
 
 ## Helm
+1) Add the Helm repository
+```
+helm repo add keptn https://charts.keptn.sh
+```
 
-1) Install core control plane components and expose via a LoadBalancer:
+2) Install core control plane components and expose via a LoadBalancer:
 ```
 helm install keptn keptn --repo=https://charts.keptn.sh \
 -n keptn --create-namespace \
@@ -32,7 +36,7 @@ helm install keptn keptn --repo=https://charts.keptn.sh \
 --wait
 ```
 
-2) Install the execution plane components. These are additional microservices that will handle certain tasks:
+3) Install the execution plane components. These are additional microservices that will handle certain tasks:
 
 ```
 helm install jmeter-service keptn/jmeter-service -n keptn
