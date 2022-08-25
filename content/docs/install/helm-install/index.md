@@ -11,16 +11,16 @@ before attempting to install Keptn.
 You should also install the [Keptn CLI](../cli-install)
 before installing Keptn although this is optional.
 It is possible to do most of what you need to do on modern releases of Keptn without the Keptn CLI
-but the CLI provides additional functionality that is useful.
-After installing Keptn,
+but the CLI provides additional functionality that is useful
+such as uploading [SLI and SLO](../../concepts/quality_gates/#what-is-a-service-level-indicator-sli) definitions..
 If you install the Keptn CLI,
-you must [authenticate the Keptn CLI](../authenticate-cli-bridge/#authenticate-keptn-cli)
-to Keptn after installing Keptn. 
+you must [authenticate](../authenticate-cli-bridge/#authenticate-keptn-cli)
+it to Keptn after you install Keptn. 
 
 Keptn consists of a **Control Plane** and an **Execution Plane**.
 
 * The **Control Plane** is the minimum set of components that are required
-  to run a Keptn instance  and to manage projects, stages, and services;
+  to run a Keptn instance and to manage projects, stages, and services;
   to handle events; and to provide integration points.
   The control plane orchestrates the task sequences defined in Shipyard
   but does not actively execute the tasks.
@@ -65,20 +65,21 @@ To install the Control Plane, you must do the following:
 
 ### Simple Keptn installation
 
-  The following commands provide a basic Keptn installation,
-  Because the install command does not expose the API gateway service,
-  we use the **kubectl** command to implement port forwarding,
-  which implements the Kubernetes [LoadBalancer](../access/#option-1-expose-keptn-via-a-loadbalancer):
+  The following commands provide a basic Keptn installation.
+  Watch a video demonstration of this simple installation [here](https://www.youtube.com/watch?v=neAqh4fAz-k).*
    ```
    helm repo add keptn https://charts.keptn.sh
    helm install keptn keptn/keptn -n keptn --create-namespace
-   kubectl -n keptn port-forward svc /api-gateway-nginx 8080:8080
+   kubectl -n keptn port-forward svc/api-gateway-nginx 8080:8080
    ```
-   This command is useful for creating a basic Keptn installation
-   to use for study or demonstration.
-   It may not be adequate for a production Keptn installation.
 
-   *Watch a video demonstration of a simple installation [here](https://www.youtube.com/watch?v=neAqh4fAz-k).*
+  We use **kubectl** to forward port `8080` from our local machine
+  to port `8080` on the Keptn API Gateway service in the cluster.
+
+  This set of commands is useful for creating a basic Keptn installation
+  to use for study or demonstration.
+  It is not adequate for a production Keptn installation.
+
 
 ### Full Keptn installation
 
@@ -86,41 +87,40 @@ To install the Control Plane, you must do the following:
   that are appropriate for installing a fully-functional production Keptn instance.
   They use the following options:
 
-  * `--version 0.18.1` -- Keptn release to be installed
+  * `--version 0.18.1` -- Keptn release to be installed.
      If you do not specify the release, Helm uses the latest release.
 
-   * `--repo=https://charts.keptn.sh` -- the location of the Helm chart
-     (rather than using the `helm repo add` command shown above).
+   * `--repo=https://charts.keptn.sh` -- the location of the Helm chart.
+     You can use this option rather than running the `helm repo add` command as shown above).
    * `apiGatewayNginx.type=<access-option>` -- this is necessary to access
-     the Keptn Bridge UI.
-     `<*access-option*>` must be `LoadBalancer`, `NodePort`, or `ClusterIP`.
+     Keptn.
+     `<access-option>` must be `LoadBalancer`, `NodePort`, or `ClusterIP`.
      See [Choose access options](../access/) for details.
-   * `--create-namespace` -- has no effect if the namespace already exists
-     but is specified for safety and consistency with other Helm commands.
+   * `--create-namespace` -- creates the `keptn` namespace if it does not already exist.
    * `--set=continuousDelivery.enabled=true` -- install Continuous Delivery support
      for this Keptn instance.
 
-* **Install Keptn control-plane with Continuous Delivery support and exposed through a LoadBalancer**
-    ```
-    helm install keptn keptn --version 0.18.1 -n keptn --repo=https://charts.keptn.sh --create-namespace --wait --set=continuousDelivery.enabled=true,apiGatewayNginx.type=LoadBalancer
-    ```
+**Install Keptn control-plane with Continuous Delivery support and exposed through a LoadBalancer**
+  ```
+  helm install keptn keptn --version 0.18.1 -n keptn --repo=https://charts.keptn.sh --create-namespace --wait --set=continuousDelivery.enabled=true,apiGatewayNginx.type=LoadBalancer
+  ```
 
-* **Use a LoadBalancer for api-gateway-nginx**
+**Use a LoadBalancer for api-gateway-nginx**
 
-```
-helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.18.1 --repo=https://charts.keptn.sh --set=apiGatewayNginx.type=LoadBalancer
-```
+  ```
+  helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.18.1 --repo=https://charts.keptn.sh --set=apiGatewayNginx.type=LoadBalancer
+  ```
 
-* **Install Keptn with an Ingress object**
+**Install Keptn with an Ingress object**
 
   If you are already using an [Ingress Controller](../access/#option-3-expose-keptn-via-an-ingress)
   and want to create an ingress object for Keptn,
   you can leverage the ingress section of the Helm chart.
 
   The Helm chart allows customizing the ingress object to your needs.
-  When `enabled` is set to `true` (by default, `enabled` is set to `false`),
+  When `ingress.enabled` is set to `true` (by default, `enabled` is set to `false`),
   the chart allows you to specify optional parameters
-  of host, path, pathType, tls, and annotations.
+  of `host`, `path`, `pathType`, `tls`, and `annotations`.
   This supports many different Ingress-Controllers and configurations.
 
   ```
@@ -143,7 +143,7 @@ Use the following command to watch the progress:
 kubectl -n keptn get pods
 ```
 
-Wait for all the pods in the Keptn namespace to show `Running` under the `STATUS` column
+Wait until all the pods in the Keptn namespace are in `Running` state.
 before proceeding.
 
 Use the following command to view all the services that are installed in the Keptn namespace:
@@ -155,15 +155,15 @@ kubectl -n keptn get services
 ## Access the Keptn Bridge
 
 The [Keptn Bridge](../../0.18.x/bridge) is the graphical user interface
-you can use to manage and view Keptn projects running in your installation.
+you can use to manage and view Keptn projects running in your instance.
 To access it:
 
-1. Expose the API Gateway NGINX.  This can be done in two ways:
+1. Expose the API Gateway NGINX.  This can be done in either of two ways:
 
    * Set the `apiGatewayNginx` parameter during installation
    * Issue the following command after installation:
      ```
-     kubectl -n keptn port-forward svc/api-gateway-nginx 8080:80
+     kubectl -n keptn port-forward svc/api-gateway-nginx 8080:8080
      ```
 2. Open a browser window to `localhost:8080`
 
@@ -172,8 +172,8 @@ To access it:
    to use if your site uses [Basic Authentication](../../0.18.x/bridge/basic_authentication):
 
    ```
-   kubectl -n keptn get secret bridge-credentials -o jsonpath-{.data.BASIC_AUTH_USERNAME} | base64 -d echo
-   kubectl -n keptn get secret bridge-credentials -o jsonpath-{.data.BASIC_AUTH_PASSWORD} | base64 -d echo
+   kubectl -n keptn get secret bridge-credentials -o jsonpath-{.data.BASIC_AUTH_USERNAME} | base64 -d
+   kubectl -n keptn get secret bridge-credentials -o jsonpath-{.data.BASIC_AUTH_PASSWORD} | base64 -d
    ```
    You can also use [OpenID Authentication](../../0.18.x/bridge/oauth) to access the Keptn Bridge.
 
