@@ -8,12 +8,18 @@ aliases:
 
 A Keptn sequence can be triggered in any of the following ways:
 
-* Using the Keptn API
-* Using the Keptn CLI
 * From the Bridge UI
 * Using the `triggeredOn`property in the `shipyard` file.
+* Using the Keptn API
+* Using the Keptn CLI
 
-## Using triggeredOn in a sequence
+## Trigger a sequence from the Keptn Bridge
+
+The [Trigger a Keptn sequence](https://www.youtube.com/watch?v=S0eumPKuAJY) video
+ilustrates how to trigger a sequence using the Keptn Bridge
+and discusses using `triggeredOn` in a `sequence` in your [shipyard](../../../0.19.x/reference/files/shipyard).
+
+## Use triggeredOn in a sequence
 
 Use the `triggeredOn` property in a project's [shipyard](../../reference/files/shipyard) file
 to kick off a sequence in response to specific events.
