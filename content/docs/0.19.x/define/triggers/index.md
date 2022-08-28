@@ -16,7 +16,7 @@ A Keptn sequence can be triggered in any of the following ways:
 ## Trigger a sequence from the Keptn Bridge
 
 The [Trigger a Keptn sequence](https://www.youtube.com/watch?v=S0eumPKuAJY) video
-ilustrates how to trigger a sequence using the Keptn Bridge
+illustrates how to trigger a sequence using the Keptn Bridge
 and discusses using `triggeredOn` in a `sequence` in your [shipyard](../../../0.19.x/reference/files/shipyard).
 
 ## Use triggeredOn in a sequence
