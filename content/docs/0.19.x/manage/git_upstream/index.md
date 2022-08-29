@@ -1,14 +1,15 @@
 ---
 title: Git-based upstream  
-description: Select a Git-based upstream for a project.
-weight: 20
+description: Create a Git-based upstream for a project.
+weight: 30
 keywords: [0.8.x-manage]
 aliases:
   - /docs/0.8.0/manage/git_upstream/
   - /docs/0.8.1/manage/git_upstream/
 ---
 
-Keptn manages a project in an internal Git repository which is separate from the repository that stores your source code.
+Keptn manages a project in an internal Git repository
+which is separate from the repository that stores your source code.
 To upstream this repository to a remote place that also works as backup,
 you must create a new Git repository.
 This GitHub repository is then specified as the upstream repo when creating a project. 
