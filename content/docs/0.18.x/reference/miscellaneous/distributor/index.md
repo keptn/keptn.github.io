@@ -182,7 +182,8 @@ K8S_DEPLOYMENT_NAME: "server001-helm-server"
 
 Each integration that uses the distibutor must properly configure the value of `K8S_DEPLOYMENT_NAME`.
 Some integrations, including `helm-service` and `jmeter-service`,
-configure this value based on the value of the `app.kubernetes.io/name` Kubernetes label.
+configure this value based on the value of the `app.kubernetes.io/name` Kubernetes label;
+for example, see the [Jmeter deployment.yaml](https://github.com/keptn-contrib/jmeter-service/blob/main/chart/templates/deployment.yaml#L105) file.
 For these integrations, you can provide a unique name for the execution plane
 by editing the `values.yaml` on each execution plane and setting a unique value for the `nameOverride` value.
 Note that, if the `nameOverride` value is set to a different value

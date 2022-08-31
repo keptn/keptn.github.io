@@ -27,7 +27,7 @@ so can be used to temporarily override a value when necessary.
 
 ## Files
 
-* Default [values.yaml](https://github.com/keptn-contrib/helm-service/blob/main/chart/values.yaml) file 
+* Default [values.yaml](https://github.com/keptn-contrib/helm-service/blob/main/chart/values.yaml) file.
 
 ## Differences between versions
 
