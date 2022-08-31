@@ -27,9 +27,15 @@ so can be used to temporarily override a value when necessary.
 
 ## Files
 
-* Default [values.yaml](https://github.com/keptn-contrib/helm-service/blob/main/chart/values.yaml) file: 
+* Default [values.yaml](https://github.com/keptn-contrib/helm-service/blob/main/chart/values.yaml) file.
 
 ## Differences between versions
+
+**Keptn 0.19.0 changes**
+
+The *helm-service* and *jmeter-service* integrations are moved out of the `keptn/keptn` github repository
+and into the keptn-contrib repository in Release 0.19.x
+and so the path to the *values.yaml* file is changed.
 
 **Keptn 0.17.0 changes**
 
