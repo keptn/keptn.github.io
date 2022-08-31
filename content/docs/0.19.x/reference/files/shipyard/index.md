@@ -68,9 +68,13 @@ although most projects only use some of the constructions.
 * `kind`: is `Shipyard`
 * `metadata`:
     `name`: Unique name for this *shipyard* file
-    Typically, this is the string `shipyard` followed by a dash and the project name; for example, `shipyard-sockshop`
+    Typically, this is the string `shipyard` followed by a dash and the project name;
+    for example, `shipyard-sockshop`
+    * `name` must start with a lowercase letter and include only lowercase alphanumeric characters and hyphens.
+    * By default, the project `name` has a maximum length of 200 characters;
+      This value is configurable with `.Values.shipyardController.config.validation.projectNameMaxSize`.
 * `spec`: Consists of the property stages.
-    * `stages`: An array of stages, each of which has a name and a sequence of tasks to execute
+    * `stages`: An array of stages, each of which has a `name` and a `sequence` of `tasks` to execute
 
 **Stage**
 

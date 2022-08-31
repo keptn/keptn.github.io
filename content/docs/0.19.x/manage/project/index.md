@@ -33,7 +33,7 @@ Before you create a project:
 ## Prepare resources for the project
 
 Before you create the project, you must create some resources
-that are specified to that command:
+that are required to create a project:
 
 * A new, unitialized Git-based upstream repository that will store
 all the configuration and data information that Keptn needs
@@ -61,12 +61,21 @@ See [Git-based upstream](../git_upstream) for details.
       - name: "production"
   ```
 
-  At least one `stage` with a `name` is required.
-  You can include sequences, tasks, etc in the shipyard at this point
-  but it is not required.
+  * At least one `stage` with a `name` is required.
+  * The project `name` must start with a lowercase letter
+    and contain only lowercase letters, numbers, and hyphens
+  * The project name should be less than 200 characters long
+  * See the [shipyard](../../reference/files/shipyard) page
+    for more details about naming rules
 
   Create this file on your local system;
   it is passed to the project's upstream Git repository for this project.
+
+  This "stub" *shipyard* file is enough to create a project.
+  You must include sequences, tasks, etc in the shipyard before running it.
+  You can add those before or after you create the project.
+  See the [Define Keptn Projects](../../define) section for information
+  about how to define sequences and tasks for your project.
 
 ## Create a project
 
@@ -81,9 +90,7 @@ The [Create a Keptn Project and Service](https://www.youtube.com/watch?v=W4YzlUa
 shows how to create a Keptn project and service from the Keptn Bridge.
 
 For written instructions, see
-[Create a new project in Bridge](../../bridge/manage_projects/#create-a-new-project-in-bridge)).
-
-
+[Create a new project in Bridge](../../bridge/manage_projects/#create-a-new-project-in-bridge).
 
 ### Create project from the CLI command line
 
@@ -95,4 +102,6 @@ For example, you could create a new project with the following command line:
   ```
   keptn create project PROJECTNAME --shipyard=FILEPATH --git-user=GIT_USER --git-token=GIT_TOKEN --git-remote-url=GIT_REMOTE_URL
   ```
+
+See the reference page for details about arguments and options for this command.
 
