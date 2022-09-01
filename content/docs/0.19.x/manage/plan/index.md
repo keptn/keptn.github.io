@@ -79,6 +79,59 @@ You must identify each tool you use to Keptn;
 this can be done in a variety of ways.
 See [Keptn and other tools](../../../concepts/keptn-tools) for more information.
 
+## Who calls whom?
+
+When integrating certain tools with Keptn,
+you have a choice of having your tool call Keptn
+or having Keptn call your tool.
+For example, you may have a Jenkins Pipeline that builds and tests your software.
+You want Keptn to take that artifact and run an evaluation
+before deploying the software.
+You can either have Jenkins call Keptn or you can have Keptn call Jenkins.
+
+The preferred solution for current Keptn releases is be to use
+Keptn [Webhooks](../../integrations/webhooks) to have Keptn call Jenkins.
+This is easier to implement, allows you to break up your Jenkins Pipeline,
+and you get the `evaluation` "for free".
+
+For example, you can define a Keptn sequence that you can trigger like this:
+
+```
+sequence:
+  - name: doMyDeployment
+    tasks:
+      - name: "deploy"
+      - name: "evaluation"
+      - name: "test"
+```
+
+Then configure the Keptn webhook service to fire on the `deploy.triggered` event
+and have Jenkins return the `deploy.finished` event.
+Keptn automatically runs your
+[quality gate](../../../concepts/quality_gates/) evaluation when it receives the event.
+When the evaluation is finished, Keptn triggers the `test` task.
+You could again use the Keptn webhook service to trigger Jenkins
+to implement any test you wanted.
+
+The [Trigger Webhook Integrations from Keptn](https://youtu.be/ehI23d7s-dY?t=60) video
+shows how to trigger Jenkins from a Jenkins task inside a sequence.
+This is also documented on the [Jenkins Integration](../../integrations/webhooks/jenkins/) page.
+
+You can instead have Jenkins call Keptn.
+This is the only implementation that is supported for Keptn 0.12.x and earlier releases.
+To do this, use the
+[Jenkins Shared Library](https://artifacthub.io/packages/keptn/keptn-integrations/jenkins-library) integration.
+
+To implement this functionality:
+
+* Create a Keptn project that includes a `stage` with a Keptn `sequence`
+that includes a single `evaluation` task.
+* Use the **curl** command to call Keptn from Jenkins, then wait for the response.
+* Code the wait logic into your Jenkins Pipeline.
+
+This approach is more difficult to implement
+and provides less functionality than using the Keptn webhooks strategy described above.
+
 ## Are you using quality gates evaluation?
 
 Most projects use quality gates to evaluate their software.
