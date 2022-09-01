@@ -72,12 +72,16 @@ kubectl get secret -n keptn git-credentials-$PROJECT_NAME -oyaml > $PROJECT_NAME
 
 ## Back up Keptn with Configuration Service and moving to Resource Service
 
-This section describes how to back up your Keptn which is using Configuration Service, updating Keptn to a newer version which is using Resource Service and restoring your data. 
+This section describes how to
+* Back up your Keptn installation which is using the Configuration Service
+* Update Keptn to a newer version which is using the  Resource Service 
+* Restore your data
 
 ### Add remote git upstream repository to each project
 
-There is no need to create an extra backup of the Configuration Service, but to not lose your data, you need to make sure every project
-created on your Keptn instance has a configured remote git upstream repository. For project which do not have remote git upstream repository configured, you can use the `keptn update project` command of Keptn CLI to add it. An example of the command:
+Each project must have a remote [Git-based upstream repository](../../manage/git_upstream) repository configured to ensure that you do not lose your data.
+You do not need to create an extra backup of the Configuration Service.
+If your installation is running  an older version of Keptn that does not have  a remote git upstream repository configured, you can use the `keptn update project` command of Keptn CLI to add it. An example of the command:
 
 ```console
 keptn update project PROJECTNAME --git-user=GIT_USER --git-token=GIT_TOKEN --git-remote-url=GIT_REMOTE_URL
@@ -123,7 +127,7 @@ kubectl get secret -n keptn git-credentials-$PROJECT_NAME -oyaml > $PROJECT_NAME
 
 ## Back up Keptn with Resource Service
 
-There is no need to create any backup an extra backup of the Resource Service, as all the data are stored in remote git upstream repository and will be automatically synchronized to the Keptn instance after restoring the MongoDB data and Git credentials
+There is no need to create an extra backup of the Resource Service as all the data are stored in remote git upstream repository and will be automatically synchronized to the Keptn instance after the MongoDB data and Git credentials are restored.
 
 ### Back up Mongodb Data
 
@@ -159,7 +163,9 @@ kubectl get secret -n keptn git-credentials-$PROJECT_NAME -oyaml > $PROJECT_NAME
 
 ## Restore Keptn
 
-This section describes how to restore data from your Keptn projects on a fresh Keptn installation using the data you have stored on your machine using the instructions above. If using Resource Service, please skip the `Restore Configuration Service` step
+This section describes how to restore data from your Keptn projects on a fresh Keptn installation using the data you have stored on your machine using the instructions above.
+
+If using Resource Service, please skip the `Restore Configuration Service` step.
 
 ### Restore Configuration Service
 
@@ -227,9 +233,9 @@ After executing these steps, your projects and all events should be visible in t
 
 ## Restore Configuration Service data to Keptn using Resource Service
 
-This section describes how to restore an acient data backup of the Configuration Service and apply it to a Keptn instance running a Resource Service. This can be applied only to projects which do not have a remote git upstream repository configured. The pre-requisities for these steps is to have the MongoDB data restored already.
+This section describes how to restore an ancient data backup of the Configuration Service and apply it to a Keptn instance running a Resource Service. This can be applied only to projects which do not have a remote git upstream repository configured. The pre-requisites for these steps is to have the MongoDB data restored already.
 
-The first step is to setup a remote git repository (e.g. on Github, Gitlab,...) for your project. Afterwards go to the project foler of your backup and execute:
+The first step is to setup a remote git repository (e.g. on Github, Gitlab,...) for your project. Afterwards go to the project folder of your backup and execute:
 
 ```console
 git remote add origin <your-git-repository-url>
@@ -237,7 +243,7 @@ git fetch origin
 git push --all --force
 ```
 
-The second step is to configure the remote git repository for your project. You can do it via Bridge UI or Keptn CLI with the commad:
+The second step is to configure the remote git repository for your project. You can do it via Bridge UI or Keptn CLI with the command:
 
 ```console
 keptn update project PROJECTNAME --git-user=GIT_USER --git-token=GIT_TOKEN --git-remote-url=GIT_REMOTE_URL
