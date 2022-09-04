@@ -63,17 +63,17 @@ The following tools need to be installed for this tutorial:
 - [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) version `>= 1.19`
 - [helm](https://helm.sh/) version `>= 3.3.0` - [Installation Guide](https://helm.sh/docs/intro/install/)
 - [git](https://git-scm.com/downloads)
-- [k3d](https://k3d.io) version `4.4.4`
+- [k3d](https://k3d.io) version `5.3.0`
 
 All executables should be configured to be executable in the user space without `sudo` or equivalents.
 
 ### Installing K3d
 
  If you already have `k3d` installed, you can check its version by running `k3d --version`.
- This tutorial targets version `4.4.4` and may not work properly with older or newer versions.
+ This tutorial targets version `5.3.0` and may not work properly with older or newer versions.
 
 ```bash
-curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=v4.4.4 bash
+curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=v5.3.0 bash
 ```
 
 ### Install Keptn
