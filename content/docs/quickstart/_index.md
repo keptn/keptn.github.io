@@ -25,15 +25,15 @@ about creating a Keptn cluster locally or in the cloud.
 1) Add the Helm repository
 ```
 helm repo add keptn https://charts.keptn.sh
+helm repo update
 ```
 
 2) Install core control plane components and expose via a LoadBalancer:
 ```
-helm install keptn keptn --repo=https://charts.keptn.sh \
--n keptn --create-namespace \
---set=apiGatewayNginx.type=LoadBalancer \
---set=continuousDelivery.enabled=true \
---wait
+helm install -n keptn keptn keptn/keptn --create-namespace \
+  --version 0.18.2 \
+  --set=apiGatewayNginx.type=LoadBalancer \
+  --wait
 ```
 
 3) Install the execution plane components. These are additional microservices that will handle certain tasks:
