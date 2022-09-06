@@ -14,7 +14,7 @@ to provide more extensive information
 without requiring you to install any software locally.***
 
 This Quick Start guide shows how to quickly create a local Keptn installation
-that runs as a [Helm] chart in Kubernetes,
+that runs as a [Helm](https://helm.sh) chart in Kubernetes,
 then run some basic exercises that demonstrate Keptn functionality.
 
 You can install and run Keptn on virtually any Kubernetes cluster.
