@@ -116,6 +116,35 @@ use the [keptn add-resource](../../cli/commands/keptn_add-resource) command:
       response_time_p99: "query D-3"  # SLI from service-level overrides SLI from stage-level
       sql-statements: "query E-3"     # SLI from service-level
     ```
+## Using different SLI environments
+
+Different projects, stages, and services can utilize different environments for your SLI.
+To do this, you create different configuration files for your SLI
+and have each point to a unique secret that contains the API endpoint for your SLI
+and a token.
+
+The implementation specifics are different for each SLI provider.
+As an example, we explain how to do this when using Dynatrace.
+Consult the documentation for your SLI for the specifics.
+
+Each SLI has a configuration file;
+for Dynatrace, it is [dynatrace.conf.yaml](https://github.com/keptn-contrib/dynatrace-service/blob/master/documentation/dynatrace-conf-yaml-file.md).
+This must be specified on the project level as the default configuration for the project.
+You can create multiple versions of this file to use different environments for different projects.
+such as `dynatrace.conf_project1.yaml` and `dynatrace.conf_project2.yaml`.
+All project-level files should be located in the same directory
+as the default `dynatrace/dynatrace.conf.yaml` file.
+
+You can also create separate configuration files for different services and different stages.
+The service first looks for a configuration on the service level,
+then at the stage level, and finally at the project level if no other configurations are found.
+So, to use different SLI environments for different stages,
+you might have files named `dynatrace.conf_dev.yaml` and `dynatrace.conf_qa.yaml`,
+also colocated with the default project configuration.
+
+Within each file, modify the value for the API credentials secret name;
+for Dynatrace, this is the `dtCreds` field.
+
 
 ## See also
 
