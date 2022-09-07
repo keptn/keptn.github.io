@@ -34,7 +34,6 @@ The steps to install and configure your Keptn instance are:
 6. If you have problems with your installation,
    check out the hints in [Troubleshooting the installation](troubleshooting)
 
-
 At this point, you should have a functional Keptn instance running.
 
 You may also be interested in the following topics:
