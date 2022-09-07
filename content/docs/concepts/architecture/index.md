@@ -23,13 +23,14 @@ Use the [Keptn CLI](../../0.18.x/reference/cli/) to send commands
 that interact with the [Keptn API](../../0.18.x/reference/api/).
 It must be [installed](../../install/cli-install)
 on the local machine and is used to send commands to Keptn.
-To communicate with Keptn, you need to know a shared secret
-that is managed by the [Secret Service](../secrets).
+To communicate with Keptn, you need to know the API token
+which is managed as a shared secret by the [Secret Service](../secrets).
 The shared secret is generated during the installation and verified by the *api* component.
 
 ## Keptn Bridge
 
-The *Keptn Bridge* is a user interface that can be used to manage Keptn projects and services.
+The *Keptn Bridge* is a user interface that can be used
+to view and manage Keptn projects and services.
 
 See [Keptn Bridge](../../0.18.x/bridge/),
 for information about how to access and use the Keptn Bridge.
@@ -99,11 +100,20 @@ They perform continuous delivery tasks like deploying or promoting a service
 and orchestrational tasks for automating operations.
 Those services can be easily plugged into a task sequence
 to extend the delivery pipeline or to further automate operations.
-Execution plane services subscribe to events via a
-[distributor](../../0.18.x/reference/miscellaneous/distributor) sidecar
-that forwards incoming `.triggered` events to them.
+Execution plane services subscribe to events using one of the following mechanisms:
+
+* [distributor](../../0.18.x/reference/miscellaneous/distributor) sidecar
+that forwards incoming `.triggered` events to execution plane services.
 These distributor sidecars can also be used to send `.started` and `.finished` events
 back to the Keptn control plane.
+This was the original Keptn mechanism for sending events to services.
+
+* **cp-connector** (Control Plane Connector) uses Go code to handle
+the logic of an integration connecting back to the control plane.
+This mechanism was introduced in Release 0.15.x and is used by all core Keptn services.
+The distributor pod is not required, but it requires more coding in each service.
+
+* **go-sdk** (experimental) -- Provides a wrapper that adds features around the cd-connector.
 
 The default Keptn installation includes Keptn-services for some Execution Plane services,including:
 
