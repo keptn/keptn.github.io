@@ -4,8 +4,9 @@ description: Configure Istio and create a ConfigMap to expose services deployed 
 weight: 75
 ---
 
-Istio can be installed in order to access the services that Keptn deploys.
-You can instead use and install the [Job Executor Service](https://artifacthub.io/packages/keptn/keptn-integrations/job-executor-service).
+Istio must be installed in order to access the services that Keptn deploys using `helm-service`.
+You can instead use and install the [Job Executor Service](https://artifacthub.io/packages/keptn/keptn-integrations/job-executor-service)
+to deploy these services.
 
 Please follow the steps in sequential order
 to implement Istio for your Keptn instance:

@@ -50,17 +50,18 @@ to support the needs of the projects you are running:
         * Install the Integration on the Kubernetes cluster(s)
         where the Keptn Execution Plane is installed.
         * Follow the installation instructions for the integration.
-    * Install and configure [Istio](istio) on the Kubernetes cluster(s)
-    where the Keptn Execution Plane is installed.
+    * If you are using services that Keptn deploys using `helm-service`,
+      install and configure [Istio](istio) on the Kubernetes cluster(s)
+      where those services are installed.
 
 * If you are using [Quality Gates](../concepts/quality_gates),
    install the [monitoring service](monitoring) you want to use
    following the instructions for that Integration:
-   * DataDog
+   * [DataDog](https://artifacthub.io/packages/keptn/keptn-integrations/datadog-service)
    * [Dynatrace](https://artifacthub.io/packages/keptn/keptn-integrations/dynatrace-service)
    * [Prometheus](https://artifacthub.io/packages/keptn/keptn-integrations/prometheus-service)
    * To use a different Observability Platform as your data source,
-   follow the instructions in [Custom Integrations](http://localhost:1313/docs/0.17.x/integrations/)
+   follow the instructions in [Custom Integrations](../0.18.x/integrations)
    to create an integration for your Observability Platform.
    or start a conversation in the #keptn-integrations channel in the [Keptn Slack](https://keptn.slack.com).
 
