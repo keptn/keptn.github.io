@@ -24,7 +24,7 @@ that interact with the [Keptn API](../../0.18.x/reference/api/).
 It must be [installed](../../install/cli-install)
 on the local machine and is used to send commands to Keptn.
 To communicate with Keptn, you need to know the API token
-which is managed as a shared secret by the [Secret Service](../secrets).
+which is managed as a shared secret by the [Secret Service](../../0.18.x/operate/secrets).
 The shared secret is generated during the installation and verified by the *api* component.
 
 ## Keptn Bridge
