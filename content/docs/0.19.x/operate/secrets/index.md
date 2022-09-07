@@ -1,11 +1,11 @@
 ---
 title: Secret Service
 description: Learn how to manage secrets in a Keptn cluster.
-weight: 20
+weight: 70
 keywords: [keptn, use-cases]
 ---
 
-The **Secret Service** is used to manage secrets in a Keptn Cluster.
+The **Secret Service** manages secrets in a Keptn Cluster.
 It provides a simple API for creating, updating or deleting secrets in a specific secret backend such as Kubernetes or vault.
 
 **NOTE:** The current implementation only supports [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret/) as a secret backend.
@@ -14,7 +14,7 @@ It provides a simple API for creating, updating or deleting secrets in a specifi
 
 A secret created by the secret-service is bound to a scope.
 A scope contains a set of capabilities which are a set of permissions.
-Currently, scopes are hardcoded into a file called `scopes.yaml` which is read by the secret-service during startup.
+Scopes are hardcoded into a file called `scopes.yaml` which is read by the secret-service during startup.
 
 The default scope for Keptn looks like this:
 ```
@@ -46,5 +46,5 @@ Based on the `scopes.yaml` file above, when a secret with scope `keptn-webhook-s
 Thus, every Kubernetes Pod bound to the service account *keptn-webhook-service* is able to read the secret.
 
 **NOTE:** The `scopes.yaml` must be modified manually in order to add, modify or delete any scopes.
-Currently, no API endpoint is provided for that.
+No API endpoint is provided for that.
 
