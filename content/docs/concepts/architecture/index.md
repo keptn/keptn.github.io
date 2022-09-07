@@ -117,9 +117,6 @@ The distributor pod is not required, but it requires more coding in each service
 
 The default Keptn installation includes Keptn-services for some Execution Plane services,including:
 
-- **helm-service:** creates/modifies the configuration of a service that is going to be onboarded
-  and fetches configuration files from the *configuration-service* and applies those using Helm.
-
 - **lighthouse-service:** conducts a quality evaluation based on configured SLOs/SLIs. 
 
 - **approval-service:** implements the automatic quality gate in each stage
@@ -132,6 +129,13 @@ The default Keptn installation includes Keptn-services for some Execution Plane 
 
 - **remediation-service:** determines the action to be performed in remediation workflows. 
 
+You also need a service to create/modify the configuration of a service that is going to be onboarded,
+fetch configuration files from the *configuration-service*, and apply the configurations.
+In older Keptn releases,
+the [helm-service](https://artifacthub.io/packages/helm/keptn/helm-service)
+was included in the default Keptn distribution for this purpose
+and it is still the most popular solution.
+
 Any of these services can be replaced by a service for another tool
 that reacts to and sends the same signals.
 See [Keptn and other tools](../keptn-tools) for more information.
@@ -142,13 +146,13 @@ or in a different Kubernetes cluster.
 
  - When they are operated within the same cluster, the services can directly access the HTTP APIs
    provided by the control plane services, without having to authenticate.
-   In this case, the distributor sidecars directly connect themselves to the NATS cluster
-   to subscribe to topics and send back events.
+   In this case, the distributor sidecars or `cp-connectors`
+   directly connect themselves to the NATS cluster to subscribe to topics and send back events.
 
  - When an execution plane is operated outside of the Cluster,
    it can communicate with the HTTP API exposed by the `api-gateway-nginx`.
    In this case, every request to the API must be authenticated using the `keptn-api` token. 
-   The distributor sidecars are not able to directly connect to the NATS cluster,
+   The distributor sidecars and cp-connectors are not able to directly connect to the NATS cluster,
    but they can be configured to fetch open `.triggered` events from the HTTP API.
 
 See [Integrations](../../integrations) for links to Keptn-service integrations that are available.
