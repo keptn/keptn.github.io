@@ -41,7 +41,7 @@ Use the `match` selector to define a filter on the `result` property of the even
 For example, you can specify that an action should execute
 only if the event property is `failed` or only when it is `success`.
 
-See [Using triggeredOn in a sequence](../../../define/triggers/##use-triggeredon-in-a-sequence)
+See [Using triggeredOn in a sequence](../../../define/triggers/#use-triggeredon-in-a-sequence)
 for more details.
 
 ## Differences between versions
