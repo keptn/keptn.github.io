@@ -255,20 +255,9 @@ k3d cluster delete mykeptn
 
 ## FAQ
 
-### Kubernetes version not supported
-In case `keptn install` prevents you from installing Keptn due to a (currently) unsupported Kubernetes version, you can bypass this check at your own risk by using the Helm installation option of Keptn.
-
-```bash
-helm install keptn https://github.com/keptn/keptn/releases/download/0.14.1/keptn-0.14.1.tgz -n keptn --create-namespace --set=continuous-delivery.enabled=true --wait
-helm install helm-service https://github.com/keptn/keptn/releases/download/0.14.1/helm-service-0.14.1.tgz -n keptn --create-namespace --wait
-helm install jmeter-service https://github.com/keptn/keptn/releases/download/0.14.1/jmeter-service-0.14.1.tgz -n keptn --create-namespace --wait
-```
-
-Now continue with step 4 from the quickstart guide.
-
 ### Disk pressure on pods in Kubernetes
 
-If the installation of Keptn is timing out, you can check if the root cause are low resources, such as disk space, by executing `kubectl describe pod PODID -n keptn`.executing
+If the installation of Keptn is timing out, you can check whether this is caused by low resources such as disk space, by executing `kubectl describe pod PODID -n keptn`.
 
 Please ensure that your local k3d environment has enough resources. You can verify this in your Docker resource settings. This quickstart guide has been tested with the following configuration:
 <details><summary>Resources</summary>
