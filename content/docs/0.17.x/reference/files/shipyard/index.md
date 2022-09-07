@@ -77,8 +77,28 @@ although most projects only use some of the constructions.
 A stage is named for the particular activity to be performed,
 such as `development`, `hardening`, `staging`, or `production`.
 Each *shipyard* file must have at least one `stage`.
-The name of the stage becomes the name of the branch in the upstream Git repository
-and the Kubernetes namespace to which services are deployed.
+The name of the stage becomes the name of the branch
+in the [upstream Git repository](../../../manage/git_upstream)
+and the Kubernetes namespace to which
+[services](../../../manage/service) are deployed.
+
+A stage can be given any meaningful name that conforms to the
+[Kubernetes Object Names and IDs](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/)
+specification, meaning:
+
+* Contains only lowercase alphanumeric characters or `-`.
+Most especially, must not contain `/` or `%`.
+* Starts and ends with an alphanumeric character.
+* Contains at most 43 characters.
+
+  Kubernetes allows up to 63 character names (because of DNS limitations).
+  For continuous delivery, the `helm-service` creates Helm releases
+  named `<serviceName>-generated`, where `<serviceName>` is the stage name..
+  Because "-generated" is 10 characters, the stage name can not be longer than 43 characters.
+
+  It is possible that larger values are allowed if you are not using the `helm-service`
+  but this has not been tested and is not guaranteed.
+
 A stage has the properties:
 
 * `name`: A unique name for the stage
@@ -93,10 +113,16 @@ about the ongoing initiative to overcome this limitation.
 
 **Sequence**
 
-A sequence is an ordered list of `task`s that are triggered sequentially
-and are part of a `stage`.
+A sequence is an ordered list of `task`s that are triggered sequentially and are part of a `stage`.
 By default, a sequence is a standalone section that runs and finishes,
 unless you specify the `triggeredOn` property to form a chain of sequences.
+
+Sequences that use the same service cannot be run in parallel.
+If you simultaneously trigger multiple sequences for the same service,
+they are queued to run sequentially.
+Sequences for different services can be run in parallel.
+This is possible when you have different automation projects
+or if you have multiple services within a project.
 
 A sequence has the properties:
 
@@ -318,5 +344,6 @@ to allow `stage`s to be added to and removed from a *shipyard* in an existing pr
 
 * [Working with shipyard files](../../../manage/shipyard)
 * [Multi-stage delivery](../../../continuous_delivery/multi_stage)
+* [Quality gates](../../../quality_gates)
 * [Triggers](../../../manage/triggers)
 * [Remediation Config](../remediation)

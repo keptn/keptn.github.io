@@ -77,8 +77,28 @@ although most projects only use some of the constructions.
 A stage is named for the particular activity to be performed,
 such as `development`, `hardening`, `staging`, or `production`.
 Each *shipyard* file must have at least one `stage`.
-The name of the stage becomes the name of the branch in the upstream Git repository
-and the Kubernetes namespace to which services are deployed.
+The name of the stage becomes the name of the branch
+in the [upstream Git repository](../../../manage/git_upstream)
+and the Kubernetes namespace to which
+[services](../../../manage/service) are deployed.
+
+A stage can be given any meaningful name that conforms to the
+[Kubernetes Object Names and IDs](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/)
+specification, meaning:
+
+* Contains only lowercase alphanumeric characters or `-`.
+Most especially, must not contain `/` or `%`.
+* Starts and ends with an alphanumeric character.
+* Contains at most 43 characters.
+
+  Kubernetes allows up to 63 character names (because of DNS limitations).
+  For continuous delivery, the `helm-service` creates Helm releases
+  named `<serviceName>-generated`, where `<serviceName>` is the stage name..
+  Because "-generated" is 10 characters, the stage name can not be longer than 43 characters.
+
+  It is possible that larger values are allowed if you are not using the `helm-service`
+  but this has not been tested and is not guaranteed.
+
 A stage has the properties:
 
 * `name`: A unique name for the stage

@@ -1,6 +1,6 @@
 ---
 title: Installation
-description: How to install and configure your Keptn environment
+description: How to install and configure your Keptn environment.  Scroll down for a reference list of tasks.
 weight: 30
 icon: concepts
 ---
@@ -13,16 +13,18 @@ The steps to install and configure your Keptn instance are:
     with the Keptn version you are installing
     and that you have adequate resources.
 
-2. Install [Keptn CLI](cli-install)
-
-3. Decide [how you want to access Keptn](access).
+2. Decide [how you want to access Keptn](access).
    Kubernetes can expose Keptn using a LoadBalancer, a NodePort, an Ingress,
    or using Port-forwarding.
 
-4. Install Keptn, specifying the access method you have chosen
-    * Using a [Helm chart](helm-install), all on one cluster
-    * [Manually](../0.16.x/operate/install/#install-keptn),
-    using **keptn install** commands (deprecated as of Release 0.17.x)
+3. Install [Keptn CLI](cli-install) on the cloud shell machine
+   that is used to access your cloud provider, Kubernetes cluster, etc (recommended).
+
+4. Install the [Helm CLI](https://helm.sh).
+
+5. Install Keptn using a [Helm chart](helm-install),
+   specifying the access method you have chosen:
+    * All on one cluster
     * Install using a [Multi-cluster setup](multi-cluster),
     meaning that the Keptn Control Plane is installed in one Kubernetes cluster
     and the Keptn Execution Plane is installed in one or more other Kubernetes clusters.
