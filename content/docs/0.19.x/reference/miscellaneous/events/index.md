@@ -35,14 +35,13 @@ sh.keptn.event.<taskname>.triggered
 sh.keptn.event.<taskname>.finished
 ````
 
-Use the `TriggeredOn` property to a shipyard sequence
-to execute that sequence 
-when the specified event is received.
+Use the `triggeredOn` property in a shipyard sequence
+to execute that sequence when the specified event is received.
 Use the `match` selector to define a filter on the `result` property of the event.
 For example, you can specify that an action should execute
 only if the event property is `failed` or only when it is `success`.
 
-See [Using TriggeredOn in a sequence](../../../define/triggers/#using-triggeredon-in-a-sequence)
+See [Using triggeredOn in a sequence](../../../define/triggers/#using-triggeredon-in-a-sequence)
 for more details.
 
 ## Differences between versions
