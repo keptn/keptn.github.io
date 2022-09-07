@@ -257,7 +257,7 @@ k3d cluster delete mykeptn
 
 ### Disk pressure on pods in Kubernetes
 
-If the installation of Keptn is timing out, you can check if the root cause are low resources, such as disk space, by executing `kubectl describe pod PODID -n keptn`.
+If the installation of Keptn is timing out, you can check whether this is caused by low resources such as disk space, by executing `kubectl describe pod PODID -n keptn`.
 
 Please ensure that your local k3d environment has enough resources. You can verify this in your Docker resource settings. This quickstart guide has been tested with the following configuration:
 <details><summary>Resources</summary>
