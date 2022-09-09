@@ -9,7 +9,7 @@ weight: 67
 
 **Key announcements**:
 
-:information_source: The *Helm-service* and *JMeter-service* have been moved into the [keptn-contrib](https://github.com/keptn-contrib) GH organization.
+:information_source: *Helm-service* and *JMeter-service* have been moved into the [keptn-contrib](https://github.com/keptn-contrib) GH organization.
 
 :star: *Bridge* uses [D3](https://d3js.org/) to render evaluation graphs improving rendering time by up to 30%.
 
