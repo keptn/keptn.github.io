@@ -1,21 +1,20 @@
 ---
-title: Define project in a shipyard
-description: Overview of using a shipyard, sequences and tasks to define a project
+title: A simple project
+description: A simple project with dev, hardening, and production stages
 weight: 30
-keywords: [0.19.x-manage]
+keywords: [0.19.x-define]
 aliases:
 ---
 
-A [shipyard.yaml](../../reference/files/shipyard) file is defined at the level of a project.
-This means that all services in a project share the same shipyard definition.
+This page walks through the process of populating
+a [shipyard](../../reference/files/shipyard) file that defines
+a simple, multi-stage project.
 
-* A shipyard defines the stages each deployment has to go through until it is released in the final stage, e.g., the production stage.
-
-* A shipyard can consist of any number of stages; but at least one. Each stage must have at least the name property.
-
-* A stage can contain any number of sequences but must have at least one.
 
 **Example of a shipyard with three stages:**
+
+This is a minimalist *shipyard* file that can be used to create the project
+as discussesd in [Start a project](../manage/project):
 
     apiVersion: spec.keptn.sh/0.2.3
     kind: "Shipyard"
@@ -26,6 +25,11 @@ This means that all services in a project share the same shipyard definition.
         - name: "dev"
         - name: "hardening"
         - name: "production"
+
+This is enough to set up the project.
+To make it do something useful, you must populate
+[tasks and sequences](task-sequence).
+These are illustrated below.
 
 **Example:** Extended shipyard with a delivery sequence in all three stage:
 

@@ -1,7 +1,7 @@
 ---
 title: Quality Gates
 description: Implement Quality Gate evaluations in your project
-weight: 70
+weight: 50
 keywords: [0.19.x-quality_gates]
 ---
 
