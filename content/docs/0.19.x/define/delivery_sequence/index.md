@@ -1,7 +1,7 @@
 ---
 title: Delivery sequence
 description: Customize your delivery and staging process.
-weight: 50
+weight: 70
 keywords: [0.19.x-cd]
 ---
 
