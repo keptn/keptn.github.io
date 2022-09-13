@@ -357,7 +357,7 @@ to allow `stage`s to be added to and removed from a *shipyard* in an existing pr
 
 ## See also
 
-* [Define project in a shipyard](../../../define/shipyard)
+* [A simple project](../../../define/simple-project)
 * [Delivery sequence](../../../define/delivery_sequence)
 * [Quality gates](../../../define/quality-gates)
 * [Triggers](../../../define/triggers)
