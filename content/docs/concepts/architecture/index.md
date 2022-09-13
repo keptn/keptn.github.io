@@ -9,73 +9,152 @@ Keptn is an event-based control plane for continuous delivery and automated oper
 
 {{< popup_image link="./assets/architecture.png" caption="Keptn architecture" width="65%">}}
 
+This event-driven architecture means that Keptn is tool and vendor agnostic.
+See [Keptn and other tools](../keptn-tools) for a fuller discussion.
+
 ## Prerequisites
 
-During the installation of Keptn, [NATS](https://nats.io/) is installed into the Kubernetes namespace where Keptn is installed.
+During the installation of Keptn, [NATS](https://nats.io/) is installed into the Kubernetes namespace
+where the Keptn Control Plane is installed.
 
 ## Keptn CLI
-The Keptn CLI needs to be installed on the local machine and is used to send commands to Keptn by interacting with the API of Keptn. To communicate with Keptn you need to know a shared secret that is generated during the installation and verified by the *api* component.
 
-**Note:** A dedicated Keptn CLI section is provided [here](../../0.15.x/reference/cli/), which helps you to get started and lists all available commands.
+Use the [Keptn CLI](../../0.18.x/reference/cli/) to send commands
+that interact with the [Keptn API](../../0.18.x/reference/api/).
+It must be [installed](../../install/cli-install)
+on the local machine and is used to send commands to Keptn.
+To communicate with Keptn, you need to know the API token
+which is managed as a shared secret by the [Secret Service](../../0.18.x/operate/secrets).
+The shared secret is generated during the installation and verified by the *api* component.
 
 ## Keptn Bridge
 
-The *Keptn Bridge* provides a user interface that shows all Keptn-managed projects and services. Besides, it gives an overview of the staging environment. 
+The *Keptn Bridge* is a user interface that can be used
+to view and manage Keptn projects and services.
 
-**Note:** A dedicated section for the Keptn Bridge is provided [here](../../0.15.x/bridge/), which explains how to access it and shows the user interface.
+See [Keptn Bridge](../../0.18.x/bridge/),
+for information about how to access and use the Keptn Bridge.
 
 ## Keptn Control Plane
 
-Keptn has several core components that are set up during the installation.
+The Keptn Control Plane runs the basic components that are required
+to run Keptn and to manage projects, stages, and services.
+This includes handling events and providing integration points.
+It orchestrates the task sequences that are defined in the *shipyard*
+but does not actively execute the tasks.
 
 ### api-gateway-nginx
 
-The *api-gateway-nginx* component is the single point used for exposing Keptn to the outside world. Besides, it is responsible to redirect incoming requests to the right internal Keptn endpoints, e.g., to api, bridge, or configuration-service.
+The *api-gateway-nginx* component is the single point used for exposing Keptn to the outside world.
+It supports the four [access options](../../install/access) that Kubernetes supports:
+LoadBalancer, NodePort, Ingress, and Port-Forward.
+
+It also redirects incoming requests to the appropriate internal Keptn endpoints --
+api, bridge, or resource-service.
 
 ### api-service
 
-The *api* component provides a REST API that allows communicating with Keptn. It provides endpoints to authenticate, get metadata about the Keptn installation within the cluster, forwarding CloudEvents to the NATS cluster, and triggering evaluations for a service.
+The [Keptn API](../../0.18.x/reference/api/) provides a REST API
+that allows you to communicate with Keptn.
+It provides endpoints to authenticate, get metadata about the Keptn installation within the cluster,
+forward CloudEvents to the NATS cluster, and triggering evaluations for a service.
 
-**Note:** A dedicated Keptn API section is provided [here](../../0.15.x/reference/api/), which helps you to access the API and to explore the available endpoints.
+The documentation shows you how to access the API and to explore the available endpoints.
 
 ### mongodb-service
 
-The *mongodb-datastore* provides means to store event data in a MongoDB deployed in your Keptn namespace. Hence, the service provides the REST endpoint `/events` to query events.
+The *mongodb-datastore* stores event data in a MongoDB deployed in your Keptn namespace.
+Hence, the service provides the REST endpoint `/events` to query events.
 
-### configuration-service
+### resource-service
 
-The *configuration-service* is a Keptn core component and used to manage resources for Keptn project-related entities, i.e., project, stage, and service. To store the resources with version control, a Git repository is used that is mounted as a persistent volume. Besides, this service has the functionality to upload the Git repository to any Git-based service such as GitLab, GitHub, Bitbucket, etc.
+The *resource-service* is a Keptn core component
+that manages resources for Keptn project-related entities, i.e., project, stage, and service.
+This replaces the `configuration-service` that was used in Keptn releases before 0.16.x.
+It uses the Git-based [upstream repository](../../0.18.x/manage/git_upstream)/ mounted as a persistent volume
+to store the resources with version control,
+This service can upload the Git repository to any Git-based service
+such as GitLab, GitHub, and Bitbucket.
 
 ### shipyard-controller
 
-The *shipyard-controller* is responsible for managing all Keptn-related entities, such as projects, stages and services and provides an HTTP API that allows to perform CRUD operations on them. 
-Another responsibility of this service is the control of task sequences defined in the shipyard file of a project by sending out `.triggered` events whenever a task within a task sequence should be executed. 
-It will then listen for incoming `.started` and `.finished` events and use them to proceed within the task sequence.
+The *shipyard-controller* manages all Keptn-related entities, such as projects, stages and services,
+and provides an HTTP API that is used to perform CRUD operations on them. 
+This service also controls the execution of task sequences
+that are defined in the project's [shipyard](../../0.18.x/reference/files/shipyard)
+by sending out `.triggered` events whenever a task within a task sequence should be executed. 
+It then listens for incoming `.started` and `.finished` events
+and uses them to proceed with the task sequence.
 
 ## Execution Plane Services
 
-To enrich the continuous delivery use case or to build automated operations, Keptn relies on services from the community. Those services can be easily plugged into a task sequence to extend the delivery pipeline or to further automate operations.
+The Keptn Execution Plane hosts the Keptn-services
+that integrate the tools that are used to process the tasks.
+The Keptn cluster can contain a single Execution Plane
+that is installed either in the same Kubernetes cluster as the Control Plane
+or in a different Kubernetes cluster..
+You can also configure multiple Execution Planes on multiple Kubernetes clusters.
 
-This category of services reacts on `.triggered` Keptn events sent by the shipyard controller and perform: (1) continuous delivery tasks like deploying or promoting a service, and (2) orchestrational tasks for automating operations.
+Keptn-services react to `.triggered` Keptn events that are sent by the shipyard controller.
+They perform continuous delivery tasks like deploying or promoting a service
+and orchestrational tasks for automating operations.
+Those services can be easily plugged into a task sequence
+to extend the delivery pipeline or to further automate operations.
+Execution plane services subscribe to events using one of the following mechanisms:
 
-Here are some examples of execution plane services:
+* [distributor](../../0.18.x/reference/miscellaneous/distributor) sidecar
+that forwards incoming `.triggered` events to execution plane services.
+These distributor sidecars can also be used to send `.started` and `.finished` events
+back to the Keptn control plane.
+This was the original Keptn mechanism for sending events to services.
 
-- **helm-service:** It has two responsibilities: (1) creates/modifies the configuration of a service that is going to be onboarded, and (2) fetches configuration files from the *configuration-service* and applies those using Helm. The current Helm version used by this service is Helm v3.1.2. 
+* **cp-connector** (Control Plane Connector) uses Go code to handle
+the logic of an integration connecting back to the control plane.
+This mechanism was introduced in Release 0.15.x and is used by all core Keptn services.
+The distributor pod is not required, but it requires more coding in each service.
 
-- **lighthouse-service:** It is responsible for conducting a quality evaluation based on configured SLOs/SLIs. 
+* **go-sdk** (experimental) -- Provides a wrapper that adds features around the cd-connector.
 
-- **approval-service:** It implements the automatic quality gate in each stage where the approval strategy has been set to `automatic`, i.e., it will send an `approval.finished` event which contains the information about whether a task sequence (e.g. the artifact delivery) should continue or not. If the approval strategy within a stage has been set to `manual`, the gatekeeper service will not respond with any event since in that case the user is responsible for sending an `approval.finished` event (either via the Bridge or via the API).  
+The default Keptn installation includes Keptn-services for some Execution Plane services,including:
 
-- **remediation-service:** It is used to determine the action to be performed in remediation workflows. 
+- **lighthouse-service:** conducts a quality evaluation based on configured SLOs/SLIs. 
 
-Execution plane services subscribe to events via a distributor sidecar, that forwards incoming `.triggered` events to them. These distributor sidecars can also be used to send `.started` and `.finished` events back to the Keptn control plane.
+- **approval-service:** implements the automatic quality gate in each stage
+  where the approval strategy has been set to `automatic`.
+  In other words, it sends an `approval.finished` event which contains information
+  about whether a task sequence (such as the artifact delivery) should continue or not.
+  If the approval strategy within a stage has been set to `manual`,
+  the gatekeeper service does not respond with any event since, in that case,
+  the user is responsible for sending an `approval.finished` event (either via the Bridge or via the API).  
 
-As illustrated in the architecture diagram above, execution plane services can both be operated within the same cluster as Keptn, or outside of the cluster. 
+- **remediation-service:** determines the action to be performed in remediation workflows. 
 
- - When they are operated within the same cluster, the services can directly access the HTTP APIs provided by the control plane services,
-without having to authenticate. In this case, the distributor sidecars directly connect themselves to the NATS cluster to subscribe to topics and send back events.
+You also need a service to create/modify the configuration of a service that is going to be onboarded,
+fetch configuration files from the *configuration-service*, and apply the configurations.
+In older Keptn releases,
+the [helm-service](https://artifacthub.io/packages/helm/keptn/helm-service)
+was included in the default Keptn distribution for this purpose
+and it is still the most popular solution.
 
-- When an execution plane is operated outside of the Cluster, it has the possibility to communicate with the HTTP API exposed by the `api-gateway-nginx`. In this case, every request to the API has to be authenticated using the `keptn-api` token. 
-Also, the distributor sidecars do not have the possibility to directly connect to the NATS cluster, but they can be configured to fetch open `.triggered` events from the HTTP API.
+Any of these services can be replaced by a service for another tool
+that reacts to and sends the same signals.
+See [Keptn and other tools](../keptn-tools) for more information.
 
-To read more about developing execution plane services, please refer to the following section in the docs: [Write a Keptn-service](../../0.15.x/integrations/custom_integration/), which helps you to implement a custom service for Keptn. 
+As illustrated in the architecture diagram above,
+execution plane services can be operated within the same cluster as the Keptn Control Plane
+or in a different Kubernetes cluster.
+
+ - When they are operated within the same cluster, the services can directly access the HTTP APIs
+   provided by the control plane services, without having to authenticate.
+   In this case, the distributor sidecars or `cp-connectors`
+   directly connect themselves to the NATS cluster to subscribe to topics and send back events.
+
+ - When an execution plane is operated outside of the Cluster,
+   it can communicate with the HTTP API exposed by the `api-gateway-nginx`.
+   In this case, every request to the API must be authenticated using the `keptn-api` token. 
+   The distributor sidecars and cp-connectors are not able to directly connect to the NATS cluster,
+   but they can be configured to fetch open `.triggered` events from the HTTP API.
+
+See [Integrations](../../integrations) for links to Keptn-service integrations that are available.
+Use the information in [Custom Integrations](../../0.18.x/integrations)
+to create a Keptn-service that integrates other tools.

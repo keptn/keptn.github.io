@@ -84,7 +84,7 @@ Each *shipyard* file must have at least one `stage`.
 The name of the stage becomes the name of the branch
 in the [upstream Git repository](../../../manage/git_upstream)
 and the Kubernetes namespace to which
-[services](../../../define/service) are deployed.
+[services](../../../manage/service) are deployed.
 
 A stage can be given any meaningful name that conforms to the
 [Kubernetes Object Names and IDs](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/)
@@ -357,7 +357,7 @@ to allow `stage`s to be added to and removed from a *shipyard* in an existing pr
 
 ## See also
 
-* [Define project in a shipyard](../../../define/shipyard)
+* [A simple project](../../../define/simple-project)
 * [Delivery sequence](../../../define/delivery_sequence)
 * [Quality gates](../../../define/quality-gates)
 * [Triggers](../../../define/triggers)

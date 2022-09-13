@@ -6,14 +6,22 @@ keywords: [0.19.x-manage]
 aliases:
 ---
 
-A Keptn sequence can be triggered in any of the following ways:
+By default, a sequence runs as a standalone section that runs and finishes.
+You can manually trigger a sequence in any of the following ways,
+usually for testing and demonstration purposes:
 
+* From the Bridge UI
 * Using the Keptn API
 * Using the Keptn CLI
-* From the Bridge UI
-* Using the `triggeredOn`property in the `shipyard` file.
 
-## Using triggeredOn in a sequence
+You can also use the `triggeredOn` property
+in the the [shipyard](../../reference/files/shipyard)
+to specify an event that triggers this sequence,
+implicitly linking two sequences.
+
+Each of these mechanismsis discussed below.
+
+## Use triggeredOn in a sequence
 
 Use the `triggeredOn` property in a project's [shipyard](../../reference/files/shipyard) file
 to kick off a sequence in response to specific events.
@@ -104,12 +112,26 @@ spec:
 the event `sh.keptn.event.production.delivery.finished` with `result=failed` is sent out.
 This triggers the *rollback* sequence, based on the configuration of the `triggeredOn` and selector.
 
-## Trigger a sequence
+## Trigger a sequence from the Keptn Bridge
+
+The [Trigger a Keptn sequence](https://www.youtube.com/watch?v=S0eumPKuAJY) video
+illustrates how to trigger a sequence using the Keptn Bridge
+and discusses using `triggeredOn` in a `sequence` in your [shipyard](../../../0.19.x/reference/files/shipyard).
+
+## Trigger a sequence with the CLI
+
+Use the appropriate CLI command to trigger a sequence:
+
+* `keptn trigger delivery` -- Trigger the delivery of a new artifact for a service in a project
+* `keptn trigger evaluation` -- Trigger an evaluation of a test for a service in a project and stage
+* `keptn trigger sequence` -- Trigger the execution of any sequence in a project
+
+## Trigger a sequence with the POST / event API
 
 A [shipyard.yaml](../../reference/files/shipyard) file can contain multiple sequences in multiple stages.
 Use `POST /event` [Keptn API](../../reference/api/) to run a specific `sequence` with the following template:
 
-```json
+```
 {
     "data": {
       "project": "[project]",
@@ -125,11 +147,12 @@ Use `POST /event` [Keptn API](../../reference/api/) to run a specific `sequence`
 
 Replace the values between square brackets (`[]`) based on your configuration:
 
-* `project`: your project name;
-* `service`: your service name;
-* `stage`: the stage in which your sequence is defined;
-* `sequence-name`: the sequence to trigger;
-* `my-source`: your source. More info are available in the [CloudEvents spec](https://github.com/cloudevents/spec/blob/v1.0/spec.md#source).
+* `project`: your project name
+* `service`: your service name
+* `stage`: the stage in which your sequence is defined
+* `sequence-name`: the sequence to trigger
+* `my-source`: your source. More information is available
+   in the [CloudEvents spec](https://github.com/cloudevents/spec/blob/v1.0/spec.md#source).
 
 ### Examples
 
