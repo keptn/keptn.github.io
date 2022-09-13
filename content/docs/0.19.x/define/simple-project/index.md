@@ -14,7 +14,7 @@ a simple, multi-stage project.
 **Example of a shipyard with three stages:**
 
 This is a minimalist *shipyard* file that can be used to create the project
-as discussesd in [Start a project](../manage/project):
+as discussesd in [Start a project](../../manage/project):
 
     apiVersion: spec.keptn.sh/0.2.3
     kind: "Shipyard"
@@ -28,7 +28,7 @@ as discussesd in [Start a project](../manage/project):
 
 This is enough to set up the project.
 To make it do something useful, you must populate
-[tasks and sequences](task-sequence).
+[tasks and sequences](../task-sequence).
 These are illustrated below.
 
 **Example:** Extended shipyard with a delivery sequence in all three stage:
