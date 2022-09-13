@@ -1,7 +1,7 @@
 ---
 title: Delivery sequence
 description: Customize your delivery and staging process.
-weight: 50
+weight: 70
 keywords: [0.19.x-cd]
 ---
 
@@ -121,7 +121,7 @@ After declaring the delivery for a project in a shipyard, you are ready to creat
 
 ## Trigger a multi-stage delivery
 
-After creating a project and creating your [service(s)](../service), you can trigger a delivery using the Keptn CLI or API.
+After creating a project and creating your [service(s)](../../manage/service), you can trigger a delivery using the Keptn CLI or API.
 
 <details><summary>**Trigger via Keptn CLI**</summary>
 <p>

@@ -1,7 +1,7 @@
 ---
 title: Quality Gates
 description: Implement Quality Gate evaluations in your project
-weight: 70
+weight: 50
 keywords: [0.19.x-quality_gates]
 ---
 
@@ -15,7 +15,7 @@ see the [SLO](../../reference/files/slo) reference page.
 ## Definition of project, stage, and service
 
 Let's assume you have an application that is running in an environment and composed of one or multiple services (aka. microservices). For example, you have an application called `easyBooking`, which can be broken down into the `booking` and `payment` service. Besides, the application is running in a `quality_assurance` environment (aka. stage).
-In order to manage your application and services in Keptn, you need a Keptn [project, stage](../../manage/project/) and [services](../service).
+In order to manage your application and services in Keptn, you need a Keptn [project, stage](../../manage/project/) and [services](../../manage/service).
 For the `easyBooking` application, the Keptn entities of a project, stage, and service map to the example as follows:
 
 * `project`: *easyBooking*
@@ -65,7 +65,7 @@ as discussed in [Create a project](../../manage/project).
 
 * To create the Keptn service `booking`,
 use the [keptn create service](../../reference/cli/commands/keptn_create_service/) command
-as discussed in [Create a service](../service/#create-a-service).
+as discussed in [Create a service](../../manage/service/).
 
 **Note:** It is not necessary to create the stage since it is declared in the Shipyard that is applied during the project creation.
 

@@ -1,13 +1,13 @@
 ---
 title: Statistics Service
-description: Provide usage statistics about a Keptn installation and optionally display them on a Swagger dashboard.
+description: Provide usage statistics about a Keptn instance
 
-weight: 10
+weight: 60
 icon: setup
 ---
 
 
-The Statistics Service provides usage statistics about a Keptn installation.
+The Statistics Service provides usage statistics about a Keptn instance.
 You can access the service using the Keptn API
 and view the results using the Swagger UI.
 
@@ -46,7 +46,7 @@ To browse the API docs, open the Swagger docs in your browser, e.g. `${KEPTN_URL
 
 ## Specifying time frames
 
-To retrieve usage statistics for a certain time frame, you need to provide the [Unix timestamps](https://www.epochconverter.com/) for the start and end of the time frame.
+To retrieve usage statistics for a certain time frame, you must provide the [Unix timestamps](https://www.epochconverter.com/) for the start and end of the time frame.
 Use the [EpochConverter](https://www.epochconverter.com/) to generate timestamps.
 
 A Keptn API example using a timestamp is:
