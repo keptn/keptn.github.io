@@ -75,7 +75,7 @@ use the [keptn add-resource](../../cli/commands/keptn_add-resource) command:
 
 **Example of multiple SLI configurations:**
 
-* Let's assume, we add the following SLI configurations to a project, stage, and service: 
+* Let's assume we add the following SLI configurations to a project, stage, and service: 
 
     * SLI configuration on project-level:
 
@@ -118,7 +118,7 @@ use the [keptn add-resource](../../cli/commands/keptn_add-resource) command:
     ```
 ## Using different SLI environments
 
-Different projects, stages, and services can utilize different environments for your SLI.
+Different projects, stages, and services within stages can utilize different environments for your SLI.
 To do this, you create different configuration files for your SLI
 and have each point to a unique secret that contains the API endpoint for your SLI
 and a token.
@@ -129,28 +129,23 @@ Consult the documentation for your SLI for the specifics.
 
 Each SLI has a configuration file;
 for Dynatrace, it is [dynatrace.conf.yaml](https://github.com/keptn-contrib/dynatrace-service/blob/master/documentation/dynatrace-conf-yaml-file.md).
-This must be specified on the project level as the default configuration for the project.
-You can create multiple versions of this file to use different environments for different projects.
-such as `dynatrace.conf_project1.yaml` and `dynatrace.conf_project2.yaml`.
-All project-level files should be located in the same directory
-as the default `dynatrace/dynatrace.conf.yaml` file.
-
-You can also create separate configuration files for different services and different stages.
-The service first looks for a configuration on the service level,
-then at the stage level, and finally at the project level if no other configurations are found.
-So, to use different SLI environments for different stages,
-you might have files named `dynatrace.conf_dev.yaml` and `dynatrace.conf_qa.yaml`,
-also colocated with the default project configuration.
-
+You can create multiple versions of this file to use different environments
+for different projects, stages, and services
+by locating a version of the file in the appropriate directory in your upstream Git repo.
+For example, if your project has the `dev`, `qa` and `prod` stages,
+you could create a unique `dynatrace.conf.yaml` file in each of these directories on Git.
 Within each file, modify the value for the API credentials secret name;
 for Dynatrace, this is the `dtCreds` field.
 
+The service first looks for a configuration on the service level,
+then at the stage level, and finally at the project level if no other configurations are found.
 
 ## See also
 
 * [slo](../slo)
 
 * [Dynatrace](https://artifacthub.io/packages/keptn/keptn-integrations/dynatrace-service)
+  * [Configuring the dynatrace-service with dynatrace/dynatrace.conf.yaml](https://github.com/keptn-contrib/dynatrace-service/blob/master/documentation/dynatrace-conf-yaml-file.md#customizing-the-conf[…]ptn-stage-or-service)
 
 * [Prometheus](https://artifacthub.io/packages/keptn/keptn-integrations/prometheus-service)
 
