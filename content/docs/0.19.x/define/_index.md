@@ -53,3 +53,9 @@ or send notifications to staff members.
 
 * [Remediation Sequence](remediation-sequence)
   discusses how to implement automatic remediation on your site.
+
+Other examples of what you can do with Keptn:
+
+* [Demo: Quality gate evaluation using metrics from another tool](infracost)
+  provides a video demonstration of how Keptn can run a quality gate evaluation
+  based on metrics from a tool that is not actually an observability platform.
