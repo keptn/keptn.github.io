@@ -1,5 +1,5 @@
 ---
-title: Demo: Quality gate evaluation using metrics from another tool
+title: "Demo: Quality gate evaluation using metrics from another tool"
 description: How to use a tool to provide metrics for a quality gate evaluation
 weight: 105
 ---
