@@ -40,6 +40,9 @@ with the following pages:
   that evaluates a deployment or release using metrics from the observability platform of your choice,
   based on criteria you define.
 
+  This page also includes a short video that steps you through the implementation process
+  for a quality gate evaluation.
+
 * [Delivery Assistant](delivery_assistant) illustrates how to implement
   a *shipyard* that has both manual and automatic delivery options,
   depending on the results of the quality gates `evaluation`.
