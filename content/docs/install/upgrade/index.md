@@ -6,12 +6,14 @@ weight: 500
 
 Keptn only supports upgrading from one release to the next;
 you cannot skip releases.
-This page
+This page has the following information:
 
-* Summarizes the upgrade process for the Keptn control plane and Keptn execution plane
-* Includes some notes about special steps required when updating multi-cluster Keptn instances
-* Gives release-specific notes about upgrading from recent releases
-* Includes links to Release Notes and upgrade instructions for older releases,
+* How to [upgrade the Keptn control plane](#upgrade-the-keptn-control-plane)
+* How to [upgrade the Keptn execution plane\(#upgrade-the-execution-plane)
+* Notes about special steps required when
+  [updating multi-cluster Keptn instances](#notes-for-upgrading-multi-cluster-instances)
+* [Release-specific notes](#upgrade-notes-by-release) about upgrading from recent releases
+* [Links to Release Notes and upgrade instructions](#upgrade-from-earlier-releases) for older releases,
   to help customers who must upgrade from older releases
 
 ## Upgrade the Keptn control plane
@@ -21,7 +23,7 @@ To upgrade the control plane:
 1. Back up your Keptn instance, following
    [Keptn's backup instructions](../../0.19.x/operate/backup_and_restore)
 1. Make sure you are connected to the Kubernetes cluster where Keptn is installed.
-1. Fetch your current Helm values with the follwoing command:
+1. Fetch your current Helm values into a file with the follwoing command:
 
    ```
    helm get values -n <your-keptn-namespace> <your-keptn-release-name> \
@@ -59,11 +61,11 @@ you may need to set the `K8S_DEPLOYMENT_NAME` environment variable on each execu
 
 ## Upgrade notes by release
 
-## Upgrade from Keptn 0.18.x to Keptn 0.19.x
+### Upgrade from Keptn 0.18.x to Keptn 0.19.x
 
-## Upgrade from Keptn 0.17.x to Keptn 0.18.x
+### Upgrade from Keptn 0.17.x to Keptn 0.18.x
 
-## Upgrade from Keptn 0.16.x to Keptn 0.17.x
+### Upgrade from Keptn 0.16.x to Keptn 0.17.x
 
 With Keptn 0.17.x, the Keptn CLI commands for `install`, `uninstall` and `upgrade` were deprecated. We recommend that you instead use the Helm CLI to upgrade.
 The Keptn Helm chart has also been refactored heavily to make it ready for future features and structural changes.
