@@ -18,11 +18,11 @@ in the Keptn GitHub repository for the default Keptn file.
 ## Usage
 
 The recommended practice is the declarative approach:
-you create your own Keptn values file that includes your customizations
-then use your customized values file to install Keptn.
-Alternatively, you can also set Helm values with `--set` during helm commands;
-this is the imparative approach.
-The --set flags take precendence over whatever you have configured in your *values.yaml* file
+you copy the standard `values.yaml` file and customize it to create your own Keptn `values` file,
+then use your customized `values` file to install Keptn.
+Alternatively, you can also set Helm values with the `--set` flag
+when issuing [helm]() commands; this is the imperative approach.
+The `--set` flags take precendence over whatever you have configured in your `values.yaml` file
 so can be used to temporarily override a value when necessary.
 
 ## Files
@@ -39,7 +39,7 @@ and so the path to the *values.yaml* file is changed.
 
 **Keptn 0.17.0 changes**
 
-Keptn Helm chart was refactored heavily in Release 0.17.0
+The Keptn Helm chart was refactored heavily in Release 0.17.0
 to make it ready for future features and structural changes.
 
 - The following Helm values changed for the Control Plane Helm chart:
@@ -62,6 +62,6 @@ to make it ready for future features and structural changes.
 ## See also
 
 * [Install Keptn using the Helm chart](../../../../install/helm-install)
-* [values.yaml](https://helm.sh/docs/chart_template_guide/values_files/)
+* [values.yaml](https://helm.sh/docs/chart_template_guide/values_files/) --
   Helm specification for the *values.yaml* file.
 
