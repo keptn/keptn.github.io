@@ -158,3 +158,261 @@ or in a different Kubernetes cluster.
 See [Integrations](../../integrations) for links to Keptn-service integrations that are available.
 Use the information in [Custom Integrations](../../0.18.x/integrations)
 to create a Keptn-service that integrates other tools.
+
+### Deep dive into NATS and multi-cluster
+
+Starter questions:
+
+1. Can the execution plane services use existing NATS rather than the control plane NATS?
+   Answer: Remote execution plane services communicate vit HTTPS, not NATS.
+   But can the execution plane services use the existing NATS
+   for a single-cluster instance?
+1. How does one set NATS configuration environment variables for control plane services?
+   Answer: The only NATS environment variable is `NAT_URL`,
+   which is hard-coded into the Helm chart for `helm-service`.
+   By default, it is set to the same value as the distributor's `PUBSUB_URL` environment variable
+   and used for control plane services implemented with `go-sdk` rather than `helm-service`.
+   Alternate values can be set for both parameters for each individual service.
+1. Does metadata aware execution work for all execution plane services?
+   See [JES Issue 363](https://github.com/keptn-contrib/job-executor-service/issues/363)
+1. When the Keptn API polls the NATS subjects
+   using HTTPS (polling `/api/v1/event` endpoint on the control plane,
+   does a "translation" happen or does the HTTPS just poll the datastore for matching events?
+1. Are solutions that use JES/Webhooks to integrate tools and `go-sdk` for event handling
+   as scalable as dedicated services and NATS?
+   Note that Keptn is not moving away from NATS but is offering alternate ways
+   for external tools to connect to NATS and the control plane.
+1. How is NATS authentication handled?  How would it be configured if using the Outsystems NATS server?
+   Answer: Not currently possible. The NATS cluster that comes with Keptn is not exposed to the public
+   and does not enforce authentication by the services that run in the same cluster.
+
+Need definition of terms.  May be misused in this write-up in the meantime:
+
+* **subject:** Is this the same as a topic, so an event?
+  And the PUBSUB_TOPIC environment variable contains a comma-separated list
+  of topics for which the distributor should listen;
+  that list can be overridden by subscription information from the Bridge.
+
+  When the control plane and execution plane are in the same K8s cluster,
+  [NATS subject hierarchies](https://docs.nats.io/nats-concepts/subjects)  are supported.
+  But wildcards cannot be used when polling events via HTTP,
+  which is the mechanism used in multi-cluster Keptn installations,
+  so each specific topic must be included in the list.
+  But if `go-sdk` is being used instead of the distributor for multi-cluster instances,
+  how is this relevant?
+* **pub:** Publish?
+* **sub:** Subscribe?
+
+#### Summary of behavior of NATS for Keptn on a single cluster
+
+On a single-cluster Keptn instance,
+the Keptn control plane and execution plane are both installed on the same cluster
+and they communicate using NATS.
+Execution plane services have a distributor pod that sub/pub event on behalf of the execution plane service.
+
+Environment variables documented
+on the [distributor](../../0.19.x/reference/miscellaneous/distributor) reference page
+set NATS environment variables for the distributor.
+[Meg to add NATS_URL to that page: https://github.com/keptn/keptn.github.io/issues/1442)]
+
+The flow can be summarized as follows.
+Note that this discussion assumes using `helm-service` and tasks like `deployment`
+but another service could be used (created?) for this processing
+and any tool could listen for tasks with names other than those of the standard tasks
+that are documented on the [shipyard](../../0.19.x/reference/files/shipyard/#fields) reference page.
+
+* The distributor for the execution plane services on a control plane
+  handles the sub(s) and pub(s) for the execution plane service
+  by subscribing to NATS subjects that Keptn creates dynamically.
+
+  For sequence-level events:
+
+  ```
+  sh.keptn.event.<stage>-<sequence>.<verb>
+  ```
+
+  For example, the control plane might publish the following to the subject:
+
+  ```
+  sh.kept.event.dev.delivery.triggered
+  sh.keptn.event.deployment.triggered
+  ```
+
+  For task-level events:
+
+  ```
+  .sh.keptn.event.<task>.<verb>
+  ```
+
+  Optionally, the control plain can send one or more events in the form:
+
+  ```
+  sh.keptn.<task>.status.changed
+  ```
+  This is useful to signal status updates during long-running tasks.
+
+* The Helm-Service Distributor (HSD) subscribes to subject:
+
+  ```
+  sh.keptn.event.deployment
+  ```
+  And receives:
+
+   ```
+   sh.keptn.event.deployment.started
+   ```
+   as well as the JSON event body.
+
+* HSD triggers helm-service and pubs to subject:
+
+  ```
+  sh.keptn.vent.deployment.started
+  ```
+  as well as the JSON event body.
+
+* The helm-service finishes the deployment and HSD pubs to subject:
+
+  ```
+  sh.keptn.event.deployment.finished
+  ```
+  as well as the JSON event body.
+
+#### Summary of behavior of NATS for Keptn on a multi-cluster instance:
+
+The execution plane is really just a namespace or cluster other than where the control plane runs.
+The distributor was originally designed to work for both the control plane and the remote execution planes
+but, for recent releases, execution plane services use
+[go-sdk](https://github.com/stellar/go/blob/master/docs/reference/readme.md) rather than the distributor.
+
+However, services on the execution plane can still communicate over NATS
+but the execution plane distributor polls the NATS subjects using the Keptn API.
+It polls the NATS subjects using HTTPS (polling the `/api/v1/event` endpoint) on the control plane.
+
+The following Keptn core services are connected to NATS
+and each uses the `NATS_URL` environment variable to determine the URL:
+`shipyard-controller`, `remediation-service`, `mongodb-datastore`,
+`lighthouse-service`, and `approval-service`.
+By default, the value of the `NATS_URL` environment variable
+is the same as the value of the distributor's `PUBSUB_URL`;
+is it a requirement that both values always match?
+
+Keptn does not currently support a ConfigMap that contains the `NATS_URL`
+so it must be set as an environment variable in the Helm chart [is that correct?] for each configured service.
+
+The `helm-service` and Job Executor Service (JES) use the distributor's API proxy feature
+to communicate with the `resource-service` so configuration change must be applied
+on the distributor and not the `helm-service` or JES.
+
+#### Outsystems environment
+
+The Outsystems requirement is set up by Geos, Rings, and Stamps:
+
+* **Geo:** logical structure used to isolate compute and data
+* **Ring:** logical structure used to control the release of code
+* **Stamp:** cluster with specific applications and configurations
+
+
+{{< popup_image link="./assets/jay-environment.png" caption="Outsystems environment" width="65%">}}
+
+Nats is required for cross-communication stamps/clusters.
+NATS is set up so each service within a stamp/cluster
+communicates (pub/sub) to the local NATS server in the stamp/cluster.
+Gateways forward messages between stamps/clusters,
+enabling cross-communication between stamps/clusters
+without requiring (or allowing) the service to talk to anything other than the local NATS cluster.
+
+Webhooks, HTTPS polling, and HTTPS REST are not allowed for cross-communication between stamps/clusters
+but they would like to use their current NATS setup to enable cross-communication
+between the Keptn control plane and execution plane services
+using a pattern similar to that used for a single cluster Keptn instance.
+This assumes:
+
+* The configuration of the Keptn control plane makes the Keptn distributor
+  communicate to the existing NATS cluster within the Outsystems cluster.
+  This can be done using by setting the `NATS_URL` environment variable
+  for the `shipyard-controller`, `remediation-service`, `mongodb-datstore`,
+  `lighthouse-service`, and `approval-service` control plane services
+  that use `sdk-go`.
+  The `PUBSUB_URL` distributor environment variable must be set to point to the existing NATS server
+  for the `helm-service`, `statistics-service`, and `api-service` on the control plane.
+
+  For this experiment, the URL of the Outsystems NATS cluster is:
+  ```
+  nats://natsserver.default.svc.cluster.local:4222
+  ```
+
+  Also set the `distributor.PUBSUB_URL` environment value to have the same value as `NATS_URL`
+  and point to the existing Outsystems cluster.
+
+* The configuration of the Keptn execution plane configures the Keptn distributor
+  to to communicate with the existing Outsystems NATS server within the cluster.
+  This can be done by setting the distributor's `PUBSUB_URL` environment variable.
+
+* Update the Keptn helm chart deployment template for each of the services without a distributor
+  in the following way, so if the variable is not passed, nothing changes:
+  ```
+  ...
+  env:
+    {{- if .Values.NATS_URL }}
+    - name: NATS_URL
+      value: {{ .Values.NATS_URL }}
+    {{- end }}
+    ...
+  ...
+  ```
+* The `mongodb-datastore` already hard-codes the NATS_URL,
+  so change it in the following way so that,
+  if the variable is not passed, it defaults to the existing value.
+   ```
+   env:
+     ...
+     - name: NATS_URL
+       value: {{ .Values.NATS_URL | default "nats://keptn-nats" }}
+   ```
+* The `statistics-service` uses the distributor, so modify the distributor portion of the template,
+  so if the value is not passed, nothing happens.
+  ```
+  env:
+    {{- if .Values.distributor.PUBSUB_URL }}
+    - name: PUBSUB_URL
+      value: {{ .Values.distributor.PUBSUB_URL }}
+    {{- end }}
+   ```
+* Modify the `helm-service` `deployment.yaml` within the Helm chart
+  in the same way as for the `statistics-service`.
+...
+          env:
+            {{- if .Values.distributor.PUBSUB_URL }}
+            - name: PUBSUB_URL
+              value: {{ .Values.distributor.PUBSUB_URL }}
+            {{- end }}
+            ...
+
+* May need to set the `K8S_DEPLOYMENT_NAME` as discussed in the
+  [Multi-cluster installation](../../install/multi-cluster/#keptn-sees-only-one-instance-of-an-integration-deployed-on-multiple-execution-planes) documentation.
+
+
+##### Open issues
+
+1. A ConfigMap that contains the NATS URL would be convenient
+   but it is not currently implemented in Keptn.
+   Instead, the NATS_URL or PUBSUB_URL must be set manually
+   for each control plane service.
+
+1. How to handle NATS authentication.
+   In the current Keptn release, the control plane services are hard-coded in the Helm chart
+   to connect the NATS cluster that is installed with Keptn.
+   The NATS cluster that comes with Keptn is not exposed to the public
+   and does not enforce authentication by the services that run in the same cluster.
+
+1. The JES also uses the distributor's API proxy to communicate with the Keptn API
+   but did not work on first pass.
+   Jay removed it from his configuration to concentrate on debugging the helm-service interface.
+
+1. How does one handle having multiple clusters per stage?
+   The Outsystems environment has multiple GEOs (e.g. regions) with multiple rings (e.g. `stages`)
+   spanning each of the GEOs.
+   Within  each ring are multiple stamps (e.g. K8s clusters).
+
+1. As the Outsystems environment grows, adding more stamps and GEOs,
+   will the execution services be auto-discovered (or auto-registered) by the control plane?
