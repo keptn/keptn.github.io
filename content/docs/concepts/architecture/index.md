@@ -159,7 +159,7 @@ See [Integrations](../../integrations) for links to Keptn-service integrations t
 Use the information in [Custom Integrations](../../0.18.x/integrations)
 to create a Keptn-service that integrates other tools.
 
-### Deep dive into NATS and multi-cluster
+## Deep dive into NATS and multi-cluster
 
 Starter questions:
 
@@ -203,7 +203,7 @@ Need definition of terms.  May be misused in this write-up in the meantime:
 * **pub:** Publish?
 * **sub:** Subscribe?
 
-#### Summary of behavior of NATS for Keptn on a single cluster
+## Summary of behavior of NATS for Keptn on a single cluster
 
 On a single-cluster Keptn instance,
 the Keptn control plane and execution plane are both installed on the same cluster
@@ -277,14 +277,14 @@ that are documented on the [shipyard](../../0.19.x/reference/files/shipyard/#fie
   ```
   as well as the JSON event body.
 
-#### Summary of behavior of NATS for Keptn on a multi-cluster instance:
+## Summary of behavior of NATS for Keptn on a multi-cluster instance:
 
 The execution plane is really just a namespace or cluster other than where the control plane runs.
 The distributor was originally designed to work for both the control plane and the remote execution planes
-but, for recent releases, execution plane services use
+but, for recent releases, most execution plane services use
 [go-sdk](https://github.com/stellar/go/blob/master/docs/reference/readme.md) rather than the distributor.
 
-However, services on the execution plane can still communicate over NATS
+Services that use `go-sdk` on the execution plane can communicate over NATS
 but the execution plane distributor polls the NATS subjects using the Keptn API.
 It polls the NATS subjects using HTTPS (polling the `/api/v1/event` endpoint) on the control plane.
 
@@ -293,17 +293,17 @@ and each uses the `NATS_URL` environment variable to determine the URL:
 `shipyard-controller`, `remediation-service`, `mongodb-datastore`,
 `lighthouse-service`, and `approval-service`.
 By default, the value of the `NATS_URL` environment variable
-is the same as the value of the distributor's `PUBSUB_URL`;
+is the same as the value of the distributor's `PUBSUB_URL` environment variable;
 is it a requirement that both values always match?
 
 Keptn does not currently support a ConfigMap that contains the `NATS_URL`
 so it must be set as an environment variable in the Helm chart [is that correct?] for each configured service.
 
 The `helm-service` and Job Executor Service (JES) use the distributor's API proxy feature
-to communicate with the `resource-service` so configuration change must be applied
-on the distributor and not the `helm-service` or JES.
+to communicate with the `resource-service` so any configuration changes must be applied
+to the distributor and not the `helm-service` or JES.
 
-#### Outsystems environment
+## Outsystems environment
 
 The Outsystems requirement is set up by Geos, Rings, and Stamps:
 
@@ -314,7 +314,7 @@ The Outsystems requirement is set up by Geos, Rings, and Stamps:
 
 {{< popup_image link="./assets/jay-environment.png" caption="Outsystems environment" width="65%">}}
 
-Nats is required for cross-communication stamps/clusters.
+Nats is required for cross-communication between stamps/clusters.
 NATS is set up so each service within a stamp/cluster
 communicates (pub/sub) to the local NATS server in the stamp/cluster.
 Gateways forward messages between stamps/clusters,
@@ -325,7 +325,10 @@ Webhooks, HTTPS polling, and HTTPS REST are not allowed for cross-communication 
 but they would like to use their current NATS setup to enable cross-communication
 between the Keptn control plane and execution plane services
 using a pattern similar to that used for a single cluster Keptn instance.
-This assumes:
+
+### Integrating Keptn into the Outsystems environment
+
+These are the steps taken to implement this configuration:
 
 * The configuration of the Keptn control plane makes the Keptn distributor
   communicate to the existing NATS cluster within the Outsystems cluster.
@@ -345,7 +348,7 @@ This assumes:
   and point to the existing Outsystems cluster.
 
 * The configuration of the Keptn execution plane configures the Keptn distributor
-  to to communicate with the existing Outsystems NATS server within the cluster.
+  to communicate with the existing Outsystems NATS server within the cluster.
   This can be done by setting the distributor's `PUBSUB_URL` environment variable.
 
 * Update the Keptn helm chart deployment template for each of the services without a distributor
@@ -391,8 +394,24 @@ This assumes:
 * May need to set the `K8S_DEPLOYMENT_NAME` as discussed in the
   [Multi-cluster installation](../../install/multi-cluster/#keptn-sees-only-one-instance-of-an-integration-deployed-on-multiple-execution-planes) documentation.
 
+* Create two separate Kubernetes clusters
+  using a [NATS supercluster](https://docs.nats.io/running-a-nats-service/configuration/gateways) setup
+  so NATS events that are published to the local NATS server
+  are seen by ann NATS servers in the Kubernetes clusters.
 
-##### Open issues
+* Set the `KEPTN_API_ENDPOINT` and `KEPTN_API_TOKEN` environment variables
+  for the [distributor](../../0.19.x/reference/miscellaneous/distributor)
+  so that events are handled using HTTP polling (`/api/vi/event`)
+  rather than using the local NATS server.
+
+* Exploring whether the [Istio](../../install/istio)
+  [multi-cluster mesh](https://istio.io/latest/docs/setup/install/multicluster/)
+  can be used to enable local REST requests made by the execution plane distributor
+  to be forwarded to the control plane service on the separate cluster.
+  This would minimize the changes required for the `distributor` or `go-sdk`.
+
+
+### Open issues
 
 1. A ConfigMap that contains the NATS URL would be convenient
    but it is not currently implemented in Keptn.
@@ -416,3 +435,10 @@ This assumes:
 
 1. As the Outsystems environment grows, adding more stamps and GEOs,
    will the execution services be auto-discovered (or auto-registered) by the control plane?
+
+1. Can the Istio multi-cluster mesh be used to enable local REST requests made by the execution plane
+   to be forwarded to the control plane service on the separate cluster?
+   If not, we will need to modify the distributor to add an option
+   that subscribes to the events via a NATS cluster
+   but uses the public Keptn API for requests to services of the Keptn control plane.
+
