@@ -47,7 +47,7 @@ Scroll to the bottom of this page to request a new integration or submit your ow
     }
 
     let searchTimeout = null;
-    let noServiceAvailableTimeout = null;
+    let noIntegrationAvailableTimeout = null;
 
     const updateDisplayedIntegrations = function(filterValue) {
         groups[0].dataset.url = `https://artifacthub.io/packages/search?kind=10&sort=relevance${filterValue !== '' && filterValue !== 'show-all' ? `&ts_query_web=${filterValue}` : ''}`;
@@ -59,14 +59,14 @@ Scroll to the bottom of this page to request a new integration or submit your ow
             textContainer.insertAdjacentHTML('beforeend', `<p>${categories[filterValue]}</p>`)
         }
 
-        if (noServiceAvailableTimeout) {
-            clearTimeout(noServiceAvailableTimeout);
+        if (noIntegrationAvailableTimeout) {
+            clearTimeout(noIntegrationAvailableTimeout);
         }
 
-        noServiceAvailableTimeout = setTimeout(() => {
-            let servicesCount = document.querySelector('div.artifacthub-widget-group > section').shadowRoot.querySelector('div').childElementCount;
-            if (servicesCount == 0) {
-                textContainer.insertAdjacentHTML('beforeend', '<p style="color: red;">No services found!</p>')
+        noIntegrationAvailableTimeout = setTimeout(() => {
+            let integrationsCount = document.querySelector('div.artifacthub-widget-group > section').shadowRoot.querySelector('div').childElementCount;
+            if (integrationsCount == 0) {
+                textContainer.insertAdjacentHTML('beforeend', '<p style="color: red;">No integration found!</p>')
             }
         }, 500);
     }
