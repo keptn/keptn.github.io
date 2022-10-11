@@ -1,0 +1,9 @@
+
+  {{ if in .Permalink "docs/0."}}
+    {{ $canoncicalFile := replaceRE "docs/0.[[:digit:]]{1,2}.([[:digit:]]{1.2}|x)" "docs/latest" .File.Path }}
+    {{ with .Site.GetPage $canoncicalFile}}
+
+      {{ $canoncical := replaceRE "docs/0.[[:digit:]]{1,2}.([[:digit:]]{1.2}|x)" "docs/latest" .Permalink }}
+      <link rel="canonical" href="{{ $canoncical | absURL}}"/>
+    {{end}}
+  {{end}}

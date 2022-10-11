@@ -24,7 +24,7 @@ This page has the following information:
 To upgrade the control plane:
 
 1. Back up your Keptn instance, following
-   [Keptn's backup instructions](../../0.19.x/operate/backup_and_restore)
+   [Keptn's backup instructions](../../latest/operate/backup_and_restore)
 1. Make sure you are connected to the Kubernetes cluster where Keptn is installed.
 1. Fetch your current Helm values into a file with the follwoing command:
 
@@ -133,7 +133,7 @@ from the [Helm CLI](https://helm.sh/docs/helm/) to upgrade.
 
 The Keptn Helm chart has also been refactored heavily in Release 0.17.x,
 to prepare it for future features and structural changes.
-To upgrade, we recommend getting your old Helm [values](../../0.19.x/reference/files/values) file,
+To upgrade, we recommend getting your old Helm [values](../../latest/reference/files/values) file,
 and then merging it together with the default Keptn Helm values
 to get any new default values that were introduced.
 You can then use your new values file to follow the

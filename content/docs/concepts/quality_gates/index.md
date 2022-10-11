@@ -16,7 +16,7 @@ Keptn quality gates provide a *declarative way* to define quality criteria of yo
 Keptn quality gates are based on the concepts of *Service-Level Indicators (SLIs)* and *Service-Level Objectives (SLOs)*. Using these, you can declaratively describe the desired quality objective for your applications and services.
 
 1. The process of evaluating a quality gate can be triggered using
-the [Keptn Bridge](../../0.19.x/bridge), the Keptn CLI or the Keptn API. 
+the [Keptn Bridge](../../latest/bridge), the Keptn CLI or the Keptn API. 
 1. Once triggered, Keptn fetches the [SLIs](../../0.18.x/reference/files/sli/). 
 from a data provider like Prometheus, Dynatrace, or Datadog.
 1. Keptn evaluates the SLI against the SLOs that are defined for the application or service. 
@@ -35,7 +35,7 @@ An example of an SLI is the *response time* (also named request latency), which 
 
 By default, SLIs are defined at the project level
 but they can also be defined for a specific stage or service within a stage.
-See the [SLI reference page](../../0.19.x/reference/files/sli) for details.
+See the [SLI reference page](../../latest/reference/files/sli) for details.
 
 ## What is a Service-Level Objective (SLO)?
 
