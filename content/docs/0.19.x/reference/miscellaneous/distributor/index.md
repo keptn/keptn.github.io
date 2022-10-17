@@ -4,7 +4,7 @@ description: Environment variables for distributor
 weight: 125
 ---
 
-A distributor subscribes a Keptn service with the Keptn Control Plane.
+A distributor can be used to subscribe a Keptn service with the Keptn Control Plane.
 Both local and remote subscriptions are supported:
 
 * Local (Keptn service runs in the same local Kubernetes cluster as the Keptn Control Plane)
@@ -17,6 +17,11 @@ Each service has its own distributor that is configured by environment variables
 In most cases, only a subset of these need to be configured.
 After the application is deployed,
 its subscription can be changed directly in the Bridge.
+
+Note that some services use `cd-connectors` or `go-sdk`
+(which is actually a wrapper for `cd-connectors`)
+instead of the distributor.
+This is discussed more in [Architecture](../../../../concepts/architecture/#execution-plane-services).
 
 ## Environment variables
 
@@ -44,7 +49,17 @@ The following environment variables configure the distributor
 when it runs within the Keptn cluster:
 
 - `PUBSUB_URL` - The URL of the NATS cluster to which the distributor should connect
-when the distributor is running within the Keptn cluster. default = `nats://keptn-nats`
+   when the distributor is running within the Keptn cluster. default = `nats://keptn-nats`
+
+   Note that this environment variable identifies the NATS cluster for the distributor.
+   The NATS URL is also defined using the NATS environment variable, `NATS_URL`;
+   services that use `cp-connector` or `go-sdk` to subscribe to events using the `NATS_URL` environment variable.
+   By default, and in most installations, the `PUBSUB_URL` and `NATS_URL` environment variables
+   should have the same value.
+   See [Execution Plane Services](../../../../../docs/concepts/architecture/#execution-plane-services)
+   for architectural details about NATS behavior when Keptn runs on a single cluster
+   and when it is installed in a [multi-cluster](../../../../../docs/install/multi-cluster/) configuration.
+  
 - `PUBSUB_TOPIC` - Comma separated list of topics (i.e. event types)
 for which the distributor should listen
 (see https://github.com/keptn/spec/blob/0.2.4/cloudevents.md for details).
