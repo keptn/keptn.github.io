@@ -58,7 +58,8 @@ api, bridge, or resource-service.
 The [Keptn API](../../0.19.x/reference/api/) provides a REST API
 that allows you to communicate with Keptn.
 It provides endpoints to authenticate, get metadata about the Keptn installation within the cluster,
-forward CloudEvents to the NATS cluster, and trigger evaluations for a service.
+forward [CloudEvents](../../0.19.x/reference/miscellaneous/events)
+to the NATS cluster, and trigger evaluations for a service.
 
 ### mongodb-service
 
@@ -172,7 +173,7 @@ On a single-cluster Keptn instance,
 the Keptn control plane and execution plane are both installed on the same cluster
 and they communicate using NATS.
 Execution plane services have a distributor pod
-that subscribe to and publish events on behalf of the execution plane service.
+that subscribes to and publishes events on behalf of the execution plane service.
 
 Environment variables documented
 on the [distributor](../../0.19.x/reference/miscellaneous/distributor) reference page
@@ -186,7 +187,7 @@ and any tool could listen for tasks with names other than those of the standard 
 that are documented on the [shipyard](../../0.19.x/reference/files/shipyard/#fields) reference page.
 
 1. The distributor for the execution plane services on a control plane
-   handles the subscription(s) and publish(es) operations for the execution plane service
+   handles the subscriptions and publishes operations for the execution plane service
    by subscribing to NATS subjects that Keptn creates dynamically.
 
    For sequence-level events:
