@@ -303,7 +303,7 @@ rather than on the control plane.
 A shipyard is defined at the level of a project.
 This means that all services in a project share the same shipyard definition.
 
-At this time, you can not add or delete stages in the *shipyard* file for an existing project
+You can not add or delete stages in the *shipyard* file for an existing project
 although you can make other modifications.
 See [Updating a shipyard](../../../manage/shipyard/#updating-a-shipyard)
 for information about modifications that can be made to a *shipyard* file.
