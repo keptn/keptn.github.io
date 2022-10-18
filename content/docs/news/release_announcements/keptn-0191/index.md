@@ -7,7 +7,7 @@ weight: 66
 
 ---
 
-Keptn 0.19.1 is a bugfix release that solves issue for the resource-service, bridge, and shipyard-controller.
+Keptn 0.19.1 is a bugfix release that solves issues for the resource-service, bridge, and shipyard-controller.
 
 ---
 
