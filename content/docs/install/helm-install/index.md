@@ -65,20 +65,35 @@ To install the Control Plane, you must do the following:
 
 ### Simple Keptn installation
 
-  The following commands provide a basic Keptn installation.
-  Watch a video demonstration of this simple installation [here](https://www.youtube.com/watch?v=neAqh4fAz-k).*
-   ```
-   helm repo add keptn https://charts.keptn.sh
-   helm install keptn keptn/keptn -n keptn --create-namespace
-   kubectl -n keptn port-forward svc/api-gateway-nginx 8080:8080
-   ```
+The following commands provide a basic Keptn installation
+This set of commands is useful for creating a basic Keptn installation
+to use for study or demonstration.
+It is not adequate for a production Keptn installation.
 
-  We use **kubectl** to forward port `8080` from our local machine
-  to port `8080` on the Keptn API Gateway service in the cluster.
+Watch a video demonstration of this simple installation
+[here](https://www.youtube.com/watch?v=neAqh4fAz-k).
 
-  This set of commands is useful for creating a basic Keptn installation
-  to use for study or demonstration.
-  It is not adequate for a production Keptn installation.
+The first command sequence installs the Keptn control plane
+and exposes it using an [Ingress](../access/#option-3-expose-keptn-via-an-ingress):
+
+```
+helm repo add keptn https://charts.keptn.sh
+helm install keptn keptn/keptn -n keptn --create-namespace
+kubectl -n keptn port-forward svc/api-gateway-nginx 8080:8080
+```
+We use **kubectl** to forward port `8080` from our local machine
+to port `8080` on the Keptn API Gateway service in the cluster.
+
+Here is an alternate command for installing a basic Keptn installation,
+this time using a [LoadBalancer](../access/#option-1-expose-keptn-via-a-loadbalancer) to expose Keptn:
+
+```
+helm install keptn keptn --repo=https://charts.keptn.sh \
+-n keptn --create-namespace \
+--set=apiGatewayNginx.type=LoadBalancer \
+--set=continuousDelivery.enabled=true \
+--wait
+```
 
 
 ### Full Keptn installation
@@ -87,7 +102,7 @@ To install the Control Plane, you must do the following:
   that are appropriate for installing a fully-functional production Keptn instance.
   They use the following options:
 
-  * `--version 0.18.1` -- Keptn release to be installed.
+  * `--version 0.19.1` -- Keptn release to be installed.
      If you do not specify the release, Helm uses the latest release.
 
    * `--repo=https://charts.keptn.sh` -- the location of the Helm chart.
@@ -102,13 +117,13 @@ To install the Control Plane, you must do the following:
 
 **Install Keptn control-plane with Continuous Delivery support and exposed through a LoadBalancer**
   ```
-  helm install keptn keptn --version 0.18.1 -n keptn --repo=https://charts.keptn.sh --create-namespace --wait --set=continuousDelivery.enabled=true,apiGatewayNginx.type=LoadBalancer
+  helm install keptn keptn --version 0.19.1 -n keptn --repo=https://charts.keptn.sh --create-namespace --wait --set=continuousDelivery.enabled=true,apiGatewayNginx.type=LoadBalancer
   ```
 
 **Use a LoadBalancer for api-gateway-nginx**
 
   ```
-  helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.18.1 --repo=https://charts.keptn.sh --set=apiGatewayNginx.type=LoadBalancer
+  helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.19.1 --repo=https://charts.keptn.sh --set=apiGatewayNginx.type=LoadBalancer
   ```
 
 **Install Keptn with an Ingress object**
@@ -154,7 +169,7 @@ kubectl -n keptn get services
 
 ## Access the Keptn Bridge
 
-The [Keptn Bridge](../../0.18.x/bridge) is the graphical user interface
+The [Keptn Bridge](../../0.19.x/bridge) is the graphical user interface
 you can use to manage and view Keptn projects running in your instance.
 To access it:
 
@@ -169,7 +184,7 @@ To access it:
 
 3. Log into the Keptn Bridge.
    The following commands give you the username and randomly-generated password
-   to use if your site uses [Basic Authentication](../../0.18.x/bridge/basic_authentication):
+   to use if your site uses [Basic Authentication](../../0.19.x/bridge/basic_authentication):
 
    ```
    kubectl -n keptn get secret bridge-credentials -o jsonpath-{.data.BASIC_AUTH_USERNAME} | base64 -d
