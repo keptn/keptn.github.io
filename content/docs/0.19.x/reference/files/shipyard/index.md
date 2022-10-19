@@ -110,10 +110,8 @@ such as `development`, `hardening`, `staging`, or `production.
 * `sequences`: An array of sequences that define the tasks to be performed
 and, optionally, the events that trigger each task.
 
-At this time, you can not add or delete stages in the *shipyard* file for an existing project
+You can not add or delete stages in the *shipyard* file for an existing project
 although you can make other modifications.
-See [KEP-70](https://github.com/keptn/enhancement-proposals/pull/70) for details
-about the ongoing initiative to overcome this limitation.
 
 **Sequence**
 
@@ -326,12 +324,9 @@ rather than on the control plane.
 A shipyard is defined at the level of a project.
 This means that all services in a project share the same shipyard definition.
 
-At this time, you can not add or delete stages in the *shipyard* file for an existing project
+You can not add or delete stages in the *shipyard* file for an existing project
 although you can make other modifications.
-
-* See [KEP-70](https://github.com/keptn/enhancement-proposals/pull/70) for details
-about the initiative to allow adding/removing stages to/from a *shipyard* file.
-* See [Updating project's shipyard](../../../manage/update)
+See [Updating project's shipyard](../../../manage/update)
 for information about modifications that can be made to a *shipyard* file.
 
 As a workaround, you can temporarily skip the execution of a particular stage by doing either of the following:
@@ -351,9 +346,6 @@ that contain annotated examples for accomplishing various tasks.
 and  named to match the value of the `Metadata` name field in the shipyard file.
 
 ## Differences between versions
-
-* [KEP-70](https://github.com/keptn/enhancement-proposals/pull/70) is active
-to allow `stage`s to be added to and removed from a *shipyard* in an existing project.
 
 ## See also
 
