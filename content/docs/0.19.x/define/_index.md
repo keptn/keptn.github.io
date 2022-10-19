@@ -62,3 +62,8 @@ Other examples of what you can do with Keptn:
 * [Demo: Quality gate evaluation using metrics from another tool](infracost)
   provides a video demonstration of how Keptn can run a quality gate evaluation
   based on metrics from a tool that is not actually an observability platform.
+
+* [Orchestrate security checks](security) provides a video
+  that discusses how Keptn can analyze your code for security vulnerabilities
+  before and after it is deployed into production.
+
