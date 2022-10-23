@@ -2,49 +2,42 @@
 {{ if default true .Site.Params.CarouselHomepage.enable }}
 
 <div class="intro">
-    <div class="container pl-0 pr-0 pt-5 pt-sm-0 pt-md-5 pt-xl-0 pb-lg-5">
-        <div class="row pb-sm-4">
-          <div class="col-12 teaser-box teaser-box--negativeMargin">
-            <picture>
-              <source media="(min-width: 768px)" srcset="/images/home/hero/graphic-hero.svg">
-              <img src="/images/home/hero/graphic-hero-XS.svg">
-            </picture>
-          </div>
+    <div class="container">
+        <div class="row teaser-box teaser-box--white">
+            <h1>What's HOT?🔥</h1>
         </div>
-      </div>
-      <div class="container pl-0 pr-0 pt-5 pt-sm-0 pt-md-5 pt-xl-0 pb-lg-5">
-        <div class="row pb-sm-4">
-          <div class="col-12 teaser-box teaser-box--negativeMargin">  
-                <div class="dark-mask"></div>
-                <div class="container">
-                    <div class="homepage owl-carousel"
-                        data-autoplay="{{ default true .Site.Params.CarouselHomepage.auto_play }}"
-                        data-slide-speed="{{ default 2000 .Site.Params.CarouselHomepage.slide_speed }}"
-                        data-pagination-speed="{{ default 1000 .Site.Params.CarouselHomepage.pagination_speed }}">
-                        {{ range .Site.Data.carousel }}
-                        <div class="item">
-                            {{ if .href }}
-                            <a href="{{ .href }}" target="_blank" title="{{ .title | safeHTML }}">
-                            {{ end }}
-                                <div class="row">
-                                    <div class="col-sm-5 right">
-                                        <h1>{{ .title | safeHTML }}</h1>
-                                        {{ .description | safeHTML }}
-                                    </div>
-                                    <div class="col-sm-7">
-                                        <img class="img-responsive" src="{{ .image }}" alt="">
-                                    </div>
+        <div class="home-carousel">    
+            <div class="dark-mask"></div>
+            <div class="container">
+                <div class="homepage owl-carousel"
+                    data-autoplay="{{ default true .Site.Params.CarouselHomepage.auto_play }}"
+                    data-slide-speed="{{ default 2000 .Site.Params.CarouselHomepage.slide_speed }}"
+                    data-pagination-speed="{{ default 1000 .Site.Params.CarouselHomepage.pagination_speed }}">
+                    {{ range .Site.Data.carousel.entries }}
+                    <div class="item"></div>       
+                        {{ if .href }}
+                        <a href="{{ .href }}" target="_blank" title="{{ .title | safeHTML }}">
+                        {{ end }}
+                            <div class="row pb-sm-4">
+                                <div class="col-sm-5 right teaser-box teaser-box--white" >
+                                    <h2>{{ .title | safeHTML }}</h2>
+                                    {{ .description | safeHTML }}
                                 </div>
-                            {{ if .href }}
-                            </a>
-                            {{ end }}
-                        </div>
+                                <div class="col-sm-7">
+                                    <img class="img-responsive" src="{{ .image }}" alt="">
+                                </div>
+                            </div>
+                        {{ if .href }}
+                        </a>
                         {{ end }}
                     </div>
-                    <!-- /.project owl-slider -->
-                </div>
+                    {{ end }}
             </div>
+            <!-- /.project owl-slider -->
         </div>
-    </div>
+    </div>           
+
+
+            
 </div>
 {{ end }}
