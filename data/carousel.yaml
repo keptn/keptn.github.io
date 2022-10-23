@@ -1,0 +1,31 @@
+- weight: 1
+  title: "Join us at Kubecon!"
+  description: >
+    <ul class="list-style-none">
+      <li>Keptn Community Day</li>
+      <li>Main Track Talks</li>
+      <li>Meet the Maintainers!</li>
+    </ul>
+  image: "img/carousel/template-easy-code.png"
+  href: "https://docs.google.com/document/d/1x7gnqWAbxSr55IgmrT0wSJ6sh5KMoWfZvD2G-8U6_t8/edit?usp=sharing"
+- weight: 2
+  title: "New sub-project: Keptn Lifecycle Controller"
+  description: >
+    <ul class="list-style-none">
+      <li>Pre- and post-deployment checks and application health</li>
+      <li>Day two operations</li>
+      <li>Fully GitOps- and operator based</li>
+      <li>Cloud native and headless</li>
+    </ul>
+  image: "img/carousel/template-easy-code.png"
+  href: "https://github.com/keptn/lifecycle-controller"
+- weight: 3
+  title: "Keptn LTS is Coming!"
+  description: >
+    <ul class="list-style-none">
+      <li>Long-Term Support release line</li>
+      <li>Keptn 1.0 release, ETA in November</li>
+      <li>Not just Keptn Core, services too</li>
+    </ul>
+  image: "img/carousel/template-easy-code.png"
+  href: "https://docs.google.com/document/d/1x7gnqWAbxSr55IgmrT0wSJ6sh5KMoWfZvD2G-8U6_t8/edit?usp=sharing"
