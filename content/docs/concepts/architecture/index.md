@@ -169,7 +169,7 @@ See [Integrations](../../integrations) for links to Keptn-service integrations t
 Use the information in [Custom Integrations](../../0.19.x/integrations)
 to create a Keptn-service that integrates other tools.
 
-### Summary of NATS behavior for Keptn on a single cluster
+### NATS behavior on a single-cluster instance
 
 On a single-cluster Keptn instance,
 the Keptn control plane and execution plane are both installed on the same cluster
@@ -245,7 +245,7 @@ that are documented on the [shipyard](../../0.19.x/reference/files/shipyard/#fie
    ```
    as well as the JSON event body.
 
-### Summary of behavior of NATS for Keptn on a multi-cluster instance:
+### NATS behavior on a multi-cluster instance
 
 In a [multi-cluster](../../install/multi-cluster) configuration,
 an execution plane is a namespace or cluster other than where the control plane runs
