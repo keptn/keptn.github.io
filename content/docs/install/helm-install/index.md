@@ -73,8 +73,8 @@ It is not adequate for a production Keptn installation.
 Watch a video demonstration of this simple installation
 [here](https://www.youtube.com/watch?v=neAqh4fAz-k).
 
-The first command sequence installs the Keptn control plane
-and exposes it using an [Ingress](../access/#option-3-expose-keptn-via-an-ingress):
+The following command sequence installs the Keptn control plane
+and exposes it using port-forwarding:
 
 ```
 helm repo add keptn https://charts.keptn.sh
