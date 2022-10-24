@@ -1,5 +1,4 @@
 <div class="intro position-relative">
-  {{ partial "announcement.html" . }}
   <div class="container pt-5">
     <div class="row pt-4 pt-md-5">
       <div class="col-12 teaser-box">
@@ -8,7 +7,9 @@
             <img alt="Keptn Homepage" src="{{ .Site.BaseURL }}/images/home/hero/keptn-logo-white.svg">
           </a>
         </div>
+        {{ partial "announcement.html" . }}
       </div>
+      
       <div class="col-12 col-md-5 col-lg-3 teaser-box teaser-box--white teaser-box--intro mr-lg-5 mr-xl-0">
         {{ with .Site.GetPage "section" "home/headline" }}
         {{ .Content }}

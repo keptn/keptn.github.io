@@ -12,7 +12,7 @@ entries:
       <li>Meet the Maintainers!</li>
     </ul>
   image: "/images/home/carousel/kubecon_noram_2022.png"
-  href: "https://docs.google.com/document/d/1x7gnqWAbxSr55IgmrT0wSJ6sh5KMoWfZvD2G-8U6_t8/edit?usp=sharing"
+  href: "https://community.cncf.io/events/details/cncf-keptn-community-presents-keptn-community-day-kubecon-cloudnativecon-detroit/"
 - title: "Check it out: Keptn Lifecycle Controller"
   description: >
     <ul class="list-style-none">
