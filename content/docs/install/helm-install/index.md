@@ -335,6 +335,6 @@ helm upgrade keptn keptn --install -n keptn --create-namespace
 
 Keptn has no opinion about how to fine-tune the database connection.
 We recommend that the user specify any special configuration via the
-[connection string]((https://www.mongodb.com/docs/manual/reference/connection-string/))
+[connection string](https://www.mongodb.com/docs/manual/reference/connection-string/) parameter
 in the `mongo.external.connectionString` helm value.
 
