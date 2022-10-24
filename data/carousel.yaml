@@ -1,5 +1,9 @@
 entries:
-- title: "Skip Me Holder"
+- title: "Skip Me"
+  description: "Keptn for the win!"
+  disabled: true
+  image: "/images/home/carousel/keptn-lifecycle-controller.png"
+  href: "https://github.com/keptn/lifecycle-controller"
 - title: "Join us at Kubecon!"
   description: >
     <ul class="list-style-none">
