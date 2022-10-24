@@ -115,7 +115,9 @@ the logic of an integration connecting back to the control plane.
 This mechanism was introduced in Release 0.15.x and is used by all core Keptn services.
 The distributor pod is not required, but it requires more coding in each service.
 
-* **go-sdk** (experimental) -- Provides a wrapper that adds features around the cd-connector.
+* [go-sdk](https://github.com/stellar/go/blob/master/docs/reference/readme.md)
+-- Provides a wrapper that adds features around the cd-connector.
+All newer services and most Keptn internal services use `go-sdk`.
 
 The default Keptn installation includes Keptn-services for some Execution Plane services,including:
 
@@ -159,7 +161,7 @@ to communicate with the Execution Plane.
 
  - When an execution plane is operated outside of the Cluster,
    it can communicate with the HTTP API exposed by the `api-gateway-nginx`.
-   In this case, each request to the API must be authenticated using the `keptn-api` token. 
+   In this case, each request to the API must be authenticated using `keptn-api-token`. 
    The distributor sidecars and cp-connectors are not able to directly connect to the NATS cluster,
    but they can be configured to fetch open `.triggered` events from the HTTP API.
 
@@ -231,12 +233,12 @@ that are documented on the [shipyard](../../0.19.x/reference/files/shipyard/#fie
 1. HSD triggers the helm-service and publishes to the subject:
 
    ```
-   sh.keptn.vent.deployment.started
+   sh.keptn.event.deployment.started
    ```
    as well as the JSON event body.
 
 
-1. The helm-service finishes the deployment and the HSD publishess to the subject:
+1. The helm-service finishes the deployment and the HSD publishes to the subject:
 
    ```
    sh.keptn.event.deployment.finished
@@ -249,14 +251,13 @@ In a [multi-cluster](../../install/multi-cluster) configuration,
 an execution plane is a namespace or cluster other than where the control plane runs
 that runs a Keptn service.
 The distributor was originally designed to work for both the control plane and the remote execution planes
-but, for recent releases, most execution plane services use
-[go-sdk](https://github.com/stellar/go/blob/master/docs/reference/readme.md) rather than the distributor.
+but, for recent releases, most execution plane services use `go-sdk` rather than the distributor.
 
 Services that use `go-sdk` on the execution plane communicate over NATS
 but the execution plane distributor polls the NATS subjects using the Keptn API.
 It polls the NATS subjects using HTTPS (polling the `/api/v1/event` endpoint) on the control plane.
 
-The following Keptn core services use `go-sdk` and are connected to NATS,
+The following Keptn core services use `go-sdk` and are connected to NATS
 using the NATS environment variable `NATS_URL` to determine the URL:
 `shipyard-controller`, `remediation-service`, `mongodb-datastore`,
 `lighthouse-service`, and `approval-service`.

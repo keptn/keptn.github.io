@@ -53,7 +53,8 @@ when it runs within the Keptn cluster:
 
    Note that this environment variable identifies the NATS cluster for the distributor.
    The NATS URL is also defined using the NATS environment variable, `NATS_URL`;
-   services that use `cp-connector` or `go-sdk` to subscribe to events using the `NATS_URL` environment variable.
+   services that use `cp-connector` or `go-sdk` to subscribe to events
+   should use the `NATS_URL` environment variable to identify the NATS cluster.
    By default, and in most installations, the `PUBSUB_URL` and `NATS_URL` environment variables
    should have the same value.
    See [Execution Plane Services](../../../../../docs/concepts/architecture/#execution-plane-services)
