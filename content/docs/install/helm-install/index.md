@@ -65,7 +65,7 @@ To install the Control Plane, you must do the following:
 
 ### Simple Keptn installation
 
-The following commands provide a basic Keptn installation
+The following commands provide a basic Keptn installation.
 This set of commands is useful for creating a basic Keptn installation
 to use for study or demonstration.
 It is not adequate for a production Keptn installation.
@@ -83,17 +83,6 @@ kubectl -n keptn port-forward svc/api-gateway-nginx 8080:8080
 ```
 We use **kubectl** to forward port `8080` from our local machine
 to port `8080` on the Keptn API Gateway service in the cluster.
-
-Here is an alternate command for installing a basic Keptn installation,
-this time using a [LoadBalancer](../access/#option-1-expose-keptn-via-a-loadbalancer) to expose Keptn:
-
-```
-helm install keptn keptn --repo=https://charts.keptn.sh \
--n keptn --create-namespace \
---set=apiGatewayNginx.type=LoadBalancer \
---set=continuousDelivery.enabled=true \
---wait
-```
 
 ### Full Keptn installation
 
@@ -113,13 +102,6 @@ helm install keptn keptn --repo=https://charts.keptn.sh \
    * `--create-namespace` -- creates the `keptn` namespace if it does not already exist.
    * `--set=continuousDelivery.enabled=true` -- install Continuous Delivery support
      for this Keptn instance.
-
-**Install Keptn control-plane with Continuous Delivery support and exposed through a LoadBalancer**
-  ```
-  helm install keptn keptn --version 0.19.1 -n keptn \
-    --repo=https://charts.keptn.sh --create-namespace --wait \
-    --set=continuousDelivery.enabled=true,apiGatewayNginx.type=LoadBalancer
-  ```
 
 **Use a LoadBalancer for api-gateway-nginx**
 

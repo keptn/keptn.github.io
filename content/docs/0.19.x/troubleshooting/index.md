@@ -130,7 +130,7 @@ Install Istio as described in the [Install and configure Istio](../../install/is
 </p></details>
 
 
-## NGNIX troubleshooting
+## NGINX troubleshooting
 
 If a CLI command like, e.g., `keptn add resource` fails with the following error message:
 
