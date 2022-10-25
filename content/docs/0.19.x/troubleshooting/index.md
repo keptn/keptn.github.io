@@ -7,95 +7,19 @@ icon: help
 
 In this section, instructions have been summarized that help to troubleshoot known issues that may occur when using Keptn.
 
-## Generating a Support Archive
+## Generating a support archive
 
-Use the Keptn CLI to generate a support archive, which can be used as a data source for debugging a Keptn installation.
-For generating a support archive, please checkout the CLI command [keptn generate support-archive](../reference/cli/commands/keptn_generate_support-archive).
+Use the [keptn generate support-archive](../reference/cli/commands/keptn_generate_support-archive) command
+to generate a support archive
+that can be used as a data source for debugging a Keptn installation.
+Note that you must
+[install the Keptn CLI](../../install/cli-install) before you can run this command.
 
-## Keptn API cannot be reached
+## Troubleshooting details
 
-In rare cases (but especially after a new Keptn installation), the Keptn API cannot be reached.
-This prevents e.g. a successful communication between the Keptn CLI and the Keptn API.
-In order to solve this problem, please try to restart the `api-gateway-nginx` pod by executing:
+See the following pages for specific troubleshooting hints:
 
-```console
-kubectl delete pods -n keptn --selector=run=api-gateway-nginx
-```
-
-## Verifying a Keptn installation
-
-Especially for troubleshooting purposes, it is necessary to verify that all parts of the Keptn installation are running as intended (i.e., no crashed pods, all distributors running).
-
-<details><summary>Expand instructions</summary>
-<p>
-
-- To verify your Keptn installation, retrieve the pods running in the `keptn` namespace.
-
-```console
-kubectl get pods -n keptn
-```
-
-```console
-NAME                                                              READY   STATUS    RESTARTS   AGE
-api-gateway-nginx-5669667d4f-2ppg9                                1/1     Running   0          20s
-api-service-5b846f4d5b-trmbp                                      1/1     Running   0          28s
-bridge-6dcc7cc967-hfvdv                                           1/1     Running   0          21s
-configuration-service-589fbfb7d9-2rrmv                            2/2     Running   2          30s
-eventbroker-go-7d9bbd5b88-84lgf                                   1/1     Running   0          31s
-gatekeeper-service-58d89b6c79-bxzsv                               2/2     Running   2          31s
-helm-service-67c6fff6d-qxhsj                                      2/2     Running   0          23s
-helm-service-continuous-deployment-distributor-7c4455d697-gwwgj   1/1     Running   3          30s
-jmeter-service-5444cc4968-v559v                                   2/2     Running   2          30s
-keptn-nats-cluster-0                                              3/3     Running   0          28s
-lighthouse-service-65ff48dc57-6hdvx                               2/2     Running   2          30s
-mongodb-59975d9f4c-nn5c2                                          1/1     Running   0          26s
-mongodb-datastore-7fdb567996-lgjj8                                2/2     Running   2          33s
-remediation-service-56777cb979-957l4                              2/2     Running   2          33s
-shipyard-service-57c6996f47-pzs9r                                 2/2     Running   2          34s
-openshift-route-service-57b45c4dfc-4x5lm                          2/2     Running   0          32s (OpenShift only)
-```
-
-</p></details>
-
-## MongoDB on OpenShift 4 fails
-<details><summary>Expand instructions</summary>
-<p>
-
-**Reason:** 
-
-The root cause of this issue is that the MongoDB (as deployed by the default Keptn installation) tries to set `mongodb` as the owner for the files in `/var/lib/mongodb/data`. However, this is not allowed for some Persistent Volumes (PVs) with the assigned rights.
-
-**Solution:** 
-
-Please execute the following command to change the image of the `mongodb` deployment to run `mongodb` as root: 
-
-```console
-kubectl set image deployment/mongodb mongodb=keptn/mongodb-privileged:latest -n keptn
-```
-</p></details>
-
-## Installation on Azure aborts
-<details><summary>Expand instructions</summary>
-<p>
-
-**Investigation:**
-
-The Keptn installation is aborting with the following error:
-
-```console
-Cannot obtain the cluster/pod IP CIDR
-```
-
-**Reason:** 
-
-The root cause of this issue is that `kubenet` is not used in your AKS cluster. However, it is needed to retrieve the `podCidr` according to the official docs: https://docs.microsoft.com/en-us/rest/api/aks/managedclusters/createorupdate#containerservicenetworkprofile 
-
-**Solution:** 
-
-Please select the **Kubenet network plugin (basic)** when setting up your AKS cluster, instead of *Azure network plugin (advanced)* and retry the installation. You can find more information here: https://docs.microsoft.com/en-us/azure/aks/configure-kubenet 
-
-</p></details>
-
+* [Troubleshooting the installation](../../install/troubleshooting)
 
 ## Broken Keptn project
 
@@ -206,24 +130,7 @@ Install Istio as described in the [Install and configure Istio](../../install/is
 </p></details>
 
 
-## Verify Kubernetes Context with Keptn Installation
-
-If you are performing critical operations, such as installing new Keptn services or upgrading something, please verify
-that you are connected to the correct cluster.
-
-* Execute `keptn status` to get the Keptn endpoint: 
-
-```console
-keptn status
-```
-
-```console
-Starting to authenticate
-Successfully authenticated
-CLI is authenticated against the Keptn cluster http://xx.xx.xx.xx.nip.io/api
-```
-
-## NGNIX troubleshooting
+## NGINX troubleshooting
 
 If a CLI command like, e.g., `keptn add resource` fails with the following error message:
 
@@ -316,69 +223,3 @@ initContainers:
 
 </p></details>
 
-
-## Fully Qualified Domain Names cannot be reached from within the cluster
-
-Depending on your Kubernetes cluster configuration, certain hostnames cannot be reached from within the Kubernetes cluster. This is usually visible via an error message that looks as follows:
-```
-Failed to send cloudevent:, Post http://event-broker.keptn.svc.cluster.local/keptn: dial tcp: lookup event-broker.keptn.svc.cluster.local: Try again
-```
-
-The problem can appear in virtually any service and scenario:
-
-1. LoadGenerator for keptn/examples
-1. Prometheus-Service/Prometheus-SLI-Service trying to access Prometheus
-1. Dynatrace-Service trying to access a Dynatrace environment
-1. Unleash-Service trying to access Unleash
-1. Any keptn-service trying to send a CloudEvent via the event-broker
-
-<details><summary>Expand instructions</summary>
-<p>
-
-
-**Problem**: Trying to access certain hostnames does not work within the cluster.
-
-The reason behind this is that some Kubernetes cluster configurations have issues when it comes to resolving internal hostnames like `service.namespace.svc.cluster.local`, but potentially reaching ANY hostname might fail, e.g., trying to fetch a URL via `wget keptn.sh`.
-
-**Analysis**: To find out whether you are affected or not, please run an `alpine:3.11` container that tries to access the Kubernetes API or any external hostname, e.g.:
-
-```
-kubectl run -i --restart=Never --rm test-${RANDOM} --image=alpine:3.11 -- sh -c "wget --no-check-certificate https://kubernetes.default.svc.cluster.local/api/v1"
-```
-
-```
-kubectl run -i --restart=Never --rm test-${RANDOM} --image=alpine:3.11 -- sh -c "wget https://keptn.sh"
-```
-
-If in any of the above instances you get a "bad address", then you are most likely affected, e.g.:
-```
-wget: bad address 'kubernetes.default.svc.cluster.local'
-```
-
-If it prints a download bar, the content of the requested URL or an HTTP 400 error (or similar), the connection works, e.g.:
-```
-Connecting to kubernetes.default.svc.cluster.local (10.0.80.1:443)
-saving to 'v1'
-v1                   100% |********************************| 10337  0:00:00 ETA
-```
-
-The problem behind this is usually a misconfiguration for the nameserver or the local `/etc/resolv.conf` configuration (e.g., searchdomains). 
-
-More details can be found at [GitHub Kubernetes Issue #64924](https://github.com/kubernetes/kubernetes/issues/64924).
-
-**Solutions**: 
-
-* Verify that your cluster's nameserver configuration is working as expected, especially the searchdomains. Easiest way to verify is to look at the output of
-   ```console
-   nslookup keptn.sh
-   ```
-   on your physical machine as well as within your Kubernetes cluster:
-   ```console
-   kubectl run -i --restart=Never --rm test-${RANDOM} --image=alpine:3.11 -- sh -c "nslookup keptn.sh" 
-   ```
-   * If a nameserver returns `NXDOMAIN` or `Non-authoritative answer`, everything is fine. 
-   * If at any point a nameserver returns an `ERRFAIL`, `SERVFAIL` or similar, update the hosts `/etc/resolv.conf` file (together with your administrator) and try again.
-   
-* Overwrite the DNS config `ndots` to `ndots:1` [in all deployment manifests](https://pracucci.com/kubernetes-dns-resolution-ndots-options-and-why-it-may-affect-application-performances.html).
-
-</p></details>

@@ -184,7 +184,7 @@ If you want to install the execution plane for continuous delivery, add the flag
     </p>
     </details>
 
-    <details><summary>**NGNIX Ingress**</summary>
+    <details><summary>**NGINX Ingress**</summary>
     <p>
 
     * To install an NGINX Ingress Controller, please refer to the [official documentation](https://kubernetes.github.io/ingress-nginx/).
@@ -226,7 +226,7 @@ If you want to install the execution plane for continuous delivery, add the flag
     </p>
     </details>
 
-    <details><summary>**NGNIX Ingress on Openshift 3.11**</summary>
+    <details><summary>**NGINX Ingress on Openshift 3.11**</summary>
     <p>
 
     * To install an NGINX Ingress Controller, please refer to the [official documentation](https://kubernetes.github.io/ingress-nginx/).
