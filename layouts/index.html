@@ -29,11 +29,16 @@ page-home
 
 {{ define "main" }}
 
+{{/* Announcements */}}
+{{ partial "announcement.html" . }}
+
 {{/* Intro */}}
 {{ partial "intro.html" . }}
 
+<!--
 {{/* Intro */}}
 {{ partial "carousel.html" . }}
+-->
 
 {{/* Usage */}}
 {{ partial "usage.html" . }}
