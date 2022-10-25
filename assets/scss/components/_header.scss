@@ -113,3 +113,12 @@
     }
   }
 }
+
+.box-announcements {
+  .ul.li {
+    a {
+      font-family: $font-family-base;
+      color: $white;
+    }
+  }
+}
