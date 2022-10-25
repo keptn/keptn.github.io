@@ -24,9 +24,8 @@ Use the [Keptn CLI](../../0.19.x/reference/cli/) to send commands
 that interact with the [Keptn API](../../0.19.x/reference/api/).
 It must be [installed](../../install/cli-install)
 on the local machine and is used to send commands to Keptn.
-To communicate with Keptn, you need to know the API token
-which is managed as a shared secret by the [Secret Service](../../0.19.x/operate/secrets).
-The shared secret is generated during the installation and verified by the *api* component.
+To communicate with Keptn, you need to know the API token (`keptn-api-token`),
+which is created during the installation via Helm and verified by the *api* component.
 
 ## Keptn Bridge
 
@@ -61,12 +60,16 @@ It provides endpoints to authenticate, get metadata about the Keptn installation
 forward [CloudEvents](../../0.19.x/reference/miscellaneous/events)
 to the NATS cluster, and trigger evaluations for a service.
 
-### mongodb-service
+### mongodb-datastore
 
-The *mongodb-datastore* stores event data in a MongoDB deployed in your Keptn namespace.
-Hence, the service provides the REST endpoint `/events` to query events.
+The *mongodb-datastore* stores event data in a MongoDB
+that, by default, is deployed in your Keptn namespace.
+You can instead use an externally hosted MongoDB by configuring
+the [connectionString](https://github.com/keptn/keptn/blob/539339ef3da8e55d7968852a88ed01e0088f5871/installer/manifests/keptn/values.yaml#L47) fields
+in the [values.yaml](../../0.19.x/reference/files/values) file.
+The service provides the REST endpoint `/events` to query events.
 The `mongodb-datastore` and `shipyard-controller` pods
-have direct connections to mongodb (keptn-mongo).
+have direct connections to mongodb (`keptn-mongo`).
 
 ### resource-service
 
@@ -74,9 +77,13 @@ The *resource-service* is a Keptn core component
 that manages resources for Keptn project-related entities, i.e., project, stage, and service.
 This replaces the `configuration-service` that was used in Keptn releases before 0.16.x.
 It uses the Git-based [upstream repository](../../0.19.x/manage/git_upstream)
-which is mounted as a persistent volume to store the resources with version control,
+to store the resources with version control.
 This service can upload the Git repository to any Git-based service
 such as GitLab, GitHub, and Bitbucket.
+
+The `resource-service` hosts this file in an `emptyDir` volume
+so that a new pod of the service always starts with an empty volume.
+Note that, in earlier releases, this file was mounted as a Persistent Volume Claim (PVC).
 
 ### shipyard-controller
 
@@ -128,13 +135,14 @@ The default Keptn installation includes Keptn-services for some Execution Plane 
   In other words, it sends an `approval.finished` event which contains information
   about whether a task sequence (such as the artifact delivery) should continue or not.
   If the approval strategy within a stage has been set to `manual`,
-  the gatekeeper service does not respond with any event since, in that case,
+  the `approval-service` does not respond with any event since, in that case,
   the user is responsible for sending an `approval.finished` event
   (using either the [Keptn Bridge](../../0.19.x/bridge/#approvals) or the API).  
 
 - **remediation-service:** determines the action to be performed in remediation workflows. 
 
-- **mongodb-datastore:** stores MongoDB event data that is deployed in the cluster.
+- **mongodb-datastore:** stores MongoDB event data that is deployed in the cluster
+  as discussed above.
 
 You also need a service to create/modify the configuration of a service that is going to be onboarded,
 fetch configuration files from the *configuration-service*, and apply the configurations.
@@ -174,7 +182,7 @@ to create a Keptn-service that integrates other tools.
 On a single-cluster Keptn instance,
 the Keptn control plane and execution plane are both installed on the same cluster
 and they communicate using NATS.
-Execution plane services have a distributor pod
+Execution plane service pods have a distributor container
 that subscribes to and publishes events on behalf of the execution plane service.
 
 Environment variables documented
@@ -195,7 +203,7 @@ that are documented on the [shipyard](../../0.19.x/reference/files/shipyard/#fie
    For sequence-level events:
 
    ```
-   sh.keptn.event.<stage>-<sequence>.<verb>
+   sh.keptn.event.<stage>.<sequence>.<verb>
    ```
 
    For example, the control plane might publish the following to the subject:
@@ -208,10 +216,10 @@ that are documented on the [shipyard](../../0.19.x/reference/files/shipyard/#fie
    For task-level events:
 
    ```
-   .sh.keptn.event.<task>.<verb>
+   sh.keptn.event.<task>.<verb>
    ```
 
-   Optionally, the control plain can send one or more events in the form:
+   Optionally, the control plane can send one or more events in the form:
 
    ```
    sh.keptn.<task>.status.changed
@@ -221,12 +229,12 @@ that are documented on the [shipyard](../../0.19.x/reference/files/shipyard/#fie
 1. The Helm-Service Distributor (HSD) subscribes to the subject:
 
    ```
-   sh.keptn.event.deployment
+   sh.keptn.event.deployment.triggered
    ```
    And receives:
 
    ```
-   sh.keptn.event.deployment.started
+   sh.keptn.event.deployment.triggered
    ```
    as well as the JSON event body.
 

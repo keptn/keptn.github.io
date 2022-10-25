@@ -18,8 +18,8 @@ In most cases, only a subset of these need to be configured.
 After the application is deployed,
 its subscription can be changed directly in the Bridge.
 
-Note that some services use `cd-connectors` or `go-sdk`
-(which is actually a wrapper for `cd-connectors`)
+Note that some services use `cp-connector` or `go-sdk`
+(which is actually a wrapper for `cp-connector`)
 instead of the distributor.
 This is discussed more in [Architecture](../../../../concepts/architecture/#execution-plane-services).
 
