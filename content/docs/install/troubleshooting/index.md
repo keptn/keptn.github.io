@@ -85,12 +85,16 @@ You should also learn how to do basic Kubernetes troubleshooting.
 
 You can analyze the pods that are failing with general Kubernetes diagnostics,
 especially viewing the log files.
-A common problem is that the Persistent Volume Claims (PVCs) do not have enough storage capacity.
-If your PVC is not configured correctly or is not large enough,
-nodes running services that need storage (such as `mongodb` and the `configuration-service`)
-cannot launch because they do not have access to storage.
-Most Kubernetes clusters need at least 20GB storage
-and may need more depending on the projects and services you are running.
+Common problems are:
+
+* Persistent Volume Claims (PVCs) do not have enough storage capacity.
+  If your PVC is not configured correctly or is not large enough,
+  nodes running services that need storage (such as `mongodb` and the `configuration-service`)
+  cannot launch because they do not have access to storage.
+  Most Kubernetes clusters need at least 20GB to 30GB of storage
+  and may need more depending on the projects and services you are running.
+* Inadequate CPUs and/or memory.
+  This can lead to timeouts during startup.
 
 ### Docker resources
 
@@ -167,7 +171,7 @@ More details can be found at
 **Solutions**:
 
 1. Verify that your cluster's nameserver configuration is working as expected,
-especially the searchdomains. The easiest way to verify this is to look at the output of
+   especially the searchdomains. The easiest way to verify this is to look at the output of
    ```
    nslookup keptn.sh
    ```
