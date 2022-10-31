@@ -63,7 +63,7 @@ Run your Keptn installation for free on GKE! If you [sign up for a Google Cloud 
 
   - [oc CLI - v4.1](https://github.com/openshift/origin/releases/tag/v4.1.0)
 
-1. Currently, there is the *known limitation* that the MongoDB of Keptn does not start. Please follow the troubleshooting guide provided here: [MongoDB fails on OpenShift](../..//#mongodb-on-openshift-4-fails).
+1. Currently, there is the *known limitation* that the MongoDB of Keptn does not start. Please follow the troubleshooting guide provided here: [MongoDB fails on OpenShift](../troubleshooting/#mongodb-fails-on-openshift).
 ngo
 
 **OpenShift 3.11**
