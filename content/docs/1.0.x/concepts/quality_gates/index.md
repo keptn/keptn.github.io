@@ -16,8 +16,8 @@ Keptn quality gates provide a *declarative way* to define quality criteria of yo
 Keptn quality gates are based on the concepts of *Service-Level Indicators (SLIs)* and *Service-Level Objectives (SLOs)*. Using these, you can declaratively describe the desired quality objective for your applications and services.
 
 1. The process of evaluating a quality gate can be triggered using
-the [Keptn Bridge](../../0.19.x/bridge), the Keptn CLI or the Keptn API. 
-1. Once triggered, Keptn fetches the [SLIs](../../0.18.x/reference/files/sli/). 
+the [Keptn Bridge](../../bridge), the Keptn CLI or the Keptn API. 
+1. Once triggered, Keptn fetches the [SLIs](../../reference/files/sli/). 
 from a data provider like Prometheus, Dynatrace, or Datadog.
 1. Keptn evaluates the SLI against the SLOs that are defined for the application or service. 
 1. After evaluation and scoring, Keptn returns the result that can be either processed in an automated way by an existing CD pipeline or by the user to manually decide on the next steps (e.g., promotion to production or pushing it back to the developer for needed improvements).
@@ -31,17 +31,17 @@ from a data provider like Prometheus, Dynatrace, or Datadog.
 
 A service-level indicator is a *"carefully defined quantitative measure of some aspect of the level of service that is provided"* (as defined in the [Site-Reliability Engineering Book](https://landing.google.com/sre/sre-book/chapters/service-level-objectives/)). 
 
-An example of an SLI is the *response time* (also named request latency), which is the indicator of how long it takes for a request to respond with an answer. Other prominent SLIs are *error rate* (or failure rate), and throughput. Keptn defines all SLIs in a dedicated [sli.yaml](../../0.18.x/reference/files/sli/)  file to make SLIs reusable within several quality gates.
+An example of an SLI is the *response time* (also named request latency), which is the indicator of how long it takes for a request to respond with an answer. Other prominent SLIs are *error rate* (or failure rate), and throughput. Keptn defines all SLIs in a dedicated [sli.yaml](../../reference/files/sli/)  file to make SLIs reusable within several quality gates.
 
 By default, SLIs are defined at the project level
 but they can also be defined for a specific stage or service within a stage.
-See the [SLI reference page](../../0.19.x/reference/files/sli) for details.
+See the [SLI reference page](../../reference/files/sli) for details.
 
 ## What is a Service-Level Objective (SLO)?
 
 A service-level objective is *"a target value or range of values for a service level that is measured by an SLI."* (as defined in the [Site-Reliability Engineering Book](https://landing.google.com/sre/sre-book/chapters/service-level-objectives/)). 
 
-An example of an SLO can define that a specific request must return results within 100 milliseconds. Keptn quality gates can comprise several SLOs that are all evaluated and scored, based even on different weights for each SLO to consider different importance of each SLO. Keptn defines SLOs in a dedicated [slo.yaml](../../0.18.x/reference/files/slo/) file.
+An example of an SLO can define that a specific request must return results within 100 milliseconds. Keptn quality gates can comprise several SLOs that are all evaluated and scored, based even on different weights for each SLO to consider different importance of each SLO. Keptn defines SLOs in a dedicated [slo.yaml](../../reference/files/slo/) file.
 
 
 ## Quality gate result on the Keptn Bridge
@@ -49,7 +49,7 @@ An example of an SLO can define that a specific request must return results with
 :bulb: *A quality gate answers one question: Does my service meet all defined quality criteria?*
 
 Keptn quality gates help you answer this question by representing
-quality gate results on the [Keptn Bridge](../../0.18.x/bridge) like this:
+quality gate results on the [Keptn Bridge](../../bridge) like this:
 
 <!--TODO: Change image and add annotations [1] ... [5] -->
 

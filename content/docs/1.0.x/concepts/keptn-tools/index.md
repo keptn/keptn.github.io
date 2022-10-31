@@ -23,7 +23,7 @@ It allows for interoperability and any kinds of integrations in the Keptn ecosys
 
 ## Start with the shipyard
 
-Keptn's [shipyard](../../0.18.x/reference/files/shipyard) file is the blueprint for your Keptn environment.
+Keptn's [shipyard](../../reference/files/shipyard) file is the blueprint for your Keptn environment.
 While it may look like a pipeline, nowhere does it mention the tooling used to action each task.
 This is deliberate and by design.
 It is this factor that allows hot-swapping of tools.
