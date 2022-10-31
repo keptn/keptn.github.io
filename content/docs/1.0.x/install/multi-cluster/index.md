@@ -100,7 +100,7 @@ Please find the Helm Charts here:
   in either of the following ways:
 
   * Set the `K8S_DEPLOYMENT_NAME` environment variable on each execution plane to a unique name.
-    See the [distributor](../../0.18.x/reference/miscellaneous/distributor) reference page
+    See the [distributor](../../reference/miscellaneous/distributor) reference page
     for more information about this and other environment variables that configure the distributor.
     For example:
 

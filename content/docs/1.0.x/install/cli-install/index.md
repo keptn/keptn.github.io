@@ -11,11 +11,11 @@ but is instead an interface to Keptn,
 much as **kubectl** is an interface to Kubernetes.
 
 The Keptn CLI sends commands to Keptn by interacting with the Keptn API.
-The [API Token](../../0.18.x/operate/api_token)
+The [API Token](../../operate/api_token)
 that is used to communicate with Keptn is generated during the installation.
 
 It is not absolutely necessary to install the Keptn CLI for current Keptn releases,
-which allow you to create a project or run a sequence using the [Keptn Bridge](../../0.18.x/bridge),
+which allow you to create a project or run a sequence using the [Keptn Bridge](../../bridge),
 but it is recommended for production systems.
 
 You can install the Keptn CLI using:

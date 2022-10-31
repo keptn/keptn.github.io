@@ -4,9 +4,9 @@ description: Tips for troubleshooting installation problems.
 weight: 300
 ---
 
-1. [Generate a support-archive](../../0.19.x/reference/cli/commands/keptn_generate_support-archive) and ask for help in our [Slack channel](https://slack.keptn.sh).
+1. [Generate a support-archive](../../reference/cli/commands/keptn_generate_support-archive) and ask for help in our [Slack channel](https://slack.keptn.sh).
 
-1. Uninstall Keptn by executing the [keptn uninstall](../../0.19.x/reference/cli/commands/keptn_uninstall) command before conducting a re-installation.
+1. Uninstall Keptn by executing the [keptn uninstall](../../reference/cli/commands/keptn_uninstall) command before conducting a re-installation.
 
 ## Keptn API cannot be reached
 

@@ -24,7 +24,7 @@ This page has the following information:
 To upgrade the control plane:
 
 1. Back up your Keptn instance, following
-   [Keptn's backup instructions](../../0.19.x/operate/backup_and_restore)
+   [Keptn's backup instructions](../../operate/backup_and_restore)
 1. Make sure you are connected to the Kubernetes cluster where Keptn is installed.
 1. Fetch your current Helm values into a file with the follwoing command:
 
@@ -133,7 +133,7 @@ from the [Helm CLI](https://helm.sh/docs/helm/) to upgrade.
 
 The Keptn Helm chart has also been refactored heavily in Release 0.17.x,
 to prepare it for future features and structural changes.
-To upgrade, we recommend getting your old Helm [values](../../0.19.x/reference/files/values) file,
+To upgrade, we recommend getting your old Helm [values](../../reference/files/values) file,
 and then merging it together with the default Keptn Helm values
 to get any new default values that were introduced.
 You can then use your new values file to follow the
@@ -174,11 +174,11 @@ You will notice that some Helm values have changed compared to your `old-values.
 
 |Release Notes                    |Upgrade documentation                                       |
 |-------------------------------- |----------------------------------------------------------- |
-|[0.16.2](../../news/release_announcements/keptn-0162/), [0.16.1](../../news/release_announcements/keptn-0161/), [0.16.0](../../news/release_announcements/keptn-0160/)   | [Upgrade from Keptn 0.15.x to 0.16.x](../../0.16.x/operate/upgrade)     |
-|[0.15.1](../../news/release_announcements/keptn-0151/), [0.15.0](../../news/release_announcements/keptn-0150/)   | [Upgrade from Keptn 0.13.x to 0.15.x](../../0.15.x/operate/upgrade)     |
-|[0.14.3](../../news/release_announcements/keptn-0143/), [0.14.2](../../news/release_announcements/keptn-0142/),[0.14.1](../../news/release_announcements/keptn-0141/)   | [Upgrade from Keptn 0.13.x to 0.14.x](../../0.14.x/operate/upgrade)     |
-|[0.13.6](../../news/release_announcements/keptn-0136/), [0.13.5](../../news/release_announcements/keptn-0135/), [0.13.4](../../news/release_announcements/keptn-0134/), [0.13.3](../../news/release_announcements/keptn-0133/), [0.13.2](../../news/release_announcements/keptn-0132/), [0.13.1](../../news/release_announcements/keptn-0131/)  [0.13.0](../../news/release_announcements/keptn-0130/)    | [Upgrade from Keptn 0.12.x to 0.13.x](../../0.13.x/operate/upgrade)     |
-|[0.12.7](../../news/release_announcements/keptn-0127/), [0.12.6](../../news/release_announcements/keptn-0126/), [0.12.4](../../news/release_announcements/keptn-0124/), [0.12.3](../../news/release_announcements/keptn-0123/), [0.12.2](../../news/release_announcements/keptn-0122/), [0.12.1](../../news/release_announcements/keptn-0121/)  [0.12.0](../../news/release_announcements/keptn-0130/)    | [Upgrade from Keptn 0.11.x to 0.12.x](../../0.14.x/operate/upgrade)     |
-|[0.11.4](../../news/release_announcements/keptn-0114/), [0.11.3](../../news/release_announcements/keptn-0113/),[0.11.2](../../news/release_announcements/keptn-0112/)   | [Upgrade from Keptn 0.11.x to 0.11.4](../../0.11.x/operate/upgrade)     |
-|[0.10.0](../../news/release_announcements/keptn-0100/)   | [Upgrade from Keptn 0.09.x to 0.10.0](../../0.10.x/operate/upgrade)     |
+|[0.16.2](../../../news/release_announcements/keptn-0162/), [0.16.1](../../../news/release_announcements/keptn-0161/), [0.16.0](../../../news/release_announcements/keptn-0160/)   | [Upgrade from Keptn 0.15.x to 0.16.x](../../../0.16.x/operate/upgrade)     |
+|[0.15.1](../../../news/release_announcements/keptn-0151/), [0.15.0](../../../news/release_announcements/keptn-0150/)   | [Upgrade from Keptn 0.13.x to 0.15.x](../../../0.15.x/operate/upgrade)     |
+|[0.14.3](../../../news/release_announcements/keptn-0143/), [0.14.2](../../../news/release_announcements/keptn-0142/),[0.14.1](../../../news/release_announcements/keptn-0141/)   | [Upgrade from Keptn 0.13.x to 0.14.x](../../../0.14.x/operate/upgrade)     |
+|[0.13.6](../../../news/release_announcements/keptn-0136/), [0.13.5](../../../news/release_announcements/keptn-0135/), [0.13.4](../../../news/release_announcements/keptn-0134/), [0.13.3](../../../news/release_announcements/keptn-0133/), [0.13.2](../../../news/release_announcements/keptn-0132/), [0.13.1](../../../news/release_announcements/keptn-0131/)  [0.13.0](../../../news/release_announcements/keptn-0130/)    | [Upgrade from Keptn 0.12.x to 0.13.x](../../../0.13.x/operate/upgrade)     |
+|[0.12.7](../../../news/release_announcements/keptn-0127/), [0.12.6](../../../news/release_announcements/keptn-0126/), [0.12.4](../../../news/release_announcements/keptn-0124/), [0.12.3](../../../news/release_announcements/keptn-0123/), [0.12.2](../../../news/release_announcements/keptn-0122/), [0.12.1](../../../news/release_announcements/keptn-0121/)  [0.12.0](../../../news/release_announcements/keptn-0130/)    | [Upgrade from Keptn 0.11.x to 0.12.x](../../../0.12.x/operate/upgrade)     |
+|[0.11.4](../../../news/release_announcements/keptn-0114/), [0.11.3](../../../news/release_announcements/keptn-0113/),[0.11.2](../../../news/release_announcements/keptn-0112/)   | [Upgrade from Keptn 0.11.x to 0.11.4](../../../0.11.x/operate/upgrade)     |
+|[0.10.0](../../../news/release_announcements/keptn-0100/)   | [Upgrade from Keptn 0.09.x to 0.10.0](../../../0.10.x/operate/upgrade)     |
 
