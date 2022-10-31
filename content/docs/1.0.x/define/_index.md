@@ -1,7 +1,7 @@
 ---
 title: Define Keptn Projects
 description: Define what a project does
-weight: 10
+weight: 350
 icon: setup
 ---
 
