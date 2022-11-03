@@ -1,6 +1,6 @@
 
 VOLUMES := -v $(CURDIR):/src -v $(CURDIR)/public:/target 
-IMAGE := klakegg/hugo:0.53-ext-alpine
+IMAGE := klakegg/hugo:0.105.0-ext
 
 .PHONY: build server clean htmltest
 
