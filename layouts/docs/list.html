@@ -21,6 +21,7 @@
     {{ else }}
     {{ range $pages }}
     {{ if eq .Parent $parent }}
+    {{ if not .Params.hide }}
     <div class="entry">
       <h5>
         <a href="{{ .Permalink }}">{{- if .Params.icon -}}<i class="page_icon">
@@ -28,6 +29,7 @@
       </h5>
       <p>{{ .Description }}</p>
     </div>
+    {{ end }}
     {{ end }}
     {{ end }}
     {{ end }}
