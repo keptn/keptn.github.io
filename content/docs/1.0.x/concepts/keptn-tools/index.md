@@ -136,4 +136,4 @@ More details are provided at the bottom of the Integrations page.
 
 ## Try Keptn?
 
-Want to try out Keptn? Head to the [explore Keptn page](../../explore) to begin.
+Want to try out Keptn? Head to the [Keptn Quick Start page](../../quickstart) to begin.

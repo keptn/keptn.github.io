@@ -22,14 +22,14 @@ with links to installation instructions.
 * k3s, k3d, and Minikube allow you to install a small Kubernetes cluster
   on your laptop for study and demonstration purposes.
 
-*Hint* Be sure to check [Kubernetes support & Cluster size](../k8s-support)
+*Note* Be sure to check [Kubernetes support & Cluster size](../k8s-support)
   to ensure that Keptn is compatible with the Kubernetes version you are running
   and that your Kubernetes cluster has enough resources for Keptn.
   In particular, ensure that you include adequat storage capacity
   for the Persistent Volume Claims (PVCs).
   We recommend at least 20GB to 30GB of storage capacity for any Keptn installlation.
   Larger installations running more complex projects may need additional storage capacity.
-  See [Check resources](../troubleshoting/#check-resources) for more information.
+  See [Check resources](../troubleshooting/#check-resources) for more information.
 
 <details>
    <summary>Azure Kubernetes Service (AKS)</summary>
