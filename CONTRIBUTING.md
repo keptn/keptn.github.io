@@ -133,7 +133,7 @@ The makefile targets are utilizing docker for easier setup. This requires no add
 
 ### Using a locally installed Hugo
 
-1. Install the extended version of [Hugo](http://gohugo.io) in [Version 0.53](https://github.com/gohugoio/hugo/releases/tag/v0.53) (see [netlify.toml](netlify.toml) - `HUGO_VERSION = "0.53"`).
+1. Install the extended version of [Hugo](http://gohugo.io) in [Version 0.105.0](https://github.com/gohugoio/hugo/releases/tag/v0.105.0) (see [netlify.toml](netlify.toml) - `HUGO_VERSION = "0.105.0"`).
 
    :warning: It is important that you install the **extended** version of Hugo. Learn how to install Hugo, depending on your OS, here: [install Hugo](https://gohugo.io/getting-started/installing/).
 
