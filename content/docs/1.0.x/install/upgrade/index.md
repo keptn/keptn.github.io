@@ -12,7 +12,7 @@ are often baked into the code.
 This page has the following information:
 
 * How to [upgrade the Keptn control plane](#upgrade-the-keptn-control-plane)
-* How to [upgrade the Keptn execution plane\(#upgrade-the-execution-plane)
+* How to [upgrade the Keptn execution plane](#upgrade-the-execution-plane)
 * Notes about special steps required when
   [updating multi-cluster Keptn instances](#notes-for-upgrading-multi-cluster-instances)
 * [Release-specific notes](#upgrade-notes-by-release) about upgrading from recent releases
@@ -42,7 +42,8 @@ To upgrade the control plane:
 
 1. Download the released Helm chart using the following command
    replacing `<release>` with the release number to which you are upgrading,
-   such as `0.19.0`:
+   such as `1.0.0`:
+
    ```
    helm pull https://charts.keptn.sh/packages/keptn-<release>.tgz
    ```
@@ -53,11 +54,12 @@ To upgrade the control plane:
 
 ## Upgrade the Execution plane
 
-When you upgrade the Keptn control plane,
+Before upgrading the Keptn execution plane,
 you should check the documentation for any services that you are using
-to see if the version you are using is compatible with the new Keptn control plane version you installed
-or if a new version of the service is available
-and to see if the service documents special upgrade instructions.
+to ensure that the version you are using is compatible
+with the new Keptn control plane version you installed.
+You may find that a new version of the service is available
+and the documentation may include special upgrade instructions.
 
 For most services, the upgrade procedure is similar to the procedure used
 to upgrade the Keptn control plane:
@@ -85,11 +87,11 @@ and use that merged file to upgrade the service:
    helm pull https://charts.keptn.sh/packages/<exec-plane-service>-<release>.tgz`
    ```
 
-     For example, to download the Helm chart for `helm-service`, Release 0.17.x,
+     For example, to download the Helm chart for `helm-service`, Release 1.0.0,
      the command is:
 
      ```
-     helm pull https://charts.keptn.sh/packages/helm-service-0.17.0.tgz`
+     helm pull https://charts.keptn.sh/packages/helm-service-1.0.0.tgz`
      ```
 
 1. Unpack the downloaded file.
@@ -97,10 +99,10 @@ and use that merged file to upgrade the service:
    and your previously downloaded `old-values.yaml` together.
 1. Use the merged `values` file and the `helm` command to do the upgrade
    to upgrade to the new version of your execution plane service.
-   For the `helm-service` example, the command to upgrade to version 0.17.0 is:
+   For the `helm-service` example, the command to upgrade to version 1.0.0 is:
 
    ```
-   helm upgrade <your-exec-plane-service> -n exec-plane --version 0.17.0 \
+   helm upgrade <your-exec-plane-service> -n exec-plane --version 1.0.0 \
      --values <your-adjusted-values-file>
    ```
 
@@ -112,10 +114,18 @@ Some additional configurations are required in recent releases.
 
 * For Keptn releases 0.15.x and later,
 you may need to set the `K8S_DEPLOYMENT_NAME` environment variable on each execution plane to a unique name.
-* [Add note about setting NATS_URL env variable]
+* If your service uses `cp-connector` or `go-sdk` to subscribe to events,
+you may need to define the `NATS_URL` environment variable to identify the NATS cluster to use.
+See the [distributor](../../reference/miscellaneous/distributor/#environment-variables)
+and [NATS behavior on a multi-cluster instance](../../concepts/architecture/#nats-behavior-on-a-multi-cluster-instance)
+pages for more information.
 
 
 ## Upgrade notes by release
+
+### Upgrade from Keptn 0.19.x to Keptn 1.0.0-LTS
+
+No special steps are required to upgrade from Keptn 0.19.x to Keptn 1.0.x-LTS.
 
 ### Upgrade from Keptn 0.18.x to Keptn 0.19.x
 
