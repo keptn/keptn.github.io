@@ -90,7 +90,7 @@ to port `8080` on the Keptn API Gateway service in the cluster.
   that are appropriate for installing a fully-functional production Keptn instance.
   They use the following options:
 
-  * `--version 0.19.1` -- Keptn release to be installed.
+  * `--version 1.0.0` -- Keptn release to be installed.
      If you do not specify the release, Helm uses the latest release.
 
    * `--repo=https://charts.keptn.sh` -- the location of the Helm chart.
@@ -107,7 +107,7 @@ to port `8080` on the Keptn API Gateway service in the cluster.
 
   ```
   helm upgrade keptn keptn --install -n keptn --create-namespace --wait \
-    --version=0.19.1 --repo=https://charts.keptn.sh \
+    --version=1.0.0 --repo=https://charts.keptn.sh \
     --set=apiGatewayNginx.type=LoadBalancer
   ```
 
@@ -177,7 +177,7 @@ To access it:
    kubectl -n keptn get secret bridge-credentials -o jsonpath-{.data.BASIC_AUTH_USERNAME} | base64 -d
    kubectl -n keptn get secret bridge-credentials -o jsonpath-{.data.BASIC_AUTH_PASSWORD} | base64 -d
    ```
-   You can also use [OpenID Authentication](../../bridge/oauth) to access the Keptn Bridge.
+   You can instead use [OpenID Authentication](../../bridge/oauth) to access the Keptn Bridge.
 
 ## Install Execution Plane
 
@@ -186,10 +186,10 @@ install a microservice.
 For example, the following two commands install the Jmeter and Helm-service microservices:
 
 ```
-helm install jmeter-service https://github.com/keptn/keptn/releases/download/0.19.1/jmeter-service-0.19.1.tgz  \
+helm install jmeter-service https://github.com/keptn/keptn/releases/download/1.0.0/jmeter-service-1.0.0.tgz  \
   -n keptn --create-namespace --wait
 
-helm install helm-service https://github.com/keptn/keptn/releases/download/0.19.1/helm-service-0.19.1.tgz \
+helm install helm-service https://github.com/keptn/keptn/releases/download/1.0.0/helm-service-1.0.0.tgz \
   -n keptn --create-namespace --wait
 ```
 
@@ -202,16 +202,17 @@ The `helm install` and `helm upgrade` commands offer a flag called `--set`,
 which can be used to specify several configuration options using the format `key1=value1,key2=value2,...`.
 The full list of available flags can be found
 in the [helm-charts](https://github.com/keptn/keptn/tree/master/installer/manifests/keptn).
+See the `README`file for a description of the parameters.
 
 * The **Control Plane with the Execution Plane (for Continuous Delivery)**
 can be installed by the following command:
 ```
-helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.19.1 --repo=https://charts.keptn.sh --set=continuousDelivery.enabled=true
+helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=1.0.0 --repo=https://charts.keptn.sh --set=continuousDelivery.enabled=true
 ```
 
 * The **Control Plane with the Execution Plane (for Continuous Delivery)** and a `LoadBalancer` for exposing Keptn can be installed by the following command:
 ```
-helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.19.1 --repo=https://charts.keptn.sh --set=continuousDelivery.enabled=true,apiGatewayNginx.type=LoadBalancer
+helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=1.0.0 --repo=https://charts.keptn.sh --set=continuousDelivery.enabled=true,apiGatewayNginx.type=LoadBalancer
 ```
 
 ## Install Keptn using a user-provided API token
@@ -238,11 +239,11 @@ The following artifacts must be available locally:
 
 **Download Keptn Helm Charts**
 
-Download the Helm charts from the [Keptn 0.19.x release](https://github.com/keptn/keptn/releases/tag/0.19.1):
+Download the Helm charts from the [Keptn 1.0.x release](https://github.com/keptn/keptn/releases/tag/1.0.0):
 
-* Keptn Control Plane: https://github.com/keptn/keptn/releases/download/0.19.1/keptn-0.19.1.tgz
-* helm-service (if needed): https://github.com/keptn/keptn/releases/download/0.19.1/helm-service-0.19.1.tgz
-* jmeter-service (if needed): https://github.com/keptn/keptn/releases/download/0.19.1/jmeter-service-0.19.1.tgz
+* Keptn Control Plane: https://github.com/keptn/keptn/releases/download/1.0.0/keptn-1.0.0.tgz
+* helm-service (if needed): https://github.com/keptn/keptn/releases/download/1.0.0/helm-service-1.0.0.tgz
+* jmeter-service (if needed): https://github.com/keptn/keptn/releases/download/1.0.0/jmeter-service-1.0.0.tgz
 
 Move the Helm Charts to a directory on your local machine, e.g., `offline-keptn`.
 
@@ -251,9 +252,9 @@ For convenience, the following script creates this directory and downloads the r
 ```
 mkdir offline-keptn
 cd offline-keptn
-curl -L https://github.com/keptn/keptn/releases/download/0.19.1/keptn-0.19.1.tgz -o keptn-0.19.1.tgz
-curl -L https://github.com/keptn/keptn/releases/download/0.19.1/helm-service-0.19.1.tgz -o helm-service-0.19.1.tgz
-curl -L https://github.com/keptn/keptn/releases/download/0.19.1/jmeter-service-0.19.1.tgz -o jmeter-service-0.19.1.tgz
+curl -L https://github.com/keptn/keptn/releases/download/1.0.0/keptn-1.0.0.tgz -o keptn-1.0.0.tgz
+curl -L https://github.com/keptn/keptn/releases/download/1.0.0/helm-service-1.0.0.tgz -o helm-service-1.0.0.tgz
+curl -L https://github.com/keptn/keptn/releases/download/1.0.0/jmeter-service-1.0.0.tgz -o jmeter-service-1.0.0.tgz
 cd ..
 ```
 
@@ -268,9 +269,9 @@ For convenience, you can use the following commands to download and execute the 
 
 ```
 cd offline-keptn
-curl -L https://raw.githubusercontent.com/keptn/keptn/0.19.1/installer/airgapped/pull_and_retag_images.sh -o pull_and_retag_images.sh
+curl -L https://raw.githubusercontent.com/keptn/keptn/1.0.0/installer/airgapped/pull_and_retag_images.sh -o pull_and_retag_images.sh
 chmod +x pull_and_retag_images.sh
-KEPTN_TAG=0.19.1 ./pull_and_retag_images.sh "your-registry.localhost:5000/"
+KEPTN_TAG=1.0.0 ./pull_and_retag_images.sh "your-registry.localhost:5000/"
 cd ..
 ```
 
@@ -286,9 +287,10 @@ For convenience, you can use the following commands to download and execute the 
 
 ```
 cd offline-keptn
-curl -L https://raw.githubusercontent.com/keptn/keptn/0.19.1/installer/airgapped/install_keptn.sh -o install_keptn.sh
+curl -L https://raw.githubusercontent.com/keptn/keptn/1.0.0/installer/airgapped/install_keptn.sh -o install_keptn.sh
 chmod +x install_keptn.sh
-./install_keptn.sh "your-registry.localhost:5000/" keptn-0.19.1.tgz helm-service-0.19.1.tgz jmeter-service-0.19.1.tgz
+./install_keptn.sh "your-registry.localhost:5000/" keptn-1.0.0.tgz \
+   helm-service-1.0.0.tgz jmeter-service-1.0.0.tgz
 cd ..
 ```
 
@@ -301,12 +303,17 @@ For example, if a user sets `prefixPath=/mykeptn` in the Helm install/upgrade co
 the Keptn API is located under `http://HOSTNAME/mykeptn/api` and the Keptn Bridge is located under `http://HOSTNAME/mykeptn/bridge`:
 
 ```
-helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.19.1 --repo=https://charts.keptn.sh --set=apiGatewayNginx.type=LoadBalancer,continuousDelivery.enabled=true,prefixPath=/mykeptn
+helm upgrade keptn keptn --install -n keptn --create-namespace --wait \
+   --version=1.0.0 --repo=https://charts.keptn.sh \
+   --set=apiGatewayNginx.type=LoadBalancer,continuousDelivery.enabled=true,prefixPath=/mykeptn
 ```
 
 ## Install Keptn with externally hosted MongoDB
 
-If you want to use an externally hosted MongoDB instead of the MongoDB installed by Keptn, please use the `helm upgrade` command as shown below. Basically, provide the MongoDB host, port, user, and password in form of a connection string.
+If you want to use an externally hosted MongoDB instead of the MongoDB installed by Keptn,
+use the `helm upgrade` command,
+specifying the MongoDB host, port, user, and password in form of a connection string
+as shown below:
 
 ```
 helm upgrade keptn keptn --install -n keptn --create-namespace
