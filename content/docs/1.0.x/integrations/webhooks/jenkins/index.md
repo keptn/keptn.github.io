@@ -2,7 +2,7 @@
 title: Jenkins Integration
 description: Example to integrate Jenkins using Webhooks
 weight: 1
-keywords: [0.19.x-integration]
+keywords: [1.0.0-integration]
 ---
 
 With a Jenkins integration, you can call existing Jenkins Pipelines from Keptn. In addition, with the optional [keptn-jenkins-library](https://github.com/keptn-sandbox/keptn-jenkins-library/)

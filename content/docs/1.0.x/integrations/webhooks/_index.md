@@ -2,7 +2,7 @@
 title: Webhook Integration
 description: Learn how to integrate external tooling using Webhooks
 weight: 2
-keywords: [0.19.x-integration]
+keywords: [1.0.0-integration]
 ---
 
 Keptn has a built-in capability, via the [Keptn webhook service](https://github.com/keptn/keptn/tree/master/webhook-service), to call external HTTP endpoints as part of sequence task orchestration. 
