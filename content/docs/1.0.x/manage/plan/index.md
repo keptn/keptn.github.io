@@ -2,7 +2,7 @@
 title: Plan your project
 description: Create and delete a project in Keptn.
 weight: 10
-keywords: [0.16.x-manage]
+keywords: [1.0.x-manage]
 aliases:
 ---
 

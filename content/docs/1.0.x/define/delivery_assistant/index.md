@@ -2,9 +2,7 @@
 title: Delivery Assistant
 description: Approval to control the delivery process
 weight: 55
-keywords: [0.19.x-cd]
-aliases:
-  - /docs/0.19.x/reference/bridge/delivery_assistent/
+keywords: [1.0.x-cd]
 ---
 
 If you would like to extend the [delivery sequence](../delivery_sequence)

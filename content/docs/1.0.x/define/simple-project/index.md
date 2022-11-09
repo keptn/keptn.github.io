@@ -2,7 +2,7 @@
 title: A simple project
 description: A simple project with dev, hardening, and production stages
 weight: 30
-keywords: [0.19.x-define]
+keywords: [1.0.x-define]
 aliases:
 ---
 

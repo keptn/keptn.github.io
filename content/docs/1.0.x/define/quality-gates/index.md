@@ -2,7 +2,7 @@
 title: Quality Gates
 description: Implement Quality Gate evaluations in your project
 weight: 50
-keywords: [0.19.x-quality_gates]
+keywords: [1.0.x-quality_gates]
 ---
 
 A quality gate allows you to validate a deployment or release

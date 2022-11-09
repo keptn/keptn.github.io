@@ -2,7 +2,7 @@
 title: Triggers
 description: Using triggers to kick off a sequence
 weight: 160
-keywords: [0.19.x-manage]
+keywords: [1.0.x-manage]
 aliases:
 ---
 
@@ -116,7 +116,7 @@ This triggers the *rollback* sequence, based on the configuration of the `trigge
 
 The [Trigger a Keptn sequence](https://www.youtube.com/watch?v=S0eumPKuAJY) video
 illustrates how to trigger a sequence using the Keptn Bridge
-and discusses using `triggeredOn` in a `sequence` in your [shipyard](../../../0.19.x/reference/files/shipyard).
+and discusses using `triggeredOn` in a `sequence` in your [shipyard](../../../reference/files/shipyard).
 
 ## Trigger a sequence with the CLI
 

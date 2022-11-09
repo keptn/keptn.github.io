@@ -2,7 +2,7 @@
 title: Delete a project
 description: Delete Keptn project
 weight: 30
-keywords: [0.19.x-manage]
+keywords: [1.0.x-manage]W
 aliases:
 ---
 

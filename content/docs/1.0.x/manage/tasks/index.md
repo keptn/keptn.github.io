@@ -2,7 +2,7 @@
 title: Manage tasks and sequences
 description: Tips for managing tasks and sequences
 weight: 35
-keywords: [0.19.x-manage]
+keywords: [1.0.x-manage]
 aliases:
 ---
 
@@ -156,7 +156,7 @@ The response will be a JSON object in the following format:
          "inputProperties":{
             "configurationChange":{
                "values":{
-                  "image":"docker.io/keptnexamples/carts:0.13.2"
+                  "image":"docker.io/keptnexamples/carts:1.0.0"
                }
             },
             "deployment":{

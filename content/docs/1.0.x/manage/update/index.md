@@ -2,7 +2,7 @@
 title: Update project's shipyard
 description: How to modify the projects shipyard
 weight: 25
-keywords: [0.19.x-manage]
+keywords: [1.0.x-manage]
 aliases:
 ---
 

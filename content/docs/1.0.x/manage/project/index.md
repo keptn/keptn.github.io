@@ -2,7 +2,7 @@
 title: Start a project
 description: Set up a new project
 weight: 20
-keywords: [0.19.x-manage]
+keywords: [1.0.x-manage]
 aliases:
 ---
 

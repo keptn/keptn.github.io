@@ -2,7 +2,7 @@
 title: Create a service
 description: Create a service for your project
 weight: 23
-keywords: [0.19.x-manage]
+keywords: [1.0.x-manage]
 aliases:
 ---
 
@@ -58,7 +58,7 @@ For Keptn, the [Helm Chart](https://Helm.sh/) has the following requirements:
 1. The Helm chart _must_ contain a `values.yaml` file with at least the `image` and `replicaCount` parameter for the deployment. These `image` and `replicaCount` parameters must be used in the deployment. An example is shown below:
 
   ```
-  image: docker.io/keptnexamples/carts:0.13.1
+  image: docker.io/keptnexamples/carts:1.0.0
   replicaCount: 1
   ```
 
