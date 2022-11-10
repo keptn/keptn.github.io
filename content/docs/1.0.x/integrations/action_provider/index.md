@@ -2,7 +2,7 @@
 title: Custom Action-Provider
 description: Implement an action-provider that executes a remediation action as response to a problem.
 weight: 10
-keywords: [0.19.x-integration]
+keywords: [1.0.0-integration]
 ---
 
 An *action-provider* is an implementation of a [*Keptn-service*](../custom_integration/#write-your-keptn-service) with a dedicated purpose. This type of service is responsible for executing a remediation action and therefore might even use another tool. The [Keptn CloudEvents](../custom_integration/#cloudevents) to which an action-provider must subscribe is:

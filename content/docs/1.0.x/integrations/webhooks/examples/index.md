@@ -2,7 +2,7 @@
 title: More Webhook Examples
 description: Webhook integrations using Webhooks
 weight: 1
-keywords: [0.19.x-integration]
+keywords: [1.0.0-integration]
 ---
 
 Below are a just few examples to review and the [Keptn Integrations page](../../../../integrations) for a growing list of integrations using Webhook.
