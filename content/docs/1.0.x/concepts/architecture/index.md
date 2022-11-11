@@ -67,6 +67,8 @@ that, by default, is deployed in your Keptn namespace.
 You can instead use an externally hosted MongoDB by configuring
 the [connectionString](https://github.com/keptn/keptn/blob/539339ef3da8e55d7968852a88ed01e0088f5871/installer/manifests/keptn/values.yaml#L47) fields
 in the [values.yaml](../../reference/files/values) file.
+See [Install Keptn with externally hosted MongoDB](../../install//helm-install/#install-keptn-with-externally-hosted-mongodb) for more information.
+
 The service provides the REST endpoint `/events` to query events.
 The `mongodb-datastore` and `shipyard-controller` pods
 have direct connections to mongodb (`keptn-mongo`).
