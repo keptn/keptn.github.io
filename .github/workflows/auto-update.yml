@@ -42,7 +42,7 @@ jobs:
           shopt -u extglob
 
       - name: Download CLI from release build
-        uses: dawidd6/action-download-artifact@v2.21.1
+        uses: dawidd6/action-download-artifact@v2.24.0
         with:
           name: keptn-cli
           github_token: ${{ secrets.KEPTN_BOT_TOKEN }}

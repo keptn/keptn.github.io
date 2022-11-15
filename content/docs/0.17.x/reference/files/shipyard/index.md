@@ -106,17 +106,21 @@ such as `development`, `hardening`, `staging`, or `production.
 * `sequences`: An array of sequences that define the tasks to be performed
 and, optionally, the events that trigger each task.
 
-At this time, you can not add or delete stages in the *shipyard* file for an existing project
+You can not add or delete stages in the *shipyard* file for an existing project
 although you can make other modifications.
-See [KEP-70](https://github.com/keptn/enhancement-proposals/pull/70) for details
-about the ongoing initiative to overcome this limitation.
 
 **Sequence**
 
-A sequence is an ordered list of `task`s that are triggered sequentially
-and are part of a `stage`.
+A sequence is an ordered list of `task`s that are triggered sequentially and are part of a `stage`.
 By default, a sequence is a standalone section that runs and finishes,
 unless you specify the `triggeredOn` property to form a chain of sequences.
+
+Sequences that use the same service cannot be run in parallel.
+If you simultaneously trigger multiple sequences for the same service,
+they are queued to run sequentially.
+Sequences for different services can be run in parallel.
+This is possible when you have different automation projects
+or if you have multiple services within a project.
 
 A sequence has the properties:
 
@@ -307,10 +311,7 @@ This means that all services in a project share the same shipyard definition.
 
 At this time, you can not add or delete stages in the *shipyard* file for an existing project
 although you can make other modifications.
-
-* See [KEP-70](https://github.com/keptn/enhancement-proposals/pull/70) for details
-about the initiative to allow adding/removing stages to/from a *shipyard* file.
-* See [Updating a shipyard](../../../manage/shipyard/#updating-a-shipyard)
+See [Updating a shipyard](../../../manage/shipyard/#updating-a-shipyard)
 for information about modifications that can be made to a *shipyard* file.
 
 As a workaround, you can temporarily skip the execution of a particular stage by doing either of the following:
@@ -331,12 +332,10 @@ and  named to match the value of the `Metadata` name field in the shipyard file.
 
 ## Differences between versions
 
-* [KEP-70](https://github.com/keptn/enhancement-proposals/pull/70) is active
-to allow `stage`s to be added to and removed from a *shipyard* in an existing project.
-
 ## See also
 
 * [Working with shipyard files](../../../manage/shipyard)
 * [Multi-stage delivery](../../../continuous_delivery/multi_stage)
+* [Quality gates](../../../quality_gates)
 * [Triggers](../../../manage/triggers)
 * [Remediation Config](../remediation)

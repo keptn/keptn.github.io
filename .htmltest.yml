@@ -10,6 +10,7 @@ IgnoreDirs:
 - "docs/0.11."
 - "docs/0.12."
 - "docs/0.13."
+- "docs/0.14."
 # exlcuded because the paths do not exist for styles and contact
 - "404"
 IgnoreURLs:
@@ -19,6 +20,8 @@ IgnoreURLs:
 - "github.com/keptn/keptn/commit"
 # GitHub Help does not like GitHub Action access
 - "help.github.com"
+# Xrefs to Keptn slack are not resolving
+- "https://slack.keptn.sh" 
 # Old Announcements
 - "keptn.sh/docs/0.7"
 # Twitter seems to be not reachable via GitHub Action

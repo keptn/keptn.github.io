@@ -21,6 +21,7 @@ width="600px">}}
   * The execution plane consists of all Keptn-services that are required to process all tasks (like deployment, test, etc.).
   * The execution plane is the cluster where you deploy your application too and execute certain tasks of a task sequence. 
   * Minimum [Cluster size](../k8s-support/#cluster-size)
+  * Execution plane services are normally Kubernetes based containers but you could regularly poll the Keptn API and therefore run a non-containerised process as a Keptn execution integration.
 
 ## Create or bring two (or more) Kubernetes clusters
 
@@ -63,16 +64,16 @@ In this release of Keptn, the execution plane services for deployment (`helm-ser
 
 Please find the Helm Charts here:
 
-  - `helm-service`: GitHub Release for [0.17.0](https://github.com/keptn/keptn/releases/tag/0.17.0) at **Assets** > `helm-service-0.17.0.tgz`
+  - `helm-service`: GitHub Release for [0.19.2](https://github.com/keptn/keptn/releases/tag/0.19.2) at **Assets** > `helm-service-0.19.2.tgz`
 
-  - `jmeter-service`: GitHub Release for [0.17.0](https://github.com/keptn/keptn/releases/tag/0.17.0) at **Assets** > `jmeter-service-0.17.0.tgz`
+  - `jmeter-service`: GitHub Release for [0.19.2](https://github.com/keptn/keptn/releases/tag/0.19.2) at **Assets** > `jmeter-service-0.19.2.tgz`
 
-### How to deploy an execution plane services?
+### How to deploy an execution plane service?
 
 * Download the `values.yaml` from the release branch, e.g., for the jmeter-service:
 
     ```
-    wget https://raw.githubusercontent.com/keptn/keptn/0.17.0/jmeter-service/chart/values.yaml
+    wget https://raw.githubusercontent.com/keptn/keptn/0.19.2/jmeter-service/chart/values.yaml
     ```
 
 * Edit the `values.yaml` to connect the services to the Keptn control plane, identified by its endpoint and API token. Therefore, set the values (1) - (5):
@@ -85,6 +86,37 @@ Please find the Helm Charts here:
         hostname: ""                        # < (3) set Keptn endpoint (without /api)
         apiValidateTls: true                # < (4 - optional) option to skip TLS verification
         token: ""                           # < (5) set Keptn API token
+    ```
+
+* If your cluster includes multiple execution planes that run the same integration service,
+  you must configure a unique name for each execution plane.
+  By default, Keptn uses the execution plane service name and version to identify the execution plane.
+  Multiple execution planes that run the same integration service thus have the same identifier,
+  so only one instance of the integration service is displayed on the integration page in the Bridge
+  and Keptn assigns the same set of event subscriptions to them all
+  unless you assign a different name to each remote execution plane service.
+
+  You can assign a unique name label and distributor service name for the execution plane
+  in either of the following ways:
+
+  * Set the `K8S_DEPLOYMENT_NAME` environment variable on each execution plane to a unique name.
+    See the [distributor](../../0.19.x/reference/miscellaneous/distributor) reference page
+    for more information about this and other environment variables that configure the distributor.
+    For example:
+
+    ```
+    K8S_DEPLOYMENT_NAME: "server001-helm-server"
+    ```
+
+  * Some integrations (such as `helm-service` and `jmeter`
+    can configure the `K8S_DEPLOYMENT_NAME` value
+    based on the value of the `app.kubernetes.io/name` Kubernetes label.
+    For these integrations, you can edit the `values.yaml` on each execution plane
+    and set a unique value for the `nameOverride` value.
+    For example:
+
+    ```
+    nameOverride: "server001-helm-server"
     ```
 
 * Depending on your setup of the multi-cluster environment and the approach you modeled your staging process, one stage can be for example on a separate cluster. Let's assume the following setup: 
@@ -109,7 +141,7 @@ Please find the Helm Charts here:
 * Deploy the execution plane service (e.g., jmeter-service) from release assets with your `values.yaml` and by using `helm`:
 
     ```console
-    helm install jmeter-service https://github.com/keptn/keptn/releases/download/0.17.0/jmeter-service-0.17.0.tgz -n keptn-exec --create-namespace --values=values.yaml
+    helm install jmeter-service https://github.com/keptn/keptn/releases/download/0.19.2/jmeter-service-0.19.2.tgz -n keptn-exec --create-namespace --values=values.yaml
     ```
 
 * Test connection to Keptn control plane using:
@@ -132,9 +164,9 @@ Please find the Helm Charts here:
     Phase:          Succeeded
     ```
 
-### How to uninstall an execution plane services?
+### How to uninstall an execution plane service?
 
-* To uninstall an execution plane service, e.g., jmeter-service, just execute:
+* To uninstall an execution plane service -- in this case, the `jmeter-service`, execute:
 
     ```console
     helm uninstall jmeter-service -n keptn-exec
@@ -144,23 +176,23 @@ Please find the Helm Charts here:
 
 See the configuration parameters of the supported execution plane services:
 
-  - `helm-service`: [Helm Chart values](https://github.com/keptn/keptn/blob/0.17.0/helm-service/chart/README.md#configuration)
+  - `helm-service`: [Helm Chart values](https://github.com/keptn/keptn/blob/0.19.2/helm-service/chart/README.md#configuration)
 
-  - `jmeter-service`: [Helm Chart values](https://github.com/keptn/keptn/blob/0.17.0/jmeter-service/chart/README.md#configuration)
+  - `jmeter-service`: [Helm Chart values](https://github.com/keptn/keptn/blob/0.19.2/jmeter-service/chart/README.md#configuration)
 
-The important once that are used in the above example are:
+The important ones that are used in the above example are:
 
 | Parameter                | Description             | Default        |
 | ------------------------ | ----------------------- | -------------- |
-| `distributor.stageFilter` | Sets the stage this service belongs to | `""` |
-| `distributor.serviceFilter` | Sets the service this service belongs to | `""` |
-| `distributor.projectFilter` | Sets the project this service belongs to | `""` |
+| `distributor.stageFilter` | Sets the stage to which this service | `""` |
+| `distributor.serviceFilter` | Sets the service to which this service | `""` |
+| `distributor.projectFilter` | Sets the project to which this service | `""` |
 | `remoteControlPlane.enabled` | Enables remote execution plane mode | `false` |
 | `remoteControlPlane.api.protocol` | Used protocol (http, https) | `"https"` |
 | `remoteControlPlane.api.hostname` | Hostname of the control plane cluster (and port) | `""` |
 | `remoteControlPlane.api.apiValidateTls` | Defines if the control plane certificate should be validated | `true` |
 | `remoteControlPlane.api.token` | Keptn API token | `""` |
-
+| `nameOverride` | Sets a unique name for this execution plane | `""` |
 
 ## Troubleshooting
 
@@ -179,26 +211,26 @@ If you see in the Keptn Bridge that an event was triggered but no service was re
 
 * Connect you to the cluster where the execution plane is running
 
-* For example, you want to test `jmeter-service` that is running in `keptn-exec` namespace, execute:
+* For example, to test `jmeter-service` that is running in the `keptn-exec` namespace, execute:
 
-  ```console
-helm test jmeter-service -n keptn-exec
+  ```
+  helm test jmeter-service -n keptn-exec
   ```
 
-* The expected outcome should be:
+* The expected outcome is:
 
-  ```console
-Pod jmeter-service-test-api-connection pending
-Pod jmeter-service-test-api-connection succeeded
-NAME: jmeter-service
-LAST DEPLOYED: Thu Feb 25 15:55:24 2021
-NAMESPACE: keptn-exec
-STATUS: deployed
-REVISION: 1
-TEST SUITE:     jmeter-service-test-api-connection
-Last Started:   Thu Feb 25 15:55:40 2021
-Last Completed: Thu Feb 25 15:55:42 2021
-Phase:          Succeeded
+  ```
+  Pod jmeter-service-test-api-connection pending
+  Pod jmeter-service-test-api-connection succeeded
+  NAME: jmeter-service
+  LAST DEPLOYED: Thu Feb 25 15:55:24 2022
+  NAMESPACE: keptn-exec
+  STATUS: deployed
+  REVISION: 1
+  TEST SUITE:     jmeter-service-test-api-connection
+  Last Started:   Thu Feb 25 15:55:40 2022
+  Last Completed: Thu Feb 25 15:55:42 2022
+  Phase:          Succeeded
   ```
 
 **Help:**
@@ -222,3 +254,25 @@ remoteControlPlane:
   - Is the Keptn API token correct? (You can find it in the Keptn Bridge, or by following the guide for [authenticating](../authenticate-cli-bridge)
 
 </p></details>
+
+### Keptn sees only one instance of an integration deployed on multiple execution planes
+
+The same integration service can be deployed to multiple execution planes in your Keptn installation.
+For example, you might deploy the `helm-services` integration
+to the execution plane that runs the `dev` stage as well as the execution plane that runs the `prod` stage.
+However, you must explicitly configure each execution plane name as described above
+so that Keptn can differentiate the two instances of the integration.
+
+If you do not correctly configure the execution plane names,
+you will see two issues:
+
+* Only one instance of the integration (such as `helm-service`)
+is displayed on the integration page in the Keptn Bridge.
+* All events for that integration are delivered to all execution planes that run the service,
+so that the execution plane for the `dev` stage
+also receives events intended for the `prod` stage.
+
+To correct this situation, follow the instructions above
+to set a unique name label and distributor service name for each execution plane
+that runs this integration service.
+

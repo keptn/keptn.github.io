@@ -19,6 +19,7 @@ This command does *not* delete:
 
 Besides, deployed services and the configuration on the Git upstream (i.e., GitHub, GitLab, or Bitbucket) are not deleted. To clean-up created projects and services, please see [Delete a project](../../../../manage/project/#delete-a-project).
 
+
 **Note:** This command requires a *Kubernetes current context* pointing to the cluster where Keptn should get uninstalled from.
 
 

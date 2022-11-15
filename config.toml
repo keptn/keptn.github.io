@@ -22,6 +22,12 @@ ignoreFiles = [
 [params]
     google_analytics_id="UA-133584243-1"
 
+[params.carouselHomepage]
+    enable = true
+    auto_play = true
+    slide_speed = 2000
+    pagination_speed = 1000
+
 [blackfriday]
 	plainIDAnchors = true
     # See https://github.com/gohugoio/hugo/issues/2424
