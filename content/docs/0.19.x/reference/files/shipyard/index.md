@@ -162,6 +162,12 @@ A sequence has the properties:
             selector:
               match:
                 release.result: failed
+    If no `selector` is specified, the sequence is triggered
+    only if the preceeding `delivery` sequence has a result of `pass`
+
+        - name: rollback
+          triggeredOn:
+          - event: production.delivery.finished
 
 **Task**
 
