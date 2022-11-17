@@ -163,39 +163,6 @@ A sequence has the properties:
               match:
                 release.result: failed
 
-    If no `selector` is specified, the sequence is triggered
-    only if the preceeding `delivery` sequence has a result of `pass`:
-
-        - name: rollback
-          triggeredOn:
-          - event: production.delivery.finished
-
-You can reference a single variable from a complex object for a triggered event.
-For example, you may need to pass environment information to a webhook integration.
-If you have a complex object called `env`,
-you can use the following syntax to reference a single value by it's full path
-with syntax like the following:
-```
-{
-  "env" : {
-    "BUILDKITE_ORG": "{{.data.buildkite.env.BUILDKITE_ORG}}"
-  }
-}
-```
-Keptn does not support complex object mappings
-so it is not possible to pass the complex object itself.
-so a construct such as the following **does not work**:
-```
-{
-  "env": "{{.data.buildkite.env}}",
-}
-```
-This generates an error message similar to:
-```
-"error":"json: cannot unmarshal string into Go value \
-   of type map[string]json.RawMessage","code":3
-``` 
-
 **Task**
 
 A single `task` is the smallest executable unit and is contained in a `sequences` block.

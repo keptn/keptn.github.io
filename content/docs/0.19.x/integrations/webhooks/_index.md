@@ -79,7 +79,20 @@ width="500px">}}
 
 **Step 3: Custom payload**
 
-If the third-party webhook receiver requires this, add a payload to match the format requested by the receiving endpoint.
+If the third-party webhook receiver requires this,
+add a payload to match the format requested by the receiving endpoint.
+
+To merely pass environment information to a webhook integration
+you can use the following syntax to reference a single value by its full path 
+with syntax like the following:
+
+```
+{
+  "env" : { 
+    "BUILDKITE_ORG": "{{.data.buildkite.env.BUILDKITE_ORG}}" 
+  }
+}
+```
 
 The output format of the webhook (i.e., the payload of the request body) can be customized using event data to match the required input format of the tool with which you are integrating. Therefore, you can reference the data field (event property) using [Go templating](https://blog.gopheracademy.com/advent-2017/using-go-templates/).
 
@@ -107,9 +120,26 @@ Based on the Go templating capabilities, you can:
 }
 ```
 
+Note that you can reference a single variable from a complex object for a triggered event
+but Keptn does not support complex object mappings
+so it is not possible to pass the complex object itself.
+In other words, a construct such as the following **does not work**:
+```
+{
+  "env": "{{.data.buildkite.env}}",
+}
+```
+This generates an error message similar to:
+```
+"error":"json: cannot unmarshal string into Go value \
+   of type map[string]json.RawMessage","code":3
+```
+
 A convenient way to add event properties to the URL or custom payload is the property picker. 
 
-To use this, put your cursor in the URL or text field at the spot where you would like to customize the payload. Clicking the *computer* icon opens a list of data fields you can add to the payload or URL. This list of data fields is derived from the event to which your webhook is subscribed.
+To use this, put your cursor in the URL or text field at the spot where you would like to customize the payload.
+Select the *computer* icon to open a list of data fields you can add to the payload or URL.
+This list of data fields is derived from the event to which your webhook is subscribed.
 
 {{< popup_image
 link="./assets/customize-payload.png"
@@ -118,7 +148,8 @@ width="700px">}}
 
 **Step 4: Set "Send Finished Event" flag**
 
-The `Send finished` event flag is not applicable to a *passive* webhook. So you can leave it unselected as shown below.
+The `Send finished` event flag is not applicable to a *passive* webhook.
+This means that you can leave it unselected as shown below.
 
 {{< popup_image
 link="./assets/finished-event-empty.png"
