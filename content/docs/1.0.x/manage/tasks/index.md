@@ -72,9 +72,9 @@ The response will be a JSON object in the following format:
          "_id":"99242617-7992-4440-8c4c-2c4aad8c1bc6",
          "schemaVersion":"1",
          "scope":{
-            "project":"sockshop",
+            "project":"myapp",
             "stage":"staging",
-            "service":"carts",
+            "service":"some-service",
             "status":"succeeded",
             "result":"pass",
             "keptnContext":"f7bdf6d6-8257-41fa-80e8-b86609f78d83",
@@ -122,17 +122,17 @@ The response will be a JSON object in the following format:
                            "canary"
                         ],
                         "deploymentURIsLocal":[
-                           "http://carts.sockshop-staging:80"
+                           "http://some-service.myapp-staging:80"
                         ],
                         "deploymentURIsPublic":[
-                           "http://carts.sockshop-staging.svc.cluster.local:80"
+                           "http://some-service.myapp-staging.svc.cluster.local:80"
                         ],
                         "deploymentstrategy":"duplicate"
                      },
                      "message":"Successfully deployed",
-                     "project":"sockshop",
+                     "project":"myapp",
                      "result":"pass",
-                     "service":"carts",
+                     "service":"some-service",
                      "stage":"staging",
                      "status":"succeeded"
                   }
@@ -156,7 +156,7 @@ The response will be a JSON object in the following format:
          "inputProperties":{
             "configurationChange":{
                "values":{
-                  "image":"docker.io/keptnexamples/carts:1.0.0"
+                  "image":"docker.io/keptnexamples/some-service:1.0.0"
                }
             },
             "deployment":{
@@ -164,10 +164,10 @@ The response will be a JSON object in the following format:
                   "direct"
                ],
                "deploymentURIsLocal":[
-                  "http://carts.sockshop-dev:80"
+                  "http://some-service.myapp-dev:80"
                ],
                "deploymentURIsPublic":[
-                  "http://carts.sockshop-dev.svc.cluster.local:80"
+                  "http://some-service.myapp-dev.svc.cluster.local:80"
                ],
                "deploymentstrategy":"direct"
             },
@@ -180,9 +180,9 @@ The response will be a JSON object in the following format:
                "timeStart":"2022-08-02T08:11:15.145Z"
             },
             "message":"",
-            "project":"sockshop",
+            "project":"myapp",
             "result":"pass",
-            "service":"carts",
+            "service":"some-service",
             "stage":"staging",
             "status":"succeeded",
             "temporaryData":{
@@ -201,7 +201,7 @@ The response will be a JSON object in the following format:
 }
 ```
 
-The Keptn context ID of the sequence can be found in the `scope.keptnContext` property - in this case its value is `f7bdf6d6-8257-41fa-80e8-b86609f78d83`. Using this context ID, you can either navigate to that sequence in the bridge, using the following deep link format: `http://<keptn-url>/bridge/project/sockshop/sequence/<keptn-context-id>`, and cancel it from there, or you can cancel the sequence using the `api/controlPlane/v1/sequence/<project>/<keptn-context-id>` endpoint:
+The Keptn context ID of the sequence can be found in the `scope.keptnContext` property - in this case its value is `f7bdf6d6-8257-41fa-80e8-b86609f78d83`. Using this context ID, you can either navigate to that sequence in the bridge, using the following deep link format: `http://<keptn-url>/bridge/project/<myapp>/sequence/<keptn-context-id>`, and cancel it from there, or you can cancel the sequence using the `api/controlPlane/v1/sequence/<project>/<keptn-context-id>` endpoint:
 
 ```
 curl -X 'POST' \
