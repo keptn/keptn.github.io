@@ -7,7 +7,7 @@ weight: 65
 
 ---
 
-Keptn 0.19.2 is a bugfix release that solves issues for the lighthouse-service and bridge.
+Keptn 0.19.3 is a bugfix release that solves issues for the lighthouse-service and bridge.
 
 ---
 
