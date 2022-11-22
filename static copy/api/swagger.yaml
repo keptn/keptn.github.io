@@ -1,0 +1,90 @@
+swagger: "2.0"
+info:
+  description: "Interface for provisioning Git repositories"
+  version: "0.1.0"
+  title: "Interface for provisioning Git repositories"
+basePath: "/v1"
+tags:
+- name: "repository"
+  description: "Management of Git upstream repositories"
+schemes:
+- "https"
+paths:
+  /repository:
+    post:
+      tags:
+      - "repository"
+      summary: "Creates a new Git repository"
+      description: ""
+      operationId: "addInstance"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "repository"
+        description: "Properties for the git upstream repository"
+        required: true
+        schema:
+          type: object
+          required:
+            - project
+            - namespace
+          properties:
+            project:
+              type: string
+              example: "sockshop"
+            namespace:
+              type: string
+              example: "keptn"
+      responses:
+        "201":
+          description: "Created"
+          schema:
+            type: object
+            properties:
+              gitRemoteURL:
+                type: string
+                description: URL to the Git repository.
+              gitToken:
+                type: string
+                description: Git token which has read and write permissions for the repository.
+          examples:
+            application/json: {
+              "gitRemoteURL": "https://abc/keptn-sockshop.git",
+              "gitToken": "xyz",
+              "gitUser": "string"
+            }
+        "409":
+          description: "Repository already exists"
+    delete:
+      tags:
+      - "repository"
+      summary: "Deletes a Git repository"
+      description: ""
+      operationId: "deleteInstance"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "repository"
+        description: "Properties for the git upstream repository"
+        required: true
+        schema:
+          type: object
+          required:
+            - project
+            - namespace
+          properties:
+            project:
+              type: string
+              example: "sockshop"
+            namespace:
+              type: string
+              example: "keptn"
+      responses:
+        "204":
+          description: "Repository deleted"
+        "404":
+          description: "Repository not found"

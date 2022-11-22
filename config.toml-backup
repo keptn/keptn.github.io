@@ -1,12 +1,5 @@
-# baseURL = "https://keptn.sh/"
-languageCode = "en-us"
-title = "keptn | Cloud-native application life-cycle orchestration"
-theme = "hugo-serif-theme"
-relativeUrls = false
-enableEmoji = true
-enableGitInfo = true
-enableRobotsTXT = true
-
+baseURL = "/"
+title = "keptn"
 
 ignoreFiles = [
 "^(.*/docs/0.7.x/*)$",
@@ -103,11 +96,8 @@ weight = 1
 section = ["HTML", "RSS"]
 
 [params]
-    google_analytics_id="UA-133584243-1"
-    # our current version
-    version="1.3.0"
-    # but our current version is in a different directory
-    versionDirectory="1.0.x"
+copyright = "Keptn Community"
+privacy_policy = "https://policies.google.com/privacy"
 
 # First one is picked as the Twitter card image if not set on page.
 # images = ["images/project-illustration.png"]

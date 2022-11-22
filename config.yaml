@@ -1,0 +1,42 @@
+_merge: deep
+title: Keptn
+params:
+  github_repo: https://github.com/keptn/keptn
+  links:
+    developer:
+    - desc: Development takes place here!
+      icon: fab fa-github
+      name: GitHub
+      url: https://github.com/keptn/
+    - desc: Chat with other project developers
+      icon: fab fa-slack
+      name: Slack
+      url: https://cloud-native.slack.com/messages/keptn
+    - desc: Watch videos about Keptn
+      icon: fab fa-youtube
+      name: Keptn YouTube channel
+      url: https://youtube.com/@keptn
+module:
+  hugoVersion:
+    extended: true
+  imports:
+  - path: github.com/keptn-sandbox/lifecycle-toolkit-docs
+    ignoreConfig: false
+    mounts:
+    - source: static
+      target: static
+    - source: layouts
+      target: layouts
+    - source: data
+      target: data
+    - source: assets
+      target: assets
+    - source: archetypes
+      target: archetypes
+    - source: content/en/_index.md
+      target: content/en/_index.md
+  proxy: direct
+languages:
+  en:
+    title: Keptn
+    contentDir: "content/en"
