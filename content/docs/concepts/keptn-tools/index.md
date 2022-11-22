@@ -11,9 +11,10 @@ However, when dealing with Keptn, that mindset is not helpful or accurate.
 
 > **Rather than "Keptn vs. ..." think "Keptn and ..."**
 
-While Keptn includes some default services
-(Helm, JMeter and Webhook services), usage of these tools is not mandatory.
-They can be easily swapped for tooling you prefer.
+Keptn includes the Webhook service out of the box.
+You can implement the tooling you prefer and Keptn will orchestrate it.
+Note that older Keptn releases included Helm and JMeter services
+but they could easily be swapped for tooling you prefer.
 
 Keptn is designed to be tool and vendor agnostic.
 Keptn orchestrates and executes any tooling that you choose.
@@ -52,12 +53,15 @@ and your chosen tool simply listens for and reacts to that event.
 Want to swap deployment tool? Easy - just remove the subscription for the original tool,
 install the new service and configure it to listen for the task instead.
 
-So... out-of-the-box, which tools listen for the tasks above?
+Older releases of Keptn included the Helm and JMeter services
+but now you can install these services (or their alternatives) on top of Keptn.
+So... if you have installed the Helm and JMeter services,
+which tools listen for the tasks above?
 
-* The Helm service listens for `deployment.triggered` events
-* The JMeter service listens for `test.triggered` events
-* The Lighthouse service listens for `evaluation.triggered` events
-* The Helm service also listens for `release.triggered` events
+* The Helm service (or an alternative) listens for `deployment.triggered` events.
+* The JMeter service (or an alternative) listens for `test.triggered` events.
+* The Lighthouse service listens for `evaluation.triggered` events.
+* The Helm service also listens for `release.triggered` events.
 
 You are not restricted to these task names.
 Define whatever task names you need to implement your custom sequences.
@@ -68,7 +72,7 @@ Let's have a look at some comparisons between popular tooling.
 
 At first glance, a Keptn sequence as expressed in the *shipyard* file
 looks a lot like a pipeline.
-But you are in full control of which tools execute for each task.
+But you are in full control of which tools are executed for each task.
 
 * For example, if one team wants CircleCI to action the deployment task.
 you can have CircleCI listen for the `deployment.triggered` task and run an entire pipeline in response.
@@ -78,10 +82,15 @@ The sequence is identical but the two teams are empowered to use different tooli
 
 ## Keptn and Load Testing Tools (JMeter, NeoLoad, BlazeMeter, k6 etc.)
 
-Out-of-the box, Keptn includes the JMeter service that listens for the `test.triggered` event.
+Keptn provides integrations for many load testing tools
+and others can be integrated fairly easily.
+These services listen for the `test.triggered` event.
+
+Older releases of Keptn included the JMeter service that listens for the `test.triggered` event
+but, in releases 0.19.0 and later, JMeter is installed separately,
+making it easier for you to choose a different tool..
 
 Prefer a different load testing tool?
-Uninstall the Jmeter Service and install a service that listens for the `test.triggered` event and you are done.
 
 ## Keptn and Observability Tools (Prometheus, Dynatrace, Splunk etc.)
 
@@ -108,14 +117,13 @@ Now quality gate metrics will be retrieved from Dynatrace and not Prometheus.
 
 ## Discover Integrations
 
-Keptn comes pre-installed with services for:
-
-* Helm
-* JMeter
-* Webhooks
-
+Keptn comes pre-installed with the Webhooks service.
 All other existing Keptn integrations are listed on the
 [Integrations](https://keptn.sh/docs/integrations/) page.
+Note that, in older Keptn releases, the JMeter and Helm services
+were included in the core Keptn software but,
+for releases 0.19.x and later,
+they must be installed separately after you install Keptn.
 
 Don't see your tool listed? You have three options:
 

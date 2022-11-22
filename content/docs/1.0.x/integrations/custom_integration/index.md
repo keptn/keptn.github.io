@@ -1,6 +1,6 @@
 ---
-title: Write a Keptn-service
-description: Implement your Keptn-service that listens to Keptn events and extends your Keptn with certain functionality.
+title: Write a Keptn Integation Service
+description: Implement a Keptn Integration Service that listens to Keptn events from your tool.
 weight: 2
 keywords: [1.0.0-integration]
 ---

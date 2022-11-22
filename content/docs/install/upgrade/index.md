@@ -121,6 +121,16 @@ you may need to set the `K8S_DEPLOYMENT_NAME` environment variable on each execu
 
 No special steps are required to upgrade from Keptn 0.18.x to Keptn 0.19.x.
 
+Note, however, that the [JMeter](https://artifacthub.io/packages/keptn/keptn-integrations/jmeter)
+and [Helm](https://artifacthub.io/packages/keptn/keptn-integrations/helm) services
+were promoted and moved to their own repositories in 0.19.x.
+If your project uses either of these services,
+you need to follow the instructions
+[here](https://keptn.sh/docs/install/helm-install/#install-execution-plane) 
+to install JMeter and/or Helm.
+See the [Keptn 0.19.0 Release Notes](https://keptn.sh/docs/news/release_announcements/keptn-0190/)
+for more information.
+
 ### Upgrade from Keptn 0.17.x to Keptn 0.18.x
 
 No special steps are required to upgrade from Keptn 0.17.x to Keptn 0.18.x.
