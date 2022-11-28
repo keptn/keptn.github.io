@@ -11,7 +11,7 @@ This is discussed in [Keptn and other tools](../../concepts/keptn-tools).
 A tool must have an integration that defines
 the `triggered`, `started`, and `finished` events
 that Keptn and the tool use for communications.
-This is discussed more fully in [Integration service](../how_integrate).
+This is discussed more fully in [Integration service](how_integrate).
 
 A number of integrations are provided on the
 [Integrations](../../integrations/) page.
