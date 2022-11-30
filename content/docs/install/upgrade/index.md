@@ -2,6 +2,8 @@
 title: Upgrade Keptn
 description: Upgrade your Keptn
 weight: 500
+aliases:
+- /docs/0.19.x/operate/upgrade/
 ---
 
 Keptn only supports upgrading from one release to the next;

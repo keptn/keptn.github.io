@@ -2,6 +2,9 @@
 title: Install Keptn using the Helm chart
 description: Install Keptn on a single cluster using the Helm chart
 weight: 40
+aliases:
+  - /docs/0.19.x/operate/install/
+  - /docs/0.19.x/operate/advanced_install_options/
 ---
 
 Keptn is installed from a Helm chart using the Helm CLI.

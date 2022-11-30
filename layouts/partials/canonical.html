@@ -1,0 +1,7 @@
+
+  {{ if in .Permalink "docs/0."}}
+
+    {{ $canoncical := replaceRE "docs/0.[[:digit:]]{1,2}.([[:digit:]]{1.2}|x)" "docs/0.19.x" .Permalink }}
+    <link rel="canonical" href="{{ $canoncical | absURL}}"/>
+
+{{end}}
