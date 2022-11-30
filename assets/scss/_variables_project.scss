@@ -1,6 +1,55 @@
-/*
+// Font
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Playfair+Display&display=swap');
 
-Add styles or override variables from the theme here.
+// Bootstrap
+@import 'bootstrap/functions';
+@import 'bootstrap/variables';
+@import 'bootstrap/mixins';
+@import 'bootstrap/root';
+@import 'bootstrap/reboot';
+@import 'bootstrap/grid';
+@import 'bootstrap/type';
+@import 'bootstrap/tables';
+@import "bootstrap/images";
+@import "bootstrap/buttons";
+@import "bootstrap/transitions";
+@import "bootstrap/nav";
+@import "bootstrap/navbar";
+@import "bootstrap/card";
+@import "bootstrap/breadcrumb";
+@import "bootstrap/list-group";
+@import 'bootstrap/utilities';
 
-*/
+// General
+@import 'general/variables';
+@import 'general/base';
+@import 'general/typography';
 
+// Libraries
+@import 'libraries/hamburgers/hamburgers';
+
+// Components
+@import 'components/buttons';
+@import 'components/contact';
+@import 'components/copy-indicator';
+@import 'components/footer';
+@import 'components/hamburger';
+@import 'components/header';
+@import 'components/logo';
+@import 'components/main-menu-mobile';
+@import 'components/main-menu';
+@import 'components/pagenav';
+@import 'components/section-index';
+@import 'components/sections';
+@import 'components/sidebar';
+@import 'components/teaser';
+@import 'components/teaser-box';
+@import 'components/teaser-card';
+@import 'components/toc';
+@import 'components/toolbar';
+@import 'components/slider';
+
+// Pages
+@import 'pages/404';
+@import 'pages/home';
+@import 'pages/why-keptn';

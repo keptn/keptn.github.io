@@ -1,0 +1,38 @@
+.page-not-found {
+  h2 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: 1.84em;
+    line-height: 1.4;
+    font-weight: $font-weight-semibold;
+
+    &:before {
+      display: none;
+    }
+
+    @media screen and (min-width: $bp-md) {
+      font-size: 2.3rem;
+    }
+  }
+
+  p {
+    font-size: 1rem;
+
+    @media screen and (min-width: $bp-md) {
+      font-size: 1.125rem;
+    }
+  }
+
+  a {
+    font-family: $font-family-base;
+    text-decoration: none;
+
+    &:not(.button) {
+      color: $primary;
+    }
+
+    &.no-underline {
+      text-decoration: none;
+    }
+  }
+}

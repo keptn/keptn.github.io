@@ -13,10 +13,11 @@ header-transparent
 <!-- script to include would go here 
 <script src="https://cdn.jsdelivr.net/npm/typeit@6.0.3/dist/typeit.min.js" />
 -->
+<script defer language="javascript" type="text/javascript"  src="{{ "/js/scripts.js" | urlize | relURL }}"></script>
 {{ end }}
 
 {{ define "body_classes" }}
-page-home
+td-home
 {{ end }}
 
 {{ define "meta" }}
@@ -25,8 +26,8 @@ page-home
 <meta property="og:image" content="https://keptn.sh/favicon.png">
 <meta property="og:url" content="https://keptn.sh/index.html">
 <meta name="twitter:card" content="summary_large_image">
-{{ end }}
 
+{{ end }}
 {{ define "main" }}
 
 {{/* Announcements */}}
