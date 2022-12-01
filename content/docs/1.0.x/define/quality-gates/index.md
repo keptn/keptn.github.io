@@ -1,5 +1,5 @@
 ---
-title: Quality Gates
+title: Quality Gates evaluations
 description: Implement Quality Gate evaluations in your project
 weight: 50
 keywords: [0.19.x-quality_gates]
@@ -417,3 +417,30 @@ curl -X GET "${KEPTN_ENDPOINT}/api/mongodb-datastore/event?keptnContext={keptnCo
 To integrate quality gates into an existing pipeline, use the API-based approach outlined above.
 As stated there, the evaluation result is not immediately available. Hence, build your integration using a polling mechanism that polls the evaluation result every 10 seconds and terminates after, e.g., 10 retries. 
 
+## Extract evaluation results
+
+Evaluation results can be extracted then forwarded
+to a third-party service for storing and processing.
+For example, you may want to push the results to Slack or another chat tool.
+
+This can be implemented using either Webhooks or the Keptn API:
+
+* **Webhooks**
+  1. Use the [Webhook service](http://localhost:1313/docs/0.19.x/integrations/webhooks/)
+     * See the [Slack Webhook Integration](https://artifacthub.io/packages/keptn/keptn-integrations/slack) example
+       for more detailed instructions.
+  1. Subscribe to the `evaluation.finished event`.
+  1. Push the result to a webhook on your external system.
+
+* **Keptn API**
+
+  1. Use the Keptn API as discussed above.
+  1. Query the `evaluation.finished` events for a given project, specifying the timeframe.
+     For example, run a `cron` job every hour and query the last hour.
+  1. When a new result is found, push it to your external system.
+
+In most cases, the Webhook implementation is the better choice
+because it immediately pushes the result to the third party system
+rather than waiting for the scheduled `cron` job to run.
+The Keptn API implementation is mostly useful
+when the external service does not provide webhooks.
