@@ -3,6 +3,7 @@ title: Configure Webhook Service
 description: Configuration for Webhook Service.
 weight: 90
 aliases:
+- /docs/0.19.x/operate/webhook_service/
 ---
 
 ## Block URLs and IPs

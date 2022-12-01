@@ -4,6 +4,7 @@ description: Upgrade your Keptn
 weight: 500
 aliases:
 - /docs/0.19.x/operate/upgrade/
+- /docs/0.19.x/integrations/migrate_from_080_to_090/
 ---
 
 Keptn only supports upgrading from one release to the next;
