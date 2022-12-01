@@ -4,6 +4,7 @@ description: Keptn and Kubernetes compatibility overview and required cluster si
 weight: 20
 aliases:
 - /docs/0.19.x/operate/k8s_support/
+- /docs/1.0.x/operate/k8s_support/
 ---
 
 This document describes the maximum version skew supported between Keptn and Kubernetes.

@@ -4,6 +4,7 @@ description: Install Keptn control-plane and execution-plane on separate cluster
 weight: 50
 aliases:
 - /docs/0.19.x/operate/multi_cluster/
+- /docs/1.0.x/operate/multi_cluster/
 ---
 
 

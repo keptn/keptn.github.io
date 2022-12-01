@@ -4,6 +4,7 @@ description: Using triggers to kick off a sequence
 weight: 160
 keywords: [0.19.x-manage]
 aliases:
+- /docs/1.0.x/manage/triggers/
 ---
 
 By default, a sequence runs as a standalone section that runs and finishes.

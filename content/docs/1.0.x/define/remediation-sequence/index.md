@@ -3,6 +3,9 @@ title: Remediation Sequence
 description: Implement a remediation sequence
 weight: 80
 icon: setup
+aliases:
+- /docs/1.0.x/automated_operations/remediation/
+- /docs/1.0.x/manage/remediation-sequence/
 ---
 
 A remediation sequence implements self-healing for a problem

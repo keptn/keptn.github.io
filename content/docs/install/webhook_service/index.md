@@ -4,6 +4,7 @@ description: Configuration for Webhook Service.
 weight: 90
 aliases:
 - /docs/0.19.x/operate/webhook_service/
+- /docs/1.0.x/operate/webhook_service/
 ---
 
 ## Block URLs and IPs
