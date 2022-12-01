@@ -226,6 +226,7 @@
   <script type="text/javascript" src="{{ ($docprism | minify | fingerprint).RelPermalink }}"></script>
   <script type="text/javascript" src="{{ ($doclightbox | minify | fingerprint).RelPermalink }}"></script>
   <script type="text/javascript" src="{{ ($owlcarouseljs | minify | fingerprint).RelPermalink }}"></script>
+  {{ partial "scarf.html" . }}
   {{ end }}
 
   {{ partial "google-analytics.html" . }}
