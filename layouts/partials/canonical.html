@@ -1,7 +1,7 @@
 
   {{ if in .Permalink "docs/0."}}
-
-    {{ $canoncical := replaceRE "docs/0.[[:digit:]]{1,2}.([[:digit:]]{1.2}|x)" "docs/0.19.x" .Permalink }}
+    {{ $versionUsed := print "docs/" $.Site.Params.version}}
+    {{ $canoncical := replaceRE "docs/0.[[:digit:]]{1,2}.([[:digit:]]{1.2}|x)" $versionUsed .Permalink }}
     <link rel="canonical" href="{{ $canoncical | absURL}}"/>
 
 {{end}}
