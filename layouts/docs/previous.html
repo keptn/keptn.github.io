@@ -1,0 +1,34 @@
+{{ define "main" }}
+<div class="container-fluid">
+  {{ .Scratch.Set "skipSeeAlso" true }}
+
+  {{ partial "primary-top.html" . }}
+
+  <p>{{ .Description }}</p>
+
+  <div class="section-index">
+        {{ range .Page.Site.Pages }}
+        
+            {{if findRE "docs/[[:digit:]].[[:digit:]]{1,2}.([[:digit:]]{1.2}|x)/_index.md" .Path }}
+                {{ if and (.Params.hide) (not .Params.draft)}}
+                    {{ if not (findRE "docs/[[:digit:]].[[:digit:]]{1,2}.([[:digit:]]{1.2}|x)/_index.md" .Site.Params.version) }}
+                    <div class="entry">
+                        <h5>
+                          <a href="{{ .Permalink }}">{{- if .Params.icon -}}<i class="page_icon">
+                              {{- partial "icon.html" .Params.icon -}}</i>{{- end -}}{{- .Title -}}</a>
+                        </h5>
+                        <p>{{ .Description }}</p>
+                      </div>
+                    {{ end }}
+                {{ end }}
+            {{ end }}
+           
+        {{ end }}
+  
+  </div>
+
+  {{ .Content }}
+
+  {{ partial "primary-bottom.html" . }}
+</div>
+{{ end }}
