@@ -20,3 +20,7 @@ See the [Contributor Guide](./CONTRIBUTING.md)
 The Keptn website engine (keptn.sh) is licensed under the [Apache License Version 2.0](./LICENSE).
 
 The Keptn documentation (e.g., `.md` files in the `/content/docs` folder) is licensed under a [CC-BY-4.0 license](./LICENSE-docs).
+
+<!-- markdownlint-disable -->
+<img referrerpolicy="no-referrer-when-downgrade" src="https://static.scarf.sh/a.png?x-pxid=b291d3b7-c6c9-4158-a037-9b31a0200f81" />
+<!-- markdownlint-enable -->
