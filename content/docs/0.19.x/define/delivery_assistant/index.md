@@ -4,6 +4,7 @@ description: Approval to control the delivery process
 weight: 55
 keywords: [0.19.x-cd]
 aliases:
+  - /docs/0.19.x/continuous_delivery/delivery_assistant/
   - /docs/0.19.x/reference/bridge/delivery_assistent/
 ---
 

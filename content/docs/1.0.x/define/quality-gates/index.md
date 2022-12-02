@@ -3,6 +3,10 @@ title: Quality Gates evaluations
 description: Implement Quality Gate evaluations in your project
 weight: 50
 keywords: [0.19.x-quality_gates]
+aliases:
+- /docs/1.0.x/quality_gates/
+- /docs/1.0.x/quality_gates/get_started/
+- /docs/1.0.x/quality_gates/integration/
 ---
 
 A quality gate allows you to validate a deployment or release

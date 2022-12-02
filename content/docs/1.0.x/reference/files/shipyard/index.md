@@ -2,6 +2,8 @@
 title: shipyard
 description: Control orchestation for a Keptn project
 weight: 715
+aliases:
+- /docs/1.0.x/define/shipyard/
 ---
 
 The shipyard is configured in the  *shipyard.yaml* file,

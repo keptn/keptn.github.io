@@ -3,6 +3,8 @@ title: sli
 description: Configure and add Service-Level Indicators (SLIs) to your service.
 weight: 725
 keywords: [0.19.x-quality_gates]
+aliases:
+- /docs/0.19.x/quality_gates/sli-provider/
 ---
 
 The *sli.yaml* file contains definitions of the Service-Level Indicators (SLIs)

@@ -3,6 +3,8 @@ title: Define Keptn Projects
 description: Define what a project does
 weight: 10
 icon: setup
+aliases:
+- /docs/0.19.x/continuous_delivery/
 ---
 
 This section provides information about the activities your Keptn project can do

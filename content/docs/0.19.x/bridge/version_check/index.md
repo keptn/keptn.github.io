@@ -4,6 +4,7 @@ description: Enable/Disable daily version check feature
 weight: 40
 aliases:
   - /docs/0.19.x/reference/version_check/
+  - /docs/0.19.x/bridge/load_information/
 ---
 
 The feature of a daily version check informs a Keptn user in the Keptn Bridge about:

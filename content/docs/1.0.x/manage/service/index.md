@@ -4,6 +4,7 @@ description: Create a service for your project
 weight: 23
 keywords: [0.19.x-manage]
 aliases:
+-  /docs/1.0.x/define/service/
 ---
 
 After creating a project, you can create one or more services for that project.

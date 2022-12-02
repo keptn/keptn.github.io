@@ -5,6 +5,7 @@ weight: 20
 keywords: [git provisioning]
 aliases:
   - /docs/0.19.x/api/git_provisioning
+  - /docs/1.0.x/api/git_provisioning
 ---
 
 
