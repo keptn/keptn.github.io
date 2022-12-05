@@ -29,6 +29,8 @@ IgnoreURLs:
 # LinkedIn does not like automation and is returning a 999 Response Code
 - "linkedin.com"
 - "mailto"
+# www.googletagmanager.com does return 400 for /
+- "www.googletagmanager.com"
 # fileformat.com returns 403
 - "fileformat.com" 
 # Domains used in documentation for local resources
