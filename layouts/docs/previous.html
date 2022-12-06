@@ -40,7 +40,7 @@
         {{ range .Page.Site.Pages }}
         
             {{if findRE "docs/[[:digit:]].[[:digit:]]{1,2}.([[:digit:]]{1.2}|x)/_index.md" .Path }}
-                {{ if and (.Params.hide) (not .Params.draft)}}
+                {{ if and (.Params.previous_release) (true)}}
                     {{ if not (findRE "docs/[[:digit:]].[[:digit:]]{1,2}.([[:digit:]]{1.2}|x)/_index.md" .Site.Params.version) }}
                     <div class="entry">
                         <h5>
