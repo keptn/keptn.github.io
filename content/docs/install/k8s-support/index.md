@@ -65,5 +65,6 @@ In particular, with growing the number of projects and their size, it is recomme
 * the CPU limits of *shipyard-controller* and *resource-service*, and
 * the RAM limits of *resource-service*.
 
-As a guidance, we ran a stress-test of a Keptn installation with 50 projects, each project having 5 stages and 50 services. Every second we run an evaluation sequence for a total of 5000 sequences.
-During the execution, we observed *shipyard-controller* to require 1 full CPU and roughly 180MB of RAM. Similarly, the *resource-service* was using around 3 CPUs and 240MB of RAM. 
+As guidance, we ran a stress test of a Keptn installation with 50 projects, each project having 5 stages and 50 services. Every second we run an evaluation sequence for a total of 5000 sequences.
+During the execution, we observed *shipyard-controller* to require 1 full CPU and roughly 180MB of RAM. Similarly, the *resource-service* required around 3 CPUs and 240MB of RAM. 
+
