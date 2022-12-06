@@ -11,7 +11,7 @@ In the following, we'll have a look at different use cases to help you get start
 
 ## General overview
 
-In general, Keptn integrations (also called Keptn-services) integrate by receiving and sending events from and to the [Keptn control-plane](../../../concepts/architecture/). Once an integration is triggered, the integration (service) usually indicates its start and once completed, responds to the Keptn control-plane with a finished status. Some integrations, such as notifications (e.g., via Slack), might not want to indicate their progress, which is also possible. In the following, we will have a look at different use cases for integrations and how they can be implemented.
+In general, Keptn integrations (also called Keptn-services) integrate by receiving and sending events from and to the [Keptn control-plane](../../../previous-releases/concepts/architecture/). Once an integration is triggered, the integration (service) usually indicates its start and once completed, responds to the Keptn control-plane with a finished status. Some integrations, such as notifications (e.g., via Slack), might not want to indicate their progress, which is also possible. In the following, we will have a look at different use cases for integrations and how they can be implemented.
 
 {{< popup_image
 link="./assets/integration-sequence.png"
@@ -75,7 +75,7 @@ Let us have a look at notification tool integrations such as Slack, or MS Team w
 <!-- disabled, since we don't allow to run SLI-providers on the execution plane. 
 ### Monitoring/observability tools (SLI-providers)
 
-Keptn quality gates are defined by [SLOs and SLIs](../../../concepts/quality_gates/) and the data will be provided via SLI-providers. The job of an SLI provider is to:
+Keptn quality gates are defined by [SLOs and SLIs](../../../previous-releases/concepts/quality_gates/) and the data will be provided via SLI-providers. The job of an SLI provider is to:
 
 1. listen for a `sh.keptn.event.get-sli.triggered` event and
 2. respond with a `sh.keptn.event.get-sli.started` event once the retrieval of the data is started and

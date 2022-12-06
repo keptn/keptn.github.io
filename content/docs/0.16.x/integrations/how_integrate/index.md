@@ -11,7 +11,7 @@ In the following sections we look at different use cases to help you get started
 
 ## General overview
 
-In general, Keptn integrations (also called Keptn-services) integrate by receiving and sending events from and to the [Keptn control-plane](../../../concepts/architecture/). Once an integration is triggered, the integration (service) usually indicates its start and once completed, responds to the Keptn control-plane with a finished status. Some integrations, such as notifications (e.g., via Slack), might not want to indicate their progress, which is also possible. In the following, we will have a look at different use cases for integrations and how they can be implemented.
+In general, Keptn integrations (also called Keptn-services) integrate by receiving and sending events from and to the [Keptn control-plane](../../../previous-releases/concepts/architecture/). Once an integration is triggered, the integration (service) usually indicates its start and once completed, responds to the Keptn control-plane with a finished status. Some integrations, such as notifications (e.g., via Slack), might not want to indicate their progress, which is also possible. In the following, we will have a look at different use cases for integrations and how they can be implemented.
 
 {{< popup_image
 link="./assets/integration-sequence.png"

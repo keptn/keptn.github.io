@@ -84,7 +84,7 @@ curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=v4.4
     k3d cluster create mykeptn -p "8082:80@loadbalancer" --k3s-server-arg "--kube-proxy-arg=conntrack-max-per-core=0"  --k3s-agent-arg "--kube-proxy-arg=conntrack-max-per-core=0" --agents 1
     ```
 
-2. **Download and install the [Keptn CLI](../0.18.x/reference/cli)**
+2. **Download and install the [Keptn CLI](../../0.18.x/reference/cli)**
 
     ```
     curl -sL https://get.keptn.sh | bash
@@ -132,7 +132,7 @@ helm install helm-service keptn/helm-service -n keptn
     &nbsp;- keptn auth --endpoint=http://localhost:8080/api --api-token=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
     &nbsp;* Alternatively, follow the instructions provided at: [Authenticate Keptn CLI](../a)
     &nbsp;* To expose Keptn on a public endpoint, please continue with the installation guidelines provided at:
-    &nbsp;- [Install Keptn](../0.18.x/docs/../../install/helm-install)
+    &nbsp;- [Install Keptn](../../0.18.x/docs/../../install/helm-install)
     </pre>
     **There is no need to follow the instructions from the installation log - the quickstart guide will cover this!**
     </p>
@@ -231,8 +231,8 @@ With Keptn installed, have a look at the different [tutorials](https://tutorials
 
 Review the documentation for a full reference on all Keptn capabilities and components and how they can be combined/extended to your needs:
 
-- [Operate Keptn](../0.18.x/operate)
-- [Manage Keptn](../0.18.x/manage)
+- [Operate Keptn](../../0.18.x/operate)
+- [Manage Keptn](../../0.18.x/manage)
 - [Continuous Delivery](../concepts/delivery)
 - [Continuous Performance Verification](../concepts/performance_validation)
 - [Automated Operations](../concepts/automated_operations)

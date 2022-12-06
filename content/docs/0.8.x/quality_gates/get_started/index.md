@@ -7,7 +7,7 @@ keywords: [0.8.x-quality_gates]
 
 In this section, you will get an overview of the use-case and learn how to get started setting up a quality gate for your project.
 
-:information_source: If you are not familiar with the concept of a quality gate, learn more [here](../../../concepts/quality_gates). 
+:information_source: If you are not familiar with the concept of a quality gate, learn more [here](../../../previous-releases/concepts/quality_gates). 
 
 **Quality gate result**
 

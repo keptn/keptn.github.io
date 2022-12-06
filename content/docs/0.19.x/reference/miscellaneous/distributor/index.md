@@ -21,7 +21,7 @@ its subscription can be changed directly in the Bridge.
 Note that some services use `cp-connector` or `go-sdk`
 (which is actually a wrapper for `cp-connector`)
 instead of the distributor.
-This is discussed more in [Architecture](../../../../concepts/architecture/#execution-plane-services).
+This is discussed more in [Architecture](../../../../previous-releases/concepts/architecture/#execution-plane-services).
 
 ## Environment variables
 

@@ -9,7 +9,7 @@ weight: 69
 
 **Key announcements**:
 
-:information_source: *CLI*: The CLI no longer provides the install/uninstall/upgrade commands. Please refer to the [Install Keptn using the Helm chart](../../../install/helm-install/) to see how you can use Helm to install and operate Keptn.
+:information_source: *CLI*: The CLI no longer provides the install/uninstall/upgrade commands. Please refer to the [Install Keptn using the Helm chart](../../../previous-releases/install/helm-install/) to see how you can use Helm to install and operate Keptn.
 
 :mailbox: *WebHooks* support the new `v1beta1` version which provides a more structured way to create your webhooks. For futher information, see [Advanced Webhook configuration](../../../0.18.x/integrations/webhooks/#advanced-webhook-configuration).
 

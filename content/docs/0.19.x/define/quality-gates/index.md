@@ -14,7 +14,7 @@ using data provided by your observability platform
 and using quality criteria that you define as Service Level Objectives (SLOs);
 see the [SLO](../../reference/files/slo) reference page.
 
-:information_source: If you are not familiar with the concept of a quality gate, learn more [here](../../../concepts/quality_gates). 
+:information_source: If you are not familiar with the concept of a quality gate, learn more [here](../../../previous-releases/concepts/quality_gates). 
 
 ## Video demonstration
 

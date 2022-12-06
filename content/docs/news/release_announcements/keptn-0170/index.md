@@ -11,7 +11,7 @@ Keptn 0.17.0 provides more customizability options in the Helm Charts. Make sure
 
 **Key announcements**:
 
-:information_source: *CLI*: The CLI no longer provides the install/uninstall/upgrade commands. Please refer to the [Install Keptn using the Helm chart](../../../install/helm-install/) to see how you can use Helm to install and operate Keptn.
+:information_source: *CLI*: The CLI no longer provides the install/uninstall/upgrade commands. Please refer to the [Install Keptn using the Helm chart](../../../previous-releases/install/helm-install/) to see how you can use Helm to install and operate Keptn.
 
 ---
 

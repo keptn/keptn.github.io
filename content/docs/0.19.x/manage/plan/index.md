@@ -77,7 +77,7 @@ Keptn orchestrates **what** to do.
 You can integrate almost any tool you like to define **how** this task is accomplished.
 You must identify each tool you use to Keptn;
 this can be done in a variety of ways.
-See [Keptn and other tools](../../../concepts/keptn-tools) for more information.
+See [Keptn and other tools](../../../previous-releases/concepts/keptn-tools) for more information.
 
 ## Who calls whom?
 
@@ -108,7 +108,7 @@ sequence:
 Then configure the Keptn webhook service to fire on the `deploy.triggered` event
 and have Jenkins return the `deploy.finished` event.
 Keptn automatically runs your
-[quality gate](../../../concepts/quality_gates/) evaluation when it receives the event.
+[quality gate](../../../previous-releases/concepts/quality_gates/) evaluation when it receives the event.
 When the evaluation is finished, Keptn triggers the `test` task.
 You could again use the Keptn webhook service to trigger Jenkins
 to implement any test you wanted.
@@ -135,7 +135,7 @@ and provides less functionality than using the Keptn webhooks strategy described
 ## Are you using quality gates evaluation?
 
 Most projects use quality gates to evaluate their software.
-See [Quality Gates](../../../concepts/quality_gates) for more information.
+See [Quality Gates](../../../previous-releases/concepts/quality_gates) for more information.
 You can (and probably will) modify the details of your quality gates
 as you test and develop your project but it is useful to consider your goals from the beginning.
 

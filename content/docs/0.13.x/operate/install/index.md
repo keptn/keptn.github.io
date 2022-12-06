@@ -298,13 +298,13 @@ it is located in the unpacked directory
 
 Keptn consists of a **Control Plane** and an **Execution Plane**:
 
-* The **Control Plane** allows using Keptn for the [Quality Gates](../../../concepts/quality_gates/) and [Automated Operations](../../../concepts/automated_operations/) use cases. To install the control plane containing the components for *quality gates* and *automated operations*, execute: 
+* The **Control Plane** allows using Keptn for the [Quality Gates](../../../previous-releases/concepts/quality_gates/) and [Automated Operations](../../../previous-releases/concepts/automated_operations/) use cases. To install the control plane containing the components for *quality gates* and *automated operations*, execute: 
 
     ```console
     keptn install
     ```
 
-* The **Control Plane with the Execution Plane (for Continuous Delivery)** allows to implement [Continuous Delivery](../../../concepts/delivery/) on top of *quality gates* and *automated operations* use cases. Please not that for this use-case [Istio](https://istio.io) is required as well, as this is used for traffic routing between blue/green versions during deployment. To install the control plane with the execution plane for continuous delivery, execute:
+* The **Control Plane with the Execution Plane (for Continuous Delivery)** allows to implement [Continuous Delivery](../../../previous-releases/concepts/delivery/) on top of *quality gates* and *automated operations* use cases. Please not that for this use-case [Istio](https://istio.io) is required as well, as this is used for traffic routing between blue/green versions during deployment. To install the control plane with the execution plane for continuous delivery, execute:
 
     ```
     keptn install --use-case=continuous-delivery
