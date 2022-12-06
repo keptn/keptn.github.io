@@ -60,11 +60,11 @@ As a rule of thumb, Keptn control plane will run with 2 vCPUs, 4 GB of memory an
 For execution plane services with continuous-delivery support, your Kubernetes cluster requires additional resources.
 This depends on the number of projects and workloads you deploy, as well as the number of stages in your Shipyard, and whether you are using direct or blue-green deployments.
 
-In particular, with growing the number of projects and their size, it is recommended to increase:
+In particular, as you grow the number of projects and their size, it is recommended to increase:
 
-* the CPU limits of *shipyard-controller* and *resource-service*, and
-* the RAM limits of *resource-service*.
+* The CPU limits of *shipyard-controller* and *resource-service*, and
+* The RAM limits of *resource-service*.
 
-As guidance, we ran a stress test of a Keptn installation with 50 projects, each project having 5 stages and 50 services. Every second we run an evaluation sequence for a total of 5000 sequences.
-During the execution, we observed *shipyard-controller* to require 1 full CPU and roughly 180MB of RAM. Similarly, the *resource-service* required around 3 CPUs and 240MB of RAM. 
+As an example, we ran a stress test of a Keptn installation with 50 projects, each project having 5 stages and 50 services. Every second we ran an evaluation sequence, for a total of 5000 sequences.
+During the execution, we observed that the *shipyard-controller* required 1 full CPU and roughly 180MB of RAM. Similarly, the *resource-service* required around 3 CPUs and 240MB of RAM. 
 
