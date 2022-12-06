@@ -14,7 +14,7 @@ It is possible to do most of what you need to do on modern releases of Keptn wit
 but the CLI provides additional functionality that is useful
 such as uploading [SLI and SLO](../../concepts/quality_gates/#what-is-a-service-level-indicator-sli) definitions..
 If you install the Keptn CLI,
-you must [authenticate](../authenticate-cli-bridge/#authenticate-keptn-cli)
+you must [authenticate](../authenticate-cli-bridge/)
 it to Keptn after you install Keptn. 
 
 Keptn consists of a **Control Plane** and an **Execution Plane**.
