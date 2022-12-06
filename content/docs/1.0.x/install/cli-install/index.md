@@ -26,46 +26,102 @@ You can install the Keptn CLI using:
 
 ## curl
 
-```
-curl -sL https://get.keptn.sh/ | bash
-```
+You can use the `curl` command to install the Keptn CLI on Linux, WSL2, and macOS.
+Windows users need `bash`, `curl`, and `awk` installed (e.g., using Git Bash).
 
-This installs the Keptn CLI for you in the current directory on your cloud shell machine.
-You can use **sudo** to move the file to another location.
-You can run the Keptn CLI from any directory
-but you may need to specify the location of the path,
-using `.keptn` rather than just `keptn` if it is in your current directory.
+1. Download the *latest stable Keptn version*
+   from [GitHub](https://github.com/keptn/keptn/releases),
+   unpack it, and install it into the current directory on your cloud shell machine:
 
-## Homebrew
+   ```
+   curl -sL https://get.keptn.sh/ | bash
+   ```
 
-```
-brew install keptn
-```
+   Use **sudo** to move the file to another location.
+   such as `/usr/local/bin/keptn`.
+   You can run the Keptn CLI from any directory
+   but you may need to specify the location of the path,
+   using `./keptn` rather than just `keptn` if it is in your current directory.
+
+2. Verify that the installation has worked and that the version is correct.
+   On Linux and macOS, run:
+
+    ```
+    keptn version
+    ```
+    On Windows, run:
+
+    ```
+    .\keptn.exe version
+    ```
+## Installation on macOS using brew
+
+1. Run the following command to automatically fetch the latest Keptn CLI via Homebrew:
+
+   ```
+   brew install keptn
+   ```
+
+1. Verify that the installation has worked and that the version is correct by running:
+
+   ```
+   keptn version
+   ```
+
+1. To upgrade Keptn CLI to a new release, run:
+
+   ```
+   brew upgrade keptn
+   ```
+
+1. To uninstall Keptn CLI, run:
+
+   ```
+   brew uninstall keptn
+   ```
 
 ## Binaries
 
-Binaries for the Keptn CLI are provided for Linux, macOS, and Windows.
+## Manually install Keptn CLI from binaries
 
-- Download the latest version for your operating system from: [GitHub](https://github.com/keptn/keptn/releases)
-- Unpack the archive
-- Find the `keptn` binary in the unpacked directory
+Each release of Keptn provides binaries for the Keptn CLI.
+These binaries are available for Linux, macOS, and Windows.
+To install the Keptn CLI from the binaries:
 
-  - *Linux / macOS*: Add executable permissions (``chmod +x keptn``), and move it to the desired destination (e.g. `mv keptn /usr/local/bin/keptn`)
+1. Download the
+   [version matching your operating system](https://github.com/keptn/keptn/releases/).
+1. Unpack the archive.
+1. Find the `keptn` binary in the unpacked directory.
+   * *Linux / macOS*:
+     * Add executable permissions:
+       ```
+       chmod +x keptn
+       ```
+     * Move the `keptn` binary to the desired destination
+       For example,
+       ```
+       mv keptn /usr/local/bin/keptn
+       ```
 
-  - *Windows*: Copy the executable to the desired folder and add the executable to your PATH environment variable.
+   * *Windows*:
+     * Move/copy the executable to the desired folder.
+     * Optionally, add the executable to the `PATH` environment variable.
 
-- Now, verify that the installation has worked and that the version is correct by running:
-    - *Linux / macOS*
+1. Verify that the installation has worked and that the version is correct.
 
-    ```console
-    keptn version
-    ```
+   * On Linux or MacOS, run:
 
-    - *Windows*
+     ```
+     keptn version
+     ```
 
-    ```console
-    .\keptn.exe version
-    ```
+    * On Windows, run:
 
-**Note:** For the rest of the documentation we will stick to the *Linux / macOS* version of the commands.
+      ```
+      .\keptn.exe version
+      ```
+
+After you install both the Keptn CLI and Keptn itself,
+you must authenticate the CLI and the Bridge.
+See [Authenticate Keptn CLI and Bridge](../authenticate-cli-bridge).
 
