@@ -122,7 +122,7 @@ This section explains how to use the Keptn CLI and the Keptn API for those two a
 
 ### Use the Keptn CLI to work with quality gates
 
-* To work with the Keptn CLI, make sure your Keptn CLI is [authenticated](../../../install/authenticate-cli-bridge//#authenticate-keptn-cli) against your Keptn installation.
+* To work with the Keptn CLI, make sure your Keptn CLI is [authenticated](../../../previous-releases/install/authenticate-cli-bridge//#authenticate-keptn-cli) against your Keptn installation.
 
 * To verify the CLI connection to your Keptn, execute [keptn status](../../reference/cli/commands/keptn_status/).
 

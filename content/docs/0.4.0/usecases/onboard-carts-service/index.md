@@ -55,7 +55,7 @@ To illustrate the scenario this use case addresses, keptn relies on the followin
 
 ## Authenticate and configure keptn
 
-If you have not yet authenticated and configured the keptn CLI, please follow these instructions. If you have already done this [during the installation](../../installation/setup-keptn-gke/#authenticate-keptn-cli-and-configure-keptn), please skip this part and continue with [creating a project](#create-project-sockshop).
+If you have not yet authenticated and configured the keptn CLI, please follow these instructions. If you have already done this [during the installation](../../previous-releases/installation/setup-keptn-gke/#authenticate-keptn-cli-and-configure-keptn), please skip this part and continue with [creating a project](#create-project-sockshop).
 
 1. The CLI needs to be authenticated against the keptn server. Therefore, please follow the [keptn auth](../../reference/cli/#keptn-auth) instructions.
 

@@ -9,7 +9,7 @@ In this section, the functionality and commands of the Keptn CLI are described. 
 uninstalling Keptn. Furthermore, the CLI allows creating projects, onboarding services, and sending new artifact events.
 
 ## Prerequisites
-- All prerequisites from the [setup](../../installation/setup-keptn#prerequisites) are needed.
+- All prerequisites from the [setup](../../previous-releases/installation/setup-keptn#prerequisites) are needed.
 
 ## Install the Keptn CLI
 Every release of Keptn provides binaries for the Keptn CLI. These binaries are available for Linux, macOS, and Windows.

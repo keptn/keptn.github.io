@@ -40,7 +40,7 @@ To create a service from the Keptn Bridge:
 
 Use the [keptn create service](../../reference/cli/commands/keptn_create_service) command
 to create a service from the command line.
-You must [install](../../../install/cli-install) and [authenticate](../../../install/authenticate-cli-bridge)
+You must [install](../../../previous-releases/install/cli-install) and [authenticate](../../../previous-releases/install/authenticate-cli-bridge)
 the Keptn CLI before you can run this command:
 
 ```

@@ -7,7 +7,7 @@ weight: 35
 The following installation instructions provide a way to manually install Keptn Quality Gates without any installer job. Furthermore, no NGINX will be installed using these instructions.
 
 Following these manual installation instructions is not the recommended way to install Keptn.
-But in case you cannot use the [prepared installer](../../installation/setup-keptn/) because you e.g. need to exactly control what is installed in your Kubernetes cluster, the instructions can be used.
+But in case you cannot use the [prepared installer](../../previous-releases/installation/setup-keptn/) because you e.g. need to exactly control what is installed in your Kubernetes cluster, the instructions can be used.
 
 **WARNING**:
 
@@ -285,7 +285,7 @@ Rules:
 
 ## Use the Keptn CLI
 
-1. Follow the [Keptn CLI install instructions](../../installation/setup-keptn/#install-keptn-cli). 
+1. Follow the [Keptn CLI install instructions](../../previous-releases/installation/setup-keptn/#install-keptn-cli). 
 
     **Important:** The Keptn CLI in version 0.6.2 or above is required.
 

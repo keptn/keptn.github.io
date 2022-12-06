@@ -13,13 +13,13 @@ Use the [keptn generate support-archive](../reference/cli/commands/keptn_generat
 to generate a support archive
 that can be used as a data source for debugging a Keptn installation.
 Note that you must
-[install the Keptn CLI](../../install/cli-install) before you can run this command.
+[install the Keptn CLI](../../previous-releases/install/cli-install) before you can run this command.
 
 ## Troubleshooting details
 
 See the following pages for specific troubleshooting hints:
 
-* [Troubleshooting the installation](../../install/troubleshooting)
+* [Troubleshooting the installation](../../previous-releases/install/troubleshooting)
 
 ## Broken Keptn project
 
@@ -125,7 +125,7 @@ Most likely Istio is not installed on your Kubernetes cluster.
 
 **Solution:**
 
-Install Istio as described in the [Install and configure Istio](../../install/istio) section.
+Install Istio as described in the [Install and configure Istio](../../previous-releases/install/istio) section.
 
 </p></details>
 

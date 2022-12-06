@@ -165,7 +165,7 @@ The remaining parameters, such as `PUBSUB_RECIPIENT`, `PUBSUB_RECIPIENT_PORT` an
 
 **Providing a unique name for execution planes that run the same integration**
 
-If your Keptn [multi-cluster set-up](../../../../install/multi-cluster)
+If your Keptn [multi-cluster set-up](../../../../previous-releases/install/multi-cluster)
 includes multiple execution planes that run the same integration service,
 you must configure a unique name for each execution plane.
 By default, Keptn uses the execution plane integration name and version to identify the execution plane.

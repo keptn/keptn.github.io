@@ -106,7 +106,7 @@ In the keptn's bridge you cannot see any entries.
 **Solution:**
 
 We fixed this issue (see [#423](https://github.com/keptn/keptn/issues/423)).
-In order to obtain this fix, please follow the [upgrade instructions](../../installation/upgrade-keptn-gke/#upgrade-keptn-from-0-2-x-to-0-2-2).
+In order to obtain this fix, please follow the [upgrade instructions](../../previous-releases/installation/upgrade-keptn-gke/#upgrade-keptn-from-0-2-x-to-0-2-2).
 </p></details>
 
 </details>

@@ -12,7 +12,7 @@ If you are unfamiliar with keptn, we recommend to first watch this [community me
 which provides an introduction to keptn.
 
 ## Prerequisites
--  All prerequisites from the [setup](../../installation/setup-keptn-gke#prerequisites) are needed.
+-  All prerequisites from the [setup](../../previous-releases/installation/setup-keptn-gke#prerequisites) are needed.
 - A GitHub organization, a GitHub user, and [personal access token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line). 
 
 ## Install the keptn CLI
@@ -51,7 +51,7 @@ In future releases, we add additional checks whether the executed commands succe
 
 ## keptn install 
 
-The keptn CLI allows to install keptn on a Google Kubernetes Engine (GKE), OpenShift or Azure Kubernetes Services (AKS). Further details are provided [here](../../installation/#install-keptn).
+The keptn CLI allows to install keptn on a Google Kubernetes Engine (GKE), OpenShift or Azure Kubernetes Services (AKS). Further details are provided [here](../../previous-releases/installation/#install-keptn).
 
   - For **GKE**:
 

@@ -15,11 +15,11 @@ for each stage defined for the project
 
 Before you create a project:
 
-* You must [Install Keptn](../../../install/helm-install)
+* You must [Install Keptn](../../../previous-releases/install/helm-install)
   on a Kubernetes cluster that has **kubectl** installed.
 
-* In most cases, you should also [install the Keptn CLI](../../../install/cli-install)
-  and [authenticate the Keptn CLI and Bridge](../../../install/authenticate-cli-bridge).
+* In most cases, you should also [install the Keptn CLI](../../../previous-releases/install/cli-install)
+  and [authenticate the Keptn CLI and Bridge](../../../previous-releases/install/authenticate-cli-bridge).
   You can create projects and services, trigger sequences, and many other common tasks
   using the Keptn Bridge rather than the command line
   but you may prefer using the command line

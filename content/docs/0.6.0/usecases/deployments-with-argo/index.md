@@ -32,7 +32,7 @@ deployment tool.
 
 ## Prerequisites
 
-* A completed [Keptn installation](../../installation/setup-keptn)
+* A completed [Keptn installation](../../previous-releases/installation/setup-keptn)
 
 * Basic knowledge of [Argo CD](https://argoproj.github.io/argo-cd/) and [Argo Rollouts](https://argoproj.github.io/argo-rollouts/)
 

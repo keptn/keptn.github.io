@@ -11,6 +11,7 @@ IgnoreDirs:
 - "docs/0.12."
 - "docs/0.13."
 - "docs/0.14."
+- "docs/1"
 # exlcuded because the paths do not exist for styles and contact
 - "404"
 IgnoreURLs:
