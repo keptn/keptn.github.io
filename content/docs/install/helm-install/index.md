@@ -3,8 +3,19 @@ title: Install Keptn using the Helm chart
 description: Install Keptn on a single cluster using the Helm chart
 weight: 40
 aliases:
+  - /docs/0.19.x/api/git_provisioning
+  - /docs/0.17.0/operate/install
+  - /docs/0.17.1/operate/install
+  - /docs/0.18.0/operate/install
+  - /docs/0.18.1/operate/install
+  - /docs/0.18.2/operate/install
+  - /docs/0.19.0/operate/install
+  - /docs/0.19.1/operate/install
+  - /docs/0.19.2/operate/install
+  - /docs/0.19.3/operate/install
   - /docs/0.19.x/operate/install/
   - /docs/0.19.x/operate/advanced_install_options/
+  - /docs/1.0.0/operate/install
   - /docs/1.0.x/operate/install/
   - /docs/1.0.x/operate/advanced_install_options/
 ---
