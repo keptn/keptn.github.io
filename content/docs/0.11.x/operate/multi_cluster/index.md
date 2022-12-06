@@ -30,18 +30,18 @@ To operate Keptn in a multi-cluster setup, you need obviously at least two Kuber
 1. One that runs Keptn as control plane
 2. The second one that runs the execution-plane services for deploying, testing, executing remediation actions, etc.
 
-To create a Kubernetes cluster, please follow the instructions [here](.../install/#create-or-bring-a-kubernetes-cluster).
+To create a Kubernetes cluster, please follow the instructions [here](../install/#create-or-bring-a-kubernetes-cluster).
 
 ## Prerequisites
 
-* [keptn CLI](.../install/#install-keptn-cli)
+* [keptn CLI](../install/#install-keptn-cli)
 * [helm CLI](https://helm.sh/docs/intro/install/)
 
 ## Install Keptn Control plane
 
 The **Control Plane** of Keptn is responsible for orchestrating your processes for continuous delivery or automated operations.
 
-* Before starting the installation, make yourself familiar with the ways of exposing Keptn as explained [here](.../install/#install-keptn). Then come back and continue installing Keptn control plane.
+* Before starting the installation, make yourself familiar with the ways of exposing Keptn as explained [here](../install/#install-keptn). Then come back and continue installing Keptn control plane.
 
 * To install the control plane, execute `keptn install` with the option you chose for exposing Keptn:
 
@@ -51,8 +51,8 @@ The **Control Plane** of Keptn is responsible for orchestrating your processes f
 
 * Before continuing, please retrieve:
 
-    * `KEPTN_ENDPOINT`: Follow the instructions [here](.../install/#install-keptn), depending on the option you chose for exposing Keptn.
-    * `KEPTN_API_TOKEN`: Follow the instructions [here](.../install/#authenticate-keptn-cli).
+    * `KEPTN_ENDPOINT`: Follow the instructions [here](../install/#install-keptn), depending on the option you chose for exposing Keptn.
+    * `KEPTN_API_TOKEN`: Follow the instructions [here](../install/#authenticate-keptn-cli).
 
 ## Install Keptn Execution plane
 
@@ -216,6 +216,6 @@ remoteControlPlane:
   - Is the Keptn API endpoint on `http` or `https`?
   - Is the hostname of the Keptn API endpoint correct, e.g. `my.keptn-dev.company.com` (without `/api`)
   - Do you want to skip TLS verification?
-  - Is the Keptn API token correct? (You can find it in the Keptn Bridge, or by following the guide for [authenticating](.../install/#authenticate-keptn-cli))
+  - Is the Keptn API token correct? (You can find it in the Keptn Bridge, or by following the guide for [authenticating](../install/#authenticate-keptn-cli))
 
 </p></details>

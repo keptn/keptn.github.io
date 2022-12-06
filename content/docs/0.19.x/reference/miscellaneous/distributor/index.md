@@ -57,9 +57,9 @@ when it runs within the Keptn cluster:
    should use the `NATS_URL` environment variable to identify the NATS cluster.
    By default, and in most installations, the `PUBSUB_URL` and `NATS_URL` environment variables
    should have the same value.
-   See [Execution Plane Services](../../../../../docs/concepts/architecture/#execution-plane-services)
+   See [Execution Plane Services](../../../../../docs/previous-releases/concepts/architecture/#execution-plane-services)
    for architectural details about NATS behavior when Keptn runs on a single cluster
-   and when it is installed in a [multi-cluster](../../../../../docs/install/multi-cluster/) configuration.
+   and when it is installed in a [multi-cluster](../../../../../docs/previous-releases/install/multi-cluster/) configuration.
   
 - `PUBSUB_TOPIC` - Comma separated list of topics (i.e. event types)
 for which the distributor should listen

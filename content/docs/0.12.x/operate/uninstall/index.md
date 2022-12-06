@@ -6,7 +6,7 @@ keywords: [0.12.x-operate]
 ---
 
 ## Prerequisites
-- [keptn CLI](.../install/#install-keptn-cli)
+- [keptn CLI](../install/#install-keptn-cli)
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
 ## Uninstall Keptn
