@@ -3,6 +3,11 @@ title: Installation
 description: How to install and configure your Keptn environment.  Scroll down for a reference list of tasks.
 weight: 30
 icon: concepts
+aliases:
+  - /docs/0.19.x/operate/install/
+  - /docs/0.19.x/operate/advanced_install_options/
+  - /docs/1.0.x/operate/install/
+  - /docs/1.0.x/operate/advanced_install_options/
 ---
 
 The steps to install and configure your Keptn instance are:
