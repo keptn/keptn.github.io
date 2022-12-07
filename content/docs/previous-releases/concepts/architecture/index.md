@@ -173,7 +173,7 @@ to communicate with the Execution Plane.
    The distributor sidecars and cp-connectors are not able to directly connect to the NATS cluster,
    but they can be configured to fetch open `.triggered` events from the HTTP API.
 
-See [Integrations](../../integrations) for links to Keptn-service integrations that are available.
+See [Integrations](../../../integrations) for links to Keptn-service integrations that are available.
 Use the information in [Custom Integrations](../../../0.19.x/integrations)
 to create a Keptn-service that integrates other tools.
 

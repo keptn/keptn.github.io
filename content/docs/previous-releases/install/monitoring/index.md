@@ -25,7 +25,7 @@ aliases:
 ---
 
 If your project uses [quality gates](../../concepts/quality_gates),
-you must install and configure the [integration](../../integrations)
+you must install and configure the [integration](../../../integrations)
 for the observability platform you are using as the data source for your project.
 
 Instructions are included with the integration packages:
