@@ -2,7 +2,6 @@
 title: Deployment with Helm
 description: Details about Keptn using Helm for deployment.
 weight: 140
-keywords: [1.0.x-cd]
 ---
 
 Keptn uses [Helm v3](https://helm.sh/) to deploy services to a Kubernetes cluster. This is currently implemented in the [helm-service](https://github.com/keptn/keptn/tree/1.0.0/helm-service).

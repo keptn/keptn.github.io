@@ -3,6 +3,9 @@ title: Action-Provider
 description: Add an action-provider to execute custom remediation actions.
 weight: 20
 icon: setup
+aliases:
+- /docs/1.0.x/automated_operations/
+- /docs/1.0.x/automated_operations/action-provider/
 ---
 
 An action-provider defines the actions that can be declared in a [remediation](../remediation) configuration.

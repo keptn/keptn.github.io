@@ -2,7 +2,6 @@
 title: Delivery sequence
 description: Customize your delivery and staging process.
 weight: 40
-keywords: [1.0.x-cd]
 ---
 
 ## Declare a multi-stage delivery sequence in shipyard

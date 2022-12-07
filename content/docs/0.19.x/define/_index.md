@@ -3,6 +3,8 @@ title: Define Keptn Projects
 description: Define what a project does
 weight: 10
 icon: setup
+aliases:
+- /docs/0.19.x/continuous_delivery/
 ---
 
 This section provides information about the activities your Keptn project can do
@@ -66,4 +68,13 @@ Other examples of what you can do with Keptn:
 * [Orchestrate security checks](security) provides a video
   that discusses how Keptn can analyze your code for security vulnerabilities
   before and after it is deployed into production.
+
+* [Orchestrate ArgoCD from Keptn](argocd) provides links to videos
+  that discuss how to use Keptn to add testing and evaluation
+  to the deployment run with ArgoCD.
+
+* [Orchestrate Argo Rollouts from Keptn](argo-rollouts)
+  provides links to a video and tutorial about how to implement a Keptn workflow
+  that deploys your software with Argo Rollouts with other features
+  to ensure the health of your deployment.
 

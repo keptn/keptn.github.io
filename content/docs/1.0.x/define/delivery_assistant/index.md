@@ -2,7 +2,6 @@
 title: Delivery Assistant
 description: Approval to control the delivery process
 weight: 55
-keywords: [1.0.x-cd]
 ---
 
 If you would like to extend the [delivery sequence](../delivery_sequence)
