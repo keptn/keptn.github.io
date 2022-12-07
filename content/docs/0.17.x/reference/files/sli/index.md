@@ -22,7 +22,7 @@ each of which always consists of a name and the provider-specific query.
 
 Please follow the links to the provider-specific SLIs: 
 Provider-specific SLIs are discussed in the documentation
-for the [integrations](../../../../previous-releases/integrations)
+for the [integrations](../../../..//integrations)
 for each monitoring platform:
 
 * [Dynatrace](https://artifacthub.io/packages/keptn/keptn-integrations/dynatrace-service)

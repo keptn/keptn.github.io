@@ -1,8 +1,8 @@
 ---
 title: Previous Releases
-description: Learn about the core concepts, use-cases, and architecture of Keptn for previous releases.
+description: Documentation for previous releases of Keptn
 weight: 2000
 icon: docs
-
+showprevious: true
 layout: previous
 ---

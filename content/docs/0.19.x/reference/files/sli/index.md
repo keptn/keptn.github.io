@@ -17,7 +17,7 @@ The query for an SLI is provider/tool-dependent;
 therefore, each SLI-provider relies on a specific SLI configuration.
 
 Provider-specific SLIs are discussed in the documentation
-for the [integrations](../../../../previous-releases/integrations)
+for the [integrations](../../../..//integrations)
 of each monitoring platform:
 
 * [Datadog](https://artifacthub.io/packages/keptn/keptn-integrations/datadog-service)
