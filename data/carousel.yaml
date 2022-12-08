@@ -1,0 +1,32 @@
+entries:
+- title: "Skip Me"
+  description: "Keptn for the win!"
+  disabled: true
+  image: "/images/home/carousel/keptn-lifecycle-controller.png"
+  href: "https://github.com/keptn/lifecycle-controller"
+- title: "Join us at Kubecon!"
+  description: >
+    <ul class="list-style-none">
+      <li>Keptn Community Day</li>
+      <li>Main Track Talks</li>
+      <li>Meet the Maintainers!</li>
+    </ul>
+  image: "/images/home/carousel/kubecon_noram_2022.png"
+  href: "https://community.cncf.io/events/details/cncf-keptn-community-presents-keptn-community-day-kubecon-cloudnativecon-detroit/"
+- title: "Check it out: Keptn Lifecycle Controller"
+  description: >
+    <ul class="list-style-none">
+      <li>Pre- and post-deployment checks and application health</li>
+      <li>Fully GitOps- and operator based</li>
+    </ul>
+  image: "/images/home/carousel/keptn-lifecycle-controller.png"
+  href: "https://github.com/keptn/lifecycle-controller"
+# - title: "Keptn LTS is Coming!"
+#   description: >
+#     <ul class="list-style-none">
+#       <li>Long-Term Support</li>
+#       <li>ETA in November</li>
+#       <li>Includes services too</li>
+#     </ul>
+#   image: "/images/home/carousel/keptn-lts.pn"
+#   href: "https://docs.google.com/document/d/1x7gnqWAbxSr55IgmrT0wSJ6sh5KMoWfZvD2G-8U6_t8/edit?usp=sharing"

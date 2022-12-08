@@ -2,6 +2,9 @@
 title: Kubernetes support & Cluster size
 description: Keptn and Kubernetes compatibility overview and required cluster size.
 weight: 20
+aliases:
+- /docs/0.19.x/operate/k8s_support/
+- /docs/1.0.x/operate/k8s_support/
 ---
 
 This document describes the maximum version skew supported between Keptn and Kubernetes.
@@ -20,8 +23,8 @@ Keptn versions are expressed as `x.y.z`, where `x` is the major version, `y` is 
 
 | Keptn Version /<br>Installation                           | Kubernetes  | AKS                       | EKS                       | GKE           | OpenShift   | K3s         | Minishift               |
 |-----------------------------------------------------------|:-----------:|:-------------------------:|:-------------------------:|:-------------:|:-----------:|:-----------:|:------------------------|
-| **0.17.x** / <br>Control & Execution plane<br>*see: (1)*   | 1.22 - 1.17 | 1.22 - 1.19 | 1.22 - 1.19 | 1.22 - 1.19   | 4, 3.11     | 1.22 - 1.19 | 1.34.2<br>(K8s: 1.11)   |
-| **0.17.x** / <br>Control plane                             | 1.22 - 1.17 | 1.22 - 1.19 | 1.22 - 1.19 | 1.22 - 1.19   | 4, 3.11     | 1.22 - 1.19 | 1.34.2<br>(K8s: 1.11)   |
+| **0.18.x**, **0.19.x** / <br>Control & Execution plane<br>*see: (1)*   | 1.24 - 1.17 | 1.24 - 1.19 | 1.24 - 1.19 | 1.24 - 1.19   | 4, 3.11     | 1.24 - 1.19 | 1.34.2<br>(K8s: 1.11)   |
+| **0.18.x**, **0.19.x** / <br>Control plane                             | 1.24 - 1.17 | 1.24 - 1.19 | 1.24 - 1.19 | 1.24 - 1.19   | 4, 3.11     | 1.24 - 1.19 | 1.34.2<br>(K8s: 1.11)   |
 
 **Remarks:**
 
@@ -56,3 +59,12 @@ The predefined resource values for the Keptn services are available in the [Helm
 As a rule of thumb, Keptn control plane will run with 2 vCPUs, 4 GB of memory and roughly 10 GB of additional disk space (Docker Images + Persistent Volumes).
 For execution plane services with continuous-delivery support, your Kubernetes cluster requires additional resources.
 This depends on the number of projects and workloads you deploy, as well as the number of stages in your Shipyard, and whether you are using direct or blue-green deployments.
+
+In particular, as you grow the number of projects and their size, it is recommended to increase:
+
+* The CPU limits of *shipyard-controller* and *resource-service*, and
+* The RAM limits of *resource-service*.
+
+As an example, we ran a stress test of a Keptn installation with 50 projects, each project having 5 stages and 50 services. Every second we ran an evaluation sequence, for a total of 5000 sequences.
+During the execution, we observed that the *shipyard-controller* required 1 full CPU and roughly 180MB of RAM. Similarly, the *resource-service* required around 3 CPUs and 240MB of RAM. 
+

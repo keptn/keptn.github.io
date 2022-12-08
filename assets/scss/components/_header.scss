@@ -29,7 +29,7 @@
     transition: all 0.3s;
     display: flex;
     align-items: center;
-    height: 80px;
+    height: 160px;
     font-size: 2.8rem;
     background-color: transparent;
     color: transparent;
@@ -110,6 +110,15 @@
           background: linear-gradient(-225deg, $primary-home-900 0%, #10478f 100%);
         }
       }
+    }
+  }
+}
+
+.box-announcements {
+  .ul.li {
+    a {
+      font-family: $font-family-base;
+      color: $white;
     }
   }
 }

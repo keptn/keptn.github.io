@@ -16,13 +16,16 @@ However, some functionality, such as uploading SLIs and SLOs, requires the CLI
 so installing it is recommended, especially for production systems.
 
 The Keptn CLI sends commands to Keptn by interacting with the Keptn API.
-The [API Token](../../0.18.x/operate/api_token)
+The [API Token](../../0.19.x/operate/api_token)
 that is used to communicate with Keptn is generated during the installation.
 After you install Keptn itself, you must then
 [authenticate the CLI and Bridge](../authenticate-cli-bridge).
 
 Install the Keptn CLI on the local machine
 that is used to interact with your cloud provider, Kubernetes, etc.
+It is not absolutely necessary to install the Keptn CLI for current Keptn releases,
+which allow you to create a project or run a sequence using the [Keptn Bridge](../../0.19.x/bridge),
+but it is recommended for production systems.
 
 Each Keptn release provides binaries for the Keptn CLI.
 These binaries are available for Linux, macOS, and Windows.

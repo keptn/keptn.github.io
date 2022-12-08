@@ -4,6 +4,7 @@ description: How to modify the projects shipyard
 weight: 25
 keywords: [0.19.x-manage]
 aliases:
+- /docs/0.19.x/manage/shipyard/
 ---
 
 A Keptn project's [shipyard](../../reference/files/shipyard) can be modified in two ways:
@@ -22,10 +23,8 @@ The following updates of shipyard.yaml are currently supported by Keptn:
 * Add/Remove a task sequence to/from a stage
 * Define a trigger for a sequence 
 
-Currently, you can not add or delete stages in the *shipyard* file for an existing project
+You can not add or delete stages in the *shipyard* file for an existing project
 although you can make other modifications.
-See [KEP-70](https://github.com/keptn/enhancement-proposals/pull/70) for details
-about the ongoing initiative to overcome this limitation.
 
 **Initial shipyard**
 

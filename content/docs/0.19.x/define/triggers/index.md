@@ -4,14 +4,10 @@ description: Using triggers to kick off a sequence
 weight: 160
 keywords: [0.19.x-manage]
 aliases:
+- /docs/0.19.x/manage/triggers/
 ---
 
 By default, a sequence runs as a standalone section that runs and finishes.
-You can also use the `triggeredOn` property
-in the the [shipyard](../../reference/files/shipyard)
-to specify an event that triggers this sequence,
-implicitly linking two sequences.
-
 You can manually trigger a sequence in any of the following ways,
 usually for testing and demonstration purposes:
 
@@ -19,7 +15,12 @@ usually for testing and demonstration purposes:
 * Using the Keptn API
 * Using the Keptn CLI
 
-Each of these is discussed below.
+You can also use the `triggeredOn` property
+in the the [shipyard](../../reference/files/shipyard)
+to specify an event that triggers this sequence,
+implicitly linking two sequences.
+
+Each of these mechanismsis discussed below.
 
 ## Use triggeredOn in a sequence
 

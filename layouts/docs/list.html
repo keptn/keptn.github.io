@@ -1,3 +1,6 @@
+{{ define "meta" }}
+  {{ partial "canonical.html" . }}
+{{ end }}
 {{ define "main" }}
 <div class="container-fluid">
   {{ .Scratch.Set "skipSeeAlso" true }}
@@ -21,6 +24,7 @@
     {{ else }}
     {{ range $pages }}
     {{ if eq .Parent $parent }}
+    {{ if not .Params.hide }}
     <div class="entry">
       <h5>
         <a href="{{ .Permalink }}">{{- if .Params.icon -}}<i class="page_icon">
@@ -28,6 +32,7 @@
       </h5>
       <p>{{ .Description }}</p>
     </div>
+    {{ end }}
     {{ end }}
     {{ end }}
     {{ end }}

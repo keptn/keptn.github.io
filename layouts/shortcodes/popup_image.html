@@ -42,9 +42,9 @@ Usage:
     {{- if (ne $prefix "https://") -}}
         {{- $prefix := slicestr $link 0 3 -}}
         {{- if (eq $prefix "../") -}}
-            {{- $link = printf "/%s%s" .Page.Dir (slicestr $link 3) -}}
+            {{- $link = printf "/%s%s" .Page.File.Dir (slicestr $link 3) -}}
         {{- else -}}
-            {{- $link = printf "/%s%s" .Page.Dir $link -}}
+            {{- $link = printf "/%s%s" .Page.File.Dir $link -}}
         {{- end -}}
     {{- end -}}
 {{- end -}}

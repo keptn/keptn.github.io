@@ -1,8 +1,12 @@
 ---
 title: Quality Gates
 description: Implement Quality Gate evaluations in your project
-weight: 70
+weight: 50
 keywords: [0.19.x-quality_gates]
+aliases:
+- /docs/0.19.x/quality_gates/
+- /docs/0.19.x/quality_gates/get_started/
+- /docs/0.19.x/quality_gates/integration/
 ---
 
 A quality gate allows you to validate a deployment or release
@@ -11,6 +15,25 @@ and using quality criteria that you define as Service Level Objectives (SLOs);
 see the [SLO](../../reference/files/slo) reference page.
 
 :information_source: If you are not familiar with the concept of a quality gate, learn more [here](../../../concepts/quality_gates). 
+
+## Video demonstration
+
+The following video illustrates how to implement a quality gate evaluation:
+
+[Service Level Providers, SLIs and SLOs in Keptn](https://www.youtube.com/watch?v=sF4B5ADL5sI)
+
+This shows how to configure the three elements that Keptn requires to run an evaluation:
+
+* The observability platform to use as a data source
+* Which metrics ([SLIs](../../reference/files/sli)) to retrieve from that observability platform
+* What threshholds ([SLOs](../../reference/files/slo)) are acceptable for each metric
+
+You will also see
+
+* How to apply weights to SLIs
+* How to apply relative threshholds to SLOs for regression testing
+* How to use the `key` SLI field to identify a metric that must pass for a build to pass,
+  no matter what the results of the other SLOs are.
 
 ## Definition of project, stage, and service
 

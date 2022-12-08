@@ -2,6 +2,9 @@
 title: Install and configure Istio
 description: Configure Istio and create a ConfigMap to expose services deployed by Keptn.
 weight: 75
+aliases:
+- /docs/0.19.x/continuous_delivery/expose_services/
+- /docs/1.0.x/continuous_delivery/expose_services/
 ---
 
 Istio must be installed in order to access the services that Keptn deploys using `helm-service`.
