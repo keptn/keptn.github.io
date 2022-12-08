@@ -2,7 +2,7 @@
 title: Tasks and sequences
 description: Learn about tasks and sequences that define what your project does
 weight: 20
-keywords: [0.19.x-define]
+keywords: [1.0.x-define]
 aliases:
 ---
 

@@ -2,7 +2,7 @@
 title: Manage Projects
 description: Create, update and delete projects from the Bridge
 weight: 40
-keywords: [0.19.x-bridge]
+keywords: [1.0.x-bridge]
 ---
 
 The Bridge provides features to make managing projects more convenient. It is possible to create and update projects directly from the UI.
