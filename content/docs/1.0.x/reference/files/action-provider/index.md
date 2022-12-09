@@ -53,7 +53,11 @@ This action-provider increases the ReplicaSet of a Kubernetes deployment by the 
   value: "1"
 ```
 
-* The `helm-service` is installed by default.
+* This example assumes that Helm is installed.
+  In older Keptn releases, `helm-service` is installed by default.
+  In current Keptn releases, follow the instructions in
+  [Helm Job-Executor Integration](https://artifacthub.io/packages/keptn/keptn-integrations/helm)
+  to implement Helm for your services.
 
 ## Add a custom Action-Provider
 

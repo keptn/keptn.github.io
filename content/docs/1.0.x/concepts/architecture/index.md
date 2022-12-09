@@ -194,7 +194,7 @@ including setting the `PUBSUB_URL` environment variable that the distributor use
 
 The flow can be summarized as follows.
 Note that this discussion assumes using `helm-service` and tasks like `deployment`
-but another service could be used for this processing
+but other services could be used for this processing
 and any tool could listen for tasks with names other than those of the standard tasks
 that are documented on the [shipyard](../../reference/files/shipyard/#fields) reference page.
 
