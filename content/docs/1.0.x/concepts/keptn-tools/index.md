@@ -81,7 +81,7 @@ The sequence is identical but the two teams are empowered to use different tooli
 Out-of-the box, Keptn includes the JMeter service that listens for the `test.triggered` event.
 
 Prefer a different load testing tool?
-Uninstall the Jmeter Service and install a service that listens for the `test.triggered` event and you are done.
+Uninstall the JMeter Service and install a service that listens for the `test.triggered` event and you are done.
 
 ## Keptn and Observability Tools (Prometheus, Dynatrace, Splunk etc.)
 
