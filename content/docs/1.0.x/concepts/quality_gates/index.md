@@ -5,7 +5,7 @@ weight: 2
 keywords: [keptn, use-cases]
 ---
 
-> When developing a software product, you eventually need to deliver a new version of your service in a production environment. To conduct this in a controlled manner and without impacting end-user experience, the quality of the new service has to be ensured in an automated way. 
+> When developing a software product, you eventually need to deliver a new version of your service in a production environment. To conduct this in a controlled manner and without impacting end-user experience, the quality of the new service must be ensured in an automated way. 
 
 :bulb: *A quality gate allows conducting a deployment/release validation by ensuring that defined quality criteria are met.*
 
@@ -17,7 +17,7 @@ Keptn quality gates are based on the concepts of *Service-Level Indicators (SLIs
 
 1. The process of evaluating a quality gate can be triggered using
 the [Keptn Bridge](../../bridge), the Keptn CLI or the Keptn API. 
-1. Once triggered, Keptn fetches the [SLIs](../../reference/files/sli/). 
+1. Once triggered, Keptn fetches the [SLIs](../../reference/files/sli/)
 from a data provider like Prometheus, Dynatrace, or Datadog.
 1. Keptn evaluates the SLI against the SLOs that are defined for the application or service. 
 1. After evaluation and scoring, Keptn returns the result that can be either processed in an automated way by an existing CD pipeline or by the user to manually decide on the next steps (e.g., promotion to production or pushing it back to the developer for needed improvements).
