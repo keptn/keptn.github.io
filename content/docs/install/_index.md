@@ -2,7 +2,7 @@
 title: Installation
 description: How to install and configure your Keptn environment.  Scroll down for a reference list of tasks.
 weight: 30
-hide: true
+hide: false
 icon: concepts
 ---
 
