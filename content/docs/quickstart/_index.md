@@ -4,6 +4,7 @@ description: Learn how to get Keptn running and explore a few basic features.
 icon: concepts
 layout: quickstart
 weight: 15
+hide: true
 hidechildren: true # this flag hides all sub-pages in the sidebar-multicard.html
 ---
 

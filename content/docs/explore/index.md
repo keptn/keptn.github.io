@@ -4,6 +4,7 @@ description: Familiarize yourself with Keptn without installation
 icon: concepts
 layout: quickstart
 weight: 10
+hide: true
 hidechildren: true # this flag hides all sub-pages in the sidebar-multicard.html
 ---
 
