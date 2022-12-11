@@ -4,7 +4,7 @@ linktitle: Release 1.0.x
 weight: 788
 sidebar_multicard: true
 icon: docs
-hide: true
+hide: false
 aliases:
   - /docs/1.0.0/
 ---
