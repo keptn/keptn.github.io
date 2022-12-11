@@ -10,7 +10,7 @@ weight: 64
 Keptn 1.0.0 is the first major release and the first LTS (Long Term Support) release of Keptn.
 Keptn LTS version support is guaranteed for at least 6 months after the initial release. 
 The Keptn community announces the LTS end-of-life within 3 months in advance, using the community announcement channel [#announcements](https://app.slack.com/client/TFHDUSPB7/CFH4VK9GT) over Slack.
-For this, we introduced [scarf.sh](scarf.sh) to track download data to decide whether the support of the LTS versions will be extended.
+For this, we introduced [scarf.sh](https://about.scarf.sh/) to track download data to decide whether the support of the LTS versions will be extended.
 
 ---
 
