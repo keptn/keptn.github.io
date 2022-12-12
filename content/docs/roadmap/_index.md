@@ -4,6 +4,7 @@ description: Find the Keptn Roadmap here
 icon: concepts
 layout: quickstart
 weight: 90
+hide: true
 hidechildren: true # this flag hides all sub pages in the sidebar-multicard.html
 ---
 
