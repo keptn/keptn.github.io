@@ -7,4 +7,6 @@ icon: docs
 hide: false
 aliases:
   - /docs/0.18.0/
+  - /docs/0.18.1/
+  - /docs/0.18.2/
 ---
