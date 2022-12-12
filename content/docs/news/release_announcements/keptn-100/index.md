@@ -8,7 +8,7 @@ weight: 64
 ---
 
 Keptn 1.0.0 is the first major release and the first LTS (Long Term Support) release of Keptn.
-Keptn LTS versions support is guaranteed for at least 6 months after the initial release. 
+Support for Keptn LTS versions is guaranteed for at least 6 months after the initial release. 
 The Keptn community announces the LTS end-of-life within 3 months in advance, using the community announcement channel [#announcements](https://app.slack.com/client/TFHDUSPB7/CFH4VK9GT) over Slack.
 For this, we introduced [scarf.sh](https://about.scarf.sh/) to track download data to decide whether the support of LTS versions will be extended.
 
@@ -17,12 +17,12 @@ For this, we introduced [scarf.sh](https://about.scarf.sh/) to track download da
 ### ⚠ BREAKING CHANGES
 
 * **installer:** We are introducing scarf.sh for download tracking to have valuable information that will help us decide whether support for Keptn LTS will be extended or not.
-* **shipyard-controller:** Keptn returns 404 instead of 400 HTTP error code when creation of the project fails when upstream repository is not found. Also returns 409 instead of 500 HTTP error code when creation or update of project fails due to upstream repository is already initialized.
+* **shipyard-controller:** Keptn returns 404 instead of 400 HTTP error code when creation of the project fails because the upstream repository is not found. Also returns 409 instead of 500 HTTP error code when creation or update of project fails becasue the upstream repository is already initialized.
 
 ### Features
 
 * **api:** Clean up logs/errors ([16b854c](https://github.com/keptn/keptn/commit/16b854c28ae8ed957f46deb25a5e40ea86658b65))
-* **bridge:** Added autofocus to deletion dialog input field ([#9056](https://github.com/keptn/keptn/issues/9056)) ([a31c21d](https://github.com/keptn/keptn/commit/a31c21d4f1472618738c15d93299d3432ce0a4c1))
+* **bridge:** Add autofocus to deletion dialog input field ([#9056](https://github.com/keptn/keptn/issues/9056)) ([a31c21d](https://github.com/keptn/keptn/commit/a31c21d4f1472618738c15d93299d3432ce0a4c1))
 * **bridge:** Show full date on hover on sequence view ([#8997](https://github.com/keptn/keptn/issues/8997)) ([c7e425a](https://github.com/keptn/keptn/commit/c7e425a7a647fe13d78d5f8b335551f10d527d43))
 * **bridge:** Unify logging ([#9166](https://github.com/keptn/keptn/issues/9166)) ([5669c0f](https://github.com/keptn/keptn/commit/5669c0f0f5e2121d3881d15766c0cc24a7b53c34))
 * **cli:** Introduce `--data` option for `trigger sequence` command ([#8830](https://github.com/keptn/keptn/issues/8830)) ([50b602e](https://github.com/keptn/keptn/commit/50b602e2791f96764760728b122e685c1d600e76))
@@ -52,7 +52,7 @@ For this, we introduced [scarf.sh](https://about.scarf.sh/) to track download da
 * **bridge:** Show correct border color for task items in sequence view ([#9055](https://github.com/keptn/keptn/issues/9055)) ([ca181d5](https://github.com/keptn/keptn/commit/ca181d59dd976fff1e0d2a22877ddf2868a2d336))
 * **cli:** Fix non deterministic processing of `trigger sequence --data` flag ([#9040](https://github.com/keptn/keptn/issues/9040)) ([4987bc3](https://github.com/keptn/keptn/commit/4987bc384612202569fdd2742004ec552c3d6305))
 * **distributor:** Datarace range variable is captured in goroutine ([#8973](https://github.com/keptn/keptn/issues/8973)) ([0f80060](https://github.com/keptn/keptn/commit/0f800601ec2c6a2a30b8f229feea2561ccfab079))
-* Indentation issue in Installer Modue ([#9301](https://github.com/keptn/keptn/issues/9301)) ([409bbab](https://github.com/keptn/keptn/commit/409bbab280a663d51307298648f7ed2d2dbe5cad))
+* Indentation issue in Installer Module ([#9301](https://github.com/keptn/keptn/issues/9301)) ([409bbab](https://github.com/keptn/keptn/commit/409bbab280a663d51307298648f7ed2d2dbe5cad))
 * **installer:** Fix default helm value for Bridge use cases ([#9028](https://github.com/keptn/keptn/issues/9028)) ([e8b0320](https://github.com/keptn/keptn/commit/e8b03203d84986f40a77cc19191f79f2b06fadda))
 * **installer:** Remove duplicate volumes and volumeMounts configuration ([#8949](https://github.com/keptn/keptn/issues/8949)) ([5f034c7](https://github.com/keptn/keptn/commit/5f034c700fa281260588f5ba41b6956e6f8fbebc))
 * **lighthouse-service:** don't fail sequence if SLO file is missing ([#9153](https://github.com/keptn/keptn/issues/9153)) ([6b1f05f](https://github.com/keptn/keptn/commit/6b1f05fcf547a4863f5f1b76cef7dc9e37d2b920))
@@ -66,7 +66,7 @@ For this, we introduced [scarf.sh](https://about.scarf.sh/) to track download da
 * **resource-service:** Determine default branch from helm value when repository is not initialized ([#8843](https://github.com/keptn/keptn/issues/8843)) ([8e91639](https://github.com/keptn/keptn/commit/8e916394247c957c9f029e651f6d345315b37979))
 * **resource-service:** Force checkout event if unstaged changes are present ([#9107](https://github.com/keptn/keptn/issues/9107)) ([dbd0ddb](https://github.com/keptn/keptn/commit/dbd0ddba017001f4864a40b6a26cf867614ea1dc))
 * **resource-service:** Map go-git specific error types to Keptn error types understood by the resource service error handler ([#8849](https://github.com/keptn/keptn/issues/8849)) ([75a1314](https://github.com/keptn/keptn/commit/75a1314c1fbfab6040346b98bfb8e13331a7c460))
-* **resource-service:** Return specific error in when creating a project with an initialized repository ([#8855](https://github.com/keptn/keptn/issues/8855)) ([2f7e1f2](https://github.com/keptn/keptn/commit/2f7e1f273ab0df258fac3a493d4fde9947b86f18))
+* **resource-service:** Return specific error when creating a project with an initialized repository ([#8855](https://github.com/keptn/keptn/issues/8855)) ([2f7e1f2](https://github.com/keptn/keptn/commit/2f7e1f273ab0df258fac3a493d4fde9947b86f18))
 * **resource-service:** revert go-utils update made in PR ([#9159](https://github.com/keptn/keptn/issues/9159)) ([#9289](https://github.com/keptn/keptn/issues/9289)) ([530b255](https://github.com/keptn/keptn/commit/530b2559c0e19c3e97d4f5499d80251a4573fcc5))
 * **resource-service:** Use go-git master version ([#9159](https://github.com/keptn/keptn/issues/9159)) ([3488c51](https://github.com/keptn/keptn/commit/3488c513f9ceafeb83658b12942b3eeedbfe3ba2))
 * **shipyard-controller:** Adapt MongoDB query to be compatible with DocumentDB ([#8978](https://github.com/keptn/keptn/issues/8978)) ([baad639](https://github.com/keptn/keptn/commit/baad6396484e26b7cc2adf803772a83cb1fdfdd2))
