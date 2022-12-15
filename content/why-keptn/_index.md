@@ -1,5 +1,5 @@
 ---
 title: Why Keptn?
-menu: main
+menu: hidden
 weight: 1
 ---
