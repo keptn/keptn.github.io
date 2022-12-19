@@ -19,8 +19,8 @@ regardless of your background and experience!
 
 ## Keptn development
 
-If you are interested 
-Most of the Keptn codebase is implemented in Golang and JavaScript/Angular.
+If you are interested, 
+most of the Keptn codebase is implemented in Golang and JavaScript/Angular.
 We also heavily use Kubernetes, Helm, Docker and
 other container technologies like CloudEvents and OpenTelemetry.
 
