@@ -95,10 +95,10 @@ and exposes it using port-forwarding:
 ```
 helm repo add keptn https://charts.keptn.sh
 helm install keptn keptn/keptn -n keptn --create-namespace
-kubectl -n keptn port-forward svc/api-gateway-nginx 8080:8080
+kubectl -n keptn port-forward svc/api-gateway-nginx 8080:80
 ```
 We use **kubectl** to forward port `8080` from our local machine
-to port `8080` on the Keptn API Gateway service in the cluster.
+to port `80` on the Keptn API Gateway service in the cluster.
 
 ### Full Keptn installation
 
@@ -116,7 +116,7 @@ to port `8080` on the Keptn API Gateway service in the cluster.
      `<access-option>` must be `LoadBalancer`, `NodePort`, or `ClusterIP`.
      See [Choose access options](../access/) for details.
    * `--create-namespace` -- creates the `keptn` namespace if it does not already exist.
-   * `--set=continuousDelivery.enabled=true` -- install Continuous Delivery support
+   * `--set=bridge.installationType=CONTINUOUS_DELIVERY` -- install Continuous Delivery support
      for this Keptn instance.
 
 **Use a LoadBalancer for api-gateway-nginx**
@@ -181,7 +181,7 @@ To access it:
    * Set the `apiGatewayNginx` parameter during installation
    * Issue the following command after installation:
      ```
-     kubectl -n keptn port-forward svc/api-gateway-nginx 8080:8080
+     kubectl -n keptn port-forward svc/api-gateway-nginx 8080:80
      ```
 2. Open a browser window to `localhost:8080`
 
@@ -202,10 +202,10 @@ install a microservice.
 For example, the following two commands install the Jmeter and Helm-service microservices:
 
 ```
-helm install jmeter-service https://github.com/keptn/keptn/releases/download/0.19.3/jmeter-service-0.19.3.tgz  \
+helm install jmeter-service https://github.com/keptn-contrib/jmeter-service/releases/download/0.18.1/jmeter-service-0.18.1.tgz  \
   -n keptn --create-namespace --wait
 
-helm install helm-service https://github.com/keptn/keptn/releases/download/0.19.3/helm-service-0.19.3.tgz \
+helm install helm-service https://github.com/keptn-contrib/helm-service/releases/download/0.18.1/helm-service-0.18.1.tgz \
   -n keptn --create-namespace --wait
 ```
 
@@ -222,12 +222,12 @@ in the [helm-charts](https://github.com/keptn/keptn/tree/master/installer/manife
 * The **Control Plane with the Execution Plane (for Continuous Delivery)**
 can be installed by the following command:
 ```
-helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.19.3 --repo=https://charts.keptn.sh --set=continuousDelivery.enabled=true
+helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.19.3 --repo=https://charts.keptn.sh --set=bridge.installationType=CONTINUOUS_DELIVERY
 ```
 
 * The **Control Plane with the Execution Plane (for Continuous Delivery)** and a `LoadBalancer` for exposing Keptn can be installed by the following command:
 ```
-helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.19.3 --repo=https://charts.keptn.sh --set=continuousDelivery.enabled=true,apiGatewayNginx.type=LoadBalancer
+helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.19.3 --repo=https://charts.keptn.sh --set=bridge.installationType=CONTINUOUS_DELIVERY,apiGatewayNginx.type=LoadBalancer
 ```
 
 ## Install Keptn using a user-provided API token
@@ -257,8 +257,8 @@ The following artifacts must be available locally:
 Download the Helm charts from the [Keptn 0.19.x release](https://github.com/keptn/keptn/releases/tag/0.19.3):
 
 * Keptn Control Plane: https://github.com/keptn/keptn/releases/download/0.19.3/keptn-0.19.3.tgz
-* helm-service (if needed): https://github.com/keptn/keptn/releases/download/0.19.3/helm-service-0.19.3.tgz
-* jmeter-service (if needed): https://github.com/keptn/keptn/releases/download/0.19.3/jmeter-service-0.19.3.tgz
+* helm-service (if needed): https://github.com/keptn-contrib/helm-service/releases/download/0.18.1/helm-service-0.18.1.tgz
+* jmeter-service (if needed): https://github.com/keptn-contrib/jmeter-service/releases/download/0.18.1/jmeter-service-0.18.1.tgz
 
 Move the Helm Charts to a directory on your local machine, e.g., `offline-keptn`.
 
@@ -317,7 +317,7 @@ For example, if a user sets `prefixPath=/mykeptn` in the Helm install/upgrade co
 the Keptn API is located under `http://HOSTNAME/mykeptn/api` and the Keptn Bridge is located under `http://HOSTNAME/mykeptn/bridge`:
 
 ```
-helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.19.3 --repo=https://charts.keptn.sh --set=apiGatewayNginx.type=LoadBalancer,continuousDelivery.enabled=true,prefixPath=/mykeptn
+helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.19.3 --repo=https://charts.keptn.sh --set=apiGatewayNginx.type=LoadBalancer,bridge.installationType=CONTINUOUS_DELIVERY,prefixPath=/mykeptn
 ```
 
 ## Install Keptn with externally hosted MongoDB
