@@ -1,6 +1,13 @@
 {{ if .Site.Menus.main }}
 <div id="main-menu-mobile" class="main-menu-mobile">
   <ul>
+
+    <li class="menu-item-klt">
+      <a href="https://lifecycle.keptn.sh/">
+        <span>Lifecycle Toolkit</span>
+      </a>
+    </li>
+
     {{ $currentPage := . }}
     {{ range .Site.Menus.main }}
     <li class="menu-item-{{ .Name | lower }} {{ if $currentPage.IsMenuCurrent "main" . }} active {{ end }}">
