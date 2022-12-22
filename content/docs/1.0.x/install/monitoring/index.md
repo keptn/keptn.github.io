@@ -3,6 +3,8 @@ title: Monitoring
 description: Install service to attach observability platform as data source for quality gates
 weight: 80
 icon: setup
+aliases:
+    - /docs/1.0.x/monitoring/dynatrace/sli_provider/
 ---
 
 If your project uses [quality gates](../../concepts/quality_gates),

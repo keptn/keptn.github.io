@@ -6,6 +6,8 @@ aliases:
 - /docs/1.0.x/quality_gates/
 - /docs/1.0.x/quality_gates/get_started/
 - /docs/1.0.x/quality_gates/integration/
+- /docs/1.0.x/quality_gates/sli/
+- /docs/1.0.x/quality_gates/slo/
 ---
 
 A quality gate allows you to validate a deployment or release

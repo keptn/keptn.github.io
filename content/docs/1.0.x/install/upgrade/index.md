@@ -2,6 +2,8 @@
 title: Upgrade Keptn
 description: Upgrade your Keptn
 weight: 500
+aliases:
+- /docs/1.0.x/integrations/migrate_from_070_to_080/
 ---
 
 Keptn only supports upgrading from one release to the next;
