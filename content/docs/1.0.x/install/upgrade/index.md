@@ -91,7 +91,7 @@ and use that merged file to upgrade the service:
      the command is:
 
      ```
-     helm pull https://charts.keptn.sh/packages/helm-service-1.0.0.tgz`
+     helm pull https://charts.keptn.sh/packages/helm-service-0.18.1.tgz`
      ```
 
 1. Unpack the downloaded file.

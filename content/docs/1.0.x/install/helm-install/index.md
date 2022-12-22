@@ -186,10 +186,10 @@ install a microservice.
 For example, the following two commands install the Jmeter and Helm-service microservices:
 
 ```
-helm install jmeter-service https://github.com/keptn/keptn/releases/download/1.0.0/jmeter-service-1.0.0.tgz  \
+helm install jmeter-service https://github.com/keptn-contrib/jmeter-service/releases/download/0.18.1/jmeter-service-0.18.1.tgz  \
   -n keptn --create-namespace --wait
 
-helm install helm-service https://github.com/keptn/keptn/releases/download/1.0.0/helm-service-1.0.0.tgz \
+helm install helm-service https://github.com/keptn-contrib/helm-service/releases/download/0.18.1/helm-service-0.18.1.tgz \
   -n keptn --create-namespace --wait
 ```
 
@@ -242,8 +242,8 @@ The following artifacts must be available locally:
 Download the Helm charts from the [Keptn 1.0.x release](https://github.com/keptn/keptn/releases/tag/1.0.0):
 
 * Keptn Control Plane: https://github.com/keptn/keptn/releases/download/1.0.0/keptn-1.0.0.tgz
-* helm-service (if needed): https://github.com/keptn/keptn/releases/download/1.0.0/helm-service-1.0.0.tgz
-* jmeter-service (if needed): https://github.com/keptn/keptn/releases/download/1.0.0/jmeter-service-1.0.0.tgz
+* helm-service (if needed): https://github.com/keptn-contrib/helm-service/releases/download/0.18.1/helm-service-0.18.1.tgz
+* jmeter-service (if needed): https://github.com/keptn-contrib/jmeter-service/releases/download/0.18.1/jmeter-service-0.18.1.tgz
 
 Move the Helm Charts to a directory on your local machine, e.g., `offline-keptn`.
 
@@ -253,8 +253,8 @@ For convenience, the following script creates this directory and downloads the r
 mkdir offline-keptn
 cd offline-keptn
 curl -L https://github.com/keptn/keptn/releases/download/1.0.0/keptn-1.0.0.tgz -o keptn-1.0.0.tgz
-curl -L https://github.com/keptn/keptn/releases/download/1.0.0/helm-service-1.0.0.tgz -o helm-service-1.0.0.tgz
-curl -L https://github.com/keptn/keptn/releases/download/1.0.0/jmeter-service-1.0.0.tgz -o jmeter-service-1.0.0.tgz
+curl -L https://github.com/keptn-contrib/helm-service/releases/download/0.18.1/helm-service-0.18.1.tgz -o helm-service-0.18.1.tgz
+curl -L https://github.com/keptn-contrib/jmeter-service/releases/download/0.18.1/jmeter-service-0.18.1.tgz -o jmeter-service-0.18.1.tgz
 cd ..
 ```
 
@@ -290,7 +290,7 @@ cd offline-keptn
 curl -L https://raw.githubusercontent.com/keptn/keptn/1.0.0/installer/airgapped/install_keptn.sh -o install_keptn.sh
 chmod +x install_keptn.sh
 ./install_keptn.sh "your-registry.localhost:5000/" keptn-1.0.0.tgz \
-   helm-service-1.0.0.tgz jmeter-service-1.0.0.tgz
+   helm-service-0.18.1.tgz jmeter-service-0.18.1.tgz
 cd ..
 ```
 
