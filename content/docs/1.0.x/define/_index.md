@@ -22,7 +22,7 @@ This section provides information and samples to illustrate common practices
 with the following pages:
 
 * [Tasks and sequences](task-sequence) explains the components of the
-  [shipyard](../reference/files/shipyard) file
+  [shipyard](../reference/files/shipyard/) file
   that are populated to define what Keptn orchestrates.
 
 * [A simple project](simple-project) illustrates the *shipyard* for a multi-stage project

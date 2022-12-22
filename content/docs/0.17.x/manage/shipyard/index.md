@@ -268,5 +268,5 @@ spec:
 
 **Result:** After extending the shipyard as shown above,
 remediations should be executed when a problem event is retrieved.
-See [Remediation sequences](../remediation-sequence).
+See [Remediation sequences](../remediation-sequence/).
 

@@ -28,7 +28,7 @@ as discussesd in [Start a project](../../manage/project):
 
 This is enough to set up the project.
 To make it do something useful, you must populate
-[tasks and sequences](../task-sequence).
+[tasks and sequences](../task-sequence/).
 These are illustrated below.
 
 **Example:** Extended shipyard with a delivery sequence in all three stage:

@@ -88,7 +88,7 @@ Uninstall the Jmeter Service and install a service that listens for the `test.tr
 Keptn uses observability tools (more generally, tools that provide metrics)
 as the data source for monitoring during the `evaluation` task.
 The `evaluation` task is an out-of-the-box Keptn feature
-that provides a [quality gate](../quality_gates).
+that provides a [quality gate](../quality_gates/).
 This quality gate can work with any metric from any tool.
 
 During creation of a Keptn project,

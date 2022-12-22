@@ -105,7 +105,7 @@ use the [keptn add-resource](../../cli/commands/keptn_add-resource) command:
 
 ## See also
 
-* [slo](../slo)
+* [slo](../slo/)
 
 * [Dynatrace](../../../monitoring/dynatrace/configure_slis/) 
 

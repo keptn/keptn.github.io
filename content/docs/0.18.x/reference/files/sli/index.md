@@ -119,7 +119,7 @@ use the [keptn add-resource](../../cli/commands/keptn_add-resource) command:
 
 ## See also
 
-* [slo](../slo)
+* [slo](../slo/)
 
 * [Dynatrace](https://artifacthub.io/packages/keptn/keptn-integrations/dynatrace-service)
 

@@ -27,7 +27,7 @@ Before you create a project:
   If you want to use the command line to create your project,
   you must install and authenticate the CLI.
 
-* We also suggest reading [Plan your project](../plan)
+* We also suggest reading [Plan your project](../plan/)
   to anticipate some of the choices you must make as you create a new project.
 
 ## Prepare resources for the project
@@ -38,7 +38,7 @@ that are required to create a project:
 * A new, unitialized Git-based upstream repository that will store
 all the configuration and data information that Keptn needs
 as well as a user token for that repository.
-See [Git-based upstream](../git_upstream) for details.
+See [Git-based upstream](../git_upstream/) for details.
 
   * Note that, in Keptn releases 0.15.x and earlier, the upstream git-based repository was optional
   although strongly recommended.

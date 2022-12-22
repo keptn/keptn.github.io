@@ -8,12 +8,12 @@ To authenticate and associate the Keptn CLI and Keptn bridge to your Keptn clust
 you need the exposed Keptn endpoint and API token.
 The endpoint values and the method of querying them
 is determined by the access options you use.
-See [Choose access options](../access) for details.
+See [Choose access options](../access/) for details.
 
 ## Authenticate Keptn CLI
 
 To authenticate the Keptn CLI against the Keptn cluster, the exposed Keptn endpoint and API token are required. 
-After [installing Keptn](../helm-install), you already have your Keptn endpoint.
+After [installing Keptn](../helm-install/), you already have your Keptn endpoint.
 
 <details><summary>Get API Token and Authenticate Keptn CLI on **Linux / MacOS**</summary>
 <p>

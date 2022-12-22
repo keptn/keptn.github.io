@@ -38,7 +38,7 @@ The steps to install and configure your Keptn instance are:
         * Also see [Job Executor Service Architecture](https://github.com/keptn-contrib/job-executor-service/blob/main/docs/ARCHITECTURE.md#example-configuration)
     * [Istio](istio)
 
-7. If you are using [Quality Gates](../concepts/quality_gates),
+7. If you are using [Quality Gates](../concepts/quality_gates/),
    install the [monitoring service](monitoring) you want to use.
 
 8. Configure [webhooks](webhook_service) (optional)

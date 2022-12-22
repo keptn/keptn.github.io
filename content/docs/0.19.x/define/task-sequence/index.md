@@ -23,7 +23,7 @@ Remember that, in Keptn, a `task` defines **what** to do (run a performance test
 or try to repair a problem on your site)
 but does not define **how** to do that (such as which tool to use).
 
-Sequences can be triggered in a variety of ways; see [Triggers](../triggers) for details and examples
+Sequences can be triggered in a variety of ways; see [Triggers](../triggers/) for details and examples
 or watch the [Trigger a Keptn Sequence](https://www.youtube.com/watch?v=S0eumPKuAJY) video
 for a demonstration of triggering a sequence using the [Keptn Bridge](../../bridge).
 

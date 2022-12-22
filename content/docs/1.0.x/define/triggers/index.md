@@ -239,7 +239,7 @@ to trigger the `delivery` sequence in the *production* stage:
 Post the following payload to the `POST /event` endpoint
 to trigger the `evaluation-only` sequence in the *hardening* stage.
 Since we want to trigger an evaluation, we need to provide addition properties that define the evaluation timeframe.
-More information is provided in the [Quality Gates](../quality-gates) page.
+More information is provided in the [Quality Gates](../quality-gates/) page.
 
 ```json
 {

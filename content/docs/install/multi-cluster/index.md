@@ -33,11 +33,11 @@ To operate Keptn in a multi-cluster setup, you need obviously at least two Kuber
 1. One that runs Keptn as control plane
 2. The second one that runs the execution-plane services for deploying, testing, executing remediation actions, etc.
 
-To create a Kubernetes cluster, please follow the instructions [here](../k8s).
+To create a Kubernetes cluster, please follow the instructions [here](../k8s/).
 
 ## Prerequisites
 
-* [keptn CLI](../cli-install)
+* [keptn CLI](../cli-install/)
 * [helm CLI](https://helm.sh/docs/intro/install/)
 
 ## Install Keptn Control plane
@@ -45,7 +45,7 @@ To create a Kubernetes cluster, please follow the instructions [here](../k8s).
 The **Control Plane** of Keptn is responsible for orchestrating your processes for continuous delivery or automated operations.
 
 * Before starting the installation, familiarize yourself with the ways of exposing Keptn as explained in
-[Choose access options](../access).
+[Choose access options](../access/).
 Then come back and continue installing the Keptn control plane.
 
 * To install the control plane, execute `helm install` with the option you chose for exposing Keptn:
@@ -57,9 +57,9 @@ Then come back and continue installing the Keptn control plane.
 * Before continuing, please retrieve:
 
     * `KEPTN_ENDPOINT`: Follow the instructions for the option you chose for exposing Keptn
-    in the [Choose access option](../access) section.
+    in the [Choose access option](../access/) section.
     * `KEPTN_API_TOKEN`: Follow the instructions
-    in [Authenticate Keptn CLI and Bridge](../authenticate-cli-bridge).
+    in [Authenticate Keptn CLI and Bridge](../authenticate-cli-bridge/).
 
 ## Install Keptn Execution plane
 
@@ -254,7 +254,7 @@ remoteControlPlane:
   - Is the Keptn API endpoint on `http` or `https`?
   - Is the hostname of the Keptn API endpoint correct, e.g. `my.keptn-dev.company.com` (without `/api`)
   - Do you want to skip TLS verification?
-  - Is the Keptn API token correct? (You can find it in the Keptn Bridge, or by following the guide for [authenticating](../authenticate-cli-bridge)
+  - Is the Keptn API token correct? (You can find it in the Keptn Bridge, or by following the guide for [authenticating](../authenticate-cli-bridge/)
 
 </p></details>
 

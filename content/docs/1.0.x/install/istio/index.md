@@ -5,7 +5,7 @@ weight: 75
 ---
 
 Istio can be installed in order to access the services that Keptn deploys.
-You can instead use and install the [Job Executor Service](../jes-install).
+You can instead use and install the [Job Executor Service](../jes-install/).
 
 Please follow the steps in sequential order
 to implement Istio for your Keptn instance:

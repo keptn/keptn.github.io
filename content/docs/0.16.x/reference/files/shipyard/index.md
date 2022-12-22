@@ -189,7 +189,7 @@ Each of these are discussed below.
 * `action`
 
     Indicates that a remediation action should be executed by an action provider
-    that is defined in a [remediation](../remediation) configuration.
+    that is defined in a [remediation](../remediation/) configuration.
 
 * `approval`
 
@@ -245,7 +245,7 @@ Each of these are discussed below.
         }
 
 * `get-action`
-    Extracts the desired remediation action from a [remediation](../remediation) configuration.
+    Extracts the desired remediation action from a [remediation](../remediation/) configuration.
 
 * `release`
 
@@ -332,4 +332,4 @@ and  named to match the value of the `Metadata` name field in the shipyard file.
 * [Working with shipyard files](../../../manage/shipyard)
 * [Multi-stage delivery](../../../continuous_delivery/multi_stage)
 * [Triggers](../../../manage/triggers)
-* [Remediation Config](../remediation)
+* [Remediation Config](../remediation/)

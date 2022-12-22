@@ -8,7 +8,7 @@ Keptn is installed from a Helm chart using the Helm CLI.
 You must install the [Helm CLI](https://helm.sh)
 before attempting to install Keptn.
 
-You should also install the [Keptn CLI](../cli-install)
+You should also install the [Keptn CLI](../cli-install/)
 before installing Keptn although this is optional.
 It is possible to do most of what you need to do on modern releases of Keptn without the Keptn CLI
 but the CLI provides additional functionality that is useful
@@ -45,7 +45,7 @@ You have the following installation options:
 can be installed on an existing Kubernetes cluster that hosts other software
 or on a dedicated Keptn Kubernetes cluster.
 * The Control Plane and Execution Plane can also be installed on separate Kubernetes clusters;
-see [Multi-cluster setup](../multi-cluster) for instructions.
+see [Multi-cluster setup](../multi-cluster/) for instructions.
 * In a multi-cluster setup, one Keptn Control Plane can support multiple Execution Planes
 that are installed on different clusters.
 
@@ -57,7 +57,7 @@ To install the Control Plane, you must do the following:
 * Install Keptn into the `keptn` namespace on the Kubernetes cluster
 * Expose the [API gateway](../../concepts/architecture/#api-gateway-nginx) service
   that controls how Keptn communicates with the internet.
-  See [Choose access option](../access) for details about all the options
+  See [Choose access option](../access/) for details about all the options
   that are available and how to install and use them.
   You can also do this after installation.
 * You may also want to modify the Keptn configuration options.
@@ -151,7 +151,7 @@ Use the following command to view all the services that are installed in the Kep
 ```
 kubectl -n keptn get services
 ```
-[Troubleshooting the Installation](../troubleshooting)
+[Troubleshooting the Installation](../troubleshooting/)
 has information that may help if your installation was not successful.
 
 ### Access the Keptn Bridge
@@ -194,7 +194,7 @@ helm install helm-service https://github.com/keptn/keptn/releases/download/1.0.0
 ```
 
 The Execution Plane (or multiple Execution Planes) can also be installed on different Kubernetes clusters.
-See [Multi-cluster setup](../multi-cluster) for details.
+See [Multi-cluster setup](../multi-cluster/) for details.
 
 ## The --set flag
 

@@ -8,7 +8,7 @@ keywords: [0.16.x-quality_gates]
 The *slo.yaml* file  contains definitions of the Service-Level Objectives (SLOs)
 defined for your Keptn installation.
 The Service-Level Objective (SLO) configuration specifies a target value or range of values
-for a service level that is measured by [Service-Level Indicators (SLI)](../sli). 
+for a service level that is measured by [Service-Level Indicators (SLI)](../sli/). 
 
 ## Service-Level Objective
 
@@ -213,7 +213,7 @@ The pass and warning criteria for the `total_score` use the logical operator ">=
 
 ## See also
 
-* [sli](../sli)
+* [sli](../sli/)
 
 * [Dynatrace](https://artifacthub.io/packages/keptn/keptn-integrations/dynatrace-service)
 

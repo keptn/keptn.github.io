@@ -20,9 +20,9 @@ Those SLI metrics are defined for Keptn in the [sli.yaml](../../reference/files/
 You then define the corresponding Service Level Objectives (SLOs)
 that reflect your criteria for the system's health
 in the [slo.yaml](../../reference/files/slo) file.
-Keptn runs [quality gates](../quality-gates) that grade each objective and calculate the total score
+Keptn runs [quality gates](../quality-gates/) that grade each objective and calculate the total score
 and then reports this analysis.
-Keptn can also implement [remediation](../remediation-sequence) steps that are appropriate
+Keptn can also implement [remediation](../remediation-sequence/) steps that are appropriate
 to handle any issues that it finds
 in either software that is about to be published
 or on the site that is running your application in production.

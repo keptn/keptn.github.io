@@ -144,7 +144,7 @@ then at the stage level, and finally at the project level if no other configurat
 
 ## See also
 
-* [slo](../slo)
+* [slo](../slo/)
 
 * [Dynatrace](https://artifacthub.io/packages/keptn/keptn-integrations/dynatrace-service)
   * [Configuring the dynatrace-service with dynatrace/dynatrace.conf.yaml](https://github.com/keptn-contrib/dynatrace-service/blob/master/documentation/dynatrace-conf-yaml-file.md#customizing-the-conf[…]ptn-stage-or-service)

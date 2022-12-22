@@ -5,7 +5,7 @@ weight: 15
 keywords: [0.10.x-quality_gates]
 ---
 
-The Service-Level Objective (SLO) configuration specifies a target value or range of values for a service level that is measured by [Service-Level Indicators (SLI)](../sli). 
+The Service-Level Objective (SLO) configuration specifies a target value or range of values for a service level that is measured by [Service-Level Indicators (SLI)](../sli/). 
 
 ## Service-Level Objective
 

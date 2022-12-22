@@ -10,7 +10,7 @@ Keptn is an event-based control plane for continuous delivery and automated oper
 {{< popup_image link="./assets/architecture.png" caption="Keptn architecture" width="65%">}}
 
 This event-driven architecture means that Keptn is tool and vendor agnostic.
-See [Keptn and other tools](../keptn-tools) for a fuller discussion.
+See [Keptn and other tools](../keptn-tools/) for a fuller discussion.
 
 ## NATS
 
@@ -153,7 +153,7 @@ and it is still the most popular solution.
 
 Any of these services can be replaced by a service for another tool
 that reacts to and sends the same signals.
-See [Keptn and other tools](../keptn-tools) for more information.
+See [Keptn and other tools](../keptn-tools/) for more information.
 
 Execution plane services can be operated within the same cluster as the Keptn Control Plane
 or in a different Kubernetes cluster.

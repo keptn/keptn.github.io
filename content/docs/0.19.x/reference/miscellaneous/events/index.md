@@ -57,5 +57,5 @@ a vendor-neutral specification for defining the format of event data.
 that defines the format of the event types recognized by Keptn core.
 
 * [shipyard](../../files/shipyard) reference
-* [distributor](../distributor) reference
+* [distributor](../distributor/) reference
 

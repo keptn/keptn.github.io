@@ -8,7 +8,7 @@ weight: 15
 hidechildren: true # this flag hides all sub-pages in the sidebar-multicard.html
 ---
 
-***Note: We suggest that you use the newly-released [Explore Keptn](../explore) exercise,
+***Note: We suggest that you use the newly-released [Explore Keptn](../explore/) exercise,
 rather than the exercises in this page.
 That exercise uses the [KillerCoda](https://killercoda.com/areas) platform
 to provide more extensive information
@@ -19,7 +19,7 @@ that runs as a [Helm](https://helm.sh) chart in Kubernetes,
 then run some basic exercises that demonstrate Keptn functionality.
 
 You can install and run Keptn on virtually any Kubernetes cluster.
-See [Install Keptn CLI](../install/cli-install) and [Install Keptn using the Helm chart](../install/helm-install) for detailed instructions
+See [Install Keptn CLI](../install/cli-install/) and [Install Keptn using the Helm chart](../install/helm-install/) for detailed instructions
 about creating a Keptn cluster locally or in the cloud.
 
 ## Helm
@@ -111,7 +111,7 @@ helm install helm-service keptn/helm-service -n keptn
     keptn install --use-case=continuous-delivery
     ```
 
-    Keptn comes with different installation options, please have a look at the [installation documentation](../install) for more details on cluster requirements, resource consumption, supported Kubernetes versions, and more.
+    Keptn comes with different installation options, please have a look at the [installation documentation](../install/) for more details on cluster requirements, resource consumption, supported Kubernetes versions, and more.
     Please note that, although during the installation procedure it might be mentioned that Istio is required, it is *not required* for this quickstart guide.
 
     <details><summary>Installation logs</summary>
@@ -131,7 +131,7 @@ helm install helm-service keptn/helm-service -n keptn
     &nbsp;* To quickly access Keptn, you can use a port-forward and then authenticate your Keptn CLI:
     &nbsp;- kubectl -n keptn port-forward service/api-gateway-nginx 8080:80
     &nbsp;- keptn auth --endpoint=http://localhost:8080/api --api-token=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
-    &nbsp;* Alternatively, follow the instructions provided at: [Authenticate Keptn CLI](../a)
+    &nbsp;* Alternatively, follow the instructions provided at: [Authenticate Keptn CLI](../a/)
     &nbsp;* To expose Keptn on a public endpoint, please continue with the installation guidelines provided at:
     &nbsp;- [Install Keptn](../0.18.x/docs/../../install/helm-install)
     </pre>
@@ -234,9 +234,9 @@ Review the documentation for a full reference on all Keptn capabilities and comp
 
 - [Operate Keptn](../0.18.x/operate)
 - [Manage Keptn](../0.18.x/manage)
-- [Continuous Delivery](../concepts/delivery)
-- [Continuous Performance Verification](../concepts/performance_validation)
-- [Automated Operations](../concepts/automated_operations)
+- [Continuous Delivery](../concepts/delivery/)
+- [Continuous Performance Verification](../concepts/performance_validation/)
+- [Automated Operations](../concepts/automated_operations/)
 - [Custom Integrations](../docs/../integrations)
 
 ## Wrapping up

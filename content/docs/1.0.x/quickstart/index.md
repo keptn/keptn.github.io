@@ -26,11 +26,11 @@ If you like what you saw in the exercise, you can:
 
 * Create your own project
 
-  * [Manage Keptn Projects](../manage) talks about about how to create and manage
+  * [Manage Keptn Projects](../manage/) talks about about how to create and manage
     Keptn projects
-  * See [Definte Keptn Projects](../define) discusses how to implement
+  * See [Definte Keptn Projects](../define/) discusses how to implement
     the functionality you want in your project.
-  * [Keptn and other tools](../concepts/keptn-tools) discusses how you can use Keptn
+  * [Keptn and other tools](../concepts/keptn-tools/) discusses how you can use Keptn
     with almost any other tools you want for your project.
 
 * Join the Keptn community

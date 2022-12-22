@@ -11,4 +11,4 @@ Please, follow these links for instructions on how to set up user authentication
 
 Concrete examples of how to integrate with external OIDC providers are listed here:
 
-* [Microsoft](../microsoft)
+* [Microsoft](../microsoft/)

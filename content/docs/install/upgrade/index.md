@@ -111,7 +111,7 @@ and use that merged file to upgrade the service:
 
 ## Notes for upgrading multi-cluster instances
 
-[Multi-cluster setup](../multi-cluster) gives details about setting up a Keptn installation
+[Multi-cluster setup](../multi-cluster/) gives details about setting up a Keptn installation
 with multiple execution planes that run on different clusters than the Keptn control plane.
 Some additional configurations are required in recent releases.
 
@@ -142,7 +142,7 @@ To upgrade, we recommend getting your old Helm [values](../../0.19.x/reference/f
 and then merging it together with the default Keptn Helm values
 to get any new default values that were introduced.
 You can then use your new values file to follow the
-[Helm installation instructions](../helm-install).
+[Helm installation instructions](../helm-install/).
 
 To upgrade the Keptn control plane to Release 0.17.x,
 follow the steps in [Upgrade the Keptn control plane](#upgrade-the-keptn-control-plane).
