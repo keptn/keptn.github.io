@@ -57,7 +57,7 @@ Additionally, the scripts need:
 
 ## Step 2: Download and prepare for the installation
 
-1. Go to the [keptn release](link) page to download the installation file using, e.g., `wget`:
+1. Go to the [keptn release](link/) page to download the installation file using, e.g., `wget`:
     ```console
     $ cd ~
     $ wget ...
