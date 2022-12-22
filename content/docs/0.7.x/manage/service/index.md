@@ -14,7 +14,7 @@ After creating a project, Keptn allows creating a service or onboarding a servic
 
 ## Create a service
 
-* To create a service, use the [keptn create service](../../reference/cli/commands/keptn_create_service) command and provide the service and project name (`--project` flag): 
+* To create a service, use the [keptn create service](../../reference/cli/commands/keptn_create_service/) command and provide the service and project name (`--project` flag): 
 
 ```console
 keptn create service SERVICENAME --project=PROJECTNAME

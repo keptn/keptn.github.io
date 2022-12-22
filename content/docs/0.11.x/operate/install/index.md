@@ -724,7 +724,7 @@ Please see our guide at [Advanced Installation Options](../advanced_install_opti
 
 ## Troubleshooting
 
-1. [Verify the Keptn installation](../../troubleshooting#verifying-a-keptn-installation).
+1. [Verify the Keptn installation](../../troubleshooting/#verifying-a-keptn-installation).
 
 1. [Generate a support-archive](../../reference/cli/commands/keptn_generate_support-archive/) and ask for help in our [Slack channel](https://slack.keptn.sh).
 

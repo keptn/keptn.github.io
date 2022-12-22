@@ -95,13 +95,13 @@ Before executing the following command, make sure you are in the `examples/onboa
 
 1. Keptn manages all service-related artifacts (like testing files, SLOs, etc.),
 in a so-called service. 
-Create a service for *carts* using the [keptn create service](../../reference/cli/commands/keptn_create_service) command:
+Create a service for *carts* using the [keptn create service](../../reference/cli/commands/keptn_create_service/) command:
 
     ```console
     keptn create service carts --project=sockshop
     ```
 
-    **Note:** Since you are not deploying a service with the `helm-service`, [keptn create service](../../reference/cli/commands/keptn_create_service) does not require any Helm chart compared to the [keptn onboard service](../../reference/cli/commands/keptn_onboard_service) command. 
+    **Note:** Since you are not deploying a service with the `helm-service`, [keptn create service](../../reference/cli/commands/keptn_create_service/) does not require any Helm chart compared to the [keptn onboard service](../../reference/cli/commands/keptn_onboard_service) command. 
 
 1. After creating the service, Keptn allows to add service-related artifacts like the performance test:
 

@@ -152,7 +152,7 @@ keptn create project musicshop --shipyard=shipyard-quality-gates.yaml
 keptn create service catalogue --project=musicshop
 ```
 
-  **Note:** Since you are not actively deploying a service in this tutorial, [keptn create service](../../reference/cli/commands/keptn_create_service) does not require you to provide a Helm chart compared to the [keptn onboard service](../../reference/cli/commands/keptn_onboard_service) command. 
+  **Note:** Since you are not actively deploying a service in this tutorial, [keptn create service](../../reference/cli/commands/keptn_create_service/) does not require you to provide a Helm chart compared to the [keptn onboard service](../../reference/cli/commands/keptn_onboard_service) command. 
 
 * To activate the quality gate for your service, upload the `slo-quality-gates.yaml` file:
 
