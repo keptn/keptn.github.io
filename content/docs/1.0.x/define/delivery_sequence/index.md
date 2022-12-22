@@ -2,6 +2,8 @@
 title: Delivery sequence
 description: Customize your delivery and staging process.
 weight: 40
+aliases:
+- /docs/1.0.x/continuous_delivery/multi_stage
 ---
 
 ## Declare a multi-stage delivery sequence in shipyard
