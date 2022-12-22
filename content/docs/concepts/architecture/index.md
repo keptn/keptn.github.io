@@ -57,7 +57,7 @@ api, bridge, or resource-service.
 The [Keptn API](../../0.19.x/reference/api/) provides a REST API
 that allows you to communicate with Keptn.
 It provides endpoints to authenticate, get metadata about the Keptn installation within the cluster,
-forward [CloudEvents](../../0.19.x/reference/miscellaneous/events)
+forward [CloudEvents](../../0.19.x/reference/miscellaneous/events/)
 to the NATS cluster, and trigger evaluations for a service.
 
 ### mongodb-datastore
@@ -66,7 +66,7 @@ The *mongodb-datastore* stores event data in a MongoDB
 that, by default, is deployed in your Keptn namespace.
 You can instead use an externally hosted MongoDB by configuring
 the [connectionString](https://github.com/keptn/keptn/blob/539339ef3da8e55d7968852a88ed01e0088f5871/installer/manifests/keptn/values.yaml#L47) fields
-in the [values.yaml](../../0.19.x/reference/files/values) file.
+in the [values.yaml](../../0.19.x/reference/files/values/) file.
 The service provides the REST endpoint `/events` to query events.
 The `mongodb-datastore` and `shipyard-controller` pods
 have direct connections to mongodb (`keptn-mongo`).
@@ -76,7 +76,7 @@ have direct connections to mongodb (`keptn-mongo`).
 The *resource-service* is a Keptn core component
 that manages resources for Keptn project-related entities, i.e., project, stage, and service.
 This replaces the `configuration-service` that was used in Keptn releases before 0.16.x.
-It uses the Git-based [upstream repository](../../0.19.x/manage/git_upstream)
+It uses the Git-based [upstream repository](../../0.19.x/manage/git_upstream/)
 to store the resources with version control.
 This service can upload the Git repository to any Git-based service
 such as GitLab, GitHub, and Bitbucket.
@@ -90,7 +90,7 @@ Note that, in earlier releases, this file was mounted as a Persistent Volume Cla
 The *shipyard-controller* manages all Keptn-related entities, such as projects, stages and services,
 and provides an HTTP API that is used to perform CRUD operations on them. 
 This service also controls the execution of task sequences
-that are defined in the project's [shipyard](../../0.19.x/reference/files/shipyard)
+that are defined in the project's [shipyard](../../0.19.x/reference/files/shipyard/)
 by sending out `.triggered` events whenever a task within a task sequence should be executed. 
 It then listens for incoming `.started` and `.finished` events
 and uses them to proceed with the task sequence.
@@ -111,7 +111,7 @@ Those services can be plugged into a task sequence
 to extend the delivery pipeline or to further automate operations.
 Execution plane services subscribe to events using one of the following mechanisms:
 
-* [distributor](../../0.19.x/reference/miscellaneous/distributor) sidecar
+* [distributor](../../0.19.x/reference/miscellaneous/distributor/) sidecar
 that forwards incoming `.triggered` events to execution plane services.
 These distributor sidecars can also be used to send `.started` and `.finished` events
 back to the Keptn control plane.
@@ -174,7 +174,7 @@ to communicate with the Execution Plane.
    but they can be configured to fetch open `.triggered` events from the HTTP API.
 
 See [Integrations](../../integrations/) for links to Keptn-service integrations that are available.
-Use the information in [Custom Integrations](../../0.19.x/integrations)
+Use the information in [Custom Integrations](../../0.19.x/integrations/)
 to create a Keptn-service that integrates other tools.
 
 ### NATS behavior on a single-cluster instance
@@ -186,7 +186,7 @@ Execution plane service pods have a distributor container
 that subscribes to and publishes events on behalf of the execution plane service.
 
 Environment variables documented
-on the [distributor](../../0.19.x/reference/miscellaneous/distributor) reference page
+on the [distributor](../../0.19.x/reference/miscellaneous/distributor/) reference page
 control how the distributor behaves,
 including setting the `PUBSUB_URL` environment variable that the distributor uses to locate the NATS cluster.
 

@@ -32,7 +32,7 @@ You can install and run Keptn on virtually any Kubernetes cluster:
 curl -sL https://get.keptn.sh | bash
 ```
 
-See [Keptn CLI](../0.18.x/reference/cli) for more information.
+See [Keptn CLI](../0.18.x/reference/cli/) for more information.
 
 2. Install the core Keptn control plane components and expose them via a LoadBalancer:
 ```
@@ -51,7 +51,7 @@ helm install helm-service keptn/helm-service -n keptn
 ```
 
   Note that you do not have to use these particular microservices.
-  See [Deploying Services](../0.18.x/define/service) for more information.
+  See [Deploying Services](../0.18.x/define/service/) for more information.
 
 See [Install Keptn using the Helm chart](../0.18.x/install/../../install/helm-install)
 for more details.
@@ -64,7 +64,7 @@ for information about supported versions of Kubernetes and sizing information.
 
 ### Create your first Keptn project
 
-Follow the information in [Manage Keptn Project/Service](../0.18.x/manage)
+Follow the information in [Manage Keptn Project/Service](../0.18.x/manage/)
 to create your first Keptn project.
 
 ## How to get more help?

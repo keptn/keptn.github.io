@@ -84,7 +84,7 @@ before executing this command.
 ## Upgrade from Keptn 0.6.2 to 0.7.0
 
 1. Before starting the update, we strongly advise to create a backup of your Keptn projects. 
-To do so, please follow the instructions in the [backup guide](../../../0.6.0/installation/backup_and_restore)
+To do so, please follow the instructions in the [backup guide](../../../0.6.0/installation/backup_and_restore/)
 
 1. To download and install the Keptn CLI for version 0.7.0, please refer to the [Install Keptn CLI](../install/#install-keptn-cli) section.
 
