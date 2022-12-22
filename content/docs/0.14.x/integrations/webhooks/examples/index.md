@@ -5,7 +5,7 @@ weight: 1
 keywords: [0.14.x-integration]
 ---
 
-Below are a just few examples to review and the [Keptn Integrations page](../../../../integrations) for a growing list of integrations using Webhook.
+Below are a just few examples to review and the [Keptn Integrations page](../../../../integrations/) for a growing list of integrations using Webhook.
 
 | Integration  | Description                                           |
 |---------------- |-----------------------------------------------------  |

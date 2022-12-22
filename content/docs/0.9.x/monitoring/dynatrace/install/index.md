@@ -130,7 +130,7 @@ When you execute the [`keptn configure monitoring`](../../../reference/cli/comma
 
 - *Alerting profile:* An alerting profile with all problems set to *0 minutes* (immediate) is created. You can review this profile by navigating to **Settings > Alerting > Alerting profiles**.
 
-- *Dashboard and Management zone:* When creating a new Keptn project or executing the [keptn configure monitoring](../../../reference/cli/commands/keptn_configure_monitoring/) command for a particular project (see Note 1), a dashboard and management zone will be generated reflecting the environment as specified in the shipyard.
+- *Dashboard and Management zone:* When creating a new Keptn project or executing the [keptn configure monitoring](../../../reference/cli/commands/keptn_configure_monitoring/) command for a particular project (see Note 1/), a dashboard and management zone will be generated reflecting the environment as specified in the shipyard.
 
 **Note:** If you already have created a project using Keptn and would like to enable Dynatrace monitoring for that project, please execute the following command:
 

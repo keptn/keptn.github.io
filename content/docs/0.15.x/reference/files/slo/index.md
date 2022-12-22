@@ -192,7 +192,7 @@ The pass and warning criteria for the `total_score` use the logical operator ">=
 
 **Important:** In the following command, the value of the `resourceUri` must be set to `slo.yaml`.
 
-* To add an SLI configuration to a service, use the [keptn add-resource](../../cli/commands/keptn_add-resource) command:
+* To add an SLI configuration to a service, use the [keptn add-resource](../../cli/commands/keptn_add-resource/) command:
 
   ```console
   keptn add-resource --project=sockshop --stage=staging --service=carts --resource=slo-quality-gates.yaml --resourceUri=slo.yaml
@@ -206,6 +206,6 @@ The pass and warning criteria for the `total_score` use the logical operator ">=
 
 * [Prometheus](../../../monitoring/prometheus/install/#configure-custom-prometheus-slis)
 
-* [Quality Gates](../../../quality_gates)
+* [Quality Gates](../../../quality_gates/)
 
 

@@ -72,7 +72,7 @@ Run your Keptn installation for free on GKE! If you [sign up for a Google Cloud 
 2. Create GKE cluster
   - [Master version:](../k8s_support/#supported-versions) `1.17.x` and `1.18.x` (tested version: `1.18.12`)
   - One node with 8 vCPUs and 32 GB memory (e.g., one **n1-standard-8** node)
-  - Image type `Ubuntu` or `COS` (**Note:** If you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../monitoring/dynatrace/).)
+  - Image type `Ubuntu` or `COS` (**Note:** If you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../monitoring/dynatrace/)./)
   - Sample script to create such a cluster:
 
     ```console
@@ -595,7 +595,7 @@ After [installing Keptn](#install-keptn), you already have your Keptn endpoint.
 KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
 ```
 
-* To authenticate the CLI against the Keptn cluster, use the [keptn auth](../../reference/cli/commands/keptn_auth) command:
+* To authenticate the CLI against the Keptn cluster, use the [keptn auth](../../reference/cli/commands/keptn_auth/) command:
 
 ```console
 keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN
@@ -628,7 +628,7 @@ $tokenEncoded = $(kubectl get secret keptn-api-token -n keptn -ojsonpath='{.data
 $Env:KEPTN_API_TOKEN = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($tokenEncoded))
 ```
 
-* To authenticate the CLI against the Keptn cluster, use the [keptn auth](../../reference/cli/commands/keptn_auth) command:
+* To authenticate the CLI against the Keptn cluster, use the [keptn auth](../../reference/cli/commands/keptn_auth/) command:
 
 ```
 keptn auth --endpoint=$Env:KEPTN_ENDPOINT --api-token=$Env:KEPTN_API_TOKEN
@@ -672,7 +672,7 @@ certutil -decode keptn-api-token-base64.txt keptn-api-token.txt
 set KEPTN_API_TOKEN=keptn-api-token
 ```
 
-* To authenticate the CLI against the Keptn cluster, use the [keptn auth](../../reference/cli/commands/keptn_auth) command:
+* To authenticate the CLI against the Keptn cluster, use the [keptn auth](../../reference/cli/commands/keptn_auth/) command:
 
 ```
 keptn.exe auth --endpoint=$Env:KEPTN_ENDPOINT --api-token=$Env:KEPTN_API_TOKEN
@@ -726,6 +726,6 @@ Please see our guide at [Advanced Installation Options](../advanced_install_opti
 
 1. [Verify the Keptn installation](../../troubleshooting#verifying-a-keptn-installation).
 
-1. [Generate a support-archive](../../reference/cli/commands/keptn_generate_support-archive) and ask for help in our [Slack channel](https://slack.keptn.sh).
+1. [Generate a support-archive](../../reference/cli/commands/keptn_generate_support-archive/) and ask for help in our [Slack channel](https://slack.keptn.sh).
 
-1. Uninstall Keptn by executing the [keptn uninstall](../../reference/cli/commands/keptn_uninstall) command before conducting a re-installation.  
+1. Uninstall Keptn by executing the [keptn uninstall](../../reference/cli/commands/keptn_uninstall/) command before conducting a re-installation.  

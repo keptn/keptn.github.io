@@ -20,7 +20,7 @@ so you should plan to sit down and do the exercise without interruptions.
 If you like what you saw in the exercise, you can:
 
 * Install a Keptn cluster for yourself,
-  following the instructions in [Installation](../../install).
+  following the instructions in [Installation](../../install/).
   Scroll down past the "cards" on the landing page for a quick list of steps to take,
   with links to pages that have more details.
 

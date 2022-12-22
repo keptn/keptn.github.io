@@ -50,7 +50,7 @@ It defines what needs to be done but leaves the details to other components.
   * `actionsOnOpen`: Declares a list of actions triggered in course of the remediation.
 
     * `action` -- specifies a unique name that matches a definition for the
-      [Action Provider](../action-provider) (Keptn-service/)
+      [Action Provider](../action-provider/) (Keptn-service/)
       that executes the action
     * `description` -- provides more details about the action
     * `value` -- property allows adding an arbitrary list of values for configuring the action
@@ -81,7 +81,7 @@ as well as the `default` problem type that is used for any unknown problem:
 ## Configuration command
 
 To add a remediation config to a service,
-use the [keptn add-resource](../../cli/commands/keptn_add-resource) command:
+use the [keptn add-resource](../../cli/commands/keptn_add-resource/) command:
 
     keptn add-resource --project=<project> --stage=<stage> --service=<service> --resource=remediation.yaml --resourceUri=remediation.yaml
 

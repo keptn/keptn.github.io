@@ -22,7 +22,7 @@ each of which always consists of a name and the provider-specific query.
 
 Please follow the links to the provider-specific SLIs: 
 Provider-specific SLIs are discussed in the documentation
-for the [integrations](../../../../integrations)
+for the [integrations](../../../../integrations/)
 for each monitoring platform:
 
 * [Dynatrace](https://artifacthub.io/packages/keptn/keptn-integrations/dynatrace-service)
@@ -39,14 +39,14 @@ that can fetch the declared SLIs.
 For Dynatrace, the value of the `resourceUri` must be: `dynatrace/sli.yaml`.
 
 * To add an SLI configuration to a service,
-use the [keptn add-resource](../../cli/commands/keptn_add-resource) command:
+use the [keptn add-resource](../../cli/commands/keptn_add-resource/) command:
 
   ```console
   keptn add-resource --project=sockshop --stage=staging --service=carts --resource=sli-config.yaml  --resourceUri=dynatrace/sli.yaml
   ```
 
 * To add an SLI configuration to a stage,
-use the [keptn add-resource](../../cli/commands/keptn_add-resource) command:
+use the [keptn add-resource](../../cli/commands/keptn_add-resource/) command:
 
   ```console
   keptn add-resource --project=sockshop --stage=staging --resource=sli-config.yaml --resourceUri=dynatrace/sli.yaml
@@ -56,7 +56,7 @@ use the [keptn add-resource](../../cli/commands/keptn_add-resource) command:
 
 
 * To add an SLI configuration to a project,
-use the [keptn add-resource](../../cli/commands/keptn_add-resource) command:
+use the [keptn add-resource](../../cli/commands/keptn_add-resource/) command:
 
   ```console
   keptn add-resource --project=sockshop --resource=sli-config.yaml --resourceUri=dynatrace/sli.yaml
@@ -118,7 +118,7 @@ use the [keptn add-resource](../../cli/commands/keptn_add-resource) command:
 
 * [Datadog](https://artifacthub.io/packages/keptn/keptn-integrations/datadog-service)
 
-* [Quality Gates](../../../quality_gates)
+* [Quality Gates](../../../quality_gates/)
 
 
 

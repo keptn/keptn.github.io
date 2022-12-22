@@ -10,7 +10,7 @@ The remediation config describes a remediation workflow in a declarative manner.
 
 ## Declare a remediation sequence in shipyard
 
-The definition of a remediation sequence is done in a so-called [Shipyard](../../manage/shipyard) file.
+The definition of a remediation sequence is done in a so-called [Shipyard](../../manage/shipyard/) file.
 
 **Example**: Simple shipyard file with a remediation sequence in a single stage
 ```yaml
@@ -37,7 +37,7 @@ spec:
                 timeframe: "10m"
 ```
 
-*Note*: Remediations can also be used in combination with [multi stage delivery](../../continuous_delivery/multi_stage) workflows.
+*Note*: Remediations can also be used in combination with [multi stage delivery](../../continuous_delivery/multi_stage/) workflows.
 
 
 ## Configure Remediation
@@ -124,7 +124,7 @@ spec:
 
 **Important:** In the following command, the value of `resourceUri` must be set to `remediation.yaml`.
 
-* To add an remediation config to a service, use the [keptn add-resource](../../reference/cli/commands/keptn_add-resource) command:
+* To add an remediation config to a service, use the [keptn add-resource](../../reference/cli/commands/keptn_add-resource/) command:
 
     ```console
     keptn add-resource --project=sockshop --stage=production --service=serviceXYZ --resource=remediation.yaml --resourceUri=remediation.yaml

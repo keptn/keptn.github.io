@@ -79,7 +79,7 @@ This section describes how to
 
 ### Add remote git upstream repository to each project
 
-Each project must have a remote [Git-based upstream repository](../../manage/git_upstream) repository configured to ensure that you do not lose your data.
+Each project must have a remote [Git-based upstream repository](../../manage/git_upstream/) repository configured to ensure that you do not lose your data.
 You do not need to create an extra backup of the Configuration Service.
 If your installation is running  an older version of Keptn that does not have  a remote git upstream repository configured, you can use the `keptn update project` command of Keptn CLI to add it. An example of the command:
 

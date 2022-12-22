@@ -105,7 +105,7 @@ aliases:
       * This CLI command executes a Helm upgrade using the Helm chart from: [keptn-installer/keptn-0.11.4.tgz](https://charts.keptn.sh/packages/keptn-0.11.4.tgz)
 
 
-* **Step 4.** Restore your Mongo DB and configuration service data according to the steps in the [restore guide](../../operate/backup_and_restore).
+* **Step 4.** Restore your Mongo DB and configuration service data according to the steps in the [restore guide](../../operate/backup_and_restore/).
 
 * :warning: **Step 5.** If you are using the **jmeter-service** or **helm-service**, upgrade them to 0.11.4 using the following commands: 
    ```console

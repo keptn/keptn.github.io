@@ -6,7 +6,7 @@ keywords: [0.18.x-manage]
 aliases:
 ---
 
-A Keptn project's [shipyard](../../reference/files/shipyard) can be modified in two ways:
+A Keptn project's [shipyard](../../reference/files/shipyard/) can be modified in two ways:
 
 * [Delete the project](../delete/) then [create a new project](../project/#create-a-project)
   that contains the updated settings.
@@ -162,7 +162,7 @@ spec:
 
 After extending the shipyard as shown above,
 remediations should be executed when a problem event is retrieved.
-See [Remediation sequences](../../define/remediation-sequence).
+See [Remediation sequences](../../define/remediation-sequence/).
 
 
 

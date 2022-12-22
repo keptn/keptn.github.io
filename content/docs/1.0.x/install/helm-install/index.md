@@ -31,12 +31,12 @@ Keptn consists of a **Control Plane** and an **Execution Plane**.
   but does not run microservices that integrate other tools with Keptn.
 
 * The **Execution Plane** refers to the microservices that integrate other tools with Keptn;
-  see [Keptn and other tools](../../concepts/keptn-tools).
+  see [Keptn and other tools](../../concepts/keptn-tools/).
   For example, the JMeter test tool 
   and the [Job Executor Service](https://artifacthub.io/packages/keptn/keptn-integrations/job-executor-service)
   execute on the Execution Plane.
 
-See [Architecture](../../concepts/architecture) for more information
+See [Architecture](../../concepts/architecture/) for more information
 about the Control Plane and the Execution Plane.
 
 You have the following installation options:
@@ -156,7 +156,7 @@ has information that may help if your installation was not successful.
 
 ### Access the Keptn Bridge
 
-The [Keptn Bridge](../../bridge) is the graphical user interface
+The [Keptn Bridge](../../bridge/) is the graphical user interface
 you can use to manage and view Keptn projects running in your instance.
 To access it:
 
@@ -171,13 +171,13 @@ To access it:
 
 3. Log into the Keptn Bridge.
    The following commands give you the username and randomly-generated password
-   to use if your site uses [Basic Authentication](../../bridge/basic_authentication):
+   to use if your site uses [Basic Authentication](../../bridge/basic_authentication/):
 
    ```
    kubectl -n keptn get secret bridge-credentials -o jsonpath-{.data.BASIC_AUTH_USERNAME} | base64 -d
    kubectl -n keptn get secret bridge-credentials -o jsonpath-{.data.BASIC_AUTH_PASSWORD} | base64 -d
    ```
-   You can instead use [OpenID Authentication](../../bridge/oauth) to access the Keptn Bridge.
+   You can instead use [OpenID Authentication](../../bridge/oauth/) to access the Keptn Bridge.
 
 ## Install Execution Plane
 

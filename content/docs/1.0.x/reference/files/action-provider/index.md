@@ -62,4 +62,4 @@ This action-provider increases the ReplicaSet of a Kubernetes deployment by the 
 ## Add a custom Action-Provider
 
 * To create and add your custom action-provider to Keptn,
-follow the instructions [Custom Action-Provider](../../../integrations/action_provider) page.
+follow the instructions [Custom Action-Provider](../../../integrations/action_provider/) page.

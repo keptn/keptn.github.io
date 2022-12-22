@@ -154,6 +154,6 @@ This prevents Helm from generating a new secret on installation and instead has 
     kubectl delete pods -n keptn --selector=app.kubernetes.io/name=api-service
     ```
 
-* Re-authenticate Keptn CLI as explained [here](../../reference/cli/commands/keptn_auth).
+* Re-authenticate Keptn CLI as explained [here](../../reference/cli/commands/keptn_auth/).
 
 * **Don't forget** to replace the API token for tools that interact with the Keptn API, e.g., *Problem Notification* setting in Dynatrace or *WebHook* in Prometheus.

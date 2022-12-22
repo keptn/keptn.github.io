@@ -16,7 +16,7 @@ usually for testing and demonstration purposes:
 * Using the Keptn CLI
 
 You can also use the `triggeredOn` property
-in the the [shipyard](../../reference/files/shipyard)
+in the the [shipyard](../../reference/files/shipyard/)
 to specify an event that triggers this sequence,
 implicitly linking two sequences.
 
@@ -24,7 +24,7 @@ Each of these mechanismsis discussed below.
 
 ## Use triggeredOn in a sequence
 
-Use the `triggeredOn` property in a project's [shipyard](../../reference/files/shipyard) file
+Use the `triggeredOn` property in a project's [shipyard](../../reference/files/shipyard/) file
 to kick off a sequence in response to specific events.
 Essentially, this links sequences together to form chains of sequences.
 Specify a list of events to `triggeredOn`,
@@ -129,7 +129,7 @@ Use the appropriate CLI command to trigger a sequence:
 
 ## Trigger a sequence with the POST / event API
 
-A [shipyard.yaml](../../reference/files/shipyard) file can contain multiple sequences in multiple stages.
+A [shipyard.yaml](../../reference/files/shipyard/) file can contain multiple sequences in multiple stages.
 Use `POST /event` [Keptn API](../../reference/api/) to run a specific `sequence` with the following template:
 
 ```
@@ -158,7 +158,7 @@ Replace the values between square brackets (`[]`) based on your configuration:
 ### Examples
 
 In the following example, we define the `podtato-example` project that has the `helloservice` service.
-The [shipyard.yaml](../../reference/files/shipyard) file for the project defines three sequences:
+The [shipyard.yaml](../../reference/files/shipyard/) file for the project defines three sequences:
 
 * `delivery` in the *hardening* stage;
 * `evaluation-only` in the *hardening* stage;

@@ -15,11 +15,11 @@ for each stage defined for the project
 
 Before you create a project:
 
-* You must [Install Keptn](../../../install/helm-install)
+* You must [Install Keptn](../../../install/helm-install/)
   on a Kubernetes cluster that has **kubectl** installed.
 
-* In most cases, you should also [install the Keptn CLI](../../../install/cli-install)
-  and [authenticate the Keptn CLI and Bridge](../../../install/authenticate-cli-bridge).
+* In most cases, you should also [install the Keptn CLI](../../../install/cli-install/)
+  and [authenticate the Keptn CLI and Bridge](../../../install/authenticate-cli-bridge/).
   You can create projects and services, trigger sequences, and many other common tasks
   using the Keptn Bridge rather than the command line
   but you may prefer using the command line
@@ -44,7 +44,7 @@ See [Git-based upstream](../git_upstream/) for details.
   although strongly recommended.
   Beginning with Keptn release 0.16.x, all Keptn projects must have an associated Git-upstream repository.
 
-* A [shipyard](../../reference/files/shipyard) file
+* A [shipyard](../../reference/files/shipyard/) file
   that defines the `stages` for your project.
   You cannot add, remove, or rename `stages` after you create the project.
   A *shipyard.yaml* file like the following is enough to create the project:
@@ -65,7 +65,7 @@ See [Git-based upstream](../git_upstream/) for details.
   * The project `name` must start with a lowercase letter
     and contain only lowercase letters, numbers, and hyphens
   * The project name should be less than 200 characters long
-  * See the [shipyard](../../reference/files/shipyard) page
+  * See the [shipyard](../../reference/files/shipyard/) page
     for more details about naming rules
 
   Create this file on your local system;
@@ -74,7 +74,7 @@ See [Git-based upstream](../git_upstream/) for details.
   This "stub" *shipyard* file is enough to create a project.
   You must include sequences, tasks, etc in the shipyard before running it.
   You can add those before or after you create the project.
-  See the [Define Keptn Projects](../../define) section for information
+  See the [Define Keptn Projects](../../define/) section for information
   about how to define sequences and tasks for your project.
 
 ## Create a project
@@ -95,8 +95,8 @@ For written instructions, see
 ### Create project from the CLI command line
 
 To create a project from the command line,
-use the [keptn create project](../../reference/cli/commands/keptn_create_project) command
-and pass a [shipyard](../../reference/files/shipyard) file.
+use the [keptn create project](../../reference/cli/commands/keptn_create_project/) command
+and pass a [shipyard](../../reference/files/shipyard/) file.
 
 For example, you could create a new project with the following command line:
   ```

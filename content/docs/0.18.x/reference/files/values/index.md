@@ -6,7 +6,7 @@ weight: 915
 
 The `values.yaml` configuration file defines the configuration used
 when installing Keptn with a Helm chart; see
-[Installing Keptn using the Helm chart](../../../../install/helm-install).
+[Installing Keptn using the Helm chart](../../../../install/helm-install/).
 `Values` is a built-in object of Helm templates; see the Helm documentation at
 [Values Files](https://helm.sh/docs/chart_template_guide/values_files/).
 
@@ -55,7 +55,7 @@ to make it ready for future features and structural changes.
 
 ## See also
 
-* [Install Keptn using the Helm chart](../../../../install/helm-install)
+* [Install Keptn using the Helm chart](../../../../install/helm-install/)
 * [values.yaml](https://helm.sh/docs/chart_template_guide/values_files/)
   Helm specification for the *values.yaml* file.
 

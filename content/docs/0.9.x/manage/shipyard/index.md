@@ -94,7 +94,7 @@ Keptn supports a set of opinionated tasks for declaring a delivery or remediatio
 
 #### Action
 
-The action task indicates that a remediation action should be executed by an action provider. It is used within a [remediation workflow](../../automated_operations/remediation).
+The action task indicates that a remediation action should be executed by an action provider. It is used within a [remediation workflow](../../automated_operations/remediation/).
 
 **Usage:**
 
@@ -194,7 +194,7 @@ Defines the quality evaluation that is executed to verify the quality of a deplo
 
 #### Get-Action
 
-The get-action task is used to extract the desired remediation action from a remediation.yaml within a [remediation workflow](../../automated_operations/remediation).
+The get-action task is used to extract the desired remediation action from a remediation.yaml within a [remediation workflow](../../automated_operations/remediation/).
 
 **Usage:**
 
@@ -462,7 +462,7 @@ spec:
                 timeframe: "10m"
 ```
 
-**Result:** After extending the shipyard as shown above, remediations should be executed when a problem event is retrieved (see [remediation workflow](../../automated_operations/remediation)).
+**Result:** After extending the shipyard as shown above, remediations should be executed when a problem event is retrieved (see [remediation workflow](../../automated_operations/remediation/)).
 
 ### Define a trigger for a sequence 
 

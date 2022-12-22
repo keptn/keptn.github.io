@@ -22,7 +22,7 @@ NATS is used to communicate with the Execution Plane as discussed below.
 
 Use the [Keptn CLI](../../0.19.x/reference/cli/) to send commands
 that interact with the [Keptn API](../../0.19.x/reference/api/).
-It must be [installed](../../install/cli-install)
+It must be [installed](../../install/cli-install/)
 on the local machine and is used to send commands to Keptn.
 To communicate with Keptn, you need to know the API token (`keptn-api-token`),
 which is created during the installation via Helm and verified by the *api* component.
@@ -46,7 +46,7 @@ but does not actively execute the tasks.
 ### api-gateway-nginx
 
 The *api-gateway-nginx* component is the single point used for exposing Keptn to the outside world.
-It supports the four [access options](../../install/access) that Kubernetes supports:
+It supports the four [access options](../../install/access/) that Kubernetes supports:
 LoadBalancer, NodePort, Ingress, and Port-Forward.
 
 It also redirects incoming requests to the appropriate internal Keptn endpoints --
@@ -173,7 +173,7 @@ to communicate with the Execution Plane.
    The distributor sidecars and cp-connectors are not able to directly connect to the NATS cluster,
    but they can be configured to fetch open `.triggered` events from the HTTP API.
 
-See [Integrations](../../integrations) for links to Keptn-service integrations that are available.
+See [Integrations](../../integrations/) for links to Keptn-service integrations that are available.
 Use the information in [Custom Integrations](../../0.19.x/integrations)
 to create a Keptn-service that integrates other tools.
 
@@ -255,7 +255,7 @@ that are documented on the [shipyard](../../0.19.x/reference/files/shipyard/#fie
 
 ### NATS behavior on a multi-cluster instance
 
-In a [multi-cluster](../../install/multi-cluster) configuration,
+In a [multi-cluster](../../install/multi-cluster/) configuration,
 an execution plane is a namespace or cluster other than where the control plane runs
 that runs a Keptn service.
 The distributor was originally designed to work for both the control plane and the remote execution planes

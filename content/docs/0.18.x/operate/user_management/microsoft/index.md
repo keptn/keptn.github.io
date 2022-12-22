@@ -50,7 +50,7 @@ caption="User is logged in" width="800px">}}
 
 ## Keptn CLI
 
-The `keptn auth` command provides several [command line flags](../../../reference/cli/commands/keptn_auth) that can be used to set up the CLI to use an SSO via OpenID Connect:
+The `keptn auth` command provides several [command line flags](../../../reference/cli/commands/keptn_auth/) that can be used to set up the CLI to use an SSO via OpenID Connect:
 
 ```
 keptn auth --oauth --oauth-discovery https://login.microsoftonline.com/<directory_tenant_id>/v2.0/.well-known/openid-configuration --oauth-client-id <client_id> --oauth-client-secret <client_secret> --endpoint <keptn_endpoint> --api-token <keptn_api_token>

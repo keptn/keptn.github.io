@@ -7,14 +7,14 @@ aliases:
 ---
 
 This page walks through the process of populating
-a [shipyard](../../reference/files/shipyard) file that defines
+a [shipyard](../../reference/files/shipyard/) file that defines
 a simple, multi-stage project.
 
 
 **Example of a shipyard with three stages:**
 
 This is a minimalist *shipyard* file that can be used to create the project
-as discussesd in [Start a project](../../manage/project):
+as discussesd in [Start a project](../../manage/project/):
 
     apiVersion: spec.keptn.sh/0.2.3
     kind: "Shipyard"

@@ -7,7 +7,7 @@ keywords: [0.18.x-cd]
 
 ## Declare a multi-stage delivery sequence in shipyard
 
-The definition of a multi-stage delivery manifests in the [Shipyard](../../reference/files/shipyard) file. It can hold multiple stages with dedicated and opinionated delivery tasks to execute.
+The definition of a multi-stage delivery manifests in the [Shipyard](../../reference/files/shipyard/) file. It can hold multiple stages with dedicated and opinionated delivery tasks to execute.
 
 **Example**: Simple shipyard file with a delivery sequence in the two stages `dev` and `production`, whereas `dev` uses a direct deployment and `prod` uses blue-green deployment:
 

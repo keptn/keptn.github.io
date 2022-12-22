@@ -387,7 +387,7 @@ If the error log event should not be associated to an execution of a specific ta
 
 ## See also
 
-* [Distributor](../../reference/miscellaneous/distributor)
-* [distributor](../../reference/files/distributor)
+* [Distributor](../../reference/miscellaneous/distributor/)
+* [distributor](../../reference/files/distributor/)
 
 ```

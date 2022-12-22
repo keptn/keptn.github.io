@@ -78,9 +78,9 @@ A stage is named for the particular activity to be performed,
 such as `development`, `hardening`, `staging`, or `production`.
 Each *shipyard* file must have at least one `stage`.
 The name of the stage becomes the name of the branch
-in the [upstream Git repository](../../../manage/git_upstream)
+in the [upstream Git repository](../../../manage/git_upstream/)
 and the Kubernetes namespace to which
-[services](../../../define/service) are deployed.
+[services](../../../define/service/) are deployed.
 
 A stage can be given any meaningful name that conforms to the
 [Kubernetes Object Names and IDs](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/)
@@ -322,7 +322,7 @@ This means that all services in a project share the same shipyard definition.
 
 You can not add or delete stages in the *shipyard* file for an existing project
 although you can make other modifications.
-* See [Updating project's shipyard](../../../manage/update)
+* See [Updating project's shipyard](../../../manage/update/)
 for information about modifications that can be made to a *shipyard* file.
 
 As a workaround, you can temporarily skip the execution of a particular stage by doing either of the following:
@@ -345,8 +345,8 @@ and  named to match the value of the `Metadata` name field in the shipyard file.
 
 ## See also
 
-* [Define project in a shipyard](../../../define/shipyard)
-* [Delivery sequence](../../../define/delivery_sequence)
-* [Quality gates](../../../define/quality-gates)
-* [Triggers](../../../define/triggers)
+* [Define project in a shipyard](../../../define/shipyard/)
+* [Delivery sequence](../../../define/delivery_sequence/)
+* [Quality gates](../../../define/quality-gates/)
+* [Triggers](../../../define/triggers/)
 * [Remediation configuration](../remediation/)

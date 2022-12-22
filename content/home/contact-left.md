@@ -1,1 +1,1 @@
-Whether you are an end user or you want to participate in the project, we’d love to hear from you! You can find more information about how to reach us in the [Keptn community](/community) or just ping us via [Slack](https://slack.keptn.sh).
+Whether you are an end user or you want to participate in the project, we’d love to hear from you! You can find more information about how to reach us in the [Keptn community](./community/) or just ping us via [Slack](https://slack.keptn.sh).

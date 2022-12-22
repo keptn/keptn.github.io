@@ -47,12 +47,12 @@ Keptn consists of a **Control Plane** and an **Execution Plane**.
   but does not run microservices that integrate other tools with Keptn.
 
 * The **Execution Plane** refers to the microservices that integrate other tools with Keptn;
-  see [Keptn and other tools](../../concepts/keptn-tools).
+  see [Keptn and other tools](../../concepts/keptn-tools/).
   For example, the JMeter test tool 
   and the [Job Executor Service](https://artifacthub.io/packages/keptn/keptn-integrations/job-executor-service)
   execute on the Execution Plane.
 
-See [Architecture](../../concepts/architecture) for more information
+See [Architecture](../../concepts/architecture/) for more information
 about the Control Plane and the Execution Plane.
 
 You have the following installation options:

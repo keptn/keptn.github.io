@@ -16,7 +16,7 @@ Deletes a project identified by project name.
 * Services that have been deployed to the Kubernetes cluster are not deleted.
 * Namespaces that have been created on the Kubernetes cluster are not deleted.
 * Helm-releases created for deployments are not deleted. To clean-up deployed Helm releases,
-please see [Delete a project](../../../../manage/delete).
+please see [Delete a project](../../../../manage/delete/).
 
 
 ```

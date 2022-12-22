@@ -20,7 +20,7 @@ For a broader explanation of this, you can read the seminal
 ## What should this project do?
 
 Before you can run the Keptn command to create a project,
-you must populate a [shipyard.yaml](../../reference/files/shipyard) file
+you must populate a [shipyard.yaml](../../reference/files/shipyard/) file
 that at least defines the `stages` for your project.
 At the current time, it is not possible to add or remove stages
 after you create your project.
@@ -52,7 +52,7 @@ becomes a branch in the upstream repo when you create the project.
 .
 A stage can be given any meaningful name
 that conforms to the naming rules described in the
-[shipyard.yaml](../../reference/files/shipyard) reference page;
+[shipyard.yaml](../../reference/files/shipyard/) reference page;
 some common stage types are:
 
 * **development** -- typically used for basic functional testing before deploying the artifact to testing stages.
@@ -68,7 +68,7 @@ some common stage types are:
   It can perform remediation (also called "self-healing") for some issues
   and generate appropriate notifications for other issues.
 
-The [Define a Project](../../define) section contains pages
+The [Define a Project](../../define/) section contains pages
 about how to implement the different types of stages.
 
 ## What tools do you want to use with Keptn?
@@ -77,7 +77,7 @@ Keptn orchestrates **what** to do.
 You can integrate almost any tool you like to define **how** this task is accomplished.
 You must identify each tool you use to Keptn;
 this can be done in a variety of ways.
-See [Keptn and other tools](../../../concepts/keptn-tools) for more information.
+See [Keptn and other tools](../../../concepts/keptn-tools/) for more information.
 
 ## Who calls whom?
 
@@ -90,7 +90,7 @@ before deploying the software.
 You can either have Jenkins call Keptn or you can have Keptn call Jenkins.
 
 The preferred solution for current Keptn releases is be to use
-Keptn [Webhooks](../../integrations/webhooks) to have Keptn call Jenkins.
+Keptn [Webhooks](../../integrations/webhooks/) to have Keptn call Jenkins.
 This is easier to implement, allows you to break up your Jenkins Pipeline,
 and you get the `evaluation` "for free".
 
@@ -135,7 +135,7 @@ and provides less functionality than using the Keptn webhooks strategy described
 ## Are you using quality gates evaluation?
 
 Most projects use quality gates to evaluate their software.
-See [Quality Gates](../../../concepts/quality_gates) for more information.
+See [Quality Gates](../../../concepts/quality_gates/) for more information.
 You can (and probably will) modify the details of your quality gates
 as you test and develop your project but it is useful to consider your goals from the beginning.
 
@@ -147,7 +147,7 @@ such as response time.
 You can use an observability platform
 (integrations are currently provided for DataDog, Dynatrace, and Prometheus)
 or you can define another SLI provider by following the instructions in
-[Custom SLI-Provider](../../integrations/sli_provider).
+[Custom SLI-Provider](../../integrations/sli_provider/).
 
   If you are already using an observability platform,
   you probably want to just configure Keptn to use that tool.
@@ -163,7 +163,7 @@ For example, for an SLI that measures response time,
 you could define an SLO with an absolute value (less than 100ms)
 or a relative value (no more than 5% slower than previous evaluations.
 Absolute and relative results can be combined into a `total_score` for the evaluation.
-See [SLO](../../reference/files/slo) for more details.
+See [SLO](../../reference/files/slo/) for more details.
 * What service will you use to deploy your artifact for quality gates evaluation?
 The most common choice is `helm-service`.
 See [Create a service](../service/) for more information.

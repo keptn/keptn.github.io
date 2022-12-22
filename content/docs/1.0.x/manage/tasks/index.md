@@ -6,7 +6,7 @@ keywords: [1.0.x-manage]
 aliases:
 ---
 
-A Keptn project's [shipyard](../../reference/files/shipyard)
+A Keptn project's [shipyard](../../reference/files/shipyard/)
 defines `sequences` that `execute` `tasks`.
 When the task receives the `action.finished` event,
 the task is finished and subsequent tasks can execute.
@@ -14,7 +14,7 @@ the task is finished and subsequent tasks can execute.
 ## Stop a task
 
 Keptn does not provide a facility to actually abort a task.
-The [keptn abort](../../reference/cli/commands/keptn_abort) command
+The [keptn abort](../../reference/cli/commands/keptn_abort/) command
 causes the shipyard controller to stop processing,
 meaning it does not continue processing
 and so prevents the next task from being triggered,
@@ -24,8 +24,8 @@ An executing task is stopped only when it receives an `action.finished`
 event, usually with a `data.result` value
 so that the shipyard controller knows what to do next..
 So, if you need to stop a task, you can send a "fake" `action.finished` event
-using the [Keptn API](../../reference/api).
-You can do this from the [Keptn Bridge](../../bridge):
+using the [Keptn API](../../reference/api/).
+You can do this from the [Keptn Bridge](../../bridge/):
 
 * Click the PC icon in the action task that is currently spinning and copy the event content.
 * Navigate to the API page and click on the user icon on the top-right

@@ -78,9 +78,9 @@ A stage is named for the particular activity to be performed,
 such as `development`, `hardening`, `staging`, or `production`.
 Each *shipyard* file must have at least one `stage`.
 The name of the stage becomes the name of the branch
-in the [upstream Git repository](../../../manage/git_upstream)
+in the [upstream Git repository](../../../manage/git_upstream/)
 and the Kubernetes namespace to which
-[services](../../../manage/service) are deployed.
+[services](../../../manage/service/) are deployed.
 
 A stage can be given any meaningful name that conforms to the
 [Kubernetes Object Names and IDs](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/)
@@ -329,7 +329,7 @@ and  named to match the value of the `Metadata` name field in the shipyard file.
 
 ## See also
 
-* [Working with shipyard files](../../../manage/shipyard)
-* [Multi-stage delivery](../../../continuous_delivery/multi_stage)
-* [Triggers](../../../manage/triggers)
+* [Working with shipyard files](../../../manage/shipyard/)
+* [Multi-stage delivery](../../../continuous_delivery/multi_stage/)
+* [Triggers](../../../manage/triggers/)
 * [Remediation Config](../remediation/)
