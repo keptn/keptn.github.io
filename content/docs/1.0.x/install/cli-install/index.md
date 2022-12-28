@@ -80,8 +80,6 @@ Windows users need `bash`, `curl`, and `awk` installed (e.g., using Git Bash).
    brew uninstall keptn
    ```
 
-## Binaries
-
 ## Manually install Keptn CLI from binaries
 
 Each release of Keptn provides binaries for the Keptn CLI.
