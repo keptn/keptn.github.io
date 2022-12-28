@@ -24,19 +24,6 @@ Instructions for getting the Keptn endpoint and, optionally,
 storing that endpoint in an environment variable
 are detailed for each option in [Choose access options](../access).
 
-For example, if you are using `LoadBalancer` to expose Keptn,
-your endpoint is `localhost` and the `port` to which you forwarded Keptn
-such as `http://localhost:8080`:
-
-   ```
-   kubectl -n keptn get service api-gateway-nginx
-   ```
-
-   ```
-   NAME                TYPE        CLUSTER-IP    EXTERNAL-IP                  PORT(S)   AGE
-   api-gateway-nginx   ClusterIP   10.117.0.20   <ENDPOINT_OF_API_GATEWAY>    80/TCP    44m
-   ```
-
 
 ## Get API Token and Authenticate Keptn CLI
 
@@ -75,31 +62,17 @@ In the Windows Command Line, do the following:
    set KEPTN_ENDPOINT=http://<ENDPOINT_OF_API_GATEWAY>/api
    ```
 
-1. Get the Keptn API Token encoded in base64:
+1. Get the Keptn API Token encoded in base64 and decode it to plain text:
 
    ```
-   kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token}
-   ```
-
-   ```
-   abcdefghijkladfaea
-   ```
-
-1. Save the encoded API token in a text file such as `keptn-api-token-base64.txt`.
-   The encoded API token is the value from the key `keptn-api-token`;
-   in this example, it is `abcdefghijkladfaea`.
-
-1. Decode the file:
-
-   ```
-   certutil -decode keptn-api-token-base64.txt keptn-api-token.txt
+   kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 -d > keptn-api-token.txt
    ```
 
 1. Open the newly created file `keptn-api-token.txt`,
    copy the value, and paste it into the next command:
 
    ```
-   set KEPTN_API_TOKEN=keptn-api-token
+   set KEPTN_API_TOKEN=<your-token>
    ```
 
 1. To authenticate the CLI against the Keptn cluster,
