@@ -116,8 +116,6 @@ to port `80` on the Keptn API Gateway service in the cluster.
      `<access-option>` must be `LoadBalancer`, `NodePort`, or `ClusterIP`.
      See [Choose access options](../access/) for details.
    * `--create-namespace` -- creates the `keptn` namespace if it does not already exist.
-   * `--set=bridge.installationType=CONTINUOUS_DELIVERY` -- install Continuous Delivery support
-     for this Keptn instance.
 
 **Use a LoadBalancer for api-gateway-nginx**
 
@@ -317,7 +315,7 @@ For example, if a user sets `prefixPath=/mykeptn` in the Helm install/upgrade co
 the Keptn API is located under `http://HOSTNAME/mykeptn/api` and the Keptn Bridge is located under `http://HOSTNAME/mykeptn/bridge`:
 
 ```
-helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.19.3 --repo=https://charts.keptn.sh --set=apiGatewayNginx.type=LoadBalancer,bridge.installationType=CONTINUOUS_DELIVERY,prefixPath=/mykeptn
+helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.19.3 --repo=https://charts.keptn.sh --set=apiGatewayNginx.type=LoadBalancer,prefixPath=/mykeptn
 ```
 
 ## Install Keptn with externally hosted MongoDB
