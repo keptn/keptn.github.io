@@ -217,15 +217,10 @@ which can be used to specify several configuration options using the format `key
 The full list of available flags can be found
 in the [helm-charts](https://github.com/keptn/keptn/tree/master/installer/manifests/keptn).
 
-* The **Control Plane with the Execution Plane (for Continuous Delivery)**
-can be installed by the following command:
-```
-helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.19.3 --repo=https://charts.keptn.sh --set=bridge.installationType=CONTINUOUS_DELIVERY
-```
 
-* The **Control Plane with the Execution Plane (for Continuous Delivery)** and a `LoadBalancer` for exposing Keptn can be installed by the following command:
+* The **Control Plane with the Execution Plane** and a `LoadBalancer` for exposing Keptn can be installed by the following command:
 ```
-helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.19.3 --repo=https://charts.keptn.sh --set=bridge.installationType=CONTINUOUS_DELIVERY,apiGatewayNginx.type=LoadBalancer
+helm upgrade keptn keptn --install -n keptn --create-namespace --wait --version=0.19.3 --repo=https://charts.keptn.sh --set=apiGatewayNginx.type=LoadBalancer
 ```
 
 ## Install Keptn using a user-provided API token
