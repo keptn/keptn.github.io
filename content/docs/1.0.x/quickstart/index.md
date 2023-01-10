@@ -5,6 +5,8 @@ icon: concepts
 layout: quickstart
 weight: 110
 hidechildren: true # this flag hides all sub-pages in the sidebar-multicard.html
+aliases:
+- /docs/quickstart/
 ---
 
 This Quick Start presents the [Keptn End-to-End Delivery](https://killercoda.com/keptn/scenario/keptn-end-to-end-delivery) exercise
