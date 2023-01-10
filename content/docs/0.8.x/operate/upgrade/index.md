@@ -18,7 +18,7 @@ aliases:
 <details><summary>Expand to see upgrade instructions:</summary>
 <p>
 
-1. Before starting the update, we strongly advise to create a backup of your Keptn projects. To do so, please follow the instructions in the [backup guide](../../operate/backup_and_restore).
+1. Before starting the update, we strongly advise to create a backup of your Keptn projects. To do so, please follow the instructions in the [backup guide](../../operate/backup_and_restore/).
 
 1. To download and install the Keptn CLI for version 0.8.7, you can choose between:
     * **Automatic installation of the Keptn CLI (Linux and Mac)**:
@@ -64,7 +64,7 @@ before executing this command.
 <details><summary>Expand to see upgrade instructions:</summary>
 <p>
 
-1. Before starting the update, we strongly advise to create a backup of your Keptn projects. To do so, please follow the instructions in the [backup guide](../../operate/backup_and_restore).
+1. Before starting the update, we strongly advise to create a backup of your Keptn projects. To do so, please follow the instructions in the [backup guide](../../operate/backup_and_restore/).
 
 1. To download and install the Keptn CLI for version 0.8.6, you can choose between:
     * **Automatic installation of the Keptn CLI (Linux and Mac)**:
@@ -110,7 +110,7 @@ before executing this command.
 <details><summary>Expand to see upgrade instructions:</summary>
 <p>
 
-1. Before starting the update, we strongly advise to create a backup of your Keptn projects. To do so, please follow the instructions in the [backup guide](../../operate/backup_and_restore).
+1. Before starting the update, we strongly advise to create a backup of your Keptn projects. To do so, please follow the instructions in the [backup guide](../../operate/backup_and_restore/).
 
 1. To download and install the Keptn CLI for version 0.8.5, you can choose between:
     * **Automatic installation of the Keptn CLI (Linux and Mac)**:
@@ -157,7 +157,7 @@ before executing this command.
 <details><summary>Expand to see upgrade instructions:</summary>
 <p>
 
-1. Before starting the update, we strongly advise to create a backup of your Keptn projects. To do so, please follow the instructions in the [backup guide](../../operate/backup_and_restore).
+1. Before starting the update, we strongly advise to create a backup of your Keptn projects. To do so, please follow the instructions in the [backup guide](../../operate/backup_and_restore/).
 
 1. To download and install the Keptn CLI for version 0.8.4, you can choose between:
     * **Automatic installation of the Keptn CLI (Linux and Mac)**:
@@ -205,7 +205,7 @@ before executing this command.
 
 ### Step 1: Upgrade Keptn
 
-1. Before starting the update, we strongly advise to create a backup of your Keptn projects. To do so, please follow the instructions in the [backup guide](../../operate/backup_and_restore).
+1. Before starting the update, we strongly advise to create a backup of your Keptn projects. To do so, please follow the instructions in the [backup guide](../../operate/backup_and_restore/).
 
 1. To download and install the Keptn CLI for version 0.8.3, you can choose between:
     * **Automatic installation of the Keptn CLI (Linux and Mac)**:
@@ -283,7 +283,7 @@ before executing this command.
 <details><summary>Expand to see upgrade instructions:</summary>
 <p>  
 
-1. Before starting the update, we strongly advise to create a backup of your Keptn projects. To do so, please follow the instructions in the [backup guide](../../operate/backup_and_restore).
+1. Before starting the update, we strongly advise to create a backup of your Keptn projects. To do so, please follow the instructions in the [backup guide](../../operate/backup_and_restore/).
 
 1. To download and install the Keptn CLI for version 0.8.2, you can choose between:
     * **Automatic installation of the Keptn CLI (Linux and Mac)**:
@@ -329,7 +329,7 @@ before executing this command.
 <details><summary>Expand to see upgrade instructions:</summary>
 <p>   
 
-1. Before starting the update, we strongly advise to create a backup of your Keptn projects. To do so, please follow the instructions in the [backup guide](../../operate/backup_and_restore).
+1. Before starting the update, we strongly advise to create a backup of your Keptn projects. To do so, please follow the instructions in the [backup guide](../../operate/backup_and_restore/).
 
 1. To download and install the Keptn CLI for version 0.8.1, you can choose between:
     * **Automatic installation of the Keptn CLI (Linux and Mac)**:
@@ -376,7 +376,7 @@ Please follow the three steps to upgrade your Keptn 0.7.3 to 0.8.0.
 
 ### Step 1: Keptn CLI and Keptn installation
 
-1. Before starting the update, we strongly advise to create a backup of your Keptn projects. To do so, please follow the instructions in the [backup guide](../../operate/backup_and_restore).
+1. Before starting the update, we strongly advise to create a backup of your Keptn projects. To do so, please follow the instructions in the [backup guide](../../operate/backup_and_restore/).
 
 1. To download and install the Keptn CLI for version 0.8.0, you can choose between:
     * **Automatic installation of the Keptn CLI (Linux and Mac)**:
@@ -749,7 +749,7 @@ With the merge of [#2733](https://github.com/keptn/keptn/pull/2733), the Keptn C
       kubectl patch namespace <NAMESPACE> -p "{\"metadata\": {\"annotations\": {\"keptn.sh/managed-by\": \"keptn\"}, \"labels\": {\"keptn.sh/managed-by\": \"keptn\"}}}"
       ```
 
-   * Option B: *Using Keptn CLI [upgrade command](../../reference/cli/commands/keptn_upgrade)*:
+   * Option B: *Using Keptn CLI [upgrade command](../../reference/cli/commands/keptn_upgrade/)*:
 
       ```
       keptn upgrade --patch-namespace

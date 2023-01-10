@@ -8,7 +8,7 @@ The Keptn CloudEvents specification defines the event types and formats
 supported by Keptn core
 as well as the payload structure associated with each event.
 Keptn generates CloudEvents based on sequence and task names
-as defined in the [shipyard](../../files/shipyard).
+as defined in the [shipyard](../../files/shipyard/).
 
 Integrations and services that are configured in your Keptn cluster
 to integrate other tools may support additional event types
@@ -56,6 +56,6 @@ a vendor-neutral specification for defining the format of event data.
 * [Keptn CloudEvents specification](https://github.com/keptn/spec/blob/master/cloudevents.md)
 that defines the format of the event types recognized by Keptn core.
 
-* [shipyard](../../files/shipyard) reference
-* [distributor](../distributor) reference
+* [shipyard](../../files/shipyard/) reference
+* [distributor](../distributor/) reference
 

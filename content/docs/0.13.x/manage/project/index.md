@@ -11,7 +11,7 @@ In other words, the separation of stage configurations is based on git repositor
 
 ## Create a project
 
-To create a project, you can use the CLI command [keptn create project](../../reference/cli/commands/keptn_create_project) and pass a shipyard file.
+To create a project, you can use the CLI command [keptn create project](../../reference/cli/commands/keptn_create_project/) and pass a shipyard file.
 
 **Note**: To learn more about the shipyard specification, please have a look at [shipyard section](../shipyard/) and the [the Keptn spec](https://github.com/keptn/spec/blob/0.2.1/shipyard.md).
 
@@ -39,7 +39,7 @@ spec:
 
 ## Delete a project
 
-To delete a Keptn project, the [keptn delete project](../../reference/cli/commands/keptn_delete_project) command is provided:
+To delete a Keptn project, the [keptn delete project](../../reference/cli/commands/keptn_delete_project/) command is provided:
   ```console
   keptn delete project PROJECTNAME
   ```

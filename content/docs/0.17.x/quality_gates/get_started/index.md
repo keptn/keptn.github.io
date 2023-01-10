@@ -7,7 +7,7 @@ keywords: [0.17.x-quality_gates]
 
 In this section, you will get an overview of the use-case and learn how to get started setting up a quality gate for your project.
 
-:information_source: If you are not familiar with the concept of a quality gate, learn more [here](../../../concepts/quality_gates). 
+:information_source: If you are not familiar with the concept of a quality gate, learn more [here](../../../concepts/quality_gates/). 
 
 **Quality gate result**
 
@@ -36,21 +36,21 @@ This visualization in the Keptn Bridge allows you to answer the following questi
   * :five: The total score of a quality gate result is depicted by the cell on the top.
   * The individual criteria are represented by a separate cell in the column. 
 
-The rest of this section assumes you have Keptn [installed](../../../install/helm-install) on your cluster, your Keptn CLI is [authenticated](../../../install/authenticate-cli-bridge/#authenticate-keptn-cli), and you have a deployed application that is monitored by your favorite monitoring solution.
+The rest of this section assumes you have Keptn [installed](../../../install/helm-install/) on your cluster, your Keptn CLI is [authenticated](../../../install/authenticate-cli-bridge/#authenticate-keptn-cli), and you have a deployed application that is monitored by your favorite monitoring solution.
 
 Given these requirements, this section defines the entities of a Keptn project, stage, and services using an example. Afterwards, four steps explain how to set up the quality gate, trigger it, and finally see the quality gate evaluation result.
 
 ## Definition of project, stage, and service
 
 Let's assume you have an application that is running in an environment and composed of one or multiple services (aka. microservices). For example, you have an application called `easyBooking`, which can be broken down into the `booking` and `payment` service. Besides, the application is running in a `quality_assurance` environment (aka. stage).
-In order to manage your application and services in Keptn, you need a Keptn [project, stage](../../manage/project/) and [services](../../manage/service).
+In order to manage your application and services in Keptn, you need a Keptn [project, stage](../../manage/project/) and [services](../../manage/service/).
 For the `easyBooking` application, the Keptn entities of a project, stage, and service map to the example as follows:
 
 * `project`: *easyBooking*
 * `stage`: *quality_assurance*
 * `service`: *booking* & *payment* (For the sake of simplicity, a quality gate will be configured for `booking` only.)
 
-For defining the stage(s) a service has to go through, a [Shipyard](../../manage/shipyard) file is needed. Since a quality gate should be configured for the *quality_assurance* environment only, the corresponding Shipyard for the *easyBooking* project looks as follows:
+For defining the stage(s) a service has to go through, a [Shipyard](../../manage/shipyard/) file is needed. Since a quality gate should be configured for the *quality_assurance* environment only, the corresponding Shipyard for the *easyBooking* project looks as follows:
 
 ```yaml
 apiVersion: "spec.keptn.sh/0.2.3"

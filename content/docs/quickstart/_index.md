@@ -8,7 +8,7 @@ weight: 15
 hidechildren: true # this flag hides all sub-pages in the sidebar-multicard.html
 ---
 
-***Note: We suggest that you use the newly-released [Explore Keptn](../explore) exercise,
+***Note: We suggest that you use the newly-released [Explore Keptn](../explore/) exercise,
 rather than the exercises in this page.
 That exercise uses the [KillerCoda](https://killercoda.com/areas) platform
 to provide more extensive information
@@ -19,7 +19,7 @@ that runs as a [Helm](https://helm.sh) chart in Kubernetes,
 then run some basic exercises that demonstrate Keptn functionality.
 
 You can install and run Keptn on virtually any Kubernetes cluster.
-See [Install Keptn CLI](../install/cli-install) and [Install Keptn using the Helm chart](../install/helm-install) for detailed instructions
+See [Install Keptn CLI](../install/cli-install/) and [Install Keptn using the Helm chart](../install/helm-install/) for detailed instructions
 about creating a Keptn cluster locally or in the cloud.
 
 ## Helm
@@ -85,7 +85,7 @@ curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=v4.4
     k3d cluster create mykeptn -p "8082:80@loadbalancer" --k3s-server-arg "--kube-proxy-arg=conntrack-max-per-core=0"  --k3s-agent-arg "--kube-proxy-arg=conntrack-max-per-core=0" --agents 1
     ```
 
-2. **Download and install the [Keptn CLI](../0.18.x/reference/cli)**
+2. **Download and install the [Keptn CLI](../0.18.x/reference/cli/)**
 
     ```
     curl -sL https://get.keptn.sh | bash
@@ -111,7 +111,7 @@ helm install helm-service keptn/helm-service -n keptn
     keptn install --use-case=continuous-delivery
     ```
 
-    Keptn comes with different installation options, please have a look at the [installation documentation](../install) for more details on cluster requirements, resource consumption, supported Kubernetes versions, and more.
+    Keptn comes with different installation options, please have a look at the [installation documentation](../install/) for more details on cluster requirements, resource consumption, supported Kubernetes versions, and more.
     Please note that, although during the installation procedure it might be mentioned that Istio is required, it is *not required* for this quickstart guide.
 
     <details><summary>Installation logs</summary>
@@ -131,9 +131,9 @@ helm install helm-service keptn/helm-service -n keptn
     &nbsp;* To quickly access Keptn, you can use a port-forward and then authenticate your Keptn CLI:
     &nbsp;- kubectl -n keptn port-forward service/api-gateway-nginx 8080:80
     &nbsp;- keptn auth --endpoint=http://localhost:8080/api --api-token=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
-    &nbsp;* Alternatively, follow the instructions provided at: [Authenticate Keptn CLI](../a)
+    &nbsp;* Alternatively, follow the instructions provided at: [Authenticate Keptn CLI](../a/)
     &nbsp;* To expose Keptn on a public endpoint, please continue with the installation guidelines provided at:
-    &nbsp;- [Install Keptn](../0.18.x/docs/../../install/helm-install)
+    &nbsp;- [Install Keptn](../0.18.x/docs/../../install/helm-install/)
     </pre>
     **There is no need to follow the instructions from the installation log - the quickstart guide will cover this!**
     </p>
@@ -147,7 +147,7 @@ helm install helm-service keptn/helm-service -n keptn
 
 2. **Access Bridge**: you can now access the Keptn Web UI at `http://127.0.0.1.nip.io:8082/bridge`.
 
-    For different ways on how to expose your Keptn installation, please refer to [Install Keptn](../docs/install/../../install/helm-install).
+    For different ways on how to expose your Keptn installation, please refer to [Install Keptn](../docs/install/../../install/helm-install/).
 
 
 ### Try Multi-Stage Delivery
@@ -232,12 +232,12 @@ With Keptn installed, have a look at the different [tutorials](https://tutorials
 
 Review the documentation for a full reference on all Keptn capabilities and components and how they can be combined/extended to your needs:
 
-- [Operate Keptn](../0.18.x/operate)
-- [Manage Keptn](../0.18.x/manage)
-- [Continuous Delivery](../concepts/delivery)
-- [Continuous Performance Verification](../concepts/performance_validation)
-- [Automated Operations](../concepts/automated_operations)
-- [Custom Integrations](../docs/../integrations)
+- [Operate Keptn](../0.18.x/operate/)
+- [Manage Keptn](../0.18.x/manage/)
+- [Continuous Delivery](../concepts/delivery/)
+- [Continuous Performance Verification](../concepts/performance_validation/)
+- [Automated Operations](../concepts/automated_operations/)
+- [Custom Integrations](../integrations/)
 
 ## Wrapping up
 

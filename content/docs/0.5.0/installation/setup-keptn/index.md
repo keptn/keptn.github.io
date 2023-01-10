@@ -286,6 +286,6 @@ keptn configure domain YOUR_DOMAIN --keptn-version=0.5.2
 
 Please note that in case of any errors, the install process might leave some files in an inconsistent state. Therefore `keptn install` cannot be executed a second time without `keptn uninstall`. To address a unsuccessful installation: 
 
-1. [Verify the Keptn installation](../../reference/troubleshooting#verifying-a-keptn-installation).
+1. [Verify the Keptn installation](../../reference/troubleshooting/#verifying-a-keptn-installation).
 
 1. Uninstall Keptn by executing the [keptn uninstall](../../reference/cli#keptn-uninstall) command before conducting a re-installation.  

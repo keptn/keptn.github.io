@@ -19,7 +19,7 @@ In Keptn 0.14.x, this can be either *Dynatrace* or *Prometheus*.
     keptn configure monitoring dynatrace --project=musicshop
     ```
 
-* Configure custom Dynatrace SLIs as explained [here](../../monitoring/dynatrace/configure_slis).
+* Configure custom Dynatrace SLIs as explained [here](../../monitoring/dynatrace/configure_slis/).
 
 ## Prometheus SLI-Provider
 
@@ -35,6 +35,6 @@ In Keptn 0.14.x, this can be either *Dynatrace* or *Prometheus*.
 
 ## Add custom SLI-Provider
 
-* To create and add your custom SLI-provider to Keptn, please follow the instructions [here](../../integrations/sli_provider).
+* To create and add your custom SLI-provider to Keptn, please follow the instructions [here](../../integrations/sli_provider/).
 
 

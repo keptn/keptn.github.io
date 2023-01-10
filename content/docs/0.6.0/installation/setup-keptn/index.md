@@ -323,6 +323,6 @@ kubectl get namespaces
 
 Please note that in case of any errors, the install process might leave some files in an inconsistent state. Therefore [keptn install](../../reference/cli/commands/keptn_install) cannot be executed a second time without [keptn uninstall](../../reference/cli/commands/keptn_uninstall). To address a unsuccessful installation: 
 
-1. [Verify the Keptn installation](../../reference/troubleshooting#verifying-a-keptn-installation).
+1. [Verify the Keptn installation](../../reference/troubleshooting/#verifying-a-keptn-installation).
 
 1. Uninstall Keptn by executing the [keptn uninstall](../../reference/cli/commands/keptn_uninstall) command before conducting a re-installation.  

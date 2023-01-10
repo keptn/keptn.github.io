@@ -8,21 +8,21 @@ keywords: [0.18.x-quality_gates]
 A quality gate allows you to validate a deployment or release
 using data provided by your observability platform
 and using quality criteria that you define as Service Level Objectives (SLOs);
-see the [SLO](../../reference/files/slo) reference page.
+see the [SLO](../../reference/files/slo/) reference page.
 
-:information_source: If you are not familiar with the concept of a quality gate, learn more [here](../../../concepts/quality_gates). 
+:information_source: If you are not familiar with the concept of a quality gate, learn more [here](../../../concepts/quality_gates/). 
 
 ## Definition of project, stage, and service
 
 Let's assume you have an application that is running in an environment and composed of one or multiple services (aka. microservices). For example, you have an application called `easyBooking`, which can be broken down into the `booking` and `payment` service. Besides, the application is running in a `quality_assurance` environment (aka. stage).
-In order to manage your application and services in Keptn, you need a Keptn [project, stage](../../manage/project/) and [services](../service).
+In order to manage your application and services in Keptn, you need a Keptn [project, stage](../../manage/project/) and [services](../service/).
 For the `easyBooking` application, the Keptn entities of a project, stage, and service map to the example as follows:
 
 * `project`: *easyBooking*
 * `stage`: *quality_assurance*
 * `service`: *booking* & *payment* (For the sake of simplicity, a quality gate will be configured for `booking` only.)
 
-For defining the stage(s) a service has to go through, a [Shipyard](../../reference/files/shipyard) file is needed.
+For defining the stage(s) a service has to go through, a [Shipyard](../../reference/files/shipyard/) file is needed.
 Since a quality gate should be configured for the *quality_assurance* environment only, the corresponding Shipyard for the *easyBooking* project looks as follows:
 
 ```yaml
@@ -61,7 +61,7 @@ spec:
 
 * To create the Keptn project `easyBooking`,
 use the [keptn create project](../../reference/cli/commands/keptn_create_project/) command
-as discussed in [Create a project](../../manage/project).
+as discussed in [Create a project](../../manage/project/).
 
 * To create the Keptn service `booking`,
 use the [keptn create service](../../reference/cli/commands/keptn_create_service/) command

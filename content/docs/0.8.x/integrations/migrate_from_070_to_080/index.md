@@ -675,7 +675,7 @@ Heavy refactoring was done in main.go. If you can, copy the content from https:/
         ...
     }
     ```
-* **func _main(...) uses cloudevents.NewClient** to run the http events endpoint
+* **func _main(.../) uses cloudevents.NewClient** to run the http events endpoint
     ```golang
     func _main(args []string, env envConfig) int {
         // configure keptn options

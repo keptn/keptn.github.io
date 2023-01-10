@@ -13,7 +13,7 @@ In other words, the separation of stage configurations is based on git repositor
 
 ## Create a project
 
-To create a project, use the CLI command [keptn create project](../../reference/cli/commands/keptn_create_project) and pass a [shipyard](../../reference/files/shipyard) file.
+To create a project, use the CLI command [keptn create project](../../reference/cli/commands/keptn_create_project/) and pass a [shipyard](../../reference/files/shipyard/) file.
 
 The simplest *shipyard.yaml* file has a single stage and no sequences defined would look like this:
 ```

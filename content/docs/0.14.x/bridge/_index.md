@@ -182,7 +182,7 @@ and additional data is gathered from the client. For more information about this
 
 #### Project settings
 In the settings view the project settings can be edited. 
-To get more information about how to manage your projects with the settings, visit [Manage Projects](./manage_projects).
+To get more information about how to manage your projects with the settings, visit [Manage Projects](./manage_projects/).
 
 {{< popup_image
 link="./assets/project-settings.png"
@@ -191,7 +191,7 @@ caption="Keptn Bridge Project Settings View">}}
 
 #### Service settings
 In this view, services can be created, updated and deleted.
-To get more information about how services can be managed in your settings, visit [Manage Services](./manage_services).
+To get more information about how services can be managed in your settings, visit [Manage Services](./manage_services/).
 
 {{< popup_image
 link="./assets/service-settings.png"
@@ -226,7 +226,7 @@ caption="Approval in Sequences">}}
 
 ### Manage projects
 
-See the documentation for [managing projects](./manage_projects) to see which features for creating and updating projects the Bridge provides.
+See the documentation for [managing projects](./manage_projects/) to see which features for creating and updating projects the Bridge provides.
 
 ## Early access version of Keptn Bridge
 

@@ -4,12 +4,12 @@ description: Install Keptn on your Kubernetes cluster and expose it
 weight: 10
 ---
 
-Keptn can run on top of virtually any [Kubernetes](../k8s-support) cluster.
+Keptn can run on top of virtually any [Kubernetes](../k8s-support/) cluster.
 It can be installed in its own namespace on an existing Kubernetes cluster
 or on it's own cluster.
 You can also deploy the Keptn Control Plane on one Kubernetes cluster
 and deploy the Keptn Execution Plane on another Kubernetes cluster;
-see [Multi-cluster setup](../multi-cluster) for details.
+see [Multi-cluster setup](../multi-cluster/) for details.
 
 Before you install a new Kubernetes cluster,
 you must install the [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) CLI.
@@ -128,7 +128,7 @@ Run your Keptn installation for free on GKE! If you [sign up for a Google Cloud 
 
 Please refer to the [official homepage of K3s](https://k3s.io) for detailed installation instructions. Here, a short guide on how to run Keptn on K3s is provided for a Linux environment. **Note:** If you are using macOS, you will need to run K3s using [multipass](https://multipass.run/) and as explained [here](https://medium.com/@zhimin.wen/running-k3s-with-multipass-on-mac-fbd559966f7c).
  
-1. Download, install [K3s](https://k3s.io/) (tested with [versions 1.17 to 1.21](../k8s-support)) and run K3s using the following command:
+1. Download, install [K3s](https://k3s.io/) (tested with [versions 1.17 to 1.21](../k8s-support/)) and run K3s using the following command:
    ```console
    curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.20.4+k3s1 K3S_KUBECONFIG_MODE="644" sh -s - --no-deploy=traefik
    ```
@@ -157,7 +157,7 @@ k3d v5.x.x requires at least Docker v20.10.5 (runc >= v1.0.0-rc93) to work prope
 
 You must install [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) before installing K3d. This is used to interact with the Kubernetes cluster.
 
-1. Download, install [K3d](https://k3d.io/v5.3.0/) (tested with [v5.3.0](../k8s-support)) and run K3d using the following command:
+1. Download, install [K3d](https://k3d.io/v5.3.0/) (tested with [v5.3.0](../k8s-support/)) and run K3d using the following command:
 
    ```console
    curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=v5.3.0 bash
@@ -180,7 +180,7 @@ You must install [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) befo
 <details><summary>Minikube</summary>
 <p>
 
-1. Download and install [Minikube](https://github.com/kubernetes/minikube/releases) (tested with [versions 1.3 to 1.10](../k8s-support)).
+1. Download and install [Minikube](https://github.com/kubernetes/minikube/releases) (tested with [versions 1.3 to 1.10](../k8s-support/)).
 
 1. Create a new Minikube profile (named keptn) with at least 6 CPU cores and 14 GB memory using:
 

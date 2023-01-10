@@ -16,15 +16,15 @@ It is most commonly used in production stages but can be used in any type of sta
 
 To implement a remediation sequence, you must:
 
-* Install an [action-provider](../../reference/files/action-provider)
+* Install an [action-provider](../../reference/files/action-provider/)
   that performs the corrective actions to be taken
-* Configure a [remediation](../../reference/files/remediation)
+* Configure a [remediation](../../reference/files/remediation/)
   that calls each required action in order and configure it
-* Configure a `remediation` sequence in the project's [shipyard](../../reference/files/shipyard)
+* Configure a `remediation` sequence in the project's [shipyard](../../reference/files/shipyard/)
 
 ## Example remediation sequence in shipyard
 
-The definition of a remediation sequence is done in the project's [Shipyard](../../reference/files/shipyard).
+The definition of a remediation sequence is done in the project's [Shipyard](../../reference/files/shipyard/).
 
 **Example**: Simple shipyard file with a remediation sequence in a single stage
 
@@ -52,7 +52,7 @@ The definition of a remediation sequence is done in the project's [Shipyard](../
 
 ## Example remediation configuration
 
-Below is an example of a [remediation](../../reference/files/remediation) configuration
+Below is an example of a [remediation](../../reference/files/remediation/) configuration
 that uses the [Helm action-provider](../../reference/files/action-provider/#helm-action-provider)
 to add pods to the cluster:
 

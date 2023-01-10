@@ -72,7 +72,7 @@ Run your Keptn installation for free on GKE! If you [sign up for a Google Cloud 
 2. Create GKE cluster
   - [Master version:](../k8s_support/#supported-versions) `1.17.x` and `1.18.x` (tested version: `1.18.12`)
   - One node with 8 vCPUs and 32 GB memory (e.g., one **n1-standard-8** node)
-  - Image type `Ubuntu` or `COS` (**Note:** If you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../monitoring/dynatrace/).)
+  - Image type `Ubuntu` or `COS` (**Note:** If you plan to use Dynatrace monitoring, select `ubuntu` for a more [convenient setup](../../monitoring/dynatrace/)./)
   - Sample script to create such a cluster:
 
     ```console
@@ -168,7 +168,7 @@ Run your Keptn installation for free on GKE! If you [sign up for a Google Cloud 
 
 Please refer to the [official homepage of K3s](https://k3s.io) for detailed installation instructions. Here, a short guide on how to run Keptn on K3s is provided for a Linux environment. **Note:** If you are using macOS, you will need to run K3s using [multipass](https://multipass.run/) and as explained [here](https://medium.com/@zhimin.wen/running-k3s-with-multipass-on-mac-fbd559966f7c).
  
-1. Download, install [K3s](https://k3s.io/) (tested with [versions 1.17 to 1.21](../k8s_support)) and run K3s using the following command:
+1. Download, install [K3s](https://k3s.io/) (tested with [versions 1.17 to 1.21](../k8s_support/)) and run K3s using the following command:
    ```console
    curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.20.4+k3s1 K3S_KUBECONFIG_MODE="644" sh -s - --no-deploy=traefik
    ```
@@ -190,7 +190,7 @@ Please refer to the [official homepage of K3s](https://k3s.io) for detailed inst
 <details><summary>Minikube</summary>
 <p>
 
-1. Download and install [Minikube](https://github.com/kubernetes/minikube/releases) (tested with [versions 1.3 to 1.10](../k8s_support)).
+1. Download and install [Minikube](https://github.com/kubernetes/minikube/releases) (tested with [versions 1.3 to 1.10](../k8s_support/)).
 
 1. Create a new Minikube profile (named keptn) with at least 6 CPU cores and 14 GB memory using:
 
@@ -595,7 +595,7 @@ After [installing Keptn](#install-keptn), you already have your Keptn endpoint.
 KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
 ```
 
-* To authenticate the CLI against the Keptn cluster, use the [keptn auth](../../reference/cli/commands/keptn_auth) command:
+* To authenticate the CLI against the Keptn cluster, use the [keptn auth](../../reference/cli/commands/keptn_auth/) command:
 
 ```console
 keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN
@@ -628,7 +628,7 @@ $tokenEncoded = $(kubectl get secret keptn-api-token -n keptn -ojsonpath='{.data
 $Env:KEPTN_API_TOKEN = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($tokenEncoded))
 ```
 
-* To authenticate the CLI against the Keptn cluster, use the [keptn auth](../../reference/cli/commands/keptn_auth) command:
+* To authenticate the CLI against the Keptn cluster, use the [keptn auth](../../reference/cli/commands/keptn_auth/) command:
 
 ```
 keptn auth --endpoint=$Env:KEPTN_ENDPOINT --api-token=$Env:KEPTN_API_TOKEN
@@ -672,7 +672,7 @@ certutil -decode keptn-api-token-base64.txt keptn-api-token.txt
 set KEPTN_API_TOKEN=keptn-api-token
 ```
 
-* To authenticate the CLI against the Keptn cluster, use the [keptn auth](../../reference/cli/commands/keptn_auth) command:
+* To authenticate the CLI against the Keptn cluster, use the [keptn auth](../../reference/cli/commands/keptn_auth/) command:
 
 ```
 keptn.exe auth --endpoint=$Env:KEPTN_ENDPOINT --api-token=$Env:KEPTN_API_TOKEN
@@ -720,12 +720,12 @@ This will keep all your data including the Git repos and events.
 
 ## Advanced: Install Keptn using the Helm chart
 
-Please see our guide at [Advanced Installation Options](../advanced_install_options) for more information.
+Please see our guide at [Advanced Installation Options](../advanced_install_options/) for more information.
 
 ## Troubleshooting
 
-1. [Verify the Keptn installation](../../troubleshooting#verifying-a-keptn-installation).
+1. [Verify the Keptn installation](../../troubleshooting/#verifying-a-keptn-installation).
 
-1. [Generate a support-archive](../../reference/cli/commands/keptn_generate_support-archive) and ask for help in our [Slack channel](https://slack.keptn.sh).
+1. [Generate a support-archive](../../reference/cli/commands/keptn_generate_support-archive/) and ask for help in our [Slack channel](https://slack.keptn.sh).
 
-1. Uninstall Keptn by executing the [keptn uninstall](../../reference/cli/commands/keptn_uninstall) command before conducting a re-installation.  
+1. Uninstall Keptn by executing the [keptn uninstall](../../reference/cli/commands/keptn_uninstall/) command before conducting a re-installation.  

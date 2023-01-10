@@ -10,7 +10,7 @@ In this section, instructions have been summarized that help to troubleshoot kno
 ## Generating a Support Archive
 
 Use the Keptn CLI to generate a support archive, which can be used as a data source for debugging a Keptn installation.
-For generating a support archive, please checkout the CLI command [keptn generate support-archive](../reference/cli/commands/keptn_generate_support-archive).
+For generating a support archive, please checkout the CLI command [keptn generate support-archive](../reference/cli/commands/keptn_generate_support-archive/).
 
 ## Keptn API cannot be reached
 
@@ -104,7 +104,7 @@ When creating a project failed, this can cause a problematic state that manifest
 <details><summary>Expand instructions</summary>
 <p>
 
-**Situation**: Executing [keptn create project](../reference/cli/commands/keptn_create_project) failed with following error message: 
+**Situation**: Executing [keptn create project](../reference/cli/commands/keptn_create_project/) failed with following error message: 
 
 ```console
 Starting to create project   
@@ -116,7 +116,7 @@ Creating project sockshop failed. Could not commit changes.
 
 **Solution**: 
 
-* Try to execute the command [keptn delete project](../reference/cli/commands/keptn_delete_project):
+* Try to execute the command [keptn delete project](../reference/cli/commands/keptn_delete_project/):
 
 * If the command did not work, manually delete the faulty project in the `configuration-service` pod.
 
@@ -201,7 +201,7 @@ Most likely Istio is not installed on your Kubernetes cluster.
 
 **Solution:**
 
-Install Istio as described in the [Install and configure Istio](../../install/istio) section.
+Install Istio as described in the [Install and configure Istio](../../install/istio/) section.
 
 </p></details>
 

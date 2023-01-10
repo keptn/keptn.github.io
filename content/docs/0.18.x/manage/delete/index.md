@@ -7,7 +7,7 @@ aliases:
 ---
 
 To delete a Keptn project,
-use the [keptn delete project](../../reference/cli/commands/keptn_delete_project) command:
+use the [keptn delete project](../../reference/cli/commands/keptn_delete_project/) command:
 
   ```
   keptn delete project PROJECTNAME

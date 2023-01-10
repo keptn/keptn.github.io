@@ -7,11 +7,11 @@ aliases:
 - /docs/1.0.x/manage/shipyard/
 ---
 
-A Keptn project's [shipyard](../../reference/files/shipyard) can be modified in two ways:
+A Keptn project's [shipyard](../../reference/files/shipyard/) can be modified in two ways:
 
-* [Delete the project](../delete) then [create a new project](../project/#create-a-project)
+* [Delete the project](../delete/) then [create a new project](../project/#create-a-project)
   that contains the updated settings.
-* Modify the project files that are stored in the [Git *upstream* repository](../git_upstream)
+* Modify the project files that are stored in the [Git *upstream* repository](../git_upstream/)
 
 :warning: Only modify your shipyard in ways mentioned in this section.
 
@@ -163,7 +163,7 @@ spec:
 
 After extending the shipyard as shown above,
 remediations should be executed when a problem event is retrieved.
-See [Remediation sequences](../../define/remediation-sequence).
+See [Remediation sequences](../../define/remediation-sequence/).
 
 
 

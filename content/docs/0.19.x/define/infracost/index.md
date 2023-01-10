@@ -16,10 +16,10 @@ The flow is:
   to execute Infracost in a container as a Kubernetes job that is orchestrated by Keptn
 * Execute a Python script that runs Infracost
   and pushes Infracost metrics to a backend.  We use Prometheus.
-* Add an `evaluation` sequence to the [shipyard](../../reference/files/shipyard).
+* Add an `evaluation` sequence to the [shipyard](../../reference/files/shipyard/).
   This sequence is triggered after the Python script finishes.
   It executes a quality gate evaluation that checks the deployment,
   based on the Infracost metrics it receives from Prometheus
-* Use the [Keptn Bridge](../../bridge) to trigger and monitor the sequence
+* Use the [Keptn Bridge](../../bridge/) to trigger and monitor the sequence
 
 

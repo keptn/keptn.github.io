@@ -13,9 +13,9 @@ aliases:
 A quality gate allows you to validate a deployment or release
 using data provided by your observability platform
 and using quality criteria that you define as Service Level Objectives (SLOs);
-see the [SLO](../../reference/files/slo) reference page.
+see the [SLO](../../reference/files/slo/) reference page.
 
-:information_source: If you are not familiar with the concept of a quality gate, learn more [here](../../../concepts/quality_gates). 
+:information_source: If you are not familiar with the concept of a quality gate, learn more [here](../../../concepts/quality_gates/). 
 
 ## Video demonstration
 
@@ -26,8 +26,8 @@ The following video illustrates how to implement a quality gate evaluation:
 This shows how to configure the three elements that Keptn requires to run an evaluation:
 
 * The observability platform to use as a data source
-* Which metrics ([SLIs](../../reference/files/sli)) to retrieve from that observability platform
-* What threshholds ([SLOs](../../reference/files/slo)) are acceptable for each metric
+* Which metrics ([SLIs](../../reference/files/sli/)) to retrieve from that observability platform
+* What threshholds ([SLOs](../../reference/files/slo/)) are acceptable for each metric
 
 You will also see
 
@@ -39,14 +39,14 @@ You will also see
 ## Definition of project, stage, and service
 
 Let's assume you have an application that is running in an environment and composed of one or multiple services (aka. microservices). For example, you have an application called `easyBooking`, which can be broken down into the `booking` and `payment` service. Besides, the application is running in a `quality_assurance` environment (aka. stage).
-In order to manage your application and services in Keptn, you need a Keptn [project, stage](../../manage/project/) and [services](../../manage/service).
+In order to manage your application and services in Keptn, you need a Keptn [project, stage](../../manage/project/) and [services](../../manage/service/).
 For the `easyBooking` application, the Keptn entities of a project, stage, and service map to the example as follows:
 
 * `project`: *easyBooking*
 * `stage`: *quality_assurance*
 * `service`: *booking* & *payment* (For the sake of simplicity, a quality gate will be configured for `booking` only.)
 
-For defining the stage(s) a service has to go through, a [Shipyard](../../reference/files/shipyard) file is needed.
+For defining the stage(s) a service has to go through, a [Shipyard](../../reference/files/shipyard/) file is needed.
 Since a quality gate should be configured for the *quality_assurance* environment only, the corresponding Shipyard for the *easyBooking* project looks as follows:
 
 ```yaml
@@ -85,7 +85,7 @@ spec:
 
 * To create the Keptn project `easyBooking`,
 use the [keptn create project](../../reference/cli/commands/keptn_create_project/) command
-as discussed in [Create a project](../../manage/project).
+as discussed in [Create a project](../../manage/project/).
 
 * To create the Keptn service `booking`,
 use the [keptn create service](../../reference/cli/commands/keptn_create_service/) command

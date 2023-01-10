@@ -23,7 +23,7 @@ It allows for interoperability and any kinds of integrations in the Keptn ecosys
 
 ## Start with the shipyard
 
-Keptn's [shipyard](../../reference/files/shipyard) file is the blueprint for your Keptn environment.
+Keptn's [shipyard](../../reference/files/shipyard/) file is the blueprint for your Keptn environment.
 While it may look like a pipeline, nowhere does it mention the tooling used to action each task.
 This is deliberate and by design.
 It is this factor that allows hot-swapping of tools.
@@ -88,7 +88,7 @@ Uninstall the Jmeter Service and install a service that listens for the `test.tr
 Keptn uses observability tools (more generally, tools that provide metrics)
 as the data source for monitoring during the `evaluation` task.
 The `evaluation` task is an out-of-the-box Keptn feature
-that provides a [quality gate](../quality_gates).
+that provides a [quality gate](../quality_gates/).
 This quality gate can work with any metric from any tool.
 
 During creation of a Keptn project,
@@ -136,4 +136,4 @@ More details are provided at the bottom of the Integrations page.
 
 ## Try Keptn?
 
-Want to try out Keptn? Head to the [Keptn Quick Start page](../../quickstart) to begin.
+Want to try out Keptn? Head to the [Keptn Quick Start page](../../quickstart/) to begin.

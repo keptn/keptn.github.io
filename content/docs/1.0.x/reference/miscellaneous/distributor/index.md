@@ -207,11 +207,11 @@ This causes a crashloop for any Keptn service that is not using the 0.14.x distr
 If you cannot update your distributor to 0.14.x,
 you may be able to run your existing distributor
 by setting the `PUBSUB_URL`environment variable to `nats://keptn-nats`.
-See the [Keptn.0.14.1 Release Announcement](../../../../news/release_announcements/keptn-0141)
+See the [Keptn.0.14.1 Release Announcement](../../../../news/release_announcements/keptn-0141/)
 for details.
 
 ## See also
 
-* [distributor](../../files/distributor)
-* [Write a Keptn-service](../../../integrations/custom_integration)
+* [distributor](../../files/distributor/)
+* [Write a Keptn-service](../../../integrations/custom_integration/)
 
