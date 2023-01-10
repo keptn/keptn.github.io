@@ -2,6 +2,8 @@
 title: Keptn Bridge (Web UI)
 description: Keptn dashboard used to view and manage projects and services managed by Keptn.
 weight: 410
+aliases:
+- /docs/1.0.x/reference/bridge/
 ---
 
 The Keptn Bridge is the Keptn user interface.

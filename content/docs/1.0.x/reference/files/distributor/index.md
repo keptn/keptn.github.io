@@ -2,6 +2,8 @@
 title: distributor
 description: Define a distributor
 weight: 125
+aliases:
+- /docs/1.0.x/reference/files/distributor.yaml/
 ---
 
 You can create your own distributor by writing a dedicated distributor deployment yaml:

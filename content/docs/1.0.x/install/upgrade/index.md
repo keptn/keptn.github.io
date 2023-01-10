@@ -2,6 +2,8 @@
 title: Upgrade Keptn
 description: Upgrade your Keptn
 weight: 500
+aliases:
+- /docs/1.0.x/integrations/migrate_from_070_to_080/
 ---
 
 Keptn only supports upgrading from one release to the next;
@@ -87,11 +89,11 @@ and use that merged file to upgrade the service:
    helm pull https://charts.keptn.sh/packages/<exec-plane-service>-<release>.tgz`
    ```
 
-     For example, to download the Helm chart for `helm-service`, Release 1.0.0,
+     For example, to download the Helm chart for `helm-service`, Release 0.18.1,
      the command is:
 
      ```
-     helm pull https://charts.keptn.sh/packages/helm-service-1.0.0.tgz`
+     helm pull https://charts.keptn.sh/packages/helm-service-0.18.1.tgz`
      ```
 
 1. Unpack the downloaded file.
@@ -99,10 +101,10 @@ and use that merged file to upgrade the service:
    and your previously downloaded `old-values.yaml` together.
 1. Use the merged `values` file and the `helm` command to do the upgrade
    to upgrade to the new version of your execution plane service.
-   For the `helm-service` example, the command to upgrade to version 1.0.0 is:
+   For the `helm-service` example, the command to upgrade to version 0.18.1 is:
 
    ```
-   helm upgrade <your-exec-plane-service> -n exec-plane --version 1.0.0 \
+   helm upgrade <your-exec-plane-service> -n exec-plane --version 0.18.1 \
      --values <your-adjusted-values-file>
    ```
 

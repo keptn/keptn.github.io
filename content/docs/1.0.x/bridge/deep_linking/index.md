@@ -3,6 +3,8 @@ title: Deep Linking
 description: Deep links into Bridge for better integration into DevOps tools
 weight: 30
 keywords: [1.0.x-bridge]
+aliases:
+- /docs/1.0.x/reference/bridge/deep_linking/
 ---
 
 A list of deep links is provided to integrate the Keptn Bridge into DevOps tools.
