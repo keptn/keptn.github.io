@@ -3,6 +3,8 @@ title: Manage Services
 description: Create, update and delete services from the Bridge
 weight: 40
 keywords: [1.0.x-bridge]
+aliases:
+- /docs/1.0.x/reference/bridge/manage_services/
 ---
 
 The Bridge provides features to make managing services more convenient. It is possible to create and delete services directly from the UI.

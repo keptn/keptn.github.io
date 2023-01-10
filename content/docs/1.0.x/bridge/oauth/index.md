@@ -5,6 +5,7 @@ weight: 20
 keywords: [0.11.x-bridge]
 aliases:
   - /docs/0.11.x/operate/user_management/openid_authentication/
+  - /docs/1.0.x/reference/bridge/oauth/
 ---
 
 ## Enable/Disable Authentication

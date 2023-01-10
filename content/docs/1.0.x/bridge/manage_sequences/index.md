@@ -3,6 +3,8 @@ title: Manage Sequences
 description: Manage sequences from the Bridge
 weight: 40
 keywords: [1.0.x-bridge]
+aliases:
+- /docs/1.0.x/reference/bridge/manage_sequences/
 ---
 
 ## Trigger new sequences

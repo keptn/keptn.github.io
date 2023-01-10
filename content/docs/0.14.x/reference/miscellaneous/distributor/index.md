@@ -196,6 +196,6 @@ for details.
 
 ## See also
 
-* [distributor.yaml](../../files/distributor.yaml)
-* [Write a Keptn-service](../../../integrations/custom_integration)
+* [distributor.yaml](../../files/distributor.yaml/)
+* [Write a Keptn-service](../../../integrations/custom_integration/)
 
