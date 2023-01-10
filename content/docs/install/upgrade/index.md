@@ -29,7 +29,7 @@ This page has the following information:
 To upgrade the control plane:
 
 1. Back up your Keptn instance, following
-   [Keptn's backup instructions](../../0.19.x/operate/backup_and_restore/)
+   [Keptn's backup instructions](../../{{< param "version" >}}/operate/backup_and_restore/)
 1. Make sure you are connected to the Kubernetes cluster where Keptn is installed.
 1. Fetch your current Helm values into a file with the follwoing command:
 
