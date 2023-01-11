@@ -8,7 +8,7 @@ aliases:
 - /docs/1.0.x/automated_operations/action-provider/
 ---
 
-An action-provider defines the actions that can be declared in a [remediation](../remediation) configuration.
+An action-provider defines the actions that can be declared in a [remediation](../remediation/) configuration.
 The action-provider receives a Keptn event, performs its action, and notifies Keptn about the execution.
 Keptn serves as the control plane that orchestrates the remediation
 but the action-provider executes the corrective action.
@@ -22,7 +22,7 @@ The [Unleash](https://artifacthub.io/packages/keptn/keptn-integrations/unleash-s
 toggles the feature flag specified by the `key-value` map in the value property.
 The `key` declares the name of the feature toggle and the `value` specifies the target setting. 
 
-* Action that needs to be added to the `actionsOnOpen` field in the [remediation](../remediation) configuration:
+* Action that needs to be added to the `actionsOnOpen` field in the [remediation](../remediation/) configuration:
 
 ```yaml
 - name: Toogle feature flag
@@ -62,4 +62,4 @@ This action-provider increases the ReplicaSet of a Kubernetes deployment by the 
 ## Add a custom Action-Provider
 
 * To create and add your custom action-provider to Keptn,
-follow the instructions [Custom Action-Provider](../../../integrations/action_provider) page.
+follow the instructions [Custom Action-Provider](../../../integrations/action_provider/) page.

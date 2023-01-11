@@ -37,7 +37,7 @@ Please join the chapter and register for the events!
 
 ## Newsletter
 
-The [Keptn newsletter](/community/newsletter) is our way to inform the Keptn community on the latest updates of the project.
+The [Keptn newsletter](/community/newsletter/) is our way to inform the Keptn community on the latest updates of the project.
 
 ✅ Watch for new releases of Keptn
 

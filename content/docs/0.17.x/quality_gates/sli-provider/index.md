@@ -21,6 +21,6 @@ to configure Keptn to use the appropriate SLIs for your project:
 
 ## Add custom SLI-Provider
 
-* To create and add your custom SLI-provider to Keptn, please follow the instructions [here](../../integrations/sli_provider).
+* To create and add your custom SLI-provider to Keptn, please follow the instructions [here](../../integrations/sli_provider/).
 
 

@@ -17,7 +17,7 @@ The query for an SLI is provider/tool-dependent;
 therefore, each SLI-provider relies on a specific SLI configuration.
 
 Provider-specific SLIs are discussed in the documentation
-for the [integrations](../../../../integrations)
+for the [integrations](../../../../integrations/)
 of each monitoring platform:
 
 * [Datadog](https://artifacthub.io/packages/keptn/keptn-integrations/datadog-service)
@@ -27,7 +27,7 @@ of each monitoring platform:
 * [Prometheus](https://artifacthub.io/packages/keptn/keptn-integrations/prometheus-service)
 
 You can also create and add your custom SLI-provider to Keptn.
-Follow the instructions [Custom SLI-Provider](../../../integrations/sli_provider).
+Follow the instructions [Custom SLI-Provider](../../../integrations/sli_provider/).
 
 ## Service-Level Indicator format
 
@@ -50,14 +50,14 @@ that can fetch the declared SLIs.
 For Dynatrace, the value of the `resourceUri` must be: `dynatrace/sli.yaml`.
 
 * To add an SLI configuration to a service,
-use the [keptn add-resource](../../cli/commands/keptn_add-resource) command:
+use the [keptn add-resource](../../cli/commands/keptn_add-resource/) command:
 
   ```console
   keptn add-resource --project=sockshop --stage=staging --service=carts --resource=sli-config.yaml  --resourceUri=dynatrace/sli.yaml
   ```
 
 * To add an SLI configuration to a stage,
-use the [keptn add-resource](../../cli/commands/keptn_add-resource) command:
+use the [keptn add-resource](../../cli/commands/keptn_add-resource/) command:
 
   ```console
   keptn add-resource --project=sockshop --stage=staging --resource=sli-config.yaml --resourceUri=dynatrace/sli.yaml
@@ -67,7 +67,7 @@ use the [keptn add-resource](../../cli/commands/keptn_add-resource) command:
 
 
 * To add an SLI configuration to a project,
-use the [keptn add-resource](../../cli/commands/keptn_add-resource) command:
+use the [keptn add-resource](../../cli/commands/keptn_add-resource/) command:
 
   ```console
   keptn add-resource --project=sockshop --resource=sli-config.yaml --resourceUri=dynatrace/sli.yaml
@@ -144,7 +144,7 @@ then at the stage level, and finally at the project level if no other configurat
 
 ## See also
 
-* [slo](../slo)
+* [slo](../slo/)
 
 * [Dynatrace](https://artifacthub.io/packages/keptn/keptn-integrations/dynatrace-service)
   * [Configuring the dynatrace-service with dynatrace/dynatrace.conf.yaml](https://github.com/keptn-contrib/dynatrace-service/blob/master/documentation/dynatrace-conf-yaml-file.md#customizing-the-conf[…]ptn-stage-or-service)
@@ -153,7 +153,7 @@ then at the stage level, and finally at the project level if no other configurat
 
 * [Datadog](https://artifacthub.io/packages/keptn/keptn-integrations/datadog-service)
 
-* [Quality Gates](../../../define/quality-gates)
+* [Quality Gates](../../../define/quality-gates/)
 
 
 

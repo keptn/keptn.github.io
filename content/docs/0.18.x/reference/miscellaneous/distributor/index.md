@@ -165,7 +165,7 @@ The remaining parameters, such as `PUBSUB_RECIPIENT`, `PUBSUB_RECIPIENT_PORT` an
 
 **Providing a unique name for execution planes that run the same integration**
 
-If your Keptn [multi-cluster set-up](../../../../install/multi-cluster)
+If your Keptn [multi-cluster set-up](../../../../install/multi-cluster/)
 includes multiple execution planes that run the same integration service,
 you must configure a unique name for each execution plane.
 By default, Keptn uses the execution plane integration name and version to identify the execution plane.
@@ -197,7 +197,7 @@ Distributors are installed automatically as a part of [Keptn](https://keptn.sh).
 ## Deploy in your Kubernetes cluster
 
 To deploy the current version of a *distributor* in your Keptn Kubernetes cluster,
-apply the [deploy/distributor.yaml](../../files/distributor) file from this repository:
+apply the [deploy/distributor.yaml](../../files/distributor/) file from this repository:
 
 ```
 kubectl apply -f deploy/service.yaml
@@ -238,11 +238,11 @@ This causes a crashloop for any Keptn service that is not using the 0.14.x distr
 If you cannot update your distributor to 0.14.x,
 you may be able to run your existing distributor
 by setting the `PUBSUB_URL`environment variable to `nats://keptn-nats`.
-See the [Keptn.0.14.1 Release Announcement](../../../../news/release_announcements/keptn-0141)
+See the [Keptn.0.14.1 Release Announcement](../../../../news/release_announcements/keptn-0141/)
 for details.
 
 ## See also
 
-* [distributor](../../files/distributor)
-* [Write a Keptn-service](../../../integrations/custom_integration)
+* [distributor](../../files/distributor/)
+* [Write a Keptn-service](../../../integrations/custom_integration/)
 

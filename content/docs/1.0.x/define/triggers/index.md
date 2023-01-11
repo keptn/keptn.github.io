@@ -16,7 +16,7 @@ usually for testing and demonstration purposes:
 * Using the Keptn CLI
 
 You can also use the `triggeredOn` property
-in the the [shipyard](../../reference/files/shipyard)
+in the the [shipyard](../../reference/files/shipyard/)
 to specify an event that triggers this sequence,
 implicitly linking two sequences.
 
@@ -24,7 +24,7 @@ Each of these mechanismsis discussed below.
 
 ## Use triggeredOn in a sequence
 
-Use the `triggeredOn` property in a project's [shipyard](../../reference/files/shipyard) file
+Use the `triggeredOn` property in a project's [shipyard](../../reference/files/shipyard/) file
 to kick off a sequence in response to specific events.
 Essentially, this links sequences together to form chains of sequences.
 Specify a list of events to `triggeredOn`,
@@ -117,7 +117,7 @@ This triggers the *rollback* sequence, based on the configuration of the `trigge
 
 The [Trigger a Keptn sequence](https://www.youtube.com/watch?v=S0eumPKuAJY) video
 illustrates how to trigger a sequence using the Keptn Bridge
-and discusses using `triggeredOn` in a `sequence` in your [shipyard](../../reference/files/shipyard).
+and discusses using `triggeredOn` in a `sequence` in your [shipyard](../../reference/files/shipyard/).
 
 ## Trigger a sequence with the CLI
 
@@ -129,7 +129,7 @@ Use the appropriate CLI command to trigger a sequence:
 
 ## Trigger a sequence with the POST / event API
 
-A [shipyard.yaml](../../reference/files/shipyard) file can contain multiple sequences in multiple stages.
+A [shipyard.yaml](../../reference/files/shipyard/) file can contain multiple sequences in multiple stages.
 Use `POST /event` [Keptn API](../../reference/api/) to run a specific `sequence` with the following template:
 
 ```
@@ -158,7 +158,7 @@ Replace the values between square brackets (`[]`) based on your configuration:
 ### Examples
 
 In the following example, we define the `podtato-example` project that has the `helloservice` service.
-The [shipyard.yaml](../../reference/files/shipyard) file for the project defines three sequences:
+The [shipyard.yaml](../../reference/files/shipyard/) file for the project defines three sequences:
 
 * `delivery` in the *hardening* stage;
 * `evaluation-only` in the *hardening* stage;
@@ -239,7 +239,7 @@ to trigger the `delivery` sequence in the *production* stage:
 Post the following payload to the `POST /event` endpoint
 to trigger the `evaluation-only` sequence in the *hardening* stage.
 Since we want to trigger an evaluation, we need to provide addition properties that define the evaluation timeframe.
-More information is provided in the [Quality Gates](../quality-gates) page.
+More information is provided in the [Quality Gates](../quality-gates/) page.
 
 ```json
 {

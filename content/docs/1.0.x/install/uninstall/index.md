@@ -5,7 +5,7 @@ weight: 550
 ---
 
 ## Prerequisites
-- [keptn CLI](../cli-install)
+- [keptn CLI](../cli-install/)
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
 ## Uninstall Keptn

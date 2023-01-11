@@ -11,7 +11,7 @@ Keptn allows you to declaratively define *multi-stage delivery* workflows by def
 
 ## Shipyard for Delivery Declaration
 
-The definition is manifested in a [shipyard](../../reference/files/shipyard) file that defines a task sequence for delivery. It can hold multiple stages, each with a dedicated *deployment strategy*, *test strategy*, as well as a *remediation strategy*. Following this declarative approach, it is not necessary to write imperative pipeline code. Keptn takes the shipyard file and creates a multi-stage workflow, with each stage having its own deployment strategy (e.g., blue/green), testing strategy (e.g., functional tests or performance tests), and an optional automated remediation strategy for triggering self-healing actions. To learn more about a shipyard configuration, please continue [here](../../define/delivery_sequence/).
+The definition is manifested in a [shipyard](../../reference/files/shipyard/) file that defines a task sequence for delivery. It can hold multiple stages, each with a dedicated *deployment strategy*, *test strategy*, as well as a *remediation strategy*. Following this declarative approach, it is not necessary to write imperative pipeline code. Keptn takes the shipyard file and creates a multi-stage workflow, with each stage having its own deployment strategy (e.g., blue/green), testing strategy (e.g., functional tests or performance tests), and an optional automated remediation strategy for triggering self-healing actions. To learn more about a shipyard configuration, please continue [here](../../define/delivery_sequence/).
 
 Please take a look at an example of a multi-stage delivery with a *dev*, *hardening*, and *production* stage with blue/green deployment and automated problem remediation.  
 

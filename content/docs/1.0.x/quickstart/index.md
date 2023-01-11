@@ -5,6 +5,8 @@ icon: concepts
 layout: quickstart
 weight: 110
 hidechildren: true # this flag hides all sub-pages in the sidebar-multicard.html
+aliases:
+- /docs/quickstart/
 ---
 
 This Quick Start presents the [Keptn End-to-End Delivery](https://killercoda.com/keptn/scenario/keptn-end-to-end-delivery) exercise
@@ -20,17 +22,17 @@ so you should plan to sit down and do the exercise without interruptions.
 If you like what you saw in the exercise, you can:
 
 * Install a Keptn cluster for yourself,
-  following the instructions in [Installation](../../install).
+  following the instructions in [Installation](../../install/).
   Scroll down past the "cards" on the landing page for a quick list of steps to take,
   with links to pages that have more details.
 
 * Create your own project
 
-  * [Manage Keptn Projects](../manage) talks about about how to create and manage
+  * [Manage Keptn Projects](../manage/) talks about about how to create and manage
     Keptn projects
-  * See [Definte Keptn Projects](../define) discusses how to implement
+  * See [Definte Keptn Projects](../define/) discusses how to implement
     the functionality you want in your project.
-  * [Keptn and other tools](../concepts/keptn-tools) discusses how you can use Keptn
+  * [Keptn and other tools](../concepts/keptn-tools/) discusses how you can use Keptn
     with almost any other tools you want for your project.
 
 * Join the Keptn community

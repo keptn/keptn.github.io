@@ -15,7 +15,7 @@ A Keptn sequence can be triggered in any of the following ways:
 
 ## Using triggeredOn in a sequence
 
-Use the `triggeredOn` property in a project's [shipyard](../../reference/files/shipyard) file
+Use the `triggeredOn` property in a project's [shipyard](../../reference/files/shipyard/) file
 to kick off a sequence in response to specific events.
 Essentially, this links sequences together to form chains of sequences.
 Specify a list of events to `triggeredOn`,
@@ -106,7 +106,7 @@ This triggers the *rollback* sequence, based on the configuration of the `trigge
 
 ## Trigger a sequence
 
-A [shipyard.yaml](../../reference/files/shipyard) file can contain multiple sequences in multiple stages.
+A [shipyard.yaml](../../reference/files/shipyard/) file can contain multiple sequences in multiple stages.
 Use `POST /event` [Keptn API](../../reference/api/) to run a specific `sequence` with the following template:
 
 ```json
@@ -134,7 +134,7 @@ Replace the values between square brackets (`[]`) based on your configuration:
 ### Examples
 
 In the following example, we define the `podtato-example` project that has the `helloservice` service.
-The [shipyard.yaml](../../reference/files/shipyard) file for the project defines three sequences:
+The [shipyard.yaml](../../reference/files/shipyard/) file for the project defines three sequences:
 
 * `delivery` in the *hardening* stage;
 * `evaluation-only` in the *hardening* stage;

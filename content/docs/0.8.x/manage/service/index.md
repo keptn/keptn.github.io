@@ -22,7 +22,7 @@ After creating a project, Keptn allows creating a service or onboarding a servic
 
 ## Create a service
 
-* To create a service, use the [keptn create service](../../reference/cli/commands/keptn_create_service) command and provide the service and project name (`--project` flag): 
+* To create a service, use the [keptn create service](../../reference/cli/commands/keptn_create_service/) command and provide the service and project name (`--project` flag/): 
 
 ```console
 keptn create service SERVICENAME --project=PROJECTNAME
@@ -81,7 +81,7 @@ env:
 
 **Onboard a service:**
 
-* To onboard a service, use the [keptn onboard service](../../reference/cli/commands/keptn_onboard_service) command and provide the service name, project name (`--project` flag), and the root directory of a Helm chart (`--chart` flag): 
+* To onboard a service, use the [keptn onboard service](../../reference/cli/commands/keptn_onboard_service) command and provide the service name, project name (`--project` flag), and the root directory of a Helm chart (`--chart` flag/): 
 
 ```console
 keptn onboard service SERVICENAME --project=PROJECTNAME --chart=FILEPATH
@@ -93,7 +93,7 @@ keptn onboard service SERVICENAME --project=PROJECTNAME --chart=FILEPATH
 keptn onboard service SERVICENAME --project=PROJECTNAME --chart=HELM_CHART.tgz
 ```
 
-* Optional: In the case of using an archived Helm chart, you can achieve the same using [keptn create service](../../reference/cli/commands/keptn_create_service) and [keptn add-resource ... --all-stages](../../reference/cli/commands/keptn_add-resource), e.g.:
+* Optional: In the case of using an archived Helm chart, you can achieve the same using [keptn create service](../../reference/cli/commands/keptn_create_service/) and [keptn add-resource ... --all-stages](../../reference/cli/commands/keptn_add-resource/), e.g.:
 
 ```console
 keptn create service SERVICENAME --project=PROJECTNAME

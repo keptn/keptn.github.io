@@ -8,7 +8,7 @@ keywords: [0.17.x-quality_gates]
 The *slo.yaml* file  contains definitions of the Service-Level Objectives (SLOs)
 defined for your Keptn installation.
 The Service-Level Objective (SLO) configuration specifies a target value or range of values
-for a service level that is measured by [Service-Level Indicators (SLI)](../sli). 
+for a service level that is measured by [Service-Level Indicators (SLI)](../sli/). 
 
 ## Service-Level Objective
 
@@ -205,7 +205,7 @@ The pass and warning criteria for the `total_score` use the logical operator ">=
 
 **Important:** In the following command, the value of the `resourceUri` must be set to `slo.yaml`.
 
-* To add an SLI configuration to a service, use the [keptn add-resource](../../cli/commands/keptn_add-resource) command:
+* To add an SLI configuration to a service, use the [keptn add-resource](../../cli/commands/keptn_add-resource/) command:
 
   ```console
   keptn add-resource --project=sockshop --stage=staging --service=carts --resource=slo-quality-gates.yaml --resourceUri=slo.yaml
@@ -213,7 +213,7 @@ The pass and warning criteria for the `total_score` use the logical operator ">=
 
 ## See also
 
-* [sli](../sli)
+* [sli](../sli/)
 
 * [Dynatrace](https://artifacthub.io/packages/keptn/keptn-integrations/dynatrace-service)
 
@@ -221,5 +221,5 @@ The pass and warning criteria for the `total_score` use the logical operator ">=
 
 * [Datadog](https://artifacthub.io/packages/keptn/keptn-integrations/datadog-service)
 
-* [Quality Gates](../../../quality_gates)
+* [Quality Gates](../../../quality_gates/)
 

@@ -2,6 +2,8 @@
 title: distributor
 description: Define a distributor
 weight: 125
+aliases:
+- /docs/1.0.x/reference/files/distributor.yaml/
 ---
 
 You can create your own distributor by writing a dedicated distributor deployment yaml:
@@ -55,8 +57,8 @@ spec:
 
 ## See also
 
-* [Write a Keptn-service](../../../integrations/custom_integration)
-* [distributor](../../miscellaneous/distributor)
+* [Write a Keptn-service](../../../integrations/custom_integration/)
+* [distributor](../../miscellaneous/distributor/)
 * [distributor source code](https://github.com/keptn/keptn/tree/master/distributor)
 
 

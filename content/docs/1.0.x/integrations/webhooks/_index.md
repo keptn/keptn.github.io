@@ -3,6 +3,8 @@ title: Webhook Integration
 description: Learn how to integrate external tooling using Webhooks
 weight: 2
 keywords: [1.0.0-integration]
+aliases:
+  - /docs/1.0.x/integrations/webhooks/slack/
 ---
 
 Keptn has a built-in capability, via the [Keptn webhook service](https://github.com/keptn/keptn/tree/master/webhook-service), to call external HTTP endpoints as part of sequence task orchestration. 

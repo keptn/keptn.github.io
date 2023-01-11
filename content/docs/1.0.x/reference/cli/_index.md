@@ -25,14 +25,6 @@ as discussed in
 
 These reference pages describe all the commands provided by the Keptn CLI.
 To list all available commands just execute:
-    
-```
-keptn --help
-```
-
-Each Keptn CLI command also supports the help flag (`--help`),
-which describes details of the respective command,
-including usage tips for the command and description of flags and arguments.
 
 The rest of this introduction provides some usage notes
 to make the Keptn CLI more convenient.

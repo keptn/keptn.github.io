@@ -1,4 +1,4 @@
-IgnoreDirectoryMissingTrailingSlash: true
+IgnoreDirectoryMissingTrailingSlash: false
 CheckDoctype: false
 #CheckExternal: false
 #Ignoring for now, might be improved later

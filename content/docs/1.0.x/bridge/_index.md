@@ -2,6 +2,8 @@
 title: Keptn Bridge (Web UI)
 description: Keptn dashboard used to view and manage projects and services managed by Keptn.
 weight: 410
+aliases:
+- /docs/1.0.x/reference/bridge/
 ---
 
 The Keptn Bridge is the Keptn user interface.
@@ -180,7 +182,7 @@ caption="Create Secret View">}}
 
 #### Project settings
 Use the settings view to edit the project settings.
-To get more information about how to manage your projects with the settings, visit [Manage Services](./manage_projects).
+To get more information about how to manage your projects with the settings, visit [Manage Services](./manage_projects/).
 
 {{< popup_image
 link="./assets/project-settings.png"
@@ -189,7 +191,7 @@ caption="Keptn Bridge Project Settings View">}}
 
 #### Service settings
 Use this view to create, update, and delete services.
-To get more information about how services can be managed in your settings, visit [Manage Services](./manage_services).
+To get more information about how services can be managed in your settings, visit [Manage Services](./manage_services/).
 
 {{< popup_image
 link="./assets/service-settings.png"
@@ -224,7 +226,7 @@ caption="Approval in Sequences">}}
 
 ### Manage projects
 
-See the documentation for [managing projects](./manage_projects) to see which features for creating and updating projects the Bridge provides.
+See the documentation for [managing projects](./manage_projects/) to see which features for creating and updating projects the Bridge provides.
 
 ## Early access version of Keptn Bridge
 

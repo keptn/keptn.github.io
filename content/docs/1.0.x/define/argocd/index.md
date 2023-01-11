@@ -7,7 +7,7 @@ weight: 235
 ArgoCD is a powerful tool for GitOps-based deployments
 but it does not run tests or evaluation on the deployment.
 Keptn can execute tests and evaluate the ArgoCD deployment,
-based on the [SLO's](../../reference/files/slo) that you define.
+based on the [SLO's](../../reference/files/slo/) that you define.
 
 You have two options for implementing this:
 

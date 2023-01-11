@@ -6,7 +6,7 @@ keywords: [0.16.x-manage]
 aliases:
 ---
 
-A [shipyard.yaml](../../reference/files/shipyard) file is defined at the level of a project.
+A [shipyard.yaml](../../reference/files/shipyard/) file is defined at the level of a project.
 This means that all services in a project share the same shipyard definition.
 
 * A shipyard defines the stages each deployment has to go through until it is released in the final stage, e.g., the production stage.
@@ -268,5 +268,5 @@ spec:
 
 **Result:** After extending the shipyard as shown above,
 remediations should be executed when a problem event is retrieved.
-See [Remediation sequences](../remediation-sequence).
+See [Remediation sequences](../remediation-sequence/).
 

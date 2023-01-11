@@ -323,7 +323,7 @@ If you want to install the execution plane for continuous delivery, add the flag
 ## Change how to expose Keptn
 
 If you would like to change the way of exposing Keptn,
-you can do this by [re-installing Keptn](../helm-install)
+you can do this by [re-installing Keptn](../helm-install/)
 and selecting the desired configuration.
 When the CLI asks you if you would like to overwrite the installation, confirm this with yes.
 This retains ell your data, including the Git repos and events.
