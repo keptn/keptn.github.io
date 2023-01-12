@@ -14,7 +14,7 @@ It is possible to do most of what you need to do on modern releases of Keptn wit
 but the CLI provides additional functionality that is useful
 such as uploading [SLI and SLO](../../concepts/quality_gates/#what-is-a-service-level-indicator-sli) definitions..
 If you install the Keptn CLI,
-you must [authenticate](../authenticate-cli-bridge/#authenticate-keptn-cli)
+you must [authenticate](../authenticate-cli-bridge/)
 it to Keptn after you install Keptn. 
 
 Keptn consists of a **Control Plane** and an **Execution Plane**.
@@ -113,7 +113,7 @@ to port `8080` on the Keptn API Gateway service in the cluster.
 
 **Install Keptn with an Ingress object**
 
-  If you are already using an [Ingress Controller](../access/#option-3-expose-keptn-via-an-ingress)
+  If you are already using an ingress controller
   and want to create an ingress object for Keptn,
   you can leverage the `ingress` section of the Helm chart.
 
@@ -121,7 +121,7 @@ to port `8080` on the Keptn API Gateway service in the cluster.
   When `ingress.enabled` is set to `true` (by default, `enabled` is set to `false`),
   the chart allows you to specify optional parameters
   of `host`, `path`, `pathType`, `tls`, and `annotations`.
-  This supports many different Ingress-Controllers and configurations.
+  This supports many different ingress controllers and configurations.
 
   ```
   helm upgrade keptn keptn --install -n keptn --create-namespace
