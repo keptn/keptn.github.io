@@ -90,7 +90,7 @@ You can also use the Keptn CLI to retrieve the Bridge URL using:
 keptn status
 ```
 
-The Keptn Bridge has [basic authentication](../../bridge/basic_authentication)
+The Keptn Bridge has [basic authentication](../../bridge/basic_authentication/)
 enabled by default and the default user is `keptn` with an automatically generated password.
 
 * To get the username for authentication, execute:
@@ -106,8 +106,8 @@ kubectl get secret -n keptn bridge-credentials -o jsonpath="{.data.BASIC_AUTH_PA
 ```
 
 * If you want to change the user and password for the authentication,
-follow the instructions [here](../../bridge/basic_authentication/#enable-authentication).
+follow the instructions [here](../../bridge/basic_authentication/#enable-authentication/).
 
-See [OpenID Authorization](../../bridge/oauth)
+See [OpenID Authorization](../../bridge/oauth/)
 for information about using OAUTH authorization for the Keptn Bridge.
 
