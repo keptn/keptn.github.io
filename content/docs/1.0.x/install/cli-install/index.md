@@ -11,11 +11,11 @@ Install it on the local machine
 that is used to interact with your cloud provider, Kubernetes, etc.
 
 The Keptn CLI sends commands to Keptn by interacting with the Keptn API.
-The [API Token](../../operate/api_token)
+The [API Token](../../operate/api_token/)
 that is used to communicate with Keptn is generated during the installation.
 
 It is possible to run Keptn without installing the Keptn CLI.
-Current Keptn releases allow you to create a project or run a sequence using the [Keptn Bridge](../../bridge),
+Current Keptn releases allow you to create a project or run a sequence using the [Keptn Bridge](../../bridge/),
 and this may be adequate for demos or personal environments you set up for study..
 But the CLI is required for some functionality
 and it should be installed on production systems.
@@ -124,5 +124,5 @@ To install the Keptn CLI from the binaries:
 
 After you install both the Keptn CLI and Keptn itself,
 you must authenticate the CLI and the Bridge.
-See [Authenticate Keptn CLI and Bridge](../authenticate-cli-bridge).
+See [Authenticate Keptn CLI and Bridge](../authenticate-cli-bridge/).
 
