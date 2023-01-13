@@ -106,7 +106,7 @@ kubectl get secret -n keptn bridge-credentials -o jsonpath="{.data.BASIC_AUTH_PA
 ```
 
 * If you want to change the user and password for the authentication,
-follow the instructions [here](../../bridge/basic_authentication/#enable-authentication/).
+follow the instructions [here](../../bridge/basic_authentication/#enable-authentication).
 
 See [OpenID Authorization](../../bridge/oauth/)
 for information about using OAUTH authorization for the Keptn Bridge.
