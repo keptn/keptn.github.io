@@ -14,6 +14,30 @@ and then push your changes to the repository as a pull request.
 If you need help getting started, feel free to ask for help on the `#help-contributing` or `#keptn-docs` channels on the [Keptn Slack](https://keptn.sh/community/#slack).
 We were all new to this once and are happy to help you!
 
+## Notes about markdown
+
+We use standard markdown syntax to author the documentation.
+See the [Markdown Guide](https://www.markdownguide.org/) for information.
+
+Note that we have implemented Site Engine Optimization (SEO) for the Keptn documentation.
+This has some ramifications:
+
+* Cross-references to a page (usually a source file itself) must use a trailing slash.
+  For example:
+  ```
+  See [Install Keptn CLI](../../install/cli-install/)
+  ```
+* Cross-references to an anchor (usually a subsection of a page,
+  denoted with a `#` in the cross-referencing link,
+  must NOT use a trailing slash.
+  For example:
+  ```
+  See [Install Keptn CLI](../../install/cli-install/#homebrew)
+  ```
+
+The CI tools check this syntax for each PR and PR's that do not conform to this practice
+do not pass CI tests and so cannot be merged.
+
 ## Guidelines for contributing
 
 * Always fork the repository then clone that fork to your local system rather than clone master directly.
