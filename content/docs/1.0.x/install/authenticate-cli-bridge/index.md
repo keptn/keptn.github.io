@@ -4,7 +4,7 @@ description: Authenticate the Keptn CLI and Bridge to your Keptn cluster
 weight: 60
 ---
 
-After you [instal Keptn](../helm-install),
+After you [instal Keptn](../helm-install/),
 you must authenticate the Keptn CLI and Bridge against the Keptn cluster.
 To do this, you need to:
 
@@ -19,7 +19,7 @@ The Keptn endpoint and the API token  are created during the Keptn installation.
 Do the following from the shell:
 
 1.  Get the Keptn endpoint from the `api-gateway-nginx`.
-    Follow the instructions in [Choose access options](../access)
+    Follow the instructions in [Choose access options](../access/)
     to get the Keptn endpoint for the access option you are using
     and, optionally, storing that endpoint in an environment variable.
 
@@ -31,7 +31,7 @@ Do the following from the shell:
    ```
 
 1. To authenticate the CLI against the Keptn cluster,
-   use the [keptn auth](../../reference/cli/commands/keptn_auth) command:
+   use the [keptn auth](../../reference/cli/commands/keptn_auth/) command:
 
    ```
    keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN
@@ -75,7 +75,7 @@ Do the folllowing in the Windows Command Line:
    ```
 
 1. To authenticate the CLI against the Keptn cluster,
-   use the [keptn auth](../../reference/cli/commands/keptn_auth) command:
+   use the [keptn auth](../../reference/cli/commands/keptn_auth/) command:
 
    ```
    keptn.exe auth --endpoint=$Env:KEPTN_ENDPOINT --api-token=$Env:KEPTN_API_TOKEN

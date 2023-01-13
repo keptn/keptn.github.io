@@ -32,7 +32,7 @@ You can use the `curl` command to install the Keptn CLI on Linux, WSL2, and macO
 Windows users need `bash`, `curl`, and `awk` installed (e.g., using Git Bash).
 
 1. Download the *latest stable Keptn version*
-   from [GitHub](https://github.com/keptn/keptn/releases),
+   from [GitHub](https://github.com/keptn/keptn/releases/),
    unpack it, and install it into the current directory on your cloud shell machine:
 
    ```
