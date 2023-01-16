@@ -16,7 +16,7 @@ that is used to communicate with Keptn is generated during the installation.
 
 It is possible to run Keptn without installing the Keptn CLI.
 Current Keptn releases allow you to create a project or run a sequence using the [Keptn Bridge](../../bridge/),
-and this may be adequate for demos or personal environments you set up for study..
+and this may be adequate for demos or personal environments you set up for study.
 But the CLI is required for some functionality
 and it should be installed on production systems.
 
@@ -33,18 +33,14 @@ Windows users need `bash`, `curl`, and `awk` installed (e.g., using Git Bash).
 
 1. Download the *latest stable Keptn version*
    from [GitHub](https://github.com/keptn/keptn/releases/),
-   unpack it, and install it into the current directory on your cloud shell machine:
+   unpack it, and install on your machine,
+   usually to `/usr/local/bin`.:
 
    ```
    curl -sL https://get.keptn.sh/ | bash
    ```
 
    Use **sudo** to move the file to another location.
-   such as `/usr/local/bin/keptn`.
-   You can run the Keptn CLI from any directory
-   but you may need to specify the location of the executable
-   or add the directory to your $PATH definition.,
-   Remember to use  `./keptn` rather than just `keptn` if it is in your current directory.
 
 2. Verify that the installation has worked and that the version is correct.
    On Linux and macOS, run:
@@ -52,12 +48,13 @@ Windows users need `bash`, `curl`, and `awk` installed (e.g., using Git Bash).
     ```
     keptn version
     ```
+
     On Windows, run:
 
     ```
     .\keptn.exe version
     ```
-## Install on macOS using brew
+## Install on macOS using Homebrew
 
 1. Run the following command to automatically fetch the latest Keptn CLI via Homebrew:
 
@@ -123,6 +120,6 @@ To install the Keptn CLI from the binaries:
       ```
 
 After you install both the Keptn CLI and Keptn itself,
-you must authenticate the CLI and the Bridge.
+you must authenticate the CLI.
 See [Authenticate Keptn CLI and Bridge](../authenticate-cli-bridge/).
 

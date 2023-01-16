@@ -4,7 +4,7 @@ description: Authenticate the Keptn CLI and Bridge to your Keptn cluster
 weight: 60
 ---
 
-After you [instal Keptn](../helm-install/),
+After you [install Keptn](../helm-install/),
 you must authenticate the Keptn CLI and Bridge against the Keptn cluster.
 To do this, you need to:
 
