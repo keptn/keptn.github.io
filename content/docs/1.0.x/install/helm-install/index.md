@@ -71,7 +71,7 @@ to use for study or demonstration.
 It is not adequate for a production Keptn installation.
 
 Watch a video demonstration of this simple installation
-[here](https://www.youtube.com/watch?v=neAqh4fAz-k).
+[here](https://www.youtube.com/watch?v=neAqh4fAz-k). 
 
 The following command sequence installs the Keptn control plane
 and exposes it using port-forwarding:
@@ -174,8 +174,8 @@ To access it:
    to use if your site uses [Basic Authentication](../../bridge/basic_authentication/):
 
    ```
-   kubectl -n keptn get secret bridge-credentials -o jsonpath-{.data.BASIC_AUTH_USERNAME} | base64 -d
-   kubectl -n keptn get secret bridge-credentials -o jsonpath-{.data.BASIC_AUTH_PASSWORD} | base64 -d
+   kubectl -n keptn get secret bridge-credentials -o jsonpath={.data.BASIC_AUTH_USERNAME} | base64 -d
+   kubectl -n keptn get secret bridge-credentials -o jsonpath={.data.BASIC_AUTH_PASSWORD} | base64 -d
    ```
    You can instead use [OpenID Authentication](../../bridge/oauth/) to access the Keptn Bridge.
 
