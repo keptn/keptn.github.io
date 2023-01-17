@@ -71,7 +71,7 @@ to use for study or demonstration.
 It is not adequate for a production Keptn installation.
 
 Watch a video demonstration of this simple installation
-[here](https://www.youtube.com/watch?v=neAqh4fAz-k). 
+[here](https://www.youtube.com/watch?v=neAqh4fAz-k).
 
 The following command sequence installs the Keptn control plane
 and exposes it using port-forwarding:
