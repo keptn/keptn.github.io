@@ -6,7 +6,7 @@ sidebar_multicard: false
 icon: contribute
 ---
  
-Sign up to our Keptn Community Newsletter to get **news, feature highlights, and more** shipped directly to your inbox.
+[Sign up](http://eepurl.com/hw7GwL) to our Keptn Community Newsletter to get **news, feature highlights, and more** shipped directly to your inbox.
 
 The newsletter is sent bi-weekly. No spam - a captain's promise!
 
