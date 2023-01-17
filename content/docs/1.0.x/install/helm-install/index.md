@@ -174,8 +174,8 @@ To access it:
    to use if your site uses [Basic Authentication](../../bridge/basic_authentication/):
 
    ```
-   kubectl -n keptn get secret bridge-credentials -o jsonpath-{.data.BASIC_AUTH_USERNAME} | base64 -d
-   kubectl -n keptn get secret bridge-credentials -o jsonpath-{.data.BASIC_AUTH_PASSWORD} | base64 -d
+   kubectl -n keptn get secret bridge-credentials -o jsonpath={.data.BASIC_AUTH_USERNAME} | base64 -d
+   kubectl -n keptn get secret bridge-credentials -o jsonpath={.data.BASIC_AUTH_PASSWORD} | base64 -d
    ```
    You can instead use [OpenID Authentication](../../bridge/oauth/) to access the Keptn Bridge.
 
