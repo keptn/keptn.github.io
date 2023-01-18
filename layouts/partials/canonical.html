@@ -1,7 +1,15 @@
-
-  {{ if in .Permalink "docs/0."}}
-    {{ $versionUsed := print "docs/" $.Site.Params.version}}
-    {{ $canoncical := replaceRE "docs/0.[[:digit:]]{1,2}.([[:digit:]]{1.2}|x)" $versionUsed .Permalink }}
+{{ $versionUsed := print "docs/" $.Site.Params.version -}}
+{{ if in .Permalink "docs/0." -}}
+  {{ $canoncical := replaceRE "docs/0.[[:digit:]]{1,2}.([[:digit:]]{1.2}|x)" $versionUsed .Permalink -}}
+  {{ if .GetPage $canoncical -}}
     <link rel="canonical" href="{{ $canoncical | absURL}}"/>
-
-{{end}}
+  {{ else }}
+    {{ range .Site.Pages -}}
+      {{ if in .Aliases $canoncical -}}
+        <link rel="canonical" href="{{ .Permalink | absURL}}"/>
+      {{- end }}
+    {{- end}}
+  {{- end}}
+{{ else if in .Permalink $versionUsed -}}
+  <link rel="canonical" href="{{ .Permalink | absURL}}"/>
+{{- end}}
