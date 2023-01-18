@@ -78,7 +78,7 @@ The initial design of Keptn uses the `helm-service`
 to deploy such applications with Helm charts.
 In earlier releases, the `helm-service` was included when Keptn was installed.
 For current Keptn versions, you must install the `helm-service` separately;
-see [Install Execution Plane](../../../install/#install-execution-plane).
+see [Install Execution Plane](../../../install/helm-install/#install-execution-plane).
 To implement blue-green deployments with the `helm-service`,
 you must also install Istio;
 see [Install and configure Istio](../../../install/istio/).
@@ -105,7 +105,7 @@ so you might choose to have Keptn
 call one of these tools to do the actual deployment.
 See [Orchestrate ArgoCD from Keptn](../../define/argocd/)
 for notes about how to use ArgoCD with Keptn
-and [Orchestrate Argo Rollouts from Keptn](../../define/argo-rollouts)
+and [Orchestrate Argo Rollouts from Keptn](../../define/argo-rollouts/)
 for information about using Argo Rollouts.
 You could use a similar approach for other tools.
 
