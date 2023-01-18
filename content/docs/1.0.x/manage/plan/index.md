@@ -71,6 +71,51 @@ some common stage types are:
 The [Define a Project](../../define/) section contains pages
 about how to implement the different types of stages.
 
+## How to deploy your application
+
+Projects frequently need to deploy an application.
+The initial design of Keptn uses the `helm-service`
+to deploy such applications with Helm charts.
+In earlier releases, the `helm-service` was included when Keptn was installed.
+For current Keptn versions, you must install the `helm-service` separately;
+see [Install Execution Plane](../../../install/#install-execution-plane).
+To implement blue-green deployments with the `helm-service`,
+you must also install Istio;
+see [Install and configure Istio](../../../install/istio/).
+This approach works for all releases of Keptn
+and is discussed in more detail on the
+[Deployment with Helm](../../define/deployment_helm/) page..
+
+If you want to deploy your application from an existing Helm registry,
+you can still use the `helm-service` to deploy your application
+by creating an external automation step that packages the `.tgz` Helm chart
+and pushes it to the Keptn configuration repository
+as part of your CI, before initiating the Keptn sequence.
+
+A better approach is to use the
+[Helm Job Executor Integration](https://artifacthub.io/packages/keptn/keptn-integrations/helm)
+to deploy your Helm chart.
+You will still need to install Istio if you are doing blue-green deployment
+but you do not need Istio if you are implementing user-managed delivery.
+You could intead use the [Job Executor Service](https://artifacthub.io/packages/keptn/keptn-integrations/job-executor-service) (JES)
+to call `kubectl` or `helm` directly to deploy your application from your registry.
+
+Tools such as Argo and Flux are better at deployment
+so you might choose to have Keptn
+call one of these tools to do the actual deployment.
+See [Orchestrate ArgoCD from Keptn](../../define/argocd/)
+for notes about how to use ArgoCD with Keptn
+and [Orchestrate Argo Rollouts from Keptn](../../define/argo-rollouts)
+for information about using Argo Rollouts.
+You could use a similar approach for other tools.
+
+You may also want to investigate the inclubating
+[Keptn Lifecycle Toolkit](https://lifecycle.keptn.sh/) (KLT) project.
+Because tools such as Argo and Flux do a better job of deployment,
+the KLT leverages such tools to bring deployment lifecycle observability
+into your existing delivery process in a way that is more straight-forward
+and better conforms to the GitOps model.
+
 ## What tools do you want to use with Keptn?
 
 Keptn orchestrates **what** to do.
@@ -78,58 +123,6 @@ You can integrate almost any tool you like to define **how** this task is accomp
 You must identify each tool you use to Keptn;
 this can be done in a variety of ways.
 See [Keptn and other tools](../../../concepts/keptn-tools/) for more information.
-
-## How to deploy tools for your project
-
-Each external tool that your project uses must be identified to Keptn.
-This can be done in a variety of ways.
-
-The initial design of Keptn uses the `helm-service` to deploy Helm charts for tools.
-This requires that each tool has an *integration* (also called a *Keptn service*)
-to define the events that the tool receives and sends.
-This approach works for all releases of Keptn.
-
-* See [Integrations](../../../integrations) for links to integrations
-  that are available for Keptn.
-* See [How to integrate your tool](../../integrations/how_integrate)
-  and [Write a Keptn service](../../integrations/custom_integration)
-  for information about how to implement an integration for a new tool.
-
-We have learned, however, that this approach is not always ideal.
-It does not conform with the GitOps model,
-it does not work well for installations that already have an OCI registry set up,
-and that having Keptn call other tools to do the deployment often makes more sense.
-
-Recent versions of Keptn provide other options:
-
-* Create an external automation step that packages the `.tgz` Helm chart
-  and pushes it to the Keptn configuration repository
-  as part of your CI, before initiating the Keptn sequence.
-
-* Use the [Job Executor Service](https://artifacthub.io/packages/keptn/keptn-integrations/job-executor-service) (JES)
-  to deploy your tool.
-  JES can execute any script or CLI tool
-  This means that it can call `kubectl` or `helm` directly to leverage your registry.
-
-* Use the [Helm Job Executor Integration](https://artifacthub.io/packages/keptn/keptn-integrations/helm)
-  to deploy your Helm chart.
-
-* Use the Keptn webhook service to integrate tools
-  such as testing services, CI/CD pipelines, and incident management services
-  by calling external HTTP endpoints as part of sequence task orchestration.
-  See [Webhook Integration](../../integrations/webhooks)
-  for instructions.
-  
-* Have Keptn call another tool (such as Argo or Flux)
-  to do the actual deployment.
-  See [Orchestrate ArgoCD from Keptn](../../define/argocd/)
-  for notes about how to use ArgoCD for this purpose.
-
-You may also want to investigate the inclubating
-[Keptn Lifecycle Toolkit](https://lifecycle.keptn.sh/) (KLT) project.
-Because tools such as Argo and Flux do a better job in deployment,
-the KLT leverages such tools to bring deployment lifecycle observability
-into your existing delivery process in a more straight-forward way.
 
 ## Who calls whom?
 
