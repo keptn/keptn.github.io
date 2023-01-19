@@ -44,7 +44,7 @@ To upgrade the control plane:
 
 1. Download the released Helm chart using the following command
    replacing `<release>` with the release number to which you are upgrading,
-   such as `1.0.0`:
+   such as `{{< param "version" >}}`:
 
    ```
    helm pull https://charts.keptn.sh/packages/keptn-<release>.tgz
@@ -125,7 +125,7 @@ pages for more information.
 
 ## Upgrade notes by release
 
-### Upgrade from Keptn 0.19.x to Keptn 1.0.0-LTS
+### Upgrade from Keptn 0.19.x to Keptn {{< param "version" >}}-LTS
 
 No special steps are required to upgrade from Keptn 0.19.x to Keptn 1.0.x-LTS.
 

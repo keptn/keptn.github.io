@@ -54,7 +54,7 @@ The `PUBSUB_TOPIC` variable sets the initial subscription for your service. If a
 spec:
   containers:
   - name: distributor
-    image: keptn/distributor:1.0.0
+    image: keptn/distributor:{{< param "version" >}}
     ports:
     - containerPort: 8080
     resources:
@@ -271,7 +271,7 @@ spec:
     spec:
       containers:
       - name: distributor
-        image: keptn/distributor:1.0.0
+        image: keptn/distributor:{{< param "version" >}}
         ports:
         - containerPort: 8080
         resources:
