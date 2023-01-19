@@ -59,7 +59,7 @@ For Keptn, the [Helm Chart](https://Helm.sh/) has the following requirements:
 1. The Helm chart _must_ contain a `values.yaml` file with at least the `image` and `replicaCount` parameter for the deployment. These `image` and `replicaCount` parameters must be used in the deployment. An example is shown below:
 
   ```
-  image: docker.io/keptnexamples/carts:1.0.0
+  image: docker.io/keptnexamples/carts:{{< param "version" >}}
   replicaCount: 1
   ```
 

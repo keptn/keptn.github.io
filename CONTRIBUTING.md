@@ -19,7 +19,9 @@ We were all new to this once and are happy to help you!
 We use standard markdown syntax to author the documentation.
 See the [Markdown Guide](https://www.markdownguide.org/) for information.
 
-Note that we have implemented Site Engine Optimization (SEO) for the Keptn documentation.
+## Syntax of cross-references
+
+We have implemented Site Engine Optimization (SEO) for the Keptn documentation.
 This has some ramifications:
 
 * Cross-references to a page (usually a source file itself) must use a trailing slash.
@@ -37,6 +39,16 @@ This has some ramifications:
 
 The CI tools check this syntax for each PR and PR's that do not conform to this practice
 do not pass CI tests and so cannot be merged.
+
+### Specifying release number
+
+Beginning with Release 1.1.0, the release number is parameterized.
+Use the `{{< param "version" >}}` string in command lines and elsewhere
+that the current version is specified.
+This renders to the value of the `version=` field in the `config.yaml` file.
+When updating the documentation for a new release,
+modify the `config.yaml` file and all occurences of the parameterized release number
+are updated automatically.
 
 ## Guidelines for contributing
 

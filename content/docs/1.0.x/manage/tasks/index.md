@@ -156,7 +156,7 @@ The response will be a JSON object in the following format:
          "inputProperties":{
             "configurationChange":{
                "values":{
-                  "image":"docker.io/keptnexamples/some-service:1.0.0"
+                  "image":"docker.io/keptnexamples/some-service:{{< param "version" >}}"
                }
             },
             "deployment":{
