@@ -2,7 +2,7 @@
 {{ $versionUsed := print "docs/" $.Site.Params.version}}
 {{ range .Data.Pages -}}
     {{ if not .Params.private -}}
-        {{ if or (in .Permalink $versionUsed) (not (in .Permalink "docs/"))}}
+        {{ if or (in .RelPermalink $versionUsed) (not (in .RelPermalink "docs/"))}}
             {{ $lastModDate := .Lastmod -}}
             {{ if not .Lastmod -}}
                 {{ $lastModDate = now -}}
