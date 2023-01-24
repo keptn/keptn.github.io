@@ -1,5 +1,5 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-{{ $versionUsed := print "docs/" $.Site.Params.version}}
+{{ $versionUsed := print "docs/" $.Site.Params.versionDirectory}}
 {{ range .Data.Pages -}}
     {{ if not .Params.private -}}
         {{ if or (in .RelPermalink $versionUsed) (not (in .RelPermalink "docs/"))}}
