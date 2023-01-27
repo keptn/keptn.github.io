@@ -207,7 +207,7 @@ Execute the following command to change the image of the `mongodb` deployment to
 
 ```
 kubectl set image deployment/mongodb \
-   mongodb=keptn/mongodb-privileged:latest -n keptn
+   mongodb=keptn-mongo/mongodb-privileged:latest -n keptn
 ```
 </p></details>
 
