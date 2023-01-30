@@ -206,8 +206,8 @@ However, this is not allowed for some Persistent Volumes Claims (PVCs) with the 
 Execute the following command to change the image of the `mongodb` deployment to run `mongodb` as root:
 
 ```
-kubectl set image deployment/mongodb \
-   mongodb=keptn-mongo/mongodb-privileged:latest -n keptn
+kubectl set image deployment/keptn-mongo \
+   mongodb=keptn/mongodb-privileged:latest -n keptn
 ```
 </p></details>
 
