@@ -1,5 +1,5 @@
 ---
-title: Release 1.0.x LTS
+title: Release 1.y.z LTS
 linktitle: Release 1.y.z
 weight: 788
 sidebar_multicard: true
