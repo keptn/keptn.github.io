@@ -1,6 +1,6 @@
 ---
-title: Release 1.0.x LTS
-linktitle: Release 1.0.x
+title: Release 1.y.z LTS
+linktitle: Release 1.y.z
 weight: 788
 sidebar_multicard: true
 icon: docs
