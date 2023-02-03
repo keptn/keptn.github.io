@@ -5,6 +5,7 @@ theme = "hugo-serif-theme"
 relativeUrls = false
 enableEmoji = true
 enableGitInfo = true
+enableRobotsTXT = true
 
 
 ignoreFiles = [

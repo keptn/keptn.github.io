@@ -1,16 +1,28 @@
 {{ $versionUsed := print "docs/" $.Site.Params.versionDirectory -}}
-{{ if and (in .RelPermalink "docs") (not (in .RelPermalink $versionUsed)) -}}
-  {{ $canoncical := replaceRE "docs/0.[[:digit:]]{1,2}.([[:digit:]]{1.2}|x)" $versionUsed .RelPermalink -}}
+{{ if (findRE "docs/[[:digit:]]" .Permalink) -}}
+  {{ $canoncical := replaceRE "docs/[[:digit:]]{1,2}.[[:digit:]]{1,2}.([[:digit:]]{1.2}|x)" $versionUsed .RelPermalink -}}
   {{ $canoncicalPath := substr $canoncical 0 -1 -}}
   {{ if .GetPage $canoncicalPath -}}
     <link rel="canonical" href="{{ $canoncical | absURL}}"/>
   {{ else }}
     {{ range .Site.Pages -}}
       {{ if in .Aliases $canoncical -}}
-        <link rel="canonical" href="{{ .RelPermalink | absURL}}"/>
+        <link rel="canonical" href="{{ .Permalink | absURL}}"/>
       {{- end }}
     {{- end}}
   {{- end}}
-{{ else if in .RelPermalink $versionUsed -}}
-  <link rel="canonical" href="{{ .RelPermalink | absURL}}"/>
+{{ else if (findRE "docs/[[:alpha:]]" .Permalink) }}
+  {{ $canoncical := replaceRE "docs/" ( print $versionUsed "/") .RelPermalink -}}
+  {{ $canoncicalPath := substr $canoncical 0 -1 -}}
+  {{ if .GetPage $canoncicalPath -}}
+    <link rel="canonical" href="{{ $canoncical | absURL}}"/>
+  {{ else }}
+    {{ range .Site.Pages -}}
+      {{ if in .Aliases $canoncical -}}
+        <link rel="canonical" href="{{ .Permalink | absURL}}"/>
+      {{- end }}
+    {{- end}}
+  {{- end}}
+{{ else if in .Permalink $versionUsed -}}
+  <link rel="canonical" href="{{ .Permalink | absURL}}"/>
 {{- end}}
