@@ -25,9 +25,8 @@ width="1000px">}}
 This option exposes Keptn externally using a cloud provider's load balancer (if available).
 
 1. **Install Keptn:** Use the Helm CLI to install Keptn on your cluster.
-If you want to install the execution plane for continuous delivery, add the flag `continuousDelivery.enabled=true`.
   ```
-   helm install keptn keptn/keptn -n keptn --version=$KeptnVersion --create-namespace --set=continuousDelivery.enabled=true,apiGatewayNginx.type=LoadBalancer
+   helm install keptn keptn/keptn -n keptn --version=$KeptnVersion --create-namespace --set=apiGatewayNginx.type=LoadBalancer
   ```
 
 1. **Get Keptn endpoint:**  Get the EXTERNAL-IP of the `api-gateway-nginx` using the command below. The Keptn API endpoint is: `http://<ENDPOINT_OF_API_GATEWAY>/api`
@@ -57,11 +56,10 @@ If you want to install the execution plane for continuous delivery, add the flag
 ### Option 2: Expose Keptn via a NodePort
 This option exposes Keptn on each Kubernetes Node's IP at a static port. Therefore, please make sure that you can access the Kubernetes Nodes in your network.
 
-1. **Install Keptn:** Use the Keptn CLI to install Keptn on your cluster.
-If you want to install the execution plane for continuous delivery, add the flag `continuousDelivery.enabled=true`.
+1. **Install Keptn:** Use the Helm CLI to install Keptn on your cluster.
    ```
    helm install keptn keptn/keptn -n keptn --version=$KeptnVersion \
-      --create-namespace --set=continuousDelivery.enabled=true,apiGatewayNginx.type=NodePort
+      --create-namespace --set=apiGatewayNginx.type=NodePort
    ```
 
 1. **Get Keptn endpoint:** Get the mapped port of the `api-gateway-nginx` using the command below.
@@ -94,11 +92,9 @@ If you want to install the execution plane for continuous delivery, add the flag
 
 ### Option 3: Expose Keptn via an Ingress
 
-1. **Install Keptn:** Use the Keptn CLI to install Keptn on your cluster.
-   If you want to install the execution plane for continuous delivery,
-   add the flag `continuousDelivery.enabled=true`.
+1. **Install Keptn:** Use the Helm CLI to install Keptn on your cluster.
    ```
-   helm install keptn keptn/keptn -n keptn --version=$KeptnVersion --create-namespace --set=continuousDelivery.enabled=true
+   helm install keptn keptn/keptn -n keptn --version=$KeptnVersion --create-namespace
    ```
 
 1. **Install an ingress controller and create an ingress:**
@@ -301,11 +297,10 @@ none of your traffic to and from the Keptn endpoint is encrypted.
 ### Option 4: Access Keptn via a Port-forward
 This option does not expose Keptn to the public but exposes Keptn on a *cluster-internal* IP.
 
-1. **Install Keptn:** Use the Keptn CLI to install Keptn on your cluster.
-If you want to install the execution plane for continuous delivery, add the flag `continuousDelivery.enabled=true`.
+1. **Install Keptn:** Use the Helm CLI to install Keptn on your cluster.
   ```
   helm install keptn keptn/keptn -n keptn --version=$KeptnVersion \
-    --create-namespace --set=continuousDelivery.enabled=true
+    --create-namespace
   ```
 
 1. **Set up a port-forward:** Configure the port-forward by using the command below.
