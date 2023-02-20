@@ -21,6 +21,15 @@ The Keptn website engine (keptn.sh) is licensed under the [Apache License Versio
 
 The Keptn documentation (e.g., `.md` files in the `/content/docs` folder) is licensed under a [CC-BY-4.0 license](./LICENSE-docs).
 
+## Contributors
+
+<a href="https://github.com/keptn/keptn.github.io/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=keptn/keptn.github.io" />
+</a>
+
+Made with [contrib.rocks](https://contrib.rocks).
+
 <!-- markdownlint-disable -->
 <img referrerpolicy="no-referrer-when-downgrade" src="https://static.scarf.sh/a.png?x-pxid=b291d3b7-c6c9-4158-a037-9b31a0200f81" />
 <!-- markdownlint-enable -->
+
