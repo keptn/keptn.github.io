@@ -158,7 +158,7 @@ To run a target call:
    make <target>
 ```
 
-We provde the following targets:
+We provide the following targets:
 
 * build: for building
 * server: for building and starting the server at http://localhost:1313/
@@ -228,7 +228,7 @@ The meaning of these fields is:
 
 * **title** -- title displayed for the section or file
 * **description** -- subtext displayed for the section or subsection
-* **weight** -- order in which section or subsection is desplayed relative to other sections and subsections at the same level.
+* **weight** -- order in which section or subsection is displayed relative to other sections and subsections at the same level.
 In this case, the weight of 2 means that this section is displayed after *Quick Start* (which has a weight of 1) and before *Roadmap* (which has a weight of 3).
 * **icon** -- determines the icon displayed next to titles in content listings.  Values used in the Keptn docs include `concepts`, `docs`, `setup`, `tasks`, `setup`, and `reference`.
 You can explore the various options used by comparing the doc output with the values used for this field.

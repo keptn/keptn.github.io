@@ -1,7 +1,7 @@
 ---
 title: Authenticate Keptn CLI and Bridge
 description: Authenticate the Keptn CLI and Bridge to your Keptn cluster
-weight: 60
+weight: 50
 ---
 
 To authenticate and associate the Keptn CLI and Keptn bridge to your Keptn cluster,

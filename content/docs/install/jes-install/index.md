@@ -1,7 +1,7 @@
 ---
 title: Install Job Executor 
 description: Install the Job Executor Service to run Keptn customizable tasks as Kubernetes jobs
-weight: 70
+weight: 60
 ---
 
 See Job Executor Service[installation instructions](https://github.com/keptn-contrib/job-executor-service/blob/main/docs/INSTALL.md)

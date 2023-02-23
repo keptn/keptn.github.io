@@ -1,7 +1,7 @@
 ---
 title: Install and configure Istio
 description: Configure Istio and create a ConfigMap to expose services deployed by Keptn.
-weight: 75
+weight: 70
 aliases:
 - /docs/0.19.x/continuous_delivery/expose_services/
 - /docs/1.0.x/continuous_delivery/expose_services/
