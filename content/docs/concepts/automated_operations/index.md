@@ -17,7 +17,7 @@ Below is an example of a declarative `remediation.yaml` file as used in Keptn. T
 To learn more, see [Remediation Sequence](../../0.18.x/define/remediation-sequence/)
 and the [remediation](../../0.18.x/reference/files/remediation/) reference page. 
 
-```yaml
+```
 version: 0.2.0
 kind: Remediation
 metadata:

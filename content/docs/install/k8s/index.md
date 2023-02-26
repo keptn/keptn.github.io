@@ -77,20 +77,21 @@ Run your Keptn installation for free on GKE! If you [sign up for a Google Cloud 
 
     - Set up the required permissions for your user:
 
-      ```console
-    oc adm policy --as system:admin add-cluster-role-to-user cluster-admin <OPENSHIFT_USER_NAME>
-      ```
+    ```console
+    oc adm policy --as system:admin add-cluster-role-to-user cluster-admin
+    <OPENSHIFT_USER_NAME>
+    ```
 
     - Set up the required permissions for the installer pod:
 
-      ```console
+    ```console
     oc adm policy  add-cluster-role-to-user cluster-admin system:serviceaccount:default:default
     oc adm policy  add-cluster-role-to-user cluster-admin system:serviceaccount:kube-system:default
-      ```
+    ```
 
     - Enable admission WebHooks on your OpenShift master node:
 
-      ```console
+    ```console
     sudo -i
     cp -n /etc/origin/master/master-config.yaml /etc/origin/master/master-config.yaml.backup
     oc ex config patch /etc/origin/master/master-config.yaml --type=merge -p '{
@@ -119,7 +120,7 @@ Run your Keptn installation for free on GKE! If you [sign up for a Google Cloud 
     else
       exit
     fi
-      ```
+    ```
 </p>
 </details>
 
