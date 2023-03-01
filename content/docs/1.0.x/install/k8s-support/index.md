@@ -20,8 +20,8 @@ Keptn versions are expressed as `x.y.z`, where `x` is the major version, `y` is 
 
 | Keptn Version /<br>Installation                           | Kubernetes  | AKS                       | EKS                       | GKE           | OpenShift   | K3s         | Minishift               |
 |-----------------------------------------------------------|:-----------:|:-------------------------:|:-------------------------:|:-------------:|:-----------:|:-----------:|:------------------------|
-| **0.17.x** / <br>Control & Execution plane<br>*see: (1)*   | 1.22 - 1.17 | 1.22 - 1.19 | 1.22 - 1.19 | 1.22 - 1.19   | 4, 3.11     | 1.22 - 1.19 | 1.34.2<br>(K8s: 1.11)   |
-| **0.17.x** / <br>Control plane                             | 1.22 - 1.17 | 1.22 - 1.19 | 1.22 - 1.19 | 1.22 - 1.19   | 4, 3.11     | 1.22 - 1.19 | 1.34.2<br>(K8s: 1.11)   |
+| **1.x.y** / <br>Control & Execution plane<br>*see: (1)*   | 1.22 - 1.17 | 1.22 - 1.19 | 1.22 - 1.19 | 1.22 - 1.19   | 4, 3.11     | 1.22 - 1.19 | 1.34.2<br>(K8s: 1.11)   |
+| **1.x.y** / <br>Control plane                             | 1.22 - 1.17 | 1.22 - 1.19 | 1.22 - 1.19 | 1.22 - 1.19   | 4, 3.11     | 1.22 - 1.19 | 1.34.2<br>(K8s: 1.11)   |
 
 **Remarks:**
 
@@ -47,6 +47,8 @@ Keptn versions are expressed as `x.y.z`, where `x` is the major version, `y` is 
 
 * Internally, a test pipeline with newer Kubernetes versions is verifying the master branch of Keptn. Known-limitations identified by these tests are referenced at the corresponding Keptn release.
 
+**Disclaimer**
+* Keptn only supports amd64 architecture. Arm-based nodes, e.g., a kind cluster on a mac book with the M1 processor, are not supported due to our dependency on the [Bitami Mongo Charts](https://github.com/bitnami/charts/issues/7305)
 ## Cluster size
 
 The size of the Keptn control plane has been derived automatically and is also reported at the latest release; see *Kubernetes Resource Data* at: [https://github.com/keptn/keptn/releases](https://github.com/keptn/keptn/releases).
