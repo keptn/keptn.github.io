@@ -47,7 +47,7 @@ Then come back and continue installing the Keptn control plane.
 
 * To install the control plane, execute `helm install` with the option you chose for exposing Keptn:
 
-    ```console
+    ```
     helm install keptn keptn/keptn -n keptn --version=$KeptnVersion --create-namespace --set=apiGatewayNginx.type=[LoadBalancer, NodePort, ClusterIP]
     ```
 
@@ -140,17 +140,17 @@ Please find the Helm Charts here:
 
 * Deploy the execution plane service (e.g., jmeter-service) from release assets with your `values.yaml` and by using `helm`:
 
-    ```console
+    ```
     helm install jmeter-service https://github.com/keptn/keptn/releases/download/0.18.1/jmeter-service-0.18.1.tgz -n keptn-exec --create-namespace --values=values.yaml
     ```
 
 * Test connection to Keptn control plane using:
 
-    ```console
+    ```
     helm test jmeter-service -n keptn-exec
     ```
 
-    ```console
+    ```
     Pod jmeter-service-test-api-connection pending
     Pod jmeter-service-test-api-connection succeeded
     NAME: jmeter-service
@@ -168,7 +168,7 @@ Please find the Helm Charts here:
 
 * To uninstall an execution plane service -- in this case, the `jmeter-service`, execute:
 
-    ```console
+    ```
     helm uninstall jmeter-service -n keptn-exec
     ```
 
@@ -237,15 +237,15 @@ If you see in the Keptn Bridge that an event was triggered but no service was re
 
 1. Validate the properties set in the `values.yaml`:
 
-  ```
-remoteControlPlane:
-  enabled: true                         # < (1) set to true
-  api:
-    protocol: "http"                    # < (2) set protocol: http or https
-    hostname: ""                        # < (3) set Keptn hostname (without /api)
-    apiValidateTls: true                # < (4 - optional) option to skip TLS verification
-    token: ""                           # < (5) set Keptn API token
-  ```
+    ```
+    remoteControlPlane:
+      enabled: true                         # < (1) set to true
+      api:
+        protocol: "http"                    # < (2) set protocol: http or https
+        hostname: ""                        # < (3) set Keptn hostname (without /api)
+        apiValidateTls: true                # < (4 - optional) option to skip TLS verification
+        token: ""                           # < (5) set Keptn API token
+    ```
 
   - Is `enabled` set to `true`?
   - Is the Keptn API endpoint on `http` or `https`?

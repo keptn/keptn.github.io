@@ -29,34 +29,34 @@ The following sections give more details.
   Use the below `gateway.yaml` manifest to create an Istio gateway
   with the name `public-gateway` in the `istio-system` namespace:
 
-```yaml
----
-apiVersion: networking.istio.io/v1alpha3
-kind: Gateway
-metadata:
-  name: public-gateway
-  namespace: istio-system
-spec:
-  selector:
-    istio: ingressgateway
-  servers:
-  - port:
-      name: http
-      number: 80
-      protocol: HTTP
-    hosts:
-    - '*'
-```
+  ```
+  ---
+  apiVersion: networking.istio.io/v1alpha3
+  kind: Gateway
+  metadata:
+    name: public-gateway
+    namespace: istio-system
+  spec:
+    selector:
+      istio: ingressgateway
+    servers:
+    - port:
+        name: http
+        number: 80
+        protocol: HTTP
+      hosts:
+      - '*'
+  ```
 
-```console
-kubectl apply -f gateway-manifest.yaml
-```
+  ```
+  kubectl apply -f gateway-manifest.yaml
+  ```
 
 ## Create ConfigMap with ingress information
 
 * [Determine the ingress IP and ports](https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/#determining-the-ingress-ip-and-ports):
 
-    ```console
+    ```
     kubectl -n istio-system get svc istio-ingressgateway
     ```
 
@@ -70,11 +70,11 @@ kubectl apply -f gateway-manifest.yaml
     HOSTNAME_TEMPLATE=<HOSTNAME_TEMPLATE> # optional, default = \${INGRESS_PROTOCOL}://\${service}.\${project}-\${stage}.\${INGRESS_HOSTNAME_SUFFIX}:\${INGRESS_PORT}
     ```
 
-      **Note:** In the above example, `nip.io` is used as wildcard DNS for the IP address.
-      **Note:** The `HOSTNAME_TEMPLATE` describes how the hostname for the automatically generated `VirtualService` should look. This value is also used for the `deploymentURIPublic` property contained in the `deployment.finished` events sent by the helm-service will look like. This URL can then be used by execution plane services that need to access the deployed service (e.g. a testing service like the jmeter-service).
-      Within the `HOSTNAME_TEMPLATE`, you can use the variables `INGRESS_HOSTNAME_SUFFIX`, `INGRESS_PORT`, `INGRESS_PROTOCOL`, as well as `project`, `stage` and `service`. Please escape those variables using `\${}` when defining the value for `HOSTNAME_TEMPLATE`, since the resulting string should contain the placeholders of those variables instead of their actual values.
+    **Note:** In the above example, `nip.io` is used as wildcard DNS for the IP address.  
+    **Note:** The `HOSTNAME_TEMPLATE` describes how the hostname for the automatically generated `VirtualService` should look. This value is also used for the `deploymentURIPublic` property contained in the `deployment.finished` events sent by the helm-service will look like. This URL can then be used by execution plane services that need to access the deployed service (e.g. a testing service like the jmeter-service).
+    Within the `HOSTNAME_TEMPLATE`, you can use the variables `INGRESS_HOSTNAME_SUFFIX`, `INGRESS_PORT`, `INGRESS_PROTOCOL`, as well as `project`, `stage` and `service`. Please escape those variables using `\${}` when defining the value for `HOSTNAME_TEMPLATE`, since the resulting string should contain the placeholders of those variables instead of their actual values.
 
-    ```console
+    ```
     kubectl create configmap -n keptn ingress-config --from-literal=ingress_hostname_suffix=${INGRESS_HOSTNAME_SUFFIX} --from-literal=ingress_port=${INGRESS_PORT} --from-literal=ingress_protocol=${INGRESS_PROTOCOL} --from-literal=istio_gateway=${ISTIO_GATEWAY} --from-literal=hostname_template=${HOSTNAME_TEMPLATE} -oyaml --dry-run | kubectl replace -f -
     ```
 
@@ -88,7 +88,7 @@ kubectl apply -f gateway-manifest.yaml
     HOSTNAME_TEMPLATE=<HOSTNAME_TEMPLATE> # optional, default = \${INGRESS_PROTOCOL}://\${service}.\${project}-\${stage}.\${INGRESS_HOSTNAME_SUFFIX}:\${INGRESS_PORT}
     ```
     
-    ```console
+    ```
     kubectl create configmap -n keptn ingress-config --from-literal=ingress_hostname_suffix=${INGRESS_HOSTNAME_SUFFIX} --from-literal=ingress_port=${INGRESS_PORT} --from-literal=ingress_protocol=${INGRESS_PROTOCOL} --from-literal=istio_gateway=${ISTIO_GATEWAY} --from-literal=hostname_template=${HOSTNAME_TEMPLATE} -oyaml --dry-run | kubectl replace -f -
     ```
 

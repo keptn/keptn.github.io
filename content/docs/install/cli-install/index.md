@@ -57,13 +57,13 @@ Binaries for the Keptn CLI are provided for Linux, macOS, and Windows.
 - Now, verify that the installation has worked and that the version is correct by running:
     - *Linux / macOS*
 
-    ```console
+    ```
     keptn version
     ```
 
     - *Windows*
 
-    ```console
+    ```
     .\keptn.exe version
     ```
 
