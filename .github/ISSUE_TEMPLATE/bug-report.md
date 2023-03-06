@@ -1,10 +1,10 @@
 ---
-name: Bug Report
-about: Report a bug encountered with Keptn Website
+name: Improvement Needed
+about: Report any improvements that the documentation needs.
 labels:
 - kind/bug
 ---
-**This is a Bug Report**
+**This is an improvement needed section where you can submit any bug, further improvements etc.**
 
 <!-- Thanks for filing an issue! Before submitting, please fill in the following information. -->
 
