@@ -60,6 +60,13 @@ The Keptn API is documented in terms of a [Swagger API documentation](https://sw
         caption="Keptn Swagger API documentation - Example"
         width="700px">}}
 
+ ## Uploading an API file to a Keptn project 
+ * It can be done in any of the two ways :
+
+    * Upload it directly to your git repo.
+
+    * Use the resource-service API for uploading with the example snippted from above. 
+    
 ## Architecture Details of Keptn API
 
 Keptn 0.6.2 introduced an NGINX as new K8s deployment and service called `api-gateway-ngnix` shown in the figure below. This NGINX allows to route the traffic and ensures that all requests are authenticated using the `/auth` endpoint of the `api-service`.
@@ -67,7 +74,6 @@ Keptn 0.6.2 introduced an NGINX as new K8s deployment and service called `api-ga
 - The `api-service` now does not implement endpoints of the `configuration-service` anymore.
 - The `configuration-service` is exposed to the public. Endpoints that are not intended to be used from the public (e.g., *deleting a project*) are marked and the description is accordingly adapted.
 - The `mongodb-datastore` is exposed to the public. Endpoints that are not intended to be used from the public are marked and the description is accordingly adapted.
-
 
 **Architecture of Keptn installation:**
 
