@@ -1,6 +1,6 @@
 ---
-name: Feature Request
-about: Suggest a/an feature/enhancement to the Keptn Documentation
+name: Content Request 
+about: Suggest any content recommendations for the Keptn Documentation
 title: ''
 labels: 'enhancement'
 assignees: ''
