@@ -26,7 +26,7 @@ localhost
 
 For example, Keptn creates the following `ConfigMap`:
 
-```
+```yaml
 apiVersion: v1
 data:
   denyList: |-

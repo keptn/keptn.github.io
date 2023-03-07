@@ -15,7 +15,7 @@ The definition is manifested in a [shipyard](../../reference/files/shipyard/) fi
 
 Please take a look at an example of a multi-stage delivery with a *dev*, *hardening*, and *production* stage with blue/green deployment and automated problem remediation.  
 
-```
+```yaml
 stages:
   - name: "dev"
     deployment_strategy: "direct"

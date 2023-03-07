@@ -15,12 +15,12 @@ aliases:
 
 - To uninstall Keptn from your cluster, run the uninstall command using the Helm CLI:
 
-    ```
-    helm uninstall keptn -n <keptn-namespace>
-    ```
+``` console
+helm uninstall keptn -n <keptn-namespace>
+```
 
 - To verify the cleanup, retrieve the list of namespaces in your cluster and ensure that the **keptn** namespace is not included in the output of the following command:
 
-    ```
-    kubectl get namespaces
-    ```
+```console
+kubectl get namespaces
+```

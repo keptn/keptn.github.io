@@ -71,20 +71,20 @@ Run your Keptn installation for free on GKE! If you [sign up for a Google Cloud 
 
     - Set up the required permissions for your user:
 
-      ```
+      ```console
     oc adm policy --as system:admin add-cluster-role-to-user cluster-admin <OPENSHIFT_USER_NAME>
       ```
 
     - Set up the required permissions for the installer pod:
 
-      ```
+      ```console
     oc adm policy  add-cluster-role-to-user cluster-admin system:serviceaccount:default:default
     oc adm policy  add-cluster-role-to-user cluster-admin system:serviceaccount:kube-system:default
       ```
 
     - Enable admission WebHooks on your OpenShift master node:
 
-      ```
+      ```console
     sudo -i
     cp -n /etc/origin/master/master-config.yaml /etc/origin/master/master-config.yaml.backup
     oc ex config patch /etc/origin/master/master-config.yaml --type=merge -p '{
@@ -123,18 +123,18 @@ Run your Keptn installation for free on GKE! If you [sign up for a Google Cloud 
 Please refer to the [official homepage of K3s](https://k3s.io) for detailed installation instructions. Here, a short guide on how to run Keptn on K3s is provided for a Linux environment. **Note:** If you are using macOS, you will need to run K3s using [multipass](https://multipass.run/) and as explained [here](https://medium.com/@zhimin.wen/running-k3s-with-multipass-on-mac-fbd559966f7c).
  
 1. Download, install [K3s](https://k3s.io/) (tested with [versions 1.17 to 1.21](../k8s_support/)) and run K3s using the following command:
-   ```
+   ```console
    curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.20.4+k3s1 K3S_KUBECONFIG_MODE="644" sh -s - --no-deploy=traefik
    ```
    This installs version `v1.20.4+k3s1` (please refer to the [K3s GitHub releases page](https://github.com/rancher/k3s/releases) for newer releases), sets file permissions `644` on `/etc/rancher/k3s/k3s.yaml` and disables `traefik` as an ingress controller.
 
 1. Export the Kubernetes profile using
-   ```
+   ```console
    export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
    ```
    
 1. Verify that the connection to the cluster works
-   ```
+   ```console
    kubectl get nodes   
    ```
 
@@ -153,18 +153,18 @@ You must install [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) befo
 
 1. Download, install [K3d](https://k3d.io/v5.3.0/) (tested with [v5.3.0](../k8s_support/)) and run K3d using the following command:
 
-   ```
+   ```console
    curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=v5.3.0 bash
    ```
    This installs version `v5.3.0` (please refer to the [K3d GitHub releases page](https://github.com/k3d-io/k3d/) for newer releases).
 
 1. Create a cluster called My keptn which has port fowarding and disables the traffic, which is a ingress gateaway.
-   ```
+   ```console
    k3d cluster create mykeptn -p "8082:80@loadbalancer" --k3s-arg "--no-deploy=traefik@server:*"
    ```
    
 1. Verify that the connection to the cluster works
-   ```
+   ```console
    kubectl get nodes   
    ```
 
@@ -178,13 +178,13 @@ You must install [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) befo
 
 1. Create a new Minikube profile (named keptn) with at least 6 CPU cores and 14 GB memory using:
 
-    ```
+    ```console
     minikube start -p keptn --cpus 6 --memory 14000
     ``` 
 
 1. (Optional) Start the Minikube LoadBalancer service in a second terminal by executing:
 
-    ```
+    ```console
    minikube tunnel 
    ``` 
 </p>
@@ -220,13 +220,13 @@ Every Keptn release provides binaries for the Keptn CLI. These binaries are avai
 - Now, verify that the installation has worked and that the version is correct by running:
     - *Linux / macOS*
 
-    ```
+    ```console
     keptn version
     ```
 
     - *Windows*
 
-    ```
+    ```console
     .\keptn.exe version
     ```
 
@@ -238,7 +238,7 @@ Keptn consists of a **Control Plane** and an **Execution Plane**:
 
 * The **Control Plane** allows using Keptn for the [Quality Gates](../../../concepts/quality_gates/) and [Automated Operations](../../../concepts/automated_operations/) use cases. To install the control plane containing the components for *quality gates* and *automated operations*, execute: 
 
-    ```
+    ```console
     keptn install
     ```
 
@@ -270,15 +270,15 @@ This option exposes Keptn externally using a cloud provider's load balancer (if 
 
 1. **Install Keptn:** For installing Keptn on your cluster, please use the Keptn CLI.
 Depending on whether you would like to install the execution plane for continuous delivery, add the flag `--use-case=continuous-delivery`. Furthermore, if you are on OpenShift, please add `--platform=openshift`.
-  ```
+  ```console
   keptn install --endpoint-service-type=LoadBalancer (--use-case=continuous-delivery) (--platform=openshift)
   ```
 
 1. **Get Keptn endpoint:**  Get the EXTERNAL-IP of the `api-gateway-ngix` using the command below. The Keptn API endpoint is: `http://<ENDPOINT_OF_API_GATEWAY>/api`
-  ```
+  ```console
   kubectl -n keptn get service api-gateway-nginx
   ```
-  ```
+  ```console
   NAME                TYPE        CLUSTER-IP    EXTERNAL-IP                  PORT(S)   AGE
   api-gateway-nginx   ClusterIP   10.117.0.20   <ENDPOINT_OF_API_GATEWAY>    80/TCP    44m
   ```
@@ -286,12 +286,12 @@ Depending on whether you would like to install the execution plane for continuou
     *Optional:* Store Keptn API endpoint in an environment variable.
 
     For Linux and Mac:
-    ```
+    ```console
     KEPTN_ENDPOINT=http://<ENDPOINT_OF_API_GATEWAY>/api
     ```
 
     For Windows:
-    ```
+    ```console
     $Env:KEPTN_ENDPOINT = 'http://<ENDPOINT_OF_API_GATEWAY>/api'
     ```
 
@@ -302,18 +302,18 @@ This option exposes Keptn on each Kubernetes Node's IP at a static port. Therefo
 
 1. **Install Keptn:** For installing Keptn on your cluster, please use the Keptn CLI.
 Depending on whether you would like to install the execution plane for continuous delivery, add the flag `--use-case=continuous-delivery`. Furthermore, if you are on OpenShift, please add `--platform=openshift`.
-  ```
+  ```console
   keptn install --endpoint-service-type=NodePort (--use-case=continuous-delivery) (--platform=openshift)
   ```
 
 1. **Get Keptn endpoint:** Get the mapped port of the `api-gateway-nginx` using the command below.
 
-    ```
+    ```console
     API_PORT=$(kubectl get svc api-gateway-nginx -n keptn -o jsonpath='{.spec.ports[?(@.name=="http")].nodePort}')
     ```
     Next, get the internal or external IP address of any Kubernetes node:
 
-    ```
+    ```console
     EXTERNAL_NODE_IP=$(kubectl get nodes -o jsonpath='{ $.items[0].status.addresses[?(@.type=="ExternalIP")].address }')
     INTERNAL_NODE_IP=$(kubectl get nodes -o jsonpath='{ $.items[0].status.addresses[?(@.type=="InternalIP")].address }')
     ```
