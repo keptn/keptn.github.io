@@ -17,3 +17,6 @@ and includes detailed instructions for implementing it with Keptn
 * [Tracetest integration for Keptn](https://artifacthub.io/packages/keptn/keptn-integrations/tracetest)
 is the integration you can download
 
+* Official [Tracetest documentation](https://docs.tracetest.io/tools-and-integrations/keptn/)
+
+
