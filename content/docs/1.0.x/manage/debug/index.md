@@ -12,9 +12,7 @@ This can be useful when analyzing execution problems for your project.
 You can set the log level in either of two ways:
 
 * Adjust the `loglevel` value to `debug`
-  in the [Helm chart](../../reference/files/values)
-  or by using the [-set flag](../../install/helm-install/#the---set-flag)
-  on the **helm** command line.
+  in the [Helm chart](../../reference/files/values).
   This is a global setting that sets the log level
   for **all** Keptn core services.
 
