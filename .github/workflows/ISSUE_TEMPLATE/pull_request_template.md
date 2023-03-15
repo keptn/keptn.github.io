@@ -4,7 +4,6 @@
 
 Fixes #XXXX <!-- replace with the issue number that is fixed in this PR -->
 
-#example
 
 <!-- Write down all the changes made-->
 ## Changes proposed
@@ -16,5 +15,6 @@ Here comes all the changes proposed through this PR
 - ...
 
 ## Check List (Check all the boxes that are applicable)
-- [ ] The title of my pull request is a short description of the requested changes.
+- [ ] All new and existing tests passed.
+- [ ] This PR does not contain plagiarized content.
 - [ ] The PR title follows semantic commit conventions.
