@@ -6,9 +6,7 @@ Fixes #XXXX <!-- replace with the issue number that is fixed in this PR -->
 
 
 <!-- Write down all the changes made-->
-## Changes proposed
-
-Here comes all the changes proposed through this PR
+## Proposed changes
 
 - change one
 - change two
