@@ -226,7 +226,7 @@ pre {
   line-height: 1.5;
   tab-size: 4;
   hyphens: none;
-  background: $preBlockBackgroundColor;
+  background: $preBlockBackgroundColor !important;
 
   code {
     display: block;

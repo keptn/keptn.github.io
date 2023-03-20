@@ -52,4 +52,4 @@ Please subscribe to our [Keptn YouTube channel](https://www.youtube.com/c/keptn/
 
 ## More adopters
 
-Find more Keptn adopters and get yourself listed [in our public adopters file](https://github.com/keptn/keptn/blob/master/ADOPTERS.md).
+Find more Keptn adopters and get yourself listed [in our public adopters file](https://github.com/keptn/community/blob/main/ADOPTERS).

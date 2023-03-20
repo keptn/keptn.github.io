@@ -223,3 +223,5 @@ The pass and warning criteria for the `total_score` use the logical operator ">=
 
 * [Quality Gates](../../../define/quality-gates/)
 
+* [Service Level Objective specification](https://github.com/keptn/spec/blob/master/service_level_objective.md)
+
