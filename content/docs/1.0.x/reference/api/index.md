@@ -29,9 +29,10 @@ The Keptn API is documented in terms of a [Swagger API documentation](https://sw
     CLI is authenticated against the Keptn cluster http://YOUR.DOMAIN/api
     ```
 
-* Access the Keptn Swagger UI and API documentation from the Bridge
-* by clicking on "Keptn API" in the top right menu
+* Access the Keptn Swagger UI and API documentation
+* by clicking on "Keptn API" in the top right menu on the Bridge
 * or by pointing your browser at: http://YOUR.DOMAIN/api .
+This gives you easy access to all API Endpoints.
 
 * The index page of the Swagger API documentation looks as follows:
 
