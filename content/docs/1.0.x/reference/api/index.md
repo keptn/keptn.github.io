@@ -64,7 +64,7 @@ This gives you easy access to all API Endpoints.
         width="700px">}}
         
 ## Uploading an API file to a Keptn project 
-* An API file can be uploaded to a project in either of the following ways :
+You can upload an API file to a project in any of the following ways :
     * Upload the file directly to your git repo.
     * Use the `resource-service` API for uploading, as shown in the example snippet from above.
 ## Architecture Details of Keptn API
