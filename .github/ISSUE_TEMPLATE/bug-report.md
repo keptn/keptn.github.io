@@ -2,7 +2,7 @@
 name: Improvement Needed
 about: Report any improvements that the documentation needs.
 labels:
-- kind/bug
+- bug
 ---
 **This is an improvement needed section where you can submit any bug, further improvements etc.**
 
