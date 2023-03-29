@@ -63,7 +63,7 @@ This gives you easy access to all API Endpoints.
         caption="Keptn Swagger API documentation - Example"
         width="700px">}}
         
-## Uploading an API file to a Keptn project 
+## Upload a file to a Keptn project
 You can upload an API file to a project in any of the following ways :
 * Use the [keptn add-resource](../../cli/commands/keptn_add-resource) command.
 Note that only some APIs are supported by this command.
@@ -75,6 +75,21 @@ on the project, stage or service level.
 
   To mimic what the `keptn add-resource` command does,
   use the `POST API` call.
+  
+  ```console
+  curl -X 'POST' \
+  'http://yourkeptn/api/resource-service/v1/project/YOURPROJECT/stage/YOURSTAGE/service/YOURSERVICE/resource' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "resources": [
+    {
+      "resourceContent": "PATHTO/yourfile.abc",
+      "resourceURI": "BASE64ENCODEDFILE"
+    }
+  ]
+  }
+  ```
 ## Architecture Details of Keptn API
 
 Keptn 0.6.2 introduced an NGINX as new K8s deployment and service called `api-gateway-ngnix` shown in the figure below. This NGINX allows to route the traffic and ensures that all requests are authenticated using the `/auth` endpoint of the `api-service`.
