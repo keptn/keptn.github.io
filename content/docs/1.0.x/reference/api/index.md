@@ -90,13 +90,20 @@ on the project, stage or service level.
   ]
   }
   ```
-## Architecture Details of Keptn API
+## Architectural Details of Keptn API
 
 Keptn 0.6.2 introduced an NGINX as new K8s deployment and service called `api-gateway-ngnix` shown in the figure below. This NGINX allows to route the traffic and ensures that all requests are authenticated using the `/auth` endpoint of the `api-service`.
 
-- The `api-service` now does not implement endpoints of the `configuration-service` anymore.
-- The `configuration-service` is exposed to the public. Endpoints that are not intended to be used from the public (e.g., *deleting a project*) are marked and the description is accordingly adapted.
-- The `mongodb-datastore` is exposed to the public. Endpoints that are not intended to be used from the public are marked and the description is accordingly adapted.
+- The [api-service](../../../concepts/architecture/#api-service)
+  does not itself implement endpoints of the `resource-service`.
+- The [resource-service](../../../concepts/architecture/#mongodb-datastore)
+  (which replaces the `configuration-service` used in earlier releases)
+- is exposed to the public.
+  Endpoints that are not intended to be used by the public (e.g., *deleting a project*)
+  are marked and the description is adapted accordingly.
+- The [mongodb-datastore](../../../concepts/architecture/#mongodb-datastore)
+  is exposed to the public.
+  Endpoints that are not intended to be used by the public are marked and the description is adapted accordingly.
 
 
 **Architecture of Keptn installation:**
