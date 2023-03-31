@@ -92,7 +92,13 @@ on the project, stage or service level.
   ```
 ## Architectural Details of Keptn API
 
-Keptn 0.6.2 introduced an NGINX as new K8s deployment and service called `api-gateway-ngnix` shown in the figure below. This NGINX allows to route the traffic and ensures that all requests are authenticated using the `/auth` endpoint of the `api-service`.
+Keptn uses
+[NGINX](https://www.nginx.com/)
+to route the traffic and ensure that all requests are authenticated
+using the `/auth` endpoint of the `api-service`.
+This is implemented using the
+[api-gateway-ngnix](../../../concepts/architecture/#api-gateway-nginx)
+service as shown in the figure below.
 
 - The [api-service](../../../concepts/architecture/#api-service)
   does not itself implement endpoints of the `resource-service`.
