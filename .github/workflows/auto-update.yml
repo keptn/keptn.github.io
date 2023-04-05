@@ -76,7 +76,7 @@ jobs:
           find $DOCS_PATH -print -type f -name '*.md' -exec sed -i "s@https://keptn.sh/docs/[[:digit:]][^/]*/@${RELATIVE_PATH}@g" {} \;
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v4
+        uses: peter-evans/create-pull-request@v5
         with:
           add-paths: "./content/docs/${{ env.SOURCE_VERSION_SLUG }}/reference/cli/commands"
           token: ${{ secrets.KEPTN_BOT_TOKEN }}
