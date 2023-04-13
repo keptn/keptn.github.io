@@ -362,4 +362,4 @@ and  named to match the value of the `Metadata` name field in the shipyard file.
 * [Quality gates](../../../define/quality-gates/)
 * [Triggers](../../../define/triggers/)
 * [Remediation configuration](../remediation/)
-* [Run tasks in parallel](../../../define/parallel)
+* [Run tasks in parallel](../../../define/parallel/)
