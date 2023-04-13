@@ -16,7 +16,7 @@ or if you have multiple services within a project.
 
 You can run tasks in parallel by putting them in different stages,
 each of which is triggered from the previous stage.
-The following [shipyard](../../reference/files/shipyard) illustrates this.
+The following [shipyard](../../reference/files/shipyard/) illustrates this.
 Here, you see we have three stages:
 
 * `hardening`
