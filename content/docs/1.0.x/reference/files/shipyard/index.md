@@ -136,7 +136,7 @@ or if you have multiple services within a project.
 If you need to run different tasks in parallel,
 a better strategy is to create separate stages,
 both of which are triggered from the previous stage.
-See [Run tasks in parallel](../../../define/parallel)
+See [Run tasks in parallel](../../../define/parallel/)
 for an example of how to do this.
 
 A sequence has the properties:
