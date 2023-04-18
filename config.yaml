@@ -1,6 +1,7 @@
 _merge: deep
 title: Keptn
 params:
+  version: 1.0.x
   github_repo: https://github.com/keptn/keptn
   links:
     developer:
@@ -20,7 +21,7 @@ module:
   hugoVersion:
     extended: true
   imports:
-  - path: github.com/keptn-sandbox/lifecycle-toolkit-docs
+  - path: github.com/keptn/docs-tooling
     ignoreConfig: false
     mounts:
     - source: static
