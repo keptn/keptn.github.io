@@ -4,139 +4,110 @@ description: Authenticate the Keptn CLI and Bridge to your Keptn cluster
 weight: 60
 ---
 
-To authenticate and associate the Keptn CLI and Keptn bridge to your Keptn cluster,
-you need the exposed Keptn endpoint and API token.
-The endpoint values and the method of querying them
-is determined by the access options you use.
-See [Choose access options](../access/) for details.
+After you [install Keptn](../helm-install/),
+you must authenticate the Keptn CLI and Bridge against the Keptn cluster.
+To do this, you need to:
 
-## Authenticate Keptn CLI
+* Get the exposed Keptn endpoint
+* Get the API token
+* Run `keptn auth`, supplying the Keptn endpoint and API token
 
-To authenticate the Keptn CLI against the Keptn cluster, the exposed Keptn endpoint and API token are required. 
-After [installing Keptn](../helm-install/), you already have your Keptn endpoint.
+The Keptn endpoint and the API token  are created during the Keptn installation.
 
-<details><summary>Get API Token and Authenticate Keptn CLI on **Linux / MacOS**</summary>
-<p>
+## Authenticate CLI on Linux and MacOS
 
-* Set the environment variable `KEPTN_API_TOKEN`:
+Do the following from the shell:
 
-```console
-KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token} | base64 --decode)
-```
+1.  Get the Keptn endpoint from the `api-gateway-nginx`.
+    Follow the instructions in [Choose access options](../access/)
+    to get the Keptn endpoint for the access option you are using
+    and, optionally, storing that endpoint in an environment variable.
 
-* To authenticate the CLI against the Keptn cluster, use the [keptn auth](../../0.19.x/reference/cli/commands/keptn_auth/) command:
+1. Set the environment variable `KEPTN_API_TOKEN`:
 
-```console
-keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN
-```
+   ```
+   KEPTN_API_TOKEN=$(kubectl get secret keptn-api-token -n keptn `
+       -ojsonpath={.data.keptn-api-token} | base64 --decode)
+   ```
 
-**Note**: If you receive a warning `Using a file-based storage for the key because the password-store seems to be not set up.` this is because a password store could not be found in your environment. In this case, the credentials are stored in `~/.keptn/.password-store` in your home directory.
-</p>
-</details>
+1. To authenticate the CLI against the Keptn cluster,
+   use the [keptn auth](../../reference/cli/commands/keptn_auth/) command:
 
-<details><summary>Get API Token and Authenticate Keptn CLI on **Windows**</summary>
-<p>
+   ```
+   keptn auth --endpoint=$KEPTN_ENDPOINT --api-token=$KEPTN_API_TOKEN
+   ```
 
-Please expand the corresponding section matching your CLI tool:
+   **Note**: If you receive a warning
+   `Using a file-based storage for the key because the password-store seems to be not set up.`,
+   it means that no password store could be found in your environment.
+   In this case, the credentials are stored in `~/.keptn/.password-store` in your home directory.
 
-<details><summary>PowerShell</summary>
-<p>
+## Authenticate CLI on Windows
 
-For the Windows PowerShell, a small script is provided that installs the `PSYaml` module and sets the environment variables.
+Do the folllowing in the Windows Command Line:
 
-* Set the environment variable `KEPTN_ENDPOINT`:
+1. Set the environment variable `KEPTN_ENDPOINT`:
 
-```console
-$Env:KEPTN_ENDPOINT = 'http://<ENDPOINT_OF_API_GATEWAY>/api'
-```
+   ```
+   set KEPTN_ENDPOINT=http://<ENDPOINT_OF_API_GATEWAY>/api
+   ```
 
-* Copy the following snippet and paste it in the PowerShell. The snippet retrieves the API token and sets the environment variable `KEPTN_API_TOKEN`:
+1. Get the Keptn API Token encoded in base64:
 
-```
-$tokenEncoded = $(kubectl get secret keptn-api-token -n keptn -ojsonpath='{.data.keptn-api-token}')
-$Env:KEPTN_API_TOKEN = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($tokenEncoded))
-```
+   ```
+   kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token}
+   ```
 
-* To authenticate the CLI against the Keptn cluster, use the [keptn auth](../../0.19.x/reference/cli/commands/keptn_auth/) command:
 
-```
-keptn auth --endpoint=$Env:KEPTN_ENDPOINT --api-token=$Env:KEPTN_API_TOKEN
-```
+1. Save the encoded API token in a text file such as `keptn-api-token-base64.txt`.
 
-</p>
-</details>
+1. Decode the file:
 
-<details><summary>Command Line</summary>
-<p>
+   ```
+   certutil -decode keptn-api-token-base64.txt keptn-api-token.txt
+   ```
 
-In the Windows Command Line, a couple of steps are necessary.
+1. Open the newly created file `keptn-api-token.txt`,
+   copy the value, and paste it into the next command:
 
-* Set the environment variable `KEPTN_ENDPOINT`:
+   ```
+   set KEPTN_API_TOKEN=<your-token>
+   ```
 
-```console
-set KEPTN_ENDPOINT=http://<ENDPOINT_OF_API_GATEWAY>/api
-```
+1. To authenticate the CLI against the Keptn cluster,
+   use the [keptn auth](../../reference/cli/commands/keptn_auth/) command:
 
-* Get the Keptn API Token encoded in base64:
-
-```console
-kubectl get secret keptn-api-token -n keptn -ojsonpath={.data.keptn-api-token}
-```
-
-```console
-abcdefghijkladfaea
-```
-
-* Take the encoded API token - it is the value from the key `keptn-api-token` (in this example, it is `abcdefghijkladfaea`) and save it in a text file, e.g., `keptn-api-token-base64.txt`
-
-* Decode the file:
-
-```
-certutil -decode keptn-api-token-base64.txt keptn-api-token.txt
-```
-
-* Open the newly created file `keptn-api-token.txt`, copy the value and paste it into the next command:
-
-```
-set KEPTN_API_TOKEN=keptn-api-token
-```
-
-* To authenticate the CLI against the Keptn cluster, use the [keptn auth](../../0.19.x/reference/cli/commands/keptn_auth/) command:
-
-```
-keptn.exe auth --endpoint=$Env:KEPTN_ENDPOINT --api-token=$Env:KEPTN_API_TOKEN
-```
-
-</p>
-</details>
-</p>
-</details>
-
----
+   ```
+   keptn.exe auth --endpoint=$Env:KEPTN_ENDPOINT --api-token=$Env:KEPTN_API_TOKEN
+   ```
 
 ## Authenticate Keptn Bridge
 
 After installing and exposing Keptn, you can access the Keptn Bridge by using a browser and navigating to the Keptn endpoint without the `api` path at the end of the URL.
 You can also use the Keptn CLI to retrieve the Bridge URL using:
 
-```console
+```
 keptn status
 ```
 
-The Keptn Bridge has basic authentication enabled by default and the default user is `keptn` with an automatically generated password.
+The Keptn Bridge has [basic authentication](../../bridge/basic_authentication/)
+enabled by default and the default user is `keptn` with an automatically generated password.
 
 * To get the username for authentication, execute:
 
-```console
+```
 kubectl get secret -n keptn bridge-credentials -o jsonpath="{.data.BASIC_AUTH_USERNAME}" | base64 --decode
 ```
 
 * To get the password for authentication, execute:
 
-```console
+```
 kubectl get secret -n keptn bridge-credentials -o jsonpath="{.data.BASIC_AUTH_PASSWORD}" | base64 --decode
 ```
 
 * If you want to change the user and password for the authentication,
-follow the instructions [here](../../0.19.x/bridge/basic_authentication/#enable-authentication).
+follow the instructions [here](../../bridge/basic_authentication/#enable-authentication).
+
+See [OpenID Authorization](../../bridge/oauth/)
+for information about using OAUTH authorization for the Keptn Bridge.
 

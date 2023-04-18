@@ -1,9 +1,6 @@
 ---
-title: Keptn v1 Docs
-linktitle: Keptn v1 Docs
+title: Documentation
+linktitle: Documentation
 description: Learn how to use Keptn.
-sidebar_multicard: true
 icon: docs
-menu: main
-weight: 4
 ---

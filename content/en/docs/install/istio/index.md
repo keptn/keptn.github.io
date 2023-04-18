@@ -2,9 +2,6 @@
 title: Install and configure Istio
 description: Configure Istio and create a ConfigMap to expose services deployed by Keptn.
 weight: 75
-aliases:
-- /docs/0.19.x/continuous_delivery/expose_services/
-- /docs/1.0.x/continuous_delivery/expose_services/
 ---
 
 Istio can be installed in order to access the services that Keptn deploys.
@@ -23,11 +20,14 @@ The following sections give more details.
 
 ## Install Istio
 
-* If you did not install Istio during the [Keptn installation](../access/#option-3-expose-keptn-via-an-ingress), please refer to the official [Installation Guides](https://istio.io/latest/docs/setup/install/) to install Istio on your cluster.
+* Refer to the official [Installation Guides](https://istio.io/latest/docs/setup/install/)
+  to install Istio on your cluster.
 
 ## Create Istio Gateway
 
-* To create an Istio `Gateway`, please follow the official Istio documentation on [Configuring Ingress using an Istio Gateway](https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/#configuring-ingress-using-an-istio-gateway). Use the below `gateway.yaml` manifest to create a Istio gateway with the name `public-gateway` in the `istio-system` namespace:
+* To create an Istio `Gateway`, please follow the official Istio documentation on [Configuring Ingress using an Istio Gateway](https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/#configuring-ingress-using-an-istio-gateway).
+  Use the below `gateway.yaml` manifest to create an Istio gateway
+  with the name `public-gateway` in the `istio-system` namespace:
 
 ```yaml
 ---

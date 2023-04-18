@@ -74,20 +74,16 @@ declarative, extensible and based on GitOps
  <a class="btn btn-lg btn-secondary mr-3 mb-4" href="{{< relref "/docs" >}}">
   Read Docs <i class="fas fa-arrow-alt-circle-right ml-2"></i>
  </a>
-<div class="container">
-<div class="row">
-    <div class="col">
+<div >
+    <div class="d-inline-flex flex-wrap" >
     <picture>
         <source media="(min-width: 768px)" srcset="/images/home/use-cases/graphic-use-case-03a.svg">
-        <img class="" src="/images/home/use-cases/graphic-use-case-03-XS.svg">
+        <img  style="max-width: 500px" src="/images/home/use-cases/graphic-use-case-03-XS.svg">
+    </picture>
+    <picture class=".flex-shrink-1" >
+        <img style="max-width: 500px" src="/images/home/use-cases/graphic-use-case-03b.svg">
     </picture>
     </div>
-    <div class="col">
-    <picture>
-        <img src="/images/home/use-cases/graphic-use-case-03b.svg">
-    </picture>
-    </div>
-</div>
 </div>
 
 {{% /blocks/lead %}}

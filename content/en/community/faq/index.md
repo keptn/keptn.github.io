@@ -29,4 +29,4 @@ We appreciate your enthusiasm and will support you in presenting and demonstrati
 
 ## How to extend Keptn?
 
-You can extend Keptn by adding Keptn services for notifications, test execution, auto-remediation and more. Please have a look at our [Keptn integrations](../../docs/integrations/) page that lists all currently curated integrations. If you want to get started with you own integrations, have a look at our [integrations contribution guide](https://github.com/keptn-sandbox/contributing).
+You can extend Keptn by adding Keptn services for notifications, test execution, auto-remediation and more. Please have a look at our [Keptn integrations](../integrations/) page that lists all currently curated integrations. If you want to get started with you own integrations, have a look at our [integrations contribution guide](https://github.com/keptn-sandbox/contributing).

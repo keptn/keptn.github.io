@@ -56,4 +56,4 @@ Please subscribe to our [Keptn YouTube channel](https://www.youtube.com/c/keptn/
 
 ## More integrations
 
-Find more integrations on our dedicated [integrations page](../../docs/integrations/).
+Find more integrations on our dedicated [integrations page](../integrations/).

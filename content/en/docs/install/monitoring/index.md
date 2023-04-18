@@ -4,24 +4,7 @@ description: Install service to attach observability platform as data source for
 weight: 80
 icon: setup
 aliases:
-- /docs/0.19.x/monitoring/
-- /docs/0.19.x/monitoring/prometheus/
-- /docs/0.19.x/monitoring/prometheus/install/
-- /docs/0.19.x/monitoring/dynatrace/uninstall/
-- /docs/0.19.x/monitoring/dynatrace/configure_slis/
-- /docs/0.19.x/monitoring/dynatrace/troubleshooting/
-- /docs/0.19.x/monitoring/dynatrace/best_practices/
-- /docs/0.19.x/monitoring/dynatrace/install/
-- /docs/0.19.x/monitoring/dynatrace/
-- /docs/1.0.x/monitoring/
-- /docs/1.0.x/monitoring/prometheus/
-- /docs/1.0.x/monitoring/prometheus/install/
-- /docs/1.0.x/monitoring/dynatrace/uninstall/
-- /docs/1.0.x/monitoring/dynatrace/configure_slis/
-- /docs/1.0.x/monitoring/dynatrace/troubleshooting/
-- /docs/1.0.x/monitoring/dynatrace/best_practices/
-- /docs/1.0.x/monitoring/dynatrace/install/
-- /docs/1.0.x/monitoring/dynatrace/
+    - /docs/1.0.x/monitoring/dynatrace/sli_provider/
 ---
 
 If your project uses [quality gates](../../concepts/quality_gates/),

@@ -36,3 +36,7 @@ $light: #c9e0f1;
 .capability05::before {
   background: url('/images/home/capabilities/capabilities-05.svg');
 }
+
+.td-overlay--dark::after {
+  background-color: transparent !important;
+}

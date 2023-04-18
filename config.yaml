@@ -17,6 +17,11 @@ params:
       icon: fab fa-youtube
       name: Keptn YouTube channel
       url: https://youtube.com/@keptn
+
+  versions:
+    - url: /docs/
+      version: latest
+      
 module:
   hugoVersion:
     extended: true
@@ -39,3 +44,13 @@ languages:
   en:
     title: Keptn
     contentDir: "content/en"
+
+enableGitInfo: true
+
+frontmatter:
+  publishDate:
+    - :git
+    - :default
+  date:
+    - :git
+    - :default
