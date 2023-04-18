@@ -1,55 +1,38 @@
-// Font
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Playfair+Display&display=swap');
+.td-navbar .navbar-brand__name {
+    display: none;
+  }
 
-// Bootstrap
-@import 'bootstrap/functions';
-@import 'bootstrap/variables';
-@import 'bootstrap/mixins';
-@import 'bootstrap/root';
-@import 'bootstrap/reboot';
-@import 'bootstrap/grid';
-@import 'bootstrap/type';
-@import 'bootstrap/tables';
-@import "bootstrap/images";
-@import "bootstrap/buttons";
-@import "bootstrap/transitions";
-@import "bootstrap/nav";
-@import "bootstrap/navbar";
-@import "bootstrap/card";
-@import "bootstrap/breadcrumb";
-@import "bootstrap/list-group";
-@import 'bootstrap/utilities';
+$primary: #006bb8;
+$secondary: #469bdd;
+$light: #c9e0f1;
 
-// General
-@import 'general/variables';
-@import 'general/base';
-@import 'general/typography';
+#td-cover-block-0 {
+  background-size: 100% auto;
+  background-position-y: bottom;
+  background-color: #006bb8 ;
+}
 
-// Libraries
-@import 'libraries/hamburgers/hamburgers';
 
-// Components
-@import 'components/buttons';
-@import 'components/contact';
-@import 'components/copy-indicator';
-@import 'components/footer';
-@import 'components/hamburger';
-@import 'components/header';
-@import 'components/logo';
-@import 'components/main-menu-mobile';
-@import 'components/main-menu';
-@import 'components/pagenav';
-@import 'components/section-index';
-@import 'components/sections';
-@import 'components/sidebar';
-@import 'components/teaser';
-@import 'components/teaser-box';
-@import 'components/teaser-card';
-@import 'components/toc';
-@import 'components/toolbar';
-@import 'components/slider';
+.capability::before {
+  content: '';
+  height: 128px;
+  width: 170px;
+  display: block;
+  background-position: center;
+}
 
-// Pages
-@import 'pages/404';
-@import 'pages/home';
-@import 'pages/why-keptn';
+.capability01::before {
+  background: url('/images/home/capabilities/capabilities-01.svg');
+}
+.capability02::before {
+  background: url('/images/home/capabilities/capabilities-02.svg');
+}
+.capability03::before {
+  background: url('/images/home/capabilities/capabilities-03.svg');
+}
+.capability04::before {
+  background: url('/images/home/capabilities/capabilities-04.svg');
+}
+.capability05::before {
+  background: url('/images/home/capabilities/capabilities-05.svg');
+}
