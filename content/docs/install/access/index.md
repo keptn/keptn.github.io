@@ -26,15 +26,15 @@ This option exposes Keptn externally using a cloud provider's load balancer (if 
 
 1. **Install Keptn:** Use the Helm CLI to install Keptn on your cluster.
 If you want to install the execution plane for continuous delivery, add the flag `continuousDelivery.enabled=true`.
-  ```console
+  ```shell
    helm install keptn keptn/keptn -n keptn --version=$KeptnVersion --create-namespace --set=continuousDelivery.enabled=true,apiGatewayNginx.type=LoadBalancer
   ```
 
 1. **Get Keptn endpoint:**  Get the EXTERNAL-IP of the `api-gateway-nginx` using the command below. The Keptn API endpoint is: `http://<ENDPOINT_OF_API_GATEWAY>/api`
-  ```console
+  ```shell
   kubectl -n keptn get service api-gateway-nginx
   ```
-  ```console
+  ```shell
   NAME                TYPE        CLUSTER-IP    EXTERNAL-IP                  PORT(S)   AGE
   api-gateway-nginx   ClusterIP   10.117.0.20   <ENDPOINT_OF_API_GATEWAY>    80/TCP    44m
   ```
@@ -42,12 +42,12 @@ If you want to install the execution plane for continuous delivery, add the flag
     *Optional:* Store Keptn API endpoint in an environment variable.
 
     For Linux and Mac:
-    ```console
+    ```shell
     KEPTN_ENDPOINT=http://<ENDPOINT_OF_API_GATEWAY>/api
     ```
 
     For Windows:
-    ```console
+    ```shell
     $Env:KEPTN_ENDPOINT = 'http://<ENDPOINT_OF_API_GATEWAY>/api'
     ```
 
@@ -58,18 +58,18 @@ This option exposes Keptn on each Kubernetes Node's IP at a static port. Therefo
 
 1. **Install Keptn:** Use the Keptn CLI to install Keptn on your cluster.
 If you want to install the execution plane for continuous delivery, add the flag `continuousDelivery.enabled=true`.
-  ```console
+  ```shell
   helm install keptn keptn/keptn -n keptn --version=$KeptnVersion --create-namespace --set=continuousDelivery.enabled=true,apiGatewayNginx.type=NodePort
   ```
 
 1. **Get Keptn endpoint:** Get the mapped port of the `api-gateway-nginx` using the command below.
 
-    ```console
+    ```shell
     API_PORT=$(kubectl get svc api-gateway-nginx -n keptn -o jsonpath='{.spec.ports[?(@.name=="http")].nodePort}')
     ```
     Next, get the internal or external IP address of any Kubernetes node:
 
-    ```console
+    ```shell
     EXTERNAL_NODE_IP=$(kubectl get nodes -o jsonpath='{ $.items[0].status.addresses[?(@.type=="ExternalIP")].address }')
     INTERNAL_NODE_IP=$(kubectl get nodes -o jsonpath='{ $.items[0].status.addresses[?(@.type=="InternalIP")].address }')
     ```
@@ -79,12 +79,12 @@ If you want to install the execution plane for continuous delivery, add the flag
     *Optional:* Store Keptn API endpoint in an environment variable.
 
     For Linux and Mac:
-    ```console
+    ```shell
     KEPTN_ENDPOINT=http://${EXTERNAL_NODE_IP}:${API_PORT}/api
     ```
 
     For Windows:
-    ```console
+    ```shell
     $Env:KEPTN_ENDPOINT = 'http://${EXTERNAL_NODE_IP}:${API_PORT}/api'
     ```
 
@@ -94,7 +94,7 @@ If you want to install the execution plane for continuous delivery, add the flag
 
 1. **Install Keptn:** Use the Keptn CLI to install Keptn on your cluster.
 If you want to install the execution plane for continuous delivery, add the flag `continuousDelivery.enabled=true`.
-  ```console
+  ```shell
   helm install keptn keptn/keptn -n keptn --version=$KeptnVersion --create-namespace --set=continuousDelivery.enabled=true
   ```
 
@@ -111,36 +111,36 @@ If you want to install the execution plane for continuous delivery, add the flag
 
     * [Determine the ingress IP](https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/#determining-the-ingress-ip-and-ports):
 
-      ```console
-    kubectl -n istio-system get svc istio-ingressgateway
+      ```shell
+      kubectl -n istio-system get svc istio-ingressgateway
       ```
 
     * Create an `ingress-manifest.yaml` manifest for an Ingress object in which you set IP-ADDRESS or your hostname and then apply the manifest. (**Note:** In the example below, `nip.io` is used as wildcard DNS for the IP address.)
 
       ```yaml
-    apiVersion: networking.k8s.io/v1
-    kind: Ingress
-    metadata:
-      annotations:
-        kubernetes.io/ingress.class: istio
-      name: api-keptn-ingress
-      namespace: keptn
-    spec:
-      rules:
-      - host: <IP-ADDRESS>.nip.io
-        http:
-          paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: api-gateway-nginx
-                port:
-                  number: 80
+      apiVersion: networking.k8s.io/v1
+      kind: Ingress
+      metadata:
+        annotations:
+          kubernetes.io/ingress.class: istio
+        name: api-keptn-ingress
+        namespace: keptn
+      spec:
+        rules:
+        - host: <IP-ADDRESS>.nip.io
+          http:
+            paths:
+            - path: /
+              pathType: Prefix
+              backend:
+                service:
+                  name: api-gateway-nginx
+                  port:
+                    number: 80
       ```
 
-      ```console
-    kubectl apply -f ingress-manifest.yaml
+      ```shell
+      kubectl apply -f ingress-manifest.yaml
       ```
 
     </p>
@@ -153,32 +153,32 @@ If you want to install the execution plane for continuous delivery, add the flag
 
     * [Determine the ingress IP](https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/#determining-the-ingress-ip-and-ports):
 
-      ```console
-    kubectl -n istio-system get svc istio-ingressgateway
+      ```shell
+      kubectl -n istio-system get svc istio-ingressgateway
       ```
 
     * Create an `ingress-manifest.yaml` manifest for an Ingress object in which you set IP-ADDRESS or your hostname and then apply the manifest. (**Note:** In the example below, `nip.io` is used as wildcard DNS for the IP address.)
 
       ```yaml
-    apiVersion: networking.k8s.io/v1beta1
-    kind: Ingress
-    metadata:
-      annotations:
-        kubernetes.io/ingress.class: istio
-      name: api-keptn-ingress
-      namespace: keptn
-    spec:
-      rules:
-      - host: <IP-ADDRESS>.nip.io
-        http:
-          paths:
-          - backend:
-              serviceName: api-gateway-nginx
-              servicePort: 80
+      apiVersion: networking.k8s.io/v1beta1
+      kind: Ingress
+      metadata:
+        annotations:
+          kubernetes.io/ingress.class: istio
+        name: api-keptn-ingress
+        namespace: keptn
+      spec:
+        rules:
+        - host: <IP-ADDRESS>.nip.io
+          http:
+            paths:
+            - backend:
+                serviceName: api-gateway-nginx
+                servicePort: 80
       ```
 
-      ```console
-    kubectl apply -f ingress-manifest.yaml
+      ```shell
+      kubectl apply -f ingress-manifest.yaml
       ```
 
     </p>
@@ -191,36 +191,36 @@ If you want to install the execution plane for continuous delivery, add the flag
 
     * [Determine the ingress IP](https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/#determining-the-ingress-ip-and-ports):
 
-      ```console
-    kubectl -n ingress-nginx get svc ingress-nginx
+      ```shell
+      kubectl -n ingress-nginx get svc ingress-nginx
       ```
 
     * Create an `ingress-manifest.yaml` manifest for an ingress object in which you set IP-ADDRESS or your hostname and then apply the manifest. (**Note:** In the example below, `nip.io` is used as wildcard DNS for the IP address.)
 
       ```yaml
-    apiVersion: networking.k8s.io/v1
-    kind: Ingress
-    metadata:
-      annotations:
-        kubernetes.io/ingress.class: nginx
-      name: api-keptn-ingress
-      namespace: keptn
-    spec:
-      rules:
-      - host: <IP-ADDRESS>.nip.io
-        http:
-          paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: api-gateway-nginx
-                port:
-                  number: 80
+      apiVersion: networking.k8s.io/v1
+      kind: Ingress
+      metadata:
+        annotations:
+          kubernetes.io/ingress.class: nginx
+        name: api-keptn-ingress
+        namespace: keptn
+      spec:
+        rules:
+        - host: <IP-ADDRESS>.nip.io
+          http:
+            paths:
+            - path: /
+              pathType: Prefix
+              backend:
+                service:
+                  name: api-gateway-nginx
+                  port:
+                    number: 80
       ```
 
-      ```console
-    kubectl apply -f ingress-manifest.yaml
+      ```shell
+      kubectl apply -f ingress-manifest.yaml
       ```
 
     </p>
@@ -233,32 +233,32 @@ If you want to install the execution plane for continuous delivery, add the flag
 
     * [Determine the ingress IP](https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-control/#determining-the-ingress-ip-and-ports):
 
-      ```console
-    kubectl -n ingress-nginx get svc ingress-nginx
+      ```shell
+      kubectl -n ingress-nginx get svc ingress-nginx
       ```
 
     * Create an `ingress-manifest.yaml` manifest for an ingress object in which you set IP-ADDRESS or your hostname and then apply the manifest. (**Note:** In the example below, `nip.io` is used as wildcard DNS for the IP address.)
 
       ```yaml
-    apiVersion: networking.k8s.io/v1beta1
-    kind: Ingress
-    metadata:
-      annotations:
-        kubernetes.io/ingress.class: nginx
-      name: api-keptn-ingress
-      namespace: keptn
-    spec:
-      rules:
-      - host: <IP-ADDRESS>.nip.io
-        http:
-          paths:
-          - backend:
-              serviceName: api-gateway-nginx
-              servicePort: 80
+      apiVersion: networking.k8s.io/v1beta1
+      kind: Ingress
+      metadata:
+        annotations:
+          kubernetes.io/ingress.class: nginx
+        name: api-keptn-ingress
+        namespace: keptn
+      spec:
+        rules:
+        - host: <IP-ADDRESS>.nip.io
+          http:
+            paths:
+            - backend:
+                serviceName: api-gateway-nginx
+                servicePort: 80
       ```
 
-      ```console
-    kubectl apply -f ingress-manifest.yaml
+      ```shell
+      kubectl apply -f ingress-manifest.yaml
       ```
 
     </p>
@@ -266,24 +266,24 @@ If you want to install the execution plane for continuous delivery, add the flag
 
 2. **Get Keptn endpoint:** Get the HOST of the `api-keptn-ingress` using the command below. The Keptn API endpoint is: `http://<HOST>/api`
 
-    ```console
-  kubectl -n keptn get ingress api-keptn-ingress
+    ```shell
+    kubectl -n keptn get ingress api-keptn-ingress
     ```
 
-    ```console
-  NAME                HOSTS                  ADDRESS         PORTS   AGE
-  api-keptn-ingress   <HOST>                 x.x.x.x   80      48m
+    ```shell
+    NAME                HOSTS                  ADDRESS         PORTS   AGE
+    api-keptn-ingress   <HOST>                 x.x.x.x   80      48m
     ```
 
     *Optional:* Store Keptn API endpoint in an environment variable.
 
     For Linux and Mac:
-    ```console
+    ```shell
     KEPTN_ENDPOINT=http://<HOST>/api
     ```
 
     For Windows:
-    ```console
+    ```shell
     $Env:KEPTN_ENDPOINT = 'http://<HOST>/api'
     ```
 
@@ -294,19 +294,19 @@ This option does not expose Keptn to the public but exposes Keptn on a *cluster-
 
 1. **Install Keptn:** Use the Keptn CLI to install Keptn on your cluster.
 If you want to install the execution plane for continuous delivery, add the flag `continuousDelivery.enabled=true`.
-  ```console
+  ```shell
   helm install keptn keptn/keptn -n keptn --version=$KeptnVersion --create-namespace --set=continuousDelivery.enabled=true
   ```
 
 1. **Setup a Port-Forward:** Configure the port-forward by using the command below.
-  ```console
+  ```shell
   kubectl -n keptn port-forward service/api-gateway-nginx 8080:80
   ```
   <details><summary>To listen on any local address</summary>
   <p>
   By default, `kubectl port-forward` binds to `127.0.0.1`. If you want to listen on any local address, add `--address 0.0.0.0`:
     
-    ```console
+    ```shell
     kubectl -n keptn port-forward service/api-gateway-nginx 8080:80 --address 0.0.0.0
     ```
   </p>
@@ -316,7 +316,7 @@ If you want to install the execution plane for continuous delivery, add the flag
   The Keptn API endpoint is: `http://localhost:8080/api`
 
     *Optional:* Store Keptn API endpoint in an environment variable:
-    ```console
+    ```shell
     KEPTN_ENDPOINT=http://localhost:8080/api
     ```
 
