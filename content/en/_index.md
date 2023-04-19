@@ -4,7 +4,7 @@ title: Home
 
 
 
-{{< blocks/cover title="Keptn" image_anchor="top" height="half" color="primary" >}}
+{{< blocks/cover title="Keptn" image_anchor="top"  color="primary" >}}
 <div class="mx-auto">
 
 <div>
@@ -105,4 +105,24 @@ Multi-step Auto-remediation workflows with built-in evaluation.
 Integrate or extend Keptn easily to work with your tool-suite.
 {{% /blocks/feature %}}
 
+{{% blocks/feature icon="none" title="Cloud-native application life-cycle orchestration by Keptn." %}}
+A declarative approach to automate delivery and operations for your workloads.
+
+<a class="btn btn-lg mr-3 mb-4 -bg-green -text-white" href="/why-keptn/">
+    Explore more
+</a>
+{{% /blocks/feature %}}
 {{% /blocks/section %}}
+
+
+{{< blocks/cover color="primary" height="half" >}}
+
+
+
+**Keptn is a CNCF Incubating Project.**
+
+Initially created by [Dynatrace](https://dynatrace.com) in 2019.
+
+<a href="https://cncf.io" target="_blank" rel="noopener" class="external-link"><img src="/images/home/cloud-native-computing.svg" alt="CNCF logo"></a>
+
+{{% /blocks/cover %}}

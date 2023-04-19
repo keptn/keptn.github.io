@@ -9,7 +9,6 @@ $light: #c9e0f1;
 #td-cover-block-0 {
   background-size: 100% auto;
   background-position-y: bottom;
-  background-color: #006bb8 ;
 }
 
 
@@ -39,4 +38,26 @@ $light: #c9e0f1;
 
 .td-overlay--dark::after {
   background-color: transparent !important;
+}
+
+
+.whykeptn img {
+  width: 100%;
+}
+
+.whykeptn h2::after {
+  display: block;
+  content: " ";
+  width: 80px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  margin-left: 0;
+  border-bottom: 4px solid #006bb8;
+}
+
+.whykeptn-left {
+  text-align: left;
+}
+.whykeptn-right {
+  text-align: left;
 }

@@ -21,7 +21,7 @@ params:
   versions:
     - url: /docs/
       version: latest
-      
+
 module:
   hugoVersion:
     extended: true
