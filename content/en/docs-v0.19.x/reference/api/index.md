@@ -72,6 +72,6 @@ Keptn 0.6.2 introduced an NGINX as new K8s deployment and service called `api-ga
 **Architecture of Keptn installation:**
 
 {{< popup_image
-    link="../../../../concepts/architecture/assets/architecture.png"
+    link="../../../concepts/architecture/assets/architecture.png"
     caption="Architecture of Keptn installation"
     width="500px">}}
