@@ -1,7 +1,7 @@
 ---
 title: Manage Keptn Projects
 description: How to create and manage a Keptn project
-weight: 6
+weight: 5
 icon: setup
 ---
 

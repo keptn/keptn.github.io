@@ -133,6 +133,12 @@ Sequences for different services can be run in parallel.
 This is possible when you have different automation projects
 or if you have multiple services within a project.
 
+If you need to run different tasks in parallel,
+a better strategy is to create separate stages,
+both of which are triggered from the previous stage.
+See [Run tasks in parallel](../../../define/parallel/)
+for an example of how to do this.
+
 A sequence has the properties:
 
 * `name`: A unique name for the sequence
@@ -356,3 +362,4 @@ and  named to match the value of the `Metadata` name field in the shipyard file.
 * [Quality gates](../../../define/quality-gates/)
 * [Triggers](../../../define/triggers/)
 * [Remediation configuration](../remediation/)
+* [Run tasks in parallel](../../../define/parallel/)

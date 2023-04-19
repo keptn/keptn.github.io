@@ -5,8 +5,6 @@ weight: 980
 sidebar_multicard: true
 icon: docs
 hide: true
-cascade:
-  type: docs
 #unsupported: This documentation is for an older Keptn release. Please consider the newest one when working with the latest Keptn.
 aliases:
   - /docs/0.16.0/

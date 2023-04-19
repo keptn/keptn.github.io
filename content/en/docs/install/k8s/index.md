@@ -88,48 +88,48 @@ ngo
 
     - Set up the required permissions for your user:
 
-      ```console
-    oc adm policy --as system:admin add-cluster-role-to-user cluster-admin <OPENSHIFT_USER_NAME>
+      ```
+      oc adm policy --as system:admin add-cluster-role-to-user cluster-admin <OPENSHIFT_USER_NAME>
       ```
 
     - Set up the required permissions for the installer pod:
 
-      ```console
-    oc adm policy  add-cluster-role-to-user cluster-admin system:serviceaccount:default:default
-    oc adm policy  add-cluster-role-to-user cluster-admin system:serviceaccount:kube-system:default
+      ```
+      oc adm policy  add-cluster-role-to-user cluster-admin system:serviceaccount:default:default
+      oc adm policy  add-cluster-role-to-user cluster-admin system:serviceaccount:kube-system:default
       ```
 
     - Enable admission WebHooks on your OpenShift master node:
 
-      ```console
-    sudo -i
-    cp -n /etc/origin/master/master-config.yaml /etc/origin/master/master-config.yaml.backup
-    oc ex config patch /etc/origin/master/master-config.yaml --type=merge -p '{
-      "admissionConfig": {
-        "pluginConfig": {
-          "ValidatingAdmissionWebhook": {
-            "configuration": {
-              "apiVersion": "apiserver.config.k8s.io/v1alpha1",
-              "kind": "WebhookAdmission",
-              "kubeConfigFile": "/dev/null"
-            }
-          },
-          "MutatingAdmissionWebhook": {
-            "configuration": {
-              "apiVersion": "apiserver.config.k8s.io/v1alpha1",
-              "kind": "WebhookAdmission",
-              "kubeConfigFile": "/dev/null"
+      ```
+      sudo -i
+      cp -n /etc/origin/master/master-config.yaml /etc/origin/master/master-config.yaml.backup
+      oc ex config patch /etc/origin/master/master-config.yaml --type=merge -p '{
+        "admissionConfig": {
+          "pluginConfig": {
+            "ValidatingAdmissionWebhook": {
+              "configuration": {
+                "apiVersion": "apiserver.config.k8s.io/v1alpha1",
+                "kind": "WebhookAdmission",
+                "kubeConfigFile": "/dev/null"
+              }
+            },
+            "MutatingAdmissionWebhook": {
+              "configuration": {
+                "apiVersion": "apiserver.config.k8s.io/v1alpha1",
+                "kind": "WebhookAdmission",
+                "kubeConfigFile": "/dev/null"
+              }
             }
           }
         }
-      }
-    }' >/etc/origin/master/master-config.yaml.patched
-    if [ $? == 0 ]; then
-      mv -f /etc/origin/master/master-config.yaml.patched /etc/origin/master/master-config.yaml
-      /usr/local/bin/master-restart api && /usr/local/bin/master-restart controllers
-    else
-      exit
-    fi
+      }' >/etc/origin/master/master-config.yaml.patched
+      if [ $? == 0 ]; then
+        mv -f /etc/origin/master/master-config.yaml.patched /etc/origin/master/master-config.yaml
+        /usr/local/bin/master-restart api && /usr/local/bin/master-restart controllers
+      else
+        exit
+      fi
       ```
 </p>
 </details>
@@ -140,18 +140,18 @@ ngo
 Please refer to the [official homepage of K3s](https://k3s.io) for detailed installation instructions. Here, a short guide on how to run Keptn on K3s is provided for a Linux environment. **Note:** If you are using macOS, you will need to run K3s using [multipass](https://multipass.run/) and as explained [here](https://medium.com/@zhimin.wen/running-k3s-with-multipass-on-mac-fbd559966f7c).
  
 1. Download, install [K3s](https://k3s.io/) (tested with [versions 1.17 to 1.21](../k8s-support/)) and run K3s using the following command:
-   ```console
+   ```
    curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.20.4+k3s1 K3S_KUBECONFIG_MODE="644" sh -s - --no-deploy=traefik
    ```
    This installs version `v1.20.4+k3s1` (please refer to the [K3s GitHub releases page](https://github.com/rancher/k3s/releases) for newer releases), sets file permissions `644` on `/etc/rancher/k3s/k3s.yaml` and disables `traefik` as an ingress controller.
 
 1. Export the Kubernetes profile using
-   ```console
+   ```
    export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
    ```
    
 1. Verify that the connection to the cluster works
-   ```console
+   ```
    kubectl get nodes   
    ```
 
@@ -170,18 +170,18 @@ You must install [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) befo
 
 1. Download, install [K3d](https://k3d.io/v5.3.0/) (tested with [v5.3.0](../k8s-support/)) and run K3d using the following command:
 
-   ```console
+   ```
    curl -s https://raw.githubusercontent.com/rancher/k3d/main/install.sh | TAG=v5.3.0 bash
    ```
    This installs version `v5.3.0` (please refer to the [K3d GitHub releases page](https://github.com/k3d-io/k3d/) for newer releases).
 
 1. Create a cluster called My keptn which has port fowarding and disables the traffic, which is a ingress gateaway.
-   ```console
+   ```
    k3d cluster create mykeptn -p "8082:80@loadbalancer" --k3s-arg "--no-deploy=traefik@server:*"
    ```
    
 1. Verify that the connection to the cluster works
-   ```console
+   ```
    kubectl get nodes   
    ```
 
@@ -195,13 +195,13 @@ You must install [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) befo
 
 1. Create a new Minikube profile (named keptn) with at least 6 CPU cores and 14 GB memory using:
 
-    ```console
+    ```
     minikube start -p keptn --cpus 6 --memory 14000
     ``` 
 
 1. (Optional) Start the Minikube LoadBalancer service in a second terminal by executing:
 
-    ```console
+    ```
    minikube tunnel 
    ``` 
 </p>

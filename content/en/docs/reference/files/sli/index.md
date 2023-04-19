@@ -155,5 +155,6 @@ then at the stage level, and finally at the project level if no other configurat
 
 * [Quality Gates](../../../define/quality-gates/)
 
+* [Service Level Indicator specification](https://github.com/keptn/spec/blob/master/service_level_indicator.md)
 
 
