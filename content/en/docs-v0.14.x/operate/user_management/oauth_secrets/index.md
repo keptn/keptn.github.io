@@ -78,7 +78,7 @@ This section explains the management of the session and database encryption secr
     kubectl delete secret -n keptn bridge-oauth
     ```
 
-* [Create the secrets](./#create-session-and-database-encryption-secret) as explained above.
+* [Create the secrets](#create-session-and-database-encryption-secret) as explained above.
 
 * Re-start the Keptn Bridge to fetch the new secrets:
 

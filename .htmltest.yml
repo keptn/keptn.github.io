@@ -4,41 +4,43 @@ CheckDoctype: false
 #Ignoring for now, might be improved later
 IgnoreAltMissing: true
 IgnoreDirs:
-# This excludes are not optimal and need refinement. 
-- "docs-v0.\\d\\."
-- "docs-v0.10."
-- "docs-v0.11."
-- "docs-v0.12."
-- "docs-v0.13."
-- "docs-v0.14."
-# exlcuded because the paths do not exist for styles and contact
-- "404"
+  - favicons
+  - community/
+  # This excludes are not optimal and need refinement. 
+  - "docs-v0.\\d\\."
+  - "docs-v0.10."
+  - "docs-v0.11."
+  - "docs-v0.12."
+  - "docs-v0.13."
+  - "docs-v0.14."
+  # exlcuded because the paths do not exist for styles and contact
+  - "404"
 IgnoreURLs:
-- "github.com/keptn/keptn/.*/\\d*\\.\\d*\\.\\d*"
-# GitHub Urls are ignored due to Request Limitations and getting a 429 instead
-- "github.com/keptn/keptn/issues"
-- "github.com/keptn/keptn/commit"
-# GitHub Help does not like GitHub Action access
-- "help.github.com"
-# Xrefs to Keptn slack are not resolving
-- "https://slack.keptn.sh" 
-# Old Announcements
-- "keptn.sh/docs/0.7"
-# Twitter seems to be not reachable via GitHub Action
-- "twitter.com"
-# LinkedIn does not like automation and is returning a 999 Response Code
-- "linkedin.com"
-- "mailto"
-# www.googletagmanager.com does return 400 for /
-- "www.googletagmanager.com"
-# fileformat.com returns 403
-- "fileformat.com" 
-# Domains used in documentation for local resources
-- "localhost:8080"
-- "YOUR-ORG"
-- "YOUR.DOMAIN"
-- "your.domain"
-- "sockshop-dev"
-- "nip.io"
-- ".local"
+  - "github.com/keptn/keptn/.*/\\d*\\.\\d*\\.\\d*"
+  # GitHub Urls are ignored due to Request Limitations and getting a 429 instead
+  - "github.com/keptn/keptn/issues"
+  - "github.com/keptn/keptn/commit"
+  # GitHub Help does not like GitHub Action access
+  - "help.github.com"
+  # Xrefs to Keptn slack are not resolving
+  - "https://slack.keptn.sh" 
+  # Old Announcements
+  - "keptn.sh/docs/0.7"
+  # Twitter seems to be not reachable via GitHub Action
+  - "twitter.com"
+  # LinkedIn does not like automation and is returning a 999 Response Code
+  - "linkedin.com"
+  - "mailto"
+  # www.googletagmanager.com does return 400 for /
+  - "www.googletagmanager.com"
+  # fileformat.com returns 403
+  - "fileformat.com" 
+  # Domains used in documentation for local resources
+  - "localhost:8080"
+  - "YOUR-ORG"
+  - "YOUR.DOMAIN"
+  - "your.domain"
+  - "sockshop-dev"
+  - "nip.io"
+  - ".local"
 StripQueryString: false

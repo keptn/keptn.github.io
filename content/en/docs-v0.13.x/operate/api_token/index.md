@@ -146,7 +146,7 @@ This will prevent Helm from generating a new secret on installation and instead 
     kubectl delete secret -n keptn keptn-api-token
     ```
 
-* [Create a new API token](./#create-api-token) as explained above.
+* [Create a new API token](#create-api-token) as explained above.
 
 * Restart API service since it requires the new token:
 

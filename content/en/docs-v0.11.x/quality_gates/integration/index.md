@@ -287,5 +287,5 @@ curl -X GET "${KEPTN_ENDPOINT}/api/mongodb-datastore/event?keptnContext={keptnCo
 
 ## Integrate into an existing pipeline
 
-To integrate quality gates into an existing pipeline, it is recommended to use the API-based approach outlined [above](./#using-the-keptn-api-to-work-with-quality-gates). As stated there, the evaluation result is not immediately available. Hence, build your integration using a polling mechanism that polls the evaluation result every 10 seconds and terminates after, e.g., 10 retries. 
+To integrate quality gates into an existing pipeline, it is recommended to use the API-based approach outlined [above](#using-the-keptn-api-to-work-with-quality-gates). As stated there, the evaluation result is not immediately available. Hence, build your integration using a polling mechanism that polls the evaluation result every 10 seconds and terminates after, e.g., 10 retries. 
 

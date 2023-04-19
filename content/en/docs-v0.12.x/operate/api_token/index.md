@@ -143,7 +143,7 @@ In this section, the management of the API token of a Keptn installation is expl
     kubectl delete secret -n keptn keptn-api-token
     ```
 
-* [Create API token](./#create-api-token) as explained above.
+* [Create API token](#create-api-token) as explained above.
 
 * Re-start API service since it requires the new token:
 

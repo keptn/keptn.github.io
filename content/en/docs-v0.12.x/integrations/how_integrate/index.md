@@ -70,7 +70,7 @@ Let us have a look at notification tool integrations such as Slack, or MS Team w
 
 * Usually, a notification tool reacts to a specific type of event or a set of events. The tool integration will subscribe to these event types and then send a defined payload to the channels. Consequently, there is no need to indicate that a notification integration starts and finishes the distribution of messages (i.e., no `*.started` or `*.finished` event has to be sent).
 
-* The easiest way to set up such an integration is by configuring a [Webhook Integration](./#webhook-integration). 
+* The easiest way to set up such an integration is by configuring a [Webhook Integration](#webhook-integration). 
 
 <!-- disabled, since we don't allow to run SLI-providers on the execution plane. 
 ### Monitoring/observability tools (SLI-providers)
