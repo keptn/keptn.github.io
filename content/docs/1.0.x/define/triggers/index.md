@@ -20,7 +20,7 @@ in the the [shipyard](../../reference/files/shipyard/)
 to specify an event that triggers this sequence,
 implicitly linking two sequences.
 
-Each of these mechanismsis discussed below.
+Each of these mechanisms is discussed below.
 
 ## Use triggeredOn in a sequence
 
