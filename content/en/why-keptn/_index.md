@@ -6,7 +6,7 @@ menu: main
 
 {{< blocks/cover title="Why Keptn?" image_anchor="top" height="half" color="secondary" >}}
 <div class="mx-auto">
-<div class="d-flex flex-row" >
+<div class="whykeptn d-flex flex-row flex-wrap" >
 <div>
 <h2> Keptn -- pronounced <i>captain</i> -- is a control-plane for DevOps automation of cloud-native applications.</h2>
 
@@ -25,7 +25,7 @@ Keptn uses a declarative approach to build scalable automation for delivery and 
 {{< blocks/lead image_anchor="top" height="half" color="light" >}}
 
 <div class="mx-auto">
-<div class="d-flex flex-row" >
+<div class="d-flex flex-row flex-wrap" >
 <div class="whykeptn whykeptn-left">
 
 {{% readfile "maintenance-left.md" %}}
@@ -43,7 +43,7 @@ Keptn uses a declarative approach to build scalable automation for delivery and 
 {{< blocks/lead image_anchor="top" height="half" color="white" >}}
 
 <div class="mx-auto">
-<div class="d-flex flex-row" >
+<div class="d-flex flex-row flex-wrap-reverse" >
 <div class="whykeptn whykeptn-left">
 
 {{% readfile "higher-compliance-left.md" %}}
@@ -61,7 +61,7 @@ Keptn uses a declarative approach to build scalable automation for delivery and 
 {{< blocks/lead image_anchor="top" height="half" color="light" >}}
 
 <div class="mx-auto">
-<div class="d-flex flex-row" >
+<div class="d-flex flex-row flex-wrap" >
 <div class="whykeptn whykeptn-left">
 
 {{% readfile "easy-extensibility-left.md" %}}
@@ -80,7 +80,7 @@ Keptn uses a declarative approach to build scalable automation for delivery and 
 {{< blocks/lead image_anchor="top" height="half" color="white" >}}
 
 <div class="mx-auto">
-<div class="d-flex flex-row" >
+<div class="d-flex flex-row flex-wrap-reverse" >
 <div class="whykeptn whykeptn-left">
 
 {{% readfile "tool-integrations-left.md" %}}
@@ -98,7 +98,7 @@ Keptn uses a declarative approach to build scalable automation for delivery and 
 {{< blocks/lead image_anchor="top" height="half" color="light" >}}
 
 <div class="mx-auto">
-<div class="d-flex flex-row" >
+<div class="d-flex flex-row flex-wrap" >
 <div class="whykeptn whykeptn-left">
 
 {{% readfile "observability-left.md" %}}

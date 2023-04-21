@@ -4,17 +4,20 @@ title: Home
 
 
 
-{{< blocks/cover title="Keptn" image_anchor="top"  color="primary" >}}
+{{< blocks/cover title="" image_anchor="top"  color="primary" >}}
 <div class="mx-auto">
-
-<div>
-
-## Cloud-native application life-cycle orchestration
-
+<div style="text-align: left" class="mb-4 d-none d-md-block " >
+<picture >
+    <img src="/images/home/hero/keptn-logo-white.svg">
+</picture>
 </div>
-<div style="text-align: left">
-
-### Keptn automates
+<div >
+    <div class="whykeptn d-flex flex-wrap justify-content-start">
+        <div  class="w-25" style="text-align: left; min-width: 200px">
+            <h2> Cloud-native application life-cycle orchestration</h2>
+        </div>
+        <div style="text-align: left" class="flex-grow-1">
+            <h3> Keptn automates</h3>
 
 - Observability, dashboards & alerting
 - SLO-driven multi-stage delivery 
@@ -22,19 +25,29 @@ title: Home
 
 declarative, extensible and based on GitOps
 
-<a class="btn btn-lg mr-3 mb-4 -bg-green -text-white"
-    href="https://keptn.sh/docs/quickstart/">
-    Install Keptn!<i class="fas fa-arrow-alt-circle-right ml-2"></i>
-</a>
- <a class="btn btn-lg btn-secondary mr-3 mb-4" href="{{< relref "/docs" >}}">
-  Docs <i class="fas fa-arrow-alt-circle-right ml-2"></i>
- </a>
+<h4> Cloud Native?</h4>
+            <a class="btn btn-lg mr-3 mb-4 -bg-green -text-white"
+                href="https://keptn.sh/docs/quickstart/">
+                Checkout Keptn Lifecycle Toolkit!<i class="fas fa-arrow-alt-circle-right ml-2"></i>
+            </a>
+            <h4> Non Cloud Native?</h4>
+            <a class="btn btn-lg mr-3 mb-4 -bg-green -text-white"
+                href="https://keptn.sh/docs/quickstart/">
+                Install Keptn v1!<i class="fas fa-arrow-alt-circle-right ml-2"></i>
+            </a>
+            <a class="btn btn-lg btn-secondary mr-3 mb-4" href="{{< relref "/docs" >}}">
+            Docs <i class="fas fa-arrow-alt-circle-right ml-2"></i>
+            </a>
 </div>
+    </div>
 </div>
+
+ <div class="whykeptn">
 <picture>
     <source media="(min-width: 768px)" srcset="/images/home/hero/graphic-hero.svg">
     <img src="/images/home/hero/graphic-hero-XS.svg">
 </picture>
+</div>
 
 
 {{< /blocks/cover >}}
@@ -56,11 +69,13 @@ declarative, extensible and based on GitOps
  <a class="btn btn-lg btn-secondary mr-3 mb-4" href="{{< relref "/docs" >}}">
   Read Docs <i class="fas fa-arrow-alt-circle-right ml-2"></i>
  </a>
+ <div class="whykeptn">
 <picture width="100%">
     <source media="(min-width: 768px)" srcset="/images/home/use-cases/graphic-use-case-02.svg">
     <source media="(min-width: 576px)" srcset="/images/home/use-cases/graphic-use-case-02-S.svg">
     <img src="/images/home/use-cases/graphic-use-case-02-XS.svg">
 </picture>
+</div>
 {{% /blocks/lead %}}
 
 {{< blocks/lead color="secondary" >}}
@@ -75,7 +90,7 @@ declarative, extensible and based on GitOps
   Read Docs <i class="fas fa-arrow-alt-circle-right ml-2"></i>
  </a>
 <div >
-    <div class="d-inline-flex flex-wrap" >
+    <div class="whykeptn d-inline-flex flex-wrap" >
     <picture>
         <source media="(min-width: 768px)" srcset="/images/home/use-cases/graphic-use-case-03a.svg">
         <img  style="max-width: 500px" src="/images/home/use-cases/graphic-use-case-03-XS.svg">
