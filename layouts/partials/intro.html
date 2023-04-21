@@ -18,11 +18,20 @@
         {{ with .Site.GetPage "section" "home/intro" }}
         {{ .Content }}
         {{ end }}
+        <div class="d-block">
+          <h3>Cloud native?</h3>
+          <a class="d-inline-block button button--filledGreen mb-3 mb-lg-0 mr-0 mr-lg-3"
+             href="https://lifecycle.keptn.sh">
+            Check out Keptn Lifecycle Toolkit <i class="fas fa-arrow-alt-circle-right ml-2"></i>
+          </a>
+        </div>
         <div class="d-block d-lg-flex">
           <div class="d-block">
+          </br>
+            <h3>Non cloud native?</h3>
             <a class="d-inline-block button button--filledGreen mb-3 mb-lg-0 mr-0 mr-lg-3"
                href="https://keptn.sh/docs/quickstart/">
-              Install Keptn!
+              Install Keptn v1!
             </a>
           </div>
           <!--TODO(oleg_nenashev): Recover once the new demo is created in https://github.com/keptn/community/issues/89

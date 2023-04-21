@@ -1,1 +1,1 @@
-# Cloud-native application life-cycle orchestration
+# Application lifecycle orchestration
