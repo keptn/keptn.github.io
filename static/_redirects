@@ -1,0 +1,9 @@
+https://keptn.netlify.com/* https://keptn.sh/:splat 301!
+
+/docs/0.* /docs-v0.:splat 301
+
+# activate as soon as we release the next version
+#/docs/1.0.* /docs-v1.0.:splat 301
+
+# remove this as soon as the next version is released 
+/docs/1.0.x/* /docs/:splat 301
