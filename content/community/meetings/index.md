@@ -31,9 +31,8 @@ We also invite Keptn contributors to participate
 and discuss how we could improve Keptn based on feedback.
 
 🗓️ **Cadence**: 
-* **Americas/EMEA meetings** - Every 3rd Tuesday of the month at 5pm CET / 8am PT / 11am ET.
-* **APAC/EMEA** - We intend to do meetings every month,
-  commonly on Wednesdays at 9AM UTC. 
+* **Americas/EMEA meetings** - Every odd week on Wednesday at 3:30pm CET / 9:30pm AWST / 6:30am PT / 9:30am ET.
+* **APAC/EMEA** - Every even week on Wednesday at 10:00am CET / 4:00pm AWST / 1:00am PT / 4:00am ET. 
   The meeting time may vary depending on speaker timezone and availability.
 
 📺 [**Schedule and RSVP**](https://community.cncf.io/keptn-community/)
