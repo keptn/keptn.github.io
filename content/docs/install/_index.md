@@ -5,6 +5,8 @@ weight: 30
 icon: concepts
 ---
 
+Note: Keptn v1 is not compatible with ARM-based machines (eg. Mac M1 and M2) due to the use of the Bitnami MongoDB which isn't built for ARM. We recommend the newer [Keptn Lifecycle Toolkit](https://lifecycle.keptn.sh) instead.
+
 The steps to install and configure your Keptn instance are:
 
 1. [Create or bring a Kubernetes cluster](k8s/)
