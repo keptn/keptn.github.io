@@ -65,7 +65,7 @@ This gives you easy access to all API Endpoints.
         
 ## Upload a file to a Keptn project
 You can upload an API file to a project in any of the following ways :
-* Use the [keptn add-resource](../../../cli/commands/keptn_add-resource) command.
+* Use the [keptn add-resource](../../cli/commands/keptn_add-resource) command.
 Note that only some APIs are supported by this command.
 * Upload the file directly to your Git repo.
 * Use the `resource-service` API for uploading
