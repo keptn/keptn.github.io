@@ -19,14 +19,14 @@ if (body.classList.contains('page-home')) {
         logoIntro.classList.add('is-sticky');
         logo.classList.add('is-sticky');
         hamburgerInner.classList.add('is-sticky');
-        logoJS.src = '/images/logo.svg';
+        logoJS.src = 'https://keptn.sh/images/logo.svg';
       }
     } else {
       header.classList.remove('is-sticky');
       logoIntro.classList.remove('is-sticky');
       logo.classList.remove('is-sticky');
       hamburgerInner.classList.remove('is-sticky');
-      logoJS.src = '/images/home/hero/keptn-logo-white.svg';
+      logoJS.src = 'https://keptn.sh/images/home/hero/keptn-logo-white.svg';
     }
   });
 
@@ -55,7 +55,7 @@ if (body.classList.contains('page-home')) {
     shuffle(randomLogoNumbers);
     var counter = 0;
     happyUserLogos.forEach(logo => {
-      logo.src = '/images/home/happy-users/logos/logo-' + randomLogoNumbers[counter] +  '.png';
+      logo.src = 'https://keptn.sh/images/home/happy-users/logos/logo-' + randomLogoNumbers[counter] +  '.png';
       counter = ++counter;
     });
   });
