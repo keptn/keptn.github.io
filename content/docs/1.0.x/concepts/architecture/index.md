@@ -288,10 +288,10 @@ Keptn uses NATS
 to propagate events.
 This means that, after an event has been successfully sent to the Keptn API,
 it is persisted by NATS Jetstream.
-If, at this point in time, the shipyard-controller
-that coordinates the sequence executions is currently down,
-it can pick up at the event stream
-so that any events sent to the API during this time are not lost.
+The `shipyard-controller` coordinates the sequence executions.
+If `the `shipyard-controller` is down when the event is sent,
+it can pick up at the event stream when it is up and running again
+so that any events sent to the API while it was down are not lost.
 
 The API client must ensure
 that the event has been successfully sent to the API.
