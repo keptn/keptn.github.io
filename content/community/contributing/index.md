@@ -73,7 +73,7 @@ A few examples:
 * Share news about Keptn features and its community through your network and social media.
 
 If you are interested in Keptn advocacy and/or want to promote your content,
-join the `#advocacy-and-outreach` channel on the Keptn Slack.
+join the `#community-and-outreach` channel on the Keptn Slack.
 
 ## Donations
 
@@ -84,7 +84,7 @@ consider donating to one of the upstream open source projects used in Keptn,
 or to open source development tools used by Keptn.
 
 In the future we plan to organize bigger in-person and online community events.
-If you want to join as sponsor, reach out to the community in the `#advocacy-and-outreach` channel on the Keptn Slack.
+If you want to join as sponsor, reach out to the community in the `#community-and-outreach` channel on the Keptn Slack.
 
 ## Internships and Mentorship programs
 
@@ -94,7 +94,7 @@ and can host our own mentorship programs for important topics contributing to th
 Learn more about our programs on [this page](https://github.com/keptn/community/tree/main/mentorship).
 
 If you are interested in mentorship programs as a potential mentor or mentee,
-reach out to the community in the `#advocacy-and-outreach` channel on the Keptn Slack.
+reach out to the community in the `#community-and-outreach` channel on the Keptn Slack.
 
 ## Other contributions
 
