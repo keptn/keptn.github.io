@@ -281,3 +281,21 @@ The `helm-service` and Job Executor Service (JES) use the distributor's API prox
 to communicate with the `resource-service` so any configuration changes must be applied
 to the distributor and not the `helm-service` or JES.
 
+## How events are handled
+
+Keptn uses NATS
+[Jetstream](https://docs.nats.io/nats-concepts/jetstream)
+to propagate events.
+This means that, after an event has been successfully sent to the Keptn API,
+it is persisted by NATS Jetstream.
+The `shipyard-controller` coordinates the sequence executions.
+If the `shipyard-controller` is down when the event is sent,
+it can pick it up from the event stream when it is up and running again
+so that any events sent to the API while it was down are not lost.
+
+The API client must ensure
+that the event has been successfully sent to the API.
+So, if the keptn API endpoint for ingesting events is down for some reason,
+it can not receive events during this time
+and integrations/tools must re-send those events.
+
