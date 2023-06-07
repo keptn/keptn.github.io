@@ -659,3 +659,9 @@ figcaption {
   color: white;
   font-family: $font-family-base;
 }
+input, button, select, optgroup, textarea {
+  margin: 3px;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}

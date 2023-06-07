@@ -6,7 +6,7 @@ weight: 20
 
 👋 **Welcome to the Keptn community!**
 
-This is the starting point for joining and contributing to the Keptn community - improving docs, improving code, discussing new features and use cases etc. For all collaboration and communication going on in all keptn projects, please read and follow our [Code of Conduct](https://github.com/keptn/community/blob/master/CODE_OF_CONDUCT.md).
+This is the starting point for joining and contributing to the Keptn community - improving docs, improving code, discussing new features and use cases etc. For all collaboration and communication going on in all keptn projects, please read and follow our [Code of Conduct](https://github.com/keptn/.github/blob/main/CODE_OF_CONDUCT.md).
 
 ## Slack
 
