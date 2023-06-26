@@ -8,7 +8,7 @@ aliases:
 ---
 
 Istio must be installed in order to access the services that Keptn deploys using `helm-service`.
-You can instead use and install the [Job Executor Service](https://artifacthub.io/packages/keptn/keptn-integrations/job-executor-service)
+If you don't want to use Istio or have no need for it, you can instead install and use the [Job Executor Service](https://artifacthub.io/packages/keptn/keptn-integrations/job-executor-service)
 to deploy these services.
 
 Please follow the steps in sequential order
