@@ -20,6 +20,10 @@ Keptn versions are expressed as `x.y.z`, where `x` is the major version, `y` is 
 * **Control & Execution plane**: Keptn control plane including all Keptn-services for continuous delivery and automated operations. Install option: `keptn install --use-case=continuous-delivery`
 
 <!-- use https://www.tablesgenerator.com/markdown_tables# for editing -->
+| Keptn Version /<br>Installation                           | Kubernetes  | AKS                       | EKS                       | GKE           | OpenShift   | K3s         | Minishift               |
+|-----------------------------------------------------------|:-----------:|:-------------------------:|:-------------------------:|:-------------:|:-----------:|:-----------:|:------------------------|
+| **0.18.x**, **0.19.x** / <br>Control & Execution plane<br>*see: (1)*   | 1.24 - 1.17 | 1.24 - 1.19 | 1.24 - 1.19 | 1.24 - 1.19   | 4, 3.11     | 1.24 - 1.19 | 1.34.2<br>(K8s: 1.11)   |
+| **0.18.x**, **0.19.x** / <br>Control plane                             | 1.24 - 1.17 | 1.24 - 1.19 | 1.24 - 1.19 | 1.24 - 1.19   | 4, 3.11     | 1.24 - 1.19 | 1.34.2<br>(K8s: 1.11)   |
 
 | Keptn Version /<br>Installation                           | Kubernetes  | AKS                       | EKS                       | GKE           | OpenShift   | K3s         | Minishift               |
 |-----------------------------------------------------------|:-----------:|:-------------------------:|:-------------------------:|:-------------:|:-----------:|:-----------:|:------------------------|
