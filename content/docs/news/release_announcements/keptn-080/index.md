@@ -85,7 +85,7 @@ Implemented **Keptn spec** version: [0.2.0](https://github.com/keptn/spec/tree/0
 
 - The **Service** screen does not show the Keptn CloudEvents anymore since this information has moved to the new **Sequence** screen. 
 
-- The old deep links still work but are adapted to the new screens as described [here](https://keptn.sh/docs/0.8.x/reference/bridge/deep_linking/#links-to-project-and-events)
+- The old deep links still work but are adapted to the new screens as described [here](https://v1.keptn.sh/docs/0.8.x/reference/bridge/deep_linking/#links-to-project-and-events)
 
 ## New Features
 
@@ -384,4 +384,4 @@ This section lists bugs and limitations that are known but not fixed in this rel
 
 ## Upgrade to 0.8.0
 
-- The upgrade from Keptn 0.7.3 to 0.8.0 is supported. Please find the documentation here: [Upgrade from Keptn 0.7.3 to 0.8.0](https://keptn.sh/docs/0.8.x/operate/upgrade/#upgrade-from-keptn-0-7-to-0-8)
+- The upgrade from Keptn 0.7.3 to 0.8.0 is supported. Please find the documentation here: [Upgrade from Keptn 0.7.3 to 0.8.0](https://v1.keptn.sh/docs/0.8.x/operate/upgrade/#upgrade-from-keptn-0-7-to-0-8)

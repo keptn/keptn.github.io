@@ -22,5 +22,5 @@ This is a bug fix release for Keptn 0.13.0, containing fixes for the the Quality
 
 ## Upgrade to 0.13.1
 
-- The upgrade from 0.12.x or 0.13.0 to 0.13.1 is supported by the `keptn upgrade` command. Find the documentation here: [Upgrade from Keptn 0.12.x to 0.13.0](https://keptn.sh/docs/0.13.x/operate/upgrade/#upgrade-from-keptn-0-12-x-to-0-13-0)
+- The upgrade from 0.12.x or 0.13.0 to 0.13.1 is supported by the `keptn upgrade` command. Find the documentation here: [Upgrade from Keptn 0.12.x to 0.13.0](https://v1.keptn.sh/docs/0.13.x/operate/upgrade/#upgrade-from-keptn-0-12-x-to-0-13-0)
 

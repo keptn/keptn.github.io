@@ -14,4 +14,4 @@ Keptn 0.8.6 provides a hotfix release for Keptn 0.8.5, containing an updated Hel
 
 ## Upgrade to 0.8.6
 
-- The upgrade from 0.8.x to 0.8.6 is supported by the `keptn upgrade` command. Find the documentation here: [Upgrade from Keptn 0.8.x to 0.8.6](https://keptn.sh/docs/0.8.x/operate/upgrade/#upgrade-from-keptn-0-8-5-to-0-8-6)
+- The upgrade from 0.8.x to 0.8.6 is supported by the `keptn upgrade` command. Find the documentation here: [Upgrade from Keptn 0.8.x to 0.8.6](https://v1.keptn.sh/docs/0.8.x/operate/upgrade/#upgrade-from-keptn-0-8-5-to-0-8-6)

@@ -55,4 +55,4 @@ This is a bug fix release for Keptn 0.8.4 - 0.8.6, containing fixes for the Brid
 
 ## Upgrade to 0.8.7
 
-- The upgrade from 0.8.x to 0.8.7 is supported by the `keptn upgrade` command. Find the documentation here: [Upgrade from Keptn 0.8.x to 0.8.7](https://keptn.sh/docs/0.8.x/operate/upgrade/#upgrade-from-keptn-0-8-6-to-0-8-7)
+- The upgrade from 0.8.x to 0.8.7 is supported by the `keptn upgrade` command. Find the documentation here: [Upgrade from Keptn 0.8.x to 0.8.7](https://v1.keptn.sh/docs/0.8.x/operate/upgrade/#upgrade-from-keptn-0-8-6-to-0-8-7)

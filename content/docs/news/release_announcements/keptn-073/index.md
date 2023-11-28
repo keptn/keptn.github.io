@@ -85,4 +85,4 @@ This section lists bugs and limitations that are known but not fixed in this rel
 
 ## Upgrade to 0.7.3
 
-- The upgrade from 0.7.x to 0.7.3 is supported by the `keptn upgrade` command. Find the documentation here: [Upgrade from Keptn 0.7.2 to 0.7.3](https://keptn.sh/docs/0.7.x/operate/upgrade/#upgrade-from-keptn-0-7-2-to-0-7-3)
+- The upgrade from 0.7.x to 0.7.3 is supported by the `keptn upgrade` command. Find the documentation here: [Upgrade from Keptn 0.7.2 to 0.7.3](https://v1.keptn.sh/docs/0.7.x/operate/upgrade/#upgrade-from-keptn-0-7-2-to-0-7-3)

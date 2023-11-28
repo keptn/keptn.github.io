@@ -11,7 +11,7 @@ Generates the markdown documentation for the Keptn CLI
 
 Generates markdown documentation for the Keptn CLI.
 
-This command can be used to create an up-to-date documentation of the Keptn CLI and as published on: https://keptn.sh/docs
+This command can be used to create an up-to-date documentation of the Keptn CLI and as published on: https://v1.keptn.sh/docs
 
 It creates one markdown file per command, suitable for rendering in Hugo.
 

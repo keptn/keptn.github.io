@@ -47,14 +47,10 @@ If you are interested, join the `#keptn-docs` channel on the Keptn Slack workspa
 
 Major documentation areas:
 
-* Documentation ([keptn.sh/docs](https://keptn.sh/docs/)) - extend and improve the documentation for Keptn
+* Documentation ([keptn.sh/docs](https://v1.keptn.sh/docs/)) - extend and improve the documentation for Keptn
   * [GitHub Repository](https://github.com/keptn/keptn.github.io/)
   * [How to contribute?](https://github.com/keptn/keptn.github.io/blob/master/CONTRIBUTING.md) 
   * [Good First Issues](https://github.com/keptn/keptn.github.io/labels/good%20first%20issue)
-* Tutorials ([tutorials.keptn.sh](https://tutorials.keptn.sh/)) - add new tutorials and extend the existing ones to help newcomer users to study Keptn, and to integrate it into their application management.
-  * [GitHub Repository](https://github.com/keptn/tutorials)
-  * [How to contribute?](https://github.com/keptn/tutorials/blob/master/CONTRIBUTING.md)
-  * [Good First Issues](https://github.com/keptn/tutorials/labels/good%20first%20issue)
 * Services and Components Documentation - many components, e.g. the [Prometheus Service for Keptn](https://github.com/keptn-contrib/prometheus-service), have documentation as a part of their repositories. Patches are welcome there too!
 * [Keptn Examples](https://github.com/keptn/examples) - expand and document Keptn examples that can be used by end users
 * Contributing guidelines

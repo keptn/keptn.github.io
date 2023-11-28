@@ -11,7 +11,7 @@ Keptn 0.8.3 implements the Keptn Enhancement Proposal [#37](https://github.com/k
 
 :tada: *Customization of auto-remediation sequences*: With this release, it is possible to customize the remediation sequences, which take care of resolving an open problem for a service. Therefore, the remediation sequence can be modeled in the Shipyard for a specific stage. Besides, it is possible to let the *action-providers* run on an execution plane. 
 
-  - :warning: As part of the upgrade process to Keptn 0.8.3 and for utilizing the auto-remediation feature, please manually add the following sequence to the stage that should have auto-remediation enabled and replace the [STAGE-NAME] by the name of the stage you added it to. Without that sequence, no remediation will be triggered for an open problem! Please find here more information on how to upgrade the remediation use-case here: [Update your Shipyard for the Remediation Use-Case](https://keptn.sh/docs/0.8.x/operate/upgrade/#upgrade-from-keptn-0-8-2-to-0-8-3) 
+  - :warning: As part of the upgrade process to Keptn 0.8.3 and for utilizing the auto-remediation feature, please manually add the following sequence to the stage that should have auto-remediation enabled and replace the [STAGE-NAME] by the name of the stage you added it to. Without that sequence, no remediation will be triggered for an open problem! Please find here more information on how to upgrade the remediation use-case here: [Update your Shipyard for the Remediation Use-Case](https://v1.keptn.sh/docs/0.8.x/operate/upgrade/#upgrade-from-keptn-0-8-2-to-0-8-3) 
 
   ```
   - name: remediation
@@ -31,7 +31,7 @@ Keptn 0.8.3 implements the Keptn Enhancement Proposal [#37](https://github.com/k
 
 :star: *Length of service name increased to 43 characters*: The limitation of the service name length has been loosened to allow a length of 43 characters.
 
-:rocket: *Support custom deployment URLs*: When deploying custom Helm Charts by using the `user_managed` deployment strategy of the *helm-service*, it is now possible to define a public and/or local deployment URL. Therefore, the file `endpoints.yaml` must be uploaded to the helm folder in the configuration repository. This file has to contain the `deploymentURIsLocal` and/or `deploymentURIsPublic`. For more details, please see the documentation [here](https://keptn.sh/docs/0.8.x/continuous_delivery/deployment_helm/#user-managed-deployments-experimental).
+:rocket: *Support custom deployment URLs*: When deploying custom Helm Charts by using the `user_managed` deployment strategy of the *helm-service*, it is now possible to define a public and/or local deployment URL. Therefore, the file `endpoints.yaml` must be uploaded to the helm folder in the configuration repository. This file has to contain the `deploymentURIsLocal` and/or `deploymentURIsPublic`. For more details, please see the documentation [here](https://v1.keptn.sh/docs/0.8.x/continuous_delivery/deployment_helm/#user-managed-deployments-experimental).
 
 ---
 
@@ -180,7 +180,7 @@ Implemented **Keptn spec** version: [0.2.2](https://github.com/keptn/spec/tree/0
 
 ## Upgrade to 0.8.3
 
-- The upgrade from 0.8.x to 0.8.3 is supported by the `keptn upgrade` command. Find the documentation here: [Upgrade from Keptn 0.8.x to 0.8.3](https://keptn.sh/docs/0.8.x/operate/upgrade/#upgrade-from-keptn-0-8-2-to-0-8-3)
+- The upgrade from 0.8.x to 0.8.3 is supported by the `keptn upgrade` command. Find the documentation here: [Upgrade from Keptn 0.8.x to 0.8.3](https://v1.keptn.sh/docs/0.8.x/operate/upgrade/#upgrade-from-keptn-0-8-2-to-0-8-3)
 
   - :warning: Please consider adding the *remediation sequence* to a stage for enabling the auto-remediation capabilities of Keptn. The instructions you will find in the upgrade guide: *Upgrade from Keptn 0.8.x to 0.8.3*
 

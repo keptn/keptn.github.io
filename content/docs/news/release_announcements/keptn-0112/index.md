@@ -3,15 +3,15 @@ title: Keptn 0.11.2
 weight: 84
 ---
 
-Keptn 0.11.2 provides a new MongoDB, which was updated from 3.6 to 4.4. This means that a manual database migration is needed to preserve data during the keptn upgrade process! Steps to upgrade Keptn with the manual migration can be found on the [Keptn Upgrade page](https://keptn.sh/docs/0.11.x/operate/upgrade/).
+Keptn 0.11.2 provides a new MongoDB, which was updated from 3.6 to 4.4. This means that a manual database migration is needed to preserve data during the keptn upgrade process! Steps to upgrade Keptn with the manual migration can be found on the [Keptn Upgrade page](https://v1.keptn.sh/docs/0.11.x/operate/upgrade/).
 
 ---
 
 **Key announcements:**
 
-⚠ _BREAKING CHANGE_:  This release requires a manual migration of all data in the Keptn Mongo DB. For more information, see our [upgrade guide](https://keptn.sh/docs/0.11.x/operate/upgrade/).
+⚠ _BREAKING CHANGE_:  This release requires a manual migration of all data in the Keptn Mongo DB. For more information, see our [upgrade guide](https://v1.keptn.sh/docs/0.11.x/operate/upgrade/).
 
-:mailbox: _Webhooks_ UI allows delegating to external services the execution of specific tasks. For an example, see our [Jenkins integration](https://keptn.sh/docs/0.10.x/integrations/webhooks/jenkins/#advanced-integrate-jenkins-response).
+:mailbox: _Webhooks_ UI allows delegating to external services the execution of specific tasks. For an example, see our [Jenkins integration](https://v1.keptn.sh/docs/0.10.x/integrations/webhooks/jenkins/#advanced-integrate-jenkins-response).
 
 :hammer: Hardening on Keptn: This release improved the High Availability (HA) capabilities of core components and performance optimization in the Bridge.
 
@@ -116,5 +116,5 @@ Keptn 0.11.2 provides a new MongoDB, which was updated from 3.6 to 4.4. This mea
 
 ## Upgrade to 0.11.x
 
-- The upgrade from 0.10.x to 0.11.x is supported by the `keptn upgrade` command. Find the documentation here: [Upgrade from Keptn 0.10.x to 0.11.x](https://keptn.sh/docs/0.11.x/operate/upgrade/)
+- The upgrade from 0.10.x to 0.11.x is supported by the `keptn upgrade` command. Find the documentation here: [Upgrade from Keptn 0.10.x to 0.11.x](https://v1.keptn.sh/docs/0.11.x/operate/upgrade/)
 

@@ -5,7 +5,7 @@ weight: 70
 
 # Release Notes 0.17.0
 
-Keptn 0.17.0 provides more customizability options in the Helm Charts. Make sure to check the [upgrade guide](https://keptn.sh/docs/install/upgrade/#upgrade-from-keptn-0-16-x-to-keptn-0-17-x) to ensure that you do not lose any data when upgrading to Keptn 0.17.0.
+Keptn 0.17.0 provides more customizability options in the Helm Charts. Make sure to check the [upgrade guide](https://v1.keptn.sh/docs/install/upgrade/#upgrade-from-keptn-0-16-x-to-keptn-0-17-x) to ensure that you do not lose any data when upgrading to Keptn 0.17.0.
 
 ---
 
@@ -22,7 +22,7 @@ Keptn 0.17.0 provides more customizability options in the Helm Charts. Make sure
 ### ⚠ BREAKING CHANGES
 
 * Git credentials for git authentication have been moved to a separate sub-structure in the `go-utils` package and split into SSH and HTTP sub-structures depending to support the different user authentication methods. This leads to new models for creating, updating, and retrieving the project information via REST APIs.
-* **installer:** Keptn's Helm charts have been reworked and some values are changed and/or moved. Please consult the [upgrade guide](https://keptn.sh/docs/install/upgrade/#upgrade-from-keptn-0-16-x-to-keptn-0-17-x) to make sure your installation can be upgraded successfully. With these changes, users can now customize resource limits/requests and add custom sidecars and extra volumes by setting the Helm values.
+* **installer:** Keptn's Helm charts have been reworked and some values are changed and/or moved. Please consult the [upgrade guide](https://v1.keptn.sh/docs/install/upgrade/#upgrade-from-keptn-0-16-x-to-keptn-0-17-x) to make sure your installation can be upgraded successfully. With these changes, users can now customize resource limits/requests and add custom sidecars and extra volumes by setting the Helm values.
 
 ### Features
 

@@ -1,6 +1,6 @@
 # Contribute to the Keptn website
 
-This document provides information about contributing to the [Keptn documentation](https://keptn.sh/docs/), which is part of the [Keptn](https://keptn.sh) website.
+This document provides information about contributing to the [Keptn documentation](https://v1.keptn.sh/docs/), which is part of the [Keptn](https://keptn.sh) website.
 
 This documentation is authored with [markdown](https://www.markdownguide.org/basic-syntax/)
 and rendered using the [Hugo static website generator framework](http://gohugo.io).
@@ -11,7 +11,7 @@ this works well for small modifications but, if you are making significant chang
 You can also run the [Hugo](https://gohugo.io/) based website locally to check the rendered documentation
 and then push your changes to the repository as a pull request.
 
-If you need help getting started, feel free to ask for help on the `#help-contributing` or `#keptn-docs` channels on the [Keptn Slack](https://keptn.sh/community/#slack).
+If you need help getting started, feel free to ask for help on the `#help-contributing` or `#keptn-docs` channels on the [Keptn Slack](https://v1.keptn.sh/community/#slack).
 We were all new to this once and are happy to help you!
 
 ## Notes about markdown
@@ -209,7 +209,7 @@ When *grip* is installed, you can format the specified file locally by running t
 
 ## Source file structure
 
-The source files for the [Keptn Documentation](https://keptn.sh/docs/) are stored under the *content/docs* directory in the repository.
+The source files for the [Keptn Documentation](https://v1.keptn.sh/docs/) are stored under the *content/docs* directory in the repository.
 The build strategy is to build everything except for the files/folders that are listed in the `ignoreFiles` array in the [config.toml](https://github.com/keptn/keptn.github.io/blob/master/config.toml) file.
 
 The order in which the files are displayed is determined by the value of the `weight` field in the metadata section of *_index.md* and *index.md* files located throughout the directory tree.

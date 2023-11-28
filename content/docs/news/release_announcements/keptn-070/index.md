@@ -17,7 +17,7 @@ weight: 100
 
 :lock: *Hardening of Keptn:* The hardened of Keptn 0.7 in terms of its permissions on a K8s cluster has been improved by defining the role-based access control (RBAC) of each service.  
 
-:star: *Removed Istio and NGINX - [KEP 18](https://github.com/keptn/enhancement-proposals/pull/18):* Keptn 0.7 does not install Istio nor an NGNIX Ingress controller during the Keptn install process. Instead, the default Kubernetes service types *NodePort* or *LoadBalancer* are used for exposing Keptn to an external IP. In case, the Kubernetes service types *ClusterIP* is chosen, it is required to manually install an Ingress or to go with port-forwarding to access the Keptn API/Bridge; documentation is provided [here](https://keptn.sh/docs/0.7.x/operate/install/).
+:star: *Removed Istio and NGINX - [KEP 18](https://github.com/keptn/enhancement-proposals/pull/18):* Keptn 0.7 does not install Istio nor an NGNIX Ingress controller during the Keptn install process. Instead, the default Kubernetes service types *NodePort* or *LoadBalancer* are used for exposing Keptn to an external IP. In case, the Kubernetes service types *ClusterIP* is chosen, it is required to manually install an Ingress or to go with port-forwarding to access the Keptn API/Bridge; documentation is provided [here](https://v1.keptn.sh/docs/0.7.x/operate/install/).
 
 Last but not least, many thanks to the community for the rich discussions around Keptn 0.7, the submitted [Keptn Enhancement Proposals](https://github.com/keptn/enhancement-proposals), and the implementation work!
 
@@ -150,11 +150,11 @@ Implemented **Keptn spec** version: [0.1.4](https://github.com/keptn/spec/tree/0
 
 ## Addressed Vulnerability Bulletins
 
-- Keptn is shipping an outdated and unsupported version of Istio, [Keptn-Vulnerability-2020-001](https://keptn.sh/docs/news/vulnerability_bulletins/keptn-sec-2020-001/)
-- RBAC cluster-admin role given to Keptn services by default, [Keptn-Vulnerability-2020-002](https://keptn.sh/docs/news/vulnerability_bulletins/keptn-sec-2020-002/)
+- Keptn is shipping an outdated and unsupported version of Istio, [Keptn-Vulnerability-2020-001](https://v1.keptn.sh/docs/news/vulnerability_bulletins/keptn-sec-2020-001/)
+- RBAC cluster-admin role given to Keptn services by default, [Keptn-Vulnerability-2020-002](https://v1.keptn.sh/docs/news/vulnerability_bulletins/keptn-sec-2020-002/)
 
 ## Good to know / Known Limitations
 
 * **Upgrade from 0.6.2 to 0.7:** *Keptn 0.7 uses Helm 3 while previous Keptn releases rely on Helm 2*. To upgrade  your Helm releases from Helm 2 to 3, two options are provided: 
-  1. *Job without Helm 3 Upgrade:* This option is needed when the cluster contains Helm releases not managed by Keptn. If this job is executed, it is necessary to manually convert the releases from Helm 2 to 3 as explained on [keptn.sh/docs](https://keptn.sh/docs/0.7.0/operate/upgrade/#job-without-helm-3-0-upgrade).
+  1. *Job without Helm 3 Upgrade:* This option is needed when the cluster contains Helm releases not managed by Keptn. If this job is executed, it is necessary to manually convert the releases from Helm 2 to 3 as explained on [keptn.sh/docs](https://v1.keptn.sh/docs/0.7.0/operate/upgrade/#job-without-helm-3-0-upgrade).
   1. *Job with Helm 3 Upgrade:* Full automation of Helm upgrade for installations were just Keptn is installed. If this job is executed, **all** Helm releases on the cluster are converted from Helm 2 to 3 and Tiller will be removed.

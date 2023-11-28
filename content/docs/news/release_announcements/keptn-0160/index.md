@@ -19,7 +19,7 @@ Make sure to check the [upgrade instructions](../../../0.16.x/operate/upgrade/) 
 
 :sparkles: *(experimental) New heatmap for SLI breakdown*: Keptn Bridge is leveraging a new rendering library that offers more flexibility for displaying the SLI breakdown. If you want to try it out, you can enable it by setting the Helm value `control-plane.bridge.d3heatmap.enabled` to `true`.
 
-:information_source: From Keptn 0.17, the CLI will remove the install/uninstall/upgrade commands. Please refer to our [documentation](https://keptn.sh/docs/0.16.x/operate/) to see how you can use helm to operate Keptn.
+:information_source: From Keptn 0.17, the CLI will remove the install/uninstall/upgrade commands. Please refer to our [documentation](https://v1.keptn.sh/docs/0.16.x/operate/) to see how you can use helm to operate Keptn.
 
 ---
 
@@ -31,7 +31,7 @@ Make sure to check the [upgrade instructions](../../../0.16.x/operate/upgrade/) 
 ### ⚠ BREAKING CHANGES
 
 * The `resource-service` replaces the old `configuration-service`. The new service always requires a Git upstream to be configured for a Keptn project. The new service will bring many advantages, such as faster response times and the possibility to upgrade Keptn without any downtime.
-* From Keptn 0.17, the CLI will remove the install/uninstall/upgrade commands. Please refer to our [documentation](https://keptn.sh/docs/0.16.x/operate/) to see how you can use helm to operate Keptn.
+* From Keptn 0.17, the CLI will remove the install/uninstall/upgrade commands. Please refer to our [documentation](https://v1.keptn.sh/docs/0.16.x/operate/) to see how you can use helm to operate Keptn.
 
 ### Features
 

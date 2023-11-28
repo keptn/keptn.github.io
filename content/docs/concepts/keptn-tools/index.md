@@ -115,7 +115,7 @@ Keptn comes pre-installed with services for:
 * Webhooks
 
 All other existing Keptn integrations are listed on the
-[Integrations](https://keptn.sh/docs/integrations/) page.
+[Integrations](https://v1.keptn.sh/docs/integrations/) page.
 
 Don't see your tool listed? You have three options:
 

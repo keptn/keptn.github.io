@@ -24,7 +24,7 @@ weight: 69
 
 ### ⚠ BREAKING CHANGES
 
-* **cli:** The install/uninstall/upgrade commands are not available anymore. Please use Helm to [operate Keptn](https://keptn.sh/docs/install/helm-install/).
+* **cli:** The install/uninstall/upgrade commands are not available anymore. Please use Helm to [operate Keptn](https://v1.keptn.sh/docs/install/helm-install/).
 * **resource-service:** Trailing `/` chars in the resource APIs will return a 404. This way, the difference between an empty URI and getting all the resources is explicit.
 * All Keptn core services depend on resource-service. From this moment on, the configuration-service is deprecated.
 

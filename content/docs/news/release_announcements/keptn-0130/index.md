@@ -15,7 +15,7 @@ Finally, this version of Keptn provides beta support for [OIDC](https://openid.n
 
 :star: *UX improvements* in Bridge: The settings page received a style refresh to better organize the information.
 
-:gift: *OIDC support*: Bridge, CLI, and Distributor have initial support for OpenID Connect. For more information on how to enable it, please check our [documentation](https://keptn.sh/docs/0.13.x/operate/user_management/).
+:gift: *OIDC support*: Bridge, CLI, and Distributor have initial support for OpenID Connect. For more information on how to enable it, please check our [documentation](https://v1.keptn.sh/docs/0.13.x/operate/user_management/).
 
 ---
 
@@ -157,5 +157,5 @@ Implemented **Keptn spec** version: [0.2.4](https://github.com/keptn/spec/tree/0
 
 ## Upgrade to 0.13.0
 
-- The upgrade from 0.12.x to 0.13.0 is supported by the `keptn upgrade` command. Find the documentation here: [Upgrade from Keptn 0.12.x to 0.13.0](https://keptn.sh/docs/0.13.x/operate/upgrade/#upgrade-from-keptn-0-12-x-to-0-13-0)
+- The upgrade from 0.12.x to 0.13.0 is supported by the `keptn upgrade` command. Find the documentation here: [Upgrade from Keptn 0.12.x to 0.13.0](https://v1.keptn.sh/docs/0.13.x/operate/upgrade/#upgrade-from-keptn-0-12-x-to-0-13-0)
 

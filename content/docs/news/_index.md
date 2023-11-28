@@ -6,4 +6,4 @@ icon: tasks
 weight: 1005
 ---
 
-Sign up to our Keptn Community Newsletter to get news, feature highlights, and more: [Newsletter](https://keptn.sh/community/newsletter/).
+Sign up to our Keptn Community Newsletter to get news, feature highlights, and more: [Newsletter](https://v1.keptn.sh/community/newsletter/).
