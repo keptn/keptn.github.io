@@ -232,7 +232,7 @@ Depending on the channel your service is subscribed to, it will receive the payl
 
 ### sh.keptn.problem
 
-To receive events in this channel, please follow the instructions of the [Runbook Automation and Self-healing](https://keptn.sh/docs/0.2.0/usecases/runbook-automation-and-self-healing/) section.
+To receive events in this channel, please follow the instructions of the [Runbook Automation and Self-healing](https://v1.keptn.sh/docs/0.2.0/usecases/runbook-automation-and-self-healing/) section.
 
 ```json
 {
@@ -257,7 +257,7 @@ To receive events in this channel, please follow the instructions of the [Runboo
 
 ## Logging
 
-To inspect your service's log messages for a specific pipeline run, as described in the [keptn's log](https://keptn.sh/docs/0.2.0/reference/keptnslog/) section, you can use the `shkeptncontext` property of the incoming CloudEvents. Your service has to output its log messages in the following format:
+To inspect your service's log messages for a specific pipeline run, as described in the [keptn's log](https://v1.keptn.sh/docs/0.2.0/reference/keptnslog/) section, you can use the `shkeptncontext` property of the incoming CloudEvents. Your service has to output its log messages in the following format:
 
 ```json
 {

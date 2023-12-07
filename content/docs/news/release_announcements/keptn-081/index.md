@@ -9,7 +9,7 @@ Keptn 0.8.1 improves the user experience of Keptn by allowing custom names for S
 
 **Key announcements:**
 
-:tada: *API/CLI support for creating secrets*:  This release introduces the new feature to create a secret on the Keptn control-plane, which is then stored as [Kubernetes Secret](https://kubernetes.io/docs/concepts/configuration/secret/). Therefore, the Keptn API and CLI provide the required functionality. Please see [keptn create secret](https://keptn.sh/docs/0.8.x/reference/cli/commands/keptn_create_secret/) to learn how to use this feature. 
+:tada: *API/CLI support for creating secrets*:  This release introduces the new feature to create a secret on the Keptn control-plane, which is then stored as [Kubernetes Secret](https://kubernetes.io/docs/concepts/configuration/secret/). Therefore, the Keptn API and CLI provide the required functionality. Please see [keptn create secret](https://v1.keptn.sh/docs/0.8.x/reference/cli/commands/keptn_create_secret/) to learn how to use this feature. 
 
 :star: *Bridge improvements for SLO names and stage overview*: The SLO spec allows adding a `displayName` for an SLO. This name is optional but will be used in the Bridge when available; please see the snippet below. Additionally, the Bridge provides enhancements for the environment screen where an overview of the currently running sequences is given and the evaluation of a quality gate is displayed:
 
@@ -146,6 +146,6 @@ Implemented **Keptn spec** version: [0.2.1](https://github.com/keptn/spec/tree/0
 
 ## Upgrade to 0.8.1
 
-- The upgrade from 0.8.0 to 0.8.1 is supported by the `keptn upgrade` command. Find the documentation here: [Upgrade from Keptn 0.8.0 to 0.8.1](https://keptn.sh/docs/0.8.x/operate/upgrade/#upgrade-from-keptn-0-8-0-to-0-8-1)
+- The upgrade from 0.8.0 to 0.8.1 is supported by the `keptn upgrade` command. Find the documentation here: [Upgrade from Keptn 0.8.0 to 0.8.1](https://v1.keptn.sh/docs/0.8.x/operate/upgrade/#upgrade-from-keptn-0-8-0-to-0-8-1)
 <details><summary>CI Information</summary>
 <p>

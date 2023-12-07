@@ -60,4 +60,4 @@ This is a bug fix release for Keptn 0.9.0, containing fixes for the Bridge and K
 
 ## Upgrade to 0.9.1
 
-- The upgrade from 0.9.0 to 0.9.1 is supported by the `keptn upgrade` command. Find the documentation here: [Upgrade from Keptn 0.9.0 to 0.9.1](https://keptn.sh/docs/0.9.x/operate/upgrade/#upgrade-from-keptn-0-9-0-to-0-9-1).
+- The upgrade from 0.9.0 to 0.9.1 is supported by the `keptn upgrade` command. Find the documentation here: [Upgrade from Keptn 0.9.0 to 0.9.1](https://v1.keptn.sh/docs/0.9.x/operate/upgrade/#upgrade-from-keptn-0-9-0-to-0-9-1).

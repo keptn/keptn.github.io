@@ -13,7 +13,7 @@ The Keptn CLI allows installing Keptn on Azure Kubernetes Services (AKS), Amazon
 
 For more information, please consult the following docs:
 
-* https://keptn.sh/docs/develop/installation/setup-keptn/
+* https://v1.keptn.sh/docs/develop/installation/setup-keptn/
 
 
 

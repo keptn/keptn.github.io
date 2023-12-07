@@ -18,9 +18,9 @@ width="700px">}}
 
 :star: *Create/Delete a service* via Bridge: Next to the Webhook configuration, the Bridge allows creating and deleting a service.
 
-:gift: Our [new integrations page](https://keptn.sh/docs/integrations/) got a facelift a let's you explore and search available Keptn integrations. All powered by the ArtifactHub.
+:gift: Our [new integrations page](https://v1.keptn.sh/docs/integrations/) got a facelift a let's you explore and search available Keptn integrations. All powered by the ArtifactHub.
 
-:information_source: Keptn provides an internal Git repository for each Keptn project regardless of whether a Git upstream is configured. This internal Git repository will become deprecated in an upcoming Keptn release; more detail will follow. Consequently, it is recommended to set a Git upstream to your own, publically accessible Git repository today. Therefore, use the Keptn [CLI](https://keptn.sh/docs/0.10.x/reference/cli/commands/keptn_update_project/) or [Bridge](https://keptn.sh/docs/0.10.x/reference/bridge/manage_projects/). If there are specific requirements to connect to an own repository, please reach out on Slack: [keptn.slack.com](https://keptn.slack.com)
+:information_source: Keptn provides an internal Git repository for each Keptn project regardless of whether a Git upstream is configured. This internal Git repository will become deprecated in an upcoming Keptn release; more detail will follow. Consequently, it is recommended to set a Git upstream to your own, publically accessible Git repository today. Therefore, use the Keptn [CLI](https://v1.keptn.sh/docs/0.10.x/reference/cli/commands/keptn_update_project/) or [Bridge](https://v1.keptn.sh/docs/0.10.x/reference/bridge/manage_projects/). If there are specific requirements to connect to an own repository, please reach out on Slack: [keptn.slack.com](https://keptn.slack.com)
 
 ---
 
@@ -238,5 +238,5 @@ Implemented **Keptn spec** version: [0.2.3](https://github.com/keptn/spec/tree/0
 
 ## Upgrade to 0.10.0
 
-- The upgrade from 0.9.x to 0.10.0 is supported by the `keptn upgrade` command. Find the documentation here: [Upgrade from Keptn 0.9.x to 0.10.0](https://keptn.sh/docs/0.10.x/operate/upgrade/#upgrade-from-keptn-0-9-x-to-0-10-0)
+- The upgrade from 0.9.x to 0.10.0 is supported by the `keptn upgrade` command. Find the documentation here: [Upgrade from Keptn 0.9.x to 0.10.0](https://v1.keptn.sh/docs/0.10.x/operate/upgrade/#upgrade-from-keptn-0-9-x-to-0-10-0)
 

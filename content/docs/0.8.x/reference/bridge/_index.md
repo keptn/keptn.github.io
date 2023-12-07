@@ -159,12 +159,12 @@ You can find links to for different integration possibilities here. This makes i
 integrations for different CI providers.
 
 Please note that the page contains dynamic content that is loaded from https://get.keptn.sh/integrations.html. By clicking the button the data is requested,
-and additional data is gathered from the client. For more information about this see https://keptn.sh/docs/0.8.x/reference/load_information/.
+and additional data is gathered from the client. For more information about this see https://v1.keptn.sh/docs/0.8.x/reference/load_information/.
 
 ### Settings
 
 In the settings view the project settings can be edited. 
-To get more information about how to manage your projects with the settings, visit [Manage Projects](https://keptn.sh/docs/0.8.x/reference/bridge/manage_projects).
+To get more information about how to manage your projects with the settings, visit [Manage Projects](https://v1.keptn.sh/docs/0.8.x/reference/bridge/manage_projects).
 
 {{< popup_image
 link="./assets/settings.png"
@@ -174,7 +174,7 @@ caption="Keptn Bridge Settings View">}}
 
 ### Approvals
 
-If you have a [manual approval strategy](https://keptn.sh/docs/0.8.x/continuous_delivery/multi_stage/#approval) defined in your shipyard.yaml file, approvals can be handled with the Keptn Bridge.
+If you have a [manual approval strategy](https://v1.keptn.sh/docs/0.8.x/continuous_delivery/multi_stage/#approval) defined in your shipyard.yaml file, approvals can be handled with the Keptn Bridge.
 At sequence execution, if the approval task is reached, a panel is shown in all relevant screens:
 
 In the environment view a pending approval can be recognized by the blue service out-of-sync icon at the according stage.
@@ -198,7 +198,7 @@ caption="Approval in Sequences">}}
 
 ### Manage projects
 
-See the documentation for [managing projects](https://keptn.sh/docs/0.8.x/reference/bridge/manage_projects) to see which features for creating and updating projects the Bridge provides.
+See the documentation for [managing projects](https://v1.keptn.sh/docs/0.8.x/reference/bridge/manage_projects) to see which features for creating and updating projects the Bridge provides.
 
 ## Early access version of Keptn Bridge
 

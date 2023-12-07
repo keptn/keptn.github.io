@@ -73,7 +73,7 @@ jobs:
           ./dist/keptn generate docs --dir="$DOCS_PATH"
 
           # Replaces All Occurences of version links with a relative path
-          find $DOCS_PATH -print -type f -name '*.md' -exec sed -i "s@https://keptn.sh/docs/[[:digit:]][^/]*/@${RELATIVE_PATH}@g" {} \;
+          find $DOCS_PATH -print -type f -name '*.md' -exec sed -i "s@https://v1.keptn.sh/docs/[[:digit:]][^/]*/@${RELATIVE_PATH}@g" {} \;
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4

@@ -154,4 +154,4 @@ Implemented **Keptn spec** version: [0.2.3](https://github.com/keptn/spec/tree/0
 
 ## Upgrade to 0.8.4
 
-- The upgrade from 0.8.x to 0.8.4 is supported by the `keptn upgrade` command. Find the documentation here: [Upgrade from Keptn 0.8.x to 0.8.4](https://keptn.sh/docs/0.8.x/operate/upgrade/#upgrade-from-keptn-0-8-3-to-0-8-4)
+- The upgrade from 0.8.x to 0.8.4 is supported by the `keptn upgrade` command. Find the documentation here: [Upgrade from Keptn 0.8.x to 0.8.4](https://v1.keptn.sh/docs/0.8.x/operate/upgrade/#upgrade-from-keptn-0-8-3-to-0-8-4)

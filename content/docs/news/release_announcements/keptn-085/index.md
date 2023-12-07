@@ -13,4 +13,4 @@ Bridge `LOOK_AND_FEEL_URL` is missing in Keptn installer helm chart [4476](https
 
 ## Upgrade to 0.8.5
 
-- The upgrade from 0.8.x to 0.8.5 is supported by the `keptn upgrade` command. Find the documentation here: [Upgrade from Keptn 0.8.x to 0.8.5](https://keptn.sh/docs/0.8.x/operate/upgrade/#upgrade-from-keptn-0-8-4-to-0-8-5)
+- The upgrade from 0.8.x to 0.8.5 is supported by the `keptn upgrade` command. Find the documentation here: [Upgrade from Keptn 0.8.x to 0.8.5](https://v1.keptn.sh/docs/0.8.x/operate/upgrade/#upgrade-from-keptn-0-8-4-to-0-8-5)

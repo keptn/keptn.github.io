@@ -204,4 +204,4 @@ Implemented **Keptn spec** version: [0.2.3](https://github.com/keptn/spec/tree/0
 
 ## Upgrade to 0.9.0
 
-- The upgrade from 0.8.x to 0.9.0 is supported by the `keptn upgrade` command. Find the documentation here: [Upgrade from Keptn 0.8.x to 0.9.0](https://keptn.sh/docs/0.9.x/operate/upgrade/#upgrade-from-keptn-0-8-x-to-0-9-0)
+- The upgrade from 0.8.x to 0.9.0 is supported by the `keptn upgrade` command. Find the documentation here: [Upgrade from Keptn 0.8.x to 0.9.0](https://v1.keptn.sh/docs/0.9.x/operate/upgrade/#upgrade-from-keptn-0-8-x-to-0-9-0)

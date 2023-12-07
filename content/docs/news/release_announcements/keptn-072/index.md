@@ -105,4 +105,4 @@ Implemented **Keptn spec** version: [0.1.6](https://github.com/keptn/spec/tree/0
 
 ## Upgrade to 0.7.2
 
-- The upgrade from 0.7.x to 0.7.2 is supported by the `keptn upgrade` command. Find the documentation here: [Upgrade from Keptn 0.7.1 to 0.7.2](https://keptn.sh/docs/0.7.x/operate/upgrade/#upgrade-from-keptn-0-7-1-to-0-7-2)
+- The upgrade from 0.7.x to 0.7.2 is supported by the `keptn upgrade` command. Find the documentation here: [Upgrade from Keptn 0.7.1 to 0.7.2](https://v1.keptn.sh/docs/0.7.x/operate/upgrade/#upgrade-from-keptn-0-7-1-to-0-7-2)

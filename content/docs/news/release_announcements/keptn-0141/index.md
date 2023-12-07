@@ -33,7 +33,7 @@ For existing integration that are not yet updated to use a 0.14.x distributor, p
 
 * **cli:** The CLI does not require anymore passing git_user as a parameter to create or upgrade a project. In case you are experiencing issues with the command, we suggest trying it without specifying the user.
 * **configuration-service:** adding invalid token results in a 404 HTTP status code (424 previously)
-* **nats**: the NATS cluster name changed from `keptn-nats-cluster` to `keptn-nats`. Please check the [upgrade documentation](https://keptn.sh/docs/0.14.x/operate/upgrade/).
+* **nats**: the NATS cluster name changed from `keptn-nats-cluster` to `keptn-nats`. Please check the [upgrade documentation](https://v1.keptn.sh/docs/0.14.x/operate/upgrade/).
 
 ### Features
 
