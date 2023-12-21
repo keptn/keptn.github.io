@@ -1,8 +1,5 @@
 # Keptn Website
 
-## Keptn V1 has reached end of life on December 22nd, 2023 and has been replaced
-
-
 [![Channel on Slack](https://img.shields.io/badge/Slack-%23keptn--website-green)](https://v1.keptn.sh/community/#slack)
 ![Powered by Netlify](https://img.shields.io/netlify/5b8b8c0a-121b-4216-bf17-eec11b2f2391)
 
