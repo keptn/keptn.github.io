@@ -1,6 +1,6 @@
 # Keptn Website
 
-## Keptn V1 has reached end of life on December 22nd, 2023 and has been replaced
+## Keptn V1 has reached end of life on December 22nd, 2023 and has been [replaced](https://github.com/keptn/lifecycle-toolkit).
 
 
 [![Channel on Slack](https://img.shields.io/badge/Slack-%23keptn--website-green)](https://v1.keptn.sh/community/#slack)
